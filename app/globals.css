@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0b;
+  --surface: #111113;
+  --card: #1a1a1d;
+  --ink: #e8e4dd;
+  --muted: #8a857d;
+  --caption: #5a5650;
+  --gold: #c9a962;
+  --glow: #b288f6;
+
+  /* glassmorphism 2.0 — 유색 앰비언트 위 다층 프로스트 글래스 */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-bg-strong: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  --shadow-hard: 0 3px 0 0 var(--gold);
+  --glow-hero: 0 0 40px 0 rgba(178, 136, 246, 0.35);
+  --r-btn: 9px;
+  --r-input: 13px;
+  --r-card: 20px;
+  --r-pill: 30px;
+
+  /* Aurora Mesh — 주요 색상 (2026-07-06 사용자 확정 스펙). 여기만 바꾸면 팔레트 전체가 바뀜 */
+  --aurora-accent-1: #2dffa0; /* 형광그린 */
+  --aurora-accent-2: #22d3ee; /* 시안 */
+  --aurora-mid: #3a63ff; /* 로열블루 */
+  --aurora-deep: #1a2fb5; /* 딥인디고 */
+  --aurora-base: #0f1a6e; /* 네이비 */
+  --aurora-highlight: rgba(200, 224, 255, 0.85); /* 청백 하이라이트 */
+  --aurora-glow-inner: rgba(34, 211, 238, 0.6);
+  --aurora-glow-outer: rgba(26, 47, 181, 0.4);
+  --aurora-angle: 120deg; /* 흐름 방향: 좌하단 → 우상단 */
+  --aurora-accent-stop: 28%; /* 작을수록 파랑 비중↑ */
+}
+
+html {
+  background: var(--bg);
+  color-scheme: dark;
+}
+
+body {
+  /* 배경은 html이 담당 — body가 칠하면 .ambient::before(z-index:-1)가 그 뒤로 숨는다 */
+  color: var(--ink);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 글래스가 블러할 유색 배경 — Aurora 앰비언트 오브 (glassmorphism 2.0의 전제)
+   흐름: 좌하단(그린·시안 액센트) → 우상단(파랑 지배) */
+.ambient::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  /* 미니멀: 배경은 조용하게(f11) — 색은 카드·CTA가 주인공 */
+  background:
+    radial-gradient(720px 540px at 80% 10%, rgba(58, 99, 255, 0.12), transparent 65%),
+    radial-gradient(560px 460px at 12% 90%, rgba(34, 211, 238, 0.07), transparent 60%);
+}
+
+::selection {
+  background: rgba(201, 169, 98, 0.35);
+}
+
+@layer components {
+  /* 패널·카드·칩·시트의 기본 표면 */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* 부상 레이어(시트·확정 카드) — 한 단계 밝은 유리 */
+  .glass-strong {
+    background: var(--glass-bg-strong);
+    backdrop-filter: blur(32px) saturate(160%);
+    -webkit-backdrop-filter: blur(32px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* 골드 액센트 유리 — 선택 상태·씨앗 칩 */
+  .glass-gold {
+    background: rgba(201, 169, 98, 0.12);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    border: 1px solid rgba(201, 169, 98, 0.45);
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* Aurora Mesh — 범용 클래스. 모양·크기 불문 버튼/카드/배지/패널 어디에나 클래스 하나로 부착.
+     하이라이트 링(::before)이 border-radius: inherit로 모양에 자동 대응한다. */
+  .aurora {
+    position: relative; /* ::before 링 기준 */
+    color: #fff;
+    background-color: var(--aurora-base); /* 폴백 */
+    background-image:
+      radial-gradient(56% 76% at 80% 14%, var(--aurora-highlight) 0%, transparent 46%),
+      radial-gradient(66% 82% at 88% 58%, var(--aurora-base) 0%, transparent 58%),
+      radial-gradient(48% 60% at 6% 94%, var(--aurora-accent-1) 0%, transparent 54%),
+      radial-gradient(46% 56% at 22% 74%, var(--aurora-accent-2) 0%, transparent 52%),
+      linear-gradient(
+        var(--aurora-angle),
+        var(--aurora-accent-1) 0%,
+        var(--aurora-accent-2) calc(var(--aurora-accent-stop) * 0.42),
+        var(--aurora-mid) var(--aurora-accent-stop),
+        var(--aurora-deep) 66%,
+        var(--aurora-base) 100%
+      );
+    background-size: 170% 170%;
+    box-shadow:
+      0 0 10px var(--aurora-glow-inner),
+      0 0 26px var(--aurora-glow-outer);
+    animation: aurora-shift 14s ease-in-out infinite;
+  }
+
+  /* 위에서 빛 받은 1px 하이라이트 링 */
+  .aurora::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.85) 0%,
+      rgba(255, 255, 255, 0.25) 45%,
+      transparent 70%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+@keyframes aurora-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora {
+    animation: none;
+  }
+}
+
+/* 인트로 B단계: 빛줄기 스윕 — 토스 simplicity의 lighten 비디오 스트립을 CSS로 등가 재현
+   (docs/references/simplicity-intro/README.md 재현 원칙 1) */
+.intro-streak {
+  position: absolute;
+  inset-inline: 0;
+  height: 150px;
+  top: calc(50% - 75px);
+  mix-blend-mode: lighten;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(201, 169, 98, 0.9) 45%,
+    rgba(178, 136, 246, 0.7) 52%,
+    transparent 70%
+  );
+  background-size: 300% 100%;
+  animation: streak-sweep 1.8s cubic-bezier(0.65, 0, 0.35, 1) 2;
+}
+
+@keyframes streak-sweep {
+  from {
+    background-position: 120% 0;
+  }
+  to {
+    background-position: -120% 0;
+  }
+}
+
+/* 인트로 D단계: 풀블리드 → 9:16 카드 축소 (opacity/transform만 — 재현 원칙 3) */
+@keyframes settle-to-card {
+  from {
+    transform: scale(2.6);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bloom {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-streak,
+  [data-intro] *,
+  [data-anim] {
+    animation: none !important;
+    transition: none !important;
+  }
+}

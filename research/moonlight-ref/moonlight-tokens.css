@@ -1,0 +1,140 @@
+/* ============================================================
+   Moonlight 아웃풋 스타일 · 드롭인 디자인 토큰
+   app.moonlight.world 라이브 DOM에서 추출 (2026-07-05)
+   "오늘 해볼까" 아웃풋에 그대로 사용
+   ------------------------------------------------------------
+   폰트 안내:
+   - Work Sans        : 원본 그대로. SIL OFL(무료·상용가능). self-host 권장
+   - Playfair Display : 원본 Kepler Std Light Condensed(Adobe 상용)의 무료 대체 (고대비 에디토리얼)
+                        · 더 부드러운 클래식을 원하면 EB Garamond로 교체
+   - Pinyon Script    : 원본 GorgeousBaby(상용)의 무료 대체
+   Google Fonts(https://fonts.google.com)에서 셋 다 무료로 받을 수 있습니다.
+   원본 폰트를 라이선스 보유 중이면 --serif/--script만 교체하면 됩니다.
+   ============================================================ */
+
+/* self-host 시 (public/fonts/에 파일 두고) 아래 주석 해제:
+@font-face{ font-family:'Work Sans'; src:url('/fonts/WorkSans.woff2') format('woff2'); font-weight:300 600; font-display:swap; }
+@font-face{ font-family:'Playfair Display'; src:url('/fonts/PlayfairDisplay.woff2') format('woff2'); font-weight:400 600; font-display:swap; }
+@font-face{ font-family:'Pinyon Script'; src:url('/fonts/PinyonScript.woff2') format('woff2'); font-weight:400; font-display:swap; }
+*/
+
+:root{
+  /* ── Color (추출한 실제 값) ── */
+  --wash:#f5f5f5;        /* 페이지 배경 */
+  --card:#ebebeb;        /* 결과 패널 */
+  --ink:#000000;         /* 텍스트·테두리 */
+  --darkwash:#1a1a1a;    /* 알약 배경 */
+  --beige:#ecd8ce;       /* 결과 카드(아웃풋이 담기는 곳) */
+  --purple:#b288f6;      /* 히어로 글로우 */
+  --lavender:#f0d8ff;    /* 보조 퍼플·hover */
+  --peach:#ffd9cd;       /* 텍스트 선택 영역 */
+  --gray400:#adadad;
+  --gray600:#666666;     /* 보조 텍스트 */
+  --error:#de6d5d;
+
+  /* ── Radius ── */
+  --r-btn:9px;           /* 버튼 */
+  --r-input:13px;        /* 인풋(시그니처 radius) */
+  --r-card:20px;         /* 결과 카드 */
+  --r-pill:30px;         /* 알약 */
+  --r-panel:31px;        /* 큰 패널 */
+
+  /* ── Depth ── */
+  --shadow-hard:0 3px 0 0 #000;   /* ★ 시그니처: 블러 없는 단단한 오프셋 그림자 */
+  --glow:0 0 40px 0 #b288f6;      /* 히어로 원형 CTA 퍼플 글로우 */
+
+  /* ── Spacing (0.25rem 스텝) ── */
+  --space-1:.25rem; --space-2:.5rem; --space-3:.75rem;
+  --space-4:1rem; --space-5:1.25rem; --space-6:1.5rem;
+
+  /* ── Type ── */
+  --serif:'Playfair Display', Georgia, 'Times New Roman', serif; /* 제목 (원본 Kepler) */
+  --sans:'Work Sans', system-ui, -apple-system, sans-serif;     /* 본문·UI (원본 그대로) */
+  --script:'Pinyon Script', cursive;                            /* 인사말 (원본 GorgeousBaby) */
+}
+
+/* ── Global ── */
+body{
+  margin:0;
+  background:var(--wash);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+*{ box-sizing:border-box; }
+*::selection{ background:var(--peach); color:#000; }
+/* 얇은 스크롤바 (원본 디테일) */
+body::-webkit-scrollbar{ width:.5rem; height:.5rem; }
+body::-webkit-scrollbar-track{ background:transparent; }
+body::-webkit-scrollbar-thumb{ background:rgba(0,0,0,.1); border-radius:.5rem; }
+
+/* ── Typography roles ── */
+.display{ font-family:var(--script); font-weight:400; line-height:.9; }   /* "Hello!" */
+.title{ font-family:var(--serif); font-weight:400; letter-spacing:.01em; } /* 세리프 제목 */
+
+/* ── 결과 패널 (outer, "Spread of the day" 컨테이너) ── */
+.panel{
+  background:var(--card);
+  border-radius:var(--r-panel);
+  border:.5px solid rgba(0,0,0,.4);
+  box-shadow:var(--shadow-hard);
+  padding:50px 24px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* ── 결과 카드 (beige, 실제 아웃풋) ── */
+.result{
+  background:var(--beige);
+  border-radius:var(--r-card);
+  border:1px solid var(--ink);
+  padding:24px 40px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+}
+
+/* ── 카테고리 알약 ── */
+.pill{
+  display:inline-block;
+  background:var(--darkwash);
+  color:#fff;
+  border-radius:var(--r-pill);
+  padding:7px 20px;
+  font-size:11px;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.pill--lavender{ background:var(--lavender); color:#000; }
+
+/* ── 2열 프롬프트 그리드 ── */
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:8px 16px; }
+.field{ display:flex; flex-direction:column; gap:8px; }
+.field label{ font-size:12.5px; text-align:center; line-height:1.35; }
+.field .box{ background:#fff; border-radius:var(--r-input); min-height:56px; border:0; }
+
+/* ── 버튼 (검정 알약형) ── */
+.btn{
+  background:var(--ink); color:#fff;
+  border:0; border-radius:var(--r-btn);
+  padding:0 13px; height:26px;
+  font-family:var(--sans); font-size:12px; cursor:pointer;
+}
+
+/* ── 히어로 원형 CTA (퍼플 글로우) ── */
+.cta{
+  width:144px; height:144px;
+  border-radius:50%;
+  background:var(--ink);
+  box-shadow:var(--glow);
+  border:0; cursor:pointer;
+  color:#fff; font-size:34px; font-weight:300;
+  display:grid; place-items:center;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.cta:hover{ transform:translateY(-2px); box-shadow:0 0 56px 4px var(--purple); }

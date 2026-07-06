@@ -1,0 +1,399 @@
+{
+  "version": 1,
+  "tracks": {
+    "like": {
+      "label": "좋아하는 걸로",
+      "categories": [
+        {
+          "id": "fitness",
+          "label": "운동/피트니스",
+          "emoji": "🏃",
+          "seeds": [
+            { "id": "running", "label": "러닝" },
+            { "id": "weight-training", "label": "헬스/웨이트" },
+            { "id": "climbing", "label": "클라이밍" },
+            { "id": "golf", "label": "골프" },
+            { "id": "hiking", "label": "등산" },
+            { "id": "home-workout", "label": "홈트/맨몸" }
+          ]
+        },
+        {
+          "id": "food",
+          "label": "음식/미식",
+          "emoji": "☕",
+          "seeds": [
+            { "id": "cafe", "label": "카페" },
+            { "id": "baking-dessert", "label": "베이킹/디저트" },
+            { "id": "restaurant-hunt", "label": "맛집탐방" },
+            { "id": "home-cooking", "label": "홈쿡/집밥" },
+            { "id": "coffee-beans", "label": "커피/원두" },
+            { "id": "diet-lunchbox", "label": "다이어트식/도시락" }
+          ]
+        },
+        {
+          "id": "content",
+          "label": "콘텐츠/미디어",
+          "emoji": "🎬",
+          "seeds": [
+            { "id": "ott", "label": "넷플릭스/OTT" },
+            { "id": "webtoon", "label": "웹툰/웹소설" },
+            { "id": "youtube", "label": "유튜브시청" },
+            { "id": "podcast", "label": "팟캐스트" },
+            { "id": "reading", "label": "독서" },
+            { "id": "movie", "label": "영화" }
+          ]
+        }
+      ]
+    },
+    "know": {
+      "label": "잘 아는 걸로",
+      "categories": [
+        {
+          "id": "dev",
+          "label": "개발/IT",
+          "emoji": "💻",
+          "seeds": [
+            { "id": "frontend", "label": "프론트엔드" },
+            { "id": "backend", "label": "백엔드" },
+            { "id": "data-ai", "label": "데이터/AI" },
+            { "id": "app-dev", "label": "앱개발" },
+            { "id": "devops", "label": "DevOps/인프라" },
+            { "id": "qa-test", "label": "QA/테스트" }
+          ]
+        },
+        {
+          "id": "commerce",
+          "label": "커머스/유통",
+          "emoji": "📦",
+          "seeds": [
+            { "id": "online-mall", "label": "온라인쇼핑몰" },
+            { "id": "md-buying", "label": "구매/MD" },
+            { "id": "logistics-delivery", "label": "물류/배송" },
+            { "id": "inventory-management", "label": "재고관리" },
+            { "id": "cs-support", "label": "CS/응대" },
+            { "id": "live-commerce", "label": "라이브커머스" }
+          ]
+        },
+        {
+          "id": "marketing",
+          "label": "마케팅/광고",
+          "emoji": "📣",
+          "seeds": [
+            { "id": "performance-marketing", "label": "퍼포먼스마케팅" },
+            { "id": "content-marketing", "label": "콘텐츠마케팅" },
+            { "id": "sns-ops", "label": "SNS운영" },
+            { "id": "brand-planning", "label": "브랜드/기획" },
+            { "id": "crm-email", "label": "CRM/이메일" },
+            { "id": "influencer-marketing", "label": "인플루언서마케팅" }
+          ]
+        }
+      ]
+    }
+  },
+  "presetSeeds": [
+    { "id": "cafe-tour", "label": "카페투어", "track": "like", "pains": [1, 4, 16, 14], "formats": ["share-link", "curation", "vote-card", "landing-waitlist"] },
+    { "id": "bakery-tour", "label": "빵집투어", "track": "like", "pains": [1, 4, 5, 16], "formats": ["share-link", "vote-card", "curation", "template-gen"] },
+    { "id": "running-crew", "label": "러닝크루", "track": "like", "pains": [3, 8, 9, 10], "formats": ["vote-card", "streak-tracker", "share-link", "calc-tool"] },
+    { "id": "diary-deco", "label": "다꾸", "track": "like", "pains": [1, 5, 10, 11], "formats": ["template-gen", "curation", "vote-card", "share-link"] },
+    { "id": "home-cafe", "label": "홈카페", "track": "like", "pains": [2, 4, 5, 14], "formats": ["calc-tool", "curation", "template-gen", "vote-card"] },
+    { "id": "side-project", "label": "사이드프로젝트", "track": "like", "pains": [3, 8, 10, 12], "formats": ["streak-tracker", "vote-card", "share-link", "landing-waitlist"] },
+    { "id": "smart-store", "label": "스마트스토어", "track": "know", "pains": [5, 7, 8, 11, 12], "formats": ["calc-tool", "dashboard", "crud-app", "digest-bot", "share-link"] },
+    { "id": "logistics-inspection", "label": "물류검수", "track": "know", "pains": [7, 8, 12, 13], "formats": ["crud-app", "calc-tool", "dashboard", "digest-bot"] },
+    { "id": "camping", "label": "캠핑", "track": "like", "pains": [2, 4, 10, 12], "formats": ["template-gen", "share-link", "vote-card", "curation"] },
+    { "id": "fandom-goods", "label": "덕질/굿즈", "track": "like", "pains": [1, 5, 9, 16], "formats": ["share-link", "vote-card", "curation", "landing-waitlist"] }
+  ],
+  "pains": [
+    { "id": 1, "label": "기록이 여기저기 흩어져 한눈에 안 모인다", "short": "기록 흩어짐" },
+    { "id": 2, "label": "초보라 뭘 사거나 골라야 할지 모른다", "short": "초보 선택 어려움" },
+    { "id": 3, "label": "혼자라 동기부여·지속이 안 된다", "short": "지속 어려움" },
+    { "id": 4, "label": "정보가 파편화돼 매번 검색·취합해야 한다", "short": "정보 파편화" },
+    { "id": 5, "label": "비교·선택이 귀찮고 오래 걸린다", "short": "비교 피로" },
+    { "id": 6, "label": "입문 장벽이 높다", "short": "입문 장벽" },
+    { "id": 7, "label": "반복 작업을 매번 손으로 한다", "short": "반복 수동" },
+    { "id": 8, "label": "진행 상황·성과가 눈에 안 보인다", "short": "성과 안 보임" },
+    { "id": 9, "label": "같이 할 사람·모임을 찾기 어렵다", "short": "함께할 사람 부족" },
+    { "id": 10, "label": "결정을 못 내리고 미룬다", "short": "선택 마비" },
+    { "id": 11, "label": "남들은 어떻게 하는지 궁금한데 알 길이 없다", "short": "벤치마크 부재" },
+    { "id": 12, "label": "뭘 놓쳤는지 모른다", "short": "체크리스트 부재" },
+    { "id": 13, "label": "전문가에게 묻기엔 사소하고 부담된다", "short": "전문가 부담" },
+    { "id": 14, "label": "내 취향·조건에 맞는 추천이 없다", "short": "개인화 부재" },
+    { "id": 15, "label": "시작은 했는데 꾸준히 관리가 안 된다", "short": "관리 방치" },
+    { "id": 16, "label": "후기·평판이 흩어져 믿을 정보를 못 찾는다", "short": "평판 흩어짐" }
+  ],
+  "formats": [
+    { "id": "share-link", "label": "공유 링크툴", "short": "링크툴", "desc": "입력한 내용을 결과 페이지로 만들고 URL로 공유", "buildDays": "3~4일", "action": "공유 가능한 링크 흐름" },
+    { "id": "vote-card", "label": "투표/반응 카드", "short": "투표카드", "desc": "공개 카드에 익명 반응과 한마디를 받음", "buildDays": "3~4일", "action": "3초 투표 카드" },
+    { "id": "chatbot", "label": "챗봇", "short": "챗봇", "desc": "좁은 프롬프트와 씨앗 데이터로 대화형 답변 제공", "buildDays": "2~3일", "action": "대화형 응답" },
+    { "id": "dashboard", "label": "집계 대시보드", "short": "대시보드", "desc": "데이터를 읽어 카운트와 표로 요약", "buildDays": "3~5일", "action": "요약판" },
+    { "id": "chrome-ext", "label": "크롬 확장", "short": "확장", "desc": "특정 사이트 화면에서 좁은 기능을 수집·주입", "buildDays": "5~7일", "action": "브라우저 보조 기능" },
+    { "id": "landing-waitlist", "label": "랜딩+웨이팅리스트", "short": "웨이팅", "desc": "정적 소개와 이메일 수집으로 수요 확인", "buildDays": "0.5~1일", "action": "예약 페이지" },
+    { "id": "crud-app", "label": "간단 CRUD 웹앱", "short": "CRUD", "desc": "목록·추가·수정·삭제가 있는 작은 업무 화면", "buildDays": "5~7일", "action": "관리 화면" },
+    { "id": "digest-bot", "label": "자동 요약/알림 봇", "short": "알림봇", "desc": "소스 수집 후 요약·알림을 좁은 채널로 전달", "buildDays": "4~5일", "action": "요약 알림" },
+    { "id": "calc-tool", "label": "규칙기반 계산기/진단 툴", "short": "진단툴", "desc": "입력값에 조건분기와 결과를 붙임", "buildDays": "2~3일", "action": "규칙 기반 진단" },
+    { "id": "curation", "label": "큐레이션 리스트/디렉토리", "short": "큐레이션", "desc": "수집 항목을 필터·검색·정렬", "buildDays": "3~5일", "action": "큐레이션 목록" },
+    { "id": "template-gen", "label": "템플릿/생성기", "short": "템플릿", "desc": "입력값으로 문서·이미지·프롬프트 산출", "buildDays": "3~4일", "action": "템플릿 산출" },
+    { "id": "streak-tracker", "label": "타이머/스트릭 트래커", "short": "스트릭", "desc": "기록·연속일·통계를 로컬에 남김", "buildDays": "2~3일", "action": "연속 기록" }
+  ],
+  "allow": {
+    "running": { "pains": [2, 3, 8, 9, 12], "formats": ["streak-tracker", "vote-card", "calc-tool", "share-link"] },
+    "weight-training": { "pains": [2, 3, 8, 11, 12], "formats": ["streak-tracker", "calc-tool", "vote-card", "template-gen"] },
+    "climbing": { "pains": [2, 6, 8, 9, 12], "formats": ["calc-tool", "curation", "vote-card", "share-link"] },
+    "golf": { "pains": [2, 5, 8, 11, 13], "formats": ["calc-tool", "curation", "vote-card", "share-link"] },
+    "hiking": { "pains": [2, 4, 9, 12, 16], "formats": ["template-gen", "curation", "share-link", "vote-card"] },
+    "home-workout": { "pains": [3, 8, 10, 12, 15], "formats": ["streak-tracker", "calc-tool", "vote-card", "template-gen"] },
+    "cafe": { "pains": [1, 4, 5, 14, 16], "formats": ["share-link", "curation", "vote-card", "calc-tool"] },
+    "baking-dessert": { "pains": [2, 4, 6, 12, 14], "formats": ["template-gen", "calc-tool", "curation", "vote-card"] },
+    "restaurant-hunt": { "pains": [4, 5, 10, 14, 16], "formats": ["curation", "vote-card", "share-link", "calc-tool"] },
+    "home-cooking": { "pains": [2, 4, 5, 12, 15], "formats": ["template-gen", "calc-tool", "curation", "share-link"] },
+    "coffee-beans": { "pains": [2, 5, 11, 14, 16], "formats": ["calc-tool", "curation", "vote-card", "share-link"] },
+    "diet-lunchbox": { "pains": [2, 3, 8, 12, 15], "formats": ["streak-tracker", "template-gen", "calc-tool", "vote-card"] },
+    "ott": { "pains": [4, 5, 10, 11, 14], "formats": ["vote-card", "curation", "calc-tool", "share-link"] },
+    "webtoon": { "pains": [1, 4, 5, 14, 16], "formats": ["curation", "share-link", "vote-card", "template-gen"] },
+    "youtube": { "pains": [1, 4, 5, 10, 11], "formats": ["curation", "vote-card", "share-link", "landing-waitlist"] },
+    "podcast": { "pains": [4, 5, 11, 12, 14], "formats": ["curation", "share-link", "vote-card", "template-gen"] },
+    "reading": { "pains": [1, 3, 8, 10, 11], "formats": ["streak-tracker", "share-link", "vote-card", "curation"] },
+    "movie": { "pains": [4, 5, 10, 11, 16], "formats": ["vote-card", "curation", "share-link", "calc-tool"] },
+    "frontend": { "pains": [4, 7, 11, 12, 13], "formats": ["calc-tool", "curation", "dashboard", "chrome-ext", "share-link"] },
+    "backend": { "pains": [4, 7, 8, 12, 13], "formats": ["calc-tool", "dashboard", "crud-app", "digest-bot", "share-link"] },
+    "data-ai": { "pains": [4, 7, 8, 11, 12], "formats": ["dashboard", "calc-tool", "digest-bot", "curation", "share-link"] },
+    "app-dev": { "pains": [4, 7, 10, 11, 12], "formats": ["calc-tool", "curation", "dashboard", "crud-app", "share-link"] },
+    "devops": { "pains": [7, 8, 11, 12, 13], "formats": ["dashboard", "digest-bot", "calc-tool", "crud-app", "chrome-ext"] },
+    "qa-test": { "pains": [7, 8, 11, 12, 13], "formats": ["crud-app", "calc-tool", "dashboard", "digest-bot", "share-link"] },
+    "online-mall": { "pains": [4, 5, 7, 8, 16], "formats": ["calc-tool", "dashboard", "crud-app", "curation", "share-link"] },
+    "md-buying": { "pains": [4, 5, 7, 11, 12], "formats": ["dashboard", "calc-tool", "curation", "crud-app", "share-link"] },
+    "logistics-delivery": { "pains": [7, 8, 11, 12, 13], "formats": ["dashboard", "crud-app", "digest-bot", "calc-tool", "share-link"] },
+    "inventory-management": { "pains": [7, 8, 11, 12, 15], "formats": ["crud-app", "dashboard", "digest-bot", "calc-tool"] },
+    "cs-support": { "pains": [1, 4, 7, 12, 13], "formats": ["digest-bot", "dashboard", "crud-app", "chatbot", "share-link"] },
+    "live-commerce": { "pains": [4, 5, 7, 10, 12], "formats": ["template-gen", "dashboard", "calc-tool", "share-link", "vote-card"] },
+    "performance-marketing": { "pains": [4, 5, 7, 8, 11], "formats": ["dashboard", "calc-tool", "curation", "digest-bot", "share-link"] },
+    "content-marketing": { "pains": [4, 7, 10, 12, 15], "formats": ["template-gen", "dashboard", "digest-bot", "curation", "share-link"] },
+    "sns-ops": { "pains": [1, 4, 7, 10, 12], "formats": ["template-gen", "dashboard", "digest-bot", "vote-card", "share-link"] },
+    "brand-planning": { "pains": [4, 5, 10, 11, 14], "formats": ["curation", "vote-card", "dashboard", "share-link", "calc-tool"] },
+    "crm-email": { "pains": [1, 7, 8, 11, 12], "formats": ["dashboard", "digest-bot", "calc-tool", "crud-app", "share-link"] },
+    "influencer-marketing": { "pains": [4, 5, 11, 14, 16], "formats": ["curation", "dashboard", "calc-tool", "share-link", "vote-card"] },
+    "cafe-tour": { "pains": [1, 4, 14, 16], "formats": ["share-link", "curation", "vote-card", "landing-waitlist"] },
+    "bakery-tour": { "pains": [1, 4, 5, 16], "formats": ["share-link", "vote-card", "curation", "template-gen"] },
+    "running-crew": { "pains": [3, 8, 9, 10], "formats": ["vote-card", "streak-tracker", "share-link", "calc-tool"] },
+    "diary-deco": { "pains": [1, 5, 10, 11], "formats": ["template-gen", "curation", "vote-card", "share-link"] },
+    "home-cafe": { "pains": [2, 4, 5, 14], "formats": ["calc-tool", "curation", "template-gen", "vote-card"] },
+    "side-project": { "pains": [3, 8, 10, 12], "formats": ["streak-tracker", "vote-card", "share-link", "landing-waitlist"] },
+    "smart-store": { "pains": [5, 7, 8, 11, 12], "formats": ["calc-tool", "dashboard", "crud-app", "digest-bot", "share-link"] },
+    "logistics-inspection": { "pains": [7, 8, 12, 13], "formats": ["crud-app", "calc-tool", "dashboard", "digest-bot"] },
+    "camping": { "pains": [2, 4, 10, 12], "formats": ["template-gen", "share-link", "vote-card", "curation"] },
+    "fandom-goods": { "pains": [1, 5, 9, 16], "formats": ["share-link", "vote-card", "curation", "landing-waitlist"] },
+    "escape-room": { "pains": [4, 5, 11, 16], "formats": ["curation", "vote-card", "share-link"] },
+    "dividend-etf": { "pains": [5, 8, 11, 13], "formats": ["calc-tool", "dashboard", "share-link"] },
+    "plant-care": { "pains": [3, 8, 12, 15], "formats": ["streak-tracker", "template-gen", "vote-card", "share-link"] },
+    "knitting": { "pains": [2, 6, 12, 13], "formats": ["template-gen", "calc-tool", "curation", "share-link"] },
+    "freelance-tax": { "pains": [4, 5, 12, 13], "formats": ["calc-tool", "dashboard", "share-link"] },
+    "cafe-ops": { "pains": [5, 7, 8, 12], "formats": ["calc-tool", "dashboard", "crud-app", "share-link"] },
+    "ux-ui": { "pains": [4, 5, 11, 14], "formats": ["curation", "dashboard", "share-link", "vote-card"] },
+    "real-estate-agent": { "pains": [4, 5, 11, 13], "formats": ["calc-tool", "dashboard", "share-link"] },
+    "tutoring": { "pains": [7, 8, 11, 12], "formats": ["digest-bot", "dashboard", "crud-app", "share-link"] },
+    "nursing-handoff": { "pains": [7, 12, 13, 15], "formats": ["template-gen", "crud-app", "dashboard", "share-link"] },
+    "insurance-review": { "pains": [4, 5, 13, 14], "formats": ["calc-tool", "dashboard", "share-link"] },
+    "import-duty": { "pains": [4, 5, 12, 13], "formats": ["calc-tool", "dashboard", "curation", "share-link"] }
+  },
+  "golden": [
+    {
+      "seed": "running",
+      "pain": 3,
+      "format": "streak-tracker",
+      "title": "러닝메이트 스트릭",
+      "oneliner": "혼자 뛰는 3개월차 러너가 지속이 안 되는 문제를 연속일 기록으로 해결하는 러닝 도구",
+      "target": "혼자 뛰기 시작한 3개월차 러너",
+      "mvp": ["오늘 뛰었다 1탭 기록", "연속일·주간 통계 뷰", "러닝 코스 프리셋", "친구 응원 투표 카드"]
+    },
+    {
+      "seed": "cafe-tour",
+      "pain": 1,
+      "format": "share-link",
+      "title": "카페투어 지도카드",
+      "oneliner": "주말마다 카페를 저장하는 사람이 흩어진 기록을 공유 링크로 모으는 카페투어 도구",
+      "target": "카페 저장은 많은데 다시 못 찾는 주말 탐방러",
+      "mvp": ["방문 카페 1분 기록", "취향 태그와 사진 메모", "친구에게 보낼 지도 링크", "다음 후보 투표 카드"]
+    },
+    {
+      "seed": "camping",
+      "pain": 12,
+      "format": "template-gen",
+      "title": "캠핑짐 안까먹기",
+      "oneliner": "월 1회 캠퍼가 놓친 준비물을 줄이도록 여행 조건별 체크리스트를 뽑는 캠핑 도구",
+      "target": "출발 전날마다 짐을 다시 싸는 초보 캠퍼",
+      "mvp": ["인원·날씨·박수 입력", "필수 장비 체크리스트", "빠뜨린 항목 강조", "동행자 공유 링크"]
+    },
+    {
+      "seed": "escape-room",
+      "pain": 4,
+      "format": "curation",
+      "title": "방탈출 난이도 지도",
+      "oneliner": "방탈출 입문자가 파편화된 테마 정보를 난이도 큐레이션으로 확인하는 도구",
+      "target": "첫 방탈출을 고르는 2~3인 모임",
+      "mvp": ["지역·인원 필터", "난이도와 공포도 태그", "초보 추천 테마 목록", "같이 갈 사람 투표 카드"]
+    },
+    {
+      "seed": "dividend-etf",
+      "pain": 8,
+      "format": "calc-tool",
+      "title": "배당 스노우볼 계산기",
+      "oneliner": "배당 투자자가 성과가 안 보이는 문제를 월별 재투자 계산으로 확인하는 도구",
+      "target": "배당 ETF를 막 모으기 시작한 직장인 투자자",
+      "mvp": ["월 투자액 입력", "예상 배당 흐름 계산", "재투자 시나리오 비교", "목표 월배당 공유 카드"]
+    },
+    {
+      "seed": "plant-care",
+      "pain": 15,
+      "format": "streak-tracker",
+      "title": "물주기 알람 스트릭",
+      "oneliner": "식물을 자주 방치하는 사람이 관리 누락을 스트릭 기록으로 줄이는 식물 도구",
+      "target": "화분은 늘지만 물주는 날을 놓치는 식물 집사",
+      "mvp": ["식물별 물주기 주기", "오늘 돌봄 1탭 기록", "연속 관리 뷰", "분갈이 체크 카드"]
+    },
+    {
+      "seed": "side-project",
+      "pain": 3,
+      "format": "streak-tracker",
+      "title": "사이드 100일 스트릭",
+      "oneliner": "혼자 만드는 빌더가 지속이 안 되는 문제를 100일 연속 기록으로 해결하는 사이드프로젝트 도구",
+      "target": "퇴근 후 만들다 멈춘 1인 빌더",
+      "mvp": ["오늘 한 일 1줄 기록", "연속일·중단일 시각화", "다음 행동 작은 카드", "친구 응원 링크"]
+    },
+    {
+      "seed": "knitting",
+      "pain": 6,
+      "format": "template-gen",
+      "title": "첫 목도리 도안표",
+      "oneliner": "뜨개 입문자가 높은 입문 장벽을 규칙 기반 도안표로 낮추는 뜨개질 도구",
+      "target": "첫 목도리를 뜨려는 뜨개 입문자",
+      "mvp": ["실 굵기와 폭 입력", "콧수·단수 계산", "진행 체크 표", "완성 사진 공유 카드"]
+    },
+    {
+      "seed": "running-crew",
+      "pain": 9,
+      "format": "vote-card",
+      "title": "크루런 번개 투표카드",
+      "oneliner": "러닝크루 운영자가 같이 뛸 사람을 찾기 어려운 문제를 3초 투표 카드로 푸는 도구",
+      "target": "평일 저녁 번개런을 잡는 러닝크루 운영자",
+      "mvp": ["날짜·코스 후보 입력", "참여 가능 투표 카드", "인원 자동 집계", "카톡 공유 문구"]
+    },
+    {
+      "seed": "fandom-goods",
+      "pain": 1,
+      "format": "share-link",
+      "title": "최애 굿즈 위시링크",
+      "oneliner": "굿즈를 모으는 팬이 흩어진 위시 기록을 공유 링크로 정리하는 덕질 도구",
+      "target": "트위터와 장터에 위시가 흩어진 팬",
+      "mvp": ["굿즈 위시 1분 등록", "보유·구함 상태 표시", "친구 공유 링크", "공동구매 관심 투표"]
+    },
+    {
+      "seed": "smart-store",
+      "pain": 7,
+      "format": "calc-tool",
+      "title": "스토어 마진 계산봇",
+      "oneliner": "스마트스토어 셀러가 반복 수동 계산을 수수료 규칙 진단으로 줄이는 커머스 도구",
+      "target": "상품별 실제 마진을 손으로 계산하는 스마트스토어 셀러",
+      "mvp": ["판매가·원가 입력", "채널 수수료 프리셋", "순마진 자동 계산", "상품별 결과 저장"]
+    },
+    {
+      "seed": "logistics-inspection",
+      "pain": 12,
+      "format": "crud-app",
+      "title": "입고검수 체크봇",
+      "oneliner": "물류 검수 담당자가 놓친 항목을 줄이도록 검수 체크리스트를 관리하는 도구",
+      "target": "입고 검수 누락을 줄이고 싶은 물류 현장 리더",
+      "mvp": ["품목별 검수 항목 목록", "입고 건별 체크 화면", "누락 항목 강조", "일일 검수 요약"]
+    },
+    {
+      "seed": "freelance-tax",
+      "pain": 13,
+      "format": "calc-tool",
+      "title": "프리랜서 세금 미리보기",
+      "oneliner": "프리랜서가 사소한 세무 질문 부담을 예상 세금 계산으로 줄이는 회계 도구",
+      "target": "첫 종합소득세를 앞둔 프리랜서",
+      "mvp": ["수입·경비 입력", "단순경비율 프리셋", "예상 납부액 범위", "준비 서류 체크"]
+    },
+    {
+      "seed": "cafe-ops",
+      "pain": 7,
+      "format": "calc-tool",
+      "title": "카페 레시피 원가표",
+      "oneliner": "카페 운영자가 반복 수동 계산을 메뉴별 원가표로 줄이는 F&B 도구",
+      "target": "신메뉴 원가를 엑셀로 다시 계산하는 개인 카페 사장",
+      "mvp": ["재료 단가 입력", "레시피별 투입량 계산", "마진율 자동 표시", "메뉴판 가격 후보 비교"]
+    },
+    {
+      "seed": "ux-ui",
+      "pain": 4,
+      "format": "curation",
+      "title": "앱 온보딩 레퍼런스 지도",
+      "oneliner": "디자이너가 파편화된 화면 사례를 온보딩 패턴 디렉토리로 모으는 UX 도구",
+      "target": "새 온보딩을 설계하는 주니어 UX 디자이너",
+      "mvp": ["패턴별 레퍼런스 등록", "산업·목표 필터", "핵심 화면 메모", "팀 공유 링크"]
+    },
+    {
+      "seed": "real-estate-agent",
+      "pain": 5,
+      "format": "calc-tool",
+      "title": "매물 수익률 계산기",
+      "oneliner": "공인중개사가 비교 피로를 실수익률 계산으로 줄이는 매물 상담 도구",
+      "target": "투자 매물을 손님에게 설명하는 공인중개사",
+      "mvp": ["매입가·보증금·월세 입력", "세금·수리비 프리셋", "실수익률 계산", "상담용 공유 리포트"]
+    },
+    {
+      "seed": "tutoring",
+      "pain": 8,
+      "format": "digest-bot",
+      "title": "학생 진도 리포트봇",
+      "oneliner": "과외 선생님이 성과가 안 보이는 문제를 주간 진도 요약으로 해결하는 교육 도구",
+      "target": "학부모에게 매주 진도를 설명해야 하는 과외 선생님",
+      "mvp": ["수업 후 진도 입력", "주간 요약 자동 문안", "보강 필요 영역 표시", "학부모 공유 링크"]
+    },
+    {
+      "seed": "nursing-handoff",
+      "pain": 7,
+      "format": "template-gen",
+      "title": "병동 인수인계 노트표",
+      "oneliner": "간호사가 반복 수동 정리를 표준 인수인계 템플릿으로 줄이는 병동 도구",
+      "target": "교대 전 인수인계 메모를 정리하는 간호사",
+      "mvp": ["환자별 항목 템플릿", "SBAR 순서 정렬", "누락 항목 표시", "근무 전 확인 체크"]
+    },
+    {
+      "seed": "insurance-review",
+      "pain": 5,
+      "format": "calc-tool",
+      "title": "보장분석 미리표",
+      "oneliner": "보험 상담자가 비교 피로를 핵심 담보 진단으로 줄이는 보장분석 도구",
+      "target": "기존 보험을 설명해야 하는 1인 보험 설계사",
+      "mvp": ["담보 항목 체크", "중복·공백 표시", "핵심 리스크 요약", "상담 전 공유 링크"]
+    },
+    {
+      "seed": "import-duty",
+      "pain": 4,
+      "format": "calc-tool",
+      "title": "수입 관세 미리계산기",
+      "oneliner": "수입 담당자가 파편화된 세율 정보를 품목별 관세 계산으로 확인하는 무역 도구",
+      "target": "인기 품목을 반복 수입하는 소규모 셀러",
+      "mvp": ["품목 프리셋 선택", "금액·수량 입력", "예상 관세 범위", "통관 체크리스트"]
+    }
+  ],
+  "situations": [
+    { "id": "commute", "label": "출퇴근 짬시간" },
+    { "id": "late-night", "label": "밤 11시 노트 앞" },
+    { "id": "group-chat", "label": "친구 단톡방 공유 직전" },
+    { "id": "weekend", "label": "주말 반나절" },
+    { "id": "first-customer", "label": "첫 사용자에게 묻기 전" },
+    { "id": "work-break", "label": "점심시간 20분" }
+  ],
+  "psychs": [
+    { "id": "guilt", "label": "작심삼일 죄책감" },
+    { "id": "fomo", "label": "나만 늦는 불안" },
+    { "id": "blank", "label": "막상 시작하면 멈칫하는 마음" },
+    { "id": "prove", "label": "진짜 반응을 보고 싶은 마음" },
+    { "id": "overchoice", "label": "고를수록 더 헷갈리는 피로" },
+    { "id": "small-win", "label": "오늘 하나라도 끝내고 싶은 마음" }
+  ],
+  "sentenceTemplates": {
+    "like": "{situation}에 {psych}을 느끼는 {target}을 위해 — {seed}의 \"{painShort}\"를 {format}(으)로 푸는 도구",
+    "know": "{target}이 매일 겪는 \"{painShort}\"를 {format}(으)로 끝내는 {seed} 실무 도구"
+  }
+}
