@@ -1,4 +1,5 @@
-// [S1] 빈-슬롯 모델 스토어 — 필수 4칸(씨앗·불편·형태·장면) + 옵션 마음.
+// [S1] 빈-슬롯 모델 스토어 — 필수 4칸(씨앗·불편·형태·장면) + ✨스페셜 1칸(마음 풀, 상시 노출).
+// 스페셜 칸은 항상 렌더되고 "채워질지"만 상태로 결정된다(빈 채로 남으면 placeholder).
 // 개별 채움/교체/제거는 캡 미소모, 🎲 전체 다시 뽑기만 SPIN_CAP을 소모한다.
 // 🔒 고정(원본 v7 Prioritize): 잠긴 축은 교체·제거·전체 뽑기에서 면제되고 그대로 유지된다.
 import { create } from "zustand";
@@ -21,7 +22,7 @@ import { track } from "./track";
 
 export const SPIN_CAP = 5;
 export const REQUIRED: readonly AxisId[] = ["seed", "pain", "format", "situation"];
-/** 전체 다시 뽑기에서 💭마음 옵션 칸이 5번째로 등장할 확률 */
+/** 전체 다시 뽑기에서 ✨스페셜(마음) 칸이 채워질 확률 — 안 채워지면 placeholder로 남는다 */
 const PSYCH_CHANCE = 0.35;
 
 export interface Slots {
@@ -59,8 +60,6 @@ interface SlotState {
   slots: Slots;
   /** 🔒 축별 고정 — 잠긴 카드는 교체·제거·🎲 전체 뽑기에서 유지 (원본 v7 Prioritize) */
   locked: LockMap;
-  /** 💭 옵션 칸 노출 여부 (5칸 그리드) */
-  psychOpen: boolean;
   spins: number;
   capHit: boolean;
   taste: Taste | null;
@@ -77,8 +76,6 @@ interface SlotState {
   removeAxis: (axis: AxisId) => void;
   /** 🔒 고정 토글 — 잠긴 축은 스핀에서 유지되고 탭 교체·✕가 비활성 */
   toggleLock: (axis: AxisId) => void;
-  /** 💭 빈 옵션 칸만 노출 (덱의 마음 카드 비행 목적지 확보) */
-  openPsych: () => void;
   /** 🎲 전체 다시 뽑기 — 유일한 캡 소모 경로 */
   spinAll: (opts?: { keepSeed?: boolean }) => void;
   setTaste: (t: Taste) => void;
@@ -108,7 +105,6 @@ const maybeAskTaste = (s: SlotState): Partial<SlotState> =>
 export const useSlot = create<SlotState>((set, get) => ({
   slots: EMPTY,
   locked: NO_LOCKS,
-  psychOpen: false,
   spins: 0,
   capHit: false,
   taste: null,
@@ -126,10 +122,7 @@ export const useSlot = create<SlotState>((set, get) => ({
     if (s.locked[v.axis]) return; // 🔒 잠긴 축은 덱 드롭으로도 안 바뀐다 (원본: 고정 카드는 리롤 면제)
     const slots = applyValue(s.slots, v);
     track("slot_fill", { axis: v.axis });
-    set({
-      slots,
-      ...(v.axis === "psych" ? { psychOpen: true } : {}),
-    });
+    set({ slots });
   },
 
   swap: (axis) => {
@@ -150,10 +143,7 @@ export const useSlot = create<SlotState>((set, get) => ({
     const { slots, locked } = get();
     if (locked[axis]) return;
     track("slot_remove", { axis });
-    set({
-      slots: { ...slots, [axis]: null },
-      ...(axis === "psych" ? { psychOpen: false } : {}),
-    });
+    set({ slots: { ...slots, [axis]: null } });
   },
 
   toggleLock: (axis) => {
@@ -163,8 +153,6 @@ export const useSlot = create<SlotState>((set, get) => ({
     track("reel_lock_toggle", { axis, locked: next });
     set({ locked: { ...s.locked, [axis]: next } });
   },
-
-  openPsych: () => set({ psychOpen: true }),
 
   spinAll: (opts) => {
     const s = get();
@@ -206,10 +194,7 @@ export const useSlot = create<SlotState>((set, get) => ({
       .forEach((axis, k) => {
         const apply = () => {
           if (gen !== spinGen) return; // reset/새 스핀이면 무효 (원본 gen 가드)
-          set((cur) => ({
-            slots: { ...cur.slots, [axis]: next[axis] } as Slots,
-            ...(axis === "psych" ? { psychOpen: withPsych } : {}),
-          }));
+          set((cur) => ({ slots: { ...cur.slots, [axis]: next[axis] } as Slots }));
         };
         if (k === 0) apply();
         else setTimeout(apply, k * SPIN_STAGGER_MS);
@@ -237,7 +222,6 @@ export const useSlot = create<SlotState>((set, get) => ({
     set({
       slots: EMPTY,
       locked: NO_LOCKS,
-      psychOpen: false,
       spins: 0,
       capHit: false,
       tasteSheetOpen: false,

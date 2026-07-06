@@ -12,7 +12,7 @@ const CHANNELS = [
   { id: "story", label: "📸 스토리" },
 ] as const;
 
-async function copyText(text: string): Promise<void> {
+export async function copyText(text: string): Promise<void> {
   try {
     await navigator.clipboard.writeText(text);
   } catch {

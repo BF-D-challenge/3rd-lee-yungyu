@@ -33,14 +33,12 @@ export interface FanDeckProps {
   aimAxis: AxisId | null;
   /** 게이트 해제 후 비활성 축(🔒 잠긴 축) — 해당 축 카드는 dim + 조준 불가 */
   inactiveAxes?: AxisId[];
-  /** 카드가 날아가 안착할 슬롯 칸의 뷰포트 rect (💭 미노출 시 null) */
+  /** 카드가 날아가 안착할 슬롯 칸의 뷰포트 rect — 5칸 상시라 🔒 잠긴 축만 null */
   getTargetRect: (axis: AxisId) => DOMRect | null;
   /** 드래그 중 슬롯 위 하이라이트용 (null = 벗어남) */
   onDragOver: (axis: AxisId | null) => void;
   /** 아크 비행이 슬롯에 닿는 순간 호출 — 해당 축만 채움/교체 */
   onPick: (card: DeckCard) => void;
-  /** 목적지 칸이 아직 없을 때(💭 옵션) 빈 칸 노출 요청 — 다음 프레임에 rect 재조회 */
-  onRequestSlot?: (axis: AxisId) => void;
 }
 
 type WCard = HTMLDivElement & { _base: number; _hov?: boolean; _deck: number; _skin?: AxisId };
@@ -110,10 +108,9 @@ const AXIS_KO: Record<AxisId, string> = {
   psych: "마음",
 };
 
-const glyphOf = (c: DeckCard) => GLYPH[c.axis];
 
 export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
-  { cards, aimAxis, inactiveAxes, getTargetRect, onDragOver, onPick, onRequestSlot },
+  { cards, aimAxis, inactiveAxes, getTargetRect, onDragOver, onPick },
   handleRef,
 ) {
   const hostRef = useRef<HTMLDivElement>(null);
@@ -126,8 +123,6 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
   onDragOverRef.current = onDragOver;
   const onPickRef = useRef(onPick);
   onPickRef.current = onPick;
-  const onRequestSlotRef = useRef(onRequestSlot);
-  onRequestSlotRef.current = onRequestSlot;
 
   // curAxis 게이트 상태 — 스킨(뒷면/aria/data-*)만 바꾸고 휠은 재구축하지 않는다 (진입 스윕 보존)
   const aimRef = useRef(aimAxis);
@@ -155,6 +150,8 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
   const poolKey = useMemo(() => cards.map(axisValueKey).join(","), [cards]);
   const poolRef = useRef(cards);
   poolRef.current = cards;
+  /** 진입 스윕은 첫 등장에서만 — 씨앗 앵커 갱신 등 풀 재구축 시 재생하지 않는다 (원본: 벨트는 리셋 전까지 유지) */
+  const sweptRef = useRef(false);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -174,7 +171,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     const BASE = 1.1;
     const targetSpeed = RM ? 0 : BASE;
     let hoverSlow = 0;
-    let entered = false;
+    let entered = sweptRef.current; // 재구축이면 스윕 생략
     let entT0: number | null = null;
     let last = 0;
     let raf = 0;
@@ -370,43 +367,28 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       requestAnimationFrame(fall);
     };
 
-    /** 탭 → 유효 축(조준 중엔 curAxis) 슬롯으로 아크 비행 → 안착 시 onPick */
+    /** 탭 → 유효 축(조준 중엔 curAxis) 슬롯으로 아크 비행 → 안착 시 onPick.
+     *  5칸 상시 노출이라 목적지 rect는 항상 있다 — 🔒 잠긴 축(null)만 무시. */
     const drawToReel = (c: WCard) => {
       if (busy || held || !isActive(c)) return;
       const card = deckOf(c);
       const eff = effAxis(c);
-      const start = (rect: DOMRect) => {
-        busy = true;
-        const gm = geom();
-        const b = c.getBoundingClientRect();
-        const cx = b.left + b.width / 2;
-        const cy = b.top + b.height / 2;
-        const a0 = absAngle(c);
-        c.classList.add("ghost");
-        const clone = makeClone(cx, cy, a0, gm.cw, gm.ch, GLYPH[eff]);
-        flyTo(clone, { x: cx, y: cy }, a0, rect, () => {
-          busy = false;
-          if (disposed) return;
-          removeCard(c);
-          onPickRef.current(card);
-        });
-      };
       const rect = getRectRef.current(eff);
-      if (rect) {
-        start(rect);
-        return;
-      }
-      // 💭 옵션 칸 미노출 — 빈 칸을 먼저 열고 다음 프레임에 목적지를 다시 잡는다
-      onRequestSlotRef.current?.(eff);
+      if (!rect) return;
       busy = true;
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() => {
-          busy = false;
-          if (disposed) return;
-          const r = getRectRef.current(eff);
-          if (r) start(r);
-        }),
-      );
+      const gm = geom();
+      const b = c.getBoundingClientRect();
+      const cx = b.left + b.width / 2;
+      const cy = b.top + b.height / 2;
+      const a0 = absAngle(c);
+      c.classList.add("ghost");
+      const clone = makeClone(cx, cy, a0, gm.cw, gm.ch, GLYPH[eff]);
+      flyTo(clone, { x: cx, y: cy }, a0, rect, () => {
+        busy = false;
+        if (disposed) return;
+        removeCard(c);
+        onPickRef.current(card);
+      });
     };
 
     /** 호버 풀아웃 + 드래그 틸트 + 드롭/탭 (원본 attach 이식) */
@@ -433,7 +415,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         }
       });
       c.addEventListener("pointerdown", (e) => {
-        if (busy) return;
+        if (busy || held || !isActive(c)) return; // 원본: busy||curAxis()<0 게이트의 다크 등가
         pid = e.pointerId;
         c.setPointerCapture(pid);
         sx = e.clientX;
@@ -453,10 +435,8 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
           const b = c.getBoundingClientRect();
           ox = b.left + b.width / 2;
           oy = b.top + b.height / 2;
-          clone = makeClone(ox, oy, absAngle(c), g.cw, g.ch, glyphOf(deckOf(c)));
+          clone = makeClone(ox, oy, absAngle(c), g.cw, g.ch, GLYPH[effAxis(c)]);
           c.classList.add("ghost");
-          // 💭 목적지 칸이 아직 없으면 드래그 시작과 함께 빈 칸을 열어 조준할 수 있게
-          if (!getRectRef.current(deckOf(c).axis)) onRequestSlotRef.current?.(deckOf(c).axis);
         }
         if (drag && clone) {
           vx = vx * 0.8 + (e.clientX - lx) * 0.2;
@@ -465,7 +445,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
           clone._rot = rot;
           clone.dataset.s0 = "1.05";
           clone.style.transform = `translate(${dx}px,${dy}px) rotate(${rot}deg) scale(1.05)`;
-          const axis = deckOf(c).axis;
+          const axis = effAxis(c); // 조준 중엔 curAxis 슬롯만 hot (원본과 동일 마진 ±34/+40)
           const r = getRectRef.current(axis);
           const over =
             !!r &&
@@ -487,11 +467,11 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         pid = null;
         onDragOverRef.current(null);
         if (!drag) {
-          drawToReel(c); // 탭 → 해당 축 릴로
+          drawToReel(c); // 탭 → 유효 축 릴로 (조준 중엔 curAxis)
           return;
         }
         const card = deckOf(c);
-        const rect = getRectRef.current(card.axis);
+        const rect = getRectRef.current(effAxis(c));
         if (clone && clone._commit && rect) {
           const cr = clone.getBoundingClientRect();
           flyTo(clone, { x: cr.left + cr.width / 2, y: cr.top + cr.height / 2 }, clone._rot || 0, rect, () => {
@@ -528,7 +508,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       c.addEventListener("pointerup", up);
       c.addEventListener("pointercancel", cancel);
       c.addEventListener("keydown", (e) => {
-        if ((e.key === "Enter" || e.key === " ") && !busy) {
+        if ((e.key === "Enter" || e.key === " ") && !busy && !held && isActive(c)) {
           e.preventDefault();
           drawToReel(c);
         }
@@ -544,7 +524,6 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       const span = WP.n * WP.spacing;
       for (let i = 0; i < WP.n; i++) {
         const c = document.createElement("div") as WCard;
-        const deck = pool[i % pool.length];
         c.className = "fd-card";
         c.style.width = `${g.cw}px`;
         c.style.height = `${g.ch}px`;
@@ -552,10 +531,10 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         c.style.top = `${-g.ch / 2}px`;
         c.setAttribute("role", "button");
         c.setAttribute("tabindex", "0");
-        c.setAttribute("aria-label", `${AXIS_KO[deck.axis]} 카드 뽑기`);
-        c.innerHTML = `<div class="pull">${backSvg(glyphOf(deck))}</div>`;
+        c.innerHTML = `<div class="pull"></div>`;
         c._base = -span / 2 + (i + 0.5) * WP.spacing;
         c._deck = i;
+        skin(c); // 뒷면 글리프·aria·data-axis/active — 조준 축 반영
         applyCardT(c, true);
         wheel.appendChild(c);
         cardsEl.push(c);
@@ -580,12 +559,13 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         wheelAngle = -12 * (1 - easeIO(p)); // 진입 스윕
         if (p >= 1) {
           entered = true;
+          sweptRef.current = true; // 완주한 뒤에만 기록 — StrictMode 재실행에도 첫 스윕 보장
           last = now;
         }
       } else {
         const dt = Math.min(0.05, (now - (last || now)) / 1000);
         last = now;
-        const t = targetSpeed * (hoverSlow ? (busy ? 0.05 : 0.25) : 1);
+        const t = targetSpeed * (hoverSlow ? (busy || held ? 0.05 : 0.25) : 1);
         speed += (t - speed) * Math.min(1, dt * 3);
         wheelAngle = (wheelAngle + speed * dt) % 360; // 드리프트 1.1°/s
         recycle();
@@ -608,8 +588,42 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     buildWheel();
     raf = requestAnimationFrame(loop);
 
+    skinRef.current = () => cardsEl.forEach(skin);
+    // 한 번에 뽑기 핸들 (원본 autoAll의 1스텝) — 부모가 430ms 간격으로 순차 호출한다.
+    // 덱이 재구축(씨앗 앵커 갱신)돼도 부모 루프가 새 인스턴스의 핸들로 이어간다.
+    apiRef.current = {
+      hold: (on) => {
+        held = on;
+      },
+      drawTo: (axis, onDone) => {
+        if (busy || disposed) return false;
+        const rect = getRectRef.current(axis);
+        const c = apexCard();
+        if (!rect || !c) return false;
+        busy = true;
+        const gm = geom();
+        const b = c.getBoundingClientRect();
+        const cx = b.left + b.width / 2;
+        const cy = b.top + b.height / 2;
+        const a0 = absAngle(c);
+        c.classList.add("ghost");
+        const clone = makeClone(cx, cy, a0, gm.cw, gm.ch, GLYPH[axis]);
+        flyTo(clone, { x: cx, y: cy }, a0, rect, () => {
+          busy = false;
+          if (disposed) return;
+          const card = deckOf(c);
+          removeCard(c);
+          onPickRef.current(card);
+          onDone();
+        });
+        return true;
+      },
+    };
+
     return () => {
       disposed = true;
+      skinRef.current = null;
+      apiRef.current = null;
       cancelAnimationFrame(raf);
       clearTimeout(rz);
       removeEventListener("resize", onResize);
@@ -622,13 +636,15 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
   }, [poolKey]);
 
   return (
+    /* 스테이지 컨테이너를 꽉 채우는 host — geom()은 host.clientHeight/clientWidth 기준이라
+       스테이지 크기에 자동 정합(원본 .stage 실측 apex와 동일). 뷰포트 fixed였던 배치만 바뀜. */
     <div
       ref={hostRef}
-      className="fd-host relative h-[280px] w-full overflow-hidden md:h-[300px]"
+      className="fd-host absolute inset-0 h-full w-full overflow-hidden"
       aria-label="카드 덱 — 끌어 놓거나 탭해서 칸을 채워보세요"
     >
       <style>{DECK_CSS}</style>
       <div ref={wheelRef} className="fd-wheel" />
     </div>
   );
-}
+});
