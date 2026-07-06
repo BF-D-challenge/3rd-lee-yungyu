@@ -1,0 +1,301 @@
+{
+  "version": 1,
+  "updated_at": "2026-07-05",
+  "purpose": "Codex-readable catalog for local PRD research datasets.",
+  "entrypoints": {
+    "overview": "research/README.md",
+    "trustmrr_ideas": "research/trustmrr-acquire/ideas.jsonl",
+    "app_store_unique_apps": "research/store-rankings/app-store-expanded-unique-apps.jsonl",
+    "chrome_webstore_unique_extensions": "research/store-rankings/chrome-webstore-expanded-unique-extensions.jsonl",
+    "store_rankings_readme": "research/store-rankings/README.md"
+  },
+  "datasets": [
+    {
+      "id": "trustmrr_acquire_ideas",
+      "path": "research/trustmrr-acquire/ideas.jsonl",
+      "readme": "research/trustmrr-acquire/README.md",
+      "format": "jsonl",
+      "rows": 1863,
+      "unique_entity_key": "slug",
+      "unique_entities": 1863,
+      "entity_type": "startup_listing",
+      "best_for": "Acquisition-market idea seeds with revenue, asking price, category, problem, opportunity, and MVP angle.",
+      "key_fields": [
+        "name",
+        "slug",
+        "url",
+        "category",
+        "revenue_30d_value",
+        "asking_price_value",
+        "multiple_text",
+        "target_user",
+        "problem",
+        "opportunity",
+        "mvp_angle",
+        "tags"
+      ],
+      "source": "https://trustmrr.com/acquire",
+      "raw_source": ".firecrawl/trustmrr-acquire/browser-cards-all.json"
+    },
+    {
+      "id": "app_store_unique_apps",
+      "path": "research/store-rankings/app-store-expanded-unique-apps.jsonl",
+      "readme": "research/store-rankings/README.md",
+      "format": "jsonl",
+      "rows": 4512,
+      "unique_entity_key": "app_id",
+      "unique_entities": 4512,
+      "entity_type": "apple_app",
+      "best_for": "Compact deduped App Store universe for PRD exploration.",
+      "key_fields": [
+        "app_id",
+        "name",
+        "developer",
+        "countries",
+        "categories",
+        "source_types",
+        "appearances_count",
+        "best_rss_rank",
+        "best_category_rank",
+        "best_search_rank",
+        "average_user_rating",
+        "user_rating_count",
+        "price",
+        "description",
+        "observations"
+      ],
+      "derived_from": [
+        "research/store-rankings/app-store-rss-expanded.jsonl",
+        "research/store-rankings/app-store-category-charts.jsonl",
+        "research/store-rankings/app-store-search-keyword-samples.jsonl"
+      ]
+    },
+    {
+      "id": "app_store_rss_expanded",
+      "path": "research/store-rankings/app-store-rss-expanded.jsonl",
+      "readme": "research/store-rankings/README.md",
+      "format": "jsonl",
+      "rows": 1890,
+      "unique_entity_key": "app_id",
+      "unique_entities": 1083,
+      "entity_type": "apple_app_chart_appearance",
+      "best_for": "Country-level free/paid App Store chart appearances from Apple RSS.",
+      "key_fields": [
+        "country",
+        "chart_type",
+        "rank",
+        "app_id",
+        "name",
+        "developer",
+        "category",
+        "release_date",
+        "url"
+      ],
+      "source_pattern": "https://rss.marketingtools.apple.com/api/v2/{country}/apps/{top-free|top-paid}/100/apps.json",
+      "raw_source": ".firecrawl/store-rankings/app-store-expanded/rss/"
+    },
+    {
+      "id": "app_store_category_charts",
+      "path": "research/store-rankings/app-store-category-charts.jsonl",
+      "readme": "research/store-rankings/README.md",
+      "format": "jsonl",
+      "rows": 4949,
+      "unique_entity_key": "app_id",
+      "unique_entities": 3473,
+      "entity_type": "apple_app_category_chart_appearance",
+      "best_for": "Category and country demand signals across App Store iPhone charts.",
+      "key_fields": [
+        "country",
+        "category_id",
+        "category",
+        "chart_type",
+        "rank",
+        "app_id",
+        "name",
+        "url"
+      ],
+      "source_pattern": "https://apps.apple.com/{country}/iphone/charts/{category_id}?chart={top-free|top-paid}",
+      "raw_source": ".firecrawl/store-rankings/app-store-expanded/category/"
+    },
+    {
+      "id": "app_store_search_keyword_samples",
+      "path": "research/store-rankings/app-store-search-keyword-samples.jsonl",
+      "readme": "research/store-rankings/README.md",
+      "format": "jsonl",
+      "rows": 1041,
+      "unique_entity_key": "app_id",
+      "unique_entities": 749,
+      "entity_type": "apple_app_search_result",
+      "best_for": "Keyword discovery around AI, productivity, finance, developer tools, marketing, and adjacent app spaces.",
+      "key_fields": [
+        "country",
+        "query",
+        "rank",
+        "app_id",
+        "name",
+        "developer",
+        "category",
+        "average_user_rating",
+        "user_rating_count",
+        "price",
+        "description",
+        "url"
+      ],
+      "source_pattern": "https://itunes.apple.com/search?term={query}&country={country}&entity=software&limit=50",
+      "raw_source": ".firecrawl/store-rankings/app-store-expanded/search/"
+    },
+    {
+      "id": "app_store_baseline_rankings",
+      "path": "research/store-rankings/app-store-rankings.jsonl",
+      "readme": "research/store-rankings/README.md",
+      "format": "jsonl",
+      "rows": 399,
+      "unique_entity_key": "app_id",
+      "unique_entities": 357,
+      "entity_type": "apple_app_chart_appearance",
+      "best_for": "Original US/KR free/paid baseline capture.",
+      "key_fields": [
+        "country",
+        "chart_type",
+        "rank",
+        "app_id",
+        "name",
+        "developer",
+        "genres",
+        "url"
+      ]
+    },
+    {
+      "id": "chrome_webstore_unique_extensions",
+      "path": "research/store-rankings/chrome-webstore-expanded-unique-extensions.jsonl",
+      "readme": "research/store-rankings/README.md",
+      "format": "jsonl",
+      "rows": 2031,
+      "unique_entity_key": "extension_id",
+      "unique_entities": 2031,
+      "entity_type": "chrome_extension",
+      "best_for": "Compact deduped Chrome Web Store universe for PRD exploration.",
+      "key_fields": [
+        "extension_id",
+        "name",
+        "url",
+        "rating",
+        "description",
+        "source_types",
+        "source_slugs",
+        "variants",
+        "queries",
+        "appearances_count",
+        "best_top_chart_rank",
+        "best_category_rank",
+        "best_search_rank",
+        "featured_anywhere",
+        "established_publisher_anywhere",
+        "observations"
+      ],
+      "derived_from": [
+        "research/store-rankings/chrome-webstore-expanded-appearances.jsonl"
+      ]
+    },
+    {
+      "id": "chrome_webstore_expanded_appearances",
+      "path": "research/store-rankings/chrome-webstore-expanded-appearances.jsonl",
+      "readme": "research/store-rankings/README.md",
+      "format": "jsonl",
+      "rows": 2452,
+      "unique_entity_key": "extension_id",
+      "unique_entities": 2031,
+      "entity_type": "chrome_extension_appearance",
+      "best_for": "Rank/source-context view of Chrome category, top chart, and keyword-search appearances.",
+      "key_fields": [
+        "source_type",
+        "source_slug",
+        "variant",
+        "query",
+        "rank",
+        "extension_id",
+        "name",
+        "rating",
+        "description",
+        "featured",
+        "established_publisher",
+        "url"
+      ],
+      "source_patterns": [
+        "https://chromewebstore.google.com/category/{category_path}",
+        "https://chromewebstore.google.com/search/{query}",
+        "https://chromewebstore.google.com/top-charts/popular"
+      ],
+      "raw_source": ".firecrawl/store-rankings/chrome-expanded/"
+    },
+    {
+      "id": "chrome_webstore_baseline_rankings",
+      "path": "research/store-rankings/chrome-webstore-rankings.jsonl",
+      "readme": "research/store-rankings/README.md",
+      "format": "jsonl",
+      "rows": 65,
+      "unique_entity_key": "extension_id",
+      "unique_entities": 65,
+      "entity_type": "chrome_extension_appearance",
+      "best_for": "Original small Chrome Web Store baseline from popular chart and four search pages.",
+      "key_fields": [
+        "source_page",
+        "source_query",
+        "rank",
+        "extension_id",
+        "name",
+        "rating",
+        "description",
+        "url"
+      ]
+    },
+    {
+      "id": "trustmrr_store_overlap",
+      "path": "research/store-rankings/trustmrr-store-overlap.jsonl",
+      "readme": "research/store-rankings/README.md",
+      "format": "jsonl",
+      "rows": 0,
+      "unique_entity_key": "id",
+      "unique_entities": 0,
+      "entity_type": "exact_normalized_name_match",
+      "best_for": "Placeholder for conservative exact normalized-name matches between TrustMRR and store rows.",
+      "key_fields": []
+    }
+  ],
+  "scripts": [
+    {
+      "path": ".firecrawl/scratchpad/normalize_store_rankings.py",
+      "purpose": "Normalize the first App Store and Chrome Web Store baseline captures."
+    },
+    {
+      "path": ".firecrawl/scratchpad/collect_app_store_expanded.py",
+      "purpose": "Collect expanded App Store RSS, category, and keyword-search raw files."
+    },
+    {
+      "path": ".firecrawl/scratchpad/normalize_app_store_expanded.py",
+      "purpose": "Normalize expanded App Store raw files into JSONL datasets."
+    },
+    {
+      "path": ".firecrawl/scratchpad/collect_chrome_webstore_expanded.py",
+      "purpose": "Collect expanded Chrome Web Store category, top chart, and keyword-search raw files."
+    },
+    {
+      "path": ".firecrawl/scratchpad/normalize_chrome_webstore_expanded.py",
+      "purpose": "Normalize expanded Chrome Web Store raw files into JSONL datasets."
+    }
+  ],
+  "recommended_exploration_order": [
+    "research/README.md",
+    "research/MANIFEST.json",
+    "research/trustmrr-acquire/ideas.jsonl",
+    "research/store-rankings/app-store-expanded-unique-apps.jsonl",
+    "research/store-rankings/chrome-webstore-expanded-unique-extensions.jsonl",
+    "research/store-rankings/*-appearances.jsonl"
+  ],
+  "join_hints": [
+    "Use normalized_name only as a candidate join key; manually review fuzzy matches before treating them as evidence.",
+    "Use app_id for App Store identity and extension_id for Chrome Web Store identity.",
+    "Use appearance files when rank, source page, query, country, category, or chart context matters.",
+    "Use unique files when broad idea-space clustering matters."
+  ]
+}
