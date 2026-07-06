@@ -45,6 +45,10 @@ export interface Golden {
   oneliner: string;
   target: string;
   mvp: string[];
+  /** 실수요 근거(매출 또는 사용량·순위) — 카드 표면엔 안 나가고 리포트/디버그용 */
+  evidenceType?: "revenue" | "usage";
+  anchorName?: string;
+  anchorDetail?: string;
 }
 
 export interface Axis {

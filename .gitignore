@@ -54,3 +54,6 @@ research/store-rankings/*.jsonl
 *.swp
 *.swo
 _legacy/
+
+# 스크랩한 타사 데이터 원본 (ToS·용량 — 요약만 추적)
+research/trustmrr-acquire/*.jsonl

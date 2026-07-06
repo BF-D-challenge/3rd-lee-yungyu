@@ -9,13 +9,22 @@ import { GlassCard } from "@/components/atoms/glass-card";
 import { FakeDoorSheet } from "@/components/molecules/fake-door-sheet";
 import { PageShell } from "@/components/layouts/page-shell";
 import { TopBar } from "@/components/layouts/top-bar";
-import { shareUrl } from "@/lib/share";
-import { loadPublished, loadVotes, type PublishedCard, type Vote } from "@/lib/storage";
+import { duelUrl, encodeDuelSlug, shareUrl } from "@/lib/share";
+import { addDuel, loadPublished, type PublishedCard, type Vote } from "@/lib/storage";
+import { fetchVotes } from "@/lib/votes";
 import { fakeDoor, track } from "@/lib/track";
+import { DuelStatus } from "./duel-status";
 import { cardTitle } from "./publish-card";
+import { copyText } from "./share-row";
 
-const VOTE_EMOJI: Record<Vote["type"], string> = { try: "🔥", empathy: "💬", meh: "🤔" };
-const VOTE_LABEL: Record<Vote["type"], string> = { try: "나도 써볼래", empathy: "문제 공감", meh: "글쎄" };
+// 긍정 전용 4칩 — need>notify>watch>cheer 순 수요 강도 (부정칩 없음)
+const VOTE_EMOJI: Record<Vote["type"], string> = { need: "🔥", notify: "🙌", watch: "👀", cheer: "💪" };
+const VOTE_LABEL: Record<Vote["type"], string> = {
+  need: "나도 이거 필요해",
+  notify: "완성하면 알려줘",
+  watch: "지켜볼게",
+  cheer: "너라면 만들어",
+};
 const REPORT_MIN_VOTES = 5;
 
 interface Row {
@@ -28,26 +37,48 @@ export function DemandBoard() {
   const [rows, setRows] = useState<Row[] | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [toast, setToast] = useState(false);
+  const [duelRev, setDuelRev] = useState(0); // 대결 생성 시 현황 목록 리렌더
   const timer = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
-    setRows(loadPublished().map((card) => ({ card, votes: loadVotes(card.slug) })));
     track("dashboard_view");
-    return () => clearTimeout(timer.current);
+    // ★핵심: 발행자가 자기 브라우저 표만 보던 블로커 해소 — fetchVotes로 서버(Supabase)의 실제 응원을 읽는다.
+    let cancelled = false;
+    void Promise.all(
+      loadPublished().map(async (card) => ({ card, votes: await fetchVotes(card.slug) })),
+    ).then((loaded) => {
+      if (!cancelled) setRows(loaded);
+    });
+    return () => {
+      cancelled = true;
+      clearTimeout(timer.current);
+    };
   }, []);
 
   if (!rows) return null;
 
-  const copyShare = async (row: Row) => {
-    try {
-      await navigator.clipboard.writeText(shareUrl(row.card.payload));
-    } catch {
-      /* 클립보드 실패 무시 */
-    }
-    track("card_share", { channel: "link", stage: "dashboard" });
+  const showToast = () => {
     setToast(true);
     clearTimeout(timer.current);
     timer.current = setTimeout(() => setToast(false), 2000);
+  };
+
+  const copyShare = async (row: Row) => {
+    await copyText(shareUrl(row.card.payload));
+    track("card_share", { channel: "link", stage: "dashboard" });
+    showToast();
+  };
+
+  const createDuel = async () => {
+    const [first, second] = rows; // 최근 2장 고정 — 카드 선택 UI는 다음 단계
+    if (!first || !second) return;
+    const a = first.card.payload;
+    const b = second.card.payload;
+    addDuel({ slug: encodeDuelSlug(a, b), a, b, createdAt: Date.now() });
+    await copyText(duelUrl(a, b));
+    track("duel_created", { via: "dashboard" });
+    setDuelRev((r) => r + 1);
+    showToast();
   };
 
   const openReport = (row: Row) => {
@@ -61,6 +92,15 @@ export function DemandBoard() {
       <div className="mx-auto mt-4 max-w-narrow">
         <h1 className="text-center font-serif text-2xl text-ink">내 카드</h1>
 
+        {rows.length >= 2 && (
+          <div className="mt-4 text-center" data-anim style={{ animation: "fade-up .4s ease both" }}>
+            <Button variant="glass" onClick={createDuel}>
+              🆚 A/B 대결 만들기
+            </Button>
+            <p className="mt-1.5 text-xs text-caption">최근 카드 2장으로 만들고 링크를 복사해요</p>
+          </div>
+        )}
+
         {rows.length === 0 ? (
           <GlassCard className="mt-8 p-10 text-center" data-anim style={{ animation: "fade-up .4s ease both" }}>
             <p className="text-lg text-ink">아직 카드가 없어요</p>
@@ -73,13 +113,20 @@ export function DemandBoard() {
             {rows.map((row) => {
               const n = row.votes.length;
               const first = row.votes[0];
+              const needN = row.votes.filter((v) => v.type === "need").length;
+              const softHold = n > 0 && needN === 0; // 응원은 왔지만 🔥 '필요해'는 0 → 강한 보류
               const unlocked = n >= REPORT_MIN_VOTES;
               return (
                 <GlassCard key={row.card.slug} className="p-5" data-anim style={{ animation: "fade-up .4s ease both" }}>
                   <h2 className="font-serif text-lg leading-snug text-ink">{cardTitle(row.card.payload)}</h2>
                   <p className="mt-2 text-sm text-gold">
-                    📬 <b>{n}명</b> 도착
+                    📬 <b>{n}명</b> 도착 · 🔥 <b>{needN}명</b> 필요해
                   </p>
+                  {softHold && (
+                    <p className="mt-1 text-xs text-caption">
+                      응원 {n}명인데 🔥 &lsquo;필요해&rsquo;는 0명 — 따뜻한 응원일 뿐 강한 수요 신호는 아직이에요 (표본 {n})
+                    </p>
+                  )}
                   {first && (
                     <p className="mt-1 truncate text-sm text-mist">
                       첫 반응: {VOTE_EMOJI[first.type]}{" "}
@@ -99,7 +146,7 @@ export function DemandBoard() {
                     }
                   >
                     <div className="p-5 text-sm leading-7 text-mist">
-                      <p>🔥 써볼래 ●명 · 💬 공감 ●명 · 🤔 글쎄 ●명</p>
+                      <p>🔥 필요해 ●명 · 🙌 알려줘 ●명 · 👀 지켜봄 ●명 · 💪 응원 ●명</p>
                       <p>누가: 20대 러닝 크루 · 직장인 ●●●</p>
                       <p>왜: &ldquo;기록이 귀찮아서 ●●●●●&rdquo;</p>
                       <p>판정: ●●● — 지금 만들어도 ●●●●</p>
@@ -116,6 +163,8 @@ export function DemandBoard() {
             })}
           </div>
         )}
+
+        <DuelStatus key={duelRev} onCopied={showToast} />
 
         <div className="mt-8 pb-4 text-center">
           <Button variant="ghost" onClick={() => router.push("/start")}>

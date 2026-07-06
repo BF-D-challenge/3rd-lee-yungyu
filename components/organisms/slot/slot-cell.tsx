@@ -8,11 +8,13 @@
  * 뒷면은 덱과 같은 인그레이빙(테두리+방사 문양+축 힌트), 앞면은 축 라벨·이모지·라벨·괘선·서브텍스트.
  * 카드 탭 = 교체 · ✕ = 비움 · 🔒 = 고정(원본 Prioritize — 잠기면 탭·✕ 비활성, 전체 뽑기 면제).
  * 필수 4칸 완성 시 floaty(5s, -5px 왕복) 부유.
+ * 조준(pulse) = 원본 slot.current: 글로우 링 펄스(slotpulse 1.9s의 opacity/transform 등가) +
+ * 상시 글로우 보더 + 플레이스홀더 강조 + data-pulse="true" 훅. 좌상단 badge = 원본 .num(순번/'선택').
  */
 
 import { forwardRef, useEffect, useRef, useState } from "react";
+import { CARD_BACK } from "@/lib/card-art";
 import { cn } from "@/lib/utils";
-import { backSvg } from "./fan-deck";
 
 export interface CellContent {
   emoji: string;
@@ -31,8 +33,12 @@ export interface SlotCellProps {
   gold?: boolean;
   /** 덱 드래그가 이 칸 위에 있을 때 하이라이트 */
   hot?: boolean;
-  /** 💭 옵션 칸 표기 */
+  /** ✨ 스페셜 칸 표기 — 상시 노출, 빈 placeholder 문구 "＋ 스페셜 카드" */
   optional?: boolean;
+  /** 현재 조준 축 (원본 slot.current) — 빈 칸에 골드/글로우 링 펄스 + data-pulse 훅 */
+  pulse?: boolean;
+  /** 칸 좌상단 배지 — 필수는 순번(1~4), 스페셜은 '스페셜' (원본 .num) */
+  badge?: string;
   /** 🔒 고정 — 탭 교체·✕ 비활성, 🎲 전체 뽑기 유지 */
   locked?: boolean;
   /** 필수 완성 후 부유 (원본 floaty) */
@@ -47,6 +53,10 @@ export interface SlotCellProps {
   onRemove?: () => void;
   /** 🔒 토글 */
   onToggleLock?: () => void;
+  /** 축 엠블럼 아트 (AXIS_ART) — 없으면 이모지 폴백 (docs/card-art-integration.md §2) */
+  axisArtSrc?: string;
+  /** 루트에 병합할 추가 클래스 — 모바일 2×2 그리드 배치용(✨스페셜 칸 col-span-2 등) */
+  className?: string;
 }
 
 /* 원본 실측: .flip{transition:transform .72s cubic-bezier(.4,0,.15,1)} */
@@ -55,7 +65,9 @@ const FLIP = "transform 720ms cubic-bezier(.4,0,.15,1)";
 const FLOAT_CSS = `
 @keyframes sc-floaty{from{translate:0 0}to{translate:0 -5px}}
 .sc-floaty{animation:sc-floaty 5s ease-in-out infinite alternate}
-@media (prefers-reduced-motion:reduce){.sc-floaty{animation:none}}
+@keyframes sc-pulse{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:0;transform:scale(1.075)}}
+.sc-pulse{animation:sc-pulse 1.9s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.sc-floaty{animation:none}.sc-pulse{animation:none;opacity:.6}}
 `;
 
 export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotCell(
@@ -67,6 +79,8 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
     gold,
     hot,
     optional,
+    pulse,
+    badge,
     locked,
     floaty,
     floatDelay = 0,
@@ -74,6 +88,8 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
     onSwap,
     onRemove,
     onToggleLock,
+    axisArtSrc,
+    className,
   },
   ref,
 ) {
@@ -154,13 +170,28 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
   }, [contentKey, content]);
 
   return (
-    <div className="flex min-w-0 flex-col items-center gap-1.5">
+    /* 원본 .slot 138×196 등가 — 데스크톱은 한 줄 flex 균등분배(max 122px 캡), 모바일은 2×2 그리드
+       칸(폭 ≈132px, 아트·글자 읽힘). 높이는 카드아트 300:485 비율이 결정. col-span 등 배치는 className. */
+    <div
+      className={cn(
+        "flex w-[min(122px,39vw)] min-w-0 flex-col items-center md:w-auto md:max-w-[122px] md:grow md:basis-0",
+        className,
+      )}
+    >
       <style>{FLOAT_CSS}</style>
       <div
         ref={ref}
+        data-pulse={pulse ? "true" : undefined}
         className={cn("relative w-full transition-transform duration-300", hot && "scale-[1.05]")}
         style={{ aspectRatio: "300 / 485", perspective: "1200px" }}
       >
+        {/* 조준 링 — 원본 slotpulse(1.9s ease-in-out infinite)의 다크 등가. opacity/transform만 */}
+        {pulse && !hot && (
+          <span
+            aria-hidden
+            className="sc-pulse pointer-events-none absolute inset-0 rounded-card border-2 border-glow"
+          />
+        )}
         {/* 퍼플 블룸 오라 — 플립 순간 피었다가 잔광으로 남는다 (원본 fill:forwards) */}
         <div
           ref={auraRef}
@@ -190,12 +221,22 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
                 transform: flipped ? "rotateY(180deg)" : "none",
               }}
             >
-              {/* 뒷면 — 덱과 같은 인그레이빙(테두리+방사 문양+축 힌트) */}
+              {/* 뒷면 — 생성 아트 히어로 + 축 엠블럼 (docs/card-art-integration.md §3a) */}
               <div
                 className="absolute inset-0 overflow-hidden rounded-card"
                 style={{ backfaceVisibility: "hidden" }}
-                dangerouslySetInnerHTML={{ __html: backSvg(axisEmoji) }}
-              />
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={CARD_BACK} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                {axisArtSrc && (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={axisArtSrc}
+                    alt=""
+                    className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 opacity-90"
+                  />
+                )}
+              </div>
               {/* 앞면 */}
               <div
                 className={cn(
@@ -210,7 +251,13 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
                   {axisEmoji} {axisLabel}
                 </span>
                 <div className="flex flex-1 flex-col items-center justify-center gap-1.5">
-                  <span className="text-2xl leading-none sm:text-3xl">{shown?.emoji}</span>
+                  {axisArtSrc ? (
+                    /* 엠블럼은 원형 프레임이 있어 ≥48px 렌더 (integration §2) */
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img src={axisArtSrc} alt="" className="h-12 w-12 object-contain sm:h-14 sm:w-14" />
+                  ) : (
+                    <span className="text-2xl leading-none sm:text-3xl">{shown?.emoji}</span>
+                  )}
                   <span className="font-serif text-[11px] leading-snug text-ink sm:text-sm">
                     {shown?.title}
                   </span>
@@ -259,19 +306,40 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
             )}
           </div>
         ) : (
-          /* 빈 칸 — 점선 유리 placeholder */
+          /* 빈 칸 — 점선 유리 placeholder. 조준(pulse) 중엔 상시 글로우 보더 + 플레이스홀더 강조 */
           <button
             type="button"
             onClick={onFill}
             aria-label={`${axisLabel} 칸 채우기`}
             className={cn(
-              "absolute inset-0 flex w-full flex-col items-center justify-center gap-2 rounded-card border border-dashed border-white/20 bg-white/[0.03] transition-colors hover:border-glow/60 hover:bg-white/[0.06]",
+              "absolute inset-0 flex w-full flex-col items-center justify-center gap-2 rounded-card border border-dashed transition-colors",
+              pulse
+                ? "border-glow/80 bg-white/[0.05]"
+                : "border-white/20 bg-white/[0.03] hover:border-glow/60 hover:bg-white/[0.06]",
               hot && "border-glow bg-white/[0.07] shadow-glow-hero",
             )}
           >
-            <span className="text-2xl opacity-40">{axisEmoji}</span>
-            <span className="text-[10px] tracking-[.12em] text-caption">{axisLabel}</span>
-            {optional && <span className="text-[9px] text-caption/70">옵션</span>}
+            {badge && (
+              <span
+                className={cn(
+                  "absolute left-1.5 top-1.5 text-[9px] tabular-nums tracking-[.04em]",
+                  pulse ? "text-glow" : "text-caption/60",
+                )}
+              >
+                {badge}
+              </span>
+            )}
+            <span className={cn("text-2xl transition-opacity", pulse ? "opacity-80" : "opacity-40")}>
+              {axisEmoji}
+            </span>
+            <span
+              className={cn(
+                "text-[10px] tracking-[.12em]",
+                pulse ? "text-glow" : "text-caption",
+              )}
+            >
+              {optional ? "＋ 스페셜 카드" : axisLabel}
+            </span>
           </button>
         )}
       </div>
