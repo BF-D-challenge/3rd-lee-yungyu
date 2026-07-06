@@ -6,15 +6,33 @@
  * 보이는 호만 렌더 + 화면 밖 recycle · 호버 풀아웃 · 드래그 틸트 · 탭/드롭 → 아크 비행 →
  * 슬롯 안착 · 낙하 버림 · `_hov` 플래그 정리(탭 제거 시 pointerleave 미발생 → 휠 영구 감속 버그 픽스).
  * 덱 내용물은 5축 혼합(🌱씨앗/😖불편/📦형태/🎬장면 + 💭마음 낮은 빈도) — lib/pools.buildDeck.
+ *
+ * curAxis 게이트 (원본 이식): 원본 벨트 카드는 익명(공통 뒷면)이고 탭/드롭이 무조건
+ * `curAxis()`(다음 빈 필수 칸)로 향한다. 여기서는 `aimAxis`가 있는 동안 모든 카드가
+ * 조준 축의 카드로 스킨(뒷면 글리프·aria·data-axis)되고 그 칸만 노린다 — 덱 재구축 없이
+ * 스킨만 갱신해 진입 스윕이 재생되지 않는다. 필수 4칸 완성(aimAxis=null) 후엔 카드 고유
+ * 축으로 복귀(정상 믹스), 🔒 잠긴 축 카드만 dim + 무시.
+ * 한 번에 뽑기(원본 autoAll)는 drawTo/hold 핸들로 아펙스 카드를 한 장씩 비행시킨다.
  */
 
-import { useEffect, useMemo, useRef } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef } from "react";
 import { axisValueKey, type AxisId, type AxisValue } from "@/lib/pools";
 
 export type DeckCard = AxisValue;
 
+export interface FanDeckHandle {
+  /** 한 번에 뽑기 한 스텝 (원본 autoAll) — 아펙스 카드를 axis 칸으로 비행, 안착 시 onPick→onDone */
+  drawTo: (axis: AxisId, onDone: () => void) => boolean;
+  /** 자동 시퀀스 동안 벨트 잠금 (원본 autoAll의 busy 유지 — 탭/드래그 차단 + 호버 크롤 .05) */
+  hold: (on: boolean) => void;
+}
+
 export interface FanDeckProps {
   cards: DeckCard[];
+  /** 현재 조준 축 = 다음 빈 필수 칸 (원본 curAxis). null이면 게이트 해제 → 카드 고유 축 */
+  aimAxis: AxisId | null;
+  /** 게이트 해제 후 비활성 축(🔒 잠긴 축) — 해당 축 카드는 dim + 조준 불가 */
+  inactiveAxes?: AxisId[];
   /** 카드가 날아가 안착할 슬롯 칸의 뷰포트 rect (💭 미노출 시 null) */
   getTargetRect: (axis: AxisId) => DOMRect | null;
   /** 드래그 중 슬롯 위 하이라이트용 (null = 벗어남) */
@@ -25,7 +43,7 @@ export interface FanDeckProps {
   onRequestSlot?: (axis: AxisId) => void;
 }
 
-type WCard = HTMLDivElement & { _base: number; _hov?: boolean; _deck: number };
+type WCard = HTMLDivElement & { _base: number; _hov?: boolean; _deck: number; _skin?: AxisId };
 
 const EASE = "cubic-bezier(.65,0,.35,1)";
 const SPRING = "cubic-bezier(.34,1.56,.64,1)";
@@ -42,6 +60,8 @@ const DECK_CSS = `
 .fd-card svg{display:block;width:100%;height:100%}
 .fd-card:hover svg{filter:drop-shadow(0 10px 14px rgba(0,0,0,.55))}
 .fd-card.ghost{visibility:hidden}
+.fd-card[data-active="false"]{opacity:.35;cursor:default}
+.fd-card[data-active="false"] .pull,.fd-card[data-active="false"]:hover .pull{transform:none}
 .fd-fly{position:fixed;z-index:999;pointer-events:none;will-change:transform}
 .fd-fly svg{display:block;width:100%;height:100%;filter:drop-shadow(0 16px 22px rgba(0,0,0,.55))}
 @media (prefers-reduced-motion:reduce){.fd-card,.fd-card .pull{transition:none}}
@@ -92,7 +112,10 @@ const AXIS_KO: Record<AxisId, string> = {
 
 const glyphOf = (c: DeckCard) => GLYPH[c.axis];
 
-export function FanDeck({ cards, getTargetRect, onDragOver, onPick, onRequestSlot }: FanDeckProps) {
+export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
+  { cards, aimAxis, inactiveAxes, getTargetRect, onDragOver, onPick, onRequestSlot },
+  handleRef,
+) {
   const hostRef = useRef<HTMLDivElement>(null);
   const wheelRef = useRef<HTMLDivElement>(null);
 
@@ -105,6 +128,29 @@ export function FanDeck({ cards, getTargetRect, onDragOver, onPick, onRequestSlo
   onPickRef.current = onPick;
   const onRequestSlotRef = useRef(onRequestSlot);
   onRequestSlotRef.current = onRequestSlot;
+
+  // curAxis 게이트 상태 — 스킨(뒷면/aria/data-*)만 바꾸고 휠은 재구축하지 않는다 (진입 스윕 보존)
+  const aimRef = useRef(aimAxis);
+  aimRef.current = aimAxis;
+  const inactiveKey = (inactiveAxes ?? []).join(",");
+  const inactiveRef = useRef<Set<AxisId>>(new Set());
+  inactiveRef.current = new Set(inactiveAxes ?? []);
+  const skinRef = useRef<(() => void) | null>(null);
+  const apiRef = useRef<FanDeckHandle | null>(null);
+
+  useImperativeHandle(
+    handleRef,
+    () => ({
+      drawTo: (axis, onDone) => apiRef.current?.drawTo(axis, onDone) ?? false,
+      hold: (on) => apiRef.current?.hold(on),
+    }),
+    [],
+  );
+
+  // 조준 축·잠금 축이 바뀌면 카드 스킨만 갱신
+  useEffect(() => {
+    skinRef.current?.();
+  }, [aimAxis, inactiveKey]);
 
   const poolKey = useMemo(() => cards.map(axisValueKey).join(","), [cards]);
   const poolRef = useRef(cards);
@@ -121,6 +167,7 @@ export function FanDeck({ cards, getTargetRect, onDragOver, onPick, onRequestSlo
 
     let cardsEl: WCard[] = [];
     let busy = false;
+    let held = false; // 한 번에 뽑기 시퀀스 동안 벨트 잠금 (원본 autoAll busy)
     let disposed = false;
     let wheelAngle = 0;
     let speed = 0;
@@ -191,6 +238,37 @@ export function FanDeck({ cards, getTargetRect, onDragOver, onPick, onRequestSlo
       if (a > 180) a -= 360;
       if (a < -180) a += 360;
       return a;
+    };
+    /** 원본 apexCard — 조준선(12시)에 가장 가까운 카드. autoAll이 뽑는 카드 */
+    const apexCard = (): WCard | null => {
+      let best: WCard | null = null;
+      let bd = Infinity;
+      cardsEl.forEach((c) => {
+        const a = Math.abs(absAngle(c));
+        if (a < bd) {
+          bd = a;
+          best = c;
+        }
+      });
+      return best;
+    };
+
+    const deckOf = (c: WCard): DeckCard => pool[c._deck % pool.length];
+    /** 원본 curAxis 게이트 — 조준 축이 있는 동안 모든 카드는 그 축의 카드다 */
+    const effAxis = (c: WCard): AxisId => aimRef.current ?? deckOf(c).axis;
+    /** 게이트 중엔 전 카드 활성(원본: 벨트 전체가 curAxis로 향함), 해제 후엔 🔒 축만 비활성 */
+    const isActive = (c: WCard) => (aimRef.current ? true : !inactiveRef.current.has(deckOf(c).axis));
+    /** 카드 스킨 — data-axis/data-active/aria/뒷면 글리프를 유효 축에 맞춘다 (재구축 없음) */
+    const skin = (c: WCard) => {
+      const eff = effAxis(c);
+      c.dataset.axis = eff;
+      c.dataset.active = String(isActive(c));
+      c.setAttribute("aria-label", `${AXIS_KO[eff]} 카드 뽑기`);
+      if (c._skin !== eff) {
+        c._skin = eff;
+        const pull = c.firstElementChild as HTMLElement | null;
+        if (pull) pull.innerHTML = backSvg(GLYPH[eff]);
+      }
     };
 
     const makeClone = (cx: number, cy: number, ang: number, w: number, h: number, glyph: string) => {
@@ -292,12 +370,11 @@ export function FanDeck({ cards, getTargetRect, onDragOver, onPick, onRequestSlo
       requestAnimationFrame(fall);
     };
 
-    const deckOf = (c: WCard): DeckCard => pool[c._deck % pool.length];
-
-    /** 탭 → 해당 축 슬롯으로 아크 비행 → 안착 시 onPick */
+    /** 탭 → 유효 축(조준 중엔 curAxis) 슬롯으로 아크 비행 → 안착 시 onPick */
     const drawToReel = (c: WCard) => {
+      if (busy || held || !isActive(c)) return;
       const card = deckOf(c);
-      if (busy) return;
+      const eff = effAxis(c);
       const start = (rect: DOMRect) => {
         busy = true;
         const gm = geom();
@@ -306,7 +383,7 @@ export function FanDeck({ cards, getTargetRect, onDragOver, onPick, onRequestSlo
         const cy = b.top + b.height / 2;
         const a0 = absAngle(c);
         c.classList.add("ghost");
-        const clone = makeClone(cx, cy, a0, gm.cw, gm.ch, glyphOf(card));
+        const clone = makeClone(cx, cy, a0, gm.cw, gm.ch, GLYPH[eff]);
         flyTo(clone, { x: cx, y: cy }, a0, rect, () => {
           busy = false;
           if (disposed) return;
@@ -314,19 +391,19 @@ export function FanDeck({ cards, getTargetRect, onDragOver, onPick, onRequestSlo
           onPickRef.current(card);
         });
       };
-      const rect = getRectRef.current(card.axis);
+      const rect = getRectRef.current(eff);
       if (rect) {
         start(rect);
         return;
       }
       // 💭 옵션 칸 미노출 — 빈 칸을 먼저 열고 다음 프레임에 목적지를 다시 잡는다
-      onRequestSlotRef.current?.(card.axis);
+      onRequestSlotRef.current?.(eff);
       busy = true;
       requestAnimationFrame(() =>
         requestAnimationFrame(() => {
           busy = false;
           if (disposed) return;
-          const r = getRectRef.current(card.axis);
+          const r = getRectRef.current(eff);
           if (r) start(r);
         }),
       );

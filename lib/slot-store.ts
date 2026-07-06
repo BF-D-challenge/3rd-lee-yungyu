@@ -95,6 +95,11 @@ interface SlotState {
  * 취향 미설정이면 가끔(40%) 시트를 띄운다. 제출/스킵하면 다시 안 묻는다.
  */
 const TASTE_ASK_CHANCE = 0.4;
+
+/** 원본 batchRemix: 대상 카드를 130ms 간격으로 순차 플립 — 축별 지연 적용 간격 */
+const SPIN_STAGGER_MS = 130;
+/** 스태거 세대 — reset/재스핀 시 증가시켜 이전 지연 적용을 무효화 (원본 gen 가드, codex #1) */
+let spinGen = 0;
 const maybeAskTaste = (s: SlotState): Partial<SlotState> =>
   !s.tasteResolved && s.spins >= 1 && Math.random() < TASTE_ASK_CHANCE
     ? { tasteSheetOpen: true, tasteAsked: true }
@@ -181,7 +186,7 @@ export const useSlot = create<SlotState>((set, get) => ({
     const keepPsych = L.psych && !!s.slots.psych;
     const withPsych = keepPsych || Math.random() < PSYCH_CHANCE;
     const psych = keepPsych ? s.slots.psych : withPsych ? drawPsych(s.slots.psych?.id) : null;
-    const slots: Slots = { seed, pain, format, situation, psych };
+    const next: Slots = { seed, pain, format, situation, psych };
     track("slot_spin", {
       spin_index: s.spins + 1,
       seed_tag: seed.id,
@@ -190,12 +195,25 @@ export const useSlot = create<SlotState>((set, get) => ({
       is_golden: !!goldenFor(seed.id, pain.id, format.id),
       filled_axes: filledRequired(s.slots).length,
     });
-    set({
-      slots,
-      psychOpen: withPsych,
-      spins: s.spins + 1,
-      ...maybeAskTaste(s),
-    });
+    spinGen += 1;
+    const gen = spinGen;
+    set({ spins: s.spins + 1, ...maybeAskTaste(s) });
+    // 원본 batchRemix 이식: 바뀌는 축만 k*130ms 간격으로 순차 적용 —
+    // 🔒 유지·keepSeed 축은 동일 참조라 스킵되고, 각 칸이 원본처럼 시차를 두고 플립한다.
+    const order: readonly AxisId[] = ["seed", "pain", "format", "situation", "psych"];
+    order
+      .filter((a) => next[a] !== s.slots[a])
+      .forEach((axis, k) => {
+        const apply = () => {
+          if (gen !== spinGen) return; // reset/새 스핀이면 무효 (원본 gen 가드)
+          set((cur) => ({
+            slots: { ...cur.slots, [axis]: next[axis] } as Slots,
+            ...(axis === "psych" ? { psychOpen: withPsych } : {}),
+          }));
+        };
+        if (k === 0) apply();
+        else setTimeout(apply, k * SPIN_STAGGER_MS);
+      });
   },
 
   setTaste: (taste) => {
@@ -214,7 +232,8 @@ export const useSlot = create<SlotState>((set, get) => ({
 
   prefillSeed: (seed) => set((s) => ({ slots: { ...s.slots, seed } })),
 
-  reset: () =>
+  reset: () => {
+    spinGen += 1; // 진행 중인 스태거 적용 취소 (원본 resetAll의 gen++)
     set({
       slots: EMPTY,
       locked: NO_LOCKS,
@@ -222,5 +241,6 @@ export const useSlot = create<SlotState>((set, get) => ({
       spins: 0,
       capHit: false,
       tasteSheetOpen: false,
-    }),
+    });
+  },
 }));
