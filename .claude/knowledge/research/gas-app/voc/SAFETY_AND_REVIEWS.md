@@ -1,3 +1,13 @@
+---
+name: gas-app--voc-safety-reviews
+description: Gas 앱스토어 리뷰 감정분석(또래 연결 호평 vs 가짜 칭찬 의심·신원검증 부재 불만), 10대 안전성 논란(2022-10 인신매매 괴담과 실제 경찰·학교 개입, 코넬대·CBC 전문가의 사회비교/불안 화폐화 비판), Discord의 실제 종료 사유(내부 메모 기반 엔지니어링 팀 확보용 acqui-hire), NGL·Sendit FTC 규제 사례를 정리한 VOC·안전성 문서.
+metadata:
+  type: research
+  topic: gas-app
+  category: voc
+  date: 2026-07-08
+---
+
 # Gas 앱 VOC 및 안전성/규제 이슈
 
 > 리서치 목적: "오늘 해볼까"의 익명 투표 기능 설계 시 참고할 리스크 사전 파악.

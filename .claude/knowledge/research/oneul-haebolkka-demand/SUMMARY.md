@@ -1,3 +1,13 @@
+---
+name: oneul-haebolkka-demand--summary
+description: 오늘 해볼까(씨앗 기반 아이디어 슬롯+지인 투표 수요확인)에 대한 수요 신호를 웹·Reddit·X·국내 커뮤니티에서 교차검증한 통합 결론 — 판정은 "수요 신호 중~강, 포지셔닝 조건부"이며 지불 의사 패턴표와 설계 반영 4개 항목을 담는다.
+metadata:
+  type: research
+  topic: oneul-haebolkka-demand
+  category: summary
+  date: 2026-07-06
+---
+
 # 오늘 해볼까 — 수요 검증 리서치 통합 요약
 
 > 2026-07-06 | 수집: 웹(WebSearch/WebFetch), Reddit(rdt-cli), X(twitter-cli), 국내(Jina/WebFetch)

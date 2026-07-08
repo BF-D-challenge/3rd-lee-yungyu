@@ -1,3 +1,13 @@
+---
+name: idea-tools-2026--community-voc
+description: Reddit(r/SaaS·r/startupideas·r/indiehackers)·HN에서 수집한 아이디어 생성/검증 도구에 대한 빌더 실반응 — 원하는 결과물 Top5, 지불 실증(GummySearch 유료 1만명), AI 점수 신뢰붕괴 밈 등 냉소 Top5, "오늘 해볼까" 시사점 5줄.
+metadata:
+  type: research
+  topic: idea-tools-2026
+  category: voc
+  date: 2026-07-07
+---
+
 # VOC: 아이디어 생성/검증 도구에 대한 빌더 커뮤니티 실반응 (2025~2026)
 
 > 수집일: 2026-07-07 · 수단: rdt-cli(Reddit, 인증 쿠키), HN Algolia API(curl)

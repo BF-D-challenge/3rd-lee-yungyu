@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """T2 — 20조합 앵커 후보 매칭 (결정론)
-입력: scratchpad/cq/samples.json, research/trustmrr-acquire/ideas.jsonl
+입력: scratchpad/cq/samples.json, docs/research/trustmrr-acquire/ideas.jsonl
 출력: scratchpad/cq/anchors.json
 규칙(DESIGN.md T2): seed 키워드 2점·pain/format 1점 가중, revenue>=200, 상위 4, 점수>=3 후보<3이면 fallback 폴백."""
 import json, os, re
@@ -44,7 +44,7 @@ FMT_KW = {
 
 def load_ideas():
     out = []
-    with open(os.path.join(ROOT, "research/trustmrr-acquire/ideas.jsonl")) as f:
+    with open(os.path.join(ROOT, "docs/research/trustmrr-acquire/ideas.jsonl")) as f:
         for line in f:
             try: x = json.loads(line)
             except: continue

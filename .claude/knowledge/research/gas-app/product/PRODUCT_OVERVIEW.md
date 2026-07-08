@@ -1,3 +1,13 @@
+---
+name: gas-app--product-overview
+description: Gas 앱의 제품 개요, 출시(2022-08)부터 Discord 인수(2023-01)·서비스 종료(2023-11)까지 타임라인, 핵심 게임 메커닉(12개 폴 응답→익명 알림 '불꽃'→60분 쿨다운+초대로 즉시 스킵), 수익화(코인 부스트+God Mode $6.99/주), Nikita Bier의 지역 제한 독점 전개 성장 전략을 정리한 제품 개요 문서.
+metadata:
+  type: research
+  topic: gas-app
+  category: product
+  date: 2026-07-08
+---
+
 # Gas 앱 제품 개요
 
 ## 한 줄 요약

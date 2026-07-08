@@ -1,3 +1,13 @@
+---
+name: card-art-prompting--summary
+description: AI 이미지 프롬프트 리서치 종합 — 카드 세트 일관성은 "히어로 이미지 확정→스타일 앵커 재사용" 워크플로우임을 밝히고, 타로 골드라인 공식·툴별(MJ/Nano Banana/DALL-E/Flux) 구현법과 gpt-image-2 Thinking 모드의 다장 일관 생성이 왜 카드아트 세트에 특히 유리한지 정리.
+metadata:
+  type: research
+  topic: card-art-prompting
+  category: summary
+  date: 2026-07-06
+---
+
 # 리서치: 전문가급 AI 이미지 프롬프트 (카드 아트 세트용)
 
 > Trust Level: L1 (Draft) · 2026-07-06 · @researcher

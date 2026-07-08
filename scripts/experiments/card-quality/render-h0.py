@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""T3 — H0(현행 앱 출력) 재현. lib/draw.ts sentence() + lib/josa.ts 복제.
-입력: scratchpad/cq/samples.json, data/combos.json
+"""T3 — H0(현행 앱 출력) 재현. src/lib/draw.ts sentence() + src/lib/josa.ts 복제.
+입력: scratchpad/cq/samples.json, src/data/combos.json
 출력: scratchpad/cq/h0.json  ({rows:[{id, card:CardCell}]})
 - 골든 행: 해당 golden의 title/oneliner/target/mvp 그대로 (현행 앱이 매칭 시 골든 표시)
 - 비골든 행: sentenceTemplates[track] + josa 자동교정, title=null, mvp=null, target=defaultTarget
@@ -9,7 +9,7 @@ import json, os, random
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 CQ = "/private/tmp/claude-501/-Users-yungyulee-Project-03-BFD-3rd-lee-yungyu/3a782a35-719b-42c6-85ef-7ddd6b883bc2/scratchpad/cq".replace("42c6", "43c6")
-d = json.load(open(os.path.join(ROOT, "data/combos.json")))
+d = json.load(open(os.path.join(ROOT, "src/data/combos.json")))
 samples = json.load(open(os.path.join(CQ, "samples.json")))
 
 TEMPLATES = d["sentenceTemplates"]

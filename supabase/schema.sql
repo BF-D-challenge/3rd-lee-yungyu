@@ -255,10 +255,50 @@ drop policy if exists purchases_insert_own on public.purchases;
 create policy purchases_insert_own on public.purchases
   for insert to authenticated with check (auth.uid() = user_id);
 
+-- ----------------------------------------------------------------------------
+-- 6. published_cards — 로그인 발행자의 카드 목록(기기 간 동기화용).
+--    slug(URL 인코딩 payload)를 그대로 보관 — 조회는 항상 payload 컬럼에서, DB 재계산 없음.
+--    참고: card_votes/duel_votes(응원 데이터)는 이 파일 v2 이후 대시보드 SQL Editor에서
+--    별도로 추가돼 라이브에는 존재하나 이 schema.sql에는 아직 반영 안 돼 있었음(2026-07-08 확인).
+--    이 섹션은 그 갭과는 별개로 새로 추가하는 v3 테이블이다.
+-- ----------------------------------------------------------------------------
+create table if not exists public.published_cards (
+  id            uuid primary key default gen_random_uuid(),
+  user_id       uuid not null references auth.users (id) on delete cascade,
+  slug          text not null,
+  payload       jsonb not null,
+  published_at  timestamptz not null default now(),
+  unique (user_id, slug)
+);
+
+create index if not exists idx_published_cards_user
+  on public.published_cards (user_id, published_at desc);
+
+alter table public.published_cards enable row level security;
+
+drop policy if exists published_cards_select_own on public.published_cards;
+create policy published_cards_select_own on public.published_cards
+  for select to authenticated using (auth.uid() = user_id);
+
+drop policy if exists published_cards_insert_own on public.published_cards;
+create policy published_cards_insert_own on public.published_cards
+  for insert to authenticated with check (auth.uid() = user_id);
+
+drop policy if exists published_cards_update_own on public.published_cards;
+create policy published_cards_update_own on public.published_cards
+  for update to authenticated using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+drop policy if exists published_cards_delete_own on public.published_cards;
+create policy published_cards_delete_own on public.published_cards
+  for delete to authenticated using (auth.uid() = user_id);
+
 -- ============================================================================
 -- 끝. 요약
---   테이블 5  : profiles, ideas, votes, spins, purchases
+--   테이블 6  : profiles, ideas, votes, spins, purchases, published_cards
 --   ENUM   4  : vote_type, product_type, purchase_status, seed_track
---   RLS 정책 15: profiles×3, ideas×4, votes×3, spins×3, purchases×2
+--   RLS 정책 19: profiles×3, ideas×4, votes×3, spins×3, purchases×2, published_cards×4
 --   Edge Function 위임: 익명 투표 rate-limit / 익명 스핀 캡 / 결제 상태 전이
+--   ⚠ 라이브 DB에는 이 파일에 없는 card_votes/duel_votes 테이블이 이미 존재함(2026-07-08 REST 프로브로 확인).
+--     본 파일과 라이브 스키마가 어긋나 있으니, 다음 정리 작업 때 card_votes/duel_votes 정의도
+--     이 파일에 역으로 반영해 단일 진실 소스로 통합할 것.
 -- ============================================================================

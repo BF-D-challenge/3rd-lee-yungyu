@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """T5 — 블라인드 채점 시트 조립 (결정론 셔플, 시드 20260708)
 입력: cq/samples.json, cq/h0.json, cq/gen20-output.json
-출력: docs/experiments/card-quality/blind-sheet.md, cq/answer-key.DO-NOT-OPEN.json
+출력: docs/dev/experiments/card-quality/blind-sheet.md, cq/answer-key.DO-NOT-OPEN.json
 - 행마다 [H0,H1,H2,H3] 셔플 → 안1~안4. 배정표는 answer-key에만.
 - 방향 라벨·앵커 URL·제품 매출 라벨 시트 노출 금지(블라인드)."""
 import json, os, random, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 CQ = "/private/tmp/claude-501/-Users-yungyulee-Project-03-BFD-3rd-lee-yungyu/3a782a35-719b-43c6-85ef-7ddd6b883bc2/scratchpad/cq"
-OUT_MD = os.path.join(ROOT, "docs/experiments/card-quality/blind-sheet.md")
+OUT_MD = os.path.join(ROOT, "docs/dev/experiments/card-quality/blind-sheet.md")
 
 samples = {r["id"]: r for r in json.load(open(os.path.join(CQ, "samples.json")))["rows"]}
 h0 = {r["id"]: r["card"] for r in json.load(open(os.path.join(CQ, "h0.json")))["rows"]}

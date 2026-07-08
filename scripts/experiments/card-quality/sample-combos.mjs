@@ -1,5 +1,5 @@
 // T1 — 카드 품질 실험 20조합 층화 표본추출 (결정론, 시드 20260707)
-// 입력: data/combos.json · 출력: scratchpad/cq/samples.json
+// 입력: src/data/combos.json · 출력: scratchpad/cq/samples.json
 // 규칙(DESIGN.md T1): 20행 like10/know10 · 골든 4(like2 know2, 카테고리 상이)
 //  · 부정합 강제 2(golf×commute, baking-dessert×work-break) · 장면 부여 정확히 10 · 모든 (pain,format)∈seed allow
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const OUT_DIR = "/private/tmp/claude-501/-Users-yungyulee-Project-03-BFD-3rd-lee-yungyu/3a782a35-719b-43c6-85ef-7ddd6b883bc2/scratchpad/cq";
-const d = JSON.parse(readFileSync(resolve(ROOT, "data/combos.json"), "utf8"));
+const d = JSON.parse(readFileSync(resolve(ROOT, "src/data/combos.json"), "utf8"));
 
 // 시드 고정 PRNG
 function mulberry32(a) { return () => { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }

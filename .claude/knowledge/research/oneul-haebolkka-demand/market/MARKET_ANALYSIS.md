@@ -1,3 +1,13 @@
+---
+name: oneul-haebolkka-demand--market-analysis
+description: IdeaBrowser·IdeasAI·Kernal·ValidatorAI·DimeADozen·IdeaProof 등 아이디어 생성/검증 도구의 가격·트랙션·지불 의사 신호를 비교표로 정리하고, "지인 투표" 유료 시장은 국내외 공백이라는 점과 순수 생성은 무료화되지만 1회성 소액 리포트($9~€99)는 성립한다는 패턴을 도출한 경쟁 분석.
+metadata:
+  type: research
+  topic: oneul-haebolkka-demand
+  category: market
+  date: 2026-07-06
+---
+
 # 오늘 해볼까 — 시장/경쟁 분석 (아이디어 생성 + 수요 검증 도구)
 
 - 조사일: 2026-07-06

@@ -1,6 +1,16 @@
+---
+name: store-seo-title--summary
+description: 앱스토어(Apple RSS·크롬 웹스토어) 상위 랭킹 제목 분석으로 "이름+구분자+검색키워드" 제목 공식을 도출하고, 오늘 해볼까 카드 40장의 제목을 브랜드 이름+SEO 부제 형태로 개선 적용한 기록.
+metadata:
+  type: research
+  topic: store-seo-title
+  category: summary
+  date: 2026-07-08
+---
+
 # 스토어 SEO·USP 제목 리서치 → 카드 제목 개선
 
-> 소스: `research/store-rankings/`(Apple RSS 12개 스토어프론트·카테고리 차트 4,949행·크롬 웹스토어 고유 확장 2,022개·iTunes 키워드 샘플) + `research/trustmrr-acquire/ideas.jsonl`. 수집 도구 없이 로컬 JSONL 분석.
+> 소스: `docs/research/store-rankings/`(Apple RSS 12개 스토어프론트·카테고리 차트 4,949행·크롬 웹스토어 고유 확장 2,022개·iTunes 키워드 샘플) + `docs/research/trustmrr-acquire/ideas.jsonl`. 수집 도구 없이 로컬 JSONL 분석.
 > 목적: 실제 상위 앱들이 어떻게 제목을 지어 SEO·USP를 잡는지 확인하고, 우리 카드 제목(현행 "며칠 뛰었나 세주기"류)을 개선.
 
 ## 핵심 발견: 이기는 제목 공식
@@ -46,7 +56,7 @@
 
 ## 적용 결과 (2026-07-08 완료)
 
-- 40장(R20+B20) 제목을 공식대로 개선해 `data/combos.json` golden `title` 갱신 + 브랜드 이름을 `appName`으로 별도 보관. tsc·build 통과.
+- 40장(R20+B20) 제목을 공식대로 개선해 `src/data/combos.json` golden `title` 갱신 + 브랜드 이름을 `appName`으로 별도 보관. tsc·build 통과.
 - **잔존 업계용어 맥락별 처리**(사용자 결정): 개발·실무 카드(UI·QA·대시보드·집계)는 타깃이 실제 검색하는 키워드라 유지, 소비자 카드만 풀어씀(R01 스트릭→"안 끊기는 러닝 연속 기록", R02 진단→"OTT 뭐 볼지 추천").
 - 예: 며칠 뛰었나 세주기→**뛴날 — 안 끊기는 러닝 연속 기록**, 카페 투표로 정해주기→**카페픽 — 카페 투표·결정**, 품절 상품 미리 걸러주기→**품절봇 — 재고 품절 방지 알림**.
 - 접미 컨벤션: 픽(추천·투표)·봇(자동·알림)·록/함(저장)·체크(체크리스트)·판(집계).

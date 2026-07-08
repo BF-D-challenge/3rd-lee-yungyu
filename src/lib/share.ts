@@ -1,0 +1,121 @@
+// v4는 백엔드 없이 URL 자체가 데이터 캐리어다 (Supabase는 3주차, R21).
+import type { Combo } from "./draw";
+import { formatById, painById, type Track } from "./combos";
+
+export interface CardPayload {
+  seedId: string;
+  seedLabel: string;
+  track: Track;
+  painId: number;
+  formatId: string;
+  title: string | null;
+  oneliner: string | null;
+  target: string;
+  situation: string;
+  psych: string;
+  /** v7 필드 — 수신자 카드에 전파. 투표자 설득용(브랜드명·근거)만; mvp/buildPrompt는 빌더 전용이라 제외(URL 길이도 절약) */
+  appName?: string | null;
+  evidence?: string | null;
+}
+
+export const toPayload = (c: Combo): CardPayload => ({
+  seedId: c.seed.id,
+  seedLabel: c.seed.label,
+  track: c.seed.track,
+  painId: c.pain.id,
+  formatId: c.format.id,
+  title: c.title,
+  oneliner: c.oneliner,
+  target: c.target,
+  situation: c.situation,
+  psych: c.psych,
+  appName: c.appName,
+  evidence: c.evidence,
+});
+
+export function encodeSlug(payload: CardPayload): string {
+  const json = JSON.stringify(payload);
+  return btoa(encodeURIComponent(json)).replaceAll("+", "-").replaceAll("/", "_").replaceAll("=", "");
+}
+
+export function decodeSlug(slug: string): CardPayload | null {
+  try {
+    const b64 = slug.replaceAll("-", "+").replaceAll("_", "/");
+    const padded = b64 + "=".repeat((4 - (b64.length % 4)) % 4);
+    const payload = JSON.parse(decodeURIComponent(atob(padded))) as CardPayload;
+    // 최소 무결성: 참조 데이터가 실제로 존재해야 렌더 가능
+    if (!payload.seedLabel || !painById(payload.painId) || !formatById(payload.formatId)) return null;
+    return payload;
+  } catch {
+    return null;
+  }
+}
+
+export const shareUrl = (payload: CardPayload): string => `${location.origin}/c/${encodeSlug(payload)}`;
+
+// ── A/B 응원 대결 — 카드 2장을 한 URL에 실어 "어느 쪽을 응원할래?"를 묻는다 (긍정 전용) ──
+
+export interface DuelPayload {
+  a: CardPayload;
+  b: CardPayload;
+}
+
+const DUEL_VERSION = 1;
+
+/** decodeSlug와 같은 최소 무결성: 참조 데이터가 실제로 존재해야 렌더 가능 */
+const isRenderable = (p: CardPayload | undefined): p is CardPayload =>
+  Boolean(p && p.seedLabel && painById(p.painId) && formatById(p.formatId));
+
+export function encodeDuelSlug(a: CardPayload, b: CardPayload): string {
+  const json = JSON.stringify({ v: DUEL_VERSION, a, b });
+  return btoa(encodeURIComponent(json)).replaceAll("+", "-").replaceAll("/", "_").replaceAll("=", "");
+}
+
+export function decodeDuelSlug(slug: string): DuelPayload | null {
+  try {
+    const b64 = slug.replaceAll("-", "+").replaceAll("_", "/");
+    const padded = b64 + "=".repeat((4 - (b64.length % 4)) % 4);
+    const parsed = JSON.parse(decodeURIComponent(atob(padded))) as {
+      v?: number;
+      a?: CardPayload;
+      b?: CardPayload;
+    };
+    if (parsed.v !== DUEL_VERSION || !isRenderable(parsed.a) || !isRenderable(parsed.b)) return null;
+    return { a: parsed.a, b: parsed.b };
+  } catch {
+    return null;
+  }
+}
+
+export const duelUrl = (a: CardPayload, b: CardPayload): string => `${location.origin}/vs/${encodeDuelSlug(a, b)}`;
+
+/** S5 "나도 뽑아보기": 방금 본 카드의 씨앗 프리필로 온보딩을 건너뛰고 슬롯 직행 (R9) */
+export const prefillSpinUrl = (payload: CardPayload): string =>
+  `/slot?seed=${encodeURIComponent(payload.seedId)}&label=${encodeURIComponent(payload.seedLabel)}&track=${payload.track}&via=vote`;
+
+// ── 네이티브 공유시트 (Web Share API) — 카톡/문자/에어드롭 등 선택 가능, 미지원 시 클립보드 폴백 ──
+// K(바이럴 계수) 측정 정의:
+//   실전달률 = public_card_view ÷ confirm_share_click (native 방식일 때만 신뢰 — clipboard는 실제 전달 불확실)
+//   응원율   = card_vote ÷ public_card_view
+//   재뽑기전환 = vote_to_spin ÷ card_vote
+
+export async function shareOrCopy(
+  url: string,
+  opts?: { title?: string; text?: string },
+): Promise<{ ok: boolean; method: "native" | "clipboard" }> {
+  if (typeof navigator !== "undefined" && "share" in navigator) {
+    try {
+      await navigator.share({ url, title: opts?.title, text: opts?.text });
+      return { ok: true, method: "native" };
+    } catch (err) {
+      if (err instanceof DOMException && err.name === "AbortError") return { ok: false, method: "native" };
+      // 다른 에러(권한 없음 등)는 클립보드 폴백으로 넘어간다
+    }
+  }
+  try {
+    await navigator.clipboard.writeText(url);
+    return { ok: true, method: "clipboard" };
+  } catch {
+    return { ok: false, method: "clipboard" };
+  }
+}

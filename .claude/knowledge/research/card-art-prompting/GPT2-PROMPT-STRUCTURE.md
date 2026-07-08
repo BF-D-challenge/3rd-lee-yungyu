@@ -1,3 +1,13 @@
+---
+name: card-art-prompting--gpt2-structure
+description: gpt-image-2 공식 쿡북·fal.ai·Reddit 실측을 종합해 카드 아트 프롬프트를 Use case/Subject/Composition/Palette/Constraints 5필드 구조로 재설계한 근거와, 오로라 카드 12장에 실제 적용한 사례.
+metadata:
+  type: research
+  topic: card-art-prompting
+  category: deep
+  date: 2026-07-07
+---
+
 # 리서치: GPT Image 2 전문 프롬프트 "구조" 설계
 
 > Trust Level: L1 (Draft) · 2026-07-07 · @researcher
