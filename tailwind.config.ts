@@ -13,6 +13,8 @@ const config: Config = {
         caption: "var(--caption)",
         gold: "var(--gold)",
         glow: "var(--glow)",
+        rose: "var(--rose)",
+        good: "var(--good)",
       },
       borderRadius: {
         btn: "var(--r-btn)",

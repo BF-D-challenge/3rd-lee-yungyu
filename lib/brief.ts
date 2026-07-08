@@ -44,6 +44,8 @@ export function buildBrief(combo: Combo): Brief {
  * 이름·한 줄·타깃·문제·MVP·첫 화면·기술 힌트 포함, 마지막 줄은 오늘 완성 지시.
  */
 export function buildPrompt(combo: Combo): string {
+  // v7 카드에 사전 생성된 빌드 프롬프트가 있으면 그대로 사용
+  if (combo.buildPrompt) return combo.buildPrompt;
   const b = buildBrief(combo);
   const oneliner =
     b.oneliner ??

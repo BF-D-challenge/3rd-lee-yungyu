@@ -1,69 +1,84 @@
 /**
- * 카드 아트 이미지 매핑 — codex image_gen.imagegen로 생성한 자산(`public/cards/`).
+ * 카드 아트 3티어 매핑 — 타로 덱 시스템 (2026-07-07 확정).
+ * 값은 수백 개지만 그림은 10장 + 뒷면: 일러스트는 "수트의 무드", 카투슈의 이름이 구체 값을 담당.
+ *   프롬프트/설계: docs/aurora-card-prompts.md · 목업/원칙: docs/card-art-integration.md
  *
- * 현행(v2): **오로라 풀블리드** — 토스뱅크 키비주얼 방향. 카드 전체를 세로로 꽉 채우는
- *   추상 라이트필드(직각 모서리, 카드별 '빛의 동사' 1개). 앱 aurora mesh 토큰과 한 몸.
- *   프롬프트: docs/aurora-card-prompts.md · 구조 근거: .claude/knowledge/research/card-art-prompting/GPT2-PROMPT-STRUCTURE.md
- *
- * ★ 라이브 모델과 1:1 정합: CATEGORY_ART 키 = combos.json 씨앗 카테고리 id, AXIS_ART 키 = lib/pools AxisId.
- *
- * ⚠ 렌더 컴포넌트(slot-cell.tsx / fan-deck.tsx / slot-machine.tsx)는 다른 세션이 편집 중.
- *    그 파일을 직접 고치지 말고 이 모듈만 import해서 연결. 연결법: docs/card-art-integration.md
+ * ⚠ 렌더 컴포넌트(slot-cell.tsx / fan-deck.tsx / slot-machine.tsx / taste-sheet.tsx)는 다른 세션 편집 중.
+ *    직접 고치지 말고 이 모듈 + components/organisms/slot/tarot-card.tsx 를 import해 연결.
  */
-import type { AxisId } from "@/lib/pools";
+import { categoryOfSeed, type AxisId, type AxisValue } from "@/lib/pools";
 
-const AURORA = "/cards/aurora";
+const A = "/cards/aurora";
 
-/** 씨앗 카테고리 6종 (combos.json tracks[].categories[].id 와 일치) */
+/** 씨앗 카테고리 id (combos.json tracks[].categories[].id 와 일치) */
 export type CategoryId =
   | "fitness" | "food" | "content"   // track: like
   | "dev" | "commerce" | "marketing"; // track: know
 
-/** 카테고리 타일 — 온보딩·취향 선택 화면(카테고리 고르기)에 깔리는 풀블리드 아트. */
+/** 티어 1 · 씨앗 수트 — 카테고리별 아르카나 (6). 씨앗 카드는 세부 값과 무관하게 카테고리 아트를 쓴다. */
 export const CATEGORY_ART: Record<CategoryId, string> = {
-  fitness: `${AURORA}/category/fitness.png`,   // 솟다 rise · emerald→cyan
-  food: `${AURORA}/category/food.png`,          // 피다 bloom · coral→amber
-  content: `${AURORA}/category/content.png`,     // 흐르다 flow · magenta→pink
-  dev: `${AURORA}/category/dev.png`,             // 맺히다 structure · electric blue
-  commerce: `${AURORA}/category/commerce.png`,   // 모이다 converge · amber→magenta
-  marketing: `${AURORA}/category/marketing.png`, // 퍼지다 radiate · violet starburst
+  fitness: `${A}/category/fitness.png`,     // 도약하는 활력
+  food: `${A}/category/food.png`,            // 불꽃을 돌보는 온기
+  content: `${A}/category/content.png`,      // 빛 리본을 뿜는 뮤즈
+  dev: `${A}/category/dev.png`,              // 빛의 격자를 짜는 빌더
+  commerce: `${A}/category/commerce.png`,    // 손 사이 황금 교환
+  marketing: `${A}/category/marketing.png`,  // 밖으로 퍼뜨리는 전령
 };
-
-/** 축 5종 (lib/pools AxisId 와 일치) — 슬롯 카드 표면 풀블리드 아트. 이모지 🌱😖📦🎬💭 대체. */
-export const AXIS_ART: Record<AxisId, string> = {
-  seed: `${AURORA}/axis/seed.png`,            // 깨어나다 emerge · champagne gold
-  pain: `${AURORA}/axis/pain.png`,            // 맞서다 clash · crimson seam
-  format: `${AURORA}/axis/format.png`,        // 정돈되다 settle · turquoise layers
-  situation: `${AURORA}/axis/situation.png`,  // 물들다 drift · dusk horizon
-  psych: `${AURORA}/axis/psych.png`,          // 고동치다 pulse · lavender halos
-};
-
-/** 공용 카드 뒷면 (덱 56장 + 슬롯 셀). 잠들다 slumber · 근검정 숨결. 축 힌트는 컴포넌트에서 오버레이. */
-export const CARD_BACK = `${AURORA}/back.png`;
-
-export const categoryArt = (id: CategoryId): string => CATEGORY_ART[id];
-export const axisArt = (axis: AxisId): string => AXIS_ART[axis];
 
 /**
- * 아카이브(v1) — 골드 라인 타로 세트. 현행 아님(오로라로 완전 피벗). 비교·회귀·재활용 대비 보존.
- * 프롬프트: docs/card-art-prompts.md (ARCHIVED). 자산: public/cards/{back.png, axis/, domain/}.
+ * 티어 2 · 축별 보편 아르카나. 세부 값은 카투슈 텍스트가 담당.
+ * seed는 기본 아르카나(씨앗별-star)로 두되, **정확한 per-category 아트는 artForValue/seedArt를 쓴다.**
+ * (전체 AxisId로 인덱싱 가능 — 렌더에서 `AXIS_ART[axis]` 하위호환 유지.)
  */
-export type DomainKey =
-  | "learn" | "work" | "image" | "biz" | "content"
-  | "shop" | "money" | "health" | "life" | "general";
+export const AXIS_ART: Record<AxisId, string> = {
+  seed: `${A}/axis/seed.png`,            // 씨앗 기본 아르카나 (fallback; per-category는 artForValue)
+  pain: `${A}/axis/pain.png`,            // 장애에 얽힌 형상
+  format: `${A}/axis/format.png`,        // 빛으로 도구를 빚는 정령
+  situation: `${A}/axis/situation.png`,  // 문턱의 순간
+  psych: `${A}/axis/psych.png`,          // 생각별이 도는 옆모습
+};
 
+/** 공용 카드 뒷면 — 골드 하이브리드(골드 프레임 + 블루 아우라). */
+export const CARD_BACK = `${A}/back.png`;
+
+/** 씨앗 수트 카테고리 순번 (카투슈 로마숫자, 선택). */
+export const CATEGORY_NUMERAL: Record<CategoryId, string> = {
+  fitness: "I", food: "II", content: "III", dev: "IV", commerce: "V", marketing: "VI",
+};
+
+/** 수트 액센트 색 — TarotCard 창 글로우 틴트 + 카투슈 수트 라벨. */
+export const AXIS_ACCENT: Record<AxisId, string> = {
+  seed: "#e6b455",       // 골드
+  pain: "#e0607a",       // 크림슨
+  format: "#39c9b0",     // 틸
+  situation: "#5b8bff",  // 블루
+  psych: "#b39cff",      // 라벤더
+};
+
+const CATEGORY_IDS: readonly CategoryId[] = [
+  "fitness", "food", "content", "dev", "commerce", "marketing",
+];
+const isCategoryId = (x: string): x is CategoryId =>
+  (CATEGORY_IDS as readonly string[]).includes(x);
+
+export const categoryArt = (id: CategoryId): string => CATEGORY_ART[id];
+
+/** 씨앗 id → 그 카테고리의 아르카나. 매칭 실패 시 dev로 폴백. */
+export function seedArt(seedId: string): string {
+  const cat = categoryOfSeed(seedId)?.category.id;
+  return cat && isCategoryId(cat) ? CATEGORY_ART[cat] : CATEGORY_ART.dev;
+}
+
+/** ★ 3티어 리졸버 — 슬롯에 놓인 값 하나의 아트 경로. (씨앗=카테고리 / 그 외=축) */
+export function artForValue(v: AxisValue): string {
+  return v.axis === "seed" ? seedArt(v.seed.id) : AXIS_ART[v.axis];
+}
+
+/**
+ * 아카이브(v1) — 골드 라인 타로 이모지 세트. 현행 아님(아우라 아르카나로 대체). 비교·회귀용 보존.
+ * 자산: public/cards/{back.png, axis/*.png(골드), domain/*.png}.
+ */
 export const LEGACY_GOLD = {
   back: "/cards/back.png",
-  axis: {
-    seed: "/cards/axis/seed.png", pain: "/cards/axis/pain.png",
-    format: "/cards/axis/format.png", situation: "/cards/axis/situation.png",
-    psych: "/cards/axis/psych.png",
-  } as Record<AxisId, string>,
-  domain: {
-    learn: "/cards/domain/learn.png", work: "/cards/domain/work.png",
-    image: "/cards/domain/image.png", biz: "/cards/domain/biz.png",
-    content: "/cards/domain/content.png", shop: "/cards/domain/shop.png",
-    money: "/cards/domain/money.png", health: "/cards/domain/health.png",
-    life: "/cards/domain/life.png", general: "/cards/domain/general.png",
-  } as Record<DomainKey, string>,
+  domainDir: "/cards/domain",
 } as const;

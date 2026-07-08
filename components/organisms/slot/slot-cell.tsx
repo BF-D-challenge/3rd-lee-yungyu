@@ -15,6 +15,7 @@
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { CARD_BACK } from "@/lib/card-art";
 import { cn } from "@/lib/utils";
+import { CardSurface } from "./card-surface";
 
 export interface CellContent {
   emoji: string;
@@ -26,6 +27,8 @@ export interface SlotCellProps {
   /** 축 라벨: 씨앗 · 불편 · 형태 · 장면 · 마음 */
   axisLabel: string;
   axisEmoji: string;
+  /** 축 배열 인덱스(0~4) — CardSurface 애니 위상 어긋내기 용 */
+  axisIndex: number;
   content: CellContent | null;
   /** 내용 정체성 — 바뀌면 플립 애니메이션 */
   contentKey: string;
@@ -53,8 +56,10 @@ export interface SlotCellProps {
   onRemove?: () => void;
   /** 🔒 토글 */
   onToggleLock?: () => void;
-  /** 축 엠블럼 아트 (AXIS_ART) — 없으면 이모지 폴백 (docs/card-art-integration.md §2) */
+  /** 창에 들어갈 아르카나 아트 (artForValue) — 없으면 이모지 폴백 (docs/card-art-integration.md) */
   axisArtSrc?: string;
+  /** 수트 액센트 색 (AXIS_ACCENT) — TarotCard 글로우 틴트 + 카투슈 라벨 */
+  accent?: string;
   /** 루트에 병합할 추가 클래스 — 모바일 2×2 그리드 배치용(✨스페셜 칸 col-span-2 등) */
   className?: string;
 }
@@ -73,10 +78,9 @@ const FLOAT_CSS = `
 export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotCell(
   {
     axisLabel,
-    axisEmoji,
+    axisIndex,
     content,
     contentKey,
-    gold,
     hot,
     optional,
     pulse,
@@ -237,36 +241,15 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
                   />
                 )}
               </div>
-              {/* 앞면 */}
+              {/* 앞면 — 확정 카드 배경(CardSurface): 방사형 검정→투명 잘린 타원 + inner glow + 초점 광원 */}
               <div
                 className={cn(
-                  "absolute inset-0 flex flex-col items-center justify-between rounded-card border p-2 text-center sm:p-3",
-                  gold ? "glass-gold border-gold/60" : "border-white/15 bg-white/[0.08]",
-                  hot && "border-glow shadow-glow-hero",
-                  locked && "ring-2 ring-gold/70",
+                  "absolute inset-0 overflow-hidden rounded-card",
+                  locked && "ring-2 ring-[#6db4f5]/70",
                 )}
                 style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
               >
-                <span className="text-[9px] tracking-[.14em] text-caption">
-                  {axisEmoji} {axisLabel}
-                </span>
-                <div className="flex flex-1 flex-col items-center justify-center gap-1.5">
-                  {axisArtSrc ? (
-                    /* 엠블럼은 원형 프레임이 있어 ≥48px 렌더 (integration §2) */
-                    /* eslint-disable-next-line @next/next/no-img-element */
-                    <img src={axisArtSrc} alt="" className="h-12 w-12 object-contain sm:h-14 sm:w-14" />
-                  ) : (
-                    <span className="text-2xl leading-none sm:text-3xl">{shown?.emoji}</span>
-                  )}
-                  <span className="font-serif text-[11px] leading-snug text-ink sm:text-sm">
-                    {shown?.title}
-                  </span>
-                </div>
-                {/* 원본 .rule — 제목/키워드 사이 괘선 */}
-                <span className="h-px w-5 shrink-0 bg-white/30" aria-hidden />
-                <span className="line-clamp-2 min-h-[2em] text-[9px] leading-tight text-caption">
-                  {shown?.sub}
-                </span>
+                <CardSurface tier={hot ? "hot" : "filled"} phase={axisIndex} injectStyle={false} />
               </div>
             </button>
 
@@ -283,7 +266,7 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
               className={cn(
                 "absolute left-0.5 top-0.5 z-10 grid h-5 w-5 place-items-center rounded-full text-[9px] transition-all sm:h-6 sm:w-6 sm:text-[10px]",
                 locked
-                  ? "bg-gold/90 text-black"
+                  ? "bg-glow/90 text-black"
                   : "glass text-mist opacity-60 hover:opacity-100",
               )}
             >
@@ -306,19 +289,25 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
             )}
           </div>
         ) : (
-          /* 빈 칸 — 점선 유리 placeholder. 조준(pulse) 중엔 상시 글로우 보더 + 플레이스홀더 강조 */
+          /* 빈 칸(D16) — 점선은 "카드가 놓일 자리" 표시로 유지, 그 안에 CardSurface(empty/aim/hot
+             tier)를 채워 채워진 카드와 같은 물성의 은은한 그라데이션을 준다. 글자 없음. */
           <button
             type="button"
             onClick={onFill}
             aria-label={`${axisLabel} 칸 채우기`}
             className={cn(
-              "absolute inset-0 flex w-full flex-col items-center justify-center gap-2 rounded-card border border-dashed transition-colors",
-              pulse
-                ? "border-glow/80 bg-white/[0.05]"
-                : "border-white/20 bg-white/[0.03] hover:border-glow/60 hover:bg-white/[0.06]",
-              hot && "border-glow bg-white/[0.07] shadow-glow-hero",
+              "absolute inset-0 flex w-full flex-col items-center justify-center overflow-hidden rounded-card border border-dashed transition-colors",
+              pulse ? "border-glow/80" : "border-white/20 hover:border-glow/60",
+              hot && "border-glow shadow-glow-hero",
             )}
           >
+            <CardSurface
+              tier={hot ? "hot" : "empty"}
+              aim={!hot && pulse}
+              phase={axisIndex}
+              injectStyle={false}
+              className="rounded-card"
+            />
             {badge && (
               <span
                 className={cn(
@@ -329,20 +318,19 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
                 {badge}
               </span>
             )}
-            <span className={cn("text-2xl transition-opacity", pulse ? "opacity-80" : "opacity-40")}>
-              {axisEmoji}
-            </span>
-            <span
-              className={cn(
-                "text-[10px] tracking-[.12em]",
-                pulse ? "text-glow" : "text-caption",
-              )}
-            >
-              {optional ? "＋ 스페셜 카드" : axisLabel}
-            </span>
           </button>
         )}
       </div>
+
+      {/* 카드 밖 캡션(moonlight .slot .label) — 카드 면은 순수 글로우, 값·축 이름은 여기 하나로만 */}
+      <p
+        className={cn(
+          "mt-2 max-w-full truncate px-1 font-serif text-[13px] italic",
+          pulse ? "text-glow" : content ? "text-ink" : "text-caption",
+        )}
+      >
+        {content ? shown?.title : optional ? "스페셜" : axisLabel}
+      </p>
     </div>
   );
 });

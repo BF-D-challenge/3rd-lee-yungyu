@@ -46,6 +46,11 @@ export function assembleCombo(slots: Slots): Combo | null {
     oneliner: g?.oneliner ?? null,
     target: g?.target ?? defaultTarget(seed.label, seed.track),
     mvp: g?.mvp ?? null,
+    evidence: g?.evidence ?? null,
+    todayAction: g?.todayAction ?? null,
+    buildPrompt: g?.buildPrompt ?? null,
+    appName: g?.appName ?? null,
+    frontStory: g?.frontStory ?? null,
     golden: !!g,
   };
 }
