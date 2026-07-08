@@ -1,6 +1,13 @@
 {
   "/Users/yungyulee/Project/03_BFD/3rd-lee-yungyu": {
-    "무시할_목록": ["research/trustmrr-acquire/*.jsonl"],
-    "항상_올릴_목록": [".claude/", ".env.example"]
+    "무시할_목록": [
+      "research/trustmrr-acquire/*.jsonl",
+      "public/cards/aurora/motion/",
+      "public/_preview/"
+    ],
+    "항상_올릴_목록": [
+      ".claude/",
+      ".env.example"
+    ]
   }
 }

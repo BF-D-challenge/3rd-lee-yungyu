@@ -47,7 +47,21 @@ const EASE = "cubic-bezier(.65,0,.35,1)";
 const SPRING = "cubic-bezier(.34,1.56,.64,1)";
 
 const DECK_CSS = `
-.fd-host{pointer-events:none}
+.fd-host{pointer-events:none;container-type:inline-size;
+  mask-image:linear-gradient(to right,transparent 0,#000 56px,#000 calc(100% - 56px),transparent 100%),
+              linear-gradient(to top,transparent 0,#000 40px);
+  mask-composite:intersect;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 56px,#000 calc(100% - 56px),transparent 100%),
+                       linear-gradient(to top,transparent 0,#000 40px);
+  -webkit-mask-composite:source-in}
+@container (max-width:760px){
+  .fd-host{
+    mask-image:linear-gradient(to right,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%),
+                linear-gradient(to top,transparent 0,#000 24px);
+    -webkit-mask-image:linear-gradient(to right,transparent 0,#000 28px,#000 calc(100% - 28px),transparent 100%),
+                         linear-gradient(to top,transparent 0,#000 24px)
+  }
+}
 .fd-wheel{position:absolute;left:50%;width:0;height:0;will-change:transform;z-index:5}
 .fd-card{position:absolute;pointer-events:auto;cursor:grab;touch-action:none;user-select:none;
   -webkit-user-select:none;will-change:transform;transition:transform .8s ${EASE},opacity .5s ease}
@@ -65,41 +79,35 @@ const DECK_CSS = `
 @media (prefers-reduced-motion:reduce){.fd-card,.fd-card .pull{transition:none}}
 `;
 
-/** 다크-골드 인그레이빙 카드 뒷면 (300:485) — 축 이모지만 살짝 노출해 어느 릴로 가는지 알린다.
- *  슬롯 안착 카드의 뒷면(slot-cell)도 이 인그레이빙을 그대로 쓴다 (원본 BACK 공유 구조). */
-export function backSvg(glyph: string): string {
-  let rays = "";
+/** moonlight 원본 인그레이빙 로제트(12방향, 중심 150,242.5·반경54·15°간격) — 좌표 그대로 루프 펼침. */
+const BACK_RAYS = (() => {
+  let out = "";
   for (let a = 0; a < 180; a += 15) {
     const r = (a * Math.PI) / 180;
     const x = Math.cos(r) * 54;
     const y = Math.sin(r) * 54;
-    rays += `<line x1="${150 - x}" y1="${242.5 - y}" x2="${150 + x}" y2="${242.5 + y}"/>`;
+    out += `<line x1="${150 - x}" y1="${242.5 - y}" x2="${150 + x}" y2="${242.5 + y}"/>`;
   }
-  const dots = [
-    [40, 40],
-    [260, 40],
-    [40, 445],
-    [260, 445],
-  ]
-    .map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.6" fill="rgba(201,169,98,.7)"/>`)
-    .join("");
+  return out;
+})();
+const BACK_DOTS = ([[40, 40], [260, 40], [40, 445], [260, 445]] as const)
+  .map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.6"/>`)
+  .join("");
+
+/** 덱 공용 뒷면 (300:485) — 디자인 리셋 D12: moonlight 인그레이빙을 색만 흑백 반전(I, 2026-07-08 최종).
+ *  원본(흰 종이+검정 잉크)과 도형·좌표 100% 동일, 카드지↔잉크 색만 반전(검정 카드지+흰 잉크, 파랑 톤 없음).
+ *  축 텍스트 삭제(로제트만) — defs/filter 전무(자산 0, 56장 중복 세이프). */
+export function backSvg(): string {
   return (
-    `<svg viewBox="0 0 300 485" xmlns="http://www.w3.org/2000/svg">` +
-    `<rect x="4" y="4" width="292" height="477" rx="20" fill="#1a1a1d" stroke="#c9a962" stroke-width="3"/>` +
-    `<rect x="17" y="17" width="266" height="451" rx="11" fill="none" stroke="rgba(201,169,98,.4)" stroke-width="1"/>` +
-    `<g stroke="rgba(201,169,98,.45)" stroke-width="1.7" stroke-linecap="round">${rays}</g>` +
-    `<circle cx="150" cy="242.5" r="26" fill="#111113" stroke="rgba(201,169,98,.55)" stroke-width="1"/>` +
-    `<text x="150" y="252" text-anchor="middle" font-size="26">${glyph}</text>${dots}</svg>`
+    `<svg viewBox="0 0 300 485" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">` +
+    `<rect x="4" y="4" width="292" height="477" rx="20" fill="#0a0a0b" stroke="#eaeaea" stroke-width="3"/>` +
+    `<rect x="17" y="17" width="266" height="451" rx="11" fill="none" stroke="#eaeaea" stroke-width="1"/>` +
+    `<g stroke="#eaeaea" stroke-width="1.7" stroke-linecap="round">${BACK_RAYS}</g>` +
+    `<circle cx="150" cy="242.5" r="4.2" fill="#eaeaea"/>` +
+    `<g fill="#eaeaea">${BACK_DOTS}</g>` +
+    `</svg>`
   );
 }
-
-const GLYPH: Record<AxisId, string> = {
-  seed: "🌱",
-  pain: "😖",
-  format: "📦",
-  situation: "🎬",
-  psych: "💭",
-};
 const AXIS_KO: Record<AxisId, string> = {
   seed: "씨앗",
   pain: "불편",
@@ -191,7 +199,9 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     const wheelParams = () => {
       const g = geom();
       const spacing = (((mobile() ? 12 : 14) / g.r) * 180) / Math.PI; // 슬리버 14/12px
-      const halfVis = (Math.asin(Math.min(0.95, (g.w / 2 + g.cw) / g.r)) * 180) / Math.PI + 4;
+      // +8(데스크톱)/+6(모바일) — mask-image 페이드 뒤로 카드가 부족해 틈이 보이지 않게 하는 culling 버퍼(D9 deckClipFix)
+      const halfVis =
+        (Math.asin(Math.min(0.95, (g.w / 2 + g.cw) / g.r)) * 180) / Math.PI + (mobile() ? 6 : 8);
       return { spacing, n: Math.ceil((2 * halfVis) / spacing) };
     };
 
@@ -264,11 +274,11 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       if (c._skin !== eff) {
         c._skin = eff;
         const pull = c.firstElementChild as HTMLElement | null;
-        if (pull) pull.innerHTML = backSvg(GLYPH[eff]);
+        if (pull) pull.innerHTML = backSvg();
       }
     };
 
-    const makeClone = (cx: number, cy: number, ang: number, w: number, h: number, glyph: string) => {
+    const makeClone = (cx: number, cy: number, ang: number, w: number, h: number) => {
       const c = document.createElement("div");
       c.className = "fd-fly";
       c.style.left = `${cx - w / 2}px`;
@@ -276,7 +286,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       c.style.width = `${w}px`;
       c.style.height = `${h}px`;
       c.style.transform = `rotate(${ang}deg)`;
-      c.innerHTML = backSvg(glyph);
+      c.innerHTML = backSvg();
       document.body.appendChild(c);
       flies.add(c);
       return c;
@@ -382,7 +392,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       const cy = b.top + b.height / 2;
       const a0 = absAngle(c);
       c.classList.add("ghost");
-      const clone = makeClone(cx, cy, a0, gm.cw, gm.ch, GLYPH[eff]);
+      const clone = makeClone(cx, cy, a0, gm.cw, gm.ch);
       flyTo(clone, { x: cx, y: cy }, a0, rect, () => {
         busy = false;
         if (disposed) return;
@@ -435,7 +445,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
           const b = c.getBoundingClientRect();
           ox = b.left + b.width / 2;
           oy = b.top + b.height / 2;
-          clone = makeClone(ox, oy, absAngle(c), g.cw, g.ch, GLYPH[effAxis(c)]);
+          clone = makeClone(ox, oy, absAngle(c), g.cw, g.ch);
           c.classList.add("ghost");
         }
         if (drag && clone) {
@@ -607,7 +617,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         const cy = b.top + b.height / 2;
         const a0 = absAngle(c);
         c.classList.add("ghost");
-        const clone = makeClone(cx, cy, a0, gm.cw, gm.ch, GLYPH[axis]);
+        const clone = makeClone(cx, cy, a0, gm.cw, gm.ch);
         flyTo(clone, { x: cx, y: cy }, a0, rect, () => {
           busy = false;
           if (disposed) return;

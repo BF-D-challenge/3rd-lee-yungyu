@@ -37,6 +37,18 @@ export interface PresetSeed {
   formats: string[];
 }
 
+/** flip 카드 앞면 = 이 카드를 쓸 사람의 고통 아크 (설명 + 3스텝 타임라인) */
+export interface FrontStoryStep {
+  t: string;
+  act: string;
+  emo: string;
+  pain: boolean;
+}
+export interface FrontStory {
+  persona: string;
+  timeline: FrontStoryStep[];
+}
+
 export interface Golden {
   seed: string;
   pain: number;
@@ -49,6 +61,15 @@ export interface Golden {
   evidenceType?: "revenue" | "usage";
   anchorName?: string;
   anchorDetail?: string;
+  /** v7 카드 필드 — 실제 카드 표면에 렌더 (근거 한 줄·오늘 할 것·빌드 프롬프트) */
+  evidence?: string;
+  todayAction?: string;
+  buildPrompt?: string;
+  /** 스토어 SEO 제목 = "{appName} — {부제}"에서 브랜드 이름만 */
+  appName?: string;
+  /** flip 카드 앞면 고통 아크 */
+  frontStory?: FrontStory;
+  source?: string;
 }
 
 export interface Axis {

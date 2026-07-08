@@ -63,7 +63,7 @@ export function PaywallSheet({ open, onClose, onShareBoost, onDayPass }: Paywall
           <span aria-hidden>⚡</span>
           <span className="flex-1">
             오늘 안에 확정→플랜→발행까지, 실행 패스{" "}
-            <b className="text-gold">1,900</b>
+            <b className="text-glow">1,900</b>
           </span>
         </Button>
 

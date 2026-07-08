@@ -57,3 +57,7 @@ _legacy/
 
 # 스크랩한 타사 데이터 원본 (ToS·용량 — 요약만 추적)
 research/trustmrr-acquire/*.jsonl
+
+# 카드 모션 영상(용량)·미리보기 HTML 실험 (사용자 결정 2026-07-08)
+public/cards/aurora/motion/
+public/_preview/

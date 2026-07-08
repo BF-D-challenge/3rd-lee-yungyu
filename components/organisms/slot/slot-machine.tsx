@@ -32,11 +32,13 @@ import {
 import { SPIN_CAP, filledRequired, REQUIRED, useSlot } from "@/lib/slot-store";
 import { fakeDoor, track } from "@/lib/track";
 import { cn } from "@/lib/utils";
-import { AXIS_ART } from "@/lib/card-art";
+import { AXIS_ART, AXIS_ACCENT, seedArt } from "@/lib/card-art";
 import { assembleCombo, assembleLine } from "./assemble";
+import { CARD_SURFACE_CSS } from "./card-surface";
 import { ConfirmBranch } from "./confirm-branch";
 import { FanDeck, type FanDeckHandle } from "./fan-deck";
 import { GoldSentence } from "./gold-sentence";
+import { IntroOverlay } from "./intro-overlay";
 import { PaywallSheet } from "./paywall-sheet";
 import { SlotCell, type CellContent } from "./slot-cell";
 import { TasteSheet } from "./taste-sheet";
@@ -76,6 +78,8 @@ export function SlotMachine() {
 
   const [hotAxis, setHotAxis] = useState<AxisId | null>(null);
   const [branchOpen, setBranchOpen] = useState(false);
+  /** 인트로 연속샷 오버레이 — 매 방문 재생(D8, 세션 게이트 없음) */
+  const [introActive, setIntroActive] = useState(true);
   /** 가짜 문 시트 — 실행 패스(day_pass)만. 플랜 990은 폐지(가치개선 계획 §3.4 — 실행 브리프 무료화) */
   const [fakeDoorOpen, setFakeDoorOpen] = useState(false);
 
@@ -214,40 +218,36 @@ export function SlotMachine() {
 
   return (
     <>
-      {/* 원본 레이아웃: 하나의 경계 있는 스테이지 박스 안에 스텝바·슬롯·덱·결과·컨트롤을 전부 담는다.
-          색/스킨은 다크 #0a0a0b · Aurora · glassmorphism 그대로(라이트 --wash/--slot/--result-bg는 글래스 등가로 매핑). */}
-      <PageShell width="wide" className="ambient pb-10">
+      {/* D17: 인트로는 별도 라우트가 아니라 판 위 오버레이 — 판은 처음부터 rest 상태로 마운트돼
+          있고(빈 5칸·씨앗 조준 펄스·덱 드리프트·컨트롤), 오버레이가 그 위를 덮었다가 걷힌다. */}
+      {introActive && <IntroOverlay cellRefs={cellRefs} onDone={() => setIntroActive(false)} />}
+
+      {/* 디자인 리셋(D9): 판을 감싼 글래스 패널·앰비언트 오브는 폐기하되, 부채꼴 덱이 가장자리에서
+          어색하게 끊기지 않도록 스테이지 박스(헤어라인 보더+미묘한 표면)는 부활 — 뷰포트는 최대한 활용. */}
+      <PageShell width="wide" className="px-3 pb-4 pt-2 sm:px-5 md:px-8">
         <TopBar
           right={
             <Pill aria-label={`오늘 전체 뽑기 ${spins} / ${SPIN_CAP}`}>
-              🎰 <span className="tabular-nums text-ink">{Math.min(spins, SPIN_CAP)}/{SPIN_CAP}</span>
+              <span className="tabular-nums text-ink">{Math.min(spins, SPIN_CAP)}/{SPIN_CAP}</span>
             </Pill>
           }
         />
 
         {/* .wrap — 스테이지 외곽(max 1060, 모바일은 폭 꽉 채움: PageShell px-5 = 원본 padding 0 20px) */}
         <div className="mx-auto mt-2 w-full max-w-[1060px]">
-          {/* .stage — 원본 실측 재현: 경계 박스 + perspective. 하위 전부 이 안에 absolute.
-              배경은 원본 var(--wash) 대신 우리 .glass(은은한 유리) + 골드/퍼플 미묘 앰비언트. */}
+          {/* .stage — perspective 무대. 하위 전부 이 안에 absolute. 헤어라인 보더 + 미묘한 표면(D9, 글래스
+              아님·blur 없음) — 부채꼴 덱이 가장자리에서 끊기지 않게 경계를 다시 준다. 뷰포트 최대 활용. */}
           <div
-            className="relative overflow-hidden rounded-[28px] pb-2 md:h-[clamp(560px,76dvh,660px)] md:pb-0"
+            className="relative flex flex-col overflow-hidden rounded-[28px] border border-[rgba(109,180,245,.14)] bg-[#050506] pb-2 shadow-[inset_0_1px_0_rgba(255,255,255,.05)] md:block md:h-[clamp(620px,calc(100dvh-140px),900px)] md:pb-0 min-h-[calc(100dvh-152px)]"
             style={{
               perspective: "1300px",
               perspectiveOrigin: "50% 40%",
+              backgroundImage:
+                "radial-gradient(120% 70% at 50% -12%, rgba(109,180,245,.05), transparent 60%), radial-gradient(90% 55% at 50% 112%, rgba(109,180,245,.04), transparent 55%)",
             }}
           >
-            {/* 유리 표면(배경 레이어) — perspective/overflow와 backdrop-filter를 분리해 3D 틸트를 보존 */}
-            <div className="glass absolute inset-0 rounded-[28px]" aria-hidden />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(120% 90% at 50% 16%, rgba(178,136,246,.10), transparent 55%)," +
-                  "radial-gradient(90% 70% at 50% 104%, rgba(201,169,98,.06), transparent 60%)",
-              }}
-            />
-
+            {/* CardSurface CSS 1회 주입 — 5칸 각각의 중복 <style> 태그 방지 */}
+            <style>{CARD_SURFACE_CSS}</style>
             {/* .stepbar — 모바일: 상단 흐름(짧은 질문·dots·작은 N/4, 간소화). 데스크톱: top:14 오버레이(원본 그대로). */}
             <div className="pointer-events-none relative z-[9] flex flex-col items-center gap-1.5 px-4 pb-1 pt-4 text-center md:absolute md:inset-x-0 md:top-3.5 md:gap-2 md:pb-0 md:pt-0">
               {!combo && aim && (
@@ -315,6 +315,7 @@ export function SlotMachine() {
                     ref={cellRefs[ax.id]}
                     axisLabel={ax.label}
                     axisEmoji={ax.emoji}
+                    axisIndex={i}
                     gold={ax.id === "seed"}
                     optional={ax.optional}
                     pulse={aimAxis === ax.id}
@@ -329,7 +330,10 @@ export function SlotMachine() {
                     onSwap={() => swap(ax.id)}
                     onRemove={() => removeAxis(ax.id)}
                     onToggleLock={() => toggleLock(ax.id)}
-                    axisArtSrc={AXIS_ART[ax.id]}
+                    axisArtSrc={
+                      ax.id === "seed" && slots.seed ? seedArt(slots.seed.id) : AXIS_ART[ax.id]
+                    }
+                    accent={AXIS_ACCENT[ax.id]}
                     className={ax.optional ? "col-span-2" : undefined}
                   />
                 ))}
@@ -376,7 +380,7 @@ export function SlotMachine() {
                   </p>
                   <GoldSentence text={line} marks={[combo.pain.short, combo.format.short]} />
                   {combo.golden && combo.title && (
-                    <p className="mt-2 text-xs text-gold">✨ {combo.title}</p>
+                    <p className="mt-2 text-xs text-glow">✨ {combo.title}</p>
                   )}
                   {revealed && (
                     <p className="mt-2.5 text-[11px] leading-relaxed text-caption">
@@ -391,7 +395,7 @@ export function SlotMachine() {
 
             {/* 모바일 전용 덱 여백 — 부채꼴 아펙스를 그리드 아래에 앉혀 슬롯과 겹치지 않게 한다
                 (데스크톱은 스테이지 하단 자체가 덱 자리라 불필요). */}
-            <div className="h-28 md:hidden" aria-hidden />
+            <div className="h-28 min-h-[112px] flex-1 md:hidden" aria-hidden />
 
             {/* .ctrl — 모바일: 흐름 하단, 주 버튼(lg 강조) + 🎲 보조(경량). 데스크톱: bottom:16 오버레이(원본, md 위계). */}
             <div className="relative z-[16] mt-2 flex w-full flex-col items-center gap-2 pb-1 md:absolute md:bottom-4 md:left-1/2 md:mt-0 md:w-auto md:-translate-x-1/2 md:flex-row md:gap-2 md:pb-0">

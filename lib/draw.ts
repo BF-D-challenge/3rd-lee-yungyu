@@ -1,4 +1,4 @@
-import { allowFor, combos, formatById, painById, type Format, type Pain, type Track } from "./combos";
+import { allowFor, combos, formatById, painById, type Format, type FrontStory, type Pain, type Track } from "./combos";
 import { fillTemplate, josa } from "./josa";
 
 export interface Seed {
@@ -18,6 +18,11 @@ export interface Combo {
   oneliner: string | null;
   target: string;
   mvp: string[] | null;
+  evidence: string | null;
+  todayAction: string | null;
+  buildPrompt: string | null;
+  appName: string | null;
+  frontStory: FrontStory | null;
   golden: boolean;
 }
 
@@ -56,7 +61,10 @@ export function draw(seed: Seed, spinIndex: number, locked: { pain?: Pain; forma
       if (pain && format) {
         return remember({
           seed, pain, format, situation, psych,
-          title: g.title, oneliner: g.oneliner, target: g.target, mvp: g.mvp, golden: true,
+          title: g.title, oneliner: g.oneliner, target: g.target, mvp: g.mvp,
+          evidence: g.evidence ?? null, todayAction: g.todayAction ?? null, buildPrompt: g.buildPrompt ?? null,
+          appName: g.appName ?? null, frontStory: g.frontStory ?? null,
+          golden: true,
         });
       }
     }
@@ -82,6 +90,11 @@ export function draw(seed: Seed, spinIndex: number, locked: { pain?: Pain; forma
     oneliner: g?.oneliner ?? null,
     target: g?.target ?? defaultTarget(seed),
     mvp: g?.mvp ?? null,
+    evidence: g?.evidence ?? null,
+    todayAction: g?.todayAction ?? null,
+    buildPrompt: g?.buildPrompt ?? null,
+    appName: g?.appName ?? null,
+    frontStory: g?.frontStory ?? null,
     golden: !!g,
   });
 }

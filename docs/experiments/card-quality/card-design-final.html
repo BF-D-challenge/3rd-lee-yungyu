@@ -1,0 +1,161 @@
+<title>오늘 해볼까 · 통합 카드 v4</title>
+<style>
+  :root{--bg:#efe9dd;--card:#fffdf8;--ink:#221d2b;--muted:#736a7d;--faint:#9a91a6;--line:#e7ddcc;--accent:#7c5cc4;--gold:#a9781a;--gold-soft:#f4e7c9;--rose:#b34c5c;--rose-soft:#f4e2e4;--good:#2f8560;--good-soft:#e0efe7;--accent-soft:#efe7fb;--artA:#b79bec;--artB:#7d54c9;--artC:#efd9b0;--shadow:0 5px 0 0 #d9cdb6;}
+  @media (prefers-color-scheme:dark){:root{--bg:#14101c;--card:#241d34;--ink:#efe9f7;--muted:#a094b2;--faint:#6c6280;--line:#372c4b;--accent:#b79bec;--gold:#e2b45c;--gold-soft:#3a2d18;--rose:#e58b9a;--rose-soft:#3a2026;--good:#67c8a0;--good-soft:#173021;--accent-soft:#2c2140;--artA:#8e6bd0;--artB:#4d2f86;--artC:#c9a86a;--shadow:0 5px 0 0 #0d0916;}}
+  :root[data-theme="light"]{--bg:#efe9dd;--card:#fffdf8;--ink:#221d2b;--muted:#736a7d;--faint:#9a91a6;--line:#e7ddcc;--accent:#7c5cc4;--gold:#a9781a;--gold-soft:#f4e7c9;--rose:#b34c5c;--rose-soft:#f4e2e4;--good:#2f8560;--good-soft:#e0efe7;--accent-soft:#efe7fb;--artA:#b79bec;--artB:#7d54c9;--artC:#efd9b0;--shadow:0 5px 0 0 #d9cdb6;}
+  :root[data-theme="dark"]{--bg:#14101c;--card:#241d34;--ink:#efe9f7;--muted:#a094b2;--faint:#6c6280;--line:#372c4b;--accent:#b79bec;--gold:#e2b45c;--gold-soft:#3a2d18;--rose:#e58b9a;--rose-soft:#3a2026;--good:#67c8a0;--good-soft:#173021;--accent-soft:#2c2140;--artA:#8e6bd0;--artB:#4d2f86;--artC:#c9a86a;--shadow:0 5px 0 0 #0d0916;}
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(120% 80% at 50% -10%, color-mix(in srgb,var(--accent-soft) 55%,var(--bg)), var(--bg));color:var(--ink);font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+  .serif{font-family:"Nanum Myeongjo",Georgia,"Times New Roman",serif}
+  .top{display:flex;justify-content:center;padding:14px}
+  button.tc{font:inherit;font-size:13px;font-weight:600;cursor:pointer;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:6px 12px}
+  .stage{display:flex;justify-content:center;padding:14px 18px 36px;perspective:1600px}
+  .flip{width:100%;max-width:392px;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.65,0,.35,1);position:relative}
+  .flip.back{transform:rotateY(180deg)}
+  .face{backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .face.rear{position:absolute;inset:0;transform:rotateY(180deg)}
+  .spacer{flex:1 1 auto}
+  .backnav{font:inherit;font-size:12px;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;padding:0 0 8px}
+  .backnav:hover{color:var(--accent)}
+
+  .primary{width:100%;font:inherit;font-size:15px;font-weight:800;cursor:pointer;color:#fff;background:var(--accent);border:none;border-radius:13px;padding:14px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 3px 0 0 color-mix(in srgb,var(--accent) 55%,#000)}
+  :root[data-theme="dark"] .primary{color:#16101f}
+  .primary:hover{filter:brightness(1.06)}.primary.done{background:var(--good);box-shadow:0 3px 0 0 color-mix(in srgb,var(--good) 55%,#000)}
+  .ghost{width:100%;font:inherit;font-size:15px;font-weight:700;cursor:pointer;color:var(--accent);background:none;border:1.5px solid color-mix(in srgb,var(--accent) 42%,var(--line));border-radius:13px;padding:12.5px;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:9px}
+  .ghost:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .sub{font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--muted);background:none;border:none;padding:9px}
+  .sub:hover{color:var(--accent)}
+  .subrow{display:flex;justify-content:center;gap:4px;align-items:center}
+  .subrow .dot{color:var(--faint)}
+  .actzone{padding:2px 19px 16px}
+
+  .art{position:relative;height:108px;background:radial-gradient(90% 120% at 18% 0%, var(--artA), transparent 60%),radial-gradient(90% 120% at 100% 30%, var(--artC), transparent 55%),linear-gradient(150deg, var(--artB), var(--accent));display:flex;flex-direction:column;justify-content:space-between;padding:13px 18px;color:#fff}
+  .art .row{display:flex;justify-content:space-between;align-items:flex-start}
+  .art .seed{font-size:11px;font-weight:700;background:rgba(255,255,255,.22);border-radius:99px;padding:3px 10px;backdrop-filter:blur(4px)}
+  .art .num{font-size:26px;font-weight:700;opacity:.9;line-height:1}
+  .art .ey{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;opacity:.95}
+  .body{padding:16px 19px 13px}
+  .title{font-size:22px;font-weight:700;letter-spacing:-.01em;margin:0 0 14px;line-height:1.2}
+
+  /* 여정 그룹 — 라벨 있는 묶음 */
+  .grp{position:relative;padding:0 0 0 12px;margin-bottom:13px}
+  .grp::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:3px;border-radius:3px}
+  .grp.situ::before{background:var(--rose)}.grp.solv::before{background:var(--good)}.grp.evid::before{background:var(--gold)}.grp.make::before{background:var(--accent)}
+  .glab{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0 0 4px}
+  .grp.situ .glab{color:var(--rose)}.grp.solv .glab{color:var(--good)}.grp.evid .glab{color:var(--gold)}.grp.make .glab{color:var(--accent)}
+  .gtxt{font-size:14.5px;line-height:1.5;color:var(--ink)}
+  .gtxt .em{font-weight:700}
+  .grp.situ .gtxt .em{color:var(--rose)}.grp.solv .gtxt .em{color:var(--good)}
+  .gsub{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .gsub b{color:var(--gold);background:var(--gold-soft);border-radius:5px;padding:1px 6px;font-size:11.5px;white-space:nowrap}
+
+  .mvpg{font-size:10px;font-weight:700;color:var(--faint);margin:6px 0 4px}
+  .mvp{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:4px}
+  .mvp span{font-size:12px;border-radius:6px;padding:3px 8px}
+  .mvp .must{background:var(--gold-soft);color:var(--gold);font-weight:700}
+  .mvp .opt{background:transparent;color:var(--faint);border:1px dashed var(--line)}
+  .today{font-size:12px;color:var(--ink);margin-top:7px;display:flex;gap:6px}
+  .today .k{color:var(--gold);font-weight:800;flex:none}
+  details.bp{display:inline}
+  details.bp summary{list-style:none;cursor:pointer;display:inline}
+  details.bp summary::-webkit-details-marker{display:none}
+  details.bp pre{margin:9px 0 0;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:10px;font-family:ui-monospace,Menlo,monospace;font-size:10.5px;line-height:1.5;white-space:pre-wrap;color:var(--ink);text-align:left}
+
+  .rear .rhead{padding:16px 19px 4px}
+  .rear .rk{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  .rear .rt{font-size:18px;font-weight:700;margin:5px 0 2px}
+  .rear .rs{font-size:12px;color:var(--muted)}
+  .tl{padding:9px 19px 4px}
+  .tstep{display:grid;grid-template-columns:48px 1fr;gap:10px}
+  .tstep .t{font-size:11px;font-weight:700;color:var(--accent);text-align:right;padding-top:9px;white-space:nowrap}
+  .tstep .b{border-left:2px solid var(--line);padding:8px 0 10px 15px;position:relative}
+  .tstep:last-child .b{border-left-color:transparent}
+  .tstep .b::before{content:"";position:absolute;left:-6px;top:12px;width:11px;height:11px;border-radius:50%;background:var(--faint);border:3px solid var(--card)}
+  .tstep.pain .b::before{background:var(--rose)}.tstep.prod .b::before{background:var(--accent)}.tstep.win .b::before{background:var(--good)}
+  .tstep .a{font-weight:600;font-size:13px;margin-bottom:1px}.tstep.prod .a{color:var(--accent)}
+  .tstep .e{font-size:11.5px;color:var(--muted)}.tstep.pain .e{color:var(--rose)}.tstep.win .e{color:var(--good)}
+  .pill{display:inline-block;font-size:9px;font-weight:800;background:var(--accent);color:#fff;border-radius:4px;padding:1px 5px;margin-left:5px}
+  :root[data-theme="dark"] .pill{color:#16101f}
+  .reactline{margin:2px 19px 0;font-size:11.5px;color:var(--muted);text-align:center}.reactline .em{font-size:13px;letter-spacing:2px}
+  .note{max-width:392px;margin:12px auto 0;font-size:11.5px;color:var(--muted);text-align:center;line-height:1.6}.note b{color:var(--ink)}
+  @media (prefers-reduced-motion:reduce){.flip{transition:none}}
+</style>
+
+<div class="top"><button class="tc" id="themeBtn" type="button">테마</button></div>
+
+<div class="stage">
+  <div class="flip" id="flip">
+    <!-- FRONT : 여정 그룹(상황→해결→근거→오늘) + Primary 1 -->
+    <div class="face front">
+      <div class="art">
+        <div class="row"><span class="seed">🌱 내가 고른 · 홈트</span><span class="num serif">03</span></div>
+        <span class="ey">오늘 뽑은 카드</span>
+      </div>
+      <div class="body">
+        <h1 class="title serif">홈트 연속기록 타이머</h1>
+
+        <div class="grp situ">
+          <p class="glab">누구의 · 어떤 순간</p>
+          <p class="gtxt">유튜브 홈트 3주차 맨몸운동러 — 땅끄부부 20일째인데 <span class="em">거울 봐도 그대로라 포기 직전</span></p>
+        </div>
+
+        <div class="grp solv">
+          <p class="glab">그래서 이 카드는</p>
+          <p class="gtxt">타이머 눌러 연속일이 쌓이니 <span class="em">아까워서 못 접게</span> 만드는 기록판</p>
+        </div>
+
+        <div class="grp evid">
+          <p class="glab">믿을 근거</p>
+          <p class="gsub">비슷한 앱 ‘Captime’ <b>월 매출 $673</b> · 수요 검증됨</p>
+        </div>
+
+        <div class="grp make">
+          <p class="glab">오늘 반나절에 만들 것</p>
+          <p class="mvpg">필수 — 이것만 있으면 오늘 완성</p>
+          <div class="mvp"><span class="must">세트/휴식 타이머</span><span class="must">연속일 +1</span><span class="must">로컬 저장</span></div>
+          <p class="mvpg">다음 단계</p>
+          <div class="mvp"><span class="opt">주간 캘린더</span><span class="opt">공유 링크</span></div>
+          <p class="today"><span class="k">오늘</span><span>세트 타이머 화면 만들고, 완료 누르면 연속일이 쌓이는 것까지.</span></p>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="actzone">
+        <button class="primary buildBtn" type="button">🛠 오늘 만들기 시작</button>
+        <button class="ghost" id="toBack" type="button">더 자세히 보기 ↻</button>
+      </div>
+    </div>
+    <!-- BACK : 더 자세히(쓸 사람 여정 + 프롬프트) · 하단 액션은 앞면과 동일 위치·크기 -->
+    <div class="face rear">
+      <div class="rhead"><button class="backnav" id="toFront" type="button">← 접기</button><div class="rk">더 자세히 · 이 카드를 쓸 사람</div><div class="rt serif">지현의 하루</div><div class="rs">유튜브 홈트 3주차 · 재택근무자 · 눈바디 정체기</div></div>
+      <div class="tl" id="tl"></div>
+      <details class="bp"><summary class="sub" style="display:block;text-align:center">🛠 만들 프롬프트 미리보기</summary><pre>홈트 세트 타이머 웹앱을 만들어줘. 운동 이름·세트 수·세트당 시간·휴식시간을 입력하면 카운트다운이 돌고, 완료 버튼을 누르면 오늘 날짜 기준 연속일이 localStorage에 +1 저장되며 주간 캘린더에 도장이 찍히는…</pre></details>
+      <p class="reactline">발행하면 지인이 <span class="em">🔥 🙌 👀</span> 로 3초 답장</p>
+      <div class="spacer"></div>
+      <div class="actzone">
+        <button class="primary buildBtn" type="button">🛠 오늘 만들기 시작</button>
+        <button class="ghost" id="pubBtn" type="button">📮 발행해서 먼저 물어보기</button>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="note">정보는 여정대로 <b>상황 → 해결 → 근거 → 오늘 만들 것</b> 4묶음. 메인 액션은 앞·뒤 공통 <b>🛠 오늘 만들기</b> 하나. 서브는 앞면 <b>‘더 자세히 보기’</b>뿐 — 뒤집으면 쓸 사람의 하루·프롬프트가 나오고, 발행은 뒷면 보조.</p>
+
+<script>
+const TL=[
+ {t:"월~금 아침","a":"15분 땅끄부부 따라 스쿼트","e":"눈바디는 그대로, 며칠째인지도 흐림"},
+ {t:"3주차","a":"'표도 안 나는데 계속 해?'","e":"성과 안 보여 포기 직전","cls":"pain"},
+ {t:"제품","a":"타이머로 완료 누르니 연속일 20","e":"20일 쌓인 게 아까워 못 접음","cls":"prod","pill":true},
+ {t:"이후","a":"단톡 인증방에 스트릭 카드 공유","e":"'20일째' 인증에 유지 동력","cls":"win"},
+];
+const el=(t,c,x)=>{const n=document.createElement(t);if(c)n.className=c;if(x!=null)n.textContent=x;return n;};
+const tl=document.getElementById("tl");
+TL.forEach(s=>{const st=el("div","tstep "+(s.cls||""));st.appendChild(el("div","t",s.t));const b=el("div","b");const a=el("div","a");a.textContent=s.a;if(s.pill)a.appendChild(el("span","pill","제품"));b.appendChild(a);b.appendChild(el("div","e",s.e));st.appendChild(b);tl.appendChild(st);});
+const flip=document.getElementById("flip");
+document.getElementById("toBack").addEventListener("click",()=>flip.classList.add("back"));
+document.getElementById("toFront").addEventListener("click",()=>flip.classList.remove("back"));
+document.querySelectorAll(".buildBtn").forEach(bb=>{bb.addEventListener("click",()=>{document.querySelectorAll(".buildBtn").forEach(x=>{x.classList.add("done");x.textContent="✓ 프롬프트 복사됨 — 붙여넣기";});setTimeout(()=>{document.querySelectorAll(".buildBtn").forEach(x=>{x.classList.remove("done");x.textContent="🛠 오늘 만들기 시작";});},2000);});});
+const pb=document.getElementById("pubBtn");
+pb.addEventListener("click",()=>{const o=pb.textContent;pb.textContent="✓ 발행됨 — 링크 복사";setTimeout(()=>{pb.textContent=o;},1800);});
+const rootEl=document.documentElement;
+document.getElementById("themeBtn").addEventListener("click",()=>{const cur=rootEl.getAttribute("data-theme");const next=cur==="dark"?"light":cur==="light"?"dark":(matchMedia("(prefers-color-scheme: dark)").matches?"light":"dark");rootEl.setAttribute("data-theme",next);});
+</script>
