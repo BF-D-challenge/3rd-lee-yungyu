@@ -1,3 +1,13 @@
+---
+name: gas-app--mobbin-flows
+description: mobbin-mcp로 실제 캡처한 Gas 앱 iOS UI 6개 플로우(온보딩·홈/폴 응답 루프·친구 초대·코인 상점·인박스/알림·프로필)를 화면 단위로 분석한 문서. "대기시간 잠금+초대로 즉시 스킵" 화면, 학교 서브도메인 딥링크, "Invitations left: 10/10" 초대 횟수 상한 등 바이럴 루프의 UX 디테일을 기록했다.
+metadata:
+  type: research
+  topic: gas-app
+  category: mobbin
+  date: 2026-07-08
+---
+
 # Gas 앱 Mobbin 플로우 분석 (iOS)
 
 mobbin-mcp `search_flows`/`search_screens`로 실제 앱 UI 캡처를 수집·확인한 기록. 스크린샷은 각 링크에서 확인 가능(Mobbin 아카이브 — Gas는 2023-11 종료되어 실제 스토어에는 없음).

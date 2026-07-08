@@ -1,3 +1,13 @@
+---
+name: idea-tools-2026--market-saas-scan
+description: IdeaBrowser·DimeADozen·GummySearch·Exploding Topics·디스콰이엇 등 아이디어 생성·검증 SaaS 15개를 최종 가치물·가격모델·유행근거·훔칠 점 기준으로 개별 카드화한 시장 스캔(WebSearch/WebFetch 기반).
+metadata:
+  type: research
+  topic: idea-tools-2026
+  category: market
+  date: 2026-07-07
+---
+
 # 아이디어 생성·발견·검증 SaaS 스캔 (2025–2026)
 
 > 조사일: 2026-07-07 · 목적: "오늘 해볼까"의 **최종 가치물(딜리버러블)** 설계를 위해, 유행한 제품들이 유저 손에 정확히 무엇을 쥐여주는지 조사.

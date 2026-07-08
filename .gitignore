@@ -46,7 +46,7 @@ pnpm-debug.log*
 .firecrawl/
 
 # 대용량 리서치 원본 덤프 (~19MB, 요약 README만 추적)
-research/store-rankings/*.jsonl
+docs/research/store-rankings/*.jsonl
 
 # 에디터 / IDE
 .vscode/
@@ -56,7 +56,7 @@ research/store-rankings/*.jsonl
 _legacy/
 
 # 스크랩한 타사 데이터 원본 (ToS·용량 — 요약만 추적)
-research/trustmrr-acquire/*.jsonl
+docs/research/trustmrr-acquire/*.jsonl
 
 # 카드 모션 영상(용량)·미리보기 HTML 실험 (사용자 결정 2026-07-08)
 public/cards/aurora/motion/

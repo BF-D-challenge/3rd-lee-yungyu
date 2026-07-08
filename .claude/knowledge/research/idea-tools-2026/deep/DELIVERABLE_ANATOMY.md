@@ -1,3 +1,13 @@
+---
+name: idea-tools-2026--deliverable-anatomy
+description: IdeaBrowser(11섹션 리포트)·DimeADozen(8섹션 $9/$129 검증 리포트)·GummySearch·Exploding Topics의 결제 순간 딜리버러블을 목차·근거출처·무료유료 경계·재방문 장치 단위까지 실물 해부하고 "오늘 해볼까"와의 갭 3줄씩 짚은 심층 분석.
+metadata:
+  type: research
+  topic: idea-tools-2026
+  category: deep
+  date: 2026-07-07
+---
+
 # 아이디어 도구 "최종 가치물" 해부 — IdeaBrowser · DimeADozen · GummySearch (+Exploding Topics)
 
 > 리서치 일자: 2026-07-07 · 목적: "오늘 해볼까"의 현 산출물(조합 문장 한 줄 + 지인 투표 카드 + 블러 리포트 가짜문)이

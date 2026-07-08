@@ -1,3 +1,13 @@
+---
+name: idea-tools-2026--tech-oss-scan
+description: 아이디어 생성·발견·검증 GitHub 오픈소스 17개 레포(reddit-ai-trends·idea-validation-agents·subscope·fider 등)를 아웃풋·데이터소스 기준으로 스캔해 키리스 커뮤니티 마이닝·판정+다음행동 1개·CLI 스킬화 등 접근법 패턴 5가지를 도출.
+metadata:
+  type: research
+  topic: idea-tools-2026
+  category: tech
+  date: 2026-07-07
+---
+
 # OSS 스캔: 아이디어 생성·발견·검증 오픈소스 (2024~2026 활발)
 
 > 조사일: 2026-07-07 · 수단: gh CLI 검색 + README 정독 · 목적: "오늘 해볼까"(1인 빌더 아이디어 뽑기 + 지인 투표 수요확인)의 최종 가치 강화 참고

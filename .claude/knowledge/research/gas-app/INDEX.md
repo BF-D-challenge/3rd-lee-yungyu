@@ -1,3 +1,13 @@
+---
+name: gas-app--index
+description: Gas 앱(10대 대상 익명 칭찬/투표 앱, 2022 출시~2023 Discord 인수 후 종료) 리서치 전체 11개 산출물의 목차·조사 방법·산출물 구조·핵심 발견 하이라이트를 정리한 안내 파일. 먼저 읽을 SUMMARY.md로 안내한다.
+metadata:
+  type: research
+  topic: gas-app
+  category: index
+  date: 2026-07-08
+---
+
 # Gas 앱 리서치 — INDEX
 
 > 조사 대상: **Gas** — Nikita Bier가 만든 10대 대상 익명 칭찬/투표 소셜 앱. 2022-08 출시 → 3개월 만에 1,000만 유저 → 2023-01 Discord 인수 → 2023-11 서비스 종료.
@@ -23,10 +33,10 @@ gas-app/
 ├── market/COMPETITORS.md        ← 경쟁사 매핑·비즈니스모델·TAM/SAM/SOM
 ├── voc/SAFETY_AND_REVIEWS.md    ← 앱스토어 VOC·안전성 논란·규제 리스크
 └── gaps/                        ← 완성도 비평으로 보강한 갭 4건
-    ├── gap-1-한국-로컬-...md     ← 한국 카피캣(OMG/HYPE)·규제환경(개인정보보호법 등)
-    ├── gap-2-심리학-다크패턴-...md ← 사회비교이론·다크패턴 학술근거·설계지침 5개
-    ├── gap-3-리텐션-붕괴-...md    ← 실사용 붕괴 타임라인·구조적 K-factor 감쇠
-    └── gap-4-기술-인프라-...md   ← Redis 장애 원전 분석 → Supabase/Vercel 환산
+    ├── gap-1-한국-로컬-맥락.md     ← 한국 카피캣(OMG/HYPE)·규제환경(개인정보보호법 등)
+    ├── gap-2-심리학-다크패턴-근거.md ← 사회비교이론·다크패턴 학술근거·설계지침 5개
+    ├── gap-3-리텐션-붕괴-메커니즘.md    ← 실사용 붕괴 타임라인·구조적 K-factor 감쇠
+    └── gap-4-기술-인프라-실패사례.md   ← Redis 장애 원전 분석 → Supabase/Vercel 환산
 ```
 
 ## 핵심 발견 하이라이트 (상세는 SUMMARY.md)

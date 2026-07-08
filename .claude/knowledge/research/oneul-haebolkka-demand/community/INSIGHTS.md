@@ -1,3 +1,13 @@
+---
+name: oneul-haebolkka-demand--community-voc
+description: Reddit(r/SideProject·indiehackers·SaaS·Startup_Ideas)·X·디스콰이엇에서 "뭘 만들지 몰라서 못 시작한다"·"검증 없이 만들고 침묵당한다" 두 가설을 실제 원문 인용(포인트·댓글수 포함)으로 지지·반박 양쪽 다 수집하고, 솔루션 피칭 글은 죽고 문제 공감 글만 흥하는 패턴을 정리한 VOC 원자료.
+metadata:
+  type: research
+  topic: oneul-haebolkka-demand
+  category: community
+  date: 2026-07-06
+---
+
 # 커뮤니티 VOC 리서치: "오늘 해볼까" 수요 가설 검증
 
 - **리서치 일자**: 2026-07-06

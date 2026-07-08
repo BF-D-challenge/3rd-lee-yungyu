@@ -1,3 +1,13 @@
+---
+name: idea-tools-2026--summary
+description: 유행 아이디어 검증 SaaS(IdeaBrowser·DimeADozen·GummySearch 등)가 결제 순간 건네는 공통 4층 딜리버러블 구조(판정·근거·다음행동·재방문)와 실증 팩트 10개를 종합해 "오늘 해볼까" 개선 방향(실행 브리프·수요 영수증 리포트)을 도출한 통합 결론.
+metadata:
+  type: research
+  topic: idea-tools-2026
+  category: summary
+  date: 2026-07-07
+---
+
 # 아이디어 생성·발견 도구 리서치 통합 요약 (2026-07-07)
 
 > 목적: "오늘 해볼까"의 최종 가치(딜리버러블) 개선. 수단: WebSearch/WebFetch + gh CLI + rdt-cli(Reddit) + HN Algolia.

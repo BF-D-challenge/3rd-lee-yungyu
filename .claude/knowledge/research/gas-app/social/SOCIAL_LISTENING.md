@@ -1,3 +1,13 @@
+---
+name: gas-app--social-listening
+description: twitter-cli(인증됨)로 확보한 Gas 창업자 Nikita Bier 본인의 트윗 원문 모음 — K-factor>1.0 공개 회고, 학교당 36시간 내 40-50% 침투율, 친구찾기(friendfinder) 인프라에 개발 리소스 90% 투입, 메시징 미지원=안전+운영효율 이중설계 등 성장 전략 1차 발언과 Discord 인수 발표에 대한 업계 반응을 시간순으로 정리한 소셜 리스닝 문서.
+metadata:
+  type: research
+  topic: gas-app
+  category: social
+  date: 2026-07-08
+---
+
 # Gas 앱 소셜 리스닝 (Twitter/X)
 
 > 조사 도구: `twitter-cli`(인증 완료) + 보조 WebSearch. 조사일 2026-07-08.

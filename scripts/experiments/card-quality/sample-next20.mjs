@@ -4,7 +4,7 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
 const CQ = "/private/tmp/claude-501/-Users-yungyulee-Project-03-BFD-3rd-lee-yungyu/3a782a35-719b-43c6-85ef-7ddd6b883bc2/scratchpad/cq";
-const d = JSON.parse(readFileSync(resolve(ROOT, "data/combos.json"), "utf8"));
+const d = JSON.parse(readFileSync(resolve(ROOT, "src/data/combos.json"), "utf8"));
 const done = JSON.parse(readFileSync(resolve(CQ, "samples.json"), "utf8")).rows;
 const doneSeeds = new Set(done.map((r) => r.seed.id));
 const doneTriples = new Set(done.map((r) => `${r.seed.id}|${r.pain.id}|${r.format.id}`));

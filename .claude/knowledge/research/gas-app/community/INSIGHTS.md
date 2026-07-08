@@ -1,3 +1,13 @@
+---
+name: gas-app--community-insights
+description: rdt-cli(Reddit)와 Hacker News Algolia API로 수집한 Gas 앱 커뮤니티 반응 — "가짜 답장 아니냐"는 유료화 의심, Discord 인수 발표에 대한 축하/데이터프라이버시 냉소/Discord 아동안전 이력 불신 3갈래 반응, 정식 종료(2023-11)보다 10개월 앞서 나타난 "이미 죽은 앱인 줄 알았다"는 10대 유저의 체감 인기 하락 증언을 정리한 VOC 문서.
+metadata:
+  type: research
+  topic: gas-app
+  category: community
+  date: 2026-07-08
+---
+
 # Gas 앱 커뮤니티 반응 (Reddit / Hacker News)
 
 조사 방법: `rdt-cli`로 Reddit 검색(`search`, `read`) + Hacker News Algolia API(`hn.algolia.com`) + 보조로 WebSearch. 조사일 2026-07-08.

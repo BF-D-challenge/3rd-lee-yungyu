@@ -1,3 +1,13 @@
+---
+name: gas-app--market-competitors
+description: Gas·TBH·NGL·Sendit·YOLO/LMK·F3·Tellonym·Yope·Sidechat/Fizz 등 익명 투표·컴플리먼트 앱 9곳의 비즈니스 모델·규제 이력을 매핑하고 TAM/SAM/SOM을 추정한 경쟁 지형 문서. NGL의 2024 FTC $5M 합의(18세 미만 서비스 영구금지), Sendit의 2025 DOJ 제소 등 "무료 폴+유료 리빌" 모델이 유발한 규제 리스크를 비교표로 정리했다.
+metadata:
+  type: research
+  topic: gas-app
+  category: market
+  date: 2026-07-08
+---
+
 # 익명 투표/컴플리먼트 앱 시장 지형
 
 > 조사 시점: 2026-07. "오늘 해볼까"(친구 투표/카드 UI 기반 아이디어 생성 앱, 무료 투표 + 유료 상세리포트 모델 검토 중)의 경쟁 지형·비즈니스 모델·규제 리스크 참고용 리서치. 모든 수치는 출처 병기, 확인 불가 항목은 "미수집(사유)"로 표기.
