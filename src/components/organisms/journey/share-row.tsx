@@ -1,10 +1,11 @@
 "use client";
 
-// 공유 행 — 카톡/링크/스토리 전부 링크 복사로 동작 (v4 1주차: URL이 데이터 캐리어)
+// 공유 행 — 네이티브 공유시트 우선, 미지원 시 링크 복사 (v4 1주차: URL이 데이터 캐리어)
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/atoms/button";
-import { shareUrl, type CardPayload } from "@/lib/share";
-import { track } from "@/lib/track";
+import { shareOrCopy, shareUrl, type CardPayload } from "@/lib/share";
+import { trackShare } from "@/lib/track";
+import { cardTitle } from "./publish-card";
 
 const CHANNELS = [
   { id: "kakao", label: "💬 카톡" },
@@ -27,17 +28,21 @@ export async function copyText(text: string): Promise<void> {
 }
 
 export function ShareRow({ payload }: { payload: CardPayload }) {
-  const [toast, setToast] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => () => clearTimeout(timer.current), []);
 
   const share = async (channel: (typeof CHANNELS)[number]["id"]) => {
-    await copyText(shareUrl(payload));
-    track("card_share", { channel });
-    setToast(true);
+    const result = await shareOrCopy(shareUrl(payload), {
+      title: cardTitle(payload),
+      text: `${cardTitle(payload)} — 오늘 해볼까에서 뽑았어. 어때?`,
+    });
+    if (!result.ok) return;
+    trackShare("card_share", result.method, { channel });
+    setToast(result.method === "native" ? "공유했어요" : "링크를 복사했어요");
     clearTimeout(timer.current);
-    timer.current = setTimeout(() => setToast(false), 2000);
+    timer.current = setTimeout(() => setToast(null), 2000);
   };
 
   return (
@@ -56,7 +61,7 @@ export function ShareRow({ payload }: { payload: CardPayload }) {
           data-anim
           style={{ animation: "fade-up .25s ease both" }}
         >
-          링크를 복사했어요
+          {toast}
         </div>
       )}
     </div>

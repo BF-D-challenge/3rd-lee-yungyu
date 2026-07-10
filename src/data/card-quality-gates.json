@@ -1,0 +1,46 @@
+{
+  "version": 2,
+  "quarantined": [
+    {
+      "key": "mobile-apps-niche-ai-scoring|10|calc-tool",
+      "reason": "익명 진단 앱 앵커와 무료·유료 결과 경계 수요의 연결을 재검증해야 함"
+    },
+    {
+      "key": "mobile-apps-niche-ai-scoring|2|calc-tool",
+      "reason": "진단 분야가 불명확하고 익명 퀴즈 앱 매출 근거를 재검증해야 함"
+    },
+    {
+      "key": "community-launch-board|58|vote-card",
+      "reason": "리뷰 요청 타이밍과 댓글 운영 앵커의 의미가 맞지 않음"
+    },
+    {
+      "key": "community-friend-map|10|vote-card",
+      "reason": "날짜·장소·예산 문제가 한 카드에 섞였고 팟캐스트 앵커가 무관함"
+    },
+    {
+      "key": "games-party-liar-game|10|vote-card",
+      "reason": "투표 카드와 게임 생성 흐름이 충돌하고 근거 출처를 추적할 수 없음"
+    },
+    {
+      "key": "mobile-apps-locale-launch-priority|10|curation",
+      "reason": "국가 우선순위와 얼굴 분석 앱 앵커의 의미가 맞지 않음"
+    }
+  ],
+  "cohorts": {
+    "appeal-first-v1": {
+      "preferences": ["local", "light-fun", "friend-vote"],
+      "keys": [
+        "cafe|17|calc-tool",
+        "community-character-chat|10|vote-card",
+        "performance-marketing|61|curation",
+        "entertainment-couple-compatibility|10|vote-card",
+        "reading|10|vote-card",
+        "no-code-small-biz-site|13|template-gen",
+        "entertainment-daily-fortune-share|10|vote-card",
+        "travel-destination-quiz|10|curation",
+        "games-drinking-game-cards|10|curation",
+        "cafe|18|curation"
+      ]
+    }
+  }
+}

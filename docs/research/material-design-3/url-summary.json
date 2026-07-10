@@ -1,0 +1,24 @@
+{
+  "input_links": 405,
+  "canonical_records": 403,
+  "duplicates_removed": 2,
+  "by_category": {
+    "blog": 115,
+    "components": 162,
+    "develop": 5,
+    "foundations": 74,
+    "get-started": 1,
+    "home": 1,
+    "styles": 43,
+    "utility": 2
+  },
+  "by_page_type": {
+    "blog": 114,
+    "component_tab": 161,
+    "develop": 4,
+    "foundation": 73,
+    "index": 7,
+    "style": 42,
+    "utility": 2
+  }
+}

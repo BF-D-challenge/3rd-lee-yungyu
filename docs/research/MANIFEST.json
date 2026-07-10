@@ -1,19 +1,163 @@
 {
   "version": 1,
-  "updated_at": "2026-07-05",
-  "purpose": "Codex-readable catalog for local PRD research datasets.",
+  "updated_at": "2026-07-10",
+  "purpose": "Machine-readable catalog for local PRD research datasets under docs/research/. Paths are repo-root relative. Human guide: docs/research/README.md, full map incl. markdown corpora: docs/research/INDEX.md.",
   "entrypoints": {
-    "overview": "research/README.md",
-    "trustmrr_ideas": "research/trustmrr-acquire/ideas.jsonl",
-    "app_store_unique_apps": "research/store-rankings/app-store-expanded-unique-apps.jsonl",
-    "chrome_webstore_unique_extensions": "research/store-rankings/chrome-webstore-expanded-unique-extensions.jsonl",
-    "store_rankings_readme": "research/store-rankings/README.md"
+    "overview": "docs/research/README.md",
+    "mobbin_action_patterns": "docs/research/mobbin/mobile-card-action-patterns.jsonl",
+    "material_design_3": "docs/research/material-design-3/README.md",
+    "material_design_3_manifest": "docs/research/material-design-3/MANIFEST.json",
+    "trustmrr_ideas": "docs/research/trustmrr-acquire/ideas.jsonl",
+    "app_store_unique_apps": "docs/research/store-rankings/app-store-expanded-unique-apps.jsonl",
+    "chrome_webstore_unique_extensions": "docs/research/store-rankings/chrome-webstore-expanded-unique-extensions.jsonl",
+    "store_rankings_readme": "docs/research/store-rankings/README.md",
+    "full_index": "docs/research/INDEX.md"
   },
   "datasets": [
     {
+      "id": "mobbin_mobile_card_action_patterns",
+      "path": "docs/research/mobbin/mobile-card-action-patterns.jsonl",
+      "readme": "docs/research/README.md",
+      "format": "jsonl",
+      "rows": 6,
+      "unique_entity_key": "id",
+      "unique_entities": 6,
+      "entity_type": "mobile_interaction_pattern_or_product_decision",
+      "best_for": "Tinder and Gas card actions, Gas invite mechanics, and the current two-card product decision without re-querying Mobbin.",
+      "key_fields": [
+        "id",
+        "record_type",
+        "app",
+        "source_url",
+        "primary_actions",
+        "interaction_model",
+        "product_fit",
+        "decision"
+      ],
+      "sources": [
+        "https://mobbin.com/flows/c7f3bc64-0e7d-4859-abba-22919c981813",
+        "https://mobbin.com/flows/1836c800-2eb5-4bb9-a86e-402aaac883ff"
+      ]
+    },
+    {
+      "id": "material_design_3_urls",
+      "path": "docs/research/material-design-3/urls.jsonl",
+      "readme": "docs/research/material-design-3/README.md",
+      "format": "jsonl",
+      "rows": 403,
+      "unique_entity_key": "id",
+      "unique_entities": 403,
+      "entity_type": "canonical_design_document_url",
+      "best_for": "Material Design 3 URL inventory, page classification, component names, and crawl status.",
+      "key_fields": [
+        "id",
+        "url",
+        "title",
+        "description",
+        "category",
+        "page_type",
+        "component",
+        "tab"
+      ],
+      "source": "https://m3.material.io/",
+      "raw_source": ".firecrawl/m3-material-map.json"
+    },
+    {
+      "id": "material_design_3_pages",
+      "path": "docs/research/material-design-3/pages.jsonl",
+      "readme": "docs/research/material-design-3/README.md",
+      "format": "jsonl",
+      "rows": 403,
+      "unique_entity_key": "id",
+      "unique_entities": 403,
+      "entity_type": "material_design_document",
+      "best_for": "Local-first M3 page search with official source URL, capture time, component, page type, and normalized content.",
+      "key_fields": [
+        "id",
+        "url_id",
+        "source_url",
+        "title",
+        "content",
+        "component",
+        "tab",
+        "status",
+        "captured_at",
+        "content_hash"
+      ],
+      "source": "https://m3.material.io/",
+      "derived_from": [
+        "docs/research/material-design-3/urls.jsonl"
+      ]
+    },
+    {
+      "id": "material_design_3_sections",
+      "path": "docs/research/material-design-3/sections.jsonl",
+      "readme": "docs/research/material-design-3/README.md",
+      "format": "jsonl",
+      "rows": 3236,
+      "unique_entity_key": "id",
+      "unique_entities": 3236,
+      "entity_type": "material_design_document_section",
+      "best_for": "Focused M3 guidance retrieval by heading path, paragraph, list, and related official links.",
+      "key_fields": [
+        "id",
+        "page_id",
+        "source_url",
+        "heading",
+        "heading_path",
+        "text",
+        "links"
+      ],
+      "source": "https://m3.material.io/"
+    },
+    {
+      "id": "material_design_3_tokens",
+      "path": "docs/research/material-design-3/tokens.jsonl",
+      "readme": "docs/research/material-design-3/README.md",
+      "format": "jsonl",
+      "rows": 3151,
+      "unique_entity_key": "id",
+      "unique_entities": 3151,
+      "entity_type": "material_design_token",
+      "best_for": "M3 component Specs token sets, token names, types, context values, references, and deprecations.",
+      "key_fields": [
+        "id",
+        "page_id",
+        "source_url",
+        "token_set",
+        "name",
+        "type",
+        "value",
+        "deprecated"
+      ],
+      "source": "https://m3.material.io/"
+    },
+    {
+      "id": "material_design_3_examples",
+      "path": "docs/research/material-design-3/examples.jsonl",
+      "readme": "docs/research/material-design-3/README.md",
+      "format": "jsonl",
+      "rows": 3643,
+      "unique_entity_key": "id",
+      "unique_entities": 3643,
+      "entity_type": "material_design_example_or_callout",
+      "best_for": "M3 figures and normalized Do, Don't, and Caution examples with source attribution.",
+      "key_fields": [
+        "id",
+        "page_id",
+        "section_id",
+        "source_url",
+        "kind",
+        "caption",
+        "alt",
+        "media_only"
+      ],
+      "source": "https://m3.material.io/"
+    },
+    {
       "id": "trustmrr_acquire_ideas",
-      "path": "research/trustmrr-acquire/ideas.jsonl",
-      "readme": "research/trustmrr-acquire/README.md",
+      "path": "docs/research/trustmrr-acquire/ideas.jsonl",
+      "readme": "docs/research/trustmrr-acquire/README.md",
       "format": "jsonl",
       "rows": 1863,
       "unique_entity_key": "slug",
@@ -39,8 +183,8 @@
     },
     {
       "id": "app_store_unique_apps",
-      "path": "research/store-rankings/app-store-expanded-unique-apps.jsonl",
-      "readme": "research/store-rankings/README.md",
+      "path": "docs/research/store-rankings/app-store-expanded-unique-apps.jsonl",
+      "readme": "docs/research/store-rankings/README.md",
       "format": "jsonl",
       "rows": 4512,
       "unique_entity_key": "app_id",
@@ -65,15 +209,15 @@
         "observations"
       ],
       "derived_from": [
-        "research/store-rankings/app-store-rss-expanded.jsonl",
-        "research/store-rankings/app-store-category-charts.jsonl",
-        "research/store-rankings/app-store-search-keyword-samples.jsonl"
+        "docs/research/store-rankings/app-store-rss-expanded.jsonl",
+        "docs/research/store-rankings/app-store-category-charts.jsonl",
+        "docs/research/store-rankings/app-store-search-keyword-samples.jsonl"
       ]
     },
     {
       "id": "app_store_rss_expanded",
-      "path": "research/store-rankings/app-store-rss-expanded.jsonl",
-      "readme": "research/store-rankings/README.md",
+      "path": "docs/research/store-rankings/app-store-rss-expanded.jsonl",
+      "readme": "docs/research/store-rankings/README.md",
       "format": "jsonl",
       "rows": 1890,
       "unique_entity_key": "app_id",
@@ -96,8 +240,8 @@
     },
     {
       "id": "app_store_category_charts",
-      "path": "research/store-rankings/app-store-category-charts.jsonl",
-      "readme": "research/store-rankings/README.md",
+      "path": "docs/research/store-rankings/app-store-category-charts.jsonl",
+      "readme": "docs/research/store-rankings/README.md",
       "format": "jsonl",
       "rows": 4949,
       "unique_entity_key": "app_id",
@@ -119,8 +263,8 @@
     },
     {
       "id": "app_store_search_keyword_samples",
-      "path": "research/store-rankings/app-store-search-keyword-samples.jsonl",
-      "readme": "research/store-rankings/README.md",
+      "path": "docs/research/store-rankings/app-store-search-keyword-samples.jsonl",
+      "readme": "docs/research/store-rankings/README.md",
       "format": "jsonl",
       "rows": 1041,
       "unique_entity_key": "app_id",
@@ -146,8 +290,8 @@
     },
     {
       "id": "app_store_baseline_rankings",
-      "path": "research/store-rankings/app-store-rankings.jsonl",
-      "readme": "research/store-rankings/README.md",
+      "path": "docs/research/store-rankings/app-store-rankings.jsonl",
+      "readme": "docs/research/store-rankings/README.md",
       "format": "jsonl",
       "rows": 399,
       "unique_entity_key": "app_id",
@@ -167,8 +311,8 @@
     },
     {
       "id": "chrome_webstore_unique_extensions",
-      "path": "research/store-rankings/chrome-webstore-expanded-unique-extensions.jsonl",
-      "readme": "research/store-rankings/README.md",
+      "path": "docs/research/store-rankings/chrome-webstore-expanded-unique-extensions.jsonl",
+      "readme": "docs/research/store-rankings/README.md",
       "format": "jsonl",
       "rows": 2031,
       "unique_entity_key": "extension_id",
@@ -194,13 +338,13 @@
         "observations"
       ],
       "derived_from": [
-        "research/store-rankings/chrome-webstore-expanded-appearances.jsonl"
+        "docs/research/store-rankings/chrome-webstore-expanded-appearances.jsonl"
       ]
     },
     {
       "id": "chrome_webstore_expanded_appearances",
-      "path": "research/store-rankings/chrome-webstore-expanded-appearances.jsonl",
-      "readme": "research/store-rankings/README.md",
+      "path": "docs/research/store-rankings/chrome-webstore-expanded-appearances.jsonl",
+      "readme": "docs/research/store-rankings/README.md",
       "format": "jsonl",
       "rows": 2452,
       "unique_entity_key": "extension_id",
@@ -230,8 +374,8 @@
     },
     {
       "id": "chrome_webstore_baseline_rankings",
-      "path": "research/store-rankings/chrome-webstore-rankings.jsonl",
-      "readme": "research/store-rankings/README.md",
+      "path": "docs/research/store-rankings/chrome-webstore-rankings.jsonl",
+      "readme": "docs/research/store-rankings/README.md",
       "format": "jsonl",
       "rows": 65,
       "unique_entity_key": "extension_id",
@@ -251,8 +395,8 @@
     },
     {
       "id": "trustmrr_store_overlap",
-      "path": "research/store-rankings/trustmrr-store-overlap.jsonl",
-      "readme": "research/store-rankings/README.md",
+      "path": "docs/research/store-rankings/trustmrr-store-overlap.jsonl",
+      "readme": "docs/research/store-rankings/README.md",
       "format": "jsonl",
       "rows": 0,
       "unique_entity_key": "id",
@@ -285,12 +429,12 @@
     }
   ],
   "recommended_exploration_order": [
-    "research/README.md",
-    "research/MANIFEST.json",
-    "research/trustmrr-acquire/ideas.jsonl",
-    "research/store-rankings/app-store-expanded-unique-apps.jsonl",
-    "research/store-rankings/chrome-webstore-expanded-unique-extensions.jsonl",
-    "research/store-rankings/*-appearances.jsonl"
+    "docs/research/README.md",
+    "docs/research/MANIFEST.json",
+    "docs/research/trustmrr-acquire/ideas.jsonl",
+    "docs/research/store-rankings/app-store-expanded-unique-apps.jsonl",
+    "docs/research/store-rankings/chrome-webstore-expanded-unique-extensions.jsonl",
+    "docs/research/store-rankings/*-appearances.jsonl"
   ],
   "join_hints": [
     "Use normalized_name only as a candidate join key; manually review fuzzy matches before treating them as evidence.",

@@ -1,8 +1,14 @@
 "use client";
 
-// [S0] 씨앗 온보딩 — 라우트는 organism에 위임 (TASK §1: 라우트에 로직 없음)
-import { Onboarding } from "@/components/organisms/journey/onboarding";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default function StartPage() {
-  return <Onboarding />;
+export default function StartRedirectPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/" + location.search);
+  }, [router]);
+
+  return null;
 }

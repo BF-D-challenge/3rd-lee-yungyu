@@ -1,0 +1,129 @@
+{
+  "generated_at": "2026-07-10T04:30:28.961Z",
+  "input": {
+    "path": "docs/research/material-design-3/pages.jsonl",
+    "selection": "status != completed",
+    "record_count": 7
+  },
+  "summary": {
+    "recovered": 1,
+    "redirect": 4,
+    "utility": 2,
+    "unresolved": 0,
+    "retained_source_failures": 6
+  },
+  "retry_output": {
+    "source_urls": [
+      "https://m3.material.io/components/icon-buttons/specs"
+    ],
+    "pages": 1,
+    "sections": 25,
+    "tokens": 382,
+    "examples": 17
+  },
+  "decisions": [
+    {
+      "expected_url": "https://m3.material.io/components/icon-button",
+      "source_status": "error",
+      "decision": "redirect",
+      "observed_final_url": "https://m3.material.io/components/icon-buttons/overview",
+      "title": "Icon buttons – Material Design 3",
+      "official_destination": true,
+      "official_destination_basis": "Material Design 3 component overview on m3.material.io",
+      "replacement_written": false,
+      "retain_source_failure": true,
+      "reason": "The stale singular route redirects to the official plural component overview; destination content is not attributed to the source URL."
+    },
+    {
+      "expected_url": "https://m3.material.io/components/icon-buttons/specs",
+      "source_status": "partial",
+      "decision": "recovered",
+      "observed_final_url": "https://m3.material.io/components/icon-buttons/specs",
+      "title": "Icon buttons – Material Design 3",
+      "usable_main_document": true,
+      "recovered_status": "completed",
+      "parser_resolution": {
+        "display_token_set": "Icon button",
+        "matched_display_name": "Icon button (baseline)",
+        "token_set_name": "md.comp.icon-button",
+        "rule": "Unique exact alias after removing a terminal (baseline) suffix"
+      },
+      "replacement_written": true,
+      "replacement_counts": {
+        "pages": 1,
+        "sections": 25,
+        "tokens": 382,
+        "examples": 17
+      },
+      "retain_source_failure": false,
+      "reason": "The unique baseline alias resolves safely and the focused re-extraction completed without errors."
+    },
+    {
+      "expected_url": "https://m3.material.io/components/widgets",
+      "source_status": "error",
+      "decision": "redirect",
+      "observed_final_url": "https://developer.android.com/develop/ui/views/appwidgets/overview?hl=ko",
+      "title": "앱 위젯 개요 \u00a0|\u00a0 Views \u00a0|\u00a0 Android Developers",
+      "official_destination": true,
+      "official_destination_basis": "Android Developers documentation on developer.android.com",
+      "replacement_written": false,
+      "retain_source_failure": true,
+      "reason": "The Material route redirects to official Android Developers documentation; destination content is not attributed to the stale Material source URL."
+    },
+    {
+      "expected_url": "https://m3.material.io/foundations/usability/applying-m3-expressive",
+      "source_status": "error",
+      "decision": "redirect",
+      "observed_final_url": "https://m3.material.io/foundations/usability/overview",
+      "title": "Usability – Material Design 3",
+      "official_destination": true,
+      "official_destination_basis": "Material Design 3 foundation overview on m3.material.io",
+      "replacement_written": false,
+      "retain_source_failure": true,
+      "reason": "The stale detail route redirects to the official usability overview; destination content is not attributed to the source URL."
+    },
+    {
+      "expected_url": "https://m3.material.io/search.html",
+      "source_status": "error",
+      "decision": "utility",
+      "observed_final_url": "https://m3.material.io/search.html",
+      "title": "Search — Material Design 3",
+      "usable_main_document": false,
+      "main_exists": false,
+      "main_text_length": 0,
+      "replacement_written": false,
+      "retain_source_failure": true,
+      "reason": "The search application shell has no main document and is intentionally retained as a non-document utility failure."
+    },
+    {
+      "expected_url": "https://m3.material.io/sitemap.xml",
+      "source_status": "error",
+      "decision": "utility",
+      "observed_final_url": null,
+      "title": null,
+      "usable_main_document": false,
+      "navigation_result": "blocked_by_browser_client",
+      "navigation_error": "net::ERR_BLOCKED_BY_CLIENT",
+      "existing_exact_extraction": {
+        "observed_url": "https://m3.material.io/sitemap.xml",
+        "main_exists": false,
+        "content_empty": true
+      },
+      "replacement_written": false,
+      "retain_source_failure": true,
+      "reason": "The direct XML revisit was blocked by the in-app client, and the existing exact extraction found no main or page content; the sitemap is intentionally retained as a machine-readable utility failure."
+    },
+    {
+      "expected_url": "https://m3.material.io/styles/color/overview",
+      "source_status": "error",
+      "decision": "redirect",
+      "observed_final_url": "https://m3.material.io/styles/color/system/overview",
+      "title": "Color - Material Design 3 - Create personal color schemes",
+      "official_destination": true,
+      "official_destination_basis": "Material Design 3 color-system overview on m3.material.io",
+      "replacement_written": false,
+      "retain_source_failure": true,
+      "reason": "The stale color route redirects to the official color-system overview; destination content is not attributed to the source URL."
+    }
+  ]
+}

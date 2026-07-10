@@ -1,0 +1,288 @@
+[
+  {
+    "key": "cafe|17|calc-tool",
+    "preferenceFit": [
+      "local"
+    ],
+    "before": {
+      "appName": "단골카페 좌석 기억표",
+      "title": "단골카페 좌석 기억표 — 여러 단골카페",
+      "oneliner": "요일마다 도는 카페의 콘센트, 소음, 주문을 좌석 선택 점수로 남긴다",
+      "target": "동네 카페를 돌려 쓰지만 자리 정보를 자주 잊는 재택러"
+    },
+    "after": {
+      "appName": "내 카페 자리",
+      "title": "카페 좌석 메모",
+      "oneliner": "주문 뒤 콘센트가 먼 걸 알아챈 재택러가 다시 짐을 챙긴다. 좌석 사진에 콘센트 위치와 소음 정도를 남겨 다음엔 바로 앉는다.",
+      "target": "카페에 들어간 뒤 콘센트와 소음 때문에 자리를 다시 고르는 재택근무자"
+    },
+    "appealScores": {
+      "scene": 5,
+      "emotionalLoss": 3,
+      "realism": 5,
+      "shareRevisit": 5,
+      "differentiation": 4,
+      "total": 4.4
+    },
+    "hypothesis": "점수표보다 주문 직후의 자리 실패와 사진 한 장 행동을 앞세우면 local 취향 사용자의 저장·재방문 의향이 높아질 것이다.",
+    "rationale": "자리를 잡자마자 다시 짐을 챙기는 행동으로 작업 흐름의 손실을 보여준다. 계산 결과 대신 다음 방문 때 다시 여는 좌석 사진 메모를 남겨 다른 후보의 투표·경로·게임 흐름과 구별했다."
+  },
+  {
+    "key": "community-character-chat|10|vote-card",
+    "preferenceFit": [
+      "friend-vote",
+      "light-fun"
+    ],
+    "before": {
+      "appName": "캐릭터챗 첫대화 카드",
+      "title": "캐릭터챗 첫대화 카드 — 첫 대화 막힘",
+      "oneliner": "캐릭터챗 유저가 새 대화를 못 고를 때, 세계관·말투·금지선을 팬 친구 반응으로 고르는 카드",
+      "target": "저장한 캐릭터가 많아 첫 대화를 미루는 캐릭터챗 유저"
+    },
+    "after": {
+      "appName": "첫마디",
+      "title": "캐릭터 대화 게임",
+      "oneliner": "웹소설 팬 셋이 새 캐릭터의 첫 대화 앞에서 멈춘다. 배경·말투를 투표하면 모두가 이어 쓸 첫 문장이 나온다.",
+      "target": "좋아하는 캐릭터의 첫 대화를 친구들과 정하고 싶은 웹소설 팬"
+    },
+    "appealScores": {
+      "scene": 4,
+      "emotionalLoss": 3,
+      "realism": 4,
+      "shareRevisit": 5,
+      "differentiation": 5,
+      "total": 4.2
+    },
+    "hypothesis": "설정 항목 나열보다 첫마디에서 채팅이 멈추는 장면을 보여주면 friend-vote 사용자의 공유 시작률이 높아질 것이다.",
+    "rationale": "팬 셋의 침묵으로 캐릭터에 몰입하지 못하는 손실을 드러냈다. 결과물은 후보 순위가 아니라 바로 대화를 시작할 한 문장이라 다른 투표 카드와 구별된다."
+  },
+  {
+    "key": "performance-marketing|61|curation",
+    "preferenceFit": [
+      "local"
+    ],
+    "before": {
+      "appName": "전단자리 후보집",
+      "title": "전단자리 후보집 — 우리 가게만 감으로 붙여요",
+      "oneliner": "가게 주변 전단 위치를 유동 시간·사진·이전 반응으로 모아 다음 후보를 좁히는 목록",
+      "target": "동네 오프라인 홍보를 실험하려는 작은 가게 운영자"
+    },
+    "after": {
+      "appName": "전단 노트",
+      "title": "동네 전단 반응",
+      "oneliner": "폐점 뒤 빵집 사장은 전단 100장을 뿌린 골목이 헷갈린다. 위치 사진마다 QR 방문 수를 붙여 다음 골목을 고른다.",
+      "target": "전단을 돌리고도 어느 골목에서 손님이 왔는지 모르는 동네 빵집 사장"
+    },
+    "appealScores": {
+      "scene": 5,
+      "emotionalLoss": 4,
+      "realism": 5,
+      "shareRevisit": 4,
+      "differentiation": 4,
+      "total": 4.4
+    },
+    "hypothesis": "막연한 전단 위치 선정 대신 폐점 뒤 기억나지 않는 골목과 다음 한 곳을 연결하면 local 취향 사용자의 만들기 시작률이 높아질 것이다.",
+    "rationale": "100장을 돌리고도 배운 것이 남지 않는 장면으로 시간과 홍보비의 손실을 보여준다. 골목 사진과 QR 반응이 쌓여 일회성 후보 목록이 아니라 동네 실험 기록이 된다."
+  },
+  {
+    "key": "entertainment-couple-compatibility|10|vote-card",
+    "preferenceFit": [
+      "light-fun",
+      "friend-vote"
+    ],
+    "before": {
+      "appName": "데이트 취향카드",
+      "title": "데이트 취향카드 — 데이트 선택 고민",
+      "oneliner": "주말 데이트 전, 쉬고 싶은 사람과 놀고 싶은 사람의 중간을 찾는다",
+      "target": "데이트 코스를 고를 때 서로 눈치만 보는 커플"
+    },
+    "after": {
+      "appName": "오늘 데이트",
+      "title": "커플 데이트 투표",
+      "oneliner": "토요일, 야근한 연인은 소파에 눕고 다른 연인은 검색만 한다. 둘이 에너지·예산을 고르면 함께 즐길 데이트 세 곳이 뜬다.",
+      "target": "한 명은 지쳤고 한 명은 나가고 싶어 토요일마다 눈치를 보는 연인"
+    },
+    "appealScores": {
+      "scene": 4,
+      "emotionalLoss": 5,
+      "realism": 5,
+      "shareRevisit": 4,
+      "differentiation": 3,
+      "total": 4.2
+    },
+    "hypothesis": "추상적인 취향 비교보다 소파와 검색창으로 갈린 토요일을 보여주면 light-fun 사용자의 투표 완료율이 높아질 것이다.",
+    "rationale": "한 사람은 눕고 다른 사람은 검색하는 병렬 행동으로 같이 보내지 못한 시간을 드러냈다. 두 입력의 겹치는 코스를 주는 흐름은 현실적이지만 데이트 투표 자체는 익숙해 차별성은 3점으로 봤다."
+  },
+  {
+    "key": "reading|10|vote-card",
+    "preferenceFit": [
+      "friend-vote"
+    ],
+    "before": {
+      "appName": "주말 독서 투표카드",
+      "title": "주말 독서 투표카드 — 책 고르기 지연",
+      "oneliner": "읽다 만 책이 쌓인 사람이 이번 주말 한 권만 고르도록 친구 반응을 받는 투표카드",
+      "target": "책은 많은데 오늘 펼칠 한 권을 못 고르는 독서 입문자"
+    },
+    "after": {
+      "appName": "한 권만",
+      "title": "주말 책 투표",
+      "oneliner": "일요일 밤 네 권을 다시 꽂던 초보가 표지를 친구에게 보낸다. 친구가 고른 한 권을 읽고 다음 주 한 줄 감상을 나눈다.",
+      "target": "읽다 만 책은 많지만 친구와 이번 주 한 권을 끝내고 싶은 독서 초보"
+    },
+    "appealScores": {
+      "scene": 5,
+      "emotionalLoss": 3,
+      "realism": 5,
+      "shareRevisit": 5,
+      "differentiation": 3,
+      "total": 4.2
+    },
+    "hypothesis": "책 선택 투표 뒤에 다음 주 완독 확인을 붙이면 friend-vote 사용자의 공유 의향과 재방문 의향이 함께 높아질 것이다.",
+    "rationale": "책을 다시 꽂는 행동으로 주말 독서가 또 미뤄진 순간을 보여준다. 친구 반응을 가벼운 약속으로 쓰는 흐름은 현실적이지만 독서 챌린지와 닮아 차별성은 3점으로 낮췄다."
+  },
+  {
+    "key": "no-code-small-biz-site|13|template-gen",
+    "preferenceFit": [
+      "local"
+    ],
+    "before": {
+      "appName": "동네가게 소개문 템플릿",
+      "title": "동네가게 소개문 템플릿 — 전문가 부담",
+      "oneliner": "디자이너나 카피라이터에게 묻기 부담스러운 동네가게 소개문을 사진과 메뉴 단서로 뽑는 템플릿",
+      "target": "작은 가게 홈페이지 문구를 혼자 쓰다 멈추는 사장님"
+    },
+    "after": {
+      "appName": "가게 첫인사",
+      "title": "동네 가게 소개문",
+      "oneliner": "오픈 전 반찬가게 사장은 소개칸을 비워 둔다. 사진·대표 메뉴로 세 문장을 만들고 단골에게 ‘우리 가게 같아?’라고 묻는다.",
+      "target": "첫 홈페이지에서 단골에게 늘 들려주던 가게 이야기를 소개문으로 옮기지 못하는 반찬가게 사장"
+    },
+    "appealScores": {
+      "scene": 5,
+      "emotionalLoss": 4,
+      "realism": 5,
+      "shareRevisit": 4,
+      "differentiation": 4,
+      "total": 4.4
+    },
+    "hypothesis": "전문가 부담보다 오픈 전 비어 있는 소개칸과 단골 한 명에게 보내는 행동을 보여주면 local 사용자의 만들기 시작 의향이 높아질 것이다.",
+    "rationale": "소개칸을 비워 둔 행동으로 가게의 익숙한 이야기가 온라인에서는 사라지는 손실을 보여준다. 사진과 대표 메뉴만 골라 세 문장을 만들고 실제 단골에게 보내므로 오늘 검증할 수 있다."
+  },
+  {
+    "key": "entertainment-daily-fortune-share|10|vote-card",
+    "preferenceFit": [
+      "light-fun",
+      "friend-vote"
+    ],
+    "before": {
+      "appName": "오늘운세 스토리카드",
+      "title": "오늘운세 스토리카드 — 스토리 톤 고민",
+      "oneliner": "운세 콘텐츠 운영자가 스토리 문구를 못 고를 때, 톤과 이미지 후보를 팔로워 반응으로 고르는 카드",
+      "target": "매일 올릴 운세 스토리 문구를 고르다 업로드가 늦는 운영자"
+    },
+    "after": {
+      "appName": "운세 한 장",
+      "title": "친구 운세 카드",
+      "oneliner": "면접장 앞, 취준생이 오늘 운세의 ‘뜻밖의 질문’ 한 줄을 캡처해 친구에게 보낸다. 밤에 실제 질문과 맞았는지 둘이 체크한다.",
+      "target": "중요한 날의 불안을 친구와 가볍게 나누고 싶은 취업 준비생"
+    },
+    "appealScores": {
+      "scene": 5,
+      "emotionalLoss": 4,
+      "realism": 4,
+      "shareRevisit": 5,
+      "differentiation": 4,
+      "total": 4.4
+    },
+    "hypothesis": "콘텐츠 운영 도구를 중요한 날 친구와 주고받는 아침·밤 의식으로 바꾸면 light-fun 사용자의 공유와 당일 재방문이 늘어날 것이다.",
+    "rationale": "괜찮다는 답 대신 운세를 보내는 행동으로 불안을 직접 고백하지 못하는 관계를 보여준다. 아침 공유와 밤 확인이 한 쌍이라 다른 반응 카드보다 재방문 이유가 선명하다."
+  },
+  {
+    "key": "travel-destination-quiz|10|curation",
+    "preferenceFit": [
+      "local",
+      "light-fun"
+    ],
+    "before": {
+      "appName": "비오는날 여행 후보집",
+      "title": "비오는날 여행 후보집 — 비 오는 날 후보 과다",
+      "oneliner": "비 예보가 뜬 주말여행에서 실내 동선과 카페 거리를 기준으로 후보를 줄인다",
+      "target": "날씨 변수 때문에 주말여행지를 못 고르는 커플"
+    },
+    "after": {
+      "appName": "우산 여행",
+      "title": "비 오는 날 가족여행",
+      "oneliner": "비 오는 역, 무릎 아픈 엄마가 앉자 딸은 야외 코스를 지운다. 실내 선호와 쉬는 간격을 누르면 비 안 맞는 동선이 나온다.",
+      "target": "걷기 힘든 부모님과 비 오는 당일치기 동선을 다시 짜야 하는 딸"
+    },
+    "appealScores": {
+      "scene": 5,
+      "emotionalLoss": 5,
+      "realism": 4,
+      "shareRevisit": 4,
+      "differentiation": 5,
+      "total": 4.6
+    },
+    "hypothesis": "일반적인 우천 후보 대신 부모님의 보행 부담과 이미 시작한 여행을 살리는 동선을 제시하면 local·light-fun 사용자의 상세 보기율이 높아질 것이다.",
+    "rationale": "엄마가 앉고 딸이 저장한 야외 코스를 지우는 행동으로 기대했던 가족 시간이 줄어드는 순간을 보여준다. 결과물은 장소 목록이 아니라 휴식 간격이 포함된 비 안 맞는 동선이다."
+  },
+  {
+    "key": "games-drinking-game-cards|10|curation",
+    "preferenceFit": [
+      "light-fun",
+      "friend-vote"
+    ],
+    "before": {
+      "appName": "분위기게임 후보집",
+      "title": "분위기게임 후보집 — 후보 과다",
+      "oneliner": "오랜만의 술자리에서 인원, 친밀도, 소음에 맞는 가벼운 게임을 고른다",
+      "target": "모임 초반 어색함을 풀 게임을 고르지 못하는 사람"
+    },
+    "after": {
+      "appName": "첫잔 게임",
+      "title": "술자리 게임 찾기",
+      "oneliner": "친구의 연인도 온 첫 술자리, 오래된 친구들끼리만 말한다. 인원·친밀도를 누르면 전원이 답할 5분 게임이 시작된다.",
+      "target": "친구의 연인까지 섞인 첫 술자리에서 누구도 빼놓고 싶지 않은 진행자"
+    },
+    "appealScores": {
+      "scene": 5,
+      "emotionalLoss": 4,
+      "realism": 5,
+      "shareRevisit": 3,
+      "differentiation": 4,
+      "total": 4.2
+    },
+    "hypothesis": "게임 목록보다 아는 사람끼리만 말이 도는 첫 술자리를 보여주면 light-fun·friend-vote 사용자의 만들기 시작 의향이 높아질 것이다.",
+    "rationale": "대화가 기존 친구들 사이에서만 도는 모습으로 새로 합류한 사람의 소외를 드러냈다. 즉시 실행은 강하지만 다음 방문 이유는 약해 shareRevisit 점수를 3점으로 평가했다."
+  },
+  {
+    "key": "cafe|18|curation",
+    "preferenceFit": [
+      "local",
+      "light-fun"
+    ],
+    "before": {
+      "appName": "점심 뒤 팀 카페 세 곳",
+      "title": "점심 뒤 팀 카페 세 곳",
+      "oneliner": "팀원이 각자 가능한 걷는 거리와 대기 시간을 고르면, 날씨까지 반영해 오늘 갈 카페 세 곳만 남긴다.",
+      "target": "점심 카페를 매번 대신 고르는 회사원"
+    },
+    "after": {
+      "appName": "커피 한 표",
+      "title": "팀 카페 익명 투표",
+      "oneliner": "점심 뒤 횡단보도, 팀은 ‘아무 데나’라 하고 막내만 지도를 켠다. 거리·대기 시간을 누르면 세 카페에 익명 표가 모인다.",
+      "target": "점심 뒤 카페 선택을 매번 떠맡아 팀 분위기까지 신경 쓰는 막내 회사원"
+    },
+    "appealScores": {
+      "scene": 5,
+      "emotionalLoss": 4,
+      "realism": 5,
+      "shareRevisit": 4,
+      "differentiation": 4,
+      "total": 4.4
+    },
+    "hypothesis": "횡단보도에서 막내에게 몰리는 결정 부담과 익명 한 표를 연결하면 local·light-fun 사용자의 참여 의향이 높아질 것이다.",
+    "rationale": "‘아무 데나’라는 말 뒤에 막내만 지도를 켜는 행동으로 결정 책임의 불균형을 보여준다. 각자 한도를 누르고 세 곳에 익명으로 표를 모으므로 누가 골랐는지 눈치 보지 않고 바로 건널 방향을 정할 수 있다."
+  }
+]

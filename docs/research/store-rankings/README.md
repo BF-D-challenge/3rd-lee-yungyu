@@ -1,8 +1,18 @@
+---
+name: store-rankings--readme
+description: Apple 앱스토어(RSS 차트·카테고리 차트·키워드 검색)와 크롬 웹스토어(카테고리·톱차트·키워드 검색)의 랭킹/노출 신호를 수집·정규화한 JSONL 9종(~17,000행) 데이터셋 가이드 — 파일별 용도, 수집 방법 테스트 결과, 국가·카테고리·키워드 커버리지, 행 수를 정리했다.
+metadata:
+  type: dataset
+  topic: store-rankings
+  category: readme
+  date: 2026-07-05
+---
+
 # Store Rankings Research
 
-Collected and normalized for PRD idea mining alongside `research/trustmrr-acquire/ideas.jsonl`.
+Collected and normalized for PRD idea mining alongside [../trustmrr-acquire/ideas.jsonl](../trustmrr-acquire/ideas.jsonl).
 
-Parent index: [../README.md](../README.md)  
+Parent index: [../INDEX.md](../INDEX.md) · Datasets guide: [../README.md](../README.md)  
 Machine-readable catalog: [../MANIFEST.json](../MANIFEST.json)
 
 ## Files

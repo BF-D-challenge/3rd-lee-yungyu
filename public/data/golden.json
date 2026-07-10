@@ -1,0 +1,4017 @@
+[
+  {
+    "seed": "ai-mock-interview",
+    "pain": 13,
+    "format": "vote-card",
+    "title": "면접답변 피드백 투표카드 — 전문가 부담",
+    "oneliner": "취준생이 전문가에게 묻기 부담스러울 때, 답변 후보를 가볍게 평가받는 투표카드",
+    "target": "전문가 상담 전 면접 답변을 가볍게 검증하려는 취준생",
+    "mvp": [
+      "답변 후보 입력",
+      "피드백 기준 선택",
+      "짧은 반응 받기",
+      "수정 답안 저장"
+    ],
+    "evidence": "AI Interview Copilot처럼 짧은 반응을 모아 선택 신호로 바꾸는 방식을 제품화한 해외 사례가 매달 약 3,510만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 면접 답변 후보를 입력하고 피드백 기준을 고른 뒤, 투표 카드로 저장·공유하는 화면까지 만들 수 있어요.",
+    "buildPrompt": "면접 질문과 답변 후보를 카드로 등록하는 투표 화면을 만들어줘. 각 카드에는 명확성, 진정성, 근거 충분함 기준을 붙이고, 받는 사람이 좋음·수정 필요·더 물어봄 중 하나로 반응하게 해줘. MVP는 한 화면에서 입력하고 결과, 저장, 공유가 이어지게 만들고 데이터는 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "AI Interview Copilot",
+    "anchorDetail": "AI Interview Copilot: 비슷한 사용 흐름에 돈을 내는 해외 사례, 월매출 약 3,510만원.",
+    "appName": "면접답변 피드백 투표카드",
+    "frontStory": {
+      "persona": "전문가 상담 전 면접 답변을 가볍게 검증하려는 취준생",
+      "timeline": [
+        {
+          "t": "모의면접 전",
+          "act": "자주 나오는 질문에 답변 후보를 적어봄",
+          "emo": "전문가에게 묻기 전에 기본기는 맞추고 싶음",
+          "pain": false
+        },
+        {
+          "t": "답변 정리 중",
+          "act": "어떤 답변이 덜 어색한지 혼자 판단하지 못함",
+          "emo": "바로 전문가에게 보내기엔 민망함",
+          "pain": true
+        },
+        {
+          "t": "상담 예약 직전",
+          "act": "가벼운 반응 없이 답변을 계속 다시 씀",
+          "emo": "중요한 질문일수록 더 손이 멈춤",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "기준점 고정",
+    "whyItMatters": "전문가에게 바로 묻기 전 작은 기준점을 잡으면 수정 부담이 줄어듭니다. 답변별 반응이 남으면 상담 시간을 더 구체적으로 쓸 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "기준점 고정",
+      "socialContext": "면접 준비 전 가벼운 검토",
+      "outputShape": "답변 피드백 투표카드",
+      "emotionalResolution": "안도감",
+      "anchorMechanism": "짧은 반응을 모아 선택 신호로 바꾸는 방식"
+    }
+  },
+  {
+    "seed": "ai-study-summary",
+    "pain": 11,
+    "format": "calc-tool",
+    "title": "강의노트 벤치마크 진단 — 벤치마크 부재",
+    "oneliner": "강의 노트를 정리한 학생이 남들 요약과 비교할 기준을 빠르게 확인하는 진단표",
+    "target": "시험 전 내 강의 노트가 충분한지 확인하려는 대학생",
+    "mvp": [
+      "내 요약 붙이기",
+      "핵심개념 표시",
+      "빠진 관점 체크",
+      "보완 문장 받기"
+    ],
+    "evidence": "Studocu는 강의 자료를 공유하고 비교하는 학습 서비스로 월매출 약 21억 7,000만원 규모의 유료 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 강의 노트와 시험 범위를 붙여넣고, 빠진 관점과 보완 문장이 보이는 진단표를 만들 수 있어요.",
+    "buildPrompt": "학생이 강의 노트와 시험 범위를 붙여넣으면 핵심 개념, 빠진 관점, 보완 문장을 표시하는 학습 진단 화면을 만들어줘. 비교 기준은 개념, 사례, 시험 포인트로 나누고 결과는 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Studocu",
+    "anchorDetail": "Studocu: 강의 자료 공유와 비교를 유료화한 학습 서비스, 월매출 약 21억 7,000만원.",
+    "appName": "강의노트 벤치마크 진단",
+    "frontStory": {
+      "persona": "시험 전 내 강의 노트가 충분한지 확인하려는 대학생",
+      "timeline": [
+        {
+          "t": "시험 범위를 펼칠 때",
+          "act": "필기와 강의 자료를 한 파일에 모읍니다",
+          "emo": "이번엔 빠뜨린 부분 없이 정리하고 싶습니다",
+          "pain": false
+        },
+        {
+          "t": "요약을 읽을 때",
+          "act": "다른 학생들은 어떤 포인트를 잡았는지 알 수 없습니다",
+          "emo": "혼자 만든 정리가 시험에 충분한지 불안합니다",
+          "pain": true
+        },
+        {
+          "t": "암기 직전",
+          "act": "빠진 관점이 있는지 모른 채 같은 문장만 반복해서 봅니다",
+          "emo": "공부를 했는데도 기준이 비어 있는 느낌이 듭니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "사회적 기준점",
+    "whyItMatters": "공부량보다 빠진 관점을 먼저 알아야 보완 시간이 줄어듭니다. 비교 기준이 보이면 혼자 만든 요약도 검토 가능한 자료가 됩니다.",
+    "differentiationAxis": {
+      "psychology": "사회적 기준점",
+      "socialContext": "시험 전 혼자 하는 강의 노트 점검",
+      "outputShape": "빠진 관점 진단표",
+      "emotionalResolution": "불안이 보완 순서로 바뀜",
+      "anchorMechanism": "학습 자료를 공유하고 비교하는 방식"
+    }
+  },
+  {
+    "seed": "ai-workout-coach",
+    "pain": 13,
+    "format": "vote-card",
+    "title": "홈트 질문 장면 투표카드",
+    "oneliner": "홈트 자세 영상에서 무릎·허리·균형 중 어느 구간을 트레이너에게 먼저 물을지 운동 경험자 투표로 고르는 카드.",
+    "target": "전문가에게 질문하기 전 위험해 보이는 장면을 좁히려는 홈트 초보",
+    "mvp": [
+      "자세 영상 등록",
+      "걱정 부위 표시",
+      "질문할 장면 고르기",
+      "전문가 질문 저장"
+    ],
+    "evidence": "3AK Track & Field는 개인 훈련으로 자세 교정을 돕는 앱이며 월매출 약 2,025만원의 수요가 있어요.",
+    "todayAction": "오늘 반나절 안에 홈트 영상을 올리고 무릎·허리·균형 중 먼저 물을 장면을 고르는 질문 카드를 만들 수 있어요.",
+    "buildPrompt": "홈트 초보가 자세 영상을 올리고 운동 경험자에게 전문가에게 먼저 물을 장면을 고르는 카드를 만들어줘. 각 장면에는 무릎, 허리, 균형 중 걱정 부위를 표시하게 하고, 정확하거나 안전하다고 판정하지 말고 질문 우선순위만 모으게 해줘. 최종 질문과 영상 타임코드는 브라우저에 저장해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "3AK Track & Field",
+    "anchorDetail": "3AK Track & Field: 개인 훈련으로 운동 자세 교정을 돕는 앱, 월매출 약 2,025만원.",
+    "appName": "홈트 질문 장면 투표카드",
+    "frontStory": {
+      "persona": "전문가 상담 전 운동 자세를 가볍게 확인하려는 초보자",
+      "timeline": [
+        {
+          "t": "운동 직후",
+          "act": "촬영한 자세 영상을 보며 괜찮은지 확인함",
+          "emo": "혼자서도 안전하게 이어가고 싶음",
+          "pain": false
+        },
+        {
+          "t": "다음 세트 전",
+          "act": "허리와 무릎 각도가 맞는지 몰라 세트를 멈춤",
+          "emo": "잘못된 자세를 반복할까 불안함",
+          "pain": true
+        },
+        {
+          "t": "운동 마무리",
+          "act": "피드백 없이 영상을 삭제하거나 묻어둠",
+          "emo": "다음 운동 때도 같은 자세가 걱정됨",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "습관 마찰 제거",
+    "whyItMatters": "비전문가 반응은 자세의 안전성을 판정할 수 없지만, 어떤 장면을 전문가에게 먼저 물을지는 좁힐 수 있습니다. 질문이 구체적이면 운동을 무작정 중단하는 시간을 줄일 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "습관 마찰 제거",
+      "socialContext": "혼자 홈트 영상을 본 뒤 전문가 질문을 준비하는 장면",
+      "outputShape": "자세 질문 우선순위 카드",
+      "emotionalResolution": "막연한 불안이 구체적인 질문으로 바뀜",
+      "anchorMechanism": "개인 훈련 피드백으로 자세 개선을 돕는 방식"
+    }
+  },
+  {
+    "seed": "backend",
+    "pain": 32,
+    "format": "dashboard",
+    "title": "가입폼 의심신호 현황판 — 의심 가입 선별",
+    "oneliner": "가입폼 로그에 가짜 연락처가 섞일 때, 의심 신호만 위험순으로 모으는 현황판",
+    "target": "무료 가입폼의 가짜 연락처를 걸러야 하는 백엔드 개발자",
+    "mvp": [
+      "가입 로그 붙이기",
+      "의심 규칙 고르기",
+      "위험순 표 보기",
+      "검토 링크 공유"
+    ],
+    "evidence": "Xquik처럼 상태 신호를 한 화면에 모아 판단을 돕는 작은 업무 도구에도 월매출 약 662만원 수요가 기록돼 있어요.",
+    "todayAction": "오늘 반나절이면 가입 로그 몇 줄과 의심 규칙을 넣고, 위험순 표와 공유 링크까지 이어지는 현황판을 만들 수 있어요.",
+    "buildPrompt": "무료 가입폼 로그를 이름, 이메일, 전화번호, 요청 메모로 붙여 넣는 현황판을 만들어줘. 반복 도메인, 숫자만 있는 전화번호, 의미 없는 이름을 의심 신호로 표시하고 위험순으로 정렬하게 해줘. 결과는 브라우저 저장소에 남기고 공유 링크 화면도 넣어줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Xquik",
+    "anchorDetail": "Xquik: 상태 신호를 모아 판단을 돕는 업무 도구 사례, 월매출 약 662만원.",
+    "appName": "가입폼 의심신호 현황판",
+    "frontStory": {
+      "persona": "무료 가입폼의 가짜 연락처를 걸러야 하는 백엔드 개발자",
+      "timeline": [
+        {
+          "t": "가입 알림을 볼 때",
+          "act": "새 신청이 늘었다고 생각하고 로그를 엶",
+          "emo": "이번엔 진짜 신청이길 기대함",
+          "pain": false
+        },
+        {
+          "t": "목록을 훑을 때",
+          "act": "비슷한 이메일과 이상한 전화번호가 섞여 있는 걸 봄",
+          "emo": "어디까지 막아야 할지 기준이 흐려짐",
+          "pain": true
+        },
+        {
+          "t": "운영자에게 넘기기 전",
+          "act": "근거 없이 몇 건만 지우고 나머지는 남김",
+          "emo": "또 같은 패턴이 들어올까 찜찜함",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "신호 탐지",
+    "whyItMatters": "가짜 연락처는 한 건씩 보면 애매하지만 반복 신호로 묶이면 처리 순서가 보입니다.",
+    "differentiationAxis": {
+      "psychology": "신호 탐지",
+      "socialContext": "무료 가입폼 출시 직후 운영자와 확인",
+      "outputShape": "의심 신호 위험순 현황판",
+      "emotionalResolution": "찜찜함이 기준으로 바뀜",
+      "anchorMechanism": "상태 신호를 한 화면에 모아 판단"
+    }
+  },
+  {
+    "seed": "backend",
+    "pain": 33,
+    "format": "digest-bot",
+    "title": "CORS 오류 다음 확인봇",
+    "oneliner": "낯선 CORS 오류를 붙여 넣으면 설정을 바꾸기 전 먼저 볼 요청·응답 한 곳과 확인 순서를 짧은 알림으로 보내준다.",
+    "target": "CORS 오류 앞에서 프록시 예제부터 붙여 넣는 초보 개발자",
+    "mvp": [
+      "CORS 오류 붙이기",
+      "요청 주소 입력",
+      "먼저 볼 응답 받기",
+      "확인 순서 저장"
+    ],
+    "evidence": "CORSPROXY는 CORS 오류 해결에 집중한 서비스로 월매출 약 162만원의 수요가 있어요.",
+    "todayAction": "오늘 반나절 안에 CORS 오류와 요청 주소를 넣고, 먼저 볼 응답 헤더와 확인 순서를 받는 봇을 만들 수 있어요.",
+    "buildPrompt": "초보 개발자가 CORS 오류 문구, 요청 주소, 프론트 주소를 입력하면 설정을 바꾸기 전에 확인할 요청과 응답 헤더를 한 곳씩 알려주는 화면을 만들어줘. 무작정 프록시를 권하지 말고 서버 허용 출처, preflight 응답, 자격 증명 순서로 확인하게 해줘. 결과는 저장하고 공유할 수 있게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "CORSPROXY",
+    "anchorDetail": "CORSPROXY: CORS 오류 해결에 집중한 서비스, 월매출 약 162만원.",
+    "appName": "CORS 오류 다음 확인봇",
+    "frontStory": {
+      "persona": "브라우저 오류 앞에서 예제만 복사해 붙이는 백엔드 초보 개발자",
+      "timeline": [
+        {
+          "t": "콘솔을 열 때",
+          "act": "빨간 오류 한 줄을 보고 검색창을 켬",
+          "emo": "금방 답이 나올 거라 생각함",
+          "pain": false
+        },
+        {
+          "t": "검색 결과를 볼 때",
+          "act": "서로 다른 프록시 예제와 설정 글을 번갈아 봄",
+          "emo": "뭘 바꾸면 더 망가질지 불안해짐",
+          "pain": true
+        },
+        {
+          "t": "배포 전",
+          "act": "이유를 모른 채 복사한 설정을 붙임",
+          "emo": "다음 오류도 같은 방식으로 헤맬 것 같음",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "인지 부담 덜기",
+    "whyItMatters": "낯선 오류는 해결보다 해석에서 막힙니다. 원인 후보와 확인 순서를 나누면 무작정 붙여 넣는 시간이 줄어듭니다.",
+    "differentiationAxis": {
+      "psychology": "인지 부담 덜기",
+      "socialContext": "배포 전 CORS 오류를 혼자 읽는 초보 개발자",
+      "outputShape": "CORS 확인 순서 알림",
+      "emotionalResolution": "건드릴 순서가 보이는 안도",
+      "anchorMechanism": "CORS 오류 해결에 집중해 다음 확인을 줄이는 방식"
+    }
+  },
+  {
+    "seed": "cafe",
+    "pain": 17,
+    "format": "calc-tool",
+    "title": "카페 좌석 메모",
+    "oneliner": "주문 뒤 콘센트가 먼 걸 알아챈 재택러가 다시 짐을 챙긴다. 좌석 사진에 콘센트 위치와 소음 정도를 남겨 다음엔 바로 앉는다.",
+    "target": "카페에 들어간 뒤 콘센트와 소음 때문에 자리를 다시 고르는 재택근무자",
+    "mvp": [
+      "카페 카드 추가",
+      "좌석 조건 기록",
+      "오늘 점수 계산",
+      "주문 메모 저장"
+    ],
+    "evidence": "CrowdField처럼 장소 정보를 기준별로 비교하는 유료 사례가 월매출 약 136만원 규모의 신호를 보여요.",
+    "todayAction": "오늘 반나절 안에 카페별 콘센트와 소음, 주문 메모를 넣고 오늘 갈 카페 점수를 보여주는 표를 만들 수 있어요.",
+    "buildPrompt": "재택근무자가 자주 가는 카페별 콘센트 위치, 좌석 넓이, 소음, 오래 앉기 눈치, 자주 시킨 메뉴를 기록하는 좌석 기억표를 만들어줘. 오늘 작업 시간과 필요한 조건을 선택하면 가장 맞는 카페를 추천하고 기록은 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "CrowdField",
+    "anchorDetail": "CrowdField: 장소 정보를 기준별로 비교하는 유료 사례, 월매출 약 136만원.",
+    "appName": "내 카페 자리",
+    "frontStory": {
+      "persona": "동네 카페를 돌려 쓰지만 자리 정보를 자주 잊는 재택러",
+      "timeline": [
+        {
+          "t": "오전 작업 시작 전",
+          "act": "노트북을 챙기며 오늘 갈 카페를 떠올림",
+          "emo": "집을 벗어나면 집중이 잘 될 것 같음",
+          "pain": false
+        },
+        {
+          "t": "카페 문을 열었을 때",
+          "act": "지난번 콘센트가 있던 자리가 어디였는지 두리번거림",
+          "emo": "이미 주문했는데 앉을 자리가 애매해 조급함",
+          "pain": true
+        },
+        {
+          "t": "노트북 배터리를 볼 때",
+          "act": "충전기 선이 닿지 않아 자리를 옮길지 고민함",
+          "emo": "익숙한 동네인데도 매번 새로 적응하는 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "환경 단서화",
+    "whyItMatters": "카페 선택은 맛보다 작업 조건에서 실패하는 경우가 많습니다. 좌석과 콘센트 기억이 남으면 오늘의 작업 장소를 빠르게 정할 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "환경 단서화",
+      "socialContext": "노트북을 들고 단골 카페를 고르는 오전",
+      "outputShape": "카페 좌석 조건표",
+      "emotionalResolution": "두리번거림이 확신으로 바뀜",
+      "anchorMechanism": "장소 정보를 기준별로 비교하는 방식"
+    }
+  },
+  {
+    "seed": "cafe",
+    "pain": 18,
+    "format": "curation",
+    "title": "팀 카페 익명 투표",
+    "oneliner": "점심 뒤 횡단보도, 팀은 ‘아무 데나’라 하고 막내만 지도를 켠다. 거리·대기 시간을 누르면 세 카페에 익명 표가 모인다.",
+    "target": "점심 뒤 카페 선택을 매번 떠맡아 팀 분위기까지 신경 쓰는 막내 회사원",
+    "mvp": [
+      "후보 카페 등록",
+      "오늘 조건 선택",
+      "대기 부담 표시",
+      "팀 선택 저장"
+    ],
+    "evidence": "takeout-tools는 Google Maps 저장 목록을 주소와 좌표로 정리하는 서비스로 월매출 약 100만원의 수요가 있어요.",
+    "todayAction": "오늘 반나절 안에 팀 근처 카페와 거리·대기 조건을 넣고, 각자 선택을 반영해 세 곳만 남기는 목록을 만들 수 있어요.",
+    "buildPrompt": "팀 점심 후 카페를 고르는 사용자가 후보 카페, 거리, 대기줄, 조용함, 디저트 여부를 등록하고 오늘 날씨와 인원수를 선택하면 갈 만한 카페 3곳을 보여주는 큐레이션 화면을 만들어줘. 팀원이 고른 기록과 최근 방문일은 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "takeout-tools",
+    "anchorDetail": "takeout-tools: Google Maps 저장 목록을 주소와 좌표로 정리하는 서비스, 월매출 약 100만원.",
+    "appName": "커피 한 표",
+    "frontStory": {
+      "persona": "점심 카페를 매번 대신 고르는 회사원",
+      "timeline": [
+        {
+          "t": "점심을 먹고 나올 때",
+          "act": "팀 단톡방에 카페 어디 갈지 물어봄",
+          "emo": "오늘은 누가 하나쯤 골라주길 기대함",
+          "pain": false
+        },
+        {
+          "t": "횡단보도 앞",
+          "act": "답장은 아무 데나와 이모티콘뿐이라 주변을 둘러봄",
+          "emo": "결정권은 없는데 책임만 내 쪽으로 오는 느낌",
+          "pain": true
+        },
+        {
+          "t": "카페 앞 줄을 볼 때",
+          "act": "사람이 많아도 다른 후보가 바로 떠오르지 않음",
+          "emo": "결국 늘 가던 곳으로 밀려 들어감",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "책임 분산",
+    "whyItMatters": "여럿이 함께 가는 카페 선택은 작은 책임이 한 사람에게 몰리기 쉽습니다. 후보 조건이 보이면 선택 부담이 개인 감에서 상황 판단으로 옮겨갑니다.",
+    "differentiationAxis": {
+      "psychology": "책임 분산",
+      "socialContext": "점심 직후 팀원들과 카페를 고르는 길",
+      "outputShape": "오늘 갈 팀 카페 세 곳",
+      "emotionalResolution": "책임감이 상황별 선택으로 나뉨",
+      "anchorMechanism": "저장한 장소 목록을 위치 정보로 정리하는 방식"
+    }
+  },
+  {
+    "seed": "community-accountability-crew",
+    "pain": 28,
+    "format": "digest-bot",
+    "title": "식단회복 알림봇 — 하루 놓치면 흐름 끊김",
+    "oneliner": "하루 식단이 무너진 뒤에도 다음 끼니로 돌아오게 작은 회복 메시지를 보낸다",
+    "target": "하루 식단을 놓치면 그대로 포기하는 사람",
+    "mvp": [
+      "쉬어간 끼니 기록",
+      "회복 메시지 생성",
+      "다음 끼니 알림",
+      "주간 흐름 보기"
+    ],
+    "evidence": "Sprout은 작은 행동 알림을 반복하게 만드는 유료 사례로 월매출 약 420만원 규모의 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 쉬어간 끼니를 기록하고, 다음 끼니 회복 메시지를 보내는 알림봇 화면을 만들 수 있어요.",
+    "buildPrompt": "식단을 관리하는 사용자가 쉬어간 끼니와 이유를 기록하면 다음 끼니에 돌아오는 짧은 회복 메시지와 선택지를 보내는 알림봇 화면을 만들어줘. 연속일을 강조하지 말고 주간 흐름과 회복 횟수를 보여주며 기록은 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Sprout",
+    "anchorDetail": "Sprout: 작은 행동 알림을 반복하게 만드는 유료 사례, 월매출 약 420만원.",
+    "appName": "식단회복 알림봇",
+    "frontStory": {
+      "persona": "하루 식단을 놓치면 그대로 포기하는 사람",
+      "timeline": [
+        {
+          "t": "점심 약속 후",
+          "act": "예정에 없던 메뉴를 먹고 식단 메모를 닫음",
+          "emo": "맛있게 먹었지만 저녁은 가볍게 돌아오고 싶음",
+          "pain": false
+        },
+        {
+          "t": "저녁 장보기 전",
+          "act": "이미 망쳤다는 생각에 아무 메뉴나 담으려 함",
+          "emo": "한 끼가 하루 전체를 끌고 가는 느낌",
+          "pain": true
+        },
+        {
+          "t": "다음날 아침",
+          "act": "어제 기록이 비어 있어 앱을 열기 싫어짐",
+          "emo": "식단을 다시 시작해야 하는 부담이 커짐",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "자기연민",
+    "whyItMatters": "식단 관리는 완벽함보다 돌아오는 속도가 중요합니다. 쉬어간 끼니를 실패로 보지 않게 하면 다음 선택이 훨씬 쉬워집니다.",
+    "differentiationAxis": {
+      "psychology": "자기연민",
+      "socialContext": "계획 밖 식사를 한 뒤 다음 끼니를 고르는 순간",
+      "outputShape": "회복 메시지 알림봇",
+      "emotionalResolution": "포기감이 다음 끼니 선택으로 바뀜",
+      "anchorMechanism": "작은 행동 알림을 반복하게 만드는 방식"
+    }
+  },
+  {
+    "seed": "community-character-chat",
+    "pain": 10,
+    "format": "vote-card",
+    "title": "캐릭터 대화 게임",
+    "oneliner": "웹소설 팬 셋이 새 캐릭터의 첫 대화 앞에서 멈춘다. 배경·말투를 투표하면 모두가 이어 쓸 첫 문장이 나온다.",
+    "target": "좋아하는 캐릭터의 첫 대화를 친구들과 정하고 싶은 웹소설 팬",
+    "mvp": [
+      "캐릭터 카드 만들기",
+      "말투 태그 붙이기",
+      "금지선 메모",
+      "팬 친구 반응 받기"
+    ],
+    "evidence": "PlotChat처럼 캐릭터 대화 후보를 가볍게 고르는 방식의 유료 사례가 매달 약 10만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 캐릭터 카드에 세계관, 말투, 금지선을 붙이고 팬 친구 반응으로 첫 대화 후보를 고르는 화면을 만들 수 있어요.",
+    "buildPrompt": "캐릭터챗 유저가 저장한 캐릭터를 카드로 등록하는 투표 화면을 만들어줘. 각 카드에는 세계관, 말투, 첫 대사 느낌, 피하고 싶은 금지선을 붙이고 팬 친구가 오늘 시작, 나중에, 설정 더 필요 반응을 남기게 해줘. 가장 시작하기 쉬운 캐릭터와 첫 대화 메모를 저장하고 데이터는 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "PlotChat",
+    "anchorDetail": "PlotChat: 캐릭터 대화 후보를 가볍게 고르는 유료 사례, 월매출 약 10만원.",
+    "appName": "첫마디",
+    "frontStory": {
+      "persona": "저장한 캐릭터가 많아 첫 대화를 미루는 캐릭터챗 유저",
+      "timeline": [
+        {
+          "t": "잠들기 전",
+          "act": "새로 저장한 캐릭터 목록을 열어봄",
+          "emo": "오늘은 하나쯤 제대로 시작하고 싶음",
+          "pain": false
+        },
+        {
+          "t": "첫 대사를 쓰려 할 때",
+          "act": "말투와 세계관이 헷갈려 문장을 지웠다 씀",
+          "emo": "처음부터 어색하면 흥미가 깨질 것 같음",
+          "pain": true
+        },
+        {
+          "t": "앱을 닫기 전",
+          "act": "캐릭터만 저장하고 대화는 또 다음으로 미룸",
+          "emo": "좋아하는 설정이 많아도 시작은 못 하는 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "시작 마찰 줄이기",
+    "whyItMatters": "선택지가 많을수록 첫 문장이 가장 큰 장벽이 됩니다. 말투와 금지선을 카드로 보면 오늘 시작할 캐릭터가 더 쉽게 보입니다.",
+    "differentiationAxis": {
+      "psychology": "시작 마찰 줄이기",
+      "socialContext": "팬 친구와 캐릭터 설정을 가볍게 확인",
+      "outputShape": "첫 대화 후보 투표카드",
+      "emotionalResolution": "시작할 용기",
+      "anchorMechanism": "캐릭터 대화 후보를 가볍게 고르는 방식"
+    }
+  },
+  {
+    "seed": "community-comment-widget",
+    "pain": 32,
+    "format": "crud-app",
+    "title": "댓글 검토 보관함 — 수상 댓글 선별",
+    "oneliner": "작은 커뮤니티 댓글 중 반복 홍보, 빈 계정, 애매한 신고를 상태별로 모아 확인하는 보관함",
+    "target": "수상한 댓글을 코드 없이 손으로 지우는 커뮤니티 운영자",
+    "mvp": [
+      "댓글 내용 저장",
+      "의심 이유 태그",
+      "처리 상태 표시",
+      "차단 메모 남기기"
+    ],
+    "evidence": "Hyvor Talk처럼 댓글 운영자가 검토 상태를 나눠 관리하는 도구가 월 약 72만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 수상한 댓글을 붙여 넣고, 의심 이유와 처리 상태를 나눠 보는 검토 보관함을 만들 수 있어요.",
+    "buildPrompt": "커뮤니티 운영자가 댓글 내용, 작성자 표시명, 링크 포함 여부, 의심 이유, 처리 상태를 등록하면 검토 보관함으로 관리되는 화면을 만들어줘. 상태는 확인 전, 보류, 숨김, 허용으로 나누고, 같은 문구가 반복되면 묶어서 보여줘. 브라우저 저장소에 저장해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Hyvor Talk",
+    "anchorDetail": "Hyvor Talk: 댓글 운영자가 검토 상태를 나눠 관리하는 도구 사례, 월 약 72만원.",
+    "appName": "댓글 검토 보관함",
+    "frontStory": {
+      "persona": "수상한 댓글을 코드 없이 손으로 지우는 커뮤니티 운영자",
+      "timeline": [
+        {
+          "t": "새 글을 올린 뒤",
+          "act": "비슷한 홍보 댓글이 여러 개 달린 걸 봄",
+          "emo": "어디까지 지워야 할지 애매함",
+          "pain": true
+        },
+        {
+          "t": "신고가 들어왔을 때",
+          "act": "이전에도 봤던 계정인지 기억이 안 남",
+          "emo": "실수로 정상 댓글을 지울까 걱정됨",
+          "pain": true
+        },
+        {
+          "t": "보관함을 쓴 뒤",
+          "act": "의심 이유와 처리 기록을 보고 결정함",
+          "emo": "운영 판단이 덜 흔들림",
+          "pain": false
+        }
+      ]
+    },
+    "source": "manual-creative-social-2026-07-10",
+    "needSource": "direct",
+    "psychologyPrinciple": "운영 판단 기록",
+    "whyItMatters": "댓글 관리는 즉흥 판단이 쌓이면 기준이 흔들립니다. 의심 이유와 처리 기록을 남기면 작은 커뮤니티도 안정적으로 운영됩니다.",
+    "differentiationAxis": {
+      "psychology": "운영 판단 기록",
+      "socialContext": "작은 커뮤니티 댓글 관리",
+      "outputShape": "댓글 검토 보관함",
+      "emotionalResolution": "찜찜한 삭제가 설명 가능한 처리로 바뀜",
+      "anchorMechanism": "댓글 검토 상태를 나눠 관리하는 방식"
+    }
+  },
+  {
+    "seed": "community-friend-map",
+    "pain": 10,
+    "format": "vote-card",
+    "title": "동네약속 거리카드 — 중간장소 고민",
+    "oneliner": "가까운 친구와도 미뤄지는 약속을 중간거리, 시간, 예산 카드로 고른다",
+    "target": "동네 친구와 만나자고만 하고 날짜를 못 잡는 사람",
+    "mvp": [
+      "가능 시간 입력",
+      "중간 장소 카드",
+      "친구 반응 받기",
+      "확정 약속 저장"
+    ],
+    "evidence": "OnPodium은 참여 가능 여부를 모으는 유료 사례로 월매출 약 650만원 규모의 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 가능한 시간과 중간 장소 후보를 카드로 만들고, 친구 반응을 받아 약속을 저장하는 화면을 만들 수 있어요.",
+    "buildPrompt": "동네 친구와 약속을 잡는 사용자가 서로의 동네, 가능한 시간대, 예산, 선호 활동을 입력하면 중간 장소 카드 3개를 만들어주는 화면을 만들어줘. 친구는 갈래, 시간 바꾸자, 다른 장소 중 하나로 반응하고 확정 약속은 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "OnPodium",
+    "anchorDetail": "OnPodium: 참여 가능 여부를 모으는 유료 사례, 월매출 약 650만원.",
+    "appName": "동네약속 거리카드",
+    "frontStory": {
+      "persona": "동네 친구와 만나자고만 하고 날짜를 못 잡는 사람",
+      "timeline": [
+        {
+          "t": "퇴근 후 메시지",
+          "act": "이번 주에 한번 보자고 친구에게 답장함",
+          "emo": "가까이 사니 금방 만날 수 있을 것 같음",
+          "pain": false
+        },
+        {
+          "t": "장소를 정할 때",
+          "act": "서로 편한 동네와 시간이 달라 대화가 느려짐",
+          "emo": "가깝다는 이유로 오히려 약속이 가벼워지는 느낌",
+          "pain": true
+        },
+        {
+          "t": "주말이 지나갈 때",
+          "act": "다음에 보자는 말만 남고 캘린더에는 아무것도 없음",
+          "emo": "친한 사이인데도 만남이 계속 밀림",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "사회적 마찰 감소",
+    "whyItMatters": "가까운 약속일수록 구체 조건이 없으면 쉽게 밀립니다. 중간 거리와 시간 카드는 가벼운 말투를 실제 일정으로 바꿉니다.",
+    "differentiationAxis": {
+      "psychology": "사회적 마찰 감소",
+      "socialContext": "동네 친구와 퇴근 후 약속을 잡는 대화",
+      "outputShape": "중간장소 약속 카드",
+      "emotionalResolution": "가벼운 약속이 확정 일정으로 바뀜",
+      "anchorMechanism": "참여 가능 여부를 모으는 방식"
+    }
+  },
+  {
+    "seed": "community-launch-board",
+    "pain": 58,
+    "format": "vote-card",
+    "title": "첫리뷰 요청 타이밍카드 — 리뷰 요청 깜빡",
+    "oneliner": "작은 커뮤니티 운영자가 리뷰 부탁을 놓치기 전에, 사용 직후 반응과 요청 문구를 고르는 투표카드",
+    "target": "런칭 후 첫 사용자에게 리뷰 요청 타이밍을 놓치는 운영자",
+    "mvp": [
+      "사용자 반응 등록",
+      "요청 문구 후보",
+      "타이밍 카드 공유",
+      "후속 요청 저장"
+    ],
+    "evidence": "Disqus Alternative처럼 사용자의 짧은 반응을 모아 운영 판단에 쓰는 사례가 매달 약 40만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 첫 사용자 반응을 등록하고 리뷰 요청 문구와 타이밍 후보를 카드로 만들어 후속 요청을 저장하는 화면을 만들 수 있어요.",
+    "buildPrompt": "작은 커뮤니티나 서비스 런칭 운영자가 첫 사용자 반응을 등록하면 리뷰 요청 타이밍 카드를 만드는 화면을 만들어줘. 카드에는 사용 직후 반응, 좋았던 기능, 아직 불편한 점, 보낼 요청 문구 후보를 붙이고 운영자가 지금 요청, 하루 뒤 요청, 보류 중 하나로 고르게 해줘. 후속 요청 기록은 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Disqus Alternative",
+    "anchorDetail": "Disqus Alternative: 짧은 반응을 운영 판단에 쓰는 유료 사례, 월매출 약 40만원.",
+    "appName": "첫리뷰 요청 타이밍카드",
+    "frontStory": {
+      "persona": "런칭 후 첫 사용자에게 리뷰 요청 타이밍을 놓치는 운영자",
+      "timeline": [
+        {
+          "t": "첫 사용자가 좋다고 말한 직후",
+          "act": "지금 리뷰를 부탁해도 될지 잠깐 고민함",
+          "emo": "좋은 반응이 사라지기 전에 남기고 싶음",
+          "pain": false
+        },
+        {
+          "t": "답장을 쓰려 할 때",
+          "act": "부담스럽지 않은 요청 문구가 떠오르지 않음",
+          "emo": "괜히 성급해 보여 관계를 망칠까 걱정됨",
+          "pain": true
+        },
+        {
+          "t": "며칠 뒤",
+          "act": "그때 좋다고 한 사용자가 누구였는지 다시 찾음",
+          "emo": "가장 따뜻한 순간을 놓친 것 같아 아쉬움",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "타이밍 포착",
+    "whyItMatters": "첫 리뷰는 기능보다 적절한 순간에 달려 있습니다. 반응과 요청 문구가 함께 보이면 부담스럽지 않게 다음 행동을 정할 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "타이밍 포착",
+      "socialContext": "작은 커뮤니티 런칭 후 첫 사용자 응대",
+      "outputShape": "리뷰 요청 타이밍 카드",
+      "emotionalResolution": "좋은 반응을 놓치지 않는 확신",
+      "anchorMechanism": "짧은 반응을 운영 판단에 쓰는 방식"
+    }
+  },
+  {
+    "seed": "community-launch-board",
+    "pain": 72,
+    "format": "vote-card",
+    "title": "런칭 도움 요청 매칭카드",
+    "oneliner": "공개 이틀 전 남은 일과 도움 후보를 올리고, 부탁 난이도와 소요 시간에 동료 반응을 받아 보낼 요청 한 장을 정한다.",
+    "target": "작은 제품 런칭을 혼자 떠안고 도움 요청 대상을 못 고르는 1인 빌더",
+    "mvp": [
+      "남은 일 입력",
+      "도움 후보 추가",
+      "부탁 부담 표시",
+      "요청 한 장 고르기"
+    ],
+    "evidence": "Changelogfy는 사용자 피드백을 제품 결정으로 바꾸는 서비스로 월매출 약 243만원의 수요가 있어요.",
+    "todayAction": "오늘 반나절 안에 런칭 전 남은 일과 도움 후보를 카드로 만들고, 동료 반응으로 먼저 보낼 요청 한 장을 정할 수 있어요.",
+    "buildPrompt": "1인 빌더가 런칭 전에 남은 일과 도움을 요청할 동료 후보를 입력하는 카드 화면을 만들어줘. 각 카드에는 소요 시간, 부탁 부담, 마감, 보낼 요청 문장을 붙이고 동료가 가장 도울 수 있는 한 장에 반응하게 해줘. 선택 결과와 최종 요청 문장은 브라우저에 저장해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Changelogfy",
+    "anchorDetail": "Changelogfy: 사용자 피드백을 제품 의사결정으로 바꾸는 서비스, 월매출 약 243만원.",
+    "appName": "런칭 도움 요청 매칭카드",
+    "frontStory": {
+      "persona": "작은 제품 런칭을 혼자 떠안고 도움 요청 대상을 못 고르는 1인 빌더",
+      "timeline": [
+        {
+          "t": "공개 이틀 전 밤",
+          "act": "랜딩 문구, 테스트 계정, 소개 이미지를 캡처해 작업 목록을 만듦",
+          "emo": "이번에는 조용히 묻히지 않게 열고 싶음",
+          "pain": false
+        },
+        {
+          "t": "부탁할 사람을 떠올릴 때",
+          "act": "누구에게 뭘 부탁해야 덜 부담일지 감이 안 옴",
+          "emo": "도움을 청하는 말이 일처럼 느껴질까 조심스러움",
+          "pain": true
+        },
+        {
+          "t": "공개글 작성 한 시간 전",
+          "act": "결국 혼자 모든 항목을 처리하려고 노트북을 켬",
+          "emo": "제품을 만들었는데 부탁과 운영만 남은 기분",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "책임 분산",
+    "whyItMatters": "1인 빌더는 도움을 청할 대상을 못 정해 남은 일을 다시 떠안기 쉽습니다. 부탁의 크기와 문장이 보이면 동료가 답하기 쉬운 요청부터 보낼 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "책임 분산",
+      "socialContext": "1인 빌더가 공개 이틀 전 동료에게 도움을 요청하는 장면",
+      "outputShape": "도움 요청 매칭카드",
+      "emotionalResolution": "혼자 하지 않아도 된다는 여유",
+      "anchorMechanism": "피드백을 다음 제품 결정으로 바꾸는 방식"
+    }
+  },
+  {
+    "seed": "community-niche-forum",
+    "pain": 16,
+    "format": "chatbot",
+    "title": "후기 속 내 조건 질문봇",
+    "oneliner": "장비명·예산·사용 장소를 넣으면, 결제 전에 후기에서 확인해야 할 질문 세 가지만 뽑아준다.",
+    "target": "후기를 많이 보고도 내게 맞는 장비인지 모르는 입문자",
+    "mvp": [
+      "장비 후보 입력",
+      "사용 상황 선택",
+      "후기 질문 받기",
+      "구매 메모 저장"
+    ],
+    "evidence": "Amazon Reviews Extractor는 상품 후기를 추출하고 요약하는 도구로 월매출 약 13만원의 유료 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 장비명·예산·사용 장소를 넣고 후기에서 확인할 질문 세 가지를 만드는 화면을 만들 수 있어요.",
+    "buildPrompt": "취미 장비를 고르는 사용자가 장비 후보, 예산, 사용할 장소, 걱정되는 점을 입력하면 커뮤니티 후기를 읽을 때 확인해야 할 질문을 답하는 챗봇을 만들어줘. 답변은 구매 권유보다 확인 질문 중심으로 구성하고, 사용자가 찾은 후기 링크와 메모를 브라우저 저장소에 남기게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Amazon Reviews Extractor",
+    "anchorDetail": "Amazon Reviews Extractor: 상품 후기를 추출하고 장단점을 요약하는 도구, 월매출 약 13만원.",
+    "appName": "후기 속 내 조건 질문봇",
+    "frontStory": {
+      "persona": "후기를 많이 보고도 내게 맞는 장비인지 모르는 입문자",
+      "timeline": [
+        {
+          "t": "취미를 시작한 첫 주",
+          "act": "입문 장비 추천 글을 저장하며 후보를 모음",
+          "emo": "이번엔 제대로 사서 오래 써보고 싶음",
+          "pain": false
+        },
+        {
+          "t": "후기를 읽는 중",
+          "act": "좋다는 말은 많은데 내 방 크기와 예산에 맞는지 안 보임",
+          "emo": "후기를 볼수록 더 똑똑하게 사야 할 것 같아 부담됨",
+          "pain": true
+        },
+        {
+          "t": "장바구니 앞",
+          "act": "마지막으로 확인할 질문을 못 정해 결제를 미룸",
+          "emo": "검색은 많이 했는데 내 결정은 아직 비어 있는 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "정보 탐색 효율",
+    "whyItMatters": "취미 장비 후기는 많을수록 내 상황과 맞는 질문이 필요합니다. 질문봇은 검색량을 줄이고 구매 전 확인 행동을 선명하게 만듭니다.",
+    "differentiationAxis": {
+      "psychology": "정보 탐색 효율",
+      "socialContext": "취미 입문자가 장비 후기를 읽고 결제하기 전",
+      "outputShape": "내 조건 후기 질문봇",
+      "emotionalResolution": "부담이 내 상황 질문으로 바뀜",
+      "anchorMechanism": "흩어진 상품 후기를 추출하고 장단점으로 요약하는 방식"
+    }
+  },
+  {
+    "seed": "data-ai",
+    "pain": 34,
+    "format": "curation",
+    "title": "자동화 단계 검수목록 — 없는 도구명 섞임",
+    "oneliner": "AI가 만든 자동화 초안에서 실제 도구명과 의심 단계를 나누는 검수 목록",
+    "target": "AI가 만든 자동화 흐름을 배포 전 확인하는 빌더",
+    "mvp": [
+      "단계 목록 붙이기",
+      "도구명 대조",
+      "수정 우선순위",
+      "검수 메모 공유"
+    ],
+    "evidence": "TurboStarter처럼 정해진 구성요소를 골라 조합하는 도구에도 월매출 약 824만원 수요가 있어, 노드 검수 흐름과 맞아요.",
+    "todayAction": "오늘 반나절이면 AI가 만든 단계 목록을 붙이고, 실제 도구명과 의심 단계를 나눠 검수 메모로 공유할 수 있어요.",
+    "buildPrompt": "AI가 만든 자동화 워크플로우의 노드 이름과 설명을 붙여 넣는 검수 목록을 만들어줘. 각 노드를 실제 도구명, 확인 필요, 가짜 가능성으로 나누고 수정 우선순위를 정하게 해줘. 결과는 검수 메모로 저장하고 공유할 수 있게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "TurboStarter",
+    "anchorDetail": "TurboStarter: 구성요소를 골라 조합하는 도구 사례, 월매출 약 824만원.",
+    "appName": "자동화 단계 검수목록",
+    "frontStory": {
+      "persona": "AI가 만든 자동화 흐름을 배포 전 확인하는 빌더",
+      "timeline": [
+        {
+          "t": "자동화 초안을 받을 때",
+          "act": "AI가 단계까지 써줘서 금방 끝날 것 같음",
+          "emo": "오늘 안에 연결할 수 있겠다고 생각함",
+          "pain": false
+        },
+        {
+          "t": "도구에 옮길 때",
+          "act": "실제 화면에는 없는 도구 이름이 섞여 있음을 봄",
+          "emo": "어디가 사실이고 어디가 꾸며낸 말인지 헷갈림",
+          "pain": true
+        },
+        {
+          "t": "실행 버튼 앞",
+          "act": "확신 없이 단계 이름을 손으로 바꿈",
+          "emo": "작동 실패가 내 탓처럼 느껴짐",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "출처 분리",
+    "whyItMatters": "AI 초안은 그럴듯한 이름을 섞어도 티가 늦게 납니다. 실제 도구명과 의심 노드를 분리해야 실행 전 손실을 줄입니다.",
+    "differentiationAxis": {
+      "psychology": "출처 분리",
+      "socialContext": "자동화 흐름을 실제 도구에 옮기기 전",
+      "outputShape": "노드명 검수 목록",
+      "emotionalResolution": "가짜 이름을 걷어내는 통제감",
+      "anchorMechanism": "구성요소를 기준별로 골라 조합"
+    }
+  },
+  {
+    "seed": "design-tools-goods-mockup",
+    "pain": 31,
+    "format": "curation",
+    "title": "굿즈색상 후보집 — 비슷한 색 남발",
+    "oneliner": "굿즈 목업 색이 전부 비슷해질 때, 인쇄 방식과 팬 반응 기준으로 후보를 줄이는 목록",
+    "target": "스티커와 키링 색상 시안을 고르는 굿즈 디자이너",
+    "mvp": [
+      "시안 이미지 등록",
+      "색상 태그 달기",
+      "인쇄 위험 표시",
+      "후보 묶음 공유"
+    ],
+    "evidence": "Wizlogo처럼 시각 후보를 빠르게 좁혀 선택하게 하는 도구에 월매출 약 203만원 수요가 기록돼 있어요.",
+    "todayAction": "오늘 반나절이면 굿즈 시안을 등록하고 색상 태그와 인쇄 위험을 붙여, 공유할 후보 묶음을 만들 수 있어요.",
+    "buildPrompt": "굿즈 목업 이미지를 등록하고 색상 태그, 인쇄 방식, 예상 팬 반응 메모를 붙이는 후보집 화면을 만들어줘. 비슷한 색은 자동으로 같은 묶음에 넣고, 각 묶음에서 대표 시안 하나를 고르게 해줘. 결과는 공유 가능한 후보 링크로 보여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Wizlogo",
+    "anchorDetail": "Wizlogo: 시각 후보를 빠르게 좁혀 선택하게 하는 도구 사례, 월매출 약 203만원.",
+    "appName": "굿즈색상 후보집",
+    "frontStory": {
+      "persona": "스티커와 키링 색상 시안을 고르는 굿즈 디자이너",
+      "timeline": [
+        {
+          "t": "목업을 뽑을 때",
+          "act": "여러 색을 만들어두면 선택지가 좋아질 거라 생각함",
+          "emo": "팬들이 좋아할 색을 찾고 싶음",
+          "pain": false
+        },
+        {
+          "t": "후보를 나열할 때",
+          "act": "화면에서는 달라 보이던 색이 거의 같은 계열로 보임",
+          "emo": "인쇄하면 더 티가 안 날까 걱정됨",
+          "pain": true
+        },
+        {
+          "t": "발주 전",
+          "act": "대표 색을 못 골라 비슷한 시안을 모두 남김",
+          "emo": "선택지가 많은데도 확신이 없음",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "선택 과부하 감소",
+    "whyItMatters": "비슷한 시안은 많을수록 결정이 느려집니다. 인쇄 위험과 반응 기준으로 묶으면 남길 후보가 줄어듭니다.",
+    "differentiationAxis": {
+      "psychology": "선택 과부하 감소",
+      "socialContext": "굿즈 발주 전 색상 후보를 공유",
+      "outputShape": "색상 후보 큐레이션 목록",
+      "emotionalResolution": "대표 색을 고르는 확신",
+      "anchorMechanism": "시각 후보를 빠르게 좁힘"
+    }
+  },
+  {
+    "seed": "design-tools-goods-mockup",
+    "pain": 31,
+    "format": "vote-card",
+    "title": "굿즈 색감 투표카드 — 비슷한 색 남발",
+    "oneliner": "비슷한 색이 늘어난 굿즈 시안을 팬에게 보여주고 가장 갖고 싶은 조합을 고르는 카드",
+    "target": "굿즈 목업 색이 너무 많아 최종 조합을 못 고르는 제작자",
+    "mvp": [
+      "목업 이미지 등록",
+      "색 조합 묶기",
+      "팬 반응 받기",
+      "최종 팔레트 저장"
+    ],
+    "evidence": "Canva Mockups처럼 굿즈 시안을 빠르게 보여주고 고르는 제작 흐름이 월 약 154만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 굿즈 목업 이미지를 올리고, 팬이 갖고 싶은 색 조합을 고르는 투표카드를 만들 수 있어요.",
+    "buildPrompt": "굿즈 제작자가 목업 이미지, 색 조합 이름, 제작 수량 고민, 걱정되는 포인트를 등록하면 팬에게 보낼 투표카드가 만들어지는 화면을 만들어줘. 팬은 갖고 싶은 조합, 피하고 싶은 색, 한 줄 이유를 남기고 제작자는 최종 팔레트를 저장하게 해줘. 브라우저 저장소와 공유 링크를 지원해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Canva Mockups",
+    "anchorDetail": "Canva Mockups: 굿즈 시안을 빠르게 보여주고 선택하게 하는 제작 흐름, 월 약 154만원.",
+    "appName": "굿즈 색감 투표카드",
+    "frontStory": {
+      "persona": "굿즈 목업 색이 너무 많아 최종 조합을 못 고르는 제작자",
+      "timeline": [
+        {
+          "t": "목업을 뽑은 뒤",
+          "act": "비슷한 색 조합이 여러 개 생김",
+          "emo": "내 눈에는 다 괜찮아 보여 더 못 고름",
+          "pain": true
+        },
+        {
+          "t": "발주 전",
+          "act": "팬들이 실제로 살 색을 혼자 추측함",
+          "emo": "재고가 남을까 불안함",
+          "pain": true
+        },
+        {
+          "t": "반응을 받은 뒤",
+          "act": "갖고 싶다는 이유가 많은 색을 확정함",
+          "emo": "발주 결정이 가벼워짐",
+          "pain": false
+        }
+      ]
+    },
+    "source": "manual-creative-social-2026-07-10",
+    "needSource": "direct",
+    "psychologyPrinciple": "구매 의향 확인",
+    "whyItMatters": "굿즈 색 선택은 제작자 취향만으로 정하면 재고 위험이 큽니다. 팬 반응을 먼저 받으면 발주 결정을 덜 외롭게 내립니다.",
+    "differentiationAxis": {
+      "psychology": "구매 의향 확인",
+      "socialContext": "팬에게 굿즈 색 조합 확인",
+      "outputShape": "목업 색감 투표카드",
+      "emotionalResolution": "색 고민이 발주 확신으로 바뀜",
+      "anchorMechanism": "굿즈 시안을 빠르게 보여주고 고르는 방식"
+    }
+  },
+  {
+    "seed": "design-tools-idea-to-ui",
+    "pain": 30,
+    "format": "vote-card",
+    "title": "화면 시안 반응카드 — 컴포넌트 재작업",
+    "oneliner": "아이디어 화면 시안을 사용자에게 보여주고 헷갈리는 버튼과 필요한 정보를 바로 받는 카드",
+    "target": "컴포넌트 색과 여백을 계속 고치느라 화면 검증을 미루는 제작자",
+    "mvp": [
+      "화면 시안 업로드",
+      "헷갈린 곳 표시",
+      "필요 정보 받기",
+      "수정 우선순위 저장"
+    ],
+    "evidence": "Useberry처럼 화면 시안에서 사용자의 막힘을 먼저 확인하는 도구가 월 약 129만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 화면 시안을 올리고, 사용자가 헷갈린 버튼과 필요한 정보를 남기는 반응카드를 만들 수 있어요.",
+    "buildPrompt": "제작자가 화면 시안 이미지, 사용자가 해야 할 일, 걱정되는 버튼, 확인하고 싶은 문장을 등록하면 사용자 반응카드가 만들어지는 화면을 만들어줘. 사용자는 헷갈린 곳, 먼저 본 정보, 누르고 싶은 버튼, 빠진 정보를 남기고 제작자는 수정 우선순위를 저장하게 해줘. 브라우저 저장소와 공유 링크를 지원해줘.",
+    "evidenceType": "usage",
+    "anchorName": "Useberry",
+    "anchorDetail": "Useberry: 화면 시안에서 사용자의 막힘을 먼저 확인하는 도구, 월 약 129만원.",
+    "appName": "화면 시안 반응카드",
+    "frontStory": {
+      "persona": "컴포넌트 색과 여백을 계속 고치느라 화면 검증을 미루는 제작자",
+      "timeline": [
+        {
+          "t": "시안을 만든 뒤",
+          "act": "버튼 색과 여백을 계속 바꿔봄",
+          "emo": "정작 사용자가 이해할지는 못 봄",
+          "pain": true
+        },
+        {
+          "t": "공유 직전",
+          "act": "완성도가 낮아 보일까 보내기를 미룸",
+          "emo": "피드백 받기 전부터 기운이 빠짐",
+          "pain": true
+        },
+        {
+          "t": "반응을 받은 뒤",
+          "act": "헷갈린 버튼부터 고치기로 정함",
+          "emo": "수정할 곳이 명확해짐",
+          "pain": false
+        }
+      ]
+    },
+    "source": "manual-creative-social-2026-07-10",
+    "needSource": "direct",
+    "psychologyPrinciple": "사용자 막힘 확인",
+    "whyItMatters": "화면 작업은 색과 여백에 빠지면 실제 막힘을 늦게 봅니다. 사용자의 헷갈림을 먼저 받으면 수정 우선순위가 바뀝니다.",
+    "differentiationAxis": {
+      "psychology": "사용자 막힘 확인",
+      "socialContext": "초기 화면 시안을 사용자에게 공유",
+      "outputShape": "시안 반응 카드",
+      "emotionalResolution": "무한 다듬기가 수정 우선순위로 바뀜",
+      "anchorMechanism": "화면 시안에서 막힘을 확인하는 방식"
+    }
+  },
+  {
+    "seed": "design-tools-logo-quick",
+    "pain": 10,
+    "format": "calc-tool",
+    "title": "로고 방향 선택 체크 — 방향 결정 지연",
+    "oneliner": "로고 시안 여러 개를 브랜드 느낌, 읽힘, 사용처 기준으로 좁혀 오늘 고를 방향을 정하는 체크 도구",
+    "target": "로고 시안을 만들었지만 어떤 방향이 맞는지 못 고르는 창업자",
+    "mvp": [
+      "시안별 느낌 입력",
+      "사용처 체크",
+      "읽힘 정도 평가",
+      "오늘 방향 저장"
+    ],
+    "evidence": "Looka처럼 브랜드 키워드로 로고 방향을 좁히는 제작 도구가 월 약 121만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 로고 시안별 느낌과 사용처를 입력하고, 읽힘과 확장성 기준으로 방향을 좁히는 체크 도구를 만들 수 있어요.",
+    "buildPrompt": "창업자가 로고 시안 이름, 브랜드 키워드, 사용할 위치, 읽기 쉬운 정도, 걱정되는 점을 입력하면 로고 방향 선택 체크 도구가 되는 화면을 만들어줘. 도구는 사용처 적합도, 기억 쉬움, 수정 필요 메모를 보여주고 오늘 선택할 방향을 저장하게 해줘. 브라우저 저장소를 사용해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Looka",
+    "anchorDetail": "Looka: 브랜드 키워드로 로고 방향을 좁히는 제작 도구, 월 약 121만원.",
+    "appName": "로고 방향 선택 체크",
+    "frontStory": {
+      "persona": "로고 시안을 만들었지만 어떤 방향이 맞는지 못 고르는 창업자",
+      "timeline": [
+        {
+          "t": "시안이 나온 뒤",
+          "act": "서로 다른 로고를 번갈아 보며 마음이 바뀜",
+          "emo": "다 괜찮고 다 아쉬워 보임",
+          "pain": true
+        },
+        {
+          "t": "명함과 앱 아이콘에 넣어볼 때",
+          "act": "작게 보면 읽히는지 헷갈림",
+          "emo": "감으로 고르면 오래 후회할까 걱정됨",
+          "pain": true
+        },
+        {
+          "t": "체크 후",
+          "act": "사용처에 가장 덜 흔들리는 방향을 저장함",
+          "emo": "오늘 결정해도 될 이유가 생김",
+          "pain": false
+        }
+      ]
+    },
+    "source": "manual-creative-social-2026-07-10",
+    "needSource": "direct",
+    "psychologyPrinciple": "선택 기준 고정",
+    "whyItMatters": "로고 선택은 취향만 보면 끝나지 않습니다. 실제 사용처 기준을 붙이면 오늘 정할 수 있는 방향이 좁혀집니다.",
+    "differentiationAxis": {
+      "psychology": "선택 기준 고정",
+      "socialContext": "창업자가 로고 시안을 고르는 순간",
+      "outputShape": "로고 방향 체크 도구",
+      "emotionalResolution": "취향 고민이 사용처 기준 결정으로 바뀜",
+      "anchorMechanism": "브랜드 키워드로 로고 방향을 좁히는 방식"
+    }
+  },
+  {
+    "seed": "design-tools-logo-quick",
+    "pain": 31,
+    "format": "vote-card",
+    "title": "로고 팔레트 투표카드 — 비슷한 색 남발",
+    "oneliner": "비슷한 색이 늘어난 로고 팔레트를 고객에게 보여주고 기억에 남는 조합을 고르는 카드",
+    "target": "브랜드 색을 계속 추가하다 로고 색을 못 고르는 제작자",
+    "mvp": [
+      "팔레트 시안 등록",
+      "기억 색 투표",
+      "어울림 이유 받기",
+      "최종 색 저장"
+    ],
+    "evidence": "Coolors처럼 팔레트를 만들고 공유해 고르는 도구가 월 약 93만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 로고 팔레트 시안을 올리고, 고객이 기억에 남는 색과 이유를 고르는 투표카드를 만들 수 있어요.",
+    "buildPrompt": "제작자가 로고 팔레트 이미지, 색 이름, 브랜드 느낌, 고민되는 이유를 등록하면 고객에게 공유할 투표카드가 만들어지는 화면을 만들어줘. 고객은 가장 기억나는 색, 덜 어울리는 색, 떠오르는 느낌을 남기고 제작자는 최종 색을 저장하게 해줘. 브라우저 저장소와 공유 링크를 지원해줘.",
+    "evidenceType": "usage",
+    "anchorName": "Coolors",
+    "anchorDetail": "Coolors: 팔레트를 만들고 공유해 고르는 디자인 도구 사례, 월 약 93만원.",
+    "appName": "로고 팔레트 투표카드",
+    "frontStory": {
+      "persona": "브랜드 색을 계속 추가하다 로고 색을 못 고르는 제작자",
+      "timeline": [
+        {
+          "t": "색을 고르는 중",
+          "act": "레퍼런스에서 가져온 비슷한 색이 늘어남",
+          "emo": "무엇이 브랜드답다는 건지 헷갈림",
+          "pain": true
+        },
+        {
+          "t": "로고에 적용할 때",
+          "act": "조금씩 다른 색을 계속 바꿔봄",
+          "emo": "결정이 점점 더 어려워짐",
+          "pain": true
+        },
+        {
+          "t": "반응을 받은 뒤",
+          "act": "사람들이 기억한 색 조합을 남김",
+          "emo": "색을 줄여도 될 것 같음",
+          "pain": false
+        }
+      ]
+    },
+    "source": "manual-creative-social-2026-07-10",
+    "needSource": "direct",
+    "psychologyPrinciple": "기억 색 확인",
+    "whyItMatters": "팔레트가 많아질수록 제작자는 미세한 차이에 갇힙니다. 고객이 기억한 색을 보면 줄일 기준이 생깁니다.",
+    "differentiationAxis": {
+      "psychology": "기억 색 확인",
+      "socialContext": "고객에게 로고 색감 확인",
+      "outputShape": "팔레트 반응 카드",
+      "emotionalResolution": "색 과잉이 줄일 기준으로 바뀜",
+      "anchorMechanism": "팔레트를 만들고 공유해 고르는 방식"
+    }
+  },
+  {
+    "seed": "devops",
+    "pain": 13,
+    "format": "calc-tool",
+    "title": "배포요금 상담계산기 — 전문가 부담",
+    "oneliner": "클라우드 요금표를 묻기 전에 예상 사용량과 위험 구간을 정리하는 계산 도구",
+    "target": "요금 질문을 하기 전에 상황을 정리해야 하는 1인 개발자",
+    "mvp": [
+      "트래픽 입력",
+      "저장공간 입력",
+      "요금 구간 보기",
+      "질문 문장 저장"
+    ],
+    "evidence": "Costimize는 클라우드 비용을 줄이도록 돕는 도구로 월매출 약 1,540만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 예상 트래픽과 저장공간을 넣고, 질문할 요금 구간과 상담 문장을 뽑는 계산 도구를 만들 수 있어요.",
+    "buildPrompt": "사용자가 예상 방문자, 이미지 저장량, 작업 실행 횟수, 배포 지역을 입력하면 월 요금 위험 구간을 계산해줘. 비싼 항목과 아껴도 되는 항목을 나누고, 전문가에게 보낼 질문 문장을 만들어줘. 결과는 저장과 공유가 가능하게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Costimize",
+    "anchorDetail": "Costimize: 클라우드 비용 최적화를 돕는 도구, 월매출 약 1,540만원.",
+    "appName": "배포요금 상담계산기",
+    "frontStory": {
+      "persona": "요금 질문을 하기 전에 상황을 정리해야 하는 1인 개발자",
+      "timeline": [
+        {
+          "t": "런칭 하루 전",
+          "act": "요금표 탭 세 개를 열고 예상 방문자를 적어봅니다",
+          "emo": "처음엔 무료 구간이면 충분할 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "계산 중반",
+          "act": "저장공간과 작업 실행 횟수가 어느 항목에 붙는지 헷갈립니다",
+          "emo": "괜히 큰 요금이 나올까 불안합니다",
+          "pain": true
+        },
+        {
+          "t": "커뮤니티 질문 전",
+          "act": "무엇을 물어야 할지 몰라 화면 캡처만 모읍니다",
+          "emo": "기초도 모르는 질문처럼 보일까 망설입니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "질문 전 구조화",
+    "whyItMatters": "전문가에게 묻기 전 입력값과 불안 구간을 나누면 질문 부담이 낮아집니다. 계산 결과는 상담을 요청할 명분이 됩니다.",
+    "differentiationAxis": {
+      "psychology": "질문 전 구조화",
+      "socialContext": "런칭 전 클라우드 요금을 묻는 상황",
+      "outputShape": "요금 위험 계산 도구",
+      "emotionalResolution": "질문 부담 완화",
+      "anchorMechanism": "비용 항목을 구간별로 분리"
+    }
+  },
+  {
+    "seed": "devops",
+    "pain": 38,
+    "format": "chrome-ext",
+    "title": "코딩툴 요금 사이드패널 — 이번 달 요금 불안",
+    "oneliner": "여러 AI 코딩 도구를 켜놓을 때, 탭 옆에서 이번 달 결제 위험을 모으는 사이드패널",
+    "target": "AI 코딩 도구 요금이 쌓이는지 불안한 1인 개발자",
+    "mvp": [
+      "툴 이름 저장",
+      "요금 메모 붙이기",
+      "결제일 표시",
+      "이번달 합계 보기"
+    ],
+    "evidence": "Prototipal처럼 개발자의 반복 확인을 브라우저 안에서 줄이는 작은 도구도 월매출 약 365만원 신호가 있어요.",
+    "todayAction": "오늘 반나절이면 브라우저 사이드패널에 툴별 요금과 결제일을 저장하고, 이번 달 합계를 바로 보여줄 수 있어요.",
+    "buildPrompt": "AI 코딩 도구별 이름, 요금, 결제일, 해지 링크 메모를 저장하는 브라우저 사이드패널 화면을 만들어줘. 상단에는 이번 달 예상 합계를 보여주고, 결제일이 가까운 항목은 강조해줘. 데이터는 브라우저 저장소에 남기고 목록을 내보낼 수 있게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Prototipal",
+    "anchorDetail": "Prototipal: 개발자의 반복 확인을 브라우저 안에서 줄이는 도구 사례, 월매출 약 365만원.",
+    "appName": "코딩툴 요금 사이드패널",
+    "frontStory": {
+      "persona": "AI 코딩 도구 요금이 쌓이는지 불안한 1인 개발자",
+      "timeline": [
+        {
+          "t": "새 도구를 켤 때",
+          "act": "무료 체험인지 유료 전환인지 나중에 보려 함",
+          "emo": "지금은 기능부터 써보고 싶음",
+          "pain": false
+        },
+        {
+          "t": "카드 알림을 받을 때",
+          "act": "어느 도구에서 빠져나간 금액인지 결제 메일을 뒤짐",
+          "emo": "작은 결제가 쌓였을까 불안함",
+          "pain": true
+        },
+        {
+          "t": "월말 정리 때",
+          "act": "해지할 도구를 못 골라 전부 미룸",
+          "emo": "개발 속도보다 요금이 먼저 걱정됨",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "손실 회피",
+    "whyItMatters": "작은 구독은 따로 보면 가볍지만 합계가 보이지 않으면 통제감을 잃습니다. 결제일과 금액을 옆에 두면 해지 판단이 빨라집니다.",
+    "differentiationAxis": {
+      "psychology": "손실 회피",
+      "socialContext": "혼자 여러 개발 도구를 시험하는 월말",
+      "outputShape": "요금 합계 사이드패널",
+      "emotionalResolution": "새는 돈이 보이는 통제감",
+      "anchorMechanism": "반복 확인을 브라우저 안에서 처리"
+    }
+  },
+  {
+    "seed": "education-report-plagiarism-check",
+    "pain": 10,
+    "format": "calc-tool",
+    "title": "레포트 제출전 점검표 — 제출 전 막힘",
+    "oneliner": "제출을 미루는 대학생이 인용 누락과 문장 겹침을 먼저 보는 점검표",
+    "target": "과제 제출 직전 표절 걱정으로 손이 멈춘 대학생",
+    "mvp": [
+      "초안 붙이기",
+      "인용 위치 표시",
+      "겹침 문장 확인",
+      "수정 순서 저장"
+    ],
+    "evidence": "Scribbr는 인용과 표절 점검을 과제 흐름에 붙인 서비스로 월매출 약 44억 3,000만원 규모의 수요가 보여요.",
+    "todayAction": "오늘 반나절 안에 레포트 초안과 참고문헌을 붙여넣고, 인용 누락과 수정 순서가 보이는 점검표를 만들 수 있어요.",
+    "buildPrompt": "대학생이 레포트 초안과 참고문헌 목록을 붙여넣으면 문단별 인용 표시, 겹쳐 보이는 문장, 먼저 고칠 순서를 보여주는 점검 화면을 만들어줘. 결과는 문단 카드로 나누고 수정 완료 체크를 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Scribbr",
+    "anchorDetail": "Scribbr: 과제 인용과 표절 점검을 제공하는 학습 보조 서비스, 월매출 약 44억 3,000만원.",
+    "appName": "레포트 제출전 점검표",
+    "frontStory": {
+      "persona": "과제 제출 직전 표절 걱정으로 손이 멈춘 대학생",
+      "timeline": [
+        {
+          "t": "마감 전날 밤",
+          "act": "완성한 레포트 초안을 다시 엽니다",
+          "emo": "이제 제출만 하면 된다고 생각합니다",
+          "pain": false
+        },
+        {
+          "t": "참고문헌을 볼 때",
+          "act": "어느 문장이 어느 자료에서 온 건지 헷갈립니다",
+          "emo": "괜히 제출했다가 문제가 생길까 불안합니다",
+          "pain": true
+        },
+        {
+          "t": "업로드 직전",
+          "act": "수정할 곳을 정하지 못해 전체 문서를 다시 읽습니다",
+          "emo": "마감은 다가오는데 판단이 느려집니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "위험 신호 분리",
+    "whyItMatters": "문서 전체를 다시 읽는 대신 위험 문단을 먼저 보면 제출 전 불안을 처리 가능한 행동으로 바꿀 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "위험 신호 분리",
+      "socialContext": "과제 제출 직전 혼자 하는 점검",
+      "outputShape": "문단별 제출 점검표",
+      "emotionalResolution": "막막함이 수정 순서로 바뀜",
+      "anchorMechanism": "인용과 표절 점검을 과제 흐름에 붙이는 방식"
+    }
+  },
+  {
+    "seed": "education-speaking-feedback",
+    "pain": 10,
+    "format": "calc-tool",
+    "title": "발표 녹음 수정순서표 — 수정 순서 막힘",
+    "oneliner": "말하기 녹음을 듣고 발음, 속도, 멈춤 중 오늘 고칠 한 가지를 고른다",
+    "target": "발표 녹음을 듣고도 어디부터 고칠지 막히는 학습자",
+    "mvp": [
+      "녹음 메모 입력",
+      "불편 구간 표시",
+      "수정 순서 계산",
+      "연습 문장 저장"
+    ],
+    "evidence": "ELSA Speak는 발음 피드백을 좁은 학습 행동으로 만든 서비스로 월매출 약 29억 5,000만원 규모의 수요가 있어요.",
+    "todayAction": "오늘 반나절 안에 발표 녹음 메모를 넣고, 발음·속도·멈춤 중 먼저 고칠 항목을 보여주는 표를 만들 수 있어요.",
+    "buildPrompt": "발표나 외국어 말하기 녹음을 연습하는 사용자가 불편했던 구간, 말이 빨라진 부분, 발음이 흔들린 단어를 입력하면 오늘 고칠 항목 1개와 연습 문장 3개를 보여주는 수정순서표를 만들어줘. 연습 완료와 다음 녹음 메모는 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "ELSA Speak",
+    "anchorDetail": "ELSA Speak: 발음 피드백을 좁은 학습 행동으로 만든 서비스, 월매출 약 29억 5,000만원.",
+    "appName": "발표 녹음 수정순서표",
+    "frontStory": {
+      "persona": "발표 녹음을 듣고도 어디부터 고칠지 막히는 학습자",
+      "timeline": [
+        {
+          "t": "스터디 전날 밤",
+          "act": "휴대폰으로 발표 연습을 녹음해 들어봄",
+          "emo": "내 목소리를 듣는 건 어색하지만 고치고 싶음",
+          "pain": false
+        },
+        {
+          "t": "두 번째 재생 중",
+          "act": "발음도 빠르고 멈춤도 이상해 보여 전부 고치고 싶어짐",
+          "emo": "하나씩 손대기보다 전체가 엉킨 느낌",
+          "pain": true
+        },
+        {
+          "t": "연습을 끝낼 때",
+          "act": "결국 첫 문장만 다시 말하고 파일을 닫음",
+          "emo": "연습했는데 나아진 부분이 떠오르지 않음",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "초점 축소",
+    "whyItMatters": "말하기 연습은 한 번에 모든 문제를 고치려 하면 멈춥니다. 오늘 고칠 하나를 정하면 녹음이 평가가 아니라 다음 연습의 시작점이 됩니다.",
+    "differentiationAxis": {
+      "psychology": "초점 축소",
+      "socialContext": "스터디나 발표 전 혼자 녹음을 듣는 상황",
+      "outputShape": "말하기 수정 우선순위표",
+      "emotionalResolution": "막막함이 한 가지 연습으로 줄어듦",
+      "anchorMechanism": "발음 피드백을 좁은 학습 행동으로 바꾸는 방식"
+    }
+  },
+  {
+    "seed": "education-speaking-feedback",
+    "pain": 13,
+    "format": "template-gen",
+    "title": "튜터 피드백 요청틀 — 전문가 부담",
+    "oneliner": "회화 녹음의 민망한 부분을 튜터에게 보낼 질문 문장으로 바꾼다",
+    "target": "튜터에게 녹음 피드백을 부탁하기 민망한 회화 학습자",
+    "mvp": [
+      "녹음 상황 입력",
+      "걱정 구간 선택",
+      "질문 문장 생성",
+      "답변 메모 저장"
+    ],
+    "evidence": "ELSA Speak는 발음 피드백을 좁은 학습 행동으로 만든 서비스로 월매출 약 29억 5,000만원 규모의 수요가 있어요.",
+    "todayAction": "오늘 반나절 안에 녹음 상황과 걱정 구간을 넣으면 튜터에게 보낼 피드백 요청 문장을 만드는 화면을 만들 수 있어요.",
+    "buildPrompt": "외국어 회화 학습자가 녹음 파일 설명, 걱정되는 표현, 튜터에게 받고 싶은 피드백 범위를 입력하면 짧고 정중한 요청 문장을 생성하는 화면을 만들어줘. 발음, 억양, 단어 선택 중 하나를 고르게 하고, 받은 답변과 다음 연습 문장은 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "ELSA Speak",
+    "anchorDetail": "ELSA Speak: 발음 피드백을 좁은 학습 행동으로 만든 서비스, 월매출 약 29억 5,000만원.",
+    "appName": "튜터 피드백 요청틀",
+    "frontStory": {
+      "persona": "튜터에게 녹음 피드백을 부탁하기 민망한 회화 학습자",
+      "timeline": [
+        {
+          "t": "온라인 수업 전",
+          "act": "짧게 녹음한 자기소개 파일을 튜터 채팅방에 올릴지 고민함",
+          "emo": "이번 수업에서는 진짜 약점을 듣고 싶음",
+          "pain": false
+        },
+        {
+          "t": "메시지를 쓰는 중",
+          "act": "그냥 한번 봐달라고 쓰면 너무 막연해 보여 지움",
+          "emo": "내 발음이 이상한 걸 먼저 인정하는 느낌이라 민망함",
+          "pain": true
+        },
+        {
+          "t": "수업이 시작될 때",
+          "act": "녹음은 보내지 못하고 평소처럼 교재 문장만 읽음",
+          "emo": "궁금했던 부분은 남은 채 시간이 지나감",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "질문 구체화",
+    "whyItMatters": "학습자가 피드백을 못 받는 이유는 실력 부족보다 요청의 민망함일 때가 많습니다. 질문 범위를 좁히면 튜터도 더 빠르게 도와줄 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "질문 구체화",
+      "socialContext": "온라인 튜터에게 녹음을 보내기 전",
+      "outputShape": "피드백 요청 메시지",
+      "emotionalResolution": "민망함이 구체적인 질문으로 바뀜",
+      "anchorMechanism": "말하기 피드백을 좁은 요청 단위로 만드는 방식"
+    }
+  },
+  {
+    "seed": "entertainment-couple-compatibility",
+    "pain": 10,
+    "format": "vote-card",
+    "title": "커플 데이트 투표",
+    "oneliner": "토요일, 야근한 연인은 소파에 눕고 다른 연인은 검색만 한다. 둘이 에너지·예산을 고르면 함께 즐길 데이트 세 곳이 뜬다.",
+    "target": "한 명은 지쳤고 한 명은 나가고 싶어 토요일마다 눈치를 보는 연인",
+    "mvp": [
+      "오늘 체력 선택",
+      "하고 싶은 것 고름",
+      "피할 조건 표시",
+      "중간 코스 추천"
+    ],
+    "evidence": "CoupleAI처럼 커플 대화를 가볍게 도와주는 도구도 매달 약 580만원 규모의 매출 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 각자 체력과 하고 싶은 것을 고르면 중간 데이트 코스를 추천하는 취향카드를 만들 수 있어요.",
+    "buildPrompt": "커플이 각자 오늘 체력, 하고 싶은 것, 피하고 싶은 것, 예산을 선택하면 둘 사이의 중간 데이트 코스를 보여주는 취향카드를 만들어줘. 결과에는 서로 양보한 점과 오늘 먼저 할 행동을 붙이고 공유 링크를 제공해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "CoupleAI",
+    "anchorDetail": "CoupleAI: 커플 대화를 가볍게 돕는 유료 사례, 월매출 약 580만원.",
+    "appName": "오늘 데이트",
+    "frontStory": {
+      "persona": "데이트 코스를 고를 때 서로 눈치만 보는 커플",
+      "timeline": [
+        {
+          "t": "토요일 낮",
+          "act": "한 명은 전시를 보고 싶고 한 명은 쉬고 싶다고 말함",
+          "emo": "서로 맞춰주고 싶은 마음은 있음",
+          "pain": false
+        },
+        {
+          "t": "카페에서 지도 앱을 볼 때",
+          "act": "어느 쪽을 고르면 상대가 실망할지 몰라 후보만 늘림",
+          "emo": "좋은 데이트보다 미안하지 않은 선택을 찾게 됨",
+          "pain": true
+        },
+        {
+          "t": "오후 시간이 지나갈 때",
+          "act": "결국 가까운 식당 하나만 예약하고 이동함",
+          "emo": "함께 정한 느낌이 없어 작은 아쉬움이 남음",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "상호성",
+    "whyItMatters": "데이트 선택은 정답보다 서로의 컨디션을 보는 과정입니다. 각자의 양보 지점이 보이면 한쪽만 맞춘 느낌이 줄어듭니다.",
+    "differentiationAxis": {
+      "psychology": "상호성",
+      "socialContext": "주말 데이트 코스를 함께 고르는 장면",
+      "outputShape": "커플 취향 조율 카드",
+      "emotionalResolution": "함께 정했다는 만족감",
+      "anchorMechanism": "커플 대화를 가볍게 돕는 방식"
+    }
+  },
+  {
+    "seed": "entertainment-daily-fortune-share",
+    "pain": 10,
+    "format": "vote-card",
+    "title": "친구 운세 카드",
+    "oneliner": "면접장 앞, 취준생이 오늘 운세의 ‘뜻밖의 질문’ 한 줄을 캡처해 친구에게 보낸다. 밤에 실제 질문과 맞았는지 둘이 체크한다.",
+    "target": "중요한 날의 불안을 친구와 가볍게 나누고 싶은 취업 준비생",
+    "mvp": [
+      "운세 문구 후보",
+      "이미지 톤 선택",
+      "팔로워 반응 받기",
+      "업로드안 저장"
+    ],
+    "evidence": "Rift: Reality Shifting처럼 가벼운 몰입 콘텐츠를 반응으로 고르는 유료 사례가 매달 약 110만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 운세 문구와 이미지 톤 후보를 카드로 만들고 팔로워 반응을 받아 업로드안을 저장하는 화면을 만들 수 있어요.",
+    "buildPrompt": "운세 콘텐츠 운영자가 오늘 올릴 문구와 이미지 톤 후보를 등록하는 투표카드 화면을 만들어줘. 팔로워는 위로됨, 웃김, 저장하고 싶음 반응을 남길 수 있고 운영자는 반응이 좋은 문구와 이미지 톤을 업로드안으로 저장하게 해줘. 데이터는 브라우저 저장소에 남기고 카드 이미지를 저장할 수 있게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Rift: Reality Shifting",
+    "anchorDetail": "Rift: Reality Shifting: 가벼운 몰입 콘텐츠를 반응으로 고르는 유료 사례, 월매출 약 110만원.",
+    "appName": "운세 한 장",
+    "frontStory": {
+      "persona": "매일 올릴 운세 스토리 문구를 고르다 업로드가 늦는 운영자",
+      "timeline": [
+        {
+          "t": "아침 업로드 전",
+          "act": "오늘 운세 문구 후보 세 개를 적어둠",
+          "emo": "이번 문구는 저장 반응을 받고 싶음",
+          "pain": false
+        },
+        {
+          "t": "스토리 편집창 앞",
+          "act": "따뜻한 톤과 장난스러운 톤 중 무엇이 맞을지 멈춤",
+          "emo": "매일 올리는 콘텐츠일수록 감이 흔들림",
+          "pain": true
+        },
+        {
+          "t": "점심이 지나서",
+          "act": "아침 운세를 늦게 올리며 문구를 또 바꿈",
+          "emo": "가벼운 콘텐츠인데도 하루 리듬을 놓친 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "반응 기준 만들기",
+    "whyItMatters": "매일 올리는 콘텐츠는 작은 톤 차이에서도 손이 멈춥니다. 팔로워 반응을 카드로 받으면 다음 업로드의 기준이 쌓입니다.",
+    "differentiationAxis": {
+      "psychology": "반응 기준 만들기",
+      "socialContext": "팔로워와 가볍게 운세 문구 확인",
+      "outputShape": "스토리 문구 투표카드",
+      "emotionalResolution": "오늘 올릴 톤이 정해지는 가벼움",
+      "anchorMechanism": "몰입 콘텐츠를 반응으로 고르는 방식"
+    }
+  },
+  {
+    "seed": "games-drinking-game-cards",
+    "pain": 10,
+    "format": "curation",
+    "title": "술자리 게임 찾기",
+    "oneliner": "친구의 연인도 온 첫 술자리, 오래된 친구들끼리만 말한다. 인원·친밀도를 누르면 전원이 답할 5분 게임이 시작된다.",
+    "target": "친구의 연인까지 섞인 첫 술자리에서 누구도 빼놓고 싶지 않은 진행자",
+    "mvp": [
+      "인원수 입력",
+      "친밀도 선택",
+      "게임 후보 보기",
+      "진행 규칙 저장"
+    ],
+    "evidence": "Meme Generator는 가벼운 놀이 콘텐츠를 빠르게 만드는 유료 사례로 월매출 약 1,200만원 규모의 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 인원수와 분위기를 고르면 바로 꺼낼 술자리 게임 후보를 보여주는 목록을 만들 수 있어요.",
+    "buildPrompt": "모임 진행자가 인원수, 서로 친한 정도, 장소 소음, 술을 마시는 정도를 입력하면 바로 진행 가능한 가벼운 게임 후보 3개를 보여주는 큐레이션 화면을 만들어줘. 각 게임에는 준비물, 민망함 정도, 끝내기 좋은 타이밍을 붙이고 선택 기록은 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Meme Generator",
+    "anchorDetail": "Meme Generator: 가벼운 놀이 콘텐츠를 빠르게 만드는 유료 사례, 월매출 약 1,200만원.",
+    "appName": "첫잔 게임",
+    "frontStory": {
+      "persona": "모임 초반 어색함을 풀 게임을 고르지 못하는 사람",
+      "timeline": [
+        {
+          "t": "오랜만의 모임 초반",
+          "act": "서로 근황만 묻다 대화가 잠깐 끊김",
+          "emo": "분위기를 부드럽게 열고 싶음",
+          "pain": false
+        },
+        {
+          "t": "게임을 꺼내려 할 때",
+          "act": "너무 유치하거나 민망한 게임이면 역효과일까 망설임",
+          "emo": "내가 분위기를 더 어색하게 만들까 봐 조심스러움",
+          "pain": true
+        },
+        {
+          "t": "테이블이 조용해질 때",
+          "act": "다들 휴대폰을 보는데 바로 꺼낼 규칙이 없음",
+          "emo": "작은 한마디 타이밍을 놓친 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "사회적 촉진",
+    "whyItMatters": "모임 게임은 재미보다 타이밍과 친밀도에 맞아야 작동합니다. 상황별 후보가 있으면 어색한 순간을 가볍게 넘길 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "사회적 촉진",
+      "socialContext": "오랜만의 술자리 초반 대화가 끊긴 순간",
+      "outputShape": "상황별 게임 후보집",
+      "emotionalResolution": "조심스러움이 꺼낼 규칙으로 바뀜",
+      "anchorMechanism": "가벼운 놀이 콘텐츠를 빠르게 만드는 방식"
+    }
+  },
+  {
+    "seed": "games-drinking-game-cards",
+    "pain": 10,
+    "format": "vote-card",
+    "title": "술자리 게임 카드 — 게임 선택 고민",
+    "oneliner": "분위기가 어색해지기 전, 사람 수와 친밀도에 맞는 게임을 고른다",
+    "target": "오랜만의 모임에서 첫 분위기를 열어야 하는 사람",
+    "mvp": [
+      "사람 수 입력",
+      "친밀도 선택",
+      "피하고 싶은 주제",
+      "게임 카드 공유"
+    ],
+    "evidence": "Meme Generator처럼 가벼운 놀이 콘텐츠를 빠르게 만드는 도구도 매달 약 1,200만원 규모의 매출 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 사람 수와 친밀도를 고르면 지금 꺼낼 술자리 게임 카드를 추천하는 화면을 만들 수 있어요.",
+    "buildPrompt": "오랜만의 술자리에서 분위기를 열고 싶은 사람이 사람 수, 서로의 친밀도, 피하고 싶은 주제를 선택하면 술자리 게임 카드를 추천하는 화면을 만들어줘. 각 카드는 규칙, 예상 시간, 조심할 점을 포함하고 공유 링크로 보여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Meme Generator",
+    "anchorDetail": "Meme Generator: 가벼운 놀이 콘텐츠를 빠르게 만드는 유료 사례, 월매출 약 1,200만원.",
+    "appName": "술자리 게임 카드",
+    "frontStory": {
+      "persona": "오랜만의 모임에서 첫 분위기를 열어야 하는 사람",
+      "timeline": [
+        {
+          "t": "금요일 밤 첫 잔 뒤",
+          "act": "서로 근황만 묻고 대화가 잠깐 끊김",
+          "emo": "분위기를 조금만 풀면 다들 편해질 것 같음",
+          "pain": false
+        },
+        {
+          "t": "게임을 제안하려 할 때",
+          "act": "너무 유치하거나 부담스러운 게임일까 봐 망설임",
+          "emo": "괜히 나서서 어색해질까 조심스러움",
+          "pain": true
+        },
+        {
+          "t": "두 번째 안주가 나왔을 때",
+          "act": "각자 휴대폰을 보며 대화 흐름이 끊김",
+          "emo": "오랜만에 모였는데 시간이 아깝게 흘러감",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "사회적 촉진",
+    "whyItMatters": "놀이 제안은 분위기에 맞아야 받아들여집니다. 사람 수와 친밀도를 먼저 고르면 부담이 작은 게임부터 꺼낼 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "사회적 촉진",
+      "socialContext": "술자리 초반 어색한 침묵이 생긴 장면",
+      "outputShape": "상황별 게임 카드",
+      "emotionalResolution": "어색함을 부드럽게 넘기는 재미",
+      "anchorMechanism": "가벼운 놀이 콘텐츠를 빠르게 만드는 방식"
+    }
+  },
+  {
+    "seed": "games-party-liar-game",
+    "pain": 10,
+    "format": "vote-card",
+    "title": "파티 라이어 투표 — 첫 판 선택 고민",
+    "oneliner": "처음 만난 사람들 앞에서, 난이도와 주제를 맞춘 라이어 게임을 만든다",
+    "target": "파티에서 모두가 참여할 가벼운 게임을 찾는 진행자",
+    "mvp": [
+      "참여 인원 입력",
+      "주제 난이도 선택",
+      "금지 주제 제외",
+      "게임 카드 나눔"
+    ],
+    "evidence": "Meme Generator처럼 참여형 놀이 콘텐츠를 즉석에서 만드는 도구도 매달 약 1,200만원 규모의 매출 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 인원과 주제를 고르면 바로 돌릴 수 있는 라이어 게임 카드를 만드는 투표 화면을 만들 수 있어요.",
+    "buildPrompt": "파티 진행자가 참여 인원, 서로 아는 정도, 피하고 싶은 주제를 입력하면 라이어 게임 주제와 역할 카드를 만들어주는 화면을 만들어줘. 각 참여자는 자기 카드만 보고, 진행자는 라운드 시간과 힌트 규칙을 확인할 수 있게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Meme Generator",
+    "anchorDetail": "Meme Generator: 참여형 놀이 콘텐츠를 즉석에서 만드는 유료 사례, 월매출 약 1,200만원.",
+    "appName": "파티 라이어 투표",
+    "frontStory": {
+      "persona": "파티에서 모두가 참여할 가벼운 게임을 찾는 진행자",
+      "timeline": [
+        {
+          "t": "파티 시작 20분 뒤",
+          "act": "처음 만난 사람들이 테이블별로만 이야기하는 걸 봄",
+          "emo": "한 번 섞일 계기만 있으면 분위기가 살 것 같음",
+          "pain": false
+        },
+        {
+          "t": "게임을 검색할 때",
+          "act": "규칙은 많은데 오늘 인원과 어울리는지 모르겠음",
+          "emo": "설명하다 실패하면 더 어색해질까 걱정됨",
+          "pain": true
+        },
+        {
+          "t": "진행을 포기하려 할 때",
+          "act": "사람들이 다시 아는 사람끼리만 모여 앉음",
+          "emo": "준비한 시간이 따로 노는 것 같아 아쉬움",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "집단 응집",
+    "whyItMatters": "파티 게임은 규칙보다 참여 문턱이 중요합니다. 인원과 친밀도에 맞춘 카드가 있으면 진행자가 자신 있게 시작할 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "집단 응집",
+      "socialContext": "처음 만난 사람들이 섞여야 하는 파티 장면",
+      "outputShape": "라이어 게임 역할 카드",
+      "emotionalResolution": "진행이 실패할까 봐 덜 떨리는 안심",
+      "anchorMechanism": "참여형 놀이 콘텐츠를 즉석에서 만드는 방식"
+    }
+  },
+  {
+    "seed": "home-workout",
+    "pain": 49,
+    "format": "vote-card",
+    "title": "점심홈트 확인카드 — 재택 점심홈트",
+    "oneliner": "재택 점심 15분 운동을 하고 나서 스스로와 동료에게 작은 확인을 남긴다",
+    "target": "재택 점심 홈트를 며칠 지나면 잊어버리는 직장인",
+    "mvp": [
+      "오늘 운동 선택",
+      "15분 타이머",
+      "확인 카드 공유",
+      "주간 기록 보기"
+    ],
+    "evidence": "Habitify는 작은 습관 기록과 리마인드를 유료화한 서비스로 월매출 약 8억 8,000만원 규모의 수요가 있어요.",
+    "todayAction": "오늘 반나절 안에 점심 홈트 타이머와 완료 카드를 만들고, 주간 기록을 보여주는 화면을 만들 수 있어요.",
+    "buildPrompt": "재택근무자가 점심시간에 할 15분 홈트 동작을 고르고 타이머를 시작하는 화면을 만들어줘. 끝나면 완료 카드가 생기고, 원하면 동료나 친구에게 가볍게 공유할 수 있게 해줘. 주간 완료 기록과 쉬어간 날 메모는 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Habitify",
+    "anchorDetail": "Habitify: 작은 습관 기록과 리마인드를 유료화한 서비스, 월매출 약 8억 8,000만원.",
+    "appName": "점심홈트 확인카드",
+    "frontStory": {
+      "persona": "재택 점심 홈트를 며칠 지나면 잊어버리는 직장인",
+      "timeline": [
+        {
+          "t": "점심을 먹고 난 뒤",
+          "act": "캘린더 빈칸을 보고 매트를 꺼냄",
+          "emo": "15분 정도는 충분히 할 수 있을 것 같음",
+          "pain": false
+        },
+        {
+          "t": "회의 알림이 울릴 때",
+          "act": "운동을 했는지 미뤘는지 표시할 곳 없이 노트북을 엶",
+          "emo": "아무도 모르는 약속이라 금방 흐려짐",
+          "pain": true
+        },
+        {
+          "t": "금요일 오후",
+          "act": "이번 주에 몇 번 했는지 기억이 나지 않음",
+          "emo": "잘하고 있었는지조차 알 수 없어 의욕이 식음",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "가벼운 사회적 증거",
+    "whyItMatters": "혼자 하는 작은 운동은 기록과 확인이 없으면 쉽게 사라집니다. 완료 카드가 있으면 재택 중에도 행동이 보이고 이어가기 쉬워집니다.",
+    "differentiationAxis": {
+      "psychology": "가벼운 사회적 증거",
+      "socialContext": "재택근무 점심시간에 짧게 운동하는 루틴",
+      "outputShape": "15분 홈트 확인카드",
+      "emotionalResolution": "흐려진 약속이 보이는 기록으로 바뀜",
+      "anchorMechanism": "작은 습관 기록과 리마인드를 남기는 방식"
+    }
+  },
+  {
+    "seed": "influencer-marketing",
+    "pain": 72,
+    "format": "vote-card",
+    "title": "인플루언서 비교카드 — 후보 캡처만",
+    "oneliner": "캡처만 쌓인 후보 계정을 팔로워 분위기·콘텐츠 톤·협업 위험으로 비교하는 투표 카드",
+    "target": "인플루언서 후보를 캡처로만 모으는 마케터",
+    "mvp": [
+      "후보 계정 입력",
+      "콘텐츠톤 태그",
+      "협업위험 표시",
+      "팀투표 카드"
+    ],
+    "evidence": "Tokfluence는 틱톡 인플루언서 프로필을 분석해 후보 비교를 돕는 도구로 월매출 약 270만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 후보 계정과 콘텐츠 톤, 팔로워 분위기, 협업 위험을 입력하고 팀 투표 카드로 공유할 수 있어요.",
+    "buildPrompt": "인플루언서 후보 계정 세 개를 입력하면 팔로워 결, 콘텐츠 톤, 최근 광고 비중, 댓글 분위기, 협업 위험을 같은 기준으로 비교하는 투표 카드를 만들어줘. 팀원이 한 명을 고르고 이유를 남기면 최종 후보와 보류 후보를 나눠 보여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Tokfluence",
+    "anchorDetail": "Tokfluence: 틱톡 인플루언서 프로필을 분석해 후보 비교를 돕는 도구, 월매출 약 270만원.",
+    "appName": "인플루언서 비교카드",
+    "frontStory": {
+      "persona": "인플루언서 후보를 캡처로만 모으는 마케터",
+      "timeline": [
+        {
+          "t": "캠페인 준비",
+          "act": "눈에 띈 계정을 캡처해 폴더에 모읍니다",
+          "emo": "후보가 많으니 좋은 선택을 할 수 있을 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "제안서 작성 전",
+          "act": "캡처마다 팔로워 분위기와 콘텐츠 톤이 달라 비교 기준을 잃습니다",
+          "emo": "결국 익숙한 계정에 다시 연락하게 될 것 같습니다",
+          "pain": true
+        },
+        {
+          "t": "팀 확인 요청",
+          "act": "왜 이 후보가 나은지 설명하려고 캡처를 다시 넘깁니다",
+          "emo": "근거 없는 취향 선택처럼 보일까 걱정됩니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "비교 기준 정렬",
+    "whyItMatters": "인플루언서 섭외는 후보가 많을수록 익숙한 사람에게 돌아가기 쉽습니다. 같은 기준의 투표 카드가 있으면 팀 판단이 빨라집니다.",
+    "differentiationAxis": {
+      "psychology": "비교 기준 정렬",
+      "socialContext": "인플루언서 섭외 후보 회의",
+      "outputShape": "후보 비교 투표 카드",
+      "emotionalResolution": "선택 근거 확보",
+      "anchorMechanism": "인플루언서 프로필 분석으로 후보 비교"
+    }
+  },
+  {
+    "seed": "legal-terms-generator",
+    "pain": 13,
+    "format": "template-gen",
+    "title": "약관상담 질문초안 — 전문가 부담",
+    "oneliner": "서비스 약관을 만들기 전 결제·환불·개인정보 항목을 변호사에게 물어볼 질문으로 정리",
+    "target": "약관 초안을 만들었지만 법률 상담 질문이 흐릿한 1인 창업자",
+    "mvp": [
+      "서비스정보 입력",
+      "결제항목 선택",
+      "위험질문 생성",
+      "상담메모 저장"
+    ],
+    "evidence": "Termly처럼 웹사이트 약관과 정책 문서를 만드는 도구는 해외에서 매달 약 8억 4,500만원 규모의 매출 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 서비스 정보와 결제·환불 항목을 입력해 법률 상담에서 물어볼 질문 초안을 만들 수 있어요.",
+    "buildPrompt": "1인 창업자가 서비스 유형, 결제 방식, 환불 조건, 수집 정보, 고객 유형을 입력하면 법률 상담에서 물어볼 질문 초안을 만드는 화면을 만들어줘. 법률 결론을 단정하지 말고 확인해야 할 약관 항목과 상담 메모를 나누어 보여줘. 데이터는 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Termly",
+    "anchorDetail": "Termly: 웹사이트 약관과 정책 문서를 만드는 도구, 월매출 약 8억 4,500만원.",
+    "appName": "약관상담 질문초안",
+    "frontStory": {
+      "persona": "약관 초안을 만들었지만 법률 상담 질문이 흐릿한 1인 창업자",
+      "timeline": [
+        {
+          "t": "결제 기능 준비 중",
+          "act": "다른 서비스 약관을 참고해 초안을 적어봄",
+          "emo": "일단 문서는 있어야 출시할 수 있다고 느낌",
+          "pain": false
+        },
+        {
+          "t": "전문가 상담 전",
+          "act": "환불, 책임 제한, 개인정보 항목 중 무엇을 물어야 할지 막힘",
+          "emo": "너무 기초적인 질문일까 부담됨",
+          "pain": true
+        },
+        {
+          "t": "출시 직전",
+          "act": "복사한 문구가 우리 서비스에 맞는지 확신하지 못함",
+          "emo": "나중에 문제가 생길까 계속 신경 쓰임",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "전문가 질문 구체화",
+    "whyItMatters": "약관은 복사보다 상담 질문을 잘 준비하는 것이 먼저입니다. 확인할 항목이 나뉘면 짧은 상담도 더 실질적으로 쓸 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "전문가 질문 구체화",
+      "socialContext": "1인 창업자의 출시 전 법률 상담",
+      "outputShape": "약관 상담 질문 초안",
+      "emotionalResolution": "출시 전 불안 완화",
+      "anchorMechanism": "약관과 정책 문서를 만드는 방식"
+    }
+  },
+  {
+    "seed": "live-commerce",
+    "pain": 59,
+    "format": "calc-tool",
+    "title": "라이브 흥행 점검 — 라이브 노쇼",
+    "oneliner": "방송 전에 상품·시간·예고글을 점검해 오늘 라이브의 빈 좌석 위험을 낮추는 도구",
+    "target": "라이브를 켜도 시청자가 적어 상품 설명만 하다 끝나는 셀러",
+    "mvp": [
+      "방송시간 입력",
+      "예고글 확인",
+      "첫상품 점검",
+      "오픈멘트 저장"
+    ],
+    "evidence": "Restream처럼 라이브 운영 흐름을 준비하는 도구는 해외에서 매달 약 3억 1,200만원 규모의 매출 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 방송 시간, 예고글, 첫 상품 구성을 입력하고 부족한 준비 항목을 보여주는 점검 화면을 만들 수 있어요.",
+    "buildPrompt": "라이브커머스 셀러가 방송 시간, 예고글, 첫 상품, 혜택, 첫 멘트를 입력하면 준비 부족 항목을 표시하는 점검 화면을 만들어줘. 시청자 입장 전까지 고칠 행동을 세 줄로 보여주고 방송 후 메모를 저장하게 해줘. 데이터는 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Restream",
+    "anchorDetail": "Restream: 라이브 운영 흐름을 준비하는 도구, 월매출 약 3억 1,200만원.",
+    "appName": "라이브 흥행 점검",
+    "frontStory": {
+      "persona": "라이브를 켜도 시청자가 적어 상품 설명만 하다 끝나는 셀러",
+      "timeline": [
+        {
+          "t": "방송 한 시간 전",
+          "act": "상품을 진열하고 휴대폰 거치대를 세움",
+          "emo": "오늘은 몇 명이라도 들어오길 기대함",
+          "pain": false
+        },
+        {
+          "t": "시작 버튼 앞",
+          "act": "예고글을 충분히 올렸는지, 첫 멘트가 있는지 헷갈림",
+          "emo": "준비가 빈 채로 켜면 또 혼자 말할까 걱정됨",
+          "pain": true
+        },
+        {
+          "t": "방송 종료 후",
+          "act": "왜 사람이 적었는지 기록 없이 넘김",
+          "emo": "다음 방송도 똑같이 시작할 것 같음",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "시작 전 통제감",
+    "whyItMatters": "라이브는 켜기 전 준비 신호가 모여야 첫 반응이 생깁니다. 시간, 예고, 첫 상품을 점검하면 방송 후 개선점도 남길 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "시작 전 통제감",
+      "socialContext": "소규모 라이브커머스 방송 준비",
+      "outputShape": "라이브 준비 점검 도구",
+      "emotionalResolution": "시작 버튼 앞 자신감",
+      "anchorMechanism": "라이브 운영 흐름을 준비하는 방식"
+    }
+  },
+  {
+    "seed": "logistics-delivery",
+    "pain": 55,
+    "format": "calc-tool",
+    "title": "발주중복 점검계산기 — 발주가 뒤섞임",
+    "oneliner": "주문별 도매처와 발송 상태를 넣어 중복 발주 위험을 먼저 보여주는 계산 도구",
+    "target": "여러 도매처에 주문을 넘기는 쇼핑몰 운영자",
+    "mvp": [
+      "주문번호 입력",
+      "도매처 선택",
+      "상태 점수 계산",
+      "중복 위험 표시"
+    ],
+    "evidence": "Order Desk는 주문과 발송 흐름을 연결하는 운영 도구로 월매출 약 5억 9,000만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 주문번호와 도매처 상태를 넣고, 중복 발주 위험이 보이는 계산 도구를 만들 수 있어요.",
+    "buildPrompt": "주문번호, 고객명, 상품명, 도매처, 발주 상태, 발송 메모를 입력하면 중복 발주 위험을 계산해줘. 위험한 주문에는 이유와 확인할 사람, 보류 문장을 붙이고 오늘 처리할 순서로 정렬해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Order Desk",
+    "anchorDetail": "Order Desk: 주문과 발송 흐름을 연결하는 운영 도구, 월매출 약 5억 9,000만원.",
+    "appName": "발주중복 점검계산기",
+    "frontStory": {
+      "persona": "여러 도매처에 주문을 넘기는 쇼핑몰 운영자",
+      "timeline": [
+        {
+          "t": "오후 발주 시간",
+          "act": "주문 목록과 도매처 메신저를 번갈아 봅니다",
+          "emo": "오늘 들어온 주문만 처리하면 끝날 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "발주 중반",
+          "act": "어제 보낸 주문인지 오늘 새로 들어온 주문인지 메모가 겹칩니다",
+          "emo": "같은 상품을 두 번 넘길까 손이 멈춥니다",
+          "pain": true
+        },
+        {
+          "t": "송장 받기 전",
+          "act": "확실하지 않은 주문을 다시 대화방에서 검색합니다",
+          "emo": "주문 하나 때문에 하루 흐름이 끊깁니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "손실 회피",
+    "whyItMatters": "중복 발주는 매출보다 사과와 취소 비용이 크게 느껴집니다. 위험 주문을 먼저 보면 멈춰야 할 지점이 명확해집니다.",
+    "differentiationAxis": {
+      "psychology": "손실 회피",
+      "socialContext": "여러 도매처와 주문을 맞추는 오후",
+      "outputShape": "중복 발주 위험 계산 도구",
+      "emotionalResolution": "실수 예방",
+      "anchorMechanism": "주문과 발송 흐름 연결"
+    }
+  },
+  {
+    "seed": "mobile-apps-ai-reply-generator",
+    "pain": 10,
+    "format": "calc-tool",
+    "title": "AI 답장 앱 첫 기능 결정표",
+    "oneliner": "사과·거절·예약 변경을 빈도·표현 위험·결제 가능성으로 비교해, 첫 출시에서 검증할 상황 하나를 정한다.",
+    "target": "답장 앱 기능이 커져서 첫 출시 범위를 못 정한 1인 빌더",
+    "mvp": [
+      "상황 후보 입력",
+      "위험도 체크",
+      "반복 빈도 표시",
+      "첫 기능 저장"
+    ],
+    "evidence": "Ticketdesk AI는 고객 문의에 자동 답장하는 지원 도구로 월매출 약 297만원의 수요가 있어요.",
+    "todayAction": "오늘 반나절 안에 답장 상황 후보를 넣고, 위험도와 반복 빈도를 비교해 첫 기능을 고르는 결정표까지 만들 수 있어요.",
+    "buildPrompt": "AI 답장 앱의 첫 기능 범위를 고르는 결정표를 만들어줘. 사용자가 사과, 거절, 예약 변경, 문의 응대 같은 상황 후보를 입력하면 반복 빈도, 민감도, 사용자가 수정할 여지, 공유 가능성을 체크하게 해줘. 결과에는 오늘 만들 첫 기능과 제외할 기능을 보여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Ticketdesk AI",
+    "anchorDetail": "Ticketdesk AI: 지식 기반으로 고객 문의와 채팅에 자동 답장하는 도구, 월매출 약 297만원.",
+    "appName": "AI 답장 앱 첫 기능 결정표",
+    "frontStory": {
+      "persona": "답장 앱 기능이 커져서 첫 출시 범위를 못 정한 1인 빌더",
+      "timeline": [
+        {
+          "t": "기능 목록 작성",
+          "act": "사과, 거절, 예약 변경, 고객 문의까지 전부 넣고 싶어집니다",
+          "emo": "넓게 만들면 더 많은 사람이 쓸 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "첫 화면 구성",
+          "act": "상황마다 필요한 입력값과 위험한 표현이 달라집니다",
+          "emo": "오늘 안에 만들 분량이 갑자기 커진 느낌입니다",
+          "pain": true
+        },
+        {
+          "t": "작업 시작 전",
+          "act": "반복 빈도가 높고 민감도가 낮은 기능 하나만 남깁니다",
+          "emo": "첫 출시가 실험 가능한 크기로 줄어듭니다",
+          "pain": false
+        }
+      ]
+    },
+    "source": "agent-tech-mobile-35",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "범위 축소",
+    "whyItMatters": "답장 앱은 상황을 많이 담을수록 안전 문구와 수정 흐름이 복잡해집니다. 첫 기능을 좁히면 실제 사용자 반응을 더 빨리 볼 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "범위 축소",
+      "socialContext": "첫 출시 범위를 정하는 앱 제작 전날",
+      "outputShape": "AI 답장 첫 기능 결정표",
+      "emotionalResolution": "실험 가능한 크기",
+      "anchorMechanism": "고객 문의에 지식 기반 답장 초안을 만드는 방식"
+    }
+  },
+  {
+    "seed": "mobile-apps-locale-launch-priority",
+    "pain": 10,
+    "format": "curation",
+    "title": "출시국가 근거 후보집 — 출시 우선순위 막힘",
+    "oneliner": "출시 국가를 못 고를 때, 언어 준비와 결제 가능성 기준으로 후보를 좁히는 목록",
+    "target": "첫 해외 출시 국가를 정하지 못한 인디 앱 메이커",
+    "mvp": [
+      "국가 후보 등록",
+      "준비도 태그",
+      "결제 신호 메모",
+      "우선순위 공유"
+    ],
+    "evidence": "FaceKit처럼 국가별 앱 수요를 타고 성장한 모바일 사례가 월매출 약 2,565만원 규모로 기록돼 있어요.",
+    "todayAction": "오늘 반나절이면 국가 후보와 준비도 태그를 넣고, 출시 우선순위를 공유하는 후보집을 만들 수 있어요.",
+    "buildPrompt": "인디 앱 메이커가 국가 후보를 등록하고 언어 준비도, 결제 가능성, 경쟁 앱 수, 지원 부담을 태그로 붙이는 큐레이션 목록을 만들어줘. 결과는 이번 주 출시 후보, 보류 후보, 조사 후보로 나누고 공유 링크로 보여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "FaceKit",
+    "anchorDetail": "FaceKit: 국가별 앱 수요를 타고 성장한 모바일 사례, 월매출 약 2,565만원.",
+    "appName": "출시국가 근거 후보집",
+    "frontStory": {
+      "persona": "첫 해외 출시 국가를 정하지 못한 인디 앱 메이커",
+      "timeline": [
+        {
+          "t": "앱 심사 준비 때",
+          "act": "영어권부터 열면 될지 주변 국가부터 열면 될지 생각함",
+          "emo": "한 나라만 정하면 진행될 것 같음",
+          "pain": false
+        },
+        {
+          "t": "스토어 설정 앞",
+          "act": "언어, 결제, 지원 문의가 한꺼번에 떠올라 결정을 미룸",
+          "emo": "어느 선택이 덜 위험한지 모르겠음",
+          "pain": true
+        },
+        {
+          "t": "출시 일정을 잡을 때",
+          "act": "모든 국가를 더 조사하겠다며 공개일을 늦춤",
+          "emo": "준비한 앱이 계속 대기 중인 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "선택 기준 축소",
+    "whyItMatters": "국가 선택은 변수가 많아질수록 출시가 밀립니다. 준비도와 결제 신호만 먼저 보면 이번 주 결정을 내릴 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "선택 기준 축소",
+      "socialContext": "앱 심사 전 출시 범위 결정",
+      "outputShape": "국가 후보 큐레이션 목록",
+      "emotionalResolution": "출시 범위가 정해지는 가벼움",
+      "anchorMechanism": "국가별 앱 수요를 기준으로 좁힘"
+    }
+  },
+  {
+    "seed": "mobile-apps-niche-ai-scoring",
+    "pain": 10,
+    "format": "calc-tool",
+    "title": "진단결과 범위표 — 범위 결정 막힘",
+    "oneliner": "AI 진단 앱에서 무료 결과와 유료 해설의 경계를 정해 첫 결제를 테스트하는 표",
+    "target": "진단 결과를 어디까지 무료로 보여줄지 고민하는 앱 빌더",
+    "mvp": [
+      "결과 항목 입력",
+      "무료 범위 체크",
+      "유료 해설 표시",
+      "실험 문구 저장"
+    ],
+    "evidence": "개인화 진단 앱처럼 무료 결과와 상세 해설을 나누는 흐름에는 월 약 1,560만원 규모의 유료 수요가 있어요.",
+    "todayAction": "오늘 반나절 안에 결과 항목을 넣고 무료 범위와 유료 해설을 나눠, 첫 결제 실험 문구까지 만드는 표를 만들 수 있어요.",
+    "buildPrompt": "AI 진단 앱의 결과 노출 범위를 정하는 표를 만들어줘. 사용자가 결과 항목을 입력하면 무료로 보여줄 요약, 결제 후 보여줄 상세 해설, 결제 전에 보여줄 미리보기 문구를 나누게 해줘. 과장된 효과 문구는 피하고 사용자가 납득할 설명만 남기게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "개인화 진단 앱",
+    "anchorDetail": "무료 진단 결과와 상세 해설을 나눠 결제를 만드는 모바일 앱, 월 약 1,560만원 규모.",
+    "appName": "진단결과 범위표",
+    "frontStory": {
+      "persona": "진단 결과를 어디까지 무료로 보여줄지 고민하는 앱 빌더",
+      "timeline": [
+        {
+          "t": "결과 화면 작성",
+          "act": "사용자에게 도움이 되게 전부 보여주고 싶지만 결제 이유도 필요합니다",
+          "emo": "무료와 유료 사이에서 선을 긋기 어렵습니다",
+          "pain": true
+        },
+        {
+          "t": "항목 분리",
+          "act": "요약, 이유, 개인화 조언, 다음 행동을 따로 적어봅니다",
+          "emo": "어떤 정보가 결제 후 가치인지 보입니다",
+          "pain": false
+        },
+        {
+          "t": "실험 문구 저장",
+          "act": "무료 요약과 유료 해설 미리보기를 한 화면에 배치합니다",
+          "emo": "사용자를 속이지 않고 결제 가치를 보여줄 수 있습니다",
+          "pain": false
+        }
+      ]
+    },
+    "source": "agent-tech-mobile-35",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "가치 경계 설정",
+    "whyItMatters": "진단 앱은 결과를 너무 많이 열면 결제 이유가 약해지고, 너무 숨기면 신뢰가 떨어집니다. 무료와 유료의 역할을 나누면 첫 결제 실험이 명확해집니다.",
+    "differentiationAxis": {
+      "psychology": "가치 경계 설정",
+      "socialContext": "AI 진단 앱 결제 화면을 설계하는 순간",
+      "outputShape": "결과 범위 결정표",
+      "emotionalResolution": "정직한 결제 실험",
+      "anchorMechanism": "무료 결과와 상세 해설을 기능 단위로 나누는 방식"
+    }
+  },
+  {
+    "seed": "mobile-apps-niche-ai-scoring",
+    "pain": 2,
+    "format": "calc-tool",
+    "title": "진단앱 질문설계표 — 초보 선택 어려움",
+    "oneliner": "니치 AI 진단 앱의 첫 질문 5개를 사용자 상황·결과 신뢰도 기준으로 고르는 표",
+    "target": "진단 앱을 만들고 싶지만 어떤 질문부터 넣을지 모르는 기획자",
+    "mvp": [
+      "진단 주제 입력",
+      "질문 후보 작성",
+      "답변 난도 체크",
+      "첫 질문 저장"
+    ],
+    "evidence": "퀴즈형 진단 앱처럼 질문 설계가 결과 신뢰도를 좌우하는 도구에는 월 약 1,030만원 규모의 유료 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 진단 주제와 질문 후보를 입력하고, 답변 난도와 결과 신뢰도를 비교하는 질문 설계표까지 만들 수 있어요.",
+    "buildPrompt": "니치 AI 진단 앱의 첫 질문을 고르는 설계표를 만들어줘. 사용자가 진단 주제와 질문 후보를 넣으면 각 질문의 답변 쉬움, 사생활 민감도, 결과에 주는 영향, 사용자가 이해할 표현을 체크하게 해줘. 결과에는 첫 질문 5개와 뺄 질문을 보여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "퀴즈형 진단 앱",
+    "anchorDetail": "질문 응답을 바탕으로 개인화 결과를 보여주는 모바일 진단 앱, 월 약 1,030만원 규모.",
+    "appName": "진단앱 질문설계표",
+    "frontStory": {
+      "persona": "진단 앱을 만들고 싶지만 어떤 질문부터 넣을지 모르는 기획자",
+      "timeline": [
+        {
+          "t": "주제 선정 후",
+          "act": "피부, 공부법, 취향 같은 진단 주제를 정하고 질문을 떠올립니다",
+          "emo": "질문을 많이 넣으면 더 정확해질 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "첫 화면 설계",
+          "act": "너무 사적인 질문과 답하기 쉬운 질문이 섞여 이탈이 걱정됩니다",
+          "emo": "사용자가 첫 질문에서 나가버릴까 신경 쓰입니다",
+          "pain": true
+        },
+        {
+          "t": "프로토타입 작성",
+          "act": "답하기 쉽고 결과에 영향이 큰 질문 5개만 남깁니다",
+          "emo": "진단이 가볍지만 허술해 보이지 않는 구성이 됩니다",
+          "pain": false
+        }
+      ]
+    },
+    "source": "agent-tech-mobile-35",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "첫 마찰 감소",
+    "whyItMatters": "진단 앱은 첫 질문에서 사용자의 신뢰와 이탈이 갈립니다. 질문 난도와 결과 기여도를 함께 보면 짧아도 설득력 있는 흐름을 만들 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "첫 마찰 감소",
+      "socialContext": "니치 진단 앱의 첫 화면을 만드는 순간",
+      "outputShape": "질문 설계표",
+      "emotionalResolution": "짧아도 믿을 수 있는 구성",
+      "anchorMechanism": "질문 후보를 답변 난도와 결과 기여도로 고르는 방식"
+    }
+  },
+  {
+    "seed": "no-code-component-market",
+    "pain": 31,
+    "format": "curation",
+    "title": "컴포넌트 색상 큐레이션 — 비슷한 색 남발",
+    "oneliner": "비슷한 색이 늘어난 노코드 컴포넌트를 팔레트와 사용처별로 정리해 재사용할 조합을 고르는 목록",
+    "target": "컴포넌트마다 색을 새로 집어 넣어 화면이 들쭉날쭉한 제작자",
+    "mvp": [
+      "컴포넌트 등록",
+      "색상 묶음 저장",
+      "사용처 태그",
+      "재사용 조합 고정"
+    ],
+    "evidence": "Untitled UI처럼 컴포넌트를 색상 규칙과 함께 제공하는 마켓 사례가 월 약 116만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 컴포넌트별 색상 묶음과 사용처를 정리하고, 다시 쓸 색 조합을 고정하는 큐레이션을 만들 수 있어요.",
+    "buildPrompt": "노코드 제작자가 컴포넌트 이름, 쓰인 색상, 사용 위치, 어울리는 배경, 피해야 할 조합을 등록하면 색상 큐레이션 목록으로 정리되는 화면을 만들어줘. 색상 묶음과 사용처 태그로 필터링하고 재사용할 조합을 저장하게 해줘. 브라우저 저장소를 사용해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Untitled UI",
+    "anchorDetail": "Untitled UI: 컴포넌트를 색상 규칙과 함께 제공하는 마켓 사례, 월 약 116만원.",
+    "appName": "컴포넌트 색상 큐레이션",
+    "frontStory": {
+      "persona": "컴포넌트마다 색을 새로 집어 넣어 화면이 들쭉날쭉한 제작자",
+      "timeline": [
+        {
+          "t": "새 화면을 붙일 때",
+          "act": "이전 컴포넌트와 비슷하지만 다른 색을 또 고름",
+          "emo": "조금씩 어긋나는 느낌이 쌓임",
+          "pain": true
+        },
+        {
+          "t": "전체 화면을 볼 때",
+          "act": "어떤 색이 원래 기준인지 모르겠음",
+          "emo": "다시 정리하려니 손댈 곳이 많아 보임",
+          "pain": true
+        },
+        {
+          "t": "큐레이션을 만든 뒤",
+          "act": "사용처별 색 조합을 재사용함",
+          "emo": "새 화면이 기존 화면과 맞아 보임",
+          "pain": false
+        }
+      ]
+    },
+    "source": "manual-creative-social-2026-07-10",
+    "needSource": "direct",
+    "psychologyPrinciple": "시각 규칙 회수",
+    "whyItMatters": "노코드 제작은 빠른 만큼 색 규칙이 흩어지기 쉽습니다. 컴포넌트별 팔레트를 모으면 재사용 기준이 생깁니다.",
+    "differentiationAxis": {
+      "psychology": "시각 규칙 회수",
+      "socialContext": "노코드 컴포넌트 재사용",
+      "outputShape": "색상 큐레이션 목록",
+      "emotionalResolution": "들쭉날쭉한 화면이 재사용 규칙으로 정리됨",
+      "anchorMechanism": "컴포넌트를 색상 규칙과 함께 제공하는 방식"
+    }
+  },
+  {
+    "seed": "no-code-component-market",
+    "pain": 31,
+    "format": "dashboard",
+    "title": "컴포넌트 색상 현황판 — 비슷한 색 남발",
+    "oneliner": "프로젝트에 퍼진 색상과 컴포넌트 사용처를 한눈에 보여줘 줄일 색부터 찾는 현황판",
+    "target": "노코드 페이지마다 비슷한 색을 계속 늘린 제작자",
+    "mvp": [
+      "색상 코드 입력",
+      "사용 컴포넌트 연결",
+      "중복 색 묶기",
+      "줄일 색 표시"
+    ],
+    "evidence": "Specify처럼 디자인 토큰 사용처를 한곳에서 보는 도구가 월 약 134만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 색상 코드와 사용 컴포넌트를 입력하고, 비슷한 색과 줄일 색을 보여주는 현황판을 만들 수 있어요.",
+    "buildPrompt": "노코드 제작자가 색상 코드, 색 이름, 쓰인 컴포넌트, 화면 위치를 입력하면 색상 현황판으로 정리되는 화면을 만들어줘. 현황판은 비슷한 색 묶음, 가장 많이 쓰인 색, 줄일 만한 색을 보여주고 교체 메모를 남기게 해줘. 브라우저 저장소를 사용해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Specify",
+    "anchorDetail": "Specify: 디자인 토큰 사용처를 한곳에서 보는 도구 사례, 월 약 134만원.",
+    "appName": "컴포넌트 색상 현황판",
+    "frontStory": {
+      "persona": "노코드 페이지마다 비슷한 색을 계속 늘린 제작자",
+      "timeline": [
+        {
+          "t": "새 페이지를 만들 때",
+          "act": "이전 색을 찾지 못해 새 색을 복사함",
+          "emo": "작은 차이가 쌓이는 걸 알지만 멈추기 어려움",
+          "pain": true
+        },
+        {
+          "t": "전체 스타일을 볼 때",
+          "act": "비슷한 파란색과 회색이 너무 많아 보임",
+          "emo": "어디부터 줄일지 막막함",
+          "pain": true
+        },
+        {
+          "t": "현황판을 본 뒤",
+          "act": "가장 적게 쓰인 비슷한 색부터 교체함",
+          "emo": "정리 순서가 생김",
+          "pain": false
+        }
+      ]
+    },
+    "source": "manual-creative-social-2026-07-10",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "중복 가시화",
+    "whyItMatters": "색상 중복은 눈으로만 보면 정리하기 어렵습니다. 사용처와 빈도를 함께 보면 줄일 색부터 보입니다.",
+    "differentiationAxis": {
+      "psychology": "중복 가시화",
+      "socialContext": "노코드 프로젝트 스타일 정리",
+      "outputShape": "색상 사용 현황판",
+      "emotionalResolution": "막막한 정리가 줄일 순서로 바뀜",
+      "anchorMechanism": "디자인 토큰 사용처를 한곳에서 보는 방식"
+    }
+  },
+  {
+    "seed": "no-code-component-market",
+    "pain": 38,
+    "format": "curation",
+    "title": "제작툴 구독 큐레이션 — 이번 달 요금 불안",
+    "oneliner": "노코드와 디자인 제작툴 구독을 용도, 이번 달 사용 여부, 대체 가능성으로 정리하는 목록",
+    "target": "제작툴을 여러 개 결제하고도 뭘 줄일지 못 고르는 1인 제작자",
+    "mvp": [
+      "구독툴 목록 입력",
+      "사용 빈도 표시",
+      "대체 가능 태그",
+      "유지할 툴 저장"
+    ],
+    "evidence": "Substacks처럼 소규모 팀의 구독툴을 모아 정리하는 서비스가 월 약 58만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 제작툴 구독 목록과 이번 달 사용 여부를 입력하고, 유지할 툴을 고르는 큐레이션을 만들 수 있어요.",
+    "buildPrompt": "1인 제작자가 결제 중인 노코드와 디자인 도구 이름, 월 비용, 이번 달 사용 여부, 대체 가능한 도구, 계속 쓰는 이유를 입력하면 구독 큐레이션 목록이 되는 화면을 만들어줘. 사용 빈도와 대체 가능성으로 필터링하고 다음 달 유지할 도구를 저장하게 해줘. 브라우저 저장소를 사용해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Substacks",
+    "anchorDetail": "Substacks: 소규모 팀의 구독툴을 모아 정리하는 서비스 사례, 월 약 58만원.",
+    "appName": "제작툴 구독 큐레이션",
+    "frontStory": {
+      "persona": "제작툴을 여러 개 결제하고도 뭘 줄일지 못 고르는 1인 제작자",
+      "timeline": [
+        {
+          "t": "카드 결제 알림을 볼 때",
+          "act": "이번 달 거의 안 쓴 제작툴 이름이 뜸",
+          "emo": "작은 비용이 여러 개라 불안함",
+          "pain": true
+        },
+        {
+          "t": "해지하려 할 때",
+          "act": "언젠가 쓸 것 같아 결정을 미룸",
+          "emo": "줄이면 작업이 막힐까 걱정됨",
+          "pain": true
+        },
+        {
+          "t": "목록을 정리한 뒤",
+          "act": "이번 달 안 쓴 툴과 대체 가능한 툴을 분리함",
+          "emo": "줄일 수 있는 비용이 보임",
+          "pain": false
+        }
+      ]
+    },
+    "source": "manual-creative-social-2026-07-10",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "비용 후회 줄이기",
+    "whyItMatters": "제작툴 구독은 하나씩 보면 작아 보여도 합치면 불안이 됩니다. 사용 여부와 대체 가능성을 붙이면 줄일 수 있는 도구가 보입니다.",
+    "differentiationAxis": {
+      "psychology": "비용 후회 줄이기",
+      "socialContext": "1인 제작자의 도구 결제 점검",
+      "outputShape": "구독툴 큐레이션",
+      "emotionalResolution": "막연한 결제 불안이 줄일 목록으로 바뀜",
+      "anchorMechanism": "구독툴을 모아 정리하는 방식"
+    }
+  },
+  {
+    "seed": "no-code-component-market",
+    "pain": 38,
+    "format": "dashboard",
+    "title": "제작툴 비용 현황판 — 이번 달 요금 불안",
+    "oneliner": "디자인, 노코드, 이미지 제작툴 비용과 사용일을 모아 이번 달 부담을 보여주는 현황판",
+    "target": "이번 달 제작툴 비용이 얼마인지 늦게 알아채는 1인 제작자",
+    "mvp": [
+      "툴별 비용 입력",
+      "사용일 체크",
+      "카테고리 합계",
+      "해지 검토 표시"
+    ],
+    "evidence": "Bobby처럼 개인 구독 비용과 갱신일을 한눈에 보여주는 앱이 월 약 76만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 제작툴 비용과 사용일을 입력하고, 카테고리 합계와 해지 검토 대상을 보여주는 현황판을 만들 수 있어요.",
+    "buildPrompt": "1인 제작자가 결제 중인 제작툴 이름, 카테고리, 월 비용, 결제일, 마지막 사용일을 입력하면 비용 현황판으로 정리되는 화면을 만들어줘. 현황판은 이번 달 합계, 카테고리별 비용, 오래 안 쓴 도구, 다음 결제일을 보여주고 해지 검토 메모를 남기게 해줘. 브라우저 저장소를 사용해줘.",
+    "evidenceType": "usage",
+    "anchorName": "Bobby",
+    "anchorDetail": "Bobby: 개인 구독 비용과 갱신일을 한눈에 보여주는 앱 사례, 월 약 76만원.",
+    "appName": "제작툴 비용 현황판",
+    "frontStory": {
+      "persona": "이번 달 제작툴 비용이 얼마인지 늦게 알아채는 1인 제작자",
+      "timeline": [
+        {
+          "t": "월말 정산 때",
+          "act": "디자인툴과 이미지툴 결제가 따로 찍힌 걸 봄",
+          "emo": "합치면 얼마나 되는지 바로 안 보임",
+          "pain": true
+        },
+        {
+          "t": "새 툴을 결제하려 할 때",
+          "act": "이미 비슷한 툴을 쓰는지 떠올려봄",
+          "emo": "또 겹쳐 결제할까 불안함",
+          "pain": true
+        },
+        {
+          "t": "현황판을 본 뒤",
+          "act": "이번 달 합계와 오래 안 쓴 툴을 확인함",
+          "emo": "결제 판단이 차분해짐",
+          "pain": false
+        }
+      ]
+    },
+    "source": "manual-creative-social-2026-07-10",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "비용 가시화",
+    "whyItMatters": "툴 비용은 여러 결제일에 흩어지면 체감이 늦습니다. 비용과 사용일을 함께 보면 유지와 해지 판단이 쉬워집니다.",
+    "differentiationAxis": {
+      "psychology": "비용 가시화",
+      "socialContext": "제작툴 구독 비용 점검",
+      "outputShape": "비용 현황판",
+      "emotionalResolution": "늦은 불안이 월간 판단으로 바뀜",
+      "anchorMechanism": "구독 비용과 갱신일을 한눈에 보여주는 방식"
+    }
+  },
+  {
+    "seed": "no-code-notion-site",
+    "pain": 2,
+    "format": "calc-tool",
+    "title": "가게사이트 견적계산기 — 초보 선택 어려움",
+    "oneliner": "동네 가게 사장이 필요한 페이지와 예약 기능을 고르면 제작 범위를 좁혀주는 도구",
+    "target": "처음 가게 소개 사이트를 만들려는 자영업자",
+    "mvp": [
+      "업종 선택",
+      "필요 페이지 고르기",
+      "기능 범위 계산",
+      "의뢰 문장 저장"
+    ],
+    "evidence": "Super처럼 노코드 페이지를 빠르게 사이트로 바꾸는 도구는 월매출 약 1억 2,000만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 업종과 필요한 페이지를 고르면 제작 범위와 의뢰 문장이 나오는 계산 도구를 만들 수 있어요.",
+    "buildPrompt": "동네 가게 업종, 필요한 페이지, 예약 여부, 메뉴 수, 사진 준비 상태를 입력하면 오늘 만들 수 있는 사이트 범위를 계산해줘. 너무 큰 범위와 먼저 만들 페이지를 나누고, 제작자에게 보낼 의뢰 문장을 만들어줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Super",
+    "anchorDetail": "Super: 노코드 페이지를 사이트로 바꾸는 도구, 월매출 약 1억 2,000만원.",
+    "appName": "가게사이트 견적계산기",
+    "frontStory": {
+      "persona": "처음 가게 소개 사이트를 만들려는 자영업자",
+      "timeline": [
+        {
+          "t": "가게 마감 후",
+          "act": "다른 식당 사이트를 보며 우리 가게도 필요하다고 생각합니다",
+          "emo": "예약이 조금 늘 수 있을 것 같아 기대합니다",
+          "pain": false
+        },
+        {
+          "t": "의뢰 글 작성 중",
+          "act": "메뉴, 위치, 예약, 후기 중 무엇부터 넣을지 고르지 못합니다",
+          "emo": "괜히 비싼 제작을 맡길까 조심스러워집니다",
+          "pain": true
+        },
+        {
+          "t": "지인에게 묻기 전",
+          "act": "필요한 기능을 설명하지 못해 메시지를 지웁니다",
+          "emo": "내가 뭘 원하는지도 모르는 느낌이 듭니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "선택지 축소",
+    "whyItMatters": "초보자는 가격보다 범위가 먼저 막힙니다. 필요한 페이지를 고르게 하면 의뢰가 막연한 부탁에서 구체적인 요청으로 바뀝니다.",
+    "differentiationAxis": {
+      "psychology": "선택지 축소",
+      "socialContext": "동네 가게 사이트 첫 의뢰",
+      "outputShape": "제작 범위 계산 도구",
+      "emotionalResolution": "의뢰 자신감",
+      "anchorMechanism": "노코드 페이지를 사이트로 전환"
+    }
+  },
+  {
+    "seed": "no-code-small-biz-site",
+    "pain": 13,
+    "format": "template-gen",
+    "title": "동네 가게 소개문",
+    "oneliner": "오픈 전 반찬가게 사장은 소개칸을 비워 둔다. 사진·대표 메뉴로 세 문장을 만들고 단골에게 ‘우리 가게 같아?’라고 묻는다.",
+    "target": "첫 홈페이지에서 단골에게 늘 들려주던 가게 이야기를 소개문으로 옮기지 못하는 반찬가게 사장",
+    "mvp": [
+      "가게 정보 입력",
+      "사진 단서 고르기",
+      "톤 선택",
+      "소개문 저장"
+    ],
+    "evidence": "Durable처럼 작은 사업자의 사이트 문구와 화면을 빠르게 만드는 도구가 월 약 122만원 규모예요.",
+    "todayAction": "오늘 반나절 안에 가게 정보와 사진 단서를 입력하면 첫 화면 소개문과 메뉴 소개 문구를 뽑는 템플릿을 만들 수 있어요.",
+    "buildPrompt": "동네가게 사장님이 가게 이름, 대표 메뉴, 손님이 좋아하는 점, 사진 단서, 원하는 말투를 입력하면 홈페이지 첫 화면 소개문을 생성하는 화면을 만들어줘. 결과는 짧은 소개, 메뉴 소개, 예약 유도 문장으로 나누고 사용자가 고쳐 저장하게 해줘. 브라우저 저장소를 사용해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Durable",
+    "anchorDetail": "Durable: 작은 사업자의 사이트 문구와 화면을 빠르게 만드는 도구, 월 약 122만원.",
+    "appName": "가게 첫인사",
+    "frontStory": {
+      "persona": "작은 가게 홈페이지 문구를 혼자 쓰다 멈추는 사장님",
+      "timeline": [
+        {
+          "t": "가게 사이트를 만들 때",
+          "act": "첫 화면에 넣을 말을 쓰다 지움",
+          "emo": "전문가에게 맡기기엔 작은 일 같음",
+          "pain": true
+        },
+        {
+          "t": "사진을 고른 뒤",
+          "act": "사진은 있는데 설명 문장이 따라오지 않음",
+          "emo": "가게 매력이 글로 안 살아남",
+          "pain": true
+        },
+        {
+          "t": "템플릿을 쓴 뒤",
+          "act": "사진 단서가 들어간 소개문을 다듬음",
+          "emo": "오늘 공개할 수 있을 것 같음",
+          "pain": false
+        }
+      ]
+    },
+    "source": "manual-creative-social-2026-07-10",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "전문가 부담 완화",
+    "whyItMatters": "작은 사이트 문구는 맡기기엔 부담스럽고 혼자 쓰기엔 막막합니다. 사진과 메뉴 단서로 시작하면 공개 가능한 문장이 나옵니다.",
+    "differentiationAxis": {
+      "psychology": "전문가 부담 완화",
+      "socialContext": "동네가게 사이트 첫 화면 작성",
+      "outputShape": "가게 소개문 템플릿",
+      "emotionalResolution": "빈 문구가 공개 가능한 소개로 바뀜",
+      "anchorMechanism": "작은 사업자 사이트 문구를 빠르게 만드는 방식"
+    }
+  },
+  {
+    "seed": "no-code-small-biz-site",
+    "pain": 15,
+    "format": "template-gen",
+    "title": "가게공지 문서틀 — 관리 방치",
+    "oneliner": "휴무·가격 변경·예약 안내를 놓치지 않도록 가게 공지 문장을 바로 뽑아주는 문서틀",
+    "target": "가게 소식을 매번 늦게 올리는 1인 운영자",
+    "mvp": [
+      "공지 종류 선택",
+      "변경 내용 입력",
+      "채널별 문장",
+      "게시 체크 저장"
+    ],
+    "evidence": "Typedream은 작은 사이트와 공지 페이지를 빠르게 만드는 도구로 월매출 약 5,200만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 공지 종류와 변경 내용을 넣으면, 채널별 문장과 게시 체크가 나오는 문서틀을 만들 수 있어요.",
+    "buildPrompt": "가게 휴무, 가격 변경, 예약 안내, 품절 안내 중 공지 종류를 고르고 변경 내용을 입력하면 인스타, 네이버, 문자용 문장을 만들어줘. 게시 전 확인할 항목과 게시한 채널 체크박스를 붙이고 저장할 수 있게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Typedream",
+    "anchorDetail": "Typedream: 작은 사이트와 공지 페이지를 빠르게 만드는 도구, 월매출 약 5,200만원.",
+    "appName": "가게공지 문서틀",
+    "frontStory": {
+      "persona": "가게 소식을 매번 늦게 올리는 1인 운영자",
+      "timeline": [
+        {
+          "t": "휴무 전날 밤",
+          "act": "내일 쉬는 걸 알리려고 인스타 글쓰기 화면을 켭니다",
+          "emo": "짧게 쓰면 금방 끝날 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "문장 작성 중",
+          "act": "네이버와 문자에는 어떻게 다르게 써야 할지 멈춥니다",
+          "emo": "공지 하나도 매번 새로 쓰는 게 번거롭습니다",
+          "pain": true
+        },
+        {
+          "t": "잠들기 전",
+          "act": "한 채널에만 올리고 다른 곳은 잊어버립니다",
+          "emo": "내일 손님이 헛걸음할까 마음이 쓰입니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "실행 의도",
+    "whyItMatters": "공지 관리는 꾸준함보다 게시 순서가 없어서 무너집니다. 채널별 문장과 체크가 있으면 놓친 채널이 줄어듭니다.",
+    "differentiationAxis": {
+      "psychology": "실행 의도",
+      "socialContext": "가게 공지를 밤에 올리는 운영자",
+      "outputShape": "채널별 공지 문서틀",
+      "emotionalResolution": "헛걸음 걱정 감소",
+      "anchorMechanism": "작은 공지 페이지와 문장 생성"
+    }
+  },
+  {
+    "seed": "no-code-widget-inbox",
+    "pain": 32,
+    "format": "dashboard",
+    "title": "문의위험 현황판 — 의심 문의 선별",
+    "oneliner": "노코드 웹문의함에 들어온 이름·연락처·요청 내용을 보고 수상한 문의를 먼저 보여주는 현황판",
+    "target": "웹문의함을 혼자 처리하는 작은 서비스 운영자",
+    "mvp": [
+      "문의 내용 붙이기",
+      "연락처 형식 체크",
+      "위험 태그 표시",
+      "처리 순서 저장"
+    ],
+    "evidence": "NETTIFY는 웹 업무 상태를 숫자와 신호로 모으는 도구로 월매출 약 216만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 웹문의 내용을 붙이고, 연락처 형식과 위험 태그가 보이는 현황판을 만들 수 있어요.",
+    "buildPrompt": "웹문의함의 이름, 이메일, 전화번호, 요청 내용을 붙여넣으면 의심스러운 문의를 위험순으로 보여줘. 각 항목에는 확인 이유, 정상 문의로 볼 수 있는 이유, 다음 답장 문장을 붙이고 저장할 수 있게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "NETTIFY",
+    "anchorDetail": "NETTIFY: 웹 업무 상태를 숫자와 신호로 모으는 도구, 월매출 약 216만원.",
+    "appName": "문의위험 현황판",
+    "frontStory": {
+      "persona": "웹문의함을 혼자 처리하는 작은 서비스 운영자",
+      "timeline": [
+        {
+          "t": "문의 알림 직후",
+          "act": "새 문의가 들어와 바로 열어봅니다",
+          "emo": "진짜 고객일 수 있어 반갑습니다",
+          "pain": false
+        },
+        {
+          "t": "답장 전",
+          "act": "이상한 이메일과 짧은 요청이 섞여 먼저 답할 사람을 못 고릅니다",
+          "emo": "정상 고객을 놓칠까 조심스러워집니다",
+          "pain": true
+        },
+        {
+          "t": "하루 끝",
+          "act": "찜찜한 문의를 그대로 남겨둡니다",
+          "emo": "내일도 같은 목록을 다시 볼 생각에 피곤합니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "예외 신호 분리",
+    "whyItMatters": "웹문의함은 진짜 고객과 잡음이 섞일 때 피로해집니다. 위험 태그가 있으면 정상 문의를 더 빨리 볼 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "예외 신호 분리",
+      "socialContext": "작은 서비스 웹문의 응대",
+      "outputShape": "문의 위험 현황판",
+      "emotionalResolution": "답장 순서 확신",
+      "anchorMechanism": "웹 업무 상태 신호화"
+    }
+  },
+  {
+    "seed": "no-code-widget-inbox",
+    "pain": 32,
+    "format": "digest-bot",
+    "title": "의심문의 알림봇 — 의심 문의 선별",
+    "oneliner": "웹문의함에서 연락처가 이상하거나 요청이 빈약한 문의만 골라 확인 알림으로 보내는 봇",
+    "target": "노코드 폼으로 상담 신청을 받는 1인 운영자",
+    "mvp": [
+      "폼 응답 붙이기",
+      "이상 연락처 표시",
+      "확인 알림 받기",
+      "처리 메모 저장"
+    ],
+    "evidence": "Blupry는 작은 웹 업무를 알림으로 줄이는 도구로 월매출 약 14만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 폼 응답을 붙이고, 이상 연락처만 확인 알림으로 받는 화면을 만들 수 있어요.",
+    "buildPrompt": "노코드 폼 응답의 이름, 연락처, 요청 내용, 유입 페이지를 입력하면 확인이 필요한 문의만 알림 목록으로 보여줘. 각 알림에는 의심 이유와 확인할 짧은 문장, 처리 메모 칸을 붙여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Blupry",
+    "anchorDetail": "Blupry: 작은 웹 업무를 알림으로 줄이는 도구, 월매출 약 14만원.",
+    "appName": "의심문의 알림봇",
+    "frontStory": {
+      "persona": "노코드 폼으로 상담 신청을 받는 1인 운영자",
+      "timeline": [
+        {
+          "t": "상담 신청 알림",
+          "act": "휴대폰으로 새 폼 응답을 확인합니다",
+          "emo": "문의가 늘어난 것 같아 기분이 좋아집니다",
+          "pain": false
+        },
+        {
+          "t": "응답 내용 확인",
+          "act": "전화번호가 이상한 신청과 진짜 고객 요청이 같은 목록에 있습니다",
+          "emo": "하나씩 눌러보는 시간이 아깝습니다",
+          "pain": true
+        },
+        {
+          "t": "답장 시간",
+          "act": "이상한 신청을 따로 표시하지 못하고 모두 다시 훑습니다",
+          "emo": "중요한 문의 답장이 늦어질까 걱정됩니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "주의 절약",
+    "whyItMatters": "확인할 문의만 따로 받으면 운영자는 정상 고객에게 더 빨리 답할 수 있습니다. 잡음이 줄어드는 것만으로도 응대 피로가 낮아집니다.",
+    "differentiationAxis": {
+      "psychology": "주의 절약",
+      "socialContext": "상담 신청 폼을 혼자 처리하는 시간",
+      "outputShape": "의심 문의 알림봇",
+      "emotionalResolution": "중요 문의 보호",
+      "anchorMechanism": "작은 웹 업무 알림화"
+    }
+  },
+  {
+    "seed": "online-mall",
+    "pain": 51,
+    "format": "calc-tool",
+    "title": "상품문구 빠른 진단 — 상품등록 반복",
+    "oneliner": "쇼핑몰 운영자가 상품 등록 전 이름·옵션·설명 빈칸을 빠르게 확인하는 점검 도구",
+    "target": "상품 등록 문구를 매번 새로 쓰는 1인 쇼핑몰 운영자",
+    "mvp": [
+      "상품명 붙이기",
+      "옵션 누락 체크",
+      "설명 빈칸 표시",
+      "수정목록 저장"
+    ],
+    "evidence": "Plerdy처럼 상세페이지와 전환 흐름을 점검하는 도구는 해외에서 매달 약 7,540만원 규모의 매출 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 상품명과 옵션, 설명 초안을 붙이고 누락된 항목을 한 화면에서 확인하는 진단 화면을 만들 수 있어요.",
+    "buildPrompt": "쇼핑몰 운영자가 상품명, 옵션, 상세 설명 초안을 붙여넣으면 누락된 옵션명, 반복되는 표현, 배송 안내 빠짐을 표시하는 점검 화면을 만들어줘. 항목마다 바로 고칠 문장을 제안하고 수정목록을 저장하게 해줘. 데이터는 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Plerdy",
+    "anchorDetail": "Plerdy: 상세페이지와 전환 흐름을 점검하는 도구, 월매출 약 7,540만원.",
+    "appName": "상품문구 빠른 진단",
+    "frontStory": {
+      "persona": "상품 등록 문구를 매번 새로 쓰는 1인 쇼핑몰 운영자",
+      "timeline": [
+        {
+          "t": "신상품 등록 전",
+          "act": "도매처 자료와 지난 상품 설명을 나란히 열어둠",
+          "emo": "이번에는 빨리 올리고 싶음",
+          "pain": false
+        },
+        {
+          "t": "옵션을 적는 중",
+          "act": "색상과 사이즈 표기가 서로 맞는지 계속 되짚음",
+          "emo": "작은 누락 때문에 문의가 쌓일까 신경 쓰임",
+          "pain": true
+        },
+        {
+          "t": "등록 버튼 앞",
+          "act": "배송 안내와 교환 문구를 다시 찾아 붙임",
+          "emo": "늘 같은 곳에서 시간이 새는 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "누락 불안 감소",
+    "whyItMatters": "상품 등록은 문구보다 누락 확인에 시간이 더 걸립니다. 필수 항목이 보이면 같은 설명을 다시 쓰는 부담이 줄어듭니다.",
+    "differentiationAxis": {
+      "psychology": "누락 불안 감소",
+      "socialContext": "1인 쇼핑몰의 신상품 등록",
+      "outputShape": "상품 등록 점검 화면",
+      "emotionalResolution": "등록 전 안도",
+      "anchorMechanism": "상세페이지 요소를 한 번에 점검하는 방식"
+    }
+  },
+  {
+    "seed": "performance-marketing",
+    "pain": 61,
+    "format": "curation",
+    "title": "동네 전단 반응",
+    "oneliner": "폐점 뒤 빵집 사장은 전단 100장을 뿌린 골목이 헷갈린다. 위치 사진마다 QR 방문 수를 붙여 다음 골목을 고른다.",
+    "target": "전단을 돌리고도 어느 골목에서 손님이 왔는지 모르는 동네 빵집 사장",
+    "mvp": [
+      "자리 사진 모으기",
+      "유동 시간 태그",
+      "반응 메모 저장",
+      "후보 순서 정렬"
+    ],
+    "evidence": "LocalRank.so는 지역 노출과 로컬 마케팅 관리를 돕는 도구로 월매출 약 4,050만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 전단 자리 사진과 유동 시간 메모를 모아, 다음 후보를 좁히는 목록을 만들 수 있어요.",
+    "buildPrompt": "가게 주변 전단 자리 사진, 주소, 유동 시간, 이전 문의 메모를 입력하면 다음에 실험할 후보 목록을 만들어줘. 각 후보에는 붙이면 좋은 시간, 피해야 할 이유, 가족에게 설명할 문장을 붙여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "LocalRank.so",
+    "anchorDetail": "LocalRank.so: 지역 노출과 로컬 마케팅 관리를 돕는 도구, 월매출 약 4,050만원.",
+    "appName": "전단 노트",
+    "frontStory": {
+      "persona": "동네 오프라인 홍보를 실험하려는 작은 가게 운영자",
+      "timeline": [
+        {
+          "t": "가게 문 닫은 뒤",
+          "act": "골목 사진을 보며 다음 전단 위치를 고릅니다",
+          "emo": "이번엔 손님 동선에 맞춰보고 싶습니다",
+          "pain": false
+        },
+        {
+          "t": "후보를 고를 때",
+          "act": "사진은 많은데 어느 시간이 붐비는지 메모가 따로 흩어져 있습니다",
+          "emo": "좋아 보이는 자리만 또 고를 것 같습니다",
+          "pain": true
+        },
+        {
+          "t": "가족에게 말하기 전",
+          "act": "왜 그 위치가 나은지 한 문장으로 설명하지 못합니다",
+          "emo": "설득보다 취향 싸움처럼 될까 걱정됩니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "비교 기준 외재화",
+    "whyItMatters": "후보를 사진만으로 고르면 익숙한 위치로 돌아갑니다. 유동 시간과 반응 메모를 함께 보면 다음 실험이 작아집니다.",
+    "differentiationAxis": {
+      "psychology": "비교 기준 외재화",
+      "socialContext": "동네 가게의 전단 위치 회의",
+      "outputShape": "전단 자리 후보 목록",
+      "emotionalResolution": "설득 가능한 근거",
+      "anchorMechanism": "지역 홍보 위치를 기록으로 비교"
+    }
+  },
+  {
+    "seed": "podcast",
+    "pain": 79,
+    "format": "vote-card",
+    "title": "출근길 에피소드 카드 — 고르다 이동시간 다 씀",
+    "oneliner": "출근 20분을 고르다 흘려보내기 전에, 길이·톤·듣고 싶은 이유로 에피소드를 고르는 투표카드",
+    "target": "밀린 팟캐스트가 많아 출근길마다 고르다 시간을 쓰는 직장인",
+    "mvp": [
+      "에피소드 카드화",
+      "분량 태그 표시",
+      "오늘 기분 반응",
+      "청취 후보 저장"
+    ],
+    "evidence": "Knightvision처럼 짧은 맥락을 골라 다음 행동으로 바꾸는 도구도 매달 약 3,240만원 규모의 매출 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 에피소드 후보를 카드로 만들고 분량과 오늘 기분 반응을 붙여 출근길 청취 후보를 저장하는 화면을 만들 수 있어요.",
+    "buildPrompt": "팟캐스트 에피소드 후보를 제목, 분량, 주제, 오늘 듣고 싶은 이유로 등록하는 투표카드 화면을 만들어줘. 사용자는 가볍게 듣기, 집중해서 듣기, 나중에 듣기 반응을 남길 수 있고, 출근길 남은 시간에 맞는 후보를 위에 보여줘. 데이터는 브라우저 저장소에 남기고 결과 카드를 공유할 수 있게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Knightvision",
+    "anchorDetail": "Knightvision: 짧은 맥락을 다음 행동으로 바꾸는 유료 사례, 월매출 약 3,240만원.",
+    "appName": "출근길 에피소드 카드",
+    "frontStory": {
+      "persona": "밀린 팟캐스트가 많아 출근길마다 고르다 시간을 쓰는 직장인",
+      "timeline": [
+        {
+          "t": "지하철을 기다릴 때",
+          "act": "오늘은 밀린 에피소드 하나를 들으려고 앱을 엶",
+          "emo": "출근길을 그냥 흘려보내고 싶지 않음",
+          "pain": false
+        },
+        {
+          "t": "열차가 들어올 때",
+          "act": "분량이 긴지 가벼운 내용인지 몰라 제목만 훑음",
+          "emo": "고르는 사이에 한 정거장을 지나칠 것 같음",
+          "pain": true
+        },
+        {
+          "t": "자리에 앉은 뒤",
+          "act": "결국 아무거나 틀었다가 집중이 안 돼 끔",
+          "emo": "들을 게 많은데 매번 못 듣는 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "시간 제약 고정",
+    "whyItMatters": "이동 시간 안에 들을 콘텐츠는 길이와 기분이 먼저 맞아야 합니다. 에피소드를 카드로 고르면 재생 전 선택 시간을 줄일 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "시간 제약 고정",
+      "socialContext": "출근길 혼자 듣기 전 선택",
+      "outputShape": "분량 기반 에피소드 투표카드",
+      "emotionalResolution": "고르다 놓치지 않는 안도",
+      "anchorMechanism": "짧은 맥락을 다음 행동으로 바꾸는 방식"
+    }
+  },
+  {
+    "seed": "podcast",
+    "pain": 80,
+    "format": "template-gen",
+    "title": "팟캐스트 문장틀 — 좋은 구절 놓침",
+    "oneliner": "듣다 좋았던 말을 놓치기 전, 인용과 내 생각을 같이 남기는 문장틀",
+    "target": "팟캐스트에서 좋은 말을 듣고도 금방 잊어버리는 사람",
+    "mvp": [
+      "에피소드 저장",
+      "좋은 말 메모",
+      "내 생각 덧붙임",
+      "공유 문장 복사"
+    ],
+    "evidence": "OnPodium처럼 오디오 경험을 기록으로 바꾸는 도구도 매달 약 650만원 규모의 매출 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 에피소드명과 좋았던 말을 입력하면 공유 가능한 문장으로 정리하는 문장틀을 만들 수 있어요.",
+    "buildPrompt": "팟캐스트를 듣는 사람이 에피소드명, 시간대, 좋았던 말, 그때 떠오른 생각을 입력하면 저장용 문장과 공유용 문장을 만들어주는 템플릿 생성기를 만들어줘. 나중에 다시 들을 링크와 태그를 남기고 복사 버튼을 제공해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "OnPodium",
+    "anchorDetail": "OnPodium: 오디오 경험을 기록으로 바꾸는 유료 사례, 월매출 약 650만원.",
+    "appName": "팟캐스트 문장틀",
+    "frontStory": {
+      "persona": "팟캐스트에서 좋은 말을 듣고도 금방 잊어버리는 사람",
+      "timeline": [
+        {
+          "t": "퇴근길 산책 중",
+          "act": "진행자가 한 문장을 듣고 잠깐 걸음을 늦춤",
+          "emo": "이 말은 나중에 꼭 다시 보고 싶다고 느낌",
+          "pain": false
+        },
+        {
+          "t": "신호등 앞",
+          "act": "휴대폰을 꺼냈지만 시간대와 표현을 정확히 못 잡음",
+          "emo": "멈춰서 적기엔 길 위라 애매함",
+          "pain": true
+        },
+        {
+          "t": "집에 도착한 뒤",
+          "act": "에피소드를 다시 열었지만 어느 지점인지 찾지 못함",
+          "emo": "좋았던 감정만 남고 문장은 사라진 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "인출 단서",
+    "whyItMatters": "오디오에서 얻은 생각은 장면과 함께 사라지기 쉽습니다. 시간대와 내 생각을 함께 남기면 다시 꺼낼 문장이 됩니다.",
+    "differentiationAxis": {
+      "psychology": "인출 단서",
+      "socialContext": "퇴근길 산책 중 팟캐스트를 듣는 장면",
+      "outputShape": "인용 저장 문장틀",
+      "emotionalResolution": "좋았던 말을 잃지 않는 만족감",
+      "anchorMechanism": "오디오 경험을 기록으로 바꾸는 방식"
+    }
+  },
+  {
+    "seed": "productivity-bank-statement-convert",
+    "pain": 13,
+    "format": "template-gen",
+    "title": "정산요약 문서틀 — 전문가 부담",
+    "oneliner": "세무사에게 보낼 월별 수입·비용·애매한 항목을 한 장으로 정리하는 문서틀",
+    "target": "정산 질문을 매번 길게 쓰는 프리랜서",
+    "mvp": [
+      "수입 합계 입력",
+      "비용 묶음 입력",
+      "질문 항목 표시",
+      "메일 문장 생성"
+    ],
+    "evidence": "Keeper는 세금 공제와 지출 정리를 돕는 도구로 월매출 약 2억 5,000만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 월별 수입과 비용 묶음을 넣고, 세무사에게 보낼 요약 문서틀을 만들 수 있어요.",
+    "buildPrompt": "프리랜서의 월별 수입 합계, 비용 묶음, 애매한 결제, 증빙 누락 항목을 입력하면 세무사에게 보낼 요약 문서를 만들어줘. 상단에는 꼭 물어볼 질문 세 개와 첨부 체크를 붙여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Keeper",
+    "anchorDetail": "Keeper: 세금 공제와 지출 정리를 돕는 도구, 월매출 약 2억 5,000만원.",
+    "appName": "정산요약 문서틀",
+    "frontStory": {
+      "persona": "정산 질문을 매번 길게 쓰는 프리랜서",
+      "timeline": [
+        {
+          "t": "세무사 마감 전날",
+          "act": "카톡에 보낼 월 정산 내용을 메모장에 적습니다",
+          "emo": "이번엔 필요한 것만 보내고 싶습니다",
+          "pain": false
+        },
+        {
+          "t": "문장 작성 중",
+          "act": "수입 합계, 비용 묶음, 질문이 한 문단에 뒤섞입니다",
+          "emo": "상대가 다시 물어볼 것 같아 말이 길어집니다",
+          "pain": true
+        },
+        {
+          "t": "전송 직전",
+          "act": "첨부 파일을 빠뜨렸는지 몰라 창을 닫지 못합니다",
+          "emo": "작은 실수 때문에 정산이 늦어질까 걱정됩니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "전달 양식화",
+    "whyItMatters": "전문가에게 보내는 자료는 형식이 없을 때 길어집니다. 문서틀이 있으면 질문과 첨부가 나뉘어 재질문이 줄어듭니다.",
+    "differentiationAxis": {
+      "psychology": "전달 양식화",
+      "socialContext": "세무사에게 월 정산 보내기",
+      "outputShape": "정산 요약 문서틀",
+      "emotionalResolution": "재질문 걱정 감소",
+      "anchorMechanism": "세금 지출 정리 흐름"
+    }
+  },
+  {
+    "seed": "productivity-bank-statement-convert",
+    "pain": 2,
+    "format": "calc-tool",
+    "title": "내역변환 첫 표 — 초보 선택 어려움",
+    "oneliner": "은행 PDF 형식이 제각각이라 막힌 회계 담당자가 먼저 변환할 파일과 주의할 열을 고르는 표",
+    "target": "은행내역 변환을 혼자 맡은 회계 담당자",
+    "mvp": [
+      "파일 유형 고르기",
+      "깨짐증상 체크",
+      "누락열 기록",
+      "변환순서 추천"
+    ],
+    "evidence": "BankConv는 은행 내역 PDF를 표 파일로 바꾸는 좁은 변환 도구로 월매출 약 118만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 은행 파일 유형과 깨짐 증상을 고르고 누락된 열을 적은 뒤, 먼저 변환할 파일 순서를 추천할 수 있어요.",
+    "buildPrompt": "회계 담당자가 은행 내역 파일 유형, 변환하려는 형식, 깨진 열, 누락된 날짜, 금액 열 상태를 입력하면 먼저 변환할 파일 순서를 보여주는 표를 만들어줘. 결과에는 주의해야 할 열과 변환 뒤 확인할 한 줄 기준을 붙여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "BankConv",
+    "anchorDetail": "BankConv: 은행 내역 PDF를 표 파일로 변환하는 도구, 월매출 약 118만원.",
+    "appName": "내역변환 첫 표",
+    "frontStory": {
+      "persona": "은행내역 변환을 혼자 맡은 회계 담당자",
+      "timeline": [
+        {
+          "t": "월말 정산 시작",
+          "act": "은행 PDF 여러 개를 내려받아 변환 파일을 만듭니다",
+          "emo": "이번 달은 빠르게 끝낼 수 있길 바랍니다",
+          "pain": false
+        },
+        {
+          "t": "표를 확인할 때",
+          "act": "입금자명과 수수료 열이 밀려 있는 파일을 발견합니다",
+          "emo": "어떤 파일부터 다시 변환해야 할지 판단하기 어렵습니다",
+          "pain": true
+        },
+        {
+          "t": "다시 변환하기 전",
+          "act": "통장별 파일을 모두 다시 열어보며 순서를 바꿉니다",
+          "emo": "초보처럼 같은 실수를 반복하는 것 같아 손이 느려집니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "첫 기준 제공",
+    "whyItMatters": "은행 내역 변환은 파일마다 깨지는 위치가 달라 초보자가 멈추기 쉽습니다. 먼저 볼 파일과 주의할 열이 정해지면 정산 흐름이 빨라집니다.",
+    "differentiationAxis": {
+      "psychology": "첫 기준 제공",
+      "socialContext": "월말 은행 내역 변환",
+      "outputShape": "변환 우선순위 표",
+      "emotionalResolution": "첫 판단 안도",
+      "anchorMechanism": "은행 PDF를 표 파일로 바꾸는 변환 수요"
+    }
+  },
+  {
+    "seed": "productivity-deep-work-focus",
+    "pain": 2,
+    "format": "calc-tool",
+    "title": "집중 첫 시간표 — 초보 선택 어려움",
+    "oneliner": "처음 깊게 일해보는 사람이 회의 사이 빈칸과 방해 요소로 25분 첫 시간을 고르는 표",
+    "target": "집중 루틴을 처음 잡는 지식노동자",
+    "mvp": [
+      "빈 시간 적기",
+      "방해요소 체크",
+      "작업깊이 고르기",
+      "첫시간 추천"
+    ],
+    "evidence": "studyfoc.us는 방해 차단과 집중 시간을 돕는 흐름으로 월매출 약 43만원 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 빈 시간과 방해 요소를 적고 작업 깊이를 고른 뒤, 바로 시작할 25분 첫 시간을 추천할 수 있어요.",
+    "buildPrompt": "사용자가 오늘 일정의 빈 시간, 회의 전후 여유, 알림 방해 요소, 처리할 작업의 깊이를 입력하면 25분짜리 첫 집중 슬롯을 추천하는 표를 만들어줘. 결과에는 시작 전 닫을 앱, 첫 문장, 끝난 뒤 기록할 한 줄을 붙여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "studyfoc.us",
+    "anchorDetail": "studyfoc.us: 방해 차단과 집중 시간을 돕는 디지털 환경 도구, 월매출 약 43만원.",
+    "appName": "집중 첫 시간표",
+    "frontStory": {
+      "persona": "집중 루틴을 처음 잡는 지식노동자",
+      "timeline": [
+        {
+          "t": "오전 일정 확인",
+          "act": "회의 사이 빈 시간이 몇 군데 있는지 캘린더를 봅니다",
+          "emo": "오늘은 한 번쯤 깊게 일할 수 있을 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "시작 직전",
+          "act": "어느 빈칸이 집중에 맞는지 몰라 메신저만 열어둡니다",
+          "emo": "괜히 시작했다가 중간에 끊길까 봐 망설입니다",
+          "pain": true
+        },
+        {
+          "t": "하루가 끝날 때",
+          "act": "분명 시간이 있었는데 깊은 작업은 못 했다고 느낍니다",
+          "emo": "내일도 같은 방식이면 또 흘려보낼 것 같습니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "시작 장벽 축소",
+    "whyItMatters": "깊은 집중을 처음 시작하는 사람은 긴 루틴보다 안전한 첫 시간이 필요합니다. 빈 시간과 방해 요소를 함께 보면 바로 시작할 시간이 드러납니다.",
+    "differentiationAxis": {
+      "psychology": "시작 장벽 축소",
+      "socialContext": "회의 사이 집중 시간 확보",
+      "outputShape": "첫 집중 슬롯표",
+      "emotionalResolution": "작은 시작감",
+      "anchorMechanism": "방해 차단과 집중 시간 관리"
+    }
+  },
+  {
+    "seed": "productivity-inbox-declutter",
+    "pain": 10,
+    "format": "calc-tool",
+    "title": "메일우선 점검표 — 우선순위 막힘",
+    "oneliner": "받은편지함에서 멈추는 직장인이 결제·고객·상사 메일 순서를 가르는 점검표",
+    "target": "메일이 쌓이면 첫 답장을 못 고르는 직장인",
+    "mvp": [
+      "메일 제목 붙이기",
+      "보낸사람 분류",
+      "긴급단어 표시",
+      "답장순서 정렬"
+    ],
+    "evidence": "Sprout은 할 일 마비와 시간 관리를 돕는 작업 앱으로 월매출 약 87만원 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 메일 제목과 보낸 사람을 붙이고 결제, 고객, 상사, 마감 단어를 표시해 답장 순서를 가르는 점검표를 만들 수 있어요.",
+    "buildPrompt": "사용자가 받은편지함의 제목과 보낸 사람을 붙여넣으면 결제, 고객, 상사, 마감, 확인 요청 단어를 표시해줘. 각 메일에 답장 긴급도와 미뤘을 때의 위험을 붙이고, 지금 답장할 메일 세 개를 고르는 점검표를 만들어줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Sprout",
+    "anchorDetail": "Sprout: 할 일 마비와 시간 관리를 돕는 작업 앱, 월매출 약 87만원.",
+    "appName": "메일우선 점검표",
+    "frontStory": {
+      "persona": "메일이 쌓이면 첫 답장을 못 고르는 직장인",
+      "timeline": [
+        {
+          "t": "출근 직후",
+          "act": "읽지 않은 메일 숫자를 보고 받은편지함을 엽니다",
+          "emo": "빨리 두세 개만 처리하면 된다고 생각합니다",
+          "pain": false
+        },
+        {
+          "t": "목록을 훑을 때",
+          "act": "고객 메일과 결제 메일과 상사 메일이 섞여 있어 손이 멈춥니다",
+          "emo": "잘못 고르면 더 급한 일을 놓칠 것 같습니다",
+          "pain": true
+        },
+        {
+          "t": "점심 전",
+          "act": "아직 첫 답장도 못 보내고 같은 목록을 다시 봅니다",
+          "emo": "메일함을 열수록 일이 더 커지는 느낌입니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "첫 행동 축소",
+    "whyItMatters": "메일 정리는 전체를 비우려 할 때 멈춥니다. 위험 단어와 관계 맥락으로 첫 답장만 좁히면 처리 흐름이 시작됩니다.",
+    "differentiationAxis": {
+      "psychology": "첫 행동 축소",
+      "socialContext": "출근 직후 받은편지함 처리",
+      "outputShape": "메일 우선순위 점검표",
+      "emotionalResolution": "숨통 트임",
+      "anchorMechanism": "할 일 마비를 작은 첫 행동으로 낮춤"
+    }
+  },
+  {
+    "seed": "productivity-meeting-interpret",
+    "pain": 13,
+    "format": "template-gen",
+    "title": "회의통역 전달문 — 전문가 부담",
+    "oneliner": "글로벌 회의에서 못 알아들은 문장을 동료에게 확인 요청으로 바꾸는 문안 도구",
+    "target": "영어 회의 후 확인 질문을 미루는 팀원",
+    "mvp": [
+      "회의문장 붙이기",
+      "모호한 표현 표시",
+      "질문대상 선택",
+      "확인문장 생성"
+    ],
+    "evidence": "Deeptrue는 실시간 회의 통역을 돕는 보조 도구로 월매출 약 392만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 회의에서 못 알아들은 문장과 맥락을 붙이고, 동료에게 보낼 확인 요청 문장을 만들 수 있어요.",
+    "buildPrompt": "글로벌 회의 참가자가 회의 중 적어둔 문장, 모호했던 표현, 관련 안건, 물어볼 동료를 입력하면 확인 요청 문장을 만들어줘. 결과에는 바로 보낼 짧은 메시지, 정중한 메시지, 다음 회의에서 확인할 질문을 나눠 보여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Deeptrue",
+    "anchorDetail": "Deeptrue: 실시간 회의 통역을 돕는 보조 도구, 월매출 약 392만원.",
+    "appName": "회의통역 전달문",
+    "frontStory": {
+      "persona": "영어 회의 후 확인 질문을 미루는 팀원",
+      "timeline": [
+        {
+          "t": "회의 직후",
+          "act": "메모장에 남긴 영어 문장을 다시 읽습니다",
+          "emo": "대략은 이해한 것 같아 안심하려 합니다",
+          "pain": false
+        },
+        {
+          "t": "액션아이템 정리",
+          "act": "누가 무엇을 하기로 했는지 한 문장이 계속 걸립니다",
+          "emo": "잘못 이해했을까 봐 다음 일을 시작하기 어렵습니다",
+          "pain": true
+        },
+        {
+          "t": "동료에게 물어보기 전",
+          "act": "너무 기본적인 질문처럼 보일까 봐 메시지를 고칩니다",
+          "emo": "확인하지 않으면 나중에 더 큰 오해가 될 것 같습니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "질문 문턱 낮추기",
+    "whyItMatters": "회의 통역의 핵심은 완벽한 번역보다 이후 행동의 오해를 줄이는 것입니다. 확인 문장이 바로 나오면 질문을 미루지 않습니다.",
+    "differentiationAxis": {
+      "psychology": "질문 문턱 낮추기",
+      "socialContext": "글로벌 회의 후 동료 확인",
+      "outputShape": "확인 요청 문안",
+      "emotionalResolution": "오해 불안 완화",
+      "anchorMechanism": "실시간 회의 통역 보조"
+    }
+  },
+  {
+    "seed": "productivity-meeting-interpret",
+    "pain": 15,
+    "format": "template-gen",
+    "title": "회의후속 문서틀 — 관리 방치",
+    "oneliner": "회의가 끝난 뒤 결정·담당자·기한을 놓치지 않도록 후속 문장을 만드는 문서틀",
+    "target": "회의록은 쓰지만 후속 실행이 흐려지는 팀 리더",
+    "mvp": [
+      "회의 메모 붙이기",
+      "결정사항 표시",
+      "담당자 문장",
+      "후속 메일 생성"
+    ],
+    "evidence": "Fellow는 회의 메모와 후속 실행을 관리하는 도구로 월매출 약 3억 6,000만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 회의 메모를 붙이고, 결정사항과 담당자별 후속 문장이 나오는 문서틀을 만들 수 있어요.",
+    "buildPrompt": "회의 메모, 참석자, 결정된 내용, 보류된 내용, 다음 회의 날짜를 입력하면 담당자별 후속 문서를 만들어줘. 각 항목에는 기한, 첫 행동, 확인 질문을 붙이고 메일로 보낼 문장까지 만들어줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Fellow",
+    "anchorDetail": "Fellow: 회의 메모와 후속 실행을 관리하는 도구, 월매출 약 3억 6,000만원.",
+    "appName": "회의후속 문서틀",
+    "frontStory": {
+      "persona": "회의록은 쓰지만 후속 실행이 흐려지는 팀 리더",
+      "timeline": [
+        {
+          "t": "회의 종료 5분 뒤",
+          "act": "메모 앱에 남은 말을 보고 후속 메일을 쓰려 합니다",
+          "emo": "방금 끝났으니 정리하기 쉬울 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "메일 작성 중",
+          "act": "누가 무엇을 맡았는지 말은 기억나는데 기한이 빠져 있습니다",
+          "emo": "나중에 각자 다르게 이해할까 불안합니다",
+          "pain": true
+        },
+        {
+          "t": "다음 회의 전",
+          "act": "지난번 결정사항을 다시 찾아봅니다",
+          "emo": "회의록은 있는데 실행이 남지 않은 느낌입니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "실행 의도",
+    "whyItMatters": "회의 후속은 기억이 생생할 때 담당자와 기한으로 고정해야 합니다. 문서틀이 있으면 합의가 행동으로 남습니다.",
+    "differentiationAxis": {
+      "psychology": "실행 의도",
+      "socialContext": "회의 직후 후속 메일 작성",
+      "outputShape": "후속 실행 문서틀",
+      "emotionalResolution": "합의 보존",
+      "anchorMechanism": "회의 메모를 실행으로 연결"
+    }
+  },
+  {
+    "seed": "productivity-task-overwhelm",
+    "pain": 10,
+    "format": "calc-tool",
+    "title": "업무순서 계산기 — 업무 순서 막힘",
+    "oneliner": "오늘 할 일을 마감·소요 시간·기다리는 사람 기준으로 계산해 첫 행동을 정하는 도구",
+    "target": "할 일은 많은데 첫 업무를 못 고르는 운영자",
+    "mvp": [
+      "할 일 입력",
+      "마감 시간 선택",
+      "대기자 표시",
+      "첫 행동 추천"
+    ],
+    "evidence": "Motion은 일정과 할 일을 자동으로 배치하는 도구로 월매출 약 9억원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 할 일과 마감 시간을 넣고, 첫 행동과 오늘 미룰 일이 보이는 계산 도구를 만들 수 있어요.",
+    "buildPrompt": "오늘 할 일, 예상 소요 시간, 마감 시간, 기다리는 사람, 미루면 생길 문제를 입력하면 첫 행동을 계산해줘. 지금 할 일, 점심 뒤 할 일, 오늘 미뤄도 되는 일을 나누고 이유를 보여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Motion",
+    "anchorDetail": "Motion: 일정과 할 일을 자동으로 배치하는 도구, 월매출 약 9억원.",
+    "appName": "업무순서 계산기",
+    "frontStory": {
+      "persona": "할 일은 많은데 첫 업무를 못 고르는 운영자",
+      "timeline": [
+        {
+          "t": "출근 직후",
+          "act": "할 일 메모 열 개를 보고 첫 줄부터 다시 읽습니다",
+          "emo": "하나만 시작하면 풀릴 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "30분 뒤",
+          "act": "마감이 가까운 일과 고객이 기다리는 일이 섞여 손이 멈춥니다",
+          "emo": "쉬운 일만 먼저 하는 것 같아 찜찜합니다",
+          "pain": true
+        },
+        {
+          "t": "점심 전",
+          "act": "아직 시작하지 못한 일을 다른 메모장으로 옮깁니다",
+          "emo": "바쁜데 한 일이 없는 느낌이 듭니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "실행 마찰 감소",
+    "whyItMatters": "업무 과부하는 일의 수보다 첫 행동이 흐릴 때 커집니다. 첫 행동과 미룰 일을 나누면 시작 비용이 낮아집니다.",
+    "differentiationAxis": {
+      "psychology": "실행 마찰 감소",
+      "socialContext": "출근 직후 업무 선택",
+      "outputShape": "첫 행동 계산 도구",
+      "emotionalResolution": "시작감 회복",
+      "anchorMechanism": "일정과 할 일 배치"
+    }
+  },
+  {
+    "seed": "productivity-task-overwhelm",
+    "pain": 10,
+    "format": "vote-card",
+    "title": "첫일결정 카드 — 첫 일 선택 막힘",
+    "oneliner": "할 일 목록 앞에서 멈춘 기획자가 세 가지 첫 작업을 동료 반응으로 좁히는 선택 카드",
+    "target": "마감이 겹치면 첫 작업을 못 고르는 기획자",
+    "mvp": [
+      "작업 세 개 입력",
+      "마감시간 표시",
+      "동료반응 받기",
+      "첫일 카드 공유"
+    ],
+    "evidence": "Sprout은 작업 마비와 우선순위 문제를 다루는 앱으로 월매출 약 87만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 첫 작업 후보 세 개를 입력하고 마감, 의존성, 에너지 정보를 붙인 뒤 동료 반응을 받는 선택 카드를 만들 수 있어요.",
+    "buildPrompt": "할 일 목록에서 오늘 먼저 할 작업 세 개를 입력하면 각 작업의 마감 시간, 의존성, 예상 에너지, 막히는 이유를 카드로 보여줘. 동료가 빠르게 하나를 고르고 이유를 남길 수 있게 만들고, 결과에는 가장 먼저 시작할 작업과 20분짜리 시작 문장을 보여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Sprout",
+    "anchorDetail": "Sprout: 작업 마비와 우선순위 문제에 집중한 생산성 앱, 월매출 약 87만원.",
+    "appName": "첫일결정 카드",
+    "frontStory": {
+      "persona": "마감이 겹치면 첫 작업을 못 고르는 기획자",
+      "timeline": [
+        {
+          "t": "업무 시작",
+          "act": "오늘 해야 할 일을 한 화면에 적어봅니다",
+          "emo": "적기만 하면 순서가 보일 거라 기대합니다",
+          "pain": false
+        },
+        {
+          "t": "첫 작업 선택",
+          "act": "셋 다 중요해 보여서 어떤 파일을 먼저 열지 못 고릅니다",
+          "emo": "고르는 시간도 일처럼 느껴져 손이 느려집니다",
+          "pain": true
+        },
+        {
+          "t": "동료에게 묻기 전",
+          "act": "상황을 길게 설명해야 할 것 같아 질문을 미룹니다",
+          "emo": "혼자 고민하다가 오전이 사라질까 초조합니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "사회적 선택 보조",
+    "whyItMatters": "할 일이 많을 때는 정답보다 시작이 중요합니다. 짧은 반응 카드로 외부 기준을 받으면 첫 작업을 정하기 쉬워집니다.",
+    "differentiationAxis": {
+      "psychology": "사회적 선택 보조",
+      "socialContext": "팀원에게 첫 작업 선택 도움 받기",
+      "outputShape": "첫 작업 선택 카드",
+      "emotionalResolution": "시작감",
+      "anchorMechanism": "작업 마비를 첫 행동으로 낮춤"
+    }
+  },
+  {
+    "seed": "reading",
+    "pain": 10,
+    "format": "vote-card",
+    "title": "주말 책 투표",
+    "oneliner": "일요일 밤 네 권을 다시 꽂던 초보가 표지를 친구에게 보낸다. 친구가 고른 한 권을 읽고 다음 주 한 줄 감상을 나눈다.",
+    "target": "읽다 만 책은 많지만 친구와 이번 주 한 권을 끝내고 싶은 독서 초보",
+    "mvp": [
+      "책장 목록 입력",
+      "읽을 이유 카드화",
+      "친구 반응 받기",
+      "주말 한 권 확정"
+    ],
+    "evidence": "Bookclubs처럼 책 선택을 작은 모임 반응으로 바꾸는 서비스가 월 약 74만원 규모로 운영돼요.",
+    "todayAction": "오늘 반나절 안에 읽다 만 책 6권을 입력하고, 친구가 읽고 싶은 순서와 한 줄 이유를 남기는 카드까지 만들 수 있어요.",
+    "buildPrompt": "읽다 만 책을 제목, 현재 페이지, 끌리는 이유, 부담되는 이유로 등록하면 주말 독서 투표카드가 만들어지는 화면을 만들어줘. 친구는 읽고 싶은 책에 반응과 한 줄 이유를 남기고, 사용자는 가장 많이 고른 책을 이번 주말 책으로 확정하게 해줘. 데이터는 브라우저 저장소에 남기고 결과 링크를 공유할 수 있게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Bookclubs",
+    "anchorDetail": "Bookclubs: 책 선택과 독서모임 반응을 연결하는 유료 커뮤니티 사례, 월 약 74만원.",
+    "appName": "한 권만",
+    "frontStory": {
+      "persona": "책은 많은데 오늘 펼칠 한 권을 못 고르는 독서 입문자",
+      "timeline": [
+        {
+          "t": "토요일 오전",
+          "act": "책장 앞에서 읽다 만 책을 꺼냈다 넣음",
+          "emo": "이번에도 고르다 시간이 갈까 봐 초조함",
+          "pain": true
+        },
+        {
+          "t": "친구 단톡방을 볼 때",
+          "act": "뭘 읽을지 묻고 싶지만 설명이 길어짐",
+          "emo": "혼자 고르면 또 미룰 것 같음",
+          "pain": true
+        },
+        {
+          "t": "책을 정한 뒤",
+          "act": "친구가 고른 이유를 옆에 두고 첫 장을 펼침",
+          "emo": "선택이 가벼워짐",
+          "pain": false
+        }
+      ]
+    },
+    "source": "manual-creative-social-2026-07-10",
+    "needSource": "direct",
+    "psychologyPrinciple": "사회적 선택 보조",
+    "whyItMatters": "책 선택은 정보보다 시작 명분이 부족해서 막힙니다. 작은 반응을 받으면 첫 장을 펼칠 이유가 생깁니다.",
+    "differentiationAxis": {
+      "psychology": "사회적 선택 보조",
+      "socialContext": "친구 단톡방에서 책 선택을 부탁",
+      "outputShape": "책별 반응 카드",
+      "emotionalResolution": "고민이 시작으로 바뀜",
+      "anchorMechanism": "책 선택을 모임 반응으로 바꾸는 방식"
+    }
+  },
+  {
+    "seed": "recruiting-hr-linkedin-scrap-match",
+    "pain": 10,
+    "format": "calc-tool",
+    "title": "공고매칭 점검표 — 지원 순서 고민",
+    "oneliner": "링크드인 공고 캡처만 쌓는 구직자가 역할·기술·마감 기준으로 지원 순서를 고르는 표",
+    "target": "해외 공고 캡처를 쌓아두는 이직 준비자",
+    "mvp": [
+      "공고캡처 붙이기",
+      "역할태그 표시",
+      "기술요건 체크",
+      "지원순서 추천"
+    ],
+    "evidence": "Tarss는 링크드인 피드와 채용 공고를 훑어 맞는 기회를 찾는 도구로 월매출 약 324만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 공고 캡처와 링크를 붙이고 역할, 기술요건, 마감일을 표시해 지원 순서를 추천하는 점검표를 만들 수 있어요.",
+    "buildPrompt": "구직자가 링크드인 공고 캡처나 텍스트를 붙여넣으면 역할, 필수 기술, 경력 수준, 마감일, 원격 가능 여부를 표로 정리해줘. 사용자의 보유 기술과 맞는 정도를 표시하고 오늘 지원할 공고와 보류할 공고를 나눠주는 점검표를 만들어줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Tarss",
+    "anchorDetail": "Tarss: 링크드인 피드와 채용 공고를 훑어 맞는 기회를 찾는 도구, 월매출 약 324만원.",
+    "appName": "공고매칭 점검표",
+    "frontStory": {
+      "persona": "해외 공고 캡처를 쌓아두는 이직 준비자",
+      "timeline": [
+        {
+          "t": "퇴근 후",
+          "act": "링크드인에서 괜찮아 보이는 공고를 캡처합니다",
+          "emo": "좋은 기회를 놓치지 않았다는 느낌이 듭니다",
+          "pain": false
+        },
+        {
+          "t": "지원하려고 볼 때",
+          "act": "캡처마다 역할과 기술요건이 달라 무엇부터 지원할지 멈춥니다",
+          "emo": "고를수록 내 경력과 맞는지 더 헷갈립니다",
+          "pain": true
+        },
+        {
+          "t": "마감일 직전",
+          "act": "가장 쉬워 보이는 공고만 급히 엽니다",
+          "emo": "진짜 맞는 기회를 뒤로 미룬 것 같아 아쉽습니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "적합도 기준화",
+    "whyItMatters": "공고 캡처는 쌓일수록 지원 행동을 늦춥니다. 역할과 기술요건을 같은 표로 맞추면 오늘 지원할 순서가 드러납니다.",
+    "differentiationAxis": {
+      "psychology": "적합도 기준화",
+      "socialContext": "퇴근 후 이직 준비",
+      "outputShape": "공고 적합도 점검표",
+      "emotionalResolution": "지원 순서 확정",
+      "anchorMechanism": "링크드인 공고 탐색과 매칭"
+    }
+  },
+  {
+    "seed": "recruiting-hr-resume-ats-check",
+    "pain": 10,
+    "format": "calc-tool",
+    "title": "자소서통과표 — 수정 우선순위 막힘",
+    "oneliner": "채용공고마다 자소서를 고쳐야 하는 취준생이 탈락 위험 문장을 먼저 고르는 점검표",
+    "target": "공고별 자소서 수정을 혼자 반복하는 취준생",
+    "mvp": [
+      "공고 문장 붙이기",
+      "자소서 단락 선택",
+      "누락키워드 표시",
+      "수정우선 카드"
+    ],
+    "evidence": "JuggleHire처럼 채용 판단을 좁혀주는 작은 도구에서도 월매출 약 74만원 사례가 보여요.",
+    "todayAction": "오늘 반나절 안에 공고와 자소서 단락을 붙이고, 누락 키워드와 수정 우선순위를 보여주는 점검표까지 만들 수 있어요.",
+    "buildPrompt": "취준생이 채용공고 문장과 자소서 단락을 붙여넣으면 필수 역량, 반복 표현, 근거 부족 문장을 나눠 표시하는 점검표를 만들어줘. 결과는 오늘 먼저 고칠 단락, 그대로 둘 단락, 면접 질문으로 이어질 문장을 카드로 보여주고 복사할 수 있게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "JuggleHire",
+    "anchorDetail": "JuggleHire: 비슷한 사용 흐름에 돈을 내는 해외 사례, 월매출 약 74만원.",
+    "appName": "자소서통과표",
+    "frontStory": {
+      "persona": "공고별 자소서 수정을 혼자 반복하는 취준생",
+      "timeline": [
+        {
+          "t": "마감 전날 밤",
+          "act": "비슷한 공고 세 개를 열고 자소서를 다시 읽음",
+          "emo": "이번엔 맞춰 쓸 수 있을 것 같음",
+          "pain": false
+        },
+        {
+          "t": "수정 중반",
+          "act": "어느 단락을 먼저 고쳐야 할지 표시 없이 전체를 만짐",
+          "emo": "시간은 줄고 확신은 더 흐려짐",
+          "pain": true
+        },
+        {
+          "t": "제출 직전",
+          "act": "공고 키워드를 반영했는지 손으로 다시 찾음",
+          "emo": "틀린 방향으로 고친 것 같아 불안함",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "인지 부하 절감",
+    "whyItMatters": "자소서 수정은 전체를 다시 쓰려는 순간 느려집니다. 공고와 어긋난 단락만 보이면 제출 전 행동이 작아집니다.",
+    "differentiationAxis": {
+      "psychology": "인지 부하 절감",
+      "socialContext": "혼자 제출 전 점검",
+      "outputShape": "수정 우선 단락표",
+      "emotionalResolution": "명확함",
+      "anchorMechanism": "채용 조건을 판단 기준으로 바꿔 후보를 좁힘"
+    }
+  },
+  {
+    "seed": "recruiting-hr-resume-ats-check",
+    "pain": 10,
+    "format": "vote-card",
+    "title": "이력서수정 투표카드 — 수정 방향 고민",
+    "oneliner": "지원 직무와 이력서 문장을 올려 동료에게 어느 부분부터 고칠지 투표받는 카드",
+    "target": "이력서 수정 순서를 못 정한 취업 준비생",
+    "mvp": [
+      "직무 설명 입력",
+      "문장 세 개 등록",
+      "수정 우선 투표",
+      "의견 링크 공유"
+    ],
+    "evidence": "Peerlist는 프로필과 작업물을 동료 피드백으로 다듬는 흐름에서 월매출 약 1,900만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 지원 직무와 이력서 문장을 넣고, 동료에게 수정 우선순위를 묻는 투표카드를 만들 수 있어요.",
+    "buildPrompt": "지원 직무 설명과 이력서 문장 세 개를 입력하면 익명 투표 카드로 보여줘. 투표자는 가장 먼저 고칠 문장을 고르고 이유를 한 줄로 남기게 해줘. 결과에는 수정 우선순위와 다음 수정 문장을 만들어줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Peerlist",
+    "anchorDetail": "Peerlist: 프로필과 작업물을 동료 피드백으로 다듬는 흐름, 월매출 약 1,900만원.",
+    "appName": "이력서수정 투표카드",
+    "frontStory": {
+      "persona": "이력서 수정 순서를 못 정한 취업 준비생",
+      "timeline": [
+        {
+          "t": "지원 마감 전날",
+          "act": "이력서 문장 세 개를 복사해 놓고 번갈아 읽습니다",
+          "emo": "조금만 고치면 제출할 수 있을 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "수정 중반",
+          "act": "성과 문장과 협업 문장 중 무엇이 더 약한지 혼자 판단합니다",
+          "emo": "계속 읽을수록 다 어색하게 느껴집니다",
+          "pain": true
+        },
+        {
+          "t": "친구에게 보내기 전",
+          "act": "무엇을 봐달라고 해야 할지 몰라 파일만 보냅니다",
+          "emo": "막연한 부탁이 될까 미안합니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "사회적 증거",
+    "whyItMatters": "글 수정은 혼자 오래 볼수록 감각이 흐려집니다. 투표 질문을 좁히면 친구도 부담 없이 판단을 도와줄 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "사회적 증거",
+      "socialContext": "지원 마감 전 친구에게 피드백 요청",
+      "outputShape": "수정 우선순위 투표카드",
+      "emotionalResolution": "제출 전 확신",
+      "anchorMechanism": "프로필 문장을 동료 피드백으로 다듬음"
+    }
+  },
+  {
+    "seed": "recruiting-hr-resume-ats-check",
+    "pain": 13,
+    "format": "calc-tool",
+    "title": "이력서문항 점검계산기 — 전문가 부담",
+    "oneliner": "채용 담당자에게 묻기 전, 이력서 문장과 공고 조건의 빠진 연결을 계산하는 도구",
+    "target": "직무 조건에 맞게 이력서를 고치려는 지원자",
+    "mvp": [
+      "직무 조건 입력",
+      "이력서 문장 붙이기",
+      "빠진 연결 계산",
+      "수정 문장 저장"
+    ],
+    "evidence": "Resume Worded는 이력서 문장을 점검해주는 도구로 월매출 약 1억 7,000만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 직무 조건과 이력서 문장을 붙이고, 빠진 연결과 수정 문장이 나오는 계산 도구를 만들 수 있어요.",
+    "buildPrompt": "직무 조건과 이력서 문장을 입력하면 조건별로 연결된 경험, 빠진 근거, 과장처럼 보이는 표현을 계산해줘. 수정 우선순위와 바로 바꿀 문장 예시를 보여주고 결과를 저장할 수 있게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Resume Worded",
+    "anchorDetail": "Resume Worded: 이력서 문장을 점검해주는 도구, 월매출 약 1억 7,000만원.",
+    "appName": "이력서문항 점검계산기",
+    "frontStory": {
+      "persona": "직무 조건에 맞게 이력서를 고치려는 지원자",
+      "timeline": [
+        {
+          "t": "카페에서 지원 준비",
+          "act": "공고 조건과 이력서를 양쪽 창에 띄웁니다",
+          "emo": "조건을 맞춰 쓰면 통과할 수 있을 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "문장 수정 중",
+          "act": "경험은 있는데 어느 조건과 연결되는지 표시하지 못합니다",
+          "emo": "채용 담당자에게 묻기엔 너무 기본적인 질문 같습니다",
+          "pain": true
+        },
+        {
+          "t": "제출 버튼 앞",
+          "act": "빠진 조건이 있는지 모른 채 마지막 문장을 고칩니다",
+          "emo": "좋은 경험을 제대로 못 보여준 것 같아 아쉽습니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "대응 관계 명료화",
+    "whyItMatters": "이력서는 좋은 경험보다 공고 조건과의 연결이 중요합니다. 빠진 연결이 보이면 전문가에게 묻지 않고도 첫 수정을 시작할 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "대응 관계 명료화",
+      "socialContext": "카페에서 혼자 지원서를 고치는 장면",
+      "outputShape": "조건 연결 계산 도구",
+      "emotionalResolution": "수정 시작감",
+      "anchorMechanism": "이력서 문장 점검"
+    }
+  },
+  {
+    "seed": "recruiting-hr-resume-ats-check",
+    "pain": 13,
+    "format": "template-gen",
+    "title": "자소서질문 초안 — 전문가 부담",
+    "oneliner": "공고별 자소서 수정이 막힐 때 멘토에게 물어볼 확인 문장을 만드는 도구",
+    "target": "공고별 자소서를 혼자 고치는 취준생",
+    "mvp": [
+      "공고문 붙이기",
+      "자소서단락 선택",
+      "막힌이유 체크",
+      "질문문장 생성"
+    ],
+    "evidence": "Pronto는 지원서가 필터를 통과하도록 돕는 취업 문서 도구로 월매출 약 46만원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 공고문과 자소서 단락을 붙이고 막힌 이유를 고른 뒤, 멘토에게 보낼 확인 질문을 만들 수 있어요.",
+    "buildPrompt": "취준생이 채용공고와 자소서 단락을 붙여넣으면 필수 역량 누락, 근거 부족, 반복 표현, 직무와 어긋난 문장을 표시해줘. 혼자 판단하기 어려운 부분은 멘토에게 보낼 확인 질문으로 바꾸고, 오늘 고칠 단락과 질문 문장을 나눠 보여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Pronto",
+    "anchorDetail": "Pronto: 지원서가 필터를 통과하도록 돕는 취업 문서 도구, 월매출 약 46만원.",
+    "appName": "자소서질문 초안",
+    "frontStory": {
+      "persona": "공고별 자소서를 혼자 고치는 취준생",
+      "timeline": [
+        {
+          "t": "마감 전날 밤",
+          "act": "공고문과 자소서 단락을 나란히 열어둡니다",
+          "emo": "몇 문단만 고치면 제출할 수 있을 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "수정 중반",
+          "act": "필수 역량을 넣어야 할지 기존 경험을 살려야 할지 멈춥니다",
+          "emo": "멘토에게 묻기엔 질문이 너무 흐릿해 보입니다",
+          "pain": true
+        },
+        {
+          "t": "제출 직전",
+          "act": "확인받지 못한 문장을 그대로 둘지 다시 고칠지 고민합니다",
+          "emo": "혼자 틀린 방향으로 고친 것 같아 불안합니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "전문가 질문 구체화",
+    "whyItMatters": "자소서 수정은 막힌 이유가 흐릿하면 도움을 요청하기 어렵습니다. 질문 문장이 생기면 혼자 다시 쓰는 시간을 줄일 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "전문가 질문 구체화",
+      "socialContext": "멘토에게 자소서 확인 요청",
+      "outputShape": "자소서 확인 질문 초안",
+      "emotionalResolution": "제출 전 안도",
+      "anchorMechanism": "지원서 필터 통과를 돕는 문서 개선"
+    }
+  },
+  {
+    "seed": "saas-lead-verify",
+    "pain": 7,
+    "format": "dashboard",
+    "title": "가입심사 현황판 — 반복 수동",
+    "oneliner": "무료 가입폼에 들어온 회사명·이메일·사용 목적을 묶어 수상한 신청을 먼저 보여주는 현황판",
+    "target": "초기 제품의 무료 가입 신청을 직접 확인하는 창업자",
+    "mvp": [
+      "신청 목록 붙이기",
+      "회사 도메인 표시",
+      "목적 메모 분류",
+      "심사 순서 정렬"
+    ],
+    "evidence": "Clearbit은 회사 정보와 이메일 신호를 연결하는 도구로 월매출 약 18억원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 가입 신청 목록을 붙이고, 회사 도메인과 사용 목적 기준으로 심사 순서가 보이는 현황판을 만들 수 있어요.",
+    "buildPrompt": "가입 신청자의 이름, 회사명, 이메일, 사용 목적, 유입 경로를 입력하면 우선 확인할 신청을 현황판으로 보여줘. 회사 도메인이 자연스러운지, 사용 목적이 구체적인지, 바로 승인할 수 있는지 나눠서 표시해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Clearbit",
+    "anchorDetail": "Clearbit: 회사 정보와 이메일 신호를 연결하는 도구, 월매출 약 18억원.",
+    "appName": "가입심사 현황판",
+    "frontStory": {
+      "persona": "초기 제품의 무료 가입 신청을 직접 확인하는 창업자",
+      "timeline": [
+        {
+          "t": "베타 오픈 다음 날",
+          "act": "새 가입 신청 27건을 보고 기분이 좋아집니다",
+          "emo": "드디어 반응이 온 것 같아 설렙니다",
+          "pain": false
+        },
+        {
+          "t": "목록 확인 중",
+          "act": "회사 이메일인지 개인 메일인지 모르는 신청이 섞여 있습니다",
+          "emo": "좋은 고객과 허수 신청을 구분하지 못해 조심스러워집니다",
+          "pain": true
+        },
+        {
+          "t": "초대 메일 전",
+          "act": "누구를 먼저 승인할지 기준 없이 이름만 봅니다",
+          "emo": "초기 고객을 놓치거나 이상한 가입을 받을까 불안합니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "신호 기반 분류",
+    "whyItMatters": "초기 가입은 숫자보다 좋은 사용자를 가려내는 일이 중요합니다. 회사와 목적 신호가 보이면 승인 순서가 생깁니다.",
+    "differentiationAxis": {
+      "psychology": "신호 기반 분류",
+      "socialContext": "베타 제품 가입 심사",
+      "outputShape": "가입 신청 현황판",
+      "emotionalResolution": "초기 고객 선별",
+      "anchorMechanism": "회사 정보와 이메일 신호 연결"
+    }
+  },
+  {
+    "seed": "sales-freelance-proposal-tracker",
+    "pain": 10,
+    "format": "curation",
+    "title": "제안서 우선목록 — 제안 순서 고민",
+    "oneliner": "보낸 제안서의 금액·마감·관계 온도를 모아 오늘 다시 연락할 곳을 좁히는 목록",
+    "target": "여러 제안서를 보낸 뒤 후속 순서를 못 정하는 프리랜서",
+    "mvp": [
+      "제안서 입력",
+      "마감일 태그",
+      "금액 힌트 표시",
+      "후속 순서 정렬"
+    ],
+    "evidence": "Bonsai는 프리랜서 제안서와 계약 흐름을 돕는 도구로 월매출 약 7억원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 보낸 제안서와 마감일을 넣고, 후속 연락 순서가 보이는 우선목록을 만들 수 있어요.",
+    "buildPrompt": "보낸 제안서 제목, 금액, 발송일, 고객 반응, 마감일, 관계 메모를 입력하면 후속 연락 우선목록을 만들어줘. 각 항목에는 오늘 연락할 이유와 보내면 좋은 짧은 문장을 붙여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Bonsai",
+    "anchorDetail": "Bonsai: 프리랜서 제안서와 계약 흐름을 돕는 도구, 월매출 약 7억원.",
+    "appName": "제안서 우선목록",
+    "frontStory": {
+      "persona": "여러 제안서를 보낸 뒤 후속 순서를 못 정하는 프리랜서",
+      "timeline": [
+        {
+          "t": "월요일 오전",
+          "act": "지난주 보낸 제안서 세 개를 다시 엽니다",
+          "emo": "가볍게 후속만 보내면 될 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "문장 작성 중",
+          "act": "금액이 큰 곳과 마감이 가까운 곳 사이에서 순서가 흔들립니다",
+          "emo": "괜히 재촉하는 사람처럼 보일까 망설입니다",
+          "pain": true
+        },
+        {
+          "t": "다른 작업 시작 전",
+          "act": "후속 연락을 하나만 보내고 나머지는 미룹니다",
+          "emo": "기회가 식는 느낌이 남습니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "기회 비용 가시화",
+    "whyItMatters": "프리랜서 후속 연락은 미루기 쉬운 영업입니다. 금액과 마감이 보이면 덜 감정적으로 순서를 정할 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "기회 비용 가시화",
+      "socialContext": "월요일 오전 제안서 후속",
+      "outputShape": "후속 연락 우선목록",
+      "emotionalResolution": "재촉 부담 완화",
+      "anchorMechanism": "제안서와 계약 흐름 관리"
+    }
+  },
+  {
+    "seed": "sales-local-biz-prospecting",
+    "pain": 10,
+    "format": "dashboard",
+    "title": "가게방문 현황판 — 재방문 순서 고민",
+    "oneliner": "방문한 가게의 관심도·거절 이유·다음 연락일을 모아 다시 갈 곳을 보여주는 현황판",
+    "target": "동네 가게 영업 방문 기록을 잊기 쉬운 초기 세일즈 담당자",
+    "mvp": [
+      "방문 기록 입력",
+      "관심도 표시",
+      "거절 이유 태그",
+      "다음 연락일 정렬"
+    ],
+    "evidence": "Pipedrive는 영업 기회를 단계별로 관리하는 도구로 월매출 약 33억원 사례가 있어요.",
+    "todayAction": "오늘 반나절 안에 방문 기록과 거절 이유를 넣고, 다음 연락일이 보이는 현황판을 만들 수 있어요.",
+    "buildPrompt": "가게 이름, 방문일, 대화한 사람, 관심도, 거절 이유, 다음 연락일을 입력하면 영업 방문 현황판을 만들어줘. 상단에는 이번 주 다시 갈 곳과 가지 않아도 되는 곳을 나누고 이유를 보여줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Pipedrive",
+    "anchorDetail": "Pipedrive: 영업 기회를 단계별로 관리하는 도구, 월매출 약 33억원.",
+    "appName": "가게방문 현황판",
+    "frontStory": {
+      "persona": "동네 가게 영업 방문 기록을 잊기 쉬운 초기 세일즈 담당자",
+      "timeline": [
+        {
+          "t": "외근을 마친 저녁",
+          "act": "방문한 가게 이름을 노트에 적습니다",
+          "emo": "오늘 대화한 곳은 기억할 수 있을 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "다음 주 월요일",
+          "act": "누가 관심을 보였고 누가 바빴는지 메모가 짧습니다",
+          "emo": "다시 가도 되는지 애매합니다",
+          "pain": true
+        },
+        {
+          "t": "재방문 전",
+          "act": "거절 이유를 기억하지 못해 같은 말로 다시 찾아갑니다",
+          "emo": "상대 시간을 뺏는 느낌이 들어 위축됩니다",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "관계 기억 보존",
+    "whyItMatters": "로컬 영업은 방문 자체보다 기억을 이어가는 일이 중요합니다. 관심도와 거절 이유가 남으면 재방문이 덜 어색해집니다.",
+    "differentiationAxis": {
+      "psychology": "관계 기억 보존",
+      "socialContext": "동네 가게 영업 재방문",
+      "outputShape": "방문 기록 현황판",
+      "emotionalResolution": "재방문 자신감",
+      "anchorMechanism": "영업 단계 관리"
+    }
+  },
+  {
+    "seed": "social-media-live-stream-setup",
+    "pain": 59,
+    "format": "landing-waitlist",
+    "title": "첫 방송 예고장 — 라이브 노쇼",
+    "oneliner": "라이브를 켜기 전, 들어올 이유와 알림 신청을 먼저 모으는 예고장",
+    "target": "첫 라이브에서 혼자 말하다 끝날까 걱정하는 소상공인",
+    "mvp": [
+      "방송 주제 입력",
+      "혜택 문장 만들기",
+      "알림 신청 받기",
+      "시작 전 알림"
+    ],
+    "evidence": "Restream처럼 라이브 준비와 알림을 돕는 도구도 매달 약 1억 2,000만원 규모의 매출 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 방송 주제와 혜택을 넣고 알림 신청을 받는 첫 방송 예고장을 만들 수 있어요.",
+    "buildPrompt": "소상공인이 첫 라이브 방송 전에 방송 주제, 시간, 받을 수 있는 혜택, 미리 물어볼 질문을 등록하는 예고장을 만들어줘. 방문자는 알림 신청과 궁금한 점을 남기고, 운영자는 방송 전 알림 대상과 질문 목록을 볼 수 있게 해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Restream",
+    "anchorDetail": "Restream: 라이브 준비와 알림을 돕는 유료 사례, 월매출 약 1억 2,000만원.",
+    "appName": "첫 방송 예고장",
+    "frontStory": {
+      "persona": "첫 라이브에서 혼자 말하다 끝날까 걱정하는 소상공인",
+      "timeline": [
+        {
+          "t": "라이브 하루 전 밤",
+          "act": "신상품을 테이블에 올려두고 방송 제목을 적음",
+          "emo": "직접 보여주면 손님들이 더 잘 이해할 것 같음",
+          "pain": false
+        },
+        {
+          "t": "방송 예약 화면 앞",
+          "act": "알림을 받을 사람이 거의 없다는 걸 확인함",
+          "emo": "켜자마자 아무도 없으면 혼잣말이 될까 불안함",
+          "pain": true
+        },
+        {
+          "t": "시작 버튼을 미룰 때",
+          "act": "상품 설명 순서만 다시 적고 공지는 올리지 못함",
+          "emo": "준비는 했는데 들어올 이유를 못 만든 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "사전 commitment",
+    "whyItMatters": "라이브는 켜는 순간보다 보기로 한 사람이 생기는 순간 시작됩니다. 예고장으로 알림과 질문을 모으면 첫 방송의 공백이 줄어듭니다.",
+    "differentiationAxis": {
+      "psychology": "사전 commitment",
+      "socialContext": "첫 라이브 방송 전날 상품과 예약 화면 앞",
+      "outputShape": "알림 신청 예고장",
+      "emotionalResolution": "들어올 사람이 있다는 안정감",
+      "anchorMechanism": "라이브 준비와 알림을 돕는 방식"
+    }
+  },
+  {
+    "seed": "travel-destination-quiz",
+    "pain": 10,
+    "format": "curation",
+    "title": "비 오는 날 가족여행",
+    "oneliner": "비 오는 역, 무릎 아픈 엄마가 앉자 딸은 야외 코스를 지운다. 실내 선호와 쉬는 간격을 누르면 비 안 맞는 동선이 나온다.",
+    "target": "걷기 힘든 부모님과 비 오는 당일치기 동선을 다시 짜야 하는 딸",
+    "mvp": [
+      "날씨 조건 입력",
+      "실내 후보 보기",
+      "이동 거리 필터",
+      "최종 장소 저장"
+    ],
+    "evidence": "Roadtrippers는 이동 경로와 여행지를 묶어 탐색하게 하는 서비스로 월매출 약 17억 7,000만원 규모의 수요가 있어요.",
+    "todayAction": "오늘 반나절 안에 날씨와 이동 시간을 넣으면 비 오는 날 가능한 여행 후보를 보여주는 큐레이션 화면을 만들 수 있어요.",
+    "buildPrompt": "주말여행지를 고르는 사용자가 출발지, 이동 가능 시간, 비 예보, 실내 선호, 카페나 전시 선호를 입력하면 비 오는 날 가능한 여행 후보를 보여주는 화면을 만들어줘. 후보마다 이동 시간, 젖지 않는 동선, 쉬는 장소를 붙이고 저장 기록은 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Roadtrippers",
+    "anchorDetail": "Roadtrippers: 이동 경로와 여행지를 묶어 탐색하게 하는 서비스, 월매출 약 17억 7,000만원.",
+    "appName": "우산 여행",
+    "frontStory": {
+      "persona": "날씨 변수 때문에 주말여행지를 못 고르는 커플",
+      "timeline": [
+        {
+          "t": "금요일 퇴근 후",
+          "act": "이번 주말 당일치기 여행지를 같이 찾아봄",
+          "emo": "짧게라도 기분 전환을 하고 싶음",
+          "pain": false
+        },
+        {
+          "t": "비 예보를 본 순간",
+          "act": "바닷가, 시장, 산책 후보가 한꺼번에 애매해짐",
+          "emo": "어딜 가도 젖고 지칠 것 같아 결정을 미룸",
+          "pain": true
+        },
+        {
+          "t": "예약 마감이 가까울 때",
+          "act": "실내 후보를 검색하다 서로 다른 링크만 보내고 멈춤",
+          "emo": "여행을 정하는 시간이 여행보다 길어지는 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "선택지 축소",
+    "whyItMatters": "날씨 변수는 여행 후보를 한 번에 흔듭니다. 실내 동선과 이동 시간을 함께 보면 취소가 아니라 조정 가능한 여행이 됩니다.",
+    "differentiationAxis": {
+      "psychology": "선택지 축소",
+      "socialContext": "비 예보가 뜬 주말여행 결정 전",
+      "outputShape": "날씨 조건별 여행 후보집",
+      "emotionalResolution": "취소 기분이 조정 가능한 계획으로 바뀜",
+      "anchorMechanism": "이동 경로와 여행지를 묶어 탐색하는 방식"
+    }
+  },
+  {
+    "seed": "travel-destination-quiz",
+    "pain": 10,
+    "format": "vote-card",
+    "title": "동행 여행 취향투표 — 동행 취향 엇갈림",
+    "oneliner": "여행 단톡방에서 말이 갈리기 전, 각자 원하는 하루를 카드로 고른다",
+    "target": "친구들과 여행지를 정하다 단톡방이 조용해지는 사람",
+    "mvp": [
+      "여행 후보 입력",
+      "취향 카드 만들기",
+      "동행 반응 받기",
+      "최종 후보 표시"
+    ],
+    "evidence": "Citron App처럼 짧은 반응을 모아 결정을 돕는 도구도 매달 약 56만원 규모의 매출 신호가 있어요.",
+    "todayAction": "오늘 반나절 안에 여행 후보를 카드로 만들고 동행자가 쉬기, 먹기, 걷기 반응을 남기는 투표 화면을 만들 수 있어요.",
+    "buildPrompt": "친구 여행 단톡방에서 후보 여행지를 카드로 올리고 동행자가 쉬기, 먹기, 사진, 걷기 부담에 반응하는 투표 화면을 만들어줘. 결과에는 가장 적게 싫어한 후보와 각자 포기할 조건을 보여주고 공유 링크를 제공해줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Citron App",
+    "anchorDetail": "Citron App: 짧은 반응을 모아 결정을 돕는 유료 사례, 월매출 약 56만원.",
+    "appName": "동행 여행 취향투표",
+    "frontStory": {
+      "persona": "친구들과 여행지를 정하다 단톡방이 조용해지는 사람",
+      "timeline": [
+        {
+          "t": "여행 한 달 전 단톡방",
+          "act": "바다, 온천, 맛집 여행 후보를 세 개 올림",
+          "emo": "이번엔 빨리 정하고 숙소를 잡고 싶음",
+          "pain": false
+        },
+        {
+          "t": "답장이 뜸해질 때",
+          "act": "한 명은 쉬고 싶고 한 명은 많이 걷고 싶다고 말함",
+          "emo": "누구 말을 기준으로 정해야 할지 조심스러움",
+          "pain": true
+        },
+        {
+          "t": "숙소 가격이 오르는 밤",
+          "act": "결국 아무도 최종 말을 하지 않아 예약을 미룸",
+          "emo": "다 같이 가는 여행인데 혼자 재촉하는 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "adjacent",
+    "psychologyPrinciple": "선호 명료화",
+    "whyItMatters": "단체 여행은 좋다는 말보다 싫은 조건을 알아야 정해집니다. 반응 카드는 말하기 애매한 취향을 가볍게 드러냅니다.",
+    "differentiationAxis": {
+      "psychology": "선호 명료화",
+      "socialContext": "친구 여행 단톡방에서 후보를 고르는 장면",
+      "outputShape": "동행자 취향 투표카드",
+      "emotionalResolution": "혼자 밀어붙이지 않는 편안함",
+      "anchorMechanism": "짧은 반응을 선택 신호로 모으는 방식"
+    }
+  },
+  {
+    "seed": "travel-itinerary-planning",
+    "pain": 72,
+    "format": "template-gen",
+    "title": "캡처여행 일정틀 — 후보 캡처만 쌓이고 못 비교",
+    "oneliner": "저장만 해둔 맛집과 전시 캡처를 시간대별 여행 일정 초안으로 바꾼다",
+    "target": "여행 후보 캡처만 쌓이고 일정으로 못 묶는 사람",
+    "mvp": [
+      "후보 캡처 입력",
+      "지역 태그 붙이기",
+      "시간대 일정 생성",
+      "동행 공유 저장"
+    ],
+    "evidence": "Tripsy는 여행 일정과 장소 후보를 정리하는 서비스로 월매출 약 4억 1,000만원 규모의 수요가 있어요.",
+    "todayAction": "오늘 반나절 안에 저장한 장소 후보와 여행 날짜를 넣으면 시간대별 일정 초안을 만드는 템플릿 화면을 만들 수 있어요.",
+    "buildPrompt": "여행 준비자가 저장해 둔 맛집, 전시, 카페 후보 이름과 지역, 운영 시간을 입력하면 시간대별 일정 초안을 만들어주는 화면을 만들어줘. 가까운 후보끼리 묶고, 예약 필요 항목과 쉬는 시간을 표시하며 결과는 브라우저 저장소에 남겨줘.",
+    "evidenceType": "revenue",
+    "anchorName": "Tripsy",
+    "anchorDetail": "Tripsy: 여행 일정과 장소 후보를 정리하는 서비스, 월매출 약 4억 1,000만원.",
+    "appName": "캡처여행 일정틀",
+    "frontStory": {
+      "persona": "여행 후보 캡처만 쌓이고 일정으로 못 묶는 사람",
+      "timeline": [
+        {
+          "t": "여행 일주일 전",
+          "act": "인스타와 블로그에서 저장한 맛집 캡처를 앨범에 모음",
+          "emo": "이번 여행은 취향에 맞게 잘 채우고 싶음",
+          "pain": false
+        },
+        {
+          "t": "일정을 짜려 할 때",
+          "act": "장소 이름과 동네가 섞여 어느 순서로 갈지 막힘",
+          "emo": "많이 저장했는데 계획으로 이어지지 않아 답답함",
+          "pain": true
+        },
+        {
+          "t": "동행자에게 보낼 때",
+          "act": "캡처만 여러 장 보내고 언제 갈지는 비워 둠",
+          "emo": "준비한 티는 나지만 실제 일정은 아직 없는 느낌",
+          "pain": true
+        }
+      ]
+    },
+    "source": "v7",
+    "needSource": "direct",
+    "psychologyPrinciple": "맥락 회복",
+    "whyItMatters": "여행 후보는 저장한 순간의 맥락이 사라지면 일정이 되기 어렵습니다. 지역과 시간대를 붙이면 캡처가 실행 가능한 초안으로 바뀝니다.",
+    "differentiationAxis": {
+      "psychology": "맥락 회복",
+      "socialContext": "여행 전 저장해 둔 장소 캡처를 정리하는 밤",
+      "outputShape": "시간대별 일정 템플릿",
+      "emotionalResolution": "쌓인 캡처가 갈 순서로 바뀜",
+      "anchorMechanism": "여행 일정과 장소 후보를 정리하는 방식"
+    }
+  }
+]

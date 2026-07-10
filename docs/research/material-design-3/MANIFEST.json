@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "updated_at": "2026-07-10",
+  "source": "https://m3.material.io/",
+  "collection": {
+    "url_discovery": "Firecrawl map only",
+    "content_extraction": "Codex in-app Browser tab.playwright API",
+    "expected_canonical_urls": 403,
+    "actual_canonical_urls": 403,
+    "captured_at": {
+      "from": "2026-07-10T04:11:15.624Z",
+      "to": "2026-07-10T04:30:00.538Z"
+    },
+    "status": "complete_with_classified_exceptions"
+  },
+  "entrypoints": {
+    "readme": "docs/research/material-design-3/README.md",
+    "schema": "docs/research/material-design-3/SCHEMA.md",
+    "urls": "docs/research/material-design-3/urls.jsonl",
+    "pages": "docs/research/material-design-3/pages.jsonl",
+    "sections": "docs/research/material-design-3/sections.jsonl",
+    "tokens": "docs/research/material-design-3/tokens.jsonl",
+    "examples": "docs/research/material-design-3/examples.jsonl",
+    "retry_report": "docs/research/material-design-3/retry/noncompleted-report.json"
+  },
+  "datasets": [
+    {
+      "id": "m3_urls",
+      "path": "docs/research/material-design-3/urls.jsonl",
+      "entity_type": "canonical_document_url",
+      "unique_entity_key": "id",
+      "rows": 403
+    },
+    {
+      "id": "m3_pages",
+      "path": "docs/research/material-design-3/pages.jsonl",
+      "entity_type": "material_design_document",
+      "unique_entity_key": "id",
+      "rows": 403
+    },
+    {
+      "id": "m3_sections",
+      "path": "docs/research/material-design-3/sections.jsonl",
+      "entity_type": "document_section",
+      "unique_entity_key": "id",
+      "rows": 3236
+    },
+    {
+      "id": "m3_tokens",
+      "path": "docs/research/material-design-3/tokens.jsonl",
+      "entity_type": "design_token",
+      "unique_entity_key": "id",
+      "rows": 3151
+    },
+    {
+      "id": "m3_examples",
+      "path": "docs/research/material-design-3/examples.jsonl",
+      "entity_type": "design_example_or_callout",
+      "unique_entity_key": "id",
+      "rows": 3643
+    }
+  ],
+  "quality": {
+    "duplicate_canonical_urls": 0,
+    "completed_pages": 397,
+    "partial_pages": 0,
+    "classified_error_pages": 6,
+    "redirect_pages": 4,
+    "utility_pages": 2,
+    "unresolved_pages": 0,
+    "empty_completed_pages": 0,
+    "orphan_records": 0,
+    "searchable_content_characters": 1815254,
+    "media_only_examples": 331,
+    "thumbnail_examples": 1354
+  },
+  "sha256": {
+    "pages.jsonl": "1a1d686fcb3668439eb38a89e16f95d8b94986a2c7eae773cdb723110f09d3ff",
+    "sections.jsonl": "0f1008439c245fba63b909969cdc917694b970460ae4709497bbb10a461a8c46",
+    "tokens.jsonl": "8490a3b735a4d02b5d694b2b9cfbbe4ad8fa5172c583e2808dbf0ec319d8d35a",
+    "examples.jsonl": "7423e3ac18dacf541b6bc25865e97c8dcc984ef2827949fc57adf71764a446ba"
+  }
+}

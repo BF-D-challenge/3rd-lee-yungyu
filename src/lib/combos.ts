@@ -37,6 +37,18 @@ export interface PresetSeed {
   formats: string[];
 }
 
+export interface ComboPair {
+  pain: number;
+  format: string;
+}
+
+export interface AllowEntry {
+  pains: number[];
+  formats: string[];
+  /** Optional explicit allowlist. When present, use these pairs instead of the full pains x formats product. */
+  pairs?: ComboPair[];
+}
+
 /** flip 카드 앞면 = 이 카드를 쓸 사람의 고통 아크 (설명 + 3스텝 타임라인) */
 export interface FrontStoryStep {
   t: string;
@@ -70,6 +82,16 @@ export interface Golden {
   /** flip 카드 앞면 고통 아크 */
   frontStory?: FrontStory;
   source?: string;
+  needSource?: "direct" | "external" | "adjacent" | "inferred";
+  psychologyPrinciple?: string;
+  whyItMatters?: string;
+  differentiationAxis?: {
+    psychology?: string;
+    socialContext?: string;
+    outputShape?: string;
+    emotionalResolution?: string;
+    anchorMechanism?: string;
+  };
 }
 
 export interface Axis {
@@ -77,14 +99,19 @@ export interface Axis {
   label: string;
 }
 
+/**
+ * golden(v7 카드 콘텐츠)은 이 파일에 없다 — src/data/combos.json에서 분리해
+ * public/data/golden.json으로 옮겼다(런타임 fetch, @/lib/golden-store 참고).
+ * 이 파일은 계속 정적 import되므로 가벼운 축(tracks/pains/formats/allow 등)만 남겨
+ * "use client" 번들에 골든 카드 수천 건이 딸려가지 않게 한다.
+ */
 export interface CombosData {
   version: number;
   tracks: Record<Track, { label: string; categories: Category[] }>;
   presetSeeds: PresetSeed[];
   pains: Pain[];
   formats: Format[];
-  allow: Record<string, { pains: number[]; formats: string[] }>;
-  golden: Golden[];
+  allow: Record<string, AllowEntry>;
   situations: Axis[];
   psychs: Axis[];
   sentenceTemplates: Record<Track, string>;
@@ -106,4 +133,12 @@ export const GENERIC_POOL = {
 
 export function allowFor(seedId: string): { pains: number[]; formats: string[] } {
   return combos.allow[seedId] ?? combos.presetSeeds.find((s) => s.id === seedId) ?? GENERIC_POOL;
+}
+
+export function allowedPairsFor(seedId: string): ComboPair[] {
+  const allow = combos.allow[seedId] ?? combos.presetSeeds.find((s) => s.id === seedId) ?? GENERIC_POOL;
+  if ("pairs" in allow && Array.isArray(allow.pairs) && allow.pairs.length) {
+    return allow.pairs;
+  }
+  return allow.pains.flatMap((pain) => allow.formats.map((format) => ({ pain, format })));
 }

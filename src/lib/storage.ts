@@ -10,6 +10,7 @@ const KEYS = {
   duels: "oneul:duels",
   duelVotes: (slug: string) => `oneul:duelvotes:${slug}`,
   duelVoted: (slug: string) => `oneul:duelvoted:${slug}`,
+  pendingDuelVotes: "oneul:pending-duel-votes:v1",
 } as const;
 
 function read<T>(key: string): T | null {
@@ -78,6 +79,7 @@ export const attachComment = (slug: string, comment: string): void => {
 // ── A/B 응원 대결 — 기존 투표와 같은 로컬 원칙: 응원은 수신자 브라우저에 쌓인다 ──
 
 export type DuelSide = "a" | "b";
+export type DuelPraiseId = "need" | "notify" | "cheer";
 
 export interface DuelComment {
   side: DuelSide;
@@ -97,7 +99,10 @@ export const loadDuelVotes = (slug: string): DuelVotes => {
   return { a: v.a, b: v.b, comments: Array.isArray(v.comments) ? v.comments : [] };
 };
 
+export const hasDuelVoted = (slug: string): boolean => read<boolean>(KEYS.duelVoted(slug)) ?? false;
+
 export const addDuelVote = (slug: string, side: DuelSide, comment?: string): void => {
+  if (hasDuelVoted(slug)) return;
   const cur = loadDuelVotes(slug);
   const text = comment?.trim();
   write(KEYS.duelVotes(slug), {
@@ -114,7 +119,58 @@ export const addDuelComment = (slug: string, side: DuelSide, text: string): void
   write(KEYS.duelVotes(slug), { ...cur, comments: [...cur.comments, { side, text, at: Date.now() }] });
 };
 
-export const hasDuelVoted = (slug: string): boolean => read<boolean>(KEYS.duelVoted(slug)) ?? false;
+export interface PendingDuelVote {
+  id: string;
+  slug: string;
+  side: DuelSide;
+  comment?: string;
+  voterFp: string;
+  roundId: string | null;
+  userId: string | null;
+  candidateId: string | null;
+  praiseId: DuelPraiseId | null;
+  idempotencyKey: string | null;
+  createdAt: number;
+}
+
+const isPendingDuelVote = (value: unknown): value is PendingDuelVote => {
+  if (!value || typeof value !== "object") return false;
+  const vote = value as Partial<PendingDuelVote>;
+  return (
+    typeof vote.id === "string" &&
+    typeof vote.slug === "string" &&
+    (vote.side === "a" || vote.side === "b") &&
+    (vote.comment === undefined || typeof vote.comment === "string") &&
+    typeof vote.voterFp === "string" &&
+    (vote.roundId === null || typeof vote.roundId === "string") &&
+    (vote.userId === null || typeof vote.userId === "string") &&
+    (vote.candidateId === null || typeof vote.candidateId === "string") &&
+    (vote.praiseId === null || vote.praiseId === "need" || vote.praiseId === "notify" || vote.praiseId === "cheer") &&
+    (vote.idempotencyKey === null || typeof vote.idempotencyKey === "string") &&
+    typeof vote.createdAt === "number"
+  );
+};
+
+export const loadPendingDuelVotes = (): PendingDuelVote[] =>
+  readArray<unknown>(KEYS.pendingDuelVotes).filter(isPendingDuelVote);
+
+/** 같은 재전송 건은 교체하고 큐 순서는 유지한다. */
+export const upsertPendingDuelVote = (vote: PendingDuelVote): void => {
+  const queue = loadPendingDuelVotes();
+  const index = queue.findIndex((item) => item.id === vote.id);
+  if (index === -1) queue.push(vote);
+  else queue[index] = vote;
+  write(KEYS.pendingDuelVotes, queue);
+};
+
+export const removePendingDuelVote = (id: string): void => {
+  write(
+    KEYS.pendingDuelVotes,
+    loadPendingDuelVotes().filter((vote) => vote.id !== id),
+  );
+};
+
+export const clearPendingDuelVotes = (): void => write(KEYS.pendingDuelVotes, []);
 
 export interface Duel {
   slug: string;

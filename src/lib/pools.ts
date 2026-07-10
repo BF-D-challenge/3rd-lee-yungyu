@@ -1,6 +1,7 @@
 // [S1] 축별 카드 풀 + 취향 가중 뽑기 (정적 데모 v6 "앵커 친화도" 모델의 웹 이식).
 // draw.ts는 3릴 시절 순수 함수로 남겨두고, 빈-슬롯 모델의 뽑기는 전부 여기서 담당한다.
 import {
+  allowedPairsFor,
   allowFor,
   combos,
   formatById,
@@ -13,6 +14,7 @@ import {
   type Track,
 } from "./combos";
 import type { Seed } from "./draw";
+import { getGoldenSync } from "./golden-store";
 
 export type AxisId = "seed" | "pain" | "format" | "situation" | "psych";
 
@@ -54,6 +56,19 @@ export function saveTaste(taste: Taste): void {
 
 /* ── 풀 구성 ── */
 const pick = <T,>(xs: readonly T[]): T => xs[Math.floor(Math.random() * xs.length)];
+const RECENT_SEED_LIMIT = 8;
+const RECENT_COMBO_LIMIT = 12;
+const recentSeedIds: string[] = [];
+const recentComboKeys: string[] = [];
+
+const comboKey = (seedId: string, painId: number, formatId: string): string => `${seedId}|${painId}|${formatId}`;
+
+function rememberSpin(seedId: string, painId: number, formatId: string): void {
+  recentSeedIds.push(seedId);
+  if (recentSeedIds.length > RECENT_SEED_LIMIT) recentSeedIds.shift();
+  recentComboKeys.push(comboKey(seedId, painId, formatId));
+  if (recentComboKeys.length > RECENT_COMBO_LIMIT) recentComboKeys.shift();
+}
 
 /** 현재 값과 다른 카드 우선 — 대안이 없으면 그대로 반환 */
 const pickNot = <T,>(xs: readonly T[], notId: string | number | undefined, id: (x: T) => string | number): T => {
@@ -61,8 +76,12 @@ const pickNot = <T,>(xs: readonly T[], notId: string | number | undefined, id: (
   return pick(rest.length ? rest : xs);
 };
 
+const isRuntimeSeed = (seedId: string): boolean => !!combos.allow[seedId];
+
 const seedsOf = (track: Track, cat: Category): Seed[] =>
-  cat.seeds.map((s) => ({ id: s.id, label: s.label, track }));
+  cat.seeds
+    .filter((s) => isRuntimeSeed(s.id))
+    .map((s) => ({ id: s.id, label: s.label, track }));
 
 export function allSeeds(): Seed[] {
   return (["like", "know"] as const).flatMap((t) =>
@@ -82,7 +101,10 @@ export function categoryOfSeed(seedId: string): { track: Track; category: Catego
 export function seedPool(taste: Taste | null): Seed[] {
   if (taste) {
     const cat = combos.tracks[taste.track].categories.find((c) => c.id === taste.categoryId);
-    if (cat) return seedsOf(taste.track, cat);
+    if (cat) {
+      const seeds = seedsOf(taste.track, cat);
+      if (seeds.length) return seeds;
+    }
   }
   return allSeeds();
 }
@@ -116,8 +138,12 @@ const weighted = <T,>(inPool: T[], full: T[]): T[] =>
   inPool.length && Math.random() < IN_POOL ? inPool : full;
 
 /* ── 축별 뽑기 (교체·전체뽑기·빈칸 채움 공용) ── */
-export const drawSeed = (taste: Taste | null, notId?: string): Seed =>
-  pickNot(seedPool(taste), notId, (s) => s.id);
+export const drawSeed = (taste: Taste | null, notId?: string): Seed => {
+  const pool = seedPool(taste);
+  const notCurrent = notId === undefined ? pool : pool.filter((s) => s.id !== notId);
+  const notRecent = notCurrent.filter((s) => !recentSeedIds.includes(s.id));
+  return pick(notRecent.length ? notRecent : notCurrent.length ? notCurrent : pool);
+};
 
 export const drawPain = (anchor: Seed | null, taste: Taste | null, notId?: number): Pain => {
   const a = anchorAllow(anchor, taste);
@@ -129,16 +155,79 @@ export const drawFormat = (anchor: Seed | null, taste: Taste | null, notId?: str
   return pickNot(a ? weighted(a.formats, allFormats()) : allFormats(), notId, (f) => f.id);
 };
 
+const V7_GOLDEN_CHANCE = 0.6;
+const GOLDEN_POOL_WEIGHT = 3;
+
+type SpinPairOptions = {
+  lockedPain?: Pain | null;
+  lockedFormat?: Format | null;
+  notPainId?: number;
+  notFormatId?: string;
+};
+
+type GoldenPair = { pain: Pain; format: Format; golden: Golden };
+
+const goldenPairsFor = (seedId: string, opts: SpinPairOptions): GoldenPair[] => {
+  const pairs = getGoldenSync().flatMap((g): GoldenPair[] => {
+    if (g.seed !== seedId) return [];
+    if (opts.lockedPain && g.pain !== opts.lockedPain.id) return [];
+    if (opts.lockedFormat && g.format !== opts.lockedFormat.id) return [];
+    const pain = painById(g.pain);
+    const format = formatById(g.format);
+    return pain && format ? [{ pain, format, golden: g }] : [];
+  });
+  const notCurrent = pairs.filter((p) => p.pain.id !== opts.notPainId || p.format.id !== opts.notFormatId);
+  const notRecent = notCurrent.filter((p) => !recentComboKeys.includes(comboKey(seedId, p.pain.id, p.format.id)));
+  return notRecent.length ? notRecent : notCurrent.length ? notCurrent : pairs;
+};
+
+export const drawSpinPair = (
+  anchor: Seed,
+  taste: Taste | null,
+  opts: SpinPairOptions = {},
+): { pain: Pain; format: Format } => {
+  const goldens = goldenPairsFor(anchor.id, opts);
+  const v7s = goldens.filter((p) => p.golden.source === "v7");
+  const done = (pain: Pain, format: Format): { pain: Pain; format: Format } => {
+    rememberSpin(anchor.id, pain.id, format.id);
+    return { pain, format };
+  };
+
+  if (v7s.length && Math.random() < V7_GOLDEN_CHANCE) {
+    const { pain, format } = pick(v7s);
+    return done(pain, format);
+  }
+
+  if (goldens.length && Math.random() < GOLDEN_POOL_WEIGHT / (GOLDEN_POOL_WEIGHT + 1)) {
+    const { pain, format } = pick(goldens);
+    return done(pain, format);
+  }
+
+  const allowedPairs = allowedPairsFor(anchor.id)
+    .filter((pair) => !opts.lockedPain || pair.pain === opts.lockedPain.id)
+    .filter((pair) => !opts.lockedFormat || pair.format === opts.lockedFormat.id);
+  const notCurrentPairs = allowedPairs.filter((pair) => pair.pain !== opts.notPainId || pair.format !== opts.notFormatId);
+  const notRecentPairs = notCurrentPairs.filter((pair) => !recentComboKeys.includes(comboKey(anchor.id, pair.pain, pair.format)));
+  const pair = pick(notRecentPairs.length ? notRecentPairs : notCurrentPairs.length ? notCurrentPairs : allowedPairs);
+  const pain = pair ? painById(pair.pain) : undefined;
+  const format = pair ? formatById(pair.format) : undefined;
+  if (pain && format) return done(pain, format);
+
+  const fallbackPain = opts.lockedPain ?? drawPain(anchor, taste, opts.notPainId);
+  const fallbackFormat = opts.lockedFormat ?? drawFormat(anchor, taste, opts.notFormatId);
+  return done(fallbackPain, fallbackFormat);
+};
+
 /** 장면·마음은 무조건 전체 풀 (6개씩) */
 export const drawSituation = (notId?: string): ComboAxis => pickNot(combos.situations, notId, (x) => x.id);
 export const drawPsych = (notId?: string): ComboAxis => pickNot(combos.psychs, notId, (x) => x.id);
 
 /** 골든 조합 조회 — 씨앗 카드가 사전검수 조합에 정확히 일치할 때 ✨타이틀 */
 export const goldenFor = (seedId: string, painId: number, formatId: string): Golden | undefined =>
-  combos.golden.find((g) => g.seed === seedId && g.pain === painId && g.format === formatId);
+  getGoldenSync().find((g) => g.seed === seedId && g.pain === painId && g.format === formatId);
 
-/* ── 부채꼴 덱 구성 — 5축 혼합, 마음은 낮은 빈도 ── */
-const DECK_MIX: Record<AxisId, number> = { seed: 4, pain: 6, format: 6, situation: 4, psych: 2 };
+/* ── 부채꼴 덱 구성 — psych(마음)는 v8부터 화면 카드로 노출하지 않는 백엔드 전용 축이라 덱에도 섞지 않는다 ── */
+const DECK_MIX: Record<AxisId, number> = { seed: 4, pain: 7, format: 7, situation: 4, psych: 0 };
 
 function sampleDistinct<T>(n: number, drawOne: () => T, id: (x: T) => string | number): T[] {
   const out: T[] = [];

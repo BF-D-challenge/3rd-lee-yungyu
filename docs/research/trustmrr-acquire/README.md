@@ -1,8 +1,18 @@
+---
+name: trustmrr-acquire--readme
+description: TrustMRR 인수 마켓플레이스(trustmrr.com/acquire)를 로그인 무한스크롤로 전량 수집한 스타트업 1,863건(ideas.jsonl) 데이터셋 가이드 — 수집 방법·필드 정의·카테고리 분포·최고 매출/최저 희망가 시그널·PRD 후보 풀을 정리했다. 슬롯 카드덱 v5(134장)의 원천 데이터.
+metadata:
+  type: dataset
+  topic: trustmrr-acquire
+  category: readme
+  date: 2026-07-05
+---
+
 # TrustMRR Acquire Idea Seeds
 
 Collected from logged-in in-app browser infinite scroll on `https://trustmrr.com/acquire`.
 
-Parent index: [../README.md](../README.md)  
+Parent index: [../INDEX.md](../INDEX.md) · Datasets guide: [../README.md](../README.md)  
 Machine-readable catalog: [../MANIFEST.json](../MANIFEST.json)
 
 ## Scope

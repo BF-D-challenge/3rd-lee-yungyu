@@ -2,6 +2,7 @@
 
 // 9:16 공유 카드 프리뷰 — 인스타 스토리에 올릴 만큼 예쁘게 (PRD §6.3, R8 · P3 소연)
 import { Pill } from "@/components/atoms/pill";
+import { BACK_RAYS } from "@/components/organisms/slot/card-back";
 import { painById } from "@/lib/combos";
 import type { CardPayload } from "@/lib/share";
 import { cn } from "@/lib/utils";
@@ -23,12 +24,24 @@ export function PublishCard({ payload, className }: PublishCardProps) {
   return (
     <div
       className={cn(
-        "aurora relative mx-auto flex aspect-[9/16] w-full max-w-[300px] flex-col overflow-hidden rounded-card p-6",
+        "relative mx-auto flex aspect-[9/16] w-full max-w-[300px] flex-col overflow-hidden rounded-card border border-white/15 bg-[#0d0d0f] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,.08)]",
         className,
       )}
     >
-      {/* 가독성용 어둠 레이어 — Aurora 위 텍스트 대비 확보 */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-black/30" />
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 300 485"
+        xmlns="http://www.w3.org/2000/svg"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[86%] w-[86%] -translate-x-1/2 -translate-y-1/2"
+      >
+        <g
+          stroke="rgba(234,234,234,.075)"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          dangerouslySetInnerHTML={{ __html: BACK_RAYS }}
+        />
+        <circle cx="150" cy="242.5" r="4.2" fill="rgba(234,234,234,.075)" />
+      </svg>
 
       <div className="relative flex flex-1 flex-col">
         <Pill className="self-start">🌱 {payload.seedLabel}</Pill>

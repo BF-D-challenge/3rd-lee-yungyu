@@ -1,3 +1,13 @@
+---
+name: simplicity-output-dom-실측
+description: toss.im/simplicity 결과·상세 화면의 DOM 변화를 CDP+MutationObserver로 실측한 문서 — 애니메이션은 인라인 style 뮤테이션(RAF), 뷰 전환은 DOM 통째 교체, 스토리형 상세 UI(세그먼트 진행바+중앙 카드+가라오케 자막+원형 컨트롤), 가라오케 자막의 단어 분해+인라인 duration 메커니즘을 밝히고 "오늘 해볼까" 결과 화면 이식 설계표를 도출했다.
+metadata:
+  type: reference
+  topic: simplicity-output-dom
+  category: field-measurement
+  date: 2026-07-06
+---
+
 # toss.im/simplicity — Output(결과·상세) 화면 DOM 변화 실측
 
 > 2026-07-06 CDP(9222) 실측. MutationObserver를 라이브 페이지에 주입해 상태 전환별 DOM 변화를 캡처.

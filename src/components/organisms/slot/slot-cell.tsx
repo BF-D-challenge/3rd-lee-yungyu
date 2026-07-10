@@ -13,8 +13,9 @@
  */
 
 import { forwardRef, useEffect, useRef, useState } from "react";
-import { CARD_BACK } from "@/lib/card-art";
 import { cn } from "@/lib/utils";
+import { backSvg } from "./card-back";
+import { CardFace } from "./card-face";
 import { CardSurface } from "./card-surface";
 
 export interface CellContent {
@@ -24,23 +25,21 @@ export interface CellContent {
 }
 
 export interface SlotCellProps {
-  /** 축 라벨: 씨앗 · 불편 · 형태 · 장면 · 마음 */
+  /** 축 라벨: 씨앗 · 불편 · 형태 · 장면 */
   axisLabel: string;
   axisEmoji: string;
-  /** 축 배열 인덱스(0~4) — CardSurface 애니 위상 어긋내기 용 */
+  /** 축 배열 인덱스(0~3) — CardSurface 애니 위상 어긋내기 용 */
   axisIndex: number;
   content: CellContent | null;
   /** 내용 정체성 — 바뀌면 플립 애니메이션 */
   contentKey: string;
-  /** 씨앗 칸 골드 표면 */
+  /** 매출 근거가 있는 사전검수 콤보와 일치하면 4장 전체가 골드 표면 */
   gold?: boolean;
   /** 덱 드래그가 이 칸 위에 있을 때 하이라이트 */
   hot?: boolean;
-  /** ✨ 스페셜 칸 표기 — 상시 노출, 빈 placeholder 문구 "＋ 스페셜 카드" */
-  optional?: boolean;
   /** 현재 조준 축 (원본 slot.current) — 빈 칸에 골드/글로우 링 펄스 + data-pulse 훅 */
   pulse?: boolean;
-  /** 칸 좌상단 배지 — 필수는 순번(1~4), 스페셜은 '스페셜' (원본 .num) */
+  /** 칸 좌상단 배지 — 순번(1~4) (원본 .num) */
   badge?: string;
   /** 🔒 고정 — 탭 교체·✕ 비활성, 🎲 전체 뽑기 유지 */
   locked?: boolean;
@@ -56,11 +55,7 @@ export interface SlotCellProps {
   onRemove?: () => void;
   /** 🔒 토글 */
   onToggleLock?: () => void;
-  /** 창에 들어갈 아르카나 아트 (artForValue) — 없으면 이모지 폴백 (docs/card-art-integration.md) */
-  axisArtSrc?: string;
-  /** 수트 액센트 색 (AXIS_ACCENT) — TarotCard 글로우 틴트 + 카투슈 라벨 */
-  accent?: string;
-  /** 루트에 병합할 추가 클래스 — 모바일 2×2 그리드 배치용(✨스페셜 칸 col-span-2 등) */
+  /** 루트에 병합할 추가 클래스 */
   className?: string;
 }
 
@@ -81,8 +76,8 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
     axisIndex,
     content,
     contentKey,
+    gold,
     hot,
-    optional,
     pulse,
     badge,
     locked,
@@ -92,7 +87,6 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
     onSwap,
     onRemove,
     onToggleLock,
-    axisArtSrc,
     className,
   },
   ref,
@@ -225,23 +219,18 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
                 transform: flipped ? "rotateY(180deg)" : "none",
               }}
             >
-              {/* 뒷면 — 생성 아트 히어로 + 축 엠블럼 (docs/card-art-integration.md §3a) */}
+              {/* 뒷면 — 덱과 같은 인그레이빙 카드지 */}
               <div
                 className="absolute inset-0 overflow-hidden rounded-card"
                 style={{ backfaceVisibility: "hidden" }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={CARD_BACK} alt="" className="absolute inset-0 h-full w-full object-cover" />
-                {axisArtSrc && (
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <img
-                    src={axisArtSrc}
-                    alt=""
-                    className="absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 opacity-90"
-                  />
-                )}
+                <div
+                  aria-hidden
+                  className="absolute inset-0 [&>svg]:block [&>svg]:h-full [&>svg]:w-full"
+                  dangerouslySetInnerHTML={{ __html: backSvg() }}
+                />
               </div>
-              {/* 앞면 — 확정 카드 배경(CardSurface): 방사형 검정→투명 잘린 타원 + inner glow + 초점 광원 */}
+              {/* 앞면 — 축 값이 카드 안에 각인되는 잉크 카드 */}
               <div
                 className={cn(
                   "absolute inset-0 overflow-hidden rounded-card",
@@ -249,7 +238,12 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
                 )}
                 style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
               >
-                <CardSurface tier={hot ? "hot" : "filled"} phase={axisIndex} injectStyle={false} />
+                <CardFace
+                  axisLabel={axisLabel}
+                  value={shown?.title ?? content.title}
+                  caption={shown?.sub ?? content.sub}
+                  golden={gold}
+                />
               </div>
             </button>
 
@@ -264,7 +258,7 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
               aria-pressed={locked || undefined}
               title="고정하면 전체 다시 뽑기에도 안 바뀌어요"
               className={cn(
-                "absolute left-0.5 top-0.5 z-10 grid h-5 w-5 place-items-center rounded-full text-[9px] transition-all sm:h-6 sm:w-6 sm:text-[10px]",
+                "absolute left-1.5 top-1.5 z-10 grid h-5 w-5 place-items-center rounded-full text-[9px] transition-all sm:h-6 sm:w-6 sm:text-[10px]",
                 locked
                   ? "bg-glow/90 text-black"
                   : "glass text-mist opacity-60 hover:opacity-100",
@@ -282,7 +276,7 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
                   onRemove?.();
                 }}
                 aria-label={`${axisLabel} 카드 빼기`}
-                className="glass absolute right-0.5 top-0.5 z-10 grid h-5 w-5 place-items-center rounded-full text-[9px] text-mist transition-colors hover:text-ink sm:h-6 sm:w-6 sm:text-[10px]"
+                className="glass absolute right-1.5 top-1.5 z-10 grid h-5 w-5 place-items-center rounded-full text-[9px] text-mist transition-colors hover:text-ink sm:h-6 sm:w-6 sm:text-[10px]"
               >
                 ✕
               </button>
@@ -321,16 +315,6 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
           </button>
         )}
       </div>
-
-      {/* 카드 밖 캡션(moonlight .slot .label) — 카드 면은 순수 글로우, 값·축 이름은 여기 하나로만 */}
-      <p
-        className={cn(
-          "mt-2 max-w-full truncate px-1 font-serif text-[13px] italic",
-          pulse ? "text-glow" : content ? "text-ink" : "text-caption",
-        )}
-      >
-        {content ? shown?.title : optional ? "스페셜" : axisLabel}
-      </p>
     </div>
   );
 });

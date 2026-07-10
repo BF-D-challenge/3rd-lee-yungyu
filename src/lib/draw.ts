@@ -1,4 +1,5 @@
-import { allowFor, combos, formatById, painById, type Format, type FrontStory, type Pain, type Track } from "./combos";
+import { allowedPairsFor, allowFor, combos, formatById, painById, type Format, type FrontStory, type Pain, type Track } from "./combos";
+import { getGoldenSync } from "./golden-store";
 import { fillTemplate, josa } from "./josa";
 
 export interface Seed {
@@ -51,7 +52,7 @@ export function draw(seed: Seed, spinIndex: number, locked: { pain?: Pain; forma
   const psych = pick(combos.psychs).label;
 
   if (!locked.pain && !locked.format && spinIndex < 3) {
-    const goldens = combos.golden.filter(
+    const goldens = getGoldenSync().filter(
       (g) => g.seed === seed.id && !recent.includes(key(seed.id, g.pain, g.format)),
     );
     const g = goldens[spinIndex % goldens.length];
@@ -70,20 +71,35 @@ export function draw(seed: Seed, spinIndex: number, locked: { pain?: Pain; forma
     }
   }
 
-  const pool = allowFor(seed.id);
-  const pains = pool.pains.map(painById).filter((p): p is Pain => !!p);
-  const formats = pool.formats.map(formatById).filter((f): f is Format => !!f);
-  const total = (locked.pain ? 1 : pains.length) * (locked.format ? 1 : formats.length);
+  const pairPool = allowedPairsFor(seed.id)
+    .filter((pair) => !locked.pain || pair.pain === locked.pain.id)
+    .filter((pair) => !locked.format || pair.format === locked.format.id);
+  const freshPairs = pairPool.filter((pair) => !recent.includes(key(seed.id, pair.pain, pair.format)));
 
-  let pain = locked.pain ?? pick(pains);
-  let format = locked.format ?? pick(formats);
-  let guard = 0;
-  while (recent.includes(key(seed.id, pain.id, format.id)) && guard++ < total) {
+  const pair = pick(freshPairs.length ? freshPairs : pairPool);
+  let pain = pair ? painById(pair.pain) : undefined;
+  let format = pair ? formatById(pair.format) : undefined;
+
+  if (!pain || !format) {
+    const pool = allowFor(seed.id);
+    const pains = pool.pains.map(painById).filter((p): p is Pain => !!p);
+    const formats = pool.formats.map(formatById).filter((f): f is Format => !!f);
+    const total = (locked.pain ? 1 : pains.length) * (locked.format ? 1 : formats.length);
+
     pain = locked.pain ?? pick(pains);
     format = locked.format ?? pick(formats);
+    let guard = 0;
+    while (recent.includes(key(seed.id, pain.id, format.id)) && guard++ < total) {
+      pain = locked.pain ?? pick(pains);
+      format = locked.format ?? pick(formats);
+    }
   }
 
-  const g = combos.golden.find((x) => x.seed === seed.id && x.pain === pain.id && x.format === format.id);
+  if (!pain || !format) {
+    throw new Error(`No drawable pain/format pair for seed "${seed.id}"`);
+  }
+
+  const g = getGoldenSync().find((x) => x.seed === seed.id && x.pain === pain.id && x.format === format.id);
   return remember({
     seed, pain, format, situation, psych,
     title: g?.title ?? null,

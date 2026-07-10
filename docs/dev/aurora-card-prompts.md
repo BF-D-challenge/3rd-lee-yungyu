@@ -2,7 +2,7 @@
 
 > 골드 타로(v1, `docs/card-art-prompts.md`)를 대체하는 **완전 피벗**. 토스뱅크 공채 키비주얼 방향.
 > 확정 요구: **심플 · 카드 비율(2:3) 풀블리드 · 직각 모서리 · 카드마다 명확히 다른 컨셉.**
-> v2.1: gpt-image-2 공식 구조 문법으로 재설계 — 근거: `.claude/knowledge/research/card-art-prompting/GPT2-PROMPT-STRUCTURE.md`.
+> v2.1: gpt-image-2 공식 구조 문법으로 재설계 — 근거: [`docs/research/card-art-prompting/GPT2-PROMPT-STRUCTURE.md`](../research/card-art-prompting/GPT2-PROMPT-STRUCTURE.md).
 > 스틸 먼저 → Veo 모션은 각 카드의 "빛의 동사"를 이어받아 후속(§5).
 
 ## 0. 설계 원리 — 색이 아니라 "빛의 동사"로 구분한다

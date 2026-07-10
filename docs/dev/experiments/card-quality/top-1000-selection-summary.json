@@ -1,0 +1,219 @@
+{
+  "target": 1000,
+  "selected": 1000,
+  "seedCount": 181,
+  "minScore": 91,
+  "maxScore": 277,
+  "maxPerSeed": 8,
+  "seedFloor": 0,
+  "top10": [
+    {
+      "key": "saas-lead-verify|32|calc-tool",
+      "score": 277,
+      "title": "가입검증기 — 가짜 이메일·번호 진단"
+    },
+    {
+      "key": "saas-ai-workflow-check|38|calc-tool",
+      "score": 275,
+      "title": "이번달얼마 — AI 도구 요금 계산기"
+    },
+    {
+      "key": "saas-cold-outreach|57|dashboard",
+      "score": 275,
+      "title": "성적표 — 콜드메일 문의 집계판"
+    },
+    {
+      "key": "saas-ai-workflow-check|33|calc-tool",
+      "score": 271,
+      "title": "에러풀이 — CORS 에러 진단 계산기"
+    },
+    {
+      "key": "saas-lead-verify|32|dashboard",
+      "score": 271,
+      "title": "가입현황판 — 가짜 가입 집계 대시보드"
+    },
+    {
+      "key": "saas-ai-workflow-check|38|dashboard",
+      "score": 269,
+      "title": "구독판 — AI 도구 요금 집계 대시보드"
+    },
+    {
+      "key": "saas-cold-outreach|57|template-gen",
+      "score": 269,
+      "title": "답장틀 — 배송·환불 답장 생성기"
+    },
+    {
+      "key": "saas-training-video|30|calc-tool",
+      "score": 268,
+      "title": "여백닥터 — shadcn 여백값 진단계산기"
+    },
+    {
+      "key": "saas-ai-workflow-check|34|calc-tool",
+      "score": 267,
+      "title": "노드체크 — 가짜 노드 검증기"
+    },
+    {
+      "key": "saas-ui-kit-manage|31|share-link",
+      "score": 267,
+      "title": "컬러가이드 — 색상표 공유 링크"
+    }
+  ],
+  "bottom10": [
+    {
+      "key": "legal-cookie-banner|14|calc-tool",
+      "score": 91,
+      "title": "쿠키배너설개인진단 — 쿠키배너설 진단 계산기"
+    },
+    {
+      "key": "legal-freelance-contract|14|calc-tool",
+      "score": 91,
+      "title": "프리랜서계개인진단 — 프리랜서계 진단 계산기"
+    },
+    {
+      "key": "legal-lease-review|14|calc-tool",
+      "score": 91,
+      "title": "전월세계약개인진단 — 전월세계약 진단 계산기"
+    },
+    {
+      "key": "legal-terms-generator|14|calc-tool",
+      "score": 91,
+      "title": "이용약관개인진단 — 이용약관 진단 계산기"
+    },
+    {
+      "key": "marketplace-niche-tool-directory|14|calc-tool",
+      "score": 91,
+      "title": "관심사도구개인진단 — 관심사도구 진단 계산기"
+    },
+    {
+      "key": "mobile-apps-ai-reply-generator|14|calc-tool",
+      "score": 91,
+      "title": "인공지능답개인진단 — 인공지능답 진단 계산기"
+    },
+    {
+      "key": "mobile-apps-locale-launch-priority|14|calc-tool",
+      "score": 91,
+      "title": "출시국가개인진단 — 출시국가 진단 계산기"
+    },
+    {
+      "key": "mobile-apps-niche-ai-scoring|14|calc-tool",
+      "score": 91,
+      "title": "니치진단앱개인진단 — 니치진단앱 진단 계산기"
+    },
+    {
+      "key": "mobile-apps-subscription-pricing|13|vote-card",
+      "score": 91,
+      "title": "구독가격설전문픽 — 구독가격설 투표 카드"
+    },
+    {
+      "key": "mobile-apps-subscription-pricing|14|calc-tool",
+      "score": 91,
+      "title": "구독가격설개인진단 — 구독가격설 진단 계산기"
+    }
+  ],
+  "smellCounts": {
+    "template-scene": 894,
+    "generic-target": 294,
+    "generic-evidence": 894,
+    "generic-build-prompt": 376
+  },
+  "largestSeeds": [
+    [
+      "saas-lead-verify",
+      8
+    ],
+    [
+      "saas-ai-workflow-check",
+      8
+    ],
+    [
+      "saas-cold-outreach",
+      8
+    ],
+    [
+      "saas-training-video",
+      8
+    ],
+    [
+      "saas-ui-kit-manage",
+      8
+    ],
+    [
+      "frontend",
+      8
+    ],
+    [
+      "influencer-marketing",
+      8
+    ],
+    [
+      "running",
+      8
+    ],
+    [
+      "saas-shortform-tracker",
+      8
+    ],
+    [
+      "ott",
+      8
+    ],
+    [
+      "golf",
+      8
+    ],
+    [
+      "restaurant-hunt",
+      8
+    ]
+  ],
+  "largestCategories": [
+    [
+      "saas",
+      48
+    ],
+    [
+      "marketing",
+      48
+    ],
+    [
+      "content",
+      48
+    ],
+    [
+      "food",
+      48
+    ],
+    [
+      "design-tools",
+      48
+    ],
+    [
+      "ai",
+      48
+    ],
+    [
+      "dev",
+      46
+    ],
+    [
+      "commerce",
+      43
+    ],
+    [
+      "marketplace",
+      42
+    ],
+    [
+      "no-code",
+      40
+    ],
+    [
+      "fitness",
+      39
+    ],
+    [
+      "travel",
+      38
+    ]
+  ]
+}

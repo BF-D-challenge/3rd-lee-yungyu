@@ -5,7 +5,7 @@
 > 카드 180장을 개별 생성하지 않는다. **공통 뒷면 1 + 축 엠블럼 6 + 분야 아이콘 10 + 프레임/씨앗 2 = 약 19장**만 만들고,
 > 앞면은 `배경틀 + 축 색 + 분야 아이콘 + 텍스트`를 CSS로 합성한다.
 > 스타일 근거: `CLAUDE.local.md` Moonlight 토큰(다크+골드 인그레이빙, 블러 없는 하드 섀도) + **주 컬러=일렉트릭 애저 블루 `#4d8dff`**(토스 Simplicity의 파란 글로우 계열, 기존 퍼플 대체).
-> 기법 근거: `.claude/knowledge/research/card-art-prompting/SUMMARY.md`(2026-07-06 리서치).
+> 기법 근거: [`docs/research/card-art-prompting/SUMMARY.md`](../research/card-art-prompting/SUMMARY.md)(2026-07-06 리서치).
 
 ---
 

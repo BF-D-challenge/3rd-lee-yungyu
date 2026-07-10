@@ -11,6 +11,7 @@ import {
   drawPsych,
   drawSeed,
   drawSituation,
+  drawSpinPair,
   goldenFor,
   loadTaste,
   saveTaste,
@@ -40,6 +41,15 @@ const NO_LOCKS: LockMap = { seed: false, pain: false, format: false, situation: 
 
 export const filledRequired = (slots: Slots): AxisId[] => REQUIRED.filter((a) => !!slots[a]);
 export const isComplete = (slots: Slots): boolean => filledRequired(slots).length === REQUIRED.length;
+
+export type SpinAllOptions = { keepSeed?: boolean };
+export type SpinTrackMeta = {
+  seed_tag: string | null;
+  pain_reel: number | null;
+  form_reel: string | null;
+  is_golden: boolean;
+  filled_axes: number;
+};
 
 const applyValue = (slots: Slots, v: AxisValue): Slots => {
   switch (v.axis) {
@@ -79,7 +89,9 @@ interface SlotState {
   /** 🔒 고정 토글 — 잠긴 축은 스핀에서 유지되고 탭 교체·✕가 비활성 */
   toggleLock: (axis: AxisId) => void;
   /** 🎲 전체 다시 뽑기 — 유일한 캡 소모 경로 */
-  spinAll: (opts?: { keepSeed?: boolean }) => void;
+  spinAll: (opts?: SpinAllOptions) => void;
+  /** 버튼/애니메이션형 전체 뽑기에서도 같은 캡·계측 규칙을 쓰기 위한 1회 소비 게이트 */
+  consumeSpin: (meta: SpinTrackMeta, opts?: { askTaste?: boolean }) => boolean;
   setTaste: (t: Taste) => void;
   skipTaste: () => void;
   openTasteSheet: () => void;
@@ -103,6 +115,29 @@ const maybeAskTaste = (s: SlotState): Partial<SlotState> =>
   !s.tasteResolved && s.spins >= 1 && Math.random() < TASTE_ASK_CHANCE
     ? { tasteSheetOpen: true, tasteAsked: true }
     : {};
+
+export const buildSpinAllSlots = (
+  s: Pick<SlotState, "slots" | "locked" | "taste">,
+  opts?: SpinAllOptions,
+): Slots => {
+  // 🔒 원본 v7 batchRemix: 잠긴 축은 그대로, 나머지만 새로 — 씨앗이 잠기면 keepSeed와 동일
+  // (불편·형태는 유지된 씨앗을 앵커로 뽑힌다). 새로 뽑을 땐 직전 카드를 피한다(원본 pickCard avoid).
+  const L = s.locked;
+  const keepSeed = (L.seed || opts?.keepSeed) && !!s.slots.seed;
+  const seed = keepSeed && s.slots.seed ? s.slots.seed : drawSeed(s.taste, s.slots.seed?.id);
+  const { pain, format } = drawSpinPair(seed, s.taste, {
+    lockedPain: L.pain ? s.slots.pain : null,
+    lockedFormat: L.format ? s.slots.format : null,
+    notPainId: s.slots.pain?.id,
+    notFormatId: s.slots.format?.id,
+  });
+  const situation =
+    L.situation && s.slots.situation ? s.slots.situation : drawSituation(s.slots.situation?.id);
+  const keepPsych = L.psych && !!s.slots.psych;
+  const withPsych = keepPsych || Math.random() < PSYCH_CHANCE;
+  const psych = keepPsych ? s.slots.psych : withPsych ? drawPsych(s.slots.psych?.id) : null;
+  return { seed, pain, format, situation, psych };
+};
 
 export const useSlot = create<SlotState>((set, get) => ({
   slots: EMPTY,
@@ -157,38 +192,41 @@ export const useSlot = create<SlotState>((set, get) => ({
     set({ locked: { ...s.locked, [axis]: next } });
   },
 
-  spinAll: (opts) => {
+  consumeSpin: (meta, opts) => {
     const s = get();
     if (s.spins >= SPIN_CAP) {
       track("spin_cap_hit", { daily_count: s.spins, seed_tag: s.slots.seed?.id ?? null });
       set({ capHit: true }); // → S1b 페이월 (가짜 문①)
-      return;
+      return false;
     }
-    // 🔒 원본 v7 batchRemix: 잠긴 축은 그대로, 나머지만 새로 — 씨앗이 잠기면 keepSeed와 동일
-    // (불편·형태는 유지된 씨앗을 앵커로 뽑힌다). 새로 뽑을 땐 직전 카드를 피한다(원본 pickCard avoid).
-    const L = s.locked;
-    const keepSeed = (L.seed || opts?.keepSeed) && !!s.slots.seed;
-    const seed = keepSeed && s.slots.seed ? s.slots.seed : drawSeed(s.taste, s.slots.seed?.id);
-    const pain = L.pain && s.slots.pain ? s.slots.pain : drawPain(seed, s.taste, s.slots.pain?.id);
-    const format =
-      L.format && s.slots.format ? s.slots.format : drawFormat(seed, s.taste, s.slots.format?.id);
-    const situation =
-      L.situation && s.slots.situation ? s.slots.situation : drawSituation(s.slots.situation?.id);
-    const keepPsych = L.psych && !!s.slots.psych;
-    const withPsych = keepPsych || Math.random() < PSYCH_CHANCE;
-    const psych = keepPsych ? s.slots.psych : withPsych ? drawPsych(s.slots.psych?.id) : null;
-    const next: Slots = { seed, pain, format, situation, psych };
     track("slot_spin", {
       spin_index: s.spins + 1,
+      seed_tag: meta.seed_tag,
+      pain_reel: meta.pain_reel,
+      form_reel: meta.form_reel,
+      is_golden: meta.is_golden,
+      filled_axes: meta.filled_axes,
+    });
+    spinGen += 1;
+    set({ spins: s.spins + 1, ...(opts?.askTaste === false ? {} : maybeAskTaste(s)) });
+    return true;
+  },
+
+  spinAll: (opts) => {
+    const s = get();
+    const next = buildSpinAllSlots(s, opts);
+    const { seed, pain, format } = next;
+    if (!seed || !pain || !format) return;
+    if (!get().consumeSpin({
       seed_tag: seed.id,
       pain_reel: pain.id,
       form_reel: format.id,
       is_golden: !!goldenFor(seed.id, pain.id, format.id),
       filled_axes: filledRequired(s.slots).length,
-    });
-    spinGen += 1;
+    })) {
+      return;
+    }
     const gen = spinGen;
-    set({ spins: s.spins + 1, ...maybeAskTaste(s) });
     // 원본 batchRemix 이식: 바뀌는 축만 k*130ms 간격으로 순차 적용 —
     // 🔒 유지·keepSeed 축은 동일 참조라 스킵되고, 각 칸이 원본처럼 시차를 두고 플립한다.
     const order: readonly AxisId[] = ["seed", "pain", "format", "situation", "psych"];

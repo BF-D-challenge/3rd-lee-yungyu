@@ -9,14 +9,13 @@ import { GlassCard } from "@/components/atoms/glass-card";
 import { FakeDoorSheet } from "@/components/molecules/fake-door-sheet";
 import { PageShell } from "@/components/layouts/page-shell";
 import { TopBar } from "@/components/layouts/top-bar";
-import { duelUrl, encodeDuelSlug, shareUrl } from "@/lib/share";
+import { duelUrl, encodeDuelSlug, shareOrCopy, shareUrl } from "@/lib/share";
 import { addDuel, type PublishedCard, type Vote } from "@/lib/storage";
 import { fetchVotes } from "@/lib/backend/votes";
 import { fetchPublished } from "@/lib/backend/published";
-import { fakeDoor, track } from "@/lib/track";
+import { fakeDoor, track, trackShare } from "@/lib/track";
 import { DuelStatus } from "./duel-status";
 import { cardTitle } from "./publish-card";
-import { copyText } from "./share-row";
 
 // 긍정 전용 4칩 — need>notify>watch>cheer 순 수요 강도 (부정칩 없음)
 const VOTE_EMOJI: Record<Vote["type"], string> = { need: "🔥", notify: "🙌", watch: "👀", cheer: "💪" };
@@ -37,7 +36,7 @@ export function DemandBoard() {
   const router = useRouter();
   const [rows, setRows] = useState<Row[] | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
-  const [toast, setToast] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
   const [duelRev, setDuelRev] = useState(0); // 대결 생성 시 현황 목록 리렌더
   const timer = useRef<ReturnType<typeof setTimeout>>();
 
@@ -60,15 +59,21 @@ export function DemandBoard() {
   if (!rows) return null;
 
   const showToast = () => {
-    setToast(true);
+    setToast("링크를 복사했어요");
     clearTimeout(timer.current);
-    timer.current = setTimeout(() => setToast(false), 2000);
+    timer.current = setTimeout(() => setToast(null), 2000);
   };
 
   const copyShare = async (row: Row) => {
-    await copyText(shareUrl(row.card.payload));
-    track("card_share", { channel: "link", stage: "dashboard" });
-    showToast();
+    const result = await shareOrCopy(shareUrl(row.card.payload), {
+      title: cardTitle(row.card.payload),
+      text: `${cardTitle(row.card.payload)} — 오늘 해볼까에서 뽑았어. 어때?`,
+    });
+    if (!result.ok) return;
+    trackShare("card_share", result.method, { channel: "link", stage: "dashboard" });
+    setToast(result.method === "native" ? "공유했어요" : "링크를 복사했어요");
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setToast(null), 2000);
   };
 
   const createDuel = async () => {
@@ -76,11 +81,17 @@ export function DemandBoard() {
     if (!first || !second) return;
     const a = first.card.payload;
     const b = second.card.payload;
+    const result = await shareOrCopy(duelUrl(a, b), {
+      title: "오늘 해볼까 A/B 대결",
+      text: `${cardTitle(a)} vs ${cardTitle(b)} — 오늘 해볼까에서 뽑았어. 뭐가 나아?`,
+    });
+    if (!result.ok) return;
     addDuel({ slug: encodeDuelSlug(a, b), a, b, createdAt: Date.now() });
-    await copyText(duelUrl(a, b));
-    track("duel_created", { via: "dashboard" });
+    trackShare("duel_created", result.method, { via: "dashboard" });
     setDuelRev((r) => r + 1);
-    showToast();
+    setToast(result.method === "native" ? "공유했어요" : "대결 링크를 복사했어요");
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setToast(null), 2000);
   };
 
   const openReport = (row: Row) => {
@@ -151,10 +162,10 @@ export function DemandBoard() {
                       <p>🔥 필요해 ●명 · 🙌 알려줘 ●명 · 👀 지켜봄 ●명 · 💪 응원 ●명</p>
                       <p>누가: 20대 러닝 크루 · 직장인 ●●●</p>
                       <p>왜: &ldquo;기록이 귀찮아서 ●●●●●&rdquo;</p>
-                      <p>판정: ●●● — 지금 만들어도 ●●●●</p>
+                      <p>반응 데이터가 쌓이면 수요 신호와 다음 행동을 보여드려요.</p>
                     </div>
                   </BlurVeil>
-                  <p className="mt-2 text-xs text-caption">검증된 고유 투표자 {n}명 · 자가·중복 제외</p>
+                  <p className="mt-2 text-xs text-caption">도착한 응원 {n}개 · 자가·중복 제외</p>
                   <div className="mt-3 text-center">
                     <Button variant="ghost" onClick={() => copyShare(row)}>
                       🔗 카드 다시 공유
@@ -182,7 +193,7 @@ export function DemandBoard() {
           data-anim
           style={{ animation: "fade-up .25s ease both" }}
         >
-          링크를 복사했어요
+          {toast}
         </div>
       )}
 

@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
   }
 
-  const title = cardTitle(payload);
+  const fromName = payload.fromName?.trim().replace(/님$/, "");
+  const title = `${fromName ? `${fromName}님의 ` : ""}${cardTitle(payload)}`;
   const description = payload.oneliner ?? payload.evidence ?? DEFAULT_DESCRIPTION;
 
   return {
