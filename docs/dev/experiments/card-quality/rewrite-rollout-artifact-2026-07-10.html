@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>오늘 해볼까 · 카드 콘텐츠 재생성 방식</title>
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --paper: #fffefa;
+      --ink: #1f2428;
+      --muted: #697177;
+      --line: #d9d4c8;
+      --line-strong: #b9b09f;
+      --accent: #246b5a;
+      --accent-soft: #dcebe5;
+      --gold: #b98020;
+      --gold-soft: #f4ead6;
+      --bad: #a33b37;
+      --bad-soft: #f3ddda;
+      --blue: #2f5d9b;
+      --blue-soft: #dee8f6;
+      --shadow: 0 12px 30px rgba(30, 26, 18, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      line-height: 1.55;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .page {
+      width: min(1180px, calc(100vw - 40px));
+      margin: 0 auto;
+      padding: 42px 0 72px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: end;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .stamp {
+      border: 1px solid var(--line-strong);
+      background: var(--paper);
+      padding: 14px 16px;
+      min-width: 210px;
+      box-shadow: var(--shadow);
+    }
+
+    .stamp strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .stamp span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    section {
+      margin-top: 34px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    .note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid.stats {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .grid.methods {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .grid.samples {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .panel,
+    .stat,
+    .method,
+    .sample,
+    .rule,
+    .timeline {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      padding: 18px;
+    }
+
+    .stat .value {
+      display: block;
+      font-size: 34px;
+      font-weight: 850;
+      line-height: 1;
+    }
+
+    .stat .label {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .method {
+      padding: 18px;
+      min-height: 245px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .method h3,
+    .sample h3 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .score {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 6px;
+      padding: 5px 9px;
+      border: 1px solid var(--line);
+      background: #faf7ef;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .score.win {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: #a8d0c1;
+    }
+
+    .score.bad {
+      background: var(--bad-soft);
+      color: var(--bad);
+      border-color: #e1b0ab;
+    }
+
+    .method p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .quote {
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .panel {
+      padding: 22px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      counter-reset: step;
+    }
+
+    .flow .step {
+      counter-increment: step;
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      min-height: 118px;
+    }
+
+    .flow .step::before {
+      content: counter(step);
+      display: inline-flex;
+      width: 24px;
+      height: 24px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      background: var(--accent);
+      color: white;
+      font-weight: 850;
+      font-size: 12px;
+    }
+
+    .flow strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .flow span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .sample {
+      overflow: hidden;
+    }
+
+    .sample .top {
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      background: #171717;
+      color: #fbfaf6;
+    }
+
+    .sample .top .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 8px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      color: #e8d8aa;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .sample .body {
+      padding: 16px;
+    }
+
+    .sample p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .sample .one {
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 750;
+    }
+
+    .mvp {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 7px;
+      margin: 14px 0;
+    }
+
+    .mvp span {
+      padding: 7px 8px;
+      border: 1px solid var(--line);
+      background: #fbfaf6;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .evidence {
+      margin-top: 12px;
+      padding: 10px;
+      background: var(--gold-soft);
+      border: 1px solid #dfc996;
+      color: #6e4d15;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .rules {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .rule {
+      padding: 14px 16px;
+      display: grid;
+      grid-template-columns: 28px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+    }
+
+    .rule b {
+      display: inline-flex;
+      width: 28px;
+      height: 28px;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 13px;
+    }
+
+    .rule span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    th,
+    td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    th {
+      background: #ebe6da;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: #555046;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 4px 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid #a8d0c1;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .pill.warn {
+      background: var(--bad-soft);
+      color: var(--bad);
+      border-color: #e1b0ab;
+    }
+
+    .timeline {
+      padding: 18px;
+    }
+
+    .timeline ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .timeline li {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .timeline time {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    .timeline p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 42px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 920px) {
+      header,
+      .grid.stats,
+      .grid.methods,
+      .grid.samples,
+      .flow,
+      .rules {
+        grid-template-columns: 1fr;
+      }
+
+      .stamp {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <p class="eyebrow">오늘 해볼까 · 카드 콘텐츠 재생성</p>
+        <h1>기계식 조합을 버리고, 문장 단위로 다시 쓰는 방식</h1>
+        <p class="subtitle">Claude 세션의 실험 흐름을 다시 적용해 생성 방식을 비교했고, 전체 6,610개 조합에서 점수 기반 상위 1,000개만 남겼습니다.</p>
+      </div>
+      <aside class="stamp">
+        <strong>1,000개</strong>
+        <span>상위 조합 선별 완료 · 2026-07-10</span>
+      </aside>
+    </header>
+
+    <section>
+      <div class="grid stats">
+        <div class="stat">
+          <span class="value">1,000</span>
+          <span class="label">현재 golden 카드 수</span>
+        </div>
+        <div class="stat">
+          <span class="value">181</span>
+          <span class="label">상위 1,000개에 남은 seed 수</span>
+        </div>
+        <div class="stat">
+          <span class="value">1,000</span>
+          <span class="label">명시 pair allowlist 조합 수</span>
+        </div>
+        <div class="stat">
+          <span class="value">0</span>
+          <span class="label">전체 검증기 구조 실패 수</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>가볍게 비교한 4가지 방식</h2>
+        <p class="note">5점 만점 · 니치 구체성, 오늘 실행감, 의외성, 자연스러움, 정합성 기준</p>
+      </div>
+      <div class="grid methods">
+        <article class="method">
+          <h3>A. 기계식 템플릿</h3>
+          <span class="score bad">1.8 / 5</span>
+          <p>seed, pain, format을 붙이지만 실제 사람이 보이지 않습니다. 숫자와 감정 표현이 무작위로 붙어 맥락이 자주 깨집니다.</p>
+          <div class="quote">점심 직후, 러닝 33개 뒤지다 지속 어려움에 식은땀...</div>
+        </article>
+        <article class="method">
+          <h3>B. 앵커 선행형</h3>
+          <span class="score win">4.4 / 5 · 채택</span>
+          <p>실제 장면을 먼저 잡고, 해외 앵커에서 검증된 메커니즘만 빌립니다. 카드 한 장에서 사람, 불편, 도구 흐름이 같이 보입니다.</p>
+          <div class="quote">동호회 단톡엔 못 올린 스윙 영상을 익명 링크로...</div>
+        </article>
+        <article class="method">
+          <h3>C. 운세 리딩형</h3>
+          <span class="score">3.5 / 5</span>
+          <p>카드 컨셉에는 맞지만 앞면부터 쓰면 앱 아이디어가 늦게 보입니다. `frontStory`와 뒷면 톤에만 제한적으로 씁니다.</p>
+          <div class="quote">오늘의 카드는 끊긴 리듬을 탓하지 말라고 말합니다.</div>
+        </article>
+        <article class="method">
+          <h3>D. MVP 선행형</h3>
+          <span class="score">3.1 / 5</span>
+          <p>만들기는 쉬워지지만 기능 목록처럼 보입니다. `mvp`와 `buildPrompt` 검산에는 쓰되 카피의 출발점으로 쓰지 않습니다.</p>
+          <div class="quote">오늘 했음, 쉼, 메모, 공유 링크가 있는 기록판</div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>확정한 작성 흐름</h2>
+        <p class="note">앞으로 모든 배치가 이 순서를 따릅니다.</p>
+      </div>
+      <div class="panel">
+        <div class="flow">
+          <div class="step">
+            <strong>사람과 장면부터</strong>
+            <span>추상 타깃 대신 이름, 상황, 반복되는 순간을 먼저 잡습니다.</span>
+          </div>
+          <div class="step">
+            <strong>pain을 행동 실패로</strong>
+            <span>"답답함"이 아니라 매번 놓치는 행동으로 씁니다.</span>
+          </div>
+          <div class="step">
+            <strong>format을 흐름으로</strong>
+            <span>대시보드, 투표, 계산기를 사용자가 하는 일로 번역합니다.</span>
+          </div>
+          <div class="step">
+            <strong>앵커는 근거로만</strong>
+            <span>카테고리보다 메커니즘 유사성을 우선하고 짧게 노출합니다.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>상위 1,000개 선별 방식</h2>
+        <p class="note">이제 모든 pain×format 곱을 쓰지 않고, 좋은 pair만 명시적으로 허용합니다.</p>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>기준</th>
+            <th>반영 내용</th>
+            <th>효과</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>니즈 구체성</td>
+            <td>짧은 범용 pain보다 길고 상황이 드러나는 pain에 가중치</td>
+            <td>무난한 조합보다 선명한 조합이 남음</td>
+          </tr>
+          <tr>
+            <td>pain-format 적합도</td>
+            <td>선택 피로는 계산기/큐레이션, 민망함은 공유/투표, 반복 수동은 템플릿/대시보드에 가점</td>
+            <td>메커니즘이 안 맞는 조합 제거</td>
+          </tr>
+          <tr>
+            <td>track-format 적합도</td>
+            <td>취향형은 공유/투표/큐레이션, 실무형은 대시보드/계산기/템플릿에 가점</td>
+            <td>취미 주제에 무거운 업무 도구가 붙는 문제 감소</td>
+          </tr>
+          <tr>
+            <td>품질 냄새 패널티</td>
+            <td>"N개 뒤지다", 범용 target, 범용 evidence, 범용 buildPrompt는 감점</td>
+            <td>전량 재작성 전에도 나쁜 조합을 우선 탈락</td>
+          </tr>
+          <tr>
+            <td>다양성 제한</td>
+            <td>seed당 최대 8개까지만 허용</td>
+            <td>상위 1,000개가 특정 seed에 몰리지 않음</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>첫 배치 샘플 3장</h2>
+        <p class="note">`running-001.json`에서 검증 통과 후 실제 `golden.json`에 반영된 카드입니다.</p>
+      </div>
+      <div class="grid samples">
+        <article class="sample">
+          <div class="top">
+            <span class="tag">러닝 · 이어가기</span>
+            <h3>안끊김기록</h3>
+          </div>
+          <div class="body">
+            <p class="one">나이키 런 클럽 47일 뛰다 하루 빠진 지현, 0일 대신 쉰 날로 남아 다시 뛴다</p>
+            <p>타깃: 하루 빠지면 러닝을 통째로 포기하는 직장인</p>
+            <div class="mvp">
+              <span>오늘 뛰었음</span>
+              <span>쉰 날 따로 기록</span>
+              <span>이어간 날 표시</span>
+              <span>기록 링크 공유</span>
+            </div>
+            <div class="evidence">Did I Do?는 일상 기록 앱으로 매달 약 116만원을 벌어요</div>
+          </div>
+        </article>
+        <article class="sample">
+          <div class="top">
+            <span class="tag">러닝 · 반응 카드</span>
+            <h3>러닝자랑픽</h3>
+          </div>
+          <div class="body">
+            <p class="one">혼자 2km 늘렸는데 아무도 모르는 밤, 기록 카드를 공유하자 친구 반응이 와 뿌듯하다</p>
+            <p>타깃: 작은 러닝 성과를 보여줄 곳이 없는 사람</p>
+            <div class="mvp">
+              <span>기록 카드 만들기</span>
+              <span>친구 반응 버튼</span>
+              <span>한마디 댓글</span>
+              <span>응원 링크 공유</span>
+            </div>
+            <div class="evidence">Flowy는 감정 기록 앱으로 매달 약 162만원을 벌어요</div>
+          </div>
+        </article>
+        <article class="sample">
+          <div class="top">
+            <span class="tag">러닝 · 친구 목록</span>
+            <h3>동네러너모음</h3>
+          </div>
+          <div class="body">
+            <p class="one">오픈채팅방이 너무 많아 망설인 민수, 거리·속도 맞는 동네 러너만 골라본다</p>
+            <p>타깃: 내 속도에 맞는 러닝 친구를 찾기 어려운 사람</p>
+            <div class="mvp">
+              <span>동네 러너 카드</span>
+              <span>거리·속도 태그</span>
+              <span>초보 환영 표시</span>
+              <span>목록 링크 공유</span>
+            </div>
+            <div class="evidence">3AK Track &amp; Field는 달리기 훈련 앱으로 매달 약 2,025만원을 벌어요</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>작성 규칙</h2>
+        <p class="note">한 장을 쓸 때마다 확인할 기준입니다.</p>
+      </div>
+      <div class="rules">
+        <div class="rule"><b>1</b><span>5초 안에 사용자가 떠올라야 합니다.</span></div>
+        <div class="rule"><b>2</b><span>오늘 만들 수 있는 행동 흐름이 보여야 합니다.</span></div>
+        <div class="rule"><b>3</b><span>같은 format 카드 100장과 구분되는 소재가 있어야 합니다.</span></div>
+        <div class="rule"><b>4</b><span>앵커 이름과 금액이 아이디어를 도와야 합니다.</span></div>
+        <div class="rule"><b>5</b><span>oneliner를 소리 내 읽었을 때 사람이 쓴 문장 같아야 합니다.</span></div>
+        <div class="rule"><b>6</b><span>"N개 뒤지다", "식은땀", 범용 체크리스트는 금지합니다.</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>현재 검증 상태</h2>
+        <p class="note">상위 1,000개로 줄인 뒤 전체 검증을 다시 통과했습니다.</p>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>항목</th>
+            <th>결과</th>
+            <th>해석</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill">배치 검증</span></td>
+            <td>`public/data/golden.json` · ok true · total 1000</td>
+            <td>상위 1,000개만 남긴 뒤 전체 구조 검증 통과</td>
+          </tr>
+          <tr>
+            <td><span class="pill">업서트</span></td>
+            <td>`combos.allow[seed].pairs` 추가 · totalPairs 1000</td>
+            <td>pain×format 전체 곱이 아니라 명시된 좋은 pair만 뽑힘</td>
+          </tr>
+          <tr>
+            <td><span class="pill warn">전체 검증</span></td>
+            <td>failedCount 0</td>
+            <td>선별된 1,000장은 현재 검증기 기준으로 모두 통과</td>
+          </tr>
+          <tr>
+            <td><span class="pill warn">품질 냄새</span></td>
+            <td>template-scene 894 · generic-evidence 894</td>
+            <td>조합은 줄였지만 카피 품질 재작성은 계속 필요</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>3시간 작전 계획</h2>
+        <p class="note">최종 완료 목표: 2026-07-10 05:00 KST · 상위 1,000개를 전량 재작성하고, 고위험 200~250장은 2차 정밀 리뷰합니다.</p>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>레인</th>
+            <th>하위 에이전트</th>
+            <th>0:00~1:00</th>
+            <th>1:00~2:15</th>
+            <th>2:15~3:00</th>
+            <th>완료 기준</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill">A</span></td>
+            <td>작전·스키마</td>
+            <td>상위 1,000개 고정, 품질 루브릭과 금지 패턴을 잠금</td>
+            <td>1,000개를 4개 재작성 레인에 250장씩 분배</td>
+            <td>고위험 200~250장 2차 리뷰 기준을 확정</td>
+            <td>모든 레인이 같은 기준으로 전량 재작성 가능</td>
+          </tr>
+          <tr>
+            <td><span class="pill">B</span></td>
+            <td>카피 재작성 1</td>
+            <td>1~250번 카드의 seed, pain, format을 확인</td>
+            <td>사람, 장면, 행동 실패가 보이도록 전량 재작성</td>
+            <td>표현 반복과 과장어를 제거한 batch 001 제출</td>
+            <td>250장 재작성 완료, batch validator 통과</td>
+          </tr>
+          <tr>
+            <td><span class="pill">C</span></td>
+            <td>카피 재작성 2</td>
+            <td>251~500번 카드의 앵커와 근거 충돌을 표시</td>
+            <td>앵커는 근거로만 남기고 사용 장면을 앞으로 이동</td>
+            <td>evidence가 아이디어를 돕는지 확인한 batch 002 제출</td>
+            <td>250장 재작성 완료, evidence 문맥 충돌 없음</td>
+          </tr>
+          <tr>
+            <td><span class="pill">D</span></td>
+            <td>카피 재작성 3</td>
+            <td>501~750번 카드의 seed 다양성과 format 편중을 확인</td>
+            <td>비슷한 소재끼리 말투, 결과물, MVP 동선을 분리</td>
+            <td>차별 축을 표시한 batch 003 제출</td>
+            <td>250장 재작성 완료, seed 내 차별성 개선</td>
+          </tr>
+          <tr>
+            <td><span class="pill">E</span></td>
+            <td>카피 재작성 4</td>
+            <td>751~1,000번 카드의 weak-anchor와 samey-mvp를 확인</td>
+            <td>근거와 MVP가 어긋나지 않도록 전량 재작성</td>
+            <td>batch 004 제출 후 고위험 후보를 표시</td>
+            <td>250장 재작성 완료, MVP 실행 단위 명확</td>
+          </tr>
+          <tr>
+            <td><span class="pill">F</span></td>
+            <td>검증·QA·반영</td>
+            <td>batch 포맷, validator, pass/review/fail 기준을 잠금</td>
+            <td>들어오는 4개 배치를 즉시 검증하고 실패 카드를 되돌림</td>
+            <td>고위험 200~250장 2차 리뷰와 UI/공유 확인</td>
+            <td>05:00 KST에 1,000장 전량 상태를 넘길 수 있음</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>3시간 immediate next steps</h2>
+        <p class="note">목표는 1,000개 전량 재작성입니다. 200~250장은 전량 재작성 이후 2차 정밀 리뷰 대상으로 둡니다.</p>
+      </div>
+      <div class="timeline">
+        <ol>
+          <li>
+            <time>02:00</time>
+            <p>상위 1,000개 allowlist를 고정하고, 품질 루브릭과 금지 패턴을 잠근 뒤 250장씩 4개 레인으로 나눕니다.</p>
+          </li>
+          <li>
+            <time>02:15</time>
+            <p>B~E 레인은 각자 250장씩 병렬 재작성하고, F 레인은 batch validator와 upsert 대기열을 엽니다.</p>
+          </li>
+          <li>
+            <time>03:30</time>
+            <p>들어온 batch부터 즉시 병합해 full validator를 돌리고, 실패 카드는 해당 레인으로 되돌립니다.</p>
+          </li>
+          <li>
+            <time>04:30</time>
+            <p>1,000개 전량 재작성 상태를 잠그고, 고위험 200~250장은 2차 리뷰 patch를 반영합니다.</p>
+          </li>
+          <li>
+            <time>05:00</time>
+            <p>2026-07-10 05:00 KST 기준 결과 요약, 실패 사유, 다음 큐를 전달합니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <footer>
+      생성 방식 원문: generation-method-test-2026-07-10.md · 첫 배치: scripts/rollout/manual-batches/running-001.json
+    </footer>
+  </main>
+</body>
+</html>

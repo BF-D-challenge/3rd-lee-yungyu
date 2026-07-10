@@ -108,6 +108,8 @@ export function VotePanel({ slug }: { slug: string }) {
   };
 
   const chosen = CHIPS.find((c) => c.type === selected);
+  const fromName = payload.fromName?.trim().replace(/님$/, "");
+  const askerCaption = fromName ? `${fromName}님이 물어봐요` : "친구가 물어봐요";
 
   return (
     <PageShell width="narrow" className="flex min-h-dvh flex-col">
@@ -115,7 +117,7 @@ export function VotePanel({ slug }: { slug: string }) {
 
       {/* 상단 맥락 — 조용한 캡션 (수신자에게 로그인·설치 카피 절대 노출 금지) */}
       <p className="text-center text-sm text-caption" data-anim style={{ animation: "fade-up .4s ease both" }}>
-        친구가 물어봐요
+        {askerCaption}
       </p>
 
       {/* 히어로 카드 — PublishCard 재사용, 높이 ~44vh 캡(SE 667h에서도 2×2가 폴드 위) */}

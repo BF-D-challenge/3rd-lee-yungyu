@@ -43,6 +43,42 @@ create table if not exists public.duel_votes (
 );
 create index if not exists idx_duel_votes_slug on public.duel_votes (slug);
 
+-- v10 수신자 플로우 메타데이터. 기존 익명 행과 구버전 클라이언트를 위해 모두 nullable이다.
+alter table public.duel_votes
+  add column if not exists round_id       text,
+  add column if not exists user_id        text,
+  add column if not exists candidate_id   text,
+  add column if not exists praise_id      text,
+  add column if not exists idempotency_key text;
+
+do $$
+begin
+  if not exists (
+    select 1
+    from pg_constraint
+    where conname = 'duel_votes_praise_id_check'
+      and conrelid = 'public.duel_votes'::regclass
+  ) then
+    alter table public.duel_votes
+      add constraint duel_votes_praise_id_check
+      check (praise_id is null or praise_id in ('need', 'notify', 'cheer'));
+  end if;
+end
+$$;
+
+-- NULL은 여러 행에 허용하면서 v10 요청은 같은 키로 한 번만 저장한다.
+create unique index if not exists uq_duel_votes_idempotency_key
+  on public.duel_votes (idempotency_key);
+create unique index if not exists uq_duel_votes_round_user
+  on public.duel_votes (round_id, user_id)
+  where round_id is not null and user_id is not null;
+create index if not exists idx_duel_votes_round_candidate
+  on public.duel_votes (round_id, candidate_id)
+  where round_id is not null;
+create index if not exists idx_duel_votes_user_id
+  on public.duel_votes (user_id)
+  where user_id is not null;
+
 -- ----------------------------------------------------------------------------
 -- RLS — 수신자 무로그인. 익명 insert 허용 + 공개 select.
 --   slug는 추측 불가 capability 토큰(base64url 인코딩된 카드)이라, 이를 아는 사람만
@@ -79,3 +115,16 @@ create policy duel_votes_update_anon on public.duel_votes
 
 -- 참고(어뷰징 방어): voter_fp는 클라이언트 생성이라 위조 가능. 프로토타입은 (slug,voter_fp)
 --   unique + 클라이언트 dedup으로 충분. rate-limit/지문 무결성은 실측 후 Edge Function으로.
+
+-- ----------------------------------------------------------------------------
+-- 3. 컬럼 권한 강화 — update은 comment만 허용(응원 후 한마디를 뒤늦게 붙이는 용도).
+--   위 update 정책의 using(true)/with check(true)는 "누가" 갱신 가능한지만 걸렀고
+--   "어떤 컬럼"까지 바꿀 수 있는지는 막지 않았다 — 익명 누구나 임의 행의 kind/side까지
+--   위조할 수 있던 구멍. 컬럼 단위 GRANT로 comment 외 컬럼은 update 자체를 차단한다.
+--   (REVOKE/GRANT는 재실행해도 안전 — 존재 여부와 무관하게 멱등)
+-- ----------------------------------------------------------------------------
+revoke update on public.card_votes from anon, authenticated;
+grant update (comment) on public.card_votes to anon, authenticated;
+
+revoke update on public.duel_votes from anon, authenticated;
+grant update (comment) on public.duel_votes to anon, authenticated;

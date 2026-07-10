@@ -17,6 +17,7 @@ dist/
 build/
 tsconfig.tsbuildinfo
 tmp/
+scratchpad/
 
 # 인증 정보 (절대 커밋 금지!)
 *.pem
@@ -57,6 +58,18 @@ _legacy/
 
 # 스크랩한 타사 데이터 원본 (ToS·용량 — 요약만 추적)
 docs/research/trustmrr-acquire/*.jsonl
+
+# M3 분할·재시도 원본 (정규화 코퍼스와 최종 리포트는 추적)
+docs/research/material-design-3/retry/*.jsonl
+docs/research/material-design-3/shards/
+
+# 카드 품질 실험 중간 산출물 (최종 후보·최종 실험 결과만 추적)
+docs/dev/experiments/card-quality/qa/human-fit-audit-*.json
+docs/dev/experiments/card-quality/qa/rewrite-1000-*
+docs/dev/experiments/card-quality/qa/expansion-candidates-*.json
+docs/dev/experiments/card-quality/qa/mobile-pairing-experiment-latest.json
+docs/dev/experiments/card-quality/qa/seed-pain-repeat-filter-latest.json
+scripts/rollout/manual-batches/
 
 # 카드 모션 영상(용량)·미리보기 HTML 실험 (사용자 결정 2026-07-08)
 public/cards/aurora/motion/

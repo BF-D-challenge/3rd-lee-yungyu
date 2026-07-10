@@ -1,0 +1,3145 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>오늘 해볼까 - 모바일 최종 플로우</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #080a0f;
+        --surface: #10141d;
+        --surface-2: #171c27;
+        --surface-3: #202634;
+        --line: rgba(236, 241, 255, 0.15);
+        --line-strong: rgba(236, 241, 255, 0.3);
+        --text: #f7f8fb;
+        --muted: #aeb6c5;
+        --dim: #737d90;
+        --blue: #6db4f5;
+        --gold: #e8c56a;
+        --mint: #7de4be;
+        --red: #ff5b6e;
+        --ink: #07111b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--bg);
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          Inter,
+          Pretendard,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        letter-spacing: 0;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      button:focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 2px;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      .page {
+        width: min(1180px, calc(100% - 28px));
+        margin: 0 auto;
+        padding: 28px 0 44px;
+      }
+
+      .overview {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 24px;
+        align-items: end;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .eyebrow {
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 680px;
+        margin-top: 8px;
+        font-size: 32px;
+        line-height: 1.15;
+        font-weight: 760;
+      }
+
+      .overview-copy {
+        max-width: 680px;
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .counts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .count {
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        padding: 7px 10px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1;
+      }
+
+      .count strong {
+        color: var(--text);
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 26px minmax(0, 1.14fr) 26px minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+        margin-top: 26px;
+      }
+
+      .flow-arrow {
+        min-height: 610px;
+        display: grid;
+        place-items: center;
+        color: var(--dim);
+        font-size: 22px;
+        font-weight: 700;
+      }
+
+      .screen-block {
+        min-width: 0;
+        display: grid;
+        justify-items: center;
+        gap: 12px;
+      }
+
+      .screen-heading {
+        width: min(320px, 100%);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .screen-number {
+        width: 28px;
+        height: 28px;
+        flex: 0 0 28px;
+        border: 1px solid var(--line-strong);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--blue);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .screen-heading h2 {
+        font-size: 16px;
+        line-height: 1.2;
+        font-weight: 760;
+      }
+
+      .screen-heading p {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.3;
+      }
+
+      .phone {
+        position: relative;
+        width: min(320px, 100%);
+        height: 610px;
+        overflow: hidden;
+        border: 1px solid var(--line-strong);
+        border-radius: 30px;
+        background: #050609;
+        box-shadow: 0 26px 60px rgba(0, 0, 0, 0.32);
+      }
+
+      .phone::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 7px;
+        width: 96px;
+        height: 4px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.62);
+        transform: translateX(-50%);
+        z-index: 20;
+      }
+
+      .status {
+        height: 28px;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1;
+      }
+
+      .phone-body {
+        height: calc(100% - 28px);
+        padding: 14px 14px 22px;
+      }
+
+      .login-body {
+        display: grid;
+        align-content: center;
+        gap: 14px;
+        text-align: center;
+      }
+
+      .brand-mark {
+        width: 54px;
+        height: 76px;
+        margin: 0 auto 6px;
+        border: 1px solid rgba(109, 180, 245, 0.58);
+        border-radius: 7px;
+        background: var(--surface-2);
+        box-shadow: 0 0 30px rgba(109, 180, 245, 0.15);
+        transform: rotate(-4deg);
+      }
+
+      .brand {
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .login-body h3 {
+        font-size: 20px;
+        line-height: 1.3;
+        font-weight: 760;
+      }
+
+      .login-body p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .primary,
+      .secondary {
+        width: 100%;
+        min-height: 48px;
+        border-radius: 7px;
+        padding: 10px 12px;
+        font-size: 13px;
+        font-weight: 760;
+      }
+
+      .primary {
+        border: 1px solid var(--blue);
+        background: var(--blue);
+        color: var(--ink);
+      }
+
+      .primary:disabled {
+        border-color: var(--line);
+        background: var(--surface-3);
+        color: var(--dim);
+      }
+
+      .secondary {
+        border: 1px solid var(--line-strong);
+        background: transparent;
+        color: var(--text);
+      }
+
+      .login-note {
+        color: var(--dim);
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .state-strip {
+        width: min(320px, 100%);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .state-chip {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 8px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1;
+      }
+
+      .state-chip.active {
+        border-color: rgba(109, 180, 245, 0.5);
+        background: rgba(109, 180, 245, 0.08);
+        color: var(--blue);
+      }
+
+      .game-body {
+        display: grid;
+        grid-template-rows: auto auto minmax(0, 1fr) auto;
+        gap: 9px;
+      }
+
+      .result-panel {
+        min-height: 94px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: var(--surface);
+        padding: 11px;
+        display: grid;
+        align-content: center;
+        gap: 5px;
+      }
+
+      .result-panel small {
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .result-panel strong {
+        font-size: 15px;
+        line-height: 1.3;
+      }
+
+      .result-panel span {
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .result-summary {
+        display: grid;
+        gap: 5px;
+      }
+
+      .round-pair {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      .round-card {
+        min-width: 0;
+        min-height: 82px;
+        border: 1px solid var(--line-strong);
+        border-radius: 7px;
+        background: var(--surface-2);
+        color: var(--text);
+        padding: 8px;
+        display: grid;
+        align-content: end;
+        gap: 4px;
+        text-align: left;
+      }
+
+      .round-card small {
+        color: var(--blue);
+        font-size: 9px;
+        font-weight: 700;
+      }
+
+      .round-card strong {
+        font-size: 11px;
+        line-height: 1.25;
+      }
+
+      .round-card span {
+        color: var(--muted);
+        font-size: 9px;
+        line-height: 1.25;
+      }
+
+      .round-card.selected {
+        border-color: var(--mint);
+        background: #10211d;
+        box-shadow: inset 0 0 0 1px rgba(125, 228, 190, 0.2);
+      }
+
+      .round-card:disabled {
+        opacity: 0.68;
+      }
+
+      .taste-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        overflow: hidden;
+      }
+
+      .taste-row > span:first-child {
+        flex: 0 0 auto;
+        color: var(--dim);
+        font-size: 10px;
+      }
+
+      .taste-chip {
+        flex: 0 0 auto;
+        border: 1px solid rgba(255, 91, 110, 0.4);
+        border-radius: 999px;
+        background: rgba(255, 91, 110, 0.08);
+        color: #ffadb7;
+        padding: 5px 7px;
+        font-size: 10px;
+        line-height: 1;
+      }
+
+      .game-stage {
+        position: relative;
+        min-height: 310px;
+        overflow: hidden;
+        border: 1px solid rgba(109, 180, 245, 0.15);
+        border-radius: 7px;
+        background: #080a0e;
+        perspective: 900px;
+      }
+
+      .draw-pair {
+        position: absolute;
+        inset: 12px 12px auto;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        z-index: 6;
+        transform: rotateX(2deg);
+      }
+
+      .draw-card {
+        min-width: 0;
+        min-height: 142px;
+        border: 1px dashed rgba(236, 241, 255, 0.22);
+        border-radius: 7px;
+        background: var(--surface);
+        padding: 10px;
+        display: grid;
+        align-content: end;
+        gap: 5px;
+        color: var(--dim);
+        text-align: left;
+        transform-style: preserve-3d;
+      }
+
+      button.draw-card {
+        cursor: pointer;
+      }
+
+      button.draw-card:disabled {
+        cursor: default;
+        opacity: 0.72;
+      }
+
+      button.draw-card.filled:disabled {
+        opacity: 1;
+      }
+
+      .draw-card small {
+        color: var(--blue);
+        font-size: 9px;
+        line-height: 1;
+      }
+
+      .draw-card strong {
+        font-size: 12px;
+        line-height: 1.2;
+        font-weight: 700;
+      }
+
+      .draw-card span {
+        font-size: 9px;
+        line-height: 1.35;
+      }
+
+      .draw-card.aim {
+        border-color: var(--blue);
+        color: var(--blue);
+        animation: slot-pulse 1.9s ease-in-out infinite;
+      }
+
+      .draw-card.filled {
+        border-style: solid;
+        border-color: rgba(125, 228, 190, 0.5);
+        background: #111c1b;
+        color: var(--text);
+      }
+
+      .draw-card.filled small {
+        color: var(--mint);
+      }
+
+      .draw-card.flipping {
+        animation: slot-flip 520ms cubic-bezier(.4, 0, .15, 1);
+      }
+
+      .deck-label {
+        position: absolute;
+        left: 50%;
+        bottom: 91px;
+        z-index: 8;
+        color: var(--dim);
+        font-size: 10px;
+        transform: translateX(-50%);
+        white-space: nowrap;
+      }
+
+      .fan {
+        position: absolute;
+        left: 50%;
+        bottom: -17px;
+        width: 220px;
+        height: 120px;
+        transform: translateX(-50%);
+        transform-origin: 50% 110%;
+        animation: deck-drift 2s linear infinite alternate;
+      }
+
+      .fan-card {
+        position: absolute;
+        left: 50%;
+        bottom: 4px;
+        width: 52px;
+        height: 82px;
+        margin: 0;
+        border: 1px solid rgba(109, 180, 245, 0.55);
+        border-radius: 5px;
+        background: var(--surface-2);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.38);
+        transform-origin: 50% 112px;
+      }
+
+      .fan-card:nth-child(1) { transform: translateX(-50%) rotate(-36deg) translateY(12px); }
+      .fan-card:nth-child(2) { transform: translateX(-50%) rotate(-24deg) translateY(7px); }
+      .fan-card:nth-child(3) { transform: translateX(-50%) rotate(-12deg) translateY(3px); }
+      .fan-card:nth-child(4) { transform: translateX(-50%); z-index: 8; }
+      .fan-card:nth-child(5) { transform: translateX(-50%) rotate(12deg) translateY(3px); }
+      .fan-card:nth-child(6) { transform: translateX(-50%) rotate(24deg) translateY(7px); }
+      .fan-card:nth-child(7) { transform: translateX(-50%) rotate(36deg) translateY(12px); }
+
+      .flying-card {
+        position: absolute;
+        z-index: 30;
+        width: 52px;
+        height: 82px;
+        border: 1px solid var(--blue);
+        border-radius: 5px;
+        background: var(--surface-2);
+        box-shadow: 0 16px 24px rgba(0, 0, 0, 0.5);
+        pointer-events: none;
+      }
+
+      .game-actions {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+      }
+
+      .share-action {
+        width: auto;
+        min-height: 48px;
+        border: 1px solid rgba(232, 197, 106, 0.5);
+        border-radius: 7px;
+        background: rgba(232, 197, 106, 0.08);
+        color: var(--gold);
+        padding: 0 10px;
+        font-size: 11px;
+        font-weight: 760;
+      }
+
+      .interaction-note {
+        width: min(360px, 100%);
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.45;
+        text-align: center;
+      }
+
+      .interaction-note strong {
+        color: var(--text);
+      }
+
+      .loop-banner {
+        position: absolute;
+        inset: 34px 14px auto;
+        z-index: 50;
+        border: 1px solid rgba(125, 228, 190, 0.48);
+        border-radius: 7px;
+        background: #10211d;
+        color: var(--mint);
+        padding: 9px 10px;
+        text-align: center;
+        font-size: 11px;
+        line-height: 1.3;
+      }
+
+      .praise-body {
+        position: relative;
+        display: grid;
+        align-content: start;
+        gap: 12px;
+      }
+
+      .sender {
+        color: var(--blue);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .round-context {
+        display: grid;
+        gap: 12px;
+      }
+
+      .shared-card {
+        min-height: 218px;
+        border: 1px solid rgba(232, 197, 106, 0.42);
+        border-radius: 7px;
+        background: #161713;
+        padding: 14px;
+        display: grid;
+        align-content: end;
+        gap: 7px;
+      }
+
+      .shared-card::before {
+        content: "";
+        width: 54px;
+        height: 78px;
+        border: 1px solid rgba(232, 197, 106, 0.45);
+        border-radius: 5px;
+        background: #202017;
+        align-self: start;
+        justify-self: center;
+      }
+
+      .shared-card strong {
+        font-size: 17px;
+        line-height: 1.3;
+      }
+
+      .shared-card span {
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .auth-sheet,
+      .praise-sheet {
+        border: 1px solid var(--line-strong);
+        border-radius: 7px;
+        background: var(--surface);
+        padding: 13px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .auth-sheet strong,
+      .praise-sheet strong {
+        font-size: 14px;
+        line-height: 1.3;
+      }
+
+      .auth-sheet p,
+      .praise-sheet p {
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .praise-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .praise-option {
+        min-height: 48px;
+        border: 1px solid rgba(232, 197, 106, 0.38);
+        border-radius: 999px;
+        background: rgba(232, 197, 106, 0.06);
+        color: #f3da96;
+        padding: 7px 9px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        line-height: 1;
+      }
+
+      .praise-option.selected {
+        border-color: var(--gold);
+        background: var(--gold);
+        color: #16140d;
+      }
+
+      .queue-status {
+        border: 1px solid rgba(125, 228, 190, 0.36);
+        border-radius: 7px;
+        background: #10211d;
+        color: var(--mint);
+        padding: 10px 11px;
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .taste-reference {
+        margin-top: 30px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+      }
+
+      .taste-reference-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 420px);
+        gap: 20px;
+        align-items: end;
+      }
+
+      .taste-reference-heading h2 {
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .taste-reference-heading p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .taste-grid {
+        width: min(680px, 100%);
+        margin: 18px auto 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        align-items: start;
+      }
+
+      .taste-example {
+        min-width: 0;
+        display: grid;
+        justify-items: center;
+        gap: 10px;
+      }
+
+      .taste-example-heading {
+        width: min(300px, 100%);
+      }
+
+      .taste-example-heading strong {
+        display: block;
+        font-size: 14px;
+        line-height: 1.3;
+      }
+
+      .taste-example-heading span {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .taste-phone {
+        position: relative;
+        width: min(300px, 100%);
+        height: 590px;
+        overflow: hidden;
+        border: 1px solid var(--line-strong);
+        border-radius: 28px;
+        background: #07090d;
+      }
+
+      .taste-phone::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 7px;
+        width: 88px;
+        height: 4px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.58);
+        transform: translateX(-50%);
+      }
+
+      .taste-screen {
+        height: calc(100% - 28px);
+        padding: 12px 13px 22px;
+        display: grid;
+        grid-template-rows: auto auto minmax(0, 1fr) auto;
+        gap: 11px;
+      }
+
+      .taste-screen.edit {
+        grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+      }
+
+      .taste-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .taste-nav strong {
+        color: var(--red);
+        font-size: 11px;
+      }
+
+      .taste-question {
+        display: grid;
+        gap: 6px;
+      }
+
+      .taste-question small {
+        color: var(--red);
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .taste-question h3 {
+        font-size: 18px;
+        line-height: 1.25;
+      }
+
+      .taste-question p {
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .taste-cloud {
+        display: flex;
+        align-content: start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 7px;
+        overflow: hidden;
+      }
+
+      .taste-pill {
+        min-height: 48px;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: transparent;
+        color: var(--muted);
+        padding: 7px 9px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        line-height: 1;
+      }
+
+      .taste-pill.selected {
+        border-color: var(--red);
+        background: rgba(255, 91, 110, 0.1);
+        color: #ffb4bd;
+      }
+
+      .selected-tastes {
+        display: flex;
+        gap: 5px;
+        overflow: hidden;
+      }
+
+      .selected-tastes span {
+        flex: 0 0 auto;
+        border: 1px solid rgba(255, 91, 110, 0.35);
+        border-radius: 999px;
+        background: rgba(255, 91, 110, 0.08);
+        color: #ffb4bd;
+        padding: 6px 7px;
+        font-size: 10px;
+        line-height: 1;
+      }
+
+      .taste-search {
+        flex: 1 0 100%;
+        min-height: 36px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: var(--surface);
+        color: var(--dim);
+        padding: 9px 10px;
+        font-size: 11px;
+      }
+
+      .taste-footer {
+        display: grid;
+        gap: 7px;
+      }
+
+      .taste-footer p {
+        color: var(--dim);
+        font-size: 10px;
+        line-height: 1.3;
+        text-align: center;
+      }
+
+      .growth-loop {
+        margin-top: 34px;
+        padding-top: 26px;
+        border-top: 1px solid var(--line);
+      }
+
+      .growth-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 460px);
+        gap: 20px;
+        align-items: end;
+      }
+
+      .growth-heading h2 {
+        margin-top: 7px;
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
+      .growth-heading p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .k-definition {
+        margin-top: 18px;
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1.3fr);
+        gap: 20px;
+        align-items: center;
+      }
+
+      .k-equation small {
+        display: block;
+        color: var(--dim);
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .k-equation strong {
+        display: block;
+        margin-top: 5px;
+        color: var(--mint);
+        font-size: 22px;
+        line-height: 1.2;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .k-equation p {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .k-chain {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .k-chain span {
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        background: var(--surface);
+        padding: 6px 7px;
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .k-chain b {
+        color: var(--text);
+        font-weight: 750;
+      }
+
+      .k-flow-scroll {
+        margin-top: 18px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        scroll-snap-type: x proximity;
+        scrollbar-width: thin;
+      }
+
+      .k-flow-rail {
+        width: max-content;
+        min-width: 100%;
+        display: flex;
+        align-items: stretch;
+      }
+
+      .k-step {
+        width: 150px;
+        min-height: 168px;
+        flex: 0 0 150px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: #0b0e14;
+        padding: 11px;
+        display: flex;
+        flex-direction: column;
+        scroll-snap-align: start;
+      }
+
+      .k-step.creator {
+        border-top-color: var(--blue);
+      }
+
+      .k-step.receiver {
+        border-top-color: var(--gold);
+      }
+
+      .k-step.new-creator {
+        border-top-color: var(--mint);
+      }
+
+      .k-step-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .k-step-number {
+        color: var(--dim);
+        font-size: 9px;
+        font-weight: 800;
+      }
+
+      .k-role {
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        padding: 3px 4px;
+        color: var(--muted);
+        font-size: 8px;
+        font-weight: 700;
+      }
+
+      .k-step.creator .k-role {
+        color: var(--blue);
+      }
+
+      .k-step.receiver .k-role {
+        color: var(--gold);
+      }
+
+      .k-step.new-creator .k-role {
+        color: var(--mint);
+      }
+
+      .k-step strong {
+        margin-top: 13px;
+        font-size: 13px;
+        line-height: 1.3;
+      }
+
+      .k-step p {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1.4;
+      }
+
+      .k-step-meta {
+        margin-top: auto;
+        padding-top: 9px;
+        border-top: 1px solid rgba(236, 241, 255, 0.08);
+        color: var(--dim);
+        font-size: 9px;
+        line-height: 1.35;
+      }
+
+      .k-step-meta b {
+        color: var(--text);
+      }
+
+      .k-ref {
+        display: inline-block;
+        margin-top: 7px;
+        color: var(--red);
+        font-size: 8px;
+        font-weight: 800;
+      }
+
+      .k-ref.gas {
+        color: var(--gold);
+      }
+
+      .k-arrow {
+        width: 28px;
+        flex: 0 0 28px;
+        display: grid;
+        place-items: center;
+        color: var(--dim);
+        font-size: 15px;
+      }
+
+      .k-arrow.loop-back {
+        color: var(--mint);
+        font-size: 20px;
+      }
+
+      .k-support {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        gap: 20px;
+      }
+
+      .k-support h3 {
+        font-size: 14px;
+        line-height: 1.3;
+      }
+
+      .k-funnel {
+        margin-top: 10px;
+        border-top: 1px solid var(--line);
+      }
+
+      .k-funnel-row {
+        min-height: 45px;
+        display: grid;
+        grid-template-columns: minmax(110px, 1fr) 72px minmax(120px, 1.2fr);
+        gap: 10px;
+        align-items: center;
+        border-bottom: 1px solid rgba(236, 241, 255, 0.1);
+        font-size: 10px;
+      }
+
+      .k-funnel-row strong {
+        font-size: 11px;
+      }
+
+      .k-funnel-row b {
+        color: var(--mint);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .k-funnel-row code {
+        color: var(--dim);
+        font-size: 9px;
+        overflow-wrap: anywhere;
+      }
+
+      .k-reference {
+        margin-top: 10px;
+        border-top: 1px solid var(--line);
+      }
+
+      .k-reference-item {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(236, 241, 255, 0.1);
+      }
+
+      .k-reference-item strong {
+        display: block;
+        font-size: 11px;
+      }
+
+      .k-reference-item a {
+        color: var(--blue);
+        text-decoration: none;
+      }
+
+      .k-reference-item a:hover {
+        text-decoration: underline;
+      }
+
+      .k-reference-item p {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1.45;
+      }
+
+      .k-guardrail {
+        margin-top: 16px;
+        border-left: 3px solid var(--red);
+        background: rgba(255, 91, 110, 0.06);
+        padding: 11px 12px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.5;
+      }
+
+      .k-guardrail strong {
+        color: var(--text);
+      }
+
+      .motion-storyboard {
+        margin-top: 34px;
+        padding-top: 26px;
+        border-top: 1px solid var(--line);
+      }
+
+      .motion-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 440px);
+        gap: 20px;
+        align-items: end;
+      }
+
+      .motion-heading h2 {
+        margin-top: 7px;
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
+      .motion-heading p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .motion-tokens {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .motion-token {
+        min-width: 0;
+        padding: 12px 10px;
+        border-right: 1px solid var(--line);
+      }
+
+      .motion-token:last-child {
+        border-right: 0;
+      }
+
+      .motion-token small {
+        display: block;
+        color: var(--dim);
+        font-size: 9px;
+        font-weight: 700;
+      }
+
+      .motion-token strong {
+        display: block;
+        margin-top: 4px;
+        color: var(--text);
+        font-size: 12px;
+        line-height: 1.25;
+      }
+
+      .motion-scenes {
+        margin-top: 8px;
+      }
+
+      .motion-scene {
+        padding: 24px 0 26px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .motion-scene-heading {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: start;
+      }
+
+      .motion-scene-number {
+        width: 30px;
+        height: 30px;
+        border: 1px solid rgba(109, 180, 245, 0.5);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--blue);
+        font-size: 10px;
+        font-weight: 800;
+      }
+
+      .motion-scene-heading h3 {
+        font-size: 16px;
+        line-height: 1.25;
+      }
+
+      .motion-scene-heading p {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      .motion-route {
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        padding: 5px 7px;
+        color: var(--gold);
+        font-size: 10px;
+        white-space: nowrap;
+      }
+
+      .frame-strip {
+        position: relative;
+        margin-top: 15px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(164px, 1fr);
+        gap: 9px;
+        overflow-x: auto;
+        padding: 0 0 8px;
+        scroll-snap-type: x proximity;
+        scrollbar-width: thin;
+      }
+
+      .motion-frame {
+        min-width: 0;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: #0b0e14;
+        overflow: hidden;
+        scroll-snap-align: start;
+      }
+
+      .frame-time {
+        display: block;
+        padding: 7px 9px 0;
+        color: var(--blue);
+        font-size: 9px;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .frame-canvas {
+        height: 126px;
+        padding: 9px;
+        display: grid;
+        place-items: center;
+      }
+
+      .mini-screen {
+        position: relative;
+        width: 86px;
+        height: 112px;
+        overflow: hidden;
+        border: 1px solid var(--line-strong);
+        border-radius: 12px;
+        background: #050609;
+        padding: 9px 7px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .mini-screen.center {
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mini-mark {
+        width: 18px;
+        height: 25px;
+        border: 1px solid var(--blue);
+        border-radius: 3px;
+        background: var(--surface-2);
+        transform: rotate(-4deg);
+      }
+
+      .mini-line {
+        width: 100%;
+        height: 4px;
+        border-radius: 2px;
+        background: var(--surface-3);
+      }
+
+      .mini-line.short {
+        width: 58%;
+      }
+
+      .mini-line.blue {
+        background: rgba(109, 180, 245, 0.72);
+      }
+
+      .mini-button {
+        width: 100%;
+        min-height: 16px;
+        margin-top: auto;
+        border-radius: 3px;
+        background: var(--blue);
+        color: var(--ink);
+        display: grid;
+        place-items: center;
+        font-size: 5px;
+        font-weight: 800;
+      }
+
+      .mini-button.gold {
+        background: var(--gold);
+      }
+
+      .mini-button.disabled {
+        background: var(--surface-3);
+        color: var(--dim);
+      }
+
+      .mini-card-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px;
+      }
+
+      .mini-card {
+        position: relative;
+        min-width: 0;
+        min-height: 48px;
+        border: 1px dashed rgba(236, 241, 255, 0.3);
+        border-radius: 4px;
+        background: var(--surface);
+      }
+
+      .mini-card.aim {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 2px rgba(109, 180, 245, 0.1);
+      }
+
+      .mini-card.open {
+        border-style: solid;
+        border-color: rgba(125, 228, 190, 0.55);
+        background: #10211d;
+      }
+
+      .mini-card.selected {
+        border-style: solid;
+        border-color: var(--gold);
+        background: #211d10;
+        transform: translateY(-2px) scale(1.02);
+      }
+
+      .mini-card.dim {
+        opacity: 0.3;
+        transform: scale(0.95);
+      }
+
+      .mini-deck {
+        position: relative;
+        width: 54px;
+        height: 22px;
+        margin: auto auto 0;
+      }
+
+      .mini-deck::before,
+      .mini-deck::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -4px;
+        width: 16px;
+        height: 25px;
+        border: 1px solid rgba(109, 180, 245, 0.55);
+        border-radius: 2px;
+        background: var(--surface-2);
+        transform-origin: 50% 30px;
+      }
+
+      .mini-deck::before {
+        transform: translateX(-50%) rotate(-28deg);
+      }
+
+      .mini-deck::after {
+        transform: translateX(-50%) rotate(28deg);
+      }
+
+      .mini-fly {
+        position: absolute;
+        left: 50%;
+        top: 54%;
+        width: 15px;
+        height: 24px;
+        border: 1px solid var(--blue);
+        border-radius: 2px;
+        background: var(--surface-2);
+        transform: translate(-50%, -50%) rotate(-8deg);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .mini-chip-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px;
+        align-content: flex-start;
+      }
+
+      .mini-chip {
+        min-width: 22px;
+        height: 11px;
+        border: 1px solid var(--line-strong);
+        border-radius: 7px;
+        background: var(--surface);
+      }
+
+      .mini-chip.on {
+        border-color: var(--red);
+        background: rgba(255, 91, 110, 0.25);
+      }
+
+      .mini-chip.gold {
+        border-color: var(--gold);
+        background: rgba(232, 197, 106, 0.3);
+      }
+
+      .mini-search {
+        height: 13px;
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        background: var(--surface);
+      }
+
+      .mini-sheet {
+        position: absolute;
+        inset: auto 4px 4px;
+        min-height: 54px;
+        border: 1px solid var(--line-strong);
+        border-radius: 6px 6px 9px 9px;
+        background: var(--surface);
+        padding: 6px;
+        display: grid;
+        gap: 4px;
+      }
+
+      .mini-success {
+        width: 30px;
+        height: 30px;
+        border: 1px solid var(--mint);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--mint);
+        font-size: 13px;
+      }
+
+      .frame-copy {
+        min-height: 70px;
+        border-top: 1px solid var(--line);
+        padding: 9px;
+      }
+
+      .frame-copy strong {
+        display: block;
+        font-size: 11px;
+        line-height: 1.3;
+      }
+
+      .frame-copy p {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 9px;
+        line-height: 1.4;
+      }
+
+      .motion-prompt {
+        margin-top: 12px;
+        border-top: 1px solid rgba(236, 241, 255, 0.1);
+      }
+
+      .motion-prompt summary {
+        min-height: 48px;
+        padding: 11px 4px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--text);
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .prompt-body {
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: #07090d;
+      }
+
+      .prompt-body pre {
+        margin: 0;
+        max-height: 420px;
+        overflow: auto;
+        padding: 58px 14px 15px;
+        color: #dce4f2;
+        font: 11px/1.6 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        white-space: pre-wrap;
+        word-break: keep-all;
+      }
+
+      .copy-prompt {
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        z-index: 2;
+        border: 1px solid var(--line-strong);
+        border-radius: 5px;
+        background: var(--surface-2);
+        color: var(--muted);
+        min-height: 48px;
+        padding: 5px 7px;
+        font-size: 10px;
+      }
+
+      .copy-prompt.copied {
+        border-color: rgba(125, 228, 190, 0.5);
+        color: var(--mint);
+      }
+
+      .loop {
+        margin-top: 28px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 15px 0;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .loop strong {
+        color: var(--mint);
+        font-size: 13px;
+      }
+
+      .loop p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .loop code {
+        color: var(--text);
+        font-size: 12px;
+      }
+
+      .m3-review {
+        margin-top: 34px;
+        padding-top: 26px;
+        border-top: 1px solid var(--line);
+      }
+
+      .m3-review h2 {
+        margin-top: 7px;
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
+      .m3-review > p {
+        max-width: 760px;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .m3-grid {
+        margin-top: 16px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        border-top: 1px solid var(--line);
+      }
+
+      .m3-rule {
+        min-width: 0;
+        padding: 13px 12px 13px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .m3-rule:nth-child(odd) {
+        border-right: 1px solid var(--line);
+      }
+
+      .m3-rule:nth-child(even) {
+        padding-left: 12px;
+      }
+
+      .m3-rule strong,
+      .m3-rule a {
+        color: var(--text);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .m3-rule p {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .implementation {
+        margin-top: 24px;
+      }
+
+      .implementation h2 {
+        font-size: 17px;
+        line-height: 1.2;
+      }
+
+      .route-list {
+        margin-top: 10px;
+        display: grid;
+        border-top: 1px solid var(--line);
+      }
+
+      .route-row {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr);
+        gap: 14px;
+        padding: 11px 0;
+        border-bottom: 1px solid var(--line);
+        align-items: baseline;
+      }
+
+      .route-row code {
+        color: var(--blue);
+        font-size: 12px;
+      }
+
+      .route-row p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .cut-line {
+        margin-top: 12px;
+        color: var(--dim);
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      @keyframes slot-pulse {
+        0%,
+        100% {
+          opacity: 0.82;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.04);
+        }
+      }
+
+      @keyframes deck-drift {
+        from {
+          rotate: -1.1deg;
+        }
+        to {
+          rotate: 1.1deg;
+        }
+      }
+
+      @keyframes slot-flip {
+        0% {
+          transform: scale(0.9) rotateY(90deg);
+        }
+        55% {
+          transform: translateY(-7px) scale(1.04) rotateY(0);
+        }
+        100% {
+          transform: translateY(0) scale(1) rotateY(0);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .overview {
+          grid-template-columns: 1fr;
+        }
+
+        .counts {
+          justify-content: flex-start;
+        }
+
+        .flow {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+
+        .flow-arrow {
+          min-height: 28px;
+          transform: rotate(90deg);
+        }
+
+        .phone {
+          width: min(360px, 100%);
+        }
+
+        .screen-heading,
+        .state-strip {
+          width: min(360px, 100%);
+        }
+
+        .taste-reference-heading,
+        .growth-heading,
+        .motion-heading {
+          grid-template-columns: 1fr;
+        }
+
+        .k-definition,
+        .k-support {
+          grid-template-columns: 1fr;
+        }
+
+        .motion-tokens {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .motion-token:nth-child(3) {
+          border-right: 0;
+        }
+
+        .motion-token:nth-child(-n + 3) {
+          border-bottom: 1px solid var(--line);
+        }
+      }
+
+      @media (max-width: 700px) {
+        .taste-grid {
+          width: min(360px, 100%);
+          grid-template-columns: 1fr;
+        }
+
+        .motion-tokens {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .m3-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .m3-rule,
+        .m3-rule:nth-child(even) {
+          padding-right: 0;
+          padding-left: 0;
+          border-right: 0;
+        }
+
+        .k-funnel-row {
+          grid-template-columns: minmax(96px, 1fr) 58px minmax(96px, 1.1fr);
+          gap: 7px;
+        }
+
+        .motion-token:nth-child(3) {
+          border-right: 1px solid var(--line);
+        }
+
+        .motion-token:nth-child(even) {
+          border-right: 0;
+        }
+
+        .motion-token:nth-child(-n + 4) {
+          border-bottom: 1px solid var(--line);
+        }
+      }
+
+      @media (max-width: 520px) {
+        .page {
+          width: min(100% - 20px, 380px);
+          padding-top: 20px;
+        }
+
+        h1 {
+          font-size: 27px;
+        }
+
+        .phone {
+          height: 600px;
+        }
+
+        .loop {
+          grid-template-columns: 1fr;
+          gap: 5px;
+        }
+
+        .route-row {
+          grid-template-columns: 88px minmax(0, 1fr);
+          gap: 10px;
+        }
+
+        .motion-scene-heading {
+          grid-template-columns: auto minmax(0, 1fr);
+        }
+
+        .motion-route {
+          grid-column: 2;
+          justify-self: start;
+        }
+
+        .frame-strip {
+          margin-right: -10px;
+          grid-auto-columns: 158px;
+        }
+
+        .k-flow-scroll {
+          margin-right: -10px;
+        }
+
+        .k-step {
+          width: 142px;
+          flex-basis: 142px;
+        }
+
+        .k-funnel-row {
+          min-height: 54px;
+          grid-template-columns: minmax(0, 1fr) 50px;
+        }
+
+        .k-funnel-row code {
+          grid-column: 1 / -1;
+          padding-bottom: 7px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .fan,
+        .draw-card.aim,
+        .draw-card.flipping {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page" id="minimal-flow">
+      <header class="overview">
+        <div>
+          <div class="eyebrow">FINAL MVP FLOW</div>
+          <h1>아이디어 카드 두 장을 바로 뽑고, BF.D가 오늘 만들 한 장을 고른다</h1>
+          <p class="overview-copy">
+            네 장을 조합하지 않고 덱에서 최종 아이디어 카드 A·B를 바로 뽑습니다. BF.D 멤버는
+            응원 라운드에서 한 장을 고르고 칭찬한 뒤, 자기 후보를 만드는 게임판으로 이어집니다.
+          </p>
+        </div>
+        <div class="counts" aria-label="최종 범위">
+          <span class="count"><strong>3</strong> 화면</span>
+          <span class="count"><strong>2</strong> 라우트</span>
+          <span class="count"><strong>1</strong> BF.D 루프</span>
+        </div>
+      </header>
+
+      <section class="flow" aria-label="최종 모바일 플로우">
+        <article class="screen-block" id="login-screen">
+          <div class="screen-heading">
+            <span class="screen-number">1</span>
+            <div>
+              <h2>로그인</h2>
+              <p>모든 진입의 첫 행동</p>
+            </div>
+          </div>
+          <div class="phone" aria-label="로그인 화면">
+            <div class="status"><span>9:41</span><span>보안 연결</span></div>
+            <div class="phone-body login-body">
+              <div class="brand-mark" aria-hidden="true"></div>
+              <div class="brand">오늘 해볼까</div>
+              <h3>오늘 만들 아이디어를 찾아볼까요?</h3>
+              <p>내 취향에서 시작하고, BF.D 멤버들의 선택과 칭찬으로 실행할 힘을 얻습니다.</p>
+              <button type="button" class="primary" id="creator-login">Google로 시작하기</button>
+              <div class="login-note">로그인 필수 · 프로필 설정 없음 · 건너뛰기 없음</div>
+            </div>
+          </div>
+          <div class="state-strip" aria-label="로그인 화면 상태">
+            <span class="state-chip active">Google 로그인</span>
+            <span class="state-chip">즉시 게임판</span>
+          </div>
+        </article>
+
+        <div class="flow-arrow" aria-hidden="true">→</div>
+
+        <article class="screen-block" id="gameboard-screen">
+          <div class="screen-heading">
+            <span class="screen-number">2</span>
+            <div>
+              <h2>게임판</h2>
+              <p>덱에서 최종 아이디어 카드 두 장을 바로 뽑기</p>
+            </div>
+          </div>
+          <div class="phone" aria-label="카드 뽑기 게임판">
+            <div class="status"><span>오늘 아이디어</span><span id="card-count">0/2</span></div>
+            <div class="loop-banner" id="loop-banner" hidden>선택한 취향으로 카드 두 장을 뽑아요</div>
+            <div class="phone-body game-body">
+              <div class="result-panel" aria-live="polite">
+                <div class="result-summary" id="result-summary">
+                  <small id="result-label">오늘의 후보</small>
+                  <strong id="result-title">최종 카드 두 장을 뽑아보세요</strong>
+                  <span id="result-copy">카드 한 장이 곧 하나의 완성된 아이디어입니다.</span>
+                </div>
+              </div>
+
+              <div class="taste-row" aria-label="선택한 취향">
+                <span>취향 3</span>
+                <span class="taste-chip">하루 MVP</span>
+                <span class="taste-chip">친구 반응</span>
+                <span class="taste-chip">자동화</span>
+              </div>
+
+              <div class="game-stage" id="game-stage">
+                <div class="draw-pair" aria-label="최종 아이디어 카드 두 장">
+                  <button type="button" class="draw-card aim" data-draw-target aria-label="카드 A 열기">
+                    <small>카드 A</small>
+                    <strong>첫 번째 카드</strong>
+                    <span>탭해서 아이디어를 열어보세요</span>
+                  </button>
+                  <button type="button" class="draw-card" data-draw-target aria-label="카드 B 열기" disabled>
+                    <small>카드 B</small>
+                    <strong>두 번째 카드</strong>
+                    <span>첫 장을 열면 활성화돼요</span>
+                  </button>
+                </div>
+
+                <div class="deck-label">빛나는 카드 표면을 순서대로 탭해 열기</div>
+                <div class="fan" aria-label="부채꼴 카드 덱">
+                  <span class="fan-card" aria-hidden="true"></span>
+                  <span class="fan-card" aria-hidden="true"></span>
+                  <span class="fan-card" aria-hidden="true"></span>
+                  <span class="fan-card" id="deck-card-source" aria-hidden="true"></span>
+                  <span class="fan-card" aria-hidden="true"></span>
+                  <span class="fan-card" aria-hidden="true"></span>
+                  <span class="fan-card" aria-hidden="true"></span>
+                </div>
+                <span class="flying-card" id="flying-card" hidden aria-hidden="true"></span>
+              </div>
+
+              <div class="game-actions">
+                <button type="button" class="secondary" id="reset-draw" hidden>↻ 다른 두 장</button>
+                <button type="button" class="share-action" id="share-demo" aria-label="BF.D 응원 라운드 공유" hidden>BF.D에게 골라달라고 하기</button>
+              </div>
+            </div>
+          </div>
+          <div class="state-strip" aria-label="게임판 내부 상태">
+            <span class="state-chip active">필수 취향 전체 화면</span>
+            <span class="state-chip active" id="draw-state">카드 직접 열기</span>
+            <span class="state-chip" id="candidate-a-state">카드 1장</span>
+            <span class="state-chip" id="candidate-b-state">카드 2장 + 공유</span>
+          </div>
+          <p class="interaction-note">
+            <strong>한 장 = 아이디어 하나:</strong> 덱 1.1°/s · 비행 420ms · 카드 사이 280ms · 플립 520ms
+          </p>
+        </article>
+
+        <div class="flow-arrow" aria-hidden="true">→</div>
+
+        <article class="screen-block" id="praise-screen">
+          <div class="screen-heading">
+            <span class="screen-number">3</span>
+            <div>
+              <h2>BF.D 응원 라운드</h2>
+              <p>멤버가 최종 카드 두 장 중 하나를 선택</p>
+            </div>
+          </div>
+          <div class="phone" aria-label="BF.D 최종 카드 응원 라운드 화면">
+            <div class="status"><span>BF.D 라운드</span><span>2장 중 선택</span></div>
+            <div class="phone-body praise-body">
+              <div class="round-context" id="round-context" inert>
+                <div class="sender">윤규님이 오늘 만들 최종 후보</div>
+                <div class="round-pair" id="round-pair" role="radiogroup" aria-label="최종 후보 한 장 선택">
+                  <button type="button" class="round-card" role="radio" aria-checked="false" aria-disabled="true" tabindex="0" data-round-candidate="A" data-seed="팀 회의" disabled>
+                    <small>후보 A</small>
+                    <strong>회의 결정 봇</strong>
+                    <span>회의가 끝나기 전에 결론을 남겨요</span>
+                  </button>
+                  <button type="button" class="round-card" role="radio" aria-checked="false" aria-disabled="true" tabindex="-1" data-round-candidate="B" data-seed="사이드 프로젝트" disabled>
+                    <small>후보 B</small>
+                    <strong>수요 질문 카드</strong>
+                    <span>친구에게 쓸지 한 번에 물어봐요</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="auth-sheet" id="receiver-auth" role="dialog" aria-modal="true" aria-labelledby="receiver-auth-title">
+                <strong id="receiver-auth-title">한 장을 고르려면 로그인해주세요</strong>
+                <p>인증 후 이 응원 라운드로 자동 복귀합니다.</p>
+                <button type="button" class="primary" id="receiver-login">Google로 계속</button>
+              </div>
+
+              <div class="praise-sheet" id="receiver-praise" aria-labelledby="receiver-praise-title" hidden>
+                <strong id="receiver-praise-title">카드 한 장과 힘이 되는 한마디를 골라주세요</strong>
+                <div class="praise-options">
+                  <button type="button" class="praise-option" aria-pressed="false">나도 필요해</button>
+                  <button type="button" class="praise-option" aria-pressed="false">완성하면 알려줘</button>
+                  <button type="button" class="praise-option" aria-pressed="false">너라면 만들어</button>
+                </div>
+                <button type="button" class="primary" id="start-own" disabled>응원하고 내 후보 만들기</button>
+              </div>
+              <div class="queue-status" id="queue-status" role="status" aria-live="polite" hidden></div>
+            </div>
+          </div>
+          <div class="state-strip" aria-label="BF.D 응원 라운드 내부 상태">
+            <span class="state-chip active" id="auth-state">멤버 로그인</span>
+            <span class="state-chip" id="praise-state">2장 중 선택</span>
+            <span class="state-chip">칭찬 1탭</span>
+            <span class="state-chip">내 후보 시작</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="taste-reference" aria-label="취향 선택 화면 구성 참고">
+        <div class="taste-reference-heading">
+          <div>
+            <div class="eyebrow">GAMEBOARD STATE</div>
+            <h2>취향 선택 화면 구성 참고</h2>
+          </div>
+          <p>
+            두 화면 모두 별도 라우트가 아닙니다. 1번은 첫 방문 직후 같은 <code>/</code>에서 차지하는
+            전체 화면 상태이고, 2번만 나중에 취향을 수정할 때 모달 바텀시트로 엽니다.
+          </p>
+        </div>
+
+        <div class="taste-grid">
+          <article class="taste-example">
+            <div class="taste-example-heading">
+              <strong>1. 취향 여러 개 고르기</strong>
+              <span>첫 방문에서 최소 3개를 빠르게 선택</span>
+            </div>
+            <div class="taste-phone" aria-label="취향 여러 개 고르기 화면" data-taste-demo data-base-count="0" data-cta-label="다음">
+              <div class="status"><span>9:41</span><span data-taste-status role="status" aria-live="polite">0/8 선택</span></div>
+              <div class="taste-screen">
+                <div class="taste-nav"><span>취향 설정</span><strong>필수 · 3–8개</strong></div>
+                <div class="taste-question">
+                  <small>취향 선택</small>
+                  <h3>어떤 아이디어가 끌리나요?</h3>
+                  <p>최소 3개, 최대 8개까지 고르세요.</p>
+                </div>
+                <div class="taste-cloud">
+                  <button type="button" class="taste-pill">바로 만들기</button>
+                  <button type="button" class="taste-pill">공유 반응</button>
+                  <button type="button" class="taste-pill">돈 받을 수 있음</button>
+                  <button type="button" class="taste-pill">커뮤니티</button>
+                  <button type="button" class="taste-pill">AI 도구</button>
+                  <button type="button" class="taste-pill">하루 MVP</button>
+                  <button type="button" class="taste-pill">친구 투표</button>
+                  <button type="button" class="taste-pill">콘텐츠</button>
+                  <button type="button" class="taste-pill">가벼운 재미</button>
+                  <button type="button" class="taste-pill">B2B</button>
+                  <button type="button" class="taste-pill">로컬</button>
+                  <button type="button" class="taste-pill">교육</button>
+                </div>
+                <div class="taste-footer">
+                  <button type="button" class="primary" data-taste-cta disabled>다음 0/8</button>
+                  <p>선택은 슬롯 덱의 확률에만 반영</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="taste-example">
+            <div class="taste-example-heading">
+              <strong>2. 검색하고 더 추가하기</strong>
+              <span>재방문 시 선택값을 빠르게 추가·해제</span>
+            </div>
+            <div class="taste-phone" aria-label="취향 검색하고 추가하기 화면" data-taste-demo data-base-count="3" data-cta-label="적용">
+              <div class="status"><span>9:41</span><span data-taste-status role="status" aria-live="polite">6/8 선택</span></div>
+              <div class="taste-screen edit">
+                <div class="taste-nav"><span>닫기</span><strong>6 of 8</strong></div>
+                <div class="selected-tastes">
+                  <span>바로 만들기</span><span>하루 MVP</span><span>공유 카드</span>
+                </div>
+                <div class="taste-question">
+                  <small>취향 편집</small>
+                  <h3>조금 더 골라볼까요?</h3>
+                  <p>칩을 다시 누르면 선택에서 빠집니다.</p>
+                </div>
+                <div class="taste-cloud">
+                  <div class="taste-search">검색: 예) 공유, 자동화, 돈</div>
+                  <button type="button" class="taste-pill selected" aria-pressed="true">주말 하루</button>
+                  <button type="button" class="taste-pill selected" aria-pressed="true">공유 카드</button>
+                  <button type="button" class="taste-pill">자동화</button>
+                  <button type="button" class="taste-pill">SaaS</button>
+                  <button type="button" class="taste-pill">모바일 앱</button>
+                  <button type="button" class="taste-pill selected" aria-pressed="true">검증 링크</button>
+                  <button type="button" class="taste-pill">프라이싱</button>
+                  <button type="button" class="taste-pill">게임</button>
+                  <button type="button" class="taste-pill">생산성</button>
+                  <button type="button" class="taste-pill">피드백</button>
+                </div>
+                <div class="taste-footer">
+                  <button type="button" class="primary" data-taste-cta>적용 6/8</button>
+                  <p>언제든 게임판에서 다시 열기</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="growth-loop" aria-labelledby="growth-loop-title">
+        <div class="growth-heading">
+          <div>
+            <div class="eyebrow">K = 1 GROWTH LOOP</div>
+            <h2 id="growth-loop-title">제작자 한 명이 새 제작자 한 명을 만드는 전체 플로우</h2>
+          </div>
+          <p>
+            K의 완료 기준은 가입이나 카드 열기가 아니라 <strong>새 사용자가 자기 카드 두 장을 만들고
+            다시 BF.D 라운드를 공유한 순간</strong>입니다. 아래 비율은 예측값이 아니라 K=1을 만들기 위해
+            실측으로 지켜야 할 최소 목표선입니다.
+          </p>
+        </div>
+
+        <div class="k-definition">
+          <div class="k-equation">
+            <small>VIRAL UNIT · 새 공유 라운드</small>
+            <strong>K = 3.2 × 31.185% = 0.998 ≈ 1.00</strong>
+            <p>원본 라운드 1개 → 고유 수신자 오픈 3.2회 → 자식 공유 라운드 약 1개</p>
+          </div>
+          <div class="k-chain" aria-label="K-factor 목표 전환율">
+            <span>고유 링크 오픈 <b>3.2회</b></span>
+            <span>로그인 <b>75%</b></span>
+            <span>선택+칭찬 <b>90%</b></span>
+            <span>내 카드 시작 <b>70%</b></span>
+            <span>두 장 완성 <b>75%</b></span>
+            <span>새 라운드 공유 <b>88%</b></span>
+          </div>
+        </div>
+
+        <div class="k-flow-scroll" aria-label="K-factor 1 전체 순환 플로우">
+          <div class="k-flow-rail">
+            <article class="k-step creator">
+              <div class="k-step-top"><span class="k-step-number">01</span><span class="k-role">기존 제작자</span></div>
+              <strong>로그인</strong>
+              <p>Google 인증 후 원래 진입 상태로 복귀합니다.</p>
+              <span class="k-ref">TINDER · 단일 CTA</span>
+              <div class="k-step-meta">준비 구간 · K 분모 전</div>
+            </article>
+            <span class="k-arrow" aria-hidden="true">→</span>
+            <article class="k-step creator">
+              <div class="k-step-top"><span class="k-step-number">02</span><span class="k-role">기존 제작자</span></div>
+              <strong>취향 3–8개</strong>
+              <p>다중 선택으로 두 카드의 방향만 좁힙니다.</p>
+              <div class="k-step-meta">완료 후 같은 라우트 유지</div>
+            </article>
+            <span class="k-arrow" aria-hidden="true">→</span>
+            <article class="k-step creator">
+              <div class="k-step-top"><span class="k-step-number">03</span><span class="k-role">기존 제작자</span></div>
+              <strong>카드 A·B 열기</strong>
+              <p>두 카드 표면을 차례로 탭해 완성 아이디어를 엽니다.</p>
+              <span class="k-ref gas">GAS · 선택지 자체가 버튼</span>
+              <div class="k-step-meta">목표: <b>90초 이내</b></div>
+            </article>
+            <span class="k-arrow" aria-hidden="true">→</span>
+            <article class="k-step creator">
+              <div class="k-step-top"><span class="k-step-number">04</span><span class="k-role">기존 제작자</span></div>
+              <strong>BF.D 라운드 공유</strong>
+              <p>질문과 <code>origin_round_id</code>가 포함된 링크로 네이티브 공유를 엽니다.</p>
+              <span class="k-ref gas">GAS · 타이핑 0 전달</span>
+              <div class="k-step-meta">share_sheet_opened · <b>K에는 미포함</b></div>
+            </article>
+            <span class="k-arrow" aria-hidden="true">→</span>
+            <article class="k-step receiver">
+              <div class="k-step-top"><span class="k-step-number">05</span><span class="k-role">BF.D 수신자</span></div>
+              <strong>링크 열기</strong>
+              <p>발신자 이름과 두 후보를 첫 화면에서 바로 확인합니다.</p>
+              <div class="k-step-meta">unique round_opened · 원본당 <b>3.2회</b></div>
+            </article>
+            <span class="k-arrow" aria-hidden="true">→</span>
+            <article class="k-step receiver">
+              <div class="k-step-top"><span class="k-step-number">06</span><span class="k-role">BF.D 수신자</span></div>
+              <strong>로그인 후 복귀</strong>
+              <p>프로필 설정 없이 인증하고 같은 라운드로 돌아옵니다.</p>
+              <div class="k-step-meta">auth_completed · 목표 <b>75%</b></div>
+            </article>
+            <span class="k-arrow" aria-hidden="true">→</span>
+            <article class="k-step receiver">
+              <div class="k-step-top"><span class="k-step-number">07</span><span class="k-role">BF.D 수신자</span></div>
+              <strong>한 장 선택 + 칭찬</strong>
+              <p>카드를 직접 탭하고 긍정 프리셋 한 개를 고릅니다.</p>
+              <span class="k-ref gas">GAS · 긍정 전용</span>
+              <span class="k-ref">TINDER · 선택 카드 강조</span>
+              <div class="k-step-meta">round_voted · 목표 <b>90%</b></div>
+            </article>
+            <span class="k-arrow" aria-hidden="true">→</span>
+            <article class="k-step receiver">
+              <div class="k-step-top"><span class="k-step-number">08</span><span class="k-role">BF.D 수신자</span></div>
+              <strong>내 카드 시작</strong>
+              <p>선택한 카드의 취향을 담아 제작자 게임판으로 이어집니다.</p>
+              <span class="k-ref gas">GAS · 행동 직후 다음 루프</span>
+              <div class="k-step-meta">own_flow_started · 목표 <b>70%</b></div>
+            </article>
+            <span class="k-arrow" aria-hidden="true">→</span>
+            <article class="k-step new-creator">
+              <div class="k-step-top"><span class="k-step-number">09</span><span class="k-role">새 제작자</span></div>
+              <strong>내 카드 A·B 완성</strong>
+              <p>취향 선택을 반복하지 않고 바로 두 장을 엽니다.</p>
+              <div class="k-step-meta">two_cards_completed · 목표 <b>75%</b></div>
+            </article>
+            <span class="k-arrow" aria-hidden="true">→</span>
+            <article class="k-step new-creator">
+              <div class="k-step-top"><span class="k-step-number">10</span><span class="k-role">새 제작자</span></div>
+              <strong>새 라운드 공유</strong>
+              <p>새 A/B 라운드를 올리는 순간 다음 바이럴 단위가 생성됩니다.</p>
+              <span class="k-ref gas">GAS · 메인 콘텐츠 공유</span>
+              <div class="k-step-meta">round_shared · 목표 <b>88%</b></div>
+            </article>
+            <span class="k-arrow loop-back" aria-hidden="true">↺</span>
+          </div>
+        </div>
+
+        <div class="k-support">
+          <div>
+            <h3>K=1 측정 퍼널</h3>
+            <div class="k-funnel">
+              <div class="k-funnel-row"><strong>원본당 고유 링크 오픈</strong><b>3.2회</b><code>unique_opener_count / origin_round_count</code></div>
+              <div class="k-funnel-row"><strong>수신자 로그인</strong><b>75%</b><code>auth_completed / round_opened</code></div>
+              <div class="k-funnel-row"><strong>선택과 칭찬</strong><b>90%</b><code>praise_sent / auth_completed</code></div>
+              <div class="k-funnel-row"><strong>내 카드 시작</strong><b>70%</b><code>own_flow_started / praise_sent</code></div>
+              <div class="k-funnel-row"><strong>카드 두 장 완성</strong><b>75%</b><code>two_cards_completed / own_flow_started</code></div>
+              <div class="k-funnel-row"><strong>새 라운드 공유</strong><b>88%</b><code>round_shared / two_cards_completed</code></div>
+            </div>
+          </div>
+          <div>
+            <h3>Tinder·Gas 적용 경계</h3>
+            <div class="k-reference">
+              <div class="k-reference-item">
+                <strong>Tinder에서 가져옴 · <a href="https://mobbin.com/flows/c7f3bc64-0e7d-4859-abba-22919c981813" target="_blank" rel="noreferrer">Mobbin</a></strong>
+                <p>한 순간에 한 결정, 1/2 진행감, 선택 카드의 하트 팝과 비선택 카드 후퇴.</p>
+              </div>
+              <div class="k-reference-item">
+                <strong>Gas에서 가져옴 · <a href="https://mobbin.com/flows/1836c800-2eb5-4bb9-a86e-402aaac883ff" target="_blank" rel="noreferrer">Mobbin</a></strong>
+                <p>카드 자체를 버튼으로 사용, 부정 없는 칭찬, 응원 직후 내 플로우 진입, 콘텐츠 자체 공유.</p>
+              </div>
+              <div class="k-reference-item">
+                <strong>가져오지 않음</strong>
+                <p>정확히 두 장인데 무한 스와이프시키는 구조와 쿨다운을 초대로 강제 해제하는 잠금.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="k-guardrail">
+          <strong>가장 취약한 구간은 수신자 로그인입니다.</strong> 로그인 성공률이 75%에서 60%로 내려가면
+          K는 약 0.80으로 떨어집니다. 이 설계는 이미 BF.D 계정이 있거나 OAuth 복귀가 매끄러운 코호트를
+          전제로 합니다. 초대를 강제하기 전에 로그인 복귀와 `내 카드 시작` 전환부터 개선해야 합니다.
+          또한 K=1은 유지선일 뿐이므로 실제 운영 목표는 변동 여유를 둔 K≥1.1이어야 합니다.
+          네이티브 공유 클릭은 전달 완료로 세지 않고, 모든 새 라운드에 `origin_round_id`를 보존해
+          부모 라운드당 고유 `round_shared` 자손 수로 실제 K를 계산합니다.
+        </p>
+      </section>
+
+      <section class="m3-review" aria-labelledby="m3-review-title">
+        <div class="eyebrow">MATERIAL DESIGN 3 REVIEW</div>
+        <h2 id="m3-review-title">구현에서 고정할 M3 가드레일</h2>
+        <p>
+          로컬 Material Design 3 스킬의 2026-07-10 스냅샷으로 점검했습니다. 이 정적 시안에서는
+          1dp를 1px로 대응하며, 제품 구현은 디자인 토큰과 플랫폼 접근성 설정을 우선합니다.
+        </p>
+        <div class="m3-grid">
+          <div class="m3-rule">
+            <strong><a href="https://m3.material.io/components/bottom-sheets/guidelines" target="_blank" rel="noreferrer">첫 취향은 전체 화면, 편집만 바텀시트</a></strong>
+            <p>필수 첫 단계를 보조 콘텐츠처럼 닫을 수 있게 만들지 않습니다. 재방문 편집만 모달 시트로 엽니다.</p>
+          </div>
+          <div class="m3-rule">
+            <strong><a href="https://m3.material.io/components/button-groups/specs" target="_blank" rel="noreferrer">모든 터치 타깃 최소 48dp</a></strong>
+            <p>CTA, 취향 칩, 칭찬 칩, 복사 버튼, 접기 헤더까지 최소 높이 48px를 유지합니다.</p>
+          </div>
+          <div class="m3-rule">
+            <strong><a href="https://m3.material.io/components/radio-button/accessibility" target="_blank" rel="noreferrer">A/B 선택은 라디오 그룹</a></strong>
+            <p>두 카드 중 정확히 한 장을 고르므로 radiogroup, aria-checked, 방향키 이동을 제공합니다.</p>
+          </div>
+          <div class="m3-rule">
+            <strong><a href="https://m3.material.io/components/cards/guidelines" target="_blank" rel="noreferrer">모바일 카드 내부 스크롤 금지</a></strong>
+            <p>카드 높이를 안정적으로 확보하고 내용은 잘라 숨기지 않습니다. 페이지가 스크롤을 소유합니다.</p>
+          </div>
+          <div class="m3-rule">
+            <strong><a href="https://m3.material.io/styles/motion/transitions/applying-transitions" target="_blank" rel="noreferrer">감속 모션은 페이드로 대체</a></strong>
+            <p>reduced motion에서는 덱 드리프트, 비행, 플립, 팝을 제거하고 100ms 상태 페이드만 남깁니다.</p>
+          </div>
+          <div class="m3-rule">
+            <strong><a href="https://m3.material.io/components/snackbar/accessibility" target="_blank" rel="noreferrer">저장 실패를 성공처럼 표시하지 않기</a></strong>
+            <p>오프라인은 대기열 저장 상태를 읽어주고, 재시도 액션이 있는 스낵바는 자동으로 닫지 않습니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="motion-storyboard" aria-labelledby="motion-storyboard-title">
+        <div class="motion-heading">
+          <div>
+            <div class="eyebrow">MOTION STORYBOARD</div>
+            <h2 id="motion-storyboard-title">화면별 인터랙션과 구현 프롬프트</h2>
+          </div>
+          <p>
+            현재 슬롯 코드의 덱·비행·플립 물성을 공통 모션 언어로 사용합니다. 단, 최종 구조는
+            네 장 조합이 아니라 완성 아이디어 카드 A·B를 직접 여는 Gas형 흐름입니다.
+          </p>
+        </div>
+
+        <div class="motion-tokens" aria-label="공통 모션 토큰">
+          <div class="motion-token"><small>ENTRY</small><strong>400ms fade-up</strong></div>
+          <div class="motion-token"><small>DECK</small><strong>3.2s sweep · 1.1°/s</strong></div>
+          <div class="motion-token"><small>FLIGHT</small><strong>420ms arc</strong></div>
+          <div class="motion-token"><small>FLIP</small><strong>520ms reveal</strong></div>
+          <div class="motion-token"><small>FEEDBACK</small><strong>300–520ms</strong></div>
+          <div class="motion-token"><small>REDUCED</small><strong>opacity only · 100ms</strong></div>
+        </div>
+
+        <div class="motion-scenes">
+          <article class="motion-scene">
+            <div class="motion-scene-heading">
+              <span class="motion-scene-number">01</span>
+              <div>
+                <h3>로그인</h3>
+                <p>첫 화면에서 맥락을 읽고 Google 인증으로 단번에 게임판까지 이동</p>
+              </div>
+              <code class="motion-route">/ · auth</code>
+            </div>
+            <div class="frame-strip" aria-label="로그인 모션 프레임">
+              <div class="motion-frame">
+                <span class="frame-time">0–120ms</span>
+                <div class="frame-canvas">
+                  <div class="mini-screen center" style="opacity:.62; transform:translateY(5px) scale(.97)">
+                    <div class="mini-mark"></div><div class="mini-line short blue"></div><div class="mini-line"></div>
+                  </div>
+                </div>
+                <div class="frame-copy"><strong>브랜드 진입</strong><p>카드 마크와 제목이 14px 아래에서 조용히 올라옵니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">120–400ms</span>
+                <div class="frame-canvas">
+                  <div class="mini-screen center">
+                    <div class="mini-mark"></div><div class="mini-line short blue"></div><div class="mini-line"></div><div class="mini-button">GOOGLE</div>
+                  </div>
+                </div>
+                <div class="frame-copy"><strong>CTA 완성</strong><p>본문과 버튼을 60ms 간격으로 노출해 시선이 아래로 흐릅니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">PRESS · 0–180ms</span>
+                <div class="frame-canvas">
+                  <div class="mini-screen center">
+                    <div class="mini-mark"></div><div class="mini-line short"></div><div class="mini-button gold">CONNECTING</div>
+                  </div>
+                </div>
+                <div class="frame-copy"><strong>인증 시작</strong><p>버튼은 0.98로 눌리고 즉시 잠깁니다. 800ms 후에만 로더를 표시합니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">RETURN · 0–420ms</span>
+                <div class="frame-canvas">
+                  <div class="mini-screen center">
+                    <div class="mini-success">✓</div><div class="mini-line short blue"></div><div class="mini-line"></div>
+                  </div>
+                </div>
+                <div class="frame-copy"><strong>게임판 연결</strong><p>인증 복귀 시 성공을 짧게 확인하고 취향 선택 상태로 교차 전환합니다.</p></div>
+              </div>
+            </div>
+            <details class="motion-prompt">
+              <summary><span>구현 프롬프트 · 로그인</span><span>열기</span></summary>
+              <div class="prompt-body">
+                <button type="button" class="copy-prompt" data-copy-target="prompt-login">프롬프트 복사</button>
+                <pre><code id="prompt-login">모바일 퍼스트 로그인 화면을 구현한다.
+
+상태 모델: idle → authenticating → returning → success 또는 error.
+진입 모션은 전체 컨테이너를 움직이지 말고 카드 마크, 브랜드, 제목, 설명, CTA를 각각 opacity 0→1, translateY 14px→0으로 올린다. duration 400ms, ease-out, 요소 간 delay 60ms.
+Google CTA는 화면 진입 180ms 뒤 시작하고 마지막에 완전히 선명해진다. 버튼 높이는 48px로 고정해 문구나 로더가 바뀌어도 레이아웃이 흔들리지 않게 한다.
+pointerdown에서 scale .98을 90ms 적용한다. click 즉시 authenticating으로 전환하고 중복 입력, 뒤로가기 연타, 카드 덱 입력을 잠근다.
+인증이 800ms 안에 끝나면 로더를 보이지 않는다. 800ms가 넘을 때만 버튼 문구를 '연결하는 중'으로 교차 페이드하고 16px 로더를 표시한다.
+OAuth 복귀 시 220ms 동안 체크 피드백을 보여준 뒤 취향 선택 상태를 opacity cross-fade 180ms로 연다. 별도 페이지 슬라이드는 사용하지 않는다.
+실패 시 화면을 초기화하지 말고 CTA 아래에 오류 한 줄을 180ms fade-in한다. CTA는 다시 활성화하고 포커스를 유지한다.
+모든 모션은 transform과 opacity만 사용한다. prefers-reduced-motion에서는 이동과 scale을 제거하고 100ms opacity 전환만 쓴다.
+키보드 포커스, aria-busy, 오류 live region, iOS safe-area를 포함한다.</code></pre>
+              </div>
+            </details>
+          </article>
+
+          <article class="motion-scene">
+            <div class="motion-scene-heading">
+              <span class="motion-scene-number">02</span>
+              <div>
+                <h3>취향 여러 개 고르기</h3>
+                <p>첫 방문에서 최소 3개, 최대 8개를 리듬감 있게 선택</p>
+              </div>
+              <code class="motion-route">/ · taste:first</code>
+            </div>
+            <div class="frame-strip" aria-label="취향 다중 선택 모션 프레임">
+              <div class="motion-frame">
+                <span class="frame-time">0–180ms</span>
+                <div class="frame-canvas">
+                  <div class="mini-screen" style="opacity:.7"><div class="mini-line short blue"></div><div class="mini-line"></div><div class="mini-chip-cloud"><i class="mini-chip"></i><i class="mini-chip"></i><i class="mini-chip"></i></div><div class="mini-button disabled">0/8</div></div>
+                </div>
+                <div class="frame-copy"><strong>전체 화면 전환</strong><p>인증 성공 상태가 180ms 교차 페이드되어 필수 취향 선택 화면으로 바뀝니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">350–620ms</span>
+                <div class="frame-canvas">
+                  <div class="mini-screen"><div class="mini-line short blue"></div><div class="mini-line"></div><div class="mini-chip-cloud"><i class="mini-chip"></i><i class="mini-chip on"></i><i class="mini-chip"></i><i class="mini-chip"></i><i class="mini-chip on"></i><i class="mini-chip"></i></div><div class="mini-button disabled">2/8</div></div>
+                </div>
+                <div class="frame-copy"><strong>선택지 전개</strong><p>칩은 24ms 스태거로 나타나며 초기 선택값은 바로 강조됩니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">TAP · 0–260ms</span>
+                <div class="frame-canvas">
+                  <div class="mini-screen"><div class="mini-line short"></div><div class="mini-chip-cloud"><i class="mini-chip on"></i><i class="mini-chip on" style="transform:scale(1.08)"></i><i class="mini-chip"></i><i class="mini-chip on"></i></div><div class="mini-button">다음 3/8</div></div>
+                </div>
+                <div class="frame-copy"><strong>선택 피드백</strong><p>칩이 1.08까지 튀었다 복귀하고 카운터와 CTA가 함께 활성화됩니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">NEXT · 0–280ms</span>
+                <div class="frame-canvas">
+                  <div class="mini-screen center"><div class="mini-success">3</div><div class="mini-line short blue"></div><div class="mini-button">NEXT</div></div>
+                </div>
+                <div class="frame-copy"><strong>선택 확정</strong><p>선택 칩이 게임판의 취향 요약으로 모이고 카드 A 조준 상태로 이어집니다.</p></div>
+              </div>
+            </div>
+            <details class="motion-prompt">
+              <summary><span>구현 프롬프트 · 취향 다중 선택</span><span>열기</span></summary>
+              <div class="prompt-body">
+                <button type="button" class="copy-prompt" data-copy-target="prompt-taste-first">프롬프트 복사</button>
+                <pre><code id="prompt-taste-first">첫 방문용 취향 다중 선택 전체 화면 상태를 구현한다. 별도 라우트나 바텀시트를 만들지 않는다.
+
+선택 규칙은 최소 3개, 최대 8개이며 건너뛰기는 없다. 상태는 entering → choosing → ready → submitting으로 분리한다.
+OAuth 성공 상태와 같은 / 라우트에서 180ms opacity cross-fade로 전환한다. 백드롭, 드래그 핸들, 바깥 탭 닫기, 뒤로가기 취소는 제공하지 않는다. 콘텐츠 높이를 미리 확보해 칩 선택으로 CTA 위치가 움직이지 않게 한다.
+질문과 설명은 80ms 뒤, 칩 그룹은 140ms 뒤 시작한다. 칩은 각 24ms 간격으로 opacity와 translateY 6px만 애니메이션한다.
+칩 탭은 pointerdown scale .97, 선택 확정 시 scale 1.08→1과 색 채움, 총 260ms cubic-bezier(.34,1.56,.64,1). 같은 칩을 다시 누르면 180ms로 해제한다.
+카운터는 고정 폭 tabular 숫자를 사용하고 변경 숫자만 120ms cross-fade한다. 3/8 카운터가 유일한 진행 표기이며 별도 점·막대 진행률은 두지 않는다. 3개가 되는 순간 CTA 배경을 240ms로 채우고 disabled를 해제한다.
+8개 상태에서 새 칩을 누르면 선택을 바꾸지 않는다. 해당 칩을 좌우 3px로 한 번 흔들고 최대 선택 안내를 live region으로 읽는다. 강한 진동은 쓰지 않는다.
+CTA 탭 후 선택 칩 복제본 3개가 게임판 상단 요약 위치로 280ms 이동하는 듯한 shared-axis 전환을 만들되 실제 레이아웃은 FLIP 기법으로 고정한다.
+선택 데이터는 즉시 로컬 상태에 저장하고 제출 실패 시 기존 선택을 보존한다.
+모든 칩과 CTA의 터치 타깃은 최소 48×48px다. prefers-reduced-motion에서는 이동과 칩 spring을 제거하고 100ms opacity 및 즉시 색 변경만 사용한다.</code></pre>
+              </div>
+            </details>
+          </article>
+
+          <article class="motion-scene">
+            <div class="motion-scene-heading">
+              <span class="motion-scene-number">03</span>
+              <div>
+                <h3>검색하고 더 추가하기</h3>
+                <p>재방문에서 선택값을 유지한 채 빠르게 검색·추가·해제</p>
+              </div>
+              <code class="motion-route">/ · taste:edit</code>
+            </div>
+            <div class="frame-strip" aria-label="취향 검색 편집 모션 프레임">
+              <div class="motion-frame">
+                <span class="frame-time">OPEN · 0–350ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-chip-cloud"><i class="mini-chip on"></i><i class="mini-chip on"></i><i class="mini-chip on"></i></div><div class="mini-search"></div><div class="mini-chip-cloud"><i class="mini-chip"></i><i class="mini-chip"></i><i class="mini-chip on"></i></div><div class="mini-button">적용 6/8</div></div></div>
+                <div class="frame-copy"><strong>기존값 복원</strong><p>선택한 취향을 상단 고정 행에 먼저 보여주고 검색 결과를 뒤이어 엽니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">TYPE · 120–180ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-chip-cloud"><i class="mini-chip on"></i><i class="mini-chip on"></i></div><div class="mini-search" style="border-color:var(--blue)"></div><div class="mini-line blue"></div><div class="mini-chip-cloud"><i class="mini-chip"></i><i class="mini-chip"></i></div></div></div>
+                <div class="frame-copy"><strong>결과 필터</strong><p>120ms 디바운스 후 결과만 180ms 교차 페이드하며 화면 높이는 유지합니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">ADD/REMOVE · 260ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-chip-cloud"><i class="mini-chip on"></i><i class="mini-chip on" style="transform:scale(1.08)"></i><i class="mini-chip on"></i></div><div class="mini-search"></div><div class="mini-chip-cloud"><i class="mini-chip on"></i><i class="mini-chip"></i></div><div class="mini-button">적용 7/8</div></div></div>
+                <div class="frame-copy"><strong>동일한 선택 물성</strong><p>첫 화면과 같은 spring·카운터 규칙을 사용해 학습 비용을 없앱니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">APPLY · 0–300ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-line short blue"></div><div class="mini-card-row"><i class="mini-card aim"></i><i class="mini-card"></i></div><div class="mini-chip-cloud"><i class="mini-chip on"></i><i class="mini-chip on"></i><i class="mini-chip on"></i></div></div></div>
+                <div class="frame-copy"><strong>게임판 복귀</strong><p>시트가 내려가고 게임판 취향 칩이 한 번 밝아져 적용 사실을 확인시킵니다.</p></div>
+              </div>
+            </div>
+            <details class="motion-prompt">
+              <summary><span>구현 프롬프트 · 취향 검색 편집</span><span>열기</span></summary>
+              <div class="prompt-body">
+                <button type="button" class="copy-prompt" data-copy-target="prompt-taste-edit">프롬프트 복사</button>
+                <pre><code id="prompt-taste-edit">재방문용 취향 검색·편집 시트를 구현한다.
+
+열릴 때 저장된 선택값을 먼저 읽고 상단 고정 selected row에 복원한다. 선택값 복원이 끝나기 전 빈 상태를 잠깐 보여주지 않는다.
+시트 진입은 첫 방문 화면과 같은 350ms fade-up을 사용해 동일 컴포넌트의 상태 전환처럼 느껴지게 한다.
+검색 입력은 120ms 디바운스한다. 결과 변경 시 목록 컨테이너 높이는 유지하고 기존 결과 opacity 1→0, 새 결과 0→1을 각각 90ms로 교차시킨다.
+검색 중에도 selected row와 적용 CTA는 고정한다. 모바일 키보드가 열리면 결과 영역만 줄이고 CTA는 safe-area 위에 sticky로 유지한다.
+추가·해제 모션은 첫 선택 화면과 같은 260ms spring을 재사용한다. 제거된 칩은 scale 1→.92와 opacity 1→0 후 목록으로 되돌아간다.
+최대 8개 규칙, 카운터 고정 폭, 오류 live region을 첫 화면과 공유한다.
+적용 탭 시 입력을 잠그고 시트를 translateY 0→24px, opacity 1→0, 300ms ease-in으로 닫는다. 배경 게임판의 취향 칩 세 개를 220ms 동안 밝게 한 뒤 원래 상태로 돌린다.
+닫기 또는 바깥 탭은 이번 세션의 미적용 변경을 버리고 이전 저장값으로 복구한다.
+prefers-reduced-motion에서는 검색 결과와 시트에 100ms opacity만 적용한다.</code></pre>
+              </div>
+            </details>
+          </article>
+
+          <article class="motion-scene">
+            <div class="motion-scene-heading">
+              <span class="motion-scene-number">04</span>
+              <div>
+                <h3>완성 아이디어 카드 A·B 직접 열기</h3>
+                <p>Gas식 직접 탭과 현재 덱의 420ms 아크·520ms 플립을 결합</p>
+              </div>
+              <code class="motion-route">/ · draw</code>
+            </div>
+            <div class="frame-strip" aria-label="카드 두 장 직접 열기 모션 프레임">
+              <div class="motion-frame">
+                <span class="frame-time">REST · 0–3.2s</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-line short blue"></div><div class="mini-card-row"><i class="mini-card aim"></i><i class="mini-card"></i></div><div class="mini-deck"></div></div></div>
+                <div class="frame-copy"><strong>덱과 조준</strong><p>덱은 -12°에서 진입한 뒤 1.1°/s로 흐르고 카드 A만 1.9초 펄스합니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">TAP · 0–420ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-card-row"><i class="mini-card aim"></i><i class="mini-card"></i></div><i class="mini-fly"></i><div class="mini-deck"></div></div></div>
+                <div class="frame-copy"><strong>아크 비행</strong><p>아펙스 카드 복제본이 120px 위 제어점을 지나 목표 카드로 날아갑니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">420–940ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-card-row"><i class="mini-card open"></i><i class="mini-card aim"></i></div><div class="mini-line blue"></div><div class="mini-deck"></div></div></div>
+                <div class="frame-copy"><strong>팝·플립·블룸</strong><p>A는 안착 즉시 520ms 플립하고 280ms 뒤 B가 다음 목표가 됩니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">2/2 · +650ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-card-row"><i class="mini-card open"></i><i class="mini-card open"></i></div><div class="mini-line short blue"></div><div class="mini-button gold">BF.D</div></div></div>
+                <div class="frame-copy"><strong>두 장 완성</strong><p>두 번째 플립이 안정된 뒤 BF.D 공유 CTA와 다른 두 장 액션만 나타납니다.</p></div>
+              </div>
+            </div>
+            <details class="motion-prompt">
+              <summary><span>구현 프롬프트 · 카드 A·B 직접 열기</span><span>열기</span></summary>
+              <div class="prompt-body">
+                <button type="button" class="copy-prompt" data-copy-target="prompt-card-draw">프롬프트 복사</button>
+                <pre><code id="prompt-card-draw">완성 아이디어 카드 두 장을 직접 여는 모바일 게임판을 구현한다. 4축 조합 슬롯은 만들지 않는다.
+
+상태 모델: idleA → flyingA → revealingA → idleB → flyingB → revealingB → complete. 각 상태에서 허용되는 입력을 명시적으로 제한한다.
+카드 A와 B 표면 자체를 유일한 기본 뽑기 버튼으로 만든다. 초기에는 A만 활성화하고 1.9s ease-in-out 조준 링을 반복한다. A가 안착한 뒤 280ms 후 B를 활성화한다.
+부채꼴 덱은 모바일 카드 84×122px, 반경 640px, 슬리버 간격 12px를 기준으로 한다. 최초 한 번만 -12deg→0deg 진입 스윕을 3.2s cubic ease로 실행하고 이후 1.1deg/s로 rAF 드리프트한다.
+활성 카드를 탭하면 즉시 전체 드로 입력을 잠근다. 중앙 덱은 비행 시작점을 보여주는 장식이며 클릭·포커스 대상이 아니다. 덱 아펙스 원본을 ghost 처리하고 body clone을 만든다.
+클론은 시작점과 목표 중앙 사이에 quadratic bezier를 사용한다. 제어점 y는 min(startY,targetY)-120px, duration 420ms, cubic ease-in-out. 이동 중 회전은 현재 각도→0, scale은 1→목표 폭 비율로 보간한다.
+도착 즉시 clone을 제거하고 목표 카드에 내용 데이터를 주입한다. 안착 팝은 scale .9→1.02→1, 300ms cubic-bezier(.34,1.3,.5,1).
+도착 즉시 앞면 플립을 시작한다. rotateY 0→180deg, 520ms cubic-bezier(.4,0,.15,1). 동시에 카드가 y 0→-10→-3px로 500ms 리프트되고 오라는 opacity 0→.8→.3, 650ms ease-out으로 남는다.
+드래그는 MVP에서 제외한다. 후속 강화 시에만 활성 카드에서 시작하는 보조 입력으로 추가하며 탭과 같은 상태 머신을 재사용한다.
+두 번째 카드가 도착한 뒤 650ms 동안 결과를 읽는 여백을 주고 'BF.D에게 골라달라고 하기'와 보조 액션 '다른 두 장'을 fade-up 320ms로 노출한다.
+완료 전에는 지속 CTA를 두지 않는다. 카드 표면만 기본 액션이며, 각 카드의 터치 타깃은 최소 48×48px다. 모바일 카드 내부에는 별도 스크롤을 만들지 않는다.
+prefers-reduced-motion에서는 덱 드리프트·아크·리프트·블룸을 제거하고 데이터 주입 후 100ms cross-fade로 앞면을 보여준다. 입력 잠금과 상태 순서는 동일하게 유지한다.</code></pre>
+              </div>
+            </details>
+          </article>
+
+          <article class="motion-scene">
+            <div class="motion-scene-heading">
+              <span class="motion-scene-number">05</span>
+              <div>
+                <h3>BF.D 멤버 로그인과 한 장 선택</h3>
+                <p>두 카드의 매력을 유지한 채 로그인 후 긍정 선택만 허용</p>
+              </div>
+              <code class="motion-route">/vs/[slug] · vote</code>
+            </div>
+            <div class="frame-strip" aria-label="BF.D 카드 선택 모션 프레임">
+              <div class="motion-frame">
+                <span class="frame-time">0–450ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-line short blue"></div><div class="mini-card-row"><i class="mini-card dim"></i><i class="mini-card dim"></i></div><div class="mini-sheet"><div class="mini-line"></div><div class="mini-button">GOOGLE</div></div></div></div>
+                <div class="frame-copy"><strong>라운드 맥락</strong><p>카드는 먼저 보이지만 비활성화되고 로그인 시트가 50ms 뒤 올라옵니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">AUTH RETURN · 220ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-line short blue"></div><div class="mini-card-row"><i class="mini-card"></i><i class="mini-card"></i></div><div class="mini-line"></div></div></div>
+                <div class="frame-copy"><strong>선택 활성화</strong><p>시트가 사라지고 두 카드가 50ms 차이로 원래 명도까지 살아납니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">TAP · 0–200ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-line short"></div><div class="mini-card-row"><i class="mini-card selected"></i><i class="mini-card dim"></i></div><div class="mini-line blue"></div></div></div>
+                <div class="frame-copy"><strong>낙관적 선택</strong><p>선택 카드에 링과 체크가 생기며 다른 카드는 읽을 수 있는 명도를 유지합니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">200–520ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-card-row"><i class="mini-card selected"></i><i class="mini-card dim"></i></div><div class="mini-success">♥</div><div class="mini-line short blue"></div></div></div>
+                <div class="frame-copy"><strong>응원 확정</strong><p>중복 입력을 막고 선택 뱃지가 팝한 뒤 칭찬 상태로 교체합니다.</p></div>
+              </div>
+            </div>
+            <details class="motion-prompt">
+              <summary><span>구현 프롬프트 · BF.D 한 장 선택</span><span>열기</span></summary>
+              <div class="prompt-body">
+                <button type="button" class="copy-prompt" data-copy-target="prompt-bfd-vote">프롬프트 복사</button>
+                <pre><code id="prompt-bfd-vote">BF.D 공유 링크의 로그인 및 A/B 긍정 선택 화면을 구현한다.
+
+상태 모델: loading → authRequired → authenticating → ready → choosing → chosen. OAuth 복귀 URL에는 원래 slug를 보존한다.
+진입 시 발신자 맥락은 400ms fade-up, 카드 A/B는 50ms 뒤, 로그인 시트는 100ms 뒤 나타난다. 카드 두 장의 높이와 폭은 처음부터 확정해 시트 제거 시 레이아웃이 이동하지 않게 한다.
+authRequired에서는 카드 내용을 읽을 수 있지만 opacity .68, inert, aria-disabled true로 둔다. 로그인 시트는 role=dialog, aria-modal=true, aria-labelledby를 갖고 포커스를 Google CTA 안에 가둔다. 선택 영역을 가리지 않게 하단에 배치한다.
+Google 로그인 탭은 로그인 화면과 같은 press, 지연 로더, 중복 방지 규칙을 재사용한다.
+인증 복귀 시 시트를 opacity 1→0과 translateY 0→12px, 220ms로 닫고 선택 영역의 inert와 aria-disabled를 해제한다. 카드 A와 B를 50ms 차이로 opacity .68→1 전환하고 첫 카드에 포커스를 보낸다.
+카드 두 장은 role=radiogroup 안의 role=radio다. 선택은 aria-checked로 노출하고 좌우 방향키로 포커스와 선택을 함께 이동한다.
+카드 탭 즉시 choosing으로 전환하고 두 카드를 모두 비활성화한다. 서버 응답을 기다리지 않고 낙관적으로 선택 상태를 표시한다.
+선택 카드는 translateY -2px, scale 1.02, 강조 링과 체크를 200ms로 적용한다. 미선택 카드는 scale .98과 opacity .72를 같은 200ms에 적용해 제목과 설명을 계속 읽을 수 있게 한다. 레이아웃 크기는 변하지 않는다.
+선택 뱃지의 하트는 scale 1→1.18→1, 300ms ease로 팝한다. 투표 저장은 fire-and-forget하되 실패 시 로컬 큐에 남기고 화면 흐름은 막지 않는다.
+로컬 큐에 남긴 경우 성공 체크 대신 role=status에 '응원을 기기에 저장했어요. 연결되면 자동으로 보낼게요.'를 표시한다. 재시도 액션이 있는 스낵바는 자동으로 닫지 않는다.
+520ms 뒤 카드 영역은 유지한 채 하단 안내만 칭찬 선택 상태로 cross-fade한다. 더블탭, 멀티탭, 재방문 중복 응원을 방지한다.
+부정 라벨과 설치 유도 문구는 넣지 않는다. 두 선택 모두 응원이라는 의미를 유지한다.
+prefers-reduced-motion에서는 scale과 이동을 제거하고 선택 링 및 opacity를 100ms로 전환한다.</code></pre>
+              </div>
+            </details>
+          </article>
+
+          <article class="motion-scene">
+            <div class="motion-scene-heading">
+              <span class="motion-scene-number">06</span>
+              <div>
+                <h3>칭찬하고 내 카드 시작</h3>
+                <p>선택 직후 긍정 피드백을 남기고 같은 취향으로 제작자 루프에 진입</p>
+              </div>
+              <code class="motion-route">/vs/[slug] → /</code>
+            </div>
+            <div class="frame-strip" aria-label="칭찬과 내 카드 시작 모션 프레임">
+              <div class="motion-frame">
+                <span class="frame-time">0–320ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-success">♥</div><div class="mini-line short blue"></div><div class="mini-chip-cloud"><i class="mini-chip gold"></i><i class="mini-chip"></i><i class="mini-chip"></i></div><div class="mini-button disabled">START</div></div></div>
+                <div class="frame-copy"><strong>칭찬 선택지</strong><p>프리셋 세 개가 40ms 스태거로 나타나며 CTA는 아직 잠겨 있습니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">TAP · 0–360ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-success">♥</div><div class="mini-chip-cloud"><i class="mini-chip gold" style="transform:scale(1.08)"></i><i class="mini-chip" style="opacity:.35"></i><i class="mini-chip" style="opacity:.35"></i></div><div class="mini-button">내 카드 만들기</div></div></div>
+                <div class="frame-copy"><strong>긍정 필</strong><p>선택 칩이 왼쪽에서 채워지고 300ms 팝한 뒤 CTA가 활성화됩니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">CTA · 0–220ms</span>
+                <div class="frame-canvas"><div class="mini-screen center"><div class="mini-success">✓</div><div class="mini-line short blue"></div><div class="mini-button gold">STARTING</div></div></div>
+                <div class="frame-copy"><strong>응원 전송</strong><p>응원 저장과 라우트 이동을 동시에 시작하며 성공 상태를 짧게 확인합니다.</p></div>
+              </div>
+              <div class="motion-frame">
+                <span class="frame-time">RETURN · 0–420ms</span>
+                <div class="frame-canvas"><div class="mini-screen"><div class="mini-line blue"></div><div class="mini-card-row"><i class="mini-card aim"></i><i class="mini-card"></i></div><div class="mini-chip-cloud"><i class="mini-chip on"></i><i class="mini-chip on"></i></div><div class="mini-deck"></div></div></div>
+                <div class="frame-copy"><strong>성장 루프 연결</strong><p>선택한 카드의 취향 배너를 보여주고 카드 A 조준 상태로 바로 시작합니다.</p></div>
+              </div>
+            </div>
+            <details class="motion-prompt">
+              <summary><span>구현 프롬프트 · 칭찬과 내 카드 시작</span><span>열기</span></summary>
+              <div class="prompt-body">
+                <button type="button" class="copy-prompt" data-copy-target="prompt-praise-loop">프롬프트 복사</button>
+                <pre><code id="prompt-praise-loop">BF.D 카드 선택 직후의 칭찬과 제작자 전환 상태를 구현한다.
+
+상태 모델: praiseEntering → praiseReady → praiseSelected → submitting → handoff. 카드 선택 결과는 화면 상단에 계속 유지한다.
+칭찬 영역은 카드 선택 후 520ms 시점에 opacity 0→1, translateY 10px→0, 320ms ease-out으로 나타난다. 프리셋 세 개는 40ms 간격으로 전개한다.
+프리셋은 '나도 필요해', '완성하면 알려줘', '너라면 만들어'처럼 전부 긍정형으로 유지한다. 한 개만 선택 가능하다.
+칩 탭 시 선택 칩 배경을 transform scaleX 0→1, transform-origin left, 360ms cubic-bezier(.65,0,.35,1)로 채운다. 텍스트와 이모지는 scale 1→1.18→1, 300ms로 팝한다. 다른 칩은 opacity .35로 낮춘다.
+칭찬을 선택하기 전에는 CTA를 disabled 상태로 둔다. 선택 순간 CTA를 240ms 색 전환으로 활성화하고 문구는 '응원하고 내 카드 만들기'로 고정한다.
+CTA 탭 즉시 모든 입력을 잠그고 scale .98 press를 90ms 적용한다. 응원 데이터와 선택 카드 seed를 병렬 저장한다. 서버 저장을 확인했을 때만 성공 체크를 220ms 보여준다.
+다음 URL에는 seed와 via=vote를 포함한다. 게임판 복귀 시 선택한 취향 배너를 2.6s 노출하고 카드 A 조준 상태를 즉시 준비한다.
+복귀 게임판은 새 페이지 전체를 밀어 넣지 않는다. opacity cross-fade 180ms 후 배너가 y -8→0으로 240ms 내려오고 덱의 기존 3.2s 첫 진입 스윕은 최초 방문일 때만 실행한다.
+네트워크 실패가 나도 사용자의 칭찬과 handoff를 막지 않는다. 로컬 큐에 보존하고 다음 세션에 재전송하되 성공으로 가장하지 않는다. role=status에 '응원을 기기에 저장했어요. 연결되면 자동으로 보낼게요.'를 표시한다. 재시도 액션이 있는 스낵바는 사용자가 처리할 때까지 유지한다.
+prefers-reduced-motion에서는 칩 필, 팝, 배너 이동을 제거하고 100ms opacity 및 즉시 상태 변경만 사용한다.</code></pre>
+              </div>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <section class="loop" aria-label="BF.D 응원 바이럴 루프">
+        <strong>K≈1 응원 루프</strong>
+        <p>고유 오픈 3.2회 → 한 장 선택 + 칭찬 → 내 카드 두 장 → 새 라운드 공유</p>
+        <code>3.2 × 31.185% = 0.998</code>
+      </section>
+
+      <section class="implementation" aria-label="구현 경계">
+        <h2>구현 경계</h2>
+        <div class="route-list">
+          <div class="route-row">
+            <code>/</code>
+            <p>비로그인 상태는 로그인, 첫 로그인 후에는 필수 취향 전체 화면과 게임판을 같은 라우트에서 전환</p>
+          </div>
+          <div class="route-row">
+            <code>/</code>
+            <p>덱에서 완성된 아이디어 카드 두 장을 바로 뽑음 → BF.D 라운드 발행</p>
+          </div>
+          <div class="route-row">
+            <code>/vs/[slug]</code>
+            <p>BF.D 멤버 로그인 → 최종 카드 한 장 선택 → 긍정 칭찬 → 씨앗 프리필 게임판으로 복귀</p>
+          </div>
+        </div>
+        <p class="cut-line">
+          핵심 플로우에서 제외: 별도 확정·발행, 4/4 칭찬 완성, 대시보드 진입.
+          K = origin당 고유 round_opened 수 × opened→round_shared 전환율.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const root = document.getElementById("minimal-flow");
+        if (!root) return;
+
+        const stage = root.querySelector("#game-stage");
+        const deckSource = root.querySelector("#deck-card-source");
+        const flyingCard = root.querySelector("#flying-card");
+        const resetButton = root.querySelector("#reset-draw");
+        const shareButton = root.querySelector("#share-demo");
+        const cardCount = root.querySelector("#card-count");
+        const resultSummary = root.querySelector("#result-summary");
+        const resultLabel = root.querySelector("#result-label");
+        const resultTitle = root.querySelector("#result-title");
+        const resultCopy = root.querySelector("#result-copy");
+        const candidateAState = root.querySelector("#candidate-a-state");
+        const candidateBState = root.querySelector("#candidate-b-state");
+        const drawTargets = Array.from(root.querySelectorAll("[data-draw-target]"));
+        const loginButton = root.querySelector("#creator-login");
+        const firstTasteDemo = root.querySelector('[data-taste-demo][data-base-count="0"]');
+        const receiverLogin = root.querySelector("#receiver-login");
+        const receiverAuth = root.querySelector("#receiver-auth");
+        const receiverPraise = root.querySelector("#receiver-praise");
+        const authState = root.querySelector("#auth-state");
+        const praiseState = root.querySelector("#praise-state");
+        const praiseOptions = Array.from(root.querySelectorAll(".praise-option"));
+        const roundCandidates = Array.from(root.querySelectorAll("[data-round-candidate]"));
+        const roundContext = root.querySelector("#round-context");
+        const roundPair = root.querySelector("#round-pair");
+        const queueStatus = root.querySelector("#queue-status");
+        const startOwn = root.querySelector("#start-own");
+        const loopBanner = root.querySelector("#loop-banner");
+        const gameboardScreen = root.querySelector("#gameboard-screen");
+        const praiseScreen = root.querySelector("#praise-screen");
+
+        if (
+          !stage ||
+          !deckSource ||
+          !flyingCard ||
+          !resetButton ||
+          !shareButton ||
+          !cardCount ||
+          !resultSummary ||
+          !resultLabel ||
+          !resultTitle ||
+          !resultCopy ||
+          !candidateAState ||
+          !candidateBState ||
+          !roundContext ||
+          !roundPair ||
+          roundCandidates.length !== 2 ||
+          drawTargets.length !== 2
+        ) {
+          return;
+        }
+
+        const candidates = [
+          {
+            title: "회의 결정 봇",
+            copy: "회의가 끝나기 전에 결론을 남겨요",
+          },
+          {
+            title: "수요 질문 카드",
+            copy: "친구에게 쓸지 한 번에 물어봐요",
+          },
+        ];
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, reducedMotion ? 0 : ms));
+        let drawn = 0;
+        let busy = false;
+        let selectedRoundCandidate = null;
+        let selectedPraise = false;
+
+        const updateAim = () => {
+          drawTargets.forEach((target, index) => {
+            target.classList.toggle("aim", index === drawn && drawn < drawTargets.length);
+          });
+        };
+
+        const resetDraw = () => {
+          drawn = 0;
+          drawTargets.forEach((target, index) => {
+            target.classList.remove("filled", "flipping", "aim");
+            target.disabled = index !== 0;
+            const title = target.querySelector("strong");
+            const copy = target.querySelector("span");
+            if (title) title.textContent = index === 0 ? "첫 번째 카드" : "두 번째 카드";
+            if (copy) {
+              copy.textContent = index === 0 ? "탭해서 아이디어를 열어보세요" : "첫 장을 열면 활성화돼요";
+            }
+          });
+          updateAim();
+          resultSummary.hidden = false;
+          resultLabel.textContent = "오늘의 후보";
+          resultTitle.textContent = "최종 카드 두 장을 뽑아보세요";
+          resultCopy.textContent = "카드 한 장이 곧 하나의 완성된 아이디어입니다.";
+          cardCount.textContent = "0/2";
+          candidateAState.classList.remove("active");
+          candidateBState.classList.remove("active");
+          resetButton.hidden = true;
+          shareButton.hidden = true;
+        };
+
+        const updateDrawResult = () => {
+          if (drawn === 1) {
+            candidateAState.classList.add("active");
+            resultLabel.textContent = "카드 A 완성";
+            resultTitle.textContent = "한 장 더 열어주세요";
+            resultCopy.textContent = "첫 번째 아이디어가 나왔어요. 이제 카드 B를 탭하세요.";
+            return;
+          }
+
+          candidateBState.classList.add("active");
+          resultLabel.textContent = "두 장 완성";
+          resultTitle.textContent = "오늘의 최종 후보가 준비됐어요";
+          resultCopy.textContent = "BF.D에 올려 한 장을 선택받고 칭찬을 받아보세요.";
+          resetButton.hidden = false;
+          shareButton.hidden = false;
+        };
+
+        const flyOne = async () => {
+          if (drawn >= drawTargets.length) return;
+          const current = candidates[drawn];
+          const target = drawTargets[drawn];
+          const stageRect = stage.getBoundingClientRect();
+          const sourceRect = deckSource.getBoundingClientRect();
+          const targetRect = target.getBoundingClientRect();
+          const width = flyingCard.offsetWidth || 52;
+          const height = flyingCard.offsetHeight || 82;
+          const startX = sourceRect.left + sourceRect.width / 2 - stageRect.left - width / 2;
+          const startY = sourceRect.top + sourceRect.height / 2 - stageRect.top - height / 2;
+          const dx = targetRect.left + targetRect.width / 2 - (sourceRect.left + sourceRect.width / 2);
+          const dy = targetRect.top + targetRect.height / 2 - (sourceRect.top + sourceRect.height / 2);
+          const scale = Math.min(1, targetRect.width / width);
+
+          flyingCard.style.left = startX + "px";
+          flyingCard.style.top = startY + "px";
+          flyingCard.hidden = false;
+
+          const motion = flyingCard.animate(
+            [
+              { transform: "translate(0, 0) rotate(0deg) scale(1)", offset: 0 },
+              {
+                transform:
+                  "translate(" + dx * 0.55 + "px, " + (dy * 0.55 - 52) + "px) rotate(-8deg) scale(1.05)",
+                offset: 0.52,
+              },
+              {
+                transform: "translate(" + dx + "px, " + dy + "px) rotate(0deg) scale(" + scale + ")",
+                offset: 1,
+              },
+            ],
+            {
+              duration: reducedMotion ? 1 : 420,
+              easing: "cubic-bezier(.65, 0, .35, 1)",
+              fill: "forwards",
+            },
+          );
+
+          try {
+            await motion.finished;
+          } catch {
+            // A restarted demo can cancel the prior animation.
+          }
+
+          flyingCard.hidden = true;
+          motion.cancel();
+          target.classList.remove("aim");
+          target.classList.add("filled", "flipping");
+          const title = target.querySelector("strong");
+          const copy = target.querySelector("span");
+          if (title) title.textContent = current.title;
+          if (copy) copy.textContent = current.copy;
+          window.setTimeout(() => target.classList.remove("flipping"), reducedMotion ? 0 : 520);
+          drawn += 1;
+          cardCount.textContent = drawn + "/2";
+          updateAim();
+          if (drawn === drawTargets.length) await wait(650);
+          updateDrawResult();
+        };
+
+        const drawCurrent = async () => {
+          if (busy || drawn >= drawTargets.length) return;
+          busy = true;
+          drawTargets.forEach((target) => {
+            target.disabled = true;
+          });
+          await flyOne();
+          if (drawn === 1) await wait(280);
+          busy = false;
+          if (drawn < drawTargets.length) drawTargets[drawn].disabled = false;
+        };
+
+        drawTargets.forEach((target, index) => {
+          target.addEventListener("click", () => {
+            if (index !== drawn) return;
+            void drawCurrent();
+          });
+        });
+        resetButton.addEventListener("click", resetDraw);
+
+        if (loginButton && firstTasteDemo) {
+          loginButton.addEventListener("click", () => {
+            firstTasteDemo.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "center" });
+          });
+        }
+
+        if (shareButton && praiseScreen) {
+          shareButton.addEventListener("click", () => {
+            praiseScreen.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+          });
+        }
+
+        if (receiverLogin && receiverAuth && receiverPraise && authState && praiseState && roundContext) {
+          receiverAuth.addEventListener("keydown", (event) => {
+            if (event.key !== "Tab") return;
+            event.preventDefault();
+            receiverLogin.focus();
+          });
+
+          receiverLogin.addEventListener("click", () => {
+            receiverAuth.hidden = true;
+            receiverPraise.hidden = false;
+            authState.classList.remove("active");
+            praiseState.classList.add("active");
+            roundContext.removeAttribute("inert");
+            roundCandidates.forEach((candidate, index) => {
+              candidate.disabled = false;
+              candidate.setAttribute("aria-disabled", "false");
+              candidate.tabIndex = index === 0 ? 0 : -1;
+            });
+            roundCandidates[0]?.focus();
+          });
+        }
+
+        const updateRoundCta = () => {
+          if (startOwn) startOwn.disabled = !(selectedRoundCandidate && selectedPraise);
+        };
+
+        const selectRoundCandidate = (candidate) => {
+          roundCandidates.forEach((peer) => {
+            const selected = peer === candidate;
+            peer.classList.toggle("selected", selected);
+            peer.setAttribute("aria-checked", selected ? "true" : "false");
+            peer.tabIndex = selected ? 0 : -1;
+          });
+          selectedRoundCandidate = candidate;
+          updateRoundCta();
+        };
+
+        roundCandidates.forEach((candidate, index) => {
+          candidate.addEventListener("click", () => selectRoundCandidate(candidate));
+          candidate.addEventListener("keydown", (event) => {
+            if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
+            event.preventDefault();
+            const delta = event.key === "ArrowLeft" || event.key === "ArrowUp" ? -1 : 1;
+            const next = roundCandidates[(index + delta + roundCandidates.length) % roundCandidates.length];
+            selectRoundCandidate(next);
+            next.focus();
+          });
+        });
+
+        praiseOptions.forEach((option) => {
+          option.addEventListener("click", () => {
+            praiseOptions.forEach((peer) => {
+              peer.classList.remove("selected");
+              peer.setAttribute("aria-pressed", "false");
+            });
+            option.classList.add("selected");
+            option.setAttribute("aria-pressed", "true");
+            selectedPraise = true;
+            updateRoundCta();
+          });
+        });
+
+        if (startOwn && gameboardScreen && loopBanner) {
+          startOwn.addEventListener("click", () => {
+            if (queueStatus) queueStatus.hidden = true;
+            resetDraw();
+            const seed = selectedRoundCandidate?.getAttribute("data-seed") || "팀 회의";
+            resultLabel.textContent = "BF.D가 고른 취향";
+            resultTitle.textContent = seed;
+            resultCopy.textContent = "이 취향을 반영한 최종 아이디어 카드 두 장을 바로 뽑아보세요.";
+            loopBanner.textContent = seed + " 취향으로 카드 두 장을 뽑아요";
+            loopBanner.hidden = false;
+            gameboardScreen.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+            window.setTimeout(() => {
+              loopBanner.hidden = true;
+            }, reducedMotion ? 0 : 2600);
+          });
+        }
+
+        resetDraw();
+
+        root.querySelectorAll("[data-taste-demo]").forEach((demo) => {
+          const baseCount = Number(demo.getAttribute("data-base-count") || "0");
+          const ctaLabel = demo.getAttribute("data-cta-label") || "적용";
+          const status = demo.querySelector("[data-taste-status]");
+          const cta = demo.querySelector("[data-taste-cta]");
+          const pills = Array.from(demo.querySelectorAll(".taste-pill"));
+
+          const refreshTasteCount = () => {
+            const selectedCount = pills.filter((pill) => pill.classList.contains("selected")).length;
+            const count = baseCount + selectedCount;
+            if (status) status.textContent = count + "/8 선택";
+            if (cta) {
+              cta.textContent = ctaLabel + " " + count + "/8";
+              cta.disabled = count < 3;
+            }
+          };
+
+          pills.forEach((pill) => {
+            pill.setAttribute("aria-pressed", pill.classList.contains("selected") ? "true" : "false");
+            pill.addEventListener("click", () => {
+              const selectedCount = pills.filter((peer) => peer.classList.contains("selected")).length;
+              const selected = pill.classList.contains("selected");
+              if (!selected && baseCount + selectedCount >= 8) return;
+              pill.classList.toggle("selected", !selected);
+              pill.setAttribute("aria-pressed", selected ? "false" : "true");
+              refreshTasteCount();
+            });
+          });
+
+          refreshTasteCount();
+          if (baseCount === 0 && cta && gameboardScreen) {
+            cta.addEventListener("click", () => {
+              gameboardScreen.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+            });
+          }
+        });
+
+        root.querySelectorAll("[data-copy-target]").forEach((button) => {
+          button.addEventListener("click", async () => {
+            const targetId = button.getAttribute("data-copy-target");
+            const target = targetId ? document.getElementById(targetId) : null;
+            const value = target?.textContent?.trim();
+            if (!value) return;
+
+            try {
+              await navigator.clipboard.writeText(value);
+            } catch {
+              const textarea = document.createElement("textarea");
+              textarea.value = value;
+              textarea.setAttribute("readonly", "");
+              textarea.style.position = "fixed";
+              textarea.style.opacity = "0";
+              document.body.appendChild(textarea);
+              textarea.select();
+              document.execCommand("copy");
+              textarea.remove();
+            }
+
+            button.classList.add("copied");
+            button.textContent = "복사됨";
+            window.setTimeout(() => {
+              button.classList.remove("copied");
+              button.textContent = "프롬프트 복사";
+            }, 1600);
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

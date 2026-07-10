@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 41,
   "tracks": {
     "like": {
       "label": "좋아하는 걸로",
@@ -96,6 +96,184 @@
               "label": "영화"
             }
           ]
+        },
+        {
+          "id": "social-media",
+          "label": "SNS/소셜",
+          "emoji": "📲",
+          "seeds": [
+            {
+              "id": "social-media-multi-platform-scheduling",
+              "label": "동시포스팅"
+            },
+            {
+              "id": "social-media-unfollow-tracker",
+              "label": "언팔로워 추적"
+            },
+            {
+              "id": "social-media-comment-moderation",
+              "label": "댓글 자동관리"
+            },
+            {
+              "id": "social-media-live-stream-setup",
+              "label": "라이브 준비"
+            },
+            {
+              "id": "social-media-influencer-search",
+              "label": "인플루언서 찾기"
+            },
+            {
+              "id": "social-media-linkedin-content",
+              "label": "링크드인 글쓰기"
+            }
+          ]
+        },
+        {
+          "id": "entertainment",
+          "label": "엔터테인먼트",
+          "emoji": "🎭",
+          "seeds": [
+            {
+              "id": "entertainment-daily-fortune-share",
+              "label": "오늘 운세 공유"
+            },
+            {
+              "id": "entertainment-couple-compatibility",
+              "label": "커플 궁합 테스트"
+            },
+            {
+              "id": "entertainment-face-swap-meme",
+              "label": "생일 짤 제작"
+            },
+            {
+              "id": "entertainment-prank-content-maker",
+              "label": "친구 골탕 프랭크"
+            },
+            {
+              "id": "entertainment-figure-collection",
+              "label": "피규어 컬렉션 정리"
+            },
+            {
+              "id": "entertainment-idol-fanfic-scenario",
+              "label": "최애 팬픽 시나리오"
+            }
+          ]
+        },
+        {
+          "id": "games",
+          "label": "게임",
+          "emoji": "🎮",
+          "seeds": [
+            {
+              "id": "games-party-liar-game",
+              "label": "라이어게임 호스트"
+            },
+            {
+              "id": "games-mafia-moderator",
+              "label": "마피아게임 사회자"
+            },
+            {
+              "id": "games-drinking-game-cards",
+              "label": "술자리 게임카드"
+            },
+            {
+              "id": "games-idle-game-progress",
+              "label": "방치형 게임진행"
+            },
+            {
+              "id": "games-stream-viewer-minigame",
+              "label": "스트리머 미니게임"
+            }
+          ]
+        },
+        {
+          "id": "community",
+          "label": "커뮤니티",
+          "emoji": "👥",
+          "seeds": [
+            {
+              "id": "community-niche-forum",
+              "label": "니치 커뮤니티"
+            },
+            {
+              "id": "community-launch-board",
+              "label": "런칭 투표판"
+            },
+            {
+              "id": "community-friend-map",
+              "label": "친구 모임 동선"
+            },
+            {
+              "id": "community-comment-widget",
+              "label": "댓글 위젯 운영"
+            },
+            {
+              "id": "community-character-chat",
+              "label": "캐릭터 AI 챗"
+            },
+            {
+              "id": "community-accountability-crew",
+              "label": "목표 인증 크루"
+            }
+          ]
+        },
+        {
+          "id": "travel",
+          "label": "여행",
+          "emoji": "✈️",
+          "seeds": [
+            {
+              "id": "travel-itinerary-planning",
+              "label": "여행 일정 짜기"
+            },
+            {
+              "id": "travel-country-survival-guide",
+              "label": "해외여행 정보모음"
+            },
+            {
+              "id": "travel-accommodation-review-compare",
+              "label": "숙소 후기 비교"
+            },
+            {
+              "id": "travel-group-expense-split",
+              "label": "여행 경비 정산"
+            },
+            {
+              "id": "travel-host-guest-guide",
+              "label": "게스트 안내장"
+            },
+            {
+              "id": "travel-destination-quiz",
+              "label": "여행지 추천 진단"
+            }
+          ]
+        },
+        {
+          "id": "news-magazines",
+          "label": "뉴스/매거진",
+          "emoji": "📰",
+          "seeds": [
+            {
+              "id": "news-magazines-industry-news-scrap",
+              "label": "업계 뉴스 스크랩"
+            },
+            {
+              "id": "news-magazines-newsletter-curation",
+              "label": "뉴스레터 모음집"
+            },
+            {
+              "id": "news-magazines-commute-news-briefing",
+              "label": "출근길 뉴스 요약"
+            },
+            {
+              "id": "news-magazines-social-stats-tracker",
+              "label": "이슈 통계 정리"
+            },
+            {
+              "id": "news-magazines-workingholiday-info-hub",
+              "label": "워홀 준비 정보"
+            }
+          ]
         }
       ]
     },
@@ -125,11 +303,11 @@
             },
             {
               "id": "devops",
-              "label": "DevOps/인프라"
+              "label": "서버 관리"
             },
             {
               "id": "qa-test",
-              "label": "QA/테스트"
+              "label": "테스트 점검"
             }
           ]
         },
@@ -144,7 +322,7 @@
             },
             {
               "id": "md-buying",
-              "label": "구매/MD"
+              "label": "상품 구매/기획"
             },
             {
               "id": "logistics-delivery",
@@ -156,7 +334,7 @@
             },
             {
               "id": "cs-support",
-              "label": "CS/응대"
+              "label": "고객 문의 응대"
             },
             {
               "id": "live-commerce",
@@ -179,7 +357,7 @@
             },
             {
               "id": "sns-ops",
-              "label": "SNS운영"
+              "label": "소셜 계정 운영"
             },
             {
               "id": "brand-planning",
@@ -187,11 +365,600 @@
             },
             {
               "id": "crm-email",
-              "label": "CRM/이메일"
+              "label": "고객 연락 관리"
             },
             {
               "id": "influencer-marketing",
               "label": "인플루언서마케팅"
+            }
+          ]
+        },
+        {
+          "id": "ai",
+          "label": "AI/인공지능",
+          "emoji": "🤖",
+          "seeds": [
+            {
+              "id": "ai-prompt-library",
+              "label": "AI 프롬프트 정리"
+            },
+            {
+              "id": "ai-mock-interview",
+              "label": "AI 모의면접 연습"
+            },
+            {
+              "id": "ai-study-summary",
+              "label": "AI 학습자료 요약"
+            },
+            {
+              "id": "ai-workout-coach",
+              "label": "AI 운동자세 피드백"
+            },
+            {
+              "id": "ai-content-maker",
+              "label": "AI 전자책 제작"
+            },
+            {
+              "id": "ai-outreach-dm",
+              "label": "영업 메시지"
+            }
+          ]
+        },
+        {
+          "id": "saas",
+          "label": "SaaS/업무툴",
+          "emoji": "🧩",
+          "seeds": [
+            {
+              "id": "saas-cold-outreach",
+              "label": "콜드메일 발신 관리"
+            },
+            {
+              "id": "saas-lead-verify",
+              "label": "가짜 가입 검증"
+            },
+            {
+              "id": "saas-shortform-tracker",
+              "label": "숏폼 성과 트래킹"
+            },
+            {
+              "id": "saas-training-video",
+              "label": "사내 교육영상 제작"
+            },
+            {
+              "id": "saas-ui-kit-manage",
+              "label": "재사용 부품 정리"
+            },
+            {
+              "id": "saas-ai-workflow-check",
+              "label": "AI 자동화 점검"
+            }
+          ]
+        },
+        {
+          "id": "mobile-apps",
+          "label": "모바일 앱 기획",
+          "emoji": "📱",
+          "seeds": [
+            {
+              "id": "mobile-apps-locale-launch-priority",
+              "label": "출시국가 선정"
+            },
+            {
+              "id": "mobile-apps-niche-ai-scoring",
+              "label": "작은 진단앱 기획"
+            },
+            {
+              "id": "mobile-apps-utility-bundle-strategy",
+              "label": "유틸앱 묶음전략"
+            },
+            {
+              "id": "mobile-apps-vertical-niche-validation",
+              "label": "틈새앱 검증"
+            },
+            {
+              "id": "mobile-apps-ai-reply-generator",
+              "label": "AI 답장생성 앱"
+            },
+            {
+              "id": "mobile-apps-subscription-pricing",
+              "label": "구독가격 설계"
+            }
+          ]
+        },
+        {
+          "id": "productivity",
+          "label": "생산성",
+          "emoji": "✅",
+          "seeds": [
+            {
+              "id": "productivity-ai-writing-humanize",
+              "label": "AI 초안 다듬기"
+            },
+            {
+              "id": "productivity-meeting-interpret",
+              "label": "화상회의 통역"
+            },
+            {
+              "id": "productivity-bank-statement-convert",
+              "label": "은행내역 변환"
+            },
+            {
+              "id": "productivity-task-overwhelm",
+              "label": "오늘할일 실행"
+            },
+            {
+              "id": "productivity-deep-work-focus",
+              "label": "깊은 집중 시간"
+            },
+            {
+              "id": "productivity-inbox-declutter",
+              "label": "메일함 정리"
+            }
+          ]
+        },
+        {
+          "id": "education",
+          "label": "교육",
+          "emoji": "📚",
+          "seeds": [
+            {
+              "id": "education-report-plagiarism-check",
+              "label": "표절검사 셀프체크"
+            },
+            {
+              "id": "education-niche-language-tutor",
+              "label": "소수언어 과외"
+            },
+            {
+              "id": "education-exam-study-guide",
+              "label": "시험범위 요약노트"
+            },
+            {
+              "id": "education-aptitude-test-prep",
+              "label": "게임형 인적성 연습"
+            },
+            {
+              "id": "education-speaking-feedback",
+              "label": "스피킹 답변 첨삭"
+            },
+            {
+              "id": "education-vocab-notebook",
+              "label": "단어장 암기관리"
+            }
+          ]
+        },
+        {
+          "id": "fintech",
+          "label": "핀테크",
+          "emoji": "💰",
+          "seeds": [
+            {
+              "id": "fintech-watchlist-news-scatter",
+              "label": "관심종목 기록"
+            },
+            {
+              "id": "fintech-auto-trade-rule-manage",
+              "label": "매매 규칙 기록"
+            },
+            {
+              "id": "fintech-personal-expense-auto-log",
+              "label": "가계부관리"
+            },
+            {
+              "id": "fintech-freelancer-payout-scatter",
+              "label": "플랫폼정산관리"
+            },
+            {
+              "id": "fintech-insurance-renewal-compare",
+              "label": "보험갱신비교"
+            },
+            {
+              "id": "fintech-market-prediction-confidence",
+              "label": "투자 메모 점검"
+            }
+          ]
+        },
+        {
+          "id": "design-tools",
+          "label": "디자인 도구",
+          "emoji": "🎨",
+          "seeds": [
+            {
+              "id": "design-tools-goods-mockup",
+              "label": "굿즈 목업 제작"
+            },
+            {
+              "id": "design-tools-chat-mockup",
+              "label": "채팅 스크린샷 목업"
+            },
+            {
+              "id": "design-tools-logo-quick",
+              "label": "로고 시안 제작"
+            },
+            {
+              "id": "design-tools-idea-to-ui",
+              "label": "아이디어 화면 시안"
+            },
+            {
+              "id": "design-tools-component-kit",
+              "label": "디자인 시스템 관리"
+            },
+            {
+              "id": "design-tools-aso-screenshot",
+              "label": "앱스토어 최적화"
+            }
+          ]
+        },
+        {
+          "id": "analytics",
+          "label": "분석/대시보드",
+          "emoji": "📊",
+          "seeds": [
+            {
+              "id": "analytics-app-store-metrics",
+              "label": "앱 지표 모아보기"
+            },
+            {
+              "id": "analytics-seo-rank-tracker",
+              "label": "검색순위 추적"
+            },
+            {
+              "id": "analytics-landing-ab-test",
+              "label": "랜딩페이지 실험"
+            },
+            {
+              "id": "analytics-notion-doc-views",
+              "label": "노션 조회수 분석"
+            },
+            {
+              "id": "analytics-trading-journal",
+              "label": "매매일지 정리"
+            },
+            {
+              "id": "analytics-link-click-stats",
+              "label": "링크 클릭 통계"
+            }
+          ]
+        },
+        {
+          "id": "utilities",
+          "label": "유틸리티",
+          "emoji": "🔧",
+          "seeds": [
+            {
+              "id": "utilities-game-companion",
+              "label": "게임 공략 노트"
+            },
+            {
+              "id": "utilities-prompt-drawer",
+              "label": "프롬프트 서랍"
+            },
+            {
+              "id": "utilities-mention-tracker",
+              "label": "내 언급 모아보기"
+            },
+            {
+              "id": "utilities-photo-batch-convert",
+              "label": "사진 일괄 변환"
+            },
+            {
+              "id": "utilities-video-subtitle-extract",
+              "label": "영상 자막 뽑기"
+            },
+            {
+              "id": "utilities-online-letter",
+              "label": "온라인 손편지"
+            }
+          ]
+        },
+        {
+          "id": "sales",
+          "label": "영업",
+          "emoji": "📈",
+          "seeds": [
+            {
+              "id": "sales-cold-email-outreach",
+              "label": "영업메일 후속 관리"
+            },
+            {
+              "id": "sales-local-biz-prospecting",
+              "label": "동네업체 발굴"
+            },
+            {
+              "id": "sales-community-lead-watch",
+              "label": "커뮤니티 잠재고객"
+            },
+            {
+              "id": "sales-quote-response-followup",
+              "label": "견적요청 응대"
+            },
+            {
+              "id": "sales-freelance-proposal-tracker",
+              "label": "프리랜서 제안관리"
+            },
+            {
+              "id": "sales-inbound-inquiry-autoreply",
+              "label": "문의 자동응대"
+            }
+          ]
+        },
+        {
+          "id": "recruiting-hr",
+          "label": "채용/HR",
+          "emoji": "🧑‍💼",
+          "seeds": [
+            {
+              "id": "recruiting-hr-hidden-job-postings",
+              "label": "숨은채용공고"
+            },
+            {
+              "id": "recruiting-hr-niche-industry-board",
+              "label": "업계전문채용판"
+            },
+            {
+              "id": "recruiting-hr-linkedin-scrap-match",
+              "label": "링크드인 공고 매칭"
+            },
+            {
+              "id": "recruiting-hr-candidate-outreach",
+              "label": "인재소싱아웃리치"
+            },
+            {
+              "id": "recruiting-hr-applicant-pipeline",
+              "label": "지원자관리"
+            },
+            {
+              "id": "recruiting-hr-resume-ats-check",
+              "label": "자소서 통과 점검"
+            }
+          ]
+        },
+        {
+          "id": "no-code",
+          "label": "노코드",
+          "emoji": "🧱",
+          "seeds": [
+            {
+              "id": "no-code-notion-site",
+              "label": "노션홈페이지"
+            },
+            {
+              "id": "no-code-small-biz-site",
+              "label": "소상공인사이트"
+            },
+            {
+              "id": "no-code-component-market",
+              "label": "컴포넌트마켓"
+            },
+            {
+              "id": "no-code-podcast-site",
+              "label": "팟캐스트사이트"
+            },
+            {
+              "id": "no-code-web-to-app",
+              "label": "웹앱변환기"
+            },
+            {
+              "id": "no-code-widget-inbox",
+              "label": "웹문의함"
+            }
+          ]
+        },
+        {
+          "id": "real-estate",
+          "label": "부동산",
+          "emoji": "🏠",
+          "seeds": [
+            {
+              "id": "real-estate-rental-listing-compare",
+              "label": "전월세 매물비교"
+            },
+            {
+              "id": "real-estate-interior-preview",
+              "label": "방꾸미기 미리보기"
+            },
+            {
+              "id": "real-estate-listing-shortform",
+              "label": "매물 홍보영상"
+            },
+            {
+              "id": "real-estate-auction-rights-check",
+              "label": "경매 권리분석"
+            },
+            {
+              "id": "real-estate-agency-listing-tracker",
+              "label": "매물장 관리"
+            },
+            {
+              "id": "real-estate-apt-price-tracker",
+              "label": "아파트 시세추적"
+            }
+          ]
+        },
+        {
+          "id": "marketplace",
+          "label": "마켓플레이스",
+          "emoji": "🛒",
+          "seeds": [
+            {
+              "id": "marketplace-store-transfer-deal",
+              "label": "가게양도 매물"
+            },
+            {
+              "id": "marketplace-niche-tool-directory",
+              "label": "관심사 도구모음"
+            },
+            {
+              "id": "marketplace-local-errand-matching",
+              "label": "동네심부름 매칭"
+            },
+            {
+              "id": "marketplace-early-user-trial",
+              "label": "체험단 매칭"
+            },
+            {
+              "id": "marketplace-online-account-transfer",
+              "label": "온라인계정 양도"
+            },
+            {
+              "id": "marketplace-side-project-launch",
+              "label": "사이드 프로젝트"
+            }
+          ]
+        },
+        {
+          "id": "customer-support",
+          "label": "고객지원",
+          "emoji": "🎧",
+          "seeds": [
+            {
+              "id": "customer-support-repeat-faq-reply",
+              "label": "반복 문의 대응"
+            },
+            {
+              "id": "customer-support-multichannel-inbox",
+              "label": "여러 채널 문의함"
+            },
+            {
+              "id": "customer-support-quote-reply-delay",
+              "label": "견적 답장 지연"
+            },
+            {
+              "id": "customer-support-missed-call-followup",
+              "label": "부재중 전화상담"
+            },
+            {
+              "id": "customer-support-feedback-roadmap",
+              "label": "고객 피드백 취합"
+            },
+            {
+              "id": "customer-support-multilingual-inquiry",
+              "label": "해외고객 문의응대"
+            }
+          ]
+        },
+        {
+          "id": "security",
+          "label": "보안",
+          "emoji": "🔒",
+          "seeds": [
+            {
+              "id": "security-breach-check",
+              "label": "정보 유출 확인"
+            },
+            {
+              "id": "security-cert-expiry",
+              "label": "인증서 만료 관리"
+            },
+            {
+              "id": "security-vibe-app-scan",
+              "label": "바이브코딩 보안점검"
+            },
+            {
+              "id": "security-file-share-safe",
+              "label": "민감서류 안전공유"
+            },
+            {
+              "id": "security-phishing-text-check",
+              "label": "스미싱 문자 판별"
+            },
+            {
+              "id": "security-launch-checklist",
+              "label": "출시 전 보안점검"
+            }
+          ]
+        },
+        {
+          "id": "crypto-web3",
+          "label": "크립토/Web3",
+          "emoji": "🪙",
+          "seeds": [
+            {
+              "id": "crypto-web3-community-news-digest",
+              "label": "코인뉴스요약"
+            },
+            {
+              "id": "crypto-web3-entry-timing-signal",
+              "label": "매수타이밍진단"
+            },
+            {
+              "id": "crypto-web3-pick-prediction-bet",
+              "label": "코인 선택 메모"
+            },
+            {
+              "id": "crypto-web3-airdrop-alert-tracker",
+              "label": "에어드랍알림"
+            },
+            {
+              "id": "crypto-web3-portfolio-scatter",
+              "label": "지갑자산흩어짐"
+            },
+            {
+              "id": "crypto-web3-nft-trait-generator",
+              "label": "민팅 속성 조합"
+            }
+          ]
+        },
+        {
+          "id": "legal",
+          "label": "법률",
+          "emoji": "⚖️",
+          "seeds": [
+            {
+              "id": "legal-terms-generator",
+              "label": "이용약관 작성"
+            },
+            {
+              "id": "legal-cookie-banner",
+              "label": "쿠키배너 설정"
+            },
+            {
+              "id": "legal-freelance-contract",
+              "label": "프리랜서 계약 질문정리"
+            },
+            {
+              "id": "legal-lease-review",
+              "label": "전월세 계약 질문정리"
+            },
+            {
+              "id": "legal-gov-proposal",
+              "label": "지원사업 제안서"
+            },
+            {
+              "id": "legal-crossborder-compliance",
+              "label": "해외배송 규제확인"
+            }
+          ]
+        },
+        {
+          "id": "iot-hardware",
+          "label": "IoT/하드웨어",
+          "emoji": "📡",
+          "seeds": [
+            {
+              "id": "iot-hardware-smart-home-manage",
+              "label": "스마트홈 관리"
+            },
+            {
+              "id": "iot-hardware-bluetooth-tracker",
+              "label": "블루투스 분실방지"
+            },
+            {
+              "id": "iot-hardware-wearable-log",
+              "label": "웨어러블 기록"
+            },
+            {
+              "id": "iot-hardware-diy-project",
+              "label": "아두이노 프로젝트"
+            },
+            {
+              "id": "iot-hardware-charger-cable",
+              "label": "충전기·케이블"
+            },
+            {
+              "id": "iot-hardware-hw-career",
+              "label": "하드웨어 이직 준비"
             }
           ]
         }
@@ -421,7 +1188,7 @@
     {
       "id": 10,
       "label": "결정을 못 내리고 미룬다",
-      "short": "선택 마비"
+      "short": "첫 선택 멈춤"
     },
     {
       "id": 11,
@@ -456,12 +1223,12 @@
     {
       "id": 17,
       "label": "매일 같은 카페만 가면 눈치도 보이고 질려서 동네 카페 3~4곳을 요일별로 돌려가며 쓰는데, 정작 오늘 간 카페에서 뭘 시켰는지 콘센트가 어디 있었는지는 매번 헷갈려서 자리에 앉고도 두리번거리게 돼요.",
-      "short": "여러 단골카페 로테이션 헷갈림"
+      "short": "단골카페 헷갈림"
     },
     {
       "id": 18,
-      "label": "매일 점심 먹고 나서 카페 어디 갈지 팀 단톡방에 물어봐도 다들 \"아무데나\"라는 이모티콘 답만 남겨서, 결국 매번 내가 혼자 정하고 늘 가던 카페만 가게 돼요.",
-      "short": "커피당번 답 대충옴"
+      "label": "매일 점심 먹고 나서 카페 어디 갈지 팀 단톡방에 물어봐도 다들 \"아무 데나\"라는 이모티콘 답만 남겨서, 결국 매번 내가 혼자 정하고 늘 가던 카페만 가게 돼요.",
+      "short": "팀 카페 선택 떠넘김"
     },
     {
       "id": 19,
@@ -486,7 +1253,7 @@
     {
       "id": 23,
       "label": "새벽배송을 정기구독으로 걸어놔서 매주 같은 요일에 자동으로 새 상자가 오는데, 지난주 재료를 다 못 먹은 채 새 재료가 또 쌓이면서 결국 뭘 언제 넣었는지도 까먹고 유통기한을 넘겨 버리게 돼요.",
-      "short": "정기배송 재료 못 비우고 버림"
+      "short": "정기재료 버림"
     },
     {
       "id": 24,
@@ -501,22 +1268,22 @@
     {
       "id": 26,
       "label": "담당 구역 매장을 한 달에 한 번씩 순회하는데, 매장 앞에서 15분 만에 급하게 먹은 밥집 이름을 다음 순회 때는 까먹어서 매번 매장 주변을 다시 헤매게 돼요.",
-      "short": "순회 중 밥집 기억 안남"
+      "short": "순회 밥집 까먹음"
     },
     {
       "id": 27,
       "label": "명절마다 시댁 식구들 외식 장소를 예약하는데, 막상 물어보면 다들 \"아무거나요~\"라고만 답해서 못 먹는 것도 싫어하는 것도 미리 못 걸러내고 식당에 가서야 불만이 터져요.",
-      "short": "명절 외식 아무거나 답변"
+      "short": "명절 외식 답변 흐림"
     },
     {
       "id": 28,
-      "label": "저속노화 식단을 시작해도 하루만 못 지키면 스트릭이 0으로 끊겨서 그냥 다 포기하게 돼요.",
-      "short": "하루 어기면 다 포기"
+      "label": "저속노화 식단을 시작해도 하루만 못 지키면 연속 기록이 0으로 돌아가서 그냥 다 포기하게 돼요.",
+      "short": "하루 놓치면 흐름 끊김"
     },
     {
       "id": 29,
       "label": "매일 도시락 메뉴가 똑같아서 금방 질려요",
-      "short": "도시락 메뉴 매번 똑같"
+      "short": "도시락 메뉴 반복"
     },
     {
       "id": 30,
@@ -530,18 +1297,18 @@
     },
     {
       "id": 32,
-      "label": "가입폼에 뻔한 패턴의 가짜 이메일과 전화번호가 계속 들어와도 코드 한 줄 없이 걸러낼 방법이 없어요",
-      "short": "가짜 가입 못 걸러"
+      "label": "폼·댓글·문의에 수상한 연락처와 짧은 요청이 섞여도 먼저 봐야 할 항목을 고르기 어려워요.",
+      "short": "의심 신호 선별"
     },
     {
       "id": 33,
-      "label": "콘솔에 CORS 에러가 뜨는데 무슨 뜻인지 몰라 아무 프록시나 복사해다 붙이고 있어요",
-      "short": "CORS 에러 못 읽음"
+      "label": "브라우저 요청 오류가 뜨는데 무슨 뜻인지 몰라 아무 프록시나 복사해 붙이고 있어요.",
+      "short": "브라우저 오류 못 읽음"
     },
     {
       "id": 34,
       "label": "Claude한테 자동화 워크플로우를 짜달라고 하면 노드 이름을 자꾸 틀리게 지어내요",
-      "short": "AI가 노드 헛짓"
+      "short": "자동화 이름 오류"
     },
     {
       "id": 35,
@@ -556,7 +1323,7 @@
     {
       "id": 37,
       "label": "필라테스 예약 앱을 만들어 앱스토어에 올렸다가 \"이건 그냥 웹사이트를 감싼 거잖아요(가이드라인 4.2)\"라는 반려 메일을 받고, 재심사 넣을 엄두가 안 나서 손님한테는 그냥 인스타 프로필 링크만 보내고 있어요",
-      "short": "가이드라인 4.2 반려 트라우마"
+      "short": "앱심사 반려 불안"
     },
     {
       "id": 38,
@@ -566,16 +1333,16 @@
     {
       "id": 39,
       "label": "바이브 코딩으로 뚝딱 짠 페이지를 그대로 Vercel Preview에 올리고 보면, 접근성까지 하나하나 뜯어볼 여유가 없어서 그냥 머지 버튼을 눌러버려요",
-      "short": "머지 직전 접근성 검토 포기"
+      "short": "공개 전 접근성 놓침"
     },
     {
       "id": 40,
       "label": "노션으로 만든 링크인바이오 페이지가 안 열린다는 DM을 받을 때마다 이미지만 계속 줄여왔는데, 진짜 원인이 이미지가 맞는지도 몰라요",
-      "short": "안 열려요, 이미지만 자꾸 줄임"
+      "short": "링크 오류 못 찾음"
     },
     {
       "id": 41,
-      "label": "스트릭이 하루라도 끊기면 다 망친 것 같아서 그날로 앱을 지워버려요",
+      "label": "연속 기록이 하루라도 끊기면 다 망친 것 같아서 그날로 앱을 지워버려요",
       "short": "하루 끊기면 앱째 포기"
     },
     {
@@ -616,7 +1383,7 @@
     {
       "id": 49,
       "label": "재택으로 혼자 일하다 보니 점심시간 15분 홈트를 빼먹어도 아무도 몰라서, 며칠만 지나면 나조차 어제 했는지 기억이 안 나 결국 그만두게 돼요.",
-      "short": "재택 점심홈트 땡땡이 안 들킴"
+      "short": "점심홈트 기록 흐림"
     },
     {
       "id": 50,
@@ -626,7 +1393,7 @@
     {
       "id": 51,
       "label": "쇼핑몰에 상품 하나 올릴 때마다 상품명이랑 설명, 옵션을 매번 새로 쓰느라 밤을 새워요",
-      "short": "상품등록 노가다"
+      "short": "상품등록 반복"
     },
     {
       "id": 52,
@@ -666,7 +1433,7 @@
     {
       "id": 59,
       "label": "라이브를 켜도 아무도 안 들어와서 혼자 상품 설명만 하다 끝나요",
-      "short": "라이브 노쇼"
+      "short": "라이브에 아무도 안 옴"
     },
     {
       "id": 60,
@@ -676,7 +1443,7 @@
     {
       "id": 61,
       "label": "회사에서는 광고 채널별 전환율을 소수점까지 따지면서, 정작 엄마 가게 전단지는 편의점 앞이랑 정류장에 감으로 나눠 붙이고 어디가 더 찍히는지 몰라서 다음 달에도 아무 데나 또 붙였어요.",
-      "short": "우리 가게만 감으로 붙여요"
+      "short": "전단 위치 감으로 정함"
     },
     {
       "id": 62,
@@ -696,7 +1463,7 @@
     {
       "id": 65,
       "label": "안락사가 임박한 아이 공고를 인스타에 올리고 나면 스레드·엑스에도 똑같이 올려야 하는데, 채널마다 글자 수랑 해시태그 규칙이 달라서 급한 와중에 세 번 다시 다듬느라 골든타임을 놓쳐요.",
-      "short": "임박 공고 다듬다 골든타임 놓침"
+      "short": "긴급 공고 늦어짐"
     },
     {
       "id": 66,
@@ -716,7 +1483,7 @@
     {
       "id": 69,
       "label": "해외 박람회에서 받아온 명함 100장에 회사 도메인으로 콜드메일을 한꺼번에 돌렸는데, 답장은커녕 열어본 흔적도 없어서 나중에 알고 보니 처음부터 스팸함으로 직행하고 있었더라고요.",
-      "short": "박람회 콜드메일 스팸함 직행"
+      "short": "첫 메일 안 읽힘"
     },
     {
       "id": 70,
@@ -797,11 +1564,11 @@
   "formats": [
     {
       "id": "share-link",
-      "label": "공유 링크툴",
-      "short": "링크툴",
+      "label": "공유 페이지",
+      "short": "공유",
       "desc": "입력한 내용을 결과 페이지로 만들고 URL로 공유",
       "buildDays": "3~4일",
-      "action": "공유 가능한 링크 흐름"
+      "action": "공유 페이지 만들기"
     },
     {
       "id": "vote-card",
@@ -813,7 +1580,7 @@
     },
     {
       "id": "chatbot",
-      "label": "챗봇",
+      "label": "대화로 확인",
       "short": "챗봇",
       "desc": "좁은 프롬프트와 씨앗 데이터로 대화형 답변 제공",
       "buildDays": "2~3일",
@@ -821,35 +1588,35 @@
     },
     {
       "id": "dashboard",
-      "label": "집계 대시보드",
-      "short": "대시보드",
-      "desc": "데이터를 읽어 카운트와 표로 요약",
+      "label": "한눈에 보는 판",
+      "short": "현황판",
+      "desc": "상태와 숫자를 한 화면에서 비교해 보여줌",
       "buildDays": "3~5일",
-      "action": "요약판"
+      "action": "현황 요약"
     },
     {
       "id": "chrome-ext",
-      "label": "크롬 확장",
-      "short": "확장",
-      "desc": "특정 사이트 화면에서 좁은 기능을 수집·주입",
+      "label": "브라우저에서 정리",
+      "short": "보조 화면",
+      "desc": "브라우저에서 보던 정보를 한 번에 정리해줌",
       "buildDays": "5~7일",
-      "action": "브라우저 보조 기능"
+      "action": "브라우저 정보 정리"
     },
     {
       "id": "landing-waitlist",
-      "label": "랜딩+웨이팅리스트",
-      "short": "웨이팅",
-      "desc": "정적 소개와 이메일 수집으로 수요 확인",
+      "label": "예약 신청 페이지",
+      "short": "예약",
+      "desc": "짧은 소개와 신청 버튼으로 수요 확인",
       "buildDays": "0.5~1일",
-      "action": "예약 페이지"
+      "action": "예약 신청"
     },
     {
       "id": "crud-app",
-      "label": "간단 CRUD 웹앱",
-      "short": "CRUD",
-      "desc": "목록·추가·수정·삭제가 있는 작은 업무 화면",
+      "label": "기록 정리판",
+      "short": "정리판",
+      "desc": "항목을 추가하고 상태를 바꾸는 작은 기록 화면",
       "buildDays": "5~7일",
-      "action": "관리 화면"
+      "action": "기록 정리"
     },
     {
       "id": "digest-bot",
@@ -861,4059 +1628,869 @@
     },
     {
       "id": "calc-tool",
-      "label": "규칙기반 계산기/진단 툴",
-      "short": "진단툴",
-      "desc": "입력값에 조건분기와 결과를 붙임",
+      "label": "기준을 묻고 정리",
+      "short": "질문표",
+      "desc": "입력값에 기준 질문과 결과를 붙임",
       "buildDays": "2~3일",
-      "action": "규칙 기반 진단"
+      "action": "질문 기준 만들기"
     },
     {
       "id": "curation",
-      "label": "큐레이션 리스트/디렉토리",
-      "short": "큐레이션",
-      "desc": "수집 항목을 필터·검색·정렬",
+      "label": "후보 모아 고르기",
+      "short": "모아보기",
+      "desc": "수집 항목을 기준별로 모아 보고 고름",
       "buildDays": "3~5일",
-      "action": "큐레이션 목록"
+      "action": "후보 모아보기"
     },
     {
       "id": "template-gen",
-      "label": "템플릿/생성기",
-      "short": "템플릿",
-      "desc": "입력값으로 문서·이미지·프롬프트 산출",
+      "label": "바로 채워 쓰기",
+      "short": "문서틀",
+      "desc": "입력값으로 문서·이미지·문장 초안을 만듦",
       "buildDays": "3~4일",
-      "action": "템플릿 산출"
+      "action": "문서 틀 만들기"
     },
     {
       "id": "streak-tracker",
-      "label": "타이머/스트릭 트래커",
-      "short": "스트릭",
+      "label": "연속 기록표",
+      "short": "기록표",
       "desc": "기록·연속일·통계를 로컬에 남김",
       "buildDays": "2~3일",
       "action": "연속 기록"
     }
   ],
   "allow": {
-    "running": {
+    "ai-mock-interview": {
       "pains": [
-        2,
-        3,
-        8,
-        9,
-        12,
-        41,
-        42,
-        43
+        13
       ],
       "formats": [
-        "streak-tracker",
-        "vote-card",
-        "calc-tool",
-        "share-link",
-        "curation"
-      ]
-    },
-    "weight-training": {
-      "pains": [
-        2,
-        3,
-        8,
-        11,
-        12,
-        44,
-        45
-      ],
-      "formats": [
-        "streak-tracker",
-        "calc-tool",
-        "vote-card",
-        "template-gen",
-        "crud-app"
-      ]
-    },
-    "climbing": {
-      "pains": [
-        2,
-        6,
-        8,
-        9,
-        12
-      ],
-      "formats": [
-        "calc-tool",
-        "curation",
-        "vote-card",
-        "share-link"
-      ]
-    },
-    "golf": {
-      "pains": [
-        2,
-        5,
-        8,
-        11,
-        13,
-        46,
-        47
-      ],
-      "formats": [
-        "calc-tool",
-        "curation",
-        "vote-card",
-        "share-link",
-        "crud-app"
-      ]
-    },
-    "hiking": {
-      "pains": [
-        2,
-        4,
-        9,
-        12,
-        16,
-        48
-      ],
-      "formats": [
-        "template-gen",
-        "curation",
-        "share-link",
         "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 13,
+          "format": "vote-card"
+        }
       ]
     },
-    "home-workout": {
+    "ai-study-summary": {
       "pains": [
-        3,
-        8,
-        10,
-        12,
-        15,
-        49,
-        50
+        11
       ],
       "formats": [
-        "streak-tracker",
-        "calc-tool",
-        "vote-card",
-        "template-gen"
-      ]
-    },
-    "cafe": {
-      "pains": [
-        1,
-        4,
-        5,
-        14,
-        16,
-        17,
-        18
-      ],
-      "formats": [
-        "share-link",
-        "curation",
-        "vote-card",
-        "calc-tool",
-        "crud-app"
-      ]
-    },
-    "baking-dessert": {
-      "pains": [
-        2,
-        4,
-        6,
-        12,
-        14,
-        21,
-        22
-      ],
-      "formats": [
-        "template-gen",
-        "calc-tool",
-        "curation",
-        "vote-card",
-        "crud-app"
-      ]
-    },
-    "restaurant-hunt": {
-      "pains": [
-        4,
-        5,
-        10,
-        14,
-        16,
-        26,
-        27
-      ],
-      "formats": [
-        "curation",
-        "vote-card",
-        "share-link",
-        "calc-tool",
-        "crud-app"
-      ]
-    },
-    "home-cooking": {
-      "pains": [
-        2,
-        4,
-        5,
-        12,
-        15,
-        23,
-        24,
-        25
-      ],
-      "formats": [
-        "template-gen",
-        "calc-tool",
-        "curation",
-        "share-link",
-        "digest-bot",
-        "crud-app"
-      ]
-    },
-    "coffee-beans": {
-      "pains": [
-        2,
-        5,
-        11,
-        14,
-        16,
-        19,
-        20
-      ],
-      "formats": [
-        "calc-tool",
-        "curation",
-        "vote-card",
-        "share-link",
-        "crud-app"
-      ]
-    },
-    "diet-lunchbox": {
-      "pains": [
-        2,
-        3,
-        8,
-        12,
-        15,
-        28,
-        29
-      ],
-      "formats": [
-        "streak-tracker",
-        "template-gen",
-        "calc-tool",
-        "vote-card",
-        "curation"
-      ]
-    },
-    "ott": {
-      "pains": [
-        4,
-        5,
-        10,
-        11,
-        14,
-        73,
-        74
-      ],
-      "formats": [
-        "vote-card",
-        "curation",
-        "calc-tool",
-        "share-link",
-        "crud-app"
-      ]
-    },
-    "webtoon": {
-      "pains": [
-        1,
-        4,
-        5,
-        14,
-        16,
-        75,
-        76
-      ],
-      "formats": [
-        "curation",
-        "share-link",
-        "vote-card",
-        "template-gen",
-        "digest-bot"
-      ]
-    },
-    "youtube": {
-      "pains": [
-        1,
-        4,
-        5,
-        10,
-        11,
-        77,
-        78
-      ],
-      "formats": [
-        "curation",
-        "vote-card",
-        "share-link",
-        "landing-waitlist",
-        "digest-bot",
-        "chatbot"
-      ]
-    },
-    "podcast": {
-      "pains": [
-        4,
-        5,
-        11,
-        12,
-        14,
-        79,
-        80
-      ],
-      "formats": [
-        "curation",
-        "share-link",
-        "vote-card",
-        "template-gen",
-        "crud-app"
-      ]
-    },
-    "reading": {
-      "pains": [
-        1,
-        3,
-        8,
-        10,
-        11,
-        81,
-        82,
-        83
-      ],
-      "formats": [
-        "streak-tracker",
-        "share-link",
-        "vote-card",
-        "curation",
-        "crud-app"
-      ]
-    },
-    "movie": {
-      "pains": [
-        4,
-        5,
-        10,
-        11,
-        16,
-        84
-      ],
-      "formats": [
-        "vote-card",
-        "curation",
-        "share-link",
         "calc-tool"
+      ],
+      "pairs": [
+        {
+          "pain": 11,
+          "format": "calc-tool"
+        }
       ]
     },
-    "frontend": {
+    "ai-workout-coach": {
       "pains": [
-        4,
-        7,
-        11,
-        12,
-        13,
-        30,
-        31
+        13
       ],
       "formats": [
-        "calc-tool",
-        "curation",
-        "dashboard",
-        "chrome-ext",
-        "share-link",
-        "template-gen"
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 13,
+          "format": "vote-card"
+        }
       ]
     },
     "backend": {
       "pains": [
-        4,
-        7,
-        8,
-        12,
-        13,
         32,
         33
       ],
       "formats": [
-        "calc-tool",
         "dashboard",
-        "crud-app",
-        "digest-bot",
-        "share-link"
+        "digest-bot"
+      ],
+      "pairs": [
+        {
+          "pain": 32,
+          "format": "dashboard"
+        },
+        {
+          "pain": 33,
+          "format": "digest-bot"
+        }
+      ]
+    },
+    "cafe": {
+      "pains": [
+        17,
+        18
+      ],
+      "formats": [
+        "calc-tool",
+        "curation"
+      ],
+      "pairs": [
+        {
+          "pain": 17,
+          "format": "calc-tool"
+        },
+        {
+          "pain": 18,
+          "format": "curation"
+        }
+      ]
+    },
+    "community-accountability-crew": {
+      "pains": [
+        28
+      ],
+      "formats": [
+        "digest-bot"
+      ],
+      "pairs": [
+        {
+          "pain": 28,
+          "format": "digest-bot"
+        }
+      ]
+    },
+    "community-character-chat": {
+      "pains": [
+        10
+      ],
+      "formats": [
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "vote-card"
+        }
+      ]
+    },
+    "community-comment-widget": {
+      "pains": [
+        32
+      ],
+      "formats": [
+        "crud-app"
+      ],
+      "pairs": [
+        {
+          "pain": 32,
+          "format": "crud-app"
+        }
+      ]
+    },
+    "community-friend-map": {
+      "pains": [
+        10
+      ],
+      "formats": [
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "vote-card"
+        }
+      ]
+    },
+    "community-launch-board": {
+      "pains": [
+        58,
+        72
+      ],
+      "formats": [
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 58,
+          "format": "vote-card"
+        },
+        {
+          "pain": 72,
+          "format": "vote-card"
+        }
+      ]
+    },
+    "community-niche-forum": {
+      "pains": [
+        16
+      ],
+      "formats": [
+        "chatbot"
+      ],
+      "pairs": [
+        {
+          "pain": 16,
+          "format": "chatbot"
+        }
       ]
     },
     "data-ai": {
       "pains": [
-        4,
-        7,
-        8,
-        11,
-        12,
-        34,
-        35
+        34
       ],
       "formats": [
-        "dashboard",
-        "calc-tool",
-        "digest-bot",
-        "curation",
-        "share-link",
-        "chatbot"
+        "curation"
+      ],
+      "pairs": [
+        {
+          "pain": 34,
+          "format": "curation"
+        }
       ]
     },
-    "app-dev": {
+    "design-tools-goods-mockup": {
       "pains": [
-        4,
-        7,
+        31
+      ],
+      "formats": [
+        "curation",
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 31,
+          "format": "curation"
+        },
+        {
+          "pain": 31,
+          "format": "vote-card"
+        }
+      ]
+    },
+    "design-tools-idea-to-ui": {
+      "pains": [
+        30
+      ],
+      "formats": [
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 30,
+          "format": "vote-card"
+        }
+      ]
+    },
+    "design-tools-logo-quick": {
+      "pains": [
         10,
-        11,
-        12,
-        36,
-        37
+        31
       ],
       "formats": [
         "calc-tool",
-        "curation",
-        "dashboard",
-        "crud-app",
-        "share-link",
-        "template-gen"
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "calc-tool"
+        },
+        {
+          "pain": 31,
+          "format": "vote-card"
+        }
       ]
     },
     "devops": {
       "pains": [
-        7,
-        8,
-        11,
-        12,
         13,
         38
       ],
       "formats": [
-        "dashboard",
-        "digest-bot",
         "calc-tool",
-        "crud-app",
         "chrome-ext"
+      ],
+      "pairs": [
+        {
+          "pain": 13,
+          "format": "calc-tool"
+        },
+        {
+          "pain": 38,
+          "format": "chrome-ext"
+        }
       ]
     },
-    "qa-test": {
+    "education-report-plagiarism-check": {
       "pains": [
-        7,
-        8,
-        11,
-        12,
-        13,
-        39,
-        40
+        10
       ],
       "formats": [
-        "crud-app",
-        "calc-tool",
-        "dashboard",
-        "digest-bot",
-        "share-link",
-        "chrome-ext"
-      ]
-    },
-    "online-mall": {
-      "pains": [
-        4,
-        5,
-        7,
-        8,
-        16,
-        51
-      ],
-      "formats": [
-        "calc-tool",
-        "dashboard",
-        "crud-app",
-        "curation",
-        "share-link",
-        "template-gen"
-      ]
-    },
-    "md-buying": {
-      "pains": [
-        4,
-        5,
-        7,
-        11,
-        12,
-        52,
-        53
-      ],
-      "formats": [
-        "dashboard",
-        "calc-tool",
-        "curation",
-        "crud-app",
-        "share-link",
-        "vote-card"
-      ]
-    },
-    "logistics-delivery": {
-      "pains": [
-        7,
-        8,
-        11,
-        12,
-        13,
-        54,
-        55
-      ],
-      "formats": [
-        "dashboard",
-        "crud-app",
-        "digest-bot",
-        "calc-tool",
-        "share-link"
-      ]
-    },
-    "inventory-management": {
-      "pains": [
-        7,
-        8,
-        11,
-        12,
-        15,
-        56
-      ],
-      "formats": [
-        "crud-app",
-        "dashboard",
-        "digest-bot",
         "calc-tool"
-      ]
-    },
-    "cs-support": {
-      "pains": [
-        1,
-        4,
-        7,
-        12,
-        13,
-        57,
-        58
       ],
-      "formats": [
-        "digest-bot",
-        "dashboard",
-        "crud-app",
-        "chatbot",
-        "share-link"
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "calc-tool"
+        }
       ]
     },
-    "live-commerce": {
+    "education-speaking-feedback": {
       "pains": [
-        4,
-        5,
-        7,
         10,
-        12,
-        59
+        13
       ],
       "formats": [
-        "template-gen",
-        "dashboard",
         "calc-tool",
-        "share-link",
-        "vote-card",
-        "landing-waitlist"
+        "template-gen"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "calc-tool"
+        },
+        {
+          "pain": 13,
+          "format": "template-gen"
+        }
       ]
     },
-    "performance-marketing": {
+    "entertainment-couple-compatibility": {
       "pains": [
-        4,
-        5,
-        7,
-        8,
-        11,
-        60,
-        61
+        10
       ],
       "formats": [
-        "dashboard",
-        "calc-tool",
-        "curation",
-        "digest-bot",
-        "share-link"
-      ]
-    },
-    "content-marketing": {
-      "pains": [
-        4,
-        7,
-        10,
-        12,
-        15,
-        62,
-        63,
-        64
-      ],
-      "formats": [
-        "template-gen",
-        "dashboard",
-        "digest-bot",
-        "curation",
-        "share-link",
         "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "vote-card"
+        }
       ]
     },
-    "sns-ops": {
+    "entertainment-daily-fortune-share": {
       "pains": [
-        1,
-        4,
-        7,
-        10,
-        12,
-        65,
-        66
+        10
       ],
       "formats": [
-        "template-gen",
-        "dashboard",
-        "digest-bot",
-        "vote-card",
-        "share-link",
-        "crud-app"
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "vote-card"
+        }
       ]
     },
-    "brand-planning": {
+    "games-drinking-game-cards": {
       "pains": [
-        4,
-        5,
-        10,
-        11,
-        14,
-        67,
-        68
+        10
       ],
       "formats": [
         "curation",
-        "vote-card",
-        "dashboard",
-        "share-link",
-        "calc-tool",
-        "digest-bot",
-        "landing-waitlist"
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "curation"
+        },
+        {
+          "pain": 10,
+          "format": "vote-card"
+        }
       ]
     },
-    "crm-email": {
+    "games-party-liar-game": {
       "pains": [
-        1,
-        7,
-        8,
-        11,
-        12,
-        69,
-        70
+        10
       ],
       "formats": [
-        "dashboard",
-        "digest-bot",
-        "calc-tool",
-        "crud-app",
-        "share-link",
-        "chatbot"
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "vote-card"
+        }
+      ]
+    },
+    "home-workout": {
+      "pains": [
+        49
+      ],
+      "formats": [
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 49,
+          "format": "vote-card"
+        }
       ]
     },
     "influencer-marketing": {
       "pains": [
-        4,
-        5,
-        11,
-        14,
-        16,
-        71,
         72
       ],
       "formats": [
-        "curation",
-        "dashboard",
-        "calc-tool",
-        "share-link",
         "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 72,
+          "format": "vote-card"
+        }
       ]
     },
-    "cafe-tour": {
+    "legal-terms-generator": {
       "pains": [
-        1,
-        4,
-        14,
-        16
+        13
       ],
       "formats": [
-        "share-link",
-        "curation",
-        "vote-card",
-        "landing-waitlist"
-      ]
-    },
-    "bakery-tour": {
-      "pains": [
-        1,
-        4,
-        5,
-        16
-      ],
-      "formats": [
-        "share-link",
-        "vote-card",
-        "curation",
         "template-gen"
+      ],
+      "pairs": [
+        {
+          "pain": 13,
+          "format": "template-gen"
+        }
       ]
     },
-    "running-crew": {
+    "live-commerce": {
       "pains": [
-        3,
-        8,
-        9,
+        59
+      ],
+      "formats": [
+        "calc-tool"
+      ],
+      "pairs": [
+        {
+          "pain": 59,
+          "format": "calc-tool"
+        }
+      ]
+    },
+    "logistics-delivery": {
+      "pains": [
+        55
+      ],
+      "formats": [
+        "calc-tool"
+      ],
+      "pairs": [
+        {
+          "pain": 55,
+          "format": "calc-tool"
+        }
+      ]
+    },
+    "mobile-apps-ai-reply-generator": {
+      "pains": [
         10
       ],
       "formats": [
-        "vote-card",
-        "streak-tracker",
-        "share-link",
         "calc-tool"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "calc-tool"
+        }
       ]
     },
-    "diary-deco": {
+    "mobile-apps-locale-launch-priority": {
       "pains": [
-        1,
-        5,
-        10,
-        11
+        10
       ],
       "formats": [
-        "template-gen",
-        "curation",
-        "vote-card",
-        "share-link"
+        "curation"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "curation"
+        }
       ]
     },
-    "home-cafe": {
+    "mobile-apps-niche-ai-scoring": {
       "pains": [
         2,
-        4,
-        5,
-        14
+        10
       ],
       "formats": [
-        "calc-tool",
+        "calc-tool"
+      ],
+      "pairs": [
+        {
+          "pain": 2,
+          "format": "calc-tool"
+        },
+        {
+          "pain": 10,
+          "format": "calc-tool"
+        }
+      ]
+    },
+    "no-code-component-market": {
+      "pains": [
+        31,
+        38
+      ],
+      "formats": [
         "curation",
-        "template-gen",
-        "vote-card"
+        "dashboard"
+      ],
+      "pairs": [
+        {
+          "pain": 31,
+          "format": "curation"
+        },
+        {
+          "pain": 31,
+          "format": "dashboard"
+        },
+        {
+          "pain": 38,
+          "format": "curation"
+        },
+        {
+          "pain": 38,
+          "format": "dashboard"
+        }
       ]
     },
-    "side-project": {
+    "no-code-notion-site": {
       "pains": [
-        3,
-        8,
-        10,
-        12
+        2
       ],
       "formats": [
-        "streak-tracker",
-        "vote-card",
-        "share-link",
-        "landing-waitlist"
+        "calc-tool"
+      ],
+      "pairs": [
+        {
+          "pain": 2,
+          "format": "calc-tool"
+        }
       ]
     },
-    "smart-store": {
+    "no-code-small-biz-site": {
       "pains": [
-        5,
-        7,
-        8,
-        11,
-        12
+        13,
+        15
       ],
       "formats": [
-        "calc-tool",
-        "dashboard",
-        "crud-app",
-        "digest-bot",
-        "share-link"
+        "template-gen"
+      ],
+      "pairs": [
+        {
+          "pain": 13,
+          "format": "template-gen"
+        },
+        {
+          "pain": 15,
+          "format": "template-gen"
+        }
       ]
     },
-    "logistics-inspection": {
+    "no-code-widget-inbox": {
       "pains": [
-        7,
-        8,
-        12,
-        13
+        32
       ],
       "formats": [
-        "crud-app",
-        "calc-tool",
         "dashboard",
         "digest-bot"
+      ],
+      "pairs": [
+        {
+          "pain": 32,
+          "format": "dashboard"
+        },
+        {
+          "pain": 32,
+          "format": "digest-bot"
+        }
       ]
     },
-    "camping": {
+    "online-mall": {
       "pains": [
-        2,
-        4,
-        10,
-        12
+        51
       ],
       "formats": [
-        "template-gen",
-        "share-link",
-        "vote-card",
+        "calc-tool"
+      ],
+      "pairs": [
+        {
+          "pain": 51,
+          "format": "calc-tool"
+        }
+      ]
+    },
+    "performance-marketing": {
+      "pains": [
+        61
+      ],
+      "formats": [
         "curation"
+      ],
+      "pairs": [
+        {
+          "pain": 61,
+          "format": "curation"
+        }
       ]
     },
-    "fandom-goods": {
+    "podcast": {
       "pains": [
-        1,
-        5,
-        9,
-        16
+        79,
+        80
       ],
       "formats": [
-        "share-link",
-        "vote-card",
-        "curation",
-        "landing-waitlist"
-      ]
-    },
-    "escape-room": {
-      "pains": [
-        4,
-        5,
-        11,
-        16
-      ],
-      "formats": [
-        "curation",
-        "vote-card",
-        "share-link"
-      ]
-    },
-    "dividend-etf": {
-      "pains": [
-        5,
-        8,
-        11,
-        13
-      ],
-      "formats": [
-        "calc-tool",
-        "dashboard",
-        "share-link"
-      ]
-    },
-    "plant-care": {
-      "pains": [
-        3,
-        8,
-        12,
-        15
-      ],
-      "formats": [
-        "streak-tracker",
         "template-gen",
-        "vote-card",
-        "share-link"
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 79,
+          "format": "vote-card"
+        },
+        {
+          "pain": 80,
+          "format": "template-gen"
+        }
       ]
     },
-    "knitting": {
+    "productivity-bank-statement-convert": {
       "pains": [
         2,
-        6,
-        12,
-        13
-      ],
-      "formats": [
-        "template-gen",
-        "calc-tool",
-        "curation",
-        "share-link"
-      ]
-    },
-    "freelance-tax": {
-      "pains": [
-        4,
-        5,
-        12,
         13
       ],
       "formats": [
         "calc-tool",
-        "dashboard",
-        "share-link"
+        "template-gen"
+      ],
+      "pairs": [
+        {
+          "pain": 2,
+          "format": "calc-tool"
+        },
+        {
+          "pain": 13,
+          "format": "template-gen"
+        }
       ]
     },
-    "cafe-ops": {
+    "productivity-deep-work-focus": {
       "pains": [
-        5,
-        7,
-        8,
-        12
+        2
       ],
       "formats": [
-        "calc-tool",
-        "dashboard",
-        "crud-app",
-        "share-link"
+        "calc-tool"
+      ],
+      "pairs": [
+        {
+          "pain": 2,
+          "format": "calc-tool"
+        }
       ]
     },
-    "ux-ui": {
+    "productivity-inbox-declutter": {
       "pains": [
-        4,
-        5,
-        11,
-        14
+        10
       ],
       "formats": [
-        "curation",
-        "dashboard",
-        "share-link",
-        "vote-card"
-      ]
-    },
-    "real-estate-agent": {
-      "pains": [
-        4,
-        5,
-        11,
-        13
+        "calc-tool"
       ],
-      "formats": [
-        "calc-tool",
-        "dashboard",
-        "share-link"
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "calc-tool"
+        }
       ]
     },
-    "tutoring": {
+    "productivity-meeting-interpret": {
       "pains": [
-        7,
-        8,
-        11,
-        12
-      ],
-      "formats": [
-        "digest-bot",
-        "dashboard",
-        "crud-app",
-        "share-link"
-      ]
-    },
-    "nursing-handoff": {
-      "pains": [
-        7,
-        12,
         13,
         15
       ],
       "formats": [
-        "template-gen",
-        "crud-app",
-        "dashboard",
-        "share-link"
+        "template-gen"
+      ],
+      "pairs": [
+        {
+          "pain": 13,
+          "format": "template-gen"
+        },
+        {
+          "pain": 15,
+          "format": "template-gen"
+        }
       ]
     },
-    "insurance-review": {
+    "productivity-task-overwhelm": {
       "pains": [
-        4,
-        5,
-        13,
-        14
+        10
       ],
       "formats": [
         "calc-tool",
-        "dashboard",
-        "share-link"
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "calc-tool"
+        },
+        {
+          "pain": 10,
+          "format": "vote-card"
+        }
       ]
     },
-    "import-duty": {
+    "reading": {
       "pains": [
-        4,
-        5,
-        12,
+        10
+      ],
+      "formats": [
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "vote-card"
+        }
+      ]
+    },
+    "recruiting-hr-linkedin-scrap-match": {
+      "pains": [
+        10
+      ],
+      "formats": [
+        "calc-tool"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "calc-tool"
+        }
+      ]
+    },
+    "recruiting-hr-resume-ats-check": {
+      "pains": [
+        10,
         13
       ],
       "formats": [
         "calc-tool",
-        "dashboard",
+        "template-gen",
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "calc-tool"
+        },
+        {
+          "pain": 10,
+          "format": "vote-card"
+        },
+        {
+          "pain": 13,
+          "format": "calc-tool"
+        },
+        {
+          "pain": 13,
+          "format": "template-gen"
+        }
+      ]
+    },
+    "saas-lead-verify": {
+      "pains": [
+        7
+      ],
+      "formats": [
+        "dashboard"
+      ],
+      "pairs": [
+        {
+          "pain": 7,
+          "format": "dashboard"
+        }
+      ]
+    },
+    "sales-freelance-proposal-tracker": {
+      "pains": [
+        10
+      ],
+      "formats": [
+        "curation"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "curation"
+        }
+      ]
+    },
+    "sales-local-biz-prospecting": {
+      "pains": [
+        10
+      ],
+      "formats": [
+        "dashboard"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "dashboard"
+        }
+      ]
+    },
+    "social-media-live-stream-setup": {
+      "pains": [
+        59
+      ],
+      "formats": [
+        "landing-waitlist"
+      ],
+      "pairs": [
+        {
+          "pain": 59,
+          "format": "landing-waitlist"
+        }
+      ]
+    },
+    "travel-destination-quiz": {
+      "pains": [
+        10
+      ],
+      "formats": [
         "curation",
-        "share-link"
+        "vote-card"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "curation"
+        },
+        {
+          "pain": 10,
+          "format": "vote-card"
+        }
+      ]
+    },
+    "travel-itinerary-planning": {
+      "pains": [
+        72
+      ],
+      "formats": [
+        "template-gen"
+      ],
+      "pairs": [
+        {
+          "pain": 72,
+          "format": "template-gen"
+        }
       ]
     }
   },
-  "golden": [
-    {
-      "seed": "running",
-      "pain": 3,
-      "format": "streak-tracker",
-      "title": "러닝메이트 스트릭",
-      "oneliner": "혼자 뛰는 3개월차 러너가 지속이 안 되는 문제를 연속일 기록으로 해결하는 러닝 도구",
-      "target": "혼자 뛰기 시작한 3개월차 러너",
-      "mvp": [
-        "오늘 뛰었다 1탭 기록",
-        "연속일·주간 통계 뷰",
-        "러닝 코스 프리셋",
-        "친구 응원 투표 카드"
-      ]
-    },
-    {
-      "seed": "cafe-tour",
-      "pain": 1,
-      "format": "share-link",
-      "title": "카페투어 지도카드",
-      "oneliner": "주말마다 카페를 저장하는 사람이 흩어진 기록을 공유 링크로 모으는 카페투어 도구",
-      "target": "카페 저장은 많은데 다시 못 찾는 주말 탐방러",
-      "mvp": [
-        "방문 카페 1분 기록",
-        "취향 태그와 사진 메모",
-        "친구에게 보낼 지도 링크",
-        "다음 후보 투표 카드"
-      ]
-    },
-    {
-      "seed": "camping",
-      "pain": 12,
-      "format": "template-gen",
-      "title": "캠핑짐 안까먹기",
-      "oneliner": "월 1회 캠퍼가 놓친 준비물을 줄이도록 여행 조건별 체크리스트를 뽑는 캠핑 도구",
-      "target": "출발 전날마다 짐을 다시 싸는 초보 캠퍼",
-      "mvp": [
-        "인원·날씨·박수 입력",
-        "필수 장비 체크리스트",
-        "빠뜨린 항목 강조",
-        "동행자 공유 링크"
-      ]
-    },
-    {
-      "seed": "escape-room",
-      "pain": 4,
-      "format": "curation",
-      "title": "방탈출 난이도 지도",
-      "oneliner": "방탈출 입문자가 파편화된 테마 정보를 난이도 큐레이션으로 확인하는 도구",
-      "target": "첫 방탈출을 고르는 2~3인 모임",
-      "mvp": [
-        "지역·인원 필터",
-        "난이도와 공포도 태그",
-        "초보 추천 테마 목록",
-        "같이 갈 사람 투표 카드"
-      ]
-    },
-    {
-      "seed": "dividend-etf",
-      "pain": 8,
-      "format": "calc-tool",
-      "title": "배당 스노우볼 계산기",
-      "oneliner": "배당 투자자가 성과가 안 보이는 문제를 월별 재투자 계산으로 확인하는 도구",
-      "target": "배당 ETF를 막 모으기 시작한 직장인 투자자",
-      "mvp": [
-        "월 투자액 입력",
-        "예상 배당 흐름 계산",
-        "재투자 시나리오 비교",
-        "목표 월배당 공유 카드"
-      ]
-    },
-    {
-      "seed": "plant-care",
-      "pain": 15,
-      "format": "streak-tracker",
-      "title": "물주기 알람 스트릭",
-      "oneliner": "식물을 자주 방치하는 사람이 관리 누락을 스트릭 기록으로 줄이는 식물 도구",
-      "target": "화분은 늘지만 물주는 날을 놓치는 식물 집사",
-      "mvp": [
-        "식물별 물주기 주기",
-        "오늘 돌봄 1탭 기록",
-        "연속 관리 뷰",
-        "분갈이 체크 카드"
-      ]
-    },
-    {
-      "seed": "side-project",
-      "pain": 3,
-      "format": "streak-tracker",
-      "title": "사이드 100일 스트릭",
-      "oneliner": "혼자 만드는 빌더가 지속이 안 되는 문제를 100일 연속 기록으로 해결하는 사이드프로젝트 도구",
-      "target": "퇴근 후 만들다 멈춘 1인 빌더",
-      "mvp": [
-        "오늘 한 일 1줄 기록",
-        "연속일·중단일 시각화",
-        "다음 행동 작은 카드",
-        "친구 응원 링크"
-      ]
-    },
-    {
-      "seed": "knitting",
-      "pain": 6,
-      "format": "template-gen",
-      "title": "첫 목도리 도안표",
-      "oneliner": "뜨개 입문자가 높은 입문 장벽을 규칙 기반 도안표로 낮추는 뜨개질 도구",
-      "target": "첫 목도리를 뜨려는 뜨개 입문자",
-      "mvp": [
-        "실 굵기와 폭 입력",
-        "콧수·단수 계산",
-        "진행 체크 표",
-        "완성 사진 공유 카드"
-      ]
-    },
-    {
-      "seed": "running-crew",
-      "pain": 9,
-      "format": "vote-card",
-      "title": "크루런 번개 투표카드",
-      "oneliner": "러닝크루 운영자가 같이 뛸 사람을 찾기 어려운 문제를 3초 투표 카드로 푸는 도구",
-      "target": "평일 저녁 번개런을 잡는 러닝크루 운영자",
-      "mvp": [
-        "날짜·코스 후보 입력",
-        "참여 가능 투표 카드",
-        "인원 자동 집계",
-        "카톡 공유 문구"
-      ]
-    },
-    {
-      "seed": "fandom-goods",
-      "pain": 1,
-      "format": "share-link",
-      "title": "최애 굿즈 위시링크",
-      "oneliner": "굿즈를 모으는 팬이 흩어진 위시 기록을 공유 링크로 정리하는 덕질 도구",
-      "target": "트위터와 장터에 위시가 흩어진 팬",
-      "mvp": [
-        "굿즈 위시 1분 등록",
-        "보유·구함 상태 표시",
-        "친구 공유 링크",
-        "공동구매 관심 투표"
-      ]
-    },
-    {
-      "seed": "smart-store",
-      "pain": 7,
-      "format": "calc-tool",
-      "title": "스토어 마진 계산봇",
-      "oneliner": "스마트스토어 셀러가 반복 수동 계산을 수수료 규칙 진단으로 줄이는 커머스 도구",
-      "target": "상품별 실제 마진을 손으로 계산하는 스마트스토어 셀러",
-      "mvp": [
-        "판매가·원가 입력",
-        "채널 수수료 프리셋",
-        "순마진 자동 계산",
-        "상품별 결과 저장"
-      ]
-    },
-    {
-      "seed": "logistics-inspection",
-      "pain": 12,
-      "format": "crud-app",
-      "title": "입고검수 체크봇",
-      "oneliner": "물류 검수 담당자가 놓친 항목을 줄이도록 검수 체크리스트를 관리하는 도구",
-      "target": "입고 검수 누락을 줄이고 싶은 물류 현장 리더",
-      "mvp": [
-        "품목별 검수 항목 목록",
-        "입고 건별 체크 화면",
-        "누락 항목 강조",
-        "일일 검수 요약"
-      ]
-    },
-    {
-      "seed": "freelance-tax",
-      "pain": 13,
-      "format": "calc-tool",
-      "title": "프리랜서 세금 미리보기",
-      "oneliner": "프리랜서가 사소한 세무 질문 부담을 예상 세금 계산으로 줄이는 회계 도구",
-      "target": "첫 종합소득세를 앞둔 프리랜서",
-      "mvp": [
-        "수입·경비 입력",
-        "단순경비율 프리셋",
-        "예상 납부액 범위",
-        "준비 서류 체크"
-      ]
-    },
-    {
-      "seed": "cafe-ops",
-      "pain": 7,
-      "format": "calc-tool",
-      "title": "카페 레시피 원가표",
-      "oneliner": "카페 운영자가 반복 수동 계산을 메뉴별 원가표로 줄이는 F&B 도구",
-      "target": "신메뉴 원가를 엑셀로 다시 계산하는 개인 카페 사장",
-      "mvp": [
-        "재료 단가 입력",
-        "레시피별 투입량 계산",
-        "마진율 자동 표시",
-        "메뉴판 가격 후보 비교"
-      ]
-    },
-    {
-      "seed": "ux-ui",
-      "pain": 4,
-      "format": "curation",
-      "title": "앱 온보딩 레퍼런스 지도",
-      "oneliner": "디자이너가 파편화된 화면 사례를 온보딩 패턴 디렉토리로 모으는 UX 도구",
-      "target": "새 온보딩을 설계하는 주니어 UX 디자이너",
-      "mvp": [
-        "패턴별 레퍼런스 등록",
-        "산업·목표 필터",
-        "핵심 화면 메모",
-        "팀 공유 링크"
-      ]
-    },
-    {
-      "seed": "real-estate-agent",
-      "pain": 5,
-      "format": "calc-tool",
-      "title": "매물 수익률 계산기",
-      "oneliner": "공인중개사가 비교 피로를 실수익률 계산으로 줄이는 매물 상담 도구",
-      "target": "투자 매물을 손님에게 설명하는 공인중개사",
-      "mvp": [
-        "매입가·보증금·월세 입력",
-        "세금·수리비 프리셋",
-        "실수익률 계산",
-        "상담용 공유 리포트"
-      ]
-    },
-    {
-      "seed": "tutoring",
-      "pain": 8,
-      "format": "digest-bot",
-      "title": "학생 진도 리포트봇",
-      "oneliner": "과외 선생님이 성과가 안 보이는 문제를 주간 진도 요약으로 해결하는 교육 도구",
-      "target": "학부모에게 매주 진도를 설명해야 하는 과외 선생님",
-      "mvp": [
-        "수업 후 진도 입력",
-        "주간 요약 자동 문안",
-        "보강 필요 영역 표시",
-        "학부모 공유 링크"
-      ]
-    },
-    {
-      "seed": "nursing-handoff",
-      "pain": 7,
-      "format": "template-gen",
-      "title": "병동 인수인계 노트표",
-      "oneliner": "간호사가 반복 수동 정리를 표준 인수인계 템플릿으로 줄이는 병동 도구",
-      "target": "교대 전 인수인계 메모를 정리하는 간호사",
-      "mvp": [
-        "환자별 항목 템플릿",
-        "SBAR 순서 정렬",
-        "누락 항목 표시",
-        "근무 전 확인 체크"
-      ]
-    },
-    {
-      "seed": "insurance-review",
-      "pain": 5,
-      "format": "calc-tool",
-      "title": "보장분석 미리표",
-      "oneliner": "보험 상담자가 비교 피로를 핵심 담보 진단으로 줄이는 보장분석 도구",
-      "target": "기존 보험을 설명해야 하는 1인 보험 설계사",
-      "mvp": [
-        "담보 항목 체크",
-        "중복·공백 표시",
-        "핵심 리스크 요약",
-        "상담 전 공유 링크"
-      ]
-    },
-    {
-      "seed": "import-duty",
-      "pain": 4,
-      "format": "calc-tool",
-      "title": "수입 관세 미리계산기",
-      "oneliner": "수입 담당자가 파편화된 세율 정보를 품목별 관세 계산으로 확인하는 무역 도구",
-      "target": "인기 품목을 반복 수입하는 소규모 셀러",
-      "mvp": [
-        "품목 프리셋 선택",
-        "금액·수량 입력",
-        "예상 관세 범위",
-        "통관 체크리스트"
-      ]
-    },
-    {
-      "seed": "cafe",
-      "pain": 17,
-      "format": "crud-app",
-      "title": "카페 돌려막기",
-      "oneliner": "매일 같은 카페만 가면 눈치도 보이고 질려서 동네 카페 3~4곳을 요일별로 로테이션하며 일하는 사람들을 위해, 카페마다 자주 시키는 메뉴·앉았던 자리·콘센트 위치를 카드로 저장해두고 오늘 갈 곳의 카드만 딱 꺼내 확인하는 카페 로테이션 치트시트.",
-      "target": "매일 같은 카페만 가면 사장님 눈치도 보이고 메뉴에도 질려서 동네 카페 3~4곳을 요일별로 돌려가며 일하는 재택 프리랜서",
-      "mvp": [
-        "카페 이름·자주 시키는 메뉴·앉았던 자리·콘센트 유무를 카페별 카드 한 장으로 등록하는 화면",
-        "등록한 카페 카드들을 목록으로 모아 오늘 갈 카페의 카드만 골라 확인하기",
-        "카페 정보가 바뀌면(리모델링·신메뉴·콘센트 위치 변경) 카드 수정·삭제",
-        "카드를 캡처해 같이 로테이션 도는 친구에게 공유하기"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "U.K. Biker Cafes",
-      "anchorDetail": "App Store 음식·음료 카테고리 3위 — 가 본 카페를 목록화·기록하려는 수요."
-    },
-    {
-      "seed": "cafe",
-      "pain": 18,
-      "format": "vote-card",
-      "title": "그 카페, 왜요?",
-      "oneliner": "점심 먹고 나서 팀 단톡방에 카페 후보 두 곳을 올리면, 팀원들이 이모지 대신 \"왜 거긴지\" 한 줄 이유까지 남기며 골라주는 투표 링크. 답은 서버 없이 링크 안에 그대로 쌓여, 마지막에 연 사람 화면에서 그날 모두의 선택과 이유가 한 번에 보인다.",
-      "target": "매일 점심시간마다 카페 어디 갈지 팀 단톡방에 물어봐도 다들 \"아무데나\"라고만 답해서, 결국 매번 내가 정하고 늘 가던 곳만 가게 되는 사무실 커피 당번.",
-      "mvp": [
-        "카페 후보 2곳을 사진+한줄 특징 태그로 담아 카드로 만드는 화면 하나(로컬에 임시 저장, 발행 전 미리보기)",
-        "완성한 카드를 투표 링크로 발행 — 서버 없이 후보 정보를 링크 자체(URL)에 담아 전달",
-        "링크를 연 팀원이 이모지 반응과 \"왜 거긴지\" 한 줄 이유를 남기면, 그 답이 다음 사람에게 넘길 링크에 그대로 이어 쌓이는 방식(로그인·DB 없이 링크로만 누적)",
-        "마지막에 연 사람 화면에서 그날 모인 모든 반응과 이유를 카드 한 장으로 한눈에 보기",
-        "결과 카드를 캡처해 팀 단톡방에 바로 공유"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "EatClub - Restaurant Deals",
-      "anchorDetail": "App Store 음식·음료 15위 — 갈 곳을 비교해 고르려는 수요."
-    },
-    {
-      "seed": "coffee-beans",
-      "pain": 19,
-      "format": "calc-tool",
-      "title": "오늘의 추출",
-      "oneliner": "원두 양과 취향만 고르면 물 양·비율·시간을 계산해 주는 홈카페 추출 도우미.",
-      "target": "핸드드립 시작한 지 3개월 된 홈카페 입문자",
-      "mvp": [
-        "원두 g과 농도 취향을 고르면 물 양·비율이 나오는 계산 화면 하나",
-        "드립·프렌치프레스 등 방식별 기본 비율 프리셋",
-        "추출 타이머",
-        "이번 잔 결과를 노트로 저장"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "VST CoffeeTools PRO for iPhone",
-      "anchorDetail": "App Store 음식·음료 5위 — 추출 비율·농도를 계산하는 도구 수요."
-    },
-    {
-      "seed": "coffee-beans",
-      "pain": 20,
-      "format": "crud-app",
-      "title": "원두 성적표",
-      "oneliner": "구독으로 받은 원두마다 산미·바디와 가격 대비 만족도를 점수로 매겨, 다음에 뭘 다시 살지 한눈에 비교하는 원두 랭킹 노트.",
-      "target": "매달 원두 구독함으로 새 원두를 받아보는 홈카페족",
-      "mvp": [
-        "원두명·로스터리·구입가를 넣고 맛 점수를 매겨 카드로 저장하는 화면 하나",
-        "산미·단맛·바디 슬라이더와 '가격 대비 만족도' 자동 계산",
-        "점수 높은 순으로 정렬한 '재구매 순위' 보기",
-        "순위 카드를 이미지로 공유"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "The Great Coffee App",
-      "anchorDetail": "App Store 음식·음료 4위 — 원두별 맛·추출을 기록해 참고하려는 수요."
-    },
-    {
-      "seed": "baking-dessert",
-      "pain": 21,
-      "format": "calc-tool",
-      "title": "틀호수 계산기",
-      "oneliner": "레시피의 틀 호수(예: 3호)를 내가 가진 틀 호수나 원형↔사각으로 바꾸면 밀가루·설탕·버터 양을 자동으로 다시 계산해 주는 베이킹 계산기.",
-      "target": "카페 레시피를 다른 호수 틀에 맞춰 바꾸다가 계산이 막막한 홈베이킹 초보",
-      "mvp": [
-        "원본 레시피 재료와 호수를 입력하면 원하는 호수로 환산되는 계산 화면 하나",
-        "원형↔사각 틀 부피 환산 자동 적용",
-        "자주 쓰는 내 틀 사이즈 저장해두고 불러오기",
-        "환산한 재료 목록 복사"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Paprika Recipe Manager",
-      "anchorDetail": "App Store 음식·음료 1위 — 레시피 배합을 인분·틀에 맞춰 조절하는 수요."
-    },
-    {
-      "seed": "baking-dessert",
-      "pain": 22,
-      "format": "crud-app",
-      "title": "답례품 배합카드",
-      "oneliner": "웨딩 답례품 마카롱을 파는데 손님마다 글루텐프리·비건·넛프리 조건이 달라 대체재료 비율을 매번 새로 실험한다. 손님 이름과 바꾼 재료·비율, 성공 여부를 카드로 남겨두고, 같은 손님이 재주문하면 검색 한 번으로 예전 성공 배합을 그대로 꺼내 쓰는 배합 기록장.",
-      "target": "웨딩 답례품으로 비건 마카롱을 파는 부업러, 손님마다 다른 알레르기·비건 조건에 맞춰 대체재료 비율을 매번 새로 실험하는 사람",
-      "mvp": [
-        "손님 이름·주문일·조건(글루텐프리/비건/넛프리 등)을 적어 주문 카드 만들기",
-        "이번 주문에서 바꾼 대체재료(계란→아쿠아파바 등)와 비율을 기록",
-        "시식 결과 '성공' 또는 '재시도' 표시로 배합 확정",
-        "같은 조건의 과거 성공 카드만 걸러서 보기",
-        "손님 이름으로 검색해 재주문 시 예전 성공 배합 바로 찾기"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Paprika Recipe Manager",
-      "anchorDetail": "App Store 음식·음료 1위 — 개인 레시피를 저장·관리하려는 수요."
-    },
-    {
-      "seed": "home-cooking",
-      "pain": 23,
-      "format": "digest-bot",
-      "title": "냉장고 마감세일",
-      "oneliner": "새벽배송을 정기구독으로 걸어둬서 깜빡해도 매주 같은 요일에 새 상자가 오는 자취러를 위한 셀프 진열대. 배송 전날 밤, 냉장고 속 재료를 유통기한 임박 순으로 줄 세워 '마감세일 코너'처럼 보여준다.",
-      "target": "새벽배송을 정기구독으로 걸어놔서 주문을 깜빡해도 매주 같은 요일 자동으로 상자가 도착하는 자취러 — 지난주 재료를 다 못 먹었는데 벌써 새 상자가 문 앞에 쌓여 있는 사람",
-      "mvp": [
-        "이번 상자에 온 재료 이름과 유통기한(며칠 후)을 적어 넣는 입력창 하나 (localStorage 저장, 서버 없음)",
-        "입력한 재료를 유통기한 임박 순으로 자동 정렬해 '마감세일 진열대'로 보여주는 목록 화면",
-        "다음 배송 요일을 스스로 지정하면 'D-1, 오늘 안에 드세요' 배지가 뜨는 카운트다운(외부 알림 발송 없이 화면 표시만)",
-        "재료별 '다 먹음/버림' 체크 한 번으로 이번 주 소비율 기록",
-        "주간 마감세일 결과(버린 개수·소비율)를 캡처해서 지인에게 공유할 수 있는 요약 카드"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Mealie - Recipe & Meal Planner",
-      "anchorDetail": "App Store 음식·음료 13위 — 식재료·팬트리를 관리하려는 수요."
-    },
-    {
-      "seed": "home-cooking",
-      "pain": 24,
-      "format": "template-gen",
-      "title": "요일밥",
-      "oneliner": "월화수목금 저녁 메뉴를 한 번 정해두면 매주 그대로 반복해서, 매번 새로 고민하지 않고 그대로 해먹는 요일 고정 식단표.",
-      "target": "매주 뭘 해먹을지 새로 고민하기 싫어서 정해진 메뉴만 반복하고 싶은 자취 직장인",
-      "mvp": [
-        "요일마다 저녁 메뉴 하나씩 정해 고정 식단표를 만드는 화면 하나",
-        "고정한 메뉴들의 장보기 목록 자동 합산",
-        "이번 주만 특정 요일 메뉴 바꾸기",
-        "식단표 이미지로 저장해 냉장고에 붙이기용 공유"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Mealime Meal Plans & Recipes",
-      "anchorDetail": "App Store 음식·음료 1위 — 주간 식단을 자동으로 구성하려는 수요."
-    },
-    {
-      "seed": "home-cooking",
-      "pain": 25,
-      "format": "crud-app",
-      "title": "집밥함 — 집밥 레시피 저장·검색",
-      "oneliner": "엄마가 카톡으로 보낸 잡채 레시피 못 찾아 매번 다시 전화하는 민망함, 저장해두면 검색으로 바로 찾아 뿌듯",
-      "target": "엄마한테 레시피 배웠는데 카톡·메모에 흩어놓고 사는 자취생",
-      "mvp": [
-        "레시피 이름·재료·순서 적어 추가",
-        "저장된 레시피 목록에서 검색",
-        "레시피 눌러서 수정·삭제",
-        "레시피 링크로 만들어 카톡 공유"
-      ],
-      "evidence": "레시피를 저장해서 정리해주는 비슷한 해외 앱이 매달 약 28만원씩 벌어요",
-      "todayAction": "오늘 반나절 안에 레시피를 적어 저장하고, 검색해서 바로 찾아보는 목록 화면까지 만들 수 있어요.",
-      "buildPrompt": "레시피 이름, 재료(여러 줄로 입력), 만드는 순서(여러 줄로 입력)를 적는 추가 화면이랑, 저장한 레시피를 카드 목록으로 보여주고 이름으로 검색하는 목록 화면을 만들어줘. 목록에서 레시피를 누르면 상세 화면이 열리고 거기서 수정·삭제 버튼을 누를 수 있게 해줘. 데이터는 새로고침해도 안 사라지게 브라우저 안에 저장하고, 레시피 하나를 카톡으로 보낼 때는 내용을 링크에 담아서 보내는 공유 버튼도 추가해줘.",
-      "source": "v7",
-      "evidenceType": "usage",
-      "anchorName": "ReciMe: Recipes & Meal Planner",
-      "anchorDetail": "App Store 음식·음료 17위 — 흩어진 레시피를 한곳에 모으려는 수요.",
-      "appName": "집밥함",
-      "frontStory": {
-        "persona": "엄마한테 배운 레시피를 카톡·메모에 흩어놓고 사는 자취생",
-        "timeline": [
-          {
-            "t": "평소 저녁",
-            "act": "엄마 카톡 레시피 읽고 넘김",
-            "emo": "이따 찾으면 되지 안심",
-            "pain": false
-          },
-          {
-            "t": "잡채 만들 때",
-            "act": "당면 불려두고 카톡 뒤짐",
-            "emo": "어? 그 메시지 어디 갔지, 당황",
-            "pain": true
-          },
-          {
-            "t": "스크롤 10분째",
-            "act": "결국 엄마한테 또 전화",
-            "emo": "당면 불어터짐, 민망하고 창피함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "restaurant-hunt",
-      "pain": 26,
-      "format": "crud-app",
-      "title": "순회맛집첩",
-      "oneliner": "담당 구역 매장을 한 달마다 순회하는 편의점 SV가, 매장 앞에서 15분 만에 후딱 먹은 밥집을 그 매장과 묶어 기록해두고 다음 순회 때 바로 찾아가는 순회맛집첩.",
-      "target": "담당 구역 25~30개 매장을 한 달 주기로 순회 점검하는 편의점 본사 SV(슈퍼바이저) — 매장 앞에서 15분 만에 급하게 먹은 밥집을 다음 순회 때 다시 못 찾는 사람.",
-      "mvp": [
-        "매장명(구역)을 검색·선택해 그 앞에서 먹은 밥집명·메뉴·별점을 카드로 저장",
-        "저장한 밥집을 담당 매장별로 묶어서 다시 보기",
-        "마지막 방문일 기준 다음 순회 예정일을 D-day로 표시해 '이번 순회 땐 여기' 알림처럼 보여주기",
-        "구역별 맛집 리스트를 같은 팀 SV들에게 링크(텍스트)로 공유"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Toast - Local Restaurants",
-      "anchorDetail": "App Store 음식·음료 19위 — 로컬 맛집을 탐색·기록하려는 수요."
-    },
-    {
-      "seed": "restaurant-hunt",
-      "pain": 27,
-      "format": "vote-card",
-      "title": "아무거나 금지",
-      "oneliner": "명절 외식 장소를 잡을 때 후보 식당 링크를 보내면, 시댁 식구들이 \"아무거나\" 대신 익명으로 못 먹는 것과 먹고 싶은 걸 체크해서 몇 명이 만족할지 자동으로 비교해 주는 3초 투표 카드.",
-      "target": "명절마다 시댁 식구 외식 장소를 예약해야 하는데, 다들 \"아무거나\"로만 답해서 막상 식당에 가서야 불만이 터지는 맏며느리(맏사위)",
-      "mvp": [
-        "후보 식당 2~3곳의 이름·사진 링크와 '이건 못 먹어요' 체크 항목을 담은 카드 만들기 화면(로컬 저장, 발행 전 미리보기)",
-        "카톡 공유용 링크 발행 — 받는 분은 로그인 없이 체크만 하면 답변이 URL에 담긴 '내 결과 링크'가 자동 생성됨(서버 저장 없음)",
-        "돌아온 결과 링크를 하나씩 붙여넣으면 브라우저에 쌓이며 식당별 '못 먹는 사람 0명' 자동 집계",
-        "제일 무난한 식당에 '여기로 확정' 도장 찍고 카톡 공유용 이미지로 내보내기"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "EatClub - Restaurant Deals",
-      "anchorDetail": "App Store 음식·음료 15위 — 식당을 비교해 고르려는 수요."
-    },
-    {
-      "seed": "diet-lunchbox",
-      "pain": 28,
-      "format": "streak-tracker",
-      "title": "느슨한 연속기록",
-      "oneliner": "저속노화 식단처럼 매일 완벽하지 않아도, 주 1회는 봐주면서 이어지는 걸로 쳐주는 유연한 다이어트 연속기록 트래커.",
-      "target": "저속노화 식단을 시작했다가 하루 어겼다고 스트릭이 끊겨서 포기하는 30대 직장인",
-      "mvp": [
-        "오늘 식단 지킴 도장을 찍는 화면 하나",
-        "주 1회 '봐주기'를 써도 연속기록이 안 끊기는 계산 로직",
-        "이번 주 봐주기 사용 현황과 연속 일수 캘린더",
-        "이번 주 성공률과 다음 목표 요약 공유"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "nutrIA",
-      "anchorDetail": "월 매출 약 $6.4k — 식단 습관 추적·데일리 인게이지먼트 수요."
-    },
-    {
-      "seed": "diet-lunchbox",
-      "pain": 29,
-      "format": "curation",
-      "title": "오늘 도시락 뭐싸지",
-      "oneliner": "저칼로리 도시락 메뉴를 골라 담아 매번 똑같던 도시락에 변화를 주는 메뉴 큐레이션.",
-      "target": "도시락 메뉴가 매일 똑같아 질린 다이어터",
-      "mvp": [
-        "오늘 조건(칼로리대·조리시간)에 맞는 도시락 메뉴 몇 개를 보여 주는 화면 하나",
-        "마음에 든 메뉴 담기",
-        "담은 메뉴의 장보기 재료 합산",
-        "이번 주 도시락 계획 저장"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Lunchbox Recipes",
-      "anchorDetail": "App Store 음식·음료 15위 — 도시락 메뉴 아이디어를 찾으려는 수요."
-    },
-    {
-      "seed": "frontend",
-      "pain": 30,
-      "format": "template-gen",
-      "title": "버튼컬러 — UI 색상 코드 생성기",
-      "oneliner": "밤 11시, 로그인 버튼 색 또 처음부터 맞추다 지친 순간, 값만 넣으면 코드로 바로 나와 마음이 놓이는 틀",
-      "target": "사이드 프로젝트에 화면 부품 새로 붙일 때마다 색·여백 다시 맞추는 신입 개발자",
-      "mvp": [
-        "메인 색·여백 입력창",
-        "값 반영된 코드 자동 생성",
-        "복사 버튼으로 바로 복사",
-        "설정값 링크로 저장·공유"
-      ],
-      "evidence": "비슷한 화면 부품 꾸러미 앱이 해외서 매달 약 220만원씩 벌어요",
-      "todayAction": "오늘 반나절, 메인 색상과 여백 값을 넣으면 그 값이 반영된 코드가 바로 나오는 입력창부터 만들어보세요.",
-      "buildPrompt": "화면 부품(버튼·카드 같은 화면 조각) 색과 여백을 한 번에 맞춰주는 웹페이지를 만들어줘. 입력창에서 메인 색상, 여백 크기(픽셀), 모서리 둥글기(픽셀) 값을 받으면, 그 값이 그대로 들어간 스타일 코드를 화면에 보여주고 복사 버튼으로 클립보드에 복사할 수 있게 해줘. 입력한 값은 서버 저장 없이 링크 뒤에 담아서, 그 링크를 다시 열면 값이 자동으로 채워지게 해줘.",
-      "source": "v7",
-      "evidenceType": "revenue",
-      "anchorName": "Efferd",
-      "anchorDetail": "월 매출 약 $3.2k, 붙여 쓰는 shadcn 블록 판매",
-      "appName": "버튼컬러",
-      "frontStory": {
-        "persona": "shadcn 붙일 때마다 색·여백 다시 맞추는 신입 개발자",
-        "timeline": [
-          {
-            "t": "매일 저녁",
-            "act": "shadcn 버튼 새로 붙이는 중",
-            "emo": "이번엔 빨리 끝나겠지",
-            "pain": false
-          },
-          {
-            "t": "밤 11시",
-            "act": "로그인 버튼 색 또 안 맞음",
-            "emo": "짜증 나고 막막함",
-            "pain": true
-          },
-          {
-            "t": "그 순간",
-            "act": "코드 지우고 창 닫으려는 손",
-            "emo": "이걸 왜 하나 싶은 허탈함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "frontend",
-      "pain": 31,
-      "format": "chrome-ext",
-      "title": "겹색잡기",
-      "oneliner": "화면에서 색을 집으면 내가 이미 갖고 있는 색과 얼마나 겹치는지 바로 알려줘요",
-      "target": "직접 만든 사이드 프로젝트에 비슷비슷한 회색만 스무 개 넘게 쌓인 프론트 신입",
-      "mvp": [
-        "지금 페이지에서 클릭한 색과 내가 저장해둔 색 목록 중 가장 가까운 색을 나란히 보여주는 확장 팝업",
-        "가까운 색이 있으면 '이미 있는 색이에요' 경고와 기존 색 코드 표시",
-        "내 색 목록을 코드로 내보내기",
-        "겹치는 색을 정리한 뒤 줄어든 색 개수를 보여주는 카운터"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "ColorZilla",
-      "anchorDetail": "Chrome 웹스토어 개발도구 카테고리 1위·★4.6"
-    },
-    {
-      "seed": "backend",
-      "pain": 32,
-      "format": "calc-tool",
-      "title": "가짜신호등",
-      "oneliner": "이메일·전화번호를 넣으면 흔한 가짜 패턴 규칙에 걸리는지 점수와 이유를 바로 계산해줘요",
-      "target": "무료 체험판에 가짜 이메일이 쏟아져 매달 비용만 새는 1인 SaaS 운영자",
-      "mvp": [
-        "이메일 하나를 넣으면 알려진 가짜 패턴 규칙에 걸리는지 점수와 이유가 뜨는 판정 화면",
-        "전화번호 자리수·반복 패턴 등 형식 규칙 위반 여부 체크",
-        "판정 규칙을 내 가입 폼에 붙일 수 있는 코드 조각으로 복사",
-        "자주 걸리는 가짜 패턴 목록을 계속 채워가는 규칙집"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "1Lookup",
-      "anchorDetail": "월 매출 약 $398k, 실시간 이메일·전화·IP 검증 API"
-    },
-    {
-      "seed": "backend",
-      "pain": 33,
-      "format": "share-link",
-      "title": "에러처방전",
-      "oneliner": "콘솔에 뜬 에러 문구를 붙여넣으면 어떤 CORS 문제인지와 붙일 수정 코드까지 짚어줘요",
-      "target": "혼자 프론트만 붙이다 콘솔에 뜬 CORS 에러 문구의 뜻을 몰라 헤매는 바이브코딩 빌더",
-      "mvp": [
-        "에러 메시지를 붙여넣으면 원인 유형과 해결 코드가 뜨는 진단 결과 페이지",
-        "결과 페이지 URL로 팀원에게 바로 공유",
-        "내가 쓰는 서버 방식(직접 짠 서버·호스팅 서비스 등)을 고르면 맞는 설정 코드로 교체",
-        "자주 걸리는 에러 유형을 모아둔 사전 페이지"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "CORSPROXY",
-      "anchorDetail": "월 매출 약 $1.2k, CORS 오류 해결 프록시"
-    },
-    {
-      "seed": "data-ai",
-      "pain": 34,
-      "format": "chatbot",
-      "title": "노드코치",
-      "oneliner": "AI가 실제로 존재하는 노드만 써서 자동화 흐름을 정확히 설계하게 도와줘요",
-      "target": "노코드 자동화를 AI한테 맡기는 1인 운영자",
-      "mvp": [
-        "원하는 자동화를 말하면 실제 노드 이름으로 단계별 흐름을 답하는 채팅 화면",
-        "생성된 흐름을 복사 가능한 JSON으로 출력",
-        "지원 노드 검색·자동완성",
-        "예시 워크플로우 프롬프트 모음"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "Synta",
-      "anchorDetail": "월 매출 약 $13k, AI 클라이언트용 n8n 워크플로우 설계 MCP"
-    },
-    {
-      "seed": "data-ai",
-      "pain": 35,
-      "format": "dashboard",
-      "title": "언급수첩",
-      "oneliner": "내가 확인한 AI 답변 결과를 붙여넣기만 하면 언급 여부와 추이를 날짜별로 정리해줘요",
-      "target": "가끔 AI 챗봇에 물어보고 결과를 캡처만 해두던 1인 SaaS 마케터",
-      "mvp": [
-        "오늘 확인한 답변을 붙여넣으면 언급 여부(포함·미포함)를 기록하는 입력 화면",
-        "기록이 쌓이며 만들어지는 주간 언급률 추이 그래프",
-        "언급됐을 때 답변 원문을 메모로 첨부",
-        "이번 주 기록 요약을 이미지 카드로 내보내기"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "MentionDesk",
-      "anchorDetail": "월 매출 약 $857, ChatGPT·Perplexity·Claude 브랜드 노출 추적"
-    },
-    {
-      "seed": "app-dev",
-      "pain": 36,
-      "format": "template-gen",
-      "title": "애플 로그인 스타터팩",
-      "oneliner": "구글·카카오 로그인 조합을 고르면 Sign in with Apple이 필수인지 알려주고, 그대로 붙여 쓸 코드 스니펫과 심사 체크 순서를 한 번에 내려줘요",
-      "target": "카카오·구글 로그인만 넣어뒀다가 심사 직전에야 Sign in with Apple 필수 조항(가이드라인 4.8)에 걸릴 걸 알아채고, 로그인 코드를 통째로 다시 짜야 하나 싶어 남의 예제 코드부터 뒤지는 1인 iOS 개발자",
-      "mvp": [
-        "넣으려는 로그인(구글·카카오·네이버 등)을 체크하면 Sign in with Apple 필수 여부와 이유가 바로 뜨는 화면",
-        "고른 조합에 맞는 로그인 버튼 연동 Swift 코드 스니펫을 복사 버튼으로 바로 복사",
-        "인앱 디지털 상품 결제 여부를 추가로 고르면 StoreKit 연동에서 같이 챙길 항목 추가 표시",
-        "고른 조합을 로컬에 저장해 심사 제출 직전 체크리스트로 다시 열어보기",
-        "관련 가이드라인 조항 번호(4.8 등)만 공식 문서 링크로 남기고 원문은 애플 사이트에서 확인하도록 안내"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "The Swift Kit",
-      "anchorDetail": "월 매출 약 $1.2k, SwiftUI 인디 개발자용 보일러플레이트"
-    },
-    {
-      "seed": "app-dev",
-      "pain": 37,
-      "format": "template-gen",
-      "title": "리젝없이깔기",
-      "oneliner": "예약 페이지 주소만 넣으면 앱스토어 심사 없이 손님 폰 홈 화면에 진짜 앱처럼 깔리는 설치 코드와 안내 카드가 바로 나와요",
-      "target": "필라테스·네일샵처럼 예약 웹앱을 앱스토어에 올렸다가 \"이건 그냥 웹사이트잖아요(가이드라인 4.2)\" 반려를 당하고, 재심사는 엄두가 안 나 인스타 프로필 링크로 버티는 사장님",
-      "mvp": [
-        "예약 페이지 URL과 가게 로고를 넣으면 홈 화면 설치용 설정 코드가 바로 나오는 화면",
-        "\"이건 웹뷰 앱이 아니라 홈 화면 바로가기예요\"라고 손님께 보여줄 안내 카드 문구(가이드라인 4.2 걱정 없는 표현)",
-        "아이폰·안드로이드별 \"홈 화면에 추가\" 캡처에 화살표를 얹은 손님용 설치 안내 이미지",
-        "로고와 가게 이름을 넣으면 홈 화면에 뜰 아이콘 모양을 미리 보는 목업 화면",
-        "완성된 코드와 안내 이미지를 카톡으로 바로 보내는 복사 버튼"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "WebToApp",
-      "anchorDetail": "월 매출 약 $620, 웹사이트를 네이티브 안드로이드 앱으로 변환"
-    },
-    {
-      "seed": "devops",
-      "pain": 38,
-      "format": "dashboard",
-      "title": "토큰가계부",
-      "oneliner": "매일 확인한 사용량을 붙여넣기만 하면 이번 달 예산 안에서 쓰고 있는지 가계부처럼 보여줘요",
-      "target": "이번 달 AI 코딩 요금이 얼마나 나올지 몰라 매번 불안한 1인 개발자",
-      "mvp": [
-        "오늘 사용량 숫자를 입력하면 이번 달 예산 대비 얼마나 남았는지 뜨는 가계부 화면",
-        "예산 안에서 쓴 날은 도장, 초과한 날은 경고로 표시",
-        "여러 AI 코딩 도구를 쓰면 도구별로 칸을 나눠 따로 입력",
-        "이번 달 절약 기록을 캡처해 공유"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "SessionWatcher",
-      "anchorDetail": "월 매출 약 $1.6k, Claude Code·Codex 토큰 사용량 추적 맥 메뉴바 앱"
-    },
-    {
-      "seed": "qa-test",
-      "pain": 39,
-      "format": "chrome-ext",
-      "title": "바이브핏체크",
-      "oneliner": "Claude·Cursor가 짜준 페이지엔 클릭은 되는데 탭도 안 되는 가짜 버튼, 흐릿한 글자, 이름 없는 이미지가 숨어 있어요. 머지 누르기 전 그 3가지만 딱 잡아드려요",
-      "target": "Claude·Cursor로 오늘 뚝딱 짠 사이드프로젝트를 Vercel Preview URL 하나 띄워보고 그대로 머지 버튼을 누르는 1인 바이브 코더",
-      "mvp": [
-        "지금 연 Vercel Preview 페이지를 훑어, 클릭 이벤트만 있고 버튼 태그가 아닌 \"가짜 버튼\" 목록을 보여주는 팝업",
-        "글자색과 배경색 대비가 낮아 흐릿하게 보이는 텍스트만 콕 집어 개수로 세어 보여주기",
-        "alt 속성이 비어있거나 없는 이미지·아이콘 목록 나열",
-        "3가지 다 걸리는 게 없으면 \"바이브핏 통과\" 배지 이미지를 만들어 클립보드로 복사",
-        "마지막 검사 결과와 배지를 로컬에 저장해 다음에 열면 바로 이어보기"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "A11yInspect",
-      "anchorDetail": "Chrome 웹스토어 접근성 카테고리 5위·★5.0"
-    },
-    {
-      "seed": "qa-test",
-      "pain": 40,
-      "format": "calc-tool",
-      "title": "안 열려요 탐정",
-      "oneliner": "몇 가지 질문에 답하면 '안 열려요' DM이 반복되는 진짜 이유가 이미지가 아니라 어디 있는지 짚어줘요",
-      "target": "인스타 프로필에 노션으로 만든 링크인바이오 페이지를 걸어둔 마이크로 인플루언서, 팔로워한테 '안 열려요' DM 받을 때마다 반사적으로 이미지만 다시 줄여온 사람",
-      "mvp": [
-        "노션 링크인바이오 페이지 구조를 묻는 8문항 체크리스트(토글 개수·임베드 동영상 수·서브페이지 depth·갤러리뷰 사용 여부·notion.site 기본 도메인 여부 등)",
-        "답변 조합에 조건분기 규칙을 적용해 유력 원인 1순위를 강조하고 나머지 원인 후보를 순위 리스트로 노출하는 진단 결과 화면",
-        "원인별로 '이미지 압축이 답이 아닐 수 있는 이유'를 짚어주고 3분 안에 고칠 구체적 액션(토글 줄이기·갤러리뷰→리스트뷰 전환·커스텀 도메인 연결) 안내",
-        "진단 결과를 인스타 스토리나 DM 답장에 바로 붙여넣을 수 있는 요약 카드 이미지로 저장",
-        "직전 진단 결과를 localStorage에 남겨 재검사할 때 개선 여부를 바로 비교"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Lighthouse",
-      "anchorDetail": "Chrome 웹스토어 개발도구 카테고리 4위·★4.4, 웹 성능 자동 진단"
-    },
-    {
-      "seed": "running",
-      "pain": 41,
-      "format": "streak-tracker",
-      "title": "뛴날 — 안 끊기는 러닝 연속 기록",
-      "oneliner": "나이키 런 클럽 47일 뛰다 하루 빠지자 헛수고 같아 지우기 직전, 버튼 눌러 며칠째인지 보니 안심돼요",
-      "target": "나이키 런 클럽으로 몇 달째 매일 뛰다 하루라도 빠지면 앱을 지워버리는 직장인 러너",
-      "mvp": [
-        "오늘 뛰었음 눌러 기록",
-        "며칠 연속인지 화면에 표시",
-        "하루 빠져도 기록 안 지움",
-        "기록 링크로 친구에게 공유"
-      ],
-      "evidence": "이런 며칠 연속 기록 앱이 해외에서 매달 약 286만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 뛰었음 버튼을 누르면 날짜가 저장되고 며칠째 연속인지 바로 보이는 화면을 만들어요",
-      "buildPrompt": "러닝 며칠 연속 기록 웹페이지를 만들어줘. '오늘 뛰었음' 버튼을 누르면 오늘 날짜를 브라우저 저장공간(로컬스토리지)에 저장하고 지금까지 며칠 연속 뛰었는지 큰 숫자로 보여줘. 하루를 건너뛰어도 연속 숫자가 0으로 초기화되지 않고 '하루 쉼'으로만 표시되게 하고, 기록을 링크(쿼리스트링)에 담아 로그인 없이 친구도 볼 수 있게 만들어줘.",
-      "source": "v7",
-      "evidenceType": "usage",
-      "anchorName": "Nike Run Club",
-      "anchorDetail": "App Store 한국 건강·피트니스 1위 (러닝 습관·연속 기록 기능)",
-      "appName": "뛴날",
-      "frontStory": {
-        "persona": "나이키 런 클럽 47일째 매일 뛰던 직장인 러너",
-        "timeline": [
-          {
-            "t": "매일 아침",
-            "act": "출근 전 런클럽 켜고 뜀",
-            "emo": "스트릭 숫자 볼 때마다 뿌듯함",
-            "pain": false
-          },
-          {
-            "t": "47일째 밤",
-            "act": "야근 겹쳐 하루 못 뛰어 스트릭 끊김",
-            "emo": "47일 다 날린 것 같아 억울함",
-            "pain": true
-          },
-          {
-            "t": "그날 밤",
-            "act": "앱 아이콘 꾹 눌러 삭제 대기",
-            "emo": "이래봤자 뭐하나 싶어 무기력함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "running",
-      "pain": 42,
-      "format": "calc-tool",
-      "title": "점심 러닝 페이스표",
-      "oneliner": "점심시간에서 샤워·이동 버퍼를 빼면 남는 러닝 시간과 그 안에 뛸 수 있는 목표 페이스를 알려주는 오피스 러너 전용 계산기",
-      "target": "점심시간 60분 안에 뛰고 씻고 복귀해야 하는 오피스 러너",
-      "mvp": [
-        "점심시간 총량과 샤워·이동 버퍼(분)를 넣으면 남는 러닝 시간과 목표 페이스가 바로 뜨는 계산 화면",
-        "회사 근처 왕복 거리 프리셋(1km·2km·3km) 선택",
-        "버퍼를 넘길 위험이 있으면 빨간 경고 표시",
-        "자주 쓰는 설정 저장해 다음에 바로 불러오기"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "3AK Track & Field",
-      "anchorDetail": "월 매출 약 $15k (개인 맞춤 페이스·기록 PR 코칭 앱)"
-    },
-    {
-      "seed": "running",
-      "pain": 43,
-      "format": "curation",
-      "title": "오늘 밤, 다들 뛰는 그 코스",
-      "oneliner": "동네와 소요시간만 고르면, 오피스 밀집 지역에서 실제로 사람이 많이 다녀 검증된 야간 코스만 추려 보여주는 러닝 코스판",
-      "target": "야근 후 헬스장 대신 회사 앞에서 딱 30분 밤에 뛰는 여성 직장인 러너",
-      "mvp": [
-        "강남·여의도·판교 등 오피스 밀집 지역에서 이미 사람이 많이 뛰는 야간 코스 3~5곳을 직접 조사해 정적 리스트로 올려두기",
-        "동네·소요시간을 고르면 해당 코스 카드만 걸러 보여주는 필터 화면",
-        "마음에 드는 코스를 '오늘 코스'로 찜해 localStorage에 저장하고, 뛰고 온 뒤 체감 안전도 별점 남기기",
-        "내가 직접 뛰어본 코스를 나만의 목록에 추가해 다음에 다시 찾기",
-        "코스 카드를 캡처하거나 링크로 러닝 메이트에게 보내 '오늘 이 코스 같이 뛸래?' 묻기"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Strava",
-      "anchorDetail": "App Store 건강·피트니스 2위 (러닝 코스·구간 탐색 기능)"
-    },
-    {
-      "seed": "weight-training",
-      "pain": 44,
-      "format": "crud-app",
-      "title": "재활 세트 기록장",
-      "oneliner": "운동·무게·횟수뿐 아니라 오늘 아팠던 부위까지 한 줄로 남겨 다음 PT 상담 때 그대로 보여주는 재활 전용 기록장",
-      "target": "허리·무릎 재활 운동을 병행하는 헬스 초보",
-      "mvp": [
-        "운동·무게·횟수와 함께 '오늘 아픈 부위' 메모를 남기는 기록 화면",
-        "통증 메모가 있는 날짜만 모아보기",
-        "지난 3회 기록과 통증 메모 비교해서 보여주기",
-        "상담용으로 최근 기록 캡처해 공유"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Hevy",
-      "anchorDetail": "App Store 건강·피트니스 15위·★4.92·8.2만 평점 (세트·무게 기록 앱)"
-    },
-    {
-      "seed": "weight-training",
-      "pain": 45,
-      "format": "template-gen",
-      "title": "호텔짐 루틴표",
-      "oneliner": "가진 기구와 시간만 고르면 그 자리에서 할 수 있는 운동 순서표를 짜주는 출장자 전용 루틴판",
-      "target": "출장 갈 때마다 호텔 헬스장 기구가 달라 당황하는 직장인",
-      "mvp": [
-        "가진 기구(덤벨만·유산소기구만·맨몸)와 시간을 고르면 운동 순서표가 뜨는 화면",
-        "각 운동 대체 동작 최대 2개 표시",
-        "이번 출장 루틴 저장해 다음 호텔에서 재사용",
-        "완료한 루틴에 체크 남기기"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "플랜핏",
-      "anchorDetail": "App Store 한국 건강·피트니스 7위·★4.74·2.7만 평점 (기구 맞춤 루틴 추천)"
-    },
-    {
-      "seed": "golf",
-      "pain": 46,
-      "format": "crud-app",
-      "title": "막내 정산소",
-      "oneliner": "매주 상사들과 도는 라운딩에서 얼떨결에 정산 총무를 맡은 막내가, 다들 카트 앞에서 기다리는 그 3분 안에 스킨스·멀리건 금액을 실수 없이 뽑아내는 스코어 입력판",
-      "target": "매주 상사들과 라운딩 도는 팀에서 얼떨결에 정산 총무를 떠맡은 사원·대리급 직장인",
-      "mvp": [
-        "18홀 그리드에 홀별 타수를 탭으로 입력하면 스킨스 승자가 바로 표시되는 스코어 입력 화면",
-        "멀리건 사용 체크와 벌타 자동 반영",
-        "인원별 최종 정산액을 'OOO님 → OOO님 3만원' 문장으로 바로 보여주는 정산 요약",
-        "지난 라운딩 정산 기록을 localStorage에 저장해 다음 모임 전에 바로 확인",
-        "정산 결과를 카톡 공유 버튼으로 바로 전송"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "18Birdies",
-      "anchorDetail": "App Store 스포츠 20위 (골프 GPS·스코어 기록 앱)"
-    },
-    {
-      "seed": "golf",
-      "pain": 47,
-      "format": "vote-card",
-      "title": "내 스윙 뭐가 문제게",
-      "oneliner": "이미 찍어둔 스윙 영상 링크만 붙여넣으면, 골프 치는 지인 여러 명이 각자 눈에 띄는 부위를 칩 하나로 찍어주고, 겹치는 답이 많을수록 진짜 문제라는 게 보이는 반응 카드",
-      "target": "동호회·스크린골프 멤버들이랑 라운드는 도는데 정작 스윙 봐달란 말은 못 꺼내고 유튜브만 보며 혼자 스윙을 고치는 골린이",
-      "mvp": [
-        "스윙 영상 링크(유튜브·인스타)를 붙여넣고 내가 의심 가는 부위를 먼저 찍어보는 화면 — 전부 브라우저에만 저장, 로그인 없음",
-        "완성한 카드를 링크 하나로 만들어 카톡으로 보내기",
-        "지인은 로그인 없이 영상 보고 '어깨·팔꿈치·하체·템포' 중 한 칩 + 한 줄 코멘트를 남기면, 그 답이 담긴 회신 링크가 자동으로 만들어져 카톡으로 돌아오는 흐름",
-        "회신 링크를 열 때마다 내 브라우저에 답이 쌓여서 부위별 득표 막대와 코멘트를 모아보고, 내가 처음 찍은 예상과 겹치는지 바로 비교해보는 결과 화면"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "The Golf Tracer",
-      "anchorDetail": "App Store 스포츠 5위 (스윙 영상·궤적 분석 앱)"
-    },
-    {
-      "seed": "hiking",
-      "pain": 48,
-      "format": "curation",
-      "title": "부모님과 걷는 산",
-      "oneliner": "지역과 걷는 시간만 고르면 오르막 적고 화장실·벤치 있는 부모님 동반용 둘레길만 추려주는 코스 큐레이션",
-      "target": "체력 약한 부모님을 모시고 가야 하는 초보 등산 자녀",
-      "mvp": [
-        "지역·소요시간을 고르면 평지 비율·화장실 유무가 표시된 코스 카드 3장이 뜨는 화면",
-        "코스별 오르막 구간 여부·벤치 개수 표시",
-        "다녀온 코스에 '부모님도 괜찮았어요' 후기 남기기",
-        "코스 카드 가족 단톡방에 공유"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "AllTrails",
-      "anchorDetail": "App Store 건강·피트니스 1위 (코스 탐색·추천 앱)"
-    },
-    {
-      "seed": "home-workout",
-      "pain": 49,
-      "format": "streak-tracker",
-      "title": "땡땡이 자백 홈트 도장",
-      "oneliner": "점심시간 15분 홈트를 빼먹은 날엔 '오늘 안 한 이유'를 한 줄 적어야 다음 칸이 열리는 도장 캘린더예요. 아무도 안 봐도 나만은 내가 빼먹은 걸 알게 되는 스트릭이에요.",
-      "target": "재택으로 혼자 일하며 점심시간 15분 홈트를 다짐했지만, 봐줄 사람이 없어 스스로도 어제 했는지 가물가물한 1인 프리랜서·재택 근무자",
-      "mvp": [
-        "오늘 날짜 칸을 탭해 '15분 완료' 도장을 찍는 이번 주 캘린더 화면 (localStorage 저장)",
-        "도장을 안 찍은 날은 '오늘 안 한 이유'를 한 줄 적어야만 다음 날 칸이 열리는 팝업",
-        "지금까지 적은 핑계를 모아 가장 많이 쓴 핑계 Top3를 보여주는 화면 (로컬 데이터 집계만)",
-        "오늘 기준 연속 며칠째인지 큰 숫자로 보여주는 홈 화면",
-        "이번 주 도장판+핑계 Top3를 이미지로 캡처해 저장하는 버튼"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Seven: 7 Minute Workout",
-      "anchorDetail": "★4.77·13.7만 평점·누적 4천만 사용 (7분 데일리 홈트 앱)"
-    },
-    {
-      "seed": "home-workout",
-      "pain": 50,
-      "format": "template-gen",
-      "title": "층간소음 걱정 없는 세트",
-      "oneliner": "가진 시간과 층간소음 민감도만 고르면 점프 없이 조용히 할 수 있는 맨몸 운동 세트를 짜주는 무소음 홈트판",
-      "target": "아파트에 살아서 층간소음 눈치 보이는 재택 근무자",
-      "mvp": [
-        "시간과 소음 민감도(예민·보통)를 고르면 무소음 동작 5개 세트가 뜨는 화면",
-        "각 동작 소음 레벨 아이콘과 시범 이미지",
-        "타이머로 세트 따라하기",
-        "완료한 세트 기록"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "JustFit: Lazy Workout & Fit",
-      "anchorDetail": "★4.79·21.3만 평점 (기구 없는 맨몸·필라테스 홈트 앱)"
-    },
-    {
-      "seed": "online-mall",
-      "pain": 51,
-      "format": "template-gen",
-      "title": "상품등록 한판",
-      "oneliner": "사진이랑 키워드만 넣으면 상품명·설명·옵션 초안이 한 번에 채워지는 등록 도우미",
-      "target": "혼자 스마트스토어 운영하는 1인 셀러",
-      "mvp": [
-        "상품 사진 1장과 키워드 3개를 넣으면 상품명·설명 초안이 뜨는 화면",
-        "카테고리별 설명 톤 프리셋 고르기",
-        "완성된 등록 텍스트 통째로 복사 버튼",
-        "이전에 만든 상품 설명 다시 불러오기"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "Catalister",
-      "anchorDetail": "이커머스 상품을 대량으로 자동 등록해주는 상품 등록 자동화 툴, 월 매출 약 $7.5k"
-    },
-    {
-      "seed": "md-buying",
-      "pain": 52,
-      "format": "curation",
-      "title": "뭐 팔지 추천대",
-      "oneliner": "요즘 잘 나가는 카테고리와 상품을 모아 다음에 들일 후보를 짚어주는 큐레이션 보드",
-      "target": "위탁·사입으로 상품 구성하는 1인 셀러",
-      "mvp": [
-        "카테고리를 고르면 요즘 잘 팔리는 상품 후보를 모아 보여주는 화면",
-        "후보별 예상 마진 메모",
-        "관심 상품 찜해두기",
-        "지난주 대비 뜨는 상품 표시"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "DropPop",
-      "anchorDetail": "여러 마켓의 판매 상품을 자동으로 소싱·등록해주는 드롭십 툴, 월 매출 약 $2.8k"
-    },
-    {
-      "seed": "md-buying",
-      "pain": 53,
-      "format": "vote-card",
-      "title": "이거 들일까",
-      "oneliner": "후보 상품을 카드로 만들어 단골·지인에게 어느 걸 원하는지 물어보는 투표",
-      "target": "재고 부담이 큰 1인 편집숍 운영자",
-      "mvp": [
-        "상품 후보 2~3개를 카드로 올리면 투표 링크가 나오는 화면",
-        "받은 표를 실시간 막대로 보기",
-        "'이유 한 줄' 코멘트 받기",
-        "마감된 투표 결과 저장"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Depop·Vinted",
-      "anchorDetail": "중고·셀렉트 상품을 사고파는 리셀 앱, App Store 쇼핑 카테고리 1~2위 인기"
-    },
-    {
-      "seed": "logistics-delivery",
-      "pain": 54,
-      "format": "digest-bot",
-      "title": "섬 배송 빼고, 진짜 밀린 것만",
-      "oneliner": "주문마다 지역을 일반/도서산간으로 표시해두면, 원래 며칠 더 걸리는 섬 배송은 너그럽게 봐주고 나머지 중에서 며칠째 그대로 멈춘 진짜 밀린 주문만 매일 아침 콕 집어 보여주는 확인 알림",
-      "target": "제주·도서산간 배송이 유독 많은 낚시·캠핑용품 스마트스토어 셀러",
-      "mvp": [
-        "주문번호·발송일·지역(일반/도서산간)을 적는 입력 목록",
-        "지역별 기준일수(일반 3일·도서산간 7일, 직접 수정 가능) 설정",
-        "기준일 넘겼는데 '완료' 체크 안 된 주문만 '오늘 확인' 목록 상단에 자동 정렬",
-        "완료 체크하면 목록에서 사라지고, 지역 태그별 색상 라벨로 구분 표시"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Shop (주문 추적 앱)",
-      "anchorDetail": "여러 브랜드 주문을 한곳에서 추적하는 앱, App Store 쇼핑 카테고리 상위"
-    },
-    {
-      "seed": "logistics-delivery",
-      "pain": 55,
-      "format": "crud-app",
-      "title": "발주 대장",
-      "oneliner": "주문을 받아 어느 거래처에 넘겼는지 상태별로 정리하는 발주 관리장",
-      "target": "위탁·사입 방식으로 파는 1인 쇼핑몰 운영자",
-      "mvp": [
-        "주문 하나를 등록하고 '접수→발주→발송' 상태를 바꾸는 화면",
-        "거래처별로 발주 묶어보기",
-        "미발주 주문만 필터",
-        "발주 내역을 날짜별로 조회"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "Doors Delivered",
-      "anchorDetail": "주문을 공급처로 넘겨 배송까지 처리하는 온라인 공급 쇼핑몰, 월 매출 약 $52k"
-    },
-    {
-      "seed": "inventory-management",
-      "pain": 56,
-      "format": "crud-app",
-      "title": "품절 잠금 장부",
-      "oneliner": "인스타 DM 주문 받는 셀러가 수량 0인 상품은 자동으로 잠가서 못 팔게 막아주는 재고장.",
-      "target": "인스타 DM으로 주문 받는 핸드메이드 소품 셀러",
-      "mvp": [
-        "상품 목록에 수량을 넣고, 수량이 0이 되면 그 항목이 빨갛게 잠기는 품절 잠금 화면",
-        "판매할 때마다 수량 –1 버튼 하나로 바로 반영",
-        "수량 2개 이하로 떨어진 품목을 목록 맨 위에 고정해 보여주기",
-        "오늘 판매·품절 처리한 이력을 시간순으로 보기"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Smart Closet·うちメモ",
-      "anchorDetail": "소지품·재고를 품목별로 기록·관리하는 정리 앱, App Store 카테고리 1위"
-    },
-    {
-      "seed": "cs-support",
-      "pain": 57,
-      "format": "chatbot",
-      "title": "문의 자동응대",
-      "oneliner": "자주 오는 질문을 미리 넣어두면 손님 문의에 먼저 답해주는 응대 봇",
-      "target": "CS를 혼자 감당하는 1인 쇼핑몰 운영자",
-      "mvp": [
-        "자주 묻는 질문·답 5개를 넣으면 채팅으로 답하는 화면",
-        "답 못 하는 질문은 나에게 넘기기",
-        "질문별 응대 횟수 보기",
-        "답변 문구 수정"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "Ticketdesk AI",
-      "anchorDetail": "지식베이스로 문의·채팅에 자동 응답하는 헬프데스크, 월 매출 약 $2.2k"
-    },
-    {
-      "seed": "cs-support",
-      "pain": 58,
-      "format": "digest-bot",
-      "title": "리뷰 부탁 알림",
-      "oneliner": "구매 후 적당한 때에 리뷰 요청을 챙겨 보내도록 알려주는 후기 수집 도우미",
-      "target": "후기가 없어 신뢰를 못 쌓는 1인 셀러",
-      "mvp": [
-        "주문 건에 '배송 완료 며칠 후 요청' 알림을 거는 화면",
-        "리뷰 요청 메시지 템플릿 고르기",
-        "요청·수집 상태 표시",
-        "아직 안 남긴 손님에게 다시 알림"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "MyFrank",
-      "anchorDetail": "고객·직원을 통해 구글 리뷰를 모으고 관리하는 후기 수집 B2B 툴, 월 매출 약 $6.1k"
-    },
-    {
-      "seed": "live-commerce",
-      "pain": 59,
-      "format": "landing-waitlist",
-      "title": "라이브 예고장",
-      "oneliner": "다음 라이브를 예고하고 알림 받을 사람을 미리 모으는 예약 페이지",
-      "target": "이제 막 라이브 방송을 시작한 1인 셀러",
-      "mvp": [
-        "방송 일시와 소개 상품을 적어 예약 페이지를 만드는 화면",
-        "알림 신청 버튼과 신청자 수 표시",
-        "방송 직전 알림 보내기",
-        "예약자 명단 보기"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Whatnot",
-      "anchorDetail": "실시간으로 상품을 팔고 사는 라이브 커머스 앱, App Store 쇼핑 카테고리 1위"
-    },
-    {
-      "seed": "performance-marketing",
-      "pain": 60,
-      "format": "dashboard",
-      "title": "입금자명 채널장부",
-      "oneliner": "입금자명 앞에 '릴스'나 '틱톡'을 붙여달라고 부탁만 해봤다면 — 그 이름들을 붙여넣기만 해도 채널별 입금액과 광고비 대비 회수율을 모아 보여주는 장부예요.",
-      "target": "인스타 릴스에 10만원, 틱톡에 10만원씩 나눠 광고비를 쓰는데, 스마트스토어 없이 계좌이체로만 주문 받는 핸드메이드 소품 공방 사장님",
-      "mvp": [
-        "입금자명을 한 줄씩 붙여넣으면 '릴스'·'틱톡' 같은 채널 키워드를 잡아 자동 분류하는 표",
-        "채널별 이번 달 광고비를 넣어두는 칸",
-        "채널별 입금 건수와 합계 금액을 모아 광고비 대비 회수율 계산",
-        "회수율 낮은 채널은 빨간색, 높은 채널은 초록색으로 표시",
-        "입력한 데이터는 브라우저에 저장해 다음 날에도 이어서 붙여넣기"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "ok-ko (OKKO Flow)",
-      "anchorDetail": "월 매출 약 $3k(광고 클릭→결제까지 서버사이드 추적하는 B2B 마케팅 SaaS)"
-    },
-    {
-      "seed": "performance-marketing",
-      "pain": 61,
-      "format": "dashboard",
-      "title": "우리 가게 포스터 성적표",
-      "oneliner": "회사에서는 광고 채널별 전환율을 소수점까지 따지면서, 정작 엄마 가게 전단지는 편의점 앞이랑 정류장에 감으로 나눠 붙이고 있는 나를 위한 판. 자리마다 다른 QR을 붙이고 스캔 수를 매일 표로 비교해서 어디가 진짜 먹히는 자리인지 확인한다.",
-      "target": "본업은 퍼포먼스 마케터인데, 부모님 반찬가게 홍보도 도맡아 하는 자식",
-      "mvp": [
-        "포스터 붙인 자리 이름(편의점 앞, 정류장 벤치 등)과 그날 확인한 스캔 수를 적는 입력 표",
-        "자리별 스캔 수를 막대그래프로 나란히 비교",
-        "날짜별 누적 스캔 추이를 선그래프로 확인",
-        "가장 안 찍히는 자리를 자동으로 표시해서 다음 달엔 빼기"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "QR Reader for iPhone",
-      "anchorDetail": "App Store 유틸리티 ★4.7·140만+ 평점(QR 스캔은 대중 습관); 동일 영역 QR 분석 SaaS(QR-Hero)는 별도로 월 매출 약 $580"
-    },
-    {
-      "seed": "content-marketing",
-      "pain": 62,
-      "format": "digest-bot",
-      "title": "보고 5분 전 순위 벼락치기",
-      "oneliner": "팀장한테 \"이번 주 블로그 순위 어때요?\" 소리 듣기 전에, 아직 확인 안 한 글부터 콕 집어주고 지난주 대비 오르내림까지 정리해서 보고 직전 5분 안에 벼락치기를 끝내게 해주는 알림장.",
-      "target": "매주 팀장에게 블로그 순위를 구두로 보고해야 하는, 글 30개 넘게 쌓인 회사 블로그 담당 주니어 마케터",
-      "mvp": [
-        "블로그 글 제목과 타깃 키워드를 처음에 등록해두는 화면(최대 30개, 로컬 저장)",
-        "오늘 검색창에 직접 쳐서 확인한 순위 숫자만 빠르게 입력하는 화면",
-        "이번 주 아직 순위를 안 넣은 글을 자동으로 상단에 콕 집어 보여주는 체크리스트",
-        "지난주 숫자와 비교해 순위 오르내림을 화살표와 색으로 자동 계산한 보고용 요약 카드",
-        "요약 카드를 캡처하기 좋게 한 화면에 깔끔히 정리한 보고 화면"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "Check Position",
-      "anchorDetail": "월 매출 약 $3.4k(구글 검색 순위 모니터링 도구)"
-    },
-    {
-      "seed": "content-marketing",
-      "pain": 63,
-      "format": "template-gen",
-      "title": "동네업체 후기글 틀",
-      "oneliner": "업종과 상호만 넣으면 네이버에 잘 걸리는 지역 후기글 순서(영업정보·가격·내돈내산 문구)를 채워주는 뼈대판.",
-      "target": "네이버 블로그로 동네 손님을 모으는 미용실·네일샵 사장님",
-      "mvp": [
-        "업종을 고르고 상호명을 넣으면 후기글 순서(방문 계기·시술 사진·가격표·영업시간·내돈내산 문구)가 채워지는 화면",
-        "업종별로 소제목 순서 규칙을 미리 다르게 세팅",
-        "업종 규정에 맞는 광고 표기 문구를 자동 배치",
-        "완성한 뼈대를 마크다운으로 복사"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "Blogmaker",
-      "anchorDetail": "월 매출 약 $820(노코드 SEO 블로그 생성·발행 플랫폼)"
-    },
-    {
-      "seed": "content-marketing",
-      "pain": 64,
-      "format": "vote-card",
-      "title": "썸네일 뭐가 나아",
-      "oneliner": "A안·B안 썸네일이나 카피를 지인에게 보내 어느 쪽이 끌리는지 투표받는 카드.",
-      "target": "유튜브·상세페이지를 만드는 1인 마케터",
-      "mvp": [
-        "이미지 2장을 올리면 좌우 투표 버튼이 뜨는 공유 카드",
-        "공유 링크를 받은 사람은 로그인 없이 바로 투표",
-        "실시간으로 A/B 득표율이 갱신",
-        "한 줄 코멘트도 남길 수 있게 허용"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "MiniaturiA",
-      "anchorDetail": "월 매출 약 $500(유튜브 바이럴 썸네일 제작 도구; 창작물 반응 검증 수요)"
-    },
-    {
-      "seed": "sns-ops",
-      "pain": 65,
-      "format": "crud-app",
-      "title": "골든타임 공고판",
-      "oneliner": "안락사가 임박한 아이의 공고문을 쓰면 인스타·엑스·스레드 글자 수와 해시태그 규칙에 맞게 자동으로 다듬어, 채널별 버튼 하나로 바로 복사하게 해주는 판.",
-      "target": "안락사 임박 공고를 올려야 하는 유기동물 보호소 SNS 자원봉사자",
-      "mvp": [
-        "공고문 하나를 쓰면 인스타·엑스·스레드용 세 버전이 나란히 뜨고 채널마다 복사 버튼이 붙어 있는 화면",
-        "글자 수를 넘긴 채널은 빨간 경고로 표시해 줄여야 할 분량을 바로 알려주기",
-        "채널마다 다른 해시태그 개수·위치 규칙을 자동으로 맞춰 미리 보여주기",
-        "올린 공고 목록에 마감 디데이를 같이 저장해 지난 공고도 다시 찾아보기"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "POST BRIDGE",
-      "anchorDetail": "월 매출 약 $43k(여러 SNS 동시 발행); 소셜 관리 앱 Hootsuite도 App Store ★4.67·3.4만 평점으로 수요 확인"
-    },
-    {
-      "seed": "sns-ops",
-      "pain": 66,
-      "format": "digest-bot",
-      "title": "언팔 비교장",
-      "oneliner": "인스타에서 받은 팔로워 내보내기 파일을 올릴 때마다 지난번과 비교해 새로 늘고 빠진 사람을 정리해 보여주는 판.",
-      "target": "인스타 팔로워 3천 명 넘는 1인 크리에이터",
-      "mvp": [
-        "팔로워 내보내기 파일을 올리면 직전 기록과 비교해 신규·이탈을 나눠 보여주는 화면",
-        "올릴 때마다 스냅샷을 날짜별로 저장",
-        "이탈한 계정만 따로 모아 목록으로 보기",
-        "최근 3번 비교 추이를 숫자로 요약"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "Last Followed",
-      "anchorDetail": "월 매출 약 $7.1k(인스타 팔로우·언팔 변동 추적 도구)"
-    },
-    {
-      "seed": "brand-planning",
-      "pain": 67,
-      "format": "digest-bot",
-      "title": "맘카페 언급 기록장",
-      "oneliner": "맘카페·후기 커뮤니티에서 내 브랜드 이야기를 발견할 때마다 링크만 붙여넣으면 모아서 매일 아침 요약해 주는 기록장.",
-      "target": "맘카페 후기 한 방에 주문이 몰리고 끊기는 1인 유아용품 D2C 대표",
-      "mvp": [
-        "브랜드 키워드를 등록하고, 오늘 발견한 언급 링크를 붙여넣으면 목록에 쌓이는 화면",
-        "자주 보는 카페·커뮤니티 이름을 체크리스트로 저장",
-        "쌓인 언급을 날짜별로 모아 하루 한 번 요약",
-        "언급마다 좋다·나쁘다 느낌을 한 번 태깅"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "Rumora",
-      "anchorDetail": "월 매출 약 $2.5k(브랜드 언급·트렌드 사전 감지 도구)"
-    },
-    {
-      "seed": "brand-planning",
-      "pain": 68,
-      "format": "landing-waitlist",
-      "title": "굳기 전 접수장",
-      "oneliner": "왁스를 굳히기 전에 몇 명이 살 건지부터 확인해서, 신청 수만큼만 만들어 다음 플리마켓에 폭염에 녹아버릴 재고를 남기지 않는 사전 신청 페이지.",
-      "target": "한여름에도 열리는 동네 플리마켓에 향초를 직접 만들어 갖고 나가 파는 1인 공방 사장님",
-      "mvp": [
-        "향초 사진과 '이번 시즌 목표 수량' 딱 하나만 적힌 페이지 한 장",
-        "'저요, ○개 살래요' 버튼 — 누르면 수량이 채워진 문자나 카카오톡 오픈채팅 링크가 바로 열리고, 서버에는 아무것도 저장하지 않기",
-        "신청한 사람 브라우저에 표시를 남겨서, 같은 사람이 다시 들어오면 '이미 신청하셨어요'로 바뀌기",
-        "지금까지 들어온 신청 수는 사장님이 직접 세어 페이지 속 숫자만 고쳐서 다시 올리기",
-        "목표 수량을 채우면 문구가 '제작 확정!'으로 바뀌기"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "Launch Club",
-      "anchorDetail": "월 매출 약 $64k(제품 홍보·초기 수요 만들기를 알려주는 마케팅 서비스)"
-    },
-    {
-      "seed": "crm-email",
-      "pain": 69,
-      "format": "calc-tool",
-      "title": "박람회 콜드메일 통관검사대",
-      "oneliner": "해외 박람회에서 받아온 명함 100장에 영어 콜드메일을 한꺼번에 보내기 전, 도메인 인증과 메일 문구를 붙여넣으면 스팸함으로 직행할지 통관되듯 통과할지 미리 알려주는 페이지.",
-      "target": "해외 박람회 다녀와서 받아온 명함 뭉치로 한꺼번에 첫 영어 콜드메일을 보내는 국내 제조업체 수출 담당자",
-      "mvp": [
-        "명함에서 옮겨 적은 회사 도메인 주소를 입력하면 SPF·DKIM 레코드 설정 여부를 조회해 통과 여부 표시",
-        "영어 메일 제목·본문을 붙여넣으면 스팸 유발 단어와 과도한 느낌표·링크 개수를 하이라이트",
-        "박람회 후 대량발송 티가 나는 요소(동일 제목 반복, 이미지만 있는 본문) 체크",
-        "결과를 통과·보류·재검사 필요로 보여주고 고칠 항목을 체크리스트로 정리",
-        "검사했던 도메인과 결과를 로컬에 저장해 다음 박람회 메일 보내기 전 다시 열람"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "TheMailSupply",
-      "anchorDetail": "월 매출 약 $650(B2B 콜드 이메일 인프라, 전량 입소문으로 성장)"
-    },
-    {
-      "seed": "crm-email",
-      "pain": 70,
-      "format": "chatbot",
-      "title": "예식 견적 3터치",
-      "oneliner": "신랑신부가 버튼 세 번만 누르면 견적 초안이 바로 나와서, 문의가 식기 전에 답장을 보낼 수 있어요.",
-      "target": "인스타 DM과 이메일로 몰리는 견적 문의에 밤새 일일이 답장하다 예식 성수기 골든타임을 놓치는 1인 웨딩플래너",
-      "mvp": [
-        "예식 유형·예산대·희망 요일 3버튼만 누르면 견적 초안이 뜨는 화면 하나",
-        "선택 조합별 견적 문구를 코드 안에 미리 심어둔 규칙표(별도 서버 없이)",
-        "완료 화면에서 카카오톡 공유 버튼으로 답변 내용을 통째로 전달",
-        "문의받은 내역을 브라우저에 저장해 다음 상담 때 다시 열어보기"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "HubSpot",
-      "anchorDetail": "App Store 비즈니스 ★4.73·1.5만 평점(리드 즉시 응대·CRM 수요); 왓츠앱 리드 자동 응대 SaaS(Whappy)는 별도로 월 매출 약 $1.3k"
-    },
-    {
-      "seed": "influencer-marketing",
-      "pain": 71,
-      "format": "share-link",
-      "title": "지금 사는 링크만",
-      "oneliner": "공구가 겹쳐도 지금 살아있는 링크만 위로 올리고, 끝난 공구는 자동으로 접어주는 프로필 링크 페이지예요.",
-      "target": "여러 브랜드 공동구매를 동시에 진행해 프로필 링크가 뒤섞이는 1인 공구 인플루언서",
-      "mvp": [
-        "공구별 시작일·마감일을 입력하면 진행 중인 것만 위로, 끝난 것은 접혀서 보이는 링크 목록 화면 하나",
-        "브랜드명·할인 조건을 카드에 태그로 표시",
-        "버튼 순서·제목 직접 편집",
-        "지난 공구 카드는 브라우저에 아카이브로 저장해 나중에 다시 꺼내기"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "Popular link in bio.",
-      "anchorDetail": "월 매출 약 $21k(링크인바이오 + 소셜 클릭 분석)"
-    },
-    {
-      "seed": "influencer-marketing",
-      "pain": 72,
-      "format": "curation",
-      "title": "인플픽 — 인플루언서 후보 비교 리스트",
-      "oneliner": "캡처 47장 쌓고도 비교 못 해 답답해 아는 사람만 또 연락하던 게, 팔로워·참여율로 거르니 뿌듯해졌다.",
-      "target": "인스타에서 협찬할 인플루언서 찾는 화장품 브랜드 마케팅 담당자",
-      "mvp": [
-        "후보 카드 추가(이름·링크·팔로워)",
-        "카테고리·참여율로 필터",
-        "팔로워순 정렬해서 보기",
-        "링크에 담아 후보 목록 공유"
-      ],
-      "evidence": "닮은꼴 서비스가 해외에서 매달 약 270만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 인플루언서 후보를 이름·링크·팔로워수로 저장하고 팔로워·참여율로 걸러보는 목록 화면부터 만들어보세요.",
-      "buildPrompt": "인플루언서 후보를 이름·인스타/유튜브 링크·팔로워수·참여율·카테고리(뷰티/패션 등)·메모로 입력해 카드로 저장하는 화면과, 카테고리·팔로워수·참여율 기준으로 필터하고 정렬해서 볼 수 있는 목록 화면을 만들어줘. 저장은 브라우저 로컬 스토리지에 하고, '공유' 버튼을 누르면 지금 목록 데이터를 링크의 쿼리 문자열에 담아서 다른 사람도 똑같은 목록을 볼 수 있게 해줘. 여러 사람이 올린 후보를 서버에 모아 보여주는 기능은 2단계로 남겨두고, 지금은 한 사람이 저장한 목록만 다뤄줘.",
-      "source": "v7",
-      "evidenceType": "revenue",
-      "anchorName": "Tokfluence",
-      "anchorDetail": "월 매출 약 $2.1k(2.5억 프로필 분석 기반 틱톡 인플루언서 매칭)",
-      "appName": "인플픽",
-      "frontStory": {
-        "persona": "협찬할 인플루언서 캡처만 쌓아두는 화장품 마케터",
-        "timeline": [
-          {
-            "t": "매일 저녁",
-            "act": "인스타 스크롤하며 계정 캡처만 쌓음",
-            "emo": "이 사람 괜찮다, 설렘",
-            "pain": false
-          },
-          {
-            "t": "어느 날",
-            "act": "팀장이 왜 이 사람이냐 물어봄",
-            "emo": "말문 막히고 식은땀",
-            "pain": true
-          },
-          {
-            "t": "밤 11시",
-            "act": "캡처 47장 넘겨봐도 못 고름",
-            "emo": "결국 또 아는 사람한테 DM, 자괴감",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "ott",
-      "pain": 73,
-      "format": "calc-tool",
-      "title": "뭐볼래 — OTT 뭐 볼지 추천",
-      "oneliner": "넷플릭스 3개 구독하고 30분 고르다 잠든 자책, 질문 3개 답하면 안심하고 볼 한 편 찍어주는 계산기",
-      "target": "퇴근 후 넷플릭스 켰다가 뭐 볼지 못 정해 그냥 잠드는 직장인",
-      "mvp": [
-        "기분·시간 고르는 질문 4개 화면",
-        "답 조합마다 장르 추천하는 규칙",
-        "왜 추천했는지 이유 한 줄 보여주기",
-        "결과 링크로 친구에게 공유하기"
-      ],
-      "evidence": "이런 조건 답하면 결과 나오는 계산기 앱이 해외서 매달 약 1000만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 기분·시간·같이 볼 사람을 묻는 질문 4개와, 답 조합별로 볼 장르를 찍어주는 규칙표부터 만들어보세요.",
-      "buildPrompt": "넷플릭스처럼 뭐 볼지 못 정하는 사람을 위한 웹앱을 만들어줘. 첫 화면에서 기분(신나는/잔잔한/무서운), 볼 수 있는 시간(30분 이하/1시간/영화 한 편), 같이 보는 사람(혼자/커플/가족)을 객관식 버튼으로 고르게 하고, 세 가지 답 조합에 맞는 장르와 추천 이유를 미리 정해둔 규칙표에서 찾아 결과 카드로 보여줘. 결과는 서버 저장 없이 브라우저 주소창 뒤에 답을 담아 친구에게 링크로 공유할 수 있게 만들어줘.",
-      "source": "v7",
-      "evidenceType": "usage",
-      "anchorName": "Netflix",
-      "anchorDetail": "App Store 엔터테인먼트 카테고리 9위·★4.73·평점 35만+ (뭘 볼지 고민하는 시청 수요 방증)",
-      "appName": "뭐볼래",
-      "frontStory": {
-        "persona": "넷플릭스·티빙·디즈니+ 3개 구독한 퇴근 직장인",
-        "timeline": [
-          {
-            "t": "평소 저녁",
-            "act": "퇴근하고 소파에 눕는다",
-            "emo": "오늘은 꼭 뭐 볼 거야",
-            "pain": false
-          },
-          {
-            "t": "9시 반",
-            "act": "30분째 썸네일만 넘긴다",
-            "emo": "이럴 거면 왜 셋이나 냈지",
-            "pain": true
-          },
-          {
-            "t": "밤 11시",
-            "act": "리모컨 쥔 채 눈 감긴다",
-            "emo": "오늘도 이렇게 잠드나",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "ott",
-      "pain": 74,
-      "format": "crud-app",
-      "title": "이어보기 구독표",
-      "oneliner": "여러 OTT에 흩어진 보다 만 시리즈를 모아두고, 한 달 넘게 안 본 플랫폼은 구독을 재검토하라고 알려줘요.",
-      "target": "넷플릭스·티빙·웨이브를 동시 구독하면서 뭘 어디서 보다 말았는지 헷갈리고 안 보는 달에도 구독료만 나가는 시청자",
-      "mvp": [
-        "작품·플랫폼·본 화수를 적어 내 브라우저에 저장하는 목록 화면 하나",
-        "플랫폼별로 '이번 달 볼 예정' 체크 표시",
-        "한 달 넘게 체크 안 된 플랫폼은 '구독 재검토' 배지로 상단에 강조",
-        "'다음 볼 것' 한 편을 큰 카드로 띄워 이어보기 유도"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Stermio Lite: Movies Organizer",
-      "anchorDetail": "App Store 매거진·신문 카테고리 12위 (흩어진 시청 목록을 한 곳에 모으는 수요)"
-    },
-    {
-      "seed": "webtoon",
-      "pain": 75,
-      "format": "digest-bot",
-      "title": "웹툰 연재 알림",
-      "oneliner": "보는 웹툰의 연재 요일을 등록하면 업로드 날 아침에 오늘 볼 목록을 알려줘요.",
-      "target": "플랫폼 서너 개에서 웹툰 20편 넘게 챙겨 보는 애독자",
-      "mvp": [
-        "오늘 요일에 올라오는 내 웹툰만 모아 보여주는 화면 하나",
-        "작품·플랫폼·연재 요일 등록",
-        "매일 아침 '오늘 올라오는 웹툰' 알림 발송",
-        "다 본 편 체크로 밀린 것 구분"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Naver Webtoon",
-      "anchorDetail": "App Store 엔터테인먼트 카테고리 8위 (요일 연재를 챙겨 보는 수요)"
-    },
-    {
-      "seed": "webtoon",
-      "pain": 76,
-      "format": "curation",
-      "title": "완독 후 목록",
-      "oneliner": "정주행 끝내고 캡처만 해둔 추천을 내 목록에 담아, 다음엔 기분 태그로 골라 읽어요.",
-      "target": "완결작을 몰아본 뒤 커뮤니티·친구 추천을 캡처만 해두고 정작 다음에 뭘 읽을지 다시 못 찾는 웹소설·웹툰 헤비리더",
-      "mvp": [
-        "제목·장르·추천한 사람을 적어 카드로 쌓는 내 목록 화면 하나",
-        "장르·완결여부·무드 태그로 내 목록 필터링",
-        "지금 기분(가볍게·긴 호흡)에 맞는 카드만 골라 보기",
-        "다 읽은 카드는 '완독' 처리해 목록에서 분리"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "WebNovel",
-      "anchorDetail": "App Store 도서 카테고리 5위 (완결 후 유사작을 탐색하는 수요)"
-    },
-    {
-      "seed": "youtube",
-      "pain": 77,
-      "format": "digest-bot",
-      "title": "살까 말까 결론판",
-      "oneliner": "리뷰 영상마다 다른 결론을 내가 직접 3줄로 적어 제품별로 나란히 비교해줘요.",
-      "target": "새 이어폰이나 가전을 사기 전 유튜브 리뷰 5~6개를 처음부터 다시 돌려보며 결론만 찾는 소비자",
-      "mvp": [
-        "제품명별로 영상 링크와 내가 적은 3줄 결론을 쌓아 브라우저에 저장하는 비교판 화면 하나",
-        "리뷰어별 장단점을 짧은 태그(가성비·내구성)로 붙이기",
-        "같은 제품 리뷰들을 나란히 놓고 비교",
-        "결론판을 링크로 저장해 나중에 다시 보거나 공유"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "SocialKit",
-      "anchorDetail": "월 매출 약 $2.1k, 영상 요약·자막 추출 API (긴 영상을 요약해 소비하는 지불 수요)"
-    },
-    {
-      "seed": "youtube",
-      "pain": 78,
-      "format": "chatbot",
-      "title": "레시피 질문카드",
-      "oneliner": "레시피 영상에서 헷갈렸던 것만 질문카드로 적어두면, 다시 볼 때 되감기 없이 바로 확인돼요.",
-      "target": "레시피 영상을 보면서 재료 분량이 헷갈릴 때마다 되감기만 반복하는 홈쿡 초보",
-      "mvp": [
-        "영상 제목과 궁금했던 질문·내가 적은 답(타임스탬프 포함)을 카드로 쌓아 브라우저에 저장하는 화면 하나",
-        "자주 묻는 질문 칩(재료·온도·시간)을 눌러 빠르게 답 등록",
-        "같은 영상을 다시 볼 때 저장된 질문카드를 리스트로 열람",
-        "카드를 다음에 그 레시피 만들 때 체크리스트처럼 사용"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "Heuristica",
-      "anchorDetail": "월 매출 약 $1.3k, 유튜브·팟캐스트에 질문하는 학습 앱 (영상 Q&A 지불 수요)"
-    },
-    {
-      "seed": "podcast",
-      "pain": 79,
-      "format": "curation",
-      "title": "출퇴근 한 편",
-      "oneliner": "이동 시간과 주제만 고르면 내가 저장해둔 밀린 에피소드 중 지금 듣기 좋은 한 편을 딱 꺼내줘요.",
-      "target": "밀린 팟캐 에피소드가 100개 넘게 쌓여 출퇴근길마다 고르다 시간을 다 쓰는 직장인 청취자",
-      "mvp": [
-        "이동시간·주제 칩을 고르면 내가 저장해둔 에피소드 중 하나가 뜨는 화면 하나",
-        "밀린 에피소드를 직접 등록하며 길이·주제 태그 붙이기",
-        "'가벼운 것만' 필터로 15분 이하 에피만 골라보기",
-        "고른 에피는 들었음 처리해 목록에서 제거"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "iCatcher! Podcast Player",
-      "anchorDetail": "App Store 뉴스 카테고리 8위 (밀린 에피소드를 골라 듣는 수요)"
-    },
-    {
-      "seed": "podcast",
-      "pain": 80,
-      "format": "crud-app",
-      "title": "에피 하이라이트",
-      "oneliner": "듣다가 좋은 구절을 에피소드·시간과 함께 적어두는 나만의 인용 노트예요.",
-      "target": "팟캐스트에서 얻은 인사이트를 기록으로 남기고 싶은 청취자",
-      "mvp": [
-        "에피소드명·시간·한 줄 인용을 적는 입력 화면 하나",
-        "인용 카드 추가·수정·삭제 목록",
-        "에피소드·태그별 필터",
-        "인용 카드를 이미지로 공유"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "Kome",
-      "anchorDetail": "월 매출 약 $2.4k, 원클릭 요약·북마크 매니저 (들은 내용을 저장하는 지불 수요)"
-    },
-    {
-      "seed": "reading",
-      "pain": 81,
-      "format": "crud-app",
-      "title": "올해 읽은 책 결산",
-      "oneliner": "한 줄씩만 남겨둔 책 기록이 연말이면 총 권수·최고 별점 책이 담긴 결산 카드로 짠 하고 완성돼요.",
-      "target": "연말 독서모임에서 '올해 읽은 책 top3' 발표 차례가 오면 제목이 하나도 안 떠올라 당황하는 독서가",
-      "mvp": [
-        "제목·별점·한줄평을 적는 입력 화면 하나",
-        "읽은 책 목록 추가·수정·삭제",
-        "연말이면 총 권수·최고 별점 책·최다 장르를 모아 결산 카드로 정리",
-        "결산 카드를 이미지나 링크로 저장해 독서모임·SNS에 공유"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Goodreads: Book Tracker & More",
-      "anchorDetail": "App Store 도서 카테고리 4위 (읽은 책을 기록·관리하는 수요)"
-    },
-    {
-      "seed": "reading",
-      "pain": 82,
-      "format": "streak-tracker",
-      "title": "하루 10분 독서",
-      "oneliner": "매일 읽은 페이지를 찍으면 연속 기록이 쌓여 독서 습관을 이어가게 해줘요.",
-      "target": "책은 사지만 매번 며칠 못 가 덮는, 습관을 못 붙인 사람",
-      "mvp": [
-        "'오늘 읽음' 버튼과 연속 일수가 크게 보이는 화면 하나",
-        "매일 읽은 페이지 수 기록",
-        "연속 기록(스트릭) 캘린더",
-        "기록이 끊기면 다시 시작하도록 넛지 알림"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Amazon Kindle",
-      "anchorDetail": "App Store 도서 카테고리 2위·★4.69·평점 1.4만+ (읽기 습관·연속 기록 수요)"
-    },
-    {
-      "seed": "reading",
-      "pain": 83,
-      "format": "share-link",
-      "title": "독서모임 감상 카드",
-      "oneliner": "책 감상과 토론 질문을 적으면 바로 카드 링크가 만들어져 로그인 없이도 모임 사람들과 공유돼요.",
-      "target": "독서모임 전날 밤 급하게 할 말을 정리하느라 늘 허둥대는 참가자",
-      "mvp": [
-        "책 제목·인상 깊은 문장·토론 질문 3개를 적으면 카드 결과 화면이 바로 만들어지는 입력 화면 하나",
-        "완성된 카드 내용을 서버 저장 없이 링크 자체에 담아 고유 URL로 공유",
-        "링크 받은 사람은 로그인 없이 카드를 읽기 전용으로 열람",
-        "만든 카드들을 내 브라우저에 목록으로 보관해 다음 모임에도 재사용"
-      ],
-      "evidenceType": "usage",
-      "anchorName": "Fable: Track & Discuss Books",
-      "anchorDetail": "App Store 도서 카테고리 13위 (독서 기록을 나누고 토론하는 수요)"
-    },
-    {
-      "seed": "movie",
-      "pain": 84,
-      "format": "vote-card",
-      "title": "뭐 볼까 투표",
-      "oneliner": "후보 영화 세 편을 올리면 애인·친구가 3초 투표로 오늘 볼 영화를 정해줘요.",
-      "target": "주말마다 볼 영화로 실랑이하는 커플·친구 무리",
-      "mvp": [
-        "후보 3편을 올리면 투표 카드가 되는 화면 하나",
-        "링크 받은 사람이 로그인 없이 한 표 던지기",
-        "실시간 득표 집계 표시",
-        "동점이면 룰렛으로 최종 결정"
-      ],
-      "evidenceType": "revenue",
-      "anchorName": "CoupleAI",
-      "anchorDetail": "월 매출 약 $6.5k, 커플용 엔터테인먼트 플랫폼 (둘이 함께 정하는 지불 수요)"
-    },
-    {
-      "seed": "golf",
-      "pain": 11,
-      "format": "curation",
-      "title": "골프픽 — 골프채 추천 비교 리스트",
-      "oneliner": "캘러웨이냐 타이틀리스트냐 이틀째 헛수고에 지친 골프 3개월차, 남들 고른 채 걸러보고 5분에 홀가분히 정한다",
-      "target": "골프 시작한 지 3개월 안팎, 채 고르다 지쳐 못 정하는 초보 직장인",
-      "mvp": [
-        "골프채 등록 화면(브랜드·가격·기간)",
-        "친 기간·가격대별 필터 버튼",
-        "인기순·가격순 정렬 버튼",
-        "내 카드 공유 링크(전체 목록은 2단계)"
-      ],
-      "evidence": "해외엔 고르는 걸 도와주는 목록 앱이 매달 약 900만원씩 버는 경우도 있어요",
-      "todayAction": "오늘 반나절 동안 골프채 브랜드·가격·친 기간을 등록하면 쌓이는 목록과, 기간별로 걸러보는 화면부터 만든다.",
-      "buildPrompt": "골프채 등록 화면(브랜드, 가격대, 친 기간 선택)과 목록 화면을 만들어줘. 입력한 골프채는 내 브라우저에 저장하고, 목록 화면에서 친 기간·가격대별 필터 버튼과 인기순·최신순 정렬 버튼을 넣어줘. 내 골프채 카드를 공유하는 버튼을 만들어서 카드 정보를 링크에 담아 공유되게 해줘.",
-      "source": "v7",
-      "appName": "골프픽",
-      "frontStory": {
-        "persona": "골프 3개월차, 채 못 골라 지친 직장인",
-        "timeline": [
-          {
-            "t": "퇴근 후",
-            "act": "캘러웨이·타이틀리스트 스펙표 비교",
-            "emo": "오늘은 꼭 정한다 다짐",
-            "pain": false
-          },
-          {
-            "t": "주말 매장서",
-            "act": "골프존 매장서 두 시간 헤맴",
-            "emo": "진땀 나고 창피함",
-            "pain": true
-          },
-          {
-            "t": "이틀째 밤",
-            "act": "즐겨찾기 47개, 결론은 여전히 0",
-            "emo": "나만 뒤처진 것 같아 막막함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "baking-dessert",
-      "pain": 6,
-      "format": "crud-app",
-      "title": "베이킹북 — 영상 레시피 정리·저장",
-      "oneliner": "마카롱 릴스 100개 저장만 하고 못 구워 민망했는데, 링크 넣으면 레시피 정리돼 오늘 처음 구워보고 뿌듯",
-      "target": "인스타 디저트 계정만 팔로우하고 못 구워본 베이킹 초보, 점심시간 20분에 몰래 도전",
-      "mvp": [
-        "영상 링크 넣어 레시피 카드 만들기",
-        "내 레시피 목록 보기·수정·삭제",
-        "완성샷 올려 공유 링크 만들기",
-        "친구가 눌러주는 좋아요 (2단계)"
-      ],
-      "evidence": "이런 영상 레시피 정리 앱이 해외에서 매달 약 54만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 영상 링크를 넣으면 재료와 순서를 적어 저장하는 레시피 카드 목록 화면을 만든다.",
-      "buildPrompt": "인스타그램이나 유튜브에서 본 디저트 영상 링크를 입력하면 제목·재료·순서를 직접 적어 레시피 카드로 저장하는 웹앱을 만들어줘. 저장한 레시피는 카드 목록으로 보여주고 각 카드를 눌러 내용을 수정하거나 삭제할 수 있게 해줘. 데이터는 브라우저에 저장하고, 완성한 레시피는 공유 버튼을 누르면 내용을 링크 뒤에 담아서 친구도 같은 레시피를 볼 수 있게 만들어줘.",
-      "source": "v7",
-      "appName": "베이킹북",
-      "frontStory": {
-        "persona": "디저트 릴스 100개 저장만 하고 못 구워본 초보 직장인",
-        "timeline": [
-          {
-            "t": "매일 점심",
-            "act": "마카롱 릴스 100개 저장만 함",
-            "emo": "언젠간 해야지 미룸",
-            "pain": false
-          },
-          {
-            "t": "오늘 점심",
-            "act": "릴스 100개 뒤적, 계량 놓침",
-            "emo": "당황해서 손 떨림",
-            "pain": true
-          },
-          {
-            "t": "그 순간",
-            "act": "20분 다 쓰고 마카롱 0개",
-            "emo": "이럴 거면 왜 했나 자괴감",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "inventory-management",
-      "pain": 56,
-      "format": "dashboard",
-      "title": "품절봇 — 재고 품절 방지 알림",
-      "oneliner": "인스타 DM으로 미니어처 인형 팔다가 품절인데 또 판다고 답장한 민망함, 재고표 품절 딱지가 막아줘 안심",
-      "target": "인스타 DM으로 미니어처 인형·소품 팔며 재고를 수첩이나 머릿속으로만 관리하는 1인 셀러",
-      "mvp": [
-        "상품명·재고 수량 입력해 표 만들기",
-        "주문 오면 버튼 눌러 재고 1개씩 차감",
-        "재고 0 되면 품절 딱지 자동 표시",
-        "재고표 링크로 저장 (팀 공유 2단계)"
-      ],
-      "evidence": "이런 재고 확인 서비스가 해외에서 매달 약 920만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 상품명과 재고 수량을 입력하면 표로 정리되고, 수량이 0이 되면 그 줄에 빨간 품절 딱지가 자동으로 뜨는 화면을 만들어보세요.",
-      "buildPrompt": "상품명과 재고 수량을 입력하는 표 화면을 만들어줘. 표의 각 줄은 상품명, 남은 수량, '주문 확정' 버튼으로 구성하고, 버튼을 누르면 수량이 1씩 줄고 0이 되면 그 줄에 빨간 '품절' 딱지가 자동으로 붙게 해줘. 표 데이터는 브라우저 로컬 저장소에 저장하고, '링크로 저장' 버튼을 누르면 표 내용을 링크 뒤에 담아 다른 기기에서도 같은 표를 열어볼 수 있게 해줘.",
-      "source": "v7",
-      "appName": "품절봇",
-      "frontStory": {
-        "persona": "인스타 DM으로 미니어처 인형 파는 1인 셀러",
-        "timeline": [
-          {
-            "t": "매일 밤",
-            "act": "DM 주문 수첩에 손으로 적음",
-            "emo": "이 정도면 안 놓친다 안심",
-            "pain": false
-          },
-          {
-            "t": "어느 밤",
-            "act": "품절된 토끼인형 또 판매 답장",
-            "emo": "어라 이거 판 거였나 식은땀",
-            "pain": true
-          },
-          {
-            "t": "5분 후",
-            "act": "구매자에 취소·사과 DM 연타",
-            "emo": "쪽팔려서 폰 던지고 싶음",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "qa-test",
-      "pain": 12,
-      "format": "calc-tool",
-      "title": "출시체크 — 출시 전 QA 체크리스트",
-      "oneliner": "카톡 공유했다가 버튼 안 눌려 민망했던 그 앱, 체크 10개면 빠진 곳 빨간불로 잡아줘 안심하고 출시",
-      "target": "출퇴근길 틈틈이 사이드 프로젝트 오늘 안에 카톡으로 공유하려는 1인 메이커",
-      "mvp": [
-        "체크 항목 10개 토글 목록",
-        "빠진 개수 따라 위험도 자동 판정",
-        "빠진 항목 빨간불로 표시",
-        "결과 링크로 친구에게 공유"
-      ],
-      "evidence": "이런 조건별로 확인해주는 서비스가 해외에서 매달 약 75만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 체크 10개짜리 점검 표를 만들어서, 내 프로젝트에 하나하나 대보며 뭐가 빠졌는지 확인해보기",
-      "buildPrompt": "체크 항목 10개(카톡 공유 미리보기 있나요, 모바일에서 버튼 다 눌리나요, 다크모드에서 글자 안 보이는 곳 없나요 같은 것들)를 예/아니오 토글로 고르는 화면을 만들어줘. 각 항목에 '치명적'과 '사소함' 표시를 미리 정해두고, 치명적인 항목이 하나라도 빠지면 빨간불로 '아직 위험', 사소한 것만 빠지면 노란불로 '그래도 출시 가능', 다 채우면 초록불로 '완료'라고 자동으로 판정하는 결과 화면을 만들어줘. 체크 상태는 브라우저에 저장해서 다시 들어와도 남아 있게 하고, 결과 화면에 '친구한테 보여주기' 버튼을 넣어서 체크 상태를 링크 뒤에 담아 공유할 수 있게 해줘.",
-      "source": "v7",
-      "appName": "출시체크",
-      "frontStory": {
-        "persona": "출퇴근 지하철에서 혼자 앱 만드는 1인 메이커",
-        "timeline": [
-          {
-            "t": "출퇴근길",
-            "act": "이어폰 끼고 짬짬이 코드 수정",
-            "emo": "오늘 밤엔 꼭 보여준다 설렘",
-            "pain": false
-          },
-          {
-            "t": "저녁 8시",
-            "act": "친구가 '버튼이 안 눌려요' 답장",
-            "emo": "얼굴 화끈, 쥐구멍 찾고 싶음",
-            "pain": true
-          },
-          {
-            "t": "밤 11시",
-            "act": "뭐가 문제인지 몰라 코드만 스크롤",
-            "emo": "이러다 오늘도 못 올리겠다 절망",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "app-dev",
-      "pain": 37,
-      "format": "crud-app",
-      "title": "예약폼 — 노코드 예약 접수 페이지",
-      "oneliner": "필라테스 예약앱, 가이드라인4.2 반려 후 인스타 링크만 보내던 민망함이 목록형 예약 화면 하나로 안심된다",
-      "target": "필라테스 예약앱 앱스토어에서 반려당하고 인스타 링크만 보내는 1인 개발자",
-      "mvp": [
-        "오늘 수업 목록 보여주기",
-        "새 수업/예약 추가하기",
-        "예약 고치거나 취소하기",
-        "이 화면 링크로 손님에게 보내기"
-      ],
-      "evidence": "이런 사진 편집 앱이 해외에서 매달 약 800만원씩 벌어요",
-      "todayAction": "오늘 반나절, 수업 목록·추가·수정·삭제 버튼 있는 예약 관리 화면 하나 완성해서 인스타 대신 링크로 손님한테 보내보기",
-      "buildPrompt": "필라테스 스튜디오용 예약 관리 웹앱을 만들어줘. 화면 하나에 위쪽엔 오늘 등록된 수업 목록(시간·수업이름·정원)을 보여주고, 아래엔 새 수업을 추가하는 입력창과 각 수업 옆에 수정·삭제 버튼을 넣어줘. 내가 보는 화면 데이터는 브라우저에 저장하고, '손님에게 보내기' 버튼을 누르면 지금 목록을 링크 뒤에 그대로 담아서(쿼리스트링) 손님은 보기만 하는 페이지 주소로 복사해줘.",
-      "source": "v7",
-      "appName": "예약폼",
-      "frontStory": {
-        "persona": "필라테스 예약앱 반려당한 1인 개발자",
-        "timeline": [
-          {
-            "t": "두 달 전",
-            "act": "두 달 밤새워 완성해 스토어 제출",
-            "emo": "드디어 끝났다, 설렘 가득",
-            "pain": false
-          },
-          {
-            "t": "제출 5일째",
-            "act": "가이드라인 4.2 반려 메일 받음",
-            "emo": "심장 철렁, 얼굴 화끈",
-            "pain": true
-          },
-          {
-            "t": "한 달째",
-            "act": "재심사 대신 인스타 링크만 보냄",
-            "emo": "손님 볼 때마다 민망하고 초라함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "sns-ops",
-      "pain": 7,
-      "format": "crud-app",
-      "title": "스팸컷 — 스팸 댓글 차단 단어장",
-      "oneliner": "인스타 공구 사장님, 스팸 댓글 지우다 진짜 손님 문의 놓쳐 아까움→단어 목록에 저장하면 스팸만 걸러져 안심",
-      "target": "인스타 공구·마켓 계정 여러 개 운영하며 계정마다 차단 단어를 매번 새로 입력하는 사장님",
-      "mvp": [
-        "스팸 단어 추가·수정·삭제 목록",
-        "자주 쓰는 기본 단어 세트 미리 채워주기",
-        "목록 전체 한 번에 복사하기",
-        "링크로 목록 공유하기"
-      ],
-      "evidence": "이런 스팸 댓글 걸러주는 앱이 해외에서 매달 약 830만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 스팸 단어를 추가·삭제하는 목록 화면과 전체 복사 버튼을 만든다",
-      "buildPrompt": "인스타그램에 반복해서 등록하는 스팸·광고성 차단 단어를 관리하는 웹앱을 만들어줘. 화면 하나에 단어를 추가·수정·삭제할 수 있는 목록을 보여주고, 자주 쓰는 기본 스팸 단어 10개를 한 번에 채워주는 버튼과 목록 전체를 한 번에 복사하는 버튼을 넣어줘. 데이터는 브라우저 로컬 저장소에 저장하고, 공유 버튼을 누르면 단어 목록을 링크의 쿼리스트링에 담아 다른 사람에게 보낼 수 있게 해줘.",
-      "source": "v7",
-      "appName": "스팸컷",
-      "frontStory": {
-        "persona": "계정 4개 돌리는 인스타 공구 사장님",
-        "timeline": [
-          {
-            "t": "매일 밤",
-            "act": "계정 4개 스팸 댓글 하나씩 지움",
-            "emo": "이게 일이지, 무덤덤",
-            "pain": false
-          },
-          {
-            "t": "그 밤 11시",
-            "act": "스팸 지우며 \"얼마예요\" 댓글도 삭제",
-            "emo": "어 이거 진짜 손님인데, 철렁",
-            "pain": true
-          },
-          {
-            "t": "다음날 아침",
-            "act": "그 손님 답 없어 딴 데서 삼",
-            "emo": "내일도 똑같겠지, 막막함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "podcast",
-      "pain": 5,
-      "format": "vote-card",
-      "title": "캐스트픽 — 팟캐스트 추천 투표",
-      "oneliner": "팟캐스트 20개 쌓아두고 반나절째 못 골라 헛수고인 나, 후보 3개 카드로 친구 투표받아 오늘 뿌듯하게 정함",
-      "target": "팟캐스트를 왕창 저장해두고 주말 반나절째 뭐부터 들을지 못 고르는 직장인",
-      "mvp": [
-        "후보 3개 제목·핵심 한 줄 입력",
-        "공유 카드 링크 만들기(주소에 저장)",
-        "친구가 로그인 없이 투표+한마디",
-        "투표 결과 모아보기 (2단계)"
-      ],
-      "evidence": "팟캐스트에서 핵심 문장 뽑아주는 비슷한 앱이 해외에서 매달 약 43만원씩 벌어요",
-      "todayAction": "오늘 반나절 안에 저장해둔 팟캐스트 중 헷갈리는 후보 3개를 추려 한 줄 소개와 함께 투표 카드를 만들어 단톡방에 보내고 결과를 받아본다.",
-      "buildPrompt": "팟캐스트 후보 3개의 제목과 핵심 한 줄 소개를 적어 넣는 화면과, 그 내용을 링크 주소에 담아 만든 공유 카드를 친구가 로그인 없이 열어서 하나를 고르고 한마디를 남기는 화면, 이렇게 두 화면으로 웹앱을 만들어줘. 투표와 한마디는 우선 이 브라우저 안에만 저장해두고, 카드를 만든 사람이 같은 링크를 다시 열면 지금까지 모인 결과를 보여줘. 화면은 휴대폰 세로 화면 기준 카드 모양으로 디자인해줘.",
-      "source": "v7",
-      "appName": "캐스트픽",
-      "frontStory": {
-        "persona": "팟캐스트 20개 저장만 해두고 반나절째 못 고르는 직장인",
-        "timeline": [
-          {
-            "t": "토요일 아침",
-            "act": "'여둘톡' 등 20개 저장해둠",
-            "emo": "밀린 거 다 들어야지 기대",
-            "pain": false
-          },
-          {
-            "t": "오후 2시",
-            "act": "20개 중 뭐부터 들을지 고민 시작",
-            "emo": "이것저것 다 좋아 보여 혼란",
-            "pain": true
-          },
-          {
-            "t": "오후 5시",
-            "act": "3시간째 제목만 훑다 못 고름",
-            "emo": "반나절 날린 게 허무하고 화남",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "diet-lunchbox",
-      "pain": 12,
-      "format": "curation",
-      "title": "슬림박스 — 다이어트 도시락 비교 리스트",
-      "oneliner": "허닭인지 랭킹닭컴인지 뭘 놓쳤는지 몰라 단톡방 묻기 민망해 멈칫, 체크리스트 비교표 공유하니 안심 시작",
-      "target": "다이어트 도시락 처음 시켜보려다 단톡방에 묻기 전 멈칫하는 사람",
-      "mvp": [
-        "도시락 브랜드 목록 올리기",
-        "칼로리·가격 필터·정렬·검색",
-        "체크리스트로 놓친 항목 보여주기",
-        "비교 링크 만들어 단톡방 공유"
-      ],
-      "evidence": "이런 식단 관리 앱들이 해외에서 매달 약 90만원에서 210만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 다이어트 도시락 브랜드 열 곳 정보(칼로리·가격·배송주기·알레르기 표시 여부)를 정리해서 체크리스트 필터로 걸러보고 비교 링크까지 만드는 화면 하나를 완성한다.",
-      "buildPrompt": "다이어트 도시락 브랜드 열 곳(이름·칼로리·가격·배송주기·알레르기 표시 여부)을 카드 목록으로 보여주고 칼로리대·가격대로 걸러보고 검색할 수 있는 화면을 만들어줘. 각 카드 아래에 나트륨 표시·냉동 또는 냉장 여부·환불 가능 여부 등 여섯 개짜리 체크리스트를 넣어서 몇 개를 충족했는지 점수로 보여주고, 고른 브랜드들을 비교표로 묶어 그 내용을 링크 뒤에 담아(쿼리스트링) 단톡방에 공유할 수 있게 해줘. 데이터는 서버 없이 브라우저 저장소(로컬스토리지)에만 저장하고 로그인은 필요 없게 만들어줘.",
-      "source": "v7",
-      "appName": "슬림박스",
-      "frontStory": {
-        "persona": "다이어트 도시락 처음 시키려다 단톡방 앞에서 멈칫하는 사람",
-        "timeline": [
-          {
-            "t": "매일 저녁",
-            "act": "퇴근길에 다이어트 도시락 검색만 함",
-            "emo": "언젠가 시켜봐야지 막연히 생각",
-            "pain": false
-          },
-          {
-            "t": "어느 날",
-            "act": "허닭 랭킹닭컴 창 띄워놓고 비교",
-            "emo": "뭐가 다른지 하나도 모르겠음",
-            "pain": true
-          },
-          {
-            "t": "그 순간",
-            "act": "단톡방에 물어보려다 손가락 멈춤",
-            "emo": "이런 것도 모르나 싶어 창피함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "data-ai",
-      "pain": 35,
-      "format": "digest-bot",
-      "title": "멘션봇 — 챗GPT 언급 추적 알림",
-      "oneliner": "합정동 카페 사장님, 챗GPT 캡처 20장 쌓고도 추이 몰라 답답했는데 매주 자동 체크해 카톡 알림으로 안심",
-      "target": "챗GPT 답변에 우리 가게가 나오는지 신경 쓰이는 소상공인 사장님",
-      "mvp": [
-        "가게이름 넣고 챗GPT에 지금 물어보기",
-        "언급 여부·문장을 화면에 기록",
-        "기록 모아 꺾은선그래프로 보기",
-        "카톡 링크로 보내기(매주자동은 2단계)"
-      ],
-      "evidence": "이런 언급 추적 앱이 해외에서 매달 약 2000만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 가게 이름을 넣으면 챗GPT에 바로 물어보고, 언급됐는지를 화면에 기록해주는 것부터 만들어보세요.",
-      "buildPrompt": "가게 이름과 확인하고 싶은 질문(예: '합정동 브런치 카페 추천해줘')을 입력하는 화면을 만들어줘. '지금 확인하기' 버튼을 누르면 그 질문을 AI 챗봇에 자동으로 보내고 받은 답변 안에 가게 이름이 있는지 확인해서, 날짜·언급 여부·답변 문장을 화면 아래 목록으로 쌓고 브라우저 저장소(로컬스토리지)에 저장해줘. 쌓인 기록으로 꺾은선그래프를 그려서 언급이 늘고 있는지 보여주고, 이번 주 결과는 주소창 뒤에 정보를 담은 링크로 만들어 카톡으로 보낼 수 있는 버튼도 추가해줘.",
-      "source": "v7",
-      "appName": "멘션봇",
-      "frontStory": {
-        "persona": "합정동 카페 사장님, 챗GPT 언급 여부가 신경 쓰이는 자영업자",
-        "timeline": [
-          {
-            "t": "매주 일요일",
-            "act": "챗GPT에 물어보고 캡처만",
-            "emo": "확인했다는 안도감",
-            "pain": false
-          },
-          {
-            "t": "이번 주",
-            "act": "지난달엔 있던 이름이 사라짐",
-            "emo": "언제부터인지 몰라 불안",
-            "pain": true
-          },
-          {
-            "t": "그날 밤",
-            "act": "캡처 20장 뒤져도 못 찾음",
-            "emo": "손 놓고 싶은 막막함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "content-marketing",
-      "pain": 15,
-      "format": "share-link",
-      "title": "소식링크 — 메모 소식 페이지 공유",
-      "oneliner": "스레드 진행상황 3일 만에 끊겨 첫 사용자 묻기 전 민망한 나, 메모만 던져도 안심되는 소식 페이지 링크",
-      "target": "스레드에 진행 상황을 매일 올리려다 3일 만에 끊긴 1인 프로젝트 준비생",
-      "mvp": [
-        "오늘 한 일 한 줄 입력",
-        "메모 쌓아 소식 페이지 자동 정리",
-        "완성 페이지 링크로 바로 공유",
-        "(2단계) 읽은 사람 응원 남기기"
-      ],
-      "evidence": "이렇게 내용 넣으면 페이지로 만들어주는 비슷한 앱이 해외에서 매달 약 106만원씩 벌어요",
-      "todayAction": "오늘 반나절, 짧은 메모를 적는 입력창과 메모가 쌓이는 소식 페이지 화면부터 만들고 공유 링크가 되는지 확인한다.",
-      "buildPrompt": "짧은 소식을 모아 보여주는 공유 페이지 웹앱을 만들어줘. 첫 화면엔 '오늘 한 일'을 한 줄로 적는 입력창과, 지금까지 적은 메모가 최신순으로 쌓이는 목록을 두고 이 메모들은 브라우저 로컬저장소에 저장해. '링크 만들기' 버튼을 누르면 지금까지 쌓인 메모 전체를 링크 주소 안에 담아(쿼리스트링 인코딩) 새 공유 링크를 만들어 복사해주고, 그 링크로 들어온 사람은 같은 내용을 읽기 전용 소식 페이지로 보게 해줘.",
-      "source": "v7",
-      "appName": "소식링크",
-      "frontStory": {
-        "persona": "스레드에 매일 진행상황 올리려던 1인 프로젝트 준비생",
-        "timeline": [
-          {
-            "t": "매일 밤 10시",
-            "act": "스레드에 '오늘 한 일' 짧게 씀",
-            "emo": "이번엔 꾸준히 할 수 있어 뿌듯",
-            "pain": false
-          },
-          {
-            "t": "3일째 밤",
-            "act": "쓸 진행상황이 없어 앱만 켰다 껐다",
-            "emo": "뭐라도 써야 하는데 손이 안 움직여 초조",
-            "pain": true
-          },
-          {
-            "t": "그 다음 주",
-            "act": "첫 팔로워가 DM으로 진행 물어봄",
-            "emo": "민망함에 커서만 깜빡깜빡",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "restaurant-hunt",
-      "pain": 4,
-      "format": "vote-card",
-      "title": "맛집픽 — 맛집 후보 투표·결정",
-      "oneliner": "인스타·네이버지도 저장 40개도 주말엔 못 정해 뒤처지는 불안, 후보 3곳 카드로 단톡방 익명 투표받아 안심",
-      "target": "인스타·네이버지도에 맛집 저장만 하고 정작 주말엔 못 정해 뒤처지는 20대 직장인",
-      "mvp": [
-        "맛집 후보 3곳 카드 만들기",
-        "사진·가격대·웨이팅 넣기",
-        "링크로 공유해 익명 투표받기",
-        "투표·한마디 모아보기(2단계)"
-      ],
-      "evidence": "후기를 모아 관리해주는 해외 앱이 매달 약 800만원씩 벌어요",
-      "todayAction": "오늘 반나절 만에 맛집 후보 3곳을 사진·가격대로 정리한 카드를 만들고, 링크를 단톡방에 공유해 첫 익명 투표를 받아본다.",
-      "buildPrompt": "맛집 후보 카드 만들기 화면을 만들어줘. 가게 이름, 사진 링크, 가격대(저·중·고), 예상 웨이팅(없음·짧음·김)을 넣어 후보 3곳을 등록하면 이 값들을 쿼리스트링에 인코딩한 공유 링크가 생겨. 그 링크로 들어온 사람은 로그인 없이 후보 중 하나를 골라 반응(좋아요)을 누르고 한 줄 댓글을 남길 수 있고, 결과는 우선 브라우저 로컬 저장소에 모아 카드를 만든 사람 화면에서만 보이게 해줘.",
-      "source": "v7",
-      "appName": "맛집픽",
-      "frontStory": {
-        "persona": "인스타·네이버지도에 맛집 40개 저장만 하고 못 고르는 27살 직장인",
-        "timeline": [
-          {
-            "t": "평소",
-            "act": "인스타·지도에 맛집만 저장",
-            "emo": "언젠간 가야지 뿌듯함",
-            "pain": false
-          },
-          {
-            "t": "금요일 밤",
-            "act": "저장 40개 열었는데 못 골라",
-            "emo": "머리 하얘지고 진땀",
-            "pain": true
-          },
-          {
-            "t": "토요일 6시",
-            "act": "결국 늘 가던 프랜차이즈로",
-            "emo": "친구들 눈치에 자괴감",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "logistics-delivery",
-      "pain": 12,
-      "format": "digest-bot",
-      "title": "주문봇 — 누락 주문 확인 알림",
-      "oneliner": "스마트스토어 주문 47건, 마감 10분전 뭐 놓쳤는지 몰라 불안 — 붙여넣으면 놓친 것만 짚어줘 안심되는 봇",
-      "target": "스마트스토어에서 혼자 옷·잡화 파는 1인 판매자, 마감 직전 주문 확인하는 사람",
-      "mvp": [
-        "주문 목록 통째로 붙여넣기",
-        "빠진 것만 자동으로 콕 집기",
-        "오늘의 체크 목록 카드로 만들기",
-        "카톡 나에게 보내기 버튼"
-      ],
-      "evidence": "이런 자동 요약 알림봇이 해외에서 매달 약 43만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 주문 목록을 붙여넣으면 택배 번호 빠진 것·문의 답변 안 한 것만 골라 보여주는 화면을 만들어보세요.",
-      "buildPrompt": "네이버 스마트스토어에서 복사한 주문 목록(주문번호, 상품명, 택배 번호, 문의 답변 여부가 줄바꿈으로 섞인 텍스트)을 붙여넣는 큰 입력창 하나짜리 화면을 만들어줘. 줄 단위로 나눠서 택배 번호가 비어 있거나 문의에 '답변완료'라는 말이 없는 줄만 골라 '오늘 놓친 것' 카드 목록으로 보여주고, 항목마다 체크박스를 달아줘. 결과는 브라우저 저장소(로컬스토리지)에 오늘 날짜로 저장해두고, 전체 목록을 카카오톡 '나와의 채팅'에 붙여넣기 좋은 글로 복사하는 버튼도 추가해줘.",
-      "source": "v7",
-      "appName": "주문봇",
-      "frontStory": {
-        "persona": "혼자 스마트스토어 옷가게 하는데 마감 10분전마다 손 떨리는 사장님",
-        "timeline": [
-          {
-            "t": "매일 밤",
-            "act": "주문 47건 눈으로 쭉 훑어봄",
-            "emo": "오늘도 괜찮겠지 싶음",
-            "pain": false
-          },
-          {
-            "t": "마감 10분전",
-            "act": "주문 수랑 송장 수가 안 맞음",
-            "emo": "심장 철렁, 식은땀 남",
-            "pain": true
-          },
-          {
-            "t": "그 순간",
-            "act": "처음부터 다시 세어봐도 모름",
-            "emo": "이러다 다 늦겠다, 울고싶음",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "movie",
-      "pain": 5,
-      "format": "vote-card",
-      "title": "무비픽 — 영화 선택 투표",
-      "oneliner": "금요일 밤, '범죄도시4'냐 '인사이드아웃2'냐 30분째 못 정해 민망할 때, 투표 카드로 속시원히 정하기",
-      "target": "단톡방에서 오늘 뭐 볼지 매번 정해야 하는 사람",
-      "mvp": [
-        "영화 후보 2~3개로 카드 만들기",
-        "카드 링크 카톡으로 공유하기",
-        "친구가 후보 고르고 한마디 남기기",
-        "투표 결과 모아보기 (2단계)"
-      ],
-      "evidence": "이런 방식의 앱이 해외에서 매달 약 790만원씩 벌어요",
-      "todayAction": "오늘 반나절, 영화 후보 2~3개 입력해 카드 만들고 링크로 공유해서 친구 투표+한마디 받는 화면까지 만들기",
-      "buildPrompt": "영화 후보 2~3개(제목과 포스터 이미지 주소)를 입력하는 카드 만들기 화면과, 그 값을 링크의 쿼리스트링에 담아 카카오톡으로 공유하는 화면을 만들어줘. 링크를 받은 친구는 로그인 없이 후보 중 하나를 탭으로 고르고 한 줄 댓글을 입력할 수 있게 하고, 이 투표와 댓글은 우선 브라우저 로컬스토리지에만 저장해줘. 화면은 모바일 세로 비율 기준으로, 투표 후 결과(득표수와 댓글 목록)를 같은 화면에 바로 보여줘.",
-      "source": "v7",
-      "appName": "무비픽",
-      "frontStory": {
-        "persona": "매주 금요일 단톡방 영화 정하기 담당인 자취생",
-        "timeline": [
-          {
-            "t": "금요일 저녁",
-            "act": "넷플릭스 후보 캡처해 단톡 공유",
-            "emo": "이번엔 금방 정해지겠지 싶음",
-            "pain": false
-          },
-          {
-            "t": "30분 뒤",
-            "act": "범죄도시4·인사이드아웃2로 갈림",
-            "emo": "다들 좋다곤 안 해 답답함",
-            "pain": true
-          },
-          {
-            "t": "자정 다돼",
-            "act": "결국 아무도 대답 안 함",
-            "emo": "괜히 나만 진지했나 싶어 민망함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "climbing",
-      "pain": 12,
-      "format": "share-link",
-      "title": "완등체크 — 클라이밍 체크리스트 공유",
-      "oneliner": "완등샷은 인스타에 올렸는데 정작 뭘 놓쳤는지 몰라 자책→체크리스트 채우면 카드 링크 생겨 단톡 공유, 뿌듯",
-      "target": "퇴근 후 클라이밍장 다니는 초보, 밤에 오늘 세션 정리하고 싶은 사람",
-      "mvp": [
-        "오늘 체크리스트 입력 화면",
-        "자동 정리된 카드 페이지 생성",
-        "카드 내용 링크에 담아 공유",
-        "좋아요 반응 모으기 (2단계)"
-      ],
-      "evidence": "실제 스포츠 틈새 앱이 해외에서 매달 약 860만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 클라이밍 체크리스트 입력 화면과 자동 정리 카드 페이지를 만들어서, 오늘 다녀온 세션 하나를 실제로 카드로 만들어본다.",
-      "buildPrompt": "체크리스트 입력 화면 하나(오늘 시도한 동작·놓친 자세·느낀 점을 칩으로 고르거나 짧게 적는 항목 5~6개)와, 답을 자동으로 정리해 보여주는 결과 카드 화면을 만들어줘. 카드 내용은 서버에 저장하지 말고 페이지 주소 뒤에 답변을 그대로 붙여서, 그 링크만 열면 누구나 카드를 볼 수 있게 해줘. 카드 아래에는 좋아요 버튼을 넣고, 지금은 눌렀을 때 화면에서만 숫자가 올라가게만 만들어줘.",
-      "source": "v7",
-      "appName": "완등체크",
-      "frontStory": {
-        "persona": "퇴근하고 밤 8시 클라이밍장 가는 3개월차 초보",
-        "timeline": [
-          {
-            "t": "평소",
-            "act": "V3 완등하면 사진 찍어 인스타",
-            "emo": "완등샷 올리며 뿌듯함",
-            "pain": false
-          },
-          {
-            "t": "그날 밤",
-            "act": "형이 왼발 왜 그랬냐 물음",
-            "emo": "대답 못 하고 말문 막힘",
-            "pain": true
-          },
-          {
-            "t": "자정 넘어",
-            "act": "영상 3번 돌려봐도 모름",
-            "emo": "나만 제자리인가 자책",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "crm-email",
-      "pain": 1,
-      "format": "digest-bot",
-      "title": "단골봇 — 고객 문의 요약 알림",
-      "oneliner": "네일샵 사장님, 인스타·카톡·예약문의 흩어져 재예약 놓칠까 조마조마 → 요약봇이 매일 카톡으로 몰아줘 안심",
-      "target": "인스타DM·카톡채널·예약문의를 혼자 다 받는 1인샵 사장님(네일·왁싱·속눈썹 등)",
-      "mvp": [
-        "채널별 문의 붙여넣는 창",
-        "하루치 요약 자동 정리",
-        "카톡으로 보낼 요약 링크",
-        "놓친 문의 빨갛게 표시"
-      ],
-      "evidence": "이런 손님 관리 자동봇이 해외에서 매달 약 5600만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 인스타·카톡·예약 문의를 붙여넣으면 오늘 몇 건 왔는지, 안 읽은 문의가 뭔지 한눈에 보여주는 요약 화면을 만든다.",
-      "buildPrompt": "인스타 DM·카톡채널·네이버예약에서 받은 손님 문의를 각각 붙여넣는 입력창 3개와 '오늘 요약 만들기' 버튼이 있는 화면을 만들어줘. 버튼을 누르면 입력한 문의를 모아 '오늘 문의 O건, 아직 답장 안 한 문의는 빨간 표시'로 요약 카드를 보여주고, 문의 옆 체크박스로 답장 여부를 표시하게 해줘. 이 요약 내용은 주소 뒤에 코드로 담아(쿼리스트링) '카톡으로 보내기' 버튼으로 복사할 수 있게 하고, 저장은 서버 없이 브라우저 로컬저장소에만 해줘.",
-      "source": "v7",
-      "appName": "단골봇",
-      "frontStory": {
-        "persona": "인스타DM·카톡 예약을 혼자 받는 네일샵 사장 민지 씨",
-        "timeline": [
-          {
-            "t": "매일 저녁",
-            "act": "인스타·카톡 DM 번갈아 체크",
-            "emo": "오늘도 안 놓쳤다 안심",
-            "pain": false
-          },
-          {
-            "t": "3일째 되던 날",
-            "act": "3일 지난 재예약 문자를 카톡서 놓침",
-            "emo": "심장 철렁, 미안해서 진땀",
-            "pain": true
-          },
-          {
-            "t": "그날 밤",
-            "act": "카톡·인스타 스크롤만 반복",
-            "emo": "이러다 단골 다 놓치겠다 막막",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "reading",
-      "pain": 81,
-      "format": "share-link",
-      "title": "책카드 — 읽은 책 기록 카드",
-      "oneliner": "올해 책 12권 읽고도 친구가 물으니 제목 안 떠올라 민망한데 적기만 해도 카드 생겨 링크로 반응 받아 뿌듯",
-      "target": "연말 모임 앞두고 출퇴근길에 읽은 책 정리해 자랑하고 싶은 직장인",
-      "mvp": [
-        "올해 읽은 책 제목 입력하기",
-        "목록으로 결산 카드 자동 완성",
-        "카드 내용 링크에 담아 공유하기",
-        "책 하나 골라 좋아요 누르기(집계2단계)"
-      ],
-      "evidence": "이런 맞춤 운세 카드 앱이 해외에서 매달 약 1억 1천만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 책 제목 입력 화면과 결과 카드 페이지, 링크 공유 버튼을 만들고 내가 읽은 책 몇 권을 직접 넣어 카드가 제대로 뜨는지 확인한다.",
-      "buildPrompt": "책 제목을 한 줄씩 여러 개 입력받는 화면과, 입력한 책 목록·총 권수를 예쁜 배경색 카드로 보여주는 결과 페이지를 만들어줘. 입력한 목록은 서버에 저장하지 말고 링크의 쿼리스트링에 그대로 담아서, 그 링크를 열면 똑같은 카드가 다시 보이게 해줘. 결과 페이지를 본 친구가 목록 중 자기도 읽고 싶은 책을 하나 골라 '좋아요'를 누르면 화면에 반짝이는 효과만 보여주고, 실제로 누가 몇 번 눌렀는지 모아서 보여주는 기능은 다음 단계로 남겨줘.",
-      "source": "v7",
-      "appName": "책카드",
-      "frontStory": {
-        "persona": "연말 모임서 책 얘기로 있어 보이고 싶은 3년차 직장인",
-        "timeline": [
-          {
-            "t": "매일 아침",
-            "act": "2호선서 책 읽고 덮음",
-            "emo": "뿌듯하지만 무심했음",
-            "pain": false
-          },
-          {
-            "t": "연말 모임",
-            "act": "수진이가 책 제목 물음",
-            "emo": "머리 하얘지고 창피함",
-            "pain": true
-          },
-          {
-            "t": "집에 온 밤",
-            "act": "사진첩·단톡 뒤져봄",
-            "emo": "허탈하고 자괴감 듦",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "webtoon",
-      "pain": 14,
-      "format": "share-link",
-      "title": "툰픽 — 취향 웹툰 추천",
-      "oneliner": "회귀물만 뜨는 웹툰 랭킹 3시간째 뒤지다 아까운 밤, 취향 누르면 저격 웹툰 결과 링크 떠 안심",
-      "target": "네이버웹툰 랭킹엔 취향 안 맞아 매번 고르다 지치는 웹툰 덕후",
-      "mvp": [
-        "취향 칩 선택 화면",
-        "장르·분위기 태그 매칭 추천",
-        "결과 페이지 링크 공유",
-        "친구 좋아요 반응(2단계)"
-      ],
-      "evidence": "해외에서 맞춤 추천·운세 앱이 매달 약 1억1천만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 취향 칩 선택 화면과 웹툰 태그 매칭 로직을 만들고, 결과를 링크로 공유하는 페이지까지 완성해보세요.",
-      "buildPrompt": "웹툰 취향 추천 결과 페이지를 만들어줘. 첫 화면에서 장르(로맨스/판타지/회귀물/일상), 분위기(잔잔함/텐션), 완결여부를 칩 버튼으로 고르게 하고, 고른 값은 URL 쿼리스트링에 담아서 결과 화면으로 넘겨. 미리 만든 웹툰 30개 목록(제목·장르·분위기 태그를 가진 자바스크립트 배열)에서 선택한 태그와 가장 많이 겹치는 3개를 뽑아 결과 페이지에 보여주고, '링크 복사' 버튼과 '좋아요' 버튼(누르면 브라우저 로컬 저장소에만 기록, 실제 집계는 나중에)을 추가해줘.",
-      "source": "v7",
-      "appName": "툰픽",
-      "frontStory": {
-        "persona": "밤마다 웹툰 랭킹 새로고침하는 덕후",
-        "timeline": [
-          {
-            "t": "밤 10시",
-            "act": "네이버웹툰 랭킹 킨다",
-            "emo": "오늘은 취향저격 기대",
-            "pain": false
-          },
-          {
-            "t": "3시간째",
-            "act": "화산귀환류만 20개 연속",
-            "emo": "또 회귀물이냐 짜증",
-            "pain": true
-          },
-          {
-            "t": "새벽 2시",
-            "act": "127개 훑고 못 골라",
-            "emo": "그냥 자자 현타옴",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "cafe",
-      "pain": 18,
-      "format": "share-link",
-      "title": "카페픽 — 카페 투표·결정",
-      "oneliner": "'카페 어디?' 물어도 이모티콘만 와 헛수고, 후보 3곳 링크 돌리면 다들 눌러 5분 만에 정해져 해방이에요",
-      "target": "점심마다 카페를 늘 혼자 정해야 하는 회사원",
-      "mvp": [
-        "카페 이름 3~4개 입력해 후보 만들기",
-        "후보를 링크에 담아 결과 페이지 만들기",
-        "링크 열면 버튼 눌러 1곳 투표하기",
-        "투표 집계·순위 표시는 (2단계)"
-      ],
-      "evidence": "이런 개인 문제 해결 앱이 해외에서 매달 약 5,600만원씩 벌어요",
-      "todayAction": "오늘 반나절, 카페 이름 입력창과 투표 링크 결과 화면부터 만들어서 팀 단톡방에 바로 던져보세요",
-      "buildPrompt": "카페 후보 이름을 최대 4개까지 입력하는 화면과, 그 후보들을 카드로 보여주고 하나를 골라 누르는 투표 화면을 만들어줘. 입력한 후보 이름들은 저장소 없이 링크 주소 뒤에 값을 붙이는 방식(쿼리스트링)으로 담아서, 그 링크를 열면 누구나 같은 후보 목록을 보고 투표할 수 있게 해줘. 투표 버튼을 누르면 선택한 카페 이름이 화면에 크게 뜨도록 만들어줘.",
-      "source": "v7",
-      "appName": "카페픽",
-      "frontStory": {
-        "persona": "매일 점심 카페 정하기 떠맡는 4년차 회사원 지현",
-        "timeline": [
-          {
-            "t": "매일 점심",
-            "act": "단톡방에 '카페 어디?' 물어봄",
-            "emo": "오늘은 다르겠지 기대",
-            "pain": false
-          },
-          {
-            "t": "오늘도",
-            "act": "이모티콘 3개만 달리고 조용함",
-            "emo": "무시당한 듯 답답함",
-            "pain": true
-          },
-          {
-            "t": "5분 뒤",
-            "act": "결국 혼자 정해 스타벅스로 감",
-            "emo": "왜 맨날 나만 정하나 지침",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "coffee-beans",
-      "pain": 16,
-      "format": "curation",
-      "title": "원두록 — 원두 후기 비교 모음",
-      "oneliner": "원두 4봉지째 인스타 협찬 후기만 믿었다가 아까운 자취생, 진짜 후기만 신맛 세기로 걸러보는 모음에 안심",
-      "target": "원두 후기 협찬에 지친 자취생·커피 초보",
-      "mvp": [
-        "로스터리 40곳 정리한 목록",
-        "신맛·지역·가격 필터 칩",
-        "평점순·최신순 정렬",
-        "찜한 목록 링크로 공유"
-      ],
-      "evidence": "비슷하게 찾고 걸러주는 목록 앱이 해외에서 매달 약 270만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 아는 원두 로스터리 30곳을 신맛·지역·가격으로 정리해 걸러볼 수 있는 목록 페이지를 완성해보세요.",
-      "buildPrompt": "원두 로스터리 목록 페이지를 만들어줘. 이름·지역·신맛 세기(1~5)·로스팅 강도·가격대·한줄 후기를 담은 원두 로스터리 30~40곳 데이터를 JSON 파일로 미리 넣고, 신맛 세기·지역·가격대로 걸러보는 필터 칩과 평점순·최신순 정렬 버튼을 화면 위쪽에 둬줘. 사용자가 마음에 드는 곳을 체크해서 찜 목록으로 모으면 그 목록을 링크의 쿼리스트링에 담아 공유할 수 있게 하고, 찜한 목록은 브라우저 로컬 저장소에도 저장해줘.",
-      "source": "v7",
-      "appName": "원두록",
-      "frontStory": {
-        "persona": "인스타 후기만 믿고 원두 사는 자취 3년차 커피 초보",
-        "timeline": [
-          {
-            "t": "매일 저녁",
-            "act": "퇴근 후 인스타서 원두 후기 찾아봄",
-            "emo": "이번엔 인생 원두 만날까 설렘",
-            "pain": false
-          },
-          {
-            "t": "택배 뜯은 날",
-            "act": "에티오피아 원두 4봉지째 또 신맛만",
-            "emo": "협찬 후기에 또 속았다는 배신감",
-            "pain": true
-          },
-          {
-            "t": "장바구니 앞",
-            "act": "5번째 원두도 못 고르고 스크롤만",
-            "emo": "뭘 믿어야 할지 막막하고 지침",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "hiking",
-      "pain": 48,
-      "format": "share-link",
-      "title": "둘레픽 — 무릎 편한 등산 코스 추천",
-      "oneliner": "무릎 수술한 어머니와 갈 둘레길 카카오맵서 세 번 찾다 헛수고 — 계단 없는 코스만 골라줘 안심 공유해요.",
-      "target": "무릎 약한 부모님 모시고 갈 평지 코스 찾는 30~40대 자녀",
-      "mvp": [
-        "지역·무릎상태 칩 선택 입력",
-        "조건 맞는 둘레길 목록 뜨기",
-        "결과 링크 만들어 공유하기",
-        "받은 가족 좋아요 누르기 (2단계)"
-      ],
-      "evidence": "큰 사이트엔 없는 것만 따로 모아 보여주는 비슷한 앱이 해외서 매달 약 3900만원씩 벌어요.",
-      "todayAction": "오늘 반나절, 지역과 무릎 상태(평지만 좋아요/계단 조금 괜찮아요)를 칩으로 고르면 어울리는 둘레길 목록이 뜨는 페이지를 만들고, 그 링크를 카카오톡 가족방에 보내볼 거예요.",
-      "buildPrompt": "입력 화면에서 지역(칩: 서울/경기/기타)과 무릎 상태(칩: 평지만 좋아요/계단 조금 괜찮아요)를 고르게 하고, 미리 만들어 둔 둘레길 데이터(이름·위치·경사도·화장실 유무를 담은 표 20~30개)에서 조건에 맞는 코스 3~5개를 뽑아 결과 페이지에 카드로 보여줘. 결과 페이지에 들어갈 때 선택값과 뽑힌 코스 목록을 URL 뒤에 쿼리스트링으로 붙여서 링크를 만들고 '링크 복사' 버튼을 달아줘. 그 링크를 받은 사람이 코스 카드마다 누르는 좋아요는 지금 버전에서는 브라우저에만 저장하면 돼.",
-      "source": "v7",
-      "appName": "둘레픽",
-      "frontStory": {
-        "persona": "무릎 약한 엄마와 평지 둘레길 찾다 세 번 헛걸음한 30대 딸",
-        "timeline": [
-          {
-            "t": "토요일 아침",
-            "act": "카카오맵으로 둘레길 검색",
-            "emo": "이번엔 괜찮겠지 기대",
-            "pain": false
-          },
-          {
-            "t": "도착 15분 후",
-            "act": "완만하다더니 계단 20개 등장",
-            "emo": "엄마 무릎 철렁, 당황",
-            "pain": true
-          },
-          {
-            "t": "정자 벤치서",
-            "act": "숨 고르는 엄마 보며 지도 꺼버림",
-            "emo": "괜히 데려왔나 죄책감",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "youtube",
-      "pain": 77,
-      "format": "curation",
-      "title": "결론픽 — 리뷰 결론 비교 정리",
-      "oneliner": "다이슨 에어랩 결제창까지 갔다가 리뷰 5개 봐도 결론이 갈려 헛수고라면, 조건별 필터로 결론만 모아 안심 픽",
-      "target": "다이슨·삼성 같은 고가 제품 살 때 리뷰 여러 개 봐도 결론 못 내리는 사람",
-      "mvp": [
-        "리뷰 링크+결론 태그 추가",
-        "제품명으로 검색하기",
-        "가격·용도별 필터·정렬",
-        "추천비율 요약+링크 공유"
-      ],
-      "evidence": "영상에서 핵심만 뽑아 정리해주는 이런 앱이 해외에서 매달 약 830만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 다이슨 에어랩처럼 리뷰가 갈리는 제품의 영상 링크 5개를 모아 결론(살까/말까) 태그를 달고, 가격 조건으로 걸러서 한눈에 비교하는 화면부터 만들어요.",
-      "buildPrompt": "제품명(예: 다이슨 에어랩)을 입력하고 리뷰 영상 링크·채널명·결론(살까/말까)·가격대를 적어서 카드로 추가하는 화면을 만들어줘. 추가한 카드는 브라우저 저장공간(로컬스토리지)에 저장하고, 가격대·결론별로 걸러보거나 최신순으로 정렬할 수 있게 해줘. 마지막으로 '추천 3 vs 비추천 2' 같은 결론 요약과 함께, 지금 모은 카드 목록을 링크(URL) 뒤에 데이터로 붙여서 다른 사람에게 공유할 수 있는 버튼을 추가해줘.",
-      "source": "v7",
-      "appName": "결론픽",
-      "frontStory": {
-        "persona": "다이슨 에어랩 결제 앞 리뷰 5개 돌려본 직장인",
-        "timeline": [
-          {
-            "t": "퇴근길에",
-            "act": "다이슨 에어랩 리뷰 검색",
-            "emo": "이번엔 잘 사고 싶다",
-            "pain": false
-          },
-          {
-            "t": "영상 3개째",
-            "act": "A는 극찬 B는 비추 갈림",
-            "emo": "누구 말 믿어야 하지",
-            "pain": true
-          },
-          {
-            "t": "결제창 앞",
-            "act": "5개 다 봐도 결론 안 남",
-            "emo": "시간만 날렸다 허탈함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "weight-training",
-      "pain": 12,
-      "format": "template-gen",
-      "title": "부위체크 — 운동 부위 체크리스트",
-      "oneliner": "헬스장 4개월째, 탈의실 거울에 비친 뒷모습이 민망한데 — 체크만 하면 빠진 부위 콕 집는 카드로 안심",
-      "target": "혼자 유튜브 보고 4개월째 헬스장 다니는 초보",
-      "mvp": [
-        "6개 부위 칩 선택 화면",
-        "체크 안 한 부위 자동 강조",
-        "빠진 부위 카드 이미지 생성",
-        "링크로 공유해 친구가 좋아요"
-      ],
-      "evidence": "이런 개인 맞춤 운동 앱이 해외에서 매달 약 2000만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 부위 체크 화면과 카드 생성 기능을 만들어서 내 이번주 운동 카드를 직접 만들어본다.",
-      "buildPrompt": "이번주 한 운동 부위를 가슴·등·어깨·팔·하체·코어 6개 칩으로 체크하는 화면을 만들어줘. 체크 안 한 부위는 자동으로 놓친 부위로 표시하고, 결과를 캔버스로 그려 다운로드할 수 있는 카드 이미지로 만들어줘. 체크값은 링크에 담아 공유하고, 친구가 그 링크를 열면 로그인 없이 좋아요만 누를 수 있게 해줘(집계 저장은 2단계).",
-      "source": "v7",
-      "appName": "부위체크",
-      "frontStory": {
-        "persona": "혼자 유튜브 보고 4개월째 헬스장 다니는 초보",
-        "timeline": [
-          {
-            "t": "매일 저녁",
-            "act": "유튜브 영상 보며 3세트씩 채움",
-            "emo": "오늘도 다 했다는 뿌듯함",
-            "pain": false
-          },
-          {
-            "t": "어느 날",
-            "act": "탈의실 거울 속 뒷태가 밋밋해 보임",
-            "emo": "왜 이러지 싶어 당황스러움",
-            "pain": true
-          },
-          {
-            "t": "그날 밤",
-            "act": "새벽 1시까지 영상만 뒤짐",
-            "emo": "내가 뭘 놓쳤는지 몰라 막막함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "home-workout",
-      "pain": 50,
-      "format": "vote-card",
-      "title": "소음체크 — 홈트 층간소음 동작 투표",
-      "oneliner": "밤 9시 원룸, 폴짝 뛰다 인터폰 무서워 접은 동작—영상 올려 4단계로 조용한지 투표받아 안심하고 뛴다",
-      "target": "저녁마다 원룸에서 홈트 하다 아랫집 눈치에 자꾸 접는 자취 직장인",
-      "mvp": [
-        "동작 사진이나 영상 올리기",
-        "조용함 4단계 눌러 반응 담기",
-        "한마디 댓글 적기",
-        "링크로 공유, 집계는 (2단계)"
-      ],
-      "evidence": "이런 운동 영상 타이머 앱이 해외에서 매달 약 88만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 동작 영상 링크와 조용함 4단계 반응 버튼이 있는 카드 화면을 만들어서, 완성한 링크를 단체방에 바로 공유해본다.",
-      "buildPrompt": "결과 카드 화면 하나를 만들어줘. 사용자가 운동 동작 이름과 짧은 영상 링크(유튜브 등)를 입력하면, 친구들이 그 링크를 눌러 들어와 조용함 정도를 '완전 조용/보통/좀 시끄러움/많이 시끄러움' 4단계 버튼과 한마디 댓글로 반응을 남길 수 있게 해줘. 입력값과 반응은 전부 링크에 담아 서버 없이 공유·집계되게 하고, 나중에 반응이 많아지면 데이터베이스로 옮길 수 있게 코드 구조를 나눠줘.",
-      "source": "v7",
-      "appName": "소음체크",
-      "frontStory": {
-        "persona": "저녁마다 원룸서 홈트 하다 아랫집 눈치 보는 자취 직장인",
-        "timeline": [
-          {
-            "t": "평소 저녁",
-            "act": "8시 반 유튜브 홈트 20분 시작",
-            "emo": "오늘은 끝까지 하자는 다짐",
-            "pain": false
-          },
-          {
-            "t": "밤 9시",
-            "act": "폴짝 뛰다 인터폰 생각남",
-            "emo": "혹시 항의올까 철렁함",
-            "pain": true
-          },
-          {
-            "t": "그 순간",
-            "act": "동작 접고 매트 옆에 치움",
-            "emo": "이럴거면 왜 하나 싶어 막막함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "podcast",
-      "pain": 5,
-      "format": "template-gen",
-      "title": "캐스트표 — 팟캐스트 내용 비교표",
-      "oneliner": "삼성전자 살까 말까 팟캐스트 3개 밤새 들어도 다 달라 아까웠는데, 대본 넣으면 비교표로 뽑아줘서 안심된다",
-      "target": "매일 밤 경제 팟캐스트 여러 개 돌려 들으며 종목 비교하는 주식 초보 직장인",
-      "mvp": [
-        "종목명 + 팟캐스트 대본 붙여넣기",
-        "대본에서 그 종목 말한 부분 뽑기",
-        "채널별 의견 표로 나란히 비교",
-        "표 링크로 공유, 저장은 2단계"
-      ],
-      "evidence": "팟캐스트 대본 비교 도구가 해외에서 매달 약 43만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 팟캐스트 대본 3개를 붙여넣으면 종목 관련 문장만 뽑아 비교표로 보여주는 화면부터 만들어보자.",
-      "buildPrompt": "종목명, 팟캐스트 채널 이름, 대본 텍스트를 넣는 입력창 3세트와 '비교하기' 버튼이 있는 화면을 만들어줘. 버튼을 누르면 AI API를 호출해서 각 대본에서 그 종목과 관련된 문장만 뽑아 채널별로 나란히 정리한 비교표를 만들고 화면에 카드형 표로 보여줘. 결과 데이터는 서버에 저장하지 말고 URL 쿼리스트링에 인코딩해서 공유 링크로 바로 쓸 수 있게 해줘.",
-      "source": "v7",
-      "appName": "캐스트표",
-      "frontStory": {
-        "persona": "삼성전자 살까 말까, 팟캐스트 뺑뺑이 도는 주식 초보 직장인",
-        "timeline": [
-          {
-            "t": "매일 밤",
-            "act": "팟캐스트 3개 틀고 삼성전자 파트 받아적음",
-            "emo": "오늘은 감 잡겠지 기대감",
-            "pain": false
-          },
-          {
-            "t": "새벽 1시",
-            "act": "세 팟캐스트 결론이 다 달라 멘붕",
-            "emo": "이 중 뭐가 맞는거야 짜증",
-            "pain": true
-          },
-          {
-            "t": "또 새벽",
-            "act": "메모장 3장 다시 펼쳐도 답 못 찾음",
-            "emo": "오늘도 그냥 패스구나 무력감",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "movie",
-      "pain": 10,
-      "format": "vote-card",
-      "title": "씨네픽 — 볼 영화 투표·결정",
-      "oneliner": "넷플릭스 40분 스크롤만 하다 허무하게 끈 금요일 밤, 후보 3개 투표 카드로 속 시원히 결정",
-      "target": "넷플릭스 뭐 볼지 매번 못 정하고 미루다 그냥 끄는 사람",
-      "mvp": [
-        "후보 영화 3개+장르 넣어 카드 만들기",
-        "링크로 친구에게 공유하기",
-        "친구가 하나 찍고 이유 한마디 남기기",
-        "쌓인 반응 카드로 보기(집계 2단계)"
-      ],
-      "evidence": "해외엔 사람들 의견을 모아 관리해주는 서비스가 매달 약 790만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 영화 후보 3개와 장르를 입력하는 카드 화면과, 그걸 링크로 공유하는 버튼까지 먼저 만들어보자.",
-      "buildPrompt": "영화 후보 3개(제목과 장르 한 줄씩)를 입력하면 카드를 만들고, 그 내용을 링크 뒤에 쿼리스트링으로 담아 공유 링크를 만드는 화면을 만들어줘. 친구가 링크를 열면 후보 중 지금 기분에 맞는 걸 하나 찍고 왜 그걸 골랐는지 한마디를 남기는 화면을 보여주고, 남긴 반응은 일단 브라우저에 저장해서 카드 아래 목록으로 보여줘(여러 사람 반응을 서버에 모아 집계하는 기능은 2단계로 나중에 추가). 결과 카드에는 지금까지 쌓인 반응 개수와 댓글을 리스트로 보여줘.",
-      "source": "v7",
-      "appName": "씨네픽",
-      "frontStory": {
-        "persona": "넷플릭스 뭐 볼지 매번 못 정하고 미루다 그냥 끄는 사람",
-        "timeline": [
-          {
-            "t": "저녁 8시",
-            "act": "넷플릭스 켜고 스크롤 시작",
-            "emo": "오늘은 뭐 볼지 기대됨",
-            "pain": false
-          },
-          {
-            "t": "20분째",
-            "act": "오징어게임2 눌렀다 뒤로가기",
-            "emo": "시간이 벌써 이만큼 갔네 불안",
-            "pain": true
-          },
-          {
-            "t": "40분째",
-            "act": "결국 못 고르고 꺼버림",
-            "emo": "허무하고 나한테 짜증남",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "cs-support",
-      "pain": 13,
-      "format": "dashboard",
-      "title": "문의표 — 자주 묻는 질문 집계 정리",
-      "oneliner": "카톡 문의 40개 복붙 답장, 대행사 묻기엔 민망한 사장님, 붙여넣으면 자주 묻는 질문 표로 뽑아줘 뿌듯",
-      "target": "카톡채널·스마트스토어에서 매일 비슷한 질문에 복붙 답장하는 1인 셀러",
-      "mvp": [
-        "카톡 대화 통째로 붙여넣기",
-        "비슷한 질문끼리 묶어 횟수 세기",
-        "질문 순위 표 링크로 공유하기",
-        "전체 질문 데이터 모아보기 (2단계)"
-      ],
-      "evidence": "이런 고객 상담 자동 정리 앱이 해외에서 매달 약 286만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 카톡 상담 내용을 붙여넣으면 자주 나온 질문을 표로 보여주는 화면부터 만들어보세요.",
-      "buildPrompt": "채팅창처럼 생긴 입력창에 카카오톡 상담 대화 전체를 붙여넣으면, 자주 나오는 단어를 기준으로 비슷한 질문끼리 자동으로 묶어서 '질문 내용 / 나온 횟수' 순서로 정렬한 표를 보여주는 화면을 만들어줘. 표 데이터는 브라우저 로컬 스토리지에 저장하고, '공유' 버튼을 누르면 표 내용을 링크의 쿼리스트링에 담아 다른 사람에게 그대로 보여줄 수 있게 해줘. 여러 사장님의 질문을 한데 모아 보여주는 기능은 나중을 위해 화면에 '준비 중' 버튼만 넣어줘.",
-      "source": "v7",
-      "appName": "문의표",
-      "frontStory": {
-        "persona": "동대문에서 원피스 파는 카톡채널 셀러 사장님",
-        "timeline": [
-          {
-            "t": "매일 저녁",
-            "act": "카톡 문의 40개 복붙 답장",
-            "emo": "귀찮아도 이게 일이지",
-            "pain": false
-          },
-          {
-            "t": "밤 11시",
-            "act": "똑같은 배송문의에 오타 답장",
-            "emo": "짜증 나고 아찔함",
-            "pain": true
-          },
-          {
-            "t": "그날 새벽",
-            "act": "대행사 번호 누르다 끊어버림",
-            "emo": "이런 것도 못 하나, 자괴감",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "live-commerce",
-      "pain": 7,
-      "format": "calc-tool",
-      "title": "팔까봇 — 판매가 손익 계산기",
-      "oneliner": "네이버 쇼핑라이브 “3만원만요”에 당황한 동대문 사장님, 원가 넣으면 손해인지 바로 뜨는 계산기로 안심",
-      "target": "네이버 쇼핑라이브로 방송하는 동대문·보세 옷가게 사장님",
-      "mvp": [
-        "원가·정가·목표마진 입력 화면",
-        "요청 가격 넣으면 가능·손해 즉시 판정",
-        "상품별 최저 판매가 자동 계산표",
-        "계산표를 링크에 담아 공유"
-      ],
-      "evidence": "비슷한 방송 자동화 앱이 해외에서 매달 약 800만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 원가·정가·목표마진율 입력 화면과, 요청 가격을 넣으면 즉시 가능·손해가 뜨는 판정 화면을 만들어 내 상품 3개로 테스트해본다.",
-      "buildPrompt": "라이브 방송용 가격 판정 계산기 웹앱을 만들어줘. 첫 화면에서 상품마다 원가, 정가, 목표 마진율을 입력하면 최저 판매 가능 가격을 자동 계산해서 목록으로 보여주고, 방송 중에는 채팅으로 들어온 요청 가격을 입력창에 넣으면 최저가격과 비교해 큰 글씨로 '팔아도 됨' 또는 '손해예요'를 즉시 보여줘. 입력한 상품 목록은 브라우저 로컬 저장소에 저장하고, 계산 결과 화면은 값을 쿼리스트링에 담아 링크로 만들어 로그인 없이도 다른 사람과 공유할 수 있게 해줘.",
-      "source": "v7",
-      "appName": "팔까봇",
-      "frontStory": {
-        "persona": "네이버 쇼핑라이브로 매일 밤 방송 켜는 동대문 보세옷가게 사장님",
-        "timeline": [
-          {
-            "t": "밤 10시",
-            "act": "엑셀 원가표 켜놓고 라이브 시작",
-            "emo": "오늘도 잘 넘기겠지 싶음",
-            "pain": false
-          },
-          {
-            "t": "라이브 중",
-            "act": "\"3만원만요!\" 채팅 폭탄에 즉석 승낙",
-            "emo": "원가가 얼마였는지 기억 안 나 심장 철렁",
-            "pain": true
-          },
-          {
-            "t": "방송 끝나고",
-            "act": "정산기 두드리다 마이너스 37건 발견",
-            "emo": "오늘 방송 왜 켰나 싶어 막막함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "devops",
-      "pain": 8,
-      "format": "digest-bot",
-      "title": "일지봇 — 개발 성과 요약 알림",
-      "oneliner": "장애 3번 막고도 '뭐했냐' 소리에 민망하던 개발자, 깃허브 모아 매일 카톡방 보내는 요약봇으로 뿌듯해짐",
-      "target": "직원 5명 안팎 작은 회사에서 혼자 서버 관리와 배포를 맡은 신입 개발자",
-      "mvp": [
-        "오늘 한 일 텍스트 붙여넣기",
-        "자동으로 보기 좋게 요약 정리",
-        "카톡 공유 링크 만들기",
-        "여러 날 모아보기는 2단계"
-      ],
-      "evidence": "이런 자동 요약 봇 서비스가 해외에서 실제로 매달 약 300만원씩 벌고 있어요",
-      "todayAction": "오늘 반나절 동안 깃허브 커밋 내용을 붙여넣으면 보기 좋게 요약해주는 화면부터 만들어서, 카톡방에 공유 링크로 실제로 보내보기.",
-      "buildPrompt": "입력창에 오늘 처리한 일(예: 깃허브 커밋 메시지, 해결한 이슈 목록)을 붙여넣으면 버튼 클릭 시 보기 좋은 글머리 기호 3~5줄 요약으로 자동 정리해주는 화면을 만들어줘. '카톡으로 보내기' 버튼을 누르면 요약 내용을 링크의 쿼리스트링에 담아 공유 링크를 생성하고, 그 링크를 열면 로그인 없이 누구나 바로 요약을 볼 수 있는 페이지도 함께 만들어줘. 방금 만든 요약과 원본 입력 내용은 브라우저 로컬 스토리지에 저장해서 새로고침해도 이어서 쓸 수 있게 해줘.",
-      "source": "v7",
-      "appName": "일지봇",
-      "frontStory": {
-        "persona": "5인 회사서 혼자 서버·배포 맡은 신입 개발자",
-        "timeline": [
-          {
-            "t": "매일 밤",
-            "act": "새벽 장애 혼자 막고 배포 마감",
-            "emo": "안 알아줘도 뿌듯함",
-            "pain": false
-          },
-          {
-            "t": "회식 자리",
-            "act": "'요즘 뭐했어?' 질문에 말문 막힘",
-            "emo": "설명 못 해 얼굴 화끈함",
-            "pain": true
-          },
-          {
-            "t": "그날 밤",
-            "act": "장애 3번 막은 기록 아무도 모름",
-            "emo": "내가 뭐 하나 싶어 허탈함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "brand-planning",
-      "pain": 68,
-      "format": "curation",
-      "title": "수량록 — 적정 재고 수량 기록",
-      "oneliner": "여름 플리마켓에 향초 40개 감으로 챙겼다 절반 녹여 아깝게 날린 뒤, 기록 걸러보고 안심 개수 정하는 목록",
-      "target": "여름 플리마켓에서 향초 팔며 개수 감으로 정하는 초보 소상공인",
-      "mvp": [
-        "장사 기록 입력 폼 만들기",
-        "계절·기온 필터·정렬 목록",
-        "판매율 자동 계산 배지",
-        "기록 링크로 공유하기"
-      ],
-      "evidence": "이런 웹사이트 링크만 넣으면 광고 문구 자동으로 만들어주는 앱, 해외선 매달 약 30만원씩 벌어요",
-      "todayAction": "오늘 반나절, 지난 장사 3번 기록(기온·챙긴 개수·판매 개수)을 입력하고 필터로 걸러 다음 개수를 뽑아본다",
-      "buildPrompt": "향초 만드는 사람이 플리마켓 장사 기록(날짜, 날씨, 기온, 챙긴 개수, 판매 개수, 남은 개수)을 입력하는 폼과 기록을 카드 목록으로 보여주는 화면을 만들어줘. 계절과 기온 구간, 판매율(판매÷챙긴 개수) 기준으로 필터·정렬하고, 판매율 낮으면 빨간 배지 높으면 초록 배지로 표시해줘. 입력한 기록은 브라우저 로컬 저장소에 저장하고, 공유 버튼을 누르면 기록 내용을 링크의 쿼리 파라미터에 담아 복사하게 해줘, 서버·로그인 없이 전부 클라이언트에서만 동작하게 만들어줘.",
-      "source": "v7",
-      "appName": "수량록",
-      "frontStory": {
-        "persona": "연남동 플리마켓서 향초 파는 초보 사장 수아",
-        "timeline": [
-          {
-            "t": "장 나가기 전",
-            "act": "향초 40개 감으로 챙김",
-            "emo": "이 정도면 다 팔리겠지 싶음",
-            "pain": false
-          },
-          {
-            "t": "한낮 두 시쯤",
-            "act": "20개 남았는데 촛농 녹아내림",
-            "emo": "심장 철렁, 어떡하지 싶음",
-            "pain": true
-          },
-          {
-            "t": "파장하고 집에서",
-            "act": "뭉개진 향초 20개 그냥 버림",
-            "emo": "재료값 날린 자괴감에 먹먹함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "online-mall",
-      "pain": 51,
-      "format": "share-link",
-      "title": "상세봇 — 상품 소개글 자동 작성",
-      "oneliner": "스마트스토어 신상 20벌 상품명·설명 밤새 치다 지친 사장님, 사진만 넣으면 소개글 완성돼 링크 공유로 해방",
-      "target": "스마트스토어·쿠팡에서 신상 올릴 때마다 상품명·설명 직접 쓰는 1인 쇼핑몰 사장님",
-      "mvp": [
-        "사진과 특징 몇 개만 입력",
-        "상품명·설명·옵션 자동 생성",
-        "결과 한 번에 복사하기",
-        "링크로 결과 페이지 공유"
-      ],
-      "evidence": "상품 정보 자동으로 채워주는 이런 앱이 해외에서 매달 약 1000만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 상품 사진과 특징 키워드 몇 개만 입력하면 상품명·설명·옵션 문구를 자동으로 만들어 복사 버튼까지 나오는 화면부터 만들어보세요.",
-      "buildPrompt": "온라인 쇼핑몰 상품 등록 도우미 웹앱을 만들어줘. 첫 화면에는 상품 사진(또는 이미지 주소), 카테고리, 특징 키워드 3개를 입력하는 폼이 있고, 입력값을 바탕으로 상품명·설명·옵션 문구를 자동으로 만들어 결과 카드로 보여줘. 결과 카드에는 전체 복사 버튼과 링크로 공유 버튼을 넣고, 공유 버튼을 누르면 입력값과 결과를 링크 주소 뒤에 담아 서버 저장 없이 그 링크만 열어도 같은 결과 페이지가 보이게 만들어줘.",
-      "source": "v7",
-      "appName": "상세봇",
-      "frontStory": {
-        "persona": "신상 20벌 올려야 하는 스마트스토어 1인 사장님",
-        "timeline": [
-          {
-            "t": "매일 밤",
-            "act": "신상 사진 찍고 설명 쓰기 시작",
-            "emo": "오늘은 일찍 끝내야지 다짐",
-            "pain": false
-          },
-          {
-            "t": "새벽 1시",
-            "act": "20벌 중 겨우 4벌 썼는데 막힘",
-            "emo": "손끝 떨리고 눈 침침해짐",
-            "pain": true
-          },
-          {
-            "t": "새벽 3시",
-            "act": "16벌 남았는데 손 못 움직임",
-            "emo": "이러다 쓰러지겠다 눈물",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "md-buying",
-      "pain": 4,
-      "format": "calc-tool",
-      "title": "마진봇 — 판매 마진 계산기",
-      "oneliner": "후드티 3,800원 팔 때마다 수수료 뒤지느라 불안했는데, 원가만 넣으면 마진 바로 알아 안심되는 계산기",
-      "target": "스마트스토어·쿠팡에서 옷 파는 부업러, 마진 계산 매번 헷갈리는 사람",
-      "mvp": [
-        "원가·판매가·플랫폼 입력 화면",
-        "플랫폼별 수수료·택배비 자동 계산",
-        "진짜 남는 돈(마진) 결과 화면",
-        "결과 링크로 저장·공유하기"
-      ],
-      "evidence": "여기저기 흩어진 정보를 모아주는 앱이 해외에서 매달 약 338만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 원가와 판매가만 입력하면 스마트스토어·쿠팡 수수료와 택배비까지 자동 계산해서 진짜 남는 마진을 보여주는 계산기를 만들어보세요.",
-      "buildPrompt": "원가, 판매가, 판매 플랫폼(스마트스토어/쿠팡/자사몰)을 고르고 입력하는 화면을 만들어줘. 플랫폼마다 정해진 수수료율과 택배비를 자동으로 계산에 반영해서 진짜 남는 마진 금액과 마진율을 큰 숫자로 보여줘. 계산 결과는 링크에 담아 공유할 수 있게 하고, 입력값은 브라우저에 저장해서 다음에 들어와도 이어서 쓸 수 있게 해줘.",
-      "source": "v7",
-      "appName": "마진봇",
-      "frontStory": {
-        "persona": "스마트스토어·쿠팡서 후드티 파는 3년차 부업러 직장인",
-        "timeline": [
-          {
-            "t": "매일 저녁",
-            "act": "정산 내역 캡처해서 엑셀에 기록",
-            "emo": "이 정도면 남는 장사겠지 싶어 안심",
-            "pain": false
-          },
-          {
-            "t": "어느 날",
-            "act": "후드티 팔았는데 정산액이 마이너스로 찍힘",
-            "emo": "어? 잘못 봤나 싶어 심장 철렁",
-            "pain": true
-          },
-          {
-            "t": "새벽 1시",
-            "act": "네이버 다섯 번 검색해도 답이 다 달라 헤맴",
-            "emo": "이럴 거면 접을까 눈물 날 것 같음",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "backend",
-      "pain": 8,
-      "format": "dashboard",
-      "title": "로그판 — 봇 사용 로그 집계 대시보드",
-      "oneliner": "당근마켓 알림봇 만들어 서버비 내는데 친구들이 진짜 쓰는지 몰라 아까웠는데, 로그 세어 표로 보여주니 뿌듯",
-      "target": "혼자 알림봇 같은 자동화 프로그램 만들어놓고 쓰는 사람 있는지 몰라 답답한 백엔드 개발자",
-      "mvp": [
-        "로그 텍스트 붙여넣으면 자동 집계",
-        "많이 나온 키워드 순위표 보기",
-        "결과를 링크에 담아 공유",
-        "매일 자동 수집·저장은 (2단계)"
-      ],
-      "evidence": "영상 데이터를 요약·집계해 파는 해외 앱이 매달 약 270만원 벌어요",
-      "todayAction": "오늘 반나절, 로그 텍스트를 붙여넣으면 키워드별 횟수를 표로 뽑아주는 화면부터 만들어보기",
-      "buildPrompt": "웹 페이지 하나를 만들어줘. 첫 화면에 큰 입력창을 두고, 사용자가 봇이나 서버 로그를 통째로 복사해서 붙여넣으면 자바스크립트로 날짜와 키워드를 뽑아내 '오늘 몇 번 요청됐는지', '어떤 키워드가 제일 많이 나왔는지'를 표로 정리해서 보여줘. 표 위에는 '오늘 보기' / '전체 보기' 버튼을 두고, '결과 공유' 버튼을 누르면 집계된 결과를 링크 뒤 물음표(쿼리스트링)에 담은 새 주소를 만들어서 그 링크만 열어도 같은 표가 보이게 해줘. 서버나 데이터베이스는 쓰지 말고 전부 브라우저 안에서만 계산해.",
-      "source": "v7",
-      "appName": "로그판",
-      "frontStory": {
-        "persona": "당근마켓 알림봇 만들어 서버비 내는 백엔드 개발자",
-        "timeline": [
-          {
-            "t": "매일 저녁",
-            "act": "AWS 청구서 3만원 확인만 함",
-            "emo": "이거 누가 쓰긴 하나 싶음",
-            "pain": false
-          },
-          {
-            "t": "어느 날",
-            "act": "친구 단톡방에 알림봇 얘기 없음",
-            "emo": "돈만 새나 싶어 철렁함",
-            "pain": true
-          },
-          {
-            "t": "그날 밤",
-            "act": "서버 끄기 버튼 앞에서 멈춤",
-            "emo": "혼자 삽질했나 싶어 막막함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "performance-marketing",
-      "pain": 7,
-      "format": "calc-tool",
-      "title": "리드컷 — 광고 문의 등급 진단",
-      "oneliner": "임플란트 광고문의 30개 손으로 거르다 헛다리 짚어 민망한 마케터, 질문 몇 개면 등급 나와 안심되는 계산기",
-      "target": "치과 임플란트 광고 맡은 프리랜서 마케터",
-      "mvp": [
-        "질문 5개 객관식 입력 화면",
-        "답변별 A·B·C 등급 자동 계산",
-        "등급별 다음 행동 문구 안내",
-        "결과를 링크에 담아 카톡 공유"
-      ],
-      "evidence": "이런 손님 거르기 계산기가 해외에서 매달 약 390만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 질문 4개짜리 등급 계산기를 만들어 문의 하나 넣으면 등급이 딱 나오는 것까지 확인한다.",
-      "buildPrompt": "임플란트 상담 문의를 입력받는 계산기 화면을 만들어줘. 나이대, 예산 여부, 거주 지역, 지금 바로 시작 원하는지 4개 질문을 버튼으로 고르게 하고, 답변 조합에 따라 A·B·C 등급과 '지금 바로 전화하세요' 같은 다음 행동 문구를 보여줘. 결과는 링크에 담아서 저장하고 카카오톡으로 바로 공유할 수 있게 만들어줘.",
-      "source": "v7",
-      "appName": "리드컷",
-      "frontStory": {
-        "persona": "임플란트 광고 맡은 프리랜서 마케터",
-        "timeline": [
-          {
-            "t": "매일 밤",
-            "act": "문의 30개 손으로 거름",
-            "emo": "그러려니, 별 생각 없음",
-            "pain": false
-          },
-          {
-            "t": "그 날",
-            "act": "3번을 VIP로 낙점, 7번은 패스",
-            "emo": "진짜는 7번, 원장 앞에서 철렁",
-            "pain": true
-          },
-          {
-            "t": "그 밤",
-            "act": "다시 30개 앞에 앉음",
-            "emo": "또 틀릴까봐 손이 떨림",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "data-ai",
-      "pain": 4,
-      "format": "dashboard",
-      "title": "광고판 — 매체별 광고비 집계표",
-      "oneliner": "보고 30분 전 대행사 막내가 네이버·인스타·카카오 광고비 베끼는 헛수고, 숫자만 넣으면 표로 합쳐 안심한다",
-      "target": "네이버·인스타·카카오에 광고 돌리는 대행사 막내 마케터·1인 셀러",
-      "mvp": [
-        "네이버·인스타·카카오 숫자 입력칸",
-        "자동 합계·비중 표 계산",
-        "지난주 대비 증감 표시",
-        "결과 표 링크로 공유"
-      ],
-      "evidence": "해외엔 여러 사이트 데이터를 모아 보여주는 서비스가 매달 약 2000만원씩 벌어요",
-      "todayAction": "오늘 반나절 동안 네이버·인스타·카카오 광고비 3칸을 채우면 합계·비중이 자동으로 표에 뜨는 화면부터 만든다",
-      "buildPrompt": "화면 하나에 네이버·인스타·카카오 세 칸을 만들어 각각 광고비·클릭수·전환수를 입력하는 폼을 만들어줘. 입력하면 바로 아래 표에 채널별 합계와 비중(퍼센트)이 자동 계산되어 뜨게 하고, 입력값은 브라우저 로컬 저장소에 요일별로 저장해 다음 주 접속 때 지난주 숫자와 나란히 비교하는 열도 보여줘. '결과 공유' 버튼을 누르면 표의 숫자들을 링크의 쿼리 문자열에 담아 로그인 없이도 같은 표를 볼 수 있는 공유 페이지를 만들어줘.",
-      "source": "v7",
-      "appName": "광고판",
-      "frontStory": {
-        "persona": "월요일마다 광고비 표 만드는 대행사 막내",
-        "timeline": [
-          {
-            "t": "매일 저녁",
-            "act": "네이버·인스타·카카오 광고비 확인",
-            "emo": "귀찮지만 매일 하는 일",
-            "pain": false
-          },
-          {
-            "t": "월요일 아침",
-            "act": "숫자 베끼다 카카오 47만원 오차 발견",
-            "emo": "심장 철렁, 식은땀",
-            "pain": true
-          },
-          {
-            "t": "보고 10분 전",
-            "act": "대충 43만원으로 채워넣을까 고민",
-            "emo": "포기하고 싶은 자괴감, 막막함",
-            "pain": true
-          }
-        ]
-      }
-    },
-    {
-      "seed": "sns-ops",
-      "pain": 1,
-      "format": "crud-app",
-      "title": "올림함 — 콘텐츠 아이디어 저장",
-      "oneliner": "카페 사장님 인스타 맡은 부업러, 카톡방 3곳 아이디어 까먹어 자책 → 목록 모아두니 안 놓쳐 안심",
-      "target": "카페·옷가게 등 여러 SNS 계정을 대신 운영하는 부업러",
-      "mvp": [
-        "아이디어 추가 폼(가게명·내용·플랫폼)",
-        "전체 목록 한 화면에 보기",
-        "올림 체크·수정·삭제 버튼",
-        "새로고침해도 안 사라짐(로컬 저장)"
-      ],
-      "evidence": "이렇게 흩어진 걸 한곳에 모아주는 앱이 해외서 매달 약 340만원씩 벌어요",
-      "todayAction": "오늘 반나절 안에 계정별 아이디어 추가·목록·체크·수정삭제 화면까지 만들어보기",
-      "buildPrompt": "카페·옷가게 등 여러 가게의 인스타 게시물 아이디어를 한 화면에서 관리하는 웹앱을 만들어줘. 가게 이름, 아이디어 내용, 플랫폼(인스타/블로그/스레드), 이미 올렸는지 여부를 입력하는 폼과 전체 목록 화면을 만들고, 목록에서 내용 수정·삭제·올림 체크가 바로 되게 해줘. 입력한 내용은 브라우저에 저장해서 새로고침해도 그대로 남게 해줘.",
-      "source": "v7",
-      "appName": "올림함",
-      "frontStory": {
-        "persona": "카페 2곳·옷가게 SNS 대신 맡은 부업 마케터",
-        "timeline": [
-          {
-            "t": "매일 저녁",
-            "act": "카톡방 3곳 오가며 메모 저장",
-            "emo": "오늘도 안 놓쳤다 뿌듯",
-            "pain": false
-          },
-          {
-            "t": "어느 날",
-            "act": "사장님이 지난주 아이디어 물음",
-            "emo": "어느 방인지 기억이 안 남",
-            "pain": true
-          },
-          {
-            "t": "밤 11시",
-            "act": "카톡 3곳 뒤져도 못 찾음",
-            "emo": "이러다 잘리겠다 싶어 아찔",
-            "pain": true
-          }
-        ]
-      }
-    }
-  ],
   "situations": [
     {
       "id": "commute",
@@ -4921,11 +2498,11 @@
     },
     {
       "id": "late-night",
-      "label": "밤 11시 노트 앞"
+      "label": "밤 11시"
     },
     {
       "id": "group-chat",
-      "label": "친구 단톡방 공유 직전"
+      "label": "단톡방 공유 전"
     },
     {
       "id": "weekend",
@@ -4933,7 +2510,7 @@
     },
     {
       "id": "first-customer",
-      "label": "첫 사용자에게 묻기 전"
+      "label": "첫 사용자 전"
     },
     {
       "id": "work-break",

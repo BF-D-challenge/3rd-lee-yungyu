@@ -6,18 +6,23 @@ import {
   addDuelVote as localAddDuel,
   addVote as localAddVote,
   attachComment as localAttachComment,
+  loadPendingDuelVotes,
   hasDuelVoted,
   hasVoted,
   loadDuelVotes as localLoadDuel,
   loadVotes as localLoadVotes,
+  removePendingDuelVote,
+  upsertPendingDuelVote,
+  type DuelPraiseId,
   type DuelSide,
   type DuelVotes,
+  type PendingDuelVote,
   type Vote,
   type VoteType,
 } from "../storage";
 
 export { hasVoted, hasDuelVoted };
-export type { Vote, VoteType, DuelSide, DuelVotes };
+export type { Vote, VoteType, DuelSide, DuelVotes, DuelPraiseId };
 
 const FP_KEY = "oneul:fp";
 
@@ -67,22 +72,27 @@ export async function attachVoteComment(slug: string, comment: string): Promise<
   }
 }
 
-/** 발행자 대시보드용 — 이 카드의 실제 응원 전부(Supabase 우선, 폴백 localStorage). */
+/** 발행자 대시보드용 — 이 카드의 실제 응원 전부(Supabase 우선, 폴백 localStorage).
+ *  내(현재 브라우저) voter_fp는 제외한다 — 발행자가 자기 링크를 열어 직접 응원해도
+ *  "검증된 고유 투표자" 표본·리포트 게이트에 섞이지 않도록. */
 export async function fetchVotes(slug: string): Promise<Vote[]> {
   const sb = getSupabase();
   if (!sb) return localLoadVotes(slug);
   try {
     const { data, error } = await sb
       .from("card_votes")
-      .select("kind,comment,created_at")
+      .select("kind,comment,created_at,voter_fp")
       .eq("slug", slug)
       .order("created_at", { ascending: true });
     if (error || !data) return localLoadVotes(slug);
-    return data.map((r) => ({
-      type: r.kind as VoteType,
-      comment: r.comment ?? undefined,
-      at: new Date(r.created_at as string).getTime(),
-    }));
+    const myFp = voterFp();
+    return data
+      .filter((r) => r.voter_fp !== myFp)
+      .map((r) => ({
+        type: r.kind as VoteType,
+        comment: r.comment ?? undefined,
+        at: new Date(r.created_at as string).getTime(),
+      }));
   } catch {
     return localLoadVotes(slug);
   }
@@ -90,19 +100,134 @@ export async function fetchVotes(slug: string): Promise<Vote[]> {
 
 // ── A/B 응원 대결 ───────────────────────────────────────────────────────────
 
-export async function castDuelVote(slug: string, side: DuelSide, comment?: string): Promise<void> {
-  localAddDuel(slug, side, comment);
-  const sb = getSupabase();
-  if (!sb) return;
+export interface DuelVoteInput {
+  slug: string;
+  side: DuelSide;
+  roundId: string;
+  userId: string;
+  candidateId: string;
+  praiseId: DuelPraiseId;
+  idempotencyKey: string;
+  comment?: string;
+}
+
+export type CastDuelVoteInput = DuelVoteInput;
+export type DuelVoteResult = "synced" | "queued";
+
+export interface FlushPendingDuelVotesResult {
+  synced: number;
+  queued: number;
+}
+
+type BrowserSupabase = NonNullable<ReturnType<typeof getSupabase>>;
+
+const offline = (): boolean => typeof navigator !== "undefined" && navigator.onLine === false;
+const browserSupabase = (): BrowserSupabase | null => {
   try {
-    await sb
-      .from("duel_votes")
-      .upsert(
-        { slug, side, comment: comment ?? null, voter_fp: voterFp() },
-        { onConflict: "slug,voter_fp", ignoreDuplicates: true },
-      );
+    return getSupabase();
   } catch {
-    /* noop */
+    return null;
+  }
+};
+
+const toPendingDuelVote = (
+  input: DuelVoteInput | { slug: string; side: DuelSide; comment?: string },
+): PendingDuelVote => {
+  const fp = voterFp();
+  const legacy = !("idempotencyKey" in input);
+  const idempotencyKey = legacy ? null : input.idempotencyKey;
+  return {
+    id: idempotencyKey ?? `legacy:${input.slug}:${fp}`,
+    slug: input.slug,
+    side: input.side,
+    comment: input.comment,
+    voterFp: fp,
+    roundId: legacy ? null : input.roundId,
+    userId: legacy ? null : input.userId,
+    candidateId: legacy ? null : input.candidateId,
+    praiseId: legacy ? null : input.praiseId,
+    idempotencyKey,
+    createdAt: Date.now(),
+  };
+};
+
+const syncDuelVote = async (sb: BrowserSupabase, vote: PendingDuelVote): Promise<void> => {
+  const { error } = await sb.from("duel_votes").upsert(
+    {
+      slug: vote.slug,
+      side: vote.side,
+      comment: vote.comment ?? null,
+      voter_fp: vote.voterFp,
+      round_id: vote.roundId,
+      user_id: vote.userId,
+      candidate_id: vote.candidateId,
+      praise_id: vote.praiseId,
+      idempotency_key: vote.idempotencyKey,
+    },
+    {
+      onConflict: vote.idempotencyKey ? "idempotency_key" : "slug,voter_fp",
+      ignoreDuplicates: true,
+    },
+  );
+  if (error && error.code !== "23505") throw error;
+};
+
+let flushInFlight: Promise<FlushPendingDuelVotesResult> | null = null;
+
+export function flushPendingDuelVotes(): Promise<FlushPendingDuelVotesResult> {
+  if (flushInFlight) return flushInFlight;
+
+  const flush = async (): Promise<FlushPendingDuelVotesResult> => {
+    const pending = loadPendingDuelVotes();
+    const sb = browserSupabase();
+    if (!sb || offline()) return { synced: 0, queued: pending.length };
+
+    let synced = 0;
+    for (const vote of pending) {
+      try {
+        await syncDuelVote(sb, vote);
+        removePendingDuelVote(vote.id);
+        synced += 1;
+      } catch {
+        // Keep failed records queued; a later online event retries them with the same key.
+      }
+    }
+    return { synced, queued: loadPendingDuelVotes().length };
+  };
+
+  flushInFlight = flush().finally(() => {
+    flushInFlight = null;
+  });
+  return flushInFlight;
+}
+
+export function castDuelVote(input: DuelVoteInput): Promise<DuelVoteResult>;
+export function castDuelVote(slug: string, side: DuelSide, comment?: string): Promise<DuelVoteResult>;
+export async function castDuelVote(
+  inputOrSlug: DuelVoteInput | string,
+  legacySide?: DuelSide,
+  legacyComment?: string,
+): Promise<DuelVoteResult> {
+  const input =
+    typeof inputOrSlug === "string"
+      ? { slug: inputOrSlug, side: legacySide ?? "a", comment: legacyComment }
+      : inputOrSlug;
+  const pending = toPendingDuelVote(input);
+
+  localAddDuel(pending.slug, pending.side, pending.comment);
+  const sb = browserSupabase();
+  if (!sb || offline()) {
+    upsertPendingDuelVote(pending);
+    return "queued";
+  }
+
+  try {
+    await syncDuelVote(sb, pending);
+    removePendingDuelVote(pending.id);
+    return "synced";
+  } catch {
+    upsertPendingDuelVote(pending);
+    return "queued";
   }
 }
 
@@ -135,5 +260,16 @@ export async function fetchDuelVotes(slug: string): Promise<DuelVotes> {
     return votes;
   } catch {
     return localLoadDuel(slug);
+  }
+}
+
+if (typeof window !== "undefined") {
+  const retryWindow = window as Window & { __oneulDuelVoteRetryBound__?: boolean };
+  if (!retryWindow.__oneulDuelVoteRetryBound__) {
+    retryWindow.__oneulDuelVoteRetryBound__ = true;
+    window.addEventListener("online", () => {
+      void flushPendingDuelVotes();
+    });
+    if (!offline()) setTimeout(() => void flushPendingDuelVotes(), 0);
   }
 }

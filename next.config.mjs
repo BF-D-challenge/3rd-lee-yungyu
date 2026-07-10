@@ -13,7 +13,7 @@ const nextConfig = {
       process.env.SUPABASE_ANON_KEY ??
       "",
     // 구글 로그인 스위치: Supabase에 Google provider를 실제로 켠 뒤에만 "1"로.
-    //   미설정이면 발행 로그인은 가짜 통과(데모 계속 동작), 투표는 Supabase 그대로 사용.
+    //   미설정이면 로그인 게이트는 데모 세션으로 통과하고, 투표 저장은 Supabase를 그대로 사용.
     NEXT_PUBLIC_GOOGLE_LOGIN:
       process.env.NEXT_PUBLIC_GOOGLE_LOGIN ?? process.env.GOOGLE_LOGIN ?? "",
   },

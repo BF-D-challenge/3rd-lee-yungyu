@@ -1,0 +1,2479 @@
+{
+ "ai": {
+  "category": "Artificial Intelligence",
+  "count": 485,
+  "samples": [
+   {
+    "name": "PROSP",
+    "desc": "Automate your LinkedIn Outreach with AI",
+    "rev": 98000,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "AI Interview Copilot",
+    "desc": "Real time interview insights for job seekers.",
+    "rev": 27000,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "Kortex-Notebooklm",
+    "desc": "Kortex transforms Google NotebookLM into a dynamic, interconnected knowledge base. Capture everything, find anything, and never lose an insight again.",
+    "rev": 26000,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "*** OF PROMPT OÜ",
+    "desc": "Digital products/services for educational AI resources. We charge during checkout.",
+    "rev": 23000,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "Gronk",
+    "desc": "Meet Gronk, your powerful AI companion for creativity, productivity, and everyday problem solving. Chat smarter, generate images, get instant answers, and boost your workflow with one intelligent app.",
+    "rev": 22000,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "Atlas",
+    "desc": "Atlas is a personalized learning platform for students. Atlas's AI studies your class materials to help you nail your homework and ace your tests.",
+    "rev": 19000,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "Brawler",
+    "desc": "Your AI boxing coach. Anytime. Anywhere.",
+    "rev": 19000,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "Stat AI",
+    "desc": "Stat AI is a sports analysis app that uses AI to provide data-driven decisions and insights.",
+    "rev": 16000,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "Low Content AI",
+    "desc": "Creates low-content books using AI tools, ready for publishing on Amazon.",
+    "rev": 16000,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "Chariot AI",
+    "desc": "Create a website in minutes. Made for small businesses and non-technical users.",
+    "rev": 13000,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "Vidgenie.ai",
+    "desc": "Vidgenie.ai creates AI-generated videos for businesses and creators for social media use.",
+    "rev": 10000,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "GenPPT",
+    "desc": "Best AI Presentation Maker",
+    "rev": 9700,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "Voice Cleaner",
+    "desc": "AI audio cleaner tool to remove background noise.",
+    "rev": 8900,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "Rotgen.org",
+    "desc": "Rotgen is an AI-powered video generation platform designed to help creators produce viral-style content faster and easier than ever before. The platform allows users to generate engaging faceless vide",
+    "rev": 8700,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "VoiceType.com",
+    "desc": "VoiceType is an AI-driven voice dictation software designed to increase productivity by replacing typing with speech. We charge customers during checkout.",
+    "rev": 8300,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "Elofoot",
+    "desc": "Elofoot is an AI-powered football prediction platform that forecasts match outcomes, exact scores and scorers with market-leading accuracy. Built for the 2026 World Cup and beyond, it combines a polis",
+    "rev": 8200,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "VoiceCheap",
+    "desc": "VoiceCheap is an AI platform that dubs and translates videos into multiple languages. You can translate, dub and publish any video in any language. Voice cloning, lip-sync, dynamic subtitles and socia",
+    "rev": 8000,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   },
+   {
+    "name": "Writingmate.ai",
+    "desc": "All in one ai platform for content creators: from text to images, to videos all in one place. MCP and API support. Perfect start to compete with Higgsfield.",
+    "rev": 7300,
+    "target": "AI-assisted workflow users in Artificial Intelligence"
+   }
+  ]
+ },
+ "saas": {
+  "category": "SaaS",
+  "count": 183,
+  "samples": [
+   {
+    "name": "1Lookup",
+    "desc": "The #1 tool for validating phone, email and IP data in real time. All through one powerful API.",
+    "rev": 398000,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "SetSmart",
+    "desc": "AI sales setter that automatically qualifies your leads and books calls via Instagram DMs and WhatsApp. Custom scripts, smart filtering, direct calendar booking, 24/7. Integrates with Calendly, GHL, Z",
+    "rev": 43000,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "Virlo",
+    "desc": "Track, manage, leverage short-form data.",
+    "rev": 32000,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "Interactive Video SaaS",
+    "desc": "Premier interactive video software used for education, training, marketing. $48k MRR + some services revenue. Easy to use, drag and drop editor rebuilt from the ground up in 2025, fully documented and",
+    "rev": 29000,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "BYQ Supply",
+    "desc": "Profitable, founder-runnable hybrid SaaS + Webflow component marketplace with a measurable wedge into AI coding tools. Currently 362 paying subscribers plus 79 lifetime customers; $91k all-time gross",
+    "rev": 19000,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "ColdSire",
+    "desc": "We help businesses scale outreach with premium cold email inboxes.",
+    "rev": 16000,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "SEO STACK",
+    "desc": "SEO stack is an SEO/marketing SaaS that offers data warehousing with AI. It is a rebuild of Google search console with Google analytics, it allows SEOs and marketers to get better results in search en",
+    "rev": 15000,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "Synta",
+    "desc": "A premium model context protocol (MCP) server and web app designed to turn AI clients like Claude, Cursor, and OpenClaw into expert n8n workflow architects, with over 300+ businesses using it daily to",
+    "rev": 13000,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "Private Location Intelligence API platform",
+    "desc": "Global Foot Traffic (Venue Visitor) data platform. Helps to find lively social scenes efficiently, avoid crowds, automate city guides, or optimize visitor schedules. It forecasts hourly busyness for m",
+    "rev": 12000,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "StudyScout",
+    "desc": "StudyScout is a B2C SaaS aggregating high-paying online studies and focus groups. $0 paid ads, growth is 100% organic. Proven viral, repeatable UGC engine with massive upside via scaling content, paid",
+    "rev": 9900,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "BettrBot",
+    "desc": "BettrBot is a desktop app that automates blackjack basic strategy across 12 sweepstakes casino platforms (Stake, Pulsz, Chumba, LuckyLand, Modo, Shuffle, Gains, ClubsPoker, AceBet, and others)",
+    "rev": 8600,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "StoryHero",
+    "desc": "StoryHero is an AI-powered SaaS that automatically turns long-form videos into short, viral-ready clips for TikTok, Instagram Reels, and YouTube Shorts. Creators can upload a long-form video and gener",
+    "rev": 6400,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "MyFrank",
+    "desc": "MyFrank is a B2B SaaS platform that helps businesses collect and manage Google reviews by actively engaging their teams. Each review is attributed to a specific employee via QR codes, enabling challe",
+    "rev": 6100,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "NextjobConnect LLC",
+    "desc": "Real-time job leads for home service contractors. Monitors neighborhood platforms, AI-classifies posts by trade, and alerts subscribers via iOS/Android app and SMS. Contractors get high intent leads.",
+    "rev": 6000,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "Tradevipe",
+    "desc": "Tradevipe is a white-label, B2B SaaS platform serving trading communities, prop firms, and brokers by providing them with fully branded trading journal web applications tailored for their users. Found",
+    "rev": 5500,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "lifeflexia",
+    "desc": "LifeFlexIA — AI Lifestyle Image Generation SaaS LifeFlexIA is a B2C SaaS similar to Halo AI, allowing users to generate ultra-realistic AI photos of themselves in premium lifestyle settings — private",
+    "rev": 5300,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "RareRoles",
+    "desc": "Remote jobs not found on LinkedIn or Indeed",
+    "rev": 5100,
+    "target": "recurring business workflow users in SaaS"
+   },
+   {
+    "name": "Zescale",
+    "desc": "Zescale is an all-in-one AI platform that helps businesses create professional marketing visuals in minutes. From product photos and lookbooks to UGC videos and ad creatives — everything you need to m",
+    "rev": 3400,
+    "target": "recurring business workflow users in SaaS"
+   }
+  ]
+ },
+ "mobile-apps": {
+  "category": "Mobile Apps",
+  "count": 160,
+  "samples": [
+   {
+    "name": "Mobile App",
+    "desc": "Currently in redesign with a Ukranian designer - internationnaly translated but only french market is exploited for now",
+    "rev": 52000,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "FaceKit",
+    "desc": "Highly profitable & scalable consumer app in the looksmaxxing / face analysis niche. Most unique and accurate app in this space. Includes very valuable data in the backend - to be elaborated on.",
+    "rev": 19000,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "Glamour",
+    "desc": "Glamour is an AI-powered personal color analysis app helping users discover their ideal color palette for clothing, makeup, and accessories. Users upload a selfie and get personalized seasonal color a",
+    "rev": 16000,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "IPTV Player & VPN App Bundle",
+    "desc": "Profitable IPTV Player and VPN app portfolio with $238K TTM profit and approximately 90% margin. This listing includes two cross-platform apps under the same brand: an IPTV Player and a companion VPN",
+    "rev": 15000,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "BambooVPN",
+    "desc": "",
+    "rev": 15000,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "EverythingWeather",
+    "desc": "A US Only Weather app with the most accurate forecasts available.",
+    "rev": 14000,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "AbMaxx",
+    "desc": "AbMaxx is a subscription-based fitness app that uses AI to analyze a user’s abs and create a personalized plan tailored to their physique and goals. The app helps users build stronger, more defined ab",
+    "rev": 9700,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "Sauce AI",
+    "desc": "Highly profitable & scalable consumer app in the rizz / texting assistant niche. Most unique and complete app in this space due to Duolingo-type course on flirting and attraction (30+ lessons) include",
+    "rev": 8700,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "Yazcam",
+    "desc": "Yazcam is an AI-powered dating assistant that helps users analyze chat screenshots and generate better replies, opening lines, and messaging strategies. The app is available on iOS and Android, moneti",
+    "rev": 8200,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "Tariq",
+    "desc": "Tariq is a reading app designed for Muslims who want to read the Quran in a modern way.",
+    "rev": 8200,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "DunkMax",
+    "desc": "High converting and profitable basketball niche sports app. $0 paid ads since launch, prime for AI distribution, UGC, and micro influencers. Annual plan heavy, $39.54 ARPPU. 15k revenue since Jan 10th",
+    "rev": 6600,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "Anonymous Startup",
+    "desc": "",
+    "rev": 6600,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "Glowly",
+    "desc": "AI Looksmaxxing App",
+    "rev": 6500,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "nutrIA",
+    "desc": "nutrIA is an AI-powered nutrition app focused on habit tracking, personalized feedback and daily engagement. The app combines food recognition, smart recommendations and gamified challenges to drive r",
+    "rev": 6400,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "AI Image Editor",
+    "desc": "This cross-platform AI photo app democratizes pro-level editing without complex prompts or login friction. Growth: Revenue surged from $3k to $6k in 3 months (65% margin). Assets: * Android (6 mo): 70",
+    "rev": 6200,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "Sufler - teleprompter",
+    "desc": "Teleprompter app for your iPhone and iPad. Supports remote controls (including Watch), AI Script generation, smooth text scrolling. ~600 reviews.",
+    "rev": 5200,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "Prettier",
+    "desc": "Your AI Beauty Consultant 🎀",
+    "rev": 4900,
+    "target": "mobile utility users in Mobile Apps"
+   },
+   {
+    "name": "CueCam",
+    "desc": "CueCam is the all-in-one teleprompter and video creation app built for content creators, entrepreneurs, educators, and anyone who wants to look confident on camera without memorizing a single line.",
+    "rev": 4800,
+    "target": "mobile utility users in Mobile Apps"
+   }
+  ]
+ },
+ "productivity": {
+  "category": "Productivity",
+  "count": 96,
+  "samples": [
+   {
+    "name": "Plutio (Super Work AI)",
+    "desc": "One app to run, grow, and automate your business.",
+    "rev": 21000,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "Word Spinner",
+    "desc": "AI-powered content rewriting and humanization platform. Chrome Extension, AI detector bypass, AI Humanizer, writing templates and more. Est 2022.",
+    "rev": 3100,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "Deeptrue",
+    "desc": "Real-time AI translation copilot for global meetings. Speak naturally in 30+ languages with on Zoom, Meet, and Teams.",
+    "rev": 2900,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "BankConv",
+    "desc": "BankConv converts bank statement PDFs into CSV, Excel, OFX, QFX, and Google Sheets — supports 1000+ banks worldwide. Free for the first 5 pages, then $2.99 per document or $29–$79/mo subscriptions. Us",
+    "rev": 871,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "Sprout",
+    "desc": "Sprout is an ADHD-friendly task app built for executive function challenges like overwhelm, task paralysis, time blindness, and decision fatigue. Features: Brain Dump AI to turn scattered thoughts i",
+    "rev": 641,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "widgetly",
+    "desc": "Widgetly provides ready-to-use widgets to enhance Notion pages for businesses and freelancers.",
+    "rev": 608,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "studyfoc.us",
+    "desc": "A calm digital environment to help you enter flow state. Block distractions, manage your time, and achieve deep work.",
+    "rev": 321,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "Mail Sweeper",
+    "desc": "Automated inbox management for email. Customers are charged during checkout.",
+    "rev": 298,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "Mypic",
+    "desc": "Mypic is a platform for managing bookings, automations, and communications. What we do different from the other platform is that we automate also the event that you put directly in your calendar by yo",
+    "rev": 293,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "MyFreshTools",
+    "desc": "MyFreshTools helps creators, marketers, and developers boost productivity with smart tools for YouTube, Google search, content creation, and more — all in one place.",
+    "rev": 241,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "autozoom - Cross platform",
+    "desc": "Screen recording, elevated. Intelligent auto-zoom. Cinematic motion blur. Crystal-clear 4K exports. All in a tool that stays out of your way.",
+    "rev": 236,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "NoteWall-Never Forget Things",
+    "desc": "Transitioned to superwall, revenue is not updated.. NoteWall turns your lock screen into a personal reminder board. Add notes, reminders, goals, habits, or quotes, and they appear right on your lock",
+    "rev": 213,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "Melo",
+    "desc": "Melo is an all-in-one productivity canvas. Notes, tasks, AI, and tools live on a single board, organized your way, with AI that actually understands what you’re working on.",
+    "rev": 197,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "CleanClip Pro",
+    "desc": "CleanClip Pro is a clipboard manager for macOS, offering easy content management and quick pasting features.",
+    "rev": 190,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "TEXT-2-ICS",
+    "desc": "Automated Calendar Event Creation Converts schedules (text, PDFs, CSVs, images) into .ics calendar files for Google Calendar, Outlook, and Apple Calendar. Initial SEO work done, good rankings for rel",
+    "rev": 132,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "Grammar Checker",
+    "desc": "- All revenue is currently organic; no marketing efforts or paid ads have been used so far. Only a small amount of ASO has been done. - Apps in the same category that actively invest in marketing and",
+    "rev": 130,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "SeeYourTime",
+    "desc": "150+ users in 4 days. SeeYourTime is a real-time visual personalised dashboard that shows how much of your hour, day, week, month, and year has passed, making wasted time impossible to ignore. Featu",
+    "rev": 120,
+    "target": "personal workflow users in Productivity"
+   },
+   {
+    "name": "HabitBox",
+    "desc": "HabitBox is a habit tracking app that helps users build better habits and break bad ones.",
+    "rev": 112,
+    "target": "personal workflow users in Productivity"
+   }
+  ]
+ },
+ "education": {
+  "category": "Education",
+  "count": 80,
+  "samples": [
+   {
+    "name": "Lunchbreak",
+    "desc": "Lunchbreak helps students and professionals make AI-generated content undetectable across all major detectors, including Turnitin and GPTZero, while keeping their natural tone and voice.",
+    "rev": 33000,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "The Brazil Girl",
+    "desc": "We teach Brazilian Portuguese! IG @thebrazilgirl has 100k+",
+    "rev": 10000,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "ChatEDU Inc.",
+    "desc": "Provides AI-powered educational tools for students, including study guides, practice questions, and interactive learning materials.",
+    "rev": 8700,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Game Assessment Prep",
+    "desc": "Game Assessment Prep is an online practice platform for HireVue game based assessments. Users train with realistic simulations across all 11 games: cognitive, spatial, and personality, plus strategies",
+    "rev": 7000,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "WRITING9",
+    "desc": "Check your IELTS essay in a couple of minutes. Get a clear and detailed report about your IELTS Essay you need to discover your weak areas and fix them.",
+    "rev": 4700,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Stealth Company",
+    "desc": "",
+    "rev": 4100,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Practiceme",
+    "desc": "AI-powered English practice with native accents and real-time feedback.",
+    "rev": 3400,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Gold List",
+    "desc": "The ultimate vocabulary notebook for SAT, GRE, language learning, and general studies.",
+    "rev": 3200,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "GenZWrite",
+    "desc": "Profitable AI SaaS in the education niche generating $4.5K in the last 30 days (~$31K ARR run rate), built almost entirely through organic growth. Strong SEO foundation and AI visibility score, steady",
+    "rev": 3000,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Voltage Learning",
+    "desc": "Helping electrical and computer engineers find hardware roles through company-specific interview question banks, exercises, resume-tools, and behavioral questions",
+    "rev": 2400,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Francopass",
+    "desc": "Francopass is a mobile/web app (iOS & Android & Web) that helps immigrants prepare for the French naturalization interview and civic exam. It includes structured revision courses covering French histo",
+    "rev": 1900,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Yeira LMS",
+    "desc": "AI-native all-in-one SaaS LMS for training businesses & HR teams: create, deliver, and track branded courses—no code needed. Live classes via Zoom, progress/grade reporting, revenue dashboard, custom",
+    "rev": 1800,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Lingo Widget: Daily Vocabolary",
+    "desc": "Lingo is a language learning app that uses a widget to teach vocabulary throughout the day.",
+    "rev": 1700,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Study Guard",
+    "desc": "Forces the user to answer flashcard questions correctly in order to unlock distracting apps",
+    "rev": 1700,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Road to offer",
+    "desc": "SaaS helping students and young professionals train for consulting case interviews.",
+    "rev": 1500,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Rosewell",
+    "desc": "An online course teaching people how to vibe code their first software app and scale it up. 🤝 → PLEASE READ: The offer includes a private email list of 150 opted-in customers, the Stripe account wit",
+    "rev": 1400,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Aprende Hebreo",
+    "desc": "Online Hebrew academy offering Modern Hebrew, Biblical Hebrew, and Torah Studies through a scalable SaaS model. Students learn through daily live classes, on-demand video courses, AI-powered tutors, a",
+    "rev": 1400,
+    "target": "guided learning users in Education"
+   },
+   {
+    "name": "Heuristica",
+    "desc": "All-in-one AI platform for learning and research. Users can create concept maps, flashcards, quizzes, summarize, or chat with YouTube videos, podcasts, PDFs to explore complex ideas. They can convert",
+    "rev": 1300,
+    "target": "guided learning users in Education"
+   }
+  ]
+ },
+ "fintech": {
+  "category": "Fintech",
+  "count": 46,
+  "samples": [
+   {
+    "name": "PolyPick",
+    "desc": "The #1 AI platform for beating prediction markets. Analyze Polymarket, Kalshi & more with AI, copy top traders, track whales, and make smarter bets in seconds.",
+    "rev": 14000,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "Linkar",
+    "desc": "Linkar offers mechanical warranty for vehicles, covering repair costs up to 15,000€ per year.",
+    "rev": 5600,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "Profile Tracer",
+    "desc": "Instant Donald Trump alerts for traders. Faster than Bloomberg.",
+    "rev": 2300,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "Pluma",
+    "desc": "Pluma is a modern personal finance app for individuals and founders who want automatic, no-effort money management. It connects to banks, categorizes transactions with AI, tracks subscriptions and cre",
+    "rev": 1700,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "Mad Dog Alpha AI",
+    "desc": "We provide a cloud-based AI analytics SaaS that helps users process, visualize, and research complex data streams automatically.",
+    "rev": 1600,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "Sferica Trading Automation LLC",
+    "desc": "Automate your own TradingView strategies. See live performance before you commit. Connect TradingView or TrendSpider to 60+ brokers in minutes. Run 60+ live-tracked strategies on crypto, forex, stoc",
+    "rev": 477,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "PocketBook AI",
+    "desc": "PocketBook AI is an expense tracking app that provides personalized financial advice.",
+    "rev": 410,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "Aimytrade.io",
+    "desc": "AiMyTrade is an AI-powered trading analysis platform providing educational analytics and market data.",
+    "rev": 404,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "Lemon Squeezy Manager",
+    "desc": "App to track your Lemon Squeezy account, and get notified for new sales",
+    "rev": 340,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "TRYA",
+    "desc": "Trya is an app that helps users manage their budget, track spending, and set savings goals.",
+    "rev": 269,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "Position Size Calculator",
+    "desc": "Get position size and risk-reward in seconds with Position Size Calculator. Calculate trade sizing instantly via risk reward ratio.",
+    "rev": 223,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "TradingView Magical Keyboard Shortcuts Extension",
+    "desc": "A Chrome extension offering custom keyboard shortcuts for TradingView users. Monthly subscription or lifetime license. I also offer custom shortcuts and workflows starting at $5,000 USD per workflow.",
+    "rev": 168,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "Hemba",
+    "desc": "Give your startup a heartbeat. Connect Your bank account, Stripe, Shopify, Slack + more into one single dashboard, all visualised through a single lifeline view. Say goodbye to dashboard fatigue, an",
+    "rev": 107,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "MIRRA",
+    "desc": "MIRRA is a performance-first trading platform built for futures traders. It combines copy trading, risk controls, deep journaling, performance analytics, and AI-powered coaching to help traders trade",
+    "rev": 76,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "CalBudget",
+    "desc": "CalBudget helps you take control of your finances with AI-powered budgeting. Instead of complicated spreadsheets or rigid budgeting apps, CalBudget analyzes your spending and automatically builds a pe",
+    "rev": 60,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "SubMan",
+    "desc": "SubMan is an app that helps users track and manage all their subscriptions in one place.",
+    "rev": 50,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "TruthPing",
+    "desc": "Real-time Trump & X monitoring for traders — AI-scored alerts to Telegram/webhook in seconds. Faster than Bloomberg.",
+    "rev": 49,
+    "target": "decision support users in Fintech"
+   },
+   {
+    "name": "MergeitAI",
+    "desc": "We offer a SaaS tool for excel users to leverage fuzzy matching technology against two columns.",
+    "rev": 38,
+    "target": "decision support users in Fintech"
+   }
+  ]
+ },
+ "design-tools": {
+  "category": "Design Tools",
+  "count": 45,
+  "samples": [
+   {
+    "name": "ThreadCam",
+    "desc": "ThreadCam allows user to create 3D mockups of their tshirt/garment designs. Mainly iOS app, just launched android app.",
+    "rev": 8900,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Komposo",
+    "desc": "From Idea to UI in Minutes",
+    "rev": 3100,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Wizlogo",
+    "desc": "A web-based platform for creating logotypes in minutes. It features a streamlined creation process to help businesses create a logo.",
+    "rev": 1500,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Frameblox",
+    "desc": "The Ultimate Framer UI kit and Design System",
+    "rev": 1400,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Logo System",
+    "desc": "Logo System is the biggest logo design library, for designer and entrepreneur.",
+    "rev": 1200,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Mockly",
+    "desc": "The #1 mocking tool that helps you create realistic screenshots of chat conversations, AI chats, social media posts and more!",
+    "rev": 1200,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Photo String Art",
+    "desc": "photostringart.com is a website and mobile app that allow generating string art pattern with a state-of-the-art algorithm. Beating all competitor algorithms in the market. A subscription is needed in",
+    "rev": 994,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "AppGrowKit",
+    "desc": "Everything you need to grow your app on the App Store. Screenshots, keyword ranks, reviews, and growth reports, all in one tool.",
+    "rev": 421,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "ValidateThat",
+    "desc": "Don't Guess. Validate That! Validate business ideas with real users in mintues. Plus run card sorts, tree tests, and surveys. Recruit participants through Prolific. Get actionable insights in minutes",
+    "rev": 384,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Rewebly",
+    "desc": "Rewebly is a profitable AI SaaS that instantly redesigns any website. Users enter a URL → Claude AI generates a premium HTML redesign → they preview free and pay to download. 100+ daily visitors, 1–2",
+    "rev": 200,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Handwritten Signature Generator",
+    "desc": "Generates realistic and beautiful ready-to-use handwritten signatures.",
+    "rev": 184,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Pagedone",
+    "desc": "Tailwind CSS library featuring 1000+ UI components, sections, contemporary and stunning pages built on Tailwind CSS.",
+    "rev": 139,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Icoon.co",
+    "desc": "3D icons, Illustrations & Creative Design Assets. Discover AI-generated 3D icons, illustrations, and images. Boost your design with high-quality assets for websites, apps, and print.",
+    "rev": 126,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Motchi.art",
+    "desc": "Describe it. We animate it. From text prompt to production-ready animated characters with transparent backgrounds. Export as Lottie, WebP, or SVG.",
+    "rev": 119,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "AI Selfie Studio",
+    "desc": "Create studio-quality profile pictures & photoshoots with AI.",
+    "rev": 80,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Mimi – AI Photo Editor",
+    "desc": "Transform your imagination into reality with AI Mimi, the ultimate AI photo editor and art generator. Whether you want to fix a picture, create a magic avatar, or design a professional profile image,",
+    "rev": 75,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Proicon",
+    "desc": "Create a Professional Unique Logo in Seconds",
+    "rev": 75,
+    "target": "visual iteration users in Design Tools"
+   },
+   {
+    "name": "Figma AI Rename Plugin",
+    "desc": "Figma plugin for automatically renaming layers in complex mockups using AI",
+    "rev": 49,
+    "target": "visual iteration users in Design Tools"
+   }
+  ]
+ },
+ "analytics": {
+  "category": "Analytics",
+  "count": 39,
+  "samples": [
+   {
+    "name": "Easy App Reports by Beyond Analytics",
+    "desc": "Visualize your App Store, Google Play, and Ad Performance data in one place without coding. The app industry's favourite data hub.",
+    "rev": 4200,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "Check Position",
+    "desc": "Monitor your websites position (SEO) on Google",
+    "rev": 3400,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "Stellar",
+    "desc": "My business is a SaaS for AB testing websites.",
+    "rev": 2100,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "BETIX",
+    "desc": "Sports analytics platform for football, tennis and basketball bettors. Helping users better understand matches through data, advanced statistics and AI-powered analysis to make smarter betting decisio",
+    "rev": 1500,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "Notionlytics",
+    "desc": "Detailed analytics for Notion. For company wikis, community knowledge bases, and shared documents. Find out what's helpful, and what isn't.",
+    "rev": 1000,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "Deltalytix",
+    "desc": "Trading journal platform to track performance",
+    "rev": 767,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "takeout-tools",
+    "desc": "Niche geocoding service for Google Maps saved lists. Extracts addresses and coordinates from Google Takeout exports. Exports to CSV, JSON, GPX, KML, GeoJSON for mapping tools and GIS. Solid traffic fr",
+    "rev": 744,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "PinStats",
+    "desc": "Pinterest analytic tool. Reveal Pinterest Pin stats.",
+    "rev": 345,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "Redirectly",
+    "desc": "Smart Deep Linking service",
+    "rev": 231,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "easyflip",
+    "desc": "EasyFlip provides AI-powered automation for eBay listings and virtual staging of product photos. You get full distribution with this purchase: -YouTube Channel with nearly 18k Subscribers $300MRR -1",
+    "rev": 143,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "LaunchPoly",
+    "desc": "LaunchPoly is the go-to directory for Polymarket tools. Discover analytics platforms, trading bots, portfolio trackers, and other tools built by the community to help you trade smarter. Users can subm",
+    "rev": 88,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "Tiller",
+    "desc": "Deploy AI agents with one click.",
+    "rev": 64,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "WebTracky",
+    "desc": "Revenue-first analytics for modern websites.",
+    "rev": 50,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "Loro",
+    "desc": "Cloud-based social media analytics platform. Helps users track and analyze content performance across multiple platforms. Subscription-based.",
+    "rev": 29,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "Strive Analytica AB",
+    "desc": "ValueBets is a subscription-based SaaS platform that provides AI-powered analytics tools for sports enthusiasts. Customers are charged immediately upon subscribing to our monthly plans and then at the",
+    "rev": 28,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "Lightspeed.run",
+    "desc": "Lightspeed.run offers website performance monitoring and optimization tools to increase conversions and improve SEO ranking.",
+    "rev": 28,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "MetricMap.tech - Analytics platform for SaaS and Ecommerce founders",
+    "desc": "MetricMap.tech is an all-in-one analytics platform built for SaaS and eCommerce founders who want clarity, not noise. Track users, sessions, events, funnels, revenue, MRR, refunds, and errors in real",
+    "rev": 19,
+    "target": "measurement workflow users in Analytics"
+   },
+   {
+    "name": "ProfileAudit",
+    "desc": "ProfileAudit is an AI-powered platform designed to transform LinkedIn profiles into high-converting assets. By leveraging advanced data analysis and strategic copywriting, our IA provides instant au",
+    "rev": 18,
+    "target": "measurement workflow users in Analytics"
+   }
+  ]
+ },
+ "utilities": {
+  "category": "Utilities",
+  "count": 33,
+  "samples": [
+   {
+    "name": "PodSpot",
+    "desc": "This app is one that operates 100% organically with no intervention and very stable revenue. In fact I haven’t really had to think about it for years now. It’s a simple utility app with no backend, n",
+    "rev": 5000,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "Arc Raiders Map",
+    "desc": "Arc Raiders Map is a companion app for Arc Raiders. It offers helpful guides and such for players of the game.",
+    "rev": 1400,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "Prompt Engine",
+    "desc": "PromptEngine.cc is a platform that lets users build, test, and share AI prompts across multiple models with speed and precision. Customers are typically charged immediately during checkout when they s",
+    "rev": 792,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "VerifiedDR",
+    "desc": "Grow your visibility in search and AI. Track your authority, traffic, and trust signals, then connect with verified partners to grow faster.",
+    "rev": 527,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "Runner",
+    "desc": "Runner is a Companion app for marathon by Bungie",
+    "rev": 448,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "Picmal",
+    "desc": "Convert and compress any media on your Mac. Images, videos, audio. Batch process hundreds at once, right on your Mac. Works offline, no account, nothing to subscribe to.",
+    "rev": 418,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "Youtube Transcript Dev | Extract & Download Video Transcripts",
+    "desc": "Go beyond basic YouTube captions. Extract transcripts from any youtube video using audio-based transcription when captions aren't available. Then do more with your transcripts — generate mindmaps, cre",
+    "rev": 297,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "Postage.TO",
+    "desc": "Postage.TO is the easiest way to send physical letters online across the globe",
+    "rev": 152,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "Noise Reducer",
+    "desc": "Reduce Noise from Audios & Videos",
+    "rev": 148,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "CallSpark",
+    "desc": "Make affordable international calls right from your browser. Best alternative to skype and google voice.",
+    "rev": 105,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "BestskyTools",
+    "desc": "Find and Launch Best AI and SaaS Tools in One Human-Curated Directoy",
+    "rev": 99,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "Hidden Mobile App",
+    "desc": "A mobile app in the identifier category currently making $200/month in revenue from ASO alone.",
+    "rev": 75,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "PhotoClear",
+    "desc": "Swipe to organize your camera roll. Built with Swift for iOS. - Over 2k downloads - 7.8% app store conversion rate - 2.7% download to paid",
+    "rev": 59,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "FindIt",
+    "desc": "Introducing FindIt, the ultimate solution to never losing your Bluetooth devices again.",
+    "rev": 42,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "Replay It",
+    "desc": "Set a delay, perform your skill, and instantly watch the playback to refine your technique. Used by athletes, coaches, and students for golf, gymnastics, dance, martial arts, and more. Available as a",
+    "rev": 40,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "Compresso",
+    "desc": "Image and video compression without quality loss",
+    "rev": 33,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "Thecalcs",
+    "desc": "thecalcs.com is a comprehensive online platform that provides a massive collection of free, professional-grade calculators for a wide variety of everyday, academic, and professional needs.",
+    "rev": 29,
+    "target": "validated niche workflow users in Utilities"
+   },
+   {
+    "name": "Vocam Translator",
+    "desc": "Vocam Translator helps you translate languages easily using one simple app.",
+    "rev": 8,
+    "target": "validated niche workflow users in Utilities"
+   }
+  ]
+ },
+ "sales": {
+  "category": "Sales",
+  "count": 22,
+  "samples": [
+   {
+    "name": "Lancer.app",
+    "desc": "Lancer.app is an AI-powered tool that automates job application process on Upwork for freelancers and agencies.",
+    "rev": 19000,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "Bookedin",
+    "desc": "BookedIn ai is a no-code AI platform agencies use to create and manage AI receptionists and sales agents across voice, SMS, email, and messaging apps like Instagram. These agents can instantly engage",
+    "rev": 7000,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "Linkeddit",
+    "desc": "An AI-powered all-in-one Reddit marketing platform that helps founders find customers who are already on Reddit asking for what they sell.",
+    "rev": 1500,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "Koldinfo",
+    "desc": "Its a data saas. We have 270 million contacts. Our users buy data to reach biz owners and make money!",
+    "rev": 1400,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "LeadFinder.io",
+    "desc": "LeadFinder.io is an all-in-one lead generation suite offering truly unlimited leads at an affordable price. It provides tools for finding business leads, extracting data from maps and websites, and va",
+    "rev": 607,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "LeadLu",
+    "desc": "LeadLu helps agencies and service businesses discover high-quality local leads through Google Maps. It identifies businesses with outdated or missing websites, low Google ratings, and other growth opp",
+    "rev": 136,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "LeadFind",
+    "desc": "Type in the leads you need, LeadFind does the rest. Our LeadFind AI does research your request and sets up a Lead Find campagne and start sending cold emails on auto-mode. Start receiving reply's in a",
+    "rev": 127,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "ConvoHunter",
+    "desc": "Monitors online communities to find potential customers for businesses",
+    "rev": 83,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "businesseswithoutwebsite.com",
+    "desc": "I kept seeing videos of people scraping Google Maps for leads… You don’t have to do that anymore. I built a tool that finds local businesses that don’t have a website yet 👀 👉 https://businesseswi",
+    "rev": 23,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "justraised",
+    "desc": "Reach funded startup founders before your competitors do.",
+    "rev": null,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "Invido",
+    "desc": "Video For Sales Teams That Drives Results",
+    "rev": null,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "FindDataSet",
+    "desc": "Provides access to comprehensive Crunchbase data for market research and business intelligence.",
+    "rev": null,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "100lead.com",
+    "desc": "100lead scrapes Google Maps data to provide business leads with verified emails, phone numbers, and social profiles.",
+    "rev": null,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "LeadsFuel.io",
+    "desc": "Provides verified B2B leads and contact lists for businesses Verified C-Level & Founders Database Talk directly to decision-makers Skip the noise — connect only with CEOs, Founders, and business lea",
+    "rev": null,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "Fheri",
+    "desc": "Fheri is a suite for managing sales commissions.",
+    "rev": null,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "SalesPopups",
+    "desc": "Sales popups that instantly grow your conversions",
+    "rev": null,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "ReviewGate",
+    "desc": "A fully-built reputation management SaaS that intercepts unhappy customers before they hit Google. Smart QR Code System Customers scan, rate 1-5 stars. Happy customers → Google. Unhappy → private i",
+    "rev": null,
+    "target": "lead generation users in Sales"
+   },
+   {
+    "name": "Context Catch",
+    "desc": "Context catch is Context-aware Reddit lead generation tool",
+    "rev": null,
+    "target": "lead generation users in Sales"
+   }
+  ]
+ },
+ "recruiting-hr": {
+  "category": "Recruiting & HR",
+  "count": 22,
+  "samples": [
+   {
+    "name": "Career Hound",
+    "desc": "Find jobs not on LinkedIn/Indeed",
+    "rev": 30000,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "Stealth Company (Global Job Board)",
+    "desc": "Huuuuuge growth potential in earnings for a marketing/sales person (which I am not); 1M+ job seekers in the database; trusted by big international organisations; Ubersuggest's traffic valuation: 395K$",
+    "rev": 5200,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "Tarss",
+    "desc": "Scrappe linkedin feeds and search for job offers that fit your skills. (Chrome extension for linkedin)",
+    "rev": 2400,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "FidForward",
+    "desc": "AI-powered platform for sourcing and outreaching potential candidates for recruitment.",
+    "rev": 754,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "JuggleHire",
+    "desc": "JuggleHire is a professional hiring management platform that transforms the chaos of Google Forms and email-based recruiting into an organized, collaborative hiring system for growing teams.",
+    "rev": 546,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "Sportsjobs Online",
+    "desc": "A job board to find sports analytics opportunities. Work as a data scientist, software engineer and similar roles helping teams win and understand better the sport.",
+    "rev": 536,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "Pronto",
+    "desc": "Pronto helps job seekers create applications that pass ATS filters and impress hiring managers.",
+    "rev": 342,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "Hired",
+    "desc": "Hired automates your entire job search — from discovering opportunities and finding hiring managers to sending personalised applications and leveraging internal company networks it's feature rich and",
+    "rev": 226,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "TopJobsToday",
+    "desc": "Fresh FAANG Jobs – No Browsing, Just Daily Email Alerts",
+    "rev": 180,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "Europass AI",
+    "desc": "Europass.ai CV and Cover Letter Creator",
+    "rev": 151,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "Agents Metrics L.L.C.",
+    "desc": "Provides data-driven solutions for real estate recruiting and agent performance assessment.",
+    "rev": 149,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "Best PM Jobs",
+    "desc": "Complete PM career platform with 70+ guides, 200+ interview questions, salary calculator, AI mock interview coach, and 17 company interview guides for Google, Meta, Amazon and more. 96 SEO-optimized p",
+    "rev": 105,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "landthisjob",
+    "desc": "Helps users tailor their resumes to match specific job descriptions in 60 seconds using AI, without rewriting their content. It also allows for AI-assisted job search using a LinkedIn jobs API, and cr",
+    "rev": 68,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "FreeMatch",
+    "desc": "FreeMatch est un service qui permet de trouver une mission plus rapidement pour les freelances développeurs.",
+    "rev": null,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "Amor",
+    "desc": "Amor helps teams find and hire engineers by analyzing GitHub profiles and contributions.",
+    "rev": null,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "https://quickresumemaker.com/",
+    "desc": "Build professional resumes in minutes with AI-powered suggestions, beautiful templates, and expert guidance. 94% of our users get interviews within 2 weeks and land their dream job faster.",
+    "rev": null,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "Refolio",
+    "desc": "Refolio turns your resume into a beautiful portfolio website in under 60 seconds. No coding, no design expertise, no headaches.",
+    "rev": null,
+    "target": "validated niche workflow users in Recruiting & HR"
+   },
+   {
+    "name": "SuperGitSight",
+    "desc": "SuperGitSight evaluates GitHub profiles with KCRIM and ACID scoring (consistency, contribution, reliability, impact, mastery). For developers, recruiters, and open-source maintainers. Features: profil",
+    "rev": null,
+    "target": "validated niche workflow users in Recruiting & HR"
+   }
+  ]
+ },
+ "no-code": {
+  "category": "No-Code",
+  "count": 16,
+  "samples": [
+   {
+    "name": "Notion tool with $3k+ MRR, 80%+ Margins, <6 hrs/week ops",
+    "desc": "A no-code platform serving a growing base of Notion users worldwide. Turns Notion into a reliable backend and provides an intuitive drag-and-drop interface to design, build, and launch apps directly f",
+    "rev": 4200,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "NETTIFY",
+    "desc": "NETTIFY is a full-stack website builder that lets small businesses launch complete, professional sites in minutes - no coding needed. Choose AI editor or edit manually, start from ready-made templates",
+    "rev": 1600,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "Nocodable Components",
+    "desc": "Nocodable Components is a profitable, bootstrapped micro-SaaS that provides 450+ fully responsive, ready-to-use UI components for Bubble.io developers. Delivered via a Chrome extension, users simply b",
+    "rev": 1600,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "OnPodium",
+    "desc": "Podcast website builder",
+    "rev": 1000,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "WebToApp: No Code App Converter",
+    "desc": "no code web to app converter which converts websites to native android apps if you are small business owner or just a curious who doesn't wanna open browser everytime! This is the best choice",
+    "rev": 620,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "ABHUB",
+    "desc": "ABHUB is a no-code website builder and content management system for wineries.",
+    "rev": 199,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "Supaframe",
+    "desc": "Supaframe helps you collect messages, bookings, feedback, and emails from your website — and manage every customer interaction from a single, simple dashboard.",
+    "rev": 136,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "Blupry",
+    "desc": "Ready-Made Features & Templates for No-Code tools",
+    "rev": 105,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "Writier",
+    "desc": "Writier allows you to compose amazing content in seconds with the help of AI-powered sentence completions. Built with the leading no-code platform (Bubble.io) that non-coders can use to build apps wit",
+    "rev": 76,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "tapy.to",
+    "desc": "Tapy builds websites through chat. Core features: • One-click publish with HTTPS • Connect or buy a custom domain • Buy business email • Download code • Code, file & content editors • Extract style f",
+    "rev": 34,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "Sevgilime Website",
+    "desc": "Website builder tool for making websites for your loved ones. Users can use 0 code tool to make websites, website is in turkish. I charge users when they want to publish their websites but building is",
+    "rev": 16,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "Blupry Marketplace",
+    "desc": "A marketplace for buying ready-made features and templates for no-code tools",
+    "rev": null,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "Vibra Code - The mobile app that builds mobile apps",
+    "desc": "Vibra Code is a mobile/website app that builds mobile apps. Open the app, describe what you want in plain English, and watch your idea become a real working app—right on your phone. No coding. No co",
+    "rev": null,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "n8n2py.me",
+    "desc": "n8n2py.me is a specialized developer tool designed to convert n8n workflows to python and vice versa. Key Features Workflow Conversion: Automatically transforms visual n8n workflows into clean, readab",
+    "rev": null,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "Runetic",
+    "desc": "Runetic.io is a no-code platform for building full-stack AI agent applications visually. It combines n8n-style workflow automation, Bubble-like UI/app building, and autonomous AI agents in one environ",
+    "rev": null,
+    "target": "builder workflow users in No-Code"
+   },
+   {
+    "name": "ReviewsToWebsite",
+    "desc": "ReviewsToWebsite turns your Google Maps reviews into a professional landing page — in minutes, with no design or coding skills needed. Paste your Google Maps URL, and our AI scrapes your reviews, extr",
+    "rev": null,
+    "target": "builder workflow users in No-Code"
+   }
+  ]
+ },
+ "real-estate": {
+  "category": "Real Estate",
+  "count": 11,
+  "samples": [
+   {
+    "name": "Deptho AI, LLC",
+    "desc": "Deptho is an AI-powered solution that helps create stunning redesigns for any space, aiming to increase property sales by convincing potential buyers and encouraging property owners to transform their",
+    "rev": 552,
+    "target": "validated niche workflow users in Real Estate"
+   },
+   {
+    "name": "Tax Sales Portal",
+    "desc": "TaxSalesPortal is a Canadian tax sale & foreclosure marketplace giving investors direct access to municipal tax sales, power of sale, and government-owned properties in one searchable platform. Each l",
+    "rev": 314,
+    "target": "validated niche workflow users in Real Estate"
+   },
+   {
+    "name": "Instant Interiors - AI",
+    "desc": "Turn any room or even your home’s exterior into your dream space in seconds with AI-created realistic, professional-quality designs.",
+    "rev": 88,
+    "target": "validated niche workflow users in Real Estate"
+   },
+   {
+    "name": "Homence",
+    "desc": "Homence combines an advanced AI real estate assistant with comprehensive property listings to provide you with a seamless and personalized home-searching experience. Say goodbye to endless scrolling a",
+    "rev": 7,
+    "target": "validated niche workflow users in Real Estate"
+   },
+   {
+    "name": "Stageify.io",
+    "desc": "Real Estate Visuals, Upgraded. Single static images -> Cinematic Video Clips",
+    "rev": null,
+    "target": "validated niche workflow users in Real Estate"
+   },
+   {
+    "name": "Propilist",
+    "desc": "Propilist centralizes your agency’s operations, improves agent performance, and gives you full visibility over your deals.",
+    "rev": null,
+    "target": "validated niche workflow users in Real Estate"
+   },
+   {
+    "name": "estatehawlhox",
+    "desc": "Real Estate Wholesaling Platform with Nationwide Property Data, Instant Skip Tracing & Built-in Voice Calling",
+    "rev": null,
+    "target": "validated niche workflow users in Real Estate"
+   },
+   {
+    "name": "Roomify",
+    "desc": "AI-powered architectural visualization SaaS that turns 2D floor plans into photorealistic 3D renders using multiple AI models (Claude and Gemini). Every upload is permanently hosted with public URLs a",
+    "rev": null,
+    "target": "validated niche workflow users in Real Estate"
+   },
+   {
+    "name": "Stagingpulse.com",
+    "desc": "Stagingpulse is an AI home staging tool made for realtors.",
+    "rev": null,
+    "target": "validated niche workflow users in Real Estate"
+   },
+   {
+    "name": "OwnerTrace",
+    "desc": "OwnerTrace is the fastest, cheapest way to get real estate data—period. Skiptrace 1,000 records for just $1 instead of paying $70–$100 elsewhere. No bloated tools, no wasted hours—just clean, usable d",
+    "rev": null,
+    "target": "validated niche workflow users in Real Estate"
+   },
+   {
+    "name": "Sheriff's List",
+    "desc": "SheriffsList.com aggregates sheriff sale and foreclosure auction listings from county courthouses across the US. It scrapes government sources daily, normalizes the data, and presents listings on an i",
+    "rev": null,
+    "target": "validated niche workflow users in Real Estate"
+   }
+  ]
+ },
+ "marketplace": {
+  "category": "Marketplace",
+  "count": 9,
+  "samples": [
+   {
+    "name": "Attivita24",
+    "desc": "The best marketplace to buy and sell small and medium-sized businesses in Italy. Connect directly with business owners and potential buyers interested in SMEs, without intermediaries.",
+    "rev": 7600,
+    "target": "validated niche workflow users in Marketplace"
+   },
+   {
+    "name": "TopDividendTools",
+    "desc": "TopDividendTools.com is a site to showcase top tools & website around dividend investing and the stock market ect.",
+    "rev": 4300,
+    "target": "validated niche workflow users in Marketplace"
+   },
+   {
+    "name": "OULANG欧浪",
+    "desc": "Web+iOS+Android. Find jobs, rentals, second-hand deals, and local services in OULANG欧浪, built for Chinese life in Spain with smart search and direct contact.",
+    "rev": 691,
+    "target": "validated niche workflow users in Marketplace"
+   },
+   {
+    "name": "QueIA.es",
+    "desc": "AI Tool Directory (Spanish)",
+    "rev": null,
+    "target": "validated niche workflow users in Marketplace"
+   },
+   {
+    "name": "ShipSquad",
+    "desc": "ShipSquad is a launch platform helping founders get visibility, backlinks, and early traction. With a 39 DR domain, every product gains strong SEO value. The platform includes an inbuilt chat system f",
+    "rev": null,
+    "target": "validated niche workflow users in Marketplace"
+   },
+   {
+    "name": "getmarketroute",
+    "desc": "A 3D product",
+    "rev": null,
+    "target": "validated niche workflow users in Marketplace"
+   },
+   {
+    "name": "Acquirely Markets",
+    "desc": "A platform where you can buy and sell startups that are MRR-verified via stripe API",
+    "rev": null,
+    "target": "validated niche workflow users in Marketplace"
+   },
+   {
+    "name": "YourFirstUsers",
+    "desc": "A place where developers can find their first users by offering free credits or subscriptions. And users can get free credits on the latest apps for free,",
+    "rev": null,
+    "target": "validated niche workflow users in Marketplace"
+   },
+   {
+    "name": "RentHuman.com",
+    "desc": "RentHuman.com is a marketplace where AI agents discover, book, and pay real people for real world tasks. We are building the operating system for human labor in the age of autonomous agents. Agents co",
+    "rev": null,
+    "target": "validated niche workflow users in Marketplace"
+   }
+  ]
+ },
+ "customer-support": {
+  "category": "Customer Support",
+  "count": 9,
+  "samples": [
+   {
+    "name": "Ticketdesk AI",
+    "desc": "AI-powered helpdesk software that automatically responds to support tickets and chats with customers using your knowledge base.",
+    "rev": 2200,
+    "target": "validated niche workflow users in Customer Support"
+   },
+   {
+    "name": "WP CRITIQUE",
+    "desc": "WP Critique provides WordPress support services including assistance, migration, optimization, and malware removal.",
+    "rev": 429,
+    "target": "validated niche workflow users in Customer Support"
+   },
+   {
+    "name": "Feedvote",
+    "desc": "Stop manually updating your roadmap. Feedvote syncs your active Linear cycles to a public feedback board in real-time.",
+    "rev": 98,
+    "target": "validated niche workflow users in Customer Support"
+   },
+   {
+    "name": "Vocaldesk",
+    "desc": "Transform your phone support with AI-powered agents that sound human and work 24/7.",
+    "rev": null,
+    "target": "validated niche workflow users in Customer Support"
+   },
+   {
+    "name": "OnSync",
+    "desc": "OnSync turns WhatsApp, Instagram, and Messenger into a real CRM + AI sales engine for teams.",
+    "rev": null,
+    "target": "validated niche workflow users in Customer Support"
+   },
+   {
+    "name": "PingBack",
+    "desc": "Centralized inbox for inbound messages for businesses, Omni channel customer support service tool (website widget, x, telegram, messenger, Instagram, Whatsapp buisness.) into a centralized shared inbo",
+    "rev": null,
+    "target": "validated niche workflow users in Customer Support"
+   },
+   {
+    "name": "ReplyPilot",
+    "desc": "ReplyPilot is an agentic AI support desk that turns raw customer tickets into clear, customer-ready replies. It analyzes each request, decides when to research the web, gathers sources, and drafts pol",
+    "rev": null,
+    "target": "validated niche workflow users in Customer Support"
+   },
+   {
+    "name": "Takkie AI",
+    "desc": "We have developed a platform for anyone to easily create AI chat agents and deploy them to the web. Businesses can offer 24/7 AI support that feels human. The chat feels like ChatGPT for customers. It",
+    "rev": null,
+    "target": "validated niche workflow users in Customer Support"
+   },
+   {
+    "name": "Nousu",
+    "desc": "Nousu is an Agentic E-commerce Support platform built for Dutch merchants, but this can be built to be multilingual fairly easily. Nousu has deep integrations into Woo and Shopify, connects withtin",
+    "rev": null,
+    "target": "validated niche workflow users in Customer Support"
+   }
+  ]
+ },
+ "security": {
+  "category": "Security",
+  "count": 7,
+  "samples": [
+   {
+    "name": "Vibe App Scanner",
+    "desc": "VAS is an automated external security scanner for AI-built apps, giving clients one click AI-ready fix instructions. No AI is used scanning capabilities, all built by two security engineers. Strong or",
+    "rev": 295,
+    "target": "validated niche workflow users in Security"
+   },
+   {
+    "name": "Gestor de Certificados",
+    "desc": "Gestor de Certificados provides a tool to manage digital certificates on your PC.",
+    "rev": 264,
+    "target": "validated niche workflow users in Security"
+   },
+   {
+    "name": "Compromised.ai",
+    "desc": "Scan the dark web free to check if your email, password, phone, or personal info has been exposed in data breaches. Get instant reports and protect yourself.",
+    "rev": 34,
+    "target": "validated niche workflow users in Security"
+   },
+   {
+    "name": "Digital Shell",
+    "desc": "Share client documents. Without the risk. Send contracts, financial reports, and sensitive files via encrypted, watermarked, trackable links. Stop using email attachments. Start protecting your client",
+    "rev": null,
+    "target": "validated niche workflow users in Security"
+   },
+   {
+    "name": "DoHackersKnow.Me",
+    "desc": "In an era where your personal information can be scattered across the internet without your consent, we empower you with the tools to reclaim your privacy. Discover, monitor, and secure your private d",
+    "rev": null,
+    "target": "validated niche workflow users in Security"
+   },
+   {
+    "name": "Beesecure",
+    "desc": "BeeSecure is a software security scanning platform created to help developers, indie hackers, and SaaS founders quickly identify security vulnerabilities in their codebases. The core product is fully",
+    "rev": null,
+    "target": "validated niche workflow users in Security"
+   },
+   {
+    "name": "Fraud Check",
+    "desc": "Fraud Check is an AI-powered fraud protection firewall for emails, text messages, and phone calls. It detects phishing scams, spoofed numbers, voice-cloning attacks, and suspicious messages before the",
+    "rev": null,
+    "target": "validated niche workflow users in Security"
+   }
+  ]
+ },
+ "crypto-web3": {
+  "category": "Crypto & Web3",
+  "count": 3,
+  "samples": [
+   {
+    "name": "Figma Plugin – NFT Generator",
+    "desc": "",
+    "rev": null,
+    "target": "validated niche workflow users in Crypto & Web3"
+   },
+   {
+    "name": "numeris",
+    "desc": "Numeris is a fair, transparent on-chain lottery web app. Users pick numbers, buy tickets, and can send tickets to other wallets. Every draw is verifiable; winners claim prizes to their wallet. The app",
+    "rev": null,
+    "target": "validated niche workflow users in Crypto & Web3"
+   },
+   {
+    "name": "CryptoCoin.News",
+    "desc": "Established crypto news website (since 2017). Over 6,600 articles on the site, 200 daily active users, 63,000 subscriber email list. Includes the X handle TodayCrypto with 2,500 followers, the Telegra",
+    "rev": null,
+    "target": "validated niche workflow users in Crypto & Web3"
+   }
+  ],
+  "fallback": [
+   {
+    "name": "AbMaxx",
+    "desc": "AbMaxx is a subscription-based fitness app that uses AI to analyze a user’s abs and create a personalized plan tailored to their physique and goals. The app helps users build stronger, more defined ab",
+    "rev": 9700,
+    "target": "mobile utility users in Mobile Apps",
+    "fallbackFrom": "Mobile Apps"
+   },
+   {
+    "name": "Idle Browser Game (PC/Mobile)",
+    "desc": "Highly addictive game, revenue comes from upgrades/power-up purchases. No marketing efforts were made (yet). Easily marketable with huge growth potential. Could be pivoted to a crypto/web3 game",
+    "rev": 1900,
+    "target": "repeatable game loop users in Games",
+    "fallbackFrom": "Games"
+   },
+   {
+    "name": "SessionWatcher",
+    "desc": "I sell a MacOS menu bar app to help users track their AI token usage in Claude Code & Codex.",
+    "rev": 1600,
+    "target": "builder productivity users in Developer Tools",
+    "fallbackFrom": "Developer Tools"
+   },
+   {
+    "name": "Plume - Word of the day",
+    "desc": "Plume is a calm, editorial Word of the Day app for iOS, featured by Apple editors in \"Best New Apps and Updates.\" One beautifully typeset word a day - definition, etymology, pronunciation, and usage -",
+    "rev": 1500,
+    "target": "mobile utility users in Mobile Apps",
+    "fallbackFrom": "Mobile Apps"
+   },
+   {
+    "name": "Sferica Trading Automation LLC",
+    "desc": "Automate your own TradingView strategies. See live performance before you commit. Connect TradingView or TrendSpider to 60+ brokers in minutes. Run 60+ live-tracked strategies on crypto, forex, stoc",
+    "rev": 477,
+    "target": "decision support users in Fintech",
+    "fallbackFrom": "Fintech"
+   },
+   {
+    "name": "BlinkClaw",
+    "desc": "Deploy OpenClaw in One Click. Paste your Telegram bot token, hit deploy, and your AI agent goes live — no infrastructure, no setup.",
+    "rev": 365,
+    "target": "recurring business workflow users in SaaS",
+    "fallbackFrom": "SaaS"
+   },
+   {
+    "name": "Vercel Analytics — Verceltics",
+    "desc": "Native iOS app for Vercel users to check Web Analytics, projects, deployments, domains, referrers, devices, countries, and UTM data from iPhone. Open source, with local token storage in iOS Keychain a",
+    "rev": 109,
+    "target": "builder productivity users in Developer Tools",
+    "fallbackFrom": "Developer Tools"
+   },
+   {
+    "name": "Rsi Tracker",
+    "desc": "RSI Tracker revolutionizes crypto trading by combining traditional RSI analysis with cutting-edge sentiment shit tracking in real time.",
+    "rev": 6,
+    "target": "AI-assisted workflow users in Artificial Intelligence",
+    "fallbackFrom": "Artificial Intelligence"
+   },
+   {
+    "name": "ApeManor",
+    "desc": "ApeManor provides insights on tech, AI, and cryptocurrency.",
+    "rev": 3,
+    "target": "AI-assisted workflow users in Artificial Intelligence",
+    "fallbackFrom": "Artificial Intelligence"
+   },
+   {
+    "name": "Nocturnus",
+    "desc": "Nocturnus is a modern, secure, and user-friendly cryptocurrency wallet designed to make digital asset management simple for both beginners and experienced crypto users. The platform allows users to st",
+    "rev": null,
+    "target": "validated niche workflow users",
+    "fallbackFrom": null
+   },
+   {
+    "name": "ChartWiz",
+    "desc": "This app lets users take a screenshot of any stock and crypto chart and it will give back analysis on it. I have not dedicated any time to doing marketing, i havent spent any time working since i publ",
+    "rev": null,
+    "target": "AI-assisted workflow users in Artificial Intelligence",
+    "fallbackFrom": "Artificial Intelligence"
+   },
+   {
+    "name": "C",
+    "desc": "Crypto & Web3",
+    "rev": null,
+    "target": "validated niche workflow users in Confidential Startup",
+    "fallbackFrom": "Confidential Startup"
+   },
+   {
+    "name": "Polaris",
+    "desc": "Polaris is a collaborative business management platform integrating income, expenses, inventory, analytics, CRM, and more in real time. It provides financial control, team roles, and blockchain-based",
+    "rev": null,
+    "target": "measurement workflow users in Analytics",
+    "fallbackFrom": "Analytics"
+   },
+   {
+    "name": "Decodex Mobile App",
+    "desc": "The cryptogram game with daily puzzle and campaign mode.",
+    "rev": null,
+    "target": "repeatable game loop users in Games",
+    "fallbackFrom": "Games"
+   },
+   {
+    "name": "5UGC: AI UGC Video",
+    "desc": "AI-powered UGC video generation tool for performance marketers. Brands input a product image, define persona and script direction, and receive realistic vertical ad creatives in minutes — no creator c",
+    "rev": null,
+    "target": "recurring business workflow users in SaaS",
+    "fallbackFrom": "SaaS"
+   }
+  ]
+ },
+ "legal": {
+  "category": "Legal",
+  "count": 2,
+  "samples": [
+   {
+    "name": "LegitAI",
+    "desc": "Webapp about creating policies and terms of conditions with AI",
+    "rev": null,
+    "target": "validated niche workflow users in Legal"
+   },
+   {
+    "name": "Guardian of Compliance",
+    "desc": "Compliance tool that handles GDPR, PIPEDA, CCPA and LGPD. Creates customized cookie banner with website favicon, generates privacy policy (for all 4 jurisdictions), cookie policy, terms of service. Ru",
+    "rev": null,
+    "target": "validated niche workflow users in Legal"
+   }
+  ],
+  "fallback": [
+   {
+    "name": "H",
+    "desc": "E-commerce Provides a simple way to scan your Shopify shop for Google Merchant Center compliance issues",
+    "rev": 7100,
+    "target": "validated niche workflow users in Hidden Business",
+    "fallbackFrom": "Hidden Business"
+   },
+   {
+    "name": "NextjobConnect LLC",
+    "desc": "Real-time job leads for home service contractors. Monitors neighborhood platforms, AI-classifies posts by trade, and alerts subscribers via iOS/Android app and SMS. Contractors get high intent leads.",
+    "rev": 6000,
+    "target": "recurring business workflow users in SaaS",
+    "fallbackFrom": "SaaS"
+   },
+   {
+    "name": "Kitchen Design AI",
+    "desc": "KitchenAI lets homeowners and contractors instantly redesign their kitchens. Simply snap a photo, and our AI generates endless variations of layouts, cabinets, and materials to visualize the perfect r",
+    "rev": 1300,
+    "target": "mobile utility users in Mobile Apps",
+    "fallbackFrom": "Mobile Apps"
+   },
+   {
+    "name": "Ship Restrict",
+    "desc": "Restricted and regulated shipping compliance WooCommerce plugin. We automatically block regulated products from shipping to restricted states, cities, and zip codes.",
+    "rev": 180,
+    "target": "commerce workflow users in E-commerce",
+    "fallbackFrom": "E-commerce"
+   },
+   {
+    "name": "avocadosai.ch",
+    "desc": "AI-based legal assistant operating in Switzerland",
+    "rev": 100,
+    "target": "AI-assisted workflow users in Artificial Intelligence",
+    "fallbackFrom": "Artificial Intelligence"
+   },
+   {
+    "name": "DialBridge",
+    "desc": "Cheap International Calls From Your Browser. Perfect for sales teams, cold calling, and reaching international clients. Call any landline or mobile worldwide — no apps, no contracts, no hidden fees.",
+    "rev": 2,
+    "target": "recurring business workflow users in SaaS",
+    "fallbackFrom": "SaaS"
+   },
+   {
+    "name": "Casewise AI",
+    "desc": "(USD 740 REVENUE) | Analyze legal documents, assess risks, and draft contracts - all processed locally on your machine through one CRM.",
+    "rev": null,
+    "target": "AI-assisted workflow users in Artificial Intelligence",
+    "fallbackFrom": "Artificial Intelligence"
+   },
+   {
+    "name": "legaldeep.ai",
+    "desc": "LegalDeep AI provides AI-Powered Legal Summaries and Analysis.",
+    "rev": null,
+    "target": "AI-assisted workflow users in Artificial Intelligence",
+    "fallbackFrom": "Artificial Intelligence"
+   },
+   {
+    "name": "Bidwel.com",
+    "desc": "We help businesses streamline RFP responses and win more government contracts with Bidwel's AI, trained on your past successful bids and company knowledge docs.",
+    "rev": null,
+    "target": "AI-assisted workflow users in Artificial Intelligence",
+    "fallbackFrom": "Artificial Intelligence"
+   },
+   {
+    "name": "Quota",
+    "desc": "Professional receipt management & reimbursement invoicing for contractors, freelancers, and small businesses.",
+    "rev": null,
+    "target": "decision support users in Fintech",
+    "fallbackFrom": "Fintech"
+   },
+   {
+    "name": "Digital Shell",
+    "desc": "Share client documents. Without the risk. Send contracts, financial reports, and sensitive files via encrypted, watermarked, trackable links. Stop using email attachments. Start protecting your client",
+    "rev": null,
+    "target": "validated niche workflow users in Security",
+    "fallbackFrom": "Security"
+   },
+   {
+    "name": "hawlhox",
+    "desc": "AI Law Platform: Train Against Virtual Opponents, Debate Legal Strategies & Research Cases in Real-Time",
+    "rev": null,
+    "target": "AI-assisted workflow users in Artificial Intelligence",
+    "fallbackFrom": "Artificial Intelligence"
+   },
+   {
+    "name": "Conforme Pro",
+    "desc": "B2B SaaS platform for document compliance management, designed for construction and real estate companies. Our clients (general contractors, property managers, real estate developers) pay a monthly or",
+    "rev": null,
+    "target": "recurring business workflow users in SaaS",
+    "fallbackFrom": "SaaS"
+   },
+   {
+    "name": "Due Date Radar",
+    "desc": "The Simple Way to Track Every Document Deadline. Your licenses, contracts, insurance and renewals due dates—tracked automatically. Missing a deadline costs more than money—it costs your business, yo",
+    "rev": null,
+    "target": "personal workflow users in Productivity",
+    "fallbackFrom": "Productivity"
+   },
+   {
+    "name": "Filesflo",
+    "desc": "Meet Filesflo, your intelligent document companion. Whether you’re a student drowning in research papers or a professional analysing complex contracts, Filesflo transforms static PDFs into interactive",
+    "rev": null,
+    "target": "personal workflow users in Productivity",
+    "fallbackFrom": "Productivity"
+   }
+  ]
+ },
+ "iot-hardware": {
+  "category": "IoT & Hardware",
+  "count": 1,
+  "samples": [
+   {
+    "name": "Melbah",
+    "desc": "Melbah offers a wireless charger for cars",
+    "rev": 534,
+    "target": "validated niche workflow users in IoT & Hardware"
+   }
+  ],
+  "fallback": [
+   {
+    "name": "Voltage Learning",
+    "desc": "Helping electrical and computer engineers find hardware roles through company-specific interview question banks, exercises, resume-tools, and behavioral questions",
+    "rev": 2400,
+    "target": "guided learning users in Education",
+    "fallbackFrom": "Education"
+   },
+   {
+    "name": "P",
+    "desc": "Health & Fitness Mobile app in the sleep/recovery tracking space. Runs fully on-device. All traffic through organic channels.",
+    "rev": 1500,
+    "target": "validated niche workflow users in Private Venture",
+    "fallbackFrom": "Private Venture"
+   },
+   {
+    "name": "Estaraht LLC",
+    "desc": "Arabic-language online therapy platform. Clients book 45-minute counseling sessions with licensed therapists and attend via secure video/audio. Non-emergency care; no prescriptions, medical device sal",
+    "rev": 640,
+    "target": "personalized tracking users in Health & Fitness",
+    "fallbackFrom": "Health & Fitness"
+   },
+   {
+    "name": "Vercel Analytics — Verceltics",
+    "desc": "Native iOS app for Vercel users to check Web Analytics, projects, deployments, domains, referrers, devices, countries, and UTM data from iPhone. Open source, with local token storage in iOS Keychain a",
+    "rev": 109,
+    "target": "builder productivity users in Developer Tools",
+    "fallbackFrom": "Developer Tools"
+   },
+   {
+    "name": "FindIt",
+    "desc": "Introducing FindIt, the ultimate solution to never losing your Bluetooth devices again.",
+    "rev": 42,
+    "target": "validated niche workflow users in Utilities",
+    "fallbackFrom": "Utilities"
+   },
+   {
+    "name": "Mockupia",
+    "desc": "Mockupia offers 700+ high-quality mockups, from devices to apparel, perfect for designers and brands to showcase their work.",
+    "rev": 21,
+    "target": "visual iteration users in Design Tools",
+    "fallbackFrom": "Design Tools"
+   },
+   {
+    "name": "Any Erase",
+    "desc": "Any Erase allows on-device removal of obstacles from your photos along with background removal and custom backgrounds.",
+    "rev": 7,
+    "target": "validated niche workflow users in Utilities",
+    "fallbackFrom": "Utilities"
+   },
+   {
+    "name": "Notifycal",
+    "desc": "Notifycal is a B2B SaaS product that helps appointment-based businesses reduce missed appointments and improve schedule reliability through automation embedded directly into their daily workflows. The",
+    "rev": null,
+    "target": "personal workflow users in Productivity",
+    "fallbackFrom": "Productivity"
+   },
+   {
+    "name": "Xtro",
+    "desc": "World's first cross‑device IDE front‑end. Start in your Mac IDE, continue on your iPhone exactly where you left off.",
+    "rev": null,
+    "target": "builder productivity users in Developer Tools",
+    "fallbackFrom": "Developer Tools"
+   },
+   {
+    "name": "Photo Swipe",
+    "desc": "The fastest and easiest way to clean up photos on your device using swipe gestures.",
+    "rev": null,
+    "target": "mobile utility users in Mobile Apps",
+    "fallbackFrom": "Mobile Apps"
+   },
+   {
+    "name": "Heartbeat Hero",
+    "desc": "Heartbeat Hero — award-winning iOS CPR training app. Teaches life-saving skills in under 10 mins via interactive lessons, rhythm & depth training using iPhone sensors, and an AI-powered 999/911 call s",
+    "rev": null,
+    "target": "guided learning users in Education",
+    "fallbackFrom": "Education"
+   }
+  ]
+ },
+ "social-media": {
+  "category": "Social Media",
+  "count": 33,
+  "samples": [
+   {
+    "name": "POST BRIDGE",
+    "desc": "Post your content to multiple social media platforms at the same time, all-in one place.",
+    "rev": 43000,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "Last Followed",
+    "desc": "A tool for tracking recent Instagram follows and activity, letting users see when new accounts are followed.",
+    "rev": 7100,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "FeedGuardians",
+    "desc": "FeedGuardians is an AI-powered social media moderation and engagement tool for Instagram, Facebook, TikTok, X, BlueSky and YouTube. It automatically filters spam, toxic, and negative comments, generat",
+    "rev": 6400,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "RTMP.IN",
+    "desc": "Go live on Instagram from your computer with OBS, XSplit, vMix, SLOBS, Wirecast, VidBlasterX, Restream, CameraFi Live, StreamYard, YouStreamer, OneStream or any streaming software or online service.",
+    "rev": 6300,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "Social Networking App B2C",
+    "desc": "Growing, profitable niche social networking app. - 4.7 stars 1500+ stars across App / Play Store - 50k users all time - 10k MAU - 1.8k DAU - 4-5k WAU - Generally in top 20-50 for Social Networking -",
+    "rev": 4100,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "PostPlanify",
+    "desc": "PostPlanify is an all-in-one social media management platform to plan, schedule, and manage content across multiple platforms. Keep everything organized in one place and stay consistent without switch",
+    "rev": 2600,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "Tokfluence",
+    "desc": "Drive More Sales With the Right TikTok Influencers. 250 Million profiles analyzed and 10 Million curated creators list.Search by niche and location, access real engagement data, and launch high-conver",
+    "rev": 2100,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "Social Growth LLC",
+    "desc": "Automates Instagram activities to increase followers and profile visits. Additionally it removes ghost followers and dead accounts.",
+    "rev": 1500,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "inkiro ai",
+    "desc": "inkiro ai helps sales teams create and post authentic content on LinkedIn.",
+    "rev": 970,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "divinetalk",
+    "desc": "DivineTalk offers personalized conversations based on Scripture to help you navigate life's challenges.",
+    "rev": 845,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "myterrace.net",
+    "desc": "A platform offering football (soccer) clubs instant match day graphics.",
+    "rev": 571,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "CommentHunter.click - Extract Social Media Comments",
+    "desc": "Paste a URL. Get clean data. CSV, Excel, JSON. Stop scrolling manually — export thousands of comments in seconds, not hours. TikTok | Instagram | YouTube | Facebook | X(Twitter) | Threads | LinkedIn",
+    "rev": 45,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "MyTree: Anonymous Messages & Gifts",
+    "desc": "MyTree is a social interaction platform that lets users create personalized virtual trees to receive anonymous or public messages and virtual gifts. Users share a unique link, collect messages from",
+    "rev": 22,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "Warbl - Engage faster on X",
+    "desc": "Generate perfect replies on X (Twitter) in one click. AI-powered Chrome extension with personalized voice profiles, smart web search, and image analysis.",
+    "rev": 14,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "Post See",
+    "desc": "Post-See is a social media automation platform that helps creators, businesses, and marketers create content once and publish it across multiple social networks from a single dashboard. Schedule posts",
+    "rev": 12,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "Peekuin - Followings Tracker",
+    "desc": "Peekuin lets you see who any public Instagram account recently followed — in chronological order, completely anonymously, and without ever needing their password.",
+    "rev": 10,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "BulletSocial",
+    "desc": "BulletSocial is a tool for scheduling and auto-posting content to multiple social media platforms. Primed to expand into marketing niches not \"generic scheduler\".",
+    "rev": 8,
+    "target": "social workflow users in Social Media"
+   },
+   {
+    "name": "Talks",
+    "desc": "Talks – Private Chat is a secure messaging app built for true privacy. Enjoy end-to-end encrypted chats, anonymous mode, voice messages, media sharing, and private group chats. Messages self-destruct",
+    "rev": 7,
+    "target": "social workflow users in Social Media"
+   }
+  ]
+ },
+ "entertainment": {
+  "category": "Entertainment",
+  "count": 30,
+  "samples": [
+   {
+    "name": "Project A",
+    "desc": "Project A is a popular AI-powered fortune-telling and astrology app with more than 50 Million downloads and 1M Active users. It provides personalized readings—including tarot, astrology, clairvoyance,",
+    "rev": 86000,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "CoupleAI",
+    "desc": "The platform (mobile and web) has achieved stable recurring revenue in less than one year of operation, with healthy margins and low operational overhead. The project has already built a strong presen",
+    "rev": 6500,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Okfans",
+    "desc": "OnlyFans alternative.",
+    "rev": 5300,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Livesync",
+    "desc": "Livesync is the #1 cloud-based real-time face swap platform, ranking #1 on Google for \"live face swap.\" 25K+ active users transform their appearance instantly during live streams, video calls, and con",
+    "rev": 3600,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "FastPrank",
+    "desc": "SaaS selling AI-generated prank content, acquired 100% organically through TikTok, targeting the French market.",
+    "rev": 2500,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Legendsverse",
+    "desc": "Legendsverse is an action figures tracking app.",
+    "rev": 1700,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Rift: Reality Shifting",
+    "desc": "Rift is the ultimate reality shifting companion, allowing users to build detailed scripts for desired realities, practice guided shifting methods, and track their journey.",
+    "rev": 814,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "AI Prank Call",
+    "desc": "real time AI Prank Call that make hilarious prank calls using AI-powered celebrity voices.",
+    "rev": 348,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Dockitty",
+    "desc": "3800 MAU | Apple Featured | no server cost",
+    "rev": 348,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Chain Text Generator",
+    "desc": "Use AI to create custom, funny, outrageous emoji-filled chain texts.",
+    "rev": 273,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Betting Tips",
+    "desc": "Betting Tips Pro delivers daily expert tips for football, basketball, tennis, American football, and baseball from around the world, providing exclusive insights with Premium tips and daily notificati",
+    "rev": 166,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Comic Book Maker, Manga: RYU",
+    "desc": "RYU transforms your photos into stunning comic-style artwork, letting you star in personalized stories across multiple art styles.",
+    "rev": 40,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "CharacterGPT: Celebrity Chat",
+    "desc": "Create your AI companion or chat with celebrity personalities. Every conversation feels authentic with unique memories and emotions.",
+    "rev": 25,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Very Important Question",
+    "desc": "Create questions with rigged answers to share with your friends.",
+    "rev": 24,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Nyancat Game",
+    "desc": "",
+    "rev": null,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Pulse Lyrics",
+    "desc": "Pulse Lyrics is an iOS utility that brings real-time synced lyrics to the Lock Screen and Dynamic Island using Apple's Live Activities. Seamlessly integrating with Spotify and Apple Music, it allows u",
+    "rev": null,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Couplee - Couple fun app",
+    "desc": "Couplee - Couple fun app",
+    "rev": null,
+    "target": "validated niche workflow users in Entertainment"
+   },
+   {
+    "name": "Halulu is Hungry",
+    "desc": "Halulu is Hungry is a subscription service offering entertainment content.",
+    "rev": null,
+    "target": "validated niche workflow users in Entertainment"
+   }
+  ]
+ },
+ "games": {
+  "category": "Games",
+  "count": 24,
+  "samples": [
+   {
+    "name": "imposter․ai",
+    "desc": "imposter.ai is the social deduction party game where bluffing and guessing collide — now with Party Mode, Online Play, and AI-powered categories.",
+    "rev": 36000,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Kickly - Pronos Coupe du Monde ⚽",
+    "desc": "Pronostics sportifs.",
+    "rev": 7100,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Werewolf : Undercover",
+    "desc": "The app narrates your Werewolf games with immersive audio.",
+    "rev": 4300,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Cool Game",
+    "desc": "Mobile game with 1,000 DAU. No ad spend. Just growing organically. With Stripe online payments as well it averages ~10-12k a month in sales.",
+    "rev": 4000,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Idle Browser Game (PC/Mobile)",
+    "desc": "Highly addictive game, revenue comes from upgrades/power-up purchases. No marketing efforts were made (yet). Easily marketable with huge growth potential. Could be pivoted to a crypto/web3 game",
+    "rev": 1900,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Who's The Impostor",
+    "desc": "Party game that became very popularized on TikTok. Everyone receives the same word, except the impostor(s). Everyone must take turns saying something to prove they know the word, without saying the wo",
+    "rev": 1000,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Dare to Share",
+    "desc": "A party game app with various categories of fun and daring questions. Both iOS and Android",
+    "rev": 744,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Embervale.TV",
+    "desc": "~800 DAU - A cross-platform video game experience designed for streamers. Engage your audience across Twitch, Web browsers, Steam, and Android.",
+    "rev": 595,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Sip 'N Sin",
+    "desc": "The ultimate social drinking game for couples, friends, and strangers. Dive into hundreds of spicy questions, daring challenges, and \"Never Have I Ever\" secrets.",
+    "rev": 98,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Advantage Player",
+    "desc": "I've developed an application that calculates exact EV and optimal strategy for certain card games (first one was BlackJack).",
+    "rev": 67,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Sportsdle",
+    "desc": "Play free daily sports wordle games! Guess the mystery NFL, MLB, or NHL player using stats and hints. New challenges every day for football, baseball, and hockey fans.",
+    "rev": 6,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "2048 - Classic Number Puzzle",
+    "desc": "This 2048 Classic Number Puzzle game designed for focus, relaxation, and challenge. Swipe to merge number tiles, plan your moves carefully, and aim to reach the 2048 tile and beyond. Choose the board",
+    "rev": 3,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "HeyServer.io",
+    "desc": "HeyServer.io is the first AI-powered Game Hosting company. With servers across the globe, HeyServer offers the latest available hosting infrastructure for gaming. Running natural language commands, us",
+    "rev": null,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "TCG Battle Cards",
+    "desc": "A trading card game app where users can build decks, trade cards, and engage in PvP battles.",
+    "rev": null,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Meta Royale Decks",
+    "desc": "AI Deck Builder for Clash Royale Get AI-powered deck building perfectly adapted to your card levels and collection. Download now and start winning! 20k+ Users Monetized with ads",
+    "rev": null,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "BlastGO",
+    "desc": "An addictive block game",
+    "rev": null,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Clash of Pantheons",
+    "desc": "Clash of Pantheons blends deep strategic gameplay with a rich mythological atmosphere. Build your deck. Command legendary powers. Outsmart your rivals.",
+    "rev": null,
+    "target": "repeatable game loop users in Games"
+   },
+   {
+    "name": "Wordcra",
+    "desc": "A social and multiplayer word game monetized with in-app purchase and 10 mobile ad networks through mediation",
+    "rev": null,
+    "target": "repeatable game loop users in Games"
+   }
+  ]
+ },
+ "community": {
+  "category": "Community",
+  "count": 12,
+  "samples": [
+   {
+    "name": "Advise.so",
+    "desc": "Vibrant and active community of marketers",
+    "rev": 18000,
+    "target": "validated niche workflow users in Community"
+   },
+   {
+    "name": "CrowdField",
+    "desc": "CrowdField is a prosumer platform for Oil & Gas and energy professionals, built as a side project using a no-code stack and grown organically via LinkedIn. It offers career-grade tools, interactive ap",
+    "rev": 4700,
+    "target": "validated niche workflow users in Community"
+   },
+   {
+    "name": "OpenHunts - A Launch Place",
+    "desc": "Discover and launch new tech products on OpenHunts—a Product Hunt alternative for makers and developers. Explore, upvote, and submit your startup today.",
+    "rev": 853,
+    "target": "validated niche workflow users in Community"
+   },
+   {
+    "name": "Friends Map",
+    "desc": "Peaked at $7K MRR. Dying now cuz I hate marketing.",
+    "rev": 493,
+    "target": "validated niche workflow users in Community"
+   },
+   {
+    "name": "Disqus Alternative",
+    "desc": "A cloud-based platform that powers website discussions, offering moderation tools, spam protection, and user engagement features—all without building your own comment system.",
+    "rev": 298,
+    "target": "validated niche workflow users in Community"
+   },
+   {
+    "name": "GurjarApp Social Media Platform",
+    "desc": "A community-based social media platform built 5 years ago for fun, now with 212K+ users and a premium .app domain. Features include image/video posts, WhatsApp-like stories, real-time messaging, video",
+    "rev": 80,
+    "target": "validated niche workflow users in Community"
+   },
+   {
+    "name": "PlotChat",
+    "desc": "PlotChat is an AI chat platform that allows you to chat with your favorite characters.",
+    "rev": 70,
+    "target": "validated niche workflow users in Community"
+   },
+   {
+    "name": "Promptzone",
+    "desc": "Built PromptZone as a home for prompt creators and AI tinkerers. Got a solid community that's genuinely into this stuff — people sharing prompts, learning together, talking about what works. The AI sp",
+    "rev": null,
+    "target": "validated niche workflow users in Community"
+   },
+   {
+    "name": "LockedIn",
+    "desc": "A platform for builders and founders to track their work and stay accountable to their goals.",
+    "rev": null,
+    "target": "validated niche workflow users in Community"
+   },
+   {
+    "name": "Lovaround",
+    "desc": "A global map connecting creative hackers and indie makers.",
+    "rev": null,
+    "target": "validated niche workflow users in Community"
+   },
+   {
+    "name": "Myfoundrly",
+    "desc": "The premium destination for the modern indie builder. Showcase your work, own your audience.",
+    "rev": null,
+    "target": "validated niche workflow users in Community"
+   },
+   {
+    "name": "IndieMap",
+    "desc": "Curated directory + community of indie hackers globally built-in audience for tools, newsletters, or SaaS targeting the maker/solo founder market.",
+    "rev": null,
+    "target": "validated niche workflow users in Community"
+   }
+  ]
+ },
+ "travel": {
+  "category": "Travel",
+  "count": 10,
+  "samples": [
+   {
+    "name": "Travy",
+    "desc": "App that lets you build travel itineraries for your upcoming trips.",
+    "rev": 821,
+    "target": "planning workflow users in Travel"
+   },
+   {
+    "name": "Travedeus",
+    "desc": "Travedeus is a travel agency website builder.",
+    "rev": 348,
+    "target": "planning workflow users in Travel"
+   },
+   {
+    "name": "China Survival Kit",
+    "desc": "Provides a digital guide to help travelers navigate China, including VPN recommendations and emergency phrase cards.",
+    "rev": 34,
+    "target": "planning workflow users in Travel"
+   },
+   {
+    "name": "Natal Navigator",
+    "desc": "NatalNavigator is a web app that generates your natal chart and maps it across the globe using astrocartography. It shows which locations on earth support or work against different areas of your life,",
+    "rev": 23,
+    "target": "planning workflow users in Travel"
+   },
+   {
+    "name": "Helpy Travel",
+    "desc": "Helpy Travel is a management platform tailored for Property Managers, designed to help them maximize revenue from guest stays by leveraging strategic partnerships, affiliate programs, and value-added",
+    "rev": null,
+    "target": "planning workflow users in Travel"
+   },
+   {
+    "name": "OKstays",
+    "desc": "OKstays makes finding the perfect hotel easy. Our AI analyzes thousands of real guest reviews to rank hotels by genuine comfort and quality. Compare and book fast with personalized filters and honest",
+    "rev": null,
+    "target": "planning workflow users in Travel"
+   },
+   {
+    "name": "GuestGuidePDF",
+    "desc": "We help STR hosts/property owners with personalized guest guidebooks in minutes.",
+    "rev": null,
+    "target": "planning workflow users in Travel"
+   },
+   {
+    "name": "BudgieAI - Travel Expense App",
+    "desc": "A smart expense tracking app for all world travellers",
+    "rev": null,
+    "target": "planning workflow users in Travel"
+   },
+   {
+    "name": "TheVerifiedHost",
+    "desc": "TheVerifiedHost is an identity and property verification platform for rental hosts. Hosts verify their ID and property ownership, get a trust badge, and share it anywhere — Facebook groups, WhatsApp,",
+    "rev": null,
+    "target": "planning workflow users in Travel"
+   },
+   {
+    "name": "lume.guide",
+    "desc": "Lume.Guide is a digital marketplace where travel creators sell curated city and travel guides as one-time digital downloads.",
+    "rev": null,
+    "target": "planning workflow users in Travel"
+   }
+  ]
+ },
+ "news-magazines": {
+  "category": "News & Magazines",
+  "count": 7,
+  "samples": [
+   {
+    "name": "Tactical Football Analysis",
+    "desc": "Since 2018, the leader in detailed tactical football analysis, including tactics, scout reports, and stats. TFA subscribers include all Premier League clubs.",
+    "rev": 7100,
+    "target": "validated niche workflow users in News & Magazines"
+   },
+   {
+    "name": "StatsPanda.com",
+    "desc": "Explore live statistics on countries, U.S. states, population data, and global trends. Real-time counters and comprehensive demographic insights.",
+    "rev": 168,
+    "target": "validated niche workflow users in News & Magazines"
+   },
+   {
+    "name": "Amazing Newsletters",
+    "desc": "Discover top newsletters tailored for you! Browse our curated collection, categorized by topics, languages, pricing, and more. Elevate your inbox today!",
+    "rev": null,
+    "target": "validated niche workflow users in News & Magazines"
+   },
+   {
+    "name": "DubaiWoofs",
+    "desc": "One stop hub for those relocating to Dubai with their dogs with the expat population on track to reach approximately 5.15 million by 2030. Already set up for SEO and programmatic SEO. Super niche wit",
+    "rev": null,
+    "target": "validated niche workflow users in News & Magazines"
+   },
+   {
+    "name": "Personal News",
+    "desc": "Provides daily audio news in under 5 minutes",
+    "rev": null,
+    "target": "validated niche workflow users in News & Magazines"
+   },
+   {
+    "name": "DevSuite",
+    "desc": "A directory website of tools that help developers ship faster.",
+    "rev": null,
+    "target": "validated niche workflow users in News & Magazines"
+   },
+   {
+    "name": "IdeasPlusBusiness",
+    "desc": "IdeasPlusBusiness.com is an established digital publication focused on entrepreneurship, small business strategy, startups, and growth insights. The platform features evergreen, search-optimized conte",
+    "rev": null,
+    "target": "validated niche workflow users in News & Magazines"
+   }
+  ]
+ }
+}

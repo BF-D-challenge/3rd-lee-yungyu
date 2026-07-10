@@ -1,4 +1,11 @@
 ---
+name: class101-윤민정-cso-ai-프로덕트-빌딩-강의대본
+description: 윤민정(Class101 CSO) 진행, 김시현·네오 게스트의 "AI시대 누구나 혼자서도 시작 가능한 프로덕트 빌딩" 유튜브 강의 자동 자막 대본 원문 — 수익화·성장 설계 프레임워크의 1차 원천 자료(minjung-coach 스킬의 근거 문서). 음성 인식 오류가 포함된 원문 보존본.
+metadata:
+  type: reference
+  topic: class101-lecture
+  category: transcript
+  date: 2026-07-06
 title: "빅테크 C레벨 & PO가 작정하고 푸는 AI시대 누구나 혼자서도 시작 가능한 프로덕트 빌딩"
 source: youtube
 source_url: https://www.youtube.com/watch?v=QftqZM-_iAk

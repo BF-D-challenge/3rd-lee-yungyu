@@ -1,5 +1,7 @@
 // PRD §8 계측. v4 단계에선 GA4 미연결 — 콘솔+localStorage 적재로 실측을 대체한다.
 
+import { authenticatedForTracking } from "./auth-session";
+
 const EVENTS_KEY = "events";
 
 let memSid: string | null = null; // 스토리지 차단 환경 폴백
@@ -18,7 +20,7 @@ const sid = (): string => {
 
 export function track(event: string, params: Record<string, unknown> = {}): void {
   if (typeof window === "undefined") return;
-  const entry = { event, session_id: sid(), is_logged_in: false, ts: Date.now(), ...params };
+  const entry = { event, session_id: sid(), is_logged_in: authenticatedForTracking(), ts: Date.now(), ...params };
   (window as { gtag?: (...args: unknown[]) => void }).gtag?.("event", event, entry);
   try {
     const log = JSON.parse(localStorage.getItem(EVENTS_KEY) ?? "[]") as unknown[];

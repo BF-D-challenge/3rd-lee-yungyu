@@ -1,0 +1,218 @@
+{
+  "runs": 100000,
+  "sourceCards": 73,
+  "quarantinedCards": 6,
+  "cards": 67,
+  "hypotheses": {
+    "H0_current": "현재처럼 첫 두 취향의 1차 카테고리에서 무작위 선택",
+    "H1_all_preferences": "선택한 모든 취향에 동일한 노출 기회",
+    "H2_semantic_fit": "다중 카테고리·형태·문구 신호로 취향 적합 풀 구성",
+    "H3_fit_plus_contrast": "취향 적합 풀에서 두 번째 카드의 차별성 재정렬",
+    "H4_balanced_coverage": "적합도 가중 추첨과 차별성 재정렬로 품질·전체 카드 노출 균형",
+    "H5_best_of_three": "정규화된 충돌 감점으로 최대 세 후보만 비교",
+    "H6_appeal_first_cohort": "사람 검수 10장 hard filter + 균등 추첨 + 최대 세 후보 비교"
+  },
+  "fixedPreferences": [
+    "local",
+    "light-fun",
+    "friend-vote"
+  ],
+  "appealCohort": {
+    "cards": 10,
+    "pools": {
+      "make-now": 1,
+      "share-reaction": 5,
+      "paid": 0,
+      "community": 4,
+      "ai-tools": 0,
+      "one-day": 4,
+      "friend-vote": 5,
+      "content": 3,
+      "light-fun": 7,
+      "b2b": 0,
+      "local": 5,
+      "education": 3
+    }
+  },
+  "preferencePools": {
+    "make-now": {
+      "currentExactCards": 9,
+      "semanticCards": 18,
+      "balancedCards": 25,
+      "maxScore": 11
+    },
+    "share-reaction": {
+      "currentExactCards": 1,
+      "semanticCards": 3,
+      "balancedCards": 21,
+      "maxScore": 13
+    },
+    "paid": {
+      "currentExactCards": 3,
+      "semanticCards": 5,
+      "balancedCards": 18,
+      "maxScore": 13
+    },
+    "community": {
+      "currentExactCards": 5,
+      "semanticCards": 5,
+      "balancedCards": 14,
+      "maxScore": 13
+    },
+    "ai-tools": {
+      "currentExactCards": 3,
+      "semanticCards": 2,
+      "balancedCards": 10,
+      "maxScore": 13
+    },
+    "one-day": {
+      "currentExactCards": 1,
+      "semanticCards": 8,
+      "balancedCards": 34,
+      "maxScore": 13
+    },
+    "friend-vote": {
+      "currentExactCards": 2,
+      "semanticCards": 5,
+      "balancedCards": 21,
+      "maxScore": 13
+    },
+    "content": {
+      "currentExactCards": 3,
+      "semanticCards": 3,
+      "balancedCards": 12,
+      "maxScore": 13
+    },
+    "light-fun": {
+      "currentExactCards": 2,
+      "semanticCards": 6,
+      "balancedCards": 10,
+      "maxScore": 13
+    },
+    "b2b": {
+      "currentExactCards": 1,
+      "semanticCards": 4,
+      "balancedCards": 28,
+      "maxScore": 15
+    },
+    "local": {
+      "currentExactCards": 0,
+      "semanticCards": 3,
+      "balancedCards": 20,
+      "maxScore": 13
+    },
+    "education": {
+      "currentExactCards": 3,
+      "semanticCards": 5,
+      "balancedCards": 15,
+      "maxScore": 13
+    }
+  },
+  "methods": {
+    "H0_current": {
+      "meanPreferenceFitScore": 9.62,
+      "preferenceFitRate": 0.781,
+      "latePreferenceExposureRate": 0,
+      "localMismatchRate": 0.7,
+      "meanPairContrastScore": 11.76,
+      "sameCategoryRate": 0.019,
+      "sameFormatRate": 0.338,
+      "samePsychologyRate": 0.012,
+      "sameOutputShapeRate": 0.01,
+      "highLexicalSimilarityRate": 0.01,
+      "contrastPassRate": 0.66,
+      "uniqueCardsSeen": 67,
+      "maxCardShare": 0.224
+    },
+    "H1_all_preferences": {
+      "meanPreferenceFitScore": 9.55,
+      "preferenceFitRate": 0.781,
+      "latePreferenceExposureRate": 0.25,
+      "localMismatchRate": 0.702,
+      "meanPairContrastScore": 11.77,
+      "sameCategoryRate": 0.019,
+      "sameFormatRate": 0.334,
+      "samePsychologyRate": 0.014,
+      "sameOutputShapeRate": 0.01,
+      "highLexicalSimilarityRate": 0.01,
+      "contrastPassRate": 0.662,
+      "uniqueCardsSeen": 67,
+      "maxCardShare": 0.2
+    },
+    "H2_semantic_fit": {
+      "meanPreferenceFitScore": 10.91,
+      "preferenceFitRate": 1,
+      "latePreferenceExposureRate": 0.251,
+      "localMismatchRate": 0,
+      "meanPairContrastScore": 11.31,
+      "sameCategoryRate": 0.073,
+      "sameFormatRate": 0.285,
+      "samePsychologyRate": 0.075,
+      "sameOutputShapeRate": 0.036,
+      "highLexicalSimilarityRate": 0.036,
+      "contrastPassRate": 0.664,
+      "uniqueCardsSeen": 11,
+      "maxCardShare": 0.125
+    },
+    "H3_fit_plus_contrast": {
+      "meanPreferenceFitScore": 11.77,
+      "preferenceFitRate": 1,
+      "latePreferenceExposureRate": 0.249,
+      "localMismatchRate": 0,
+      "meanPairContrastScore": 12.38,
+      "sameCategoryRate": 0,
+      "sameFormatRate": 0.191,
+      "samePsychologyRate": 0.001,
+      "sameOutputShapeRate": 0,
+      "highLexicalSimilarityRate": 0,
+      "contrastPassRate": 0.808,
+      "uniqueCardsSeen": 11,
+      "maxCardShare": 0.15
+    },
+    "H4_balanced_coverage": {
+      "meanPreferenceFitScore": 11.53,
+      "preferenceFitRate": 1,
+      "latePreferenceExposureRate": 0.25,
+      "localMismatchRate": 0,
+      "meanPairContrastScore": 12.38,
+      "sameCategoryRate": 0,
+      "sameFormatRate": 0.192,
+      "samePsychologyRate": 0.001,
+      "sameOutputShapeRate": 0,
+      "highLexicalSimilarityRate": 0,
+      "contrastPassRate": 0.807,
+      "uniqueCardsSeen": 40,
+      "maxCardShare": 0.162
+    },
+    "H5_best_of_three": {
+      "meanPreferenceFitScore": 10.48,
+      "preferenceFitRate": 1,
+      "latePreferenceExposureRate": 0.25,
+      "localMismatchRate": 0,
+      "meanPairContrastScore": 12.65,
+      "sameCategoryRate": 0,
+      "sameFormatRate": 0.1,
+      "samePsychologyRate": 0.004,
+      "sameOutputShapeRate": 0,
+      "highLexicalSimilarityRate": 0,
+      "contrastPassRate": 0.896,
+      "uniqueCardsSeen": 40,
+      "maxCardShare": 0.123
+    },
+    "H6_appeal_first_cohort": {
+      "meanPreferenceFitScore": 8.85,
+      "preferenceFitRate": 1,
+      "latePreferenceExposureRate": 0.251,
+      "localMismatchRate": 0,
+      "meanPairContrastScore": 12.89,
+      "sameCategoryRate": 0,
+      "sameFormatRate": 0.021,
+      "samePsychologyRate": 0,
+      "sameOutputShapeRate": 0,
+      "highLexicalSimilarityRate": 0,
+      "contrastPassRate": 0.979,
+      "uniqueCardsSeen": 10,
+      "maxCardShare": 0.135
+    }
+  }
+}

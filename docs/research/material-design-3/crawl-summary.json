@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-07-10T04:24:38.294Z",
+  "input_dir": "docs/research/material-design-3/shards",
+  "output_dir": "docs/research/material-design-3",
+  "datasets": [
+    {
+      "type": "pages",
+      "shard_count": 4,
+      "row_count": 403,
+      "output_path": "docs/research/material-design-3/pages.jsonl"
+    },
+    {
+      "type": "sections",
+      "shard_count": 4,
+      "row_count": 3277,
+      "output_path": "docs/research/material-design-3/sections.jsonl"
+    },
+    {
+      "type": "tokens",
+      "shard_count": 4,
+      "row_count": 2970,
+      "output_path": "docs/research/material-design-3/tokens.jsonl"
+    },
+    {
+      "type": "examples",
+      "shard_count": 4,
+      "row_count": 3673,
+      "output_path": "docs/research/material-design-3/examples.jsonl"
+    }
+  ]
+}

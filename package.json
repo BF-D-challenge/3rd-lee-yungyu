@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "npm run typecheck"
+    "test": "npm run typecheck",
+    "quality:cards": "node scripts/rollout/validate-golden.mjs public/data/golden.json && node scripts/rollout/check-golden-visible-smells.mjs && node scripts/rollout/audit-golden-human-fit.mjs --minScore 72 --label latest && node scripts/rollout/experiment-mobile-card-pairing.mjs --runs 20000"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
