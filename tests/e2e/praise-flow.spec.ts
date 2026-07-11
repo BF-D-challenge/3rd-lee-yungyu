@@ -65,8 +65,9 @@ test.describe("익명 칭찬 통합 시나리오", () => {
 
     await page.goto(`/praise/${request.slug}`);
     await expect(page.getByRole("heading", { name: request.card.title })).toBeVisible();
+    await page.getByRole("button", { name: "익명 응원 보내기" }).click();
     await page.getByRole("button", { name: selectedPraise }).click();
-    await page.getByRole("radio", { name: "계속 익명" }).check();
+    await page.getByRole("radio", { name: "기본 · 계속 익명으로 보낼게요" }).check();
     await page.getByRole("button", { name: "이 칭찬 카드 보내기" }).click();
 
     await expect(page.getByRole("heading", { name: "오늘의 칭찬을 보냈어요." })).toBeVisible();
@@ -100,8 +101,9 @@ test.describe("익명 칭찬 통합 시나리오", () => {
     const senderName = "삼십일뒤공개이름";
 
     await page.goto(`/praise/${request.slug}`);
+    await page.getByRole("button", { name: "익명 응원 보내기" }).click();
     await page.getByRole("button", { name: selectedPraise }).click();
-    await page.getByRole("radio", { name: "30일 뒤 이름 공개에 동의" }).check();
+    await page.getByRole("radio", { name: "선택 · 30일 뒤 이름 공개에 동의해요" }).check();
     await page.getByPlaceholder("공개할 이름(선택)").fill(senderName);
     await page.getByRole("button", { name: "이 칭찬 카드 보내기" }).click();
     await expect(page.getByRole("heading", { name: "오늘의 칭찬을 보냈어요." })).toBeVisible();
@@ -113,7 +115,7 @@ test.describe("익명 칭찬 통합 시나리오", () => {
     await openPraiseTab(page);
 
     await expect(page.getByRole("button", { name: "오늘의 칭찬 카드 뒤집기" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "누가 보냈는지 보기" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "990원에 지금 확인" })).toBeVisible();
     await expectNoPrivateText(page, senderName);
 
     await page.clock.setFixedTime(addDays(FIXED_NOW, 30));
@@ -126,7 +128,7 @@ test.describe("익명 칭찬 통합 시나리오", () => {
     await page.getByRole("button", { name: "오늘의 칭찬 카드 뒤집기" }).click();
     await expect(page.getByText(selectedPraise, { exact: true })).toBeVisible();
     await expect(page.getByText(senderName, { exact: false })).toBeVisible();
-    await expect(page.getByRole("button", { name: "누가 보냈는지 보기" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "990원에 지금 확인" })).toHaveCount(0);
   });
 
   test("Scenario 9. 칭찬이 없고 공유할 아이디어도 없으면 아이디어 뽑기로 돌아간다", async ({ page }) => {
@@ -134,11 +136,11 @@ test.describe("익명 칭찬 통합 시나리오", () => {
     await openPraiseTab(page);
 
     await expect(page.getByText("아직 도착한 칭찬이 없어요", { exact: true })).toBeVisible();
-    await expect(page.getByRole("button", { name: "칭찬 받아오기" })).toBeVisible();
-    await expect(page.getByRole("button", { name: "누가 보냈는지 보기" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "아이디어 먼저 뽑기" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "990원에 지금 확인" })).toHaveCount(0);
     await expect(page.getByRole("button", { name: "다음 칭찬 미리 보기" })).toHaveCount(0);
 
-    await page.getByRole("button", { name: "칭찬 받아오기" }).click();
+    await page.getByRole("button", { name: "아이디어 먼저 뽑기" }).click();
     await expect(page.locator("section[aria-label='검증된 원본에서 시작하는 네 장 아이디어 제작기']")).toBeVisible();
   });
 
@@ -149,7 +151,7 @@ test.describe("익명 칭찬 통합 시나리오", () => {
     await page.goto("/");
     await openPraiseTab(page);
 
-    await page.getByRole("button", { name: "칭찬 받아오기" }).click();
+    await page.getByRole("button", { name: "링크 다시 공유하기" }).click();
     await expect.poll(async () => shareCalls(page)).toHaveLength(1);
     expect((await shareCalls(page))[0].url).toBe(`${new URL(page.url()).origin}/praise/${request.slug}`);
     expect(await trackedEvents(page)).toEqual(expect.arrayContaining([
@@ -257,7 +259,7 @@ test.describe("익명 칭찬 통합 시나리오", () => {
     await openPraiseTab(page);
     await expectNoPrivateText(page, senderName);
 
-    await page.getByRole("button", { name: "누가 보냈는지 보기" }).click();
+    await page.getByRole("button", { name: "990원에 지금 확인" }).click();
     await expect(page.getByRole("dialog", { name: "이 칭찬을 보낸 사람 확인" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "이 칭찬을 보낸 사람 확인, 준비 중이에요" })).toBeVisible();
     await expectTrackedFeature(page, "sender_identity");
@@ -272,7 +274,7 @@ test.describe("익명 칭찬 통합 시나리오", () => {
     await page.goto("/");
     await openPraiseTab(page);
 
-    await expect(page.getByRole("button", { name: "누가 보냈는지 보기" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "990원에 지금 확인" })).toHaveCount(0);
     await expectNoPrivateText(page, "저장되면안되는이름");
   });
 
@@ -284,12 +286,13 @@ test.describe("익명 칭찬 통합 시나리오", () => {
     await page.goto("/");
     await openPraiseTab(page);
 
-    await expect(page.getByRole("button", { name: "누가 보냈는지 보기" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "990원에 지금 확인" })).toHaveCount(0);
   });
 
   test("Scenario 14. 칭찬 주요 CTA와 전체 문서는 Primary 다크 토큰을 유지한다", async ({ page }) => {
     const request = makePraiseRequest({ id: "request-scenario-14" });
     await page.goto(`/praise/${request.slug}`);
+    await page.getByRole("button", { name: "익명 응원 보내기" }).click();
 
     const sendButton = page.getByRole("button", { name: "이 칭찬 카드 보내기" });
     const colors = await sendButton.evaluate((button) => {

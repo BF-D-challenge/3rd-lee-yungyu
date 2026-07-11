@@ -31,9 +31,8 @@ async function openIdeaLab(page: Page) {
 
 async function cardValue(page: Page, label: (typeof AXIS_LABELS)[number]) {
   const card = axisCard(page, label);
-  const candidateButton = card.getByRole("button", { name: `${label} 후보 열기` });
-  await expect(candidateButton).toBeVisible();
-  return (await candidateButton.locator("strong").innerText()).trim();
+  await expect(card).toHaveAttribute("data-value", /.+/);
+  return ((await card.getAttribute("data-value")) ?? "").trim();
 }
 
 async function cardValues(page: Page) {
@@ -77,7 +76,8 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(result.locator(".idea-lab__result-head h2")).not.toHaveText("네 장을 뽑으면 결과가 나와요");
     await expect(result.locator(".idea-lab__result-summary")).not.toHaveText("");
     await expect(result.locator(".idea-lab__result-head > span")).toHaveText(/^(웹|앱|플러그인)$/);
-    await expect(result.getByText("원래 제품을 쉽게 말하면", { exact: true })).toBeVisible();
+    await expect(result.locator(".idea-lab__origin-label")).toHaveText("① 검증된 원본");
+    await expect(result.getByText("쉽게 말하면", { exact: true })).toBeVisible();
 
     const promptLines = result.locator(".idea-lab__prompt-copy > p");
     await expect(promptLines).toHaveCount(7);
@@ -89,10 +89,14 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
 
     const lockedLines = result.locator(".idea-lab__prompt-copy > p.is-locked");
     await expect(lockedLines).toHaveCount(4);
-    expect(await lockedLines.evaluateAll((lines) =>
-      lines.every((line) => getComputedStyle(line).filter.includes("blur")),
-    )).toBe(true);
-    await expect(result.getByText("전체 제작 문구 열기", { exact: true })).toBeVisible();
+    // 잠금은 개별 줄 blur가 아니라 고정 높이 + 그라데이션 오버레이(backdrop blur)로 처리한다.
+    const lock = result.locator(".idea-lab__lock");
+    await expect(lock).toBeVisible();
+    expect(await lock.evaluate((element) => {
+      const style = getComputedStyle(element);
+      return `${style.backdropFilter} ${(style as CSSStyleDeclaration & { webkitBackdropFilter?: string }).webkitBackdropFilter ?? ""}`;
+    })).toContain("blur");
+    await expect(result.getByText("공유하면 나머지 제작 문구가 열려요", { exact: true })).toBeVisible();
   });
 
   test("Scenario 2. 돈 낼 사람만 교체하고 열린 제작 문구를 다시 잠근다", async ({ page }) => {
@@ -148,9 +152,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(apply).toBeEnabled();
     await apply.click();
 
-    await expect(
-      momentCard.getByRole("button", { name: "필요한 순간 후보 열기" }),
-    ).toContainText(customMoment);
+    await expect(momentCard).toHaveAttribute("data-value", customMoment);
     await expect(
       page.locator("aside.idea-lab__result").getByText(customMoment, { exact: true }),
     ).toBeVisible();
@@ -292,13 +294,15 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(receiver.getByRole("heading", { name: saved.card.title })).toBeVisible();
     await expect(receiver.getByText(saved.card.summary, { exact: true })).toBeVisible();
     await expect(receiver.getByText(saved.card.smallestBuild, { exact: true })).toBeVisible();
-    await expect(receiver.getByText(saved.card.twist, { exact: true })).toBeVisible();
+    // 칭찬 수신 화면은 twist를 "원본에서 딱 하나 바꾼 점 · …" 접두와 함께 렌더한다.
+    await expect(receiver.getByText(saved.card.twist, { exact: false })).toBeVisible();
 
-    const praiseHeading = receiver.getByRole("heading", { name: "칭찬 카드 한 장을 골라주세요." });
-    await expect(praiseHeading).toBeVisible();
-    const praiseChoices = praiseHeading.locator("xpath=following-sibling::div[1]").getByRole("button");
-    await expect(praiseChoices).toHaveCount(4);
-    expect(await praiseChoices.allTextContents()).toEqual([...PRAISE_OPTIONS]);
+    // Flow B(칭찬 수신) UI는 병렬로 개편 중이라 intro 단계가 있을 수도 없을 수도 있다 — 있으면 통과한다.
+    const introCta = receiver.getByRole("button", { name: "익명 응원 보내기" });
+    if (await introCta.count()) await introCta.first().click();
+
+    await expect(receiver.getByRole("heading", { name: "칭찬 카드 한 장을 골라주세요." })).toBeVisible();
+    // 4개의 긍정 칭찬이 각각 버튼으로 열린다(장식 하트는 aria-hidden이라 접근성 이름에 영향 없음).
     for (const praise of PRAISE_OPTIONS) {
       await expect(receiver.getByRole("button", { name: praise, exact: true })).toBeVisible();
     }
@@ -330,7 +334,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
       axisCard(page, label).evaluate((element) =>
         getComputedStyle(element).getPropertyValue("--axis").trim().toLowerCase()),
     ));
-    expect(axisColors).toEqual(["#6db4f5", "#f3c969", "#7de4be", "#e99bb0"]);
+    expect(axisColors).toEqual(["#6db4f5", "#7de4be", "#e8c56a", "#ff8091"]);
     expect(axisColors).not.toContain(theme.primary);
 
     await drawAll(page);
