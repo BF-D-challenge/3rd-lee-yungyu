@@ -9,6 +9,9 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "test": "npm run typecheck",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "test:integration": "npm run test:unit && npm run test:e2e",
     "quality:cards": "node scripts/rollout/validate-golden.mjs public/data/golden.json && node scripts/rollout/check-golden-visible-smells.mjs && node scripts/rollout/audit-golden-human-fit.mjs --minScore 72 --label latest && node scripts/rollout/experiment-mobile-card-pairing.mjs --runs 20000"
   },
   "dependencies": {
@@ -33,6 +36,7 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -41,6 +45,7 @@
     "eslint-config-next": "14.2.35",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.7"
   }
 }

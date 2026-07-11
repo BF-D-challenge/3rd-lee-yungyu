@@ -7,8 +7,8 @@ type Size = "md" | "lg";
 const variants: Record<Variant, string> = {
   // 주요 CTA: Aurora Mesh (PRD §7 — .aurora가 그라데이션·글로우·링 전부 담당)
   aurora: "aurora font-semibold active:translate-y-[1px]",
-  // 보조 시그니처: 솔리드 골드 + 하드 오프셋 그림자
-  gold: "bg-gold text-bg font-semibold shadow-hard active:translate-y-[2px] active:shadow-none",
+  // 레거시 gold 호출부도 Primary 단일색으로 수렴한다.
+  gold: "bg-primary text-white font-semibold shadow-hard hover:bg-[var(--primary-hover)] active:bg-[var(--primary-pressed)] active:translate-y-[2px] active:shadow-none",
   glass: "glass text-ink hover:bg-white/10",
   ghost: "text-mist hover:text-ink",
 };

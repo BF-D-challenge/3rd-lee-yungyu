@@ -8,12 +8,11 @@
 
 | 파일 | 역할 |
 |---|---|
-| recommended-four-card-flow-motion.html | Flow A/B 모션 작업본 |
 | four-card-structure-options.html | 네 카드 분류 13개 비교 |
 | mobile-slot-candidates.html | 전체 모바일 플로우 기준 |
 | app-store-trending-top-100.html | 국가별 App Store 상위 100 감사 |
 | trustmrr-original-top-100.html | TrustMRR 원본 상위 100 감사 |
-| pixel-campfire-analysis.html | 픽셀 모닥불 구조 분석 |
+| archive/pixel-campfire-analysis.html | 폐기된 픽셀 모닥불 구조 분석 레퍼런스 |
 
 ## 하위 폴더
 
@@ -22,4 +21,7 @@
 - bfd-setup/: 개발 환경 안내
 - archive/: 폐기하지 않고 보존하는 과거 구현 문서와 체크포인트
 
-사각 모닥불 이전 체크포인트는 archive/flow-checkpoints/에 보존한다.
+Flow A/B 모션 아카이브:
+
+- archive/flow-checkpoints/recommended-four-card-flow-motion.html: 확정된 Flow A/B 모션 정본
+- archive/flow-checkpoints/recommended-four-card-flow-motion-before-square-campfire.html: 사각 모닥불 이전 체크포인트

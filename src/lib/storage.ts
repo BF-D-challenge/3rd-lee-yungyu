@@ -56,6 +56,7 @@ export const addPublished = (card: PublishedCard): void => {
 export type VoteType = "need" | "notify" | "watch" | "cheer";
 
 export interface Vote {
+  id?: string;
   type: VoteType;
   comment?: string;
   at: number;
@@ -63,10 +64,11 @@ export interface Vote {
 
 export const loadVotes = (slug: string): Vote[] => readArray<Vote>(KEYS.votes(slug));
 export const addVote = (slug: string, vote: Vote): void => {
+  if (hasVoted(slug)) return;
   write(KEYS.votes(slug), [...loadVotes(slug), vote]);
   write(KEYS.voted(slug), true);
 };
-export const hasVoted = (slug: string): boolean => read<boolean>(KEYS.voted(slug)) ?? false;
+export const hasVoted = (slug: string): boolean => read<unknown>(KEYS.voted(slug)) === true;
 
 /** 응원 직후 한마디만 뒤늦게 붙일 때 — 표는 늘리지 않고 마지막 응원에 코멘트만 단다 */
 export const attachComment = (slug: string, comment: string): void => {

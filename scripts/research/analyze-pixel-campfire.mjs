@@ -6,8 +6,10 @@ if (!sourcePath) throw new Error("Usage: node analyze-pixel-campfire.mjs <source
 
 const root = process.cwd();
 const researchDir = path.join(root, "docs/research/pixel-campfire");
-const devHtml = path.join(root, "docs/dev/pixel-campfire-analysis.html");
+const devArchiveDir = path.join(root, "docs/dev/archive");
+const devHtml = path.join(devArchiveDir, "pixel-campfire-analysis.html");
 fs.mkdirSync(researchDir, { recursive: true });
+fs.mkdirSync(devArchiveDir, { recursive: true });
 
 const source = fs.readFileSync(sourcePath, "utf8");
 fs.writeFileSync(path.join(researchDir, "original.scss"), source);

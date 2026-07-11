@@ -11,6 +11,7 @@ const config: Config = {
         ink: "var(--ink)",
         mist: "var(--muted)",
         caption: "var(--caption)",
+        primary: "var(--primary)",
         gold: "var(--gold)",
         glow: "var(--glow)",
         rose: "var(--rose)",
