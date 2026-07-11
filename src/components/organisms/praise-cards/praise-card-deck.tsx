@@ -35,8 +35,14 @@ export interface PraiseCardDeckProps extends Omit<HTMLAttributes<HTMLElement>, "
   hasNextCard?: boolean;
   palette?: Partial<PraiseCardDeckPalette>;
   ariaLabel?: string;
+  /** 빈 덱 상태 CTA 문구. 다시 공유할 링크가 있는지에 따라 호출부가 다르게 넘긴다. */
+  shareActionLabel?: string;
   onRequestPraise?: () => void;
   onRevealSender?: (card: PraiseCard) => void;
+  /** 명시적 30일 공개 동의 카드에서만 전달한다. 영구 익명 카드에는 절대 넘기지 않는다. */
+  revealSenderHint?: string;
+  /** 영구 익명이라 결제 CTA 자체를 만들 수 없을 때만 true. */
+  showForeverAnonymousNote?: boolean;
   onPreviewNext?: (card: PraiseCard) => void;
 }
 
@@ -77,8 +83,11 @@ export function PraiseCardDeck({
   hasNextCard = false,
   palette,
   ariaLabel,
+  shareActionLabel = "칭찬 받아오기",
   onRequestPraise,
   onRevealSender,
+  revealSenderHint,
+  showForeverAnonymousNote = false,
   onPreviewNext,
   className,
   style,
@@ -179,12 +188,17 @@ export function PraiseCardDeck({
               {faceUp ? "카드를 다시 누르면 뒷면으로 돌아가요." : "오늘 공개된 카드를 한 장 뒤집어 보세요."}
             </p>
 
-            {onRevealSender || (hasNextCard && onPreviewNext) ? (
+            {onRevealSender || showForeverAnonymousNote || (hasNextCard && onPreviewNext) ? (
               <div className={styles.actions}>
                 {onRevealSender ? (
-                  <button type="button" className={styles.primaryAction} onClick={() => onRevealSender(card)}>
-                    누가 보냈는지 보기
-                  </button>
+                  <div className={styles.goldEntry}>
+                    <button type="button" className={styles.goldAction} onClick={() => onRevealSender(card)}>
+                      990원에 지금 확인
+                    </button>
+                    {revealSenderHint ? <p className={styles.goldHint}>{revealSenderHint}</p> : null}
+                  </div>
+                ) : showForeverAnonymousNote ? (
+                  <p className={styles.foreverAnonymousNote}>영구 익명은 결제해도 공개되지 않아요.</p>
                 ) : null}
                 {hasNextCard && onPreviewNext ? (
                   <button type="button" className={styles.secondaryAction} onClick={() => onPreviewNext(card)}>
@@ -208,7 +222,7 @@ export function PraiseCardDeck({
               disabled={!onRequestPraise}
               onClick={onRequestPraise}
             >
-              칭찬 받아오기
+              {shareActionLabel}
             </button>
           </div>
         )}
