@@ -45,7 +45,12 @@ export function voterFp(): string {
 
 /** 응원 1표 — 낙관적으로 localStorage에 남기고(중복차단) Supabase에 upsert(1인1표). */
 export async function castVote(slug: string, type: VoteType, comment?: string): Promise<void> {
-  localAddVote(slug, { type, comment, at: Date.now() });
+  localAddVote(slug, {
+    id: typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : undefined,
+    type,
+    comment,
+    at: Date.now(),
+  });
   const sb = getSupabase();
   if (!sb) return;
   try {
@@ -81,7 +86,7 @@ export async function fetchVotes(slug: string): Promise<Vote[]> {
   try {
     const { data, error } = await sb
       .from("card_votes")
-      .select("kind,comment,created_at,voter_fp")
+      .select("id,kind,comment,created_at,voter_fp")
       .eq("slug", slug)
       .order("created_at", { ascending: true });
     if (error || !data) return localLoadVotes(slug);
@@ -89,6 +94,7 @@ export async function fetchVotes(slug: string): Promise<Vote[]> {
     return data
       .filter((r) => r.voter_fp !== myFp)
       .map((r) => ({
+        id: typeof r.id === "string" ? r.id : undefined,
         type: r.kind as VoteType,
         comment: r.comment ?? undefined,
         at: new Date(r.created_at as string).getTime(),

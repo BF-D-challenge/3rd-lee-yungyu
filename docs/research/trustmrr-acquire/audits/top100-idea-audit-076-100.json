@@ -1,0 +1,303 @@
+{
+  "range": "76-100",
+  "audits": [
+    {
+      "source_rank": 76,
+      "id": "trustmrr-acquire-0368",
+      "status": "usable",
+      "reason": "의류 디자인이라는 입력과 3D 목업 생성 과정 및 결과가 원문에 구체적으로 드러난다.",
+      "concreteSummary": "티셔츠나 의류 디자인을 가진 사용자가 디자인을 넣으면 이를 3D 목업으로 변환해 입체 시안을 받는다.",
+      "mechanism": {
+        "input": "티셔츠 또는 의류 디자인",
+        "process": "디자인을 3D 의류 목업으로 생성",
+        "output": "완성된 3D 의류 목업"
+      },
+      "recoverableAxes": ["target", "problem", "input", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 77,
+      "id": "trustmrr-acquire-0566",
+      "status": "exclude",
+      "reason": "모바일 앱이라는 형식과 오가닉 성장 정보만 있고 실제 대상과 기능이 없다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 78,
+      "id": "trustmrr-acquire-0788",
+      "status": "exclude",
+      "reason": "학생 대상 학습 자료의 종류는 보이지만 어떤 입력을 받아 어떤 방식으로 만드는지 알 수 없다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": ["target", "problem", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 79,
+      "id": "trustmrr-acquire-0141",
+      "status": "exclude",
+      "reason": "문자 대화 도우미와 30개 이상의 강좌는 확인되지만 도우미가 받는 입력과 돌려주는 결과가 잘려 있어 메커니즘이 완결되지 않는다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": ["target", "problem", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 80,
+      "id": "trustmrr-acquire-0174",
+      "status": "exclude",
+      "reason": "크리에이터용 얼굴 없는 영상 생성 결과는 명확하지만 어떤 원본을 입력받는지 원문에 없다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": ["target", "problem", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 81,
+      "id": "trustmrr-acquire-0155",
+      "status": "exclude",
+      "reason": "블랙잭 기본 전략을 자동화한다는 설명만으로는 게임 상태를 어떻게 읽고 추천과 실행 중 무엇을 출력하는지 구분할 수 없다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": ["target", "problem", "process"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 82,
+      "id": "trustmrr-acquire-0019",
+      "status": "usable",
+      "reason": "음성을 입력해 AI 받아쓰기로 텍스트를 얻는 전체 작동 구조가 명시돼 있다.",
+      "concreteSummary": "타이핑을 줄이려는 사용자가 음성을 입력하면 AI 받아쓰기가 말을 텍스트로 변환해 작성된 문장을 돌려준다.",
+      "mechanism": {
+        "input": "사용자가 말한 음성",
+        "process": "AI 음성 받아쓰기로 말을 텍스트로 변환",
+        "output": "입력 대신 사용할 작성된 텍스트"
+      },
+      "recoverableAxes": ["target", "problem", "input", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 83,
+      "id": "trustmrr-acquire-0302",
+      "status": "exclude",
+      "reason": "이사 및 보관 업체용 영업 인텔리전스라는 범주만 있고 데이터 입력과 자동화 과정 및 산출물이 없다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": ["target", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 84,
+      "id": "trustmrr-acquire-0071",
+      "status": "usable",
+      "reason": "채팅 스크린샷을 분석해 답장과 첫 문장 및 메시지 전략을 생성하는 구조가 구체적이다.",
+      "concreteSummary": "데이트 대화에 어려움을 겪는 사용자가 채팅 스크린샷을 넣으면 AI가 대화를 분석해 답장, 첫 대화 문구, 메시지 전략을 제안한다.",
+      "mechanism": {
+        "input": "데이트 채팅 스크린샷",
+        "process": "AI로 대화 내용을 분석하고 메시지 대안을 생성",
+        "output": "추천 답장, 첫 대화 문구, 메시지 전략"
+      },
+      "recoverableAxes": ["target", "problem", "input", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 85,
+      "id": "trustmrr-acquire-0037",
+      "status": "usable",
+      "reason": "예측 대상 경기와 AI 예측 과정 및 승패·정확한 점수·득점자라는 결과가 명시돼 있다.",
+      "concreteSummary": "축구 경기 예측이 필요한 사용자가 예측 대상 경기를 넣으면 AI가 경기 결과를 예측해 승패, 정확한 점수, 득점자 예측을 제공한다.",
+      "mechanism": {
+        "input": "예측 대상 축구 경기",
+        "process": "AI로 경기 결과와 득점 정보를 예측",
+        "output": "승패, 정확한 점수, 득점자 예측"
+      },
+      "recoverableAxes": ["target", "problem", "input", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 86,
+      "id": "trustmrr-acquire-0147",
+      "status": "exclude",
+      "reason": "현대적으로 꾸란을 읽는 앱이라는 설명뿐이라 입력과 차별화된 읽기 처리 방식을 복원할 수 없다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": ["target", "problem", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 87,
+      "id": "trustmrr-acquire-0736",
+      "status": "usable",
+      "reason": "원본 영상과 목표 언어를 받아 번역·더빙·립싱크·자막을 거친 현지화 영상을 만드는 과정이 구체적이다.",
+      "concreteSummary": "다국어 영상을 게시하려는 제작자가 원본 영상과 목표 언어를 넣으면 번역, 더빙, 음성 복제, 립싱크, 자막 처리를 거쳐 게시 가능한 영상을 받는다.",
+      "mechanism": {
+        "input": "원본 영상과 목표 언어",
+        "process": "영상 번역, 더빙, 음성 복제, 립싱크, 동적 자막 처리",
+        "output": "목표 언어로 현지화되어 게시 가능한 영상"
+      },
+      "recoverableAxes": ["target", "problem", "input", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 88,
+      "id": "trustmrr-acquire-0162",
+      "status": "exclude",
+      "reason": "모바일 앱이라는 범주명 외에는 대상과 문제 및 기능 정보가 전혀 없다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 89,
+      "id": "trustmrr-acquire-0617",
+      "status": "usable",
+      "reason": "이탈리아 중소기업 매도자와 인수 희망자를 중개인 없이 직접 연결하는 거래 구조가 명확하다.",
+      "concreteSummary": "이탈리아 중소기업을 팔거나 인수하려는 사용자가 매매 대상과 관심 조건을 넣으면 마켓플레이스가 사업주와 잠재 구매자를 직접 연결해 거래 상대를 제공한다.",
+      "mechanism": {
+        "input": "매도할 중소기업 또는 중소기업 인수 관심 조건",
+        "process": "사업주와 잠재 구매자를 중개인 없이 직접 연결",
+        "output": "조건에 맞는 중소기업 거래 상대"
+      },
+      "recoverableAxes": ["target", "problem", "input", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 90,
+      "id": "trustmrr-acquire-0526",
+      "status": "usable",
+      "reason": "B2B 연락처 데이터와 API를 이용해 리드를 수집하고 대규모 아웃리치까지 실행하는 흐름이 구체적이다.",
+      "concreteSummary": "B2B 영업 담당자가 수집할 연락처 조건을 API로 넣으면 4억 2천만 건 이상의 연락처에서 리드를 수집하고 대규모 아웃리치를 실행한 결과를 받는다.",
+      "mechanism": {
+        "input": "수집할 B2B 연락처 조건을 담은 API 요청",
+        "process": "전 세계 연락처 데이터에서 리드를 수집하고 아웃리치를 실행",
+        "output": "수집된 B2B 리드와 실행된 아웃리치"
+      },
+      "recoverableAxes": ["target", "problem", "input", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 91,
+      "id": "trustmrr-acquire-0436",
+      "status": "usable",
+      "reason": "상품 데이터를 Shopify에 대량 등록하는 입력과 자동화 과정 및 결과가 명확하다.",
+      "concreteSummary": "Shopify 판매자가 등록할 상품 데이터를 넣으면 도구가 수천 개 상품을 자동으로 일괄 등록해 완성된 스토어 상품 목록을 만든다.",
+      "mechanism": {
+        "input": "Shopify에 등록할 상품 데이터",
+        "process": "수천 개 상품을 Shopify 스토어에 자동 일괄 등록",
+        "output": "등록이 완료된 Shopify 상품 목록"
+      },
+      "recoverableAxes": ["target", "problem", "input", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 92,
+      "id": "trustmrr-acquire-0806",
+      "status": "exclude",
+      "reason": "텍스트·이미지·영상이라는 출력 범위만 넓게 제시되고 구체 입력과 콘텐츠 처리 과정이 없다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": ["target", "problem", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 93,
+      "id": "trustmrr-acquire-0786",
+      "status": "exclude",
+      "reason": "전술·스카우트 보고서·통계를 제공한다는 결과는 보이지만 분석할 입력 데이터와 분석 방법은 설명되지 않는다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": ["target", "problem", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 94,
+      "id": "trustmrr-acquire-0404",
+      "status": "usable",
+      "reason": "Shopify 스토어를 스캔해 Google Merchant Center 규정 위반 문제를 찾는 전체 메커니즘이 명시돼 있다.",
+      "concreteSummary": "Shopify 판매자가 자신의 스토어를 넣으면 도구가 Google Merchant Center 규정 준수 여부를 스캔해 발견된 문제 목록을 제공한다.",
+      "mechanism": {
+        "input": "검사할 Shopify 스토어",
+        "process": "Google Merchant Center 규정 준수 문제를 스캔",
+        "output": "발견된 규정 준수 문제 목록"
+      },
+      "recoverableAxes": ["target", "problem", "input", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 95,
+      "id": "trustmrr-acquire-0421",
+      "status": "usable",
+      "reason": "Instagram 팔로우와 활동을 추적해 새 팔로우 계정과 시점을 보여주는 구조가 구체적이다.",
+      "concreteSummary": "최근 팔로우 변화를 확인하려는 사용자가 Instagram 계정을 연결하면 도구가 팔로우와 활동을 추적해 새로 팔로우한 계정과 시점을 보여준다.",
+      "mechanism": {
+        "input": "추적할 Instagram 계정의 팔로우 및 활동",
+        "process": "최근 팔로우와 계정 활동 변화를 추적",
+        "output": "새로 팔로우한 계정과 팔로우 시점"
+      },
+      "recoverableAxes": ["target", "problem", "input", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 96,
+      "id": "trustmrr-acquire-0004",
+      "status": "exclude",
+      "reason": "Slack과 3,000개 이상의 도구 및 지속형 메모리라는 기반만 있고 수행할 업무와 결과물이 없다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": ["target", "process"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 97,
+      "id": "trustmrr-acquire-0014",
+      "status": "exclude",
+      "reason": "스포츠 경기 예측이라는 범주명만 있어 대상 경기와 입력 데이터 및 예측 방식이 없다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": ["output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 98,
+      "id": "trustmrr-acquire-0778",
+      "status": "usable",
+      "reason": "에이전시가 여러 채널용 AI 리셉셔니스트와 영업 에이전트를 노코드로 만들고 관리하는 구조가 명확하다.",
+      "concreteSummary": "에이전시가 운영할 채널과 에이전트 설정을 넣으면 노코드 도구가 음성, SMS, 이메일, Instagram에서 즉시 응대하는 AI 리셉셔니스트와 영업 에이전트를 만든다.",
+      "mechanism": {
+        "input": "운영할 채널과 AI 리셉셔니스트 또는 영업 에이전트 설정",
+        "process": "노코드로 에이전트를 생성하고 음성·SMS·이메일·Instagram 채널에서 관리",
+        "output": "여러 채널에서 즉시 응대하는 AI 리셉셔니스트와 영업 에이전트"
+      },
+      "recoverableAxes": ["target", "problem", "input", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 99,
+      "id": "trustmrr-acquire-0371",
+      "status": "usable",
+      "reason": "HireVue 지원자가 11종 게임을 실전형 시뮬레이션과 전략으로 연습하는 구체 과정이 드러난다.",
+      "concreteSummary": "HireVue 게임 평가를 준비하는 지원자가 연습할 게임을 고르면 인지·공간·성격 영역의 실제와 유사한 시뮬레이션을 수행하고 대응 전략을 익힌다.",
+      "mechanism": {
+        "input": "연습할 HireVue 게임 평가 유형",
+        "process": "11종 게임의 인지·공간·성격 과제를 실제와 유사하게 시뮬레이션하고 전략을 제공",
+        "output": "게임별 실전 연습 경험과 대응 전략"
+      },
+      "recoverableAxes": ["target", "problem", "input", "process", "output"],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 100,
+      "id": "trustmrr-acquire-0406",
+      "status": "exclude",
+      "reason": "추천 결과는 구체적이지만 무엇을 입력받아 어떤 분석을 거쳐 추천하는지 원문에 없어 메커니즘이 완결되지 않는다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": ["target", "problem", "output"],
+      "evidenceBasis": "listing"
+    }
+  ]
+}

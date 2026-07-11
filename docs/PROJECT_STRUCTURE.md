@@ -14,16 +14,16 @@ This repository keeps runtime code, product documents, research corpora, and gen
 
 ## Documents
 
-- `docs/prd/` - active PRDs and rollout specs.
-- `docs/prd/archive/` - older PRDs and superseded planning documents.
+- `docs/prd/오늘-해볼까-prd.md` - the single active product specification.
+- `docs/prd/archive/` - older PRDs and superseded planning documents, grouped by checkpoint.
 - `docs/research/` - research corpus and dataset guides. This is the canonical home for research documents.
-- `docs/dev/` - implementation notes, experiments, setup guides, and local tooling notes.
+- `docs/dev/` - stable local-preview pages plus an index at `docs/dev/README.md`.
 - `docs/dev/archive/` - superseded implementation guides kept for traceability.
 
 ## Scripts
 
-- `scripts/rollout/` - golden-card rollout helpers.
-- `scripts/experiments/` - one-off experiment scripts that are still useful to rerun.
+- `scripts/rollout/` - source-card and runtime-card rollout helpers.
+- `scripts/research/` - scripts that rebuild static research and audit pages.
 - `scripts/check-supabase.mjs` - Supabase connectivity check.
 
 ## Local Or Ignored

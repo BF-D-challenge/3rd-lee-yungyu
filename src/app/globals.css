@@ -9,8 +9,12 @@
   --ink: #e8e4dd;
   --muted: #8a857d;
   --caption: #5a5650;
+  --primary: #ff4458;
+  --primary-hover: #ff5f70;
+  --primary-pressed: #e63d50;
+  --primary-soft: rgba(255, 68, 88, 0.16);
   --gold: #c9a962;
-  --glow: #6db4f5; /* 디자인 리셋 D3: 퍼플(#b288f6) 퇴역 → 블루 단일 액센트 */
+  --glow: var(--primary);
   --rose: #e0899a; /* 고통(pain) 시맨틱 — flip 카드 앞면 통증 아크 */
   --good: #6fce9f; /* 해결(solution) 시맨틱 — flip 카드 뒷면 */
 
@@ -20,8 +24,8 @@
   --glass-border: rgba(255, 255, 255, 0.16);
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 
-  --shadow-hard: 0 3px 0 0 var(--gold);
-  --glow-hero: 0 0 40px 0 rgba(109, 180, 245, 0.4);
+  --shadow-hard: 0 3px 0 0 var(--primary-pressed);
+  --glow-hero: 0 0 40px 0 rgba(255, 68, 88, 0.34);
   --r-btn: 9px;
   --r-input: 13px;
   --r-card: 20px;
@@ -67,7 +71,7 @@ body {
 }
 
 ::selection {
-  background: rgba(201, 169, 98, 0.35);
+  background: rgba(255, 68, 88, 0.34);
 }
 
 @layer components {
@@ -98,30 +102,21 @@ body {
     box-shadow: var(--shadow-glass);
   }
 
-  /* Aurora Mesh — 범용 클래스. 모양·크기 불문 버튼/카드/배지/패널 어디에나 클래스 하나로 부착.
-     하이라이트 링(::before)이 border-radius: inherit로 모양에 자동 대응한다. */
+  /* 기존 aurora 호출부를 깨지 않기 위한 Primary 호환 클래스.
+     실제 주요 액션은 Tinder 계열 coral 단일색으로 통일한다. */
   .aurora {
-    position: relative; /* ::before 링 기준 */
+    position: relative;
     color: #fff;
-    background-color: var(--aurora-base); /* 폴백 */
-    background-image:
-      radial-gradient(56% 76% at 80% 14%, var(--aurora-highlight) 0%, transparent 46%),
-      radial-gradient(66% 82% at 88% 58%, var(--aurora-base) 0%, transparent 58%),
-      radial-gradient(48% 60% at 6% 94%, var(--aurora-accent-1) 0%, transparent 54%),
-      radial-gradient(46% 56% at 22% 74%, var(--aurora-accent-2) 0%, transparent 52%),
-      linear-gradient(
-        var(--aurora-angle),
-        var(--aurora-accent-1) 0%,
-        var(--aurora-accent-2) calc(var(--aurora-accent-stop) * 0.42),
-        var(--aurora-mid) var(--aurora-accent-stop),
-        var(--aurora-deep) 66%,
-        var(--aurora-base) 100%
-      );
-    background-size: 170% 170%;
-    box-shadow:
-      0 0 10px var(--aurora-glow-inner),
-      0 0 26px var(--aurora-glow-outer);
-    animation: aurora-shift 14s ease-in-out infinite;
+    background: var(--primary);
+    box-shadow: 0 10px 28px rgba(255, 68, 88, 0.28);
+  }
+
+  .aurora:hover {
+    background: var(--primary-hover);
+  }
+
+  .aurora:active {
+    background: var(--primary-pressed);
   }
 
   /* 위에서 빛 받은 1px 하이라이트 링 */
@@ -131,33 +126,12 @@ body {
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.85) 0%,
-      rgba(255, 255, 255, 0.25) 45%,
-      transparent 70%
-    );
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.42), transparent 58%);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     mask-composite: exclude;
     pointer-events: none;
-  }
-}
-
-@keyframes aurora-shift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .aurora {
-    animation: none;
   }
 }
 

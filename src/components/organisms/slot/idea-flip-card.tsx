@@ -44,6 +44,16 @@ const painFallback = (c: Combo): FrontStory => ({
   ],
 });
 
+const audienceLabels = { b2b: "B2B", b2c: "B2C" } as const;
+const platformLabels = { web: "웹", app: "앱", plugin: "플러그인" } as const;
+const productTypeLabels = {
+  "ai-agent": "AI 에이전트",
+  automation: "자동화",
+  dashboard: "대시보드",
+  analyzer: "분석기",
+  utility: "유틸리티",
+} as const;
+
 export function IdeaFlipCard({
   combo,
   story,
@@ -67,6 +77,11 @@ export function IdeaFlipCard({
   const subtitle = appName && combo.title?.includes(" — ") ? combo.title.split(" — ")[1] : (combo.title ?? line ?? title);
   const mvpItems = combo.mvp ?? [];
   const prompt = buildPrompt(combo);
+  const preferenceTags = [
+    combo.audiences?.[0] ? audienceLabels[combo.audiences[0]] : null,
+    combo.platforms?.[0] ? platformLabels[combo.platforms[0]] : null,
+    combo.productTypes?.[0] ? productTypeLabels[combo.productTypes[0]] : null,
+  ].filter((value) => value !== null);
   /** 매출 근거가 있는 사전검수 콤보 — 확정 카드도 골드 톤으로 이어간다 */
   const golden = combo.golden;
 
@@ -128,10 +143,10 @@ export function IdeaFlipCard({
             <span
               className={`rounded-full border px-2.5 py-1 text-[11px] font-bold ${golden ? "border-[#e0b660]/40 bg-[#e0b660]/[.08] text-[#e0b660]" : "border-[#eaeaea]/30 bg-[#eaeaea]/[.06] text-[#eaeaea]/85"}`}
             >
-              🌱 내가 고른 · {seedLabel}
+              {preferenceTags.length ? preferenceTags.join(" · ") : seedLabel}
             </span>
             <span className={`font-serif text-2xl font-bold ${golden ? "text-[#e0b660]/80" : "text-[#eaeaea]/60"}`}>
-              {golden ? "🌟" : "✦"}
+              {combo.sourceFidelityScore ? `${combo.sourceFidelityScore}%` : golden ? "검증" : "✦"}
             </span>
           </div>
           <div className="relative z-10 flex-1 overflow-y-auto px-4 pt-3.5">
@@ -175,6 +190,27 @@ export function IdeaFlipCard({
             <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#eaeaea]/70">💡 이렇게 풀어요</p>
             <p className="mt-1.5 text-[14px] font-bold leading-snug text-[#eaeaea]">{subtitle}</p>
             {combo.oneliner && <p className="mt-1 text-xs leading-snug text-[#eaeaea]/60">{combo.oneliner}</p>}
+            {combo.mechanism ? (
+              <dl className="mt-3 space-y-1.5 border-y border-[#eaeaea]/10 py-2.5 text-[11px] leading-snug">
+                <div className="grid grid-cols-[34px_1fr] gap-2">
+                  <dt className="font-bold text-[#eaeaea]/45">입력</dt>
+                  <dd className="text-[#eaeaea]/75">{combo.mechanism.input}</dd>
+                </div>
+                <div className="grid grid-cols-[34px_1fr] gap-2">
+                  <dt className="font-bold text-[#eaeaea]/45">처리</dt>
+                  <dd className="text-[#eaeaea]/75">{combo.mechanism.process}</dd>
+                </div>
+                <div className="grid grid-cols-[34px_1fr] gap-2">
+                  <dt className="font-bold text-[#eaeaea]/45">결과</dt>
+                  <dd className="font-semibold text-[#eaeaea]/90">{combo.mechanism.output}</dd>
+                </div>
+              </dl>
+            ) : null}
+            {combo.adaptationChange ? (
+              <p className="mt-2 text-[10px] leading-snug text-[#eaeaea]/50">
+                원본과 달라진 점 · {combo.adaptationChange}
+              </p>
+            ) : null}
             {combo.todayAction && (
               <p className="mt-2.5 rounded-md border border-[#eaeaea]/15 bg-[#eaeaea]/[.05] px-2.5 py-2 text-[11px] leading-snug text-[#eaeaea]/80">
                 <span className="font-extrabold text-[#eaeaea]">🟣 오늘 만들 것</span> {combo.todayAction}
@@ -203,6 +239,16 @@ export function IdeaFlipCard({
             {combo.evidence && (
               <p className="mt-3 text-[11px] italic leading-snug text-[#eaeaea]/45">📈 {combo.evidence}</p>
             )}
+            {combo.sourceUrl ? (
+              <a
+                href={combo.sourceUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-2 inline-flex text-[10px] font-bold text-[#e0b660]/75 underline decoration-[#e0b660]/30 underline-offset-2"
+              >
+                원본 확인 · {combo.anchorName ?? seedLabel}
+              </a>
+            ) : null}
 
             {!shared ? (
               <div className="mt-3.5 rounded-[14px] border border-dashed border-[#eaeaea]/25 bg-[#eaeaea]/[.04] p-3.5 text-center">

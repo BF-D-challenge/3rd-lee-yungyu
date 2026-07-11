@@ -1,0 +1,392 @@
+{
+  "range": "26-50",
+  "audits": [
+    {
+      "source_rank": 26,
+      "id": "trustmrr-acquire-0752",
+      "status": "exclude",
+      "reason": "모바일 앱이라는 범주명만 있어 대상, 문제, 입력, 처리, 출력을 복원할 수 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 27,
+      "id": "trustmrr-acquire-0425",
+      "status": "usable",
+      "reason": "NotebookLM 자료를 서로 연결해 검색 가능한 지식 베이스로 바꾸는 대상, 문제와 작동 흐름이 구체적입니다.",
+      "concreteSummary": "Google NotebookLM 사용자가 수집한 자료와 인사이트를 넣으면 Kortex가 항목을 서로 연결해 무엇이든 다시 찾을 수 있는 동적 지식 베이스를 제공한다.",
+      "mechanism": {
+        "input": "Google NotebookLM에 수집한 자료와 인사이트",
+        "process": "수집 항목을 동적으로 연결하고 다시 찾을 수 있도록 지식 베이스로 구성합니다.",
+        "output": "인사이트를 잃지 않고 검색할 수 있는 상호 연결형 지식 베이스"
+      },
+      "recoverableAxes": [
+        "target",
+        "problem",
+        "input",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 28,
+      "id": "trustmrr-acquire-0188",
+      "status": "exclude",
+      "reason": "Whop과 Stripe의 반복 매출 차이만 설명하며 실제 제품 기능은 공개하지 않았습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 29,
+      "id": "trustmrr-acquire-0798",
+      "status": "usable",
+      "reason": "텍스트 프롬프트를 AI로 처리해 짧은 영상을 만드는 입력, 처리, 출력이 명시되어 있습니다.",
+      "concreteSummary": "짧은 영상 제작자가 텍스트 프롬프트를 넣으면 AI가 내용을 영상으로 생성해 짧은 동영상을 제공한다.",
+      "mechanism": {
+        "input": "짧은 영상의 내용을 설명한 텍스트 프롬프트",
+        "process": "AI가 프롬프트를 바탕으로 영상 콘텐츠를 생성합니다.",
+        "output": "텍스트 요청에 맞춰 생성된 짧은 동영상"
+      },
+      "recoverableAxes": [
+        "target",
+        "input",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 30,
+      "id": "trustmrr-acquire-0772",
+      "status": "exclude",
+      "reason": "교육용 AI 자료라는 상품 범주와 결제 방식만 있고 어떤 입력을 어떻게 처리하는지 알 수 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "target",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 31,
+      "id": "trustmrr-acquire-0277",
+      "status": "usable",
+      "reason": "개인·기업 고객이 프록시 유형을 고르면 자동 프로비저닝하는 상품과 처리 흐름이 구체적입니다.",
+      "concreteSummary": "개인 또는 기업 고객이 주거용·ISP·모바일 4G/5G 프록시 상품을 선택하면 시스템이 자동 프로비저닝을 거쳐 사용할 프록시를 제공한다.",
+      "mechanism": {
+        "input": "주거용, ISP 또는 모바일 4G/5G 프록시 상품 선택",
+        "process": "선택한 프록시 상품을 자동으로 프로비저닝합니다.",
+        "output": "고객이 사용할 수 있도록 준비된 프록시 서비스"
+      },
+      "recoverableAxes": [
+        "target",
+        "input",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 32,
+      "id": "trustmrr-acquire-0481",
+      "status": "exclude",
+      "reason": "대화, 이미지 생성, 즉시 답변을 모두 내세운 범용 AI 동반자라 구체적인 대상과 단일 문제 해결 흐름이 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "problem",
+        "input",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 33,
+      "id": "trustmrr-acquire-0160",
+      "status": "exclude",
+      "reason": "AI 웹사이트 구축 플랫폼이라는 범주명 외에 사용자, 입력 자료, 구축 절차가 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 34,
+      "id": "trustmrr-acquire-0087",
+      "status": "exclude",
+      "reason": "자가 출판 작가의 소셜 미디어 관리라는 대상과 문제만 있고 입력, 처리 방식, 결과물이 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "target",
+        "problem"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 35,
+      "id": "trustmrr-acquire-0002",
+      "status": "usable",
+      "reason": "대상 고객, 백링크 확보 문제, 관련 기회 탐색과 답변 초안 작성 결과가 명시되어 있습니다.",
+      "concreteSummary": "에이전시·창업자·SEO 팀이 기자와 편집 매체의 아웃리치 기회를 넣으면 AI가 백링크 관련성을 선별하고 답변 초안을 작성해 대응할 기회 목록과 초안을 제공한다.",
+      "mechanism": {
+        "input": "기자와 편집 매체의 아웃리치 기회",
+        "process": "AI가 백링크 관련성을 찾아내고 각 기회에 보낼 답변 초안을 작성합니다.",
+        "output": "대응할 관련 기회 목록과 제출용 답변 초안"
+      },
+      "recoverableAxes": [
+        "target",
+        "problem",
+        "input",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 36,
+      "id": "trustmrr-acquire-0340",
+      "status": "usable",
+      "reason": "팀과 에이전시가 LLM과 프롬프트로 에이전트를 설계, 테스트, 배포하는 전체 흐름이 드러납니다.",
+      "concreteSummary": "팀이나 에이전시가 LLM과 프롬프트를 넣으면 웹 플랫폼이 AI 에이전트 또는 챗봇을 설계하고 테스트해 배포 가능한 결과물을 제공한다.",
+      "mechanism": {
+        "input": "사용할 LLM과 프롬프트",
+        "process": "웹에서 AI 에이전트나 챗봇을 설계하고 테스트한 뒤 배포합니다.",
+        "output": "테스트를 거쳐 배포된 AI 에이전트 또는 챗봇"
+      },
+      "recoverableAxes": [
+        "target",
+        "problem",
+        "input",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 37,
+      "id": "trustmrr-acquire-0354",
+      "status": "exclude",
+      "reason": "비즈니스 운영, 성장, 자동화를 모두 포괄할 뿐 구체적인 입력, 자동화 절차, 산출물이 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "target",
+        "problem"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 38,
+      "id": "trustmrr-acquire-0248",
+      "status": "usable",
+      "reason": "소셜 계정 데이터를 자체 스크래퍼로 수집해 성장 분석을 제공하는 입력, 처리, 출력이 확인됩니다.",
+      "concreteSummary": "소셜 계정 운영자가 Instagram과 TikTok 계정 데이터를 넣으면 자체 스크래퍼가 지표를 수집·분석해 성장 분석이 포함된 프로필 링크를 제공한다.",
+      "mechanism": {
+        "input": "Instagram과 TikTok 계정 데이터",
+        "process": "자체 개발 스크래퍼가 소셜 지표를 수집하고 성장 관점으로 분석합니다.",
+        "output": "소셜 성장 분석이 포함된 프로필 링크 서비스"
+      },
+      "recoverableAxes": [
+        "target",
+        "problem",
+        "input",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 39,
+      "id": "trustmrr-acquire-0005",
+      "status": "usable",
+      "reason": "학생이 수업 자료를 넣으면 AI가 학습해 숙제와 시험을 지원하는 작동 흐름이 완전합니다.",
+      "concreteSummary": "학생이 자신의 수업 자료를 넣으면 AI가 내용을 학습해 숙제 풀이와 시험 준비를 돕는 개인 맞춤형 학습 지원을 제공한다.",
+      "mechanism": {
+        "input": "학생이 사용하는 수업 자료",
+        "process": "AI가 수업 자료의 내용을 학습하고 학생에게 맞춰 활용합니다.",
+        "output": "숙제 풀이와 시험 준비를 위한 개인 맞춤형 학습 지원"
+      },
+      "recoverableAxes": [
+        "target",
+        "problem",
+        "input",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 40,
+      "id": "trustmrr-acquire-0196",
+      "status": "exclude",
+      "reason": "외모 개선과 얼굴 분석 분야만 제시하고 실제 입력 방식, 분석 절차, 사용자에게 주는 결과를 공개하지 않았습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "target",
+        "problem",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 41,
+      "id": "trustmrr-acquire-0568",
+      "status": "usable",
+      "reason": "프리랜서와 에이전시가 Upwork 일자리에 지원하는 과정을 AI로 자동화하는 흐름이 구체적입니다.",
+      "concreteSummary": "프리랜서나 에이전시가 지원할 Upwork 일자리를 넣으면 AI가 지원 과정을 자동으로 진행해 완료된 지원 결과를 제공한다.",
+      "mechanism": {
+        "input": "지원할 Upwork 일자리",
+        "process": "AI가 해당 일자리의 지원 과정을 자동으로 진행합니다.",
+        "output": "자동화된 Upwork 지원 결과"
+      },
+      "recoverableAxes": [
+        "target",
+        "problem",
+        "input",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 42,
+      "id": "trustmrr-acquire-0091",
+      "status": "exclude",
+      "reason": "Webflow 컴포넌트 마켓플레이스라는 상품 유형과 사업 지표만 있고 사용자의 입력과 처리 흐름이 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "target",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 43,
+      "id": "trustmrr-acquire-0192",
+      "status": "exclude",
+      "reason": "AI 복싱 코치라는 콘셉트만 있고 사용자가 무엇을 제출하며 어떤 분석과 피드백을 받는지 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "target",
+        "problem"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 44,
+      "id": "trustmrr-acquire-0767",
+      "status": "exclude",
+      "reason": "마케터 커뮤니티라는 대상과 상품 유형만 있고 해결 문제나 작동 방식이 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "target",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 45,
+      "id": "trustmrr-acquire-0714",
+      "status": "exclude",
+      "reason": "자동 콘텐츠 생성 API라고만 되어 있어 입력 데이터와 생성할 구체 형식, 대상 사용자를 알 수 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 46,
+      "id": "trustmrr-acquire-0143",
+      "status": "exclude",
+      "reason": "프랑스 자동차 분야의 B2B SaaS라는 시장 범주만 있고 실제 기능이 전혀 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "target"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 47,
+      "id": "trustmrr-acquire-0837",
+      "status": "exclude",
+      "reason": "Amazon 출판용 로우 콘텐츠 도서를 만든다는 결과는 있지만 생성에 필요한 입력이 공개되지 않았습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "target",
+        "problem",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 48,
+      "id": "trustmrr-acquire-0618",
+      "status": "exclude",
+      "reason": "스포츠 분석과 AI 인사이트라는 범주만 있고 어떤 종목과 데이터를 어떻게 분석하는지 알 수 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "problem",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 49,
+      "id": "trustmrr-acquire-0055",
+      "status": "exclude",
+      "reason": "기업용 콜드 이메일 메일함이라는 상품은 알 수 있지만 입력, 운영 절차, 측정 가능한 결과가 없습니다.",
+      "concreteSummary": null,
+      "mechanism": null,
+      "recoverableAxes": [
+        "target",
+        "problem",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    },
+    {
+      "source_rank": 50,
+      "id": "trustmrr-acquire-0587",
+      "status": "usable",
+      "reason": "셀카를 AI로 분석해 의류, 메이크업, 액세서리용 개인 색상 팔레트를 주는 흐름이 명시되어 있습니다.",
+      "concreteSummary": "사용자가 셀카를 넣으면 AI가 퍼스널컬러와 계절 색상 유형을 분석해 의류, 메이크업, 액세서리에 맞는 개인 색상 팔레트를 제공한다.",
+      "mechanism": {
+        "input": "사용자의 셀카",
+        "process": "AI가 얼굴의 퍼스널컬러와 계절 색상 유형을 분석합니다.",
+        "output": "의류, 메이크업, 액세서리에 활용할 개인 맞춤형 색상 팔레트"
+      },
+      "recoverableAxes": [
+        "target",
+        "problem",
+        "input",
+        "process",
+        "output"
+      ],
+      "evidenceBasis": "listing"
+    }
+  ]
+}

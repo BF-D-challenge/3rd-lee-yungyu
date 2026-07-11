@@ -12,7 +12,7 @@ metadata:
 
 Collected from logged-in in-app browser infinite scroll on `https://trustmrr.com/acquire`.
 
-Parent index: [../INDEX.md](../INDEX.md) · Datasets guide: [../README.md](../README.md)  
+Parent index: [../INDEX.md](../INDEX.md) · Datasets guide: [../README.md](../README.md)
 Machine-readable catalog: [../MANIFEST.json](../MANIFEST.json)
 
 ## Scope
@@ -27,6 +27,8 @@ Machine-readable catalog: [../MANIFEST.json](../MANIFEST.json)
 
 - [ideas.jsonl](ideas.jsonl): one startup idea seed per line, optimized for Codex retrieval.
 - [README.md](README.md): this human-readable summary.
+- [audits/](audits/): Top 100 records reviewed in four batches, plus detail-page corrections.
+- [translations/](translations/): Korean explanations for the Top 100, split into four reviewable batches.
 - [../store-rankings/app-store-expanded-unique-apps.jsonl](../store-rankings/app-store-expanded-unique-apps.jsonl): compact App Store demand-signal universe.
 - [../store-rankings/chrome-webstore-expanded-unique-extensions.jsonl](../store-rankings/chrome-webstore-expanded-unique-extensions.jsonl): compact Chrome Web Store demand-signal universe.
 

@@ -1,0 +1,3257 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>오늘 해볼까 · 4카드 구조 A–M 테스트</title>
+    <style>
+      :root {
+        --bg: #0b0b0f;
+        --surface: rgba(24, 24, 31, 0.9);
+        --surface-2: #202027;
+        --surface-3: #292930;
+        --line: rgba(255, 255, 255, 0.1);
+        --line-strong: rgba(255, 255, 255, 0.2);
+        --text: #f7f5f2;
+        --muted: #aaa8b2;
+        --faint: #777681;
+        --accent: #d6ff62;
+        --accent-text: #171b08;
+        --a: #b99cff;
+        --b: #ffad79;
+        --c: #68d9ff;
+        --slot-1: #c5a8ff;
+        --slot-2: #74d7ff;
+        --slot-3: #ffb26f;
+        --slot-4: #c9f36a;
+        --radius-xl: 28px;
+        --radius-lg: 22px;
+        --radius-md: 16px;
+        --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        overflow-x: hidden;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 15% -8%, rgba(185, 156, 255, 0.16), transparent 31rem),
+          radial-gradient(circle at 88% 12%, rgba(104, 217, 255, 0.09), transparent 26rem),
+          var(--bg);
+        font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      button {
+        color: inherit;
+      }
+
+      .shell {
+        width: min(1380px, 100%);
+        margin: 0 auto;
+        padding: 18px 16px 120px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 44px;
+      }
+
+      .brand,
+      .prototype-note,
+      .eyebrow,
+      .micro-label,
+      .option-letter,
+      .slot-index,
+      .result-label,
+      .prompt-label,
+      .metric-label {
+        letter-spacing: -0.01em;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 14px;
+        font-weight: 750;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 29px;
+        height: 29px;
+        place-items: center;
+        border-radius: 10px;
+        color: var(--accent-text);
+        background: var(--accent);
+        box-shadow: 0 0 22px rgba(214, 255, 98, 0.18);
+      }
+
+      .prototype-note {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 7px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        background: rgba(255, 255, 255, 0.035);
+        font-size: 11px;
+        font-weight: 650;
+      }
+
+      .prototype-note::before {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #ffc36d;
+        content: "";
+      }
+
+      .hero {
+        max-width: 780px;
+        margin-bottom: 34px;
+      }
+
+      .eyebrow {
+        margin: 0 0 13px;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 720px;
+        margin-bottom: 16px;
+        font-size: clamp(38px, 7vw, 76px);
+        line-height: 0.98;
+        letter-spacing: -0.065em;
+      }
+
+      .hero-copy {
+        max-width: 640px;
+        margin-bottom: 20px;
+        color: var(--muted);
+        font-size: clamp(15px, 2vw, 18px);
+        line-height: 1.6;
+        letter-spacing: -0.018em;
+      }
+
+      .hero-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .hero-chip {
+        padding: 8px 11px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: #d7d5db;
+        background: rgba(255, 255, 255, 0.03);
+        font-size: 12px;
+        font-weight: 650;
+      }
+
+      .overview-matrix {
+        margin-bottom: 52px;
+      }
+
+      .matrix-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 10px;
+      }
+
+      .matrix-head h2 {
+        margin-bottom: 4px;
+        font-size: clamp(22px, 3vw, 30px);
+        letter-spacing: -0.04em;
+      }
+
+      .matrix-head p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .matrix-legend {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: end;
+        gap: 5px;
+      }
+
+      .matrix-legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 7px;
+        border: 1px solid color-mix(in srgb, var(--legend-color) 24%, transparent);
+        border-radius: 999px;
+        color: #c9c7ce;
+        background: color-mix(in srgb, var(--legend-color) 6%, transparent);
+        font-size: 9px;
+        font-weight: 750;
+      }
+
+      .matrix-legend i {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--legend-color);
+      }
+
+      .matrix-frame {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(18, 18, 23, 0.88);
+        box-shadow: 0 18px 52px rgba(0, 0, 0, 0.22);
+      }
+
+      .matrix-scroll {
+        overflow-x: auto;
+      }
+
+      .matrix-compact {
+        display: none;
+      }
+
+      .compact-combo {
+        --row-color: var(--a);
+        min-width: 0;
+        padding: 7px;
+        border: 1px solid color-mix(in srgb, var(--row-color) 20%, var(--line));
+        border-radius: 12px;
+        background: color-mix(in srgb, var(--row-color) 3.5%, #141419);
+      }
+
+      .compact-combo-head {
+        display: grid;
+        grid-template-columns: 21px minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .compact-combo-letter {
+        display: grid;
+        width: 21px;
+        height: 21px;
+        place-items: center;
+        border: 1px solid color-mix(in srgb, var(--row-color) 48%, transparent);
+        border-radius: 7px;
+        color: var(--row-color);
+        background: color-mix(in srgb, var(--row-color) 10%, transparent);
+        font-size: 9px;
+        font-weight: 900;
+      }
+
+      .compact-combo-head strong {
+        overflow: hidden;
+        font-size: 11px;
+        letter-spacing: -0.025em;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .compact-combo-head small {
+        color: var(--row-color);
+        font-size: 9px;
+        font-weight: 750;
+        white-space: nowrap;
+      }
+
+      .compact-axes {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 3px;
+        margin-top: 5px;
+      }
+
+      .compact-axis {
+        --card-color: var(--slot-1);
+        min-width: 0;
+        padding: 3px 5px;
+        border: 1px solid color-mix(in srgb, var(--card-color) 16%, transparent);
+        border-radius: 6px;
+        background: color-mix(in srgb, var(--card-color) 4%, transparent);
+      }
+
+      .compact-axis span {
+        display: block;
+        overflow: hidden;
+        color: var(--card-color);
+        font-size: 9px;
+        font-weight: 800;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .compact-axis strong {
+        display: block;
+        margin-top: 1px;
+        overflow: hidden;
+        color: #dedce2;
+        font-size: 10.5px;
+        line-height: 1.12;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .compact-outcome {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 6px;
+        margin-top: 5px;
+      }
+
+      .compact-outcome strong {
+        display: -webkit-box;
+        overflow: hidden;
+        color: #f2f0f4;
+        font-size: 10.5px;
+        line-height: 1.17;
+        letter-spacing: -0.02em;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      .compact-outcome span {
+        padding: 2px 5px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        color: #9f9da6;
+        font-size: 9px;
+        font-weight: 750;
+        white-space: nowrap;
+      }
+
+      .compact-risk {
+        margin: 4px 0 0;
+        color: #908e98;
+        font-size: 9px;
+        line-height: 1.18;
+      }
+
+      .structure-matrix {
+        width: 100%;
+        min-width: 1270px;
+        table-layout: fixed;
+        border-collapse: collapse;
+      }
+
+      .structure-matrix th {
+        height: 31px;
+        padding: 0 8px;
+        color: #7f7d88;
+        border-right: 1px solid rgba(255, 255, 255, 0.055);
+        border-bottom: 1px solid var(--line);
+        background: #121217;
+        font-size: 8.5px;
+        font-weight: 800;
+        letter-spacing: 0.055em;
+        text-align: left;
+        text-transform: uppercase;
+      }
+
+      .structure-matrix th:last-child,
+      .structure-matrix td:last-child {
+        border-right: 0;
+      }
+
+      .structure-matrix th:nth-child(6),
+      .structure-matrix td:nth-child(6) {
+        background: rgba(214, 255, 98, 0.018);
+      }
+
+      .structure-matrix tbody tr {
+        --row-color: var(--a);
+        background: color-mix(in srgb, var(--row-color) 1.4%, transparent);
+      }
+
+      .structure-matrix tbody tr:nth-child(even) {
+        background: color-mix(in srgb, var(--row-color) 2.8%, transparent);
+      }
+
+      .structure-matrix td {
+        height: 47px;
+        padding: 4px 8px;
+        overflow: hidden;
+        vertical-align: middle;
+        border-right: 1px solid rgba(255, 255, 255, 0.055);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+      }
+
+      .structure-matrix tbody tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .matrix-method {
+        display: grid;
+        grid-template-columns: 25px minmax(0, 1fr);
+        align-items: center;
+        gap: 7px;
+      }
+
+      .matrix-letter {
+        display: grid;
+        width: 25px;
+        height: 25px;
+        place-items: center;
+        border: 1px solid color-mix(in srgb, var(--row-color) 48%, transparent);
+        border-radius: 8px;
+        color: var(--row-color);
+        background: color-mix(in srgb, var(--row-color) 10%, transparent);
+        font-size: 10px;
+        font-weight: 900;
+      }
+
+      .matrix-method-copy,
+      .matrix-card,
+      .matrix-result,
+      .matrix-test {
+        min-width: 0;
+      }
+
+      .matrix-method strong,
+      .matrix-result strong,
+      .matrix-test strong {
+        display: block;
+        overflow: hidden;
+        font-size: 11px;
+        line-height: 1.2;
+        letter-spacing: -0.025em;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .matrix-method small {
+        display: block;
+        margin-top: 2px;
+        overflow: hidden;
+        color: var(--row-color);
+        font-size: 8.5px;
+        font-weight: 750;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .matrix-card-label {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: 2px;
+        overflow: hidden;
+        color: var(--card-color);
+        font-size: 8px;
+        font-weight: 800;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .matrix-card-label b {
+        display: grid;
+        width: 13px;
+        height: 13px;
+        flex: 0 0 13px;
+        place-items: center;
+        border-radius: 4px;
+        color: #111;
+        background: var(--card-color);
+        font-size: 7px;
+      }
+
+      .matrix-card-value {
+        display: -webkit-box;
+        overflow: hidden;
+        color: #d9d7de;
+        font-size: 10px;
+        font-weight: 680;
+        line-height: 1.22;
+        letter-spacing: -0.02em;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      .matrix-result strong {
+        color: #f1eff4;
+        font-size: 10.8px;
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      .matrix-result span {
+        display: inline-block;
+        margin-top: 3px;
+        padding: 2px 5px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        color: #9997a1;
+        font-size: 7.5px;
+        font-weight: 750;
+      }
+
+      .matrix-test strong {
+        color: var(--row-color);
+        font-size: 9.5px;
+      }
+
+      .matrix-test span {
+        display: -webkit-box;
+        margin-top: 2px;
+        overflow: hidden;
+        color: #8e8c96;
+        font-size: 8.3px;
+        line-height: 1.25;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      .matrix-note {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin: 8px 2px 0;
+        color: #7f7d87;
+        font-size: 9px;
+        line-height: 1.4;
+      }
+
+      .matrix-note::before {
+        width: 6px;
+        height: 6px;
+        flex: 0 0 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        content: "";
+      }
+
+      .interactive-lab-section {
+        padding-top: 8px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin: 0 0 14px;
+      }
+
+      .section-head h2 {
+        margin-bottom: 5px;
+        font-size: clamp(21px, 4vw, 30px);
+        letter-spacing: -0.04em;
+      }
+
+      .section-head p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .selected-structure {
+        display: none;
+        align-items: center;
+        gap: 7px;
+        flex: 0 0 auto;
+        padding: 8px 11px;
+        border: 1px solid rgba(214, 255, 98, 0.24);
+        border-radius: 999px;
+        color: var(--accent);
+        background: rgba(214, 255, 98, 0.07);
+        font-size: 12px;
+        font-weight: 750;
+      }
+
+      .selected-structure.is-visible {
+        display: inline-flex;
+      }
+
+      .option-tabs {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+
+      .option-tab {
+        position: relative;
+        min-height: 164px;
+        padding: 13px;
+        overflow: hidden;
+        text-align: left;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.028);
+        cursor: pointer;
+        transition: 180ms ease;
+      }
+
+      .option-tab:hover {
+        border-color: var(--line-strong);
+        transform: translateY(-2px);
+      }
+
+      .option-tab[aria-selected="true"] {
+        border-color: color-mix(in srgb, var(--option-color) 62%, transparent);
+        background: color-mix(in srgb, var(--option-color) 9%, var(--surface));
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--option-color) 20%, transparent);
+      }
+
+      .option-tab[aria-selected="true"]::after {
+        position: absolute;
+        right: -38px;
+        bottom: -62px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--option-color) 18%, transparent);
+        filter: blur(12px);
+        content: "";
+      }
+
+      .option-tab[data-option="A"] {
+        --option-color: var(--a);
+      }
+
+      .option-tab[data-option="B"] {
+        --option-color: var(--b);
+      }
+
+      .option-tab[data-option="C"] {
+        --option-color: var(--c);
+      }
+
+      .option-tab-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 13px;
+      }
+
+      .option-letter {
+        display: grid;
+        width: 32px;
+        height: 32px;
+        place-items: center;
+        border: 1px solid color-mix(in srgb, var(--option-color) 46%, transparent);
+        border-radius: 11px;
+        color: var(--option-color);
+        background: color-mix(in srgb, var(--option-color) 10%, transparent);
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .option-signal {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .option-tab h3 {
+        position: relative;
+        z-index: 1;
+        margin-bottom: 7px;
+        font-size: 14px;
+        letter-spacing: -0.03em;
+      }
+
+      .option-tab p {
+        position: relative;
+        z-index: 1;
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 10.5px;
+        line-height: 1.45;
+      }
+
+      .option-axis-preview {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px;
+        margin-top: 10px;
+      }
+
+      .option-axis-preview span {
+        display: flex;
+        align-items: center;
+        min-width: 0;
+        gap: 5px;
+        padding: 5px 6px;
+        overflow: hidden;
+        border: 1px solid color-mix(in srgb, var(--axis-color) 22%, transparent);
+        border-radius: 7px;
+        color: #b9b7c0;
+        background: color-mix(in srgb, var(--axis-color) 5%, transparent);
+        font-size: 8.5px;
+        font-weight: 700;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .option-axis-preview b {
+        display: grid;
+        width: 14px;
+        height: 14px;
+        flex: 0 0 14px;
+        place-items: center;
+        border-radius: 5px;
+        color: #111;
+        background: var(--axis-color);
+        font-size: 8px;
+      }
+
+      .lab {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
+        gap: 14px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background: rgba(17, 17, 22, 0.78);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(22px);
+      }
+
+      .workspace,
+      .result-panel {
+        min-width: 0;
+        border-radius: 20px;
+      }
+
+      .workspace {
+        padding: 20px;
+        background: var(--surface);
+      }
+
+      .workspace-head {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .micro-label {
+        margin-bottom: 5px;
+        color: var(--faint);
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .workspace-title {
+        margin-bottom: 0;
+        font-size: 19px;
+        letter-spacing: -0.035em;
+      }
+
+      .shuffle-button,
+      .secondary-button,
+      .primary-button,
+      .mini-button,
+      .candidate-card,
+      .idea-card,
+      .pick-button {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .shuffle-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        flex: 0 0 auto;
+        padding: 9px 12px;
+        border: 1px solid var(--line-strong);
+        border-radius: 12px;
+        background: var(--surface-3);
+        font-size: 12px;
+        font-weight: 750;
+        cursor: pointer;
+      }
+
+      .shuffle-button:hover {
+        background: #33333b;
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+        margin-bottom: 20px;
+      }
+
+      .idea-card {
+        --slot-color: var(--slot-1);
+        position: relative;
+        min-height: 158px;
+        padding: 14px;
+        overflow: hidden;
+        text-align: left;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.02));
+        cursor: pointer;
+        transition: 170ms ease;
+      }
+
+      .idea-card[data-slot="1"] {
+        --slot-color: var(--slot-1);
+      }
+
+      .idea-card[data-slot="2"] {
+        --slot-color: var(--slot-2);
+      }
+
+      .idea-card[data-slot="3"] {
+        --slot-color: var(--slot-3);
+      }
+
+      .idea-card[data-slot="4"] {
+        --slot-color: var(--slot-4);
+      }
+
+      .idea-card::before {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 3px;
+        background: var(--slot-color);
+        opacity: 0.65;
+        content: "";
+      }
+
+      .idea-card:hover {
+        border-color: color-mix(in srgb, var(--slot-color) 36%, transparent);
+        transform: translateY(-2px);
+      }
+
+      .idea-card.is-active {
+        border-color: color-mix(in srgb, var(--slot-color) 78%, transparent);
+        background: color-mix(in srgb, var(--slot-color) 8%, var(--surface-2));
+        box-shadow: 0 0 0 1px color-mix(in srgb, var(--slot-color) 16%, transparent);
+      }
+
+      .idea-card.is-active::after {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--slot-color);
+        box-shadow: 0 0 14px var(--slot-color);
+        content: "";
+      }
+
+      .card-meta {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 23px;
+        color: var(--slot-color);
+        font-size: 10px;
+        font-weight: 800;
+      }
+
+      .slot-index {
+        display: grid;
+        width: 20px;
+        height: 20px;
+        place-items: center;
+        border-radius: 7px;
+        color: #111;
+        background: var(--slot-color);
+        font-size: 10px;
+      }
+
+      .card-title {
+        display: -webkit-box;
+        margin-bottom: 7px;
+        overflow: hidden;
+        font-size: 16px;
+        font-weight: 780;
+        line-height: 1.25;
+        letter-spacing: -0.035em;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      .card-detail {
+        display: -webkit-box;
+        margin-bottom: 0;
+        overflow: hidden;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.45;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+      }
+
+      .deck-area {
+        position: relative;
+        padding: 14px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: #15151a;
+      }
+
+      .deck-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 11px;
+      }
+
+      .deck-heading {
+        min-width: 0;
+      }
+
+      .deck-heading strong {
+        display: block;
+        margin-bottom: 3px;
+        overflow: hidden;
+        font-size: 13px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .deck-heading span,
+      .deck-tip {
+        color: var(--faint);
+        font-size: 10px;
+      }
+
+      .deck-tip {
+        flex: 0 0 auto;
+      }
+
+      .candidate-mask {
+        position: relative;
+        margin: 0 -14px;
+      }
+
+      .candidate-mask::before,
+      .candidate-mask::after {
+        position: absolute;
+        z-index: 3;
+        top: 0;
+        bottom: 8px;
+        width: 25px;
+        pointer-events: none;
+        content: "";
+      }
+
+      .candidate-mask::before {
+        left: 0;
+        background: linear-gradient(90deg, #15151a, transparent);
+      }
+
+      .candidate-mask::after {
+        right: 0;
+        background: linear-gradient(-90deg, #15151a, transparent);
+      }
+
+      .candidate-strip {
+        display: flex;
+        gap: 8px;
+        padding: 2px 24px 10px;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+      }
+
+      .candidate-strip::-webkit-scrollbar {
+        display: none;
+      }
+
+      .candidate-card {
+        flex: 0 0 142px;
+        min-height: 116px;
+        padding: 12px;
+        scroll-snap-align: start;
+        text-align: left;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #24242b;
+        cursor: pointer;
+        transform-origin: center bottom;
+        transition: 160ms ease;
+      }
+
+      .candidate-card:nth-child(4n + 1) {
+        transform: rotate(-1deg);
+      }
+
+      .candidate-card:nth-child(4n + 3) {
+        transform: rotate(1deg);
+      }
+
+      .candidate-card:hover {
+        border-color: var(--line-strong);
+        transform: translateY(-4px) rotate(0);
+      }
+
+      .candidate-card.is-selected {
+        border-color: var(--active-slot-color, var(--accent));
+        background: color-mix(in srgb, var(--active-slot-color, var(--accent)) 8%, #24242b);
+      }
+
+      .candidate-kicker {
+        display: block;
+        margin-bottom: 15px;
+        color: var(--faint);
+        font-size: 9px;
+        font-weight: 800;
+      }
+
+      .candidate-title {
+        display: -webkit-box;
+        margin-bottom: 0;
+        overflow: hidden;
+        font-size: 12px;
+        font-weight: 720;
+        line-height: 1.4;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+      }
+
+      .custom-row {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .custom-input {
+        min-width: 0;
+        flex: 1 1 auto;
+        height: 43px;
+        padding: 0 13px;
+        color: var(--text);
+        border: 1px solid var(--line);
+        outline: none;
+        border-radius: 12px;
+        background: #0f0f13;
+        font-size: 12px;
+      }
+
+      .custom-input::placeholder {
+        color: #66656f;
+      }
+
+      .custom-input:focus {
+        border-color: var(--active-slot-color, var(--accent));
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--active-slot-color, var(--accent)) 12%, transparent);
+      }
+
+      .mini-button {
+        flex: 0 0 auto;
+        padding: 0 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: 12px;
+        background: var(--surface-3);
+        font-size: 12px;
+        font-weight: 750;
+        cursor: pointer;
+      }
+
+      .result-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px;
+        background:
+          radial-gradient(circle at 90% 0%, var(--option-wash, rgba(185, 156, 255, 0.1)), transparent 16rem),
+          #16161c;
+      }
+
+      .result-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .result-label,
+      .prompt-label {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .platform-badge {
+        padding: 6px 9px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: #d9d7dd;
+        background: rgba(255, 255, 255, 0.04);
+        font-size: 10px;
+        font-weight: 750;
+      }
+
+      .result-sentence {
+        margin-bottom: 2px;
+        font-size: clamp(20px, 2.6vw, 30px);
+        font-weight: 750;
+        line-height: 1.32;
+        letter-spacing: -0.045em;
+        word-break: keep-all;
+      }
+
+      .sentence-part {
+        padding: 0 2px;
+        border-radius: 5px;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+      }
+
+      .sentence-part[data-slot="1"] {
+        color: var(--slot-1);
+        background: rgba(197, 168, 255, 0.08);
+      }
+
+      .sentence-part[data-slot="2"] {
+        color: var(--slot-2);
+        background: rgba(116, 215, 255, 0.07);
+      }
+
+      .sentence-part[data-slot="3"] {
+        color: var(--slot-3);
+        background: rgba(255, 178, 111, 0.07);
+      }
+
+      .sentence-part[data-slot="4"] {
+        color: var(--slot-4);
+        background: rgba(201, 243, 106, 0.07);
+      }
+
+      .preserve-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .preserve-card {
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      .preserve-card span {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--faint);
+        font-size: 9px;
+        font-weight: 800;
+      }
+
+      .preserve-card strong {
+        display: block;
+        font-size: 12px;
+        line-height: 1.4;
+        letter-spacing: -0.02em;
+      }
+
+      .guard-row {
+        display: flex;
+        gap: 9px;
+        padding: 11px 12px;
+        border: 1px solid rgba(214, 255, 98, 0.13);
+        border-radius: 13px;
+        color: #d9e7b3;
+        background: rgba(214, 255, 98, 0.045);
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .guard-row.is-warning {
+        border-color: rgba(255, 173, 121, 0.3);
+        color: #ffd5bb;
+        background: rgba(255, 173, 121, 0.07);
+      }
+
+      .guard-row.is-warning .guard-icon {
+        color: var(--slot-3);
+      }
+
+      .guard-icon {
+        flex: 0 0 auto;
+        color: var(--accent);
+        font-weight: 900;
+      }
+
+      .prompt-card {
+        padding: 13px;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        background: #0e0e12;
+      }
+
+      .prompt-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .prompt-actions {
+        display: flex;
+        gap: 6px;
+      }
+
+      .text-button {
+        padding: 5px 7px;
+        color: var(--muted);
+        border: 0;
+        border-radius: 7px;
+        background: transparent;
+        font-size: 10px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .text-button:hover {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .prompt-body {
+        margin: 0;
+        overflow: hidden;
+        color: #c8c6cd;
+        font: 10.5px/1.65 ui-monospace, SFMono-Regular, Menlo, monospace;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .prompt-hidden {
+        display: block;
+        position: relative;
+        max-height: 38px;
+        overflow: hidden;
+        filter: blur(3.5px);
+        opacity: 0.55;
+        user-select: none;
+        transition: 200ms ease;
+      }
+
+      .prompt-card.is-open .prompt-hidden {
+        max-height: 360px;
+        filter: none;
+        opacity: 1;
+        user-select: text;
+      }
+
+      .result-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: auto;
+      }
+
+      .primary-button,
+      .secondary-button {
+        min-height: 44px;
+        padding: 0 15px;
+        border-radius: 13px;
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .primary-button {
+        flex: 1 1 auto;
+        color: var(--accent-text);
+        border: 1px solid var(--accent);
+        background: var(--accent);
+      }
+
+      .secondary-button {
+        flex: 0 0 auto;
+        border: 1px solid var(--line-strong);
+        background: var(--surface-3);
+      }
+
+      .comparison {
+        margin-top: 58px;
+      }
+
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .comparison-card {
+        --option-color: var(--a);
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.028);
+      }
+
+      .comparison-card[data-option="B"] {
+        --option-color: var(--b);
+      }
+
+      .comparison-card[data-option="C"] {
+        --option-color: var(--c);
+      }
+
+      .comparison-name {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 18px;
+      }
+
+      .comparison-name .option-letter {
+        --option-color: inherit;
+      }
+
+      .comparison-name strong {
+        font-size: 15px;
+      }
+
+      .metric-list {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 17px;
+      }
+
+      .metric {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 10px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .metric:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .metric-label {
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .metric-value {
+        flex: 0 0 auto;
+        color: var(--option-color);
+        font-size: 11px;
+        font-weight: 800;
+      }
+
+      .risk-note {
+        min-height: 58px;
+        margin-bottom: 14px;
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 12px;
+        color: var(--muted);
+        background: rgba(0, 0, 0, 0.12);
+        font-size: 10.5px;
+        line-height: 1.5;
+      }
+
+      .pick-button {
+        width: 100%;
+        min-height: 40px;
+        border: 1px solid color-mix(in srgb, var(--option-color) 35%, transparent);
+        border-radius: 12px;
+        color: var(--option-color);
+        background: color-mix(in srgb, var(--option-color) 7%, transparent);
+        font-size: 11px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .pick-button.is-picked {
+        color: #111;
+        background: var(--option-color);
+      }
+
+      .test-guide {
+        display: grid;
+        grid-template-columns: minmax(250px, 0.7fr) minmax(0, 1.3fr);
+        gap: 12px;
+        margin-top: 12px;
+      }
+
+      .guide-intro,
+      .guide-steps {
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: rgba(255, 255, 255, 0.025);
+      }
+
+      .guide-intro h3 {
+        margin-bottom: 8px;
+        font-size: 22px;
+        letter-spacing: -0.04em;
+      }
+
+      .guide-intro p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .guide-steps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .guide-step {
+        padding: 12px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.035);
+      }
+
+      .guide-step span {
+        display: grid;
+        width: 22px;
+        height: 22px;
+        margin-bottom: 20px;
+        place-items: center;
+        border-radius: 8px;
+        color: var(--accent-text);
+        background: var(--accent);
+        font-size: 10px;
+        font-weight: 850;
+      }
+
+      .guide-step strong {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 12px;
+      }
+
+      .guide-step p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 10.5px;
+        line-height: 1.45;
+      }
+
+      .disclaimer {
+        margin: 16px auto 0;
+        color: var(--faint);
+        font-size: 10px;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      .toast {
+        position: fixed;
+        z-index: 30;
+        left: 50%;
+        bottom: 20px;
+        padding: 10px 14px;
+        opacity: 0;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: rgba(34, 34, 41, 0.95);
+        box-shadow: 0 10px 36px rgba(0, 0, 0, 0.3);
+        font-size: 11px;
+        font-weight: 700;
+        pointer-events: none;
+        transform: translate(-50%, 14px);
+        transition: 180ms ease;
+      }
+
+      .toast.is-visible {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      .is-shuffling .idea-card {
+        animation: shuffle 260ms ease both;
+      }
+
+      .is-shuffling .idea-card:nth-child(2) {
+        animation-delay: 25ms;
+      }
+
+      .is-shuffling .idea-card:nth-child(3) {
+        animation-delay: 50ms;
+      }
+
+      .is-shuffling .idea-card:nth-child(4) {
+        animation-delay: 75ms;
+      }
+
+      @keyframes shuffle {
+        50% {
+          opacity: 0.5;
+          transform: translateY(-9px) rotate(1.2deg);
+        }
+      }
+
+      @media (min-width: 1000px) {
+        .shell {
+          padding-top: 14px;
+        }
+
+        .topbar {
+          margin-bottom: 12px;
+        }
+
+        .hero {
+          display: grid;
+          grid-template-columns: 360px minmax(0, 1fr);
+          grid-template-rows: auto auto auto;
+          column-gap: 38px;
+          max-width: none;
+          margin-bottom: 15px;
+        }
+
+        .hero .eyebrow {
+          grid-column: 1;
+          grid-row: 1;
+          margin-bottom: 7px;
+          font-size: 10px;
+        }
+
+        .hero h1 {
+          grid-column: 1;
+          grid-row: 2 / span 2;
+          align-self: start;
+          margin-bottom: 0;
+          font-size: 47px;
+          line-height: 0.93;
+        }
+
+        .hero-copy {
+          grid-column: 2;
+          grid-row: 2;
+          align-self: end;
+          max-width: 800px;
+          margin-bottom: 9px;
+          font-size: 14px;
+          line-height: 1.45;
+        }
+
+        .hero-chips {
+          grid-column: 2;
+          grid-row: 3;
+          align-self: start;
+          gap: 5px;
+        }
+
+        .hero-chip {
+          padding: 5px 8px;
+          font-size: 9px;
+        }
+
+        .overview-matrix {
+          margin-bottom: 46px;
+        }
+      }
+
+      @media (min-width: 861px) and (max-width: 1100px) {
+        .shell {
+          padding-right: 10px;
+          padding-left: 10px;
+        }
+
+        .topbar {
+          margin-bottom: 8px;
+        }
+
+        .hero {
+          grid-template-columns: 250px minmax(0, 1fr);
+          column-gap: 22px;
+          margin-bottom: 9px;
+        }
+
+        .hero h1 {
+          font-size: 39px;
+        }
+
+        .hero-copy {
+          font-size: 12.5px;
+        }
+
+        .matrix-head h2 {
+          font-size: 23px;
+        }
+
+        .matrix-frame {
+          display: none;
+        }
+
+        .matrix-compact {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 4px;
+        }
+
+        .structure-matrix {
+          min-width: 0;
+        }
+
+        .structure-matrix col:nth-child(1) {
+          width: 11% !important;
+        }
+
+        .structure-matrix col:nth-child(2) {
+          width: 10.5% !important;
+        }
+
+        .structure-matrix col:nth-child(3),
+        .structure-matrix col:nth-child(4) {
+          width: 11.5% !important;
+        }
+
+        .structure-matrix col:nth-child(5) {
+          width: 12.5% !important;
+        }
+
+        .structure-matrix col:nth-child(6) {
+          width: 24% !important;
+        }
+
+        .structure-matrix col:nth-child(7) {
+          width: 19% !important;
+        }
+
+        .structure-matrix th {
+          padding-right: 5px;
+          padding-left: 5px;
+          font-size: 7.8px;
+        }
+
+        .structure-matrix td {
+          height: 49px;
+          padding-right: 5px;
+          padding-left: 5px;
+        }
+
+        .matrix-method {
+          grid-template-columns: 22px minmax(0, 1fr);
+          gap: 5px;
+        }
+
+        .matrix-letter {
+          width: 22px;
+          height: 22px;
+          font-size: 9px;
+        }
+
+        .matrix-method strong {
+          font-size: 9.5px;
+        }
+
+        .matrix-method small {
+          font-size: 7.5px;
+        }
+
+        .matrix-card-label {
+          gap: 3px;
+          font-size: 7.3px;
+        }
+
+        .matrix-card-value {
+          font-size: 9px;
+        }
+
+        .matrix-result strong {
+          font-size: 9.7px;
+        }
+
+        .matrix-test strong {
+          font-size: 8.5px;
+        }
+
+        .matrix-test span {
+          font-size: 7.5px;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .lab {
+          grid-template-columns: 1fr;
+        }
+
+        .option-tabs {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .comparison-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .result-panel {
+          min-height: 0;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .shell {
+          padding: 14px 12px 96px;
+        }
+
+        .matrix-head {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .matrix-legend {
+          justify-content: flex-start;
+        }
+
+        .matrix-frame {
+          border-radius: 14px;
+        }
+
+        .topbar {
+          margin-bottom: 34px;
+        }
+
+        .prototype-note span {
+          display: none;
+        }
+
+        .hero {
+          margin-bottom: 28px;
+        }
+
+        h1 {
+          max-width: 360px;
+          font-size: 46px;
+        }
+
+        .section-head {
+          align-items: start;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .option-tabs {
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 164px;
+          grid-template-columns: none;
+          grid-template-rows: repeat(2, 164px);
+          gap: 8px;
+          margin-right: -12px;
+          padding-right: 12px;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none;
+        }
+
+        .option-tabs::-webkit-scrollbar {
+          display: none;
+        }
+
+        .option-tab {
+          min-height: 164px;
+          scroll-snap-align: start;
+        }
+
+        .lab {
+          gap: 8px;
+          padding: 7px;
+          border-radius: 23px;
+        }
+
+        .workspace,
+        .result-panel {
+          padding: 14px;
+          border-radius: 18px;
+        }
+
+        .workspace-head {
+          align-items: center;
+        }
+
+        .workspace-title {
+          font-size: 17px;
+        }
+
+        .shuffle-button {
+          padding: 9px 10px;
+        }
+
+        .cards-grid {
+          gap: 7px;
+        }
+
+        .idea-card {
+          min-height: 151px;
+          padding: 12px;
+        }
+
+        .card-meta {
+          align-items: start;
+          min-height: 28px;
+          margin-bottom: 13px;
+          line-height: 1.25;
+        }
+
+        .card-title {
+          font-size: 14px;
+        }
+
+        .card-detail {
+          -webkit-line-clamp: 2;
+        }
+
+        .deck-area {
+          padding: 12px;
+        }
+
+        .candidate-mask {
+          margin: 0 -12px;
+        }
+
+        .custom-row {
+          flex-direction: column;
+        }
+
+        .mini-button {
+          min-height: 41px;
+        }
+
+        .result-sentence {
+          font-size: 22px;
+        }
+
+        .preserve-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .comparison {
+          margin-top: 44px;
+        }
+
+        .comparison-grid,
+        .test-guide,
+        .guide-steps {
+          grid-template-columns: 1fr;
+        }
+
+        .comparison-grid {
+          display: flex;
+          margin-right: -12px;
+          padding-right: 12px;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none;
+        }
+
+        .comparison-grid::-webkit-scrollbar {
+          display: none;
+        }
+
+        .comparison-card {
+          flex: 0 0 84%;
+          scroll-snap-align: start;
+        }
+
+        .guide-steps {
+          display: grid;
+        }
+
+        .guide-step {
+          display: grid;
+          grid-template-columns: 30px 1fr;
+          column-gap: 8px;
+        }
+
+        .guide-step span {
+          grid-row: 1 / span 2;
+          margin-bottom: 0;
+        }
+
+        .guide-step strong,
+        .guide-step p {
+          grid-column: 2;
+        }
+      }
+
+      @media (max-width: 370px) {
+        h1 {
+          font-size: 41px;
+        }
+
+        .idea-card {
+          min-height: 158px;
+        }
+
+        .shuffle-button span {
+          display: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">?</span>오늘 해볼까</div>
+        <div class="prototype-note"><span>카드 분류 구조 실험 · 실제 서비스 아님</span>PROTOTYPE</div>
+      </header>
+
+      <section class="hero">
+        <p class="eyebrow">4 CARD STRUCTURE LAB</p>
+        <h1>같은 목표,<br />다른 네 장.</h1>
+        <p class="hero-copy">
+          잘되는 제품의 80–90%를 남기고 한 끗만 바꾸려면, 어떤 네 장을 뽑아야 할까요?
+          A–M, 총 13개 안의 차이와 결과를 한 화면에서 비교하고 가장 설명하기 쉬운 구조를 골라보세요.
+        </p>
+        <div class="hero-chips" aria-label="프로토타입 핵심 기능">
+          <span class="hero-chip">취향 조사 없음</span>
+          <span class="hero-chip">각 카드만 교체</span>
+          <span class="hero-chip">직접 입력 가능</span>
+          <span class="hero-chip">웹 · 앱 · 플러그인</span>
+        </div>
+      </section>
+
+      <section class="overview-matrix" aria-labelledby="matrix-heading">
+        <div class="matrix-head">
+          <div>
+            <h2 id="matrix-heading">A–M 전체 비교 · 클릭 필요 없음</h2>
+            <p>네 장의 분류 기준, 실제 예시 조합, 만들어지는 결과와 실패 위험을 같은 행에서 비교합니다.</p>
+          </div>
+          <div class="matrix-legend" aria-label="카드 색상 범례">
+            <span style="--legend-color: var(--slot-1)"><i></i>1번 원본 기준</span>
+            <span style="--legend-color: var(--slot-2)"><i></i>2번 관점</span>
+            <span style="--legend-color: var(--slot-3)"><i></i>3번 변화</span>
+            <span style="--legend-color: var(--slot-4)"><i></i>4번 한 끗</span>
+          </div>
+        </div>
+
+        <div class="matrix-frame">
+          <div class="matrix-scroll">
+            <table class="structure-matrix" aria-label="13개 네 카드 조합법 비교표">
+              <colgroup>
+                <col style="width: 140px" />
+                <col style="width: 140px" />
+                <col style="width: 150px" />
+                <col style="width: 150px" />
+                <col style="width: 160px" />
+                <col style="width: 310px" />
+                <col style="width: 200px" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col">조합법</th>
+                  <th scope="col">카드 1</th>
+                  <th scope="col">카드 2</th>
+                  <th scope="col">카드 3</th>
+                  <th scope="col">카드 4</th>
+                  <th scope="col">예시 결과</th>
+                  <th scope="col">검증 포인트 · 위험</th>
+                </tr>
+              </thead>
+              <tbody id="matrix-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="matrix-compact" id="matrix-compact" aria-label="1000픽셀용 13개 조합법 비교 카드"></div>
+        <p class="matrix-note">카드 1도 조합법마다 다릅니다. 단, 이미 작동하는 제품에서 출발한다는 원칙만 공통으로 유지합니다.</p>
+      </section>
+
+      <section class="interactive-lab-section" aria-labelledby="option-heading">
+        <div class="section-head">
+          <div>
+            <h2 id="option-heading">선택: 직접 바꿔보는 실험실</h2>
+            <p>위 비교표만으로 판단할 수 있습니다. 더 확인하고 싶은 안만 아래에서 다시 뽑거나 한 장씩 바꿔보세요.</p>
+          </div>
+          <div class="selected-structure" id="selected-structure">✓ 선택: A안</div>
+        </div>
+
+        <div class="option-tabs" id="option-tabs" role="tablist" aria-label="4카드 분류 구조 13개"></div>
+
+        <div class="lab" id="lab">
+          <section class="workspace" aria-labelledby="workspace-title">
+            <div class="workspace-head">
+              <div>
+                <p class="micro-label" id="workspace-kicker">A안 · 성공 제품 DNA형</p>
+                <h2 class="workspace-title" id="workspace-title">뽑힌 네 장</h2>
+              </div>
+              <button class="shuffle-button" id="shuffle-button" type="button" aria-label="네 장 전체 다시 뽑기">
+                ↻ <span>4장 다시 뽑기</span>
+              </button>
+            </div>
+
+            <div class="cards-grid" id="cards-grid" aria-label="현재 선택한 네 장"></div>
+
+            <div class="deck-area" id="deck-area">
+              <div class="deck-head">
+                <div class="deck-heading">
+                  <strong id="deck-title">1번 카드만 바꾸기</strong>
+                  <span id="deck-subtitle">아래 후보를 누르면 이 카드만 교체됩니다.</span>
+                </div>
+                <span class="deck-tip">옆으로 넘겨보기 →</span>
+              </div>
+              <div class="candidate-mask">
+                <div class="candidate-strip" id="candidate-strip"></div>
+              </div>
+              <form class="custom-row" id="custom-form">
+                <input
+                  class="custom-input"
+                  id="custom-input"
+                  type="text"
+                  maxlength="80"
+                  autocomplete="off"
+                  placeholder="후보에 없으면 직접 적기"
+                  aria-label="활성 카드에 직접 입력"
+                />
+                <button class="mini-button" type="submit">이 카드에 넣기</button>
+              </form>
+            </div>
+          </section>
+
+          <aside class="result-panel" id="result-panel" aria-labelledby="result-heading">
+            <div class="result-top">
+              <span class="result-label">조합 결과</span>
+              <span class="platform-badge" id="platform-badge">모바일 앱</span>
+            </div>
+            <h2 class="result-sentence" id="result-heading"></h2>
+
+            <div class="preserve-grid">
+              <div class="preserve-card">
+                <span>80–90% · 그대로 가져온 것</span>
+                <strong id="preserved-copy"></strong>
+              </div>
+              <div class="preserve-card">
+                <span>10–20% · 바꾼 한 가지</span>
+                <strong id="changed-copy"></strong>
+              </div>
+            </div>
+
+            <div class="guard-row" id="guard-row">
+              <span class="guard-icon">↳</span>
+              <span id="guard-copy"></span>
+            </div>
+
+            <section class="prompt-card" id="prompt-card" aria-labelledby="prompt-heading">
+              <div class="prompt-head">
+                <span class="prompt-label" id="prompt-heading">AI로 만들기 요청문 · 미리보기</span>
+                <div class="prompt-actions">
+                  <button class="text-button" id="prompt-toggle" type="button">전체 보기</button>
+                  <button class="text-button" id="copy-prompt" type="button">복사</button>
+                </div>
+              </div>
+              <pre class="prompt-body"><span id="prompt-visible"></span><span class="prompt-hidden" id="prompt-hidden"></span></pre>
+            </section>
+
+            <div class="result-actions">
+              <button class="primary-button" id="pick-current" type="button">이 구조 선택</button>
+              <button class="secondary-button" id="copy-result" type="button">결과 복사</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="comparison" aria-labelledby="comparison-heading" hidden aria-hidden="true">
+        <div class="section-head">
+          <div>
+            <h2 id="comparison-heading">짧게 돌려본 결과</h2>
+            <p>Character.AI·Ingan.ai·1Lookup·Grammarly·Calendly·Loom 시드를 섞어 13개 분류 구조를 비교한 1차 판정입니다.</p>
+          </div>
+        </div>
+
+        <div class="comparison-grid" id="comparison-grid"></div>
+
+        <div class="test-guide">
+          <div class="guide-intro">
+            <p class="micro-label">60초 비교법</p>
+            <h3>세 번만 눌러보세요.</h3>
+            <p>좋은 구조는 긴 설명 없이도 무엇을 남기고 무엇 하나를 바꿨는지 바로 말할 수 있습니다.</p>
+          </div>
+          <div class="guide-steps">
+            <div class="guide-step">
+              <span>1</span>
+              <strong>전체를 다시 뽑기</strong>
+              <p>A–M에서 한 번씩 눌러 첫 결과의 안정성을 봅니다.</p>
+            </div>
+            <div class="guide-step">
+              <span>2</span>
+              <strong>3번 카드만 교체</strong>
+              <p>한 장을 바꿔도 문장이 자연스럽고 아이디어가 무너지지 않는지 봅니다.</p>
+            </div>
+            <div class="guide-step">
+              <span>3</span>
+              <strong>10초 안에 설명하기</strong>
+              <p>원본·보존한 것·바꾼 한 가지를 소리 내 말하고 가장 쉬운 안을 고릅니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="disclaimer">
+          이 페이지의 제품명과 카드 문구는 분류 구조를 비교하기 위한 시드입니다. 실제 출시 후보는 research 원본의 매출·사용자·기능 근거를 다시 확인한 뒤 생성합니다.
+        </p>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      const slotColors = ["#c5a8ff", "#74d7ff", "#ffb26f", "#c9f36a"];
+
+      const structures = {
+        A: {
+          name: "성공 제품 DNA형",
+          labels: ["검증된 원본", "사람이 계속 하는 일", "딱 한 곳 바꾸기", "하나 더하기·빼기"],
+          helpers: ["무엇을 80–90% 가져올지", "리텐션을 만드는 반복 행동", "변화가 일어나는 지점 하나", "그 지점에 가할 조작 하나"],
+          pools: [
+            [
+              { title: "Character.AI", detail: "캐릭터 발견 → 1:1 대화 → 관계 축적", value: "Character.AI의 캐릭터 대화 구조", platform: "앱 · 웹" },
+              { title: "Ingan.ai", detail: "개인 정보 입력 → AI 해석 → 공유 리포트", value: "Ingan.ai의 개인 데이터 분석 구조", platform: "웹" },
+              { title: "1Lookup", detail: "식별자 하나 입력 → 정보 보강 → 즉시 결과", value: "1Lookup의 단일 조회 구조", platform: "웹" },
+              { title: "Grammarly", detail: "작성 감지 → 즉시 제안 → 한 번에 반영", value: "Grammarly의 작성 보조 구조", platform: "플러그인" },
+              { title: "Calendly", detail: "가능 시간 공개 → 상대 선택 → 일정 확정", value: "Calendly의 셀프 예약 구조", platform: "웹" },
+              { title: "Duolingo", detail: "짧은 학습 → 즉시 피드백 → 연속 기록", value: "Duolingo의 짧은 학습 구조", platform: "앱" }
+            ],
+            [
+              { title: "매일 돌아와 대화를 잇는다", detail: "이전 맥락이 남아 다음 방문 이유가 생김", value: "매일 돌아와 이전 대화를 잇는 행동" },
+              { title: "정보 하나를 넣고 바로 본다", detail: "복잡한 설정 없이 입력과 보상이 붙어 있음", value: "정보 하나를 넣고 즉시 결과를 보는 행동" },
+              { title: "쓰는 순간 제안을 받는다", detail: "별도 화면을 열지 않고 원래 흐름 안에서 사용", value: "쓰는 순간 바로 제안을 받아 반영하는 행동" },
+              { title: "결과를 저장하고 공유한다", detail: "내 결과가 대화 소재가 되어 다시 유입됨", value: "결과를 저장하고 다른 사람에게 공유하는 행동" },
+              { title: "빈 시간을 상대가 직접 고른다", detail: "왕복 메시지 없이 한 번에 결정", value: "가능한 선택지에서 상대가 직접 고르는 행동" },
+              { title: "짧게 끝내고 연속 기록을 잇는다", detail: "작은 완료와 스트릭이 재방문을 만듦", value: "짧게 완료하고 연속 기록을 이어가는 행동" }
+            ],
+            [
+              { title: "AI가 맡는 역할", detail: "기능 수는 그대로 두고 AI의 직업만 교체", value: "AI가 맡는 역할" },
+              { title: "사용자가 넣는 정보", detail: "처리·결과는 남기고 입력 데이터만 교체", value: "사용자가 넣는 정보" },
+              { title: "결과가 나오는 순간", detail: "같은 결과를 더 필요한 타이밍에 전달", value: "결과가 나오는 순간" },
+              { title: "결과의 공개 범위", detail: "기능보다 혼자/함께 쓰는 방식을 교체", value: "결과의 공개 범위" },
+              { title: "첫 화면의 시작점", detail: "탐색부터가 아니라 바로 행동부터 시작", value: "첫 화면의 시작점" },
+              { title: "돈을 내는 단위", detail: "제품은 유지하고 결제 순간만 교체", value: "돈을 내는 단위" }
+            ],
+            [
+              { title: "일반 AI를 ‘직장 선배’로 바꾼다", detail: "조언 범위를 회사생활 한 가지로 제한", value: "일반 AI를 ‘직장 선배’ 역할로만 바꿉니다", platform: "모바일 앱" },
+              { title: "인스타 계정 대신 캘린더를 넣는다", detail: "공개 게시물 대신 가까운 일정만 입력", value: "인스타 계정 대신 캘린더 일정만 입력받습니다", platform: "모바일 앱" },
+              { title: "결과 뒤 7일 행동 하나를 더한다", detail: "긴 코스가 아니라 오늘 할 행동 하나만 제공", value: "결과 뒤에 7일 동안 할 행동 하나만 더합니다", platform: "웹" },
+              { title: "공개 탐색 피드를 완전히 뺀다", detail: "탐색 없이 초대 링크의 상대와 바로 시작", value: "공개 탐색 피드를 빼고 초대 링크만 남깁니다", platform: "웹" },
+              { title: "입력창 옆 한 줄 제안만 더한다", detail: "새 화면 없이 현재 작성 화면에 붙임", value: "입력창 옆에 한 줄 제안만 더합니다", platform: "브라우저 플러그인" },
+              { title: "월 구독 대신 결과 1회 결제로 바꾼다", detail: "매달 결제하지 않고 필요한 순간만 구매", value: "월 구독을 빼고 결과 한 번당 결제로 바꿉니다", platform: "웹" }
+            ]
+          ],
+          recipes: [
+            [0, 0, 0, 0],
+            [1, 1, 1, 1],
+            [2, 1, 2, 2],
+            [3, 2, 4, 4],
+            [4, 4, 3, 3],
+            [5, 5, 5, 5]
+          ],
+          guard: "변경 지점 1개와 조작 1개를 짝지어, 기능이 여러 방향으로 번지는 것을 막는 안입니다.",
+          result(cards) {
+            return `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 유지할 반복 행동 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 변경 지점 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 한 끗 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`;
+          },
+          preserved(cards) {
+            return `${cards[0].detail} · ${cards[1].value}`;
+          },
+          changed(cards) {
+            return `${cards[2].value} → ${cards[3].value}`;
+          },
+          prompt(cards) {
+            return [
+              `[원본] ${cards[0].value}`,
+              `[유지] ${cards[1].value}은 그대로 보존한다.`,
+              "",
+              `[변경 지점] ${cards[2].value} 하나만 바꾼다.`,
+              `[구체적 조작] ${cards[3].value}.`,
+              "",
+              "원본과 동일한 핵심 흐름을 먼저 3단계로 설명하고,",
+              "달라진 한 가지가 사용자 행동과 결제 이유를 어떻게 바꾸는지 써라.",
+              "새 기능을 추가로 발명하지 말고 웹·앱·플러그인 중 맞는 형태를 제안하라."
+            ].join("\n");
+          }
+        },
+        B: {
+          name: "고객·문제형",
+          labels: ["수익 원본", "누가 돈 내나", "언제 필요하나", "한 끗 변화"],
+          helpers: ["이미 반복 사용되는 구조", "지갑과 반복 업무가 있는 사람", "해결 욕구가 가장 커지는 순간", "그 순간을 겨냥한 변화 하나"],
+          pools: [
+            [
+              { title: "Character.AI", detail: "캐릭터를 고르고 맥락이 이어지는 대화", value: "Character.AI의 관계형 대화 흐름", platform: "앱 · 웹" },
+              { title: "Ingan.ai", detail: "내 정보를 넣고 해석된 결과를 받는 흐름", value: "Ingan.ai의 개인화 리포트 흐름", platform: "웹" },
+              { title: "1Lookup", detail: "정보 하나로 상대 정보를 보강하는 흐름", value: "1Lookup의 즉시 조회 흐름", platform: "웹" },
+              { title: "Grammarly", detail: "작성 중 문제를 찾아 바로 고치는 흐름", value: "Grammarly의 인라인 교정 흐름", platform: "플러그인" },
+              { title: "Calendly", detail: "가능 시간을 열어 상대가 직접 예약", value: "Calendly의 셀프 예약 흐름", platform: "웹" },
+              { title: "Loom", detail: "화면을 녹화하고 링크 하나로 설명", value: "Loom의 비동기 설명 흐름", platform: "앱 · 플러그인" }
+            ],
+            [
+              { title: "첫 직장을 다니는 20대", detail: "사소한 회사 질문을 매일 검색하는 사람", value: "첫 직장을 다니며 회사생활 답을 자주 찾는 20대" },
+              { title: "매주 리드를 찾는 1인 영업자", detail: "조사 시간을 줄이면 바로 돈이 되는 사람", value: "매주 잠재 고객을 직접 조사하는 1인 영업자" },
+              { title: "매일 글을 올리는 크리에이터", detail: "작성 속도와 반응이 수익에 연결되는 사람", value: "매일 콘텐츠 문구를 작성하는 1인 크리에이터" },
+              { title: "반복 문의가 많은 쇼핑몰 운영자", detail: "답변 누락과 시간이 손실로 이어지는 사람", value: "반복 문의를 직접 처리하는 소형 쇼핑몰 운영자" },
+              { title: "고객 미팅이 많은 프리랜서", detail: "일정 조율과 후속 정리가 반복되는 사람", value: "고객 미팅을 매주 여러 번 잡는 프리랜서" },
+              { title: "소개팅을 앞둔 직장인", detail: "짧은 시간에 대화 준비가 필요한 사람", value: "새로운 만남을 앞두고 대화를 준비하는 직장인" }
+            ],
+            [
+              { title: "상대에게 답장하기 직전", detail: "무슨 말을 해야 할지 멈추는 30초", value: "상대에게 중요한 답장을 보내기 직전" },
+              { title: "첫 만남 10분 전", detail: "새로 만날 상대와 맥락을 급하게 훑는 순간", value: "새로운 사람과 첫 만남을 시작하기 10분 전" },
+              { title: "월요일 우선순위를 정할 때", detail: "이번 주 무엇부터 할지 고르는 순간", value: "매주 월요일 업무 우선순위를 정할 때" },
+              { title: "게시 버튼을 누르기 직전", detail: "문구가 괜찮은지 마지막으로 망설이는 순간", value: "콘텐츠 게시 버튼을 누르기 직전" },
+              { title: "같은 질문이 세 번째 왔을 때", detail: "반복 작업을 더는 직접 하고 싶지 않은 순간", value: "같은 고객 질문이 세 번째 반복됐을 때" },
+              { title: "결과를 고객에게 보내기 직전", detail: "전달 품질이 신뢰를 결정하는 순간", value: "작업 결과를 고객에게 전달하기 직전" }
+            ],
+            [
+              { title: "새 입력 없이 캘린더만 읽는다", detail: "설문을 없애고 이미 있는 일정에서 맥락 추출", value: "새 설문을 없애고 기존 캘린더만 읽습니다", platform: "모바일 앱" },
+              { title: "결과를 바로 쓸 한 문장으로 끝낸다", detail: "리포트 대신 복사 가능한 완성 문장 하나", value: "긴 리포트를 빼고 바로 쓸 완성 문장 하나만 줍니다", platform: "키보드 플러그인" },
+              { title: "개인 결과에 팀 공유 링크를 더한다", detail: "같이 판단할 수 있는 읽기 전용 링크", value: "개인 결과에 팀용 읽기 링크 하나만 더합니다", platform: "웹" },
+              { title: "요청 전에 한 번만 먼저 알려준다", detail: "사용자가 찾기 전 필요한 순간에 알림", value: "사용자가 열기 전에 필요한 순간 한 번만 먼저 알려줍니다", platform: "모바일 앱" },
+              { title: "월 구독을 건당 결제로 바꾼다", detail: "가끔 강하게 필요한 순간에만 구매", value: "월 구독을 없애고 결과 한 건마다 결제하게 합니다", platform: "웹" },
+              { title: "텍스트 결과를 30초 음성으로 바꾼다", detail: "화면을 볼 수 없는 직전 상황에 맞춤", value: "텍스트 결과를 30초 음성 브리핑으로 바꿉니다", platform: "모바일 앱" }
+            ]
+          ],
+          recipes: [
+            [1, 5, 1, 5],
+            [2, 1, 1, 2],
+            [3, 2, 3, 1],
+            [4, 4, 2, 3],
+            [5, 4, 5, 2],
+            [0, 0, 0, 1]
+          ],
+          guard: "고객과 필요 순간은 강하게 좁혀지지만, 원본의 핵심 반복 행동이 사라지지 않았는지 별도 확인이 필요한 안입니다.",
+          result(cards) {
+            return `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 돈 낼 고객 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 필요 순간 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 한 끗 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`;
+          },
+          preserved(cards) {
+            return `${cards[0].value} · 기존의 빠른 입력→결과 흐름`;
+          },
+          changed(cards) {
+            return `${cards[1].value}의 ${cards[2].value}에 맞춰 ${cards[3].value}`;
+          },
+          prompt(cards) {
+            return [
+              `[원본] ${cards[0].value}`,
+              `[고객] ${cards[1].value}`,
+              "",
+              `[필요 순간] ${cards[2].value}`,
+              `[한 끗] ${cards[3].value}.`,
+              "",
+              "이 고객이 지금 쓰는 대안과 돈을 낼 이유를 각각 한 줄로 써라.",
+              "원본의 핵심 입력→처리→결과 흐름은 유지하고, 한 끗 변화 외 기능은 추가하지 마라.",
+              "첫 결제까지 필요한 가장 작은 제품 화면을 제안하라."
+            ].join("\n");
+          }
+        },
+        C: {
+          name: "플랫폼 변환형",
+          labels: ["옮길 원본", "어디서 쓰나", "핵심 기능", "한 끗 변화"],
+          helpers: ["가져올 검증된 흐름", "웹·앱·플러그인 중 사용 표면", "절대 버리지 않을 기능 하나", "표면과 순간을 바꾸는 변화 하나"],
+          pools: [
+            [
+              { title: "Character.AI", detail: "대화할 상대를 고르고 관계가 이어지는 흐름", value: "Character.AI의 맥락형 대화", platform: "앱 · 웹" },
+              { title: "Ingan.ai", detail: "개인 데이터를 해석해 읽을거리로 만드는 흐름", value: "Ingan.ai의 개인화 해석", platform: "웹" },
+              { title: "1Lookup", detail: "정보 하나를 넣어 보강된 답을 받는 흐름", value: "1Lookup의 단일 정보 조회", platform: "웹" },
+              { title: "Grammarly", detail: "현재 입력창 안에서 바로 교정하는 흐름", value: "Grammarly의 인라인 제안", platform: "플러그인" },
+              { title: "Calendly", detail: "링크에서 상대가 직접 시간을 고르는 흐름", value: "Calendly의 예약 링크", platform: "웹" },
+              { title: "Loom", detail: "내 화면 맥락을 링크 하나로 전달하는 흐름", value: "Loom의 비동기 설명", platform: "앱 · 플러그인" }
+            ],
+            [
+              { title: "모바일 앱 · 잠금화면 직전", detail: "이동 중 10초 안에 보고 행동", value: "모바일 앱의 잠금화면·알림 표면", platform: "모바일 앱" },
+              { title: "크롬 플러그인 · 입력창 옆", detail: "원래 하던 일을 떠나지 않고 사용", value: "브라우저 입력창 바로 옆", platform: "브라우저 플러그인" },
+              { title: "웹 · 공유 링크 한 장", detail: "가입하지 않은 상대도 바로 확인", value: "로그인 없이 여는 웹 공유 링크", platform: "웹" },
+              { title: "모바일 키보드 · 답장 순간", detail: "어떤 앱에서도 키보드 위에서 실행", value: "모바일 키보드의 답장 표면", platform: "키보드 플러그인" },
+              { title: "메뉴바 앱 · 업무 전환 사이", detail: "새 탭 없이 단축키로 바로 호출", value: "데스크톱 메뉴바와 단축키", platform: "데스크톱 앱" },
+              { title: "카카오톡 공유 확장", detail: "링크나 문장을 공유해 즉시 처리", value: "모바일 공유 시트", platform: "모바일 확장" }
+            ],
+            [
+              { title: "맥락을 읽고 다음 답을 제안", detail: "이전 내용에서 가장 자연스러운 다음 행동 생성", value: "현재 맥락을 읽고 다음 답 하나를 제안하는 기능" },
+              { title: "정보 하나를 받아 즉시 해석", detail: "설정 없이 단일 입력에서 결과 생성", value: "정보 하나를 받아 즉시 해석하는 기능" },
+              { title: "반복 작업을 한 번에 실행", detail: "여러 클릭을 하나의 명령으로 줄임", value: "반복 작업을 한 번에 실행하는 기능" },
+              { title: "결과를 시각 리포트로 정리", detail: "복잡한 결과를 읽고 공유하기 쉽게 변환", value: "결과를 한 장의 시각 리포트로 정리하는 기능" },
+              { title: "가능한 선택지를 자동으로 좁힘", detail: "판단 대신 고를 수 있는 소수 옵션 제공", value: "가능한 선택지를 세 개 이하로 좁히는 기능" },
+              { title: "화면 맥락을 짧게 설명", detail: "현재 보이는 것을 비동기 전달물로 만듦", value: "현재 화면 맥락을 짧은 설명으로 바꾸는 기능" }
+            ],
+            [
+              { title: "부르기 전에 한 번만 제안한다", detail: "상시 개입이 아니라 필요 신호가 있을 때 한 번", value: "사용자가 부르기 전에 필요한 순간 한 번만 제안합니다" },
+              { title: "결과를 30초 음성으로 바꾼다", detail: "눈이 아닌 귀로 바로 소비", value: "텍스트 결과를 30초 음성으로만 전달합니다" },
+              { title: "공개 탐색을 빼고 1:1 링크만 남긴다", detail: "발견 피드 대신 아는 사람과 바로 사용", value: "공개 탐색을 없애고 1:1 초대 링크만 남깁니다" },
+              { title: "결과마다 다음 행동 하나를 붙인다", detail: "읽고 끝나지 않게 가장 작은 실행 연결", value: "모든 결과 끝에 다음 행동 하나만 붙입니다" },
+              { title: "현재 탭 밖으로 나가지 않게 한다", detail: "새 대시보드 대신 오버레이 한 장", value: "별도 대시보드를 빼고 현재 탭 안에서 끝냅니다" },
+              { title: "7일 뒤 한 번만 다시 묻는다", detail: "알림 홍수 없이 결과의 실제 효용 확인", value: "결과를 받은 7일 뒤 변화 여부를 한 번만 묻습니다" }
+            ]
+          ],
+          recipes: [
+            [3, 3, 0, 0],
+            [1, 0, 1, 3],
+            [2, 1, 1, 4],
+            [0, 2, 0, 2],
+            [4, 5, 4, 5],
+            [5, 5, 5, 1]
+          ],
+          guard: "웹·앱·플러그인 다양성은 가장 크지만, 단순 포팅을 피하려면 플랫폼과 ‘쓰이는 순간’이 함께 달라져야 하는 안입니다.",
+          result(cards) {
+            return `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 남길 핵심 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 옮길 표면 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 한 끗 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`;
+          },
+          preserved(cards) {
+            return `${cards[0].value} 중 ${cards[2].value}`;
+          },
+          changed(cards) {
+            return `${cards[1].value}에서 쓰도록 옮기고 ${cards[3].value}`;
+          },
+          prompt(cards) {
+            return [
+              `[원본] ${cards[0].value}`,
+              `[핵심 기능] ${cards[2].value}만 그대로 보존한다.`,
+              "",
+              `[사용 표면] ${cards[1].value}`,
+              `[한 끗] ${cards[3].value}.`,
+              "",
+              "원본의 핵심 기능이 이 표면에서 더 자주 필요한 이유를 한 문장으로 설명하라.",
+              "플랫폼을 옮기는 것 외에 대시보드나 커뮤니티 기능을 새로 만들지 마라.",
+              "10초 안에 첫 가치를 느끼는 모바일 우선 흐름을 제안하라."
+            ].join("\n");
+          }
+        }
+      };
+
+      const sharedOriginals = [
+        { title: "Character.AI", detail: "캐릭터 발견 → 1:1 대화 → 관계 축적", value: "Character.AI의 캐릭터 대화 구조", platform: "앱 · 웹" },
+        { title: "Ingan.ai", detail: "개인 정보 입력 → AI 해석 → 공유 리포트", value: "Ingan.ai의 개인 데이터 분석 구조", platform: "웹" },
+        { title: "1Lookup", detail: "식별자 하나 입력 → 정보 보강 → 즉시 결과", value: "1Lookup의 단일 조회 구조", platform: "웹" },
+        { title: "Grammarly", detail: "작성 감지 → 즉시 제안 → 한 번에 반영", value: "Grammarly의 작성 보조 구조", platform: "브라우저 플러그인" },
+        { title: "Calendly", detail: "가능 시간 공개 → 상대 선택 → 일정 확정", value: "Calendly의 셀프 예약 구조", platform: "웹" },
+        { title: "Loom", detail: "화면 녹화 → 링크 공유 → 비동기 피드백", value: "Loom의 비동기 설명 구조", platform: "데스크톱 앱 · 플러그인" }
+      ].map((card, family) => ({ ...card, family }));
+      const pairedRecipes = [
+        [0, 0, 0, 0],
+        [1, 1, 1, 1],
+        [2, 2, 2, 2],
+        [3, 3, 3, 3],
+        [4, 4, 4, 4],
+        [5, 5, 5, 5]
+      ];
+
+      function makePool(rows) {
+        return rows.map(([title, detail, value, platform], family) => ({ title, detail, value: value || title, platform, family }));
+      }
+
+      function makeStructure(config) {
+        const startIndex = config.startIndex || 0;
+        const recipes = pairedRecipes.map((_, offset) => pairedRecipes[(startIndex + offset) % pairedRecipes.length]);
+        return {
+          name: config.name,
+          labels: config.labels,
+          helpers: config.helpers,
+          strictRows: true,
+          pools: [(config.originals || sharedOriginals).map((card) => ({ ...card })), ...config.pools.map(makePool)],
+          recipes,
+          guard: config.guard,
+          result: config.result,
+          preserved: config.preserved,
+          changed: config.changed,
+          prompt(cards) {
+            return [
+              `[원본] ${cards[0].value}`,
+              `[${config.labels[1]}] ${cards[1].value}`,
+              "",
+              `[${config.labels[2]}] ${cards[2].value}`,
+              `[${config.labels[3]}] ${cards[3].value}`,
+              "",
+              "원본의 핵심 입력→처리→결과 중 80–90%는 그대로 보존한다.",
+              "네 카드가 지시한 변화 한 가지 외에 새 기능을 추가하지 마라.",
+              "웹·앱·플러그인 중 가장 자연스러운 형태와 첫 사용 흐름을 제안하라."
+            ].join("\n");
+          }
+        };
+      }
+
+      const roleOriginals = sharedOriginals.map((card) => ({ ...card }));
+      roleOriginals[0] = {
+        title: "ChatGPT",
+        detail: "질문 입력 → 범용 AI 처리 → 대화형 결과",
+        value: "ChatGPT의 범용 대화 구조",
+        platform: "앱 · 웹",
+        family: 0
+      };
+
+      Object.assign(structures, {
+        D: makeStructure({
+          name: "입력 데이터 치환형",
+          startIndex: 1,
+          labels: ["입력 구조 원본", "원래 받는 입력", "바꿀 입력 하나", "그대로 낼 결과"],
+          helpers: ["입력만 바꿀 원본", "원본이 받던 데이터", "새로 받을 데이터 하나", "결과 구조를 잠그는 카드"],
+          pools: [
+            [
+              ["캐릭터 선택과 대화", "대화 상대와 사용자의 메시지", "캐릭터 선택과 사용자의 대화"],
+              ["생년월일과 프로필", "개인 정보를 입력해 해석 시작", "생년월일·프로필 입력"],
+              ["이메일 주소 하나", "식별자 하나로 상대 정보 조회", "이메일 주소 한 개"],
+              ["작성 중인 문장", "현재 입력을 읽어 바로 제안", "사용자가 작성 중인 문장"],
+              ["가능한 시간 목록", "내가 열어둔 시간에서 상대가 선택", "예약 가능한 시간 목록"],
+              ["화면과 목소리", "작업 화면을 녹화해 맥락 전달", "녹화한 화면과 음성"]
+            ],
+            [
+              ["회사 규칙 문서로 바꾼다", "가상 캐릭터 대신 실제 팀의 규칙 한 장", "캐릭터 대신 회사 규칙 문서 하나를 받는다"],
+              ["최근 7일 캘린더로 바꾼다", "설문 대신 이미 기록된 일정 사용", "생년월일 대신 최근 7일 캘린더를 받는다"],
+              ["회사 도메인으로 바꾼다", "개인 이메일 대신 조직 단위 조사", "이메일 주소 대신 회사 도메인 하나를 받는다"],
+              ["고객 문의 스레드로 바꾼다", "내 문장 대신 고객과의 대화 전체 사용", "작성 문장 대신 고객 문의 스레드를 받는다"],
+              ["오늘의 에너지로 바꾼다", "빈 시간 대신 가능한 집중 수준을 입력", "가능 시간 대신 오늘의 에너지 수준을 받는다"],
+              ["오류 로그로 바꾼다", "화면 설명 대신 기계가 남긴 기록 사용", "화면 녹화 대신 오류 로그를 받는다"]
+            ],
+            [
+              ["같은 대화형 답변", "맥락을 기억하는 1:1 답변은 유지", "맥락이 이어지는 1:1 대화 결과", "모바일 앱"],
+              ["같은 개인 리포트", "해석된 문장과 공유 카드 유지", "개인화된 해석 리포트", "웹"],
+              ["같은 즉시 조회표", "보강된 정보 표는 유지", "한 화면의 즉시 조회 결과", "웹"],
+              ["같은 인라인 제안", "입력 위치에서 바로 고치는 경험 유지", "입력창 안의 즉시 제안", "브라우저 플러그인"],
+              ["같은 선택 링크", "상대가 직접 골라 확정하는 결과 유지", "상대가 직접 선택하는 링크", "웹"],
+              ["같은 설명 링크", "링크 한 장으로 맥락을 전달", "공유 가능한 설명 링크", "데스크톱 앱"]
+            ]
+          ],
+          guard: "Ingan.ai처럼 처리와 결과는 그대로 두고 입력 데이터 하나만 바꾸는 데 강한 안입니다.",
+          result: (cards) => `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 기존 입력 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 새 입력 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 유지할 결과 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`,
+          preserved: (cards) => `${cards[0].detail} · ${cards[3].value}`,
+          changed: (cards) => `${cards[1].value} → ${cards[2].value}`
+        }),
+        E: makeStructure({
+          name: "사용자 치환형",
+          startIndex: 2,
+          labels: ["반복 사용자 원본", "기존 핵심 사용자", "인접한 새 사용자", "그대로 둘 행동"],
+          helpers: ["사용자만 바꿀 원본", "지금 반복해서 쓰는 사람", "비슷한 고통을 가진 옆 시장", "리텐션 행동을 잠그는 카드"],
+          pools: [
+            [
+              ["캐릭터 팬", "관계를 위해 매일 대화를 잇는 사람", "캐릭터와 관계를 쌓는 팬"],
+              ["나를 해석받고 싶은 개인", "자기 결과를 읽고 공유하는 사람", "자기 이해 콘텐츠를 찾는 개인"],
+              ["리드를 찾는 영업자", "상대 정보를 반복 조회하는 사람", "잠재 고객을 조사하는 영업자"],
+              ["영문을 쓰는 지식근로자", "작성 중 교정을 반복하는 사람", "영문 문서를 자주 쓰는 지식근로자"],
+              ["미팅을 잡는 프리랜서", "일정 링크를 반복 발송하는 사람", "고객 일정을 잡는 프리랜서"],
+              ["설명을 반복하는 팀원", "같은 맥락을 녹화해 보내는 사람", "업무 설명을 반복하는 팀원"]
+            ],
+            [
+              ["첫 팀장이 된 직장인", "회사 답을 묻기 어려운 초보 관리자", "처음 팀장이 되어 매일 판단이 필요한 직장인"],
+              ["첫 만남을 준비하는 커플", "서로를 빠르게 이해할 소재가 필요한 두 사람", "새로운 관계를 시작한 커플"],
+              ["후보자를 검토하는 채용담당자", "공개 정보를 반복 확인하는 업무 사용자", "채용 후보를 매주 검토하는 담당자"],
+              ["고객 댓글에 답하는 1인 판매자", "브랜드 톤을 지키며 빨리 답해야 하는 사람", "고객 댓글을 직접 답하는 1인 판매자"],
+              ["수업 예약을 받는 튜터", "시간과 수업 조건을 함께 조율하는 사람", "개인 수업 예약을 받는 튜터"],
+              ["고객을 온보딩하는 CS 담당자", "같은 설명을 고객마다 다시 하는 사람", "신규 고객을 반복 온보딩하는 CS 담당자"]
+            ],
+            [
+              ["매일 같은 상대와 대화를 잇는다", "이전 맥락이 다음 방문 이유", "매일 맥락이 이어지는 대화를 한다"],
+              ["정보를 넣고 내 결과를 공유한다", "입력→해석→공유 흐름 유지", "개인 정보를 넣고 결과를 공유한다"],
+              ["식별자 하나로 바로 조회한다", "설정 없는 단일 조회 유지", "식별자 하나를 넣고 즉시 조회한다"],
+              ["쓰는 자리에서 바로 고친다", "원래 앱을 떠나지 않는 행동 유지", "작성 위치에서 제안을 바로 반영한다"],
+              ["상대가 링크에서 직접 고른다", "왕복 메시지를 없애는 행동 유지", "상대가 링크에서 선택해 확정한다"],
+              ["링크 하나로 비동기 설명한다", "회의 대신 링크를 보내는 행동 유지", "설명 링크 하나를 보내고 피드백받는다"]
+            ]
+          ],
+          guard: "새 시장을 찾기 쉽지만 새 사용자 때문에 핵심 행동까지 바뀌면 실패합니다. 4번 카드가 원본 보존 장치입니다.",
+          result: (cards) => `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 기존 사용자 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 새 사용자 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 유지할 행동 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`,
+          preserved: (cards) => `${cards[0].detail} · ${cards[3].value}`,
+          changed: (cards) => `${cards[1].value} → ${cards[2].value}`
+        }),
+        F: makeStructure({
+          name: "사용 순간 치환형",
+          startIndex: 3,
+          labels: ["사용 순간 원본", "평소 쓰는 순간", "더 절실한 순간", "즉시 줄 보상"],
+          helpers: ["타이밍만 바꿀 원본", "현재 사용 맥락", "욕구가 더 커지는 순간", "그 자리에서 끝낼 결과"],
+          pools: [
+            [
+              ["심심할 때 대화", "여유 시간에 캐릭터를 찾아 대화", "심심할 때 캐릭터와 대화한다"],
+              ["결과가 궁금할 때 검사", "호기심이 생겼을 때 정보를 입력", "나에 대한 해석이 궁금할 때 검사한다"],
+              ["리스트 만들 때 조회", "조사 업무 중 상대 정보를 확인", "잠재 고객 목록을 만들 때 조회한다"],
+              ["문서를 다 쓴 뒤 교정", "완성된 글을 마지막에 검토", "문서를 완성한 뒤 교정한다"],
+              ["미팅 제안 뒤 예약", "서로 가능한 시간을 주고받는 중 사용", "미팅을 제안한 뒤 예약 링크를 보낸다"],
+              ["설명이 필요할 때 녹화", "긴 설명을 대신하기 위해 화면을 녹화", "설명이 길어질 때 화면을 녹화한다"]
+            ],
+            [
+              ["상사에게 답장하기 30초 전", "실수 비용이 큰 답장을 보내기 직전", "상사에게 중요한 답장을 보내기 30초 전"],
+              ["첫 만남 10분 전", "상대와 나의 맥락이 급하게 필요한 순간", "첫 만남을 시작하기 10분 전"],
+              ["첫 영업 미팅 직전", "상대 정보를 몰라 신뢰를 잃기 쉬운 순간", "첫 영업 미팅을 시작하기 직전"],
+              ["게시 버튼을 누르기 직전", "공개 뒤 되돌리기 어려운 마지막 순간", "콘텐츠 게시 버튼을 누르기 직전"],
+              ["이번 주 시간이 무너졌을 때", "재조정이 필요한 실제 일정 충돌 순간", "이번 주 일정이 충돌한 순간"],
+              ["버그를 전달하기 직전", "재현 정보가 빠지면 왕복이 늘어나는 순간", "버그를 동료에게 전달하기 직전"]
+            ],
+            [
+              ["복사할 답장 한 문장", "긴 상담 없이 지금 보낼 말 하나", "바로 복사할 답장 한 문장", "키보드 플러그인"],
+              ["30초 음성 브리핑", "화면을 오래 보지 않아도 되는 결과", "30초짜리 음성 브리핑", "모바일 앱"],
+              ["상대 정보 세 줄", "미팅에 필요한 핵심만 압축", "상대를 이해할 정보 세 줄", "브라우저 플러그인"],
+              ["게시 전 위험 표시 하나", "고칠 문장보다 먼저 위험 여부 전달", "게시 전 확인할 위험 표시 하나", "브라우저 플러그인"],
+              ["옮길 일정 하나", "전체 재설계 대신 충돌 하나 해결", "지금 옮길 일정 하나", "모바일 앱"],
+              ["재현 체크리스트", "개발자가 바로 확인할 최소 정보", "버그 재현 체크리스트", "데스크톱 앱"]
+            ]
+          ],
+          guard: "기능 대신 사용 타이밍을 바꾸므로 한 끗이 선명합니다. 단, 더 절실한 순간이 실제로 자주 오는지는 검증해야 합니다.",
+          result: (cards) => `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 기존 순간 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 새 순간 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 즉시 보상 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`,
+          preserved: (cards) => `${cards[0].detail}의 핵심 처리 방식`,
+          changed: (cards) => `${cards[1].value} → ${cards[2].value} · ${cards[3].value}`
+        }),
+        G: makeStructure({
+          name: "결과물 치환형",
+          startIndex: 4,
+          labels: ["처리 가치 원본", "원래 입력", "같은 핵심 처리", "바꿀 결과물"],
+          helpers: ["출력만 바꿀 원본", "그대로 받을 데이터", "그대로 돌릴 처리", "더 바로 쓰이는 결과 형식"],
+          pools: [
+            [
+              ["사용자와 캐릭터의 대화", "관계가 쌓이는 대화 맥락", "사용자와 캐릭터의 대화 맥락"],
+              ["개인 프로필", "해석에 필요한 개인 데이터", "사용자가 넣은 개인 프로필"],
+              ["이메일 주소", "상대를 식별하는 단일 정보", "조회할 이메일 주소"],
+              ["작성 중인 문장", "교정할 실제 텍스트", "사용자가 작성 중인 문장"],
+              ["가능 시간", "예약에 필요한 시간 목록", "사용자의 가능한 시간 목록"],
+              ["화면 녹화", "설명할 업무 맥락", "녹화한 화면과 목소리"]
+            ],
+            [
+              ["맥락을 기억해 다음 답 생성", "관계형 대화 엔진 유지", "이전 맥락을 기억해 다음 답을 만드는 처리"],
+              ["개인 데이터를 AI로 해석", "입력에서 패턴을 찾는 처리 유지", "개인 데이터의 패턴을 해석하는 처리"],
+              ["공개·보강 정보를 결합", "조회 로직은 그대로 유지", "공개 정보를 찾아 한 사람으로 보강하는 처리"],
+              ["문맥과 톤의 문제 감지", "인라인 분석 처리 유지", "문맥·톤·오류를 감지하는 처리"],
+              ["겹치는 선택지만 계산", "가능 시간 계산 유지", "양쪽이 가능한 선택지를 계산하는 처리"],
+              ["화면과 음성을 요약", "녹화 맥락 처리 유지", "화면과 음성에서 핵심을 요약하는 처리"]
+            ],
+            [
+              ["오늘 할 행동 하나", "긴 대화 대신 행동 카드로 종료", "오늘 바로 할 행동 카드 하나", "모바일 앱"],
+              ["친구와 비교하는 한 장", "긴 리포트 대신 공유 가능한 비교 카드", "두 사람이 함께 보는 비교 카드", "웹"],
+              ["위험 신호 하나", "정보 표 대신 먼저 볼 위험 여부", "상대의 위험 신호 한 개", "브라우저 플러그인"],
+              ["복사할 답장 세 개", "교정 이유 대신 선택 가능한 완성 문장", "바로 복사할 답장 세 개", "브라우저 플러그인"],
+              ["추천 시간 하나", "가능 목록 대신 최선의 선택 한 개", "가장 좋은 예약 시간 하나", "웹"],
+              ["실행 체크리스트", "영상 대신 할 일 목록으로 전달", "영상에서 뽑은 실행 체크리스트", "데스크톱 앱"]
+            ]
+          ],
+          guard: "입력과 처리까지 잠그고 결과 형식만 바꾸므로 비교가 쉽습니다. 결과물이 실제 행동으로 이어지는지 확인해야 합니다.",
+          result: (cards) => `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 유지할 입력 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 유지할 처리 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 새 결과물 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`,
+          preserved: (cards) => `${cards[1].value} → ${cards[2].value}`,
+          changed: (cards) => `${cards[0].detail}의 결과 → ${cards[3].value}`
+        }),
+        H: makeStructure({
+          name: "유통 루프형",
+          startIndex: 5,
+          labels: ["공유 결과 원본", "첫 번째 가치", "들어오는 통로", "공유 장치 하나"],
+          helpers: ["유통만 바꿀 원본", "처음 느끼는 효용", "원래 행동 속 진입점", "다음 사람을 부르는 한 장치"],
+          pools: [
+            [
+              ["나를 아는 대화", "첫 답부터 내 맥락을 기억", "첫 답에서 나를 기억하는 대화"],
+              ["나만의 해석", "정보를 넣자마자 개인화된 문장", "입력 직후 받는 개인화 해석"],
+              ["상대 정보 확인", "식별자 하나로 바로 보강", "한 번의 입력으로 확인하는 상대 정보"],
+              ["문장 즉시 개선", "쓰는 자리에서 좋은 문장으로 변경", "현재 문장이 즉시 좋아지는 경험"],
+              ["왕복 없는 예약", "메시지 없이 시간이 확정", "왕복 대화 없이 예약되는 경험"],
+              ["회의 없는 설명", "링크를 열면 맥락을 이해", "회의 없이 맥락이 전달되는 경험"]
+            ],
+            [
+              ["친구가 보낸 캐릭터 링크", "검색이 아니라 관계에서 시작", "친구가 보낸 1:1 캐릭터 링크", "웹"],
+              ["인스타 스토리 결과 카드", "결과를 보고 내 것도 해보는 진입", "인스타 스토리의 결과 카드", "웹"],
+              ["검색 결과의 즉시 조회", "업무 검색 중 바로 진입", "검색 결과 페이지의 즉시 조회", "웹"],
+              ["작성 도구의 플러그인 마켓", "문제 상황과 설치가 가까움", "현재 작성 도구의 플러그인 마켓", "브라우저 플러그인"],
+              ["상대가 받은 예약 링크", "초대한 사람이 새 사용자가 됨", "상대가 전달받은 예약 링크", "웹"],
+              ["업무 스레드의 설명 링크", "결과물을 보며 제품을 알게 됨", "업무 대화에 공유된 설명 링크", "웹" ]
+            ],
+            [
+              ["대화 끝에 상대 초대", "공개 피드 없이 한 명만 부름", "대화 끝의 1:1 상대 초대"],
+              ["결과 카드에 같은 질문", "보는 사람이 자기 결과를 만들게 함", "공유 카드 아래의 ‘나도 해보기’ 질문"],
+              ["조회표에 검증 요청", "팀원이 한 번 확인하고 새 조회 시작", "조회 결과의 팀 검증 요청"],
+              ["수정 전후 한 줄 공유", "문장 결과 자체가 제품 데모", "수정 전후를 보여주는 한 줄 공유"],
+              ["예약 뒤 내 링크 만들기", "상대가 같은 구조를 바로 복제", "예약 완료 뒤 ‘내 링크 만들기’"],
+              ["영상 끝에 내 설명 만들기", "시청자가 자기 맥락을 녹화", "설명 끝의 ‘내 버전 만들기’"]
+            ]
+          ],
+          guard: "기능을 추가하지 않고 첫 가치가 보이는 위치만 바꾸는 안입니다. 억지 친구 초대나 보상 설계는 제외합니다.",
+          result: (cards) => `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 첫 가치 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 들어오는 통로 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 공유 장치 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`,
+          preserved: (cards) => `${cards[0].detail} · ${cards[1].value}`,
+          changed: (cards) => `${cards[2].value} → ${cards[3].value}`
+        }),
+        I: makeStructure({
+          name: "제거 집중형",
+          startIndex: 0,
+          labels: ["핵심 행동 원본", "핵심 한 행동", "없앨 마찰", "남길 한 화면"],
+          helpers: ["덜어낼 원본", "절대 버리지 않을 행동", "통째로 제거할 단계", "MVP의 유일한 화면"],
+          pools: [
+            [
+              ["상대와 바로 대화", "캐릭터를 고른 뒤 메시지를 주고받음", "상대와 메시지를 주고받는다"],
+              ["정보를 넣고 해석", "입력한 내 정보에서 결과를 읽음", "개인 정보를 넣고 해석 결과를 읽는다"],
+              ["식별자 하나 조회", "한 입력으로 보강 정보를 확인", "식별자 하나를 넣고 바로 조회한다"],
+              ["쓰며 바로 고치기", "작성 중 제안을 한 번에 적용", "쓰는 자리에서 제안을 바로 적용한다"],
+              ["상대가 시간 선택", "상대가 링크에서 직접 예약", "상대가 가능한 시간을 직접 고른다"],
+              ["화면을 녹화해 공유", "설명 맥락을 링크로 보냄", "화면을 녹화해 링크로 공유한다"]
+            ],
+            [
+              ["공개 캐릭터 탐색", "검색·랭킹·추천 피드 전체 제거", "공개 캐릭터 탐색 단계를 없앤다"],
+              ["긴 사전 설문", "결과 전에 묻는 여러 질문 제거", "긴 사전 설문을 없앤다"],
+              ["대시보드와 저장함", "이번 조회와 관계없는 관리 화면 제거", "대시보드와 저장함을 없앤다"],
+              ["별도 편집기", "원래 작성 도구를 떠나는 단계 제거", "별도 편집 화면을 없앤다"],
+              ["계정 생성", "예약 전에 가입하는 단계 제거", "예약 전 계정 생성을 없앤다"],
+              ["영상 편집", "자르기·꾸미기·렌더링 단계 제거", "녹화 후 영상 편집을 없앤다"]
+            ],
+            [
+              ["초대 링크의 대화방", "상대를 정한 링크에서 바로 대화", "초대 링크로 여는 1:1 대화방", "모바일 앱"],
+              ["입력과 결과 한 장", "입력칸 아래 즉시 결과", "입력과 결과가 붙은 웹 한 장", "웹"],
+              ["조회 입력창과 표", "입력 한 줄과 결과 표만 유지", "조회 입력창과 결과 표 한 장", "웹"],
+              ["현재 입력창 오버레이", "원래 도구 위 작은 제안만 유지", "현재 입력창 위의 작은 오버레이", "브라우저 플러그인"],
+              ["시간 선택 링크", "가능 시간만 보고 바로 확정", "가입 없이 여는 시간 선택 링크", "웹"],
+              ["녹화 후 공유 링크", "정지 버튼 뒤 즉시 URL 생성", "녹화와 공유 링크만 있는 앱", "데스크톱 앱"]
+            ]
+          ],
+          guard: "가장 작은 MVP를 만들기 좋은 안입니다. 제거한 단계가 실제 핵심 가치나 신뢰 장치였는지는 반드시 확인해야 합니다.",
+          result: (cards) => `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 남길 행동 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 없앨 마찰 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 남길 화면 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`,
+          preserved: (cards) => `${cards[0].detail} 중 ${cards[1].value}`,
+          changed: (cards) => `${cards[2].value} · ${cards[3].value}`
+        }),
+        J: makeStructure({
+          name: "역할 특화형",
+          startIndex: 0,
+          originals: roleOriginals,
+          labels: ["범용 AI 원본", "범용 AI 역할", "고정할 한 역할", "하지 않을 일"],
+          helpers: ["AI 역할을 좁힐 원본", "현재 넓게 맡은 역할", "반복 고통이 있는 직업 하나", "범위가 퍼지지 않는 금지선"],
+          pools: [
+            [
+              ["무엇이든 대화하는 동반자", "관계·조언·놀이를 모두 담당", "어떤 주제든 대화하는 AI 동반자"],
+              ["무엇이든 해석하는 상담가", "개인 정보를 넓게 해석", "개인 정보를 폭넓게 해석하는 AI"],
+              ["무엇이든 찾는 조사원", "여러 종류의 상대 정보를 조사", "상대 정보를 폭넓게 찾는 AI 조사원"],
+              ["무엇이든 고치는 작문가", "문법·톤·구조를 모두 교정", "모든 문장을 고치는 AI 작문가"],
+              ["모든 일정을 잡는 비서", "다양한 약속을 같은 방식으로 예약", "모든 종류의 일정을 잡는 AI 비서"],
+              ["무엇이든 요약하는 기록자", "화면·회의·영상 전부 요약", "모든 화면과 말을 요약하는 AI 기록자"]
+            ],
+            [
+              ["1인 쇼핑몰 CS 매니저", "고객 문의 답변 작성에만 집중", "1인 쇼핑몰의 고객 문의 답변 매니저"],
+              ["첫 만남 대화 코치", "만나기 전 질문과 답장만 도움", "첫 만남을 준비하는 대화 코치"],
+              ["채용 후보 검증 담당자", "업무·공개 경력 확인에만 집중", "채용 후보를 검증하는 조사 담당자"],
+              ["한국어 CS 답변 편집자", "고객 문의 답장만 브랜드 톤으로 수정", "한국어 고객 문의 답변 편집자"],
+              ["1인 미용실 예약 매니저", "시술 시간과 준비 조건만 조율", "1인 미용실의 예약 매니저"],
+              ["개발 버그 전달 기록자", "재현 정보와 로그 정리에만 집중", "개발 버그를 전달하는 기록자"]
+            ],
+            [
+              ["환불·정책을 최종 결정하지 않는다", "답변 작성 밖 운영 판단은 사람에게 남김", "환불·정책·법률 판단을 최종 결정하지 않는다"],
+              ["연애 궁합을 단정하지 않는다", "대화 준비 밖 관계 판정 금지", "상대의 마음이나 궁합을 단정하지 않는다"],
+              ["사생활을 추측하지 않는다", "공개 업무 정보 밖 추론 금지", "비공개 사생활을 추측하지 않는다"],
+              ["새 마케팅 문구는 만들지 않는다", "고객 답변 수정 밖 생성 금지", "문의 답변 외 새 콘텐츠는 만들지 않는다"],
+              ["결제·고객 관리는 하지 않는다", "예약 시간 조율에만 집중", "예약 외 결제와 CRM 업무는 하지 않는다"],
+              ["버그를 고치지는 않는다", "전달물 생성까지만 담당", "코드 수정이나 원인 단정은 하지 않는다"]
+            ]
+          ],
+          guard: "AI 래퍼가 넓어지는 것을 가장 잘 막습니다. 역할 이름보다 반복해서 맡길 실제 업무가 구체적인지 봐야 합니다.",
+          result: (cards) => `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 범용 역할 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 고정 역할 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 금지 범위 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`,
+          preserved: (cards) => `${cards[0].detail}의 대화·처리 방식`,
+          changed: (cards) => `${cards[2].value}로 고정 · ${cards[3].value}`
+        }),
+        K: makeStructure({
+          name: "개인→함께형",
+          startIndex: 2,
+          labels: ["1인 사용 원본", "혼자 하는 행동", "함께 볼 사람", "공유할 한 단위"],
+          helpers: ["개인 흐름을 가져올 원본", "현재 개인 핵심 행동", "같은 판단이 필요한 한 사람", "협업을 최소화한 결과물"],
+          pools: [
+            [
+              ["혼자 캐릭터와 대화", "개인 대화와 기억 축적", "혼자 캐릭터와 맥락을 쌓으며 대화한다"],
+              ["내 결과를 혼자 읽기", "개인 정보를 넣고 해석 확인", "내 개인화 결과를 혼자 읽는다"],
+              ["상대 정보를 혼자 조회", "조사 결과를 개인이 판단", "상대 정보를 혼자 조회하고 판단한다"],
+              ["내 문장을 혼자 고치기", "제안을 보고 개인이 반영", "내 문장을 혼자 고쳐서 보낸다"],
+              ["내 가능한 시간을 공개", "상대가 골라도 관리는 개인 중심", "내 가능한 시간을 링크로 공개한다"],
+              ["내 화면을 녹화해 보내기", "설명은 개인이 만들고 전달", "내 화면 설명을 녹화해 보낸다"]
+            ],
+            [
+              ["같은 고민을 맡은 동료 한 명", "대화 내용을 함께 판단할 사람", "같은 고민을 판단할 동료 한 명"],
+              ["결과를 비교할 친구 한 명", "서로 다른 입력을 함께 읽을 사람", "개인 결과를 함께 비교할 친구 한 명"],
+              ["조회 근거를 승인할 팀장", "조사 결과를 검토할 책임자", "조회 결과를 승인할 팀장 한 명"],
+              ["최종 문구를 확인할 고객", "보내기 전 톤을 합의할 상대", "최종 문장을 확인할 고객 한 명"],
+              ["여러 일정을 보는 코디네이터", "개별 예약 충돌을 보는 담당자", "예약 충돌을 확인할 코디네이터 한 명"],
+              ["실행을 맡을 담당자", "설명 뒤 실제 행동할 사람", "설명을 보고 실행할 담당자 한 명"]
+            ],
+            [
+              ["대화 결론 카드 한 장", "전체 대화가 아닌 결론만 공유", "대화에서 고른 결론 카드 한 장", "모바일 앱"],
+              ["두 결과 비교 링크", "읽기 전용으로 차이만 표시", "두 사람의 결과를 비교하는 링크", "웹"],
+              ["근거와 승인 버튼", "채팅 없이 근거를 보고 승인", "조회 근거와 승인 버튼 한 개", "웹"],
+              ["수정 전후 문장", "주석 도구 없이 두 문장만 비교", "수정 전후 문장 한 쌍", "브라우저 플러그인"],
+              ["충돌 일정 한 장", "전체 캘린더 대신 문제만 공유", "충돌한 일정만 보여주는 한 장", "웹"],
+              ["설명과 할 일 세 개", "프로젝트 관리 없이 실행만 전달", "설명 아래의 할 일 세 개", "데스크톱 앱"]
+            ]
+          ],
+          guard: "개인 제품을 B2B로 과하게 키우지 않고, 딱 한 사람과 한 결과만 공유하게 만드는 안입니다.",
+          result: (cards) => `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 개인 행동 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 함께 볼 사람 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 공유 단위 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`,
+          preserved: (cards) => `${cards[0].detail} · ${cards[1].value}`,
+          changed: (cards) => `${cards[2].value}에게 ${cards[3].value} 공유`
+        }),
+        L: makeStructure({
+          name: "재방문 시간축형",
+          startIndex: 4,
+          labels: ["첫 결과 원본", "첫 번째 결과", "다시 볼 시점", "비교할 변화"],
+          helpers: ["재방문을 붙일 원본", "기존의 즉시 보상", "한 번만 돌아올 자연스러운 때", "전후를 보여줄 한 지표"],
+          pools: [
+            [
+              ["오늘의 대화 답", "현재 맥락에 맞는 캐릭터 답변", "오늘의 대화에서 받은 답"],
+              ["오늘의 개인 해석", "현재 입력으로 만든 개인 리포트", "오늘 받은 개인화 해석"],
+              ["오늘의 상대 조회", "지금 확인한 보강 정보", "오늘 확인한 상대 정보"],
+              ["오늘 고친 문장", "현재 작성물의 개선 결과", "오늘 고친 문장"],
+              ["오늘 확정한 일정", "지금 예약된 선택", "오늘 확정한 예약 일정"],
+              ["오늘 보낸 설명", "지금 공유한 녹화 링크", "오늘 보낸 화면 설명"]
+            ],
+            [
+              ["다음 대화가 세 번 쌓였을 때", "관계 변화가 보일 만큼만 기다림", "대화가 세 번 더 쌓인 뒤"],
+              ["7일 뒤 같은 시간", "새 데이터가 생기는 최소 간격", "7일 뒤 같은 시간"],
+              ["다음 미팅이 끝난 뒤", "조회가 실제 판단에 도움됐는지 확인", "다음 미팅이 끝난 직후"],
+              ["다음 게시물 작성 때", "같은 작업이 자연스럽게 반복되는 시점", "다음 게시물을 작성할 때"],
+              ["예약 하루 전", "일정 가치가 다시 커지는 시점", "예약한 일정 하루 전"],
+              ["상대가 링크를 본 뒤", "전달이 완료된 후 후속 행동 확인", "상대가 설명 링크를 본 뒤"]
+            ],
+            [
+              ["대화 톤의 변화", "처음과 최근 답의 온도 차이", "첫 대화와 최근 대화의 톤 변화", "모바일 앱"],
+              ["행동 하나의 완료 여부", "리포트가 실제 행동으로 이어졌는지", "추천 행동 한 개의 완료 여부", "웹"],
+              ["미팅 준비 시간", "조회 전후 준비에 쓴 시간", "미팅 준비에 걸린 시간 변화", "웹"],
+              ["수정 횟수", "제안이 실제 왕복을 줄였는지", "문장을 다시 고친 횟수", "브라우저 플러그인"],
+              ["지난 예약 대비 변경 횟수", "이전 예약과 비교해 일정 안정성을 확인", "지난 예약 대비 일정 변경 횟수", "웹"],
+              ["후속 질문 수", "설명이 왕복을 줄였는지 확인", "설명 뒤 받은 후속 질문 수", "데스크톱 앱"]
+            ]
+          ],
+          guard: "알림을 늘리지 않고 결과의 효용을 확인할 자연스러운 시점 한 번만 붙이는 안입니다.",
+          result: (cards) => `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 첫 결과 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 다시 볼 시점 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 비교할 변화 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`,
+          preserved: (cards) => `${cards[0].detail} · ${cards[1].value}`,
+          changed: (cards) => `재방문: ${cards[2].value} · 비교: ${cards[3].value}`
+        }),
+        M: makeStructure({
+          name: "결제 순간형",
+          startIndex: 5,
+          labels: ["무료→유료가 보이는 원본", "무료 첫 가치", "돈 낼 순간", "결제할 한 단위"],
+          helpers: ["수익화를 시험할 원본", "가입 전 느끼는 효용", "더 깊은 결과가 필요한 순간", "구독 대신 살 수 있는 결과"],
+          pools: [
+            [
+              ["첫 대화 세 번", "관계형 대화의 재미를 무료로 체감", "첫 캐릭터와 나누는 대화 세 번"],
+              ["요약 결과 세 줄", "입력 직후 핵심 해석을 무료 공개", "개인화 해석의 요약 세 줄"],
+              ["기본 정보 세 칸", "조회 가능 여부와 기본 정보 공개", "상대의 기본 정보 세 칸"],
+              ["문장 한 개 교정", "설치 직후 실제 개선을 체감", "작성 문장 한 개의 교정"],
+              ["예약 링크 한 개", "첫 일정 조율을 무료로 완료", "첫 예약 링크 한 개"],
+              ["5분 녹화 한 개", "짧은 설명 링크를 무료 생성", "5분짜리 녹화 한 개"]
+            ],
+            [
+              ["대화 기억을 한 달 남길 때", "관계를 이어갈 이유가 생긴 순간", "대화 기억을 한 달 이상 남기고 싶을 때"],
+              ["전체 행동 계획을 열 때", "호기심이 실제 실행 욕구로 바뀐 순간", "전체 행동 계획을 열어볼 때"],
+              ["보고서로 고객에게 보낼 때", "내부 조회가 외부 전달물이 되는 순간", "조회 결과를 고객용 보고서로 보낼 때"],
+              ["브랜드 톤 전체를 적용할 때", "개인 교정이 반복 업무로 확장되는 순간", "브랜드 톤을 모든 답변에 적용할 때"],
+              ["자동 리마인드를 보낼 때", "예약 후 노쇼 비용을 줄이고 싶은 순간", "예약 상대에게 자동 리마인드를 보낼 때"],
+              ["팀 작업 기록으로 남길 때", "일회성 설명이 업무 자산이 되는 순간", "설명을 팀 기록으로 보관할 때"]
+            ],
+            [
+              ["기억 슬롯 한 개", "필요한 관계 하나만 구매", "캐릭터 한 명의 기억 슬롯", "모바일 앱"],
+              ["상세 리포트 한 건", "구독 없이 깊은 결과만 구매", "상세 개인 리포트 한 건", "웹"],
+              ["검증 보고서 한 건", "고객에게 보낼 때마다 결제", "외부 전달용 검증 보고서 한 건", "웹"],
+              ["브랜드 톤 한 개", "팀·브랜드 단위 프리셋 구매", "저장된 브랜드 톤 한 개", "브라우저 플러그인"],
+              ["예약 완료 한 건", "성과가 생겼을 때만 결제", "리마인드까지 끝난 예약 한 건", "웹"],
+              ["팀 공유 공간 한 개", "설명 자산을 모을 곳만 구매", "팀 설명 공간 한 개", "데스크톱 앱"]
+            ]
+          ],
+          guard: "가격표보다 결제 순간과 단위를 먼저 정하는 안입니다. 무료 가치가 너무 약하면 유료 전환 이전에 이탈합니다.",
+          result: (cards) => `원본 <span class="sentence-part" data-slot="1">${escapeHtml(cards[0].title)}</span>. 무료 첫 가치 <span class="sentence-part" data-slot="2">${escapeHtml(cards[1].title)}</span>. 결제 순간 <span class="sentence-part" data-slot="3">${escapeHtml(cards[2].title)}</span>. 결제 단위 <span class="sentence-part" data-slot="4">${escapeHtml(cards[3].title)}</span>.`,
+          preserved: (cards) => `${cards[0].detail} · ${cards[1].value}`,
+          changed: (cards) => `결제 시점: ${cards[2].value} · 결제 단위: ${cards[3].value}`
+        })
+      });
+
+      const structureMeta = {
+        A: { color: "#b99cff", signal: "원본 보존 최강", summary: "반복 행동을 남기고 변경 지점 하나만 고릅니다.", metrics: [["원본 보존", "가장 강함"], ["한 끗 통제", "강함"], ["이해 속도", "빠름"]], risk: "고객과 결제 이유는 결과 다음 단계에서 보강해야 합니다." },
+        B: { color: "#ffad79", signal: "구매 이유 최강", summary: "돈 내는 사람과 필요한 순간부터 좁힙니다.", metrics: [["구매 이유", "가장 강함"], ["사용 순간", "강함"], ["원본 보존", "보통"]], risk: "고객과 상황을 바꾸며 원본 반복 행동까지 흐려질 수 있습니다." },
+        C: { color: "#68d9ff", signal: "포맷 다양성 최강", summary: "핵심 기능을 웹·앱·플러그인 표면으로 옮깁니다.", metrics: [["플랫폼 다양성", "가장 강함"], ["핵심 기능", "강함"], ["한 끗 통제", "보통"]], risk: "플랫폼만 옮긴 얕은 래퍼가 되지 않게 사용 순간을 확인해야 합니다." },
+        D: { color: "#73e3c2", signal: "Ingan식 변화", summary: "처리와 출력은 두고 입력 데이터 하나만 바꿉니다.", metrics: [["한 끗 통제", "가장 강함"], ["원본 보존", "강함"], ["데이터 의존", "높음"]], risk: "새 입력 데이터에 실제 접근할 수 있는지 먼저 확인해야 합니다." },
+        E: { color: "#ffd36d", signal: "인접 시장 확장", summary: "같은 행동을 반복할 새 사용자만 바꿉니다.", metrics: [["시장 확장", "강함"], ["원본 보존", "보통"], ["타겟 명료성", "강함"]], risk: "사용자만 바꿨는데 행동까지 달라지면 사실상 새 제품이 됩니다." },
+        F: { color: "#ff8e9e", signal: "사용 맥락 집중", summary: "같은 기능을 더 절실한 순간에 꺼냅니다.", metrics: [["필요 순간", "가장 강함"], ["한 끗 통제", "강함"], ["빈도 검증", "필수"]], risk: "강한 순간이 드물면 제품을 다시 열 이유가 부족할 수 있습니다." },
+        G: { color: "#8fc8ff", signal: "결과 체감 강화", summary: "입력과 처리는 두고 결과물만 더 쓰이게 바꿉니다.", metrics: [["가치 체감", "강함"], ["원본 보존", "강함"], ["실행 연결", "강함"]], risk: "포맷만 예뻐지고 실제 행동은 그대로일 위험이 있습니다." },
+        H: { color: "#dc9dff", signal: "유입 루프 점검", summary: "첫 가치가 보이는 통로와 공유 한 번만 설계합니다.", metrics: [["자연 유입", "강함"], ["바이럴 가능성", "강함"], ["제품 품질", "별도"]], risk: "제품 가치가 약한 상태에서 공유 장치만 붙이면 스팸이 됩니다." },
+        I: { color: "#d6ff62", signal: "가장 작은 MVP", summary: "핵심 행동 외 마찰을 빼고 화면 하나만 남깁니다.", metrics: [["MVP 속도", "가장 강함"], ["이해 속도", "가장 빠름"], ["신뢰 장치", "주의"]], risk: "제거한 단계가 결제·신뢰에 꼭 필요한지 확인해야 합니다." },
+        J: { color: "#ffb36b", signal: "AI 범위 통제", summary: "범용 AI를 반복 업무 하나의 역할로 고정합니다.", metrics: [["구체성", "가장 강함"], ["범위 통제", "강함"], ["시장 크기", "확인"]], risk: "역할 이름만 좁고 실제 업무는 여전히 넓을 수 있습니다." },
+        K: { color: "#6fe0ff", signal: "B2B·공유 확장", summary: "개인 행동은 두고 한 사람과 한 결과만 공유합니다.", metrics: [["협업 가치", "강함"], ["원본 보존", "강함"], ["복잡도", "보통"]], risk: "곧바로 팀 관리·권한·댓글까지 늘어나지 않게 막아야 합니다." },
+        L: { color: "#b7a5ff", signal: "재방문 설계", summary: "첫 결과를 저장하고 자연스러운 시점 한 번만 다시 봅니다.", metrics: [["리텐션 가설", "강함"], ["효용 검증", "강함"], ["즉시 가치", "유지"]], risk: "필요 없는 알림이 아니라 실제 변화가 생기는 시점을 찾아야 합니다." },
+        M: { color: "#ffcf87", signal: "수익화 검증", summary: "무료 첫 가치 뒤 돈 낼 순간과 단위를 고릅니다.", metrics: [["결제 명료성", "가장 강함"], ["MVP 범위", "강함"], ["원본 변화", "작음"]], risk: "결제 단위보다 무료 첫 가치가 먼저 충분히 좋아야 합니다." }
+      };
+
+      const staticExampleResults = {
+        A: "직장 선배 캐릭터 — 관계형 대화와 기억은 유지",
+        B: "소개팅 앞둔 직장인을 위한 첫 만남 전 30초 음성 브리핑",
+        C: "답장 직전 먼저 제안하는 모바일 키보드 — 작성 보조 유지",
+        D: "생년월일 대신 최근 7일 캘린더를 읽는 개인 리포트",
+        E: "영업자용 조회 흐름을 채용담당자의 후보 검증으로 전환",
+        F: "게시 직전 위험 하나만 알려주는 작성 플러그인",
+        G: "가능 시간 목록 대신 최적 시간 하나를 추천하는 Calendly",
+        H: "Loom 영상 끝에서 받는 사람도 자기 설명을 만드는 유통 루프",
+        I: "공개 캐릭터 탐색을 없앤 초대 링크 전용 1:1 대화",
+        J: "답변만 작성하고 환불 판단은 넘기는 1인 쇼핑몰 CS 매니저",
+        K: "조회 근거를 팀장이 확인하고 승인하는 1Lookup 공유 링크",
+        L: "예약 하루 전, 지난 예약 대비 변경 횟수를 보여주는 Calendly",
+        M: "5분 녹화는 무료, 팀 공유 공간 단위로 결제하는 Loom"
+      };
+
+      const appState = {
+        activeOption: "A",
+        pickedOption: localStorage.getItem("four-card-picked-option-v2") || "",
+        options: {}
+      };
+
+      Object.entries(structures).forEach(([id, structure]) => {
+        appState.options[id] = {
+          activeSlot: 0,
+          recipeIndex: 0,
+          cards: structure.recipes[0].map((poolIndex, slotIndex) => ({ ...structure.pools[slotIndex][poolIndex] })),
+          promptOpen: false
+        };
+      });
+
+      const elements = {
+        matrixBody: document.querySelector("#matrix-body"),
+        matrixCompact: document.querySelector("#matrix-compact"),
+        lab: document.querySelector("#lab"),
+        optionTabs: document.querySelector("#option-tabs"),
+        comparisonGrid: document.querySelector("#comparison-grid"),
+        cardsGrid: document.querySelector("#cards-grid"),
+        candidateStrip: document.querySelector("#candidate-strip"),
+        workspaceKicker: document.querySelector("#workspace-kicker"),
+        deckTitle: document.querySelector("#deck-title"),
+        deckSubtitle: document.querySelector("#deck-subtitle"),
+        deckArea: document.querySelector("#deck-area"),
+        customForm: document.querySelector("#custom-form"),
+        customInput: document.querySelector("#custom-input"),
+        shuffleButton: document.querySelector("#shuffle-button"),
+        resultPanel: document.querySelector("#result-panel"),
+        platformBadge: document.querySelector("#platform-badge"),
+        resultHeading: document.querySelector("#result-heading"),
+        preservedCopy: document.querySelector("#preserved-copy"),
+        changedCopy: document.querySelector("#changed-copy"),
+        guardRow: document.querySelector("#guard-row"),
+        guardCopy: document.querySelector("#guard-copy"),
+        promptCard: document.querySelector("#prompt-card"),
+        promptVisible: document.querySelector("#prompt-visible"),
+        promptHidden: document.querySelector("#prompt-hidden"),
+        promptToggle: document.querySelector("#prompt-toggle"),
+        copyPrompt: document.querySelector("#copy-prompt"),
+        copyResult: document.querySelector("#copy-result"),
+        pickCurrent: document.querySelector("#pick-current"),
+        selectedStructure: document.querySelector("#selected-structure"),
+        toast: document.querySelector("#toast")
+      };
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function buildStaticMatrix() {
+        elements.matrixBody.innerHTML = Object.entries(structures)
+          .map(([id, structure]) => {
+            const meta = structureMeta[id];
+            const cards = structure.recipes[0].map((poolIndex, slotIndex) => structure.pools[slotIndex][poolIndex]);
+            const cardCells = cards
+              .map(
+                (card, index) => `
+                  <td>
+                    <div class="matrix-card" style="--card-color: ${slotColors[index]}">
+                      <span class="matrix-card-label" title="${escapeHtml(structure.labels[index])}"><b>${index + 1}</b>${escapeHtml(structure.labels[index])}</span>
+                      <strong class="matrix-card-value" title="${escapeHtml(card.title)}">${escapeHtml(card.title)}</strong>
+                    </div>
+                  </td>`
+              )
+              .join("");
+
+            return `
+              <tr style="--row-color: ${meta.color}">
+                <td>
+                  <div class="matrix-method">
+                    <span class="matrix-letter">${id}</span>
+                    <span class="matrix-method-copy">
+                      <strong title="${escapeHtml(structure.name)}">${escapeHtml(structure.name)}</strong>
+                      <small>${escapeHtml(meta.signal)}</small>
+                    </span>
+                  </div>
+                </td>
+                ${cardCells}
+                <td>
+                  <div class="matrix-result">
+                    <strong>${escapeHtml(staticExampleResults[id])}</strong>
+                    <span>${escapeHtml(getPlatform(cards))}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="matrix-test">
+                    <strong>${escapeHtml(meta.summary)}</strong>
+                    <span>${escapeHtml(meta.risk)}</span>
+                  </div>
+                </td>
+              </tr>`;
+          })
+          .join("");
+
+        elements.matrixCompact.innerHTML = Object.entries(structures)
+          .map(([id, structure]) => {
+            const meta = structureMeta[id];
+            const cards = structure.recipes[0].map((poolIndex, slotIndex) => structure.pools[slotIndex][poolIndex]);
+            const axes = cards
+              .map(
+                (card, index) => `
+                  <div class="compact-axis" style="--card-color: ${slotColors[index]}">
+                    <span title="${escapeHtml(structure.labels[index])}">${index + 1} · ${escapeHtml(structure.labels[index])}</span>
+                    <strong title="${escapeHtml(card.title)}">${escapeHtml(card.title)}</strong>
+                  </div>`
+              )
+              .join("");
+
+            return `
+              <article class="compact-combo" style="--row-color: ${meta.color}">
+                <div class="compact-combo-head">
+                  <span class="compact-combo-letter">${id}</span>
+                  <strong>${escapeHtml(structure.name)}</strong>
+                  <small>${escapeHtml(meta.signal)}</small>
+                </div>
+                <div class="compact-axes">${axes}</div>
+                <div class="compact-outcome">
+                  <strong>${escapeHtml(staticExampleResults[id])}</strong>
+                  <span>${escapeHtml(getPlatform(cards))}</span>
+                </div>
+                <p class="compact-risk">검증: ${escapeHtml(meta.summary)} · 위험: ${escapeHtml(meta.risk)}</p>
+              </article>`;
+          })
+          .join("");
+      }
+
+      function buildStructureDirectory() {
+        elements.optionTabs.innerHTML = Object.entries(structures)
+          .map(([id, structure]) => {
+            const meta = structureMeta[id];
+            return `
+              <button
+                class="option-tab"
+                type="button"
+                role="tab"
+                aria-selected="${id === appState.activeOption}"
+                data-option="${id}"
+                style="--option-color: ${meta.color}"
+              >
+                <span class="option-tab-top">
+                  <span class="option-letter">${id}</span>
+                  <span class="option-signal">${escapeHtml(meta.signal)}</span>
+                </span>
+                <h3>${escapeHtml(structure.name)}</h3>
+                <p>${escapeHtml(meta.summary)}</p>
+                <span class="option-axis-preview" aria-label="${id}안 네 카드 분류 기준">
+                  ${structure.labels
+                    .map(
+                      (label, index) => `<span style="--axis-color: ${slotColors[index]}" title="${escapeHtml(label)}"><b>${index + 1}</b>${escapeHtml(label)}</span>`
+                    )
+                    .join("")}
+                </span>
+              </button>`;
+          })
+          .join("");
+
+        elements.comparisonGrid.innerHTML = Object.entries(structures)
+          .map(([id, structure]) => {
+            const meta = structureMeta[id];
+            return `
+              <article class="comparison-card" data-option="${id}" style="--option-color: ${meta.color}">
+                <div class="comparison-name"><span class="option-letter">${id}</span><strong>${escapeHtml(structure.name)}</strong></div>
+                <div class="metric-list">
+                  ${meta.metrics
+                    .map(
+                      ([label, value]) => `<div class="metric"><span class="metric-label">${escapeHtml(label)}</span><span class="metric-value">${escapeHtml(value)}</span></div>`
+                    )
+                    .join("")}
+                </div>
+                <p class="risk-note">약점: ${escapeHtml(meta.risk)}</p>
+                <button class="pick-button" type="button" data-pick="${id}">${id}안 선택</button>
+              </article>`;
+          })
+          .join("");
+      }
+
+      function current() {
+        const id = appState.activeOption;
+        return { id, structure: structures[id], state: appState.options[id] };
+      }
+
+      function render() {
+        const { id, structure, state } = current();
+        const activeColor = slotColors[state.activeSlot];
+        elements.optionTabs.querySelectorAll(".option-tab").forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.option === id)));
+        elements.workspaceKicker.textContent = `${id}안 · ${structure.name}`;
+        elements.deckArea.style.setProperty("--active-slot-color", activeColor);
+        elements.resultPanel.style.setProperty("--option-wash", `${structureMeta[id].color}1f`);
+
+        elements.cardsGrid.innerHTML = state.cards
+          .map(
+            (card, index) => `
+              <button
+                class="idea-card ${index === state.activeSlot ? "is-active" : ""}"
+                type="button"
+                data-card-slot="${index}"
+                data-slot="${index + 1}"
+                aria-pressed="${index === state.activeSlot}"
+                aria-label="${index + 1}번 ${escapeHtml(structure.labels[index])} 카드 선택"
+              >
+                <span class="card-meta"><span class="slot-index">${index + 1}</span>${escapeHtml(structure.labels[index])}</span>
+                <strong class="card-title">${escapeHtml(card.title)}</strong>
+                <p class="card-detail">${escapeHtml(card.detail || "직접 입력한 카드")}</p>
+              </button>`
+          )
+          .join("");
+
+        const pool = structure.pools[state.activeSlot];
+        const activeCard = state.cards[state.activeSlot];
+        elements.deckTitle.textContent = `${state.activeSlot + 1}번 · ${structure.labels[state.activeSlot]}만 바꾸기`;
+        elements.deckSubtitle.textContent = structure.helpers[state.activeSlot];
+        elements.customInput.placeholder = `${structure.labels[state.activeSlot]} 직접 적기`;
+        elements.candidateStrip.innerHTML = pool
+          .map((candidate, index) => {
+            const selected = candidate.title === activeCard.title && candidate.value === activeCard.value;
+            const candidateKicker = structure.strictRows
+              ? state.activeSlot === 0
+                ? `원본 후보 ${String(index + 1).padStart(2, "0")}`
+                : candidate.family === state.cards[0].family
+                  ? "원본 호환"
+                  : "다른 원본 실험"
+              : `후보 ${String(index + 1).padStart(2, "0")}`;
+            return `
+              <button
+                class="candidate-card ${selected ? "is-selected" : ""}"
+                type="button"
+                data-candidate-index="${index}"
+                aria-pressed="${selected}"
+              >
+                <span class="candidate-kicker">${candidateKicker}</span>
+                <strong class="candidate-title">${escapeHtml(candidate.title)}</strong>
+              </button>`;
+          })
+          .join("");
+
+        elements.platformBadge.textContent = getPlatform(state.cards);
+        elements.resultHeading.innerHTML = structure.result(state.cards);
+        elements.preservedCopy.textContent = structure.preserved(state.cards);
+        elements.changedCopy.textContent = structure.changed(state.cards);
+        const cardFamilies = state.cards.map((card) => card.family).filter((family) => typeof family === "number");
+        const hasFamilyMismatch = structure.strictRows && new Set(cardFamilies).size > 1;
+        elements.guardRow.classList.toggle("is-warning", Boolean(hasFamilyMismatch));
+        elements.guardCopy.textContent = hasFamilyMismatch
+          ? "조합 일관성 확인: 다른 원본 계열 카드가 섞였습니다. 이 조합이 자연스러운지 비교한 뒤 유지하거나 다시 고르세요."
+          : structure.guard;
+
+        const prompt = structure.prompt(state.cards);
+        const lines = prompt.split("\n");
+        elements.promptVisible.textContent = `${lines.slice(0, 2).join("\n")}\n`;
+        elements.promptHidden.textContent = lines.slice(2).join("\n");
+        elements.promptCard.classList.toggle("is-open", state.promptOpen);
+        elements.promptToggle.textContent = state.promptOpen ? "접기" : "전체 보기";
+        elements.pickCurrent.textContent = appState.pickedOption === id ? `✓ ${id}안 선택됨` : "이 구조 선택";
+        renderPickedState();
+      }
+
+      function getPlatform(cards) {
+        return cards[3].platform || cards[2].platform || cards[1].platform || cards[0].platform || "웹 · 앱";
+      }
+
+      function renderPickedState() {
+        const picked = appState.pickedOption;
+        elements.selectedStructure.classList.toggle("is-visible", Boolean(picked));
+        if (picked) elements.selectedStructure.textContent = `✓ 선택: ${picked}안 · ${structures[picked].name}`;
+        document.querySelectorAll("[data-pick]").forEach((button) => {
+          const isPicked = button.dataset.pick === picked;
+          button.classList.toggle("is-picked", isPicked);
+          button.textContent = isPicked ? `✓ ${picked}안 선택됨` : `${button.dataset.pick}안 선택`;
+        });
+      }
+
+      function switchOption(id) {
+        appState.activeOption = id;
+        render();
+        elements.lab.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function setActiveSlot(slotIndex) {
+        const { state } = current();
+        state.activeSlot = slotIndex;
+        render();
+        requestAnimationFrame(() => {
+          elements.candidateStrip.scrollTo({ left: 0, behavior: "smooth" });
+        });
+      }
+
+      function chooseCandidate(index) {
+        const { structure, state } = current();
+        state.cards[state.activeSlot] = { ...structure.pools[state.activeSlot][index] };
+        render();
+        showToast(`${state.activeSlot + 1}번 카드만 바꿨습니다.`);
+      }
+
+      function shuffleAll() {
+        const { structure, state } = current();
+        let nextIndex = state.recipeIndex;
+        while (nextIndex === state.recipeIndex && structure.recipes.length > 1) {
+          nextIndex = Math.floor(Math.random() * structure.recipes.length);
+        }
+        state.recipeIndex = nextIndex;
+        elements.lab.classList.add("is-shuffling");
+        window.setTimeout(() => {
+          state.cards = structure.recipes[nextIndex].map((poolIndex, slotIndex) => ({ ...structure.pools[slotIndex][poolIndex] }));
+          render();
+          showToast("새 조합 네 장을 뽑았습니다.");
+          window.setTimeout(() => elements.lab.classList.remove("is-shuffling"), 160);
+        }, 150);
+      }
+
+      function inferPlatform(value, fallback) {
+        if (/키보드/i.test(value)) return "키보드 플러그인";
+        if (/크롬|브라우저 플러그인|확장 프로그램|extension|plugin/i.test(value)) return "브라우저 플러그인";
+        if (/데스크톱|메뉴바|mac|windows/i.test(value)) return "데스크톱 앱";
+        if (/ios|android|안드로이드|모바일|앱/i.test(value)) return "모바일 앱";
+        if (/웹|사이트|링크/i.test(value)) return "웹";
+        return fallback;
+      }
+
+      function setCustomCard(value) {
+        const clean = value.trim();
+        if (!clean) {
+          showToast("카드에 넣을 내용을 적어주세요.");
+          return;
+        }
+        const { state } = current();
+        const previousCard = state.cards[state.activeSlot];
+        state.cards[state.activeSlot] = {
+          title: clean,
+          detail: "직접 입력한 카드",
+          value: clean,
+          platform: inferPlatform(clean, previousCard.platform),
+          family: previousCard.family
+        };
+        elements.customInput.value = "";
+        render();
+        showToast(`${state.activeSlot + 1}번에 직접 입력한 내용을 넣었습니다.`);
+      }
+
+      function pickOption(id) {
+        appState.pickedOption = id;
+        localStorage.setItem("four-card-picked-option-v2", id);
+        render();
+        showToast(`${id}안 · ${structures[id].name}을 선택했습니다.`);
+      }
+
+      function plainResult() {
+        const { structure, state } = current();
+        const temporary = document.createElement("div");
+        temporary.innerHTML = structure.result(state.cards);
+        return temporary.textContent.trim();
+      }
+
+      async function copyText(value, successMessage) {
+        try {
+          await navigator.clipboard.writeText(value);
+        } catch (error) {
+          const textarea = document.createElement("textarea");
+          textarea.value = value;
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.append(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          textarea.remove();
+        }
+        showToast(successMessage);
+      }
+
+      let toastTimer;
+      function showToast(message) {
+        window.clearTimeout(toastTimer);
+        elements.toast.textContent = message;
+        elements.toast.classList.add("is-visible");
+        toastTimer = window.setTimeout(() => elements.toast.classList.remove("is-visible"), 1800);
+      }
+
+      elements.optionTabs.addEventListener("click", (event) => {
+        const tab = event.target.closest("[data-option]");
+        if (tab) switchOption(tab.dataset.option);
+      });
+
+      elements.comparisonGrid.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-pick]");
+        if (button) pickOption(button.dataset.pick);
+      });
+
+      elements.cardsGrid.addEventListener("click", (event) => {
+        const card = event.target.closest("[data-card-slot]");
+        if (card) setActiveSlot(Number(card.dataset.cardSlot));
+      });
+
+      elements.candidateStrip.addEventListener("click", (event) => {
+        const candidate = event.target.closest("[data-candidate-index]");
+        if (candidate) chooseCandidate(Number(candidate.dataset.candidateIndex));
+      });
+
+      elements.customForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        setCustomCard(elements.customInput.value);
+      });
+
+      elements.shuffleButton.addEventListener("click", shuffleAll);
+
+      elements.promptToggle.addEventListener("click", () => {
+        const { state } = current();
+        state.promptOpen = !state.promptOpen;
+        render();
+      });
+
+      elements.copyPrompt.addEventListener("click", () => {
+        const { structure, state } = current();
+        copyText(structure.prompt(state.cards), "AI로 만들기 요청문을 복사했습니다.");
+      });
+
+      elements.copyResult.addEventListener("click", () => copyText(plainResult(), "결과 문장을 복사했습니다."));
+      elements.pickCurrent.addEventListener("click", () => pickOption(appState.activeOption));
+
+      buildStaticMatrix();
+      buildStructureDirectory();
+      render();
+    </script>
+  </body>
+</html>

@@ -43,6 +43,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# 자동화 테스트 결과물
+test-results/
+playwright-report/
+blob-report/
+coverage/
+
 # 수집 원본 캐시
 .firecrawl/
 

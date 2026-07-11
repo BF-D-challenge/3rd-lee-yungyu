@@ -1,12 +1,5 @@
-"use client";
+import { TodayApp } from "@/components/organisms/oneul/today-app";
 
-import { Suspense } from "react";
-import { MobileFlow } from "@/components/organisms/slot/mobile-flow";
-
-export default function SlotPage() {
-  return (
-    <Suspense fallback={null}>
-      <MobileFlow />
-    </Suspense>
-  );
+export default function HomePage() {
+  return <TodayApp />;
 }

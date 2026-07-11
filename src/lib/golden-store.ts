@@ -16,14 +16,22 @@ export function getGoldenSync(): Golden[] {
 export function ensureGoldenLoaded(): Promise<Golden[]> {
   if (cache) return Promise.resolve(cache);
   if (!loadPromise) {
-    loadPromise = fetch(`/data/golden.json?v=${Date.now()}`, { cache: "no-store" })
-      .then((res) => {
-        if (!res.ok) throw new Error(`golden.json fetch failed: ${res.status}`);
-        return res.json() as Promise<Golden[]>;
-      })
-      .then((data) => {
-        cache = data;
-        return data;
+    const version = Date.now();
+    loadPromise = Promise.all(
+      ["source-cards.json", "golden.json"].map((file) =>
+        fetch(`/data/${file}?v=${version}`, { cache: "no-store" }).then((res) => {
+          if (!res.ok) throw new Error(`${file} fetch failed: ${res.status}`);
+          return res.json() as Promise<Golden[]>;
+        }),
+      ),
+    )
+      .then(([sourceCards, legacyCards]) => {
+        const sourceKeys = new Set(sourceCards.map((card) => `${card.seed}|${card.pain}|${card.format}`));
+        cache = [
+          ...sourceCards,
+          ...legacyCards.filter((card) => !sourceKeys.has(`${card.seed}|${card.pain}|${card.format}`)),
+        ];
+        return cache;
       })
       .catch((err) => {
         loadPromise = null; // 실패하면 다음 호출에서 재시도
