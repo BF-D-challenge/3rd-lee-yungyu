@@ -1,0 +1,424 @@
+[
+  {
+    "seed": "design-tools-goods-mockup",
+    "pain": 31,
+    "format": "vote-card",
+    "title": "입혀보고 승인받는 의류 3D 시안 앱",
+    "oneliner": "의류 디자이너가 평면 아트워크와 옷 종류를 넣으면 3D 착장 시안으로 변환하고 고객의 승인 또는 수정 요청을 받는 링크를 얻는다.",
+    "target": "티셔츠와 굿즈 시안을 고객에게 보여주고 확정받아야 하는 독립 디자이너와 소규모 의류 제작사",
+    "mvp": [
+      "평면 아트워크와 의류 종류 업로드",
+      "회전 가능한 3D 의류 목업 생성",
+      "시안별 승인·수정 요청 링크 발급",
+      "색상과 버전별 승인 상태 확인"
+    ],
+    "evidence": "TrustMRR에 등록된 ThreadCam의 최근 30일 매출은 $8.9k다.",
+    "evidenceType": "revenue",
+    "anchorName": "ThreadCam",
+    "anchorDetail": "ThreadCam: 티셔츠와 의류 디자인을 3D 목업으로 만드는 모바일 앱, 최근 30일 매출 $8.9k.",
+    "appName": "의류 3D 시안 승인앱",
+    "frontStory": {
+      "persona": "의류 브랜드 세 곳의 티셔츠 시안을 동시에 진행하는 프리랜서 디자이너",
+      "timeline": [
+        {
+          "t": "시안 제작 직후",
+          "act": "평면 그래픽을 티셔츠 사진 위에 얹어 고객에게 보낸다",
+          "emo": "실물에서 어떻게 보일지 설명하기 어렵다",
+          "pain": true
+        },
+        {
+          "t": "수정 요청 도착",
+          "act": "비슷한 색상과 파일명이 섞인 여러 버전을 다시 찾는다",
+          "emo": "어느 안을 고친 것인지 확신이 없다",
+          "pain": true
+        },
+        {
+          "t": "제작 발주 전",
+          "act": "고객이 승인한 3D 시안과 색상 상태를 확인한다",
+          "emo": "확정된 한 버전만 넘길 수 있어 안심된다",
+          "pain": false
+        }
+      ]
+    },
+    "todayAction": "오늘은 티셔츠 한 종류와 아트워크 한 장을 올려 3D 시안을 만들고, 승인·수정 요청 두 버튼이 있는 공유 링크까지 구현한다.",
+    "buildPrompt": "의류 디자이너가 PNG 아트워크와 티셔츠 종류, 색상을 입력하면 회전 가능한 3D 목업을 만드는 앱을 구현해줘. 생성된 시안에는 버전 번호와 색상을 표시하고 고객용 공유 링크에 승인과 수정 요청 버튼을 둬. 수정 요청에는 한 줄 의견을 남길 수 있게 하고, 작업자는 버전별 상태를 대기·승인·수정 요청으로 확인하게 해줘. 첫 버전은 티셔츠 한 종류와 한 프로젝트만 지원해.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "검토 가능성",
+    "whyItMatters": "평면 시안과 구두 확인을 3D 목업과 명시적 승인 상태로 바꾸면 잘못된 버전을 제작에 넘기는 위험을 줄일 수 있다.",
+    "differentiationAxis": {
+      "psychology": "검토 가능성",
+      "socialContext": "디자이너와 고객 사이의 제작 전 승인",
+      "outputShape": "승인 상태가 붙은 회전형 3D 의류 시안",
+      "emotionalResolution": "발주 전 확신",
+      "anchorMechanism": "평면 의류 디자인을 3D 목업으로 변환"
+    },
+    "audiences": [
+      "b2c",
+      "b2b"
+    ],
+    "platforms": [
+      "app",
+      "web",
+      "plugin"
+    ],
+    "productTypes": [
+      "utility",
+      "automation",
+      "dashboard"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0368",
+    "sourceUrl": "https://trustmrr.com/startup/threadcam",
+    "sourceDescription": "ThreadCam allows user to create 3D mockups of their tshirt/garment designs. Mainly iOS app, just launched android app.",
+    "sourceFidelityScore": 90,
+    "sourcePreserved": [
+      "target",
+      "problem",
+      "input",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "원본의 3D 목업 생성 흐름은 유지하고, 완성된 시안에 고객 승인 또는 수정 요청 단계만 추가했다.",
+    "mechanism": {
+      "input": "평면 의류 아트워크, 의류 종류, 색상",
+      "process": "아트워크를 3D 의류 목업에 입히고 버전별 검토 링크를 만든다",
+      "output": "회전 가능한 3D 시안과 승인·수정 요청 상태"
+    },
+    "specificityScore": 5
+  },
+  {
+    "seed": "productivity-task-overwhelm",
+    "pain": 10,
+    "format": "vote-card",
+    "title": "실행 전 결재받는 Slack 업무 에이전트",
+    "oneliner": "팀원이 Slack에 업무 요청을 쓰면 에이전트가 연결된 업무 앱의 실행안을 만들고 담당자 승인 뒤 처리 결과를 채널에 돌려준다.",
+    "target": "Slack에서 반복 업무를 요청하지만 자동화가 임의로 실행되는 것은 불안한 운영팀",
+    "mvp": [
+      "Slack 멘션으로 업무 요청 접수",
+      "연결된 업무 앱을 바탕으로 실행안 작성",
+      "담당자의 승인·반려 버튼 제공",
+      "승인된 작업 결과와 변경 기록 회신"
+    ],
+    "evidence": "TrustMRR에 등록된 Roman AI의 최근 30일 매출은 $7.1k다.",
+    "evidenceType": "revenue",
+    "anchorName": "Roman AI",
+    "anchorDetail": "Roman AI: Slack 안에서 3,000개 이상의 도구와 연결되고 지속형 메모리를 사용하는 AI 동료, 최근 30일 매출 $7.1k.",
+    "appName": "승인형 Slack 업무 에이전트",
+    "frontStory": {
+      "persona": "매일 Slack으로 계정 생성과 일정 변경 요청을 받는 운영 매니저",
+      "timeline": [
+        {
+          "t": "요청 도착",
+          "act": "팀원이 Slack 채널에 고객 계정 변경을 부탁한다",
+          "emo": "내용을 다시 업무 앱으로 옮겨야 해 부담스럽다",
+          "pain": true
+        },
+        {
+          "t": "자동화 실행 전",
+          "act": "에이전트가 바꿀 항목과 사용할 연결 앱을 실행안으로 보여준다",
+          "emo": "잘못 바뀔 부분을 먼저 확인하고 싶다",
+          "pain": true
+        },
+        {
+          "t": "승인 후",
+          "act": "승인 버튼을 누르고 처리 결과와 변경 기록을 채널에서 확인한다",
+          "emo": "통제권을 유지한 채 반복 작업을 넘겨 안심된다",
+          "pain": false
+        }
+      ]
+    },
+    "todayAction": "오늘은 Slack 명령 한 종류를 받아 실행안을 만들고, 승인 버튼을 누른 뒤 테스트 작업 결과를 회신하는 흐름까지 구현한다.",
+    "buildPrompt": "Slack 앱 형태의 승인형 업무 에이전트를 구현해줘. 사용자가 채널에서 봇을 멘션해 업무를 요청하면 요청 내용, 실행할 단계, 변경 대상, 연결 앱을 요약한 승인 카드를 보여줘. 승인 전에는 외부 작업을 실행하지 말고 승인 또는 반려 버튼을 제공해. 승인되면 한 가지 테스트 업무를 실행하고 결과와 변경 기록을 같은 스레드에 남겨줘. 채널별 최근 요청은 지속형 메모리로 불러오되 MVP에서는 한 종류의 업무만 지원해.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "행동 전 통제감",
+    "whyItMatters": "Slack 안의 요청과 연결 앱 실행 사이에 짧은 승인 단계를 두면 자동화 속도를 얻으면서도 잘못된 변경을 막을 수 있다.",
+    "differentiationAxis": {
+      "psychology": "행동 전 통제감",
+      "socialContext": "운영팀의 Slack 요청과 담당자 결재",
+      "outputShape": "승인 카드와 실행 기록",
+      "emotionalResolution": "자동화에 대한 통제감",
+      "anchorMechanism": "Slack 안의 AI 동료가 외부 도구와 지속형 메모리를 사용"
+    },
+    "audiences": [
+      "b2b"
+    ],
+    "platforms": [
+      "plugin",
+      "web",
+      "app"
+    ],
+    "productTypes": [
+      "ai-agent",
+      "automation"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0004",
+    "sourceUrl": "https://trustmrr.com/startup/roman-ai",
+    "sourceDescription": "Roman is your AI coworker living in your Slack workspace and connecting to +3000 tools, skills and with persistent memory.",
+    "sourceFidelityScore": 92,
+    "sourcePreserved": [
+      "target",
+      "problem",
+      "input",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "원본의 Slack 기반 연결 도구 실행 흐름에 담당자 승인 대기 단계만 추가했다.",
+    "mechanism": {
+      "input": "Slack 채널의 업무 요청과 승인 담당자",
+      "process": "지속형 메모리와 연결된 업무 앱으로 실행안을 만들고 승인 전 대기한다",
+      "output": "승인된 작업의 처리 결과와 변경 기록"
+    },
+    "specificityScore": 5
+  },
+  {
+    "seed": "sales-local-biz-prospecting",
+    "pain": 10,
+    "format": "dashboard",
+    "title": "이사업체 잠재고객 우선순위 레이더",
+    "oneliner": "이사업체 영업 담당자가 서비스 지역과 취급 이사 유형을 넣으면 영업 데이터를 자동 분류해 연락 우선순위가 매겨진 잠재고객 목록을 받는다.",
+    "target": "한정된 영업 시간에 먼저 연락할 고객을 정해야 하는 지역 이사·보관 업체",
+    "mvp": [
+      "서비스 지역과 이사 유형 설정",
+      "잠재고객 영업 데이터 가져오기",
+      "수요 신호와 최신성 기준으로 우선순위 계산",
+      "연락 대상과 근거를 한 화면에 표시"
+    ],
+    "evidence": "TrustMRR에 등록된 Book The Move의 최근 30일 매출은 $8.2k다.",
+    "evidenceType": "revenue",
+    "anchorName": "Book The Move",
+    "anchorDetail": "Book The Move: 이사 및 보관 업체를 위한 자동화 영업 인텔리전스, 최근 30일 매출 $8.2k.",
+    "appName": "이사업체 잠재고객 레이더",
+    "frontStory": {
+      "persona": "서울 서부 지역에서 소형 이사 업체의 영업을 혼자 맡는 대표",
+      "timeline": [
+        {
+          "t": "오전 영업 시작",
+          "act": "여러 영업 목록을 열어 오늘 연락할 대상을 찾는다",
+          "emo": "누가 실제 고객에 가까운지 판단하기 어렵다",
+          "pain": true
+        },
+        {
+          "t": "첫 연락 직전",
+          "act": "지역과 이사 유형에 맞는 잠재고객을 감으로 고른다",
+          "emo": "시간을 엉뚱한 대상에게 쓸까 걱정된다",
+          "pain": true
+        },
+        {
+          "t": "우선순위 확인",
+          "act": "레이더에서 포착 근거가 있는 상위 고객부터 연락한다",
+          "emo": "오늘 할 영업 순서가 명확해진다",
+          "pain": false
+        }
+      ]
+    },
+    "todayAction": "오늘은 한 지역의 잠재고객 CSV를 넣어 수요 신호와 최신성으로 정렬하고 상위 20건을 보여주는 대시보드를 만든다.",
+    "buildPrompt": "지역 이사·보관 업체용 잠재고객 레이더를 웹 대시보드로 구현해줘. 사용자가 서비스 지역과 이사 유형을 설정하고 잠재고객 CSV를 올리면 각 행의 수요 신호와 데이터 최신성을 기준으로 우선순위를 계산해. 목록에는 고객명, 지역, 신호, 포착일, 추천 연락 순서와 순위 근거를 표시하고 연락 완료 상태를 바꿀 수 있게 해줘. MVP는 한 업체와 한 서비스 지역만 지원해.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "우선순위 가시화",
+    "whyItMatters": "지역 이사업체가 제한된 영업 시간을 가능성이 높은 고객부터 쓰게 하면 감으로 명단을 훑는 시간을 줄일 수 있다.",
+    "differentiationAxis": {
+      "psychology": "우선순위 가시화",
+      "socialContext": "지역 이사·보관 업체의 일일 영업",
+      "outputShape": "근거가 표시된 잠재고객 순위판",
+      "emotionalResolution": "첫 연락 대상에 대한 확신",
+      "anchorMechanism": "이사·보관 업종 전용 자동화 영업 인텔리전스"
+    },
+    "audiences": [
+      "b2b"
+    ],
+    "platforms": [
+      "web",
+      "app"
+    ],
+    "productTypes": [
+      "dashboard",
+      "analyzer"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0302",
+    "sourceUrl": "https://trustmrr.com/startup/book-the-move",
+    "sourceDescription": "Automated sales intelligence for moving and storage companies.",
+    "sourceFidelityScore": 84,
+    "sourcePreserved": [
+      "target",
+      "problem",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "원본의 이사·보관 업계용 영업 인텔리전스를 한 업체의 단일 서비스 지역 잠재고객 순위 화면으로 범위만 좁혔다.",
+    "mechanism": {
+      "input": "서비스 지역, 이사 유형, 잠재고객 영업 데이터",
+      "process": "영업 데이터를 분류하고 수요 신호와 최신성으로 연락 순위를 매긴다",
+      "output": "잠재고객 목록, 포착 근거, 추천 연락 순서"
+    },
+    "specificityScore": 5
+  },
+  {
+    "seed": "education-aptitude-test-prep",
+    "pain": 10,
+    "format": "dashboard",
+    "title": "11종 게임으로 약점을 찾는 인적성 훈련실",
+    "oneliner": "취업 준비생이 HireVue형 게임을 연습하면 11종 시뮬레이션이 인지·공간·성격 수행을 분석해 다음에 훈련할 약점 순서를 보여준다.",
+    "target": "HireVue 게임 기반 평가를 앞두고 무엇부터 연습할지 모르는 취업 준비생",
+    "mvp": [
+      "인지·공간·성격 게임 중 연습 항목 선택",
+      "HireVue형 실전 시뮬레이션 진행",
+      "정확도와 반응 시간으로 영역별 수행 분석",
+      "약점 순위와 다음 연습 게임 추천"
+    ],
+    "evidence": "TrustMRR에 등록된 Game Assessment Prep의 최근 30일 매출은 $7k다.",
+    "evidenceType": "revenue",
+    "anchorName": "Game Assessment Prep",
+    "anchorDetail": "Game Assessment Prep: HireVue 게임 기반 평가의 11가지 게임을 실전형으로 연습하는 온라인 플랫폼, 최근 30일 매출 $7k.",
+    "appName": "게임형 인적성 약점훈련실",
+    "frontStory": {
+      "persona": "첫 HireVue 게임 평가를 일주일 앞둔 대기업 지원자",
+      "timeline": [
+        {
+          "t": "평가 일주일 전",
+          "act": "인지·공간·성격 게임 예시를 찾아 각각 조금씩 풀어본다",
+          "emo": "실제 평가와 얼마나 비슷한지 알 수 없다",
+          "pain": true
+        },
+        {
+          "t": "연습 직후",
+          "act": "점수만 보고 어떤 영역부터 다시 해야 할지 고민한다",
+          "emo": "남은 시간을 어디에 써야 할지 막막하다",
+          "pain": true
+        },
+        {
+          "t": "다음 세션 선택",
+          "act": "약점 1순위와 추천 게임을 확인하고 바로 재연습한다",
+          "emo": "준비 순서가 보여 집중할 수 있다",
+          "pain": false
+        }
+      ]
+    },
+    "todayAction": "오늘은 인지 게임 한 종류를 플레이하고 정확도와 반응 시간을 기록해 약점 점수와 다음 연습을 보여주는 화면까지 만든다.",
+    "buildPrompt": "HireVue형 게임 기반 평가 연습 웹앱을 구현해줘. 홈에서 인지, 공간, 성격 영역과 총 11개 게임 목록을 보여주고 MVP에서는 인지 게임 한 종류를 실제로 플레이하게 해. 세션이 끝나면 정확도, 반응 시간, 실수 유형을 분석해 영역별 약점 순위와 다음 연습 게임을 제안해. 결과 대시보드에는 최근 세 번의 변화도 표시하고 실제 채용 합격 가능성을 예측한다는 표현은 사용하지 마.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "즉시 피드백",
+    "whyItMatters": "실전형 연습 결과를 약점 순서로 바꾸면 사용자가 11개 게임을 무작정 반복하지 않고 남은 시간을 취약 영역에 집중할 수 있다.",
+    "differentiationAxis": {
+      "psychology": "즉시 피드백",
+      "socialContext": "채용 게임 평가 직전의 개인 연습",
+      "outputShape": "영역별 약점 순위와 다음 훈련",
+      "emotionalResolution": "연습 순서에 대한 확신",
+      "anchorMechanism": "11가지 HireVue형 게임의 실전 시뮬레이션"
+    },
+    "audiences": [
+      "b2c"
+    ],
+    "platforms": [
+      "web",
+      "app"
+    ],
+    "productTypes": [
+      "analyzer",
+      "utility",
+      "dashboard"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0371",
+    "sourceUrl": "https://trustmrr.com/startup/game-assessment-prep",
+    "sourceDescription": "Game Assessment Prep is an online practice platform for HireVue game based assessments. Users train with realistic simulations across all 11 games: cognitive, spatial, and personality, plus strategies",
+    "sourceFidelityScore": 88,
+    "sourcePreserved": [
+      "target",
+      "problem",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "원본의 11개 게임 연습 흐름은 유지하고, 세션 뒤에 약점 우선순위를 보여주는 검토 화면만 추가했다.",
+    "mechanism": {
+      "input": "준비할 평가 영역과 11종 게임 연습 결과",
+      "process": "실전형 시뮬레이션에서 인지·공간·성격 수행을 비교한다",
+      "output": "영역별 약점 순위와 다음에 연습할 게임"
+    },
+    "specificityScore": 5
+  },
+  {
+    "seed": "sales-community-lead-watch",
+    "pain": 67,
+    "format": "chrome-ext",
+    "title": "게시 전 Reddit 적합도 분석기",
+    "oneliner": "마케터가 Reddit 게시 초안과 제품 설명을 넣으면 서브레딧·내용·게시 시점·차단 위험을 분석해 적합한 게시 위치와 수정안을 받는다.",
+    "target": "Reddit에서 제품을 알리고 싶지만 커뮤니티 규칙 위반과 차단이 걱정되는 소규모 사업자와 마케터",
+    "mvp": [
+      "제품 설명과 Reddit 게시 초안 입력",
+      "서브레딧 후보와 커뮤니티 규칙 대조",
+      "내용·게시 시점·차단 위험 분석",
+      "추천 서브레딧과 문장별 수정안 표시"
+    ],
+    "evidence": "TrustMRR에 등록된 MediaFast의 최근 30일 매출은 $6.7k다.",
+    "evidenceType": "revenue",
+    "anchorName": "MediaFast",
+    "anchorDetail": "MediaFast: 게시할 서브레딧, 공유할 콘텐츠, 게시 시점을 제안해 Reddit 차단 위험을 줄이는 제품, 최근 30일 매출 $6.7k.",
+    "appName": "Reddit 게시 적합도 분석기",
+    "frontStory": {
+      "persona": "개발자용 구독 서비스를 Reddit에 처음 알리려는 1인 창업자",
+      "timeline": [
+        {
+          "t": "게시글 작성",
+          "act": "제품 소개 초안을 쓰고 관련 있어 보이는 서브레딧을 여러 개 연다",
+          "emo": "어디에 올려야 반응을 얻을지 모르겠다",
+          "pain": true
+        },
+        {
+          "t": "게시 버튼 직전",
+          "act": "홍보성 문장과 각 커뮤니티 규칙을 하나씩 대조한다",
+          "emo": "삭제되거나 차단될까 불안하다",
+          "pain": true
+        },
+        {
+          "t": "사전 분석 후",
+          "act": "적합도가 높은 서브레딧과 수정할 문장을 확인한다",
+          "emo": "규칙에 맞는 초안으로 고쳐 올릴 수 있다",
+          "pain": false
+        }
+      ]
+    },
+    "todayAction": "오늘은 Reddit 게시 초안과 서브레딧 주소를 넣으면 규칙 위반 표현을 표시하고 적합도와 수정 문장을 보여주는 웹 화면을 만든다.",
+    "buildPrompt": "Reddit 게시 전 적합도 분석기를 웹앱과 브라우저 확장 기능 형태로 구현해줘. 사용자가 제품 설명, 게시 초안, 후보 서브레딧을 넣으면 해당 커뮤니티 규칙과 초안을 대조해 주제 적합도, 홍보성 표현, 게시 권장 시점, 차단 위험을 각각 근거와 함께 보여줘. 결과에는 추천 서브레딧, 수정이 필요한 문장, 바로 붙여 넣을 수정 초안을 포함해. MVP는 사용자가 직접 입력한 한 개 서브레딧의 공개 규칙과 한 개 초안만 분석해.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "실수 회피",
+    "whyItMatters": "게시 위치와 문장, 시점, 차단 위험을 제출 전에 함께 확인하면 마케터가 커뮤니티 규칙을 어겨 첫 접점을 잃는 일을 줄일 수 있다.",
+    "differentiationAxis": {
+      "psychology": "실수 회피",
+      "socialContext": "사업자의 Reddit 게시 직전 검토",
+      "outputShape": "서브레딧 적합도와 문장별 수정안",
+      "emotionalResolution": "게시 전 불안 해소",
+      "anchorMechanism": "서브레딧·콘텐츠·게시 시점·차단 위험을 함께 추천"
+    },
+    "audiences": [
+      "b2b"
+    ],
+    "platforms": [
+      "web",
+      "plugin"
+    ],
+    "productTypes": [
+      "analyzer",
+      "utility"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0406",
+    "sourceUrl": "https://trustmrr.com/startup/mediafast-1",
+    "sourceDescription": "Tells you which subreddits to post in, what content to share, and when to post it—so you can market on Reddit EASILY and Organically without getting banned.",
+    "sourceFidelityScore": 91,
+    "sourcePreserved": [
+      "target",
+      "problem",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "원본의 추천 흐름은 유지하고 사용 시점을 Reddit 마케팅 전반에서 게시 버튼 직전의 초안 검토로만 좁혔다.",
+    "mechanism": {
+      "input": "Reddit 게시 초안, 홍보할 제품, 목표 독자",
+      "process": "서브레딧 적합도, 콘텐츠 어조, 게시 시점, 차단 위험을 함께 판정한다",
+      "output": "추천 서브레딧, 게시 시간, 수정해야 할 문장"
+    },
+    "specificityScore": 5
+  }
+]

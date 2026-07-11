@@ -31,6 +31,7 @@ metadata:
 | [material-design-3/](material-design-3/) | 데이터셋 (JSONL 5) | M3 공식 문서 403개 URL의 페이지·섹션·토큰·Do/Don't/Caution 로컬 검색 코퍼스 | [README.md](material-design-3/README.md) |
 | [trustmrr-acquire/](trustmrr-acquire/) | 데이터셋 (JSONL 1) | TrustMRR 인수시장 스타트업 1,863건 아이디어 씨앗 | [README.md](trustmrr-acquire/README.md) |
 | [store-rankings/](store-rankings/) | 데이터셋 (JSONL 9) | 앱스토어·크롬 웹스토어 랭킹/검색 수요 신호 ~17k행 | [README.md](store-rankings/README.md) |
+| [pixel-campfire/](pixel-campfire/) | 구현 근거 (3) | 참조 모닥불 SCSS의 레이어·팔레트·애니메이션을 구조화한 자료 | [README.md](pixel-campfire/README.md) |
 | [moonlight-ref/](moonlight-ref/) | 에셋 (4) | Moonlight 스타일 디자인 토큰 CSS·인터랙션 데모·6축 카드 데이터·녹화 GIF | [INDEX.md](moonlight-ref/INDEX.md) |
 | [class101 강의대본](class101-윤민정-cso-ai-프로덕트-빌딩-강의대본.md) | 낱개 문서 | 윤민정 CSO AI 프로덕트 빌딩 강의 유튜브 대본 원문 | 파일 자체 |
 | [simplicity DOM 실측](simplicity-output-dom-실측.md) | 낱개 문서 | toss.im/simplicity 결과 화면 DOM 변화 CDP 실측 → 이식 설계 | 파일 자체 |

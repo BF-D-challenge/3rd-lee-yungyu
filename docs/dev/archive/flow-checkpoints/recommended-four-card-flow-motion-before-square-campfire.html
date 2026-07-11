@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>오늘 해볼까 · 공유 전후 모션 플로우</title>
+  <style>
+    :root{
+      color-scheme:dark;
+      --bg:#080a0f;--surface:#10141d;--surface2:#171c27;--surface3:#202634;
+      --line:rgba(236,241,255,.15);--line2:rgba(236,241,255,.3);
+      --text:#f7f8fb;--muted:#aeb6c5;--dim:#737d90;
+      --blue:#6db4f5;--gold:#e8c56a;--mint:#7de4be;--rose:#ff8091;--ink:#07111b;
+    }
+    *{box-sizing:border-box}
+    html{background:var(--bg)}
+    body{margin:0;min-width:900px;background:radial-gradient(760px 430px at 50% -15%,rgba(109,180,245,.1),transparent 68%),var(--bg);color:var(--text);font-family:Inter,Pretendard,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo",sans-serif;-webkit-font-smoothing:antialiased}
+    button{font:inherit;cursor:pointer}
+    button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    h1,h2,h3,p{margin:0}
+    .page{width:min(1180px,calc(100% - 24px));margin:0 auto;padding:22px 0 28px}
+    .overview{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:end;padding-bottom:14px;border-bottom:1px solid var(--line)}
+    .eyebrow{color:var(--blue);font-size:10px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+    h1{margin-top:7px;font-size:27px;line-height:1.15;letter-spacing:-.035em}
+    .overview-copy{max-width:760px;margin-top:7px;color:var(--muted);font-size:11px;line-height:1.5}
+    .overview-copy b{color:var(--text)}
+    .replay{height:34px;padding:0 12px;border:0;border-radius:9px;color:var(--ink);background:var(--gold);font-size:9px;font-weight:850}
+
+    .secondary{width:100%;min-height:34px;margin-top:6px;border:1px solid var(--line2);border-radius:8px;color:var(--muted);background:transparent;font-size:10px;font-weight:800}
+
+    .concept-board{margin-top:18px;padding:18px;border:1px solid rgba(232,197,106,.24);border-radius:14px;background:radial-gradient(520px 210px at 50% 105%,rgba(255,128,72,.09),transparent 70%),rgba(255,255,255,.022)}
+    .concept-board h2{font-size:24px;letter-spacing:-.03em}.concept-board>.concept-copy{margin-top:6px;color:var(--muted);font-size:13px;line-height:1.55}
+    .core-loop{display:grid;grid-template-columns:repeat(9,minmax(0,auto));gap:7px;align-items:center;margin-top:14px}.loop-step{min-width:0;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:12px;font-weight:800;text-align:center}.loop-arrow{color:var(--gold);font-size:13px;text-align:center}
+    .metaphor-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;margin-top:10px}.metaphor-grid.simple{grid-template-columns:repeat(3,minmax(0,1fr))}.metaphor{min-width:0;padding:10px;border-radius:8px;background:#0b0e14}.metaphor b{display:block;color:var(--gold);font-size:12px}.metaphor span{display:block;margin-top:4px;color:var(--muted);font-size:12px;line-height:1.45}
+    .choice-stack{display:grid;gap:6px;margin-top:10px}.choice-chip{padding:9px;border:1px solid var(--line);border-radius:7px;color:var(--muted);background:var(--surface);font-size:11px;text-align:left}.choice-chip.selected{color:var(--text);border-color:var(--gold);background:rgba(232,197,106,.07)}.simple-hint{margin-top:10px;color:var(--muted);font-size:11px;line-height:1.45}
+    .slot.active{border-color:var(--rose);box-shadow:0 0 0 1px rgba(255,128,145,.18)}.maker-five .slot::before,.maker-clone .slot::before{content:"";position:absolute;right:7px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--slot-color);box-shadow:0 0 8px var(--slot-color)}.card-actions{display:flex;gap:4px;margin-top:7px}.card-actions span{flex:1;padding:4px 2px;border:1px solid var(--line);border-radius:4px;color:var(--muted);font-size:7px;text-align:center}.slot.active .card-actions span:first-child{color:var(--text);border-color:var(--rose)}
+    .active-rack{position:absolute;left:0;right:0;bottom:82px;z-index:6;padding:7px;border:1px solid rgba(255,128,145,.22);border-radius:7px;background:rgba(10,13,19,.95)}.active-rack>b{display:block;color:var(--rose);font-size:8px}.rack-cards{display:flex;gap:4px;margin-top:5px}.rack-cards span{flex:1;padding:7px 3px;border:1px solid var(--line);border-radius:5px;color:var(--muted);background:var(--surface);font-size:7px;text-align:center}.rack-cards span:first-child{color:var(--text);border-color:var(--rose)}
+    .prompt-box{position:relative;margin-top:10px;padding:10px;border:1px solid rgba(109,180,245,.25);border-radius:8px;background:#080b11;overflow:hidden}.prompt-box small{display:block;color:var(--blue);font-size:9px;font-weight:900}.prompt-text{margin-top:7px;color:var(--text);font:11px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-line}.prompt-box.locked{height:132px}.prompt-box.locked::after{content:"전체 내용은 공유 후 열려요";position:absolute;left:0;right:0;bottom:0;height:64px;padding-top:35px;color:var(--muted);background:linear-gradient(transparent,rgba(8,11,17,.96) 50%);backdrop-filter:blur(3px);font:9px/1.3 ui-sans-serif,system-ui;text-align:center}.prompt-box.open{height:205px;border-color:rgba(125,228,190,.35)}.prompt-box.open small{color:var(--mint)}.unlock-state{margin-top:8px;padding:8px;border-radius:7px;color:var(--mint);background:rgba(125,228,190,.07);font-size:10px;text-align:center}
+    .maker-five .choice-stack{grid-template-columns:1fr 1fr}.ember-transition{position:relative;height:86px;margin-top:2px}.ember-piece{--dx:0px;--dy:0px;--piece:var(--blue);position:absolute;left:50%;top:45%;width:28px;height:18px;border:1px solid rgba(255,255,255,.28);border-radius:5px;background:var(--piece);transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--rot));opacity:.9}.ember-piece.one{--dx:-58px;--dy:-24px;--rot:-12deg;--piece:var(--blue)}.ember-piece.two{--dx:58px;--dy:-24px;--rot:12deg;--piece:var(--mint)}.ember-piece.three{--dx:-58px;--dy:25px;--rot:10deg;--piece:var(--gold)}.ember-piece.four{--dx:58px;--dy:25px;--rot:-10deg;--piece:var(--rose)}.story-row.play .ember-piece{animation:emberGather 10s cubic-bezier(.4,0,.2,1) infinite}@keyframes emberGather{0%,12%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--rot));opacity:.9}24%,88%{transform:translate(-50%,-50%) scale(.2);opacity:0}100%{opacity:0}}.ember-core{position:absolute;left:50%;top:42%;width:24px;height:34px;border-radius:58% 42% 62% 38% / 70% 62% 38% 30%;background:linear-gradient(#fff6ae,#ffbd4e 42%,#ff6545);transform:translate(-50%,-50%) scale(.2);opacity:0;filter:drop-shadow(0 0 9px rgba(255,117,54,.75))}.story-row.play .ember-core{animation:emberIgnite 10s ease-out infinite}@keyframes emberIgnite{0%,21%{opacity:0;transform:translate(-50%,-50%) scale(.2)}28%,88%{opacity:1;transform:translate(-50%,-50%) scale(1)}100%{opacity:0}}.ember-caption{position:absolute;left:0;right:0;bottom:0;color:var(--gold);font-size:10px;font-weight:850;text-align:center}
+    .idea-summary{padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}.idea-summary small{color:var(--gold);font-size:9px}.idea-summary b{display:block;margin-top:5px;font-size:13px;line-height:1.3}.idea-summary p{margin-top:5px;color:var(--muted);font-size:10px;line-height:1.4}
+    .link-state{margin-top:9px;padding:8px;border-radius:6px;color:var(--mint);background:rgba(125,228,190,.07);font-size:11px;text-align:center}
+    .campfire{position:relative;width:94px;height:102px;margin:8px auto 4px}.campfire .glow{position:absolute;left:8px;right:8px;bottom:8px;height:48px;border-radius:50%;background:radial-gradient(circle,rgba(255,139,67,.4),transparent 70%);filter:blur(7px)}.campfire .log{position:absolute;left:22px;bottom:16px;width:54px;height:11px;border-radius:8px;background:linear-gradient(90deg,#6b3a24,#b96d3a,#5a2f20);transform:rotate(18deg)}.campfire .log.two{transform:rotate(-18deg)}.campfire .flame{position:absolute;left:31px;bottom:25px;width:34px;height:53px;border-radius:52% 48% 58% 42% / 70% 65% 35% 30%;background:linear-gradient(180deg,#fff4a6 0,#ffbd4e 38%,#ff6b45 78%,rgba(255,74,45,.15) 100%);transform:rotate(5deg);transform-origin:50% 100%;filter:drop-shadow(0 0 8px rgba(255,119,50,.65))}.campfire .flame::after{content:"";position:absolute;left:10px;bottom:3px;width:15px;height:28px;border-radius:60% 40% 55% 45%;background:linear-gradient(#fffbd1,#ffd65d)}.story-row.play .campfire .flame{animation:flameSway 1.5s ease-in-out infinite alternate}@keyframes flameSway{from{transform:rotate(-5deg) scale(.94,1)}to{transform:rotate(6deg) scale(1.05,.97)}}.campfire.small{transform:scale(.72);margin-top:-2px;margin-bottom:-12px}.campfire.large .flame{left:26px;width:44px;height:68px}.campfire.large .glow{background:radial-gradient(circle,rgba(255,139,67,.58),transparent 72%)}
+    .wood-message{padding:9px;border:1px solid rgba(232,197,106,.25);border-radius:7px;background:rgba(232,197,106,.06)}.wood-message small{color:var(--gold);font-size:9px}.wood-message p{margin-top:5px;color:var(--text);font-size:11px;line-height:1.4}.name-row{display:flex;align-items:center;justify-content:space-between;margin-top:7px;color:var(--muted);font-size:10px}.blur-name{filter:blur(2.2px);user-select:none}.countdown{color:var(--gold);font-weight:850}.price-note{margin-top:6px;color:var(--dim);font-size:9px;text-align:center}.privacy-note{margin-top:6px;color:var(--muted);font-size:10px;line-height:1.4;text-align:center}
+    .wood-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}.wood-option{min-height:67px;padding:9px;border:1px solid var(--line);border-radius:8px;color:var(--text);background:var(--surface);font-size:11px;line-height:1.35;text-align:left}.wood-option::before{content:"";display:block;width:24px;height:8px;margin-bottom:7px;border-radius:5px;background:linear-gradient(90deg,#7b4328,#c07843,#704027)}
+    .consent-box{display:grid;gap:5px;margin-top:8px}.consent-box span{padding:8px;border:1px solid var(--line);border-radius:6px;color:var(--muted);background:#0a0d13;font-size:11px;line-height:1.4}.consent-box span:first-child{border-color:rgba(125,228,190,.28)}
+    .arrival-stage{position:relative;height:155px}.arrival-stage .campfire{position:absolute;left:50%;bottom:0;transform:translateX(-50%)}.flying-wood{position:absolute;left:18px;top:18px;width:42px;height:13px;border-radius:8px;background:linear-gradient(90deg,#6e3a24,#bc7140,#6a3925);opacity:0;z-index:5}.story-row.play .flying-wood{animation:woodArrival 10s cubic-bezier(.25,.8,.25,1) infinite}@keyframes woodArrival{0%,50%{opacity:0;transform:translate(0,0) rotate(-18deg)}54%{opacity:1}62%{opacity:1;transform:translate(74px,92px) rotate(25deg)}65%,100%{opacity:0;transform:translate(78px,97px) rotate(25deg)}}.story-row.play .arrival-stage .campfire{animation:fireGrow 10s ease-out infinite}@keyframes fireGrow{0%,61%{filter:brightness(.82);scale:.82}68%,94%{filter:brightness(1.22);scale:1.08}100%{filter:brightness(.82);scale:.82}}
+
+    .flow-section{margin-top:20px}
+    .flow-section+ .flow-section{margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+    .flow-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+    .flow-head h2{font-size:18px}.flow-head p{margin-top:3px;color:var(--muted);font-size:11px}
+    .role{padding:6px 9px;border:1px solid rgba(109,180,245,.32);border-radius:999px;color:var(--blue);background:rgba(109,180,245,.07);font-size:10px;font-weight:850}
+    .role.receiver{color:var(--mint);border-color:rgba(125,228,190,.32);background:rgba(125,228,190,.07)}
+    .story-row{display:flex;align-items:flex-start;gap:6px;min-width:0}
+    .story-step{flex:1 1 0;min-width:0}
+    .arrow{width:14px;flex:0 0 14px;display:grid;place-items:center;height:547px;color:var(--dim);font-size:14px;font-weight:900}
+    .step-head{height:47px;display:flex;align-items:flex-start;gap:7px}
+    .step-no{width:21px;height:21px;flex:0 0 21px;display:grid;place-items:center;border:1px solid var(--line2);border-radius:50%;color:var(--blue);font-size:7px;font-weight:900}
+    .receiver-flow .step-no{color:var(--mint)}
+    .step-head h3{font-size:13px;line-height:1.2}.step-head p{margin-top:3px;color:var(--dim);font-size:10px;line-height:1.3}
+
+    .screen{position:relative;height:500px;overflow:hidden;border:1px solid var(--line2);border-radius:18px;background:#050609;box-shadow:0 16px 38px rgba(0,0,0,.3)}
+    .screen::after{content:"";position:absolute;left:50%;bottom:5px;width:56px;height:3px;border-radius:99px;background:rgba(255,255,255,.5);transform:translateX(-50%);z-index:10}
+    .status{height:22px;padding:0 11px;display:flex;align-items:center;justify-content:space-between;color:var(--dim);font-size:8px}
+    .screen-body{height:calc(100% - 22px);padding:12px 11px 16px;display:flex;flex-direction:column}
+    .appbar{display:flex;justify-content:space-between;align-items:flex-start;min-height:24px;margin-bottom:9px;gap:7px}
+    .brand{color:var(--blue);font-size:11px;line-height:1.3;font-weight:900}.receiver-flow .brand{color:var(--mint)}
+    .meta{color:var(--dim);font-size:9px;white-space:nowrap}
+    .label{color:var(--blue);font-size:10px;font-weight:900;letter-spacing:.04em}.receiver-flow .label{color:var(--mint)}
+    .title{margin-top:7px;font-size:18px;line-height:1.25;letter-spacing:-.02em}
+    .copy{margin-top:7px;color:var(--muted);font-size:11px;line-height:1.5}
+    .spacer{flex:1}
+    .primary{width:100%;min-height:38px;border:0;border-radius:8px;color:var(--ink);background:var(--blue);font-size:11px;font-weight:900}
+    .primary.gold{background:var(--gold)}.primary.mint{background:var(--mint)}
+
+    /* App entry: 400ms fade-up, 60ms stagger */
+    .story-row.play .entry-item{animation:entry 10s ease-out infinite;animation-delay:var(--delay)}
+    @keyframes entry{0%{opacity:0;transform:translateY(14px)}4%,88%{opacity:1;transform:none}96%,100%{opacity:0}}
+    .mark{width:34px;height:46px;margin:17px auto 12px;border:1px solid rgba(109,180,245,.6);border-radius:6px;background:var(--surface2);box-shadow:0 0 22px rgba(109,180,245,.13);transform:rotate(-4deg)}
+    .start-center{text-align:center}
+    .start-center .copy{max-width:125px;margin-left:auto;margin-right:auto}
+    .source-pills{display:flex;justify-content:center;gap:4px;margin-top:12px}
+    .source-pills span{padding:4px 5px;border:1px solid var(--line);border-radius:99px;color:var(--muted);background:var(--surface);font-size:5px}
+
+    /* 원본 이해 */
+    .source-card{margin-top:7px;padding:9px;background:var(--surface);border:1px solid var(--line);border-radius:9px}
+    .source-card h3{font-size:13px}.source-card p{margin-top:5px;color:var(--muted);font-size:6.5px;line-height:1.45}
+    .mini-loop{display:grid;gap:4px;margin-top:8px}
+    .mini-loop div{display:grid;grid-template-columns:16px 1fr;gap:5px;align-items:center;padding:5px;background:var(--surface2);border-radius:6px;color:var(--muted);font-size:5.5px}
+    .mini-loop b{width:15px;height:15px;display:grid;place-items:center;border-radius:50%;color:var(--ink);background:var(--blue);font-size:5px}
+    .source-note{margin-top:6px;padding:5px;color:var(--mint);background:rgba(125,228,190,.06);border:1px solid rgba(125,228,190,.18);border-radius:6px;font-size:5.5px;line-height:1.35}
+    .target-chip{display:inline-flex;margin-top:5px;padding:3px 5px;border:1px solid rgba(232,197,106,.24);border-radius:99px;color:var(--gold);font-size:5px;font-weight:850}
+
+    /* App deck: 3.2s sweep, 420ms arc, 520ms reveal */
+    .mini-board{position:relative;height:254px}.maker-four .mini-board,.maker-five .mini-board,.maker-clone .mini-board{height:350px}.maker-five .prompt-box.open{height:280px}.receiver-flow .maker-clone .brand{color:var(--blue)}
+    .slots{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+    .slot{position:relative;min-height:86px;padding:6px;color:var(--text);background:var(--surface2);border:1px solid var(--line);border-radius:7px;overflow:hidden}
+    .slot::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--slot-color)}
+    .slot:nth-child(1){--slot-color:var(--blue)}.slot:nth-child(2){--slot-color:var(--mint)}.slot:nth-child(3){--slot-color:var(--gold)}.slot:nth-child(4){--slot-color:var(--rose)}
+    .slot small{color:var(--slot-color);font-size:7px;font-weight:900}.slot b{display:block;margin-top:5px;font-size:11px;line-height:1.2}.slot span{display:block;margin-top:4px;color:var(--dim);font-size:8px;line-height:1.3}
+    .fan-viewport{position:absolute;left:0;right:0;bottom:0;height:92px;overflow:hidden;mask-image:linear-gradient(to right,transparent 0,#000 13%,#000 87%,transparent 100%),linear-gradient(to top,transparent 0,#000 24%,#000 68%,transparent 100%);mask-composite:intersect;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 13%,#000 87%,transparent 100%),linear-gradient(to top,transparent 0,#000 24%,#000 68%,transparent 100%);-webkit-mask-composite:source-in}
+    .fan{position:absolute;left:50%;bottom:-36px;width:0;height:0;transform-origin:0 0;will-change:transform}
+    .fan i{position:absolute;left:-14.5px;top:-21px;width:29px;height:42px;border:1px solid rgba(255,255,255,.28);border-radius:5px;background:linear-gradient(145deg,#6db4f5,#405f9d);box-shadow:0 7px 12px rgba(0,0,0,.28);will-change:transform,opacity}
+    .fan i::after{content:"✦";position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.72);font:700 8px Georgia,serif}
+    .fan i{transform:rotate(var(--angle)) translateY(-82px)}
+    .story-row.play .fan{animation:wheelDrift 10s linear infinite}
+    @keyframes wheelDrift{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    .story-row.play .fan i:nth-child(18){animation:apexDraw 10s cubic-bezier(.34,1.56,.64,1) infinite}
+    @keyframes apexDraw{0%,26%{opacity:1;transform:rotate(255deg) translateY(-82px) scale(1)}28%{opacity:1;transform:rotate(255deg) translateY(-98px) scale(1.08)}30%,34%{opacity:0;transform:rotate(255deg) translateY(-105px) scale(1.08)}38%,100%{opacity:1;transform:rotate(255deg) translateY(-82px) scale(1)}}
+    .deck-caption{position:absolute;left:50%;bottom:53px;z-index:3;transform:translateX(-50%);color:var(--dim);font-size:8px;white-space:nowrap}
+    .fly-card{position:absolute;left:50%;bottom:23px;width:29px;height:42px;border:1px solid rgba(255,255,255,.35);border-radius:5px;background:linear-gradient(145deg,#8cc5f7,#4d69a8);opacity:0;z-index:4}
+    .story-row.play .fly-card{animation:flight 10s cubic-bezier(.4,0,.15,1) infinite}
+    @keyframes flight{0%,27%{opacity:0;transform:translate(-50%,0) rotate(-12deg) scale(1)}28%{opacity:1}32%{opacity:1;transform:translate(-66px,-105px) rotate(-4deg) scale(1.08)}34%{opacity:0;transform:translate(-68px,-127px) rotate(0) scale(1.12)}100%{opacity:0}}
+    .story-row.play .slot:nth-child(1){animation:slotReveal 10s cubic-bezier(.4,0,.15,1) infinite}
+    @keyframes slotReveal{0%,33%{transform:rotateY(90deg) scale(.94);opacity:.25}38%,93%{transform:rotateY(0) scale(1);opacity:1}100%{opacity:.25}}
+    .candidate-line{display:flex;gap:3px;margin-top:5px}.candidate-line span{flex:1;padding:4px 2px;text-align:center;border:1px solid var(--line);border-radius:5px;color:var(--dim);font-size:4.5px}.candidate-line span:first-child{color:var(--text);border-color:var(--blue);background:rgba(109,180,245,.08)}
+    .complete-chip{position:absolute;left:50%;bottom:64px;z-index:5;transform:translateX(-50%);padding:3px 5px;border-radius:99px;color:var(--ink);background:var(--mint);font-size:4.5px;font-weight:900;white-space:nowrap;opacity:0}.story-row.play .complete-chip{animation:completePop 10s ease-out infinite}@keyframes completePop{0%,37%{opacity:0;transform:translate(-50%,5px)}43%,91%{opacity:1;transform:translate(-50%,0)}100%{opacity:0}}
+
+    /* App result flip: .7s cubic-bezier(.65,0,.35,1) */
+    .result-stage{perspective:1000px}
+    .result-card{position:relative;height:286px;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+    .story-row.play .result-card{animation:resultFlip 10s cubic-bezier(.65,0,.35,1) infinite}
+    @keyframes resultFlip{0%,47%{transform:rotateY(0)}55%,91%{transform:rotateY(180deg)}98%,100%{transform:rotateY(0)}}
+    .face{position:absolute;inset:0;padding:9px;background:var(--surface);border:1px solid var(--line2);border-radius:10px;backface-visibility:hidden;overflow:hidden}
+    .face.back{transform:rotateY(180deg)}
+    .face-kicker{color:var(--blue);font-size:5px;font-weight:900}.face h3{margin-top:7px;font-size:12px;line-height:1.2}
+    .face p{margin-top:6px;color:var(--muted);font-size:6px;line-height:1.4}
+    .compare{display:grid;gap:5px;margin-top:9px}
+    .compare div{padding:6px;background:var(--surface2);border-radius:6px}
+    .compare b{display:block;font-size:5px}.compare span{display:block;margin-top:2px;color:var(--muted);font-size:5.5px;line-height:1.35}
+    .compare .same b{color:var(--mint)}.compare .different b{color:var(--rose)}
+    .prompt{position:relative;height:53px;margin-top:8px;padding:6px;color:var(--muted);background:#0a0d13;border-radius:6px;overflow:hidden;font:5px/1.4 ui-monospace,Menlo,monospace}
+    .prompt::after{content:"";position:absolute;inset:20px 0 0;background:linear-gradient(transparent,#0a0d13 82%);backdrop-filter:blur(2px)}
+
+    /* App share feedback: 300–520ms */
+    .saved-check,.sent-check{width:44px;height:44px;margin:12px auto 9px;display:grid;place-items:center;border-radius:50%;color:var(--ink);background:var(--mint);box-shadow:0 0 0 7px rgba(125,228,190,.1);font-size:18px;font-weight:900}
+    .saved-check{margin:7px auto 5px}
+    .story-row.play .saved-check{animation:checkPop 10s cubic-bezier(.2,.8,.2,1) infinite}
+    @keyframes checkPop{0%,67%{opacity:0;transform:scale(0) rotate(-20deg)}73%,92%{opacity:1;transform:scale(1)}98%,100%{opacity:0}}
+    .share-sheet{margin-top:auto;padding:8px;background:var(--surface2);border:1px solid var(--line);border-radius:9px 9px 0 0}
+    .story-row.play .share-sheet{animation:sheetUp 10s ease-out infinite}
+    @keyframes sheetUp{0%,70%{opacity:0;transform:translateY(38px)}76%,94%{opacity:1;transform:none}100%{opacity:0}}
+    .share-sheet b{font-size:6.5px}.share-icons{display:flex;justify-content:space-between;margin-top:7px}.share-icons span{width:27px;height:27px;display:grid;place-items:center;border-radius:8px;color:var(--text);background:var(--surface3);font-size:8px}
+    .share-question{margin-top:5px;padding:5px;color:var(--text);background:rgba(109,180,245,.08);border:1px solid rgba(109,180,245,.2);border-radius:6px;font-size:5.5px}
+    .friend-chip{display:flex;align-items:center;gap:5px;margin-top:5px;color:var(--muted);font-size:5.5px}.friend-dot{width:18px;height:18px;display:grid;place-items:center;border-radius:50%;color:var(--ink);background:var(--gold);font-size:5px;font-weight:900}
+    .message-preview{margin-top:5px;padding:5px;color:var(--dim);background:#0a0d13;border-radius:5px;font-size:5px;line-height:1.35;text-align:left}
+
+    /* Receiver */
+    .shared-by{display:flex;gap:6px;align-items:center;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:7px}
+    .avatar{width:22px;height:22px;display:grid;place-items:center;border-radius:50%;color:var(--ink);background:var(--gold);font-size:7px;font-weight:900}
+    .shared-by b{display:block;font-size:6px}.shared-by span{display:block;margin-top:1px;color:var(--dim);font-size:5px}
+    .preview-card{margin-top:10px;padding:10px;background:linear-gradient(145deg,#24364f,#141a25);border:1px solid rgba(109,180,245,.32);border-radius:9px}
+    .preview-card small{color:var(--blue);font-size:9px;font-weight:900}.preview-card h3{margin-top:8px;font-size:17px;line-height:1.25}.preview-card p{margin-top:8px;color:var(--muted);font-size:11px;line-height:1.5}
+    .receiver-groups{display:grid;gap:5px;margin-top:9px}.receiver-groups div{padding:7px;background:var(--surface);border:1px solid var(--line);border-radius:7px}.receiver-groups b{display:block;color:var(--mint);font-size:5px}.receiver-groups div:nth-child(2) b{color:var(--rose)}.receiver-groups p{margin-top:3px;color:var(--muted);font-size:5.5px;line-height:1.35}
+    .reactions{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:12px}
+    .reaction{min-height:66px;padding:6px;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:8px;font-size:6px;font-weight:800}
+    .reaction span{display:block;margin-bottom:5px;font-size:15px}.reaction.active{border-color:var(--mint);background:rgba(125,228,190,.08)}
+    .reaction:last-child:nth-child(3){grid-column:1/-1;min-height:48px}.reaction-note{margin-top:6px;color:var(--mint);font-size:5px;text-align:center}
+    .receiver-flow .reaction{transition:border-color .18s ease,background-color .18s ease,transform .12s ease}.receiver-flow .reaction:active{transform:scale(.98)}
+    .feedbacks{display:grid;gap:5px;margin-top:10px}.feedback{padding:7px;text-align:left;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:7px;font-size:6px}.feedback.active{color:var(--text);border-color:var(--blue);background:rgba(109,180,245,.08)}
+    .text-field{height:52px;margin-top:6px;padding:7px;color:var(--dim);background:#0a0d13;border:1px dashed var(--line2);border-radius:7px;font-size:5.5px;line-height:1.35}
+    .sent-card{margin-top:12px;padding:8px;background:var(--surface);border:1px solid var(--line);border-radius:8px}.sent-card small{color:var(--mint);font-size:5px}.sent-card b{display:block;margin-top:4px;font-size:6.5px}.sent-card p{margin-top:3px;color:var(--muted);font-size:5.5px;line-height:1.35}
+
+    .empty-fire-stage{position:relative;height:210px;margin-top:4px}.empty-fire-stage .campfire{position:absolute;left:50%;bottom:14px;transform:translateX(-50%)}.story-row.play .campfire.empty .flame{height:25px;bottom:24px;opacity:.28;filter:drop-shadow(0 0 5px rgba(255,119,50,.28));animation:none}.campfire.empty .flame::after{height:14px;opacity:.55}.dashed-wood{position:absolute;width:52px;height:15px;border:2px dashed rgba(232,197,106,.62);border-radius:9px;background:rgba(232,197,106,.025)}.dashed-wood.one{left:8px;bottom:34px;transform:rotate(13deg)}.dashed-wood.two{right:7px;bottom:45px;transform:rotate(-15deg)}.dashed-wood::after{content:"장작 자리";position:absolute;left:50%;top:18px;transform:translateX(-50%);color:var(--dim);font-size:8px;white-space:nowrap}.waiting-copy{margin-top:-3px;text-align:center}.waiting-copy h3{font-size:16px}.waiting-copy p{margin-top:6px;color:var(--muted);font-size:11px;line-height:1.45}
+    .starter-preview{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}.starter-card{position:relative;min-height:92px;padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--surface)}.starter-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;border-radius:0 0 9px 9px;background:var(--starter)}.starter-card:nth-child(1){--starter:var(--blue)}.starter-card:nth-child(2){--starter:var(--mint)}.starter-card:nth-child(3){--starter:var(--gold)}.starter-card:nth-child(4){--starter:var(--rose)}.starter-card small{color:var(--starter);font-size:9px;font-weight:900}.starter-card b{display:block;margin-top:8px;font-size:12px;line-height:1.3}
+    .note{margin-top:12px;color:var(--dim);font-size:7px;text-align:right}
+    @media(max-width:1050px){.page{width:calc(100% - 18px)}.story-row{gap:5px}.arrow{width:12px;flex-basis:12px}.screen{height:500px}.arrow{height:547px}.screen-body{padding-left:10px;padding-right:10px}}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:100ms!important}.entry-item,.fly-card,.slot,.result-card,.saved-check,.sent-check,.share-sheet,.reaction,.flying-wood{opacity:1!important;transform:none!important}.campfire .flame,.arrival-stage .campfire{animation:none!important}.ember-piece{opacity:0!important;transform:translate(-50%,-50%) scale(.2)!important}.ember-core{opacity:1!important;transform:translate(-50%,-50%) scale(1)!important}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="overview">
+      <div><p class="eyebrow">오늘 해볼까 · 모닥불 컨셉</p><h1>작은 실행을 불씨로 남기고<br>응원으로 오래 이어가요</h1><p class="overview-copy"><b>만든 사람 5화면과 장작을 보내는 사람 5화면</b>으로 보여드려요.</p></div>
+      <button class="replay" id="replay">모션 다시 보기 ↻</button>
+    </header>
+    <section class="concept-board" aria-labelledby="concept-title">
+      <h2 id="concept-title">네 장을 뽑아 첫 불씨를 만들어요.</h2>
+      <p class="concept-copy">작게 시작하고, 공유한 사람에게 장작을 받으며 이어가요.</p>
+      <div class="core-loop" aria-label="핵심 흐름"><span class="loop-step">네 장</span><i class="loop-arrow">→</i><span class="loop-step">불씨</span><i class="loop-arrow">→</i><span class="loop-step">실행</span><i class="loop-arrow">→</i><span class="loop-step">공유</span><i class="loop-arrow">→</i><span class="loop-step">장작</span></div>
+      <div class="metaphor-grid simple"><div class="metaphor"><b>카드</b><span>아이디어를 만드는 네 가지 재료예요.</span></div><div class="metaphor"><b>불씨</b><span>네 장으로 정한 이번에 시작할 아이디어예요.</span></div><div class="metaphor"><b>장작</b><span>다른 사람이 보내는 실제 응원이에요.</span></div></div>
+    </section>
+
+    <section class="flow-section">
+      <div class="flow-head"><div><h2>Flow A · 만든 사람</h2><p>네 장 뽑기 → 실행 정하기 → 공유 보상 → 기다리기 → 장작 받기</p></div><span class="role">만든 사람 · 5장</span></div>
+      <div class="story-row play maker-five" id="makerFlow">
+        <article class="story-step"><div class="step-head"><span class="step-no">1</span><div><h3>네 장 뽑기·바꾸기</h3><p>취향 조사 없이 바로 시작</p></div></div><div class="screen"><div class="status"><span>9:41</span><span>● ● ●</span></div><div class="screen-body"><div class="appbar"><span class="brand">오늘은 뭘 만들어볼까요?</span><span class="meta">4 / 4</span></div><div class="mini-board"><div class="slots"><div class="slot"><small>01 이미 돈 버는 제품</small><b>Character.AI</b><div class="card-actions"><span>바꾸기</span><span>직접 쓰기</span></div></div><div class="slot"><small>02 사람들이 반복하는 행동</small><b>매일 대화하기</b><div class="card-actions"><span>바꾸기</span><span>직접 쓰기</span></div></div><div class="slot"><small>03 새로 더할 쓰임</small><b>회사 고민 묻기</b><div class="card-actions"><span>바꾸기</span><span>직접 쓰기</span></div></div><div class="slot active"><small>04 이번 한 끗</small><b>AI 직장 선배</b><div class="card-actions"><span>바꾸기</span><span>직접 쓰기</span></div></div></div><div class="active-rack"><b>활성 · ④ 이번 한 끗을 바꿔요</b><div class="rack-cards"><span>직장 선배</span><span>면접관</span><span>팀장 코치</span><span>직접 쓰기</span></div></div><span class="deck-caption">후보가 촤르륵 펼쳐지고, 덱은 360° 계속 돌아요</span><span class="fly-card"></span><div class="fan-viewport"><div class="fan"><i style="--angle:0deg"></i><i style="--angle:15deg"></i><i style="--angle:30deg"></i><i style="--angle:45deg"></i><i style="--angle:60deg"></i><i style="--angle:75deg"></i><i style="--angle:90deg"></i><i style="--angle:105deg"></i><i style="--angle:120deg"></i><i style="--angle:135deg"></i><i style="--angle:150deg"></i><i style="--angle:165deg"></i><i style="--angle:180deg"></i><i style="--angle:195deg"></i><i style="--angle:210deg"></i><i style="--angle:225deg"></i><i style="--angle:240deg"></i><i style="--angle:255deg"></i><i style="--angle:270deg"></i><i style="--angle:285deg"></i><i style="--angle:300deg"></i><i style="--angle:315deg"></i><i style="--angle:330deg"></i><i style="--angle:345deg"></i></div></div></div><button class="primary">네 장으로 불씨 만들기</button><button class="secondary">4장 다시 뽑기</button></div></div></article>
+        <div class="arrow">→</div>
+        <article class="story-step"><div class="step-head"><span class="step-no">2</span><div><h3>불씨와 실행 정하기</h3><p>네 장이 하나로 모여요</p></div></div><div class="screen"><div class="status"><span>9:41</span><span>● ● ●</span></div><div class="screen-body"><div class="appbar"><span class="brand">이번 불씨</span><span class="meta">네 장이 합쳐졌어요</span></div><div class="ember-transition" aria-label="네 색 카드가 가운데로 모여 작은 불꽃이 되는 장면"><i class="ember-piece one"></i><i class="ember-piece two"></i><i class="ember-piece three"></i><i class="ember-piece four"></i><i class="ember-core"></i><p class="ember-caption">네 장이 하나의 불씨가 됐어요</p></div><p class="label">이번 주에 불씨로 해볼 일</p><div class="choice-stack"><button class="choice-chip selected">첫 화면 만들기</button><button class="choice-chip">사용 흐름 그리기</button><button class="choice-chip">버튼 하나 연결하기</button><button class="choice-chip">직접 쓰기</button></div><div class="prompt-box locked"><small>바로 제작에 붙여 넣을 실행 프롬프트</small><p class="prompt-text">첫 직장인이 회사에서 겪은 상황을 입력하면,
+현실적인 직장 선배처럼 답하는 모바일 웹을 만들어줘.
+첫 화면에는 고민 입력창과 ‘선배에게 물어보기’ 버튼을 보여줘.
+답변은 공감 한 문장, 바로 쓸 답장 3개, 조심할 점 1개로 나눠줘.
+이전 고민 한 개를 기억해 다음 대화에서 이어서 답하게 해줘.</p></div><p class="simple-hint">공유 링크로 응원을 받을 수 있어요. 공유를 마치면 전체 실행 프롬프트가 열려요.</p><div class="spacer"></div><button class="primary">공유하고 전체 프롬프트 열기</button></div></div></article>
+        <div class="arrow">→</div>
+        <article class="story-step"><div class="step-head"><span class="step-no">3</span><div><h3>공유 완료·실행 프롬프트</h3><p>지금 바로 제작에 붙여 넣기</p></div></div><div class="screen"><div class="status"><span>9:41</span><span>● ● ●</span></div><div class="screen-body"><div class="appbar"><span class="brand">공유를 마쳤어요</span><span class="meta">전체 열림</span></div><div class="unlock-state">전체 실행 프롬프트가 열렸어요</div><div class="prompt-box open"><small>지금 바로 제작에 붙여 넣을 실행 프롬프트</small><p class="prompt-text">첫 직장인이 회사에서 겪은 상황을 입력하면,
+현실적인 직장 선배처럼 답하는 모바일 웹을 만들어줘.
+첫 화면에는 고민 입력창과 ‘선배에게 물어보기’ 버튼을 보여줘.
+답변은 공감 한 문장, 바로 쓸 답장 3개, 조심할 점 1개로 나눠줘.
+이전 고민 한 개를 기억해 다음 대화에서 이어서 답하게 해줘.</p></div><div class="link-state">공유 링크를 보냈어요 · 응원이 오면 장작으로 알려드려요</div><div class="spacer"></div><button class="primary">전체 프롬프트 복사하기</button><button class="secondary">내 모닥불 보러가기</button></div></div></article>
+        <div class="arrow">→</div>
+        <article class="story-step"><div class="step-head"><span class="step-no">4</span><div><h3>첫 장작 기다리기</h3><p>아직 응원이 오기 전</p></div></div><div class="screen"><div class="status"><span>9:41</span><span>● ● ●</span></div><div class="screen-body start-center"><div class="appbar"><span class="brand">내 모닥불</span><span class="meta">장작 0개</span></div><div class="empty-fire-stage"><i class="dashed-wood one" aria-label="아직 놓이지 않은 장작 자리"></i><i class="dashed-wood two" aria-label="아직 놓이지 않은 장작 자리"></i><div class="campfire empty"><i class="glow"></i><i class="log"></i><i class="log two"></i><i class="flame"></i></div></div><div class="waiting-copy"><h3>첫 장작을 기다리고 있어요</h3><p>공유한 사람이 응원을 보내면<br>이 점선 자리에 장작이 쌓여요.</p></div><div class="spacer"></div><button class="primary">이번 실행 계속하기</button></div></div></article>
+        <div class="arrow">→</div>
+        <article class="story-step"><div class="step-head"><span class="step-no">5</span><div><h3>장작 받기</h3><p>응원이 도착했을 때</p></div></div><div class="screen"><div class="status"><span>9:41</span><span>● ● ●</span></div><div class="screen-body"><div class="appbar"><span class="brand">누군가가 장작을 보탰어요</span><span class="meta">D-30</span></div><div class="arrival-stage praise-arrival"><i class="flying-wood"></i><div class="campfire large"><i class="glow"></i><i class="log"></i><i class="log two"></i><i class="flame"></i></div></div><div class="wood-message"><small>받은 장작</small><p>“이 한 끗이 좋아요. 완성되면 꼭 써보고 싶어요.”</p><div class="name-row"><span class="blur-name">민○</span><span class="countdown">이름은 30일 뒤 · D-30</span></div></div><p class="privacy-note">동의한 이름만 보여요 · 익명은 결제해도 공개 안 돼요.</p><button class="primary gold" style="margin-top:8px">990원에 지금 보기</button><button class="secondary">30일 뒤 무료로 보기</button><p class="price-note">한 번만 내는 단건 결제예요.</p><div class="spacer"></div><button class="primary">이번 실행 이어가기</button></div></div></article>
+      </div>
+    </section>
+
+    <section class="flow-section">
+      <div class="flow-head"><div><h2>Flow B · 보내는 사람</h2><p>이번 실행 보기 → 장작 보내기 → 내 모닥불 제안 → 네 장 바로 뽑기</p></div><span class="role receiver">보내는 사람 · 5장</span></div>
+      <div class="story-row play receiver-flow receiver-five" id="receiverFlow">
+        <article class="story-step"><div class="step-head"><span class="step-no">1</span><div><h3>이번 실행 보기</h3><p>아이디어와 할 일을 한 번에</p></div></div><div class="screen"><div class="status"><span>9:41</span><span>● ● ●</span></div><div class="screen-body"><div class="appbar"><span class="brand">지현님이 이번 주에 만들고 있어요</span><span class="meta">초대받은 불</span></div><div class="campfire small"><i class="glow"></i><i class="log"></i><i class="log two"></i><i class="flame"></i></div><div class="preview-card"><small>지현님의 모닥불</small><h3>첫 직장인을 위한<br>AI 직장 선배</h3><p>회사에서 어떻게 말할지 막혔을 때, 경험 많은 선배처럼 답해주는 앱이에요.</p></div><div class="idea-summary" style="margin-top:9px"><small>이번 작은 실행</small><b>첫 화면 만들기</b><p>일요일까지 해보려고 해요.</p></div><div class="spacer"></div><button class="primary mint">장작 고르기</button></div></div></article>
+        <div class="arrow">→</div>
+        <article class="story-step"><div class="step-head"><span class="step-no">2</span><div><h3>장작과 이름 고르기</h3><p>모두 중립에서 시작</p></div></div><div class="screen"><div class="status"><span>9:41</span><span>● ● ●</span></div><div class="screen-body"><div class="appbar"><span class="brand">어떤 마음을 보탤까요?</span><span class="meta">하나 고르기</span></div><div class="wood-grid"><button class="wood-option">이거 진짜 필요해요</button><button class="wood-option">이 한 끗이 좋아요</button><button class="wood-option">완성되면 써보고 싶어요</button><button class="wood-option">이번 주도 계속 가봐요</button></div><p class="label" style="margin-top:10px">내 이름은 어떻게 할까요?</p><div class="consent-box"><span>30일 뒤 이름을 알려줘도 좋아요</span><span>계속 익명으로 보낼게요</span></div><p class="privacy-note">익명은 결제해도 공개되지 않아요.</p><div class="spacer"></div><button class="primary mint">이 장작 보내기</button></div></div></article>
+        <div class="arrow">→</div>
+        <article class="story-step"><div class="step-head"><span class="step-no">3</span><div><h3>장작 도착</h3><p>불꽃이 조금 더 커져요</p></div></div><div class="screen"><div class="status"><span>9:41</span><span>● ● ●</span></div><div class="screen-body start-center"><div class="appbar"><span class="brand">전달 완료</span><span class="meta">장작 1개</span></div><div class="arrival-stage"><i class="flying-wood"></i><div class="campfire large"><i class="glow"></i><i class="log"></i><i class="log two"></i><i class="flame"></i></div></div><h3 class="title">지현님의 불에<br>장작을 보탰어요</h3><p class="copy">선택한 응원과 이름 설정을 함께 보냈어요.</p><div class="spacer"></div><button class="primary mint">닫기</button></div></div></article>
+        <div class="arrow">→</div>
+        <article class="story-step"><div class="step-head"><span class="step-no">4</span><div><h3>내 시작으로 이어가기</h3><p>원할 때만 시작해요</p></div></div><div class="screen"><div class="status"><span>9:41</span><span>● ● ●</span></div><div class="screen-body start-center"><div class="appbar"><span class="brand">내 모닥불</span><span class="meta">아직 비어 있어요</span></div><div class="empty-fire-stage"><div class="campfire empty"><i class="glow"></i><i class="log"></i><i class="log two"></i><i class="flame"></i></div></div><h3 class="title">나도 네 장을 뽑아<br>첫 불씨를 만들 수 있어요</h3><p class="copy">방금 보낸 응원처럼, 내 작은 실행도 누군가와 나눌 수 있어요. 지금 시작하지 않아도 괜찮아요.</p><div class="spacer"></div><button class="primary mint">내 모닥불 피워보기</button><button class="secondary">나중에 할게요</button></div></div></article>
+        <div class="arrow">→</div>
+        <article class="story-step maker-clone"><div class="step-head"><span class="step-no">5</span><div><h3>네 장 뽑기·바꾸기</h3><p>취향 조사 없이 바로 시작</p></div></div><div class="screen"><div class="status"><span>9:41</span><span>● ● ●</span></div><div class="screen-body"><div class="appbar"><span class="brand">오늘은 뭘 만들어볼까요?</span><span class="meta">4 / 4</span></div><div class="mini-board"><div class="slots"><div class="slot"><small>01 이미 돈 버는 제품</small><b>Character.AI</b><div class="card-actions"><span>바꾸기</span><span>직접 쓰기</span></div></div><div class="slot"><small>02 사람들이 반복하는 행동</small><b>매일 대화하기</b><div class="card-actions"><span>바꾸기</span><span>직접 쓰기</span></div></div><div class="slot"><small>03 새로 더할 쓰임</small><b>회사 고민 묻기</b><div class="card-actions"><span>바꾸기</span><span>직접 쓰기</span></div></div><div class="slot active"><small>04 이번 한 끗</small><b>AI 직장 선배</b><div class="card-actions"><span>바꾸기</span><span>직접 쓰기</span></div></div></div><div class="active-rack"><b>활성 · ④ 이번 한 끗을 바꿔요</b><div class="rack-cards"><span>직장 선배</span><span>면접관</span><span>팀장 코치</span><span>직접 쓰기</span></div></div><span class="deck-caption">후보가 촤르륵 펼쳐지고, 덱은 360° 계속 돌아요</span><span class="fly-card"></span><div class="fan-viewport"><div class="fan"><i style="--angle:0deg"></i><i style="--angle:15deg"></i><i style="--angle:30deg"></i><i style="--angle:45deg"></i><i style="--angle:60deg"></i><i style="--angle:75deg"></i><i style="--angle:90deg"></i><i style="--angle:105deg"></i><i style="--angle:120deg"></i><i style="--angle:135deg"></i><i style="--angle:150deg"></i><i style="--angle:165deg"></i><i style="--angle:180deg"></i><i style="--angle:195deg"></i><i style="--angle:210deg"></i><i style="--angle:225deg"></i><i style="--angle:240deg"></i><i style="--angle:255deg"></i><i style="--angle:270deg"></i><i style="--angle:285deg"></i><i style="--angle:300deg"></i><i style="--angle:315deg"></i><i style="--angle:330deg"></i><i style="--angle:345deg"></i></div></div></div><button class="primary">네 장으로 불씨 만들기</button><button class="secondary">4장 다시 뽑기</button></div></div></article>
+      </div>
+    </section>
+    <p class="note">카드덱 24장 360° 회전·마스크·비행 유지 · 장작 도착·불꽃 성장 모션 · 움직임 줄이기 설정 지원</p>
+  </main>
+  <script>
+    const maker=document.getElementById("makerFlow");
+    const receiver=document.getElementById("receiverFlow");
+    function replay(){maker.classList.remove("play");receiver.classList.remove("play");void maker.offsetWidth;maker.classList.add("play");receiver.classList.add("play")}
+    document.getElementById("replay").addEventListener("click",replay);
+    document.querySelectorAll(".reaction").forEach(function(button){button.addEventListener("click",function(){document.querySelectorAll(".reaction").forEach(function(item){item.classList.remove("active")});button.classList.add("active")})});
+    document.querySelectorAll(".feedback").forEach(function(button){button.addEventListener("click",function(){document.querySelectorAll(".feedback").forEach(function(item){item.classList.remove("active")});button.classList.add("active")})});
+  </script>
+</body>
+</html>

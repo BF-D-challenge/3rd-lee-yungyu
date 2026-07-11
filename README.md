@@ -1,13 +1,14 @@
-# 🌱 오늘 해볼까
+# 🔥 오늘 해볼까
 
-> **무엇을 만들지 모르는 초보 1인 빌더가, 좋아하는 것(🌱씨앗)에서 출발해 오늘 만들 아이디어 1개를 뽑고, 지인 투표로 수요까지 확인하는 도구.**
-> BF.D Vibe Coding Challenge 4주 프로젝트 (2026-07-06 ~ 08-02) · 이윤규
+> **검증된 제품의 작동 방식을 네 장으로 뽑아 80~90%는 남기고 한 가지만 바꾼 아이디어를 만들고, 공유한 뒤 익명 응원을 받는 도구.**
+> BF.D Vibe Coding Challenge 4주 프로젝트 · 이윤규
 
-- 씨앗(내가 좋아하는 것·잘 아는 것)에서 출발한 **빈 슬롯 채우기**로 아이디어를 좁히고,
-- 확정한 아이디어를 **9:16 카드**로 발행해 카톡/링크/스토리로 공유하면,
-- 지인이 **로그인 없이 3초 응원**(🔥나도 이거 필요해/🙌완성하면 알려줘/👀지켜볼게/💪너라면 만들어)으로 수요 신호를 보내준다.
+- **검증된 원본 / 돈 낼 사람 / 필요한 순간 / 한 끗 변화** 네 장을 먼저 뽑는다.
+- 마음에 들지 않으면 전체 또는 한 장만 다시 뽑고, 직접 문장을 쓸 수도 있다.
+- 결과를 공유하면 AI 코딩 도구에 붙여 넣을 전체 제작 문구가 열린다.
+- 익명 응원이 오면 모닥불 주위의 유령과 점선 의자가 사람과 실제 의자로 채워지고 불꽃이 커진다.
 
-⚠️ 포지셔닝 금칙어: 이 제품을 "아이디어 생성기 · AI 추천 · 랜덤"이라고 말하지 않는다. ([PRD §1](docs/prd/오늘-해볼까-prd.md))
+기준 명세는 [최종 PRD v4](docs/prd/오늘-해볼까-prd.md), 현재 실행 순서는 [TASK](docs/TASK.md)다.
 
 ---
 
@@ -20,47 +21,45 @@ npm run typecheck  # 타입 검사
 npm run build      # 프로덕션 빌드
 ```
 
-응원(투표) 데이터는 이미 Supabase에 연결돼 있다(계획보다 조기 연동 — `src/lib/backend/votes.ts`, `supabase/schema.sql`을 개인 계정 대시보드 SQL Editor에 직접 적용, 연결 확인은 `node scripts/check-supabase.mjs`). 로그인·결제는 아직 가짜 문.
+기존 Supabase 응원 저장 계층은 남아 있지만, v4의 익명 응원·이름 공개 동의·990원 가짜 문 데이터 구조는 TASK 순서에 따라 다시 맞춘다.
 
 ## 📂 레포 지도
 
-문서(`docs/`)와 코드(`src/`)를 최상위에서 분리했다. 코드는 다시 프론트(UI, `src/app`·`src/components`·`src/lib`)와 DB 연동 계층(`src/lib/backend/`) + DB 스키마(`supabase/`)로 나뉜다 — 단, 진짜 백엔드 서버는 없다. Next.js 앱이 브라우저에서 Supabase를 직접 호출하는 구조라 `src/lib/backend/`도 실제로는 브라우저에서 실행된다(RLS로 보호).
+문서(`docs/`)와 실행 코드(`src/`)를 분리한다. 최신 PRD는 한 개만 유지하고, 이전 기획은 날짜별 아카이브에서 보존한다.
 
 ```
 docs/                     # 문서 전부 (코드와 완전 분리)
-  PRD.md                  #   한 장 요약 (작업 중 빠른 참조)
-  TASK.md                 #   실행 계획 — 구현 현황·남은 백로그·DoD
+  README.md               #   문서 전체 지도
+  PRD.md                  #   v4 한 장 요약
+  TASK.md                 #   T0~T6 실행 순서
   DEPLOY.md               #   배포 가이드
   prd/
-    오늘-해볼까-prd.md      #   ★ 최종 PRD (기준 명세, v3 재통합 2026-07-08)
-    오늘-해볼까-디자인-리셋.md #   moonlight 게임판 전환 목표 스펙 (확정, 구현 대기)
-    archive/              #   v1 원본 · v3 개선안(R1~R26) · v4 다크리뉴얼 · 개별 개선안 5종 · 카드품질 실험계획
-    assets/               #   UI 목업 4장 · 아이디어 엔진 실증(통과율 66.7%) · 인트로 설계 산출
-  research/               #   원천 데이터 — 강의 대본·스토어 랭킹·trustmrr(카드 콘텐츠 근거 소스)·moonlight 원본
-  dev/                    #   카드 아트 프롬프트 · 카드 콘텐츠 실험 확정본(experiments/card-quality) · simplicity 인트로 실측 · bfd-setup(세팅 도구 원본 보관)
+    오늘-해볼까-prd.md      #   ★ 유일한 최신 기준 명세
+    archive/              #   과거 PRD와 실행 계획
+    assets/               #   과거 목업·설계 근거
+  research/               #   Gas·TrustMRR·App Store·Mobbin 등 리서치 코퍼스
+  dev/                    #   정적 프로토타입·감사 페이지·실험과 체크포인트
 src/                      # 코드 전부 (Next.js 공식 src/ 컨벤션)
-  app/                    #   라우트 (L·S0·S1·S3·S5·S5-VS·S6) — 로직 없음
+  app/                    #   Next.js 라우트
   components/             #   아토믹: atoms → molecules → organisms → layouts
-  lib/                    #   pools(뽑기 엔진)·brief·josa·track·share·slot-store·storage
-    backend/              #   ★DB 연동 계층 — Supabase 클라이언트·구글 OAuth·응원(votes) 데이터 접근
-  data/combos.json        #   씨앗×불편×형태 조합 데이터 (allowlist·골든 조합·trustmrr 앵커)
-public/                  # 정적 에셋 (Next.js 규칙상 루트 고정)
-supabase/schema.sql       # 응원(투표) DB 스키마 — 이미 연동됨
-scripts/                  # 개발 도구 (Supabase 연결 확인, 카드 품질 실험 스크립트)
-.claude/                  # Claude Code 스킬(prd-maker·safe-push·민정코치)과 지식 베이스
-_legacy/                  # 구 코드 백업 (git 미추적, 인터랙션 수치 참조용)
+  lib/                    #   카드 선택·결과 조립·저장·공유 로직
+  data/                   #   컴팩트한 입력 데이터
+public/data/              # 원본 카드와 런타임 생성 데이터
+supabase/                 # 익명 응원 저장 스키마
+scripts/research/         # 감사·리서치 정적 페이지 생성
+scripts/rollout/          # 카드 데이터 빌드·검증
 ```
 
-의존 방향은 아래로만: routes → organisms → molecules → atoms / 전 계층 → lib·data ([TASK.md §1](docs/TASK.md)).
+자세한 폴더 역할은 [PROJECT_STRUCTURE](docs/PROJECT_STRUCTURE.md)를 참고한다.
 
-## 📅 4주 계획 (요약 — 상세는 [PRD §6](docs/prd/오늘-해볼까-prd.md))
+## 📅 4주 계획
 
 | 주차 | 목표 |
 |------|------|
-| 1주차 | end-to-end **가짜 루프** 완성 (전 여정 + 가짜 문 + 계측). Supabase 응원 백엔드는 계획보다 앞당겨 이미 연동됨 |
-| 2주차 | 실유저 투하 → 병목 1개 확정 |
-| 3주차 | 로그인 실전환(구글 원탭) + 수요 리포트 실물화 |
-| 4주차 | BF.D 코호트 실전 투하 + 실측, 데모 영상 |
+| 1주차 | 최종 PRD, Flow A/B 10화면 정적 HTML, 5명 이해 테스트 |
+| 2주차 | 검증된 원본 기반 네 장 뽑기와 쉬운 결과·제작 문구 |
+| 3주차 | 공유 링크, 익명 응원, 유령·의자 전환, 불꽃 성장 |
+| 4주차 | 990원 가짜 문, 퍼널 계측, 실사용 결과와 데모 영상 |
 
 ## 🌐 배포 (Vercel 자동 배포)
 

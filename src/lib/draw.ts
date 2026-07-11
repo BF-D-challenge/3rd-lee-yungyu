@@ -1,4 +1,18 @@
-import { allowedPairsFor, allowFor, combos, formatById, painById, type Format, type FrontStory, type Pain, type Track } from "./combos";
+import {
+  allowedPairsFor,
+  allowFor,
+  combos,
+  formatById,
+  painById,
+  type CardAudience,
+  type CardMechanism,
+  type CardPlatform,
+  type CardProductType,
+  type Format,
+  type FrontStory,
+  type Pain,
+  type Track,
+} from "./combos";
 import { getGoldenSync } from "./golden-store";
 import { fillTemplate, josa } from "./josa";
 
@@ -24,6 +38,14 @@ export interface Combo {
   buildPrompt: string | null;
   appName: string | null;
   frontStory: FrontStory | null;
+  audiences: CardAudience[] | null;
+  platforms: CardPlatform[] | null;
+  productTypes: CardProductType[] | null;
+  anchorName: string | null;
+  sourceUrl: string | null;
+  sourceFidelityScore: number | null;
+  adaptationChange: string | null;
+  mechanism: CardMechanism | null;
   golden: boolean;
 }
 
@@ -65,6 +87,10 @@ export function draw(seed: Seed, spinIndex: number, locked: { pain?: Pain; forma
           title: g.title, oneliner: g.oneliner, target: g.target, mvp: g.mvp,
           evidence: g.evidence ?? null, todayAction: g.todayAction ?? null, buildPrompt: g.buildPrompt ?? null,
           appName: g.appName ?? null, frontStory: g.frontStory ?? null,
+          audiences: g.audiences ?? null, platforms: g.platforms ?? null, productTypes: g.productTypes ?? null,
+          anchorName: g.anchorName ?? null,
+          sourceUrl: g.sourceUrl ?? null, sourceFidelityScore: g.sourceFidelityScore ?? null,
+          adaptationChange: g.adaptationChange ?? null, mechanism: g.mechanism ?? null,
           golden: true,
         });
       }
@@ -111,6 +137,14 @@ export function draw(seed: Seed, spinIndex: number, locked: { pain?: Pain; forma
     buildPrompt: g?.buildPrompt ?? null,
     appName: g?.appName ?? null,
     frontStory: g?.frontStory ?? null,
+    audiences: g?.audiences ?? null,
+    platforms: g?.platforms ?? null,
+    productTypes: g?.productTypes ?? null,
+    anchorName: g?.anchorName ?? null,
+    sourceUrl: g?.sourceUrl ?? null,
+    sourceFidelityScore: g?.sourceFidelityScore ?? null,
+    adaptationChange: g?.adaptationChange ?? null,
+    mechanism: g?.mechanism ?? null,
     golden: !!g,
   });
 }

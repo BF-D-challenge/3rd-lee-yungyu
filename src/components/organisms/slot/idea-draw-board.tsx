@@ -148,7 +148,7 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
   };
 
   const preferenceLabels = useMemo(
-    () => preferences.slice(0, 3).map((id) => preferenceForId(id).label),
+    () => preferences.map((id) => preferenceForId(id).label),
     [preferences],
   );
 
@@ -162,7 +162,7 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
       <header className="mx-auto flex w-full max-w-[760px] items-start justify-between gap-4">
         <div>
           <p className="text-xs font-bold text-glow">오늘 해볼까</p>
-          <h1 className="mt-2 font-serif text-2xl leading-tight text-ink">오늘 만들 후보 두 장</h1>
+          <h1 className="mt-2 font-serif text-2xl leading-tight text-ink">취향에 맞는 구체적 후보 두 장</h1>
           <div className="mt-3 flex flex-wrap gap-2" aria-label="선택한 취향">
             {preferenceLabels.map((label) => (
               <span key={label} className="rounded-pill border border-white/15 px-2.5 py-1 text-[11px] text-mist">
@@ -183,7 +183,7 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
       </header>
 
       <div data-board-layout className="mx-auto mt-6 grid w-full max-w-[760px] gap-4 sm:gap-5 min-[840px]:mt-4 min-[840px]:gap-4">
-        <section data-result-card-zone className="mx-auto w-full max-w-[600px] px-3 sm:px-6">
+        <section data-result-card-zone className="relative z-10 mx-auto w-full max-w-[600px] px-3 sm:px-6">
           <div className="grid grid-cols-2 gap-3 sm:gap-5">
             <IdeaCandidateCard
               ref={cardARef}
@@ -210,7 +210,10 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
           </p>
         </section>
 
-        <div data-card-deck-zone className="relative isolate mx-auto h-[230px] w-full max-w-[760px] overflow-hidden sm:h-[270px] min-[840px]:h-[210px]">
+        <div
+          data-card-deck-zone
+          className="relative z-20 isolate mx-auto h-[230px] w-full max-w-[760px] overflow-hidden sm:h-[270px] min-[840px]:h-[210px]"
+        >
           <FanDeck
             ref={deckRef}
             cards={deckCards}

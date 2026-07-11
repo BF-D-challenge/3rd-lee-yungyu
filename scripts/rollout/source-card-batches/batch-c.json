@@ -1,0 +1,425 @@
+[
+  {
+    "seed": "productivity-meeting-interpret",
+    "pain": 15,
+    "format": "template-gen",
+    "title": "말하면 회의 문서가 되는 브라우저 확장",
+    "oneliner": "회의가 잦은 팀이 브라우저에서 음성을 녹음하면 AI가 받아쓰기와 항목 분류를 거쳐 결정·할 일·질문이 나뉜 편집 문서를 받습니다.",
+    "target": "키보드로 회의 후속 문서를 다시 쓰느라 기록이 밀리는 개인 사용자와 업무팀",
+    "mvp": [
+      "브라우저에서 음성 녹음 또는 오디오 파일 업로드",
+      "AI 받아쓰기와 화자별 문장 구분",
+      "결정·할 일·질문 섹션 자동 분류",
+      "사용자 검토 후 문서 복사 또는 내보내기"
+    ],
+    "evidence": "VoiceType.com은 TrustMRR에 최근 30일 매출 8,300달러로 기록된 사례입니다.",
+    "evidenceType": "revenue",
+    "anchorName": "VoiceType.com",
+    "anchorDetail": "VoiceType.com: 음성으로 타이핑을 대체하는 AI 받아쓰기 소프트웨어, 최근 30일 매출 8,300달러.",
+    "appName": "음성 회의문서 확장기",
+    "frontStory": {
+      "persona": "회의가 끝날 때마다 메모를 업무 문서로 다시 옮기는 프로젝트 매니저",
+      "timeline": [
+        {
+          "t": "회의 직후",
+          "act": "기억이 남아 있을 때 결정 사항을 말로 빠르게 남깁니다",
+          "emo": "지금 정리하지 않으면 또 밀릴 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "후속 문서 작성 중",
+          "act": "녹음과 메모를 들으며 결정과 할 일을 다시 타이핑합니다",
+          "emo": "같은 내용을 두 번 쓰는 일이 지칩니다",
+          "pain": true
+        },
+        {
+          "t": "업무 공유 전",
+          "act": "빠진 담당자와 질문이 없는지 문서를 다시 훑습니다",
+          "emo": "정리 형식이 일정하면 바로 공유할 수 있겠다고 느낍니다",
+          "pain": true
+        }
+      ]
+    },
+    "todayAction": "브라우저에서 1분 음성을 녹음하고 받아쓰기 결과를 결정·할 일·질문 세 섹션으로 나눠 편집하는 프로토타입을 만듭니다.",
+    "buildPrompt": "브라우저 확장 형태의 음성 문서화 MVP를 만들어줘. 사용자가 현재 탭에서 녹음을 시작하거나 오디오 파일을 올리면 한국어 음성을 텍스트로 바꾸고, 결과를 결정 사항·할 일·열린 질문으로 분류해 한 화면에 보여줘. 각 문장은 사용자가 직접 수정하고 섹션 사이로 옮길 수 있어야 하며, 검토를 완료한 뒤 마크다운 복사와 문서 파일 내보내기를 제공해줘. 원본 오디오는 처리 후 삭제하고, 자동 분류 결과에는 반드시 검토 전 상태임을 표시해줘.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "인지적 오프로딩",
+    "whyItMatters": "말하는 속도로 초안을 남기고 구조화만 검토하면 타이핑을 반복하는 시간을 줄이면서도 자동 생성 문서의 오류를 사람이 통제할 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "기억이 사라지기 전에 말로 비우기",
+      "socialContext": "회의 직후 팀 후속 문서 공유",
+      "outputShape": "결정·할 일·질문으로 나뉜 편집 문서",
+      "emotionalResolution": "다시 타이핑해야 한다는 부담 감소",
+      "anchorMechanism": "음성을 AI 받아쓰기로 바꿔 타이핑을 대체"
+    },
+    "audiences": [
+      "b2c",
+      "b2b"
+    ],
+    "platforms": [
+      "plugin",
+      "web",
+      "app"
+    ],
+    "productTypes": [
+      "utility",
+      "automation"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0019",
+    "sourceUrl": "https://trustmrr.com/startup/voicetype-com",
+    "sourceDescription": "VoiceType is an AI-driven voice dictation software designed to increase productivity by replacing typing with speech. We charge customers during checkout.",
+    "sourceFidelityScore": 89,
+    "sourcePreserved": [
+      "target",
+      "problem",
+      "input",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "범용 받아쓰기 결과를 그대로 내보내는 대신 회의 후속 업무에 맞춰 결정·할 일·질문 구조로만 범위를 좁혔습니다.",
+    "mechanism": {
+      "input": "브라우저에서 녹음한 음성 또는 업로드한 회의 오디오",
+      "process": "AI 받아쓰기 후 문장을 결정 사항·할 일·열린 질문으로 분류",
+      "output": "사람이 검토하고 수정할 수 있는 구조화 회의 문서"
+    },
+    "specificityScore": 5
+  },
+  {
+    "seed": "recruiting-hr-hidden-job-postings",
+    "pain": 4,
+    "format": "dashboard",
+    "title": "유료 리서치 참가 기회 매칭판",
+    "oneliner": "유료 연구에 참여하려는 사람이 거주지·연령·가능 시간을 넣으면 모집 공고를 자격 조건과 보상으로 걸러 신청 가능한 인터뷰·포커스그룹 목록을 받습니다.",
+    "target": "온라인 인터뷰와 포커스그룹에 참여해 보상을 받고 싶은 개인",
+    "mvp": [
+      "거주지·연령·관심 분야·가능 시간 입력",
+      "온라인 연구와 포커스그룹 공고 수집",
+      "자격 조건과 보상 기준 자동 필터",
+      "신청 가능 목록과 마감일 현황판 제공"
+    ],
+    "evidence": "StudyScout는 TrustMRR에 최근 30일 매출 9,900달러로 기록된 사례입니다.",
+    "evidenceType": "revenue",
+    "anchorName": "StudyScout",
+    "anchorDetail": "StudyScout: 보상이 높은 온라인 연구와 포커스그룹을 모아 제공하는 B2C SaaS, 최근 30일 매출 9,900달러.",
+    "appName": "유료 리서치 참가 매칭판",
+    "frontStory": {
+      "persona": "퇴근 후 참여할 수 있는 유료 사용자 인터뷰를 찾는 직장인",
+      "timeline": [
+        {
+          "t": "참가 기회를 찾을 때",
+          "act": "여러 모집 사이트와 커뮤니티를 번갈아 확인합니다",
+          "emo": "조건이 맞는 공고 하나만 빠르게 찾고 싶습니다",
+          "pain": false
+        },
+        {
+          "t": "공고를 읽을 때",
+          "act": "거주지와 연령 조건을 끝까지 읽고 나서야 지원 불가임을 압니다",
+          "emo": "찾는 시간보다 탈락 조건을 확인하는 시간이 더 깁니다",
+          "pain": true
+        },
+        {
+          "t": "신청하려 할 때",
+          "act": "저장해 둔 공고의 마감일과 신청 상태를 다시 찾습니다",
+          "emo": "기회를 놓치지 않도록 한곳에서 관리하고 싶습니다",
+          "pain": true
+        }
+      ]
+    },
+    "todayAction": "모집 공고 20개를 수동으로 등록하고 사용자 조건 네 가지로 필터링해 신청 가능·확인 필요·지원 불가로 나누는 웹 현황판을 만듭니다.",
+    "buildPrompt": "유료 온라인 연구와 포커스그룹을 찾는 B2C 웹 현황판을 만들어줘. 사용자는 거주지, 연령대, 관심 분야, 참여 가능한 시간을 입력하고, 관리자는 연구명, 보상, 방식, 자격 조건, 마감일, 신청 링크를 등록하게 해줘. 조건이 명확히 맞는 공고는 신청 가능, 정보가 부족한 공고는 확인 필요, 맞지 않는 공고는 지원 불가로 구분해줘. 카드에는 보상과 마감일을 우선 표시하고 저장, 신청 완료, 숨기기 상태를 로컬에 남겨줘. 자동으로 자격을 확정하지 말고 근거가 된 조건 문구를 함께 보여줘.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "기회비용 회피",
+    "whyItMatters": "참가자가 자격 없는 공고를 읽는 시간을 줄이고 신청 가능한 기회와 마감일에 집중하게 하면 반복 방문 이유가 생깁니다.",
+    "differentiationAxis": {
+      "psychology": "놓칠 수 있는 보상 기회를 먼저 확인",
+      "socialContext": "개인이 유료 연구에 직접 지원",
+      "outputShape": "자격 조건별 신청 가능 현황판",
+      "emotionalResolution": "헛수고 대신 지원 순서 확보",
+      "anchorMechanism": "보상이 높은 연구와 포커스그룹 공고를 한곳에 집계"
+    },
+    "audiences": [
+      "b2c"
+    ],
+    "platforms": [
+      "web",
+      "app"
+    ],
+    "productTypes": [
+      "dashboard",
+      "utility",
+      "automation"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0264",
+    "sourceUrl": "https://trustmrr.com/startup/studyscout",
+    "sourceDescription": "StudyScout is a B2C SaaS aggregating high-paying online studies and focus groups. $0 paid ads, growth is 100% organic. Proven viral, repeatable UGC engine with massive upside via scaling content, paid",
+    "sourceFidelityScore": 90,
+    "sourcePreserved": [
+      "target",
+      "problem",
+      "input",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "전체 모집 공고를 나열하는 대신 사용자의 참가 조건을 먼저 받아 신청 가능한 공고만 좁혀 보여주는 검토 단계를 추가했습니다.",
+    "mechanism": {
+      "input": "사용자의 거주지·연령·관심 분야·가능 시간과 유료 연구 모집 공고",
+      "process": "각 공고의 자격 조건과 보상, 마감일을 사용자 조건과 대조",
+      "output": "신청 가능 여부와 이유가 표시된 인터뷰·포커스그룹 현황판"
+    },
+    "specificityScore": 5
+  },
+  {
+    "seed": "social-media-unfollow-tracker",
+    "pain": 66,
+    "format": "dashboard",
+    "title": "인스타 관계 변화 비교기",
+    "oneliner": "Instagram 사용자가 본인이 내보낸 두 시점의 팔로잉 목록을 넣으면 추가·이탈 계정을 비교해 관계 변화와 확인 시점을 표로 받습니다.",
+    "target": "팔로잉 수가 많아 최근 관계 변화를 직접 확인하기 어려운 Instagram 사용자",
+    "mvp": [
+      "두 시점의 Instagram 팔로잉 목록 업로드",
+      "사용자명 기준 추가·이탈 계정 비교",
+      "변화 시점과 계정별 상태 표 제공",
+      "비교 기록을 기기 안에 저장하거나 삭제"
+    ],
+    "evidence": "Last Followed는 TrustMRR에 최근 30일 매출 7,100달러로 기록된 사례입니다.",
+    "evidenceType": "revenue",
+    "anchorName": "Last Followed",
+    "anchorDetail": "Last Followed: 최근 Instagram 팔로우와 활동을 추적해 새 계정을 언제 팔로우했는지 보여주는 서비스, 최근 30일 매출 7,100달러.",
+    "appName": "인스타 팔로우 변화표",
+    "frontStory": {
+      "persona": "수천 개 계정을 팔로우해 최근 추가하거나 정리한 계정을 기억하기 어려운 Instagram 사용자",
+      "timeline": [
+        {
+          "t": "피드를 정리한 날",
+          "act": "관심 없는 계정을 몇 개 정리하고 새 계정을 팔로우합니다",
+          "emo": "지금은 바뀐 계정을 기억할 수 있을 것 같습니다",
+          "pain": false
+        },
+        {
+          "t": "며칠 뒤",
+          "act": "팔로잉 수만 달라졌지만 어떤 계정이 바뀌었는지 알 수 없습니다",
+          "emo": "일일이 목록을 훑는 것은 포기하게 됩니다",
+          "pain": true
+        },
+        {
+          "t": "관계를 확인할 때",
+          "act": "두 시점의 목록 차이만 보고 최근 변화를 확인하려 합니다",
+          "emo": "불필요한 감시 없이 내 데이터만 비교하고 싶습니다",
+          "pain": true
+        }
+      ]
+    },
+    "todayAction": "사용자가 올린 두 개의 사용자명 목록을 비교해 새로 추가된 계정과 사라진 계정을 표로 보여주는 로컬 웹 프로토타입을 만듭니다.",
+    "buildPrompt": "사용자가 직접 내보낸 Instagram 팔로잉 목록 두 개를 비교하는 웹 분석기를 만들어줘. 이전 목록과 현재 목록은 CSV 또는 JSON으로 업로드하고 사용자명을 정규화한 뒤 새로 추가됨, 목록에서 사라짐, 변화 없음으로 분류해줘. 결과에는 사용자명, 상태, 비교한 날짜만 표시하고 검색과 상태 필터를 제공해줘. 업로드 파일과 비교 결과는 서버로 보내지 말고 브라우저 안에서 처리하며, 사용자가 전체 기록을 즉시 삭제할 수 있게 해줘. 비밀번호 입력이나 자동 로그인, 타인 계정 감시는 구현하지 마.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "정보 격차 해소",
+    "whyItMatters": "사용자가 직접 보유한 두 시점의 목록만 비교하면 최근 관계 변화라는 핵심 결과를 제공하면서 계정 로그인과 지속 감시 위험을 줄일 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "기억이 아니라 두 시점의 차이로 확인",
+      "socialContext": "본인 Instagram 팔로잉 정리",
+      "outputShape": "추가·이탈 계정 변화표",
+      "emotionalResolution": "누가 바뀌었는지 모르는 답답함 해소",
+      "anchorMechanism": "최근 팔로우 활동과 발생 시점을 추적"
+    },
+    "audiences": [
+      "b2c"
+    ],
+    "platforms": [
+      "app",
+      "web",
+      "plugin"
+    ],
+    "productTypes": [
+      "analyzer",
+      "dashboard",
+      "automation"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0421",
+    "sourceUrl": "https://trustmrr.com/startup/last-followed",
+    "sourceDescription": "A tool for tracking recent Instagram follows and activity, letting users see when new accounts are followed.",
+    "sourceFidelityScore": 84,
+    "sourcePreserved": [
+      "target",
+      "problem",
+      "input",
+      "output"
+    ],
+    "adaptationChange": "계정을 계속 감시하는 대신 사용자가 직접 내보낸 두 시점의 팔로잉 목록만 기기 안에서 비교하도록 데이터 수집 방식을 바꿨습니다.",
+    "mechanism": {
+      "input": "본인이 Instagram에서 내보낸 이전·현재 팔로잉 목록 두 개",
+      "process": "사용자명을 기준으로 두 목록의 추가·이탈 항목을 기기 안에서 비교",
+      "output": "최근 추가되거나 목록에서 사라진 계정과 확인 시점이 담긴 변화표"
+    },
+    "specificityScore": 5
+  },
+  {
+    "seed": "utilities-video-subtitle-extract",
+    "pain": 7,
+    "format": "template-gen",
+    "title": "숏폼 다국어 더빙 변환기",
+    "oneliner": "글로벌 채널을 운영하는 마케팅팀이 90초 이하 영상을 올리고 대상 언어를 고르면 번역·음성 복제·립싱크·자막 합성을 거쳐 게시 가능한 다국어 영상 파일을 받습니다.",
+    "target": "같은 숏폼 영상을 여러 언어 채널에 게시하는 브랜드 콘텐츠팀과 제작 대행사",
+    "mvp": [
+      "90초 이하 세로 영상 업로드",
+      "대상 언어와 화자 음성 선택",
+      "대사 번역·더빙·립싱크·동적 자막 생성",
+      "언어별 미리보기와 영상 파일 내보내기"
+    ],
+    "evidence": "VoiceCheap은 TrustMRR에 최근 30일 매출 8,000달러로 기록된 사례입니다.",
+    "evidenceType": "revenue",
+    "anchorName": "VoiceCheap",
+    "anchorDetail": "VoiceCheap: 영상을 여러 언어로 번역하고 더빙해 게시할 수 있게 하는 AI 플랫폼, 최근 30일 매출 8,000달러.",
+    "appName": "숏폼 다국어 더빙 변환기",
+    "frontStory": {
+      "persona": "하나의 제품 영상을 여러 국가 계정에 올려야 하는 브랜드 콘텐츠 매니저",
+      "timeline": [
+        {
+          "t": "원본 영상 승인 후",
+          "act": "한국어 숏폼 한 편을 해외 채널에도 배포하기로 합니다",
+          "emo": "콘텐츠를 다시 촬영하지 않고 재사용하고 싶습니다",
+          "pain": false
+        },
+        {
+          "t": "현지화 작업 중",
+          "act": "번역, 성우 녹음, 자막, 입 모양 수정을 각각 요청합니다",
+          "emo": "짧은 영상 한 편에 검토 단계가 너무 많이 생깁니다",
+          "pain": true
+        },
+        {
+          "t": "게시 직전",
+          "act": "언어별 영상과 자막이 맞는지 파일을 번갈아 확인합니다",
+          "emo": "한 화면에서 결과를 비교하고 바로 내보내고 싶습니다",
+          "pain": true
+        }
+      ]
+    },
+    "todayAction": "15초 제품 영상 한 편과 한 개 대상 언어로 범위를 제한해 번역 자막, 합성 음성, 결과 미리보기가 이어지는 웹 흐름을 만듭니다.",
+    "buildPrompt": "브랜드 콘텐츠팀용 숏폼 다국어 더빙 웹 MVP를 만들어줘. 사용자가 90초 이하 세로 영상을 업로드하고 대상 언어를 고르면 음성을 구간별로 전사하고, 번역 대본을 편집한 뒤 합성 음성과 동적 자막을 영상 타임라인에 맞춰 생성하게 해줘. 화자 음성 사용 동의를 확인한 경우에만 음성 복제 옵션을 켜고, 원본·번역 대본·더빙 결과를 나란히 미리보기로 제공해줘. MVP는 한 개 영상과 한 개 대상 언어만 처리하고 최종 MP4와 자막 파일을 내보내게 해줘.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "처리 유창성",
+    "whyItMatters": "번역부터 더빙과 자막까지 분리된 작업을 한 흐름으로 묶으면 콘텐츠팀이 언어별 결과를 빠르게 검토하고 반복 게시할 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "여러 제작 단계를 한 번에 끝내고 싶은 마음",
+      "socialContext": "브랜드 숏폼의 다국가 채널 배포",
+      "outputShape": "언어별 더빙 영상과 자막 파일",
+      "emotionalResolution": "외주 조율과 파일 혼선 감소",
+      "anchorMechanism": "영상 번역·더빙·음성 복제·립싱크·동적 자막 통합"
+    },
+    "audiences": [
+      "b2b"
+    ],
+    "platforms": [
+      "web",
+      "app"
+    ],
+    "productTypes": [
+      "utility",
+      "automation"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0736",
+    "sourceUrl": "https://trustmrr.com/startup/voicecheap",
+    "sourceDescription": "VoiceCheap is an AI platform that dubs and translates videos into multiple languages. You can translate, dub and publish any video in any language. Voice cloning, lip-sync, dynamic subtitles and socia",
+    "sourceFidelityScore": 89,
+    "sourcePreserved": [
+      "problem",
+      "input",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "모든 길이와 종류의 영상을 다루는 대신 90초 이하 숏폼의 다국어 배포로 범위를 좁혔습니다.",
+    "mechanism": {
+      "input": "90초 이하 원본 영상과 게시할 대상 언어",
+      "process": "대사를 번역하고 합성 음성·립싱크·동적 자막을 영상 시간에 맞춰 생성",
+      "output": "선택한 언어로 더빙되고 자막이 입혀진 게시용 영상 파일"
+    },
+    "specificityScore": 5
+  },
+  {
+    "seed": "online-mall",
+    "pain": 51,
+    "format": "calc-tool",
+    "title": "공급사 상품 일괄등록 플러그인",
+    "oneliner": "Shopify 운영자가 공급사 상품 CSV를 올리고 필드를 연결하면 플러그인이 상품명·설명·옵션을 검증해 일괄 등록 전 미리보기와 게시 결과를 돌려줍니다.",
+    "target": "공급사 상품 수백 개를 Shopify에 반복 등록하는 온라인 쇼핑몰 운영팀",
+    "mvp": [
+      "공급사 상품 CSV 업로드",
+      "공급사 열과 Shopify 상품 필드 연결",
+      "누락값·중복 옵션·이미지 주소 오류 검사",
+      "등록 미리보기 확인 후 상품 일괄 게시"
+    ],
+    "evidence": "Catalister는 TrustMRR에 최근 30일 매출 7,500달러로 기록된 사례입니다.",
+    "evidenceType": "revenue",
+    "anchorName": "Catalister",
+    "anchorDetail": "Catalister: 수천 개 상품을 몇 분 안에 Shopify 스토어에 추가하는 상품 등록 자동화 서비스, 최근 30일 매출 7,500달러.",
+    "appName": "공급사 상품 일괄등록 플러그인",
+    "frontStory": {
+      "persona": "새 공급사 카탈로그를 Shopify에 옮겨야 하는 쇼핑몰 상품 운영자",
+      "timeline": [
+        {
+          "t": "공급사 파일을 받을 때",
+          "act": "수백 행짜리 상품 CSV와 이미지 주소를 전달받습니다",
+          "emo": "이번 주 안에 전부 등록해야 합니다",
+          "pain": false
+        },
+        {
+          "t": "상품 등록 중",
+          "act": "상품명, 설명, 옵션을 Shopify 입력칸에 반복해서 옮깁니다",
+          "emo": "한 칸만 밀려도 여러 상품을 다시 확인해야 합니다",
+          "pain": true
+        },
+        {
+          "t": "일괄 게시 전",
+          "act": "누락된 값과 잘못 연결된 옵션을 샘플로 확인합니다",
+          "emo": "전체 등록 전에 오류 위치를 정확히 보고 싶습니다",
+          "pain": true
+        }
+      ]
+    },
+    "todayAction": "샘플 공급사 CSV 한 개를 Shopify 상품 필드에 연결하고 오류 3종을 표시한 뒤 등록 전 미리보기를 만드는 웹 플러그인 프로토타입을 구현합니다.",
+    "buildPrompt": "Shopify 쇼핑몰 운영자를 위한 공급사 상품 일괄등록 플러그인 MVP를 만들어줘. 사용자가 CSV를 올리면 첫 행을 열 이름으로 읽고 공급사 열을 Shopify의 상품명, 설명, 가격, 옵션, 재고, 이미지 주소 필드에 연결하게 해줘. 필수값 누락, 중복 옵션, 잘못된 이미지 주소를 행별로 표시하고 오류가 없는 상품만 등록 미리보기에 포함해줘. 사용자가 미리보기를 확인하고 승인해야 일괄 게시되도록 하며, 성공·실패 건수와 실패 이유를 결과 화면에 남겨줘. 초기 버전은 Shopify 한 스토어와 CSV 한 형식만 지원해줘.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "오류 회피",
+    "whyItMatters": "반복 입력을 자동화하되 게시 전에 필드 연결과 오류 행을 확인하게 하면 대량 등록 속도와 상품 데이터 통제권을 함께 확보할 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "대량 게시 전 오류를 먼저 차단",
+      "socialContext": "공급사 카탈로그를 받는 Shopify 운영팀",
+      "outputShape": "필드 연결표·오류 목록·일괄 게시 결과",
+      "emotionalResolution": "밤샘 반복 입력과 대량 오류 불안 감소",
+      "anchorMechanism": "다수의 상품을 Shopify에 자동으로 빠르게 등록"
+    },
+    "audiences": [
+      "b2b"
+    ],
+    "platforms": [
+      "plugin",
+      "web"
+    ],
+    "productTypes": [
+      "automation",
+      "utility"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0436",
+    "sourceUrl": "https://trustmrr.com/startup/catalister",
+    "sourceDescription": "Product listing automation tool. With Catalister you can add thousands of products to your Shopify store in minutes!",
+    "sourceFidelityScore": 92,
+    "sourcePreserved": [
+      "target",
+      "problem",
+      "input",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "범용 상품 등록 대신 공급사가 제공한 CSV를 Shopify 필드로 연결하는 작업으로 입력 범위를 좁혔습니다.",
+    "mechanism": {
+      "input": "공급사 상품 CSV와 Shopify 필드 연결 규칙",
+      "process": "상품 데이터를 필드별로 변환하고 누락값·중복 옵션·이미지 주소 오류를 검사",
+      "output": "승인 가능한 상품 미리보기와 Shopify 일괄 게시 성공·실패 결과"
+    },
+    "specificityScore": 5
+  }
+]

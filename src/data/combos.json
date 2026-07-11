@@ -1,5 +1,5 @@
 {
-  "version": 41,
+  "version": 43,
   "tracks": {
     "like": {
       "label": "좋아하는 걸로",
@@ -2487,6 +2487,146 @@
         {
           "pain": 72,
           "format": "template-gen"
+        }
+      ]
+    },
+    "sales-inbound-inquiry-autoreply": {
+      "pains": [
+        70
+      ],
+      "formats": [
+        "chatbot"
+      ],
+      "pairs": [
+        {
+          "pain": 70,
+          "format": "chatbot"
+        }
+      ]
+    },
+    "social-media-multi-platform-scheduling": {
+      "pains": [
+        65
+      ],
+      "formats": [
+        "dashboard"
+      ],
+      "pairs": [
+        {
+          "pain": 65,
+          "format": "dashboard"
+        }
+      ]
+    },
+    "saas-cold-outreach": {
+      "pains": [
+        69
+      ],
+      "formats": [
+        "digest-bot"
+      ],
+      "pairs": [
+        {
+          "pain": 69,
+          "format": "digest-bot"
+        }
+      ]
+    },
+    "saas-ai-workflow-check": {
+      "pains": [
+        34
+      ],
+      "formats": [
+        "calc-tool"
+      ],
+      "pairs": [
+        {
+          "pain": 34,
+          "format": "calc-tool"
+        }
+      ]
+    },
+    "analytics-seo-rank-tracker": {
+      "pains": [
+        8
+      ],
+      "formats": [
+        "dashboard"
+      ],
+      "pairs": [
+        {
+          "pain": 8,
+          "format": "dashboard"
+        }
+      ]
+    },
+    "recruiting-hr-hidden-job-postings": {
+      "pains": [
+        4
+      ],
+      "formats": [
+        "dashboard"
+      ],
+      "pairs": [
+        {
+          "pain": 4,
+          "format": "dashboard"
+        }
+      ]
+    },
+    "social-media-unfollow-tracker": {
+      "pains": [
+        66
+      ],
+      "formats": [
+        "dashboard"
+      ],
+      "pairs": [
+        {
+          "pain": 66,
+          "format": "dashboard"
+        }
+      ]
+    },
+    "utilities-video-subtitle-extract": {
+      "pains": [
+        7
+      ],
+      "formats": [
+        "template-gen"
+      ],
+      "pairs": [
+        {
+          "pain": 7,
+          "format": "template-gen"
+        }
+      ]
+    },
+    "education-aptitude-test-prep": {
+      "pains": [
+        10
+      ],
+      "formats": [
+        "dashboard"
+      ],
+      "pairs": [
+        {
+          "pain": 10,
+          "format": "dashboard"
+        }
+      ]
+    },
+    "sales-community-lead-watch": {
+      "pains": [
+        67
+      ],
+      "formats": [
+        "chrome-ext"
+      ],
+      "pairs": [
+        {
+          "pain": 67,
+          "format": "chrome-ext"
         }
       ]
     }

@@ -61,6 +61,16 @@ export interface FrontStory {
   timeline: FrontStoryStep[];
 }
 
+export type CardAudience = "b2b" | "b2c";
+export type CardPlatform = "web" | "app" | "plugin";
+export type CardProductType = "ai-agent" | "automation" | "dashboard" | "analyzer" | "utility";
+
+export interface CardMechanism {
+  input: string;
+  process: string;
+  output: string;
+}
+
 export interface Golden {
   seed: string;
   pain: number;
@@ -92,6 +102,18 @@ export interface Golden {
     emotionalResolution?: string;
     anchorMechanism?: string;
   };
+  /** source-fidelity-v1: preference axes and auditable reverse-engineering fields. */
+  audiences?: CardAudience[];
+  platforms?: CardPlatform[];
+  productTypes?: CardProductType[];
+  sourceRecordId?: string;
+  sourceUrl?: string;
+  sourceDescription?: string;
+  sourceFidelityScore?: number;
+  sourcePreserved?: Array<"target" | "problem" | "input" | "process" | "output">;
+  adaptationChange?: string;
+  mechanism?: CardMechanism;
+  specificityScore?: number;
 }
 
 export interface Axis {

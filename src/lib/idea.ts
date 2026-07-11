@@ -48,6 +48,14 @@ export function assembleCombo(slots: Slots): Combo | null {
     buildPrompt: golden?.buildPrompt ?? null,
     appName: golden?.appName ?? null,
     frontStory: golden?.frontStory ?? null,
+    audiences: golden?.audiences ?? null,
+    platforms: golden?.platforms ?? null,
+    productTypes: golden?.productTypes ?? null,
+    anchorName: golden?.anchorName ?? null,
+    sourceUrl: golden?.sourceUrl ?? null,
+    sourceFidelityScore: golden?.sourceFidelityScore ?? null,
+    adaptationChange: golden?.adaptationChange ?? null,
+    mechanism: golden?.mechanism ?? null,
     golden: !!golden,
   };
 }
@@ -84,7 +92,18 @@ const NO_LOCKS: LockMap = { seed: false, pain: false, format: false, situation: 
 const candidateKey = (candidate: IdeaCandidate) =>
   `${candidate.combo.seed.id}|${candidate.combo.pain.id}|${candidate.combo.format.id}`;
 
-const comboFromGolden = (card: Golden): Combo | null => {
+const preferenceOrdered = <T extends PreferenceId>(
+  values: readonly T[] | undefined,
+  preferences: readonly PreferenceId[],
+): T[] | null => {
+  if (!values?.length) return null;
+  const order = new Map(preferences.map((preference, index) => [preference, index]));
+  return [...values].sort(
+    (left, right) => (order.get(left) ?? Number.MAX_SAFE_INTEGER) - (order.get(right) ?? Number.MAX_SAFE_INTEGER),
+  );
+};
+
+const comboFromGolden = (card: Golden, preferences: readonly PreferenceId[]): Combo | null => {
   const seed = allSeeds().find((item) => item.id === card.seed);
   const pain = painById(card.pain);
   const format = formatById(card.format);
@@ -104,13 +123,21 @@ const comboFromGolden = (card: Golden): Combo | null => {
     buildPrompt: card.buildPrompt ?? null,
     appName: card.appName ?? null,
     frontStory: card.frontStory ?? null,
+    audiences: preferenceOrdered(card.audiences, preferences),
+    platforms: preferenceOrdered(card.platforms, preferences),
+    productTypes: preferenceOrdered(card.productTypes, preferences),
+    anchorName: card.anchorName ?? null,
+    sourceUrl: card.sourceUrl ?? null,
+    sourceFidelityScore: card.sourceFidelityScore ?? null,
+    adaptationChange: card.adaptationChange ?? null,
+    mechanism: card.mechanism ?? null,
     golden: true,
   };
 };
 
 const drawCandidate = (preferences: readonly PreferenceId[], index: number): IdeaCandidate => {
   const normalized = normalizePreferences(preferences);
-  const preferenceId = normalized[index % normalized.length] ?? "make-now";
+  const preferenceId = normalized[index % normalized.length] ?? "utility";
   const taste = legacyTasteFor(normalized, index);
   const slots = buildSpinAllSlots({ slots: EMPTY_SLOTS, locked: NO_LOCKS, taste });
   const combo = assembleCombo(slots);
@@ -123,10 +150,11 @@ const drawCandidate = (preferences: readonly PreferenceId[], index: number): Ide
 };
 
 export function drawIdeaCandidates(preferences: readonly PreferenceId[]): [IdeaCandidate, IdeaCandidate] {
-  const selected = selectGoldenPair(getGoldenSync(), normalizePreferences(preferences));
+  const normalized = normalizePreferences(preferences);
+  const selected = selectGoldenPair(getGoldenSync(), normalized);
   if (selected) {
-    const firstCombo = comboFromGolden(selected[0].card);
-    const secondCombo = comboFromGolden(selected[1].card);
+    const firstCombo = comboFromGolden(selected[0].card, normalized);
+    const secondCombo = comboFromGolden(selected[1].card, normalized);
     if (firstCombo && secondCombo) {
       const contrast = Number(pairContrastScore(selected[0].card, selected[1].card).toFixed(2));
       return [

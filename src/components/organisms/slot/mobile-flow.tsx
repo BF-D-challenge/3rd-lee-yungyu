@@ -9,7 +9,7 @@ import { checkAuthSession, consumeAuthPending, type AuthSession } from "@/lib/au
 import { ensureGoldenLoaded } from "@/lib/golden-store";
 import { openerKey, trackGrowth } from "@/lib/growth";
 import {
-  MIN_PREFERENCES,
+  hasRequiredPreferenceGroups,
   loadPreferences,
   normalizePreferences,
   preferencesForSeed,
@@ -26,7 +26,7 @@ type Stage = "loading" | "login" | "taste" | "draw";
 const queryPreferences = (params: URLSearchParams): PreferenceId[] => {
   const values = [params.get("preference") ?? "", ...(params.get("preferences")?.split(",") ?? [])];
   const normalized = normalizePreferences(values);
-  if (normalized.length >= MIN_PREFERENCES) return normalized;
+  if (hasRequiredPreferenceGroups(normalized)) return normalized;
   const seedId = params.get("seed");
   return seedId ? preferencesForSeed(seedId, normalized[0]) : normalized;
 };
@@ -56,7 +56,7 @@ export function MobileFlow() {
       : saved;
     setSession(nextSession);
     setPreferences(next);
-    setStage(next.length >= MIN_PREFERENCES ? "draw" : "taste");
+    setStage(hasRequiredPreferenceGroups(next) ? "draw" : "taste");
   };
 
   useEffect(() => {

@@ -1,0 +1,419 @@
+[
+  {
+    "seed": "saas-lead-verify",
+    "pain": 7,
+    "format": "dashboard",
+    "title": "회원가입 연락처·IP 위험검증 API",
+    "oneliner": "B2B 서비스 운영자가 신규 회원의 전화번호·이메일·IP를 API로 보내면 실시간 유효성 검증을 거쳐 정상·주의·위험 결과와 근거를 받습니다.",
+    "target": "가짜 계정과 오입력 회원을 가입 시점에 선별해야 하는 B2B SaaS 운영·보안팀",
+    "mvp": [
+      "검증 요청용 API 키와 엔드포인트 발급",
+      "전화번호·이메일·IP 동시 입력과 실시간 유효성 검사",
+      "정상·주의·위험 상태와 판단 근거를 JSON으로 반환",
+      "요청별 입력값·결과·응답 시간을 조회하는 기록 화면"
+    ],
+    "evidence": "TrustMRR 원본 레코드에 기록된 1Lookup의 최근 30일 매출은 $398k입니다.",
+    "evidenceType": "revenue",
+    "anchorName": "1Lookup",
+    "anchorDetail": "1Lookup은 전화번호·이메일·IP 데이터를 하나의 API로 실시간 검증하며, TrustMRR 최근 30일 매출은 $398k입니다.",
+    "appName": "가입신호 검증 API",
+    "frontStory": {
+      "persona": "무료 체험 가입이 늘면서 가짜 계정을 먼저 걸러야 하는 B2B SaaS 운영자",
+      "timeline": [
+        {
+          "t": "회원가입 요청 도착",
+          "act": "전화번호·이메일·접속 IP가 회원 정보와 함께 들어옵니다",
+          "emo": "정상 고객의 가입은 막지 않고 의심 계정만 찾고 싶습니다",
+          "pain": false
+        },
+        {
+          "t": "운영자가 수동 확인",
+          "act": "이메일 도메인과 전화번호 형식을 사이트별로 검색합니다",
+          "emo": "한 건씩 확인하는 동안 승인 대기열이 계속 쌓입니다",
+          "pain": true
+        },
+        {
+          "t": "계정 승인 결정",
+          "act": "일관된 근거 없이 계정을 허용하거나 차단합니다",
+          "emo": "가짜 계정을 통과시키거나 정상 고객을 막을까 불안합니다",
+          "pain": true
+        }
+      ]
+    },
+    "todayAction": "회원가입 요청 JSON을 받아 세 입력값의 검증 상태와 사유를 반환하고, 최근 요청 기록을 보여주는 API·웹 화면을 만듭니다.",
+    "buildPrompt": "B2B SaaS 회원가입 위험검증 서비스를 만들어줘. API는 전화번호, 이메일, IP를 한 요청으로 받고 각 값의 형식과 유효성 결과를 정상·주의·위험으로 반환해야 해. 웹 화면에는 API 키 발급, 요청 테스트 콘솔, 최근 요청 목록, 항목별 판단 근거와 응답 시간을 보여줘. 실제 외부 검증 공급자를 교체할 수 있도록 검증 어댑터 인터페이스를 분리하고, MVP에서는 샘플 공급자와 명시적인 실패 상태를 사용해줘.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "불확실성 감소",
+    "whyItMatters": "세 종류의 가입 신호를 한 번에 확인하면 운영자가 사이트를 오가며 수동 검증하는 시간을 줄일 수 있습니다. 판단 근거가 함께 남아 정상 고객과 의심 계정을 일관되게 구분할 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "불확실성 감소",
+      "socialContext": "B2B 서비스의 신규 회원가입 직후",
+      "outputShape": "정상·주의·위험 상태와 근거가 담긴 API 응답",
+      "emotionalResolution": "가입 승인 기준을 설명할 수 있는 통제감",
+      "anchorMechanism": "전화번호·이메일·IP를 하나의 API로 실시간 검증"
+    },
+    "audiences": [
+      "b2b"
+    ],
+    "platforms": [
+      "web",
+      "plugin"
+    ],
+    "productTypes": [
+      "utility",
+      "analyzer"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0441",
+    "sourceUrl": "https://trustmrr.com/startup/1lookup",
+    "sourceDescription": "The #1 tool for validating phone, email and IP data in real time. All through one powerful API.",
+    "sourceFidelityScore": 92,
+    "sourcePreserved": [
+      "target",
+      "problem",
+      "input",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "범용 데이터 검증 범위를 B2B 서비스의 신규 회원가입 요청으로 좁혔습니다.",
+    "mechanism": {
+      "input": "신규 회원의 전화번호, 이메일, 접속 IP",
+      "process": "세 데이터를 하나의 API 요청으로 받아 실시간 유효성을 검사",
+      "output": "정상·주의·위험 상태와 항목별 판단 근거"
+    },
+    "specificityScore": 5
+  },
+  {
+    "seed": "sales-inbound-inquiry-autoreply",
+    "pain": 70,
+    "format": "chatbot",
+    "title": "상담예약 DM 선별 에이전트",
+    "oneliner": "영업팀이 Instagram DM·WhatsApp 문의와 선별 기준을 연결하면 에이전트가 24시간 잠재고객을 분류하고 담당자 승인 뒤 상담 일정을 Calendly에 예약합니다.",
+    "target": "Instagram DM과 WhatsApp으로 들어오는 상담 문의를 놓치거나 늦게 답하는 B2B 영업팀",
+    "mvp": [
+      "Instagram DM·WhatsApp 상담 대화 수집",
+      "맞춤 질문과 조건으로 잠재고객 자동 선별",
+      "답변 초안·선별 근거·추천 시간을 담당자에게 승인 요청",
+      "승인된 문의를 Calendly 상담 일정으로 예약"
+    ],
+    "evidence": "TrustMRR 원본 레코드에 기록된 SetSmart의 최근 30일 매출은 $43k입니다.",
+    "evidenceType": "revenue",
+    "anchorName": "SetSmart",
+    "anchorDetail": "SetSmart는 Instagram DM·WhatsApp 문의를 AI로 선별하고 상담을 예약하며, TrustMRR 최근 30일 매출은 $43k입니다.",
+    "appName": "DM 상담예약 에이전트",
+    "frontStory": {
+      "persona": "Instagram DM으로 상담 문의를 받는 소규모 B2B 서비스 영업 담당자",
+      "timeline": [
+        {
+          "t": "고객이 늦은 밤 문의",
+          "act": "가격과 가능한 상담 시간을 DM으로 묻습니다",
+          "emo": "아침에 답해도 관심이 남아 있을지 걱정됩니다",
+          "pain": false
+        },
+        {
+          "t": "다음 날 문의 선별",
+          "act": "Instagram과 WhatsApp을 번갈아 열어 조건을 다시 묻습니다",
+          "emo": "구매 가능성이 높은 문의부터 찾기 어렵습니다",
+          "pain": true
+        },
+        {
+          "t": "상담 시간 조율",
+          "act": "여러 차례 메시지를 주고받는 사이 고객이 다른 업체를 예약합니다",
+          "emo": "답변 속도 때문에 계약 기회를 놓쳤다는 생각이 듭니다",
+          "pain": true
+        }
+      ]
+    },
+    "todayAction": "DM 대화 샘플을 넣으면 선별 질문, 적합도 근거, 예약 후보 시간을 만들고 담당자 승인 후 Calendly 예약으로 넘기는 웹 화면을 만듭니다.",
+    "buildPrompt": "Instagram DM과 WhatsApp 상담 문의를 처리하는 B2B 영업 에이전트를 만들어줘. 문의 대화, 맞춤 질문, 필수 조건, 예약 가능 시간을 입력받아 리드를 적합·추가 질문·부적합으로 분류하고 근거를 표시해. 자동 발송이나 예약 전에 담당자가 답변 초안과 추천 시간을 반드시 승인하게 하고, 승인 후 Calendly 예약 링크 또는 예약 결과를 대화 기록에 남겨줘. 한 화면에서 미처리 문의, 승인 대기, 예약 완료 상태를 이동할 수 있게 해줘.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "즉시 응답",
+    "whyItMatters": "문의가 들어온 채널과 시간에 상관없이 같은 기준으로 선별하면 구매 가능성이 높은 고객에게 더 빨리 답할 수 있습니다. 담당자 승인을 남겨 잘못된 답변이나 성급한 예약 위험도 통제할 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "즉시 응답",
+      "socialContext": "Instagram DM·WhatsApp으로 들어오는 상담 문의",
+      "outputShape": "선별 근거가 붙은 답변 초안과 승인형 예약",
+      "emotionalResolution": "문의 누락 없이 최종 결정은 사람이 한다는 안도감",
+      "anchorMechanism": "맞춤 스크립트와 필터로 리드를 선별하고 캘린더에 직접 예약"
+    },
+    "audiences": [
+      "b2b"
+    ],
+    "platforms": [
+      "web",
+      "app"
+    ],
+    "productTypes": [
+      "ai-agent",
+      "automation"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0400",
+    "sourceUrl": "https://trustmrr.com/startup/setsmart",
+    "sourceDescription": "AI sales setter that automatically qualifies your leads and books calls via Instagram DMs and WhatsApp. Custom scripts, smart filtering, direct calendar booking, 24/7. Integrates with Calendly, GHL, Z",
+    "sourceFidelityScore": 93,
+    "sourcePreserved": [
+      "problem",
+      "input",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "원본의 캘린더 직접 예약 앞에 담당자 승인 단계를 하나 추가했습니다.",
+    "mechanism": {
+      "input": "Instagram DM·WhatsApp 상담 문의, 맞춤 질문, 예약 가능 시간",
+      "process": "24시간 문의를 읽고 조건에 맞는 잠재고객을 선별한 뒤 담당자 승인을 요청",
+      "output": "승인된 리드의 Calendly 상담 예약과 대화 요약"
+    },
+    "specificityScore": 5
+  },
+  {
+    "seed": "social-media-multi-platform-scheduling",
+    "pain": 65,
+    "format": "dashboard",
+    "title": "채널별 검토형 동시발행 플러그인",
+    "oneliner": "콘텐츠 운영자가 원문과 발행 채널을 고르면 플러그인이 채널별 게시 미리보기를 만들고 승인된 콘텐츠를 여러 소셜 미디어에 동시에 발행합니다.",
+    "target": "같은 콘텐츠를 여러 소셜 미디어에 반복해서 게시하는 B2B 콘텐츠 운영팀",
+    "mvp": [
+      "원문·이미지 입력과 발행 채널 선택",
+      "연결된 채널별 게시물 미리보기 생성",
+      "채널별 승인·제외 상태 저장",
+      "승인된 채널 동시 발행과 성공·실패 결과 표시"
+    ],
+    "evidence": "TrustMRR 원본 레코드에 기록된 POST BRIDGE의 최근 30일 매출은 $43k입니다.",
+    "evidenceType": "revenue",
+    "anchorName": "POST BRIDGE",
+    "anchorDetail": "POST BRIDGE는 한 곳에서 콘텐츠를 여러 소셜 미디어 플랫폼에 동시에 게시하며, TrustMRR 최근 30일 매출은 $43k입니다.",
+    "appName": "동시발행 브리지",
+    "frontStory": {
+      "persona": "한 공지를 여러 소셜 채널에 빠르게 배포해야 하는 조직의 콘텐츠 담당자",
+      "timeline": [
+        {
+          "t": "공지 원문 확정",
+          "act": "텍스트와 이미지를 한 번 정리합니다",
+          "emo": "내용이 확정돼 이제 배포만 하면 된다고 생각합니다",
+          "pain": false
+        },
+        {
+          "t": "채널별 게시",
+          "act": "각 소셜 미디어를 열고 같은 내용을 다시 붙여넣습니다",
+          "emo": "한 채널을 빠뜨리거나 이전 버전을 올릴까 신경 쓰입니다",
+          "pain": true
+        },
+        {
+          "t": "발행 결과 확인",
+          "act": "어느 채널에서 실패했는지 탭을 다시 열어 확인합니다",
+          "emo": "급한 공지일수록 반복 작업에 시간을 빼앗깁니다",
+          "pain": true
+        }
+      ]
+    },
+    "todayAction": "원문 한 건과 세 개 채널을 선택해 채널별 미리보기를 승인하고, 모의 발행 결과를 한 화면에서 확인하는 플러그인 프로토타입을 만듭니다.",
+    "buildPrompt": "여러 소셜 미디어에 콘텐츠를 동시에 게시하는 브라우저 플러그인과 웹 현황판을 만들어줘. 사용자가 원문, 이미지, 발행 채널을 고르면 채널별 미리보기를 나란히 보여주고 각 채널을 승인하거나 제외하게 해. 승인된 채널만 한 번에 발행하고 게시물 URL, 성공, 실패, 실패 사유를 결과 목록에 남겨줘. MVP는 세 채널 어댑터 인터페이스와 모의 발행 모드로 구성해 실제 API 연결을 교체할 수 있게 해줘.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "검토 후 실행",
+    "whyItMatters": "원문을 한 번만 입력하고 발행 결과를 한곳에서 보면 반복 복사와 채널 누락을 줄일 수 있습니다. 동시발행 전에 채널별 내용을 확인해 잘못된 게시물이 한꺼번에 퍼지는 위험도 낮춥니다.",
+    "differentiationAxis": {
+      "psychology": "검토 후 실행",
+      "socialContext": "여러 공식 소셜 채널에 같은 공지를 배포할 때",
+      "outputShape": "채널별 미리보기와 게시 성공·실패 현황판",
+      "emotionalResolution": "누락 없이 발행했다는 확신",
+      "anchorMechanism": "한 곳에서 여러 소셜 미디어에 동시에 게시"
+    },
+    "audiences": [
+      "b2b"
+    ],
+    "platforms": [
+      "plugin",
+      "web",
+      "app"
+    ],
+    "productTypes": [
+      "automation"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0009",
+    "sourceUrl": "https://trustmrr.com/startup/post-bridge",
+    "sourceDescription": "Post your content to multiple social media platforms at the same time, all-in one place.",
+    "sourceFidelityScore": 88,
+    "sourcePreserved": [
+      "problem",
+      "input",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "원본의 즉시 동시 게시 앞에 채널별 미리보기 승인 단계를 하나 추가했습니다.",
+    "mechanism": {
+      "input": "게시할 원문, 이미지, 연결된 소셜 미디어 채널",
+      "process": "한곳에서 채널별 미리보기를 확인한 뒤 승인된 채널에 동시에 전송",
+      "output": "채널별 게시물 URL과 성공·실패 상태"
+    },
+    "specificityScore": 5
+  },
+  {
+    "seed": "backend",
+    "pain": 33,
+    "format": "digest-bot",
+    "title": "QuickBooks Desktop 읽기 전용 API 중계기",
+    "oneliner": "QuickBooks 연동 개발자가 고객·청구서 조회 요청을 보내면 로컬 커넥터가 QuickBooks Desktop 또는 Enterprise로 중계해 표준 JSON 응답과 오류 원인을 돌려줍니다.",
+    "target": "QuickBooks Desktop 또는 Enterprise 데이터를 웹 서비스와 연결해야 하는 B2B 개발팀",
+    "mvp": [
+      "Windows 로컬 커넥터와 회사 파일 연결",
+      "고객·청구서 읽기 전용 REST 엔드포인트",
+      "웹 요청을 QuickBooks Desktop·Enterprise로 중계",
+      "표준 JSON 응답과 요청별 오류 원인 요약"
+    ],
+    "evidence": "TrustMRR 원본 레코드에 기록된 Conductor의 최근 30일 매출은 $31k입니다.",
+    "evidenceType": "revenue",
+    "anchorName": "Conductor",
+    "anchorDetail": "Conductor는 QuickBooks Desktop·Enterprise용 API를 제공하며, TrustMRR 최근 30일 매출은 $31k입니다.",
+    "appName": "QuickBooks API 중계기",
+    "frontStory": {
+      "persona": "고객사의 QuickBooks Desktop 데이터를 SaaS에 연결해야 하는 백엔드 개발자",
+      "timeline": [
+        {
+          "t": "연동 요구사항 확인",
+          "act": "웹 서비스에서 고객과 청구서 데이터를 읽어야 합니다",
+          "emo": "일반 REST API처럼 연결할 수 있기를 기대합니다",
+          "pain": false
+        },
+        {
+          "t": "데스크톱 연결 시도",
+          "act": "로컬 프로그램과 웹 요청 사이의 인증·전달 코드를 직접 만듭니다",
+          "emo": "요청 오류가 어느 구간에서 났는지 찾기 어렵습니다",
+          "pain": true
+        },
+        {
+          "t": "운영 중 오류 대응",
+          "act": "고객 환경마다 다른 응답을 로그에서 다시 해석합니다",
+          "emo": "회계 데이터보다 중계 코드 유지보수에 더 많은 시간을 씁니다",
+          "pain": true
+        }
+      ]
+    },
+    "todayAction": "샘플 QuickBooks 회사 파일 응답을 사용해 고객·청구서 조회 REST 계약, 로컬 커넥터 모의 중계, 표준 JSON·오류 요약 화면을 만듭니다.",
+    "buildPrompt": "QuickBooks Desktop와 Enterprise를 웹 서비스에 연결하는 읽기 전용 API 중계기 MVP를 만들어줘. Windows 로컬 커넥터가 회사 파일 연결 상태를 보여주고, 웹 서버의 고객·청구서 조회 요청을 받아 모의 QuickBooks 응답으로 중계하게 해. 모든 응답은 표준 JSON 형태로 반환하고 요청 ID, 처리 시간, 성공 여부, 오류가 발생한 구간과 원인을 현황판에 남겨줘. 쓰기·수정 기능은 포함하지 말고 실제 QuickBooks 어댑터를 나중에 교체할 수 있게 인터페이스를 분리해줘.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "오류 가시성",
+    "whyItMatters": "데스크톱 회계 프로그램과 웹 서비스 사이의 연결을 공통 API로 감싸면 팀마다 같은 중계 코드를 다시 만들 필요가 없습니다. 요청별 오류 구간이 보이면 고객 환경에서 발생한 연동 실패도 더 빠르게 진단할 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "오류 가시성",
+      "socialContext": "고객사의 데스크톱 회계 데이터를 SaaS에 연결할 때",
+      "outputShape": "표준 JSON 응답과 요청별 오류 원인 요약",
+      "emotionalResolution": "연동 실패 지점을 바로 찾는 통제감",
+      "anchorMechanism": "QuickBooks Desktop·Enterprise를 API로 연결"
+    },
+    "audiences": [
+      "b2b"
+    ],
+    "platforms": [
+      "plugin",
+      "web"
+    ],
+    "productTypes": [
+      "utility"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0372",
+    "sourceUrl": "https://trustmrr.com/startup/conductor",
+    "sourceDescription": "The best QuickBooks Desktop & Enterprise API on the planet.",
+    "sourceFidelityScore": 84,
+    "sourcePreserved": [
+      "target",
+      "problem",
+      "input",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "원본의 넓은 QuickBooks API 범위를 고객·청구서 읽기 전용으로 좁혔습니다.",
+    "mechanism": {
+      "input": "고객·청구서 조회 요청과 QuickBooks 회사 파일 연결 정보",
+      "process": "로컬 커넥터가 요청을 QuickBooks Desktop·Enterprise로 전달하고 응답을 표준화",
+      "output": "표준 JSON 데이터 또는 요청 구간별 오류 원인"
+    },
+    "specificityScore": 5
+  },
+  {
+    "seed": "saas-cold-outreach",
+    "pain": 69,
+    "format": "digest-bot",
+    "title": "기자 요청 답변 검토 에이전트",
+    "oneliner": "에이전시·창업자·SEO팀이 회사 정보와 기자 요청 조건을 넣으면 에이전트가 관련 기회를 찾고 맞춤 답변 초안을 만들어 사람의 승인 대기함에 올립니다.",
+    "target": "기자·편집 매체 요청에 빠르게 답해 백링크를 확보하려는 에이전시, 창업자, SEO팀",
+    "mvp": [
+      "회사 소개·전문 분야·타깃 키워드 등록",
+      "기자·편집 매체 요청 수집과 관련도 선별",
+      "요청 문맥에 맞춘 답변 초안 생성",
+      "사람의 승인·수정 후 보낼 답변 대기함"
+    ],
+    "evidence": "TrustMRR 원본 레코드에 기록된 Backlinker AI의 최근 30일 매출은 $22k입니다.",
+    "evidenceType": "revenue",
+    "anchorName": "Backlinker AI",
+    "anchorDetail": "Backlinker AI는 기자·편집 매체 아웃리치 기회를 찾고 답변 초안을 작성하며, TrustMRR 최근 30일 매출은 $22k입니다.",
+    "appName": "기자답변 에이전트",
+    "frontStory": {
+      "persona": "여러 고객사의 백링크 기회를 찾고 답변하는 SEO 에이전시 담당자",
+      "timeline": [
+        {
+          "t": "기자 요청 확인",
+          "act": "여러 요청 중 고객사와 관련 있는 주제를 찾습니다",
+          "emo": "좋은 기회가 있을 것 같아 빠르게 확인하고 싶습니다",
+          "pain": false
+        },
+        {
+          "t": "관련 기회 선별",
+          "act": "요청마다 고객사의 전문 분야와 조건을 다시 비교합니다",
+          "emo": "찾는 동안 답변 마감이 지나갈까 조급합니다",
+          "pain": true
+        },
+        {
+          "t": "답변 작성",
+          "act": "같은 회사 소개를 요청 문맥에 맞게 매번 다시 씁니다",
+          "emo": "속도를 내면 부정확한 내용을 보낼까 걱정됩니다",
+          "pain": true
+        }
+      ]
+    },
+    "todayAction": "회사 정보와 기자 요청 목록을 넣으면 관련도 순으로 기회를 정렬하고, 근거가 표시된 답변 초안을 승인 대기함에 올리는 웹 화면을 만듭니다.",
+    "buildPrompt": "기자와 편집 매체의 요청에 답변하는 B2B 아웃리치 에이전트를 만들어줘. 사용자가 회사 소개, 전문 분야, 증명 가능한 사실, 타깃 키워드를 등록하고 기자 요청 목록을 넣으면 관련도와 마감 시간을 기준으로 기회를 정렬해. 각 요청에는 선택 근거와 맞춤 답변 초안을 만들되 등록되지 않은 사실은 생성하지 말고 빈칸으로 표시해. 모든 초안은 사람이 수정·승인하기 전에는 전송할 수 없게 하고 승인 대기, 수정 중, 발송 준비 상태를 한 화면에서 관리하게 해줘.",
+    "source": "source-fidelity-v1",
+    "needSource": "direct",
+    "psychologyPrinciple": "통제감 회복",
+    "whyItMatters": "관련 요청을 먼저 찾고 회사 정보로 초안을 만들면 짧은 답변 마감 안에 더 많은 기회를 검토할 수 있습니다. 전송 전 사람의 승인을 강제하면 빠른 자동화와 사실 정확성을 함께 관리할 수 있습니다.",
+    "differentiationAxis": {
+      "psychology": "통제감 회복",
+      "socialContext": "기자·편집 매체의 답변 마감 전",
+      "outputShape": "관련도 근거가 붙은 답변 초안 승인 대기함",
+      "emotionalResolution": "기회를 놓치지 않으면서 사실을 검토하는 안정감",
+      "anchorMechanism": "관련 아웃리치 기회를 찾고 AI로 답변 초안을 작성"
+    },
+    "audiences": [
+      "b2b"
+    ],
+    "platforms": [
+      "web",
+      "plugin"
+    ],
+    "productTypes": [
+      "ai-agent",
+      "automation"
+    ],
+    "sourceRecordId": "trustmrr-acquire-0002",
+    "sourceUrl": "https://trustmrr.com/startup/backlinker-ai",
+    "sourceDescription": "Backlinker AI automates backlink acquisition through AI-powered reporter and editorial outreach. Built for agencies, founders, and SEO teams, it finds relevant opportunities, drafts responses, and hel",
+    "sourceFidelityScore": 94,
+    "sourcePreserved": [
+      "target",
+      "problem",
+      "input",
+      "process",
+      "output"
+    ],
+    "adaptationChange": "원본의 자동 아웃리치 흐름에 사람이 답변을 승인해야 하는 검토 단계를 하나 추가했습니다.",
+    "mechanism": {
+      "input": "회사 소개·전문 분야·타깃 키워드와 기자 요청 목록",
+      "process": "관련 기회를 선별하고 요청 문맥에 맞는 답변 초안을 작성한 뒤 사람의 승인을 대기",
+      "output": "관련도 근거와 사실 검토 상태가 붙은 답변 초안"
+    },
+    "specificityScore": 5
+  }
+]
