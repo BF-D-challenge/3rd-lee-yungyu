@@ -14,8 +14,14 @@ const config: Config = {
         primary: "var(--primary)",
         gold: "var(--gold)",
         glow: "var(--glow)",
+        deco: "var(--deco-glow)",
+        "deco-soft": "var(--deco-glow-soft)",
         rose: "var(--rose)",
         good: "var(--good)",
+        "axis-source": "var(--axis-source)",
+        "axis-payer": "var(--axis-payer)",
+        "axis-moment": "var(--axis-moment)",
+        "axis-twist": "var(--axis-twist)",
       },
       borderRadius: {
         btn: "var(--r-btn)",
@@ -26,6 +32,7 @@ const config: Config = {
       boxShadow: {
         hard: "var(--shadow-hard)",
         "glow-hero": "var(--glow-hero)",
+        "glow-deco": "var(--glow-deco-hero)",
         glass: "var(--shadow-glass)",
       },
       backdropBlur: {
