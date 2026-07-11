@@ -18,6 +18,17 @@
   --rose: #e0899a; /* 고통(pain) 시맨틱 — flip 카드 앞면 통증 아크 */
   --good: #6fce9f; /* 해결(solution) 시맨틱 — flip 카드 뒷면 */
 
+  /* 장식 글로우 — 카드 오로라·조준 링·검증 라벨. Primary(#ff4458)는 CTA 전용이라 혼용 금지 */
+  --deco-glow: #6db4f5;
+  --deco-glow-soft: rgba(109, 180, 245, 0.16);
+  --glow-deco-hero: 0 0 40px 0 rgba(109, 180, 245, 0.34);
+
+  /* 4카드 축 의미색 (idea-lab 결과 하이라이트·카드 틴트·조준 색) */
+  --axis-source: #6db4f5; /* 검증된 원본 — 블루 */
+  --axis-payer: #7de4be; /* 돈 낼 사람 — 민트 */
+  --axis-moment: #e8c56a; /* 필요한 순간 — 앰버 */
+  --axis-twist: #ff8091; /* 한 끗 변화 — 핑크 */
+
   /* glassmorphism 2.0 — 유색 앰비언트 위 다층 프로스트 글래스 */
   --glass-bg: rgba(255, 255, 255, 0.08);
   --glass-bg-strong: rgba(255, 255, 255, 0.12);

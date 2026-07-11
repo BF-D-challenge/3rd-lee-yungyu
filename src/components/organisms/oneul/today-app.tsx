@@ -149,8 +149,11 @@ export function TodayApp() {
             card={todayCard}
             hasNextCard={Boolean(praiseState.next)}
             nextCardLabel={praiseState.next ? `다음 칭찬은 ${formatDate(praiseState.next.availableAt)}에 열려요` : "잠긴 다음 칭찬이 없어요"}
+            shareActionLabel={request ? "링크 다시 공유하기" : "아이디어 먼저 뽑기"}
             onRequestPraise={requestPraise}
             onRevealSender={praiseState.senderIdentityFakeDoor.status === "available" ? () => openDoor("sender") : undefined}
+            revealSenderHint="30일 뒤엔 무료로 확인할 수 있어요"
+            showForeverAnonymousNote={praiseState.senderIdentityFakeDoor.status === "forbidden"}
             onPreviewNext={praiseState.nextPreviewFakeDoor.status === "available" ? () => openDoor("next") : undefined}
             palette={{ accent: "#ff4458", cardBack: "#3a1830", cardBackLine: "#ff9cab" }}
           />

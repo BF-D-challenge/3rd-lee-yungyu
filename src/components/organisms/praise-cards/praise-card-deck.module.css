@@ -286,14 +286,21 @@
 
 .actions {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
   width: min(100%, 500px);
   margin: 20px auto 0;
+  align-items: start;
 }
 
-.primaryAction,
+.goldEntry {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .secondaryAction,
+.goldAction,
 .shareAction {
   min-height: 46px;
   padding: 0 16px;
@@ -303,10 +310,28 @@
   cursor: pointer;
 }
 
-.primaryAction {
-  border: 0;
-  color: #fff;
-  background: var(--praise-accent);
+.goldAction {
+  border: 1px solid #c9a24f;
+  color: #2b2109;
+  background: linear-gradient(180deg, #f3d98a, #e8c56a);
+  box-shadow: 0 10px 24px rgba(232, 197, 106, 0.28);
+  width: 100%;
+}
+
+.goldHint {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  text-align: center;
+}
+
+.foreverAnonymousNote {
+  align-self: center;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
 }
 
 .secondaryAction {
@@ -315,14 +340,14 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-.primaryAction:focus-visible,
+.goldAction:focus-visible,
 .secondaryAction:focus-visible,
 .shareAction:focus-visible {
   outline: 3px solid rgba(255, 255, 255, 0.85);
   outline-offset: 3px;
 }
 
-.primaryAction:disabled,
+.goldAction:disabled,
 .secondaryAction:disabled,
 .shareAction:disabled {
   cursor: not-allowed;
