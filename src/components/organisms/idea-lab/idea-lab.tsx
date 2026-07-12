@@ -170,7 +170,6 @@ export function IdeaLab({ initialScenarioId, onShare, onViewPraise, className }:
   }, [choiceIndexes, overrides, revealed, scenarioIndex]);
 
   const complete = IDEA_LAB_AXIS_IDS.every((axis) => resolved[axis] !== null);
-  const filledCount = IDEA_LAB_AXIS_IDS.filter((axis) => resolved[axis] !== null).length;
   const aimAxis = IDEA_LAB_AXIS_IDS.find((axis) => !revealed[axis]) ?? null;
   const inactiveAxes = IDEA_LAB_AXIS_IDS.filter((axis) => revealed[axis]);
 
