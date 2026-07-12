@@ -51,6 +51,8 @@ export interface FourCardCellProps {
   onSwap?: () => void;
   /** 루트에 병합할 추가 클래스 */
   className?: string;
+  /** 카드 프레임(aspect-ratio 박스) 폭 제어 — 기본 max-w-[200px]. 모바일 2×2에서 뷰포트 높이 기반 clamp로 대체 */
+  frameClassName?: string;
 }
 
 /* 원본 실측: .flip{transition:transform .72s cubic-bezier(.4,0,.15,1)} */
@@ -79,6 +81,7 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
     onFill,
     onSwap,
     className,
+    frameClassName,
   },
   ref,
 ) {
@@ -167,7 +170,8 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
         ref={ref}
         data-pulse={pulse ? "true" : undefined}
         className={cn(
-          "relative w-full max-w-[200px] self-center transition-transform duration-300",
+          "relative w-full self-center transition-transform duration-300",
+          frameClassName ?? "max-w-[200px]",
           hot && "scale-[1.05]",
         )}
         style={{ aspectRatio: "300 / 485", perspective: "1200px" }}
