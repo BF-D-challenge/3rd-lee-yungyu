@@ -1,22 +1,48 @@
 .root {
+  display: flex;
   min-height: 100dvh;
   color: #f5f5f2;
   color-scheme: dark;
-  background: #0d2a23;
+  background:
+    radial-gradient(120% 60% at 50% -10%, rgba(125, 228, 190, 0.1), transparent 55%),
+    #0d2a23;
+}
+
+.frame {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  width: 100%;
 }
 
 .shell {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   width: 100%;
-  max-width: 760px;
-  margin: 0 auto;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 26px;
   background: #0b1916;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 481px) {
+  .frame {
+    align-items: center;
+    padding: 32px 16px;
+  }
+
+  .shell {
+    flex: none;
+    width: 100%;
+    max-width: 420px;
+    height: min(844px, calc(100dvh - 64px));
+    border: 1px solid rgba(125, 228, 190, 0.16);
+    border-radius: 28px;
+    box-shadow: 0 3px 0 0 rgba(125, 228, 190, 0.5), 0 30px 70px rgba(0, 0, 0, 0.45);
+  }
 }
 
 .appbar {
+  flex: 0 0 auto;
   padding: 20px 20px 0;
 }
 
@@ -38,15 +64,26 @@
   flex: 1;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.12);
+  transition: background 220ms var(--spring, cubic-bezier(0.34, 1.56, 0.64, 1));
 }
 
 .progressDot[data-done="true"] {
   background: var(--praise-receiver-mint, #7de4be);
 }
 
+.stepViewport {
+  position: relative;
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
 .step {
-  padding: 22px 20px 28px;
-  animation: stepIn 420ms cubic-bezier(0.2, 0.75, 0.2, 1) both;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  animation: stepIn 360ms var(--spring, cubic-bezier(0.34, 1.56, 0.64, 1)) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -58,12 +95,26 @@
 @keyframes stepIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateX(14px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
+}
+
+.scrollArea {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 18px 20px 12px;
+  overflow-y: auto;
+}
+
+.ctaDock {
+  flex: 0 0 auto;
+  padding: 12px 20px calc(14px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(11, 25, 22, 0), rgba(11, 25, 22, 0.6) 40%, #0b1916 100%);
 }
 
 .backRow {
@@ -73,21 +124,34 @@
 .backButton {
   padding: 6px 4px;
   border: 0;
+  border-radius: 8px;
   color: rgba(255, 255, 255, 0.56);
   background: transparent;
   font-size: 13px;
   cursor: pointer;
+  transition: color 160ms ease;
 }
 
 .backButton:hover {
   color: rgba(255, 255, 255, 0.85);
 }
 
+.backButton:focus-visible {
+  outline: 2px solid var(--praise-receiver-mint, #7de4be);
+  outline-offset: 3px;
+}
+
+.kicker {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 12px;
+}
+
 .heroTitle {
   margin: 10px 0 0;
-  font-family: Georgia, "Nanum Myeongjo", serif;
-  font-size: clamp(24px, 6vw, 32px);
-  line-height: 1.28;
+  font-family: var(--font-serif), Georgia, "Nanum Myeongjo", serif;
+  font-weight: 600;
+  font-size: clamp(24px, 6.4vw, 32px);
+  line-height: 1.26;
   letter-spacing: -0.02em;
 }
 
@@ -100,11 +164,15 @@
 }
 
 .buildCard {
-  margin-top: 22px;
+  position: relative;
+  margin-top: 20px;
   padding: 16px 18px;
-  border: 1px solid var(--praise-receiver-mint, #7de4be);
+  border: 1px solid rgba(125, 228, 190, 0.4);
   border-radius: 16px;
-  background: rgba(125, 228, 190, 0.08);
+  background:
+    radial-gradient(140% 100% at 0% 0%, rgba(125, 228, 190, 0.14), transparent 60%),
+    rgba(125, 228, 190, 0.05);
+  box-shadow: 0 3px 0 0 rgba(125, 228, 190, 0.42);
 }
 
 .buildLabel {
@@ -122,21 +190,24 @@
 }
 
 .twistNote {
-  margin-top: 16px;
+  margin-top: 14px;
   color: rgba(255, 255, 255, 0.5);
   font-size: 12px;
   line-height: 1.6;
 }
 
 .stepHeading {
-  font-size: 20px;
-  font-weight: 800;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(19px, 5vw, 22px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .stepSub {
   margin: 6px 0 0;
   color: rgba(255, 255, 255, 0.56);
   font-size: 13px;
+  line-height: 1.5;
 }
 
 .praiseGrid {
@@ -147,7 +218,7 @@
 }
 
 .praiseOption {
-  min-height: 84px;
+  min-height: 88px;
   padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 14px;
@@ -157,13 +228,27 @@
   line-height: 1.45;
   text-align: left;
   cursor: pointer;
-  transition: border-color 160ms ease, background 160ms ease;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms var(--spring, cubic-bezier(0.34, 1.56, 0.64, 1)),
+    box-shadow 160ms var(--spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+}
+
+.praiseOption:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.praiseOption:focus-visible {
+  outline: 3px solid var(--praise-receiver-mint, #7de4be);
+  outline-offset: 2px;
 }
 
 .praiseOption[data-selected="true"] {
   border-color: var(--praise-receiver-mint, #7de4be);
   background: rgba(125, 228, 190, 0.12);
-  box-shadow: 0 0 0 1px var(--praise-receiver-mint, #7de4be) inset;
+  box-shadow: 0 3px 0 0 var(--praise-receiver-mint, #7de4be);
+  transform: translateY(-1px);
 }
 
 .praiseHeart {
@@ -172,11 +257,13 @@
 }
 
 .revealSection {
-  margin-top: 22px;
-  padding: 14px 16px;
+  margin-top: 18px;
+  padding: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
+  background:
+    radial-gradient(140% 100% at 0% 0%, rgba(255, 255, 255, 0.05), transparent 60%),
+    rgba(255, 255, 255, 0.02);
 }
 
 .revealTitle {
@@ -190,13 +277,19 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 12px;
+  padding: 4px 2px;
   cursor: pointer;
 }
 
 .revealOption input {
   margin-top: 3px;
   accent-color: var(--praise-receiver-mint, #7de4be);
+}
+
+.revealOption input:focus-visible {
+  outline: 2px solid var(--praise-receiver-mint, #7de4be);
+  outline-offset: 3px;
 }
 
 .revealOptionLabel {
@@ -206,7 +299,7 @@
 
 .senderNameInput {
   width: 100%;
-  height: 42px;
+  height: 44px;
   margin-top: 10px;
   padding: 0 12px;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -214,10 +307,13 @@
   color: inherit;
   background: rgba(0, 0, 0, 0.24);
   outline: none;
+  transition: border-color 160ms ease;
 }
 
-.senderNameInput:focus {
+.senderNameInput:focus-visible {
   border-color: #ff4458;
+  outline: 2px solid rgba(255, 68, 88, 0.4);
+  outline-offset: 2px;
 }
 
 .privacyNote {
@@ -229,7 +325,6 @@
 
 .primaryCta {
   width: 100%;
-  margin-top: 22px;
 }
 
 .sentBadge {
@@ -260,8 +355,9 @@
 
 .sentHeading {
   margin-top: 26px;
+  font-family: var(--font-serif), Georgia, serif;
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 600;
   text-align: center;
 }
 

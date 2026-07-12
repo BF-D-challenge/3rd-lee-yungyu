@@ -122,23 +122,30 @@ export function TodayApp() {
     setDoor(nextDoor);
   };
 
-  return (
-    <main className="min-h-dvh bg-bg text-ink">
-      <nav className="sticky top-0 z-50 border-b border-white/10 bg-bg/90 px-4 py-3 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-4">
-          <button type="button" onClick={() => setView("idea")} className="text-sm font-black text-primary">오늘 해볼까</button>
-          <div className="flex rounded-full border border-white/10 bg-white/[.035] p-1 text-xs font-bold">
-            <button type="button" onClick={() => setView("idea")} className={`rounded-full px-4 py-2 ${view === "idea" ? "bg-primary text-white" : "text-mist"}`}>아이디어 뽑기</button>
-            <button type="button" onClick={() => setView("praise")} className={`rounded-full px-4 py-2 ${view === "praise" ? "bg-primary text-white" : "text-mist"}`}>오늘의 칭찬{records.length ? ` ${records.length}` : ""}</button>
-          </div>
-        </div>
-      </nav>
+  const isIdea = view === "idea";
 
-      {view === "idea" ? (
-        <div className="sm:px-5 sm:py-6"><IdeaLab onShare={shareIdea} /></div>
+  return (
+    <div className="flex min-h-dvh justify-center text-ink">
+      <main
+        className={`relative w-full max-w-[440px] bg-bg shadow-[0_0_0_1px_rgba(255,255,255,.05),0_40px_120px_rgba(0,0,0,.5)] ${
+          isIdea ? "flex h-dvh flex-col overflow-hidden" : "min-h-dvh"
+        }`}
+      >
+        <nav className="sticky top-0 z-50 flex-none border-b border-white/10 bg-bg/90 px-4 py-2.5 backdrop-blur-xl">
+          <div className="flex items-center justify-between gap-3">
+            <button type="button" onClick={() => setView("idea")} className="text-sm font-black text-primary">오늘 해볼까</button>
+            <div className="flex rounded-full border border-white/10 bg-white/[.035] p-1 text-[11px] font-bold">
+              <button type="button" onClick={() => setView("idea")} className={`rounded-full px-3.5 py-1.5 transition-colors ${view === "idea" ? "bg-primary text-white" : "text-mist"}`}>아이디어 뽑기</button>
+              <button type="button" onClick={() => setView("praise")} className={`rounded-full px-3.5 py-1.5 transition-colors ${view === "praise" ? "bg-primary text-white" : "text-mist"}`}>오늘의 칭찬{records.length ? ` ${records.length}` : ""}</button>
+            </div>
+          </div>
+        </nav>
+
+      {isIdea ? (
+        <div className="min-h-0 flex-1"><IdeaLab onShare={shareIdea} onViewPraise={() => setView("praise")} /></div>
       ) : (
-        <section className="px-4 py-7 sm:px-6 sm:py-10">
-          <div className="mx-auto mb-5 max-w-[720px]">
+        <section className="px-4 py-7">
+          <div className="mb-5">
             <p className="text-xs font-black tracking-[.14em] text-primary">DAILY ONE CARD</p>
             <h1 className="mt-2 text-3xl font-bold">매일 익명의 칭찬 한 장</h1>
             <p className="mt-2 text-sm leading-6 text-mist">
@@ -157,16 +164,17 @@ export function TodayApp() {
             onPreviewNext={praiseState.nextPreviewFakeDoor.status === "available" ? () => openDoor("next") : undefined}
             palette={{ accent: "#ff4458", cardBack: "#3a1830", cardBackLine: "#ff9cab" }}
           />
-          {!request && !todayCard ? <p className="mx-auto mt-4 max-w-[720px] text-center text-xs text-caption">먼저 네 장을 뽑아 결과를 공유하면 칭찬을 받을 수 있어요.</p> : null}
+          {!request && !todayCard ? <p className="mt-4 text-center text-xs text-caption">먼저 네 장을 뽑아 결과를 공유하면 칭찬을 받을 수 있어요.</p> : null}
         </section>
       )}
 
-      <FakeDoorSheet
-        open={door !== null}
-        onClose={() => setDoor(null)}
-        product="demand_report"
-        title={door === "sender" ? "이 칭찬을 보낸 사람 확인" : "다음 칭찬 카드 미리 보기"}
-      />
-    </main>
+        <FakeDoorSheet
+          open={door !== null}
+          onClose={() => setDoor(null)}
+          product="demand_report"
+          title={door === "sender" ? "이 칭찬을 보낸 사람 확인" : "다음 칭찬 카드 미리 보기"}
+        />
+      </main>
+    </div>
   );
 }

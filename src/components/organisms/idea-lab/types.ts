@@ -59,5 +59,7 @@ export interface IdeaLabProps {
   initialScenarioId?: string;
   /** 실제 앱에 연결할 때 공유 성공 여부를 돌려준다. 성공한 경우에만 전체 제작 문구가 열린다. */
   onShare?: (payload: IdeaLabSharePayload) => boolean | Promise<boolean>;
+  /** A3 공유 완료 화면의 "오늘의 칭찬 보러가기" — 탭 셸이 뷰 전환을 담당한다. */
+  onViewPraise?: () => void;
   className?: string;
 }

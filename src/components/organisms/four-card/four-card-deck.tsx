@@ -167,21 +167,21 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     const flies = new Set<HTMLDivElement>();
     let WP = { spacing: 1, n: 0 };
 
-    const mobile = () => host.clientWidth < 680;
+    // 앱 전체가 ≤480px 모바일 컬럼으로 통일됨 → 덱은 모바일 파라미터만 사용(반경 640·카드 84×122·슬리버 12px).
+    const mobile = () => true;
     const geom = () => {
       const w = host.clientWidth;
       const h = host.clientHeight;
-      const r = mobile() ? 640 : 1050;
-      const cw = mobile() ? 84 : 100;
-      const ch = mobile() ? 122 : 146;
-      return { w, h, r, cw, ch, cy: h + r - (mobile() ? 150 : 175) }; // 원본 실측: 아펙스 카드 중심 150/175px
+      const r = 640;
+      const cw = 84;
+      const ch = 122;
+      return { w, h, r, cw, ch, cy: h + r - 150 }; // 원본 실측: 아펙스 카드 중심 150px
     };
     const wheelParams = () => {
       const g = geom();
-      const spacing = (((mobile() ? 12 : 14) / g.r) * 180) / Math.PI; // 슬리버 14/12px
-      // +8(데스크톱)/+6(모바일) — mask-image 페이드 뒤로 카드가 부족해 틈이 보이지 않게 하는 culling 버퍼(D9 deckClipFix)
-      const halfVis =
-        (Math.asin(Math.min(0.95, (g.w / 2 + g.cw) / g.r)) * 180) / Math.PI + (mobile() ? 6 : 8);
+      const spacing = ((12 / g.r) * 180) / Math.PI; // 슬리버 12px
+      // +6 — mask-image 페이드 뒤로 카드가 부족해 틈이 보이지 않게 하는 culling 버퍼(D9 deckClipFix)
+      const halfVis = (Math.asin(Math.min(0.95, (g.w / 2 + g.cw) / g.r)) * 180) / Math.PI + 6;
       return { spacing, n: Math.ceil((2 * halfVis) / spacing) };
     };
 

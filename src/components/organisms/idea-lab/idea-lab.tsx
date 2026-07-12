@@ -22,6 +22,8 @@ import { FanDeck, FourCardCell, type DeckCard, type FanDeckHandle } from "../fou
 type ChoiceIndexes = Record<IdeaLabAxisId, number>;
 type Revealed = Record<IdeaLabAxisId, boolean>;
 type Overrides = Partial<Record<IdeaLabAxisId, string>>;
+/** 한 라우트 안에서 한 번에 하나의 화면만 렌더 — 문서형 짬뽕 금지 */
+type Stage = "draw" | "result" | "shared";
 
 const EMPTY_REVEALED: Revealed = { source: false, payer: false, moment: false, twist: false };
 const DEFAULT_CHOICES: ChoiceIndexes = { source: 0, payer: 0, moment: 0, twist: 0 };
@@ -131,7 +133,7 @@ function initialScenarioIndex(initialScenarioId?: string) {
   return index >= 0 ? index : 0;
 }
 
-export function IdeaLab({ initialScenarioId, onShare, className }: IdeaLabProps) {
+export function IdeaLab({ initialScenarioId, onShare, onViewPraise, className }: IdeaLabProps) {
   const [scenarioIndex, setScenarioIndex] = useState(() => initialScenarioIndex(initialScenarioId));
   const [choiceIndexes, setChoiceIndexes] = useState<ChoiceIndexes>(DEFAULT_CHOICES);
   const [revealed, setRevealed] = useState<Revealed>(EMPTY_REVEALED);
@@ -141,6 +143,7 @@ export function IdeaLab({ initialScenarioId, onShare, className }: IdeaLabProps)
   const [busy, setBusy] = useState(false);
   const [hotAxis, setHotAxis] = useState<IdeaLabAxisId | null>(null);
   const [promptUnlocked, setPromptUnlocked] = useState(false);
+  const [stage, setStage] = useState<Stage>("draw");
   const [message, setMessage] = useState("네 장을 먼저 뽑아보세요.");
   const [copied, setCopied] = useState(false);
 
@@ -205,7 +208,7 @@ export function IdeaLab({ initialScenarioId, onShare, className }: IdeaLabProps)
     fillAxis(axis);
     setPromptUnlocked(false);
     if (IDEA_LAB_AXIS_IDS.filter((a) => revealedRef.current[a]).length + 1 >= IDEA_LAB_AXIS_IDS.length) {
-      setMessage("네 장이 완성됐어요. 카드 하나만 바꾸거나 직접 적을 수 있어요.");
+      setMessage("네 장이 완성됐어요. 카드를 탭해 바꾸거나, 네 장으로 결과를 보세요.");
     }
   };
 
@@ -242,7 +245,7 @@ export function IdeaLab({ initialScenarioId, onShare, className }: IdeaLabProps)
     }
     deckRef.current?.hold(false);
     if (!rm) await wait(RESULT_REVEAL_MS);
-    setMessage("네 장이 완성됐어요. 카드 하나만 바꾸거나 직접 적을 수 있어요.");
+    setMessage("네 장이 완성됐어요. 카드를 탭해 바꾸거나, 네 장으로 결과를 보세요.");
     setBusy(false);
   };
 
@@ -251,6 +254,7 @@ export function IdeaLab({ initialScenarioId, onShare, className }: IdeaLabProps)
     if (busy) return;
     setBusy(true);
     setPromptUnlocked(false);
+    setEditorAxis(null);
     if (axis === "source") {
       const nextScenario = nextIndex ?? (scenarioIndex + 1) % IDEA_LAB_SCENARIOS.length;
       setScenarioIndex(nextScenario);
@@ -282,7 +286,16 @@ export function IdeaLab({ initialScenarioId, onShare, className }: IdeaLabProps)
     setPromptUnlocked(false);
     setMessage(`${IDEA_LAB_AXIS_META[editorAxis].label}에 직접 쓴 문장을 넣었어요.`);
     setCustomDraft("");
+    setEditorAxis(null);
   };
+
+  const goResult = () => {
+    if (!selection) return;
+    setEditorAxis(null);
+    setMessage("친구에게 물어보면 전체 제작 문구가 무료로 열려요.");
+    setStage("result");
+  };
+  const goDraw = () => setStage("draw");
 
   const sharePayload = selection
     ? ({
@@ -323,6 +336,7 @@ export function IdeaLab({ initialScenarioId, onShare, className }: IdeaLabProps)
     }
     if (success) {
       setPromptUnlocked(true);
+      setStage("shared");
       setMessage("공유가 끝나 전체 제작 문구를 열었어요.");
     } else {
       setMessage("공유를 마치지 않았어요. 결과는 그대로 보관돼요.");
@@ -344,32 +358,22 @@ export function IdeaLab({ initialScenarioId, onShare, className }: IdeaLabProps)
     : [];
 
   return (
-    <section className={`idea-lab ${className ?? ""}`} aria-label="검증된 원본에서 시작하는 네 장 아이디어 제작기">
+    <section
+      className={`idea-lab ${className ?? ""}`}
+      data-stage={stage}
+      aria-label="검증된 원본에서 시작하는 네 장 아이디어 제작기"
+    >
       <style suppressHydrationWarning>{IDEA_LAB_CSS}</style>
-      <header className="idea-lab__header">
-        <div>
-          <p className="idea-lab__eyebrow">오늘 해볼까 · 새 4카드 제작 흐름</p>
-          <h1>잘되는 제품에서 한 곳만 바꿔보세요.</h1>
-          <p>로그인이나 취향 조사는 없습니다. 네 장을 먼저 뽑고, 마음에 안 드는 장만 바꾸면 됩니다.</p>
-        </div>
-        <div className="idea-lab__platforms" aria-label="다루는 결과 형태">
-          <span>웹</span><span>앱</span><span>플러그인</span>
-        </div>
-      </header>
 
-      <div className={`idea-lab__workspace ${selection ? "has-result" : ""}`}>
-        <div className="idea-lab__maker">
-          <div className="idea-lab__board-head">
-            <div>
-              <p>네 장의 기준</p>
-              <strong>{complete ? "완성 · 한 장씩 바꿀 수 있어요" : `${filledCount} / 4`}</strong>
-            </div>
-            <button type="button" className="idea-lab__draw-button" onClick={drawAll} disabled={busy}>
-              {busy ? "뽑는 중…" : complete ? "↻ 4장 다시 뽑기" : "✦ 4장 한 번에 뽑기"}
-            </button>
-          </div>
+      {/* ── A1 뽑기 스테이지 ─────────────────────────────────────── */}
+      {stage === "draw" ? (
+        <div className="idea-lab__stage idea-lab__stage--draw" data-anim>
+          <header className="idea-lab__hero">
+            <p className="idea-lab__eyebrow">오늘 해볼까 · 네 장으로 시작</p>
+            <h1>잘되는 것에서<br />한 곳만 바꿔요.</h1>
+          </header>
 
-          <div className="idea-lab__slots">
+          <div className="idea-lab__slots" role="list">
             {IDEA_LAB_AXIS_IDS.map((axis, index) => {
               const meta = IDEA_LAB_AXIS_META[axis];
               const value = resolved[axis];
@@ -404,65 +408,20 @@ export function IdeaLab({ initialScenarioId, onShare, className }: IdeaLabProps)
                     badge={value ? undefined : `${index + 1}`}
                     floaty={complete}
                     floatDelay={index}
+                    frameClassName="idea-lab__card-frame"
                     onFill={() => fillAxis(axis)}
-                    onSwap={() => replaceAxis(axis)}
+                    onSwap={() => openEditor(axis)}
                   />
-                  {value ? (
-                    <div className="idea-lab__slot-actions">
-                      <button type="button" onClick={() => replaceAxis(axis)} disabled={busy}>↻ 이 카드만 바꾸기</button>
-                      <button type="button" onClick={() => openEditor(axis)}>직접 쓰기</button>
-                    </div>
-                  ) : null}
                 </article>
               );
             })}
           </div>
 
-          <p className="idea-lab__status" aria-live="polite">{message}</p>
+          <p className="idea-lab__status" aria-live="polite">
+            {complete ? message : busy ? message : "카드를 탭·드래그하거나 한 번에 네 장을 뽑아요."}
+          </p>
 
-          {editorAxis ? (
-            <div className="idea-lab__editor" style={{ "--axis": IDEA_LAB_AXIS_META[editorAxis].color } as CSSProperties}>
-              <div className="idea-lab__editor-head">
-                <div><small>활성 카드</small><h2>{IDEA_LAB_AXIS_META[editorAxis].label}</h2></div>
-                <button type="button" onClick={() => setEditorAxis(null)} aria-label="후보 닫기">×</button>
-              </div>
-              <div className="idea-lab__candidates">
-                {editorOptions.map((option, index) => {
-                  const active = editorAxis === "source"
-                    ? scenario.source.id === option.id && !overrides.source
-                    : choiceIndexes[editorAxis] === index && !overrides[editorAxis];
-                  return (
-                    <button
-                      type="button"
-                      key={option.id}
-                      className={active ? "is-active" : ""}
-                      onClick={() => replaceAxis(editorAxis, index)}
-                      disabled={busy}
-                    >
-                      {editorAxis === "source" ? <small>{PLATFORM_LABELS[(option as IdeaLabSourceOption).platform]}</small> : null}
-                      <b>{option.value}</b>
-                    </button>
-                  );
-                })}
-              </div>
-              <div className="idea-lab__custom">
-                <label htmlFor={`idea-lab-custom-${editorAxis}`}>카드 대신 내 문장 쓰기</label>
-                <div>
-                  <input
-                    id={`idea-lab-custom-${editorAxis}`}
-                    value={customDraft}
-                    onChange={(event) => setCustomDraft(event.target.value)}
-                    onKeyDown={(event) => { if (event.key === "Enter") saveCustom(); }}
-                    placeholder={`${IDEA_LAB_AXIS_META[editorAxis].label}을 한 문장으로 적어주세요`}
-                  />
-                  <button type="button" onClick={saveCustom} disabled={!customDraft.trim()}>적용</button>
-                </div>
-              </div>
-            </div>
-          ) : null}
-
-          <div className="idea-lab__deck">
-            <p>카드는 마스크 안에서 계속 돌아갑니다. 탭하거나 끌어 조준 칸을 채워보세요.</p>
+          <div className="idea-lab__deck" aria-hidden={busy ? "true" : undefined}>
             <div className="idea-lab__deck-stage">
               <FanDeck
                 ref={deckRef}
@@ -478,96 +437,251 @@ export function IdeaLab({ initialScenarioId, onShare, className }: IdeaLabProps)
               />
             </div>
           </div>
-        </div>
 
-        <aside className={`idea-lab__result ${selection ? "is-ready" : ""}`}>
-          <div className="idea-lab__result-head">
-            <div><small>한 끗 결과</small><h2>{selection ? selection.twist.resultTitle : "네 장을 뽑으면 결과가 나와요"}</h2></div>
-            {selection ? <span>{PLATFORM_LABELS[selection.twist.platform]}</span> : null}
+          <div className="idea-lab__cta-bar">
+            {complete ? (
+              <>
+                <button type="button" className="idea-lab__cta idea-lab__cta--primary" onClick={goResult}>
+                  네 장으로 결과 보기 →
+                </button>
+                <button type="button" className="idea-lab__cta idea-lab__cta--ghost" onClick={drawAll} disabled={busy}>
+                  {busy ? "뽑는 중…" : "↻ 4장 다시 뽑기"}
+                </button>
+              </>
+            ) : (
+              <button type="button" className="idea-lab__cta idea-lab__cta--primary" onClick={drawAll} disabled={busy}>
+                {busy ? "뽑는 중…" : "✦ 4장 한 번에 뽑기"}
+              </button>
+            )}
           </div>
-          {selection ? (
-            <>
-              <p className="idea-lab__result-summary">
-                <mark className="is-payer" style={{ "--mark": IDEA_LAB_AXIS_META.payer.color } as CSSProperties}>{selection.payer.value}</mark>이<br />
-                <mark className="is-moment" style={{ "--mark": IDEA_LAB_AXIS_META.moment.color } as CSSProperties}>{selection.moment.value}</mark>에 쓰도록,<br />
-                원본에서 <mark className="is-twist" style={{ "--mark": IDEA_LAB_AXIS_META.twist.color } as CSSProperties}>{selection.twist.value}</mark>만 적용합니다.
-              </p>
 
-              <div className="idea-lab__origin">
-                <span className="idea-lab__origin-label">① 검증된 원본</span>
-                <b>{selection.source.sourceName} · {selection.source.value}</b>
-                <small>근거 · {selection.source.evidence}</small>
-              </div>
-
-              <div className="idea-lab__explain">
-                <b>쉽게 말하면</b>
-                <p>{buildPlainExplain(selection)}</p>
-              </div>
-
-              <div className={`idea-lab__prompt ${promptUnlocked ? "is-unlocked" : ""}`}>
-                <div className="idea-lab__prompt-head">
-                  <div><small>AI 코딩 도구에 붙여 넣을</small><b>제작 문구</b></div>
-                  <span className="idea-lab__prompt-tag">{promptUnlocked ? "전체 공개" : "앞부분 미리보기"}</span>
+          {editorAxis ? (
+            <div className="idea-lab__sheet-wrap" role="dialog" aria-modal="true" aria-label={`${IDEA_LAB_AXIS_META[editorAxis].label} 카드 바꾸기`}>
+              <button type="button" className="idea-lab__sheet-scrim" aria-label="닫기" onClick={() => setEditorAxis(null)} />
+              <div className="idea-lab__sheet" style={{ "--axis": IDEA_LAB_AXIS_META[editorAxis].color } as CSSProperties}>
+                <div className="idea-lab__sheet-head">
+                  <div><small>이 카드</small><h2>{IDEA_LAB_AXIS_META[editorAxis].label}</h2></div>
+                  <div className="idea-lab__sheet-head-actions">
+                    <button type="button" className="idea-lab__sheet-reroll" onClick={() => replaceAxis(editorAxis)} disabled={busy}>↻ 이 카드만 바꾸기</button>
+                    <button type="button" className="idea-lab__sheet-close" onClick={() => setEditorAxis(null)} aria-label="후보 닫기">×</button>
+                  </div>
                 </div>
-                <div className="idea-lab__prompt-copy">
-                  {promptLines.map((line, index) => (
-                    <p key={line} className={!promptUnlocked && index >= 3 ? "is-locked" : ""}>{line}</p>
-                  ))}
-                  {!promptUnlocked ? (
-                    <div className="idea-lab__lock">
-                      <b>공유하면 나머지 제작 문구가 열려요</b>
-                      <span>아이디어 링크를 공유하면 무료로 열려요.</span>
-                    </div>
-                  ) : null}
+                <div className="idea-lab__candidates">
+                  {editorOptions.map((option, index) => {
+                    const active = editorAxis === "source"
+                      ? scenario.source.id === option.id && !overrides.source
+                      : choiceIndexes[editorAxis] === index && !overrides[editorAxis];
+                    return (
+                      <button
+                        type="button"
+                        key={option.id}
+                        className={active ? "is-active" : ""}
+                        onClick={() => replaceAxis(editorAxis, index)}
+                        disabled={busy}
+                      >
+                        {editorAxis === "source" ? <small>{PLATFORM_LABELS[(option as IdeaLabSourceOption).platform]}</small> : null}
+                        <b>{option.value}</b>
+                      </button>
+                    );
+                  })}
                 </div>
-                {promptUnlocked ? (
-                  <button type="button" className="idea-lab__copy" onClick={copyPrompt}>{copied ? "복사했어요 ✓" : "전체 제작 문구 복사"}</button>
-                ) : (
-                  <button type="button" className="idea-lab__share" onClick={shareAndUnlock} disabled={busy}>친구에게 물어보고 전체 열기 ↗</button>
-                )}
+                <div className="idea-lab__custom">
+                  <label htmlFor={`idea-lab-custom-${editorAxis}`}>카드 대신 내 문장 쓰기</label>
+                  <div>
+                    <input
+                      id={`idea-lab-custom-${editorAxis}`}
+                      value={customDraft}
+                      onChange={(event) => setCustomDraft(event.target.value)}
+                      onKeyDown={(event) => { if (event.key === "Enter") saveCustom(); }}
+                      placeholder={`${IDEA_LAB_AXIS_META[editorAxis].label}을 한 문장으로 적어주세요`}
+                    />
+                    <button type="button" onClick={saveCustom} disabled={!customDraft.trim()}>적용</button>
+                  </div>
+                </div>
               </div>
-            </>
-          ) : (
-            <div className="idea-lab__result-empty">
-              <div><i /><i /><i /><i /></div>
-              <p>검증된 원본, 돈 낼 사람, 필요한 순간, 한 끗 변화가 한 문장으로 연결됩니다.</p>
             </div>
-          )}
-        </aside>
-      </div>
+          ) : null}
+        </div>
+      ) : null}
+
+      {/* ── A2 결과 스테이지 ─────────────────────────────────────── */}
+      {stage === "result" && selection ? (
+        <div className="idea-lab__stage idea-lab__stage--result" data-anim>
+          <div className="idea-lab__stage-scroll">
+          <div className="idea-lab__stage-top">
+            <button type="button" className="idea-lab__back" onClick={goDraw}>← 카드 다시 보기</button>
+          </div>
+          <aside className="idea-lab__result is-ready">
+            <div className="idea-lab__result-head">
+              <div><small>한 끗 결과</small><h2>{selection.twist.resultTitle}</h2></div>
+              <span>{PLATFORM_LABELS[selection.twist.platform]}</span>
+            </div>
+
+            <p className="idea-lab__result-summary">
+              <mark className="is-payer" style={{ "--mark": IDEA_LAB_AXIS_META.payer.color } as CSSProperties}>{selection.payer.value}</mark>이<br />
+              <mark className="is-moment" style={{ "--mark": IDEA_LAB_AXIS_META.moment.color } as CSSProperties}>{selection.moment.value}</mark>에 쓰도록,<br />
+              원본에서 <mark className="is-twist" style={{ "--mark": IDEA_LAB_AXIS_META.twist.color } as CSSProperties}>{selection.twist.value}</mark>만 적용합니다.
+            </p>
+
+            <div className="idea-lab__origin">
+              <span className="idea-lab__origin-label">① 검증된 원본</span>
+              <b>{selection.source.sourceName} · {selection.source.value}</b>
+              <small>근거 · {selection.source.evidence}</small>
+            </div>
+
+            <div className="idea-lab__explain">
+              <b>쉽게 말하면</b>
+              <p>{buildPlainExplain(selection)}</p>
+            </div>
+
+            <div className="idea-lab__prompt">
+              <div className="idea-lab__prompt-head">
+                <div><small>AI 코딩 도구에 붙여 넣을</small><b>제작 문구</b></div>
+                <span className="idea-lab__prompt-tag">앞부분 미리보기</span>
+              </div>
+              <div className="idea-lab__prompt-copy">
+                {promptLines.map((line, index) => (
+                  <p key={line} className={index >= 3 ? "is-locked" : ""}>{line}</p>
+                ))}
+                <div className="idea-lab__lock">
+                  <b>공유하면 나머지 제작 문구가 열려요</b>
+                  <span>아이디어 링크를 공유하면 무료로 열려요.</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+          </div>
+
+          <div className="idea-lab__cta-bar idea-lab__cta-bar--stack">
+            <p className="idea-lab__result-note" aria-live="polite">{message}</p>
+            <button type="button" className="idea-lab__cta idea-lab__cta--primary" onClick={shareAndUnlock} disabled={busy}>
+              친구에게 물어보고 전체 열기 ↗
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {/* ── A3 공유 완료 스테이지 ────────────────────────────────── */}
+      {stage === "shared" && selection ? (
+        <div className="idea-lab__stage idea-lab__stage--shared" data-anim>
+          <div className="idea-lab__stage-scroll">
+          <div className="idea-lab__stage-top">
+            <button type="button" className="idea-lab__back" onClick={() => setStage("result")}>← 결과로</button>
+            <span className="idea-lab__done-tag">공유 완료 ✓</span>
+          </div>
+          <aside className="idea-lab__result is-ready">
+            <div className="idea-lab__result-head">
+              <div><small>전체 공개</small><h2>{selection.twist.resultTitle}</h2></div>
+              <span>{PLATFORM_LABELS[selection.twist.platform]}</span>
+            </div>
+            <div className="idea-lab__prompt is-unlocked">
+              <div className="idea-lab__prompt-head">
+                <div><small>AI 코딩 도구에 붙여 넣을</small><b>제작 문구</b></div>
+                <span className="idea-lab__prompt-tag">전체 공개</span>
+              </div>
+              <div className="idea-lab__prompt-copy">
+                {promptLines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
+            </div>
+          </aside>
+          </div>
+
+          <div className="idea-lab__cta-bar idea-lab__cta-bar--stack">
+            <button type="button" className="idea-lab__cta idea-lab__cta--primary" onClick={copyPrompt}>
+              {copied ? "복사했어요 ✓" : "전체 제작 문구 복사"}
+            </button>
+            {onViewPraise ? (
+              <button type="button" className="idea-lab__cta idea-lab__cta--ghost" onClick={onViewPraise}>
+                오늘의 칭찬 보러가기 →
+              </button>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
 
 const IDEA_LAB_CSS = `
-.idea-lab{--lab-bg:#090b10;--lab-surface:#11151d;--lab-surface-2:#171c26;--lab-line:rgba(255,255,255,.11);--lab-text:#f4f1e9;--lab-muted:#9ba2ae;--lab-primary:var(--primary,#ff4458);--lab-deco:var(--deco-glow,#6db4f5);position:relative;display:block;width:100%;max-width:1440px;margin:0 auto;padding:clamp(16px,3vw,42px);padding-bottom:calc(clamp(16px,3vw,42px) + env(safe-area-inset-bottom,0px));overflow:hidden;border:1px solid var(--lab-line);border-radius:28px;background:radial-gradient(900px 460px at 8% -5%,rgba(255,68,88,.1),transparent 70%),radial-gradient(760px 420px at 96% 0%,var(--deco-glow-soft,rgba(109,180,245,.12)),transparent 72%),var(--lab-bg);color:var(--lab-text);font-family:var(--font-sans),system-ui,sans-serif}
+.idea-lab{--lab-bg:#090b10;--lab-surface:#11151d;--lab-surface-2:#171c26;--lab-line:rgba(255,255,255,.11);--lab-hairline:rgba(255,255,255,.16);--lab-text:#f4f1e9;--lab-muted:#9ba2ae;--lab-primary:var(--primary,#ff4458);--lab-deco:var(--deco-glow,#6db4f5);--lab-ease:var(--ease,cubic-bezier(.65,0,.35,1));--lab-spring:var(--spring,cubic-bezier(.34,1.56,.64,1));position:relative;display:block;width:100%;height:100%;color:var(--lab-text);font-family:var(--font-sans),system-ui,sans-serif}
 .idea-lab *{box-sizing:border-box}.idea-lab button,.idea-lab input{font:inherit}.idea-lab button{color:inherit}
-.idea-lab__header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:22px}.idea-lab__eyebrow{margin:0 0 9px;color:var(--lab-primary);font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.idea-lab__header h1{max-width:720px;margin:0;font-family:var(--font-serif),Georgia,serif;font-size:clamp(24px,4vw,46px);line-height:1.05;letter-spacing:-.035em}.idea-lab__header p:not(.idea-lab__eyebrow){max-width:640px;margin:11px 0 0;color:var(--lab-muted);font-size:14px;line-height:1.65}.idea-lab__platforms{display:flex;gap:6px}.idea-lab__platforms span{padding:7px 11px;border:1px solid var(--lab-line);border-radius:999px;background:rgba(255,255,255,.035);color:#c8ced8;font-size:11px;font-weight:800}
-.idea-lab__workspace{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
-.idea-lab__maker,.idea-lab__result{border:1px solid var(--lab-line);border-radius:22px;background:rgba(17,21,29,.82);box-shadow:0 24px 70px rgba(0,0,0,.24)}.idea-lab__maker{padding:16px;overflow:hidden}
-.idea-lab__board-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}.idea-lab__board-head p{margin:0;color:var(--lab-muted);font-size:11px}.idea-lab__board-head strong{display:block;margin-top:3px;font-size:14px}
-.idea-lab__draw-button{min-height:44px;padding:0 16px;border:1px solid var(--lab-primary);border-radius:12px;background:var(--lab-primary);color:#fff!important;box-shadow:0 9px 24px rgba(255,68,88,.24);font-size:12px;font-weight:900;cursor:pointer;transition:transform .2s ease,background .2s ease}.idea-lab__draw-button:hover:not(:disabled){transform:translateY(-2px);background:var(--primary-hover,#ff5f70)}.idea-lab button:disabled{opacity:.5;cursor:wait}
-.idea-lab__slots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.idea-lab__slot{position:relative;min-width:0;display:flex;flex-direction:column;gap:8px}
-.idea-lab__slot-label{display:flex;align-items:center;gap:6px;color:var(--axis);font-size:11px;font-weight:900;letter-spacing:.02em}.idea-lab__slot-label span{display:grid;width:18px;height:18px;place-items:center;border-radius:50%;background:var(--axis-soft);font-size:9px}
-.idea-lab__slot-actions{display:grid;grid-template-columns:1fr auto;gap:6px}.idea-lab__slot-actions button{min-height:30px;padding:0 8px;border:1px solid var(--lab-line);border-radius:9px;background:rgba(255,255,255,.04);font-size:10px;font-weight:800;cursor:pointer;white-space:nowrap}.idea-lab__slot-actions button:first-child{border-color:color-mix(in srgb,var(--axis) 34%,transparent);color:var(--axis)}
-.idea-lab__status{min-height:16px;margin:12px 2px 0;color:var(--lab-muted);font-size:11px}
-.idea-lab__editor{margin-top:12px;padding:12px;border:1px solid color-mix(in srgb,var(--axis) 38%,transparent);border-radius:15px;background:#0c0f15}.idea-lab__editor-head{display:flex;align-items:center;justify-content:space-between}.idea-lab__editor-head small{color:var(--lab-muted);font-size:9px}.idea-lab__editor-head h2{margin:2px 0 0;color:var(--axis);font-size:14px}.idea-lab__editor-head>button{width:30px;height:30px;border:1px solid var(--lab-line);border-radius:50%;background:transparent;color:var(--lab-muted);cursor:pointer}
-.idea-lab__candidates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:10px}.idea-lab__candidates button{min-height:66px;padding:9px;border:1px solid var(--lab-line);border-radius:11px;background:rgba(255,255,255,.025);text-align:left;cursor:pointer}.idea-lab__candidates button.is-active{border-color:var(--axis);background:color-mix(in srgb,var(--axis) 12%,transparent)}.idea-lab__candidates small{display:block;margin-bottom:4px;color:var(--axis);font-size:8.5px}.idea-lab__candidates b{font-size:10px;line-height:1.35}
-.idea-lab__custom{margin-top:11px}.idea-lab__custom label{display:block;margin-bottom:5px;color:var(--lab-muted);font-size:9.5px}.idea-lab__custom>div{display:grid;grid-template-columns:1fr auto;gap:6px}.idea-lab__custom input{min-width:0;height:40px;padding:0 11px;border:1px solid var(--lab-line);border-radius:9px;outline:0;background:#07090d;color:var(--lab-text);font-size:11px}.idea-lab__custom input:focus{border-color:var(--axis)}.idea-lab__custom button{padding:0 14px;border:0;border-radius:9px;background:var(--axis);color:#091016!important;font-size:11px;font-weight:900;cursor:pointer}
-.idea-lab__deck{margin:14px -16px -16px}.idea-lab__deck>p{margin:0 16px 4px;color:#606875;font-size:9px;text-align:center}.idea-lab__deck-stage{position:relative;height:clamp(148px,26vw,200px);overflow:hidden}
-.idea-lab__result{position:relative;padding:18px}
-.idea-lab__result-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--lab-line)}.idea-lab__result-head small{color:var(--lab-primary);font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.idea-lab__result-head h2{margin:5px 0 0;font-family:var(--font-serif),Georgia,serif;font-size:22px;line-height:1.12}.idea-lab__result-head>span{padding:5px 9px;border:1px solid rgba(255,68,88,.35);border-radius:999px;background:rgba(255,68,88,.08);color:#ff9ca8;font-size:9px;font-weight:900;white-space:nowrap}
-.idea-lab__result-summary{margin:16px 0;font-size:15px;font-weight:800;line-height:1.78}.idea-lab__result-summary mark{padding:1px 4px;border-radius:4px;background:color-mix(in srgb,var(--mark) 8%,transparent);box-shadow:inset 0 -2px 0 color-mix(in srgb,var(--mark) 60%,transparent);color:var(--lab-text)}
-.idea-lab__origin{margin-bottom:10px;padding:11px 12px;border:1px solid color-mix(in srgb,var(--lab-deco) 32%,transparent);border-left:3px solid var(--lab-deco);border-radius:11px;background:color-mix(in srgb,var(--lab-deco) 7%,transparent)}.idea-lab__origin-label{display:inline-block;margin-bottom:6px;color:var(--lab-deco);font-size:10px;font-weight:900;letter-spacing:.04em}.idea-lab__origin b{display:block;font-size:12px;line-height:1.45}.idea-lab__origin small{display:block;margin-top:6px;color:#7f8792;font-size:9px}
-.idea-lab__explain{margin-bottom:12px;padding:11px 12px;border:1px solid var(--lab-line);border-radius:11px;background:rgba(255,255,255,.024)}.idea-lab__explain b{font-size:11px}.idea-lab__explain p{margin:6px 0 0;color:#c6ccd5;font-size:11px;line-height:1.55}
-.idea-lab__prompt{overflow:hidden;border:1px solid var(--lab-line);border-radius:13px;background:#090c11}.idea-lab__prompt-head{display:flex;align-items:center;justify-content:space-between;padding:11px;border-bottom:1px solid var(--lab-line)}.idea-lab__prompt-head small{display:block;color:#7e8794;font-size:8.5px}.idea-lab__prompt-head b{display:block;margin-top:2px;font-size:11px}.idea-lab__prompt-tag{color:#828b96;font-size:8.5px}.idea-lab.is-unlocked .idea-lab__prompt-tag,.idea-lab__prompt.is-unlocked .idea-lab__prompt-tag{color:var(--good,#6fce9f)}
-.idea-lab__prompt-copy{position:relative;max-height:150px;overflow:hidden;padding:11px}.idea-lab__prompt.is-unlocked .idea-lab__prompt-copy{max-height:none}.idea-lab__prompt-copy p{margin:0 0 6px;color:#c2c9d2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;line-height:1.5}.idea-lab__prompt-copy p.is-locked{opacity:.72}
-.idea-lab__lock{position:absolute;right:0;bottom:0;left:0;display:grid;height:96px;place-content:end center;padding-bottom:12px;text-align:center;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}.idea-lab__lock::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent,rgba(8,11,17,.97) 52%)}.idea-lab__lock b{font-size:11px}.idea-lab__lock span{margin-top:3px;color:#828a95;font-size:8.5px}
-.idea-lab__share,.idea-lab__copy{width:calc(100% - 22px);min-height:44px;margin:0 11px 11px;border:1px solid var(--lab-primary);border-radius:11px;background:var(--lab-primary);color:#fff!important;font-size:11px;font-weight:900;cursor:pointer;box-shadow:0 9px 24px rgba(255,68,88,.22)}
-.idea-lab__result-empty{display:grid;place-content:center;padding:26px 20px;text-align:center}.idea-lab__result-empty>div{display:flex;justify-content:center;gap:8px}.idea-lab__result-empty i{width:34px;height:52px;border:1px dashed #3a414d;border-radius:8px}.idea-lab__result-empty i:nth-child(1){border-color:var(--axis-source,#6db4f5)}.idea-lab__result-empty i:nth-child(2){border-color:var(--axis-payer,#7de4be)}.idea-lab__result-empty i:nth-child(3){border-color:var(--axis-moment,#e8c56a)}.idea-lab__result-empty i:nth-child(4){border-color:var(--axis-twist,#ff8091)}.idea-lab__result-empty p{max-width:280px;margin:15px auto 0;color:var(--lab-muted);font-size:11px;line-height:1.6}
-@media(min-width:901px){.idea-lab__workspace{grid-template-columns:minmax(0,1.42fr) minmax(320px,.58fr)}.idea-lab__slots{grid-template-columns:repeat(4,minmax(0,1fr))}.idea-lab__board-head{margin-bottom:10px}.idea-lab__result{position:sticky;top:16px}.idea-lab__workspace:not(.has-result) .idea-lab__result{align-self:start}}
-@media(max-width:900px){.idea-lab__result{min-height:0}}
-@media(max-width:560px){.idea-lab{padding:14px;padding-bottom:calc(14px + env(safe-area-inset-bottom,0px));border-radius:0}.idea-lab__header{align-items:flex-start;flex-direction:column;margin-bottom:16px}.idea-lab__platforms{width:100%}.idea-lab__platforms span{flex:1;text-align:center}.idea-lab__maker{padding:12px}.idea-lab__board-head{align-items:stretch;flex-direction:column}.idea-lab__draw-button{width:100%}.idea-lab__slots{gap:10px}.idea-lab__slot-actions button{font-size:9px;padding:0 6px}.idea-lab__candidates{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.idea-lab__candidates button{min-width:74%;scroll-snap-align:start}.idea-lab__result{padding:14px}.idea-lab__result-head h2{font-size:19px}.idea-lab__deck{margin:12px -12px -12px}}
-@media(prefers-reduced-motion:reduce){.idea-lab__draw-button{transition:none}}
+.idea-lab button:focus-visible,.idea-lab input:focus-visible{outline:2px solid var(--lab-primary);outline-offset:2px}
+.idea-lab ::selection{background:color-mix(in srgb,var(--lab-primary) 34%,transparent);color:#fff}
+
+/* ── 스테이지 셸 ── */
+.idea-lab__stage{position:relative;display:flex;flex-direction:column;height:100%;min-height:0}
+@keyframes idea-stage-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.idea-lab__stage[data-anim]{animation:idea-stage-in .32s var(--lab-ease) both}
+.idea-lab__stage--result,.idea-lab__stage--shared{overflow:hidden;padding:0}
+.idea-lab__stage-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:14px 16px 8px}
+.idea-lab__stage-scroll::-webkit-scrollbar{width:.4rem}
+.idea-lab__stage-scroll::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--lab-primary) 26%,transparent);border-radius:1rem}
+
+/* ── A1 뽑기 스테이지 (100dvh 한 화면 완결) ── */
+.idea-lab__stage--draw{padding:12px 16px 0;overflow:hidden}
+.idea-lab__hero{flex:none;padding:4px 2px 6px}
+.idea-lab__eyebrow{margin:0 0 6px;color:var(--lab-primary);font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.idea-lab__hero h1{margin:0;font-family:var(--font-serif),Georgia,serif;font-weight:600;font-size:clamp(26px,7.4vw,38px);line-height:.98;letter-spacing:-.025em;text-wrap:balance}
+.idea-lab__slots{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:min-content;gap:12px;align-content:center;padding:6px 0}
+.idea-lab__slot{position:relative;min-width:0;display:flex;flex-direction:column;gap:6px}
+.idea-lab__card-frame{max-width:min(42vw,14.6vh)}
+.idea-lab__slot-label{display:flex;align-items:center;gap:6px;color:var(--axis);font-size:10.5px;font-weight:900;letter-spacing:.02em}.idea-lab__slot-label span{display:grid;width:17px;height:17px;place-items:center;border-radius:50%;background:var(--axis-soft);font-size:9px}
+.idea-lab__status{flex:none;min-height:15px;margin:2px 2px 6px;color:var(--lab-muted);font-size:11px;text-align:center;text-wrap:balance}
+.idea-lab__deck{flex:none;position:relative;height:clamp(120px,20vh,158px);margin:0 -16px -18px}
+.idea-lab__deck-stage{position:absolute;inset:0;overflow:hidden}
+.idea-lab__cta-bar{flex:none;position:sticky;bottom:0;z-index:4;display:grid;gap:8px;padding:12px 0 calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--lab-bg) 62%,transparent)}
+.idea-lab__stage--draw .idea-lab__cta-bar{grid-template-columns:1fr auto}
+.idea-lab__stage--draw .idea-lab__cta-bar:has(.idea-lab__cta--ghost){grid-template-columns:1fr auto}
+.idea-lab__stage--draw .idea-lab__cta-bar:not(:has(.idea-lab__cta--ghost)){grid-template-columns:1fr}
+.idea-lab__cta{min-height:48px;padding:0 18px;border-radius:12px;font-size:13px;font-weight:900;cursor:pointer;transition:transform .16s var(--lab-spring),box-shadow .16s var(--lab-spring),background .18s ease,border-color .18s ease}
+.idea-lab__cta--primary{border:1px solid var(--lab-primary);background:var(--lab-primary);color:#fff!important;box-shadow:0 3px 0 0 var(--primary-pressed,#e63d50),0 12px 26px rgba(255,68,88,.26)}
+.idea-lab__cta--primary:hover:not(:disabled){background:var(--primary-hover,#ff5f70)}
+.idea-lab__cta--primary:active:not(:disabled){transform:translateY(2px);box-shadow:0 1px 0 0 var(--primary-pressed,#e63d50)}
+.idea-lab__cta--ghost{border:1px solid var(--lab-hairline);background:rgba(255,255,255,.04);color:var(--lab-text);white-space:nowrap}
+.idea-lab__cta--ghost:hover:not(:disabled){border-color:color-mix(in srgb,var(--lab-primary) 42%,transparent)}
+.idea-lab__cta--ghost:active:not(:disabled){transform:translateY(2px)}
+.idea-lab__cta:disabled{opacity:.55;cursor:wait}
+.idea-lab__cta-bar--stack{grid-template-columns:1fr}
+.idea-lab__result-note{margin:0;color:var(--lab-muted);font-size:11px;text-align:center;text-wrap:balance}
+.idea-lab__stage--result .idea-lab__cta-bar,.idea-lab__stage--shared .idea-lab__cta-bar{position:static;flex:none;padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--lab-line);background:linear-gradient(to top,var(--lab-bg),color-mix(in srgb,var(--lab-bg) 88%,transparent))}
+
+/* ── 바텀 시트 (카드 바꾸기 / 직접 쓰기) ── */
+.idea-lab__sheet-wrap{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;justify-content:flex-end}
+.idea-lab__sheet-scrim{flex:1;border:0;background:rgba(4,6,10,.62);cursor:pointer;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);animation:idea-fade .18s ease both}
+@keyframes idea-fade{from{opacity:0}to{opacity:1}}
+@keyframes idea-sheet-up{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+.idea-lab__sheet{border-top:1px solid color-mix(in srgb,var(--axis) 42%,transparent);border-radius:20px 20px 0 0;padding:14px 14px calc(16px + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,var(--lab-surface-2),var(--lab-surface));box-shadow:0 -14px 40px rgba(0,0,0,.5);animation:idea-sheet-up .26s var(--lab-ease) both}
+.idea-lab__sheet-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.idea-lab__sheet-head small{color:var(--lab-muted);font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.idea-lab__sheet-head h2{margin:2px 0 0;color:var(--axis);font-size:16px;font-weight:800}
+.idea-lab__sheet-head-actions{display:flex;align-items:center;gap:7px}
+.idea-lab__sheet-reroll{min-height:34px;padding:0 11px;border:1px solid color-mix(in srgb,var(--axis) 40%,transparent);border-radius:10px;background:color-mix(in srgb,var(--axis) 12%,transparent);color:var(--axis);font-size:11px;font-weight:800;cursor:pointer}
+.idea-lab__sheet-close{width:32px;height:32px;flex:none;border:1px solid var(--lab-line);border-radius:50%;background:transparent;color:var(--lab-muted);font-size:15px;cursor:pointer}
+.idea-lab__candidates{display:flex;gap:8px;overflow-x:auto;margin-top:12px;padding-bottom:4px;scroll-snap-type:x mandatory}
+.idea-lab__candidates::-webkit-scrollbar{height:.3rem}.idea-lab__candidates::-webkit-scrollbar-thumb{background:var(--lab-line);border-radius:1rem}
+.idea-lab__candidates button{flex:0 0 72%;min-height:70px;padding:11px;border:1px solid var(--lab-line);border-radius:12px;background:rgba(255,255,255,.03);text-align:left;cursor:pointer;scroll-snap-align:start;transition:border-color .16s ease,transform .16s var(--lab-spring)}
+.idea-lab__candidates button:active{transform:scale(.98)}
+.idea-lab__candidates button.is-active{border-color:var(--axis);background:color-mix(in srgb,var(--axis) 14%,transparent)}
+.idea-lab__candidates small{display:block;margin-bottom:5px;color:var(--axis);font-size:9px;font-weight:800}.idea-lab__candidates b{font-size:12px;line-height:1.4;font-weight:700}
+.idea-lab__custom{margin-top:13px}.idea-lab__custom label{display:block;margin-bottom:6px;color:var(--lab-muted);font-size:10px}.idea-lab__custom>div{display:grid;grid-template-columns:1fr auto;gap:7px}.idea-lab__custom input{min-width:0;height:44px;padding:0 12px;border:1px solid var(--lab-line);border-radius:11px;outline:0;background:#07090d;color:var(--lab-text);font-size:12px}.idea-lab__custom input:focus{border-color:var(--axis)}.idea-lab__custom button{padding:0 16px;border:0;border-radius:11px;background:var(--axis);color:#091016!important;font-size:12px;font-weight:900;cursor:pointer}.idea-lab__custom button:disabled{opacity:.5}
+
+/* ── A2/A3 상단 ── */
+.idea-lab__stage-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.idea-lab__back{min-height:38px;padding:0 13px;border:1px solid var(--lab-hairline);border-radius:pill;border-radius:999px;background:rgba(255,255,255,.04);color:var(--lab-text);font-size:12px;font-weight:800;cursor:pointer;transition:transform .16s var(--lab-spring),border-color .16s ease}
+.idea-lab__back:hover{border-color:color-mix(in srgb,var(--lab-primary) 40%,transparent)}.idea-lab__back:active{transform:translateX(-2px)}
+.idea-lab__done-tag{padding:6px 11px;border:1px solid color-mix(in srgb,var(--good,#6fce9f) 42%,transparent);border-radius:999px;background:color-mix(in srgb,var(--good,#6fce9f) 12%,transparent);color:var(--good,#6fce9f);font-size:11px;font-weight:900}
+
+/* ── 결과 패널 (moon-panel급 표면) ── */
+.idea-lab__result{position:relative;border:1px solid var(--lab-hairline);border-radius:20px;padding:18px;background:radial-gradient(120% 80% at 50% -8%,color-mix(in srgb,var(--lab-deco) 12%,transparent),transparent 52%),linear-gradient(168deg,var(--lab-surface-2),var(--lab-surface) 72%);box-shadow:0 3px 0 0 rgba(0,0,0,.35),0 24px 60px rgba(0,0,0,.4)}
+.idea-lab__result-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--lab-line)}.idea-lab__result-head small{color:var(--lab-primary);font-size:9px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.idea-lab__result-head h2{margin:6px 0 0;font-family:var(--font-serif),Georgia,serif;font-weight:600;font-size:clamp(23px,6.4vw,30px);line-height:1.1;letter-spacing:-.02em;text-wrap:balance}.idea-lab__result-head>span{flex:none;padding:5px 10px;border:1px solid rgba(255,68,88,.35);border-radius:999px;background:rgba(255,68,88,.08);color:#ff9ca8;font-size:10px;font-weight:900;white-space:nowrap}
+.idea-lab__result-summary{margin:16px 0;font-size:16px;font-weight:800;line-height:1.8}.idea-lab__result-summary mark{padding:1px 5px;border-radius:5px;background:color-mix(in srgb,var(--mark) 9%,transparent);box-shadow:inset 0 -2px 0 color-mix(in srgb,var(--mark) 62%,transparent);color:var(--lab-text)}
+.idea-lab__origin{margin-bottom:11px;padding:12px 13px;border:1px solid color-mix(in srgb,var(--lab-deco) 32%,transparent);border-left:3px solid var(--lab-deco);border-radius:12px;background:color-mix(in srgb,var(--lab-deco) 7%,transparent)}.idea-lab__origin-label{display:inline-block;margin-bottom:6px;color:var(--lab-deco);font-size:10px;font-weight:900;letter-spacing:.04em}.idea-lab__origin b{display:block;font-size:13px;line-height:1.5;font-weight:700}.idea-lab__origin small{display:block;margin-top:7px;color:#7f8792;font-size:10px;line-height:1.5}
+.idea-lab__explain{margin-bottom:12px;padding:12px 13px;border:1px solid var(--lab-line);border-radius:12px;background:rgba(255,255,255,.024)}.idea-lab__explain b{font-size:12px}.idea-lab__explain p{margin:7px 0 0;color:#c6ccd5;font-size:12px;line-height:1.6}
+.idea-lab__prompt{overflow:hidden;border:1px solid var(--lab-line);border-radius:13px;background:#090c11}.idea-lab__prompt-head{display:flex;align-items:center;justify-content:space-between;padding:12px;border-bottom:1px solid var(--lab-line)}.idea-lab__prompt-head small{display:block;color:#7e8794;font-size:9px}.idea-lab__prompt-head b{display:block;margin-top:2px;font-size:12px}.idea-lab__prompt-tag{color:#828b96;font-size:9px;font-weight:800}.idea-lab__prompt.is-unlocked .idea-lab__prompt-tag{color:var(--good,#6fce9f)}
+.idea-lab__prompt-copy{position:relative;max-height:170px;overflow:hidden;padding:12px}.idea-lab__prompt.is-unlocked .idea-lab__prompt-copy{max-height:none}.idea-lab__prompt-copy p{margin:0 0 7px;color:#c2c9d2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;line-height:1.55}.idea-lab__prompt-copy p.is-locked{opacity:.72}
+.idea-lab__lock{position:absolute;right:0;bottom:0;left:0;display:grid;height:104px;place-content:end center;padding-bottom:13px;text-align:center;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}.idea-lab__lock::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent,rgba(9,12,17,.97) 52%)}.idea-lab__lock b{font-size:12px}.idea-lab__lock span{margin-top:4px;color:#828a95;font-size:9.5px}
+
+/* prefers-reduced-motion */
+@media(prefers-reduced-motion:reduce){.idea-lab__stage[data-anim]{animation:none}.idea-lab__sheet,.idea-lab__sheet-scrim{animation:none}.idea-lab__cta,.idea-lab__back,.idea-lab__candidates button{transition:none}}
 `;

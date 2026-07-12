@@ -29,6 +29,18 @@ async function openIdeaLab(page: Page) {
   return lab;
 }
 
+/** A1(뽑기) → A2(결과) 스테이지 전환 */
+async function goResult(page: Page) {
+  await page.getByRole("button", { name: /네 장으로 결과 보기/ }).click();
+  await expect(page.locator(".idea-lab__stage--result")).toBeVisible();
+}
+
+/** 채워진 카드를 탭해 바꾸기/직접쓰기 바텀 시트를 연다 */
+async function openCardSheet(page: Page, label: (typeof AXIS_LABELS)[number]) {
+  await axisCard(page, label).locator(".idea-lab__card-frame button").click();
+  await expect(page.getByRole("dialog")).toBeVisible();
+}
+
 async function cardValue(page: Page, label: (typeof AXIS_LABELS)[number]) {
   const card = axisCard(page, label);
   await expect(card).toHaveAttribute("data-value", /.+/);
@@ -55,12 +67,15 @@ async function assertShareEvents(page: Page, method: "native" | "clipboard") {
 }
 
 test.describe("아이디어 제작과 칭찬 요청 공유", () => {
-  test("Scenario 1. 첫 방문에서 네 장을 뽑고 제작 문구의 앞 3줄만 읽는다", async ({ page }) => {
+  test("Scenario 1. 뽑기 화면에서 네 장을 뽑고, 결과 화면으로 전환해 앞 3줄만 읽는다", async ({ page }) => {
     const lab = await openIdeaLab(page);
 
+    // A1 뽑기 스테이지는 오직 슬롯·덱·뽑기 CTA만 — 결과 요소는 노출되지 않는다.
     await expect(page).toHaveURL(/\/$/);
     await expect(page.getByRole("button", { name: /로그인|Google로 계속/ })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: /로그인|취향 조사/ })).toHaveCount(0);
+    await expect(page.locator(".idea-lab__stage--draw")).toBeVisible();
+    await expect(page.locator(".idea-lab__result")).toHaveCount(0);
 
     for (const label of AXIS_LABELS) {
       await expect(axisCard(page, label)).toBeVisible();
@@ -72,8 +87,13 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
       expect(await cardValue(page, label)).not.toBe("");
     }
 
-    const result = page.locator("aside.idea-lab__result");
-    await expect(result.locator(".idea-lab__result-head h2")).not.toHaveText("네 장을 뽑으면 결과가 나와요");
+    // A2 결과 스테이지로 화면 전환 — 뽑기 슬롯은 사라진다.
+    await goResult(page);
+    await expect(page.locator(".idea-lab__stage--draw")).toHaveCount(0);
+    await expect(page.locator("article.idea-lab__slot")).toHaveCount(0);
+
+    const result = page.locator(".idea-lab__stage--result aside.idea-lab__result");
+    await expect(result.locator(".idea-lab__result-head h2")).not.toHaveText("");
     await expect(result.locator(".idea-lab__result-summary")).not.toHaveText("");
     await expect(result.locator(".idea-lab__result-head > span")).toHaveText(/^(웹|앱|플러그인)$/);
     await expect(result.locator(".idea-lab__origin-label")).toHaveText("① 검증된 원본");
@@ -89,7 +109,6 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
 
     const lockedLines = result.locator(".idea-lab__prompt-copy > p.is-locked");
     await expect(lockedLines).toHaveCount(4);
-    // 잠금은 개별 줄 blur가 아니라 고정 높이 + 그라데이션 오버레이(backdrop blur)로 처리한다.
     const lock = result.locator(".idea-lab__lock");
     await expect(lock).toBeVisible();
     expect(await lock.evaluate((element) => {
@@ -97,23 +116,32 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
       return `${style.backdropFilter} ${(style as CSSStyleDeclaration & { webkitBackdropFilter?: string }).webkitBackdropFilter ?? ""}`;
     })).toContain("blur");
     await expect(result.getByText("공유하면 나머지 제작 문구가 열려요", { exact: true })).toBeVisible();
+
+    // 뒤로가기 → 카드 상태를 유지한 채 A1로 복귀
+    await page.getByRole("button", { name: /카드 다시 보기/ }).click();
+    await expect(page.locator(".idea-lab__stage--draw")).toBeVisible();
+    await expect(lab.locator("article.idea-lab__slot.is-filled")).toHaveCount(4);
   });
 
-  test("Scenario 2. 돈 낼 사람만 교체하고 열린 제작 문구를 다시 잠근다", async ({ page }) => {
+  test("Scenario 2. 돈 낼 사람만 교체하면 열렸던 제작 문구가 다시 잠긴다", async ({ page }) => {
     await installShareMock(page, "native");
     await openIdeaLab(page);
     await drawAll(page);
 
-    const result = page.locator("aside.idea-lab__result");
     const beforeCards = await cardValues(page);
-    const beforeMarks = await result.locator(".idea-lab__result-summary mark").allTextContents();
-    const beforeTitle = await result.locator(".idea-lab__result-head h2").innerText();
-    const beforePlatform = await result.locator(".idea-lab__result-head > span").innerText();
 
-    await result.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
-    await expect(result.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
+    // 결과 → 공유 → 공유 완료(A3)에서 전체 문구가 열린다.
+    await goResult(page);
+    const beforeMarks = await page.locator(".idea-lab__result-summary mark").allTextContents();
+    await page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
+    await expect(page.locator(".idea-lab__stage--shared")).toBeVisible();
+    await expect(page.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
 
-    await axisCard(page, "돈 낼 사람").getByRole("button", { name: /이 카드만 바꾸기/ }).click();
+    // A1로 돌아가 돈 낼 사람 카드만 다른 후보로 교체
+    await page.getByRole("button", { name: /결과로/ }).click();
+    await page.getByRole("button", { name: /카드 다시 보기/ }).click();
+    await openCardSheet(page, "돈 낼 사람");
+    await page.locator(".idea-lab__candidates button:not(.is-active)").first().click();
     await expect(page.getByText("돈 낼 사람 카드만 바꿨어요.", { exact: true })).toBeVisible();
 
     const afterCards = await cardValues(page);
@@ -122,24 +150,21 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     expect(afterCards["필요한 순간"]).toBe(beforeCards["필요한 순간"]);
     expect(afterCards["한 끗 변화"]).toBe(beforeCards["한 끗 변화"]);
 
-    const afterMarks = await result.locator(".idea-lab__result-summary mark").allTextContents();
+    // 다시 결과로 가면 문구는 잠겨 있고(공유 CTA 재노출), 첫 mark(돈 낼 사람)만 바뀐다.
+    await goResult(page);
+    const afterMarks = await page.locator(".idea-lab__result-summary mark").allTextContents();
     expect(afterMarks[0]).not.toBe(beforeMarks[0]);
     expect(afterMarks.slice(1)).toEqual(beforeMarks.slice(1));
-    await expect(result.locator(".idea-lab__result-head h2")).toHaveText(beforeTitle);
-    await expect(result.locator(".idea-lab__result-head > span")).toHaveText(beforePlatform);
-
-    await expect(result.getByRole("button", { name: /친구에게 물어보고 전체 열기/ })).toBeEnabled();
-    await expect(result.getByRole("button", { name: "전체 제작 문구 복사" })).toHaveCount(0);
-    await expect(result.locator(".idea-lab__prompt-copy > p.is-locked")).toHaveCount(4);
+    await expect(page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ })).toBeEnabled();
+    await expect(page.getByRole("button", { name: "전체 제작 문구 복사" })).toHaveCount(0);
+    await expect(page.locator(".idea-lab__prompt-copy > p.is-locked")).toHaveCount(4);
   });
 
   test("Scenario 3. 필요한 순간을 직접 입력하고 빈 문장은 적용하지 않는다", async ({ page }) => {
     await openIdeaLab(page);
     await drawAll(page);
 
-    const momentCard = axisCard(page, "필요한 순간");
-    await momentCard.getByRole("button", { name: "직접 쓰기" }).click();
-
+    await openCardSheet(page, "필요한 순간");
     const input = page.getByLabel("카드 대신 내 문장 쓰기");
     const apply = page.getByRole("button", { name: "적용", exact: true });
     await expect(input).toBeVisible();
@@ -152,21 +177,23 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(apply).toBeEnabled();
     await apply.click();
 
-    await expect(momentCard).toHaveAttribute("data-value", customMoment);
+    await expect(axisCard(page, "필요한 순간")).toHaveAttribute("data-value", customMoment);
+    await goResult(page);
     await expect(
-      page.locator("aside.idea-lab__result").getByText(customMoment, { exact: true }),
+      page.locator(".idea-lab__result-summary").getByText(customMoment, { exact: true }),
     ).toBeVisible();
   });
 
-  test("Scenario 4a. native 공유 성공 후 제작 문구를 열고 완료 이벤트를 기록한다", async ({ page }) => {
+  test("Scenario 4a. native 공유 성공 후 공유 완료 화면에서 전체 문구를 연다", async ({ page }) => {
     await installShareMock(page, "native");
     await openIdeaLab(page);
     await drawAll(page);
+    await goResult(page);
 
-    const result = page.locator("aside.idea-lab__result");
-    await result.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
-    await expect(result.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
-    await expect(result.locator(".idea-lab__prompt-copy > p.is-locked")).toHaveCount(0);
+    await page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
+    await expect(page.locator(".idea-lab__stage--shared")).toBeVisible();
+    await expect(page.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
+    await expect(page.locator(".idea-lab__prompt-copy > p.is-locked")).toHaveCount(0);
 
     const calls = await shareCalls(page);
     expect(calls).toHaveLength(1);
@@ -175,15 +202,16 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await assertShareEvents(page, "native");
   });
 
-  test("Scenario 4b. clipboard 폴백 공유도 별도 방식으로 기록하고 제작 문구를 연다", async ({ page }) => {
+  test("Scenario 4b. clipboard 폴백 공유도 별도 방식으로 기록하고 문구를 연다", async ({ page }) => {
     await installShareMock(page, "clipboard");
     await openIdeaLab(page);
     await drawAll(page);
+    await goResult(page);
 
-    const result = page.locator("aside.idea-lab__result");
-    await result.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
-    await expect(result.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
-    await expect(result.locator(".idea-lab__prompt-copy > p.is-locked")).toHaveCount(0);
+    await page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
+    await expect(page.locator(".idea-lab__stage--shared")).toBeVisible();
+    await expect(page.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
+    await expect(page.locator(".idea-lab__prompt-copy > p.is-locked")).toHaveCount(0);
 
     const calls = await shareCalls(page);
     const writes = await clipboardWrites(page);
@@ -195,7 +223,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await assertShareEvents(page, "clipboard");
   });
 
-  test("Scenario 5. 공유 취소 후 결과를 유지하고 동일 URL로 다시 공유한다", async ({ page }) => {
+  test("Scenario 5. 공유 취소 후 결과 화면을 유지하고 동일 URL로 다시 공유한다", async ({ page }) => {
     await page.addInitScript(() => {
       const state = window as typeof window & {
         __shareCalls?: ShareData[];
@@ -227,16 +255,18 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
 
     await openIdeaLab(page);
     await drawAll(page);
-    const result = page.locator("aside.idea-lab__result");
+    await goResult(page);
+    const result = page.locator(".idea-lab__stage--result aside.idea-lab__result");
     const titleBeforeCancel = await result.locator(".idea-lab__result-head h2").innerText();
     const summaryBeforeCancel = await result.locator(".idea-lab__result-summary").textContent();
 
-    await result.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
+    await page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
     await expect(page.getByText("공유를 마치지 않았어요. 결과는 그대로 보관돼요.", { exact: true })).toBeVisible();
-    await expect(result.locator(".idea-lab__prompt-copy > p.is-locked")).toHaveCount(4);
+    await expect(page.locator(".idea-lab__stage--result")).toBeVisible();
+    await expect(page.locator(".idea-lab__prompt-copy > p.is-locked")).toHaveCount(4);
     await expect(result.locator(".idea-lab__result-head h2")).toHaveText(titleBeforeCancel);
     expect(await result.locator(".idea-lab__result-summary").textContent()).toBe(summaryBeforeCancel);
-    await expect(result.getByRole("button", { name: /친구에게 물어보고 전체 열기/ })).toBeEnabled();
+    await expect(page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ })).toBeEnabled();
     expect(await clipboardWrites(page)).toHaveLength(0);
 
     const cancelledEvents = await trackedEvents(page);
@@ -248,8 +278,9 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     if (!firstCalls[0].url) throw new Error("취소된 공유 payload에 URL이 없습니다.");
     const firstUrl = firstCalls[0].url;
 
-    await result.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
-    await expect(result.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
+    await page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
+    await expect(page.locator(".idea-lab__stage--shared")).toBeVisible();
+    await expect(page.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
 
     const retriedCalls = await shareCalls(page);
     expect(retriedCalls).toHaveLength(2);
@@ -264,7 +295,6 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
       share_method: "native",
     });
 
-    // 같은 결과의 취소 재시도는 최초에 만든 칭찬 요청 URL을 그대로 재사용해야 한다.
     expect(retriedCalls[1].url).toBe(firstUrl);
   });
 
@@ -272,6 +302,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await installShareMock(page, "native");
     await openIdeaLab(page);
     await drawAll(page);
+    await goResult(page);
 
     await page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
     await expect(page.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
@@ -294,15 +325,12 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(receiver.getByRole("heading", { name: saved.card.title })).toBeVisible();
     await expect(receiver.getByText(saved.card.summary, { exact: true })).toBeVisible();
     await expect(receiver.getByText(saved.card.smallestBuild, { exact: true })).toBeVisible();
-    // 칭찬 수신 화면은 twist를 "원본에서 딱 하나 바꾼 점 · …" 접두와 함께 렌더한다.
     await expect(receiver.getByText(saved.card.twist, { exact: false })).toBeVisible();
 
-    // Flow B(칭찬 수신) UI는 병렬로 개편 중이라 intro 단계가 있을 수도 없을 수도 있다 — 있으면 통과한다.
     const introCta = receiver.getByRole("button", { name: "익명 응원 보내기" });
     if (await introCta.count()) await introCta.first().click();
 
     await expect(receiver.getByRole("heading", { name: "칭찬 카드 한 장을 골라주세요." })).toBeVisible();
-    // 4개의 긍정 칭찬이 각각 버튼으로 열린다(장식 하트는 aria-hidden이라 접근성 이름에 영향 없음).
     for (const praise of PRAISE_OPTIONS) {
       await expect(receiver.getByRole("button", { name: praise, exact: true })).toBeVisible();
     }
@@ -338,6 +366,8 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     expect(axisColors).not.toContain(theme.primary);
 
     await drawAll(page);
+    await goResult(page);
+    await page.mouse.move(0, 0); // 방금 클릭한 위치의 :hover 색이 잡히지 않도록 포인터를 치운다
     await expect(page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }))
       .toHaveCSS("background-color", "rgb(255, 68, 88)");
   });
