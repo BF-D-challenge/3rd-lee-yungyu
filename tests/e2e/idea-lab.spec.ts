@@ -133,7 +133,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     // 결과 → 공유 → 공유 완료(A3)에서 전체 문구가 열린다.
     await goResult(page);
     const beforeMarks = await page.locator(".idea-lab__result-summary mark").allTextContents();
-    await page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
+    await page.getByRole("button", { name: /링크 공유하고 전체 문구 열기/ }).click();
     await expect(page.locator(".idea-lab__stage--shared")).toBeVisible();
     await expect(page.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
 
@@ -155,7 +155,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     const afterMarks = await page.locator(".idea-lab__result-summary mark").allTextContents();
     expect(afterMarks[0]).not.toBe(beforeMarks[0]);
     expect(afterMarks.slice(1)).toEqual(beforeMarks.slice(1));
-    await expect(page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ })).toBeEnabled();
+    await expect(page.getByRole("button", { name: /링크 공유하고 전체 문구 열기/ })).toBeEnabled();
     await expect(page.getByRole("button", { name: "전체 제작 문구 복사" })).toHaveCount(0);
     await expect(page.locator(".idea-lab__prompt-copy > p.is-locked")).toHaveCount(4);
   });
@@ -190,7 +190,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await drawAll(page);
     await goResult(page);
 
-    await page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
+    await page.getByRole("button", { name: /링크 공유하고 전체 문구 열기/ }).click();
     await expect(page.locator(".idea-lab__stage--shared")).toBeVisible();
     await expect(page.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
     await expect(page.locator(".idea-lab__prompt-copy > p.is-locked")).toHaveCount(0);
@@ -208,7 +208,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await drawAll(page);
     await goResult(page);
 
-    await page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
+    await page.getByRole("button", { name: /링크 공유하고 전체 문구 열기/ }).click();
     await expect(page.locator(".idea-lab__stage--shared")).toBeVisible();
     await expect(page.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
     await expect(page.locator(".idea-lab__prompt-copy > p.is-locked")).toHaveCount(0);
@@ -260,13 +260,13 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     const titleBeforeCancel = await result.locator(".idea-lab__result-head h2").innerText();
     const summaryBeforeCancel = await result.locator(".idea-lab__result-summary").textContent();
 
-    await page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
+    await page.getByRole("button", { name: /링크 공유하고 전체 문구 열기/ }).click();
     await expect(page.getByText("공유를 마치지 않았어요. 결과는 그대로 보관돼요.", { exact: true })).toBeVisible();
     await expect(page.locator(".idea-lab__stage--result")).toBeVisible();
     await expect(page.locator(".idea-lab__prompt-copy > p.is-locked")).toHaveCount(4);
     await expect(result.locator(".idea-lab__result-head h2")).toHaveText(titleBeforeCancel);
     expect(await result.locator(".idea-lab__result-summary").textContent()).toBe(summaryBeforeCancel);
-    await expect(page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ })).toBeEnabled();
+    await expect(page.getByRole("button", { name: /링크 공유하고 전체 문구 열기/ })).toBeEnabled();
     expect(await clipboardWrites(page)).toHaveLength(0);
 
     const cancelledEvents = await trackedEvents(page);
@@ -278,7 +278,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     if (!firstCalls[0].url) throw new Error("취소된 공유 payload에 URL이 없습니다.");
     const firstUrl = firstCalls[0].url;
 
-    await page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
+    await page.getByRole("button", { name: /링크 공유하고 전체 문구 열기/ }).click();
     await expect(page.locator(".idea-lab__stage--shared")).toBeVisible();
     await expect(page.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
 
@@ -304,7 +304,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await drawAll(page);
     await goResult(page);
 
-    await page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }).click();
+    await page.getByRole("button", { name: /링크 공유하고 전체 문구 열기/ }).click();
     await expect(page.getByRole("button", { name: "전체 제작 문구 복사" })).toBeEnabled();
 
     const saved = await page.evaluate(() =>
@@ -368,7 +368,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await drawAll(page);
     await goResult(page);
     await page.mouse.move(0, 0); // 방금 클릭한 위치의 :hover 색이 잡히지 않도록 포인터를 치운다
-    await expect(page.getByRole("button", { name: /친구에게 물어보고 전체 열기/ }))
+    await expect(page.getByRole("button", { name: /링크 공유하고 전체 문구 열기/ }))
       .toHaveCSS("background-color", "rgb(255, 68, 88)");
   });
 });
