@@ -67,6 +67,7 @@ test.describe("익명 칭찬 통합 시나리오", () => {
     await expect(page.getByRole("heading", { name: request.card.title })).toBeVisible();
     await page.getByRole("button", { name: "익명 응원 보내기" }).click();
     await page.getByRole("button", { name: selectedPraise }).click();
+    await page.getByRole("button", { name: "다음" }).click();
     await page.getByRole("radio", { name: "기본 · 계속 익명으로 보낼게요" }).check();
     await page.getByRole("button", { name: "이 칭찬 카드 보내기" }).click();
 
@@ -103,6 +104,7 @@ test.describe("익명 칭찬 통합 시나리오", () => {
     await page.goto(`/praise/${request.slug}`);
     await page.getByRole("button", { name: "익명 응원 보내기" }).click();
     await page.getByRole("button", { name: selectedPraise }).click();
+    await page.getByRole("button", { name: "다음" }).click();
     await page.getByRole("radio", { name: "선택 · 30일 뒤 이름 공개에 동의해요" }).check();
     await page.getByPlaceholder("공개할 이름(선택)").fill(senderName);
     await page.getByRole("button", { name: "이 칭찬 카드 보내기" }).click();
@@ -293,6 +295,8 @@ test.describe("익명 칭찬 통합 시나리오", () => {
     const request = makePraiseRequest({ id: "request-scenario-14" });
     await page.goto(`/praise/${request.slug}`);
     await page.getByRole("button", { name: "익명 응원 보내기" }).click();
+    await page.getByRole("button", { name: PRAISE_OPTIONS[0] }).click();
+    await page.getByRole("button", { name: "다음" }).click();
 
     const sendButton = page.getByRole("button", { name: "이 칭찬 카드 보내기" });
     const colors = await sendButton.evaluate((button) => {
