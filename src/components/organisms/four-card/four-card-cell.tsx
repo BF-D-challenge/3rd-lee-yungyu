@@ -135,8 +135,8 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
         auraRef.current?.animate(
           [
             { opacity: 0, transform: "scale(.9)" },
-            { opacity: 0.9, transform: "scale(1.06)", offset: 0.4 },
-            { opacity: 0.35, transform: "scale(1)" },
+            { opacity: 0.3, transform: "scale(1.04)", offset: 0.4 },
+            { opacity: 0.1, transform: "scale(1)" },
           ],
           { duration: 900, easing: "ease-out", fill: "forwards", delay: 80 },
         );
@@ -151,8 +151,8 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
       auraRef.current?.animate(
         [
           { opacity: 0, transform: "scale(.9)" },
-          { opacity: 0.8, transform: "scale(1.05)", offset: 0.4 },
-          { opacity: 0.3, transform: "scale(1)" },
+          { opacity: 0.26, transform: "scale(1.04)", offset: 0.4 },
+          { opacity: 0.09, transform: "scale(1)" },
         ],
         { duration: 800, easing: "ease-out", fill: "forwards" },
       );
@@ -231,7 +231,7 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
                   containerType: "inline-size",
                 }}
               >
-                <CardSurface tier="filled" phase={axisIndex} injectStyle={false} className="rounded-card" />
+                <CardSurface tier="filled" phase={axisIndex} calm injectStyle={false} className="rounded-card" />
                 {/* 축 의미색 틴트 오버레이 */}
                 <span
                   aria-hidden
@@ -292,6 +292,7 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
               tier={hot ? "hot" : "empty"}
               aim={!hot && pulse}
               phase={axisIndex}
+              calm
               injectStyle={false}
               className="rounded-card"
             />
@@ -303,7 +304,7 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
               }}
             />
             <span
-              className="relative text-[26cqi] font-serif italic leading-none"
+              className="relative text-[26cqi] font-semibold leading-none"
               style={{ color: `color-mix(in srgb, ${axisColor} 70%, transparent)` }}
             >
               ?

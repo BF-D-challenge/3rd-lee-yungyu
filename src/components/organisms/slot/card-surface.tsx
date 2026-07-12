@@ -22,6 +22,8 @@ export interface CardSurfaceProps {
   tier?: "empty" | "filled" | "hot";
   /** 빈 칸이 현재 조준 축일 때(D16 예열) — tier="empty"와 함께 사용 */
   aim?: boolean;
+  /** 산세리프·플랫 리디자인: 과한 오브/시머를 눌러 담백하게(four-card 슬롯 전용) */
+  calm?: boolean;
   /** 카드별 애니 위상 어긋내기 인덱스 (5장 동시 안 뜨게) — 축 배열 인덱스(0~4)를 그대로 넘길 것 */
   phase?: number;
   /** <style> 주입 여부 — 한 화면 여러 장이면 한 번만 true */
@@ -33,6 +35,7 @@ export function CardSurface({
   tier = "filled",
   aim = false,
   phase = 0,
+  calm = false,
   injectStyle = true,
   className,
 }: CardSurfaceProps) {
@@ -45,7 +48,7 @@ export function CardSurface({
   const orbMounted = tier !== "empty" || aim;
 
   return (
-    <div className={cn("cs", tier === "empty" && "cs-empty", tier === "hot" && "cs-hot", aim && "cs-aim", className)}>
+    <div className={cn("cs", tier === "empty" && "cs-empty", tier === "hot" && "cs-hot", aim && "cs-aim", calm && "cs-calm", className)}>
       {injectStyle ? <style>{CARD_SURFACE_CSS}</style> : null}
       <div className="cs-stage" style={{ animationDelay: d1 }}>
         <div className="cs-sh cs-sh1" style={{ animationDelay: d3 }} />
@@ -101,5 +104,11 @@ export const CARD_SURFACE_CSS = `
 .cs-empty.cs-aim .cs-iglow{box-shadow:inset 0 0 11cqi rgba(120,180,255,.22), inset 0 0 3.5cqi rgba(165,208,255,.16)}
 .cs-empty.cs-aim .cs-orbwrap{opacity:.3}
 
+/* calm — 산세리프·플랫 리디자인: 오브를 눌러 끄고 시머를 감쇠(레퍼런스 ✦ 수준 절제) */
+.cs-calm .cs-orbwrap{opacity:.16}
+.cs-calm.cs-hot .cs-orbwrap{opacity:.28}
+.cs-calm .cs-stage{filter:opacity(.5)}
+.cs-calm.cs-empty .cs-stage{filter:opacity(.32)}
+.cs-calm .cs-iglow{box-shadow:inset 0 0 8cqi rgba(120,180,255,.16),inset 0 0 3cqi rgba(165,208,255,.1)}
 @media (prefers-reduced-motion:reduce){.cs-stage,.cs-sh,.cs-orbwrap{animation:none!important}}
 `;

@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/atoms/button";
 import { castVote, hasVoted } from "@/lib/backend/votes";
 import { decodePraiseRequest } from "@/lib/praise-share";
 import { track } from "@/lib/track";
@@ -46,9 +45,14 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
       <main className={`${styles.root} ${styles.notFound}`}>
         <div>
           <h1 className="text-2xl font-bold">칭찬할 아이디어를 찾을 수 없어요.</h1>
-          <Button variant="aurora" className="mt-5" onClick={() => router.push("/")}>
+          <button
+            type="button"
+            className={styles.primaryButton}
+            style={{ marginTop: 20 }}
+            onClick={() => router.push("/")}
+          >
             내 아이디어 뽑기
-          </Button>
+          </button>
         </div>
       </main>
     );
@@ -89,26 +93,32 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
             {step === "intro" ? (
               <div className={styles.step} key="intro">
                 <div className={styles.scrollArea}>
-                  <p className={styles.kicker}>친구가 이번 주에 만들고 있어요</p>
-                  <h1 className={styles.heroTitle}>{card.title}</h1>
-                  <p className={styles.heroSummary}>{card.summary}</p>
+                  <div className={styles.receiverAppbarRow}>
+                    <span className={styles.receiverAppbarBrand}>친구가 이번 주에 만들고 있어요</span>
+                    <span className={styles.receiverAppbarMeta}>공유 링크</span>
+                  </div>
+
+                  <div className={styles.previewCard}>
+                    <p className={styles.previewLabel}>친구의 아이디어</p>
+                    <h1 className={styles.heroTitle}>{card.title}</h1>
+                    <p className={styles.heroSummary}>{card.summary}</p>
+                  </div>
 
                   <div className={styles.buildCard}>
-                    <p className={styles.buildLabel}>이번 주 가장 작은 실행</p>
+                    <p className={styles.buildLabel}>이번 작은 실행</p>
                     <p className={styles.buildValue}>{card.smallestBuild}</p>
                   </div>
                   <p className={styles.twistNote}>원본에서 딱 하나 바꾼 점 · {card.twist}</p>
                 </div>
 
                 <div className={styles.ctaDock}>
-                  <Button
-                    variant="aurora"
-                    size="lg"
-                    className={styles.primaryCta}
+                  <button
+                    type="button"
+                    className={styles.primaryButton}
                     onClick={() => setStep("praise")}
                   >
                     익명 응원 보내기
-                  </Button>
+                  </button>
                 </div>
               </div>
             ) : null}
@@ -122,8 +132,10 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
                     </button>
                   </div>
 
-                  <h2 className={styles.stepHeading}>칭찬 카드 한 장을 골라주세요.</h2>
-                  <p className={styles.stepSub}>마음에 드는 한 문장을 선택하면 다음으로 넘어가요.</p>
+                  <div className={styles.receiverAppbarRow}>
+                    <h2 className={styles.stepHeading}>칭찬 카드 한 장을 골라주세요.</h2>
+                    <span className={styles.receiverAppbarMeta}>하나 고르기</span>
+                  </div>
                   <div className={styles.praiseGrid}>
                     {PRAISES.map((praise) => (
                       <button
@@ -141,15 +153,14 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
                 </div>
 
                 <div className={styles.ctaDock}>
-                  <Button
-                    variant="aurora"
-                    size="lg"
-                    className={styles.primaryCta}
+                  <button
+                    type="button"
+                    className={styles.primaryButton}
                     onClick={() => setStep("reveal")}
                     disabled={!selected}
                   >
                     다음
-                  </Button>
+                  </button>
                 </div>
               </div>
             ) : null}
@@ -163,11 +174,8 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
                     </button>
                   </div>
 
-                  <h2 className={styles.stepHeading}>공개 설정을 선택해주세요.</h2>
-                  <p className={styles.stepSub}>이름 공개 여부는 지금 정하고, 나중에 바꿀 수 없어요.</p>
-
                   <div className={styles.revealSection}>
-                    <p className={styles.revealTitle}>공개 설정</p>
+                    <p className={styles.revealTitle}>내 이름은 어떻게 할까요?</p>
                     <label className={styles.revealOption}>
                       <input
                         type="radio"
@@ -197,15 +205,14 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
                 </div>
 
                 <div className={styles.ctaDock}>
-                  <Button
-                    variant="aurora"
-                    size="lg"
-                    className={styles.primaryCta}
+                  <button
+                    type="button"
+                    className={styles.primaryButton}
                     onClick={send}
                     disabled={sending || !selected}
                   >
                     {sending ? "카드 넣는 중…" : "이 칭찬 카드 보내기"}
-                  </Button>
+                  </button>
                 </div>
               </div>
             ) : null}
@@ -214,21 +221,19 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
               <div className={styles.step} key="sent">
                 <div className={styles.scrollArea}>
                   <div className="text-center">
-                    <span className={styles.sentBadge}>✓ 전송 완료</span>
-                    <div className={styles.sentCardArt} aria-hidden="true">
-                      <span className="px-4 text-center text-sm font-bold leading-6">
-                        칭찬 카드가<br />덱에 들어갔어요
-                      </span>
-                    </div>
+                    <span className={styles.sentPill}>칭찬 카드가 덱에 들어갔어요</span>
                     <h2 className={styles.sentHeading}>오늘의 칭찬을 보냈어요.</h2>
                     <p className={styles.sentNote}>응원은 실제로 한 번만 전달돼요. 받는 사람은 매일 한 장씩 익명 카드를 확인합니다.</p>
                   </div>
                 </div>
 
                 <div className={styles.ctaDock}>
-                  <Button variant="aurora" size="lg" className={styles.primaryCta} onClick={() => router.push("/")}>
+                  <button type="button" className={styles.primaryButton} onClick={() => router.push("/")}>
                     나도 네 장 뽑아보기
-                  </Button>
+                  </button>
+                  <button type="button" className={styles.secondaryButton} onClick={() => router.back()}>
+                    닫기
+                  </button>
                 </div>
               </div>
             ) : null}
