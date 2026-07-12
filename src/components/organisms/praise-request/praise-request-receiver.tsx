@@ -17,15 +17,21 @@ const PRAISES = [
 
 type RevealChoice = "after-30d" | "forever-anonymous";
 
-/** Flow B 단계: B1 아이디어 확인 → B2+B3 칭찬·공개설정 → B4 전송 완료. B5는 "/"로 라우팅한다. */
-type ReceiverStep = "intro" | "praise" | "sent";
+/**
+ * Flow B 5단계: B1 아이디어 확인 → B2 칭찬 고르기 → B3 공개 설정 → B4 전송 완료 → B5 홈("/") 라우팅.
+ * 각 단계는 독립된 화면이다 — B2(칭찬 4택)와 B3(공개 설정)를 한 화면에 합치지 않는다.
+ */
+type ReceiverStep = "intro" | "praise" | "reveal" | "sent";
+
+const STEP_ORDER: ReceiverStep[] = ["intro", "praise", "reveal", "sent"];
+const TOTAL_DOTS = 5; // B1~B5(홈 라우팅) 기준 진행 도트
 
 export function PraiseRequestReceiver({ slug }: { slug: string }) {
   const router = useRouter();
   const card = useMemo(() => decodePraiseRequest(slug), [slug]);
   const alreadySent = useMemo(() => hasVoted(slug), [slug]);
   const [step, setStep] = useState<ReceiverStep>(() => (alreadySent ? "sent" : "intro"));
-  const [selected, setSelected] = useState(PRAISES[0]);
+  const [selected, setSelected] = useState<string | null>(null);
   const [reveal, setReveal] = useState<RevealChoice>("forever-anonymous");
   const [senderName, setSenderName] = useState("");
   const [sent, setSent] = useState(alreadySent);
@@ -49,7 +55,7 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
   }
 
   const send = async () => {
-    if (sending || sent || hasVoted(slug)) return;
+    if (sending || sent || hasVoted(slug) || !selected) return;
     setSending(true);
     const note = {
       v: 1,
@@ -64,126 +70,169 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
     setSending(false);
   };
 
-  const stepIndex = step === "intro" ? 0 : step === "praise" ? 1 : 2;
+  const stepIndex = STEP_ORDER.indexOf(step);
 
   return (
     <main className={styles.root}>
-      <div className="mx-auto max-w-[760px] px-4 py-8 sm:py-12">
+      <div className={styles.frame}>
         <section className={styles.shell} aria-label="익명 응원 카드 보내기">
           <div className={styles.appbar}>
             <p className={styles.eyebrow}>ANONYMOUS PRAISE</p>
             <div className={styles.progress} aria-hidden="true">
-              {[0, 1, 2].map((index) => (
+              {Array.from({ length: TOTAL_DOTS }, (_, index) => (
                 <span key={index} className={styles.progressDot} data-done={index <= stepIndex} />
               ))}
             </div>
           </div>
 
-          {step === "intro" ? (
-            <div className={styles.step} key="intro">
-              <p className="text-xs text-mist">친구가 이번 주에 만들고 있어요</p>
-              <h1 className={styles.heroTitle}>{card.title}</h1>
-              <p className={styles.heroSummary}>{card.summary}</p>
+          <div className={styles.stepViewport}>
+            {step === "intro" ? (
+              <div className={styles.step} key="intro">
+                <div className={styles.scrollArea}>
+                  <p className={styles.kicker}>친구가 이번 주에 만들고 있어요</p>
+                  <h1 className={styles.heroTitle}>{card.title}</h1>
+                  <p className={styles.heroSummary}>{card.summary}</p>
 
-              <div className={styles.buildCard}>
-                <p className={styles.buildLabel}>이번 주 가장 작은 실행</p>
-                <p className={styles.buildValue}>{card.smallestBuild}</p>
-              </div>
-              <p className={styles.twistNote}>원본에서 딱 하나 바꾼 점 · {card.twist}</p>
-
-              <Button
-                variant="aurora"
-                size="lg"
-                className={styles.primaryCta}
-                onClick={() => setStep("praise")}
-              >
-                익명 응원 보내기
-              </Button>
-            </div>
-          ) : null}
-
-          {step === "praise" ? (
-            <div className={styles.step} key="praise">
-              <div className={styles.backRow}>
-                <button type="button" className={styles.backButton} onClick={() => setStep("intro")}>
-                  ‹ 아이디어 다시 보기
-                </button>
-              </div>
-
-              <h2 className={styles.stepHeading}>칭찬 카드 한 장을 골라주세요.</h2>
-              <div className={styles.praiseGrid}>
-                {PRAISES.map((praise) => (
-                  <button
-                    key={praise}
-                    type="button"
-                    onClick={() => setSelected(praise)}
-                    data-selected={selected === praise}
-                    className={styles.praiseOption}
-                  >
-                    <span className={styles.praiseHeart} aria-hidden="true">♡ </span>
-                    {praise}
-                  </button>
-                ))}
-              </div>
-
-              <div className={styles.revealSection}>
-                <p className={styles.revealTitle}>공개 설정</p>
-                <label className={styles.revealOption}>
-                  <input
-                    type="radio"
-                    checked={reveal === "forever-anonymous"}
-                    onChange={() => setReveal("forever-anonymous")}
-                  />
-                  <span className={styles.revealOptionLabel}>기본 · 계속 익명으로 보낼게요</span>
-                </label>
-                <label className={styles.revealOption}>
-                  <input
-                    type="radio"
-                    checked={reveal === "after-30d"}
-                    onChange={() => setReveal("after-30d")}
-                  />
-                  <span className={styles.revealOptionLabel}>선택 · 30일 뒤 이름 공개에 동의해요</span>
-                </label>
-                {reveal === "after-30d" ? (
-                  <input
-                    value={senderName}
-                    onChange={(event) => setSenderName(event.target.value)}
-                    placeholder="공개할 이름(선택)"
-                    className={styles.senderNameInput}
-                  />
-                ) : null}
-                <p className={styles.privacyNote}>계속 익명을 고르면 상대가 결제해도 이름은 보이지 않아요.</p>
-              </div>
-
-              <Button
-                variant="aurora"
-                size="lg"
-                className={styles.primaryCta}
-                onClick={send}
-                disabled={sending}
-              >
-                {sending ? "카드 넣는 중…" : "이 칭찬 카드 보내기"}
-              </Button>
-            </div>
-          ) : null}
-
-          {step === "sent" ? (
-            <div className={styles.step} key="sent">
-              <div className="text-center">
-                <span className={styles.sentBadge}>✓ 전송 완료</span>
-                <div className={styles.sentCardArt} aria-hidden="true">
-                  <span className="px-4 text-center text-sm font-bold leading-6">
-                    칭찬 카드가<br />덱에 들어갔어요
-                  </span>
+                  <div className={styles.buildCard}>
+                    <p className={styles.buildLabel}>이번 주 가장 작은 실행</p>
+                    <p className={styles.buildValue}>{card.smallestBuild}</p>
+                  </div>
+                  <p className={styles.twistNote}>원본에서 딱 하나 바꾼 점 · {card.twist}</p>
                 </div>
-                <h2 className={styles.sentHeading}>오늘의 칭찬을 보냈어요.</h2>
-                <p className={styles.sentNote}>응원은 실제로 한 번만 전달돼요. 받는 사람은 매일 한 장씩 익명 카드를 확인합니다.</p>
-                <Button variant="aurora" size="lg" className={styles.primaryCta} onClick={() => router.push("/")}>
-                  나도 네 장 뽑아보기
-                </Button>
+
+                <div className={styles.ctaDock}>
+                  <Button
+                    variant="aurora"
+                    size="lg"
+                    className={styles.primaryCta}
+                    onClick={() => setStep("praise")}
+                  >
+                    익명 응원 보내기
+                  </Button>
+                </div>
               </div>
-            </div>
-          ) : null}
+            ) : null}
+
+            {step === "praise" ? (
+              <div className={styles.step} key="praise">
+                <div className={styles.scrollArea}>
+                  <div className={styles.backRow}>
+                    <button type="button" className={styles.backButton} onClick={() => setStep("intro")}>
+                      ‹ 아이디어 다시 보기
+                    </button>
+                  </div>
+
+                  <h2 className={styles.stepHeading}>칭찬 카드 한 장을 골라주세요.</h2>
+                  <p className={styles.stepSub}>마음에 드는 한 문장을 선택하면 다음으로 넘어가요.</p>
+                  <div className={styles.praiseGrid}>
+                    {PRAISES.map((praise) => (
+                      <button
+                        key={praise}
+                        type="button"
+                        onClick={() => setSelected(praise)}
+                        data-selected={selected === praise}
+                        className={styles.praiseOption}
+                      >
+                        <span className={styles.praiseHeart} aria-hidden="true">♡ </span>
+                        {praise}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={styles.ctaDock}>
+                  <Button
+                    variant="aurora"
+                    size="lg"
+                    className={styles.primaryCta}
+                    onClick={() => setStep("reveal")}
+                    disabled={!selected}
+                  >
+                    다음
+                  </Button>
+                </div>
+              </div>
+            ) : null}
+
+            {step === "reveal" ? (
+              <div className={styles.step} key="reveal">
+                <div className={styles.scrollArea}>
+                  <div className={styles.backRow}>
+                    <button type="button" className={styles.backButton} onClick={() => setStep("praise")}>
+                      ‹ 칭찬 다시 고르기
+                    </button>
+                  </div>
+
+                  <h2 className={styles.stepHeading}>공개 설정을 선택해주세요.</h2>
+                  <p className={styles.stepSub}>이름 공개 여부는 지금 정하고, 나중에 바꿀 수 없어요.</p>
+
+                  <div className={styles.revealSection}>
+                    <p className={styles.revealTitle}>공개 설정</p>
+                    <label className={styles.revealOption}>
+                      <input
+                        type="radio"
+                        checked={reveal === "forever-anonymous"}
+                        onChange={() => setReveal("forever-anonymous")}
+                      />
+                      <span className={styles.revealOptionLabel}>기본 · 계속 익명으로 보낼게요</span>
+                    </label>
+                    <label className={styles.revealOption}>
+                      <input
+                        type="radio"
+                        checked={reveal === "after-30d"}
+                        onChange={() => setReveal("after-30d")}
+                      />
+                      <span className={styles.revealOptionLabel}>선택 · 30일 뒤 이름 공개에 동의해요</span>
+                    </label>
+                    {reveal === "after-30d" ? (
+                      <input
+                        value={senderName}
+                        onChange={(event) => setSenderName(event.target.value)}
+                        placeholder="공개할 이름(선택)"
+                        className={styles.senderNameInput}
+                      />
+                    ) : null}
+                    <p className={styles.privacyNote}>계속 익명을 고르면 상대가 결제해도 이름은 보이지 않아요.</p>
+                  </div>
+                </div>
+
+                <div className={styles.ctaDock}>
+                  <Button
+                    variant="aurora"
+                    size="lg"
+                    className={styles.primaryCta}
+                    onClick={send}
+                    disabled={sending || !selected}
+                  >
+                    {sending ? "카드 넣는 중…" : "이 칭찬 카드 보내기"}
+                  </Button>
+                </div>
+              </div>
+            ) : null}
+
+            {step === "sent" ? (
+              <div className={styles.step} key="sent">
+                <div className={styles.scrollArea}>
+                  <div className="text-center">
+                    <span className={styles.sentBadge}>✓ 전송 완료</span>
+                    <div className={styles.sentCardArt} aria-hidden="true">
+                      <span className="px-4 text-center text-sm font-bold leading-6">
+                        칭찬 카드가<br />덱에 들어갔어요
+                      </span>
+                    </div>
+                    <h2 className={styles.sentHeading}>오늘의 칭찬을 보냈어요.</h2>
+                    <p className={styles.sentNote}>응원은 실제로 한 번만 전달돼요. 받는 사람은 매일 한 장씩 익명 카드를 확인합니다.</p>
+                  </div>
+                </div>
+
+                <div className={styles.ctaDock}>
+                  <Button variant="aurora" size="lg" className={styles.primaryCta} onClick={() => router.push("/")}>
+                    나도 네 장 뽑아보기
+                  </Button>
+                </div>
+              </div>
+            ) : null}
+          </div>
         </section>
       </div>
     </main>
