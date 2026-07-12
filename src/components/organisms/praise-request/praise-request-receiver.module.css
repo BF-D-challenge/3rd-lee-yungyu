@@ -35,9 +35,8 @@
     width: 100%;
     max-width: 420px;
     height: min(844px, calc(100dvh - 64px));
-    border: 1px solid rgba(125, 228, 190, 0.16);
-    border-radius: 28px;
-    box-shadow: 0 3px 0 0 rgba(125, 228, 190, 0.5), 0 30px 70px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(125, 228, 190, 0.22);
+    border-radius: 16px;
   }
 }
 
@@ -64,7 +63,7 @@
   flex: 1;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.12);
-  transition: background 220ms var(--spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+  transition: background 200ms ease;
 }
 
 .progressDot[data-done="true"] {
@@ -83,7 +82,7 @@
   flex: 1;
   flex-direction: column;
   min-height: 0;
-  animation: stepIn 360ms var(--spring, cubic-bezier(0.34, 1.56, 0.64, 1)) both;
+  animation: stepIn 220ms ease both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -114,7 +113,7 @@
   flex: 0 0 auto;
   padding: 12px 20px calc(14px + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: linear-gradient(180deg, rgba(11, 25, 22, 0), rgba(11, 25, 22, 0.6) 40%, #0b1916 100%);
+  background: #0b1916;
 }
 
 .backRow {
@@ -141,23 +140,56 @@
   outline-offset: 3px;
 }
 
-.kicker {
+.receiverAppbarRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.receiverAppbarBrand {
   color: rgba(255, 255, 255, 0.56);
   font-size: 12px;
+  line-height: 1.4;
+}
+
+.receiverAppbarMeta {
+  flex: 0 0 auto;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: var(--praise-receiver-mint, #7de4be);
+  background: rgba(125, 228, 190, 0.1);
+  font-size: 10.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.previewCard {
+  margin-top: 14px;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.previewLabel {
+  color: var(--praise-receiver-mint, #7de4be);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
 }
 
 .heroTitle {
-  margin: 10px 0 0;
-  font-family: var(--font-serif), Georgia, "Nanum Myeongjo", serif;
-  font-weight: 600;
-  font-size: clamp(24px, 6.4vw, 32px);
-  line-height: 1.26;
+  margin: 8px 0 0;
+  font-weight: 700;
+  font-size: clamp(20px, 6vw, 25px);
+  line-height: 1.28;
   letter-spacing: -0.02em;
 }
 
 .heroSummary {
   max-width: 56ch;
-  margin: 12px 0 0;
+  margin: 8px 0 0;
   color: rgba(255, 255, 255, 0.68);
   font-size: 14px;
   line-height: 1.6;
@@ -167,12 +199,9 @@
   position: relative;
   margin-top: 20px;
   padding: 16px 18px;
-  border: 1px solid rgba(125, 228, 190, 0.4);
-  border-radius: 16px;
-  background:
-    radial-gradient(140% 100% at 0% 0%, rgba(125, 228, 190, 0.14), transparent 60%),
-    rgba(125, 228, 190, 0.05);
-  box-shadow: 0 3px 0 0 rgba(125, 228, 190, 0.42);
+  border: 1px solid rgba(125, 228, 190, 0.32);
+  border-radius: 12px;
+  background: rgba(125, 228, 190, 0.05);
 }
 
 .buildLabel {
@@ -197,31 +226,24 @@
 }
 
 .stepHeading {
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(19px, 5vw, 22px);
-  font-weight: 600;
+  margin: 0;
+  font-size: clamp(17px, 4.6vw, 19px);
+  font-weight: 700;
   letter-spacing: -0.01em;
-}
-
-.stepSub {
-  margin: 6px 0 0;
-  color: rgba(255, 255, 255, 0.56);
-  font-size: 13px;
-  line-height: 1.5;
 }
 
 .praiseGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
 .praiseOption {
   min-height: 88px;
   padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
+  border-radius: 10px;
   color: rgba(255, 255, 255, 0.86);
   background: rgba(255, 255, 255, 0.03);
   font-size: 13px;
@@ -229,14 +251,8 @@
   text-align: left;
   cursor: pointer;
   transition:
-    border-color 160ms ease,
-    background 160ms ease,
-    transform 160ms var(--spring, cubic-bezier(0.34, 1.56, 0.64, 1)),
-    box-shadow 160ms var(--spring, cubic-bezier(0.34, 1.56, 0.64, 1));
-}
-
-.praiseOption:active {
-  transform: translateY(1px) scale(0.99);
+    border-color 140ms ease,
+    background 140ms ease;
 }
 
 .praiseOption:focus-visible {
@@ -246,9 +262,7 @@
 
 .praiseOption[data-selected="true"] {
   border-color: var(--praise-receiver-mint, #7de4be);
-  background: rgba(125, 228, 190, 0.12);
-  box-shadow: 0 3px 0 0 var(--praise-receiver-mint, #7de4be);
-  transform: translateY(-1px);
+  background: rgba(125, 228, 190, 0.1);
 }
 
 .praiseHeart {
@@ -260,17 +274,15 @@
   margin-top: 18px;
   padding: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  background:
-    radial-gradient(140% 100% at 0% 0%, rgba(255, 255, 255, 0.05), transparent 60%),
-    rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .revealTitle {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .revealOption {
@@ -323,41 +335,80 @@
   line-height: 1.6;
 }
 
-.primaryCta {
+.primaryButton {
   width: 100%;
+  min-height: 52px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 12px;
+  color: #fff;
+  background: #ff4458;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 140ms ease;
 }
 
-.sentBadge {
+.primaryButton:hover:not(:disabled) {
+  background: #ff5a6c;
+}
+
+.primaryButton:active:not(:disabled) {
+  background: #e63a4d;
+}
+
+.primaryButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.primaryButton:focus-visible {
+  outline: 2px solid #ff4458;
+  outline-offset: 2px;
+}
+
+.secondaryButton {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 8px;
+  padding: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.86);
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 140ms ease, color 140ms ease;
+}
+
+.secondaryButton:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+.secondaryButton:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.sentPill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
+  margin-top: 26px;
+  padding: 8px 14px;
   border-radius: 999px;
   color: #0b1916;
   background: var(--praise-receiver-mint, #7de4be);
   font-size: 12px;
   font-weight: 800;
-}
-
-.sentCardArt {
-  margin: 22px auto 0;
-  display: grid;
-  place-items: center;
-  width: 116px;
-  height: 172px;
-  border: 2px solid rgba(255, 255, 255, 0.85);
-  border-radius: 14px;
-  background: #fffdf8;
-  color: #121212;
-  transform: rotate(-3deg);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  text-align: center;
 }
 
 .sentHeading {
-  margin-top: 26px;
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: 22px;
-  font-weight: 600;
+  margin-top: 22px;
+  font-size: 20px;
+  font-weight: 700;
   text-align: center;
 }
 
