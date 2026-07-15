@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6752672420-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 이미지 중심 좌표 하늘 차트’는 촬영 직후 아마추어 천체사진가가 FITS 파일 1개를 입력해 플레이트 솔빙 1회 후 중심 좌표가 표시된 하늘 차트 1개를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6752672420-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 사진 촬영 영역 경계 확인’은 다음 촬영 구도 수정 시 FITS 파일 1개를 플레이트 솔빙 1회 처리해 촬영 영역 경계가 표시된 하늘 차트 1개를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6752672420-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 사진 속 주요 천체 라벨’은 관측 기록 제출 직전 FITS 파일 1개를 플레이트 솔빙 1회 처리해 주요 천체 라벨이 붙은 하늘 차트 1개를 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6752672420-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 사진 촬영 영역 경계 확인’은 학교 천문 동아리 지도교사가 촬영 직후 FITS 파일 1개를 플레이트 솔빙 1회 처리해 경계가 표시된 하늘 차트 1개로 대상과 구도를 확인하게 한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6752672420-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 사진 속 주요 천체 라벨’은 다음 촬영 구도 수정 시 지도교사가 FITS 파일 1개를 플레이트 솔빙 1회 처리해 주요 천체 라벨이 붙은 하늘 차트 1개를 받는 구조다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6752672420-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 이미지 중심 좌표 하늘 차트’는 관측 기록 제출 직전 지도교사가 FITS 파일 1개를 플레이트 솔빙 1회 처리해 중심 좌표가 표시된 하늘 차트 1개를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6752672420-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 사진 속 주요 천체 라벨’은 소형 천문대 운영자가 촬영 직후 FITS 파일 1개를 플레이트 솔빙 1회 처리해 주요 천체 라벨이 붙은 하늘 차트 1개를 확인하는 흐름이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6752672420-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 이미지 중심 좌표 하늘 차트’는 다음 촬영 구도 수정 시 운영자가 FITS 파일 1개를 플레이트 솔빙 1회 처리해 중심 좌표가 표시된 하늘 차트 1개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6752672420-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 사진 촬영 영역 경계 확인’은 관측 기록 제출 직전 운영자가 FITS 파일 1개를 플레이트 솔빙 1회 처리해 촬영 영역 경계가 표시된 하늘 차트 1개를 얻는다.",
+      "risk_flags": []
+    }
+  ]
+}

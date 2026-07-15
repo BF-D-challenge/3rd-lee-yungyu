@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-6752672420-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도교사가 천체 촬영 직후 FITS 이미지 1개를 입력하면 플레이트 솔빙 1회 후 중심 좌표가 찍힌 하늘 차트 1개를 즉시 확인할 수 있어 제목·결제자·순간·한 끗 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도교사가 촬영 직후 FITS 이미지 1개를 입력하면 플레이트 솔빙 1회 후 촬영 영역 경계가 표시된 하늘 차트 1개를 즉시 확인할 수 있어 구도 검토 목적과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도교사가 촬영 직후 FITS 이미지 1개를 입력하면 플레이트 솔빙 1회 후 주요 천체 라벨이 붙은 하늘 차트 1개를 즉시 확인할 수 있어 학생 사진의 대상 확인 순간에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도교사가 다음 촬영 구도를 수정할 때 FITS 이미지 1개를 입력하면 플레이트 솔빙 1회 후 중심 좌표가 찍힌 하늘 차트 1개를 즉시 얻어 장비 조정에 활용할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도교사가 다음 촬영 구도를 수정할 때 FITS 이미지 1개를 입력하면 플레이트 솔빙 1회 후 촬영 영역 경계가 표시된 하늘 차트 1개를 즉시 얻어 구도를 조정할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도교사가 다음 촬영 구도를 수정할 때 FITS 이미지 1개를 입력하면 플레이트 솔빙 1회 후 주요 천체 라벨이 붙은 하늘 차트 1개를 즉시 얻어 대상과 구도를 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도교사가 관측 기록 제출 직전 FITS 이미지 1개를 입력하면 플레이트 솔빙 1회 후 중심 좌표가 찍힌 하늘 차트 1개를 즉시 얻어 촬영 영역의 근거로 기록할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도교사가 관측 기록 제출 직전 FITS 이미지 1개를 입력하면 플레이트 솔빙 1회 후 촬영 영역 경계가 표시된 하늘 차트 1개를 즉시 얻어 이미지가 담은 영역을 근거로 남길 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도교사가 관측 기록 제출 직전 FITS 이미지 1개를 입력하면 플레이트 솔빙 1회 후 주요 천체 라벨이 붙은 하늘 차트 1개를 즉시 얻어 촬영 대상의 설명 근거로 사용할 수 있다.",
+      "risk_flags": []
+    }
+  ]
+}

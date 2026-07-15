@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-takeout-tools-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여행 기록자가 Google Takeout 저장 장소 ZIP을 받은 직후 한 번 파싱해 장소명·주소·위도·경도를 행별 CSV로 받아 다른 지도 앱으로 옮기는 흐름이 제목·결제자·순간·한 끗 변화와 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-takeout-tools-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지역 연구자가 새 지도 앱으로 가져오기 직전에 Google Takeout ZIP을 한 번 파싱해 장소명·좌표·목록 이름이 속성으로 붙은 GeoJSON 파일을 받아 재입력 없이 정리하는 흐름이 제목·결제자·순간·한 끗 변화와 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-takeout-tools-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도 데이터 프리랜서가 고객의 Google Takeout ZIP을 지도·분석 도구에서 다시 쓰기 직전에 한 번 파싱해 장소명과 좌표가 담긴 GPX waypoint 파일 하나를 받아 이전하는 흐름이 제목·결제자·순간·한 끗 변화와 구체적으로 맞는다.",
+      "risk_flags": []
+    }
+  ]
+}

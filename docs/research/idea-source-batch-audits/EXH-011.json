@@ -1,0 +1,35 @@
+{
+  "batch_id": "EXH-011",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "sonnet",
+  "audit_model": "sonnet",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 98,
+  "decision_counts": {
+    "Fail": 80,
+    "Candidate": 6,
+    "Merge": 12
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 80,
+      "sample": [
+        "app_store:1640609657",
+        "app_store:867374917",
+        "app_store:1558989799",
+        "app_store:6739995108",
+        "trustmrr:aprende-hebreo",
+        "app_store:1461453227",
+        "app_store:1454618322",
+        "app_store:1542444199"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

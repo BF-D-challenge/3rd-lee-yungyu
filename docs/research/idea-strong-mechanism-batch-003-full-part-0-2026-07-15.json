@@ -1,0 +1,220 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-milestone-clip-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메인테이너가 공개 GitHub 저장소 URL 1개를 넣으면 최신 이름·별·포크 수를 한 번 배치해 성과 신선한 순간에 세로형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메인테이너가 공개 GitHub 저장소 URL 1개를 넣으면 최신 이름·별·포크 수를 한 번 배치해 커뮤니티에 알릴 정사각형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메인테이너가 공개 GitHub 저장소 URL 1개를 넣으면 최신 이름·별·포크 수를 한 번 배치해 수치 변경 직후 공유할 가로형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메인테이너가 공개 GitHub 저장소 URL 1개를 넣으면 목표 달성 시점의 이름·별·포크 수를 한 번 배치해 세로형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메인테이너가 공개 GitHub 저장소 URL 1개를 넣으면 목표 달성 시점의 이름·별·포크 수를 한 번 배치해 정사각형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메인테이너가 공개 GitHub 저장소 URL 1개를 넣으면 목표 달성 시점의 이름·별·포크 수를 한 번 배치해 가로형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메인테이너가 공개 GitHub 저장소 URL 1개를 넣으면 주간 업데이트용 이름·별·포크 수를 한 번 배치해 정해진 게시 시간에 맞출 세로형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메인테이너가 공개 GitHub 저장소 URL 1개를 넣으면 주간 업데이트용 이름·별·포크 수를 한 번 배치해 정해진 게시 시간에 맞출 정사각형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메인테이너가 공개 GitHub 저장소 URL 1개를 넣으면 주간 업데이트용 이름·별·포크 수를 한 번 배치해 정해진 게시 시간에 맞출 가로형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 창업자가 공개 GitHub 저장소 URL 1개를 넣으면 최신 이름·별·포크 수를 한 번 배치해 커뮤니티에 알릴 세로형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 창업자가 공개 GitHub 저장소 URL 1개를 넣으면 최신 이름·별·포크 수를 한 번 배치해 커뮤니티에 알릴 정사각형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 창업자가 공개 GitHub 저장소 URL 1개를 넣으면 최신 이름·별·포크 수를 한 번 배치해 커뮤니티에 알릴 가로형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 창업자가 공개 GitHub 저장소 URL 1개를 넣으면 목표 달성 시점의 이름·별·포크 수를 한 번 배치해 세로형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 창업자가 공개 GitHub 저장소 URL 1개를 넣으면 목표 달성 시점의 이름·별·포크 수를 한 번 배치해 정사각형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 창업자가 공개 GitHub 저장소 URL 1개를 넣으면 목표 달성 시점의 이름·별·포크 수를 한 번 배치해 가로형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 창업자가 공개 GitHub 저장소 URL 1개를 넣으면 주간 업데이트용 이름·별·포크 수를 한 번 배치해 정해진 게시 시간에 맞출 세로형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 창업자가 공개 GitHub 저장소 URL 1개를 넣으면 주간 업데이트용 이름·별·포크 수를 한 번 배치해 정해진 게시 시간에 맞출 정사각형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 창업자가 공개 GitHub 저장소 URL 1개를 넣으면 주간 업데이트용 이름·별·포크 수를 한 번 배치해 정해진 게시 시간에 맞출 가로형 MP4 1개를 즉시 얻는다.",
+      "risk_flags": []
+    }
+  ]
+}

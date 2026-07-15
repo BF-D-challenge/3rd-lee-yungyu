@@ -1,0 +1,180 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-compresso-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘상품 이미지 300KB 압축본 만들기’는 상품 담당자가 업로드 제한 순간 이미지 1개를 한 번 압축해 300KB 이하 파일 1개를 받지만 OS 기본 압축·저장 기능으로 더 쉽게 대체할 수 있다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-compresso-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘증빙 사진 2MB 압축본 만들기’는 퍼포먼스 마케터가 배너 용량 초과 순간 이미지 1개를 한 번 압축해 2MB 이하 파일 1개를 받지만 OS 기본 압축·저장 기능으로 더 쉽게 대체할 수 있다.",
+      "risk_flags": [
+        "os_basic_substitute",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-compresso-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘광고 배너 1MB 압축본 만들기’는 사무직 실무자가 문서 첨부 거절 순간 이미지 1개를 한 번 압축해 1MB 이하 파일 1개를 받지만 payer는 증빙 이미지이고 twist는 광고 배너라 불일치하며 OS 기본 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-handwritten-signature-generator-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘계약서 투명 배경 서명 PNG’는 컨설턴트가 계약서 발송 직전 이름 텍스트 1개를 한 번 생성해 투명 배경 서명 PNG 1개를 받지만 범용 AI 대체 가능성이 크고 계약서에 사용할 현실적 서명 생성은 규제·안전 위험이 있다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-handwritten-signature-generator-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘이메일 하단 작은 서명 PNG’는 프리랜서가 견적서 PDF 저장 직전 이름 텍스트 1개를 한 번 생성해 작은 PNG 1개를 받지만 범용 AI 대체 가능성이 크고 실제 서명처럼 보이는 이미지 생성의 안전 위험이 있다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-handwritten-signature-generator-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘견적서 가는 선 서명 PNG’는 소규모 사업자가 확인서 첨부 직전 이름 텍스트 1개를 한 번 생성해 가는 선 PNG 1개를 받지만 범용 AI 대체 가능성이 크고 실제 서명 이미지 생성의 안전 위험이 있다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-thememorychess-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘10초 뒤 체스 기물 복원 결과’는 학습자가 FEN 텍스트 1개를 입력해 포지션을 본 뒤 10초 후 전체 배치를 복원해야 하므로 입력·처리·결과가 한 번으로 끝나지 않고 복원 결과도 구체적으로 정의되지 않았다.",
+      "risk_flags": [
+        "multi_step",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-thememorychess-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘지정 칸 체스 기물 맞히기’는 코치가 FEN 텍스트 1개를 넣어 회상 훈련을 진행한 뒤 학습자의 답을 받아야 하지만 두 번째 입력과 채점 결과가 smallest_build에 없어 단일 결과가 불명확하다.",
+      "risk_flags": [
+        "multi_step",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-thememorychess-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사라진 체스 기물 찾기 결과’는 선수가 FEN 텍스트 1개를 넣어 회상한 뒤 사라진 기물을 찾아야 하지만 학습자의 답 입력과 채점 방식이 없어 처리 1회·결과 1개가 구체적이지 않다.",
+      "risk_flags": [
+        "multi_step",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-milestone-clip-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘저장소 성과 세로형 MP4 만들기’는 메인테이너가 성과 공유 순간 공개 GitHub 저장소 URL 1개를 한 번 조회·배치해 저장소명·별·포크가 담긴 세로형 MP4 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-milestone-clip-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘저장소 성과 가로형 MP4’는 개발자 창업자가 별 수치 목표 달성 직후 공개 GitHub 저장소 URL 1개를 한 번 조회·배치해 이름·별·포크가 담긴 가로형 MP4 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-milestone-clip-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘저장소 성과 정사각형 MP4’는 개발자 마케터가 포크 증가를 게시할 순간 공개 GitHub 저장소 URL 1개를 한 번 조회·배치해 이름·별·포크가 담긴 정사각형 MP4 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    }
+  ]
+}

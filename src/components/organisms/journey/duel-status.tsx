@@ -8,9 +8,9 @@ import { duelUrl } from "@/lib/share";
 import { fetchDuelVotes, type DuelSide, type DuelVotes } from "@/lib/backend/votes";
 import { loadDuels, type Duel } from "@/lib/storage";
 import { track } from "@/lib/track";
+import { copyText } from "@/lib/copy-text";
 import { cn } from "@/lib/utils";
 import { cardTitle } from "./publish-card";
-import { copyText } from "./share-row";
 
 interface DuelRow {
   duel: Duel;

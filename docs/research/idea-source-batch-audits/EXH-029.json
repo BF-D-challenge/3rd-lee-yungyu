@@ -1,0 +1,97 @@
+{
+  "batch_id": "EXH-029",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 48,
+    "Fail": 49,
+    "Merge": 3
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 62,
+      "sample": [
+        "trustmrr:snap-ugc",
+        "trustmrr:chibify-app",
+        "chrome_web_store:gohjkcljkfamegallahhgfgnpgeoaabf",
+        "chrome_web_store:jlaieagppfmkikkkfbgagdpkmidkmmhd",
+        "trustmrr:weightsapp-llc",
+        "chrome_web_store:cfbnfkpaoldidigecaidbidijnhbgbll",
+        "chrome_web_store:bnjlijllccbbjdeiflmakhkijbdddflj"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:chibify-app",
+          "decision": "Candidate",
+          "reason": "사진 하나를 받아 AI로 귀여운 치비 스타일로 변환해 즉시 결과 이미지 하나를 만드는 2일 세로 조각이다."
+        },
+        {
+          "key": "chrome_web_store:cfbnfkpaoldidigecaidbidijnhbgbll",
+          "decision": "Candidate",
+          "reason": "새 탭 그룹이라는 단일 기기 입력을 감지해 자동으로 닫고 즉시 닫힌 상태를 만드는 세로 조각이다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 2,
+      "fail_count": 53,
+      "sample": [
+        "chrome_web_store:efbcbjagneleeplijjgglpppdkjdmohl",
+        "app_store:1666653815",
+        "app_store:780174422",
+        "app_store:1017492454",
+        "app_store:1171095810",
+        "chrome_web_store:jmjcgjmipjiklbnfbdclkdikplgajhgc"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:780174422",
+          "decision": "Candidate",
+          "reason": "목적지 검색 → 주변 주차장 정보 비교 → 위치·요금·운영시간·사진이 보이는 상세 정보 세로 조각이 남는다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 3,
+      "fail_count": 50,
+      "sample": [
+        "trustmrr:gurjarapp-social-media-platform",
+        "chrome_web_store:jlaieagppfmkikkkfbgagdpkmidkmmhd",
+        "chrome_web_store:iljefmfdlllkjhofncgpfogndeocnode",
+        "app_store:1638569789",
+        "app_store:552821843"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:jlaieagppfmkikkkfbgagdpkmidkmmhd",
+          "decision": "Candidate",
+          "reason": "사이트 입력 → 사이트 위 토론 연결 → 해당 사이트에서 바로 확인하는 토론을 2일 세로 조각으로 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.2
+    },
+    {
+      "round": 4,
+      "fail_count": 49,
+      "sample": [
+        "app_store:1434510930",
+        "app_store:1599181775",
+        "trustmrr:kwizz-ai",
+        "app_store:368305725",
+        "app_store:1638569789"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

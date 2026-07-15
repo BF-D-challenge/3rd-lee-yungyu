@@ -1,0 +1,163 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6705123515-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘아이폰 성공 햅틱 촉감과 Swift 코드’는 디자이너가 구현 직전에 햅틱 종류 텍스트 하나를 입력해 성공 햅틱을 재생하고 Swift 코드를 받지만 촉감 검증과 코드 제공이라는 결과가 두 개다.",
+      "risk_flags": [
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6705123515-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘아이폰 경고 햅틱 재생과 Swift 코드’는 디자이너가 결제 상태 촉감을 정하는 순간 햅틱 종류 하나를 입력해 경고 햅틱과 대응 코드를 각각 받으므로 결과가 하나가 아니다.",
+      "risk_flags": [
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6705123515-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘아이폰 탭 햅틱 재생과 Swift 코드’는 디자이너가 구현 직전에 햅틱 종류 텍스트 하나를 입력해 탭 햅틱을 재생하고 Swift 코드 카드도 받으므로 촉감과 코드라는 두 결과를 만든다.",
+      "risk_flags": [
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6705123515-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘아이폰 경고 햅틱 재생과 Swift 코드’는 QA 담당자가 구현 직전에 경고 햅틱 종류 하나를 입력하는 순간이라 실제 화면을 검수하는 QA의 필요 시점과 맞지 않고 재생·코드 결과도 둘이다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6705123515-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘아이폰 탭 햅틱 재생과 Swift 코드’는 QA 담당자가 결제 성공·실패 촉감을 정하는 순간에 탭 햅틱 하나를 입력하도록 해 순간과 한 끗 변화가 어긋나며 재생과 코드 결과도 둘이다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "moment_twist_mismatch",
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6705123515-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘아이폰 성공 햅틱 촉감과 Swift 코드’는 QA 담당자가 완성 화면을 검수할 때 햅틱 종류 하나로 성공 햅틱을 재생하고 Swift 코드를 별도로 보여주므로 결과가 두 개다.",
+      "risk_flags": [
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-figma-ai-rename-plugin-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 UI 역할명 정리’는 목업을 정리하는 디자이너가 컴포넌트화 직전에 Figma 프레임 파일 하나를 한 번 분석해 버튼·입력창 같은 UI 역할명이 적용된 레이어 이름 미리보기 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-figma-ai-rename-plugin-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 계층 경로명 표시’는 리뷰 링크 전 디자이너가 Figma 프레임 파일 하나를 한 번 분석해 부모 구조가 드러나는 레이어 경로명 미리보기 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-figma-ai-rename-plugin-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 반복 레이어의 순번 이름 정리’는 목업 디자이너가 개발 인수인계 직전에 Figma 프레임 파일 하나를 한 번 분석해 반복 요소에 순번이 붙은 레이어 이름 미리보기 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-figma-ai-rename-plugin-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 계층 경로명 표시’는 디자인 시스템 담당자가 컴포넌트화 직전에 Figma 프레임 파일 하나를 한 번 분석해 부모 구조가 보이는 경로명 적용 미리보기 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-figma-ai-rename-plugin-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 반복 레이어의 순번 이름 정리’는 디자인 시스템 담당자가 리뷰 링크 전 Figma 프레임 파일 하나를 한 번 분석해 반복 카드와 행에 순번이 붙은 레이어 이름 미리보기 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-figma-ai-rename-plugin-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 UI 역할명 정리’는 디자인 시스템 담당자가 인수인계 직전에 Figma 프레임 파일 하나를 한 번 분석해 버튼·입력창 등 UI 역할명이 적용된 레이어 이름 미리보기 하나를 받는다.",
+      "risk_flags": []
+    }
+  ]
+}

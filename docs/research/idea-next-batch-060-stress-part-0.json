@@ -1,0 +1,429 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-scanner-me-scan-pdf-document-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "종이 문서 사진 1장을 촬영·보정해 공유 가능한 PDF 1개로 만들며 계약서 전달 순간과 관공서용 반듯한 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-scanner-me-scan-pdf-document-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "종이 문서 사진 1장을 스캔 처리해 개인정보 영역을 가린 PDF 1개로 저장하므로 세무 전달 순간과 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-scanner-me-scan-pdf-document-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "입력은 문서 1개로 정의됐지만 계약서 여러 장을 묶는 순간 여러 입력과 추가 병합 처리가 필요해 1입력·1처리 규칙을 위반한다.",
+      "risk_flags": [
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-habits-garden-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "완료 기록을 지속적으로 남겨야 연속 기록이 작동하는 습관 추적 기능으로 문제 전에 기록이 필요하고 기본 투두·리마인더로 대체 가능하다.",
+      "risk_flags": [
+        "prior_logging",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-habits-garden-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "스터디 완료 기록을 누적해야 주간 달력 결과가 의미 있어 문제 전에 기록이 필요하며 범용 일정·투두 앱으로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "prior_logging",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-habits-garden-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "약 복용 완료를 계속 기록해야 회복 가능한 연속 기록이 작동하므로 사전 기록이 필요하고 기본 알림·건강 기록 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "prior_logging",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6780632905-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "오늘의 루틴과 투두를 미리 입력해 둬야 하며 출근 전 우선순위 정리는 기본 미리 알림·투두 앱으로 더 쉽게 할 수 있다.",
+      "risk_flags": [
+        "prior_setup",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6780632905-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "반복 업무와 약속을 사전에 기록해야 목록이 작동하고 월간 달력 확인은 기본 캘린더 앱으로 더 편리하게 처리할 수 있다.",
+      "risk_flags": [
+        "prior_setup",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6780632905-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "루틴과 투두를 계속 기록해야 다음 날 재정리가 가능하며 기본 미리 알림·투두 앱으로 동일한 결과를 쉽게 얻을 수 있다.",
+      "risk_flags": [
+        "prior_setup",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-quran-daily-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "검색어 1개로 구절 1개를 찾는 흐름은 구체적이지만 Quran Daily라는 제목만으로 검색 문제와 결과가 드러나지 않아 제목 보완이 필요하다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-quran-daily-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아랍어 검색어 1개로 구절 1개를 보여주는 처리는 명확하지만 잠금 화면에서 오늘 구절을 확인한다는 순간과 검색 기능의 연결이 불분명하다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-quran-daily-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "수업 중 검색어 1개를 받아 구절 1개를 즉시 보여주는 흐름은 자연스럽지만 제목만으로 검색 결과가 보이지 않아 문구 수정이 필요하다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6761837242-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "작업명을 입력해 5분 타이머를 실행하는 기능은 기본 시계 타이머와 범용 집중 앱으로 더 쉽게 대체 가능하다.",
+      "risk_flags": [
+        "os_alternative",
+        "generic_utility"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6761837242-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "보고서나 집안일을 입력해 카운트다운하는 결과는 구체적이지만 기본 타이머 한 번이면 동일하게 해결되어 차별적 세로 조각이 아니다.",
+      "risk_flags": [
+        "os_alternative",
+        "generic_utility"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6761837242-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공부 과목을 입력해 5분 카운트다운을 실행하는 것은 기본 시계 앱의 타이머보다 편하지 않아 독립 결제 이유가 약하다.",
+      "risk_flags": [
+        "os_alternative",
+        "generic_utility"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-compress-photos-pictures-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 파일 1개를 압축해 화질을 유지한 가벼운 이미지 1개를 만들며 업로드 용량 제한이라는 순간과 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-compress-photos-pictures-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "HEIC 사진 1개를 압축해 JPG 파일 1개로 저장하는 흐름은 가능하지만 압축과 포맷 변환이 동시에 제시돼 처리 범위가 모호하다.",
+      "risk_flags": [
+        "process_scope"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-compress-photos-pictures-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 파일 1개를 압축해 저장공간을 덜 차지하는 이미지 1개로 만들며 저장공간 부족 순간과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-pictolines-com-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 1장을 선화 도안 1개로 바꾸는 흐름은 명확하지만 범용 이미지 AI에 한 번 요청해도 유사 결과를 얻을 수 있어 전문 기능의 필요성이 약하다.",
+      "risk_flags": [
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-pictolines-com-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "반려동물 사진 1장을 인쇄용 선화 1개로 만드는 입력·결과는 구체적이지만 범용 이미지 AI 한 번으로 대체 가능하다.",
+      "risk_flags": [
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-pictolines-com-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 1장을 색칠공부 도안 1개로 변환하는 처리는 가능하지만 어린이집용 비율 지정까지 범용 이미지 AI로 처리할 수 있어 차별성이 없다.",
+      "risk_flags": [
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-snaplearn-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "칠판 사진 1장을 요약 1개로 바꾸는 결과는 구체적이지만 범용 AI에 사진과 요약 요청을 한 번 보내는 방식으로 더 쉽게 대체 가능하다.",
+      "risk_flags": [
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-snaplearn-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "노트 사진 1장을 암기 요약 1개로 변환하는 흐름은 성립하지만 범용 AI 한 번의 이미지 분석으로 동일한 결과를 얻을 수 있다.",
+      "risk_flags": [
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-snaplearn-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "문제 풀이 사진 1장을 시각 요약 1개로 만드는 기능은 범용 AI 한 번으로 대체 가능해 별도 카드의 필요성이 없다.",
+      "risk_flags": [
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-jollycat-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "다양한 파일 형식 중 하나를 골라 변환하는 범용 기능이고 입력·출력 형식이 특정되지 않아 제목만으로 문제와 결과도 드러나지 않는다.",
+      "risk_flags": [
+        "generic_utility",
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-jollycat-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영상·음성 파일을 원하는 확장자로 바꾸는 기능은 편집 도구나 OS·온라인 변환기로 쉽게 대체 가능하며 입력과 출력 형식도 모호하다.",
+      "risk_flags": [
+        "generic_utility",
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-jollycat-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "민감한 파일 1개의 형식 변환이라는 목적은 있으나 지원 형식이 지나치게 넓고 일반 로컬·온라인 변환 도구로 대체 가능하다.",
+      "risk_flags": [
+        "generic_utility",
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-visioncut-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 파일 1개를 배경 제거 클립 1개로 만드는 흐름은 구체적이지만 VisionCut이라는 제목만으로 배경 제거 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-visioncut-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "상품 영상 1개를 배경이 제거된 클립 1개로 처리하는 순간은 자연스럽지만 제목이 기능을 설명하지 않아 문구 보완이 필요하다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-visioncut-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "강의 영상 1개를 깨끗한 홍보 클립 1개로 만드는 처리는 가능하지만 제목만으로 배경 제거 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    }
+  ]
+}

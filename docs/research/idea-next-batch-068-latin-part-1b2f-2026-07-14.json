@@ -1,0 +1,16 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1441536768-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "재료·양·조리 설정을 한 번 입력하면 수비드 온도와 타이머를 계산해 조리 완료 시각과 과조리 경고를 즉시 제공하므로, 수비드 시작 직전 자취생의 실제 문제를 반나절~2일 MVP로 해결할 수 있다.",
+      "risk_flags": []
+    }
+  ]
+}

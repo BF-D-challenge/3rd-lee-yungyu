@@ -1,0 +1,125 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-347393479-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출발지와 도착지를 한 번 입력해 경로 주변 명소를 검색하고 들를 장소 목록을 즉시 얻는 흐름이 부모의 출발 전 경유지 결정 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-347393479-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "출발지와 도착지 입력 후 경로 주변 명소 목록을 얻지만 아이 동반 조건을 처리하는 기능이 원본 메커니즘에 명확히 포함되지 않아 결과 범위가 불분명하다.",
+      "risk_flags": [
+        "new_filter_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-347393479-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출발지와 도착지를 입력해 경로 주변 특색 명소를 한 번 검색하고 숨은 관광지 목록을 받는 흐름이 문제와 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-347393479-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "출발지와 도착지를 입력해 명소 목록을 받는 처리는 가능하지만 차박 커플의 순간에 아이 동반 명소를 제시해 결제자와 실제 사용 맥락이 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-347393479-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "출발지와 도착지를 입력해 숨은 관광지 목록을 받는 처리는 가능하지만 차박 커플이 아이와 들를 휴게소를 찾는다는 순간이 결제자와 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-347393479-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출발지와 도착지를 한 번 입력해 경로 주변 특색 명소를 검색하고 이색 휴게소 목록을 즉시 받는 흐름이 차박 코스 계획과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-347393479-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "출발지와 도착지 입력으로 경로 주변 명소 목록을 만들 수 있지만 관광 콘텐츠 제작자가 출발 전 경유지를 정하는 개인 여행 순간인지 콘텐츠 제작 순간인지 불명확하다.",
+      "risk_flags": [
+        "moment_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-347393479-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "출발지와 도착지 입력 후 이색 휴게소 목록을 얻는 결과는 구체적이지만 콘텐츠 제작자의 필요보다 개인 여행자의 휴게소 탐색에 가까워 결제 순간이 불명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-347393479-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "출발지와 도착지 입력 후 경로 주변 명소 목록을 얻지만 아이 동반 조건이 원본 메커니즘에 포함된 것인지 불명확하고 콘텐츠 제작자와 사용 순간도 어긋난다.",
+      "risk_flags": [
+        "new_filter_unclear",
+        "payer_moment_mismatch"
+      ]
+    }
+  ]
+}

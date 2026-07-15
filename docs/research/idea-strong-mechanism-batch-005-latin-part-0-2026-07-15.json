@@ -1,0 +1,268 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-photo-string-art-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진으로 만드는 120핀 입문 스트링 도안’은 공방 운영자가 제작 직전에 사진 한 장을 입력해 120핀 패턴을 한 번 생성하고 번호가 붙은 PDF 도안 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-photo-string-art-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진으로 만드는 180핀 표준 스트링 도안’은 운영자가 사진 한 장을 처리해 PDF 하나를 받는 구조는 명확하지만 운영자의 제작 직전 순간과 ‘수업 실습 사진’ 선택 순간이 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-photo-string-art-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진으로 만드는 240핀 정밀 스트링 도안’은 공방 운영자가 견적 전 사진 한 장을 입력해 240핀 패턴을 생성하고 실제 작업용 PDF 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-photo-string-art-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진으로 만드는 180핀 표준 스트링 도안’은 공방 강사가 제작 직전 사진 한 장을 180핀 패턴으로 처리해 번호가 붙은 PDF 도안 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-photo-string-art-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진으로 만드는 240핀 정밀 스트링 도안’은 강사가 수업 사진 한 장을 처리해 PDF 하나를 받지만 초보자 수업 준비 순간과 정밀 240핀 결과의 난이도가 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-photo-string-art-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진으로 만드는 120핀 입문 스트링 도안’은 강사가 사진 한 장을 120핀 패턴으로 변환해 PDF 하나를 받는 구조는 명확하지만 고객 견적·납기 답변 순간이 강사의 핵심 순간과 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-photo-string-art-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진으로 만드는 240핀 정밀 스트링 도안’은 온라인 제작자가 제작 직전 사진 한 장을 240핀 패턴으로 생성해 즉시 작업용 PDF 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-photo-string-art-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진으로 만드는 120핀 입문 스트링 도안’은 온라인 제작자가 사진 한 장을 처리해 PDF 하나를 받는 구조는 명확하지만 온라인 판매자의 수업 실습 사진 선택 순간이 자연스럽지 않다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-photo-string-art-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진으로 만드는 180핀 표준 스트링 도안’은 온라인 제작자가 견적 전 사진 한 장을 180핀 패턴으로 처리해 제작 가능성을 확인할 PDF 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mermaidonline-live-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 투명 배경 PNG 다이어그램’은 백엔드 개발자가 PR 직전 코드 블록 하나를 한 번 렌더링해 투명 배경 PNG 파일 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mermaidonline-live-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 2배 해상도 PNG 다이어그램’은 백엔드 개발자가 기술 문서 삽입 직전 코드 블록 하나를 렌더링해 2배 해상도 PNG 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mermaidonline-live-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘Mermaid 코드의 편집 가능한 SVG 다이어그램’은 개발자가 코드 하나를 렌더링해 SVG 하나를 받는 구조는 명확하지만 백엔드 개발자의 발표 슬라이드 제작 순간과 payer가 다소 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-mermaidonline-live-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 2배 해상도 PNG 다이어그램’은 테크 리드가 PR 직전 코드 블록 하나를 렌더링해 2배 해상도 PNG 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mermaidonline-live-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 편집 가능한 SVG 다이어그램’은 테크 리드가 기술 문서 직전 코드 블록 하나를 렌더링해 편집 가능한 SVG 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mermaidonline-live-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 투명 배경 PNG 다이어그램’은 테크 리드가 발표 직전 코드 블록 하나를 렌더링해 투명 배경 PNG 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mermaidonline-live-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘Mermaid 코드의 편집 가능한 SVG 다이어그램’은 기술 강사가 코드 하나를 렌더링해 SVG 하나를 받는 구조는 명확하지만 PR 설명 작성 순간이 강사의 실제 사용 순간과 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-mermaidonline-live-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 투명 배경 PNG 다이어그램’은 기술 강사가 문서 삽입 직전 코드 블록 하나를 렌더링해 투명 배경 PNG 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mermaidonline-live-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 2배 해상도 PNG 다이어그램’은 기술 강사가 발표 직전 코드 블록 하나를 렌더링해 2배 해상도 PNG 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1119117405-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 자투리 최소 절단 배치 PDF’는 목공 작업자가 판재·톱날·부품 목록을 한 텍스트 블록으로 입력해 배치를 한 번 계산하고 자투리 최소 PDF 하나를 받는 MVP가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1119117405-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 재단 순서 표시 PDF’는 목공 작업자가 치수 텍스트 블록 하나를 입력해 배치를 한 번 계산하고 재단 순서가 표시된 PDF 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1119117405-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 부품 번호 표시 절단 PDF’는 목공 작업자가 변경된 치수 목록 텍스트 하나를 처리해 부품 번호가 표시된 절단 PDF 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

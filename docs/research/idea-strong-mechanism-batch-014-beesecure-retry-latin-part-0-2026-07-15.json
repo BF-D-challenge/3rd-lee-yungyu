@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-beesecure-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 배포 직전 웹 프로젝트 ZIP 하나를 정적 검사해 하드코딩된 비밀키의 파일·행 위치가 담긴 HTML 보고서를 받으므로 제목·결제자·순간·한 끗 변화가 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 AI 코드를 합친 직후 웹 프로젝트 ZIP 하나를 정적 검사해 위험한 eval 호출의 파일·행 위치가 담긴 HTML 보고서를 받으므로 제목·결제자·순간·한 끗 변화가 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 다른 팀에 넘기기 직전 웹 프로젝트 ZIP 하나에서 와일드카드 CORS 설정을 정적 검사해 해당 파일·행 위치가 담긴 HTML 보고서를 받으므로 제목·결제자·순간·한 끗 변화가 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 납품 직전 웹 프로젝트 ZIP 하나를 정적 검사해 위험한 eval 호출의 파일·행 위치가 담긴 HTML 보고서를 받으므로 결제자와 순간에 맞는 단일 보안 확인 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 AI 코드를 합친 직후 웹 프로젝트 ZIP 하나에서 와일드카드 CORS 설정을 정적 검사해 파일·행 위치가 담긴 HTML 보고서를 받으므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 다른 팀에 전달하기 직전 웹 프로젝트 ZIP 하나를 정적 검사해 하드코딩된 비밀키의 파일·행 위치가 담긴 HTML 보고서를 받으므로 결제자·순간·결과가 구체적으로 연결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 사내 웹 도구 배포 직전 웹 프로젝트 ZIP 하나에서 와일드카드 CORS 설정을 정적 검사해 해당 파일·행 위치가 담긴 HTML 보고서를 받으므로 단일 입력·처리·결과와 사용 순간이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 AI 코드를 기존 프로젝트에 합친 직후 웹 프로젝트 ZIP 하나를 정적 검사해 하드코딩된 비밀키의 파일·행 위치가 담긴 HTML 보고서를 받으므로 제목·결제자·순간·한 끗 변화가 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 다른 팀에 넘기기 직전 웹 프로젝트 ZIP 하나에서 위험한 eval 호출을 정적 검사해 해당 파일·행 위치가 담긴 HTML 보고서를 받으므로 결제자·필요한 순간·결과가 모두 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

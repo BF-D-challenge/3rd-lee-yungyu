@@ -1,0 +1,127 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-gnmpfminmaijfpdcegocbpkdolkndkpd-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘항공권 포인트 사용 현금 절약액’은 상담자가 고객에게 항공권 옵션을 보내기 직전 공개 Air Canada URL 하나를 처리해 포인트·현금 운임에서 절약액 하나를 보여주므로 제목·순간·한 끗 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘LeetCode 난이도별 풀이 분포 카드’는 취업 준비생이 지원서 첨부 직전 공개 프로필 URL 하나를 분석해 난이도별 분포 PNG 카드 하나를 받으므로 입력·처리·결과와 사용 순간이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘LeetCode 주제별 강약점 통계 카드’는 강사가 주간 피드백 직전 공개 프로필 URL 하나를 분석해 주제별 풀이 편중을 강약점 색상 카드 하나로 보여주므로 payer·moment·twist가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘LeetCode 최근 풀이 꾸준함 카드’는 코치가 상담 화면을 열기 직전 공개 프로필 URL 하나의 최근 풀이 기록을 처리해 꾸준함 한 줄이 담긴 PNG 카드 하나를 받으므로 세로 조각이 분명하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘노션 표 잘림 없는 인쇄용 PDF’는 프리랜서가 최종 납품 직전 공개 Notion URL 하나를 변환해 표 페이지 나눔이 보존된 PDF 파일 하나를 받으므로 결과와 한 끗 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘노션 다크 페이지 인쇄용 PDF’는 교사가 인쇄소에 넘기기 직전 공개 Notion URL 하나를 처리해 다크 페이지 대비가 보존된 PDF 하나를 받으므로 실제 순간과 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘노션 이미지 비율 보존 PDF’는 팀 리더가 협력사 전달 직전 공개 Notion URL 하나를 변환해 이미지 원본 비율이 보존된 PDF 파일 하나를 받으므로 payer·moment·twist와 MVP가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ecanpcehffngcegjmadlcijfolapggal-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘웹페이지 원본 서버 IP 확인 보고서’는 개발자가 DNS 이전 직후 공개 URL 하나에서 페이지 요소 IP를 검사할 수는 있지만 IPvFoo 흐름만으로 CDN 뒤의 실제 원본 서버 IP를 확인해 HTML 보고서에 보장할 수 없어 결과와 메커니즘이 어긋난다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-ecanpcehffngcegjmadlcijfolapggal-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 요청별 IP 버전 보고서’는 보안 담당자가 외부 전송 검토표 작성 직전 공개 웹페이지 URL 하나를 검사해 요청별 IPv4·IPv6 구분이 담긴 HTML 보고서 하나를 받으므로 입력·처리·결과가 단일하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ecanpcehffngcegjmadlcijfolapggal-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 제3자 도메인 연결 보고서’는 QA 엔지니어가 속도 문제 재현 기록 직전 공개 웹페이지 URL 하나를 검사해 제3자 도메인 목록 하나가 담긴 HTML 보고서를 받으므로 순간과 한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    }
+  ]
+}

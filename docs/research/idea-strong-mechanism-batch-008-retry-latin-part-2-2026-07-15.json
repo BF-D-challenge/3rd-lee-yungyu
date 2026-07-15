@@ -1,0 +1,164 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-mirage-detect-image-editing-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "result_title은 사진의 과도한 보정 영역을 히트맵으로 보여주고, 브랜드 콘텐츠 QA 담당자가 공개·승인 직전 사진 파일 하나를 입력해 한 번 탐지한 뒤 히트맵 이미지 한 장을 받는 흐름과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mirage-detect-image-editing-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "result_title은 복제 흔적 히트맵 결과를 보여주지만, payer는 과도한 보정 검수 담당자이고 사진 조작 의심 순간에 사진 파일 하나로 복제 흔적을 탐지해 히트맵 한 장을 받는다는 연결이 다소 약하다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-mirage-detect-image-editing-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "result_title은 경계 불일치 히트맵 결과를 명확히 보여주지만, payer가 과도한 보정 검수 담당자인 상황에서 사진 파일 하나로 경계 불일치를 탐지해 히트맵 한 장을 받는 한 끗이 다소 좁게 맞물리지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-novel-translator-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "result_title은 장 구분이 보존된 한국어 번역 EPUB 결과를 보여주고, 해외 웹소설 독자가 영어 EPUB 하나를 입력해 한 번 번역한 뒤 장 구분 보존 EPUB 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-novel-translator-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "result_title과 입력·처리·결과는 명확하지만, payer는 매주 해외 웹소설을 읽는 독자인데 moment는 출판 초벌 검토용 원고를 받은 직후라 결제자와 필요한 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-novel-translator-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "result_title은 각주 링크 보존 번역 EPUB을 보여주지만, payer는 해외 웹소설 독자인데 moment는 독서 모임 자료 배포 직전으로 운영자 역할의 순간이며 결제자와 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-novel-translator-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "result_title은 대화 표기 보존 번역 EPUB을 설명하지만, payer는 영어 원고를 검토하는 출판 편집자인데 moment는 영어 소설의 다음 장을 읽는 독자 순간이라 결제자와 필요한 순간이 불일치한다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-novel-translator-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "result_title은 각주 링크가 보존된 한국어 번역 EPUB 결과를 보여주고, 출판 편집자가 초벌 검토 직후 영어 EPUB 하나를 입력해 한 번 번역한 뒤 링크 보존 EPUB 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-novel-translator-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "result_title과 장 구분 보존 결과는 명확하지만, payer는 출판 편집자인데 moment는 원서 독서 모임 자료 배포 직전이라 결제자와 필요한 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-novel-translator-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "result_title은 각주 링크 보존 번역 EPUB을 보여주지만, payer는 원서 독서 모임 진행자인데 moment는 출판 초벌 검토용 원고를 받은 직후라 결제자와 필요한 순간이 불일치한다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-novel-translator-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "result_title은 장 구분 보존 번역 EPUB 결과를 설명하지만, payer는 독서 모임 진행자인데 moment는 출판 초벌 검토 직후라 출판 편집자에 가까운 순간이며 결제자와 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-novel-translator-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "result_title은 대화 표기가 보존된 한국어 번역 EPUB 결과를 보여주고, 독서 모임 진행자가 배포 직전 영어 EPUB 하나를 입력해 한 번 번역한 뒤 대화 표기 보존 EPUB 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    }
+  ]
+}

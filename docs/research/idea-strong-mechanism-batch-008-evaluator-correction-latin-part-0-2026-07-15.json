@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "id": "next-latin-chrome-web-store-epbobagokhieoonfplomdklollconnkl-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹페이지 URL 하나를 입력해 APA 7판으로 한 번 변환하고 제출 직전 참고문헌 인용문 한 줄을 즉시 얻는 흐름이 대학생의 순간·결제자·한 끗 변화와 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-epbobagokhieoonfplomdklollconnkl-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹페이지 URL 하나를 입력해 MLA 9판으로 한 번 변환하고 편집 중인 원고에 넣을 인용문 한 줄을 즉시 얻는 흐름이 대학생의 순간·결제자·한 끗 변화와 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-epbobagokhieoonfplomdklollconnkl-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "웹페이지 URL 하나를 입력해 Chicago 저자-날짜 형식으로 한 번 변환하고 인용문 한 줄을 얻는 기능은 구체적이지만, 대학생 결제자와 ‘클라이언트에게 납품 직전’이라는 사용 순간의 연결이 한국 대학생 맥락에서 다소 불명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    }
+  ]
+}

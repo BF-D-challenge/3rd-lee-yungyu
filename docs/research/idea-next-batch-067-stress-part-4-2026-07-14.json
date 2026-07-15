@@ -1,0 +1,417 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-479528827-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "상품 사진 파일을 입력해 배경을 지우고 레이어를 합성한 뒤 상세페이지용 몽타주 한 장을 즉시 만든다는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-479528827-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 파일을 합성하는 흐름에 원본에 없는 색감 보정과 판매용 목업 기능을 추가해 핵심 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-479528827-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여러 사진 파일을 입력해 배경을 지우고 겹친 뒤 단체 홍보 포스터용 몽타주를 만드는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1322105540-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인물과 포즈를 입력해 자세·크기·조명을 조정하고 참고 포즈를 만드는 흐름은 맞지만 입력과 조정 범위가 추상적이다.",
+      "risk_flags": [
+        "vague_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1322105540-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "두 인물의 포즈 참고컷을 만드는 흐름은 가능하지만 웹툰 작가와 게임 일러스트용 결과의 사용 맥락이 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1322105540-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "두 인물의 포즈 입력을 받아 자세와 비율을 조정하고 웹툰 콘티용 참고 포즈 하나를 보여주는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1207200983-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "CCTV URL을 재생해 화면을 보는 결과는 가능하지만 기존 카메라 설치가 전제되고 웹브라우저의 스트림 재생이 더 간단하다.",
+      "risk_flags": [
+        "prerequisite_setup",
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1207200983-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "농장 운영자 맥락과 숙소 CCTV URL·주차장 화면 결과가 서로 달라 결제자와 한 끗 변화가 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "prerequisite_setup"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1207200983-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "펜션 운영자 맥락인데 농장 카메라와 야생동물 장면을 제시해 사용 순간과 결과가 불일치하며 기존 카메라 설치도 필요하다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "prerequisite_setup"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6443677513-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 원본 파일 묶음을 입력해 압축·암호화하고 외주사에 보낼 압축 파일 하나를 결과로 만드는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6443677513-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "파일 묶음을 압축해 아카이브를 만드는 처리는 맞지만 거래처 문서 전달자와 개발 프로젝트 보관 결과가 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6443677513-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로젝트 파일 보관이라는 결제자와 거래처 문서 공유라는 변형이 달라 입력·결과의 사용 순간을 문구로 맞춰야 한다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-590254755-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "연락처 권한을 받아 중복을 병합하는 처리는 명확하지만 OS 기본 연락처의 중복 정리 기능이 더 간단하다.",
+      "risk_flags": [
+        "os_basic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-590254755-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "연락처 권한 입력과 중복 병합 결과는 명확하지만 OS 기본 주소록 기능으로 같은 문제를 더 편하게 해결할 수 있다.",
+      "risk_flags": [
+        "os_basic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-590254755-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "단일 기기 연락처 권한만으로 여러 기기의 주소록 문제를 해결한다고 표현해 입력 범위를 벗어나며 OS 기능도 대체 가능하다.",
+      "risk_flags": [
+        "input_scope_mismatch",
+        "os_basic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6776997348-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단어 목록을 받아 플래시카드를 만드는 핵심은 명확하지만 플래시카드와 발음 연습이라는 결과가 두 가지이고 입력도 다소 넓다.",
+      "risk_flags": [
+        "multiple_results",
+        "vague_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6776997348-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단어 목록에서 학습 카드를 만드는 흐름은 가능하지만 JLPT 준비자와 여행 단어 입력의 목적이 어긋나고 발음 연습까지 포함해 결과가 넓다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "multiple_results"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6776997348-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단어 목록을 카드로 바꾸는 처리는 맞지만 여행 준비자와 JLPT 목록이 불일치하고 반복 학습·발음 연습으로 결과가 확장된다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "multiple_results"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-309010388-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기기 센서로 차량 기울기를 측정해 보정 높이를 보여주는 흐름은 보이지만 한 기울기 입력만으로 바퀴별 높이를 계산하는 조건이 부족하다.",
+      "risk_flags": [
+        "insufficient_input",
+        "measurement_accuracy"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-309010388-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "차량 기울기 측정에서 보정 높이를 얻는 목적은 자연스럽지만 샤워실 배수 문제와 결과의 직접 연결이 약하고 차량 치수 입력이 없다.",
+      "risk_flags": [
+        "weak_result_link",
+        "insufficient_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-309010388-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "차량 센서 입력으로 바퀴별 받침 높이를 보여주려 하지만 차종·바퀴 위치 없이 정확한 계산이 가능한지 불명확하다.",
+      "risk_flags": [
+        "insufficient_input",
+        "measurement_accuracy"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-938939446-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭이나 드래그를 입력해 불꽃을 폭발시키고 즉시 시각 효과 하나를 보여주는 단순한 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-938939446-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여러 손가락의 화면 탭을 입력해 화면 불꽃놀이를 즉시 보여주는 가족 놀이 결과가 원본과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-938939446-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 드래그를 입력해 불꽃 줄을 만들고 폭발 효과 하나를 즉시 보여주는 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-548942104-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인명이나 분야 검색어를 입력해 검색하고 수업 중 필요한 인물의 행적 정보를 결과로 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-548942104-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "직업·활동지역 검색어를 입력해 관련 인물을 찾고 친일 행적 기록을 하나의 결과로 확인하는 사용 순간이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-548942104-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출생년도와 출신지역을 검색어로 입력해 지역 관련 인물을 좁히고 인물 정보를 바로 확인하는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-577775980-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "GPS 권한만으로 여행 중 계속 백그라운드 기록해야 하므로 입력 1회·처리 1회·즉시 결과 조건을 충족하지 못한다.",
+      "risk_flags": [
+        "ongoing_tracking",
+        "not_immediate"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-577775980-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "GPS 권한 이후 라이딩을 계속 기록해야 하고 러닝 중 백그라운드 기록이라는 변형도 결제자와 맞지 않는다.",
+      "risk_flags": [
+        "ongoing_tracking",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-577775980-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "트레일 러너가 필요한 순간에 모터사이클 이동을 기록한다고 써서 결제자와 결과가 불일치하며 지속적인 GPS 기록도 필요하다.",
+      "risk_flags": [
+        "ongoing_tracking",
+        "payer_twist_mismatch"
+      ]
+    }
+  ]
+}

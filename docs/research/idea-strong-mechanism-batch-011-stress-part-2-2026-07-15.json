@@ -1,0 +1,138 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-apirealtest-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 데모 전 개발 대행자가 cURL 명령 텍스트 하나를 입력해 API를 한 번 호출하고 응답 스키마가 강조된 HTML 보고서 하나를 받아 문제와 결과가 제목에 드러난다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-scopepilot-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 제작 프리랜서가 기존 범위와 새 요청이 담긴 문서 파일 하나를 한 번 분석해 추가 작업이 강조된 변경 주문서 PDF 하나를 고객 요청 직후 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-scopepilot-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "브랜딩 스튜디오 PM이 기존 범위와 새 요청 문서 파일 하나를 한 번 분석해 범위 밖 추가 금액이 강조된 변경 주문서 PDF 하나를 작업 전에 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-scopepilot-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영상 제작 대행사의 견적 책임자가 변경 문서 파일 하나를 분석해 추가 일정 PDF를 받지만, payer는 추가 금액을 산정하려 하고 moment도 추가비 합의를 요청하는 순간이라 제목·twist와 자연스럽게 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-receiptworks-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "팝업 판매자가 판매자·거래일·품목·금액 텍스트 하나만 입력해 영수증을 만들지만 세금 항목을 산출할 세율이나 세금 정보가 없어 강조된 세금 결과를 신뢰성 있게 만들 수 없다.",
+      "risk_flags": [
+        "safety_or_regulation_risk",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-receiptworks-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공방 운영자가 판매자·거래일·품목·금액 텍스트 하나를 한 번 형식화해 환불 안내가 강조된 영수증 PDF 하나를 만들지만, 입력에 환불 정책이나 안내 내용이 없어 문구 범위를 보완해야 한다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-receiptworks-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현장 서비스 프리랜서가 판매자·거래일·품목·금액 텍스트 하나를 한 번 형식화해 품목별 금액이 강조된 영수증 PDF 하나를 월말 정산 전에 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-supergitsight-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기술 스크리너가 공개 GitHub 프로필 URL 하나를 한 번 평가해 기여 일관성 점수 HTML 보고서 하나를 받으므로 흐름은 구체적이지만 채용 판단에 점수를 직접 쓰는 위험을 명시해야 한다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-supergitsight-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "엔지니어링 리드가 공개 GitHub 프로필 URL 하나를 KCRIM·ACID 기준으로 한 번 평가해 기술 숙련도 점수 보고서 하나를 받아 인터뷰 전 후보를 비교하지만 채용 점수의 판단 위험이 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-supergitsight-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제품 책임자가 공개 GitHub 프로필 URL 하나를 한 번 평가해 저장소 신뢰성 점수 HTML 보고서 하나를 계약 전 비교 근거로 받지만 외주 선정에 직접 쓰이는 평가 점수의 위험이 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    }
+  ]
+}

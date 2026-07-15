@@ -1,0 +1,50 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-516561342-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "스마트폰 사진 한 장을 필터·스티커·프레임으로 꾸며 사진 한 장을 만드는 입력·처리·결과는 구체적이지만, OS 기본 사진 편집이나 범용 사진 편집 앱으로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "generic_editing",
+        "os_default_or_existing_app"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-516561342-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "스마트폰 사진 한 장에 필터·스티커·프레임을 적용해 공유 가능한 꾸민 사진 한 장을 만들지만, 공유를 포함해도 기존 사진 편집 앱과 OS 기본 기능으로 충분히 해결된다.",
+      "risk_flags": [
+        "generic_editing",
+        "os_default_or_existing_app"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-516561342-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "스마트폰 사진 한 장에 한국 감성 스티커와 프레임을 적용해 꾸며진 사진 한 장을 만들지만, 이는 기존 사진 편집 앱이나 범용 AI 한 번으로 더 편리하게 할 수 있다.",
+      "risk_flags": [
+        "generic_editing",
+        "os_default_or_existing_app",
+        "weak_differentiation"
+      ]
+    }
+  ]
+}

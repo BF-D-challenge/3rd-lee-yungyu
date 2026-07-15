@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-meyoo-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주문별 비용을 뺀 실제 실이익 표라는 제목이 문제와 결과를 명확히 보여주며, 소형 셀러가 월 정산 때 결제액·수수료·광고비·원가가 담긴 CSV 하나를 한 번 계산해 주문별 실이익 정산표 하나로 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-meyoo-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "광고비까지 뺀 상품 실이익 표라는 제목은 명확하지만, 대행자가 정산표에서 적자 원인을 찾을 때 주문번호·상품·결제액·수수료·광고비·원가 CSV 하나를 계산한 결과가 상품별 집계인지 명확히 규정되지 않았다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-meyoo-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "상품별 광고·원가 차감 실이익 표라는 제목이 문제와 결과를 명확히 보여주며, 정산 담당자가 광고 상품을 고를 때 비용 필드가 담긴 CSV 하나를 한 번 계산해 SKU별 실이익을 합산한 정산표 하나로 받는다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["results"],
+  "properties": {
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "hard_gate", "ux", "reason", "risk_flags"],
+        "properties": {
+          "id": { "type": "string" },
+          "status": { "enum": ["pass", "review", "fail"] },
+          "hard_gate": { "enum": ["pass", "fail"] },
+          "ux": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["beginner", "intermediate", "expert"],
+            "properties": {
+              "beginner": { "enum": ["pass", "fail"] },
+              "intermediate": { "enum": ["pass", "fail"] },
+              "expert": { "enum": ["pass", "fail"] }
+            }
+          },
+          "reason": { "type": "string" },
+          "risk_flags": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "title_unclear",
+                "payer_moment_mismatch",
+                "payer_twist_mismatch",
+                "moment_twist_mismatch",
+                "input_not_allowed",
+                "multi_input",
+                "multi_step",
+                "multi_result",
+                "prior_record_required",
+                "external_action_required",
+                "external_data_required",
+                "os_basic_substitute",
+                "generic_ai_substitute",
+                "mechanism_drift",
+                "scope_too_large",
+                "result_unclear",
+                "mvp_too_large",
+                "safety_or_regulation_risk",
+                "korean_context_mismatch"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

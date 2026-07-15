@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-checkemail-dev-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "이메일 RFC 구문 오류 검증 결과라는 제목이 명확하고, SaaS 운영자가 수상한 가입 이메일 한 줄을 입력해 RFC 구문을 한 번 검사한 뒤 오류 여부가 담긴 JSON 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-checkemail-dev-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "이메일 일회용 도메인 판정 결과라는 제목이 명확하고, 백엔드 개발자가 공개 직전 이메일 한 줄을 입력해 내장 목록과 일회용 도메인 일치 여부를 한 번 검사한 뒤 JSON 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-checkemail-dev-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "이메일 도메인 MX 존재 결과는 결과가 구체적이지만, CRM 담당자가 이메일 한 줄을 입력해 공개 MX를 조회해야 하므로 결과의 즉시성과 초보자 이해가 다소 불명확하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    }
+  ]
+}

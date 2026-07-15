@@ -1,0 +1,68 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6461213251-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘협찬 고지 위치가 보이는 네이버 후기’는 결제 전 육아용품 후기를 확인하는 부모가 네이버 글 URL 하나를 입력하면 대가성 문구를 한 번 분석해 본문 앞·중간·뒤 위치 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6461213251-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘네이버 후기의 대가성 문구 모음’은 가전 최종 선택 순간에 네이버 후기 URL 하나를 입력하면 대가성 문구를 한 번 탐지해 발견된 원문 문장 목록 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6461213251-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘대가성 표현 횟수가 표시된 후기’는 맛집 링크를 고르는 총무가 네이버 글 URL 하나를 입력하면 대가성 표현을 한 번 탐지해 발견 횟수 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1140451547-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘직선 궤적선이 표시된 골프 영상’은 코치가 공이 잘 보이지 않는 골프 영상 파일 하나를 입력하면 한 번 편집해 직선 궤적선이 포함된 MP4 파일 한 개를 받는 흐름이 명확하지만, 영상에서 공 궤적을 안정적으로 추적하는 MVP 구현 범위가 다소 불확실하다.",
+      "risk_flags": [
+        "mvp_too_large"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1140451547-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘드로우 궤적선이 표시된 골프 영상’은 아마추어 골퍼가 공유 직전 골프 영상 파일 하나를 입력하면 한 번 편집해 드로우 궤적선이 포함된 MP4 파일 한 개를 받는 흐름이 명확하지만, 휘어진 궤적 추적까지 포함한 MVP 구현 범위가 다소 불확실하다.",
+      "risk_flags": [
+        "mvp_too_large"
+      ]
+    }
+  ]
+}

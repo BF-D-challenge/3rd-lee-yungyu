@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6757283848-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘목표 반죽량에 맞춘 재료 그램표’는 소형 베이커리 운영자가 판매 배치로 키우기 전에 총 반죽 중량과 재료별 비율 텍스트를 한 번 입력하면 baker’s percentage로 계산해 재료별 그램표 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6757283848-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘밀가루 기준 베이커스 퍼센트 배합표’는 소형 베이커리 운영자가 주문 수량 변경 직후 총 반죽 중량과 재료별 비율 텍스트를 한 번 입력하면 baker’s percentage를 계산해 밀가루 100% 기준 배합표 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6757283848-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘실패 줄이는 1그램 단위 생산표’는 소형 베이커리 운영자가 저울에 올리기 직전 총 반죽 중량과 재료별 비율 텍스트를 한 번 입력하면 재료 중량을 계산해 1g 단위 생산 계량표 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6757283848-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘밀가루 기준 베이커스 퍼센트 배합표’는 매장 반장이 판매 배치 전 총 반죽 중량과 재료별 비율 텍스트를 한 번 입력하면 baker’s percentage를 계산해 밀가루 100% 기준 배합표 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6757283848-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘실패 줄이는 1그램 단위 생산표’는 매장 반장이 주문 수량 변경 직후 총 반죽 중량과 재료별 비율 텍스트를 한 번 입력하면 재료 중량을 계산해 1g 단위 생산 계량표 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6757283848-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘목표 반죽량에 맞춘 재료 그램표’는 매장 반장이 저울에 올리기 직전 총 반죽 중량과 재료별 비율 텍스트를 한 번 입력하면 중량을 계산해 재료별 그램표 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6757283848-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘실패 줄이는 1그램 단위 생산표’는 주문제작 홈베이커가 판매 배치 전 총 반죽 중량과 재료별 비율 텍스트를 한 번 입력하면 재료 중량을 계산해 1g 단위 생산 계량표 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6757283848-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘목표 반죽량에 맞춘 재료 그램표’는 주문제작 홈베이커가 주문 수량 변경 직후 총 반죽 중량과 재료별 비율 텍스트를 한 번 입력하면 중량을 계산해 재료별 그램표 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6757283848-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘밀가루 기준 베이커스 퍼센트 배합표’는 주문제작 홈베이커가 저울에 올리기 직전 총 반죽 중량과 재료별 비율 텍스트를 한 번 입력하면 비율을 계산해 밀가루 100% 기준 배합표 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

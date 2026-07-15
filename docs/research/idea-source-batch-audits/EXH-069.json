@@ -1,0 +1,65 @@
+{
+  "batch_id": "EXH-069",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 40,
+    "Fail": 58,
+    "Reserve": 1,
+    "Merge": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 70,
+      "sample": [
+        "app_store:427362797",
+        "app_store:921446819",
+        "app_store:495489408",
+        "trustmrr:progress",
+        "app_store:1177346000",
+        "app_store:1603279883",
+        "app_store:311548709"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:427362797",
+          "decision": "Candidate",
+          "reason": "입력한 음성 유형과 사용 가능 시간으로 운동을 골라 안내 음성 워밍업을 만든다."
+        },
+        {
+          "key": "app_store:495489408",
+          "decision": "Candidate",
+          "reason": "Tumblr 화면 하나를 받아 제스처로 보고 저장하거나 리블로그하는 단일 기능 조각이 확인된다."
+        },
+        {
+          "key": "app_store:1603279883",
+          "decision": "Candidate",
+          "reason": "Reddit 페이지와 단일 Safari 권한을 받아 UI를 전환하고 필터링된 Reddit 화면을 즉시 보여준다."
+        }
+      ],
+      "false_reject_rate": 0.42857142857142855
+    },
+    {
+      "round": 2,
+      "fail_count": 58,
+      "sample": [
+        "trustmrr:progress",
+        "chrome_web_store:gkhlgobgichcdmjgipofmhognfgeafpk",
+        "trustmrr:youbrokeprod",
+        "app_store:6475702873",
+        "trustmrr:simple-x-header",
+        "trustmrr:closer-view"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

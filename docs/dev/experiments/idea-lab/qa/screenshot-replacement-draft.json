@@ -1,0 +1,75 @@
+{
+  "id": "site-photo-closeout",
+  "source": {
+    "id": "source-site-audit-pro",
+    "sourceName": "Site Audit Pro",
+    "platform": "app",
+    "value": "현장에서 발견한 문제를 사진·담당자·설명으로 기록하고 전문 보고서로 공유하는 점검 앱",
+    "detail": "프로젝트별 이슈와 사진을 모으고 사진에 표시를 더해 PDF·CSV 점검 보고서로 내보냅니다.",
+    "evidence": "미국 App Store 4.8점·평가 1.1만개·유료 $12.90; 통합 장부의 영국 유료 생산성 1위 기록; 공식 설명에서 이슈·사진 주석·PDF 보고서 흐름 확인",
+    "preservedFlow": "현장과 작업 설정 → 이슈별 사진·설명 기록 → 상대가 확인할 수 있는 보고서 공유"
+  },
+  "payers": [
+    {
+      "id": "payer-small-interior-contractor",
+      "value": "한 달에 2~5곳을 마감하는 소형 인테리어 시공자",
+      "detail": "준공 사진은 휴대폰에 있지만 고객에게 보낼 때 공정·위치·수정 내용을 다시 설명합니다."
+    },
+    {
+      "id": "payer-store-maintenance-manager",
+      "value": "여러 매장의 소규모 수리를 맡는 시설관리 담당자",
+      "detail": "수리 전후 사진과 업체 메모가 카톡방마다 흩어져 월말 완료 증거를 다시 모읍니다."
+    },
+    {
+      "id": "payer-equipment-installer",
+      "value": "간판·에어컨·가구 설치를 직접 인계하는 1인 기사",
+      "detail": "작업이 끝나면 설치 위치와 마감 상태를 사진으로 보내지만 어떤 부분을 보라는지 전화로 다시 설명합니다."
+    }
+  ],
+  "moments": [
+    {
+      "id": "moment-after-completion-walkthrough",
+      "value": "수리·설치 완료 점검을 끝내고 현장 사진이 쌓인 직후",
+      "detail": "현장을 떠나기 전에 무엇을 고쳤는지 고객이 알아볼 한 장으로 묶어야 하는 순간"
+    },
+    {
+      "id": "moment-client-asks-proof",
+      "value": "고객이 완료된 부분의 사진 증거를 다시 요청한 순간",
+      "detail": "카메라 롤을 뒤지거나 긴 설명을 쓰지 않고 해당 위치의 전후 차이를 보내야 하는 순간"
+    },
+    {
+      "id": "moment-before-final-payment",
+      "value": "잔금·월 정산을 청구하기 한 시간 전",
+      "detail": "끝난 작업과 남은 문제를 사진 근거로 분리해 청구 지연을 막아야 하는 순간"
+    }
+  ],
+  "twists": [
+    {
+      "id": "twist-three-issues-only",
+      "kind": "remove",
+      "value": "프로젝트 관리와 긴 점검표를 빼고 중요한 완료 항목 세 개만 남기기",
+      "detail": "사진과 설명을 보고서로 공유하는 흐름은 유지하고 오늘 인계할 핵심 작업만 세 개로 제한합니다.",
+      "resultTitle": "사진 3장 공사 완료서",
+      "platform": "web",
+      "smallestBuild": "현장명과 사진 세 장, 각 사진 설명 한 줄을 넣으면 작업·위치·완료 상태가 붙은 1쪽 PDF가 나오는 모바일 웹 화면"
+    },
+    {
+      "id": "twist-before-after-pair",
+      "kind": "replace",
+      "value": "이슈 목록을 같은 위치의 수리 전·후 사진 한 쌍으로 바꾸기",
+      "detail": "현장 사진으로 결과를 증명하는 흐름은 유지하고 받는 사람이 비교할 결과를 전후 한 쌍으로 바꿉니다.",
+      "resultTitle": "수리 전후 한 장 보고서",
+      "platform": "web",
+      "smallestBuild": "전 사진과 후 사진을 한 장씩 올리고 위치·작업 한 줄을 쓰면 나란히 비교되는 공유 링크와 PDF가 나오는 모바일 웹 화면"
+    },
+    {
+      "id": "twist-one-markup",
+      "kind": "add",
+      "value": "사진마다 봐야 할 곳을 가리키는 원·화살표 하나 더하기",
+      "detail": "사진 보고서 흐름은 유지하고 고객이 문제나 완료 부분을 바로 찾도록 표시 하나만 더합니다.",
+      "resultTitle": "표시가 붙은 현장 사진 PDF",
+      "platform": "web",
+      "smallestBuild": "사진 한 장에서 원 또는 화살표 한 개를 놓고 설명을 쓰면 표시·위치·작성시각이 붙은 PDF 한 쪽이 나오는 모바일 웹 화면"
+    }
+  ]
+}

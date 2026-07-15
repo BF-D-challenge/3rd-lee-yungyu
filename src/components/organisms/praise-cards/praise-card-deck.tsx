@@ -9,6 +9,7 @@ export interface PraiseCard {
   id: string;
   message: string;
   arrivedAt: string;
+  ideaTitle?: string;
   anonymousLabel?: string;
   emblem?: PraiseCardEmblem;
 }
@@ -37,23 +38,20 @@ export interface PraiseCardDeckProps extends Omit<HTMLAttributes<HTMLElement>, "
   ariaLabel?: string;
   /** 빈 덱 상태 CTA 문구. 다시 공유할 링크가 있는지에 따라 호출부가 다르게 넘긴다. */
   shareActionLabel?: string;
+  emptyDescription?: string;
   onRequestPraise?: () => void;
-  onRevealSender?: (card: PraiseCard) => void;
-  /** 명시적 30일 공개 동의 카드에서만 전달한다. 영구 익명 카드에는 절대 넘기지 않는다. */
-  revealSenderHint?: string;
-  /** 영구 익명이라 결제 CTA 자체를 만들 수 없을 때만 true. */
-  showForeverAnonymousNote?: boolean;
-  onPreviewNext?: (card: PraiseCard) => void;
+  onReveal?: (card: PraiseCard) => void;
+  onStartIdea?: () => void;
 }
 
 const DEFAULT_PALETTE: PraiseCardDeckPalette = {
-  table: "#0b2925",
-  tableEdge: "#071a19",
-  card: "#f4efe5",
-  cardInk: "#1d2428",
-  cardMuted: "#6c706e",
-  cardBack: "#27314f",
-  cardBackLine: "#9aa8d0",
+  table: "#0d0d10",
+  tableEdge: "#060608",
+  card: "#f4f1ea",
+  cardInk: "#1a1a1e",
+  cardMuted: "#6c6c72",
+  cardBack: "#17171c",
+  cardBackLine: "#8a8a92",
   accent: "#ff4458",
 };
 
@@ -65,30 +63,28 @@ const EMBLEM: Record<PraiseCardEmblem, { symbol: string; label: string; tone: "w
 };
 
 /**
- * 일반 카드 게임의 테이블·스택·수트·딜 문법만 추상화한 익명 칭찬 카드입니다.
+ * 일반 카드 게임의 테이블·스택·수트·딜 문법만 추상화한 응원 카드입니다.
  * 결제 상태나 결제 동작은 포함하지 않습니다.
  *
  * @example
  * <PraiseCardDeck
  *   card={{ id: "praise-1", message: "작은 디테일까지 챙기는 모습이 멋졌어요.", arrivedAt: "2026. 7. 12." }}
  *   onRequestPraise={() => sharePraiseLink()}
- *   onRevealSender={(card) => openSenderSheet(card.id)}
- *   onPreviewNext={(card) => openNextPreview(card.id)}
+ *   onStartIdea={() => showIdeaMaker()}
  * />
  */
 export function PraiseCardDeck({
   card = null,
   initiallyFaceUp = false,
-  nextCardLabel = "다음 칭찬은 아직 잠겨 있어요",
+  nextCardLabel = "다음 응원은 아직 잠겨 있어요.",
   hasNextCard = false,
   palette,
   ariaLabel,
-  shareActionLabel = "칭찬 받아오기",
+  shareActionLabel = "응원 받아오기",
+  emptyDescription = "완성한 아이디어를 공유하고 친구의 응원을 받아보세요.",
   onRequestPraise,
-  onRevealSender,
-  revealSenderHint,
-  showForeverAnonymousNote = false,
-  onPreviewNext,
+  onReveal,
+  onStartIdea,
   className,
   style,
   ...props
@@ -117,8 +113,8 @@ export function PraiseCardDeck({
   const deckLabel =
     ariaLabel ??
     (card
-      ? `오늘 공개된 익명 칭찬 카드. ${faceUp ? "앞면이 열려 있습니다." : "뒷면이 보입니다."}`
-      : "아직 공개된 칭찬 카드가 없습니다.");
+      ? `받은 응원 카드. ${faceUp ? "앞면이 열려 있습니다." : "뒷면이 보입니다."}`
+      : "아직 도착한 응원 카드가 없습니다.");
 
   return (
     <section
@@ -131,8 +127,8 @@ export function PraiseCardDeck({
       <div className={styles.table}>
         <header className={styles.header}>
           <div>
-            <span className={styles.eyebrow}>TODAY&apos;S PRAISE</span>
-            <h2>{card ? "오늘 공개된 익명 칭찬" : "오늘의 칭찬 카드"}</h2>
+            <span className={styles.eyebrow}>PRAISE CARD</span>
+            <h2>{card ? "도착한 응원 한 장" : "받은 응원"}</h2>
           </div>
           <span className={styles.tableMark} aria-hidden="true">✦</span>
         </header>
@@ -150,16 +146,19 @@ export function PraiseCardDeck({
               <button
                 type="button"
                 className={styles.flipCard}
-                aria-label={faceUp ? "칭찬 카드 뒷면 보기" : "오늘의 칭찬 카드 뒤집기"}
+                aria-label={faceUp ? "응원 카드 뒷면 보기" : "응원 카드 뒤집어 내용 확인하기"}
                 aria-pressed={faceUp}
-                onClick={() => setFaceUp((current) => !current)}
+                onClick={() => {
+                  if (!faceUp) onReveal?.(card);
+                  setFaceUp((current) => !current);
+                }}
               >
                 <span className={styles.flipInner}>
                   <span className={styles.cardBack} aria-hidden={faceUp}>
                     <span className={styles.backBorder} aria-hidden="true">
                       <span className={styles.backSuit}>✦</span>
                     </span>
-                    <span className={styles.flipHint}>탭해서 칭찬 열기</span>
+                    <span className={styles.flipHint}>눌러서 응원 확인하기</span>
                   </span>
 
                   <span className={styles.cardFront} data-tone={emblem.tone} aria-hidden={!faceUp}>
@@ -170,11 +169,12 @@ export function PraiseCardDeck({
                     <span className={styles.praiseBody}>
                       <span className={styles.quoteMark} aria-hidden="true">“</span>
                       <strong>{card.message}</strong>
-                      <span className={styles.sender}>{card.anonymousLabel ?? "익명"}</span>
+                      {card.ideaTitle ? <span className={styles.ideaTitle}>아이디어 · {card.ideaTitle}</span> : null}
+                      {card.anonymousLabel ? <span className={styles.sender}>{card.anonymousLabel}</span> : null}
                     </span>
                     <span className={styles.arrivedAt}>도착일 · {card.arrivedAt}</span>
                     <span className={styles.suitBottom} aria-hidden="true">
-                      <b>익명</b>
+                      <b>응원</b>
                       <i>{emblem.symbol}</i>
                     </span>
                   </span>
@@ -185,28 +185,27 @@ export function PraiseCardDeck({
             </div>
 
             <p className={styles.deckHint}>
-              {faceUp ? "카드를 다시 누르면 뒷면으로 돌아가요." : "오늘 공개된 카드를 한 장 뒤집어 보세요."}
+              {faceUp ? "응원을 확인했어요." : "카드를 눌러 응원을 확인하세요."}
             </p>
 
-            {onRevealSender || showForeverAnonymousNote || (hasNextCard && onPreviewNext) ? (
-              <div className={styles.actions}>
-                {onRevealSender ? (
-                  <div className={styles.goldEntry}>
-                    <button type="button" className={styles.goldAction} onClick={() => onRevealSender(card)}>
-                      990원에 지금 확인
-                    </button>
-                    {revealSenderHint ? <p className={styles.goldHint}>{revealSenderHint}</p> : null}
-                  </div>
-                ) : showForeverAnonymousNote ? (
-                  <p className={styles.foreverAnonymousNote}>영구 익명은 결제해도 공개되지 않아요.</p>
-                ) : null}
-                {hasNextCard && onPreviewNext ? (
-                  <button type="button" className={styles.secondaryAction} onClick={() => onPreviewNext(card)}>
-                    다음 칭찬 미리 보기
+            {faceUp && hasNextCard ? (
+              <p className={styles.nextNotice} role="status">{nextCardLabel}</p>
+            ) : null}
+
+            {faceUp && !hasNextCard ? (
+              <div className={styles.completion}>
+                <strong role="status">도착한 응원을 모두 확인했어요.</strong>
+                {onStartIdea ? (
+                  <button type="button" className={styles.primaryAction} onClick={onStartIdea}>
+                    새 아이디어 만들기
                   </button>
                 ) : null}
               </div>
             ) : null}
+
+            <span className={styles.srOnly} aria-live="polite">
+              {faceUp ? `응원 내용: ${card.message}` : "응원 카드 뒷면이 보입니다."}
+            </span>
           </>
         ) : (
           <div className={styles.emptyState}>
@@ -214,16 +213,13 @@ export function PraiseCardDeck({
               <span className={styles.emptyBack} />
               <span className={styles.emptyFront}>?</span>
             </div>
-            <h3>아직 도착한 칭찬이 없어요</h3>
-            <p>공유 링크를 보내면 친구가 익명으로 칭찬 카드를 남길 수 있어요.</p>
-            <button
-              type="button"
-              className={styles.shareAction}
-              disabled={!onRequestPraise}
-              onClick={onRequestPraise}
-            >
-              {shareActionLabel}
-            </button>
+            <h3>아직 도착한 응원이 없어요</h3>
+            <p>{emptyDescription}</p>
+            {onRequestPraise ? (
+              <button type="button" className={styles.shareAction} onClick={onRequestPraise}>
+                {shareActionLabel}
+              </button>
+            ) : null}
           </div>
         )}
       </div>

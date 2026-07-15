@@ -1,0 +1,64 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1140451547-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘페이드 궤적선이 표시된 골프 영상’은 골프장 콘텐츠 담당자가 게시 직전 골프 영상 파일 하나를 입력해 페이드 궤적선을 한 번 적용하고 공유 가능한 MP4 한 개를 받는 문제와 결과를 명확히 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6762625967-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘본문이 읽히는 HWP PDF 변환’은 프리랜서가 휴대폰에서 열리지 않는 HWP 또는 HWPX 파일 하나를 입력해 한 번 변환하고 본문을 읽을 수 있는 PDF 한 개를 받는 순간과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6762625967-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 위치가 유지된 HWP PDF’는 초등학생 보호자가 전달 직전 HWP 또는 HWPX 파일 하나를 입력해 한 번 변환하고 이미지 위치가 보존된 PDF 한 개를 받는 문제와 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6762625967-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치가 보존된 HWP PDF’는 대학생이 마감 전 HWP 또는 HWPX 과제 파일 하나를 입력해 한 번 변환하고 표의 행·열 배치가 유지된 PDF 한 개를 받아 내용을 확인하는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-mirage-detect-image-editing-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘복제 흔적이 표시된 사진 히트맵’은 중고거래 운영자가 공개·승인 직전 사진 한 장을 입력해 복제 흔적을 한 번 탐지하고 의심 영역이 표시된 히트맵 이미지 한 장을 받아 검토 범위를 좁히는 결과가 분명하다.",
+      "risk_flags": []
+    }
+  ]
+}

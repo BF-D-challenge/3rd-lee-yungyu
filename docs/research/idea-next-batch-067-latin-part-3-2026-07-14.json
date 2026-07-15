@@ -1,0 +1,195 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1582051883-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "텍스트인 라벨·값을 입력해 색상을 지정하고 발표용 막대차트 이미지 하나를 즉시 저장하는 흐름이 구체적이며 실제 발표 직전 순간과 자연스럽고 2일 내 구현 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1582051883-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "텍스트인 월별 매출 라벨·값을 입력해 색상별 막대차트 이미지 하나로 저장하는 흐름이 소상공인의 보고서 작성 순간과 자연스럽고 2일 내 구현 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1582051883-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "텍스트인 보고서 수치를 입력해 막대그래프로 변환하고 이미지 하나를 얻는 흐름이 소상공인의 보고서 작성 순간에 구체적이며 2일 내 구현 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1582051883-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "텍스트인 라벨·값을 입력해 발표용 색상 막대차트 이미지 하나를 저장하는 흐름이 소상공인의 발표 직전 필요와 자연스럽고 2일 내 구현 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1582051883-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "텍스트인 월별 매출 데이터를 입력해 항목별 색상 막대차트 이미지 하나로 내보내는 흐름이 실제 보고서 작성 순간과 구체적으로 맞고 2일 내 구현 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-938939446-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "화면 탭과 드래그를 입력으로 요구하는데 검수 허용 입력인 텍스트·URL·파일·사진·단일 기기 권한에 포함되지 않는다.",
+      "risk_flags": [
+        "input_violation"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-938939446-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "화면 드래그라는 허용 목록 밖의 터치 제스처를 입력으로 요구하므로 카드의 단일 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "input_violation"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-938939446-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여러 손가락 동시 터치를 입력으로 요구하는데 이는 허용된 텍스트·URL·파일·사진·단일 기기 권한 입력이 아니다.",
+      "risk_flags": [
+        "input_violation",
+        "multi_user_touch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-938939446-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "화면 드래그를 입력으로 요구해 허용 입력 규칙을 위반하며, 생일 파티 진행자의 필요 순간과 아기 보채기 상황도 일치하지 않는다.",
+      "risk_flags": [
+        "input_violation",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-938939446-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여러 손가락 동시 터치를 입력으로 요구해 허용 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "input_violation",
+        "multi_user_touch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-938939446-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "화면 탭은 허용 입력 목록에 포함되지 않아 단일 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "input_violation"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-938939446-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여러 손가락 동시 터치를 입력으로 요구해 허용 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "input_violation",
+        "multi_user_touch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-938939446-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "화면 탭을 입력으로 요구해 허용 입력 규칙을 위반하며, 태블릿 가족 놀이 상황에서 손가락 터치 반응을 즐기는 사용자라는 결제자도 다소 불명확하다.",
+      "risk_flags": [
+        "input_violation",
+        "payer_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-938939446-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "화면 드래그를 입력으로 요구해 허용 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "input_violation"
+      ]
+    }
+  ]
+}

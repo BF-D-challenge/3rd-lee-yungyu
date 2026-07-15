@@ -1,0 +1,1145 @@
+{
+  "mode": "source-fidelity",
+  "model": {
+    "provider": "local",
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimension": 384,
+    "normalization": "L2",
+    "similarity": "cosine via normalized dot product"
+  },
+  "scope": {
+    "combinations": 81,
+    "scenarios": 3,
+    "singleTwist": 81,
+    "doubleTwist": 0
+  },
+  "policy": {
+    "minimum": 0.8,
+    "targetMaximum": 0.99,
+    "aboveTargetMaximum": "allowed because an overseas product mechanic may be copied exactly",
+    "portfolioDuplicates": "allowed and not evaluated in this mode"
+  },
+  "summary": {
+    "percentiles": {
+      "50": 0.983152,
+      "75": 0.990048,
+      "90": 0.990048,
+      "95": 0.990048,
+      "99": 0.990048,
+      "99.5": 0.990048,
+      "99.9": 0.990048,
+      "99.95": 0.990048,
+      "99.99": 0.990048,
+      "100": 0.990048
+    },
+    "belowMinimum": 0,
+    "inTargetBand": 54,
+    "exactAllowed": 27,
+    "pass": 81,
+    "passRate": 1.0
+  },
+  "lowest": [
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-1__moment-notion-pdf-1__twist-notion-pdf-1",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "고객에게 노션 문서를 납품하는 프리랜서",
+      "moment": "노션 페이지를 고정 파일로 전달하기 직전",
+      "twistTitles": [
+        "노션 표 잘림 없는 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-3__moment-notion-pdf-3__twist-notion-pdf-3",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "운영 매뉴얼을 외부 협력사에 보내는 팀 리더",
+      "moment": "노션 원본을 열 수 없는 사람에게 보낼 순간",
+      "twistTitles": [
+        "노션 다크 페이지 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-3__moment-notion-pdf-3__twist-notion-pdf-1",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "운영 매뉴얼을 외부 협력사에 보내는 팀 리더",
+      "moment": "노션 원본을 열 수 없는 사람에게 보낼 순간",
+      "twistTitles": [
+        "노션 표 잘림 없는 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-3__moment-notion-pdf-2__twist-notion-pdf-3",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "운영 매뉴얼을 외부 협력사에 보내는 팀 리더",
+      "moment": "노션 문서를 인쇄 상태로 검수할 순간",
+      "twistTitles": [
+        "노션 다크 페이지 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-3__moment-notion-pdf-2__twist-notion-pdf-2",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "운영 매뉴얼을 외부 협력사에 보내는 팀 리더",
+      "moment": "노션 문서를 인쇄 상태로 검수할 순간",
+      "twistTitles": [
+        "노션 이미지 비율 보존 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-3__moment-notion-pdf-2__twist-notion-pdf-1",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "운영 매뉴얼을 외부 협력사에 보내는 팀 리더",
+      "moment": "노션 문서를 인쇄 상태로 검수할 순간",
+      "twistTitles": [
+        "노션 표 잘림 없는 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-3__moment-notion-pdf-1__twist-notion-pdf-3",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "운영 매뉴얼을 외부 협력사에 보내는 팀 리더",
+      "moment": "노션 페이지를 고정 파일로 전달하기 직전",
+      "twistTitles": [
+        "노션 다크 페이지 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-3__moment-notion-pdf-1__twist-notion-pdf-2",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "운영 매뉴얼을 외부 협력사에 보내는 팀 리더",
+      "moment": "노션 페이지를 고정 파일로 전달하기 직전",
+      "twistTitles": [
+        "노션 이미지 비율 보존 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-3__moment-notion-pdf-1__twist-notion-pdf-1",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "운영 매뉴얼을 외부 협력사에 보내는 팀 리더",
+      "moment": "노션 페이지를 고정 파일로 전달하기 직전",
+      "twistTitles": [
+        "노션 표 잘림 없는 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-2__moment-notion-pdf-3__twist-notion-pdf-3",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "수업 자료를 인쇄해 배포하는 교사",
+      "moment": "노션 원본을 열 수 없는 사람에게 보낼 순간",
+      "twistTitles": [
+        "노션 다크 페이지 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-2__moment-notion-pdf-3__twist-notion-pdf-2",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "수업 자료를 인쇄해 배포하는 교사",
+      "moment": "노션 원본을 열 수 없는 사람에게 보낼 순간",
+      "twistTitles": [
+        "노션 이미지 비율 보존 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-2__moment-notion-pdf-3__twist-notion-pdf-1",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "수업 자료를 인쇄해 배포하는 교사",
+      "moment": "노션 원본을 열 수 없는 사람에게 보낼 순간",
+      "twistTitles": [
+        "노션 표 잘림 없는 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-2__moment-notion-pdf-2__twist-notion-pdf-3",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "수업 자료를 인쇄해 배포하는 교사",
+      "moment": "노션 문서를 인쇄 상태로 검수할 순간",
+      "twistTitles": [
+        "노션 다크 페이지 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-3__moment-notion-pdf-3__twist-notion-pdf-2",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "운영 매뉴얼을 외부 협력사에 보내는 팀 리더",
+      "moment": "노션 원본을 열 수 없는 사람에게 보낼 순간",
+      "twistTitles": [
+        "노션 이미지 비율 보존 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-2__moment-notion-pdf-2__twist-notion-pdf-1",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "수업 자료를 인쇄해 배포하는 교사",
+      "moment": "노션 문서를 인쇄 상태로 검수할 순간",
+      "twistTitles": [
+        "노션 표 잘림 없는 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-1__moment-notion-pdf-1__twist-notion-pdf-2",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "고객에게 노션 문서를 납품하는 프리랜서",
+      "moment": "노션 페이지를 고정 파일로 전달하기 직전",
+      "twistTitles": [
+        "노션 이미지 비율 보존 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-1__moment-notion-pdf-1__twist-notion-pdf-3",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "고객에게 노션 문서를 납품하는 프리랜서",
+      "moment": "노션 페이지를 고정 파일로 전달하기 직전",
+      "twistTitles": [
+        "노션 다크 페이지 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-1__moment-notion-pdf-2__twist-notion-pdf-1",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "고객에게 노션 문서를 납품하는 프리랜서",
+      "moment": "노션 문서를 인쇄 상태로 검수할 순간",
+      "twistTitles": [
+        "노션 표 잘림 없는 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-2__moment-notion-pdf-2__twist-notion-pdf-2",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "수업 자료를 인쇄해 배포하는 교사",
+      "moment": "노션 문서를 인쇄 상태로 검수할 순간",
+      "twistTitles": [
+        "노션 이미지 비율 보존 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-1__moment-notion-pdf-2__twist-notion-pdf-3",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "고객에게 노션 문서를 납품하는 프리랜서",
+      "moment": "노션 문서를 인쇄 상태로 검수할 순간",
+      "twistTitles": [
+        "노션 다크 페이지 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-1__moment-notion-pdf-2__twist-notion-pdf-2",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "고객에게 노션 문서를 납품하는 프리랜서",
+      "moment": "노션 문서를 인쇄 상태로 검수할 순간",
+      "twistTitles": [
+        "노션 이미지 비율 보존 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-1__moment-notion-pdf-3__twist-notion-pdf-2",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "고객에게 노션 문서를 납품하는 프리랜서",
+      "moment": "노션 원본을 열 수 없는 사람에게 보낼 순간",
+      "twistTitles": [
+        "노션 이미지 비율 보존 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-1__moment-notion-pdf-3__twist-notion-pdf-3",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "고객에게 노션 문서를 납품하는 프리랜서",
+      "moment": "노션 원본을 열 수 없는 사람에게 보낼 순간",
+      "twistTitles": [
+        "노션 다크 페이지 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-2__moment-notion-pdf-1__twist-notion-pdf-1",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "수업 자료를 인쇄해 배포하는 교사",
+      "moment": "노션 페이지를 고정 파일로 전달하기 직전",
+      "twistTitles": [
+        "노션 표 잘림 없는 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-2__moment-notion-pdf-1__twist-notion-pdf-2",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "수업 자료를 인쇄해 배포하는 교사",
+      "moment": "노션 페이지를 고정 파일로 전달하기 직전",
+      "twistTitles": [
+        "노션 이미지 비율 보존 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-2__moment-notion-pdf-1__twist-notion-pdf-3",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "수업 자료를 인쇄해 배포하는 교사",
+      "moment": "노션 페이지를 고정 파일로 전달하기 직전",
+      "twistTitles": [
+        "노션 다크 페이지 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.961432,
+      "id": "notion-page-to-pdf__payer-notion-pdf-1__moment-notion-pdf-3__twist-notion-pdf-1",
+      "scenarioId": "notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "payer": "고객에게 노션 문서를 납품하는 프리랜서",
+      "moment": "노션 원본을 열 수 없는 사람에게 보낼 순간",
+      "twistTitles": [
+        "노션 표 잘림 없는 인쇄용 PDF"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-1__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-1__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-3__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-3__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-1__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-2__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-2__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-2__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-1__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-3__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-2__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-1__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-2__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-3__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-3__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-3__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-1__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-1__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-2__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-2__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-2__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-3__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-1__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    }
+  ],
+  "highest": [
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-2__moment-extension-audit-2__twist-extension-audit-2",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "고객사 브라우저 보안을 점검하는 보안 컨설턴트",
+      "moment": "확장 프로그램 보안 근거를 보고할 순간",
+      "twistTitles": [
+        "확장 프로그램 외부 전송 도메인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-3__moment-extension-audit-3__twist-extension-audit-2",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "여러 고객의 업무용 브라우저를 관리하는 프리랜서",
+      "moment": "다른 사람에게 설치 여부를 설명할 순간",
+      "twistTitles": [
+        "확장 프로그램 외부 전송 도메인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-3__moment-extension-audit-3__twist-extension-audit-1",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "여러 고객의 업무용 브라우저를 관리하는 프리랜서",
+      "moment": "다른 사람에게 설치 여부를 설명할 순간",
+      "twistTitles": [
+        "확장 프로그램 과도한 권한 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-3__moment-extension-audit-2__twist-extension-audit-3",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "여러 고객의 업무용 브라우저를 관리하는 프리랜서",
+      "moment": "확장 프로그램 보안 근거를 보고할 순간",
+      "twistTitles": [
+        "확장 프로그램 난독화 스크립트 위치표"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-3__moment-extension-audit-2__twist-extension-audit-2",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "여러 고객의 업무용 브라우저를 관리하는 프리랜서",
+      "moment": "확장 프로그램 보안 근거를 보고할 순간",
+      "twistTitles": [
+        "확장 프로그램 외부 전송 도메인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-3__moment-extension-audit-2__twist-extension-audit-1",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "여러 고객의 업무용 브라우저를 관리하는 프리랜서",
+      "moment": "확장 프로그램 보안 근거를 보고할 순간",
+      "twistTitles": [
+        "확장 프로그램 과도한 권한 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-3__moment-extension-audit-1__twist-extension-audit-3",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "여러 고객의 업무용 브라우저를 관리하는 프리랜서",
+      "moment": "새 Chrome 확장 설치를 승인하기 직전",
+      "twistTitles": [
+        "확장 프로그램 난독화 스크립트 위치표"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-3__moment-extension-audit-1__twist-extension-audit-2",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "여러 고객의 업무용 브라우저를 관리하는 프리랜서",
+      "moment": "새 Chrome 확장 설치를 승인하기 직전",
+      "twistTitles": [
+        "확장 프로그램 외부 전송 도메인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-3__moment-extension-audit-1__twist-extension-audit-1",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "여러 고객의 업무용 브라우저를 관리하는 프리랜서",
+      "moment": "새 Chrome 확장 설치를 승인하기 직전",
+      "twistTitles": [
+        "확장 프로그램 과도한 권한 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-2__moment-extension-audit-3__twist-extension-audit-3",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "고객사 브라우저 보안을 점검하는 보안 컨설턴트",
+      "moment": "다른 사람에게 설치 여부를 설명할 순간",
+      "twistTitles": [
+        "확장 프로그램 난독화 스크립트 위치표"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-2__moment-extension-audit-3__twist-extension-audit-2",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "고객사 브라우저 보안을 점검하는 보안 컨설턴트",
+      "moment": "다른 사람에게 설치 여부를 설명할 순간",
+      "twistTitles": [
+        "확장 프로그램 외부 전송 도메인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-2__moment-extension-audit-3__twist-extension-audit-1",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "고객사 브라우저 보안을 점검하는 보안 컨설턴트",
+      "moment": "다른 사람에게 설치 여부를 설명할 순간",
+      "twistTitles": [
+        "확장 프로그램 과도한 권한 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-2__moment-extension-audit-2__twist-extension-audit-3",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "고객사 브라우저 보안을 점검하는 보안 컨설턴트",
+      "moment": "확장 프로그램 보안 근거를 보고할 순간",
+      "twistTitles": [
+        "확장 프로그램 난독화 스크립트 위치표"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-2__moment-extension-audit-2__twist-extension-audit-1",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "고객사 브라우저 보안을 점검하는 보안 컨설턴트",
+      "moment": "확장 프로그램 보안 근거를 보고할 순간",
+      "twistTitles": [
+        "확장 프로그램 과도한 권한 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-2__moment-extension-audit-1__twist-extension-audit-3",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "고객사 브라우저 보안을 점검하는 보안 컨설턴트",
+      "moment": "새 Chrome 확장 설치를 승인하기 직전",
+      "twistTitles": [
+        "확장 프로그램 난독화 스크립트 위치표"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-2__moment-extension-audit-1__twist-extension-audit-2",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "고객사 브라우저 보안을 점검하는 보안 컨설턴트",
+      "moment": "새 Chrome 확장 설치를 승인하기 직전",
+      "twistTitles": [
+        "확장 프로그램 외부 전송 도메인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-2__moment-extension-audit-1__twist-extension-audit-1",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "고객사 브라우저 보안을 점검하는 보안 컨설턴트",
+      "moment": "새 Chrome 확장 설치를 승인하기 직전",
+      "twistTitles": [
+        "확장 프로그램 과도한 권한 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-1__moment-extension-audit-3__twist-extension-audit-3",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "사내 확장 프로그램 배포를 맡은 IT 관리자",
+      "moment": "다른 사람에게 설치 여부를 설명할 순간",
+      "twistTitles": [
+        "확장 프로그램 난독화 스크립트 위치표"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-1__moment-extension-audit-3__twist-extension-audit-2",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "사내 확장 프로그램 배포를 맡은 IT 관리자",
+      "moment": "다른 사람에게 설치 여부를 설명할 순간",
+      "twistTitles": [
+        "확장 프로그램 외부 전송 도메인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-1__moment-extension-audit-3__twist-extension-audit-1",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "사내 확장 프로그램 배포를 맡은 IT 관리자",
+      "moment": "다른 사람에게 설치 여부를 설명할 순간",
+      "twistTitles": [
+        "확장 프로그램 과도한 권한 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-1__moment-extension-audit-2__twist-extension-audit-3",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "사내 확장 프로그램 배포를 맡은 IT 관리자",
+      "moment": "확장 프로그램 보안 근거를 보고할 순간",
+      "twistTitles": [
+        "확장 프로그램 난독화 스크립트 위치표"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-1__moment-extension-audit-2__twist-extension-audit-2",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "사내 확장 프로그램 배포를 맡은 IT 관리자",
+      "moment": "확장 프로그램 보안 근거를 보고할 순간",
+      "twistTitles": [
+        "확장 프로그램 외부 전송 도메인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-1__moment-extension-audit-2__twist-extension-audit-1",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "사내 확장 프로그램 배포를 맡은 IT 관리자",
+      "moment": "확장 프로그램 보안 근거를 보고할 순간",
+      "twistTitles": [
+        "확장 프로그램 과도한 권한 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-1__moment-extension-audit-1__twist-extension-audit-3",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "사내 확장 프로그램 배포를 맡은 IT 관리자",
+      "moment": "새 Chrome 확장 설치를 승인하기 직전",
+      "twistTitles": [
+        "확장 프로그램 난독화 스크립트 위치표"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-1__moment-extension-audit-1__twist-extension-audit-2",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "사내 확장 프로그램 배포를 맡은 IT 관리자",
+      "moment": "새 Chrome 확장 설치를 승인하기 직전",
+      "twistTitles": [
+        "확장 프로그램 외부 전송 도메인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-1__moment-extension-audit-1__twist-extension-audit-1",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "사내 확장 프로그램 배포를 맡은 IT 관리자",
+      "moment": "새 Chrome 확장 설치를 승인하기 직전",
+      "twistTitles": [
+        "확장 프로그램 과도한 권한 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.990048,
+      "id": "chrome-extension-static-audit__payer-extension-audit-3__moment-extension-audit-3__twist-extension-audit-3",
+      "scenarioId": "chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "payer": "여러 고객의 업무용 브라우저를 관리하는 프리랜서",
+      "moment": "다른 사람에게 설치 여부를 설명할 순간",
+      "twistTitles": [
+        "확장 프로그램 난독화 스크립트 위치표"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-3__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-3__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-1__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-2__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-1__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-3__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-2__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-2__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-2__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-1__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-1__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-3__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-3__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-3__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-2__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-3__moment-route-gpx-1__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-2__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-3__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "출발 전에 경로 파일을 최종 확인할 순간",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-2__moment-route-gpx-1__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "고객 투어를 준비하는 오토바이 투어 가이드",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-2__twist-route-gpx-1",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "경유지 보존 장거리 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-2__twist-route-gpx-2",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "구간별로 나눈 라이딩 경로 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-2__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "경로의 구간과 회차점을 함께 공유할 순간",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    },
+    {
+      "similarity": 0.983152,
+      "id": "maps-route-to-gpx__payer-route-gpx-1__moment-route-gpx-1__twist-route-gpx-3",
+      "scenarioId": "maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "payer": "라이딩 코스를 짜는 자전거 동호회 운영자",
+      "moment": "확정한 장거리 경로를 기기에 넣기 직전",
+      "twistTitles": [
+        "회차점 이름 포함 라이딩 GPX"
+      ]
+    }
+  ]
+}

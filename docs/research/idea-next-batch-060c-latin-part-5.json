@@ -1,0 +1,142 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-527031134-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "커피 샘플별 감각 점수를 입력해 항목 합산과 결점 표시를 수행하고 총점과 CSV를 내지만, 제목만으로 문제·결과가 드러나지 않고 스프레드시트로 대체하기 쉬운 단순 계산이다.",
+      "risk_flags": [
+        "vague_title",
+        "generic_spreadsheet"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-527031134-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "커피 샘플별 감각 점수를 입력해 결점과 점수를 합산하고 총점과 CSV를 내지만, 제목이 모호하고 기록·합산은 범용 스프레드시트로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "vague_title",
+        "generic_spreadsheet"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-527031134-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "커피 샘플별 감각 점수를 입력해 항목 합산과 결점 표시를 거쳐 총점 CSV를 만들지만, 팀에 보내는 결과는 새 기능이고 핵심 계산 자체는 범용 도구로 대체 가능하다.",
+      "risk_flags": [
+        "vague_title",
+        "generic_spreadsheet",
+        "new_action_dependency"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-527031134-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "커피 샘플별 감각 점수를 입력해 결점과 점수를 합산하고 총점과 CSV를 내지만, 제목만으로 결과가 보이지 않으며 수입사 품질 담당자의 기존 기록 업무를 단순 계산 이상으로 좁히지 못했다.",
+      "risk_flags": [
+        "vague_title",
+        "generic_spreadsheet"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-527031134-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "커피 샘플별 감각 점수를 입력해 결점 체크와 합산을 수행한 뒤 총점 CSV를 내지만, 제목이 모호하고 수입 샘플 기록·내보내기는 스프레드시트로 쉽게 대체된다.",
+      "risk_flags": [
+        "vague_title",
+        "generic_spreadsheet"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-527031134-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "커피 샘플별 감각 점수를 입력해 항목별 합산과 결점 표시를 하고 총점 CSV를 내지만, 제목만으로 문제와 결과가 드러나지 않고 로스터 팀 전달은 별도 행동에 의존한다.",
+      "risk_flags": [
+        "vague_title",
+        "generic_spreadsheet",
+        "new_action_dependency"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-527031134-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "커피 샘플별 감각 점수를 입력해 합산·결점 표시 후 총점 CSV를 만들지만, 대회 교육생에게도 제목이 문제와 결과를 설명하지 못하고 단순 점수 계산은 범용 스프레드시트가 더 편하다.",
+      "risk_flags": [
+        "vague_title",
+        "generic_spreadsheet"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-527031134-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "커피 샘플별 감각 점수를 입력해 항목 합산과 결점 표시를 수행하고 총점과 CSV를 내지만, 제목이 모호하며 대회 준비의 구체적 한 끗 변화 없이 범용 계산·기록 기능에 머문다.",
+      "risk_flags": [
+        "vague_title",
+        "generic_spreadsheet"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-527031134-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "커피 샘플별 감각 점수를 입력해 결점 체크와 합산을 거쳐 총점 CSV를 내지만, 제목만으로 결과가 보이지 않고 로스터 팀 공유는 별도 상대방 행동을 요구한다.",
+      "risk_flags": [
+        "vague_title",
+        "generic_spreadsheet",
+        "new_action_dependency"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-288054534-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한국 여행 중인 무슬림 가족 여행자가 공항·호텔에서 현재 위치 권한 1개를 받아 기도 시간을 한 번 계산하고 다음 기도까지 남은 시간 1개를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6449972752-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공연 직전 세션 연주자가 지금 울리는 기타 소리를 마이크 권한 1개로 한 번 감지해 표준 E 기준 현재 음과 센트 오차 1개를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6449972752-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "녹음 전 홈레코딩 작업자가 기타 소리를 마이크 권한 1개로 한 번 감지해 목표음 도달 여부 1개를 초록 판정으로 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6449972752-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "합주 직전 동호회 연주자가 지금 울린 기타 소리를 마이크 권한 1개로 한 번 감지해 해당 줄 이름과 튜닝 힌트로 구성된 결과 1개를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1526081216-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "배포 직전 백엔드 개발자가 JSON 텍스트 1개를 한 번 문법 검사해 첫 문법 오류 줄 번호 1개를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1526081216-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "연동 직전 프론트엔드 개발자가 JSON 텍스트 1개를 한 번 쉼표 문법 검사해 잘못된 쉼표 위치 1개를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1526081216-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "테스트 결과 전달 전 QA 엔지니어가 JSON 텍스트 1개를 한 번 괄호 구조 검사해 잘못 닫힌 위치 1개를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-402405770-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현상 직전 아마추어 사진가가 필름·현상액·희석·온도가 적힌 텍스트 블록 1개를 한 번 온도 보정 계산해 보정 현상 시간표 1개를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-402405770-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현상 시작 순간 실무자가 필름·현상액·희석·온도가 적힌 텍스트 블록 1개를 한 번 푸시 1스톱 시간 계산해 현상 시간표 1개를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-402405770-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현상 시작 전 암실 강사가 필름·현상액·희석·온도가 적힌 텍스트 블록 1개를 한 번 단계 시간 계산해 교반 시점이 포함된 현상 시간표 1개를 즉시 확인한다.",
+      "risk_flags": []
+    }
+  ]
+}

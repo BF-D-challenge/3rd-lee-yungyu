@@ -1,0 +1,68 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-bcnbbkdpnoeaaedhhnlefgpijlpbmije-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹앱 오류의 실패 API 호출 증거 만들기’는 프론트엔드 개발자가 같은 웹앱 URL 하나를 입력해 호출을 한 번 기록하고 실패 요청만 추려 민감 헤더를 가린 HAR 파일 하나를 저장하는 순간·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-bcnbbkdpnoeaaedhhnlefgpijlpbmije-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘외부 전달용 웹앱 API cURL 묶음’은 API QA 엔지니어가 공개 웹앱 URL 하나를 입력해 호출을 한 번 기록·변환하고 민감 헤더를 가린 cURL TXT 파일 하나를 릴리스 전 전달용으로 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-bcnbbkdpnoeaaedhhnlefgpijlpbmije-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "‘웹앱 호출 중복을 뺀 endpoint 목록’은 기술 컨설턴트가 웹앱 URL 하나를 입력해 호출을 한 번 기록·정리하고 중복 제거 endpoint JSON 하나를 받지만, 다른 팀의 실패 요청 재현이라는 순간에 필요한 호출 상세를 잃는지가 불명확하다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GitHub 예제 폴더 구조 보존 ZIP 받기’는 실습 개발자가 공개 GitHub 하위 폴더 URL 하나를 입력해 파일을 한 번 압축하고 원래 폴더 구조를 보존한 ZIP 파일 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Git 메타데이터 뺀 GitHub 코드 ZIP’은 프로그래밍 강사가 공개 GitHub 하위 폴더 URL 하나를 입력해 파일을 한 번 압축하고 Git 메타데이터를 제외한 코드 ZIP 파일 하나를 배포 직전에 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

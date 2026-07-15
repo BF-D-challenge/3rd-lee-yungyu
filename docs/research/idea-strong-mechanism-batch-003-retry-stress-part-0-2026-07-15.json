@@ -1,0 +1,84 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-qranalytica-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘인쇄해도 선명한 SVG QR 파일’은 매장 운영자가 인쇄 전 목적지 URL 1개를 QR 인코딩·스캔 확인해 SVG 파일 1개를 얻는 흐름은 구체적이지만, 원본의 dynamic QR 및 상세 분석 결과가 정적 파일 출력으로 빠져 메커니즘이 달라진다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-qranalytica-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘발주 전 확인하는 QR 테스트 PDF’는 인쇄 담당자가 목적지 URL 1개를 QR 인코딩·스캔 확인해 A4 PDF 1개를 얻는 흐름은 구체적이지만, 원본의 dynamic QR 및 상세 분석 결과가 테스트 PDF 출력으로 대체되어 메커니즘이 달라진다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-qranalytica-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘디자인 위에 올리는 투명 PNG QR’은 온라인 판매자가 발주 직전 목적지 URL 1개를 QR 인코딩·스캔 확인해 투명 PNG 파일 1개를 얻는 흐름은 구체적이지만, 원본의 dynamic QR 및 상세 분석 결과가 정적 PNG 출력으로 빠져 메커니즘이 달라진다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-gifduo-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘가볍게 올리는 256픽셀 프로필 GIF’는 1인 크리에이터가 정사각형 프로필 사진 1개를 최소 반복 애니메이션으로 변환해 256픽셀 GIF 파일 1개를 즉시 얻는 흐름이 payer·moment·twist와 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-gifduo-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘원형 크롭에도 안 잘리는 프로필 GIF’는 소상공인 운영자가 정사각형 프로필 사진 1개에 최소 반복 애니메이션과 투명 여백 처리를 한 번 적용해 정사각 GIF 파일 1개를 얻는 흐름이 채널 업로드 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-gifduo-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘선명하게 보이는 512픽셀 프로필 GIF’는 프리랜서가 정사각형 프로필 사진 1개를 최소 반복 애니메이션으로 변환해 512픽셀 GIF 파일 1개를 얻지만, payer의 ‘너무 크거나 흐림’ 순간을 512픽셀 출력만으로는 모두 해결한다고 보기 어렵다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    }
+  ]
+}

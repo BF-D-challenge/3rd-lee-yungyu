@@ -1,0 +1,35 @@
+{
+  "batch_id": "EXH-005",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "sonnet",
+  "audit_model": "sonnet",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 98,
+  "decision_counts": {
+    "Fail": 78,
+    "Merge": 18,
+    "Candidate": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 78,
+      "sample": [
+        "app_store:1097430896",
+        "app_store:1575496870",
+        "app_store:6746960344",
+        "app_store:1560570003",
+        "trustmrr:speechactors",
+        "app_store:880731821",
+        "app_store:592346243",
+        "app_store:1549694221"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

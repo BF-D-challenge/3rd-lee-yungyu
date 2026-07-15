@@ -1,0 +1,452 @@
+[
+  {
+    "id": "shopping-page-risk-check",
+    "source": {
+      "id": "source-alitools-shopping-assistant",
+      "sourceName": "Alitools Shopping Assistant",
+      "platform": "plugin",
+      "value": "AliExpress 상품 페이지에서 쿠폰·가격 이력·판매자 평점·유사 상품을 한 번에 보여주는 쇼핑 확장",
+      "detail": "현재 보고 있는 상품을 인식해 과거 가격과 판매자 신뢰 정보, 적용 가능한 할인과 대안을 구매 전에 보여줍니다.",
+      "evidence": "Chrome Web Store 수집본 평점 4.5, 실험 표본 내 시장 신호 상위 17.7%",
+      "preservedFlow": "현재 상품 페이지 읽기 → 외부 가격·판매자 정보 결합 → 구매 전 위험과 대안 확인"
+    },
+    "payers": [
+      {
+        "id": "payer-overseas-shopper",
+        "value": "알리익스프레스에서 월 3회 이상 직구하는 구매자",
+        "detail": "할인율이 실제인지와 판매자가 믿을 만한지 여러 후기·검색 페이지를 오가며 확인합니다."
+      },
+      {
+        "id": "payer-prototype-parts",
+        "value": "해외 부품을 소량 주문하는 1인 하드웨어 메이커",
+        "detail": "비슷한 부품의 판매자·배송·반품 조건을 비교하지 못하면 제작 일정과 비용이 함께 밀립니다."
+      },
+      {
+        "id": "payer-buying-agent",
+        "value": "고객 대신 해외 상품을 고르는 소형 구매대행 운영자",
+        "detail": "주문 전에 가격 변동과 판매자 위험을 근거로 설명하기 위해 여러 자료를 다시 모읍니다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-before-overseas-checkout",
+        "value": "할인 표시가 큰 상품을 결제하기 5분 전",
+        "detail": "지금 가격이 실제로 싼지와 판매자 위험을 빠르게 확인해야 하는 순간"
+      },
+      {
+        "id": "moment-two-sellers",
+        "value": "같은 상품을 파는 판매자 두 곳 중 하나를 골라야 할 때",
+        "detail": "가격뿐 아니라 평점·운영 기간·반품 조건을 같은 기준으로 비교해야 하는 순간"
+      },
+      {
+        "id": "moment-price-dropped-message",
+        "value": "판매자가 오늘만 할인이라고 알린 직후",
+        "detail": "과거 가격을 보지 않고 급하게 사서 후회할지 판단해야 하는 순간"
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-current-page-facts",
+        "kind": "remove",
+        "value": "유사 상품 검색과 쿠폰 적용을 빼고 현재 페이지의 판매자·배송·반품 사실 다섯 개만 정리하기",
+        "detail": "상품 페이지를 구매 판단 카드로 바꾸는 흐름은 유지하지만 페이지에 이미 있는 정보만 사용합니다.",
+        "resultTitle": "해외 상품 페이지의 구매 전 사실 5개",
+        "platform": "plugin",
+        "smallestBuild": "현재 상품 페이지에서 가격·배송일·반품 기간·판매자 평점·판매 건수를 읽어 원문 위치와 함께 보여주는 브라우저 패널"
+      },
+      {
+        "id": "twist-thirty-day-history",
+        "kind": "replace",
+        "value": "무제한 가격 그래프를 최근 30일 최고·최저·오늘 가격 세 숫자로 바꾸기",
+        "detail": "과거 가격과 오늘 가격을 비교하는 핵심은 유지하지만 외부에서 이미 쌓은 가격 이력이 필요합니다.",
+        "resultTitle": "오늘이 싼지 보는 30일 가격 3숫자",
+        "platform": "plugin",
+        "smallestBuild": "현재 상품 ID를 읽어 미리 수집된 30일 최고·최저·오늘 가격과 수집 일수를 보여주는 브라우저 패널"
+      },
+      {
+        "id": "twist-two-seller-compare",
+        "kind": "replace",
+        "value": "자동 유사 상품 추천을 사용자가 고른 상품 URL 두 개 비교로 바꾸기",
+        "detail": "현재 상품과 대안을 비교하는 흐름은 유지하고 이미지 검색과 추천 범위를 제거합니다.",
+        "resultTitle": "해외 판매자 2곳의 가격·배송·반품 비교",
+        "platform": "web",
+        "smallestBuild": "같은 마켓의 상품 URL 두 개를 넣으면 가격·예상 배송·반품 기간·판매자 평점과 확인 불가 항목이 나오는 웹 화면"
+      }
+    ]
+  },
+  {
+    "id": "youtube-language-loop",
+    "source": {
+      "id": "source-language-learning-video",
+      "sourceName": "Language Learning with Netflix & YouTube-AFL",
+      "platform": "plugin",
+      "value": "Netflix·YouTube 영상에 이중 자막과 표현 학습·말하기 연습을 붙이는 언어 학습 확장",
+      "detail": "현재 재생 중인 영상 자막을 두 언어로 함께 보여주고 모르는 표현을 저장하거나 따라 말하게 합니다.",
+      "evidence": "Chrome Web Store 수집본 평점 3.9, 실험 표본 내 시장 신호 상위 17.2%",
+      "preservedFlow": "현재 영상 자막 읽기 → 모국어·학습 언어 연결 → 표현 확인과 말하기 연습"
+    },
+    "payers": [
+      {
+        "id": "payer-youtube-beginner",
+        "value": "교재 대신 유튜브로 영어를 공부하는 직장인 초급 학습자",
+        "detail": "한 문장을 놓칠 때마다 자막·번역·사전을 오가다 영상 흐름과 공부를 함께 놓칩니다."
+      },
+      {
+        "id": "payer-speaking-test",
+        "value": "영어 말하기 시험을 준비하며 실제 표현을 모으는 취업 준비생",
+        "detail": "영상에서 좋은 표현을 발견해도 발음과 쓰임을 다시 찾아 짧게 말해보는 데 시간이 듭니다."
+      },
+      {
+        "id": "payer-parent-video-study",
+        "value": "자녀와 짧은 영어 영상을 함께 보는 초등 학부모",
+        "detail": "한 편 전체를 가르치기보다 오늘 따라 말할 문장 세 개를 고르고 뜻을 설명해야 합니다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-caption-too-fast",
+        "value": "공개 유튜브 영상의 자막이 빨라 같은 장면을 세 번 돌려본 순간",
+        "detail": "현재 문장의 뜻과 핵심 표현을 화면을 떠나지 않고 확인하고 싶은 순간"
+      },
+      {
+        "id": "moment-expression-found",
+        "value": "오늘 써보고 싶은 표현을 영상에서 방금 들은 순간",
+        "detail": "그 문장의 시점·뜻·발음과 짧은 따라 말하기 구간을 바로 남겨야 하는 순간"
+      },
+      {
+        "id": "moment-ten-minute-study",
+        "value": "잠들기 전 10분 동안 영상 한 편만 공부하려는 밤",
+        "detail": "전체 강의 대신 영상에서 중요한 세 문장만 이해하고 말해보고 싶은 순간"
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-youtube-public-only",
+        "kind": "remove",
+        "value": "Netflix 연동과 AI 마인드맵을 빼고 공개 유튜브 자막 한 편만 다루기",
+        "detail": "영상 자막으로 학습하는 흐름은 유지하고 DRM·계정 연동 없이 시작합니다.",
+        "resultTitle": "유튜브 한 편의 이중 자막 학습표",
+        "platform": "web",
+        "smallestBuild": "자막이 공개된 유튜브 URL 하나를 넣으면 원문·한국어 뜻·재생 시점이 문장별로 나오는 웹 화면"
+      },
+      {
+        "id": "twist-three-expressions",
+        "kind": "replace",
+        "value": "영상 전체 단어장을 오늘 쓸 표현 세 개로 바꾸기",
+        "detail": "자막에서 학습 재료를 고르는 흐름은 유지하고 복습할 결과를 세 문장으로 제한합니다.",
+        "resultTitle": "영상에서 고른 오늘의 표현 3개",
+        "platform": "web",
+        "smallestBuild": "유튜브 URL을 넣으면 반복·난이도 기준 표현 세 개와 원문 시점·뜻·내 문장 빈칸이 나오는 웹 화면"
+      },
+      {
+        "id": "twist-thirty-second-shadowing",
+        "kind": "add",
+        "value": "표현 하나에 30초 구간 반복과 내 음성 길이 비교 더하기",
+        "detail": "영상 표현을 따라 말하는 흐름은 유지하고 발음 점수 대신 듣고 말한 길이와 누락 단어만 확인합니다.",
+        "resultTitle": "영상 표현 30초 따라 말하기",
+        "platform": "web",
+        "smallestBuild": "선택한 표현의 30초 이하 구간을 반복 재생하고 브라우저 녹음에서 말한 문장·누락 단어·원문 시점을 보여주는 웹 화면"
+      }
+    ]
+  },
+  {
+    "id": "recurring-charge-finder",
+    "source": {
+      "id": "source-rocket-money",
+      "sourceName": "Rocket Money - Bills & Budgets",
+      "platform": "app",
+      "value": "여러 금융 계좌를 연결해 반복 구독·지출·예산을 추적하고 잊은 구독을 찾는 개인 금융 앱",
+      "detail": "거래 내역에서 반복 청구와 지출 변화를 찾아 사용자가 구독을 정리하거나 다음 달 지출을 계획하게 합니다.",
+      "evidence": "App Store 수집본 평점 4.48, 리뷰 366,768개, 실험 표본 내 시장 신호 상위 1.3%",
+      "preservedFlow": "거래 내역 읽기 → 반복 청구·변화 탐지 → 줄일 지출과 다음 청구 확인"
+    },
+    "payers": [
+      {
+        "id": "payer-many-subscriptions",
+        "value": "영상·업무·AI 구독을 여러 개 결제하는 1인 직장인",
+        "detail": "카드 앱에서 상호가 다르게 찍힌 월 결제를 하나씩 기억해 구독 목록과 맞춥니다."
+      },
+      {
+        "id": "payer-family-card-manager",
+        "value": "가족 카드와 생활비를 한 달에 한 번 정리하는 맞벌이 가구 관리자",
+        "detail": "자동이체와 가족 구독이 섞여 어느 결제가 반복되고 금액이 올랐는지 표로 다시 만듭니다."
+      },
+      {
+        "id": "payer-freelancer-expenses",
+        "value": "업무용 SaaS 비용을 직접 정산하는 프리랜서",
+        "detail": "프로젝트가 끝난 뒤에도 남은 도구 결제를 카드 명세서에서 뒤늦게 발견합니다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-card-bill-spike",
+        "value": "이번 달 카드값이 예상보다 커진 명세서를 받은 직후",
+        "detail": "일회성 지출보다 계속 빠져나가는 결제와 인상된 항목을 먼저 찾아야 하는 순간"
+      },
+      {
+        "id": "moment-before-subscription-cleanup",
+        "value": "사용하지 않는 구독을 정리하려는 월말 저녁",
+        "detail": "기억에 의존하지 않고 최근 거래에서 실제로 반복된 상호와 금액을 보고 싶은 순간"
+      },
+      {
+        "id": "moment-project-ended",
+        "value": "고객 프로젝트가 끝나 업무 도구를 정리하는 날",
+        "detail": "다음 달에도 청구될 도구와 최근 오른 요금을 한 번에 확인해야 하는 순간"
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-statement-file-only",
+        "kind": "remove",
+        "value": "은행 계좌 연결·예산·신용점수를 빼고 사용자가 받은 카드 거래 파일 한 개만 분석하기",
+        "detail": "거래에서 반복 청구를 찾는 흐름은 유지하고 금융 계정 권한과 자동 해지를 제거합니다.",
+        "resultTitle": "카드 거래 파일에서 찾은 반복 결제",
+        "platform": "web",
+        "smallestBuild": "최근 3개월 카드 CSV·XLSX 한 파일을 올리면 같은 상호·비슷한 주기의 반복 결제와 마지막 금액이 나오는 로컬 처리 웹 화면"
+      },
+      {
+        "id": "twist-price-increase",
+        "kind": "add",
+        "value": "반복 결제 중 지난번보다 금액이 오른 항목과 차액 표시 더하기",
+        "detail": "구독 추적은 유지하고 사용자가 놓치기 쉬운 가격 인상을 실제 거래 근거로 보여줍니다.",
+        "resultTitle": "금액이 오른 반복 결제 찾기",
+        "platform": "web",
+        "smallestBuild": "카드 거래 파일에서 같은 상호의 이전·최근 금액을 비교해 인상액·인상률·거래일을 보여주는 웹 화면"
+      },
+      {
+        "id": "twist-next-month-list",
+        "kind": "replace",
+        "value": "자동 해지와 예산 조언을 다음 달 다시 나갈 가능성이 높은 결제 목록으로 바꾸기",
+        "detail": "반복 지출을 줄일 행동으로 연결하는 흐름은 유지하고 금융기관·가맹점의 새 행동을 요구하지 않습니다.",
+        "resultTitle": "다음 달 다시 나갈 결제와 합계",
+        "platform": "web",
+        "smallestBuild": "최근 거래 파일을 올리면 두 번 이상 반복된 상호·예상 다음 날짜·최근 금액·예상 합계와 사용자가 직접 확인할 체크박스가 나오는 웹 화면"
+      }
+    ]
+  },
+  {
+    "id": "inbox-subscription-cleanup",
+    "source": {
+      "id": "source-unroll-me",
+      "sourceName": "Unroll.Me - Email Cleanup",
+      "platform": "app",
+      "value": "메일함을 연결해 구독 발신자를 찾아 차단·유지·하루 묶음으로 정리하는 이메일 청소 앱",
+      "detail": "여러 메일 계정의 구독 발신자를 계속 탐지하고 사용자가 일괄 수신거부하거나 하루 요약으로 묶게 합니다.",
+      "evidence": "App Store 수집본 평점 4.67, 리뷰 129,501개, 실험 표본 내 시장 신호 상위 2.9%",
+      "preservedFlow": "메일함 연결 → 구독 발신자 탐지·분류 → 차단·유지·묶음 처리"
+    },
+    "payers": [
+      {
+        "id": "payer-newsletter-marketer",
+        "value": "경쟁사 뉴스레터를 많이 구독한 마케터",
+        "detail": "필요한 메일과 더는 읽지 않는 구독이 섞여 발신자별로 검색하고 수신거부합니다."
+      },
+      {
+        "id": "payer-research-inbox",
+        "value": "논문·행사·서비스 알림을 한 메일함으로 받는 연구자",
+        "detail": "읽을 자료를 놓치지 않으면서 반복 광고 메일만 묶어 정리하기 어렵습니다."
+      },
+      {
+        "id": "payer-small-business-inbox",
+        "value": "고객 문의와 거래처 광고를 같은 메일로 받는 소상공인",
+        "detail": "오래 쌓인 광고 구독 때문에 실제 주문·문의 메일을 찾는 시간이 길어집니다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-hundred-unread",
+        "value": "읽지 않은 메일이 100개를 넘은 월요일 아침",
+        "detail": "중요 메일을 지우지 않고 반복 발신자부터 한꺼번에 정리하고 싶은 순간"
+      },
+      {
+        "id": "moment-newsletter-keeps-coming",
+        "value": "수신거부했다고 생각한 뉴스레터가 다시 온 순간",
+        "detail": "같은 회사의 다른 발신 주소까지 찾아 정리해야 하는 순간"
+      },
+      {
+        "id": "moment-before-vacation",
+        "value": "휴가 전에 메일함을 비우려는 마지막 업무일",
+        "detail": "구독 메일을 발신자별로 보고 유지·정리·하루 묶음을 빠르게 결정해야 하는 순간"
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-sender-list-only",
+        "kind": "remove",
+        "value": "메일 본문 읽기와 자동 차단을 빼고 최근 메일 헤더의 구독 발신자 목록만 만들기",
+        "detail": "메일함에서 구독 발신자를 찾는 흐름은 유지하지만 여전히 계정 연결이나 메일 내보내기가 필요합니다.",
+        "resultTitle": "최근 메일의 구독 발신자 목록",
+        "platform": "web",
+        "smallestBuild": "메일 계정 읽기 권한 또는 MBOX 내보내기를 받아 최근 100개 헤더에서 구독 발신자·건수·마지막 날짜를 보여주는 웹 화면"
+      },
+      {
+        "id": "twist-unsubscribe-links",
+        "kind": "replace",
+        "value": "서비스가 대신 차단하는 행동을 각 발신자의 공식 수신거부 링크 모음으로 바꾸기",
+        "detail": "구독을 한곳에서 정리하는 흐름은 유지하지만 링크 추출을 위해 메일 원문 접근이 필요합니다.",
+        "resultTitle": "구독 발신자별 수신거부 링크 모음",
+        "platform": "web",
+        "smallestBuild": "메일 계정 또는 MBOX에서 List-Unsubscribe 헤더를 읽어 발신자별 공식 링크와 직접 확인 버튼을 보여주는 웹 화면"
+      },
+      {
+        "id": "twist-daily-rollup",
+        "kind": "add",
+        "value": "유지한 구독 메일을 하루 한 번 제목 묶음으로 보여주기",
+        "detail": "구독 메일을 덜 방해되게 보는 핵심은 유지하지만 지속적인 메일 읽기 권한과 백그라운드 작업이 필요합니다.",
+        "resultTitle": "유지한 구독의 하루 제목 묶음",
+        "platform": "web",
+        "smallestBuild": "선택한 발신자의 새 메일 제목을 매일 읽어 한 화면과 요약 메일로 묶는 계정 연동 웹 서비스"
+      }
+    ]
+  },
+  {
+    "id": "inactive-tab-shelf",
+    "source": {
+      "id": "source-tab-wrangler",
+      "sourceName": "Tab Wrangler",
+      "platform": "plugin",
+      "value": "오래 쓰지 않은 브라우저 탭을 자동으로 닫아 보관하고 필요할 때 쉽게 복원하는 확장",
+      "detail": "열려 있지만 사용하지 않은 탭을 일정 시간 뒤 보관함으로 옮겨 브라우저를 가볍게 만들고 기록에서 다시 엽니다.",
+      "evidence": "Chrome Web Store 수집본 평점 4.4, 실험 표본 내 시장 신호 상위 8.9%",
+      "preservedFlow": "열린 탭과 마지막 사용 시각 확인 → 비활성 탭 보관 → 기록에서 즉시 복원"
+    },
+    "payers": [
+      {
+        "id": "payer-tab-researcher",
+        "value": "자료 조사 때 탭을 수십 개 여는 기획자·리서처",
+        "detail": "나중에 읽을 탭을 닫지 못해 창이 쌓이고 필요한 페이지를 제목만 보고 다시 찾습니다."
+      },
+      {
+        "id": "payer-tab-developer",
+        "value": "문서·이슈·로컬 화면을 동시에 여는 웹 개발자",
+        "detail": "프로젝트가 바뀌어도 이전 작업 탭을 남겨두어 다음 날 브라우저가 느리고 복잡합니다."
+      },
+      {
+        "id": "payer-tab-recruiter",
+        "value": "후보자·회사 페이지를 많이 비교하는 채용 담당자",
+        "detail": "검토가 끝난 후보와 보류 중인 후보 탭이 섞여 같은 페이지를 다시 열거나 놓칩니다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-fifty-tabs",
+        "value": "열린 탭이 50개를 넘어 제목도 보이지 않는 순간",
+        "detail": "지금 쓰는 탭은 남기고 오래 안 본 탭만 안전하게 치우고 싶은 순간"
+      },
+      {
+        "id": "moment-browser-slow",
+        "value": "브라우저가 느려졌지만 탭을 잃을까 닫지 못하는 순간",
+        "detail": "나중에 복원할 기록을 확인하고 비활성 탭만 한 번에 보관해야 하는 순간"
+      },
+      {
+        "id": "moment-resume-project",
+        "value": "며칠 전 중단한 프로젝트 자료를 다시 여는 아침",
+        "detail": "북마크를 새로 정리하지 않고 그때 닫힌 탭 묶음을 그대로 복원하고 싶은 순간"
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-preview-before-close",
+        "kind": "add",
+        "value": "자동으로 닫기 전에 7일 이상 안 본 탭 목록과 제외 버튼 보여주기",
+        "detail": "비활성 탭을 보관하는 흐름은 유지하고 중요한 탭이 갑자기 사라지는 불안을 줄입니다.",
+        "resultTitle": "닫기 전에 보는 오래된 탭 보관 목록",
+        "platform": "plugin",
+        "smallestBuild": "탭 권한으로 마지막 사용 시각을 기록해 7일 이상 안 본 탭의 제목·도메인·제외·지금 보관 버튼을 보여주는 브라우저 패널"
+      },
+      {
+        "id": "twist-domain-bundle",
+        "kind": "replace",
+        "value": "탭을 하나씩 보관하는 대신 같은 도메인의 비활성 탭을 한 묶음으로 바꾸기",
+        "detail": "오래된 탭을 치우고 되찾는 흐름은 유지하면서 복원 단위를 작업 맥락으로 만듭니다.",
+        "resultTitle": "도메인별로 묶어 보관한 오래된 탭",
+        "platform": "plugin",
+        "smallestBuild": "7일 이상 안 본 탭을 도메인별 제목 목록으로 보여주고 묶음 보관·묶음 복원을 제공하는 브라우저 패널"
+      },
+      {
+        "id": "twist-last-seven-days-shelf",
+        "kind": "remove",
+        "value": "영구 북마크·동기화를 빼고 최근 7일 보관함과 복원만 남기기",
+        "detail": "닫은 탭을 되찾는 핵심은 유지하고 계정·클라우드·장기 분류를 제거합니다.",
+        "resultTitle": "7일 안에 되찾는 비활성 탭 보관함",
+        "platform": "plugin",
+        "smallestBuild": "보관된 탭의 제목·URL·닫힌 시각을 로컬에 7일 저장하고 하나 또는 전체 복원하는 확장 화면"
+      }
+    ]
+  },
+  {
+    "id": "handwriting-diagram-export",
+    "source": {
+      "id": "source-myscript-notes",
+      "sourceName": "MyScript Notes: AI 노트와 PDF",
+      "platform": "app",
+      "value": "손글씨·수식·그린 도형을 인식해 편집 가능한 텍스트와 정밀한 도형으로 바꾸는 디지털 노트 앱",
+      "detail": "펜으로 쓴 메모와 다이어그램을 인식하고 문서·보드에서 편집하거나 다른 도구로 내보낼 수 있게 합니다.",
+      "evidence": "App Store 수집본 평점 4.62, 리뷰 3,683개, 실험 표본 내 시장 신호 상위 8.1%",
+      "preservedFlow": "손글씨·도형 입력 → 글자·도형 관계 인식 → 편집 가능한 결과로 변환·내보내기"
+    },
+    "payers": [
+      {
+        "id": "payer-whiteboard-pm",
+        "value": "회의실 화이트보드 흐름도를 문서로 옮기는 제품 기획자",
+        "detail": "회의 뒤 사진을 보며 상자·화살표·문구를 슬라이드나 다이어그램 도구에 다시 그립니다."
+      },
+      {
+        "id": "payer-field-sketch",
+        "value": "현장 배치·작업 순서를 종이에 그리는 소형 시공업체 담당자",
+        "detail": "손그림을 고객·팀과 공유할 때 선과 라벨을 컴퓨터에서 다시 만들어야 합니다."
+      },
+      {
+        "id": "payer-tutor-diagram",
+        "value": "수업에서 손으로 개념도를 그리는 1인 강사",
+        "detail": "같은 도식을 다음 수업 자료에 쓰려고 글자와 상자를 매번 다시 입력합니다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-after-whiteboard",
+        "value": "회의가 끝나 화이트보드를 지우기 직전",
+        "detail": "사진만 보관하지 않고 상자·화살표·문구를 수정 가능한 파일로 남겨야 하는 순간"
+      },
+      {
+        "id": "moment-before-report",
+        "value": "손그림 작업 순서를 보고서에 넣기 30분 전",
+        "detail": "전체 디자인을 새로 하지 않고 읽히는 도형과 글자로 한 번만 정리하고 싶은 순간"
+      },
+      {
+        "id": "moment-handwriting-change",
+        "value": "손그림의 문구 하나만 고쳐 다시 공유해야 하는 순간",
+        "detail": "사진 편집이 아니라 텍스트와 상자를 직접 수정할 수 있어야 하는 순간"
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-box-arrow-only",
+        "kind": "remove",
+        "value": "무한 노트·수식·PDF 주석을 빼고 상자·화살표·짧은 글자만 인식하기",
+        "detail": "손그림을 편집 가능한 결과로 바꾸는 흐름은 유지하고 한 장 흐름도에 필요한 요소로 제한합니다.",
+        "resultTitle": "손그림 한 장을 편집 가능한 흐름도로",
+        "platform": "web",
+        "smallestBuild": "정면에서 찍은 손그림 한 장을 올리면 상자·화살표·짧은 텍스트를 편집 가능한 SVG와 원본 대비 화면으로 받는 웹 화면"
+      },
+      {
+        "id": "twist-unclear-regions",
+        "kind": "add",
+        "value": "확신이 낮은 글자·화살표만 원본 위에 표시해 확인하기",
+        "detail": "필기·도형 인식은 유지하고 틀린 구조를 조용히 확정하지 않도록 수정 지점을 보여줍니다.",
+        "resultTitle": "애매한 곳만 고치는 손그림 흐름도",
+        "platform": "web",
+        "smallestBuild": "손그림 사진을 올리면 인식이 애매한 영역 최대 다섯 개와 후보 글자·연결 방향을 확인한 뒤 SVG를 받는 웹 화면"
+      },
+      {
+        "id": "twist-original-side-by-side",
+        "kind": "replace",
+        "value": "노트 앱 편집기를 원본 사진과 변환 도형의 나란한 비교로 바꾸기",
+        "detail": "인식 결과를 고치는 흐름은 유지하고 별도 노트 생태계 없이 변환 정확도와 파일 내보내기에 집중합니다.",
+        "resultTitle": "원본과 비교해 고치는 편집형 흐름도",
+        "platform": "web",
+        "smallestBuild": "손그림 사진과 변환된 SVG를 나란히 보여주고 텍스트·상자·화살표를 클릭해 고친 뒤 SVG를 받는 웹 화면"
+      }
+    ]
+  }
+]

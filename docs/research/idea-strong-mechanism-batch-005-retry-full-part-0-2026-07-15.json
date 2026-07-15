@@ -1,0 +1,220 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 투명 배경 PNG 다이어그램’은 백엔드 개발자가 PR 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 투명 배경 PNG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 2배 해상도 PNG 다이어그램’은 백엔드 개발자가 PR 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 2배 해상도 PNG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 편집 가능한 SVG 다이어그램’은 백엔드 개발자가 PR 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 편집 가능한 SVG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 투명 배경 PNG 다이어그램’은 백엔드 개발자가 기술 문서 삽입 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 투명 배경 PNG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 2배 해상도 PNG 다이어그램’은 백엔드 개발자가 기술 문서 삽입 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 2배 해상도 PNG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 편집 가능한 SVG 다이어그램’은 백엔드 개발자가 기술 문서 삽입 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 편집 가능한 SVG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 투명 배경 PNG 다이어그램’은 백엔드 개발자가 발표 슬라이드 삽입 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 투명 배경 PNG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 2배 해상도 PNG 다이어그램’은 백엔드 개발자가 발표 슬라이드 삽입 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 2배 해상도 PNG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 편집 가능한 SVG 다이어그램’은 백엔드 개발자가 발표 슬라이드 삽입 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 편집 가능한 SVG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 투명 배경 PNG 다이어그램’은 테크 리드가 PR 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 투명 배경 PNG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 2배 해상도 PNG 다이어그램’은 테크 리드가 PR 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 2배 해상도 PNG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 편집 가능한 SVG 다이어그램’은 테크 리드가 PR 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 편집 가능한 SVG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 투명 배경 PNG 다이어그램’은 테크 리드가 기술 문서 삽입 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 투명 배경 PNG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 2배 해상도 PNG 다이어그램’은 테크 리드가 기술 문서 삽입 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 2배 해상도 PNG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 편집 가능한 SVG 다이어그램’은 테크 리드가 기술 문서 삽입 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 편집 가능한 SVG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 투명 배경 PNG 다이어그램’은 테크 리드가 발표 슬라이드 삽입 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 투명 배경 PNG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 2배 해상도 PNG 다이어그램’은 테크 리드가 발표 슬라이드 삽입 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 2배 해상도 PNG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 편집 가능한 SVG 다이어그램’은 테크 리드가 발표 슬라이드 삽입 직전에 Mermaid 코드 하나를 입력해 한 번 렌더링하고 편집 가능한 SVG 한 개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,485 @@
+{
+  "mode": "source-fidelity",
+  "model": {
+    "provider": "local",
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimension": 384,
+    "normalization": "L2",
+    "similarity": "cosine via normalized dot product"
+  },
+  "scope": {
+    "combinations": 27,
+    "scenarios": 1,
+    "singleTwist": 27,
+    "doubleTwist": 0
+  },
+  "policy": {
+    "minimum": 0.8,
+    "targetMaximum": 0.99,
+    "aboveTargetMaximum": "allowed because an overseas product mechanic may be copied exactly",
+    "portfolioDuplicates": "allowed and not evaluated in this mode"
+  },
+  "summary": {
+    "percentiles": {
+      "50": 0.977446,
+      "75": 0.977446,
+      "90": 0.977446,
+      "95": 0.977446,
+      "99": 0.977446,
+      "99.5": 0.977446,
+      "99.9": 0.977446,
+      "99.95": 0.977446,
+      "99.99": 0.977446,
+      "100": 0.977446
+    },
+    "belowMinimum": 0,
+    "inTargetBand": 27,
+    "exactAllowed": 0,
+    "pass": 27,
+    "passRate": 1.0
+  },
+  "lowest": [
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-woodworker__moment-sheet-cut-before-order__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "맞춤 가구를 제작하는 소규모 목공 작업자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-interior-worker__moment-sheet-cut-after-change__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "MDF·합판을 재단해 납품하는 인테리어 실무자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-interior-worker__moment-sheet-cut-before-sawing__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "MDF·합판을 재단해 납품하는 인테리어 실무자",
+      "moment": "톱질을 시작하기 전 작업대에서",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-interior-worker__moment-sheet-cut-before-sawing__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "MDF·합판을 재단해 납품하는 인테리어 실무자",
+      "moment": "톱질을 시작하기 전 작업대에서",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-interior-worker__moment-sheet-cut-before-sawing__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "MDF·합판을 재단해 납품하는 인테리어 실무자",
+      "moment": "톱질을 시작하기 전 작업대에서",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-interior-worker__moment-sheet-cut-before-order__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "MDF·합판을 재단해 납품하는 인테리어 실무자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-interior-worker__moment-sheet-cut-before-order__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "MDF·합판을 재단해 납품하는 인테리어 실무자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-interior-worker__moment-sheet-cut-before-order__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "MDF·합판을 재단해 납품하는 인테리어 실무자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-after-change__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-after-change__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-after-change__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-before-sawing__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "톱질을 시작하기 전 작업대에서",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-interior-worker__moment-sheet-cut-after-change__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "MDF·합판을 재단해 납품하는 인테리어 실무자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-before-sawing__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "톱질을 시작하기 전 작업대에서",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-before-order__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-before-order__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-before-order__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-woodworker__moment-sheet-cut-after-change__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "맞춤 가구를 제작하는 소규모 목공 작업자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-woodworker__moment-sheet-cut-after-change__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "맞춤 가구를 제작하는 소규모 목공 작업자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-woodworker__moment-sheet-cut-after-change__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "맞춤 가구를 제작하는 소규모 목공 작업자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    }
+  ],
+  "highest": [
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-interior-worker__moment-sheet-cut-after-change__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "MDF·합판을 재단해 납품하는 인테리어 실무자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-before-sawing__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "톱질을 시작하기 전 작업대에서",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-woodworker__moment-sheet-cut-before-order__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "맞춤 가구를 제작하는 소규모 목공 작업자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-woodworker__moment-sheet-cut-before-order__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "맞춤 가구를 제작하는 소규모 목공 작업자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-woodworker__moment-sheet-cut-before-sawing__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "맞춤 가구를 제작하는 소규모 목공 작업자",
+      "moment": "톱질을 시작하기 전 작업대에서",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-woodworker__moment-sheet-cut-before-sawing__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "맞춤 가구를 제작하는 소규모 목공 작업자",
+      "moment": "톱질을 시작하기 전 작업대에서",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-woodworker__moment-sheet-cut-before-sawing__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "맞춤 가구를 제작하는 소규모 목공 작업자",
+      "moment": "톱질을 시작하기 전 작업대에서",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-woodworker__moment-sheet-cut-after-change__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "맞춤 가구를 제작하는 소규모 목공 작업자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-woodworker__moment-sheet-cut-after-change__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "맞춤 가구를 제작하는 소규모 목공 작업자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-woodworker__moment-sheet-cut-after-change__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "맞춤 가구를 제작하는 소규모 목공 작업자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-before-order__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-before-order__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-before-order__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-before-sawing__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "톱질을 시작하기 전 작업대에서",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-interior-worker__moment-sheet-cut-after-change__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "MDF·합판을 재단해 납품하는 인테리어 실무자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-before-sawing__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "톱질을 시작하기 전 작업대에서",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-after-change__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-after-change__twist-sheet-cut-order",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 재단 순서 표시 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-kitchen-maker__moment-sheet-cut-after-change__twist-sheet-cut-part-numbers",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "주방 가구 설치 전 판재를 발주하는 가구 제작자",
+      "moment": "고객 치수 변경분을 새로 배치하는 순간",
+      "twistTitles": [
+        "판재 치수로 부품 번호 표시 절단 PDF"
+      ]
+    },
+    {
+      "similarity": 0.977446,
+      "id": "sheet-cut-layout__payer-sheet-cut-interior-worker__moment-sheet-cut-before-order__twist-sheet-cut-minimize-waste",
+      "scenarioId": "sheet-cut-layout",
+      "sourceName": "SketchCut PRO",
+      "payer": "MDF·합판을 재단해 납품하는 인테리어 실무자",
+      "moment": "재단소에 판재 주문을 넣기 직전",
+      "twistTitles": [
+        "판재 치수로 자투리 최소 절단 배치 PDF"
+      ]
+    }
+  ]
+}

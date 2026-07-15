@@ -1,0 +1,83 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘성공 JSON을 반환하는 가상 API’는 백엔드가 없는 프론트엔드 개발자가 실제 API 응답을 받을 수 없는 순간 API 설정 텍스트 1개를 받아 성공 응답으로 1회 모킹하고 로컬 mock URL 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘오류 JSON을 반환하는 가상 API’는 QA 엔지니어가 릴리스 전 여러 응답 상태를 확인하려는 순간 API 설정 텍스트 1개를 받아 오류 응답 1회와 오류 JSON 로컬 mock URL 1개를 얻지만, smallest_build는 오류 상태 하나만 제공해 세 응답 상태를 검수한다는 순간과 범위가 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘빈 목록을 반환하는 가상 API’는 노코드 자동화 제작자가 데모에서 응답 분기를 바꿔 보여줄 순간 API 설정 텍스트 1개를 받아 빈 목록 응답으로 1회 모킹하고 로컬 mock URL 1개를 얻지만, 한 번에 빈 목록만 반환해 분기 전환 요구를 완전히 충족하는지는 불명확하다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘LeetCode 난이도별 풀이 분포 카드’는 취업 준비생이 공개 풀이 현황을 공유하기 직전 공개 프로필 URL 1개를 분석해 쉬움·중간·어려움 분포 PNG 카드 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘LeetCode 주제별 강약점 통계 카드’는 코딩 테스트 강사가 현재 준비 상태를 설명할 순간 공개 프로필 URL 1개를 분석해 주제별 풀이 편중을 강점·약점 색상 카드 1개로 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘LeetCode 최근 풀이 꾸준함 카드’는 코치가 다음 학습 우선순위를 정하기 직전 공개 프로필 URL 1개를 분석해 최근 풀이 꾸준함 한 줄이 담긴 PNG 카드 1개를 받지만, 여러 우선순위 지표 중 꾸준함 하나만 제공해 순간의 의사결정 결과가 다소 불명확하다.",
+      "risk_flags": [
+        "result_unclear",
+        "moment_twist_mismatch"
+      ]
+    }
+  ]
+}

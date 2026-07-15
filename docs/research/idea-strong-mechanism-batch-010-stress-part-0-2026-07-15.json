@@ -1,0 +1,130 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-dhildnnjbegaggknfkagdpnballiepfm-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘헤더 수정 요청의 재생 결과 확인’은 오류 재현이 잦은 프론트엔드 개발자가 오류 화면 직후 Chrome DevTools cURL 텍스트 1개에서 헤더를 1회 바꿔 재생된 HTTP 응답 1개를 확인하는 흐름을 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-dhildnnjbegaggknfkagdpnballiepfm-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘민감 헤더 포함 요청의 보안 표시’는 API 응답을 검증하는 QA 엔지니어가 수정한 요청을 비교할 때 cURL 텍스트 1개에서 민감 헤더를 1회 표시해 보안 표시가 포함된 재생 결과 1개를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-dhildnnjbegaggknfkagdpnballiepfm-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘JSON 본문 변경 요청의 응답 확인’은 릴리스 전 웹 보안을 점검하는 개발자의 배포 전 민감 헤더 검토 순간과 맞지 않으며, cURL 텍스트 1개의 JSON 본문을 바꿔 응답 1개를 받는 처리도 payer와 moment의 핵심인 헤더 노출 확인에서 벗어난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-dedhhonndhpolmfaficejlcahmcgaell-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘상품 사진 정사각형 규격 파일’은 상품 사진을 매일 올리는 쇼핑몰 운영자가 등록 화면에서 규격 오류를 만났을 때 이미지 파일 1개를 정사각형으로 1회 리사이즈해 다운로드 이미지 파일 1개를 받는 흐름을 명확히 한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-dedhhonndhpolmfaficejlcahmcgaell-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘용량 줄인 WebP 이미지 파일’은 게시 직전 이미지를 맞추는 SNS 콘텐츠 디자이너가 예약 직전에 이미지 파일 1개를 WebP로 1회 변환해 다운로드 파일 1개를 받는 흐름으로 payer와 moment가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-dedhhonndhpolmfaficejlcahmcgaell-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진을 둥글게 자른 프로필 파일’은 수업 자료를 배포하려는 교사가 크기·형식 오류를 해결하려는 순간과 맞지 않고, 이미지 파일 1개를 둥근 형태로 크롭해 파일 1개를 만드는 twist도 payer의 실제 필요와 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘성공 JSON을 반환하는 가상 API’는 백엔드를 기다리는 프론트엔드 개발자가 API 설정 텍스트 1개를 받아 성공 응답으로 1회 모킹하고 로컬 mock URL 1개를 얻는 세로 조각이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘오류 JSON을 반환하는 가상 API’는 오류 화면을 확인해야 하는 QA 엔지니어가 API 설정 텍스트 1개를 오류 응답으로 1회 모킹해 오류 JSON을 반환하는 로컬 mock URL 1개를 받는 흐름을 명확히 한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘빈 목록을 반환하는 가상 API’는 데모 직전 실제 서버 없이 연결을 확인하려는 노코드 자동화 제작자가 API 설정 텍스트 1개를 받아 빈 목록 응답으로 1회 모킹하고 로컬 mock URL 1개를 얻는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-cipdlgmjblnniiicohcmcafcncippbha-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘페이지 404 링크 색상 표시 CSV’는 게시 직전 콘텐츠 편집자가 공개 웹페이지 URL 1개를 받아 링크를 1회 스캔하고 404 링크가 표시된 CSV 파일 1개를 받는 결과가 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

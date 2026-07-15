@@ -1,0 +1,238 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-carmaster-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량 재생 저역 뭉침 정리 음원’은 독립 프로듀서가 발매 직전 차 안에서 랩 음악 파일 하나를 넣어 저역 과밀을 한 번 정리하고 정리된 오디오 파일 하나를 받는 순간과 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-carmaster-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량에서 묻히는 랩 보컬 보정’은 독립 프로듀서가 납품 전 차량 스피커로 랩 음악 파일 하나를 확인할 때 보컬 명료도를 한 번 보정해 보정된 오디오 파일 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-carmaster-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량 청취 음량 들쭉날쭉함 보정’은 독립 프로듀서가 차량용 홍보 영상 음원을 확정하기 전 랩 음악 파일 하나의 체감 음량을 한 번 균일화해 음량을 맞춘 오디오 파일 하나를 받는 카드다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-carmaster-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량에서 묻히는 랩 보컬 보정’은 음원을 검수하는 엔지니어가 발매 직전 차 안에서 랩 음악 파일 하나의 보컬 명료도를 한 번 보정하고 보정된 오디오 파일 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-carmaster-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량 청취 음량 들쭉날쭉함 보정’은 엔지니어가 클라이언트 납품 전 랩 음악 파일 하나를 입력해 차량 청취 기준 체감 음량을 한 번 균일화하고 음량을 맞춘 오디오 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-carmaster-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량 재생 저역 뭉침 정리 음원’은 음원을 검수하는 엔지니어가 차량용 홍보 영상 음원을 확정할 때 랩 음악 파일 하나의 저역 과밀을 한 번 정리해 정리된 오디오 파일 하나를 받는 흐름이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-carmaster-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량 청취 음량 들쭉날쭉함 보정’은 소규모 스튜디오가 발매 직전 랩 음악 파일 하나의 차량 체감 음량을 한 번 균일화해 음량을 맞춘 오디오 파일 하나를 받는 구체적인 세로 조각이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-carmaster-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량 재생 저역 뭉침 정리 음원’은 소규모 스튜디오가 클라이언트 납품 전 랩 음악 파일 하나의 저역 과밀을 한 번 정리해 정리된 오디오 파일 하나를 받는 순간과 결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-carmaster-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량에서 묻히는 랩 보컬 보정’은 소규모 스튜디오가 차량용 홍보 영상 음원을 확정할 때 랩 음악 파일 하나의 보컬 명료도를 한 번 보정해 보정된 오디오 파일 하나를 받는 카드다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-sqlflow-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘CSV를 PostgreSQL 이관 SQL로 변환’은 백엔드 개발자가 운영 DB 투입 전 CSV 파일 하나를 PostgreSQL SQL 초안 하나로 바꾸지만, 동일한 파일 변환을 범용 AI 한 번으로 더 쉽게 수행할 수 있어 전문 세로 조각의 필요성이 약하다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sqlflow-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘CSV를 MySQL 이관 SQL로 변환’은 백엔드 개발자가 개발 환경 이관 직전 CSV 파일 하나를 MySQL SQL 초안 하나로 바꾸지만, 동일한 작업을 범용 AI 한 번으로 더 편하게 처리할 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sqlflow-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘CSV를 T-SQL 이관 SQL로 변환’은 백엔드 개발자가 다른 DB 방언 프로젝트의 CSV 파일 하나를 T-SQL 초안 하나로 바꾸지만, 범용 AI 한 번으로도 같은 변환 결과를 얻을 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sqlflow-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘CSV를 MySQL 이관 SQL로 변환’은 데이터 엔지니어가 운영 DB 투입 전 CSV 파일 하나를 MySQL SQL 초안 하나로 바꾸지만, 이 단일 파일 변환은 범용 AI 한 번으로 대체 가능하다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sqlflow-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘CSV를 T-SQL 이관 SQL로 변환’은 데이터 엔지니어가 개발 환경 이관 직전 CSV 파일 하나를 T-SQL SQL 초안 하나로 바꾸지만, 같은 입력·처리·결과를 범용 AI 한 번으로 더 쉽게 만들 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sqlflow-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘CSV를 PostgreSQL 이관 SQL로 변환’은 데이터 엔지니어가 다른 DB 방언의 이관 파일을 받은 직후 CSV 파일 하나를 PostgreSQL SQL 초안 하나로 바꾸지만, 범용 AI가 동일한 변환을 한 번에 수행할 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sqlflow-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘CSV를 T-SQL 이관 SQL로 변환’은 풀스택 개발자가 운영 DB 투입 전 CSV 파일 하나를 T-SQL SQL 초안 하나로 바꾸지만, 전문 처리 차별성 없이 범용 AI 한 번으로 대체 가능하다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sqlflow-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘CSV를 PostgreSQL 이관 SQL로 변환’은 풀스택 개발자가 개발 환경 이관 직전 CSV 파일 하나를 PostgreSQL SQL 초안 하나로 바꾸지만, 동일한 파일 변환을 범용 AI 한 번으로 더 편리하게 처리할 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sqlflow-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘CSV를 MySQL 이관 SQL로 변환’은 풀스택 개발자가 다른 DB 방언의 CSV 파일 하나를 MySQL SQL 초안 하나로 바꾸지만, 별도 제품 없이 범용 AI 한 번으로 같은 결과를 만들 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    }
+  ]
+}

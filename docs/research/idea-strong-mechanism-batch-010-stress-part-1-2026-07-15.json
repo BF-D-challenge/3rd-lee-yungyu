@@ -1,0 +1,129 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-cipdlgmjblnniiicohcmcafcncippbha-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘응답 실패 외부 링크 점검 CSV’는 캠페인 담당자가 시작 직전 공개 웹페이지 URL 1개를 받아 링크를 1회 스캔하고 응답 실패 외부 링크가 표시된 CSV 1개를 얻는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-cipdlgmjblnniiicohcmcafcncippbha-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘페이지 리다이렉트 링크 점검 CSV’는 납품 직전 제작 대행 QA가 공개 웹페이지 URL 1개를 받아 링크를 1회 스캔하고 리다이렉트 링크가 표시된 CSV 1개를 얻는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘경유지 보존 장거리 경로 GPX’는 동호회 운영자가 출발지 확정 직후 공개 Google Maps 경로 URL 1개를 받아 1회 편집·최적화하고 경유지 보존 GPX 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘회차점 이름 포함 라이딩 GPX’는 투어 가이드가 안내 직전 공개 Google Maps 경로 URL 1개를 받아 1회 편집·최적화하고 회차점 이름이 포함된 GPX 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구간별로 나눈 라이딩 경로 GPX’는 콘텐츠 제작자가 공개 전 공개 Google Maps 경로 URL 1개를 받아 1회 편집·최적화하고 구간별 트랙 GPX 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘확장 프로그램 과도한 권한 위치 보고서’는 IT 관리자가 배포 승인 직전 CRX 파일 1개를 올려 권한을 정적으로 1회 스캔하고 과도한 권한 위치가 표시된 HTML 보고서 1개를 얻는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘확장 프로그램 난독화 스크립트 위치표’는 보안 컨설턴트가 제출 직전 CRX 파일 1개를 올려 포함 스크립트를 정적으로 1회 스캔하고 난독화 의심 파일 위치를 담은 HTML 결과 1개를 얻는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘확장 프로그램 외부 전송 도메인 보고서’는 프리랜서가 설치 직전 CRX 파일 1개를 올려 내부 코드를 정적으로 1회 스캔하고 외부 전송 도메인 목록이 담긴 HTML 보고서 1개를 얻는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-gnmpfminmaijfpdcegocbpkdolkndkpd-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘항공권 세금 포함 포인트 가치 계산’은 총무가 결재 직전 공개 Air Canada 결제 화면 URL 1개를 처리해 세금 포함 센트/포인트 결과 1개를 얻지만, 캐나다·Aeroplan 전제의 payer와 한국 사용 순간이 맞지 않는다.",
+      "risk_flags": [
+        "korean_context_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-gnmpfminmaijfpdcegocbpkdolkndkpd-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘항공권 결제 후 부족 포인트 계산’은 여행자가 결제 직전 공개 Air Canada 결제 URL 1개를 처리해 부족 포인트 1개를 얻는다고 했지만, 보유 포인트가 입력에 없어 차감 계산을 수행할 수 없고 캐나다·Aeroplan 전제도 한국 사용 순간과 맞지 않는다.",
+      "risk_flags": [
+        "external_data_required",
+        "korean_context_mismatch"
+      ]
+    }
+  ]
+}

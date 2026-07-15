@@ -1,0 +1,14 @@
+{
+  "status": "ok",
+  "candidateRows": 2576,
+  "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "dimension": 384,
+  "reviewPercentile": 99.9,
+  "componentPercentile": 99.99,
+  "reviewThreshold": 0.708616,
+  "componentThreshold": 0.829771,
+  "reviewEdges": 2886,
+  "provisionalComponents": 95,
+  "provisionalComponentRows": 299,
+  "note": "Edges and components are provisional; no final ledger row was changed."
+}

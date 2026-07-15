@@ -62,8 +62,14 @@ docs/research/store-rankings/*.jsonl
 *.swo
 _legacy/
 
+# Codex / research local workspace caches
+.codex/
+.research/
+scripts/research/__pycache__/
+
 # 스크랩한 타사 데이터 원본 (ToS·용량 — 요약만 추적)
 docs/research/trustmrr-acquire/*.jsonl
+docs/research/trustmrr-acquire.zip
 
 # M3 분할·재시도 원본 (정규화 코퍼스와 최종 리포트는 추적)
 docs/research/material-design-3/retry/*.jsonl

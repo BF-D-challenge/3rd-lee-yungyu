@@ -1,0 +1,6 @@
+prospect_id,source_channel,segment,recent_event_date,recent_problem,monthly_occurrences,current_workaround,minutes_spent_last_event,price_shown_krw,offer_type,action,amount_paid_krw,refundable,payment_status,lost_reason_code,quote_paraphrase,result_used,next_step,consent_to_followup,deletion_due_at
+P001,community,solo_cohort_operator,,,,,,9900,cohort_once,,,,pending,,,,,,
+P002,dm,solo_cohort_operator,,,,,,9900,cohort_once,,,,pending,,,,,,
+P003,referral,solo_cohort_operator,,,,,,9900,cohort_once,,,,pending,,,,,,
+P004,community,solo_cohort_operator,,,,,,9900,cohort_once,,,,pending,,,,,,
+P005,dm,solo_cohort_operator,,,,,,9900,cohort_once,,,,pending,,,,,,

@@ -1,0 +1,56 @@
+{
+  "batch_id": "EXH-040",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 58,
+    "Candidate": 36,
+    "Merge": 4,
+    "Reserve": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 72,
+      "sample": [
+        "trustmrr:based-labs-ai",
+        "trustmrr:abun-com",
+        "app_store:1524133146",
+        "chrome_web_store:alncdjedloppbablonallfbkeiknmkdi",
+        "chrome_web_store:cfkogjpgolfbfbppokphmjafdnajfbog",
+        "app_store:1465717844",
+        "chrome_web_store:eengninahgaajcfgddamfpbjhcoghdbj",
+        "trustmrr:sneaker-synergy"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1524133146",
+          "decision": "Candidate",
+          "reason": "농구 경기 설정 입력 → 경기 타이머와 점수판 처리 → 즉시 조작 가능한 라이브 스코어보드 결과가 남는다."
+        }
+      ],
+      "false_reject_rate": 0.125
+    },
+    {
+      "round": 2,
+      "fail_count": 58,
+      "sample": [
+        "chrome_web_store:aighbajkamplcinockonchknbclndded",
+        "app_store:841875549",
+        "chrome_web_store:lkoeejijapdihgbegpljiehpnlkadljb",
+        "app_store:365898918",
+        "chrome_web_store:locflijiacalkhglljedgenckkdafohb",
+        "chrome_web_store:knaodoefkjbgmmilogebghadhmnphjih"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

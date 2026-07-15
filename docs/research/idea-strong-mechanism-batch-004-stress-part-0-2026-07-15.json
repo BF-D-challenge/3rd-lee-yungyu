@@ -1,0 +1,134 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-framera-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유튜브 편집자가 게시 직전 영상 파일 하나에서 지정 시점 프레임을 한 번 추출해 원본 해상도 PNG 한 장을 저장한다는 제목·순간·한 끗 변화가 구체적으로 맞물린다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-framera-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "숏폼 제작자가 클라이언트 검수 순간 영상 파일 하나에서 지정 시점 프레임을 한 번 추출해 타임코드가 포함된 JPG 한 장을 저장한다는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-framera-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 제작사 납품 담당자가 인용 이미지를 급히 뽑는 순간 영상 파일 하나에서 지정 시점 프레임을 한 번 추출해 고화질 JPG 한 장을 저장한다는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-949490225-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "취업 준비생이 제출 직전 사진 파일 하나를 한 번 3×4cm 비율로 리사이즈·크롭해 실제 크기 인쇄용 PDF 한 장을 만든다는 제목과 사용 순간이 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-949490225-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "온라인 판매자가 상품 라벨을 만드는 순간이지만 카드는 10×15cm 액자용 사진을 A4 한 장에 배치하므로 payer·moment와 A4 배치 결과가 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-949490225-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "행사 운영자가 A4에 안내 사진을 배치하려는 순간인데 결과는 사진 파일 하나를 10×15cm로 리사이즈·크롭한 JPEG 한 장이라 payer·moment와 twist가 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1505140281-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 음악가가 싱글 게시 직전 오디오 파일 하나를 한 번 주파수 분석해 음량 반응 파형이 담긴 MP4 영상 하나를 만든다는 카드가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1505140281-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팟캐스트 제작자가 홍보 클립을 올리는 순간 오디오 파일 하나를 한 번 주파수 분석해 회전하는 원형 스펙트럼 MP4 하나를 만든다는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1505140281-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음원 유통사 콘텐츠 담당자가 납품 마감에 오디오 파일 하나를 한 번 주파수 분석해 주파수별 막대 시각화 MP4 하나를 즉시 만든다는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1043963852-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "배관 용접공이 절단 직전 치수 텍스트 하나로 90도 엘보 오프셋을 계산하지만 절단 치수와 도면이라는 복수 결과를 내고 산업 작업의 안전·정확성 위험도 있어 MVP 단일 결과 게이트를 넘지 못한다.",
+      "risk_flags": [
+        "multi_result",
+        "safety_or_regulation_risk"
+      ]
+    }
+  ]
+}

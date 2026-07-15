@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "id": "next-latin-chrome-web-store-epbobagokhieoonfplomdklollconnkl-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 Chicago 인용문’은 공개 웹페이지 URL 하나를 받아 Chicago 저자-날짜 형식으로 한 번 변환하고 인용문 한 줄을 보여주지만, 결제자인 리서치 보고서 실무자와 ‘과제 참고문헌’ 순간의 표현이 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-epbobagokhieoonfplomdklollconnkl-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 APA 7판 인용문’은 공개 웹페이지 URL 하나를 받아 APA 7판으로 한 번 변환하고 원고에 바로 붙일 인용문 한 줄을 제공해 결제자·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-epbobagokhieoonfplomdklollconnkl-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 MLA 9판 인용문’은 공개 웹페이지 URL 하나를 받아 MLA 9판으로 한 번 변환하고 납품 직전 출처 목록에 쓸 인용문 한 줄을 제공해 결제자·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    }
+  ]
+}

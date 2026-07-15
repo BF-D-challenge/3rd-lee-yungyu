@@ -1,0 +1,35 @@
+{
+  "batch_id": "EXH-003",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "sonnet",
+  "audit_model": "sonnet",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 85,
+    "Merge": 15
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 85,
+      "sample": [
+        "app_store:1017559099",
+        "app_store:1423643723",
+        "trustmrr:gluely-ai",
+        "app_store:1263789061",
+        "chrome_web_store:dkdnidbnjihhilbjndnnlfipmbnoaipn",
+        "app_store:1667518571",
+        "chrome_web_store:chpbokhnpfgplkebdionfdaobjofipnm",
+        "chrome_web_store:galcmebplofkicjmoaeijjijlopiedba",
+        "app_store:281796108"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

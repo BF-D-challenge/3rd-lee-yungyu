@@ -1,0 +1,245 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1526081216-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘API JSON 오류 위치 즉시 확인’은 JSON 텍스트 1개를 한 번 검증해 오류 위치 또는 정상 결과 1개를 보여주며 개발 배포 직전 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1526081216-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘중첩 JSON 배열 CSV 표 변환’은 JSON 1개를 평탄화해 CSV 1개를 내지만 결제자는 모델 클래스 작업을, 순간도 모델 클래스 생성을 요구해 결과와 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1526081216-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘JSON 샘플 TypeScript 타입 생성’은 JSON 1개에서 TypeScript 코드 1개를 만들지만 결제자와 순간은 표 확인을 요구해 결과와 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1451490992-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘농구 점프 영상 높이 계산’은 점프 영상 파일 1개에서 비행 시간을 한 번 측정해 점프 높이 1개를 보여주며 코치의 훈련 직후 측정 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1451490992-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘선발 테스트 점프 높이 판정’은 영상 1개에서 높이 1개를 내지만 결제자는 프로 트레이너이고 순간은 체대 입시 상담이라 사용자와 상황이 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1451490992-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘슬로모션 점프 최고 높이 표시’는 영상 파일 1개를 한 번 분석해 최고 점프 높이 1개를 표시하며 입시 체육학원의 선발 판정 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1356726417-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘레이스 차량 코너 세팅 생성’은 차량·업그레이드 정보를 담은 텍스트 1개에 공식을 한 번 적용해 코너 설정 1개를 내며 레이스 직전 필요와 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1356726417-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘초보 차량 안정성 세팅 생성’은 텍스트 1개에서 안정성 설정 1개를 내지만 결제자와 순간은 드리프트 세팅을 요구해 결과와 충돌한다.",
+      "risk_flags": [
+        "title_unclear",
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1356726417-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘드리프트 차량 미끄러짐 세팅’은 텍스트 1개에서 드리프트 설정 1개를 내지만 결제자와 순간은 초보자의 안정적 기본 세팅을 요구한다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1570594940-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘밤하늘 밝은 점 천체 이름 확인’은 카메라 화면 1개를 한 번 대조해 천체 이름 1개를 보여주며 밝은 점을 발견한 즉시 확인하려는 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1570594940-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘야경 사진 속 행성 위치 표시’는 하늘 화면 1개에서 행성 위치 1개를 대조해 표시하며 수업 직전 천체를 짚어야 하는 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1570594940-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘수업 직전 현재 별자리 위치’는 카메라 화면 1개에서 별자리 지도 1개를 내지만 결제자는 도시 야경 사진가이고 순간도 촬영 구도라 수업용 결과와 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1644199292-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스타듀밸리 분실 아이템 세이브 복구’는 세이브 파일 1개의 아이템 값을 한 번 수정해 복구 파일 1개를 내며 분실 직후 이어서 플레이하려는 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1644199292-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영용 스타듀밸리 인벤토리 세팅’은 세이브 파일 1개에서 인벤토리 값을 한 번 수정해 세팅 파일 1개를 내며 촬영 전 준비 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1644199292-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스타듀밸리 농장 자금 세이브 수정’은 세이브 파일 1개의 자금 값을 한 번 바꿔 수정 파일 1개를 내며 오래된 세이브를 이어가려는 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-298840058-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘공연장 마이크 주파수 울림 확인’은 마이크 입력 1개를 FFT 처리해 그래프 1개를 내지만 제목의 울림 확인이 그래프만으로 어떻게 판정되는지 결과가 불명확하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-298840058-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘스피커 입력 이상 주파수 대역’은 마이크 입력 1개를 FFT 처리하지만 원본의 그래프 표시를 넘어 이상 대역을 판정하려면 기준이나 추가 분석이 필요하다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-298840058-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘홈레코딩 저음 공진 주파수’는 마이크 입력 1개를 FFT 처리해 저음 그래프 1개를 내지만 그래프만으로 공진 주파수를 특정하는 결과 근거가 불명확하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    }
+  ]
+}

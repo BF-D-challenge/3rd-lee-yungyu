@@ -1,0 +1,127 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-beesecure-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 배포 직전 웹 프로젝트 ZIP 하나를 입력하면 하드코딩된 비밀키를 정적 검사해 파일·행 위치가 담긴 HTML 보고서 하나를 즉시 받아볼 수 있어 제목·순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-beesecure-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 AI 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 보안 헤더 누락을 정적 검사해 누락 파일·행 위치가 담긴 HTML 보고서 하나를 즉시 받아볼 수 있어 납품 검수 순간과 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-beesecure-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 인수인계 직전 웹 프로젝트 ZIP 하나를 입력하면 위험한 eval 계열 호출을 정적 검사해 해당 파일·행 위치가 담긴 HTML 보고서 하나를 즉시 받아볼 수 있어 payer·moment·twist가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-sheetsandbox-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "1인 개발자가 공개 CSV 게시 Google Sheet URL 하나를 입력하면 전체 행을 읽기 전용 JSON으로 변환해 호출 가능한 API 링크 하나를 MVP 연결 직후 즉시 받을 수 있어 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-sheetsandbox-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "노코드 대행자가 하드코딩 목록을 바꾸기 직전 공개 Google Sheet URL 하나를 입력하지만, 시트 데이터를 읽기 전용 API로 만드는 원본 흐름 대신 열 이름만 담긴 OpenAPI 문서 하나를 반환해 실제 연결 결과가 사라진다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-sheetsandbox-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제품 엔지니어가 데모 직전 공개 Google Sheet URL 하나를 입력하면 첫 번째 데이터 열만 읽기 전용 JSON으로 변환해 현재 값을 호출할 API 링크 하나를 즉시 받을 수 있어 순간과 한 끗 변화가 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-webtoapp-no-code-app-converter-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소상공인 운영자가 모바일 웹 완성 직후 공개 웹사이트 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용해 설치 가능한 debug APK 하나를 즉시 받아 앱 출시 확인을 진행할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-webtoapp-no-code-app-converter-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 홈 화면 앱 요청 직후 공개 웹사이트 URL 하나를 입력하면 자사 도메인 밖 이동을 막도록 설정해 설치 가능한 debug APK 하나를 즉시 받아 납품 대응을 할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-webtoapp-no-code-app-converter-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "커뮤니티 매니저가 테스트 단말에 설치하기 직전 공개 웹사이트 URL 하나를 입력하면 Android 뒤로가기를 웹 탐색처럼 처리해 설치 가능한 debug APK 하나를 즉시 받아 동작을 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-scrapestudio-co-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 구현 직전 URL#selector 텍스트 하나를 입력하면 지정 컴포넌트의 인라인 스타일을 HTML과 CSS로 분리해 코드 파일 하나를 즉시 받아 재현 작업을 시작할 수 있다.",
+      "risk_flags": []
+    }
+  ]
+}

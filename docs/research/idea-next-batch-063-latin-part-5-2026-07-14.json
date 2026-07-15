@@ -1,0 +1,216 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-336829635-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한 1개로 해양 예보를 조회해 결과를 보여주지만 제목만으로 문제와 결과가 드러나지 않고 요트 선주와 서핑 순간의 결제가 어긋난다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-336829635-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한 1개로 출항지의 바람·파도·조수를 보여주는 흐름은 구체적이지만 제목이 문제와 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-336829635-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한 1개로 카약 전 해양 예보를 보여주는 흐름은 구체적이지만 제목만 읽어서는 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-336829635-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출항지 위치 1개로 지역 해양 예보를 확인하는 세로 조각은 가능하지만 제주 레저 사업자와 서핑 이용 순간의 결제가 자연스럽게 맞지 않는다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-336829635-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한 1개로 요트 출항 전 바람·파도·조수를 확인하는 흐름은 구체적이지만 제목이 문제와 결과를 드러내지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-336829635-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한 1개로 카약 투어 전 해양 예보를 보여주는 흐름은 구체적이지만 제목만으로 문제와 결과를 알기 어렵다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-khlafnpamapdkjifagknfnjjjdhdhhhi-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 사진 1장을 역검색해 링크를 반환하는 입력·처리·결과는 명확하지만 Google Lens 같은 범용 이미지 검색을 한 번 쓰는 편이 더 간단하다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-khlafnpamapdkjifagknfnjjjdhdhhhi-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 사진 1장으로 출처 링크를 반환하는 흐름은 구체적이지만 범용 이미지 역검색으로 동일한 결과를 더 쉽게 얻을 수 있다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-khlafnpamapdkjifagknfnjjjdhdhhhi-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "도매 상품 사진 1장을 처리해 검색 결과와 링크를 보여주지만 Google Lens 등 범용 이미지 검색이 더 편리하다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-khlafnpamapdkjifagknfnjjjdhdhhhi-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "경쟁 상품 사진 1장으로 원본 링크를 찾는 흐름은 명확하지만 범용 이미지 역검색으로 대체할 수 있어 차별성이 없다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-khlafnpamapdkjifagknfnjjjdhdhhhi-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "도매 상품 사진 1장으로 출처 링크를 반환하지만 검색어 없이도 Google Lens 같은 범용 기능이 같은 문제를 해결한다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-khlafnpamapdkjifagknfnjjjdhdhhhi-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 사진 1장으로 알리바바 출처 링크를 찾는 입력·처리·결과는 구체적이지만 범용 이미지 검색보다 편하지 않다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-khlafnpamapdkjifagknfnjjjdhdhhhi-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "도매 상품 사진 1장으로 유사 상품 링크를 반환하지만 범용 이미지 역검색을 한 번 사용하는 편이 더 쉽다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-khlafnpamapdkjifagknfnjjjdhdhhhi-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 사진 1장으로 출처 링크를 반환하는 세로 조각은 명확하지만 Google Lens 같은 범용 이미지 검색으로 대체 가능하다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-khlafnpamapdkjifagknfnjjjdhdhhhi-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "경쟁 상품 이미지 1장으로 원본 링크를 확인하는 흐름은 명확하지만 범용 이미지 역검색이 더 간단하다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    }
+  ]
+}

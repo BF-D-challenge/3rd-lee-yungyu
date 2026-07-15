@@ -1,0 +1,92 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6757637581-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "애플워치 탭 1회로 공을 슛 처리해 최고 점수를 보여주는 흐름은 구체적이지만 제목만으로는 점수 결과와 한 탭 조작이 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6757637581-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "애플워치 화면 탭으로 공을 튕겨 정확도를 계산하고 최고 점수를 보여주는 흐름은 가능하지만 제목만으로 결과가 명확하지 않고 동호회원의 슛 감각 유지와 게임 점수의 연결도 약하다.",
+      "risk_flags": [
+        "title_result_unclear",
+        "payer_twist_weak"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6757637581-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "애플워치 탭 입력 후 슛 정확도와 최고 점수를 즉시 보여주는 세로 조각은 가능하지만 제목만으로 결과가 보이지 않고 운동 전 가볍게 노는 순간과 슛 감각 유지의 효용이 불명확하다.",
+      "risk_flags": [
+        "title_result_unclear",
+        "payer_twist_weak"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6757637581-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "애플워치 한 번 탭으로 자유투를 처리해 최고 점수를 계산하는 흐름은 구체적이지만 제목만으로 점수 결과가 드러나지 않아 초보자가 결과를 즉시 예측하기 어렵다.",
+      "risk_flags": [
+        "title_result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6757637581-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "애플워치 탭으로 공을 튕겨 정확도와 최고 점수를 보여주는 흐름은 구현 가능하지만 제목만으로 결과가 명확하지 않고 학생과 짧은 게임의 결제·사용 맥락도 다소 약하다.",
+      "risk_flags": [
+        "title_result_unclear",
+        "payer_twist_weak"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6757637581-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "애플워치 한 번 탭으로 자유투 성공 점수를 계산하는 입력·처리·결과는 구체적이지만 제목만으로 결과가 보이지 않고 운동 전 사용 순간과 학생 결제자의 연결이 약하다.",
+      "risk_flags": [
+        "title_result_unclear",
+        "payer_twist_weak"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "batch_id": "EXH-050",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 47,
+    "Fail": 48,
+    "Merge": 4,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 69,
+      "sample": [
+        "chrome_web_store:fhlfnfchgcjajlfcpomdlhafompckfan",
+        "app_store:926415425",
+        "app_store:1456461872",
+        "app_store:6748301202",
+        "trustmrr:tf-invites-automate-testflight-for-ios-iphone-apps-apple-testflight",
+        "app_store:296581815",
+        "trustmrr:chappola"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:926415425",
+          "decision": "Candidate",
+          "reason": "도시명 입력 → 해당 도시의 ZTL 접근 지점 검색 → 지도와 위치 목록 제공의 2일 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 2,
+      "fail_count": 55,
+      "sample": [
+        "chrome_web_store:kdlbcldaancegbobbcginlmdophijcdj",
+        "app_store:429132577",
+        "app_store:1579636154",
+        "app_store:382028327",
+        "app_store:378351144",
+        "app_store:926415425"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:kdlbcldaancegbobbcginlmdophijcdj",
+          "decision": "Candidate",
+          "reason": "브라우저 탭 권한 입력 → 스트레칭 알림 처리 → 눈 휴식 알림 결과를 2일 세로 조각으로 만들 수 있다."
+        },
+        {
+          "key": "app_store:926415425",
+          "decision": "Candidate",
+          "reason": "도시명 입력 → ZTL 진입점 검색·거리 필터링 → 오프라인 지도 결과를 반나절~2일 세로 조각으로 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.3333333333333333
+    },
+    {
+      "round": 3,
+      "fail_count": 48,
+      "sample": [
+        "app_store:300815151",
+        "app_store:382028327",
+        "app_store:426415753",
+        "app_store:415411639",
+        "app_store:1449446747"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

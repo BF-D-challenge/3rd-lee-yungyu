@@ -1,4 +1,5 @@
 import type { IdeaLabSharePayload } from "@/components/organisms/idea-lab";
+import { decodeBinaryBase64Url, encodeBinaryBase64Url } from "./base64-url";
 
 export interface PraiseRequestCard {
   v: 1;
@@ -7,7 +8,10 @@ export interface PraiseRequestCard {
   summary: string;
   smallestBuild: string;
   source: string;
+  payer?: string;
+  moment?: string;
   twist: string;
+  flow?: string;
   createdAt: number;
 }
 export interface SavedPraiseRequest {
@@ -22,12 +26,11 @@ const toBase64Url = (value: string): string => {
   const bytes = new TextEncoder().encode(value);
   let binary = "";
   bytes.forEach((byte) => { binary += String.fromCharCode(byte); });
-  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  return encodeBinaryBase64Url(binary);
 };
 
 const fromBase64Url = (value: string): string => {
-  const padded = value.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(value.length / 4) * 4, "=");
-  const binary = atob(padded);
+  const binary = decodeBinaryBase64Url(value);
   return new TextDecoder().decode(Uint8Array.from(binary, (char) => char.charCodeAt(0)));
 };
 
@@ -38,8 +41,11 @@ export function praiseRequestFromIdea(payload: IdeaLabSharePayload): PraiseReque
     title: payload.title,
     summary: payload.summary,
     smallestBuild: payload.selection.twist.smallestBuild,
-    source: payload.selection.source.value,
-    twist: payload.selection.twist.value,
+    source: `${payload.selection.source.sourceName} — ${payload.selection.source.value}`,
+    payer: payload.selection.payer.value,
+    moment: payload.selection.moment.value,
+    twist: payload.selection.twist.detail,
+    flow: `${payload.selection.source.preservedFlow} → ${payload.selection.twist.resultTitle}`,
     createdAt: Date.now(),
   };
 }
@@ -56,7 +62,10 @@ export function decodePraiseRequest(slug: string): PraiseRequestCard | null {
       typeof value.summary !== "string" ||
       typeof value.smallestBuild !== "string" ||
       typeof value.source !== "string" ||
+      (value.payer !== undefined && typeof value.payer !== "string") ||
+      (value.moment !== undefined && typeof value.moment !== "string") ||
       typeof value.twist !== "string" ||
+      (value.flow !== undefined && typeof value.flow !== "string") ||
       typeof value.createdAt !== "number"
     ) return null;
     return value as PraiseRequestCard;

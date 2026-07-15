@@ -1,0 +1,120 @@
+{
+  "results": [
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GitHub 예제 폴더 구조 보존 ZIP 받기’는 개발자가 필요한 GitHub 하위 폴더를 열기 직전에 URL 하나를 입력해 구조를 보존한 ZIP 하나를 즉시 받는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘GitHub 폴더와 포함 파일 목록 ZIP’은 개발자가 전달 직전에 하위 폴더 URL 하나를 압축해 ZIP 하나를 받는 흐름은 명확하지만, 원본 압축 메커니즘에 없는 manifest 추가 기능으로 범위를 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Git 메타데이터 뺀 GitHub 코드 ZIP’은 개발자가 검토 직전에 하위 폴더 URL 하나를 한 번 압축해 메타데이터를 제외한 코드 ZIP 하나를 즉시 받는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘GitHub 폴더와 포함 파일 목록 ZIP’은 강사가 폴더 URL 하나로 manifest 포함 ZIP 하나를 만들어 전달할 수 있지만, 원본 압축 메커니즘에 없는 manifest 추가 기능이다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Git 메타데이터 뺀 GitHub 코드 ZIP’은 강사가 전달 직전에 하위 폴더 URL 하나를 한 번 압축해 메타데이터를 제외한 ZIP 하나를 즉시 만들 수 있어 입력·처리·결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘GitHub 예제 폴더 구조 보존 ZIP 받기’는 강사가 검토 범위를 고정할 때 하위 폴더 URL 하나로 구조 보존 ZIP 하나를 받는 흐름은 구체적이나, 전달 목적의 강사와 로컬 열기 직전 순간의 연결이 약하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Git 메타데이터 뺀 GitHub 코드 ZIP’은 기술 PM이 로컬에서 확인하기 직전에 하위 폴더 URL 하나를 한 번 처리해 메타데이터 없는 코드 ZIP 하나를 즉시 받는 결과가 분명하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GitHub 예제 폴더 구조 보존 ZIP 받기’는 기술 PM이 전달 직전에 하위 폴더 URL 하나를 압축해 원래 구조의 ZIP 하나를 즉시 받으므로 payer·moment·twist가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘GitHub 폴더와 포함 파일 목록 ZIP’은 기술 PM이 검토 범위를 고정할 때 URL 하나로 manifest 포함 ZIP 하나를 받을 수 있지만, 원본에 없는 manifest 기능을 추가해 메커니즘이 변한다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    }
+  ]
+}

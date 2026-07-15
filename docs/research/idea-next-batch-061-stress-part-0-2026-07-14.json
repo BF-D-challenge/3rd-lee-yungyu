@@ -1,0 +1,444 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-habitwheel-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "습관 목록 텍스트를 입력해 룰렛으로 오늘 실행할 습관 하나를 고르는 흐름은 구체적이지만 범용 AI 한 번으로 더 쉽게 대체할 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-habitwheel-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "습관 목록 텍스트를 입력해 운동이나 독서 중 하나를 뽑는 결과는 명확하지만 범용 AI 한 번으로 더 쉽게 대체할 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-habitwheel-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "습관 목록 텍스트를 입력해 오늘의 집안일·자기계발 습관 하나를 뽑는 흐름은 명확하지만 강사가 범용 AI로 같은 결과를 더 쉽게 만들 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-wa-direct-chat-for-whatsapp-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "전화번호 텍스트를 입력해 WhatsApp 대화창을 여는 결과는 구체적이지만 wa.me 링크나 연락처 기능으로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "basic_function_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-wa-direct-chat-for-whatsapp-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "전화번호 텍스트를 입력해 WhatsApp 메시지 화면을 여는 흐름은 명확하지만 번호 링크나 연락처 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "basic_function_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-wa-direct-chat-for-whatsapp-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "해외 전화번호 텍스트를 입력해 WhatsApp 작성 화면을 여는 결과는 구체적이지만 표준 WhatsApp 링크로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "basic_function_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-tym-flow-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "작업 시간과 수익을 입력해 작업별 수익을 보여주지만 작업 전에 계속 기록해야 가치가 생기는 추적 기능이다.",
+      "risk_flags": [
+        "requires_prior_tracking"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-tym-flow-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "시간과 예상 정산액을 입력해 작업별 수익을 보여주지만 월 정산을 위해 사전 기록이 누적되어야 한다.",
+      "risk_flags": [
+        "requires_prior_tracking"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-tym-flow-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "작업 시간과 수익을 입력해 수수료 차감 후 시급을 계산하지만 프로젝트별 시간을 미리 계속 기록해야 한다.",
+      "risk_flags": [
+        "requires_prior_tracking"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1598355340-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "운동 목표와 조건을 텍스트로 입력해 오늘 운동 계획을 받는 흐름은 가능하지만 범용 AI 한 번으로 더 쉽게 만들 수 있고 제목만으로 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1598355340-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "운동 목표와 조건을 입력해 실행 루틴을 받는 결과는 구체적이지만 범용 AI 한 번으로 대체 가능하고 제목이 문제·결과를 설명하지 않는다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1598355340-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "운동 목표와 장소 조건을 입력해 짧은 계획을 받는 흐름은 명확하지만 범용 AI 한 번으로 대체 가능하며 제목이 불명확하다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6457366208-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 파일을 입력해 같은 필터를 적용한 상품 사진을 얻지만 기본 사진 편집 기능으로 대체 가능하고 제목만으로 결과가 보이지 않는다.",
+      "risk_flags": [
+        "basic_function_substitute",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6457366208-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 파일을 입력해 필름 톤 사진을 얻는 결과는 구체적이지만 기본 사진 앱의 필터 기능으로 대체 가능하고 제목이 불명확하다.",
+      "risk_flags": [
+        "basic_function_substitute",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6457366208-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 파일 여러 장을 입력해 색감을 보정하지만 기본 사진 편집 기능으로 처리할 수 있고 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "basic_function_substitute",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1451490992-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "수직 점프 영상 파일을 입력해 비행 시간을 계산하고 선수의 점프 높이 하나를 보여주는 흐름이 구체적이며 측정 순간과 사용자가 자연스럽게 맞는다.",
+      "risk_flags": [
+        "measurement_accuracy"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1451490992-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "점프 영상 파일을 입력해 비행 시간을 계산하고 체대 입시용 점프 기록 하나를 보여주므로 훈련 직후의 입력·처리·결과가 명확하다.",
+      "risk_flags": [
+        "measurement_accuracy"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1451490992-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "점프 영상 파일을 입력해 비행 시간을 계산하고 블로킹 훈련의 수직 점프 높이 하나를 보여주는 세로 조각이 가능하다.",
+      "risk_flags": [
+        "measurement_accuracy"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-485251405-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "위치 권한 또는 위치 텍스트를 입력해 달·태양 정보를 계산하고 해당 지역의 최적 낚시 시간을 보여주는 흐름이 구체적이다.",
+      "risk_flags": [
+        "heuristic_prediction"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-485251405-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출조 위치와 날짜를 입력해 달·태양 정보를 계산하고 날짜별 추천 낚시 시각을 하나의 시간표로 보여준다.",
+      "risk_flags": [
+        "heuristic_prediction"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-485251405-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "저수지 위치를 입력해 천문·조수 조건을 계산하고 바다낚시 시간표를 보여주는 결과가 사용 순간과 자연스럽게 연결된다.",
+      "risk_flags": [
+        "external_data_dependency",
+        "heuristic_prediction"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6754209839-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "SysEx 파일은 처리할 수 있지만 터치 조작을 입력으로 요구해 허용 입력 범위를 벗어나며 제목만으로 문제와 결과도 드러나지 않는다.",
+      "risk_flags": [
+        "disallowed_input",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6754209839-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "SysEx 데이터 입력 후 신스 음색을 재생하는 흐름은 보이지만 터치 입력이 허용되지 않고 제목만으로 결과가 불명확하다.",
+      "risk_flags": [
+        "disallowed_input",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6754209839-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "SysEx 파일을 입력해 FM 음색을 재생할 수 있으나 터치 조작이 허용 입력이 아니며 제목만으로 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "disallowed_input",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-883738213-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "그림 파일이나 선 입력으로 디지털 그림을 만들 수 있지만 터치 입력은 허용 목록에 없고 기본 그림 앱으로 대체 가능하며 제목도 불명확하다.",
+      "risk_flags": [
+        "disallowed_input",
+        "basic_function_substitute",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-883738213-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "그림 선과 색상을 입력해 시안을 완성하지만 터치 조작이 허용 입력 범위를 벗어나고 OS 기본 그림 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "disallowed_input",
+        "basic_function_substitute",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-883738213-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "그림 입력으로 레이어 편집 결과를 만들지만 터치 입력이 허용되지 않고 범용 그림 앱이 더 편하며 제목만으로 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "disallowed_input",
+        "basic_function_substitute",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-418102178-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "PDF 파일을 입력해 읽기 화면을 보여주는 흐름은 구체적이지만 OS 기본 PDF 리더로 더 쉽게 처리할 수 있고 제목만으로 결과가 불명확하다.",
+      "risk_flags": [
+        "basic_function_substitute",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-418102178-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "PDF 파일을 입력해 페이지를 표시하는 결과는 명확하지만 기본 문서 앱으로 대체 가능하고 책갈피·메모는 원본 최소 처리에 포함되지 않는다.",
+      "risk_flags": [
+        "basic_function_substitute",
+        "scope_drift",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-418102178-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "PDF 파일을 입력해 책처럼 읽는 화면을 보여주지만 기본 PDF 리더로 대체 가능하고 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "basic_function_substitute",
+        "unclear_title"
+      ]
+    }
+  ]
+}

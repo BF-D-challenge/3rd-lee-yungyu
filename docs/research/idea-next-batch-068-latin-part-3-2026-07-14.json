@@ -1,0 +1,364 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-953739548-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "연락처를 입력해 스프레드시트 파일로 내보내는 흐름은 구체적이지만 ‘Contacts2XL’만으로 문제와 결과가 초보자에게 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-953739548-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "연락처를 입력해 엑셀 파일로 백업하는 처리는 구체적이지만 제목만으로 백업 결과와 필요 순간이 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-953739548-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "연락처를 입력해 스프레드시트 파일을 만드는 조각은 성립하지만 ‘Contacts2XL’만으로 사용 목적과 결과가 즉시 보이지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-953739548-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "연락처를 입력해 엑셀 열로 내보내는 처리는 명확하지만 퇴사자와 거래처 정리라는 결제자·순간·한 끗이 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-953739548-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주소록을 입력해 공유 가능한 스프레드시트로 만드는 흐름은 구체적이지만 제목만으로 파일 변환 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1437885179-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 입력을 무음 고화질 촬영으로 처리해 사진·영상을 저장하는 흐름은 구체적이나 제목의 일본어 표현만으로 결과를 초보자가 즉시 이해하기 어렵다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1437885179-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "카메라 입력으로 무음 영상을 저장할 수 있지만 도서관 대학생이라는 결제자와 회의 촬영 순간이 어긋나 카드 조합이 자연스럽지 않다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1437885179-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "카메라 입력을 무음 촬영해 사진·영상을 저장하는 처리는 가능하지만 도서관 학생과 공연 리허설 순간이 일치하지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1437885179-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "카메라 입력을 무음 촬영해 결과물을 저장하는 조각은 있으나 회의 중 직장인과 도서관 촬영 순간이 서로 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1437885179-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "무음 고화질 촬영 결과는 구체적이지만 회의 중 직장인이 공연 리허설을 촬영한다는 결제자·필요 순간 조합이 부자연스럽다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1437885179-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "카메라로 무음 사진·영상을 저장하는 처리는 명확하지만 회의 중 직장인과 리허설 촬영 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1437885179-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "무음 고화질 촬영이라는 결과는 구체적이나 회의 직장인과 도서관 자료 촬영의 결제자·순간·트위스트가 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1437885179-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "카메라 입력을 무음 촬영해 저장하는 흐름은 가능하지만 공연장 스태프가 회의 화면을 기록한다는 필요 순간과 트위스트가 부자연스럽다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1437885179-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "무음 촬영 결과는 구체적이지만 공연장 스태프가 도서관 자료를 찍고 회의 영상 트위스트를 쓰는 조합이 일관되지 않다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6742751800-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "M3U 파일·링크를 입력해 채널을 파싱·검색하고 목록을 보여주는 흐름은 구체적이지만 제목만으로 검색 결과가 즉시 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6742751800-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여러 M3U 소스를 입력해 채널을 통합·검색하는 처리는 가능하지만 제목만으로 통합 목록 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6742751800-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "M3U 파일·링크를 파싱해 검색 가능한 채널 목록을 만드는 조각은 성립하지만 제목에 갱신·즐겨찾기 결과가 보이지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6742751800-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "M3U 링크를 입력해 채널 목록을 불러오고 검색하는 흐름은 구체적이지만 셋톱박스 사용자와 모바일 앱의 사용 맥락이 다소 불명확하다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6742751800-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "M3U 소스를 입력해 채널을 파싱·검색하고 즐겨찾기하는 결과는 구체적이나 제목만으로 이 기능이 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6742751800-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "M3U 파일·링크를 입력해 검색 가능한 채널 목록을 만드는 처리는 명확하지만 제목만으로 목록 갱신과 결과가 충분히 보이지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6742751800-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "M3U 링크를 입력해 채널을 파싱하고 즐겨찾기 가능한 목록을 만드는 흐름은 구체적이나 제목이 문제와 결과를 설명하지 못한다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6742751800-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "M3U 소스를 입력해 채널을 통합·검색하는 처리는 가능하지만 제목만으로 통합 검색 결과와 사용 순간이 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6742751800-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "M3U 파일·링크를 파싱해 검색 가능한 채널 목록을 만드는 조각은 성립하지만 제목만으로 최신화와 통합 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1369253556-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "차량 불빛 장면을 카메라로 입력해 장노출 처리하고 서울 야경의 빛궤적 사진 한 장을 즉시 만드는 흐름이 제목과 카드 문구에 구체적으로 드러난다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1369253556-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캠핑 랜턴 장면을 카메라로 입력해 장노출 처리하고 허공에 그린 빛궤적 사진 한 장을 만드는 흐름이 자연스럽고 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1369253556-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카메라 입력을 장노출 처리해 빛궤적을 만드는 원본 메커니즘인데 폭포 물결을 부드럽게 담는 트위스트는 빛궤적 결과와 맞지 않는다.",
+      "risk_flags": [
+        "mechanism_mismatch"
+      ]
+    }
+  ]
+}

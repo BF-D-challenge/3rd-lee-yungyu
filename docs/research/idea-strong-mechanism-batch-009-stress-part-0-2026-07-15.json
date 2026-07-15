@@ -1,0 +1,129 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-583922375-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영 장면에 맞는 셔터값’은 사진가가 첫 컷 직전에 카메라로 한 지점을 측정하고 ISO 400·f/2.8 조건으로 처리해 셔터값 하나를 받는 흐름이 payer·moment·twist와 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-583922375-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영 장면의 노출 EV 수치’는 카메라로 한 지점을 측정해 EV 하나를 표시하지만, 조명을 옮긴 스튜디오 사진가가 원하는 새 조리개·셔터·ISO 조합 대신 EV만 받는 점이 payer의 순간과 한 끗 변화에 덜 맞는다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-583922375-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영 장면에 맞는 조리개값’은 재촬영 직전에 카메라로 한 지점을 측정하고 ISO 400·1/125초 조건으로 처리해 조리개값 하나를 주므로 현장 조명 담당자의 필요와 twist가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-430807521-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘결승선 사진의 선수별 통과 시각’은 코치가 발표 직전에 결승선을 카메라로 한 번 촬영·포토피니시 처리해 선수별 통과 시각 이미지를 받는 단일 흐름으로 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-430807521-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘대회 순위를 담은 결승선 포토피니시’는 체육교사가 결과 입력 직전에 결승선을 한 번 촬영해 포토피니시 처리하고 순위가 보이는 이미지 하나를 받으므로 payer·moment·twist가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-430807521-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘결승선 사진에 표시한 달리기 순위’는 경기 담당자가 공지 직전에 결승선을 카메라로 한 번 처리해 순위선이 겹쳐진 결과 이미지 하나를 받는 구조로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760473513-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘캠핑카 네 바퀴별 수평 보정 센티미터’는 여행자가 숙박 설치 직전에 기기 기울기를 한 번 측정하고 네 바퀴 보정량을 계산해 센티미터 표 하나를 받으므로 현장 순간과 결과가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760473513-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘캠핑카가 수평인지 바로 확인’은 대여 운영자가 인계 직전에 기울기를 한 번 측정해 수평 여부 하나를 받지만, 보정량이 필요한 payer의 업무를 단순 수평계 확인으로 축소해 OS 기본 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "os_basic_substitute",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760473513-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘캠핑카 수평을 맞출 바퀴 순서’는 현장 작업자가 차량 재조정 직전에 기울기를 한 번 측정하고 보정 계산으로 먼저 올릴 바퀴 순서 하나를 받아 payer의 작업 순간과 twist가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-655607914-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘드럼 목표 음정과 현재 피치 차이’는 드러머가 사운드체크 직전에 드럼 한 개를 한 번 두드려 마이크 분석을 거쳐 목표 피치와 현재 피치의 차이 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

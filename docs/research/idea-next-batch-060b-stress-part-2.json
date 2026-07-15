@@ -1,0 +1,387 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app_store-347393479-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출발지·도착지 입력을 한 번 처리해 경로 주변 이색 명소 목록을 즉시 보여주므로 가족 여행 중간 경유지를 정하는 순간과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-347393479-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출발지·도착지 입력을 경로 주변 명소 검색으로 처리해 국내 숨은 관광지 목록 하나를 제공하므로 차박 코스 계획 순간에 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-347393479-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출발지·도착지 입력 후 경로 주변 명소를 검색해 아이 동반 특색 명소 목록 하나를 보여주므로 여행 콘텐츠 소재를 찾는 순간에 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-522687241-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "운전면허 문제 하나를 입력해 이해도를 처리하고 한국식 정답 설명 하나를 보여주는 구조가 수험생의 오답 확인 순간에 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-522687241-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교통표지판 문제 하나를 입력해 채점한 뒤 정답과 참고자료 하나를 제공하므로 헷갈린 규칙을 즉시 복습할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-522687241-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "교통표지판 문제를 채점해 관련 규정을 보여주는 결과는 가능하지만 운전학원 강사의 결제 이유와 ‘출퇴근 전’ 순간이 어색해 실제 사용 장면이 불명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app_store-538386564-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "VSD·VDX·VSDX 파일 하나를 렌더링해 상세 도면 미리보기 하나를 즉시 제공하므로 현장 파일 확인 문제와 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-538386564-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Visio 파일 하나를 입력해 렌더링하고 배포용 PDF 하나를 결과로 내보내는 흐름이 협력업체 도면 공유 순간에 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-538386564-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "공정도 파일을 렌더링해 미리보기할 수 있지만 ‘레이어별 확인’은 원본의 일반 상세 미리보기보다 구체화된 기능인지 불명확하다.",
+      "risk_flags": [
+        "feature_scope_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app_store-300814524-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "두 상품의 가격·용량을 입력해 단위 가격을 계산하고 실질 단가 하나를 보여주므로 장보기 중 선택 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-300814524-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "가격·수량·할인 입력으로 비교하는 원본 메커니즘에서 벗어나 예산에 맞는 구매 가능 수량을 산출하는 새 기능을 요구한다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app_store-300814524-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "묶음상품 두 개의 가격·수량·할인을 입력해 할인율을 비교하고 절약액 하나를 보여주므로 흥정 직전의 판단 순간에 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-459313476-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "악보 음표나 건반 입력에서 음정·코드를 판별해 정답을 보여주지만 한 입력에 판별 대상이 둘로 섞여 결과 범위가 약간 불명확하다.",
+      "risk_flags": [
+        "result_scope_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app_store-459313476-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음악 문제 하나를 입력해 해당 요소를 판별하고 정답 하나를 확인하게 하므로 코드 문제를 푼 직후의 사용 순간과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-459313476-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "표시된 피아노 건반 하나를 입력해 해당 음과 화음을 판별하고 화음 정답 하나를 보여주므로 독학 연습 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-6443709020-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "가족 구성원의 휴대폰에 흩어진 사진을 모으려면 상대방의 사진 제공 행동이 필수라서 문제 전에 다른 사람의 새 행동을 요구한다.",
+      "risk_flags": [
+        "dependent_party_action"
+      ]
+    },
+    {
+      "id": "next-stress-app_store-6443709020-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "동창 모임 사진을 모으는 총무 시나리오는 다른 참석자들이 사진을 보내야 작동하므로 상대방의 새 행동이 필수다.",
+      "risk_flags": [
+        "dependent_party_action"
+      ]
+    },
+    {
+      "id": "next-stress-app_store-6443709020-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "친구들과 찍은 사진을 단체앨범에 저장하려면 친구들의 사진 공유나 참여가 필요해 단일 사용자 입력·처리·결과 조건을 벗어난다.",
+      "risk_flags": [
+        "dependent_party_action"
+      ]
+    },
+    {
+      "id": "next-stress-app_store-980368562-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "건강식 레시피 하나를 입력해 재료를 계산하고 통로별 장보기 목록 하나를 즉시 생성하므로 마트에서 빠르게 구매할 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-980368562-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "운동 식단 레시피 하나를 입력해 필요한 재료를 장보기 항목으로 처리하고 통로별 목록 하나를 보여주므로 주간 식단 준비에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-980368562-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "일주일 식단의 여러 레시피를 입력해 식재료 목록으로 계산하는 구조는 가능하지만 ‘레시피 하나’ 기반 원본보다 입력 범위가 커 MVP 경계가 불명확하다.",
+      "risk_flags": [
+        "input_scope_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app_store-1497379822-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "GPX·KML 파일 하나를 입력해 지도 경로와 거리·고도를 분석한 결과 하나를 제공하므로 산행 전 경로 확인에 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-1497379822-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "경로 파일을 지도에 표시할 수 있지만 ‘오프라인 지도용’은 지도 데이터 사전 확보가 필요할 수 있어 단일 파일 처리 결과로의 작동 범위가 불명확하다.",
+      "risk_flags": [
+        "offline_data_dependency"
+      ]
+    },
+    {
+      "id": "next-stress-app_store-1497379822-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원본은 거리·고도 분석인데 KML 경로의 속도 차트를 제공하려면 추가 데이터와 새 분석 기능이 필요해 원본 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "missing_input"
+      ]
+    },
+    {
+      "id": "next-stress-app_store-477962899-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 한 장과 문구를 입력해 문구를 배치하고 워터마크 없는 밈 이미지 하나를 저장·공유할 수 있어 사용 순간과 결과가 선명하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-477962899-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "친구 사진과 축하 문구를 입력해 이미지에 배치하고 공유용 밈 하나를 생성하므로 소상공인의 홍보 콘텐츠 제작에 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-477962899-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "상품 이미지와 유행 문구를 입력해 문구를 배치하고 저장 가능한 밈 이미지 하나를 결과로 제공하므로 즉시 SNS 소재가 된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-6453697787-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카페 사진 한 장을 입력해 필름 필터를 한 번 적용하고 따뜻한 필름 룩 사진 하나를 결과로 제공하므로 게시 직전 사용 순간이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app_store-6453697787-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "사진 한 장을 필터 처리해 필름 룩을 만드는 핵심은 맞지만 ‘자동 보정’이 원본의 단순 필름 효과를 넘어서는지 문구만으로 불명확하다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app_store-6453697787-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여행 사진 한 장을 입력해 한 번의 필터 처리로 아날로그 색감 사진 하나를 즉시 생성하므로 사진 취미인의 문제와 결과가 일치한다.",
+      "risk_flags": []
+    }
+  ]
+}

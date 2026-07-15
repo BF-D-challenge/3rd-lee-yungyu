@@ -1,0 +1,65 @@
+{
+  "batch_id": "EXH-063",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 43,
+    "Fail": 48,
+    "Merge": 3,
+    "Reserve": 6
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 73,
+      "sample": [
+        "app_store:6474308183",
+        "chrome_web_store:fooenmopnfaejehogdbmegaleanpdcea",
+        "app_store:1035127285",
+        "trustmrr:skillfox",
+        "trustmrr:funnell-ai",
+        "chrome_web_store:djflhoibgkdhkhhcedjiklpkjnoahfmg",
+        "app_store:912237070",
+        "app_store:396584034"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:skillfox",
+          "decision": "Reserve",
+          "reason": "회사별 내부 지식과 팀 공유를 전제로 하는 커스텀 요청에서만 작동한다."
+        },
+        {
+          "key": "chrome_web_store:djflhoibgkdhkhhcedjiklpkjnoahfmg",
+          "decision": "Candidate",
+          "reason": "User-Agent 문자열 하나를 받아 스푸핑·모방하고 변경된 Chrome 요청을 확인하는 2일 세로 조각이다."
+        },
+        {
+          "key": "app_store:912237070",
+          "decision": "Candidate",
+          "reason": "도시나 위치 하나를 받아 풍속·풍향을 확인하고 실시간 측정 결과 하나를 보여주는 조각이다."
+        }
+      ],
+      "false_reject_rate": 0.375
+    },
+    {
+      "round": 2,
+      "fail_count": 48,
+      "sample": [
+        "app_store:1455685357",
+        "chrome_web_store:pngkijelimppchhdpneipbcdndjlhjna",
+        "app_store:1098199475",
+        "trustmrr:promotveo3",
+        "app_store:6769976280"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

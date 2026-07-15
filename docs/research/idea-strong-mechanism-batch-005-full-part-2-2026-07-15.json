@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-1119117405-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 자투리 최소 절단 배치 PDF’는 재단소 주문 직전에 판재 크기·톱날 폭·부품 치수 목록 텍스트 하나를 받아 배치를 한 번 최적화하고 자투리 최소 배치 PDF 하나를 제공해 결제자·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1119117405-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 재단 순서 표시 PDF’는 톱질 전 작업대에서 판재 크기·톱날 폭·부품 치수 목록 텍스트 하나를 받아 배치를 한 번 계산하고 재단 순서가 표시된 PDF 하나를 제공해 결제자·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1119117405-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 부품 번호 표시 절단 PDF’는 톱질 전 작업대에서 판재 크기·톱날 폭·부품 치수 목록 텍스트 하나를 받아 배치를 한 번 계산하고 부품 번호가 표시된 절단 PDF 하나를 제공해 결제자·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1119117405-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 자투리 최소 절단 배치 PDF’는 톱질 전 작업대에서 판재 크기·톱날 폭·부품 치수 목록 텍스트 하나를 받아 배치를 한 번 최적화하고 자투리 최소 배치 PDF 하나를 제공해 결제자·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1119117405-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 재단 순서 표시 PDF’는 톱질 전 작업대에서 판재 크기·톱날 폭·부품 치수 목록 텍스트 하나를 받아 배치를 한 번 계산하고 재단 순서가 표시된 PDF 하나를 제공해 결제자·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1119117405-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 부품 번호 표시 절단 PDF’는 톱질 전 작업대에서 판재 크기·톱날 폭·부품 치수 목록 텍스트 하나를 받아 배치를 한 번 계산하고 부품 번호가 표시된 절단 PDF 하나를 제공해 결제자·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1119117405-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 자투리 최소 절단 배치 PDF’는 고객 치수 변경 직후 판재 크기·톱날 폭·변경 부품 목록 텍스트 하나를 받아 배치를 한 번 재계산하고 자투리 최소 배치 PDF 하나를 제공해 결제자·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1119117405-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 재단 순서 표시 PDF’는 고객 치수 변경 직후 판재 크기·톱날 폭·변경 부품 목록 텍스트 하나를 받아 배치를 한 번 재계산하고 재단 순서가 표시된 PDF 하나를 제공해 결제자·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1119117405-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 부품 번호 표시 절단 PDF’는 고객 치수 변경 직후 판재 크기·톱날 폭·변경 부품 목록 텍스트 하나를 받아 배치를 한 번 재계산하고 부품 번호가 표시된 절단 PDF 하나를 제공해 결제자·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    }
+  ]
+}

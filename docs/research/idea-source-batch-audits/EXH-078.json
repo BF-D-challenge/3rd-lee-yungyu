@@ -1,0 +1,64 @@
+{
+  "batch_id": "EXH-078",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 59,
+    "Candidate": 40,
+    "Merge": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 67,
+      "sample": [
+        "chrome_web_store:kajibbejlbohfaggdiogboambcijhkke",
+        "trustmrr:directoryfast",
+        "app_store:492764073",
+        "trustmrr:dubaiwoofs",
+        "chrome_web_store:ppfoibjbcchcfifclhebkhnigneiceje",
+        "app_store:1028294311",
+        "app_store:1502813439"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:kajibbejlbohfaggdiogboambcijhkke",
+          "decision": "Candidate",
+          "reason": "입력 이메일 대화와 첨부파일 → PGP 암호화 처리 → 보호된 이메일 결과를 2일 세로 조각으로 확인할 수 있다."
+        },
+        {
+          "key": "chrome_web_store:ppfoibjbcchcfifclhebkhnigneiceje",
+          "decision": "Candidate",
+          "reason": "입력 상품 이미지 → 다운로드 처리 → 저장된 이미지 결과를 한 번에 확인할 수 있어 2일 세로 조각이 가능하다."
+        },
+        {
+          "key": "app_store:1028294311",
+          "decision": "Candidate",
+          "reason": "단일 Bluetooth 체중계 권한과 측정값 → 건강 지표 기록·추세 분석 → 체중 변화 결과가 남는다."
+        }
+      ],
+      "false_reject_rate": 0.42857142857142855
+    },
+    {
+      "round": 2,
+      "fail_count": 59,
+      "sample": [
+        "app_store:6776644622",
+        "trustmrr:directoryfast",
+        "app_store:492764073",
+        "trustmrr:board-ad",
+        "chrome_web_store:fhbaaaookfjndiecceejfdcbkampdnkk",
+        "app_store:6756828162"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

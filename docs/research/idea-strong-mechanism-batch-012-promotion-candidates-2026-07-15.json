@@ -1,0 +1,81 @@
+[
+  {
+    "id": "fits-sky-locator",
+    "source": {
+      "id": "source-fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "research": {
+        "key": "app_store:6752672420",
+        "url": "https://apps.apple.com/au/app/skysafari-8-pro/id6752672420"
+      },
+      "platform": "app",
+      "value": "FITS 천체 사진 한 장을 분석해 어느 하늘을 찍었는지 좌표·촬영 영역·주요 천체가 표시된 차트로 놓는 도구",
+      "detail": "FITS 파일 하나를 입력하면 별 패턴을 한 번 플레이트 솔빙하고 촬영 중심과 영역이 표시된 하늘 차트 한 개를 즉시 만듭니다.",
+      "evidence": "App Store 원본은 FITS·로컬·URL 천체 이미지를 가져와 플레이트 솔빙한 뒤 하늘 차트에 직접 배치한다고 명시하고, 수집 시점 호주 레퍼런스 카테고리 4위가 확인됩니다.",
+      "preservedFlow": "FITS 천체 이미지 입력 → 별 패턴 플레이트 솔빙 → 좌표가 표시된 하늘 차트"
+    },
+    "payers": [
+      {
+        "id": "payer-fits-sky-locator-1",
+        "value": "촬영 위치를 확인하는 아마추어 천체사진가",
+        "detail": "FITS 촬영본이 실제 하늘의 어느 영역인지 반복 확인해야 하며, 별 지도를 대조하고 좌표를 수동으로 맞추는 데 시간이 걸린다."
+      },
+      {
+        "id": "payer-fits-sky-locator-2",
+        "value": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+        "detail": "학생들이 촬영한 천체 이미지의 대상과 구도를 확인해야 하며, 이미지와 별자리 자료를 직접 비교해 설명한다."
+      },
+      {
+        "id": "payer-fits-sky-locator-3",
+        "value": "관측 기록을 정리하는 소형 천문대 운영자",
+        "detail": "촬영 결과의 하늘 위치를 기록마다 확인해야 하며, 이미지의 별 배치를 지도와 대조해 관측 문서에 옮긴다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-fits-sky-locator-1",
+        "value": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+        "detail": "구도를 다시 잡거나 촬영 결과를 폐기하기 전에 이미지가 가리키는 하늘 위치를 바로 알아야 한다."
+      },
+      {
+        "id": "moment-fits-sky-locator-2",
+        "value": "다음 촬영에서 구도를 수정해야 하는 순간",
+        "detail": "지난 이미지의 실제 시야를 기준으로 장비를 조정해야 하므로 차트 위 위치 확인이 지금 필요하다."
+      },
+      {
+        "id": "moment-fits-sky-locator-3",
+        "value": "관측 기록을 제출하기 직전",
+        "detail": "촬영 이미지가 어느 영역을 담았는지 근거를 기록해야 해서 하늘 차트 배치 결과가 즉시 필요하다."
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-fits-sky-locator-1",
+        "kind": "replace",
+        "value": "중심 좌표가 찍힌 하늘 차트로 보여주기",
+        "detail": "FITS 이미지의 플레이트 솔빙과 하늘 차트 배치는 유지하고, 결과 표시만 중심 좌표를 강조한 차트로 바꾼다.",
+        "resultTitle": "천체 이미지 중심 좌표 하늘 차트",
+        "platform": "app",
+        "smallestBuild": "천체 관측용 FITS 이미지 파일 1개를 입력받아 플레이트 솔빙을 한 번 수행하고 중심 좌표가 찍힌 하늘 차트 1개를 즉시 보여준다."
+      },
+      {
+        "id": "twist-fits-sky-locator-2",
+        "kind": "add",
+        "value": "촬영 영역 경계를 오버레이하기",
+        "detail": "같은 FITS 이미지 위치 계산은 유지하고, 결과 표시만 이미지가 차지한 촬영 영역 경계를 하늘 차트 위에 겹쳐 보여주는 것으로 바꾼다.",
+        "resultTitle": "천체 사진 촬영 영역 경계 확인",
+        "platform": "app",
+        "smallestBuild": "FITS 이미지 파일 1개를 입력받아 플레이트 솔빙을 한 번 수행하고 촬영 영역 경계가 표시된 하늘 차트 1개를 즉시 보여준다."
+      },
+      {
+        "id": "twist-fits-sky-locator-3",
+        "kind": "add",
+        "value": "식별된 주요 천체에 라벨 붙이기",
+        "detail": "플레이트 솔빙으로 이미지 위치를 찾는 처리는 유지하고, 결과 표시만 차트 안의 주요 천체 이름 라벨로 바꾼다.",
+        "resultTitle": "천체 사진 속 주요 천체 라벨",
+        "platform": "app",
+        "smallestBuild": "천체 FITS 이미지 파일 1개를 입력받아 플레이트 솔빙을 한 번 수행하고 주요 천체 라벨이 붙은 하늘 차트 1개를 즉시 보여준다."
+      }
+    ]
+  }
+]

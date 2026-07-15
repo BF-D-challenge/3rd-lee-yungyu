@@ -1,0 +1,30 @@
+{
+  "date": "2026-07-12",
+  "scenarioIds": [
+    "lookup-brief",
+    "party-imposter",
+    "personal-color-kit"
+  ],
+  "combinations": 81,
+  "before": {
+    "passed": 47,
+    "failed": 34,
+    "failedByScenario": {
+      "lookup-brief": 8,
+      "party-imposter": 8,
+      "personal-color-kit": 18
+    }
+  },
+  "after": {
+    "passed": 81,
+    "failed": 0,
+    "averageDeskScore": 4.84,
+    "minimumDeskScore": 4.8
+  },
+  "cardsChanged": 16,
+  "humanValidation": {
+    "status": "not_run",
+    "note": "Internal desk review cannot prove real build intent."
+  },
+  "reproduce": "node scripts/research/audit-idea-lab-pilot.mjs"
+}

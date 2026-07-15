@@ -1,0 +1,544 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-sitemaptollm-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 문서 포털의 테크니컬 라이터가 사이트맵을 새로 공개한 직후 공개 사이트맵 URL 하나를 한 번 파싱해 페이지 제목·URL 한 줄씩의 llms.txt 파일 하나를 받으므로 순간과 한 끗 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-sitemaptollm-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 문서 포털의 테크니컬 라이터가 사이트맵 공개 직후 공개 사이트맵 URL 하나를 한 번 파싱해 첫 URL 경로별 섹션이 붙은 llms.txt 파일 하나를 받으므로 문서 구조 정리 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-sitemaptollm-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 문서 포털의 테크니컬 라이터가 사이트맵 공개 직후 공개 사이트맵 URL 하나를 한 번 정규화해 쿼리와 중복 URL이 제거된 llms.txt 파일 하나를 받으므로 재수집 문제와 결과가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-sitemaptollm-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "문서 구조를 크게 바꾼 테크니컬 라이터가 공개 사이트맵 URL 하나를 한 번 파싱해 현재 페이지 제목·URL 한 줄씩의 llms.txt 파일 하나를 받으므로 오래된 경로 정리 순간에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-sitemaptollm-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "문서 구조를 크게 바꾼 테크니컬 라이터가 공개 사이트맵 URL 하나를 한 번 파싱해 첫 URL 경로별 섹션이 붙은 llms.txt 파일 하나를 받으므로 구조 변경과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-sitemaptollm-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "문서 구조를 크게 바꾼 테크니컬 라이터가 공개 사이트맵 URL 하나를 한 번 정규화해 쿼리와 중복 URL이 제거된 llms.txt 파일 하나를 받으므로 배포 전 검수 목적에 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-sitemaptollm-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 크롤러 안내 파일 배포 직전의 테크니컬 라이터가 공개 사이트맵 URL 하나를 한 번 파싱해 페이지 제목·URL 한 줄씩의 llms.txt 파일 하나를 받으므로 검수 순간과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-sitemaptollm-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 크롤러 안내 파일 배포 직전의 테크니컬 라이터가 공개 사이트맵 URL 하나를 한 번 파싱해 첫 URL 경로별 섹션이 붙은 llms.txt 파일 하나를 받으므로 잘못된 묶음 방지라는 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-sitemaptollm-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 크롤러 안내 파일 배포 직전의 테크니컬 라이터가 공개 사이트맵 URL 하나를 한 번 정규화해 쿼리와 중복 URL이 제거된 llms.txt 파일 하나를 받으므로 배포 전 목록 검수에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아마추어 축구팀 SNS 운영자가 경기 정보 확정 직후 팀명·경기명·일시·스코어·로고 URL 텍스트 하나를 한 번 배치해 1080×1080 매치데이 PNG 한 장을 받으므로 게시 순간과 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아마추어 축구팀 SNS 운영자가 경기 정보 확정 직후 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1920 스토리 PNG 한 장을 받으므로 모바일 공지 순간에 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아마추어 축구팀 SNS 운영자가 경기 정보 확정 직후 팀·스폰서 정보와 로고 URL 텍스트 하나를 한 번 배치해 하단 스폰서 바가 있는 PNG 한 장을 받으므로 필요한 브랜딩 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디자인 담당자 없는 아마추어 축구팀 SNS 운영자가 경기 공지 직전 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1080 PNG 한 장을 받으므로 반복 편집을 줄이는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디자인 담당자 없는 아마추어 축구팀 SNS 운영자가 경기 공지 직전 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1920 스토리 PNG 한 장을 받으므로 순간과 게시 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디자인 담당자 없는 아마추어 축구팀 SNS 운영자가 경기 공지 직전 팀·스폰서 정보와 로고 URL 텍스트 하나를 한 번 배치해 스폰서 바가 있는 PNG 한 장을 받으므로 운영 목적과 결과가 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아마추어 축구팀 SNS 운영자가 수정된 경기 정보를 재공지하기 직전 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1080 PNG 한 장을 받으므로 재공지 순간에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아마추어 축구팀 SNS 운영자가 수정된 경기 정보를 재공지하기 직전 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1920 스토리 PNG 한 장을 받으므로 즉시 재생성 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아마추어 축구팀 SNS 운영자가 수정된 경기 정보를 재공지하기 직전 팀·스폰서 정보와 로고 URL 텍스트 하나를 한 번 배치해 스폰서 바가 있는 PNG 한 장을 받으므로 한 끗 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유소년 축구클럽 코치가 게시할 경기 정보 확정 직후 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1080 매치데이 PNG 한 장을 받으므로 이동 중 게시 순간에 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유소년 축구클럽 코치가 게시할 경기 정보 확정 직후 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1920 스토리 PNG 한 장을 받으므로 필요한 모바일 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유소년 축구클럽 코치가 게시할 경기 정보 확정 직후 팀·스폰서 정보와 로고 URL 텍스트 하나를 한 번 배치해 스폰서 바가 있는 PNG 한 장을 받으므로 운영 목적과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유소년 축구클럽 코치가 디자인 담당자 없이 경기 공지를 올릴 때 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1080 PNG 한 장을 받으므로 반복 편집 대체 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유소년 축구클럽 코치가 디자인 담당자 없이 경기 공지를 올릴 때 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1920 스토리 PNG 한 장을 받으므로 게시 순간과 형식이 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유소년 축구클럽 코치가 디자인 담당자 없이 경기 공지를 올릴 때 팀·스폰서 정보와 로고 URL 텍스트 하나를 한 번 배치해 스폰서 바가 있는 PNG 한 장을 받으므로 요구 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유소년 축구클럽 코치가 수정된 경기 정보를 재공지하기 직전 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1080 PNG 한 장을 받으므로 재공지 목적에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유소년 축구클럽 코치가 수정된 경기 정보를 재공지하기 직전 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1920 스토리 PNG 한 장을 받으므로 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유소년 축구클럽 코치가 수정된 경기 정보를 재공지하기 직전 팀·스폰서 정보와 로고 URL 텍스트 하나를 한 번 배치해 스폰서 바가 있는 PNG 한 장을 받으므로 순간과 한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풋살리그 운영자가 여러 경기의 정보 확정 직후 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1080 PNG 한 장을 받으므로 수작업 정렬 문제를 직접 해결한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풋살리그 운영자가 여러 경기의 정보 확정 직후 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1920 스토리 PNG 한 장을 받으므로 공지 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풋살리그 운영자가 여러 경기의 정보 확정 직후 팀·스폰서 정보와 로고 URL 텍스트 하나를 한 번 배치해 스폰서 바가 있는 PNG 한 장을 받으므로 반복 정렬 문제와 결과가 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풋살리그 운영자가 디자인 담당자 없이 공지를 올릴 때 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1080 PNG 한 장을 받으므로 팀별 일관성 확보 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풋살리그 운영자가 디자인 담당자 없이 공지를 올릴 때 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1920 스토리 PNG 한 장을 받으므로 모바일 게시 순간에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풋살리그 운영자가 디자인 담당자 없이 공지를 올릴 때 팀·스폰서 정보와 로고 URL 텍스트 하나를 한 번 배치해 스폰서 바가 있는 PNG 한 장을 받으므로 결과와 payer의 필요가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풋살리그 운영자가 수정된 경기 정보를 재공지하기 직전 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1080 PNG 한 장을 받으므로 즉시 재공지 목적이 분명하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풋살리그 운영자가 수정된 경기 정보를 재공지하기 직전 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1920 스토리 PNG 한 장을 받으므로 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-myterrace-net-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풋살리그 운영자가 수정된 경기 정보를 재공지하기 직전 팀·스폰서 정보와 로고 URL 텍스트 하나를 한 번 배치해 스폰서 바가 있는 PNG 한 장을 받으므로 payer·moment·twist가 자연스럽게 연결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Tailwind 개발자가 브라우저 요소의 디자인 오류 직후 공개 URL·CSS selector·margin 또는 padding 값을 담은 텍스트 하나를 한 번 읽어 spacing class 한 줄만 바뀐 diff 파일 하나를 받으므로 수정 범위와 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Tailwind 개발자가 브라우저 요소의 색상 오류 직후 공개 URL·CSS selector·text 또는 background color 값을 담은 텍스트 하나를 한 번 읽어 color class 한 줄만 바뀐 diff 파일 하나를 받으므로 필요한 수정과 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Tailwind 개발자가 브라우저 요소의 반응형 오류 직후 공개 URL·CSS selector·breakpoint와 class 값을 담은 텍스트 하나를 한 번 읽어 지정 breakpoint class 한 줄이 추가된 diff 파일 하나를 받으므로 한 끗 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Tailwind 개발자가 코드 리뷰 직전 공개 URL·CSS selector·margin 또는 padding 값을 담은 텍스트 하나를 한 번 읽어 spacing class 한 줄만 바뀐 diff 파일 하나를 받으므로 최소 수정 검토 순간에 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Tailwind 개발자가 코드 리뷰 직전 공개 URL·CSS selector·text 또는 background color 값을 담은 텍스트 하나를 한 번 읽어 color class 한 줄만 바뀐 diff 파일 하나를 받으므로 요청 속성만 수정한다는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Tailwind 개발자가 코드 리뷰 직전 공개 URL·CSS selector·breakpoint와 class 값을 담은 텍스트 하나를 한 번 읽어 지정 breakpoint class 한 줄이 추가된 diff 파일 하나를 받으므로 검토 목적과 결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Tailwind 개발자가 같은 요소의 class를 재조합하기 전 공개 URL·CSS selector·margin 또는 padding 값을 담은 텍스트 하나를 한 번 읽어 spacing class 한 줄만 바뀐 diff 파일 하나를 받으므로 현재 class 확인 순간에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Tailwind 개발자가 같은 요소의 class를 재조합하기 전 공개 URL·CSS selector·text 또는 background color 값을 담은 텍스트 하나를 한 번 읽어 color class 한 줄만 바뀐 diff 파일 하나를 받으므로 수정 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Tailwind 개발자가 같은 요소의 class를 재조합하기 전 공개 URL·CSS selector·breakpoint와 class 값을 담은 텍스트 하나를 한 번 읽어 지정 breakpoint class 한 줄이 추가된 diff 파일 하나를 받으므로 입력·처리·결과가 단일하다.",
+      "risk_flags": []
+    }
+  ]
+}

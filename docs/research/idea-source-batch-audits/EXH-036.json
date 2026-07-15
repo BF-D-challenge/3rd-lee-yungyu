@@ -1,0 +1,99 @@
+{
+  "batch_id": "EXH-036",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 50,
+    "Merge": 6,
+    "Fail": 43,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 67,
+      "sample": [
+        "app_store:1163786766",
+        "app_store:282935706",
+        "chrome_web_store:kcbhlbighmhmfljoenbafmdnhgmolbjo",
+        "chrome_web_store:kohnpgjnebgngobifoimegihoblapbnl",
+        "app_store:906581110",
+        "app_store:298252561",
+        "trustmrr:llms-txt-generator"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1163786766",
+          "decision": "Candidate",
+          "reason": "기상 시각과 알람 미션 입력 → 알람 예약·미션 실행 → 미션 완료 전 해제 차단 알람을 2일 세로 조각으로 만들 수 있다."
+        },
+        {
+          "key": "chrome_web_store:kcbhlbighmhmfljoenbafmdnhgmolbjo",
+          "decision": "Candidate",
+          "reason": "수식 입력 → 그래프 계산 → 어느 웹사이트에서든 확인하는 그래프 계산기를 반나절 세로 조각으로 만들 수 있다."
+        },
+        {
+          "key": "chrome_web_store:kohnpgjnebgngobifoimegihoblapbnl",
+          "decision": "Candidate",
+          "reason": "프로젝트·부서 정보 입력 → 캘린더 그룹 설정 → 그룹별 Google Calendar 확인을 2일 세로 조각으로 만들 수 있다."
+        },
+        {
+          "key": "app_store:298252561",
+          "decision": "Candidate",
+          "reason": "단어 입력 → 사전 검색·발음 확인 → 뜻·용례·발음이 보이는 단어 항목을 하루 안에 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.5714285714285714
+    },
+    {
+      "round": 2,
+      "fail_count": 59,
+      "sample": [
+        "app_store:524331467",
+        "trustmrr:marketsy-ai",
+        "chrome_web_store:bgfiegdbajagebogifobkhambpljbfmk",
+        "chrome_web_store:hmdinepahgmfhgojoglndlhllogdceli",
+        "chrome_web_store:mlhimllheakianplccjmedmiabppmeaj",
+        "app_store:6760657349"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:bgfiegdbajagebogifobkhambpljbfmk",
+          "decision": "Candidate",
+          "reason": "YouTube Music 페이지를 입력받아 테마와 플레이어 기능을 적용하고, 즉시 강화된 음악 감상 화면을 만들 수 있습니다."
+        },
+        {
+          "key": "chrome_web_store:hmdinepahgmfhgojoglndlhllogdceli",
+          "decision": "Candidate",
+          "reason": "경쟁사 상위 전환 광고를 입력받아 분석하고, 즉시 수익성 높은 상품 목록을 만들 수 있습니다."
+        },
+        {
+          "key": "app_store:6760657349",
+          "decision": "Candidate",
+          "reason": "두 관객의 숫자를 입력받아 합산·현재 시각 계산을 처리하고, 즉시 마술 결과를 보여줄 수 있습니다."
+        }
+      ],
+      "false_reject_rate": 0.5
+    },
+    {
+      "round": 3,
+      "fail_count": 43,
+      "sample": [
+        "app_store:1644578451",
+        "trustmrr:private-enterprise-5",
+        "app_store:469284907",
+        "trustmrr:deployhermes",
+        "app_store:1449893235"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

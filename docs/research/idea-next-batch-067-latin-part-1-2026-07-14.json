@@ -1,0 +1,209 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1233988242-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "녹음 파일을 받아 톤·채널·효과를 처리해 효과 파일을 만드는 흐름은 구체적이지만 일반 오디오 편집기나 범용 AI 한 번으로 더 쉽게 할 수 있고 결제자·팟캐스트 순간·축하 메시지 결과도 어긋난다.",
+      "risk_flags": [
+        "generic_tool",
+        "payer_moment_mismatch",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1233988242-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "녹음 파일에 박수·환호 효과를 처리해 저장하는 결과는 구체적이지만 일반 오디오 편집기나 범용 AI가 더 편하고 라이브커머스 판매자와 축하 녹음의 결제 맥락도 불일치한다.",
+      "risk_flags": [
+        "generic_tool",
+        "payer_moment_mismatch",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1233988242-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "녹음 파일을 받아 에코를 적용한 파일을 만드는 입력·처리·결과는 명확하지만 일반 오디오 편집기나 범용 AI 한 번이 더 편하고 행사 콘텐츠 제작자 외의 차별성이 약하다.",
+      "risk_flags": [
+        "generic_tool",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1233988242-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "녹음 파일의 톤·채널을 조정해 효과 파일을 만드는 흐름은 명확하지만 일반 오디오 편집기나 범용 AI가 더 편하고 행사 메시지 제작자와 라이브커머스 음성의 순간이 맞지 않는다.",
+      "risk_flags": [
+        "generic_tool",
+        "payer_moment_mismatch",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1233988242-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "녹음 파일에 박수·환호를 넣어 저장하는 결과는 구체적이지만 일반 오디오 편집기나 범용 AI 한 번으로 대체 가능하며 행사 메시지 제작자와 라이브커머스 음성의 조합도 부자연스럽다.",
+      "risk_flags": [
+        "generic_tool",
+        "payer_moment_mismatch",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6766812660-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진을 입력해 구슬 색상과 격자로 변환한 퓨즈비즈 패턴을 즉시 얻는 흐름은 구체적이고 제작 순간도 자연스럽지만 FuseBeads만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6766812660-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "픽셀 캐릭터 이미지를 입력해 색상 축소와 비즈 격자 패턴으로 바꾸는 결과는 구체적이지만 초보자에게 제목만으로 변환 목적이 보이지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6766812660-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진을 입력해 비즈 색상표와 격자 패턴으로 변환해 수업용 도안을 확인하는 흐름은 자연스럽지만 제목만 읽어서는 문제와 즉시 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6766812660-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "픽셀 캐릭터를 사진 또는 픽셀 아트로 입력해 색상을 줄인 제작용 비즈 패턴을 얻는 세로 조각은 가능하지만 제목만으로 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6766812660-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진을 입력해 국내 비즈판에 맞는 색상·격자 도안을 즉시 만드는 흐름은 공방의 제작 전 순간과 맞지만 FuseBeads라는 제목만으로 핵심 문제가 보이지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6766812660-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진을 입력해 비즈 색상표와 격자로 바꿔 수업용 패턴 하나를 얻는 흐름은 강사에게 자연스럽지만 제목만으로 변환 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6766812660-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진을 입력해 주요 색상과 비즈 격자 패턴으로 변환하는 처리는 구체적이고 제작 전 필요 순간과 맞지만 제목만으로 사진 변환 결과를 알기 어렵다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6766812660-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이 사진을 입력해 국내 비즈판용 격자 도안으로 변환하는 결과는 초보 엄마의 제작 순간에 구체적이지만 FuseBeads만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6766812660-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "픽셀 캐릭터를 입력해 색상을 줄인 비즈 패턴을 즉시 확인하는 흐름은 수업 준비에 자연스럽지만 초보자에게 제목만으로 핵심 변환 결과가 보이지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    }
+  ]
+}

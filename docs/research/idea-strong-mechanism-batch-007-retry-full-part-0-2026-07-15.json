@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-figma-ai-rename-plugin-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 UI 역할명 정리’는 프로덕트 디자이너가 컴포넌트화 직전에 Figma 프레임 파일 하나를 넣고 시각 요소를 한 번 분석해 버튼·입력창 같은 UI 역할명이 적용된 레이어 이름 미리보기 하나를 받는 흐름으로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-figma-ai-rename-plugin-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 계층 경로명 표시’는 프로덕트 디자이너가 컴포넌트화 직전에 Figma 프레임 파일 하나를 넣고 레이어 계층을 한 번 분석해 부모 구조가 드러나는 경로명 미리보기 하나를 받는 흐름으로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-figma-ai-rename-plugin-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 반복 레이어의 순번 이름 정리’는 프로덕트 디자이너가 컴포넌트화 직전에 Figma 프레임 파일 하나를 넣고 반복 요소를 한 번 식별해 순번이 붙은 레이어 이름 미리보기 하나를 받는 흐름으로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-figma-ai-rename-plugin-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 UI 역할명 정리’는 프로덕트 디자이너가 공유 직전에 Figma 프레임 파일 하나를 넣고 시각 요소를 한 번 분석해 UI 역할명이 적용된 레이어 이름 미리보기 하나를 받는 흐름으로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-figma-ai-rename-plugin-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 계층 경로명 표시’는 프로덕트 디자이너가 공유 직전에 Figma 프레임 파일 하나를 넣고 레이어 계층을 한 번 분석해 부모 구조가 드러나는 경로명 미리보기 하나를 받는 흐름으로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-figma-ai-rename-plugin-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 반복 레이어의 순번 이름 정리’는 프로덕트 디자이너가 공유 직전에 Figma 프레임 파일 하나를 넣고 반복 요소를 한 번 식별해 순번이 붙은 레이어 이름 미리보기 하나를 받는 흐름으로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-figma-ai-rename-plugin-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 UI 역할명 정리’는 프로덕트 디자이너가 개발 인수인계 직전에 Figma 프레임 파일 하나를 넣고 시각 요소를 한 번 분석해 UI 역할명이 적용된 레이어 이름 미리보기 하나를 받는 흐름으로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-figma-ai-rename-plugin-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 계층 경로명 표시’는 프로덕트 디자이너가 개발 인수인계 직전에 Figma 프레임 파일 하나를 넣고 레이어 계층을 한 번 분석해 부모 구조가 드러나는 경로명 미리보기 하나를 받는 흐름으로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-figma-ai-rename-plugin-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 반복 레이어의 순번 이름 정리’는 프로덕트 디자이너가 개발 인수인계 직전에 Figma 프레임 파일 하나를 넣고 반복 요소를 한 번 식별해 순번이 붙은 레이어 이름 미리보기 하나를 받는 흐름으로 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,639 @@
+{
+  "mode": "source-fidelity",
+  "model": {
+    "provider": "local",
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimension": 384,
+    "normalization": "L2",
+    "similarity": "cosine via normalized dot product"
+  },
+  "scope": {
+    "combinations": 27,
+    "scenarios": 1,
+    "singleTwist": 27,
+    "doubleTwist": 0
+  },
+  "policy": {
+    "minimum": 0.8,
+    "targetMaximum": 0.99,
+    "aboveTargetMaximum": "allowed because an overseas product mechanic may be copied exactly",
+    "portfolioDuplicates": "allowed and not evaluated in this mode"
+  },
+  "summary": {
+    "percentiles": {
+      "50": 0.990872,
+      "75": 0.990872,
+      "90": 0.990872,
+      "95": 0.990872,
+      "99": 0.990872,
+      "99.5": 0.990872,
+      "99.9": 0.990872,
+      "99.95": 0.990872,
+      "99.99": 0.990872,
+      "100": 0.990872
+    },
+    "belowMinimum": 0,
+    "inTargetBand": 0,
+    "exactAllowed": 27,
+    "pass": 27,
+    "passRate": 1.0
+  },
+  "lowest": [
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-1__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-3__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-2__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-2__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-2__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-1__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-1__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-1__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-3__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-3__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-3__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-2__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-3__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-2__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-1__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-1__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-1__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-3__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-3__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-3__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-2__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-2__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-2__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-1__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-1__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-2__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-3__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    }
+  ],
+  "highest": [
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-3__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-2__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-1__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-1__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-2__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-2__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-2__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-3__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-3__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-3__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-1__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-1__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-1__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-2__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-3__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-2__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-3__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-3__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-2__moment-fits-sky-locator-3__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "학생 관측 결과를 검토하는 학교 천문 동아리 지도교사",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-1__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-1__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-1__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-2__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-2__twist-fits-sky-locator-2",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 사진 촬영 영역 경계 확인"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-2__twist-fits-sky-locator-3",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "다음 촬영에서 구도를 수정해야 하는 순간",
+      "twistTitles": [
+        "천체 사진 속 주요 천체 라벨"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-3__moment-fits-sky-locator-3__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "관측 기록을 정리하는 소형 천문대 운영자",
+      "moment": "관측 기록을 제출하기 직전",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    },
+    {
+      "similarity": 0.990872,
+      "id": "fits-sky-locator__payer-fits-sky-locator-1__moment-fits-sky-locator-1__twist-fits-sky-locator-1",
+      "scenarioId": "fits-sky-locator",
+      "sourceName": "SkySafari 8 Pro",
+      "payer": "촬영 위치를 확인하는 아마추어 천체사진가",
+      "moment": "천체 촬영 직후 대상이 맞는지 확인하는 순간",
+      "twistTitles": [
+        "천체 이미지 중심 좌표 하늘 차트"
+      ]
+    }
+  ]
+}

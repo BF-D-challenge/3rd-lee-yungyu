@@ -1,0 +1,102 @@
+{
+  "batch_id": "EXH-035",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 32,
+    "Fail": 64,
+    "Merge": 4
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 70,
+      "sample": [
+        "app_store:413618155",
+        "app_store:315795555",
+        "trustmrr:alt-text-pro",
+        "app_store:6744907251",
+        "chrome_web_store:eiaeiblijfjekdanodkjadfinkhbfgcd",
+        "app_store:6698896097",
+        "chrome_web_store:lflganldnkcbanfenpokfhnibioleaam"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:alt-text-pro",
+          "decision": "Candidate",
+          "reason": "이미지 파일 → 이미지 내용을 분석해 SEO 최적화 대체 텍스트 생성 → 다국어 대체 텍스트 하나를 즉시 확인할 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 2,
+      "fail_count": 66,
+      "sample": [
+        "app_store:1437843273",
+        "app_store:433865746",
+        "app_store:566325832",
+        "app_store:6717609264",
+        "trustmrr:statspanda-com",
+        "chrome_web_store:lflganldnkcbanfenpokfhnibioleaam",
+        "app_store:516000464"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:433865746",
+          "decision": "Candidate",
+          "reason": "현재 위치 입력 → 날씨·강수 정보 처리 → 오늘·내일 날씨 결과를 반나절 조각으로 제공한다."
+        },
+        {
+          "key": "trustmrr:statspanda-com",
+          "decision": "Candidate",
+          "reason": "국가·미국 주 입력 → 실시간 통계 조회 → 선택 지역의 인구·추세 카운터를 2일 조각으로 제공한다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 3,
+      "fail_count": 64,
+      "sample": [
+        "chrome_web_store:ajnmfincdldfcodgpglmolicgglkdeof",
+        "app_store:413618155",
+        "chrome_web_store:oiekdmlabennjdpgimlcpmphdjphlcha",
+        "app_store:662254410",
+        "trustmrr:statspanda-com",
+        "app_store:662558935",
+        "trustmrr:bestskytools"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:statspanda-com",
+          "decision": "Candidate",
+          "reason": "국가나 미국 주 하나를 입력받아 인구·추세 통계를 조회하고 실시간 카운터 결과를 즉시 보여주는 세로 조각이다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 4,
+      "fail_count": 64,
+      "sample": [
+        "trustmrr:digital-scale",
+        "chrome_web_store:indebhooogflfgiehhilfagpmhdppjce",
+        "app_store:573235547",
+        "app_store:530277946",
+        "chrome_web_store:lflganldnkcbanfenpokfhnibioleaam",
+        "app_store:299147843",
+        "trustmrr:shareduled"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

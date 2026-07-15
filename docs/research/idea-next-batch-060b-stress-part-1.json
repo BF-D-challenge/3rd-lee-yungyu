@@ -1,0 +1,446 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-reverse-audio-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음성 녹음 하나를 역재생해 뒤집힌 음성 파일 하나로 만드는 흐름은 구체적이지만 제목만으로 놀이 목적과 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-reverse-audio-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음성 녹음 하나를 역재생해 뒤집힌 음성 파일 하나로 저장할 수 있으나 숏폼 제작과 장난 파일 저장의 목적이 섞여 제목과 결과가 불명확하다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "purpose_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-reverse-audio-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음성 녹음 하나를 역재생해 뒤집힌 음성 파일 하나를 만드는 처리는 명확하지만 보호자 대상 순간과 숏폼 내레이션 결과가 서로 맞지 않는다.",
+      "risk_flags": [
+        "purpose_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-supascans-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "손글씨 노트 이미지 하나를 OCR 처리해 편집 텍스트 하나로 만들 수 있지만 휴대폰 OCR이나 범용 AI로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "os_feature_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-supascans-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "수업 필기 이미지 하나를 OCR 처리해 복사 가능한 텍스트 하나로 만들 수 있지만 OS 기본 OCR과 범용 AI가 더 간단한 대안이다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "os_feature_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-supascans-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "손글씨 이미지 하나를 OCR 처리해 텍스트 하나로 만들 수 있으나 제목과 무관한 제목·문단 정리까지 암시하고 범용 OCR로 대체 가능하다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "scope_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-qr-menu-maker-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "메뉴 정보 하나를 QR 메뉴로 생성해 공유 가능한 메뉴 하나를 만들지만 QR 생성은 범용 웹 도구로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "generic_tool_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-qr-menu-maker-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "메뉴 정보 하나를 QR 메뉴로 생성하는 흐름은 구체적이지만 임시 QR 메뉴는 기존 무료 QR 생성 도구로 대체 가능하다.",
+      "risk_flags": [
+        "generic_tool_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-qr-menu-maker-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "메뉴 정보 하나를 QR 메뉴로 생성해 공유할 수 있으나 링크 공유용 QR 제작은 범용 도구가 더 간단하고 고유한 한 끗 변화가 없다.",
+      "risk_flags": [
+        "generic_tool_substitute",
+        "weak_differentiation"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-wifi-menu-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "메뉴 정보 하나를 인터랙티브 QR 메뉴로 처리해 디지털 메뉴 하나를 만들지만 범용 QR·웹페이지 제작 도구로 대체 가능하다.",
+      "risk_flags": [
+        "generic_tool_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-wifi-menu-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "메뉴 정보 하나를 QR 메뉴로 생성하는 처리는 가능하지만 품절 갱신은 입력 1회 처리 1회 결과 1개의 범위를 벗어난다.",
+      "risk_flags": [
+        "scope_mismatch",
+        "generic_tool_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-wifi-menu-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "메뉴 정보 하나를 QR 메뉴로 만들 수 있으나 제목의 Wifi와 실제 QR 메뉴 결과가 불일치하고 범용 도구로 대체된다.",
+      "risk_flags": [
+        "title_mismatch",
+        "generic_tool_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-moly-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "셀카 사진 하나를 헤드샷 이미지 하나로 변환하는 흐름은 명확하지만 범용 이미지 생성 AI 한 번으로 더 쉽게 해결된다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-moly-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "셀카 사진 하나를 전문 헤드샷 하나로 만들지만 프리랜서 소개 페이지용 결과는 범용 이미지 생성 AI와 차별되지 않는다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "weak_differentiation"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-moly-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "셀카 사진 하나를 헤드샷 이미지 하나로 변환할 수 있으나 강사·프리랜서 대상과 결과가 혼재하고 범용 이미지 AI로 대체된다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "purpose_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-linkedinheadshots-ai-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 파일 하나를 비즈니스 헤드샷 하나로 처리하지만 AI 헤드샷 생성은 범용 이미지 AI 한 번으로 더 쉽게 가능하다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-linkedinheadshots-ai-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 파일 하나를 전문 비즈니스 사진 하나로 변환할 수 있으나 링크드인용이라는 포장 외에 범용 AI와의 차이가 없다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "weak_differentiation"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-linkedinheadshots-ai-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 파일 하나를 비즈니스 사진 하나로 만들 수 있지만 투자자 미팅용과 취업 플랫폼용 목적이 섞이고 범용 AI로 대체 가능하다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "purpose_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-ai-photo-headshot-generator-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인물 사진 하나를 사원증용 헤드샷 하나로 만들 수 있지만 인물 이미지 생성은 범용 AI 한 번으로 더 쉽게 처리된다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-ai-photo-headshot-generator-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인물 사진 하나를 헤드샷 이미지 하나로 변환할 수 있으나 소개팅 사진과 강의용 사진 목적이 섞이고 범용 AI로 대체된다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "purpose_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-ai-photo-headshot-generator-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인물 사진 하나를 프로필 헤드샷 하나로 만들 수 있지만 여권 사진 보정은 범용 이미지 AI로 더 쉽게 해결된다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1348028646-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "메뉴 사진 하나를 번역문 하나로 처리할 수 있지만 번역은 OS 기본 기능과 범용 번역 앱으로 더 쉽게 가능하다.",
+      "risk_flags": [
+        "os_feature_substitute",
+        "generic_tool_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1348028646-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "표지판 사진 하나를 번역문 하나로 만들 수 있으나 공항 표지판 번역은 기본 카메라·번역 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "os_feature_substitute",
+        "generic_tool_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1348028646-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "음성 하나를 번역문 하나로 처리할 수 있지만 음성 번역은 범용 번역 앱의 기본 기능이며 고유한 한 끗 변화가 없다.",
+      "risk_flags": [
+        "generic_tool_substitute",
+        "weak_differentiation"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6740606431-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "메뉴 사진 하나를 번역 텍스트가 겹친 이미지 하나로 만들 수 있지만 카메라 번역과 범용 번역 앱으로 대체 가능하다.",
+      "risk_flags": [
+        "os_feature_substitute",
+        "generic_tool_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6740606431-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "표지판 사진 하나를 번역 이미지 하나로 처리할 수 있으나 기본 카메라 번역 기능으로 더 쉽게 해결된다.",
+      "risk_flags": [
+        "os_feature_substitute",
+        "generic_tool_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6740606431-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "문서 사진 하나를 번역 이미지 하나로 만들 수 있지만 문서 번역은 범용 AI와 번역 도구로 대체 가능하고 정확성 위험도 있다.",
+      "risk_flags": [
+        "generic_ai_substitute",
+        "accuracy_risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-640670118-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "맥주 재료·스타일·장비라는 복수 입력을 계산해 레시피와 단계를 만들므로 입력 1개와 결과 1개의 조건을 충족하지 못한다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "multiple_outputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-640670118-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "재료·스타일·장비를 함께 입력해 레시피와 단계를 만들고 별도 타이머까지 제공하므로 단일 입력·단일 결과 세로 조각을 벗어난다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "multiple_outputs",
+        "scope_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-640670118-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "복수의 양조 정보를 입력해 레시피와 양조 단계를 만들며 장비별 배합 조정까지 요구해 반나절~2일 단일 세로 조각으로 좁혀지지 않는다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "scope_mismatch"
+      ]
+    }
+  ]
+}

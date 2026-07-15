@@ -1,0 +1,56 @@
+{
+  "batch_id": "EXH-073",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 99,
+  "decision_counts": {
+    "Fail": 66,
+    "Candidate": 30,
+    "Reserve": 3
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 71,
+      "sample": [
+        "app_store:1385502150",
+        "chrome_web_store:cmdelclhhmllfeciclafkfafhcjggple",
+        "chrome_web_store:iibninhmiggehlcdolcilmhacighjamp",
+        "app_store:6758571439",
+        "app_store:6470394620",
+        "app_store:6756997829",
+        "trustmrr:family-challenge",
+        "app_store:780656219"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:iibninhmiggehlcdolcilmhacighjamp",
+          "decision": "Candidate",
+          "reason": "텍스트·폼 입력 → 저장 문구 확장과 자동 채우기 → 즉시 재사용 가능한 문구와 입력 폼 결과를 만든다."
+        }
+      ],
+      "false_reject_rate": 0.125
+    },
+    {
+      "round": 2,
+      "fail_count": 66,
+      "sample": [
+        "app_store:1219573110",
+        "chrome_web_store:pmlimkmmldkplmocpbliebchefehmcnd",
+        "app_store:6754461039",
+        "app_store:552024276",
+        "chrome_web_store:mfmgdailbkanbdajodjgmgncbeflcnci",
+        "trustmrr:supawazap-whatsapp-web-crm",
+        "app_store:6752370745"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

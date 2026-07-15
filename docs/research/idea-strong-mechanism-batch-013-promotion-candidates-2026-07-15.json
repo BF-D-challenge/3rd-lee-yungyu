@@ -1,0 +1,239 @@
+[
+  {
+    "id": "youtube-hidden-tag-export",
+    "source": {
+      "id": "source-youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "research": {
+        "key": "chrome_web_store:idickfnblhhleimfneihpmddjabiodlp",
+        "url": "https://chromewebstore.google.com/detail/youtube-tag-extractor/idickfnblhhleimfneihpmddjabiodlp"
+      },
+      "platform": "web",
+      "value": "YouTube 영상 URL에서 공개 메타데이터의 숨은 태그를 비교 가능한 목록 파일로 만드는 도구",
+      "detail": "YouTube 영상 URL 하나를 입력하면 숨은 태그를 한 번 추출해 원래 순서·중복 제거·긴 구문 우선 중 선택한 목록 파일 한 개로 제공합니다.",
+      "evidence": "Chrome Web Store 원본은 YouTube 영상의 숨은 태그 추출을 명시하고, 수집 시점 카테고리 1위·평점 5.0·2개 목록 노출이 확인됩니다.",
+      "preservedFlow": "YouTube 영상 URL 입력 → 숨은 태그 한 번 추출 → 비교 가능한 TXT 또는 CSV 목록 파일"
+    },
+    "payers": [
+      {
+        "id": "payer-youtube-tag-export-1",
+        "value": "유튜브 채널을 매주 운영하는 영상 제작자",
+        "detail": "경쟁 채널의 숨은 태그를 확인해 제목과 태그를 손보는 일을 반복하며, 페이지 소스와 확장 도구를 번갈아 열어 태그를 수작업으로 복사한다."
+      },
+      {
+        "id": "payer-youtube-tag-export-2",
+        "value": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+        "detail": "캠페인 전 여러 유튜브 영상의 태그를 비교해야 하며, 영상별 태그를 일일이 찾아 표에 붙이고 화면 증거를 따로 캡처한다."
+      },
+      {
+        "id": "payer-youtube-tag-export-3",
+        "value": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+        "detail": "고객 영상과 경쟁 영상의 태그 목록을 확인하는 업무가 반복되며, 숨은 태그를 찾아 목록화하고 검수 자료용 캡처를 수동으로 만든다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-youtube-tag-export-1",
+        "value": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+        "detail": "업로드 직전에 검색 노출을 점검해야 해서, 지금 영상 URL만 넣고 태그 목록과 증거 캡처를 바로 받아야 한다."
+      },
+      {
+        "id": "moment-youtube-tag-export-2",
+        "value": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+        "detail": "보고서 작성이 이미 시작된 상태라 영상마다 태그를 직접 찾을 시간이 없고, 즉시 목록과 화면 자료가 필요하다."
+      },
+      {
+        "id": "moment-youtube-tag-export-3",
+        "value": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+        "detail": "검수 마감 직전이라 숨은 태그가 빠졌는지 바로 확인해야 하며, 사전 등록 없이 해당 영상 URL에서 결과를 받아야 한다."
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-youtube-tag-export-1",
+        "kind": "replace",
+        "value": "태그를 원래 표시 순서의 TXT 파일로 받기",
+        "detail": "유튜브 영상 URL 입력과 숨은 태그 추출 처리는 유지하고, 결과만 중복 제거 없이 원래 순서의 TXT 한 개로 바꾼다.",
+        "resultTitle": "유튜브 영상 태그 원래순서 TXT 목록",
+        "platform": "web",
+        "smallestBuild": "유튜브 영상 URL 하나를 입력받아 숨은 태그를 한 번 추출하고, 원래 순서의 태그 TXT 파일 하나를 즉시 제공한다."
+      },
+      {
+        "id": "twist-youtube-tag-export-2",
+        "kind": "add",
+        "value": "중복 태그를 제거한 CSV로 받기",
+        "detail": "영상 URL에서 숨은 태그를 추출하는 흐름은 유지하고, 결과 목록에서 중복만 제거해 CSV 파일 한 개로 바꾼다.",
+        "resultTitle": "유튜브 영상 중복 제거 태그 CSV",
+        "platform": "web",
+        "smallestBuild": "유튜브 영상 URL 하나를 입력받아 숨은 태그를 한 번 추출·중복 제거하고, 태그 CSV 파일 하나를 즉시 제공한다."
+      },
+      {
+        "id": "twist-youtube-tag-export-3",
+        "kind": "add",
+        "value": "긴 구문 태그를 앞에 둔 CSV로 받기",
+        "detail": "URL 입력과 숨은 태그 추출은 그대로 두고, 결과 목록의 정렬만 긴 구문 우선으로 바꿔 CSV 한 개로 제공한다.",
+        "resultTitle": "유튜브 경쟁 영상 긴 태그 우선 목록",
+        "platform": "web",
+        "smallestBuild": "유튜브 영상 URL 하나를 입력받아 숨은 태그를 한 번 추출·길이순 정렬하고, 태그 CSV 파일 하나를 즉시 제공한다."
+      }
+    ]
+  },
+  {
+    "id": "masked-cookie-profile",
+    "source": {
+      "id": "source-masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "research": {
+        "key": "chrome_web_store:ijolfnkijbagodcigeebgjhlkdgcebmf",
+        "url": "https://chromewebstore.google.com/detail/cookie-manager-pro/ijolfnkijbagodcigeebgjhlkdgcebmf"
+      },
+      "platform": "web",
+      "value": "현재 사이트 쿠키의 값을 노출하지 않고 재현에 필요한 구조만 JSON 프로필로 저장하는 도구",
+      "detail": "현재 사이트 쿠키를 읽는 단일 사이트 권한을 허용하면 쿠키를 한 번 필터링·그룹화하고 모든 값을 마스킹한 JSON 파일 한 개를 제공합니다.",
+      "evidence": "Chrome Web Store 원본은 쿠키 조회·편집·삭제·내보내기와 프로필 저장을 명시하고, 수집 시점 카테고리 25위와 평점 5.0이 확인됩니다.",
+      "preservedFlow": "현재 사이트 쿠키 단일 권한 → 쿠키 구조 한 번 필터링·마스킹 → 재현용 JSON 프로필 파일"
+    },
+    "payers": [
+      {
+        "id": "payer-masked-cookie-profile-1",
+        "value": "로그인 버그를 재현하는 웹 QA 엔지니어",
+        "detail": "현재 사이트의 세션 쿠키 상태를 확인하고 증거로 전달하는 일이 반복되며, 개발자 도구에서 쿠키를 열어 값을 가리고 따로 저장한다."
+      },
+      {
+        "id": "payer-masked-cookie-profile-2",
+        "value": "세션 설정을 확인하는 프론트엔드 개발자",
+        "detail": "로그인 문제를 조사할 때 쿠키의 속성과 그룹을 반복 확인해야 하며, 필요한 항목을 수동으로 복사해 재현 기록을 만든다."
+      },
+      {
+        "id": "payer-masked-cookie-profile-3",
+        "value": "고객 브라우저 이슈를 지원하는 기술 담당자",
+        "detail": "고객 환경의 사이트 쿠키 구성을 확인하는 요청이 반복되며, 쿠키 목록을 조회하고 민감한 값을 마스킹해 개발팀에 전달한다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-masked-cookie-profile-1",
+        "value": "로그인 버그 증거로 현재 쿠키 구조를 저장하는 순간",
+        "detail": "문제가 재현된 브라우저 상태가 지금뿐이라, 현재 사이트 권한을 허용하고 마스킹된 구조 JSON을 즉시 받아야 한다."
+      },
+      {
+        "id": "moment-masked-cookie-profile-2",
+        "value": "세션 환경을 초기화하기 전에 쿠키 구성을 확인하는 순간",
+        "detail": "초기화하면 재현 상태가 사라질 수 있어, 삭제 전에 현재 쿠키의 플래그와 그룹을 바로 기록해야 한다."
+      },
+      {
+        "id": "moment-masked-cookie-profile-3",
+        "value": "개발팀에 브라우저 이슈를 전달하는 순간",
+        "detail": "지원 답변을 기다릴 수 없는 상황이라 원문 값 없이도 쿠키 구조를 즉시 JSON으로 넘겨야 한다."
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-masked-cookie-profile-1",
+        "kind": "replace",
+        "value": "session cookie만 마스킹해 JSON으로 저장하기",
+        "detail": "현재 사이트 쿠키 권한을 읽고 조회·내보내는 흐름은 유지하며, session cookie만 골라 모든 value를 마스킹한 JSON 파일 한 개를 만든다.",
+        "resultTitle": "현재 사이트 세션 쿠키 마스킹 JSON",
+        "platform": "web",
+        "smallestBuild": "현재 사이트 쿠키를 읽는 단일 사이트 권한 하나를 입력받아 session cookie만 한 번 필터링·마스킹하고, JSON 파일 하나를 즉시 제공한다."
+      },
+      {
+        "id": "twist-masked-cookie-profile-2",
+        "kind": "add",
+        "value": "SameSite·Secure 플래그만 JSON으로 저장하기",
+        "detail": "현재 사이트 쿠키를 읽어 결과 파일로 만드는 처리는 유지하고, SameSite·Secure 플래그만 남기며 모든 value를 마스킹한 JSON 한 개를 만든다.",
+        "resultTitle": "사이트 쿠키 보안 플래그 마스킹 JSON",
+        "platform": "web",
+        "smallestBuild": "현재 사이트 쿠키를 읽는 단일 사이트 권한 하나를 입력받아 SameSite·Secure 플래그만 한 번 추출·마스킹하고, JSON 파일 하나를 즉시 제공한다."
+      },
+      {
+        "id": "twist-masked-cookie-profile-3",
+        "kind": "add",
+        "value": "domain·path별 쿠키 그룹을 JSON으로 저장하기",
+        "detail": "현재 사이트 쿠키 조회와 내보내기는 유지하고, 결과를 domain·path 그룹으로 묶으며 모든 value를 마스킹한 JSON 파일 한 개로 제한한다.",
+        "resultTitle": "사이트 쿠키 도메인 경로 그룹 JSON",
+        "platform": "web",
+        "smallestBuild": "현재 사이트 쿠키를 읽는 단일 사이트 권한 하나를 입력받아 domain·path별로 한 번 그룹화·마스킹하고, JSON 파일 하나를 즉시 제공한다."
+      }
+    ]
+  },
+  {
+    "id": "website-design-token-export",
+    "source": {
+      "id": "source-website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "research": {
+        "key": "chrome_web_store:lcgfgelbpgaepigopgkoloicjjkgihcg",
+        "url": "https://chromewebstore.google.com/detail/design-analyzer-extract-d/lcgfgelbpgaepigopgkoloicjjkgihcg"
+      },
+      "platform": "web",
+      "value": "공개 웹사이트의 색상·폰트·간격·효과를 재사용 가능한 디자인 토큰 파일로 만드는 도구",
+      "detail": "공개 웹사이트 URL 하나를 입력하면 디자인 요소를 한 번 추출해 CSS 변수·JSON 토큰·Figma 호환 토큰 중 선택한 파일 한 개를 제공합니다.",
+      "evidence": "Chrome Web Store 원본은 웹사이트의 색상·폰트·간격·그림자·효과 추출과 CSS·JSON·Figma 내보내기를 명시하고, 수집 시점 검색 순위 9위가 확인됩니다.",
+      "preservedFlow": "공개 웹사이트 URL 입력 → 디자인 요소 한 번 추출 → CSS·JSON·Figma 호환 토큰 파일"
+    },
+    "payers": [
+      {
+        "id": "payer-design-token-export-1",
+        "value": "새 디자인 시스템을 만드는 프로덕트 디자이너",
+        "detail": "참고 사이트의 색상·폰트·간격을 눈대중으로 확인해 토큰으로 옮기느라 화면별 값을 수동 기록한다."
+      },
+      {
+        "id": "payer-design-token-export-2",
+        "value": "기존 CSS를 정리하는 프론트엔드 개발자",
+        "detail": "웹사이트의 스타일 값을 개발자 도구에서 하나씩 찾아 CSS 변수로 변환하는 작업이 반복된다."
+      },
+      {
+        "id": "payer-design-token-export-3",
+        "value": "브랜드 일관성을 검수하는 디자인 QA",
+        "detail": "공개 사이트의 실제 색상과 효과를 확인해 브랜드 기준과 비교하려고 디자인 요소를 수작업으로 수집한다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-design-token-export-1",
+        "value": "리디자인 기준 사이트를 정한 직후",
+        "detail": "새 화면을 만들기 전에 참고 사이트의 실제 토큰을 바로 확보해야 임의의 값으로 작업을 시작하지 않는다."
+      },
+      {
+        "id": "moment-design-token-export-2",
+        "value": "컴포넌트 CSS를 구현하려는 순간",
+        "detail": "색상·간격·폰트 값을 즉시 꺼내야 반복해서 개발자 도구를 오가며 구현이 지연되지 않는다."
+      },
+      {
+        "id": "moment-design-token-export-3",
+        "value": "브랜드 화면 검수를 시작하기 직전",
+        "detail": "검수 대상 사이트의 디자인 값을 한 번에 확인해야 브랜드 기준과 다른 지점을 바로 짚을 수 있다."
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-design-token-export-1",
+        "kind": "replace",
+        "value": "개발자가 바로 붙이는 CSS variables로 내보내기",
+        "detail": "공개 웹사이트 URL에서 색상·폰트·간격·그림자·효과를 추출하는 흐름은 유지하고 CSS 변수 형식으로만 출력한다.",
+        "resultTitle": "웹사이트 디자인 값 CSS 변수 파일",
+        "platform": "web",
+        "smallestBuild": "공개 웹사이트 URL 하나를 입력받아 디자인 요소를 한 번 추출하고 CSS variables 파일 하나를 즉시 반환한다."
+      },
+      {
+        "id": "twist-design-token-export-2",
+        "kind": "add",
+        "value": "화면 값을 이름 붙은 JSON 토큰으로 정리하기",
+        "detail": "웹사이트 URL을 분석해 디자인 요소를 추출하는 처리는 유지하되, 결과를 이름 붙은 JSON token 구조로 정리한다.",
+        "resultTitle": "웹사이트 색상·간격 JSON 토큰 파일",
+        "platform": "web",
+        "smallestBuild": "공개 웹사이트 URL 하나를 입력받아 디자인 요소를 한 번 추출하고 JSON token 파일 하나를 즉시 반환한다."
+      },
+      {
+        "id": "twist-design-token-export-3",
+        "kind": "add",
+        "value": "Figma에서 읽기 쉬운 token JSON으로 변환하기",
+        "detail": "URL에서 색상·폰트·간격·그림자·효과를 추출하는 원본 처리는 유지하며, Figma에서 읽을 수 있는 token JSON으로만 바꾼다.",
+        "resultTitle": "웹사이트 디자인 값 Figma 토큰 파일",
+        "platform": "web",
+        "smallestBuild": "공개 웹사이트 URL 하나를 입력받아 디자인 요소를 한 번 추출하고 Figma 호환 token JSON 파일 하나를 즉시 반환한다."
+      }
+    ]
+  }
+]

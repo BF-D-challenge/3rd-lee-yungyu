@@ -1,0 +1,130 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-6784176363-200",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한 줄 생각 메모를 한 번 스와이프해 Daily·Work·Trash·Archive로 분류하는 흐름은 구체적이고 회의 중 떠오른 일을 즉시 처리하는 순간도 자연스럽지만, 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-201",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한 줄 업무 아이디어를 입력하고 위로 밀어 업무 메모로 분류하는 입력·처리·결과는 명확하지만, 제목만으로 어떤 문제를 해결하고 어떤 분류 결과를 주는지 부족하게 드러난다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "한 줄 생각 메모를 입력해 왼쪽으로 밀어 버리는 결과는 구체적이지만, 메모 삭제는 OS 기본 메모 기능이 더 간단해 별도 앱의 한 끗 가치가 약하다.",
+      "risk_flags": [
+        "os_basic_feature"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퇴근길에 내일 할 일을 한 줄 입력하고 오른쪽으로 밀어 Daily·Work·Trash·Archive 중 오늘 할 일로 분류하는 흐름은 자연스럽지만, 제목만으로 문제와 결과가 충분히 보이지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-211",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퇴근길에 업무 아이디어를 한 줄 입력하고 위로 밀어 업무 메모로 분류하는 흐름은 실행 가능하지만, 제목만으로 구체적인 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-212",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "퇴근길에 불필요한 한 줄 메모를 입력하고 왼쪽으로 밀어 삭제하는 결과는 명확하지만, 삭제 자체는 OS 기본 기능이 더 편해 차별성이 없다.",
+      "risk_flags": [
+        "os_basic_feature"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-220",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메모를 한 줄 입력하고 오른쪽으로 밀어 오늘 할 일로 분류하는 입력·처리·결과와 망설이는 순간은 자연스럽지만, 제목만으로 문제와 결과가 구체적으로 보이지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메모를 한 줄 입력하고 위로 밀어 업무 메모로 정리하는 흐름은 2일 MVP로 가능하지만, 제목만으로 해결하려는 문제와 구체적 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-222",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "망설이는 한 줄 메모를 입력해 왼쪽으로 밀어 삭제하는 결과는 즉시 구체적이지만, 메모 삭제는 OS 기본 기능이 더 편해 독립 앱으로서의 가치가 부족하다.",
+      "risk_flags": [
+        "os_basic_feature"
+      ]
+    }
+  ]
+}

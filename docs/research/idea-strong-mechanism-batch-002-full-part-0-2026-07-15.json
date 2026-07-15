@@ -1,0 +1,160 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-carmaster-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 발매 직전 차량에서 뭉치는 저역을 한 번 정리하고 정리된 오디오 음원 하나를 반환하므로, 독립 프로듀서의 순간과 한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 발매 직전 차량에서 묻히는 보컬의 명료도를 한 번 보정하고 보정된 오디오 음원 하나를 반환하므로, 독립 프로듀서의 납품 전 확인 순간에 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 발매 직전 차량에서 들쭉날쭉한 체감 음량을 한 번 균일화하고 음량을 맞춘 오디오 음원 하나를 반환하므로, 독립 프로듀서의 차량 확인 문제와 결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 클라이언트 납품 전 차량 스피커에서 뭉치는 저역을 한 번 정리하고 정리된 오디오 음원 하나를 반환하므로, 독립 프로듀서의 최종 검수 순간에 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 클라이언트 납품 전 차량 스피커에서 묻히는 보컬을 한 번 선명하게 보정하고 보정된 오디오 음원 하나를 반환하므로, 독립 프로듀서의 납품 리스크를 직접 해결한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 클라이언트 납품 전 차량 스피커에서 들쭉날쭉한 체감 음량을 한 번 맞추고 음량을 맞춘 오디오 음원 하나를 반환하므로, 독립 프로듀서의 최종 확인 순간과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 차량용 홍보 영상 음원 확정 전에 차량에서 뭉치는 저역을 한 번 정리하고 정리된 오디오 음원 하나를 반환하므로, 독립 프로듀서가 사전 기록 없이 즉시 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 차량용 홍보 영상 음원 확정 전에 묻히는 보컬을 한 번 선명하게 보정하고 보정된 오디오 음원 하나를 반환하므로, 독립 프로듀서의 차량 검수 순간과 결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 차량용 홍보 영상 음원 확정 전에 들쭉날쭉한 체감 음량을 한 번 균일화하고 음량을 맞춘 오디오 음원 하나를 반환하므로, 독립 프로듀서의 즉시 확인 요구에 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 발매 직전 차량에서 뭉치는 저역을 한 번 정리하고 정리된 오디오 음원 하나를 반환하므로, 발매 음원을 검수하는 엔지니어의 문제와 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 발매 직전 차량에서 묻히는 보컬을 한 번 선명하게 보정하고 보정된 오디오 음원 하나를 반환하므로, 검수 엔지니어의 차량 청취 순간에 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 발매 직전 차량에서 들쭉날쭉한 체감 음량을 한 번 균일화하고 음량을 맞춘 오디오 음원 하나를 반환하므로, 검수 엔지니어가 납품 전 바로 사용할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 입력해 클라이언트 납품 전 차량 스피커에서 뭉치는 저역을 한 번 정리하고 정리된 오디오 음원 하나를 반환하므로, 검수 엔지니어의 최종 재생 순간과 한 끗 변화가 일치한다.",
+      "risk_flags": []
+    }
+  ]
+}

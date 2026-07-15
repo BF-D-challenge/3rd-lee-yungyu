@@ -1,0 +1,98 @@
+{
+  "batch_id": "EXH-055",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 48,
+    "Candidate": 47,
+    "Merge": 4,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 61,
+      "sample": [
+        "chrome_web_store:fbgcedjacmlbgleddnoacbnijgmiolem",
+        "chrome_web_store:fegalkjehfbkilffcdlellohagpfbfag",
+        "trustmrr:writegeo",
+        "app_store:1459350082",
+        "app_store:977908708",
+        "trustmrr:clawsify",
+        "app_store:6739682991"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:writegeo",
+          "decision": "Candidate",
+          "reason": "랜딩 페이지를 입력받아 AI 어시스턴트에 맞는 구조로 생성·변환하고, ChatGPT와 Gemini에서의 발견 가능성을 확인하는 세로 조각이 남는다."
+        },
+        {
+          "key": "app_store:6739682991",
+          "decision": "Candidate",
+          "reason": "멈춘 웹페이지와 간격을 입력받아 자동 새로고침하고, 뉴스·티켓·예약 상태를 다시 확인하는 2일 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 2,
+      "fail_count": 53,
+      "sample": [
+        "trustmrr:charactergpt-celebrity-chat",
+        "trustmrr:vibefyre",
+        "app_store:325920454",
+        "trustmrr:bunkr",
+        "chrome_web_store:fegalkjehfbkilffcdlellohagpfbfag",
+        "chrome_web_store:kfjlgmbnpnpmkfgbnbfbcjleglenkkap"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:charactergpt-celebrity-chat",
+          "decision": "Candidate",
+          "reason": "사용자 메시지 → 캐릭터 성격·기억·감정 처리 → 연예인처럼 답하는 대화 응답이라는 2일 세로 조각이 남는다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 3,
+      "fail_count": 50,
+      "sample": [
+        "chrome_web_store:fbgcedjacmlbgleddnoacbnijgmiolem",
+        "trustmrr:charactergpt-celebrity-chat",
+        "app_store:6756656688",
+        "trustmrr:myfairytale",
+        "trustmrr:clawsify"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:fbgcedjacmlbgleddnoacbnijgmiolem",
+          "decision": "Candidate",
+          "reason": "Microsoft Rewards extension 입력 → 포인트 추적과 기본 검색 설정 → 매일 새로운 적립 방법 확인의 2일 세로 조각이 남는다."
+        }
+      ],
+      "false_reject_rate": 0.2
+    },
+    {
+      "round": 4,
+      "fail_count": 48,
+      "sample": [
+        "trustmrr:orvo-ai",
+        "trustmrr:homence",
+        "trustmrr:myfairytale",
+        "app_store:1295066030",
+        "trustmrr:dashpane"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

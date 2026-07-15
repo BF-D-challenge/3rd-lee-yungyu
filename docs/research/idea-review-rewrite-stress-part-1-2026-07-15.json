@@ -1,0 +1,256 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6751760761-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘밤 연습용 손목 촉각 박자’는 BPM과 박자를 각각 입력해 처리한 뒤 햅틱 메트로놈을 제공하므로 입력이 2개이고 개인 레슨 강사의 순간과 밤 연습 제목도 어긋난다.",
+      "risk_flags": [
+        "multi_input",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6751760761-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘레슨용 3박자 손목 메트로놈’은 3/4 박자와 BPM을 입력해 햅틱 템포를 만드는 2개 입력이며 밴드 연주자의 합주 순간과 레슨용 제목·한 끗이 맞지 않는다.",
+      "risk_flags": [
+        "multi_input",
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6751760761-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘합주 직전 탭 템포 박자’는 탭을 여러 번 입력해야 BPM을 계산할 수 있는데 한 번 탭으로 처리한다고 적어 다단계 입력이고, 집에서 밤에 연습하는 사용자와 합주 제목도 어긋난다.",
+      "risk_flags": [
+        "multi_step",
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760979290-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘채색 직전 종이 스케치 투명선화’는 스케치 사진 1장을 입력해 종이색·그림자·번짐을 제거하고 투명 배경 선화 PNG 1개를 즉시 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760979290-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘연한 밑그림 보존 투명 선화’는 밑그림 사진 1장을 입력해 배경과 종이색을 제거하고 연한 선이 남은 투명 PNG 1개를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760979290-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘기울어진 로고 스케치 선화’는 로고 스케치 사진 1장을 보정해 투명 선화 PNG 1개를 만들지만, 수업 노트를 선화로 옮기는 웹툰 지망생과 로고 제목·상황이 맞지 않아 문구 수정이 필요하다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-288054534-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘현재 위치 다음 기도 시간 확인’은 위치 권한 1개를 처리해 다음 기도 시간과 키블라 방향이라는 결과 2개를 함께 제공하므로 단일 결과 조건을 위반한다.",
+      "risk_flags": [
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-288054534-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘다음 기도와 30분 전 준비 시간’은 위치 권한 처리 후 기도 시간과 30분 전 시점이라는 결과 2개를 만들고 원본의 키블라 결과 대신 새 시간 기능을 추가한다.",
+      "risk_flags": [
+        "multi_result",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-288054534-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘여행지 주소 기도 시간과 키블라’는 주소 텍스트를 좌표로 바꾸기 위한 외부 데이터가 필요하고 기도 시간과 키블라 방향 결과도 2개다.",
+      "risk_flags": [
+        "multi_result",
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-478293637-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘빠른 기타 소절 느린 반복 구간’은 음악 파일 1개와 구간 선택을 받아 템포를 낮춰 반복 연습용 음악 구간 1개를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-478293637-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘공연 브리지 구간 즉시 반복’은 음악 파일 1개에서 브리지 구간을 반복해 주지만, 보컬 트레이너의 피치 조절 필요 순간과 브리지 반복 제목의 초점이 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-478293637-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘내 음역에 맞춘 보컬 반복 구간’은 음악 파일 1개의 선택 구간 피치를 조정해 반복 구간 1개를 제공하지만, 세션 연주자의 브리지 반복 순간과 보컬 음역 제목이 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-300590611-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘식사 전 한 손 탭 동물 소리’는 헛간 화면 탭 1회로 문을 열고 동물과 소리라는 하나의 공개 놀이 결과를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-300590611-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차례대로 탭하는 헛간 동물 공개’는 헛간 화면 탭 1회로 다음 동물과 소리를 공개해 어린이집의 차례 놀이 결과를 하나로 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-300590611-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘탭하면 동물 이름과 소리 공개’는 헛간 화면 탭 1회로 동물과 동물 소리 1개를 즉시 공개해 따라 말하기 자극을 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1115974495-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘공사 사진 촬영일시 증명 워터마크’는 사진 1장에 날짜·시간을 넣어 타임스탬프 사진 1개를 만들지만, 워터마크만으로 실제 촬영일을 증명한다고 제목이 과장될 수 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1115974495-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘아이 성장 사진 촬영일 고정’은 사진 1장에 날짜·시간 워터마크를 넣어 사진 파일 1개를 만들지만, 다이어터의 운동 직후 기록 순간과 아이 성장 제목이 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1115974495-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘운동 직후 사진 날짜시간 기록’은 운동 사진 1장에 날짜·시간 워터마크를 넣어 타임스탬프 사진 1개를 만들지만, 아이 성장 사진을 정리하는 부모의 순간과 운동 제목이 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    }
+  ]
+}

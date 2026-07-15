@@ -1,0 +1,169 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-451326903-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘지도 경계점으로 부지 면적 계산’은 텍스트 좌표 목록 1개를 한 번 처리해 제곱미터 면적 결과 1개를 즉시 내므로 제목과 세로 조각이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-451326903-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘측정한 부지 면적 GeoJSON 저장’은 텍스트 좌표 목록 1개를 한 번 계산해 경계와 면적이 담긴 GeoJSON 파일 1개를 즉시 만들므로 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-451326903-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘지도 두 지점 사이 거리 확인’은 두 좌표로 직선거리만 계산하지만 러너가 필요한 것은 실제 코스 거리라 결제자와 한 끗 변화가 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-459111718-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘전압과 전류로 소비전력 계산’은 두 수치를 한 번 곱해 와트 1개를 내지만 OS 기본 계산기로 더 간단히 처리할 수 있다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-459111718-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘전압과 저항으로 소비전력 계산’은 두 수치를 한 번 계산해 와트 1개를 내지만 OS 기본 계산기로 더 간단히 처리할 수 있다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-459111718-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘전류와 저항으로 소비전력 계산’은 두 수치를 한 번 계산해 와트 1개를 내지만 OS 기본 계산기로 더 간단히 처리할 수 있다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1566817391-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘지연 촬영으로 스노보드 동작 확인’은 카메라 권한 1개로 지연 후 한 번 촬영하고 최근 클립 1개를 즉시 재생해 혼자 연습하는 순간과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1566817391-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘스키 영상 재생 후 배터리 절약’은 촬영·재생 뒤 OS 절전 모드까지 전환해야 하므로 단일 기기 권한 입력만으로 끝나는 한 번의 처리 범위를 벗어난다.",
+      "risk_flags": [
+        "external_action_required",
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1566817391-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘훈련 직후 스키 영상 자동 재생’은 촬영 후 클립 1개를 재생하지만 배터리 절약이 필요한 결제자와 촬영 시작 순간의 핵심 문제를 해결하지 못한다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1500098830-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘영상 전체 음원 파일로 저장’은 비디오 파일 1개에서 한 번 오디오 트랙을 추출해 저장 가능한 오디오 파일 1개를 즉시 만들므로 입력과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1500098830-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘영상 속 음성 채널만 저장’은 단순 오디오 추출을 넘어 영상에서 음성 채널만 분리해야 하므로 원본 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1500098830-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘영상 특정 구간 음원 저장’은 비디오 파일 1개에 구간 지정과 추출을 추가해 별도 편집 단계를 요구하므로 원본의 단순 전체 오디오 변환 세로 조각을 벗어난다.",
+      "risk_flags": [
+        "multi_step",
+        "mechanism_drift",
+        "payer_twist_mismatch"
+      ]
+    }
+  ]
+}

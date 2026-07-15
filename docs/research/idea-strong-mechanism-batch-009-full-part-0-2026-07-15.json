@@ -1,0 +1,436 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-1494197457-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영 장면 색온도 Kelvin 측정’은 제품 사진가가 첫 촬영 직전 단일 카메라 장면을 한 번 분석해 현재 색온도 Kelvin 수치 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘조명 장면 화이트밸런스 권장값’은 제품 사진가가 첫 촬영 직전 카메라 장면 하나를 분석해 화이트밸런스 보정 권장값 하나를 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘색온도 수치가 찍힌 조명 장면’은 제품 사진가가 첫 촬영 직전 카메라 장면 하나를 분석해 Kelvin 수치가 표시된 스냅샷 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영 장면 색온도 Kelvin 측정’은 제품 사진가가 광원 교체 직후 단일 카메라 장면을 분석해 현재 색온도 Kelvin 수치 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘조명 장면 화이트밸런스 권장값’은 제품 사진가가 광원 교체 직후 카메라 장면 하나를 분석해 화이트밸런스 보정 권장값 하나를 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘색온도 수치가 찍힌 조명 장면’은 제품 사진가가 광원 교체 직후 카메라 장면 하나를 분석해 Kelvin 수치가 표시된 스냅샷 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영 장면 색온도 Kelvin 측정’은 제품 사진가가 재촬영 직전 단일 카메라 장면을 분석해 현재 색온도 Kelvin 수치 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘조명 장면 화이트밸런스 권장값’은 제품 사진가가 재촬영 직전 카메라 장면 하나를 분석해 화이트밸런스 보정 권장값 하나를 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘색온도 수치가 찍힌 조명 장면’은 제품 사진가가 재촬영 직전 카메라 장면 하나를 분석해 Kelvin 수치가 표시된 스냅샷 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영 장면 색온도 Kelvin 측정’은 영상 촬영감독이 첫 촬영 직전 단일 카메라 장면을 분석해 현재 색온도 Kelvin 수치 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘조명 장면 화이트밸런스 권장값’은 영상 촬영감독이 첫 촬영 직전 카메라 장면 하나를 분석해 화이트밸런스 보정 권장값 하나를 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘색온도 수치가 찍힌 조명 장면’은 영상 촬영감독이 첫 촬영 직전 카메라 장면 하나를 분석해 Kelvin 수치가 표시된 스냅샷 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영 장면 색온도 Kelvin 측정’은 영상 촬영감독이 광원 교체 직후 단일 카메라 장면을 분석해 현재 색온도 Kelvin 수치 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘조명 장면 화이트밸런스 권장값’은 영상 촬영감독이 광원 교체 직후 카메라 장면 하나를 분석해 화이트밸런스 보정 권장값 하나를 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘색온도 수치가 찍힌 조명 장면’은 영상 촬영감독이 광원 교체 직후 카메라 장면 하나를 분석해 Kelvin 수치가 표시된 스냅샷 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영 장면 색온도 Kelvin 측정’은 영상 촬영감독이 재촬영 직전 단일 카메라 장면을 분석해 현재 색온도 Kelvin 수치 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘조명 장면 화이트밸런스 권장값’은 영상 촬영감독이 재촬영 직전 카메라 장면 하나를 분석해 화이트밸런스 보정 권장값 하나를 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘색온도 수치가 찍힌 조명 장면’은 영상 촬영감독이 재촬영 직전 카메라 장면 하나를 분석해 Kelvin 수치가 표시된 스냅샷 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영 장면 색온도 Kelvin 측정’은 스튜디오 운영자가 첫 제품 촬영 직전 단일 카메라 장면을 분석해 현재 색온도 Kelvin 수치 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘조명 장면 화이트밸런스 권장값’은 스튜디오 운영자가 첫 제품 촬영 직전 카메라 장면 하나를 분석해 화이트밸런스 보정 권장값 하나를 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘색온도 수치가 찍힌 조명 장면’은 스튜디오 운영자가 첫 제품 촬영 직전 카메라 장면 하나를 분석해 Kelvin 수치가 표시된 스냅샷 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영 장면 색온도 Kelvin 측정’은 스튜디오 운영자가 광원 교체 직후 단일 카메라 장면을 분석해 현재 색온도 Kelvin 수치 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘조명 장면 화이트밸런스 권장값’은 스튜디오 운영자가 광원 교체 직후 카메라 장면 하나를 분석해 화이트밸런스 보정 권장값 하나를 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘색온도 수치가 찍힌 조명 장면’은 스튜디오 운영자가 광원 교체 직후 카메라 장면 하나를 분석해 Kelvin 수치가 표시된 스냅샷 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영 장면 색온도 Kelvin 측정’은 스튜디오 운영자가 재촬영 직전 단일 카메라 장면을 분석해 현재 색온도 Kelvin 수치 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘조명 장면 화이트밸런스 권장값’은 스튜디오 운영자가 재촬영 직전 카메라 장면 하나를 분석해 화이트밸런스 보정 권장값 하나를 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1494197457-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘색온도 수치가 찍힌 조명 장면’은 스튜디오 운영자가 재촬영 직전 카메라 장면 하나를 분석해 Kelvin 수치가 표시된 스냅샷 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6745445528-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘원시 JSON의 첫 오류 줄’은 백엔드 개발자가 재현된 API 오류 순간 원시 JSON 텍스트 한 덩어리를 한 번 검증해 파싱을 막는 첫 오류 줄 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6745445528-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘복잡한 JSON 구조 접어 보기’는 백엔드 개발자가 재현된 API 오류 순간 원시 JSON 한 덩어리를 한 번 형식화해 접었다 펼칠 수 있는 JSON 트리 하나를 즉시 보는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6745445528-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘전체 키 경로가 붙은 JSON 트리’는 백엔드 개발자가 재현된 API 오류 순간 원시 JSON 한 덩어리를 한 번 형식화해 전체 키 경로가 붙은 트리 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6745445528-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘원시 JSON의 첫 오류 줄’은 백엔드 개발자가 배포 전 서버 응답 검수 순간 원시 JSON 텍스트 한 덩어리를 한 번 검증해 첫 오류 줄 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6745445528-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘복잡한 JSON 구조 접어 보기’는 백엔드 개발자가 배포 전 서버 응답 검수 순간 원시 JSON 한 덩어리를 한 번 형식화해 접었다 펼칠 수 있는 JSON 트리 하나를 즉시 보는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6745445528-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘전체 키 경로가 붙은 JSON 트리’는 백엔드 개발자가 배포 전 서버 응답 검수 순간 원시 JSON 한 덩어리를 한 번 형식화해 전체 키 경로가 붙은 트리 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6745445528-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘원시 JSON의 첫 오류 줄’은 백엔드 개발자가 협력사 API 필드를 대조하는 순간 원시 JSON 텍스트 한 덩어리를 한 번 검증해 첫 오류 줄 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6745445528-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘복잡한 JSON 구조 접어 보기’는 백엔드 개발자가 협력사 API 필드를 대조하는 순간 원시 JSON 한 덩어리를 한 번 형식화해 접었다 펼칠 수 있는 JSON 트리 하나를 즉시 보는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6745445528-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘전체 키 경로가 붙은 JSON 트리’는 백엔드 개발자가 협력사 API 필드를 대조하는 순간 원시 JSON 한 덩어리를 한 번 형식화해 전체 키 경로가 붙은 트리 하나를 즉시 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

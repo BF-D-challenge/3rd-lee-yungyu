@@ -1,0 +1,220 @@
+{
+  "results": [
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 태그 원래순서 TXT 목록’은 매주 경쟁 영상을 운영하는 제작자가 업로드 직전 태그를 점검할 때 URL 하나로 숨은 태그를 한 번 추출해 원래 순서의 TXT 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 중복 제거 태그 CSV’는 매주 경쟁 영상을 운영하는 제작자가 업로드 직전 태그를 점검할 때 URL 하나로 숨은 태그를 추출·중복 제거해 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 경쟁 영상 긴 태그 우선 목록’은 매주 경쟁 영상을 운영하는 제작자가 업로드 직전 태그를 점검할 때 URL 하나로 숨은 태그를 추출·길이순 정렬해 긴 태그 우선 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 태그 원래순서 TXT 목록’은 매주 경쟁 영상 브리프를 만드는 마케터가 조사 브리프에 근거를 넣을 때 URL 하나로 숨은 태그를 한 번 추출해 원래 순서의 TXT 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 중복 제거 태그 CSV’는 매주 경쟁 영상 브리프를 만드는 마케터가 조사 브리프에 근거를 넣을 때 URL 하나로 숨은 태그를 추출·중복 제거해 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 경쟁 영상 긴 태그 우선 목록’은 매주 경쟁 영상 브리프를 만드는 마케터가 조사 브리프에 근거를 넣을 때 URL 하나로 숨은 태그를 추출·길이순 정렬해 긴 태그 우선 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 태그 원래순서 TXT 목록’은 매주 경쟁 영상을 운영하는 제작자가 고객 영상 업로드 전 메타데이터를 검수할 때 URL 하나로 숨은 태그를 한 번 추출해 원래 순서의 TXT 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 중복 제거 태그 CSV’는 매주 경쟁 영상을 운영하는 제작자가 고객 영상 업로드 전 메타데이터를 검수할 때 URL 하나로 숨은 태그를 추출·중복 제거해 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 경쟁 영상 긴 태그 우선 목록’은 매주 경쟁 영상을 운영하는 제작자가 고객 영상 업로드 전 메타데이터를 검수할 때 URL 하나로 숨은 태그를 추출·길이순 정렬해 긴 태그 우선 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 태그 원래순서 TXT 목록’은 경쟁 영상 브리프를 만드는 마케터가 경쟁 영상 태그를 확인해 제목을 고칠 때 URL 하나로 숨은 태그를 한 번 추출해 원래 순서의 TXT 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 중복 제거 태그 CSV’는 경쟁 영상 브리프를 만드는 마케터가 경쟁 영상 태그를 확인해 제목을 고칠 때 URL 하나로 숨은 태그를 추출·중복 제거해 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 경쟁 영상 긴 태그 우선 목록’은 경쟁 영상 브리프를 만드는 마케터가 경쟁 영상 태그를 확인해 제목을 고칠 때 URL 하나로 숨은 태그를 추출·길이순 정렬해 긴 태그 우선 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 태그 원래순서 TXT 목록’은 경쟁 영상 브리프를 만드는 마케터가 조사 브리프에 태그 근거를 넣을 때 URL 하나로 숨은 태그를 한 번 추출해 원래 순서의 TXT 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 중복 제거 태그 CSV’는 경쟁 영상 브리프를 만드는 마케터가 조사 브리프에 태그 근거를 넣을 때 URL 하나로 숨은 태그를 추출·중복 제거해 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 경쟁 영상 긴 태그 우선 목록’은 경쟁 영상 브리프를 만드는 마케터가 조사 브리프에 태그 근거를 넣을 때 URL 하나로 숨은 태그를 추출·길이순 정렬해 긴 태그 우선 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 태그 원래순서 TXT 목록’은 경쟁 영상 브리프를 만드는 마케터가 고객 영상 업로드 전 메타데이터를 검수할 때 URL 하나로 숨은 태그를 한 번 추출해 원래 순서의 TXT 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 중복 제거 태그 CSV’는 경쟁 영상 브리프를 만드는 마케터가 고객 영상 업로드 전 메타데이터를 검수할 때 URL 하나로 숨은 태그를 추출·중복 제거해 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 경쟁 영상 긴 태그 우선 목록’은 경쟁 영상 브리프를 만드는 마케터가 고객 영상 업로드 전 메타데이터를 검수할 때 URL 하나로 숨은 태그를 추출·길이순 정렬해 긴 태그 우선 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

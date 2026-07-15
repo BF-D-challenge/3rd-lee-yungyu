@@ -1,0 +1,94 @@
+{
+  "batch_id": "EXH-046",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 49,
+    "Fail": 45,
+    "Reserve": 2,
+    "Merge": 4
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 72,
+      "sample": [
+        "chrome_web_store:eepgnffgkekpdkbkooopffobhfpcgnnh",
+        "app_store:640956497",
+        "chrome_web_store:lciekfmhecamdffbalcmlkndoppnbdjg",
+        "app_store:1061486140",
+        "trustmrr:dociagent",
+        "app_store:605722237",
+        "chrome_web_store:plaoglnkeoglehhogbhojbbiickamini",
+        "app_store:637237326"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:dociagent",
+          "decision": "Candidate",
+          "reason": "프로젝트 입력 → 전문적으로 구조화된 문서 변환 → 구조화된 문서 산출의 세로 조각을 2일 안에 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.125
+    },
+    {
+      "round": 2,
+      "fail_count": 54,
+      "sample": [
+        "app_store:1050545700",
+        "trustmrr:vibecom",
+        "chrome_web_store:gnoaaehhjlflggbckngnjjdgbnnaobam",
+        "chrome_web_store:bboccnojhhoegfffpcllbeigipedjedf",
+        "trustmrr:hovers",
+        "trustmrr:sharefast"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1050545700",
+          "decision": "Candidate",
+          "reason": "결혼 준비 일정 입력 → 개인화 정보와 태스크 정렬 → 맞춤 결혼 준비 정보 흐름을 2일 내 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 3,
+      "fail_count": 47,
+      "sample": [
+        "app_store:329374073",
+        "trustmrr:referall",
+        "trustmrr:dreampreter",
+        "app_store:1000558562",
+        "chrome_web_store:lggphhofhicddcfjbllkggkmiplmnpll"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:329374073",
+          "decision": "Candidate",
+          "reason": "카메라 데이터베이스를 받아 가장 가까운 카메라까지의 색상 거리와 제한속도를 보여주는 HUD 세로 조각이다."
+        }
+      ],
+      "false_reject_rate": 0.2
+    },
+    {
+      "round": 4,
+      "fail_count": 45,
+      "sample": [
+        "chrome_web_store:lciekfmhecamdffbalcmlkndoppnbdjg",
+        "app_store:396855834",
+        "app_store:1637815745",
+        "chrome_web_store:gjfgbeefgffadekkoegbagifoedingmk",
+        "trustmrr:sharefast"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

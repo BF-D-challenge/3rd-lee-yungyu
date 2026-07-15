@@ -1,0 +1,156 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1140451547-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘직선 궤적선이 표시된 골프 영상’은 골프 코치가 레슨 직후 골프 영상 파일 하나를 한 번 처리해 직선 궤적선이 포함된 MP4 한 개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1140451547-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘페이드 궤적선이 표시된 골프 영상’은 골프 코치가 SNS 업로드 직전 골프 영상 파일 하나를 한 번 처리해 페이드 궤적선이 포함된 MP4 한 개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1140451547-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "‘드로우 궤적선이 표시된 골프 영상’은 골프 영상 파일 하나를 처리해 드로우 궤적선 MP4 한 개를 만들지만, 레슨 피드백을 주는 코치의 결제 순간과 대회 하이라이트를 참가자에게 보내는 순간의 연결이 약하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1140451547-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "‘페이드 궤적선이 표시된 골프 영상’은 아마추어 골퍼가 골프 영상 파일 하나를 처리해 페이드 궤적선 MP4 한 개를 만들지만, 자신의 SNS 게시를 위한 결제자와 수강생에게 레슨 피드백을 설명하는 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1140451547-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘드로우 궤적선이 표시된 골프 영상’은 SNS 업로드 직전 아마추어 골퍼가 골프 영상 파일 하나를 한 번 처리해 드로우 궤적선이 포함된 MP4 한 개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1140451547-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "‘직선 궤적선이 표시된 골프 영상’은 아마추어 골퍼가 골프 영상 파일 하나를 처리해 직선 궤적선 MP4 한 개를 만들지만, SNS 게시가 주된 결제자와 대회 하이라이트를 참가자에게 보내는 순간의 연결이 약하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1140451547-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "‘드로우 궤적선이 표시된 골프 영상’은 골프장 콘텐츠 담당자가 골프 영상 파일 하나를 처리해 드로우 궤적선 MP4 한 개를 만들지만, 대회 영상 제작자의 결제자와 레슨 직후 수강생 피드백 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1140451547-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘직선 궤적선이 표시된 골프 영상’은 골프장 콘텐츠 담당자가 SNS 업로드 직전 골프 영상 파일 하나를 한 번 처리해 직선 궤적선이 포함된 MP4 한 개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1140451547-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘페이드 궤적선이 표시된 골프 영상’은 골프장 콘텐츠 담당자가 대회 하이라이트 전달 직전 골프 영상 파일 하나를 한 번 처리해 페이드 궤적선이 포함된 MP4 한 개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6762625967-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘본문이 읽히는 HWP PDF 변환’은 프리랜서가 이동 중 HWP 또는 HWPX 파일 하나를 한 번 변환해 본문을 읽을 수 있는 PDF 한 개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6762625967-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치가 보존된 HWP PDF’는 프리랜서가 가족에게 안내문을 전달하기 직전 HWP 또는 HWPX 파일 하나를 한 번 변환해 표 배치가 유지된 PDF 한 개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6762625967-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 위치가 유지된 HWP PDF’는 프리랜서가 마감 직전 HWP 또는 HWPX 파일 하나를 한 번 변환해 이미지 위치가 유지된 PDF 한 개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

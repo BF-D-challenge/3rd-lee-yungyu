@@ -1,0 +1,84 @@
+{
+  "batch_id": "EXH-043",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 46,
+    "Fail": 52,
+    "Merge": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 69,
+      "sample": [
+        "app_store:6756660667",
+        "app_store:6778600014",
+        "chrome_web_store:loloihmeeijnmgbncppdcjmjlcmjadcj",
+        "app_store:828774079",
+        "app_store:6480158120",
+        "app_store:6763265632",
+        "app_store:1193047144"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6778600014",
+          "decision": "Candidate",
+          "reason": "터치 코드와 손가락 쓸기를 받아 전자 악기로 재생하고 녹음된 연주를 남기는 2일 조각이다."
+        },
+        {
+          "key": "app_store:828774079",
+          "decision": "Candidate",
+          "reason": "음성을 받아 녹음·편집·압축하고 이메일로 보낼 파일을 즉시 만드는 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 2,
+      "fail_count": 55,
+      "sample": [
+        "chrome_web_store:hmdcmlfkchdmnmnmheododdhjedfccka",
+        "trustmrr:flowheadshots",
+        "trustmrr:payco",
+        "app_store:384043853",
+        "app_store:1592422326",
+        "app_store:882477693"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:hmdcmlfkchdmnmnmheododdhjedfccka",
+          "decision": "Candidate",
+          "reason": "웹사이트 하나를 입력받아 색상을 선택하고, 선택한 색상을 즉시 확인하는 2일 세로 조각이 남는다."
+        },
+        {
+          "key": "trustmrr:payco",
+          "decision": "Merge",
+          "reason": "랜딩 페이지 생성 입력·처리·결과가 small-business-site와 실질적으로 같고 결제 처리는 단순 확장이다."
+        }
+      ],
+      "false_reject_rate": 0.3333333333333333
+    },
+    {
+      "round": 3,
+      "fail_count": 52,
+      "sample": [
+        "chrome_web_store:flipcogpafljogkghkcfdnpdjlfcedbn",
+        "chrome_web_store:gmomhmlhffhkjjgkaejkkjhecfpbpekn",
+        "chrome_web_store:mmfgafbkmdfipjldopmmbjkggebhmhij",
+        "chrome_web_store:mafopchedjkbgkpbbnbgifaolempmdgh",
+        "chrome_web_store:gjjbmfigjpgnehjioicaalopaikcnheo",
+        "app_store:830340223"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

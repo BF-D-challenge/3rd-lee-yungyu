@@ -1,0 +1,126 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사이트 스타일의 Figma 토큰 추출’은 공개 웹사이트 URL 하나에서 디자인 요소를 한 번 추출해 Figma 호환 token JSON 하나를 반환하는 흐름은 구체적이지만 제목의 문제 상황이 다소 모호하다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 색상·간격을 JSON 토큰으로 추출’은 공개 웹사이트 URL 하나의 디자인 요소를 한 번 추출해 이름 붙은 JSON token 파일 하나를 즉시 반환하므로 입력·처리·결과와 사용 순간이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-bnjjngeaknajbdcgpfkgnonkmififhfo-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹 폼 입력 타입별 더미값 채우기’는 로그인 없이 열리는 공개 테스트 폼 URL 하나에서 입력 타입별 가짜값을 한 번 채워 가짜 데이터가 채워진 현재 폼 화면 하나를 반환하므로 폼 제출 직전의 QA 순간과 잘 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-bnjjngeaknajbdcgpfkgnonkmififhfo-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘한국 주소·전화 형식으로 테스트 폼 채우기’는 공개 테스트 폼 URL 하나의 입력칸을 한 번 채워 한국 주소·전화 형식의 가짜값이 들어간 폼 화면 하나를 반환하므로 한국 가입 흐름 회귀 검사 순간과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-bnjjngeaknajbdcgpfkgnonkmififhfo-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘수정 전후 같은 값으로 폼 재현하기’는 공개 테스트 폼 URL 하나의 입력칸을 한 번 채워 동일 seed의 재현값이 들어간 폼 화면 하나를 반환하므로 시연 직전 반복 입력 문제를 줄이는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 태그 원래순서 TXT 목록’은 유튜브 영상 URL 하나에서 숨은 태그를 한 번 추출해 원래 순서의 TXT 파일 하나를 제공하므로 업로드 직전 태그 확인 순간과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 경쟁 영상 긴 태그 우선 목록’은 유튜브 영상 URL 하나에서 숨은 태그를 한 번 추출·길이순 정렬해 CSV 파일 하나를 반환하므로 경쟁 영상 브리프 작성 순간에 필요한 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 중복 제거 태그 CSV’는 유튜브 영상 URL 하나에서 숨은 태그를 한 번 추출·중복 제거해 CSV 파일 하나를 반환하므로 업로드 전 메타데이터 검수 순간과 잘 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘상품 페이지 최소 가로폭 이미지 ZIP’은 다운로드가 허용된 공개 웹페이지 URL 하나의 이미지를 가로폭 기준으로 한 번 필터링해 조건에 맞는 ZIP 파일 하나를 반환하므로 상품 등록용 이미지 선별 결과가 분명하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 고용량 이미지 선별 ZIP’은 다운로드가 허용된 공개 웹페이지 URL 하나의 이미지를 파일 크기 기준으로 한 번 필터링해 기준을 넘는 이미지 ZIP 파일 하나를 반환하므로 레퍼런스 보드 제작 순간과 자연스럽다.",
+      "risk_flags": []
+    }
+  ]
+}

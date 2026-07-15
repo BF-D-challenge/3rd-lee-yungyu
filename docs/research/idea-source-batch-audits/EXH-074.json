@@ -1,0 +1,35 @@
+{
+  "batch_id": "EXH-074",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 79,
+    "Candidate": 16,
+    "Merge": 5
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 79,
+      "sample": [
+        "app_store:1661294758",
+        "app_store:896132217",
+        "app_store:1267382794",
+        "chrome_web_store:lgjinjcobiflbbnhenlfkcjpeeacklfl",
+        "chrome_web_store:nlboajobccgidfcdoedphgfaklelifoa",
+        "trustmrr:ringchef-ai",
+        "app_store:1245772818",
+        "app_store:1483471584"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

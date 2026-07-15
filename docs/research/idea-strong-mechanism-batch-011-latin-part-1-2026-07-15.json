@@ -1,0 +1,152 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-chromapick-chrome-extension-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 폰트 스택을 복사하는 텍스트’는 UI 디자이너가 참고 사이트 URL을 받은 직후 공개 URL 하나에서 폰트 스택을 한 번 추출해 Figma용 텍스트 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chromapick-chrome-extension-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 색 대비를 확인하는 스타일 텍스트’는 UI 디자이너가 시안 작업 직전에 공개 URL 하나의 색상 조합을 한 번 계산해 대비 정보가 포함된 Figma용 스타일 텍스트 파일 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chromapick-chrome-extension-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 색 토큰을 바로 복사하는 텍스트’는 UI 디자이너가 개발 전달 전 공개 URL 하나에서 색상 코드를 한 번 추출해 Figma에 복사할 색 토큰 텍스트 파일 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chromapick-chrome-extension-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 색 대비를 확인하는 스타일 텍스트’는 프론트엔드 디자이너가 참고 URL을 받은 직후 공개 URL 하나의 색상 조합을 한 번 계산해 대비 정보가 담긴 스타일 텍스트 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chromapick-chrome-extension-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 색 토큰을 바로 복사하는 텍스트’는 프론트엔드 디자이너가 시안 직전에 공개 URL 하나에서 색상 코드를 한 번 추출해 복사 가능한 색 토큰 텍스트 파일 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chromapick-chrome-extension-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 폰트 스택을 복사하는 텍스트’는 프론트엔드 디자이너가 개발 전달 전에 공개 URL 하나에서 폰트 스택을 한 번 추출해 Figma용 텍스트 파일 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-apirealtest-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘cURL로 상태 코드 확인 API 보고서’는 프론트엔드 개발자가 연동 실패 직후 cURL 명령 텍스트 하나로 공개 테스트 API를 한 번 호출해 상태 코드가 강조된 HTML 보고서 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-apirealtest-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘cURL로 응답 스키마 확인 API 보고서’는 프론트엔드 개발자가 배포 직전 cURL 명령 하나로 공개 테스트 API를 한 번 호출해 응답 스키마가 강조된 HTML 보고서 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-apirealtest-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘cURL로 지연 시간 확인 API 보고서’는 프론트엔드 개발자가 고객 데모 전에 cURL 명령 하나로 공개 테스트 API를 한 번 호출해 지연 시간이 강조된 HTML 보고서 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-apirealtest-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘cURL로 응답 스키마 확인 API 보고서’는 QA 엔지니어가 브라우저 연동 실패 직후 cURL 명령 하나로 공개 테스트 API를 한 번 호출해 스키마 보고서 하나를 받지만, 릴리스별 검수자인 payer와 해당 moment의 연결이 덜 명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-apirealtest-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘cURL로 지연 시간 확인 API 보고서’는 QA 엔지니어가 배포 승인 직전 cURL 명령 하나로 공개 테스트 API를 한 번 호출해 지연 시간이 강조된 HTML 보고서 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-apirealtest-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘cURL로 상태 코드 확인 API 보고서’는 QA 엔지니어가 고객 데모 전에 cURL 명령 하나로 공개 테스트 API를 한 번 호출해 상태 코드 보고서 하나를 받지만, 릴리스 검수 payer와 데모 직전 moment의 연결이 덜 명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    }
+  ]
+}

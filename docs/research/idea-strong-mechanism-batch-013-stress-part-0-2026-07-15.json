@@ -1,0 +1,129 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-ndgimibanhlabgdgjcpbbndiehljcpfh-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘요소 HTML에서 검증된 테스트 locator 만들기’는 QA 자동화 엔지니어가 테스트 코드를 작성하려는 순간 HTML 텍스트 하나를 입력해 속성 우선 locator를 한 번 생성·검증하고 Playwright·XPath·CSS 선택자 텍스트 파일 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ndgimibanhlabgdgjcpbbndiehljcpfh-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘고객 요소 HTML의 세 형식 locator 묶음’은 프론트엔드 개발자가 DOM 변경 직후 HTML 하나를 입력해 세 형식 locator를 한 번 생성·검증하고 파일 하나를 받는 흐름은 명확하지만 제목만으로 해결할 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-ndgimibanhlabgdgjcpbbndiehljcpfh-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘깨진 요소 HTML의 짧은 locator 복구’는 자동화 컨설턴트가 고객 인수인계 직전 요소 HTML 하나를 입력해 선택자를 한 번 생성·검증하고 짧은 대체 locator 텍스트 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-bcnbbkdpnoeaaedhhnlefgpijlpbmije-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹앱 오류의 실패 API 호출 증거 만들기’는 프론트엔드 개발자가 오류 재현 직후 공개 웹앱 URL 하나를 입력해 호출을 한 번 기록·필터링하고 실패 요청 HAR 파일 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-bcnbbkdpnoeaaedhhnlefgpijlpbmije-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘외부 전달용 웹앱 API cURL 묶음’은 API QA 엔지니어가 릴리스 직전 공개 웹앱 URL 하나를 입력해 호출을 한 번 기록·변환하고 민감 헤더를 가린 cURL TXT 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-bcnbbkdpnoeaaedhhnlefgpijlpbmije-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘웹앱 호출 중복을 뺀 endpoint 목록’은 기술 컨설턴트가 외부 개발팀에 장애 증거를 보내기 직전 공개 URL 하나를 처리해 endpoint 목록 JSON 하나를 받지만, payer와 moment가 요구하는 실패 호출·민감 헤더가 제거된 전달용 기록을 제공하지 않아 twist와 핵심 순간이 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GitHub 예제 폴더 구조 보존 ZIP 받기’는 개발자가 예제 폴더를 실행하려는 순간 공개 GitHub 하위 폴더 URL 하나를 입력해 파일을 한 번 압축하고 구조 보존 ZIP 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Git 메타데이터 뺀 GitHub 코드 ZIP’은 프로그래밍 강사가 수업 직전 공개 하위 폴더 URL 하나를 입력해 파일을 한 번 압축하고 Git 메타데이터가 제외된 ZIP 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GitHub 폴더와 포함 파일 목록 ZIP’은 기술 PM이 코드 검토 범위를 넘기기 직전 공개 하위 폴더 URL 하나를 입력해 파일을 한 번 압축하고 manifest가 포함된 ZIP 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사이트 디자인 값을 CSS 변수로 추출’은 프로덕트 디자이너가 리디자인 기준 사이트를 정한 직후 공개 웹사이트 URL 하나를 입력해 디자인 요소를 한 번 추출하고 CSS variables 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

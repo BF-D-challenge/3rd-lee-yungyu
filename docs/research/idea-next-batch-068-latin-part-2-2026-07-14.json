@@ -1,0 +1,361 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1441536768-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "재료·중량·조리 설정 1개를 받아 수비드 온도와 타이머를 1회 계산하고 완료·과조리 경고 1개를 제공해 조리 직전의 사용 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1441536768-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한우 등심 중량과 설정 1개를 입력해 온도·타이머를 계산하고 완료·과조리 경고 1개를 제공하므로 수비드 투입 직전의 문제와 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1441536768-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "닭가슴살 양과 조리 설정 1개를 처리해 완료 시각과 과조리 경고 1개를 보여주므로 타이머를 맞추는 순간에 구체적인 효용이 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6782233144-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "문제의 선택지 답안 1개를 채점해 정답·오답과 해설 1개를 보여줄 수 있지만 제목만으로 해설 결과가 드러나지 않고 문제 원문 입력도 불명확하다.",
+      "risk_flags": [
+        "title_unclear",
+        "question_source_implicit"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6782233144-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "금융·시사경제 문제를 랜덤으로 여러 개 풀고 점수를 산출하는 흐름은 입력 1개·처리 1회·결과 1개의 단일 세로 조각을 벗어난다.",
+      "risk_flags": [
+        "multi_step",
+        "score_requires_history"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6782233144-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "틀린 문제만 모아 복습하려면 이전 풀이 기록을 저장해야 하므로 문제 전에 기록이 필요한 기능에 해당한다.",
+      "risk_flags": [
+        "requires_history",
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6782233144-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "금융·시사경제 문제를 랜덤으로 여러 개 풀고 점수를 확인하는 구성은 단일 입력·단일 처리·단일 결과 조건을 위반한다.",
+      "risk_flags": [
+        "multi_step",
+        "score_requires_history"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6782233144-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "틀린 기업사례 문제를 모아 복습하려면 선행 풀이 기록과 누적 보관이 필요해 문제 전에 기록해야 작동한다.",
+      "risk_flags": [
+        "requires_history",
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6782233144-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "선택지 답안 1개를 정오 판정과 경제이론 해설 1개로 바꾸는 조각은 가능하지만 제목과 카드 문구만으로 사용자가 무엇을 입력하는지 충분히 분명하지 않다.",
+      "risk_flags": [
+        "title_unclear",
+        "question_source_implicit"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6782233144-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "틀린 기업사례 문제만 모아 제공하려면 과거 오답을 저장·분류하는 선행 기록 기능이 필요하다.",
+      "risk_flags": [
+        "requires_history",
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6782233144-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "선택지 답안 1개를 채점해 경제이론별 정답·오답 이유 1개를 제공하는 흐름은 가능하지만 제목만으로 해설 결과와 입력 방식이 선명하지 않다.",
+      "risk_flags": [
+        "title_unclear",
+        "question_source_implicit"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6782233144-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "랜덤 문제 풀이와 점수 확인은 여러 문제 입력과 누적 계산이 필요해 단일 세로 조각 조건을 충족하지 않는다.",
+      "risk_flags": [
+        "multi_step",
+        "score_requires_history"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1146608794-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치와 날짜 1개를 받아 태양 위치를 계산하고 일출 시각과 촬영 방향 1개를 보여주므로 촬영지 도착 직후의 문제와 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1146608794-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한강 위치와 날짜 1개를 처리해 일몰 시각과 카메라 방향 1개를 제공하므로 촬영 전 필요한 순간과 자연스럽게 연결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1146608794-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "계절별 태양 고도 비교는 여러 날짜와 결과를 비교하는 기능으로 입력 1개·처리 1회·결과 1개의 범위를 벗어난다.",
+      "risk_flags": [
+        "multi_input",
+        "comparison_feature"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1146608794-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "캠핑 여행객이 필요한 기능은 해돋이 방향인데 한강 일몰 촬영 방향을 계산해 결제자·순간·변화가 서로 맞지 않는다.",
+      "risk_flags": [
+        "payer_mismatch",
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1146608794-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "계절별 태양 고도 비교는 여러 날짜를 입력하고 복수 결과를 대조해야 하므로 단일 입력·단일 결과 조건을 위반한다.",
+      "risk_flags": [
+        "multi_input",
+        "comparison_feature"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1146608794-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캠핑장 위치와 날짜 1개로 일출 방향 1개를 계산하는 흐름은 가능하지만 촬영 위치라는 표현이 캠핑 순간과 완전히 일치하지 않아 문구 보완이 필요하다.",
+      "risk_flags": [
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1146608794-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "옥상 카페 운영자가 필요한 햇빛 시간 계획과 캠핑장 계절별 고도 비교가 맞지 않고 여러 날짜 비교도 요구한다.",
+      "risk_flags": [
+        "payer_mismatch",
+        "multi_input",
+        "comparison_feature"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1146608794-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "옥상 카페 운영자에게 필요한 햇빛 계획 대신 제주 촬영 위치의 일출 방향을 제공해 결제자와 결과가 어긋난다.",
+      "risk_flags": [
+        "payer_mismatch",
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1146608794-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "옥상 카페 운영자의 햇빛 확인 순간에 한강 일몰 촬영 방향을 제공해 결제자·필요한 순간·한 끗 변화가 자연스럽게 연결되지 않는다.",
+      "risk_flags": [
+        "payer_mismatch",
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-953739548-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기기 연락처 1개에 단일 변환을 적용해 이름·번호가 정리된 스프레드시트 파일 1개를 즉시 제공하므로 엑셀 전달 문제와 결과가 명확하다.",
+      "risk_flags": [
+        "privacy_sensitive"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-953739548-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "거래처 연락처 1개를 스프레드시트 열로 변환해 공유 가능한 파일 1개를 제공하므로 주소록 정리 순간에 구체적인 효용이 있다.",
+      "risk_flags": [
+        "privacy_sensitive"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-953739548-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기기 변경 전 연락처 보관은 OS·계정의 기본 동기화나 백업 기능이 더 편리해 범용 변환 앱의 차별성이 부족하다.",
+      "risk_flags": [
+        "os_default_better",
+        "backup_use_case"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-953739548-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "휴대폰 연락처 1개를 고객관리용 스프레드시트 1개로 변환해 즉시 공유할 수 있어 자영업자의 주소록 이전 순간과 자연스럽게 맞는다.",
+      "risk_flags": [
+        "privacy_sensitive"
+      ]
+    }
+  ]
+}

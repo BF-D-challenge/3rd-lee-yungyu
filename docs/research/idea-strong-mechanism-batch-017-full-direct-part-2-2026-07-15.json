@@ -1,0 +1,544 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 퍼블리셔가 디자인 오류 직후 공개 URL의 한 CSS 요소와 margin·padding 값을 넣으면 spacing class 한 줄 diff 파일 하나를 받아 문제와 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 퍼블리셔가 디자인 오류 직후 공개 URL의 한 CSS 요소와 text·background 색상값을 넣으면 color class 한 줄 diff 파일 하나를 받아 문제와 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 퍼블리셔가 디자인 오류 직후 공개 URL의 한 CSS 요소와 breakpoint·class 값을 넣으면 지정 breakpoint class 한 줄 diff 파일 하나를 받아 문제와 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 퍼블리셔가 코드 리뷰 직전 공개 URL의 한 CSS 요소와 margin·padding 값을 넣으면 spacing class 한 줄 diff 파일 하나를 받아 수정 범위가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 퍼블리셔가 코드 리뷰 직전 공개 URL의 한 CSS 요소와 색상값을 넣으면 color class 한 줄 diff 파일 하나를 받아 수정 범위가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 퍼블리셔가 코드 리뷰 직전 공개 URL의 한 CSS 요소와 breakpoint·class 값을 넣으면 지정 class 한 줄 diff 파일 하나를 받아 수정 범위가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 퍼블리셔가 class 재조합 직전 공개 URL의 한 CSS 요소와 margin·padding 값을 넣으면 spacing class 한 줄 diff 파일 하나를 받아 교체값을 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 퍼블리셔가 class 재조합 직전 공개 URL의 한 CSS 요소와 색상값을 넣으면 color class 한 줄 diff 파일 하나를 받아 교체값을 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 퍼블리셔가 class 재조합 직전 공개 URL의 한 CSS 요소와 breakpoint·class 값을 넣으면 지정 breakpoint class 한 줄 diff 파일 하나를 받아 교체값을 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 디자인 오류 직후 공개 URL의 한 CSS 요소와 margin·padding 값을 넣으면 spacing class 한 줄 diff 파일 하나를 받아 수기 비교 문제를 해결한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 디자인 오류 직후 공개 URL의 한 CSS 요소와 색상값을 넣으면 color class 한 줄 diff 파일 하나를 받아 수기 비교 문제를 해결한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 디자인 오류 직후 공개 URL의 한 CSS 요소와 breakpoint·class 값을 넣으면 지정 breakpoint class 한 줄 diff 파일 하나를 받아 수기 비교 문제를 해결한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 코드 리뷰 직전 공개 URL의 한 CSS 요소와 margin·padding 값을 넣으면 spacing class 한 줄 diff 파일 하나를 받아 작은 수정임을 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 코드 리뷰 직전 공개 URL의 한 CSS 요소와 색상값을 넣으면 color class 한 줄 diff 파일 하나를 받아 작은 수정임을 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 코드 리뷰 직전 공개 URL의 한 CSS 요소와 breakpoint·class 값을 넣으면 지정 breakpoint class 한 줄 diff 파일 하나를 받아 작은 수정임을 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 class 재조합 직전 공개 URL의 한 CSS 요소와 margin·padding 값을 넣으면 spacing class 한 줄 diff 파일 하나를 받아 교체할 한 줄을 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 class 재조합 직전 공개 URL의 한 CSS 요소와 색상값을 넣으면 color class 한 줄 diff 파일 하나를 받아 교체할 한 줄을 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-taillens-tool-for-frontend-developers-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 class 재조합 직전 공개 URL의 한 CSS 요소와 breakpoint·class 값을 넣으면 지정 breakpoint class 한 줄 diff 파일 하나를 받아 교체할 한 줄을 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 SVG 아이콘 ZIP을 전달받은 직후 파일명과 glyph 웹폰트를 한 번 변환해 파일명 기반 CSS class가 포함된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 SVG 아이콘 ZIP을 전달받은 직후 viewBox를 같은 em 영역으로 한 번 정규화해 정렬된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 SVG 아이콘 ZIP을 전달받은 직후 glyph 웹폰트로 한 번 변환해 class·codepoint 미리보기 HTML이 든 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 웹 프로젝트 적용 직전 SVG 아이콘 ZIP을 한 번 변환해 파일명 기반 CSS class가 포함된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 웹 프로젝트 적용 직전 SVG 아이콘 ZIP의 viewBox를 한 번 정규화해 정렬된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 웹 프로젝트 적용 직전 SVG 아이콘 ZIP을 한 번 변환해 class·codepoint 미리보기 HTML이 든 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 다른 개발자에게 넘기기 전 SVG 아이콘 ZIP을 한 번 변환해 파일명 기반 CSS class가 포함된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 다른 개발자에게 넘기기 전 SVG 아이콘 ZIP의 viewBox를 한 번 정규화해 정렬된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 다른 개발자에게 넘기기 전 SVG 아이콘 ZIP을 한 번 변환해 class·codepoint 미리보기 HTML이 든 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 SVG 아이콘 ZIP을 전달받은 직후 파일명과 glyph 웹폰트를 한 번 변환해 파일명 기반 CSS class가 포함된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 SVG 아이콘 ZIP을 전달받은 직후 viewBox를 같은 em 영역으로 한 번 정규화해 정렬된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 SVG 아이콘 ZIP을 전달받은 직후 glyph 웹폰트로 한 번 변환해 class·codepoint 미리보기 HTML이 든 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 웹 프로젝트 적용 직전 SVG 아이콘 ZIP을 한 번 변환해 파일명 기반 CSS class가 포함된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 웹 프로젝트 적용 직전 SVG 아이콘 ZIP의 viewBox를 한 번 정규화해 정렬된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 웹 프로젝트 적용 직전 SVG 아이콘 ZIP을 한 번 변환해 class·codepoint 미리보기 HTML이 든 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 다른 개발자에게 넘기기 전 SVG 아이콘 ZIP을 한 번 변환해 파일명 기반 CSS class가 포함된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 다른 개발자에게 넘기기 전 SVG 아이콘 ZIP의 viewBox를 한 번 정규화해 정렬된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 다른 개발자에게 넘기기 전 SVG 아이콘 ZIP을 한 번 변환해 class·codepoint 미리보기 HTML이 든 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 SVG 아이콘 ZIP을 전달받은 직후 파일명과 glyph 웹폰트를 한 번 변환해 파일명 기반 CSS class가 포함된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 SVG 아이콘 ZIP을 전달받은 직후 viewBox를 같은 em 영역으로 한 번 정규화해 정렬된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 SVG 아이콘 ZIP을 전달받은 직후 glyph 웹폰트로 한 번 변환해 class·codepoint 미리보기 HTML이 든 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 웹 프로젝트 적용 직전 SVG 아이콘 ZIP을 한 번 변환해 파일명 기반 CSS class가 포함된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 웹 프로젝트 적용 직전 SVG 아이콘 ZIP의 viewBox를 한 번 정규화해 정렬된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 웹 프로젝트 적용 직전 SVG 아이콘 ZIP을 한 번 변환해 class·codepoint 미리보기 HTML이 든 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 다른 개발자에게 넘기기 전 SVG 아이콘 ZIP을 한 번 변환해 파일명 기반 CSS class가 포함된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 다른 개발자에게 넘기기 전 SVG 아이콘 ZIP의 viewBox를 한 번 정규화해 정렬된 웹폰트 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-fonzo-io-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 다른 개발자에게 넘기기 전 SVG 아이콘 ZIP을 한 번 변환해 class·codepoint 미리보기 HTML이 든 패키지 ZIP 하나를 얻는다.",
+      "risk_flags": []
+    }
+  ]
+}

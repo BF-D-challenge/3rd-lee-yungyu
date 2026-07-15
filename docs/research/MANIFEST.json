@@ -1,9 +1,13 @@
 {
   "version": 1,
-  "updated_at": "2026-07-10",
+  "updated_at": "2026-07-14",
   "purpose": "Machine-readable catalog for local PRD research datasets under docs/research/. Paths are repo-root relative. Human guide: docs/research/README.md, full map incl. markdown corpora: docs/research/INDEX.md.",
   "entrypoints": {
     "overview": "docs/research/README.md",
+    "idea_final_decisions": "docs/research/idea-final-decisions-62.jsonl",
+    "idea_source_coverage": "docs/research/idea-source-coverage.jsonl",
+    "idea_source_coverage_summary": "docs/research/idea-source-coverage-summary.md",
+    "newsletter_leads": "docs/research/newsletter-leads/README.md",
     "mobbin_action_patterns": "docs/research/mobbin/mobile-card-action-patterns.jsonl",
     "material_design_3": "docs/research/material-design-3/README.md",
     "material_design_3_manifest": "docs/research/material-design-3/MANIFEST.json",
@@ -14,6 +18,87 @@
     "full_index": "docs/research/INDEX.md"
   },
   "datasets": [
+    {
+      "id": "idea_final_decisions_62",
+      "path": "docs/research/idea-final-decisions-62.jsonl",
+      "readme": "docs/research/README.md",
+      "format": "jsonl",
+      "rows": 62,
+      "unique_entity_key": "id",
+      "unique_entities": 62,
+      "entity_type": "idea_final_decision",
+      "best_for": "Preventing rejected ideas from re-entering review and reading the final UX consensus, status, gate, reason, and merge target for all 62 candidates.",
+      "key_fields": [
+        "id",
+        "title",
+        "lane",
+        "ux_consensus",
+        "final_status",
+        "gate",
+        "reason",
+        "merged_into"
+      ],
+      "derived_from": [
+        "docs/dev/experiments/idea-lab/archive/queues/idea-user-validation-queue-62.jsonl",
+        "docs/dev/experiments/idea-lab/idea-current-batch-01-ux-product-audit.md",
+        "docs/dev/experiments/idea-lab/idea-remaining-39-final-audit.md"
+      ],
+      "generator": "scripts/research/build-idea-user-validation-queue.mjs",
+      "validator": "scripts/research/verify-idea-final-decisions.mjs"
+    },
+    {
+      "id": "idea_source_coverage",
+      "path": "docs/research/idea-source-coverage.jsonl",
+      "readme": "docs/research/idea-source-coverage-summary.md",
+      "format": "jsonl",
+      "rows": 8406,
+      "unique_entity_key": "dataset + source_id",
+      "unique_entities": 8406,
+      "entity_type": "idea_source_review_record",
+      "best_for": "Selecting only unseen TrustMRR, App Store, and Chrome Web Store sources while tracking review, merge, rejection, custom-reserve, and app-link status.",
+      "key_fields": [
+        "dataset",
+        "source_id",
+        "normalized_name",
+        "name",
+        "url",
+        "market_signal",
+        "review_status",
+        "review_batch",
+        "rejection_code",
+        "matched_scenario_ids",
+        "cross_dataset_name_key"
+      ],
+      "derived_from": [
+        "docs/research/trustmrr-acquire/ideas.jsonl",
+        "docs/research/store-rankings/app-store-expanded-unique-apps.jsonl",
+        "docs/research/store-rankings/chrome-webstore-expanded-unique-extensions.jsonl",
+        "src/components/organisms/idea-lab/sample-data.ts"
+      ],
+      "generator": "scripts/research/build-idea-source-coverage.mjs"
+    },
+    {
+      "id": "newsletter_idea_leads",
+      "path": "docs/research/newsletter-leads/newsletter-leads.jsonl",
+      "readme": "docs/research/newsletter-leads/README.md",
+      "format": "jsonl",
+      "rows": 7,
+      "unique_entity_key": "lead_id",
+      "unique_entities": 7,
+      "entity_type": "external_newsletter_discovery_lead",
+      "best_for": "Recording newsletter-discovered product cases without changing the 8,406-source exhaustive-review denominator or allowing direct app-card promotion.",
+      "key_fields": [
+        "lead_id",
+        "queue_scope",
+        "denominator_effect",
+        "newsletter",
+        "product_name",
+        "mechanism",
+        "corpus_link",
+        "preliminary"
+      ],
+      "validator": "scripts/research/verify-newsletter-idea-leads.mjs"
+    },
     {
       "id": "mobbin_mobile_card_action_patterns",
       "path": "docs/research/mobbin/mobile-card-action-patterns.jsonl",
@@ -408,6 +493,18 @@
   ],
   "scripts": [
     {
+      "path": "scripts/research/build-idea-user-validation-queue.mjs",
+      "purpose": "Regenerate the final 62-candidate decision ledger and the empty current validation queue from the archived lineage source."
+    },
+    {
+      "path": "scripts/research/verify-idea-final-decisions.mjs",
+      "purpose": "Assert unique IDs, complete decisions, exact status totals, empty pending queue, zero Fail re-entry, and deprecated-queue archival."
+    },
+    {
+      "path": "scripts/research/verify-newsletter-idea-leads.mjs",
+      "purpose": "Keep newsletter discoveries out of the 8,406 denominator, reject direct Candidate promotion, and validate referenced source keys."
+    },
+    {
       "path": ".firecrawl/scratchpad/normalize_store_rankings.py",
       "purpose": "Normalize the first App Store and Chrome Web Store baseline captures."
     },
@@ -431,6 +528,9 @@
   "recommended_exploration_order": [
     "docs/research/README.md",
     "docs/research/MANIFEST.json",
+    "docs/research/idea-final-decisions-62.jsonl",
+    "docs/research/idea-source-coverage-summary.md",
+    "docs/research/idea-source-coverage.jsonl",
     "docs/research/trustmrr-acquire/ideas.jsonl",
     "docs/research/store-rankings/app-store-expanded-unique-apps.jsonl",
     "docs/research/store-rankings/chrome-webstore-expanded-unique-extensions.jsonl",

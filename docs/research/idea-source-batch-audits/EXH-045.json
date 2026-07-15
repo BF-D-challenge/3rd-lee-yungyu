@@ -1,0 +1,36 @@
+{
+  "batch_id": "EXH-045",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 74,
+    "Candidate": 21,
+    "Reserve": 3,
+    "Merge": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 74,
+      "sample": [
+        "chrome_web_store:jjpjcmckhkcefefgbgghomdhcbfmklea",
+        "app_store:1560592402",
+        "chrome_web_store:giplcddiofbfhjhgdkcpeimcmlfddlnk",
+        "app_store:1664015586",
+        "app_store:377382255",
+        "chrome_web_store:bbmdjlmdgkmgppeobhnigpnjpelfhmki",
+        "chrome_web_store:gepipnmhdeemppokommnippgeeagabio",
+        "app_store:1568298035"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

@@ -1,0 +1,54 @@
+{
+  "batch_id": "EXH-019",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 98,
+  "decision_counts": {
+    "Fail": 53,
+    "Candidate": 40,
+    "Reserve": 1,
+    "Merge": 4
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 58,
+      "sample": [
+        "app_store:6444602589",
+        "trustmrr:dunkmax",
+        "app_store:282614216",
+        "app_store:577628510",
+        "app_store:1046714401",
+        "app_store:828392046"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1046714401",
+          "decision": "Candidate",
+          "reason": "Safari 확장 허용 → 웹페이지 광고 차단 → 광고 없는 브라우징을 단일 권한과 처리로 2일 안에 구현할 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 2,
+      "fail_count": 53,
+      "sample": [
+        "app_store:385724144",
+        "app_store:453571750",
+        "app_store:771946428",
+        "app_store:6479689893",
+        "app_store:6445905219",
+        "app_store:1584940053"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

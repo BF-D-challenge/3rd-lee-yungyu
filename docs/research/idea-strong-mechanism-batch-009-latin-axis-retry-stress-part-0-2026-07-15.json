@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-430807521-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘결승선 사진의 선수별 통과 시각’은 코치가 결승선 기록 확정 순간 단일 카메라 입력으로 결승선을 한 번 포토피니시 처리해 선수별 통과 시각 이미지 하나를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-430807521-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘대회 순위를 담은 결승선 포토피니시’는 체육교사가 육안으로 선착순을 가리기 어려운 순간 단일 카메라로 결승선을 한 번 처리해 순위가 보이는 포토피니시 이미지 하나를 얻는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-430807521-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘결승선 사진에 표시한 달리기 순위’는 대회 담당자가 기록표에 옮기기 직전 결승선 장면 하나를 포토피니시 처리해 순위선이 겹쳐진 결과 이미지 하나를 확인하는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1520204499-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘픽셀 로고의 단순화 SVG 윤곽선’은 인쇄 디자이너가 저해상도 로고를 제작 파일로 넘기기 직전 JPG·PNG 파일 하나를 한 번 벡터 변환해 단순화된 SVG 하나를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1520204499-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘복잡한 이미지의 간결한 SVG 윤곽’은 레이저 커팅 제작자가 픽셀 윤곽이 깨진 순간 JPG·PNG 파일 하나를 한 번 벡터 변환해 세부 수준을 낮춘 SVG 하나를 얻는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1520204499-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘깨진 로고 모서리를 다듬은 SVG’는 프리랜서 디자이너가 확대 가능한 원본을 요청받은 순간 JPG·PNG 파일 하나를 한 번 벡터 변환해 모서리가 매끄러운 SVG 하나를 얻는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6755650844-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘트레이딩 카드 좌우 센터링 점수’는 카드숍 매입 담당자가 여러 장 중 좋은 카드를 고르는 순간 정면 카드 사진 한 장을 한 번 분석해 좌우 테두리 센터링 점수 하나를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6755650844-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘카드 테두리 치우침 경계 표시’는 카드샵 직원이 상태와 가격을 확정하기 직전 정면 카드 사진 한 장을 한 번 분석해 치우친 테두리 경계 오버레이 하나를 확인하는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6755650844-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘트레이딩 카드 상하 센터링 점수’는 전문 수집가가 카드 선별 근거를 기록하기 직전 정면 카드 사진 한 장을 한 번 분석해 상하 테두리 센터링 점수 하나를 얻는 흐름이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

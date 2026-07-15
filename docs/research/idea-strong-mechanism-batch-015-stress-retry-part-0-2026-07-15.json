@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6759912958-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "마감이 잦은 만화 창작자가 페이지 수·하루 작업 가능 시간·마감일을 한 번 입력하면 일정을 계산해 날짜별 목표 페이지표 하나를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6759912958-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹소설 작가가 전체 페이지 수·하루 작업 가능 시간·마감일을 한 번 입력하면 마감까지 필요한 하루 작업시간과 계획 대비 부족한 분을 계산한 결과 카드 하나를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6759912958-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "일러스트레이터가 페이지 수·하루 작업 가능 시간·마감일을 한 번 입력하면 공정별 일정을 계산해 간트차트 하나를 즉시 보지만, 입력만으로 어떤 공정과 분할 기준을 사용할지 결과가 명확하지 않다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    }
+  ]
+}

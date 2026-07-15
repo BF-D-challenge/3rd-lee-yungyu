@@ -1,0 +1,439 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6751921248-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "트레이딩 카드 팩 선택이라는 허용되지 않은 선택 입력으로 카드 공개 결과를 만들며 제목만으로 문제와 결과도 명확하지 않다.",
+      "risk_flags": [
+        "input_type",
+        "title_clarity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6751921248-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "트레이딩 카드 팩 선택이라는 허용되지 않은 선택 입력으로 카드 컬렉션을 만들며 자랑·간직은 추가 행동을 전제로 한다.",
+      "risk_flags": [
+        "input_type",
+        "external_action"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6751921248-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "팩 선택은 허용된 텍스트·URL·파일·사진·권한 입력이 아니고 중고 거래 전 확인이라는 필요 순간도 결과와 자연스럽게 연결되지 않는다.",
+      "risk_flags": [
+        "input_type",
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1168117279-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "Apple Pencil과 캔버스 조작은 허용된 입력 유형이 아니며 범용 드로잉 앱이나 OS 기본 기능으로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "input_type",
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1168117279-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "Apple Pencil 입력과 브러시 선택으로 그림을 만드는 조합은 허용 입력을 벗어나고 자동 저장 갤러리는 범용 드로잉 앱 기능이다.",
+      "risk_flags": [
+        "input_type",
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1168117279-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "Apple Pencil 기반 그림 그리기는 허용 입력이 아니며 앱을 닫기 전 저장은 OS·범용 드로잉 앱에서 더 편하게 처리할 수 있다.",
+      "risk_flags": [
+        "input_type",
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-478652543-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "총액·팁 비율·인원이라는 복수 입력을 계산해 금액을 보여주는 기능은 기본 계산기나 범용 계산 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_alternative",
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-478652543-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여행 식사비 계산은 총액·비율·인원과 반올림 설정을 추가로 요구하고 기본 계산기로 충분히 처리할 수 있다.",
+      "risk_flags": [
+        "generic_alternative",
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-478652543-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "팁 계산 결과는 총액·비율·인원을 넣어야 하며 기본 계산기만으로 더 간단하게 얻을 수 있다.",
+      "risk_flags": [
+        "generic_alternative",
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1270890718-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "건반 키 탭은 허용된 입력 유형이 아니고 키보디스트의 라이브 사운드 출력을 위해 별도 연주 장비 행동을 요구한다.",
+      "risk_flags": [
+        "input_type",
+        "external_action"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1270890718-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "건반 탭과 키 변경은 허용 입력을 벗어나며 크로스페이드된 연주 사운드는 단일 입력·단일 처리·단일 결과로 좁혀지지 않는다.",
+      "risk_flags": [
+        "input_type",
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1270890718-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "건반 키 탭은 허용 입력이 아니며 여러 코드를 순차 재생하는 흐름은 입력 1개에서 결과 1개 조건을 충족하지 않는다.",
+      "risk_flags": [
+        "input_type",
+        "multiple_outputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1531679862-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "텍스트 단어 목록을 받아 자가 점검 후 미암기 단어 세트를 만드는 흐름은 구체적이지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_clarity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1531679862-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "텍스트 단어 목록에서 어려운 단어를 추리는 결과는 구체적이지만 예문·원어민 발음까지 포함하면 단일 처리 범위가 흐려진다.",
+      "risk_flags": [
+        "title_clarity",
+        "scope_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1531679862-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "텍스트 단어 목록과 자가 판정으로 미암기 세트를 만드는 핵심은 가능하지만 제목만으로 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_clarity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1073082439-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한 1회로 KP 지수와 오늘 밤 관측 가능성을 처리해 즉시 관측 여부를 보여주는 실제 여행 순간의 세로 조각이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1073082439-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한으로 관측 가능성을 보여주는 핵심은 구체적이지만 구름과 태양 활동을 함께 제공하려면 처리 범위가 두 가지로 늘어난다.",
+      "risk_flags": [
+        "scope_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1073082439-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한 1회로 여행지의 KP 지수와 관측 가능성을 확인해 기다릴지 잠들지 즉시 판단할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6771714850-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "책 표지 사진을 받아 책 정보를 분류하는 흐름은 허용 입력과 결과가 구체적이지만 제목만으로 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_clarity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6771714850-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "중복 책을 확인하려면 이전 소장 목록을 미리 기록해 두어야 하므로 문제 발생 전에 기록이 필수다.",
+      "risk_flags": [
+        "pre_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6771714850-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "친구에게 빌려준 책인지 확인하려면 사전에 소장 책을 기록해야 하므로 문제 전에 기록해야 작동한다.",
+      "risk_flags": [
+        "pre_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-884947832-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한으로 버스 도착 정보를 얻을 수 있지만 지도·대중교통 기본 앱에서 더 편하게 제공되는 범용 기능이다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-884947832-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 외에 하차 정류장 선택과 알림 판단이 추가되어 단일 입력·단일 처리·단일 결과가 아니며 기본 지도 앱으로 대체된다.",
+      "risk_flags": [
+        "generic_alternative",
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-884947832-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한 외에 지역·노선 선택이 필요하고 실시간 버스 조회는 기존 지도·교통 앱에서 더 편하게 가능하다.",
+      "risk_flags": [
+        "generic_alternative",
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-478643661-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "3D 포즈 선택과 회전·자세·조명 조작은 허용 입력 유형을 벗어나며 여러 조작으로 단일 입력·처리·결과가 아니다.",
+      "risk_flags": [
+        "input_type",
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-478643661-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "신체 부위 선택과 3D 회전 조작이 허용 입력을 벗어나고 필요한 참고 화면까지 여러 설정 처리가 필요하다.",
+      "risk_flags": [
+        "input_type",
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-478643661-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "포즈 선택·머리 각도·조명 조정은 허용 입력이 아니며 여러 조작을 거쳐야 하므로 세로 조각이 단순하지 않다.",
+      "risk_flags": [
+        "input_type",
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6769347373-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "텍스트 단어 1개를 암기 여부로 처리해 복습 큐를 만드는 흐름은 구체적이지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_clarity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6769347373-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "텍스트 단어 판정 후 복습 큐를 만드는 핵심은 가능하지만 50개 누적 덱은 단어 1개 처리에서 범위를 확장한다.",
+      "risk_flags": [
+        "title_clarity",
+        "scope_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6769347373-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "텍스트 단어 1개를 외움·미암기로 분류해 다음 복습 대상을 만드는 구조는 명확하지만 제목만으로 문제와 결과가 완전히 보이지 않는다.",
+      "risk_flags": [
+        "title_clarity"
+      ]
+    }
+  ]
+}

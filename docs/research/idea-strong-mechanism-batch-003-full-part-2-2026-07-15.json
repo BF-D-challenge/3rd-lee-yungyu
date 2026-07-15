@@ -1,0 +1,256 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 납품 전 점검하는 소형 개발팀이 공개 직전 공개 웹앱 URL 하나를 입력하고 보안 헤더 응답만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 납품 전 점검하는 소형 개발팀이 공개 직전 공개 웹앱 URL 하나를 입력하고 HTTPS·쿠키 설정만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 납품 전 점검하는 소형 개발팀이 공개 직전 공개 웹앱 URL 하나를 입력하고 공개 관리 경로 응답만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 납품 전 점검하는 소형 개발팀이 고객에게 테스트 링크를 전달하기 직전 공개 웹앱 URL 하나를 입력하고 보안 헤더 응답만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 납품 전 점검하는 소형 개발팀이 고객에게 테스트 링크를 전달하기 직전 공개 웹앱 URL 하나를 입력하고 HTTPS·쿠키 설정만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 납품 전 점검하는 소형 개발팀이 고객에게 테스트 링크를 전달하기 직전 공개 웹앱 URL 하나를 입력하고 공개 관리 경로 응답만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 납품 전 점검하는 소형 개발팀이 AI 프로토타입 데모 공개 직전 공개 웹앱 URL 하나를 입력하고 보안 헤더 응답만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 납품 전 점검하는 소형 개발팀이 AI 프로토타입 데모 공개 직전 공개 웹앱 URL 하나를 입력하고 HTTPS·쿠키 설정만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 납품 전 점검하는 소형 개발팀이 AI 프로토타입 데모 공개 직전 공개 웹앱 URL 하나를 입력하고 공개 관리 경로 응답만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 프로토타입을 공개하는 프리랜서 개발자가 공개 직전 공개 웹앱 URL 하나를 입력하고 보안 헤더 응답만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 프로토타입을 공개하는 프리랜서 개발자가 공개 직전 공개 웹앱 URL 하나를 입력하고 HTTPS·쿠키 설정만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 프로토타입을 공개하는 프리랜서 개발자가 공개 직전 공개 웹앱 URL 하나를 입력하고 공개 관리 경로 응답만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 프로토타입을 공개하는 프리랜서 개발자가 고객에게 테스트 링크를 전달하기 직전 공개 웹앱 URL 하나를 입력하고 보안 헤더 응답만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 프로토타입을 공개하는 프리랜서 개발자가 고객에게 테스트 링크를 전달하기 직전 공개 웹앱 URL 하나를 입력하고 HTTPS·쿠키 설정만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 프로토타입을 공개하는 프리랜서 개발자가 고객에게 테스트 링크를 전달하기 직전 공개 웹앱 URL 하나를 입력하고 공개 관리 경로 응답만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 프로토타입을 공개하는 프리랜서 개발자가 AI 프로토타입 데모 공개 직전 공개 웹앱 URL 하나를 입력하고 보안 헤더 응답만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 프로토타입을 공개하는 프리랜서 개발자가 AI 프로토타입 데모 공개 직전 공개 웹앱 URL 하나를 입력하고 HTTPS·쿠키 설정만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 프로토타입을 공개하는 프리랜서 개발자가 AI 프로토타입 데모 공개 직전 공개 웹앱 URL 하나를 입력하고 공개 관리 경로 응답만 한 번 점검해 관찰된 문제와 재현 URL을 받는 흐름이 제목과 일치한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    }
+  ]
+}

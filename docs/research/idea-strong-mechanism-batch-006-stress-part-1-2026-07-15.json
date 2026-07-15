@@ -1,0 +1,141 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1509085044-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘BLE 특성값 변경 시점 로그’는 단일 기기의 특성값을 한 번 읽어 변경 여부와 변경 시점을 판단할 수 없으며 결과 로그를 만들려면 이전 기록이나 반복 측정이 필요하다.",
+      "risk_flags": [
+        "multi_step",
+        "prior_record_required",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1509085044-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘주변 BLE 기기 서비스 UUID 목록’은 BLE 권한 하나로 기기를 한 번 스캔하고 서비스 UUID를 처리해 목록 파일 하나를 제공하므로 개발자가 펌웨어 응답을 확인하는 순간과 잘 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-meyoo-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘주문별 비용을 뺀 실제 실이익 표’는 주문 정보가 담긴 CSV 파일 하나를 입력해 결제액에서 수수료·광고비·원가를 한 번 차감하고 주문별 정산표 하나를 제공해 소형 셀러의 월 정산 순간에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-meyoo-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘광고비까지 뺀 상품 실이익 표’는 비용 필드가 담긴 CSV 파일 하나에서 광고비를 포함한 실이익을 한 번 계산해 정산표 하나로 제공하므로 가격 변경 직전 대행자의 판단 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-meyoo-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘상품별 광고·원가 차감 실이익 표’는 주문별 비용 CSV 하나를 입력해 차감 계산 후 SKU별 실이익으로 합산하고 정산표 하나를 제공하므로 광고 지속 상품을 고르는 담당자의 순간과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-gnbafbeabkbkecmbedfgebgboicpnkpp-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘웹페이지 시안 어긋남 오버레이 비교’는 Figma URL과 실제 웹페이지 URL이라는 두 외부 대상을 입력해 각각 가져와야 하므로 입력 1개 규칙을 넘고 외부 데이터 접근이 필수다.",
+      "risk_flags": [
+        "multi_input",
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-gnbafbeabkbkecmbedfgebgboicpnkpp-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘Figma 시안 구현 차이율 비교’는 Figma URL과 실제 웹페이지 URL 두 입력을 외부에서 불러와야 하므로 단일 입력 MVP가 아니며 차이율 계산에도 외부 데이터 접근이 필요하다.",
+      "risk_flags": [
+        "multi_input",
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-gnbafbeabkbkecmbedfgebgboicpnkpp-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘실제 웹페이지 차이 위치 표시’는 Figma URL과 실제 페이지 URL 두 입력을 가져와 비교해야 하므로 입력 1개 규칙을 위반하고 외부 데이터 접근이 필수다.",
+      "risk_flags": [
+        "multi_input",
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-cable-identifier-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진 속 케이블 종류명 즉시 확인’은 케이블 사진 한 장을 처리해 식별 카드 하나를 내지만 범용 이미지 AI 한 번으로 더 쉽게 대체할 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-cable-identifier-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘케이블 사진의 호환 포트 확인’은 사진 한 장에서 호환 포트를 카드 하나로 보여주지만 범용 이미지 AI 한 번으로 더 쉽게 대체할 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    }
+  ]
+}

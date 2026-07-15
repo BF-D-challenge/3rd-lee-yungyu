@@ -1,0 +1,220 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-sitemaptollm-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자사 문서 사이트를 운영하는 1인 SaaS 개발자가 사이트맵 공개 직후 페이지 제목·URL 텍스트가 담긴 공개 사이트맵 URL 하나를 한 번 파싱해 제목과 URL이 한 줄씩 정리된 llms.txt 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-sitemaptollm-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자사 문서 사이트를 운영하는 1인 SaaS 개발자가 문서 구조 변경 직후 공개 사이트맵 URL 하나를 한 번 파싱해 첫 경로 구간별로 묶인 llms.txt 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-sitemaptollm-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자사 문서 사이트를 운영하는 1인 SaaS 개발자가 AI 크롤러 안내 파일 배포 직전 공개 사이트맵 URL 하나를 한 번 정규화해 쿼리와 중복 URL이 제거된 llms.txt 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-sitemaptollm-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여러 고객 사이트를 관리하는 콘텐츠 대행 실무자가 사이트맵 공개 직후 공개 사이트맵 URL 하나를 한 번 파싱해 첫 경로 구간별 섹션이 붙은 llms.txt 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-sitemaptollm-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여러 고객 사이트를 관리하는 콘텐츠 대행 실무자가 문서 구조 변경 직후 공개 사이트맵 URL 하나를 한 번 정규화해 쿼리와 중복 URL이 제거된 llms.txt 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-sitemaptollm-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여러 고객 사이트를 관리하는 콘텐츠 대행 실무자가 AI 크롤러 안내 파일 배포 직전 공개 사이트맵 URL 하나를 한 번 파싱해 페이지 제목과 URL이 한 줄씩 정리된 llms.txt 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-sitemaptollm-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 문서 포털을 배포하는 테크니컬 라이터가 사이트맵 공개 직후 공개 사이트맵 URL 하나를 한 번 정규화해 쿼리와 중복 URL이 제거된 llms.txt 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-sitemaptollm-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 문서 포털을 배포하는 테크니컬 라이터가 문서 구조 변경 직후 공개 사이트맵 URL 하나를 한 번 파싱해 페이지 제목과 URL이 한 줄씩 정리된 llms.txt 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-sitemaptollm-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자 문서 포털을 배포하는 테크니컬 라이터가 AI 크롤러 안내 파일 배포 직전 공개 사이트맵 URL 하나를 한 번 파싱해 첫 경로 구간별 섹션이 붙은 llms.txt 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-myterrace-net-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아마추어 축구팀 SNS 운영자가 게시할 경기 정보 확정 직후 팀명·경기명·일시·스코어·로고 URL 텍스트 하나를 한 번 배치해 1080×1080 매치데이 PNG 한 장을 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-myterrace-net-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아마추어 축구팀 SNS 운영자가 경기 공지를 올려야 할 때 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1920 세로형 매치데이 PNG 한 장을 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-myterrace-net-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아마추어 축구팀 SNS 운영자가 경기 정보 수정 후 팀·스폰서 로고 URL을 포함한 텍스트 하나를 한 번 배치해 하단 스폰서 바가 있는 PNG 한 장을 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-myterrace-net-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유소년 축구클럽 코치가 게시할 경기 정보 확정 직후 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1920 세로형 매치데이 PNG 한 장을 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-myterrace-net-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유소년 축구클럽 코치가 디자인 담당자 없이 공지해야 할 때 팀·스폰서 로고 URL을 포함한 텍스트 하나를 한 번 배치해 하단 스폰서 바가 있는 PNG 한 장을 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-myterrace-net-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유소년 축구클럽 코치가 경기 정보 수정 후 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1080 정사각형 매치데이 PNG 한 장을 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-myterrace-net-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지역 풋살리그 운영자가 게시할 경기 정보 확정 직후 팀·스폰서 로고 URL을 포함한 텍스트 하나를 한 번 배치해 하단 스폰서 바가 있는 PNG 한 장을 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-myterrace-net-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지역 풋살리그 운영자가 디자인 담당자 없이 공지해야 할 때 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1080 정사각형 매치데이 PNG 한 장을 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-myterrace-net-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지역 풋살리그 운영자가 경기 정보 수정 후 경기 정보와 로고 URL 텍스트 하나를 한 번 배치해 1080×1920 세로형 매치데이 PNG 한 장을 받는다.",
+      "risk_flags": []
+    }
+  ]
+}

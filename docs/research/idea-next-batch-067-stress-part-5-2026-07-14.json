@@ -1,0 +1,429 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6760657349-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "두 숫자를 입력해 합계를 계산하는 결과는 구체적이지만 휴대폰 계산기보다 편하지 않고 현재 시각과의 일치 연출도 재현 가능한 문제 해결 결과가 아니다.",
+      "risk_flags": [
+        "os_basic",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760657349-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "두 숫자 입력→합계와 시각 대조→현재 시각 공개는 계산기보다 나은 행사 진행 결과가 아니며 마술 연출에 필요한 별도 설명이 빠져 있다.",
+      "risk_flags": [
+        "os_basic",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760657349-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "두 숫자 입력→합계 계산→시각 일치 결과는 일반 계산기만으로도 가능하고 생일 파티에서 어떤 한 끗 변화가 생기는지 구체적이지 않다.",
+      "risk_flags": [
+        "os_basic",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1636112325-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "항구와 날짜를 입력해 조석을 계산하고 물때 시각·높이·계수를 보여주는 흐름은 타당하지만 제목만으로 물때 도구임이 드러나지 않고 데이터 제공 방식이 불명확하다.",
+      "risk_flags": [
+        "data_source",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1636112325-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "항구와 날짜 입력→조석·기준 계산→출항 가능한 시간 결과는 자연스럽지만 안전 판단에 쓰일 데이터의 정확성과 기준이 문구에 없다.",
+      "risk_flags": [
+        "safety",
+        "data_source"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1636112325-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "항구와 날짜에 최소 수위 기준을 넣어 가능한 물때를 보여주는 흐름은 가능하지만 최소 수위의 의미와 결과 범위가 명확하지 않다.",
+      "risk_flags": [
+        "threshold_unclear",
+        "data_source"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1532669250-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로젝트 할 일을 입력해 파일 기반으로 닫고 완료 목록을 만드는 구조는 가능하지만 '파일 기반 이슈 처리'가 어떤 입력 형식과 결과인지 불명확하다.",
+      "risk_flags": [
+        "process_unclear",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1532669250-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "할 일 텍스트를 입력해 프로젝트 폴더의 항목을 완료 처리하는 결과는 구체화할 수 있지만 파일 형식과 완료 처리 방식이 문구에 드러나지 않는다.",
+      "risk_flags": [
+        "process_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1532669250-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로젝트 할 일을 입력해 상태별 파일로 나누는 흐름은 보이지만 '완료된 할 일'과 상태별 파일의 실제 결과가 서로 명확히 연결되지 않는다.",
+      "risk_flags": [
+        "process_unclear",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1035219562-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장에 파리풍 필터를 적용해 편집 사진을 만드는 결과는 명확하지만 기본 사진 편집기의 필터 기능으로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_editor",
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1035219562-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 입력→색상 필터 적용→통일된 편집 사진은 구체적이지만 일반 사진 앱의 필터 한 번으로 처리할 수 있어 별도 카드 가치가 없다.",
+      "risk_flags": [
+        "generic_editor",
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1035219562-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장을 파리풍으로 보정하는 입력·처리·결과는 명확하지만 범용 사진 편집 기능보다 편리한 한 끗이 없다.",
+      "risk_flags": [
+        "generic_editor",
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6448928907-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오디오 파일 또는 입력을 받아 노이즈·톤·링 변조·필터를 적용하고 실험적인 음원을 내는 흐름은 가능하지만 오디오 입력의 형태와 재생 결과가 불명확하다.",
+      "risk_flags": [
+        "input_unclear",
+        "realtime_scope"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6448928907-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오디오 입력→효과 처리→변형 음원은 구체적이지만 라이브 루프 입력인지 파일 입력인지와 즉시 결과의 형태를 문구만으로 판단하기 어렵다.",
+      "risk_flags": [
+        "input_unclear",
+        "realtime_scope"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6448928907-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보컬 오디오를 입력해 노이즈·변조 효과를 적용하는 결과는 보이지만 마이크 권한과 실시간 처리 범위가 명시되지 않았다.",
+      "risk_flags": [
+        "permission_unclear",
+        "realtime_scope"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-961932335-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 입력→도쿄풍 필터→편집 사진 결과는 구체적이지만 기본 사진 앱의 필터 기능으로 더 편리하게 처리할 수 있다.",
+      "risk_flags": [
+        "generic_editor",
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-961932335-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "일상 사진에 도쿄 색감 필터를 적용하는 결과는 명확하지만 범용 사진 편집기의 기본 필터와 차별되는 처리나 결과가 없다.",
+      "risk_flags": [
+        "generic_editor",
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-961932335-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "도시 사진 입력→도쿄 필름 필터→보정 사진은 한 번에 끝나지만 일반 사진 앱보다 편리한 세로 조각이 아니다.",
+      "risk_flags": [
+        "generic_editor",
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-402405770-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현상 단계와 온도를 입력해 보정 시간을 계산하고 한 세션용 다단계 타이머를 즉시 제공하므로 입력·처리·결과가 구체적이고 현상 순간에도 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-402405770-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현상·정착·수세 단계와 온도를 입력해 보정된 단계별 타이머를 제공하므로 집에서 한 번의 현상 세션을 완결하는 MVP가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-402405770-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현상 단계와 온도를 입력하면 교반·세척 순서에 맞춘 단계별 소리 타이머가 결과로 나오므로 암실 작업 순간과 한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-553145544-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "얼굴 요소를 조합해 JPEG 스케치를 만드는 결과는 구체적이지만 실제 수사·실종 신고에 쓰이는 정확한 식별 도구처럼 읽혀 용도와 한계 문구가 필요하다.",
+      "risk_flags": [
+        "high_stakes",
+        "input_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-553145544-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "눈·코·입·머리카락 요소를 선택해 이동·확대하고 JPEG 용의자 스케치를 즉시 저장하므로 추리 게임 과업에 맞는 단일 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-553145544-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "짧은 설명에 맞는 얼굴 요소를 선택·배치해 저장·공유 가능한 범인 스케치를 만드는 흐름이 방탈출 상황과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1031060746-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "건반과 베이스·코드 버튼 입력을 받아 가상 아코디언 음을 즉시 출력하므로 악기를 두고 온 연주자의 코드 연습 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1031060746-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "24건반과 코드 버튼을 누르면 아코디언 소리가 나와 이동 중 스케일·코드 연습이라는 한 번의 과업을 완결한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1031060746-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "건반과 베이스·코드 버튼 입력→가상 아코디언 음 생성→민요 스케일 소리 확인으로 이어져 짧은 이동 중 연습 순간에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6484594401-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카메라 권한과 장면으로 사진·영상을 한 쌍 저장하는 결과는 명확하지만 OS의 Live Photo 같은 기본 기능으로 더 편리하게 대체된다.",
+      "risk_flags": [
+        "os_basic",
+        "permission_scope"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6484594401-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카메라 권한으로 사진과 영상을 동시에 저장하는 핵심은 가능하지만 템플릿별 브이로그 구성은 원본 메커니즘에 없는 새 기능이다.",
+      "risk_flags": [
+        "new_feature",
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6484594401-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진·영상 쌍 저장은 구체적이지만 여행 커플이라는 결제자와 반려견 산책이라는 트위스트가 어긋나 실제 사용 순간이 자연스럽지 않다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "os_basic"
+      ]
+    }
+  ]
+}

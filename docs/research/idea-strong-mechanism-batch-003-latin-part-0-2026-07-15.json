@@ -1,0 +1,168 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-milestone-clip-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘저장소 성과 세로형 MP4 만들기’는 오픈소스 메인테이너가 공개 저장소 수치가 바뀐 순간 URL 1개로 이름·별·포크 수를 배치해 세로형 MP4 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-milestone-clip-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘저장소 성과 정사각형 MP4’는 오픈소스 메인테이너가 별 목표 달성 직후 공개 저장소 URL 1개에서 이름·별·포크 수를 처리해 정사각형 MP4 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-milestone-clip-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘저장소 성과 가로형 MP4’는 오픈소스 메인테이너가 포크 증가를 주간 업데이트할 때 공개 저장소 URL 1개에서 이름·별·포크 수를 배치해 가로형 MP4 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-milestone-clip-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘저장소 성과 정사각형 MP4’는 출시 성과를 보여줄 개발자 창업자가 수치 변경 직후 공개 저장소 URL 1개에서 이름·별·포크 수를 처리해 정사각형 MP4 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-milestone-clip-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘저장소 성과 가로형 MP4’는 개발자 창업자가 별 목표 달성 직후 공개 저장소 URL 1개에서 최신 이름·별·포크 수를 배치해 가로형 MP4 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-milestone-clip-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘저장소 성과 세로형 MP4 만들기’는 개발자 창업자가 포크 증가 주간 업데이트 순간 공개 저장소 URL 1개에서 이름·별·포크 수를 처리해 세로형 MP4 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-milestone-clip-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘저장소 성과 가로형 MP4’는 프로젝트 홍보 개발자 마케터가 공개 저장소 수치 변경 직후 URL 1개에서 이름·별·포크 수를 배치해 게시용 가로형 MP4 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-milestone-clip-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘저장소 성과 세로형 MP4 만들기’는 프로젝트 홍보 개발자 마케터가 별 목표 달성 직후 공개 저장소 URL 1개에서 이름·별·포크 수를 처리해 세로형 MP4 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-milestone-clip-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘저장소 성과 정사각형 MP4’는 프로젝트 홍보 개발자 마케터가 포크 증가 주간 업데이트 순간 공개 저장소 URL 1개에서 이름·별·포크 수를 배치해 정사각형 MP4 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-qranalytica-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘인쇄용 SVG QR 파일 만들기’는 소형 카페 포스터 담당자가 인쇄소 제출 직전 목적지 URL 1개를 입력해 동적 QR을 생성하고 인쇄용 SVG 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-qranalytica-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘투명 PNG QR 파일 만들기’는 소형 카페 포장 담당자가 스티커 발주 직전 목적지 URL 1개를 입력해 동적 QR을 생성하고 투명 PNG 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-qranalytica-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘A4 출력용 QR 테스트 만들기’는 소형 카페 포스터 담당자를 결제자로 두면서 순간은 학원 안내문 PDF 게시 직전으로 바뀌어 payer와 moment가 어긋나며, URL 1개에서 동적 QR을 만들어 A4 PDF 1개를 제공하는 처리 자체는 구체적이다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    }
+  ]
+}

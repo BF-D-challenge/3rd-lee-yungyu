@@ -1,0 +1,231 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-588959204-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "수입·지출·이체를 미리 계속 기록해야 대조 후 계정별 잔액을 계산하므로 문제 발생 순간의 1회 입력·처리·결과 조각이 아니고 제목도 문제와 결과를 드러내지 않는다.",
+      "risk_flags": [
+        "prior_recording_required",
+        "generic_ledger",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-588959204-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "거래를 사전에 기록해 둔 뒤 여러 이체를 대조해야 통장별 잔액을 얻으므로 문제 전에 기록이 필요하고 제목만으로 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "prior_recording_required",
+        "generic_ledger",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-588959204-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "거래를 누적 기록한 뒤 달력으로 분류해야 하루 식비·교통비와 예산 초과를 확인할 수 있어 사전 기록이 필요하고 범용 가계부·캘린더 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "prior_recording_required",
+        "os_or_generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-588959204-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카드·현금 거래를 계속 기록하고 대조해야 통장별 잔액을 계산하므로 즉시 1회 조각이 아니며 일반 가계부 앱으로도 처리할 수 있다.",
+      "risk_flags": [
+        "prior_recording_required",
+        "generic_ledger"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-588959204-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기록된 거래를 전제로 달력에서 하루 지출을 확인하는 구조라 문제 전에 기록이 필요하고 계좌 이체 직후의 혼란을 직접 해결하지 못한다.",
+      "risk_flags": [
+        "prior_recording_required",
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-588959204-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "수입·지출을 미리 입력한 뒤 대조하거나 달력에서 조회해야 하므로 사전 기록이 필수이고 각각의 카드 순간과 처리·결과가 일치하지 않는다.",
+      "risk_flags": [
+        "prior_recording_required",
+        "input_process_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-588959204-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "달력에서 하루 지출을 보려면 거래를 미리 계속 기록해야 하므로 문제 전에 설치·기록이 필요하고 제목도 예산 초과 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "prior_recording_required",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-588959204-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "이체 직후 통장별 잔액을 얻으려면 기존 거래 기록을 누적해 둬야 하므로 사전 기록 게이트를 위반하고 범용 가계부와 차별성이 약하다.",
+      "risk_flags": [
+        "prior_recording_required",
+        "generic_ledger"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-588959204-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "거래 내역을 미리 기록한 뒤 대조해야 예산 초과를 계산할 수 있어 문제 전에 기록이 필요하며 제목만으로 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "prior_recording_required",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6760676992-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "주류·스타일·맛을 한 번 입력해 레시피와 팁을 보여주지만 레시피 검색은 웹·범용 AI로 더 쉽게 대체되고 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_alternative",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6760676992-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "소주 베이스와 상큼한 맛을 입력해 레시피를 검색하는 결과는 가능하지만 새 위스키를 찾는 순간과 입력이 불일치하고 웹·범용 AI 검색으로 대체 가능하다.",
+      "risk_flags": [
+        "moment_input_mismatch",
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6760676992-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "진과 탄산 스타일을 입력해 제조 팁을 얻는 흐름은 구체적이지만 일반 레시피 검색·범용 AI가 더 편하고 제목만으로 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "generic_alternative",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6760676992-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "소주 베이스와 상큼한 맛을 입력해 레시피를 검색하지만 바의 손님 응대 순간에 필요한 즉시 제조 결과가 불명확하고 웹·범용 AI로 대체 가능하다.",
+      "risk_flags": [
+        "generic_alternative",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6760676992-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "진과 탄산 스타일을 입력해 팁을 찾는 카드인데 새 위스키 레시피를 찾는 순간과 맞지 않으며 레시피 검색은 범용 검색·AI가 더 편하다.",
+      "risk_flags": [
+        "moment_input_mismatch",
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6760676992-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위스키·스타일·맛을 입력해 레시피와 팁을 받는 결과는 구체적이지만 제목이 기능을 설명하지 않고 범용 레시피 검색·AI로 대체 가능하다.",
+      "risk_flags": [
+        "generic_alternative",
+        "title_unclear"
+      ]
+    }
+  ]
+}

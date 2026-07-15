@@ -1,0 +1,423 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-571824492-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "운동 기록을 입력해 1RM을 계산하고 운동별 최대중량을 보여주는 흐름은 구체적이지만 GymGoal Pro라는 제목만으로 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-571824492-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "운동 기록 하나로 1RM을 계산하는 원본 처리와 달리 소홀한 근육을 판단하려면 부위별 누적 기록과 추가 분석이 필요하다.",
+      "risk_flags": [
+        "history_required",
+        "scope_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-571824492-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "운동 기록을 입력해 1RM을 계산하더라도 맨몸운동의 최대중량이라는 결과가 일반적인 1RM 처리와 자연스럽게 맞지 않는다.",
+      "risk_flags": [
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1422450628-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "시험 유형을 입력해 문제를 풀고 정답·해설을 받는 흐름은 구체적이지만 Section 608과 냉동공조기능사 시험의 대상이 일치하는지 제목과 문구만으로 불명확하다.",
+      "risk_flags": [
+        "domain_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1422450628-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "시험 유형 입력 후 한 문제의 정답·해설을 주는 구조에서 자주 틀린 문제를 모으려면 사전 풀이 기록이 필요하다.",
+      "risk_flags": [
+        "history_required",
+        "extra_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1422450628-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "Section 608 시험 유형만 입력하는데 냉매 압력표 문제와 계산 근거를 제공하려면 별도 문제 데이터와 계산 입력이 추가로 필요하다.",
+      "risk_flags": [
+        "input_insufficient",
+        "scope_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1320729984-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "체중·체지방률·메모 한 건을 입력해 변화 그래프를 만들려면 과거 기록이 필요하므로 입력 1개에서 결과 1개가 완결되지 않는다.",
+      "risk_flags": [
+        "history_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1320729984-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "체중 기록으로 추세 그래프를 만드는 원본 처리에 회식·야식 스탬프와 변화 흐름 분석을 추가해 단일 기록 세로 조각을 벗어난다.",
+      "risk_flags": [
+        "history_required",
+        "extra_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1320729984-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "아침 체중 한 건 입력으로 주간 변화 그래프를 만들 수 없어 기록 누적이 선행되어야 한다.",
+      "risk_flags": [
+        "history_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-457863522-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "드럼 패드 연주는 허용된 텍스트·URL·파일·사진·단일 권한 입력에 해당하지 않아 녹음 결과를 만들 수 없다.",
+      "risk_flags": [
+        "input_type_forbidden"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-457863522-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "드럼 연주 녹음 뒤 양자화는 원본의 녹음·오디오 저장 처리에 없는 추가 기능이다.",
+      "risk_flags": [
+        "extra_feature",
+        "input_type_forbidden"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-457863522-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "드럼 패드 연주를 입력해 오디오를 저장하는 흐름에서 한국 대중가요 반주와의 맞춤은 별도 음원 입력과 추가 처리가 필요하다.",
+      "risk_flags": [
+        "external_input",
+        "extra_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-459019300-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "지출 한 건 입력만으로 상위 지출 카테고리와 월별 예산을 산출할 수 없고 누적 가계부 기록이 필요하다.",
+      "risk_flags": [
+        "history_required",
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-459019300-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "반복 공과금과 월별 카테고리 비교는 단일 지출 입력과 현금흐름 추적만으로는 완결되지 않고 과거 기록이 필요하다.",
+      "risk_flags": [
+        "history_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-459019300-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "주유비 한 건 입력으로 월말 현금흐름과 교통비 비중을 보여줄 수 없어 누적 계정별 기록이 선행되어야 한다.",
+      "risk_flags": [
+        "history_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6447426581-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "색상 값 또는 이미지를 입력해 HEX·RGB·Swift 코드를 복사하는 흐름은 구체적이지만 이미지에서 대표 색상을 추출하는 처리가 원본에 명시되지 않았다.",
+      "risk_flags": [
+        "image_processing_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6447426581-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "색상 입력을 코드로 변환하는 원본 처리와 달리 프로젝트별 팔레트 정리는 저장·분류 기능을 추가한다.",
+      "risk_flags": [
+        "extra_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6447426581-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "색상 값을 Swift 코드로 변환하는 결과는 가능하지만 단순 색상 변환은 범용 변환기나 한 번의 검색이 더 편해 규칙상 차별성이 없다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1550529526-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한만으로 오프라인 산행 경로를 보이려면 신호가 끊기기 전에 지도 데이터를 설치해 둬야 한다.",
+      "risk_flags": [
+        "preinstall_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1550529526-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한으로 오프라인 지도를 보여주는 처리에 설치된 등산로와 정상 날씨 확인을 함께 요구해 사전 설치와 외부 최신 정보가 필요하다.",
+      "risk_flags": [
+        "preinstall_required",
+        "external_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1550529526-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한으로 오프라인 경로를 확인하려면 지리산 경로 데이터를 미리 설치해야 하므로 문제 순간의 단일 입력만으로 작동하지 않는다.",
+      "risk_flags": [
+        "preinstall_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-409695797-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "대출 금액·기간·추가 납입액만으로는 이자율이 없어 대출 기간과 비용 절감액을 구체적으로 계산할 수 없다.",
+      "risk_flags": [
+        "input_insufficient"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-409695797-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "보너스 일시납을 포함한 총 이자와 종료 시점을 계산하려면 대출 금액·기간·추가 납입액 외에 이자율이 필요하다.",
+      "risk_flags": [
+        "input_insufficient"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-409695797-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "은행별 조건 비교를 하려면 은행별 금리와 조건 데이터가 필요하지만 허용 입력에는 대출 금액·기간·추가 납입액만 있다.",
+      "risk_flags": [
+        "input_insufficient",
+        "external_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760676992-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주류·스타일·맛 프로필 하나를 입력해 레시피를 검색·분류하고 제조법과 팁 하나를 즉시 보여주는 구체적인 세로 조각이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760676992-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "진·탄산 스타일·맛 프로필을 입력하면 레시피 검색 결과로 얼음과 가니시 제조 팁을 즉시 받을 수 있어 입력·처리·결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760676992-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소주 베이스와 상큼한 맛을 입력해 레시피를 검색하고 집에서 만들 제조법과 팁을 하나 받는 흐름이 실제 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-402012828-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진·동영상·문서 파일을 입력해 암호 또는 가짜 코드로 잠그고 개인 보관함을 즉시 보여주는 단일 처리 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-402012828-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "파일을 잠그는 원본 처리와 달리 신분증 문서를 분류하려면 별도 문서 분류 기능이 추가된다.",
+      "risk_flags": [
+        "extra_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-402012828-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진·동영상·문서 파일을 입력해 잠근 뒤 가짜 코드로 공개 파일 목록을 보여주는 결과가 원본의 암호·가짜 코드 메커니즘과 일치한다.",
+      "risk_flags": []
+    }
+  ]
+}

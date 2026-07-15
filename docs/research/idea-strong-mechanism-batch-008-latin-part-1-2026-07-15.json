@@ -1,0 +1,164 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6762625967-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치가 보존된 HWP PDF’는 보호자가 이동 중 받은 학교 안내문 HWP 한 파일을 한 번 변환해 표 배치가 유지된 PDF 한 개를 얻는 결과가 명확하지만, ‘공공기관 문서’ 순간이 학교 가정통신문과 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6762625967-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 위치가 유지된 HWP PDF’는 초등학생 보호자가 받은 학교 HWP 한 파일을 한 번 변환해 이미지 위치가 보존된 전달용 PDF 한 개를 얻는 흐름이 자연스럽고 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6762625967-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘본문이 읽히는 HWP PDF 변환’은 보호자가 마감 직전 과제 문서 HWP 한 파일을 한 번 변환해 읽을 수 있는 PDF 한 개를 얻는 결과는 명확하지만, 학교 가정통신문 보호자와 과제 문서 순간이 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6762625967-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 위치가 유지된 HWP PDF’는 대학생이 이동 중 받은 HWP 한 파일을 한 번 변환해 이미지 위치가 보존된 PDF 한 개를 얻는 처리와 결과는 명확하지만, 대학생 과제 파일과 공공기관 문서 순간이 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6762625967-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘본문이 읽히는 HWP PDF 변환’은 대학생이 받은 HWP 한 파일을 한 번 변환해 읽을 수 있는 PDF 한 개를 얻는 결과는 명확하지만, 대학생 과제 파일과 가족에게 전달할 학교 안내문 순간이 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6762625967-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치가 보존된 HWP PDF’는 대학생이 마감 직전 과제 HWP 한 파일을 한 번 변환해 표 배치가 유지된 PDF 한 개를 얻는 흐름이 자연스럽고 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mirage-detect-image-editing-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘복제 흔적이 표시된 사진 히트맵’은 중고거래 운영자가 게시물 사진 한 장을 한 번 탐지해 복제 의심 영역이 표시된 히트맵 이미지 한 장을 얻는 결과가 승인 직전 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mirage-detect-image-editing-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘경계 불일치가 보이는 사진 히트맵’은 중고거래 운영자가 사진 한 장을 한 번 탐지해 의심 영역 히트맵 한 장을 얻는 결과는 명확하지만, 중고거래 운영자와 보도 사진 송고 순간이 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-mirage-detect-image-editing-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘과도한 보정 영역 사진 히트맵’은 중고거래 운영자가 사진 한 장을 한 번 탐지해 과도한 보정 의심 영역 히트맵 한 장을 얻는 결과는 구체적이지만, 중고거래 승인과 브랜드 광고 승인 순간이 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-mirage-detect-image-editing-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘경계 불일치가 보이는 사진 히트맵’은 뉴스 사진 담당자가 사진 한 장을 한 번 탐지해 경계 불일치 의심 영역 히트맵 한 장을 얻는 결과는 명확하지만, 뉴스 담당자와 중고거래 승인 순간이 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-mirage-detect-image-editing-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘과도한 보정 영역 사진 히트맵’은 뉴스 사진 담당자가 송고 직전 사진 한 장을 한 번 탐지해 과도한 보정 의심 영역 히트맵 한 장을 얻는 흐름이 자연스럽고 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mirage-detect-image-editing-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘복제 흔적이 표시된 사진 히트맵’은 뉴스 사진 담당자가 사진 한 장을 한 번 탐지해 복제 의심 영역 히트맵 한 장을 얻는 결과는 명확하지만, 뉴스 담당자의 브랜드 광고 승인 순간과 복제 흔적 검수가 완전히 맞지는 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    }
+  ]
+}

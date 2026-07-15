@@ -1,0 +1,110 @@
+{
+  "batch_id": "EXH-042",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 47,
+    "Fail": 51,
+    "Merge": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 70,
+      "sample": [
+        "chrome_web_store:fkbgcmnnpibpbeedpciabjimdgklmnpb",
+        "chrome_web_store:jgckkchjhjihgdcgaanipmdofhpogcmc",
+        "app_store:1340469417",
+        "app_store:6751921248",
+        "app_store:375279377",
+        "trustmrr:roomstylerai-ai-interior-design",
+        "chrome_web_store:fgldlaakkhepojmdmjpjgkhjcifiihak"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:jgckkchjhjihgdcgaanipmdofhpogcmc",
+          "decision": "Candidate",
+          "reason": "AliExpress Bundle Deals 페이지 입력 → 실제 상품 페이지로 자동 이동 → 상품 페이지 확인이라는 1회 세로 조각이 가능하다."
+        },
+        {
+          "key": "app_store:1340469417",
+          "decision": "Candidate",
+          "reason": "레시피 선택·식재료 검색어 입력 → 식사 계획과 재료 합산 → 휴대폰으로 보낼 장보기 목록이라는 세로 조각이 가능하다."
+        },
+        {
+          "key": "chrome_web_store:fgldlaakkhepojmdmjpjgkhjcifiihak",
+          "decision": "Candidate",
+          "reason": "Amazon 상품 페이지 입력 → 쿠폰 체크박스 자동 클릭 → 적용된 상품 페이지 확인이라는 단일 동작 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.42857142857142855
+    },
+    {
+      "round": 2,
+      "fail_count": 65,
+      "sample": [
+        "app_store:1600525061",
+        "chrome_web_store:nkjdfibkjibnjhmffipfdhhpgfcdcbjj",
+        "app_store:6751921248",
+        "trustmrr:ugc-creator-ai",
+        "chrome_web_store:ejgbgncenolaheegamfggfbncdlbcphk",
+        "app_store:624366832",
+        "trustmrr:codeai-studio"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6751921248",
+          "decision": "Candidate",
+          "reason": "팩 선택 입력 → 카드 순차 공개 → 희귀 카드 확인 결과의 2일 세로 조각이 남는다."
+        },
+        {
+          "key": "trustmrr:codeai-studio",
+          "decision": "Candidate",
+          "reason": "코딩 요청 입력 → 여러 모델 채팅 처리 → 코드 제안 결과의 2일 세로 조각이 남는다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 3,
+      "fail_count": 55,
+      "sample": [
+        "app_store:1445630390",
+        "app_store:1457185832",
+        "trustmrr:onlyphone-ai",
+        "chrome_web_store:nacklnnkbcphbhgodnhfgnbdmobomlnm",
+        "trustmrr:codeai-studio",
+        "app_store:569092652"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:569092652",
+          "decision": "Candidate",
+          "reason": "이력서와 희망 조건 → LOOP AI 분석 → 적합한 채용정보와 포지션 제안이라는 2일 세로 조각이 남는다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 4,
+      "fail_count": 51,
+      "sample": [
+        "app_store:1457185832",
+        "app_store:375279377",
+        "chrome_web_store:jidnnkmjegbfllodfcacpkcheoocelcl",
+        "app_store:624366832",
+        "app_store:1585858911",
+        "app_store:595012291"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

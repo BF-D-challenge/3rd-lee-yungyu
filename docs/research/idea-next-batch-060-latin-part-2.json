@@ -1,0 +1,133 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1468880337-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Files 앱에서 파일 하나를 받아 헥사·ASCII와 시그니처를 분석하고 바이트 빈도·파일 정체 화면을 보여주지만 제목만으로 문제 상황은 드러나지 않는다.",
+      "risk_flags": [
+        "TITLE_UNCLEAR"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1468880337-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "파일 하나를 받아 헥사 데이터를 처리하는 흐름은 맞지만 특정 패턴을 검색하려면 별도의 패턴 입력이 필요해 입력 1개 규칙을 위반한다.",
+      "risk_flags": [
+        "SECOND_INPUT_UNDEFINED"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1468880337-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "첨부파일 하나를 받아 헥사·ASCII와 바이트 빈도를 분석해 깨진 파일의 구조를 즉시 보여주지만 제목만으로 문제 상황은 드러나지 않는다.",
+      "risk_flags": [
+        "TITLE_UNCLEAR"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1468880337-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "펌웨어 파일 하나를 받아 헥사 데이터를 처리하는 흐름은 맞지만 특정 패턴을 검색하려면 별도의 패턴 입력이 필요해 입력 1개 규칙을 위반한다.",
+      "risk_flags": [
+        "SECOND_INPUT_UNDEFINED"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1468880337-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "파일 하나를 받아 헥사·ASCII와 바이트 빈도를 분석해 헤더와 구조를 즉시 보여주지만 제목만으로 문제 상황은 드러나지 않는다.",
+      "risk_flags": [
+        "TITLE_UNCLEAR"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1468880337-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "바이너리 파일 하나를 받아 헥사·ASCII와 시그니처를 분석해 매직 넘버와 메타데이터를 보여주지만 제목만으로 문제 상황은 드러나지 않는다.",
+      "risk_flags": [
+        "TITLE_UNCLEAR"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1468880337-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "첨부파일 하나를 받아 헥사·ASCII와 바이트 빈도를 분석해 악성 여부를 확인할 구조 정보를 보여주지만 제목만으로 문제 상황은 드러나지 않는다.",
+      "risk_flags": [
+        "TITLE_UNCLEAR",
+        "SECURITY_CONTEXT"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1468880337-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "바이너리 파일 하나를 받아 헥사·ASCII와 시그니처를 분석해 매직 넘버와 메타데이터를 보여주지만 제목만으로 문제 상황은 드러나지 않는다.",
+      "risk_flags": [
+        "TITLE_UNCLEAR",
+        "SECURITY_CONTEXT"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1468880337-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "파일 하나를 받아 헥사 데이터를 처리하는 흐름은 맞지만 특정 패턴을 검색하려면 별도의 패턴 입력이 필요해 입력 1개 규칙을 위반한다.",
+      "risk_flags": [
+        "SECOND_INPUT_UNDEFINED",
+        "SECURITY_CONTEXT"
+      ]
+    }
+  ]
+}

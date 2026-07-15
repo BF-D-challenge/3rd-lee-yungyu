@@ -1,0 +1,61 @@
+{
+  "batch_id": "EXH-039",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 36,
+    "Fail": 55,
+    "Merge": 7,
+    "Reserve": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 80,
+      "sample": [
+        "chrome_web_store:afmjmkbkjlohbjhjocdinioafkbcipen",
+        "trustmrr:rowform",
+        "app_store:829587759",
+        "chrome_web_store:pobhoodpcipjmedfenaigbeloiidbflp",
+        "app_store:6444957733",
+        "app_store:996325726",
+        "app_store:403879490",
+        "trustmrr:mobiclaw"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:rowform",
+          "decision": "Candidate",
+          "reason": "요구 텍스트 입력 → AI가 대화형 폼 생성 → 리드 생성·온보딩·설문에 쓸 폼 확인의 2일 세로 조각이 남는다."
+        },
+        {
+          "key": "app_store:403879490",
+          "decision": "Candidate",
+          "reason": "RSS 피드 입력 → 기사 수집·키워드 필터링 → 읽지 않은 기사 목록 확인의 작은 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.25
+    },
+    {
+      "round": 2,
+      "fail_count": 55,
+      "sample": [
+        "app_store:6450627697",
+        "trustmrr:sheeter-ai",
+        "app_store:829587759",
+        "app_store:6444957733",
+        "app_store:996325726",
+        "trustmrr:mobiclaw"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

@@ -1,0 +1,428 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1104649303-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한을 받아 달 위상을 표시하는 흐름은 명확하지만 제목과 결과만으로 촬영 가능 시간까지 보이지 않고 월출 시각은 원본 즉시 결과를 넘어선다.",
+      "risk_flags": [
+        "scope-creep",
+        "weak-differentiation"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1104649303-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한만으로 달 위상을 계산하는 원본 처리에서 보름달 알림과 야간 촬영 준비 시점까지 확장되어 별도 알림·예측 기능이 필요하다.",
+      "risk_flags": [
+        "scope-creep",
+        "missing-input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1104649303-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한으로 현재 달 위상만 계산하는 원본인데 국내 명소 선택·구름 예보·관측 가능성 계산을 추가해 입력과 처리가 달라진다.",
+      "risk_flags": [
+        "scope-creep",
+        "external-data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-363978811-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "운동 구간 텍스트를 한 번 입력해 이름이 붙은 타이머를 처리하고 멀리서 읽는 전체 화면 결과를 즉시 제공해 트레이너의 수업 직전 사용 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-363978811-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "운동 구간 입력에서 멀리서 읽는 전체 화면 타이머가 나오는 흐름은 가능하지만 집에서 혼자 운동하는 결제자와 회원이 흩어진 스튜디오라는 순간이 서로 맞지 않는다.",
+      "risk_flags": [
+        "payer-moment-mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-363978811-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "구간 입력과 전체 화면 타이머 결과에 음성 안내를 추가해 원본의 타이머 메커니즘을 벗어난 새 기능이 필요하다.",
+      "risk_flags": [
+        "scope-creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-340779800-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선물 이름 텍스트만으로는 사람별 분류·구매 상태·예산을 알 수 없어 입력 1개에서 구체적인 예산 포함 결과를 만들 수 없다.",
+      "risk_flags": [
+        "missing-input",
+        "unsupported-inference"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-340779800-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선물 이름 목록만으로 받는 사람별 구매 현황이나 국내 온라인몰 상태를 산출할 수 없어 원본 입력·처리·결과가 성립하지 않는다.",
+      "risk_flags": [
+        "missing-input",
+        "external-data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-340779800-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사람별 예산과 구매·배송·포장 상태가 입력에 없는데 이를 한 화면에 표시하도록 요구해 단일 텍스트 입력의 결과 범위를 초과한다.",
+      "risk_flags": [
+        "missing-input",
+        "state-required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760237050-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "목표 군용 좌표만으로는 거리와 방위를 계산할 현재 위치 입력이 없어 구체적인 목표 방향 결과를 만들 수 없다.",
+      "risk_flags": [
+        "missing-input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760237050-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "군용 좌표 입력만 가능한 원본에 오프라인 지도와 현재 위치 확인을 추가해 필요한 입력·기능이 늘어난다.",
+      "risk_flags": [
+        "missing-input",
+        "scope-creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760237050-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "목표 좌표만으로 현재 위치 기준 방향을 표시할 수 없고 경유지 기록까지 추가되어 원본의 단일 계산 조각을 벗어난다.",
+      "risk_flags": [
+        "missing-input",
+        "scope-creep",
+        "state-required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6753624290-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카드 종류 또는 번호 하나를 입력해 테스트 번호 생성과 Luhn 검증을 처리하고 JSON·텍스트·PDF 테스트 데이터를 즉시 제공하므로 개발자의 결제창 검증 순간과 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6753624290-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카드 번호나 종류를 입력해 Luhn 검증을 수행하고 결과를 JSON·텍스트 파일로 내보내므로 오류 재현과 기록화라는 한 번의 처리·결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6753624290-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카드 번호 또는 종류를 입력해 오프라인 Luhn 검증과 카드 유형 판별을 한 번 처리하고 결과를 즉시 보여주므로 외부망 없는 PG 연동 검증 순간에 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6778743593-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "불안 문장 하나를 입력해 별·성운·별자리 형태로 변환하고 개인 우주 화면 하나를 즉시 보여주므로 퇴근 후 감정을 시각화하는 순간이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6778743593-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "감정 기록을 우주 형태로 변환하는 원본에 미래 날짜 저장 기능을 추가해 기록·보관 상태라는 새 기능이 필요하다.",
+      "risk_flags": [
+        "scope-creep",
+        "state-required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6778743593-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "이번 달 목표 문장 하나를 입력해 별 형태로 변환하고 개인 우주에 표시하는 단일 처리·결과가 원본 메커니즘 안에서 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1540711931-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카메라 권한으로 촬영해 사진을 얻는 기능은 아이폰 기본 카메라가 더 편하고, 수동 RAW 촬영까지 포함해 반나절~2일 세로 조각으로 보기 어렵다.",
+      "risk_flags": [
+        "native-alternative",
+        "mvp-risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1540711931-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영상 촬영을 원하는 순간인데 입력·처리·결과가 고해상도 사진으로만 정의되어 결제자와 결과가 직접 맞지 않는다.",
+      "risk_flags": [
+        "input-output-mismatch",
+        "native-alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1540711931-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "화이트밸런스 고정 후 고해상도 사진 저장은 기본 카메라의 범용 기능과 겹치며 RAW 수동 촬영을 2일 MVP로 구현하기 어렵다.",
+      "risk_flags": [
+        "native-alternative",
+        "mvp-risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-395680819-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영상 파일과 외부 자막 파일이라는 두 입력을 함께 요구하므로 입력 1개 규칙을 위반하고, 파일을 컴퓨터에서 가져오는 과정도 추가된다.",
+      "risk_flags": [
+        "multi-input",
+        "transfer-required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-395680819-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영상과 자막 두 파일 입력에 더해 이전 시청 위치를 저장·복원해야 하므로 단일 처리 규칙과 사전 기록 금지 규칙을 모두 벗어난다.",
+      "risk_flags": [
+        "multi-input",
+        "state-required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-395680819-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영상 파일과 자막 파일을 함께 입력해야 해 단일 입력 규칙을 충족하지 않으며, 변환 없이 재생하는 결과는 원본 기능에 한정된다.",
+      "risk_flags": [
+        "multi-input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1233384588-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Toyota OBD-2 코드 하나를 입력해 설명·가능 원인·증상을 조회하고 한 화면의 코드 정보 결과를 즉시 보여주므로 경고등 직후의 사용 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1233384588-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "스캐너에 표시된 고장 코드 하나를 입력해 감지 조건과 가능한 원인을 처리하고 제목·원인·증상·설명 결과를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1233384588-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원본은 OBD-2 코드 입력인데 경고등 모양을 찾아 조회하도록 바뀌어 입력 방식과 처리 메커니즘이 달라진다.",
+      "risk_flags": [
+        "input-mismatch",
+        "scope-creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-363738376-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "PDF 악보를 가져와 보는 결과는 OS 기본 파일·PDF 뷰어가 더 편해 차별적인 한 끗 변화가 없고 제목만으로 문제와 결과도 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "native-alternative",
+        "weak-differentiation"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-363738376-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공연 순서대로 여러 악보를 묶으려면 PDF 여러 개와 순서 입력이 필요해 입력 1개 규칙을 위반한다.",
+      "risk_flags": [
+        "multi-input",
+        "scope-creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-363738376-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "PDF를 읽는 원본 조각에 곡명 메타데이터와 검색 목록을 추가해 새 저장·검색 기능이 필요하고 OS 기본 PDF 뷰어 대체성도 약하다.",
+      "risk_flags": [
+        "native-alternative",
+        "scope-creep",
+        "state-required"
+      ]
+    }
+  ]
+}

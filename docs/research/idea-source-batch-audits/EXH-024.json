@@ -1,0 +1,75 @@
+{
+  "batch_id": "EXH-024",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 37,
+    "Fail": 56,
+    "Merge": 5,
+    "Reserve": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 67,
+      "sample": [
+        "chrome_web_store:idnnbdplmphpflfnlkomgpfbpcgelopg",
+        "app_store:1508186374",
+        "chrome_web_store:hgaldpfdgmmojgdlaiapgndeicgdbldp",
+        "chrome_web_store:kgjfgplpablkjnlkjmjdecgdpfankdle",
+        "app_store:289894882",
+        "chrome_web_store:nfmjbheokmeabfpibbgnjbjoplnhhpdk",
+        "app_store:6738896323"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:hgaldpfdgmmojgdlaiapgndeicgdbldp",
+          "decision": "Candidate",
+          "reason": "웹사이트 입력 → AI 디자인 피드백 분석 → 개인 디자인 코파일럿 결과의 단일 세로 조각을 2일 안에 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 2,
+      "fail_count": 60,
+      "sample": [
+        "trustmrr:bhyte-software-llc",
+        "trustmrr:leadfinder-io",
+        "trustmrr:fishingai",
+        "chrome_web_store:iabkalnfoikilmlcnjcnflcmpooflhbi",
+        "app_store:6738783142",
+        "trustmrr:widgetly"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:leadfinder-io",
+          "decision": "Candidate",
+          "reason": "지도·웹사이트의 사업 정보를 받아 리드를 추출하고, 결과 목록을 제공하는 2일 세로 조각이 남는다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 3,
+      "fail_count": 56,
+      "sample": [
+        "chrome_web_store:ohcclfkaidblnjnggclkiecgkpgldihe",
+        "chrome_web_store:fanpjgiacagfdioehljmkbdipgnmimap",
+        "app_store:1238611143",
+        "app_store:6738783142",
+        "app_store:1111876388",
+        "app_store:1456118550"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

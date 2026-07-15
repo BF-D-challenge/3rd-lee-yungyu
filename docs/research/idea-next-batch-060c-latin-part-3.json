@@ -1,0 +1,137 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6778368917-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영화 제목 1개를 입력해 관련 작품·인물 정보를 연결하고 상세 정보와 개인 목록을 내는 흐름은 구체적이지만 앱 제목만으로 선택 곤란 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6778368917-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영화 제목 1개를 입력해 관련 출연작 정보를 연결하고 상세 정보와 개인 목록을 내는 흐름은 가능하지만 왓챠피디아에서 본 작품이라는 맥락과 제목만으로는 문제·결과가 불명확하다.",
+      "risk_flags": [
+        "title_unclear",
+        "external_context"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6778368917-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영화 제목 1개를 입력해 관련 작품·장르를 연결하고 목록으로 저장하는 처리는 가능하지만 한 제목으로 이번 주말 후보를 장르별 정리한다는 결과와 앱 제목의 문제 표현이 약하다.",
+      "risk_flags": [
+        "title_unclear",
+        "result_scope"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6778368917-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영화 제목 1개를 입력해 관련 작품·인물 정보를 연결하고 상세 정보와 개인 목록을 내지만 필모그래피 수집자와 왓챠피디아 기록이라는 목적이 어긋나며 제목도 문제를 보여주지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6778368917-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영화 제목 1개를 입력해 관련 작품·장르를 연결하고 후보 목록을 내는 흐름은 세로 조각이 가능하지만 필모그래피 수집자에게 주말 후보 정리는 덜 자연스럽고 제목이 문제·결과를 밝히지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6778368917-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영화 제목 1개를 입력해 관련 영화·배우를 연결하고 상세 정보와 개인 목록을 내는 흐름은 자연스럽지만 친구 추천작을 저장하는 순간과 영화 애호가의 결제가 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6778368917-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영화 제목 1개를 입력해 관련 작품·장르를 연결하고 장르별 후보 목록을 내는 흐름은 가능하지만 리뷰어가 주말 선택을 해결하는 한 끗 결과가 모호하고 앱 제목도 문제를 제시하지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "result_scope"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6778368917-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영화 제목 1개를 입력해 관련 영화·배우 정보를 연결하고 상세 정보와 개인 목록을 내는 흐름은 구체적이지만 기록 관리 목적과 선택 곤란 순간이 섞여 있으며 제목만으로 문제·결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6778368917-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영화 제목 1개를 입력해 관련 정보와 개인 목록을 내는 처리는 가능하지만 왓챠피디아에서 본 작품을 기록한다는 맥락이 별도 행동을 전제하는 듯하고 앱 제목도 문제를 드러내지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "external_context"
+      ]
+    }
+  ]
+}

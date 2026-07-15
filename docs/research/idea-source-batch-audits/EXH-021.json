@@ -1,0 +1,54 @@
+{
+  "batch_id": "EXH-021",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 99,
+  "decision_counts": {
+    "Fail": 53,
+    "Candidate": 38,
+    "Merge": 8
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 63,
+      "sample": [
+        "app_store:1673567402",
+        "app_store:6477325101",
+        "app_store:1179959829",
+        "app_store:522687241",
+        "app_store:441179131",
+        "trustmrr:openhunts-a-launch-place",
+        "app_store:1435783608"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:441179131",
+          "decision": "Candidate",
+          "reason": "그림 과정을 입력으로 받아 기록 영상 하나를 만들 수 있어, 제목만으로 결과가 보이는 2일 세로 조각이 남는다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 2,
+      "fail_count": 53,
+      "sample": [
+        "app_store:1179959829",
+        "chrome_web_store:cpkkfaafbdlmbapnncigbndjohnapimh",
+        "app_store:892347083",
+        "app_store:6504849169",
+        "app_store:1380362212",
+        "app_store:1058959277"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

@@ -1,0 +1,377 @@
+[
+  {
+    "id": "video-place-route",
+    "source": {
+      "id": "source-vlogmap",
+      "sourceName": "VlogMap – Extract and map locations from videos & reels",
+      "platform": "plugin",
+      "value": "여행 영상에서 언급되거나 화면에 나온 장소를 뽑아 지도·목록·경로로 저장하는 브라우저 확장",
+      "detail": "공개 YouTube 여행 영상이나 릴스를 읽어 장소명과 나온 시점을 찾고, 저장할 장소 목록과 지도 경로를 만듭니다.",
+      "evidence": "Chrome Web Store 원본 평점 5.0, 필터 실험 2회 노출; 공개 여행 영상 URL → 장소·시점 → 지도·경로 메커니즘 확인",
+      "preservedFlow": "공개 여행 영상 입력 → 장소와 나온 시점 추출 → 지도·목록·경로 확인"
+    },
+    "payers": [
+      {
+        "id": "payer-video-trip-planner",
+        "value": "브이로그 여러 편을 보며 자유여행 동선을 짜는 직장인 여행자",
+        "detail": "영상마다 흩어진 장소를 메모하고 지도에서 다시 찾아 이동 순서를 직접 비교합니다."
+      },
+      {
+        "id": "payer-small-tour-designer",
+        "value": "영상 속 명소를 소규모 투어 코스로 바꾸는 1인 여행 기획자",
+        "detail": "고객 취향에 맞는 새 코스를 만들 때 영상의 장소·근거 시점·이동 거리를 따로 정리합니다."
+      },
+      {
+        "id": "payer-location-coordinator",
+        "value": "출장·촬영 답사 동선을 반복해서 만드는 소형 프로젝트 코디네이터",
+        "detail": "참고 영상에서 후보 장소를 뽑고 하루 안에 갈 수 있는지 지도와 표를 오가며 확인합니다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-after-three-vlogs",
+        "value": "여행 영상 세 편을 봤는데 장소 이름이 메모마다 흩어진 밤",
+        "detail": "영상으로 돌아가 장소를 다시 찾지 않고 후보지만 한 번에 모아야 하는 순간"
+      },
+      {
+        "id": "moment-before-booking-route",
+        "value": "숙소·교통을 결제하기 전 방문 장소가 하루 동선인지 확인할 때",
+        "detail": "마음에 든 곳이 서로 너무 멀지 않은지 영상 근거와 지도에서 함께 확인해야 하는 순간"
+      },
+      {
+        "id": "moment-before-sharing-itinerary",
+        "value": "동행자나 고객에게 첫 여행 코스안을 보내기 직전",
+        "detail": "장소를 고른 이유와 영상의 해당 장면까지 설명 가능한 목록이 필요한 순간"
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-captioned-youtube-only",
+        "kind": "remove",
+        "value": "여러 영상 플랫폼을 빼고 자막 있는 공개 YouTube 여행 영상 한 편만 받기",
+        "detail": "영상에서 장소를 찾아 지도에 옮기는 흐름은 유지하고 첫 입력을 처리 가능한 공개 영상 하나로 줄입니다.",
+        "resultTitle": "여행 영상 한 편을 장소 목록으로",
+        "platform": "web",
+        "smallestBuild": "자막 있는 공개 YouTube URL 하나를 넣으면 언급된 장소명·도시·지도 링크가 최대 열 곳 나오는 웹 화면"
+      },
+      {
+        "id": "twist-timestamp-evidence",
+        "kind": "add",
+        "value": "각 장소에 영상의 나온 초와 근거 자막 한 줄 더하기",
+        "detail": "추출한 장소를 저장하는 흐름에 사용자가 직접 맞는 곳인지 되돌아가 확인할 근거만 더합니다.",
+        "resultTitle": "나온 초와 지도 링크가 붙은 여행 장소 목록",
+        "platform": "web",
+        "smallestBuild": "자막 있는 공개 YouTube URL 하나를 넣으면 장소마다 타임스탬프·근거 자막·지도 링크가 붙고 틀린 장소를 제외할 수 있는 웹 화면"
+      },
+      {
+        "id": "twist-one-day-route",
+        "kind": "replace",
+        "value": "장소 저장 목록을 이동 거리가 짧은 하루 방문 순서 한 개로 바꾸기",
+        "detail": "영상에서 장소를 찾아 지도화하는 흐름은 유지하고 결과를 실제로 움직일 순서와 지도 링크로 바꿉니다.",
+        "resultTitle": "영상 속 장소로 만든 하루 동선",
+        "platform": "web",
+        "smallestBuild": "공개 YouTube URL 하나와 시작 위치를 넣으면 추출 장소 중 최대 다섯 곳의 방문 순서와 구간별 지도 링크가 나오는 웹 화면"
+      }
+    ]
+  },
+  {
+    "id": "one-page-seo-fix-list",
+    "source": {
+      "id": "source-seo-analyzer",
+      "sourceName": "SEO Analyzer: One-Click Website Audit",
+      "platform": "plugin",
+      "value": "현재 웹페이지의 제목·메타태그·링크·헤딩을 읽어 검색 노출에 필요한 항목을 한 번에 점검하는 확장",
+      "detail": "페이지 하나를 열고 실행하면 검색엔진이 읽는 제목·설명·헤딩·링크 상태를 분석해 전체 개요를 보여줍니다.",
+      "evidence": "Chrome Web Store 원본 평점 5.0, 필터 실험 2회 정밀검사 후보; 현재 URL → SEO 항목 분석 → 누락 개요 메커니즘 확인",
+      "preservedFlow": "현재 웹페이지 입력 → 제목·태그·링크·헤딩 검사 → 검색 노출 점검 결과 확인"
+    },
+    "payers": [
+      {
+        "id": "payer-freelance-web-builder",
+        "value": "한 달에 여러 랜딩페이지를 납품하는 1인 웹 제작자",
+        "detail": "디자인과 기능을 마친 뒤 제목·설명·헤딩 누락을 페이지마다 다시 확인합니다."
+      },
+      {
+        "id": "payer-small-brand-marketer",
+        "value": "자사몰 기획전·콘텐츠 페이지를 직접 올리는 소형 브랜드 마케터",
+        "detail": "개발자가 없는 상태에서 새 페이지가 검색에 읽힐 기본 조건을 갖췄는지 판단해야 합니다."
+      },
+      {
+        "id": "payer-small-seo-agency",
+        "value": "여러 고객 사이트를 관리하는 소형 SEO 대행사 실무자",
+        "detail": "고객 페이지를 넘겨받을 때 기본 태그 누락을 반복해서 찾아 수정 요청으로 바꿉니다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-before-page-release",
+        "value": "새 랜딩페이지를 공개하기 10분 전",
+        "detail": "검색 노출의 기본 항목이 빠져 다시 배포하는 일을 막아야 하는 순간"
+      },
+      {
+        "id": "moment-after-no-search-entry",
+        "value": "페이지를 열었는데 제목·설명이 검색 결과에서 이상하게 보인 직후",
+        "detail": "검색엔진이 어떤 내용을 읽고 무엇이 비어 있는지 한 페이지에서 확인해야 하는 순간"
+      },
+      {
+        "id": "moment-before-client-handoff",
+        "value": "팀·고객에게 페이지 점검 완료라고 공유하기 직전",
+        "detail": "막연한 SEO 점수가 아니라 고칠 항목과 확인 결과를 근거로 남겨야 하는 순간"
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-four-seo-basics",
+        "kind": "remove",
+        "value": "수십 개 SEO 지표를 빼고 검색 제목·검색 설명·대표 제목(H1)·대표 주소(canonical) 네 항목만 검사하기",
+        "detail": "현재 페이지의 검색 요소를 분석하는 흐름은 유지하고 첫 배포를 막는 기본 항목으로 범위를 줄입니다.",
+        "resultTitle": "공개 전 SEO 기본 4개 검사",
+        "platform": "plugin",
+        "smallestBuild": "현재 탭을 바꾸지 않는 읽기 전용 검사로 제목·메타설명·H1·canonical의 있음·없음·길이 경고와 해당 HTML 위치를 보여주는 브라우저 확장 화면"
+      },
+      {
+        "id": "twist-fix-order-not-score",
+        "kind": "replace",
+        "value": "종합 SEO 점수를 오늘 고칠 순서와 정확한 누락 항목으로 바꾸기",
+        "detail": "같은 페이지 검사는 유지하고 비교하기 어려운 점수 대신 배포 전에 닫을 작업 목록을 줍니다.",
+        "resultTitle": "점수 대신 오늘 고칠 SEO 목록",
+        "platform": "plugin",
+        "smallestBuild": "현재 탭의 기본 SEO 오류를 영향도 순으로 최대 다섯 개 보여주고 각 항목에 현재 값·권장 범위·HTML 위치를 붙이는 확장 화면"
+      },
+      {
+        "id": "twist-search-preview",
+        "kind": "add",
+        "value": "현재 제목·설명이 검색 결과에서 어떻게 잘릴지 미리보기 한 장 더하기",
+        "detail": "제목과 메타태그를 읽는 흐름에 사용자가 결과 모양을 보고 수정 여부를 판단할 시각 근거만 더합니다.",
+        "resultTitle": "잘리는 문구가 보이는 검색 미리보기",
+        "platform": "plugin",
+        "smallestBuild": "현재 탭의 제목·메타설명·URL을 읽어 데스크톱 검색 결과 카드와 잘리는 글자 위치를 보여주는 확장 화면"
+      }
+    ]
+  },
+  {
+    "id": "schema-error-fix-block",
+    "source": {
+      "id": "source-schema-validator-generator",
+      "sourceName": "Schema Markup Validator & Generator",
+      "platform": "plugin",
+      "value": "웹페이지의 Schema.org 구조화 데이터를 검증·시각화하고 수정하거나 새 JSON-LD를 만드는 확장",
+      "detail": "현재 페이지의 구조화 데이터 블록을 읽어 오류와 중첩 구조를 보여주고 검색 리치 결과에 맞는 마크업 생성을 돕습니다.",
+      "evidence": "Chrome Web Store 시장 신호 상위 0.5%, 필터 실험 2회 정밀검사 후보; 현재 URL → 구조화 데이터 검증 → 수정 JSON-LD 메커니즘 확인",
+      "preservedFlow": "현재 웹페이지 입력 → Schema.org 구조화 데이터 검증·시각화 → 수정 JSON-LD 확인"
+    },
+    "payers": [
+      {
+        "id": "payer-technical-seo-practitioner",
+        "value": "고객 사이트의 리치 결과 오류를 고치는 테크니컬 SEO 실무자",
+        "detail": "Search Console 경고와 실제 페이지 JSON-LD를 오가며 어느 속성이 잘못됐는지 찾습니다."
+      },
+      {
+        "id": "payer-multi-client-web-agency",
+        "value": "쇼핑몰·지역업체 사이트를 반복 납품하는 소형 웹 에이전시",
+        "detail": "상품·업체·이벤트 페이지마다 다른 구조화 데이터 누락을 개발자에게 설명해야 합니다."
+      },
+      {
+        "id": "payer-ecommerce-growth-developer",
+        "value": "자사몰 검색 노출을 직접 관리하는 소형 팀의 그로스 개발자",
+        "detail": "상품 템플릿 변경 뒤 여러 페이지의 JSON-LD가 유효한지 빠르게 확인합니다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-after-schema-warning",
+        "value": "Search Console에서 구조화 데이터 경고를 받은 직후",
+        "detail": "경고 이름만으로는 못 찾는 실제 JSON 경로와 고칠 값을 확인해야 하는 순간"
+      },
+      {
+        "id": "moment-before-campaign-indexing",
+        "value": "상품·행사 페이지를 검색엔진에 제출하기 직전",
+        "detail": "리치 결과 기회를 놓치기 전에 필수 속성과 형식 오류를 닫아야 하는 순간"
+      },
+      {
+        "id": "moment-before-structured-data-handoff",
+        "value": "구조화 데이터 수정안을 팀·개발자·고객에게 보내기 직전",
+        "detail": "오류 코드가 아니라 붙여넣어 비교할 수정 블록과 근거가 필요한 순간"
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-first-schema-block",
+        "kind": "remove",
+        "value": "사이트 전체 검사를 빼고 현재 페이지를 검사한 뒤 발견된 JSON-LD 오류 블록 하나만 고르기",
+        "detail": "Schema.org 검증 흐름은 유지하고 한 번에 처리할 범위를 실제 오류 블록 하나로 제한합니다.",
+        "resultTitle": "페이지에서 고칠 검색 정보 오류 한 개 찾기",
+        "platform": "plugin",
+        "smallestBuild": "현재 탭의 첫 JSON-LD 블록을 읽어 스키마 유형·오류 JSON 경로·필수 속성 누락을 보여주는 브라우저 확장 화면"
+      },
+      {
+        "id": "twist-copy-ready-json-diff",
+        "kind": "replace",
+        "value": "기술 오류 코드 목록을 자동 반영되지 않는 전후 비교와 수정 JSON-LD 한 블록으로 바꾸기",
+        "detail": "검증 결과는 유지하고 사용자가 바로 적용·검토할 수 있는 정확한 구조와 변경 위치로 결과를 바꿉니다.",
+        "resultTitle": "구글 검색 확장 정보 오류, 고친 코드와 비교",
+        "platform": "plugin",
+        "smallestBuild": "현재 탭 검사 뒤 JSON-LD(상품 가격·행사 날짜 같은 검색 확장 정보를 만드는 코드) 오류 블록 하나를 고르면 원본·수정 제안·바뀐 줄·적용 전 주의사항·재검사 결과를 보여주는 읽기 전용 확장 화면"
+      },
+      {
+        "id": "twist-rich-result-readiness",
+        "kind": "add",
+        "value": "수정 뒤 리치 결과 필수 조건 충족 여부 체크 한 장 더하기",
+        "detail": "구조화 데이터 검증에 검색 노출을 보장하지 않는다는 안내와 현재 유형의 필수 조건 확인만 더합니다.",
+        "resultTitle": "구글 검색 확장 정보 준비 체크",
+        "platform": "plugin",
+        "smallestBuild": "현재 탭의 스키마 유형을 인식해 필수·권장 속성 충족표와 검색 노출 비보장 안내를 보여주는 확장 화면"
+      }
+    ]
+  },
+  {
+    "id": "current-page-to-clean-csv",
+    "source": {
+      "id": "source-data-scraper-ai-miner",
+      "sourceName": "Data Scraper - AI Data Miner",
+      "platform": "plugin",
+      "value": "현재 웹페이지에서 사용자가 원하는 내용을 골라 코딩 없이 구조화 데이터로 추출하는 브라우저 도구",
+      "detail": "페이지에 보이는 반복 항목과 필드를 선택하면 같은 구조를 찾아 표로 정리하고 CSV로 내보냅니다.",
+      "evidence": "Chrome Web Store 원본 평점 5.0, 필터 D 정밀검사 후보; 현재 웹페이지 → 선택 필드 추출 → 구조화 CSV 메커니즘 확인",
+      "preservedFlow": "현재 웹페이지와 원하는 필드 선택 → 반복 항목 구조화 → CSV 미리보기·내보내기"
+    },
+    "payers": [
+      {
+        "id": "payer-product-research-operator",
+        "value": "공개 상품 목록을 엑셀로 비교하는 1인 셀러·상품 조사 담당자",
+        "detail": "상품명·가격·평점 수십 줄을 페이지에서 복사해 열마다 다시 붙여넣습니다."
+      },
+      {
+        "id": "payer-public-list-researcher",
+        "value": "기관·행사·지원사업 공개 목록을 반복 수집하는 소형 팀 리서처",
+        "detail": "같은 형태의 제목·날짜·링크를 주마다 표로 옮기고 출처를 다시 확인합니다."
+      },
+      {
+        "id": "payer-ops-catalog-manager",
+        "value": "파트너 사이트의 공개 항목을 내부 목록으로 정리하는 운영 담당자",
+        "detail": "납품처·파트너·매장 같은 공개 목록을 CSV 형식에 맞게 손으로 정리합니다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-after-copying-twenty-rows",
+        "value": "같은 모양의 항목을 스무 줄째 복사하다가 아직 페이지가 남은 순간",
+        "detail": "현재 페이지에서 반복 구조를 잡아 남은 행을 한 번에 표로 옮기고 싶은 순간"
+      },
+      {
+        "id": "moment-before-weekly-list-update",
+        "value": "지난주와 같은 공개 목록을 다시 업데이트하기 시작할 때",
+        "detail": "새 행만 확인할 수 있도록 같은 열 구조의 CSV가 다시 필요한 순간"
+      },
+      {
+        "id": "moment-before-sharing-source-table",
+        "value": "수집한 표를 동료·고객에게 보내기 직전",
+        "detail": "값뿐 아니라 어느 페이지에서 언제 가져왔는지 검수 가능한 결과가 필요한 순간"
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-current-page-only",
+        "kind": "remove",
+        "value": "사이트 순회와 페이지네이션을 빼고 현재 열어둔 공개 페이지 한 장만 추출하기",
+        "detail": "웹 내용을 구조화하는 흐름은 유지하고 로그인·크롤러·백그라운드 작업 없이 현재 탭으로 범위를 닫습니다.",
+        "resultTitle": "현재 페이지 한 장을 바로 CSV로",
+        "platform": "plugin",
+        "smallestBuild": "현재 공개 탭에서 사용자가 반복 항목 하나를 누르면 보이는 행만 표 미리보기와 CSV로 내보내는 브라우저 확장"
+      },
+      {
+        "id": "twist-three-example-cells",
+        "kind": "replace",
+        "value": "CSS 선택자 설정을 이름·가격·링크처럼 서로 다른 열의 예시 셀 한 개에서 세 개 누르기로 바꾸기",
+        "detail": "추출할 필드를 정하는 흐름은 유지하고 코드를 모르는 사용자가 화면에서 구조를 가르치게 합니다.",
+        "resultTitle": "세 칸만 눌러 만드는 웹 표",
+        "platform": "plugin",
+        "smallestBuild": "현재 공개 탭에서 이름·가격·링크 같은 서로 다른 열의 예시 셀을 한 개에서 세 개 누르면 같은 반복 구조의 열과 행을 미리 보여주고 선택을 취소할 수 있는 확장"
+      },
+      {
+        "id": "twist-source-columns",
+        "kind": "add",
+        "value": "CSV마다 원본 URL·수집 시각·빈 값 경고 열을 자동으로 더하기",
+        "detail": "구조화 데이터 내보내기에 나중에 검수하고 다시 찾을 수 있는 최소 출처 정보만 더합니다.",
+        "resultTitle": "출처가 남는 웹페이지 CSV",
+        "platform": "plugin",
+        "smallestBuild": "현재 공개 탭에서 고른 필드를 CSV로 만들고 각 행에 원본 URL·수집 시각·빈 값 표시를 붙이는 확장"
+      }
+    ]
+  },
+  {
+    "id": "accessibility-fix-five",
+    "source": {
+      "id": "source-ibm-equal-access-checker",
+      "sourceName": "IBM Equal Access Accessibility Checker",
+      "platform": "plugin",
+      "value": "현재 웹페이지를 검사해 접근성 문제와 관련 기준을 찾아주는 브라우저 확장",
+      "detail": "페이지의 DOM과 화면 요소를 자동 규칙으로 검사해 장애가 있는 사용자를 막을 수 있는 접근성 오류를 표시합니다.",
+      "evidence": "Chrome Web Store 원본 평점 4.9, IBM 접근성 검사 확장; 현재 URL → 접근성 규칙 검사 → 오류 위치·기준 확인 메커니즘 확인",
+      "preservedFlow": "현재 웹페이지 입력 → 접근성 규칙 검사 → 오류 위치·기준·수정 방향 확인"
+    },
+    "payers": [
+      {
+        "id": "payer-solo-saas-builder",
+        "value": "웹 접근성 전담자가 없는 1인 SaaS·웹서비스 제작자",
+        "detail": "배포 전 버튼 이름·대비·폼 라벨 같은 기본 오류를 브라우저와 문서를 오가며 확인합니다."
+      },
+      {
+        "id": "payer-small-web-qa-agency",
+        "value": "고객 사이트를 납품 전에 검사하는 소형 웹 에이전시 QA 담당자",
+        "detail": "자동 검사 결과를 개발자가 바로 고칠 수 있는 위치와 문장으로 다시 번역합니다."
+      },
+      {
+        "id": "payer-public-site-manager",
+        "value": "학교·협회·공공성 있는 웹페이지를 직접 관리하는 실무자",
+        "detail": "접근성 민원이나 내부 점검 요청이 오면 어떤 오류부터 고쳐야 하는지 판단하기 어렵습니다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-before-accessible-release",
+        "value": "새 페이지를 공개하기 전 마지막 브라우저 점검을 할 때",
+        "detail": "키보드·스크린리더 사용자를 막는 기본 오류를 배포 전에 닫아야 하는 순간"
+      },
+      {
+        "id": "moment-after-accessibility-report",
+        "value": "사용자나 고객에게 접근성 문제 제보를 받은 직후",
+        "detail": "제보한 화면에서 자동으로 찾을 수 있는 오류와 실제 수정 위치를 먼저 좁혀야 하는 순간"
+      },
+      {
+        "id": "moment-before-fix-ticket",
+        "value": "찾은 접근성 오류를 실제 수정 작업으로 옮기기 직전",
+        "detail": "혼자 고치거나 팀에 넘길 때 규칙 코드가 아니라 재현 위치·영향·수정 확인법을 한 장으로 남겨야 하는 순간"
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-top-five-blockers",
+        "kind": "remove",
+        "value": "전체 WCAG 보고서를 빼고 현재 페이지의 사용자 진행을 막는 오류 다섯 개만 남기기",
+        "detail": "접근성 규칙 검사는 유지하고 처음 고칠 범위를 버튼·링크·폼·대비의 결정적 오류로 줄입니다.",
+        "resultTitle": "먼저 고칠 접근성 오류 5개",
+        "platform": "plugin",
+        "smallestBuild": "현재 탭을 axe-core 규칙으로 검사해 심각도가 높은 오류 최대 다섯 개의 요소·영향·선정 이유·기준을 보여주고 자동 검사 밖의 수동 확인이 필요하다고 알리는 브라우저 확장"
+      },
+      {
+        "id": "twist-korean-fix-location",
+        "kind": "replace",
+        "value": "영문 규칙 코드 목록을 화면 요소 위치·한국어 영향·고칠 속성으로 바꾸기",
+        "detail": "같은 자동 검사 결과를 비전문가도 개발자에게 전달할 수 있는 구체적인 수정 단위로 바꿉니다.",
+        "resultTitle": "위치와 고칠 속성이 보이는 접근성 검사",
+        "platform": "plugin",
+        "smallestBuild": "현재 탭의 자동 검사 오류마다 DOM 선택자·화면 텍스트·한국어 영향 설명·확인할 HTML 속성·수정 뒤 재검사 항목을 보여주는 확장"
+      },
+      {
+        "id": "twist-ready-fix-ticket",
+        "kind": "add",
+        "value": "오류마다 재현 위치·영향·수정 확인법이 있는 개발 티켓 한 장 더하기",
+        "detail": "접근성 오류와 기준을 찾는 흐름에 팀이 바로 수정·재검사할 수 있는 전달 형식만 더합니다.",
+        "resultTitle": "개발자에게 바로 보내는 접근성 티켓",
+        "platform": "plugin",
+        "smallestBuild": "현재 탭의 자동 검사 오류 하나를 고르면 URL·요소·영향·관련 기준·수정 후 재검사 항목이 있는 Markdown 티켓을 만드는 확장"
+      }
+    ]
+  }
+]

@@ -1,0 +1,239 @@
+[
+  {
+    "id": "notion-page-to-pdf",
+    "source": {
+      "id": "source-notion-page-to-pdf",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "research": {
+        "key": "chrome_web_store:ijaopicbldggjdgbnfdlkljeggibmcha",
+        "url": "https://chromewebstore.google.com/detail/print-notion-export-notio/ijaopicbldggjdgbnfdlkljeggibmcha"
+      },
+      "platform": "web",
+      "value": "공개 Notion 페이지를 표·이미지·다크 배치가 유지되는 전달용 PDF로 바꾸는 도구",
+      "detail": "공개 Notion 페이지 URL 하나를 입력하면 페이지를 한 번 렌더링해 선택한 배치 보존 기준이 적용된 PDF 파일 한 개로 변환합니다.",
+      "evidence": "Chrome Web Store 원본은 Notion을 PDF로 내보내면서 레이아웃·표·다크 모드를 유지한다고 명시하고, 수집 시점 검색 순위 4위와 평점 4.8이 확인됩니다.",
+      "preservedFlow": "공개 Notion 페이지 URL 입력 → 레이아웃 보존 렌더링 → 전달·인쇄 가능한 PDF 파일"
+    },
+    "payers": [
+      {
+        "id": "payer-notion-pdf-1",
+        "value": "고객에게 노션 문서를 납품하는 프리랜서",
+        "detail": "페이지 레이아웃과 표가 무너지지 않는 PDF를 만들려고 노션 내용을 복사해 문서 편집기에서 다시 손본다."
+      },
+      {
+        "id": "payer-notion-pdf-2",
+        "value": "수업 자료를 인쇄해 배포하는 교사",
+        "detail": "노션의 표와 이미지가 인쇄용으로 잘리는 문제를 막기 위해 페이지마다 미리보기와 편집을 반복한다."
+      },
+      {
+        "id": "payer-notion-pdf-3",
+        "value": "운영 매뉴얼을 외부 협력사에 보내는 팀 리더",
+        "detail": "공유용 노션 페이지를 고정된 PDF로 바꾸면서 다크 페이지 대비와 표 페이지 나눔을 수작업으로 조정한다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-notion-pdf-1",
+        "value": "노션 페이지를 고정 파일로 전달하기 직전",
+        "detail": "받는 사람이 노션을 쓰지 않아도 표·이미지·배경이 흐트러지지 않는 PDF 한 개가 지금 필요하다."
+      },
+      {
+        "id": "moment-notion-pdf-2",
+        "value": "노션 문서를 인쇄 상태로 검수할 순간",
+        "detail": "종이나 PDF 화면에서 표 잘림·이미지 비율·다크 배경 대비가 유지되는지 전달 전에 확인해야 한다."
+      },
+      {
+        "id": "moment-notion-pdf-3",
+        "value": "노션 원본을 열 수 없는 사람에게 보낼 순간",
+        "detail": "로그인이나 편집 권한을 요구하지 않고 누구나 같은 배치로 읽는 PDF 파일을 바로 만들어야 한다."
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-notion-pdf-1",
+        "kind": "replace",
+        "value": "표 페이지 나눔을 우선 보존하기",
+        "detail": "노션 URL을 PDF로 변환하고 레이아웃과 이미지를 유지하는 흐름은 그대로 두며, 표가 행 중간에서 끊기지 않도록 페이지 나눔만 우선한다.",
+        "resultTitle": "노션 표 잘림 없는 인쇄용 PDF",
+        "platform": "web",
+        "smallestBuild": "공개 Notion 페이지 URL 하나를 입력하면 페이지를 PDF로 변환해 표 페이지 나눔이 보존된 파일 하나를 즉시 제공한다."
+      },
+      {
+        "id": "twist-notion-pdf-2",
+        "kind": "add",
+        "value": "이미지 원본 비율을 고정하기",
+        "detail": "노션 페이지를 레이아웃 보존 PDF로 바꾸는 처리와 결과는 유지하고, 삽입 이미지의 원본 비율만 고정한다.",
+        "resultTitle": "노션 이미지 비율 보존 PDF",
+        "platform": "web",
+        "smallestBuild": "공개 Notion 페이지 URL 하나를 입력하면 내용을 PDF로 변환해 이미지 비율이 보존된 파일 하나를 즉시 만든다."
+      },
+      {
+        "id": "twist-notion-pdf-3",
+        "kind": "add",
+        "value": "다크 페이지 인쇄 대비를 보존하기",
+        "detail": "노션 URL을 PDF로 변환하며 레이아웃과 표를 유지하는 구조는 같고, 다크 페이지의 인쇄 대비만 읽기 좋게 보존한다.",
+        "resultTitle": "노션 다크 페이지 인쇄용 PDF",
+        "platform": "web",
+        "smallestBuild": "공개 Notion 페이지 URL 하나를 입력하면 페이지를 PDF로 변환해 다크 페이지 대비가 보존된 파일 하나를 즉시 보여준다."
+      }
+    ]
+  },
+  {
+    "id": "chrome-extension-static-audit",
+    "source": {
+      "id": "source-chrome-extension-static-audit",
+      "sourceName": "Seerguard",
+      "research": {
+        "key": "chrome_web_store:nkgaaaiaadfgellaglahphkfjipcgmin",
+        "url": "https://chromewebstore.google.com/detail/seerguard/nkgaaaiaadfgellaglahphkfjipcgmin"
+      },
+      "platform": "web",
+      "value": "Chrome 확장 CRX의 과도한 권한·외부 전송·난독화 위치를 설치 전에 보여 주는 정적 감사 도구",
+      "detail": "CRX 파일 하나를 입력하면 manifest와 스크립트를 한 번 정적으로 검사해 선택한 위험 단서의 파일 위치가 표시된 HTML 보고서 한 개를 만듭니다.",
+      "evidence": "Chrome Web Store 원본은 확장의 위협·의심 권한·악성 동작을 검사한다고 명시하고, 수집 시점 카테고리 9위와 평점 5.0이 확인됩니다.",
+      "preservedFlow": "Chrome 확장 CRX 파일 입력 → 권한·도메인·스크립트 정적 검사 → 위험 근거 위치 HTML 보고서"
+    },
+    "payers": [
+      {
+        "id": "payer-extension-audit-1",
+        "value": "사내 확장 프로그램 배포를 맡은 IT 관리자",
+        "detail": "직원 브라우저에 설치할 확장 프로그램마다 권한과 악성 여부를 수작업으로 검토하느라 배포가 늦어진다."
+      },
+      {
+        "id": "payer-extension-audit-2",
+        "value": "고객사 브라우저 보안을 점검하는 보안 컨설턴트",
+        "detail": "고객이 전달한 CRX 파일의 외부 통신과 의심 권한을 압축 해제해 소스별로 확인한다."
+      },
+      {
+        "id": "payer-extension-audit-3",
+        "value": "여러 고객의 업무용 브라우저를 관리하는 프리랜서",
+        "detail": "고객별 확장 프로그램 설치 전 위험 신호를 반복해서 찾아야 해 매번 개발자 도구와 파일 검색을 사용한다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-extension-audit-1",
+        "value": "새 Chrome 확장 설치를 승인하기 직전",
+        "detail": "업무 브라우저에 CRX를 배포하기 전에 권한·외부 전송·난독화 위치 중 위험 근거를 문서로 확인해야 한다."
+      },
+      {
+        "id": "moment-extension-audit-2",
+        "value": "확장 프로그램 보안 근거를 보고할 순간",
+        "detail": "과도한 권한·외부 도메인·난독화 스크립트 위치를 추측이 아니라 정적 검사 결과로 제출해야 한다."
+      },
+      {
+        "id": "moment-extension-audit-3",
+        "value": "다른 사람에게 설치 여부를 설명할 순간",
+        "detail": "CRX 파일에서 찾은 구체적인 위치와 근거를 보여 주며 설치 승인 또는 보류 이유를 바로 전달해야 한다."
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-extension-audit-1",
+        "kind": "replace",
+        "value": "과도한 권한 위치를 먼저 보여주는 검사",
+        "detail": "CRX 파일을 스캔해 위협·의심 권한·악성 동작을 확인하는 흐름은 유지하고, 권한 목록에서 과도한 항목의 위치만 먼저 강조한다.",
+        "resultTitle": "확장 프로그램 과도한 권한 위치 보고서",
+        "platform": "web",
+        "smallestBuild": "CRX 파일 하나를 올리면 확장 프로그램 권한을 정적으로 스캔해 과도한 권한 위치를 표시한 HTML 보고서 하나를 즉시 보여준다."
+      },
+      {
+        "id": "twist-extension-audit-2",
+        "kind": "add",
+        "value": "외부 전송 도메인을 묶어 보여주는 검사",
+        "detail": "확장 프로그램 입력과 위협·권한·악성 동작 스캔은 유지하고, 코드에 포함된 외부 전송 도메인만 한눈에 묶어 표시한다.",
+        "resultTitle": "확장 프로그램 외부 전송 도메인 보고서",
+        "platform": "web",
+        "smallestBuild": "CRX 파일 하나를 올리면 내부 코드를 정적으로 스캔해 외부 전송 도메인 목록 하나가 담긴 HTML 보고서를 즉시 만든다."
+      },
+      {
+        "id": "twist-extension-audit-3",
+        "kind": "add",
+        "value": "난독화 스크립트 파일을 표시하는 검사",
+        "detail": "CRX 파일의 위협·의심 권한·악성 동작을 정적으로 확인하는 구조는 유지하고, 난독화가 의심되는 스크립트 파일 위치만 표시한다.",
+        "resultTitle": "확장 프로그램 난독화 스크립트 위치표",
+        "platform": "web",
+        "smallestBuild": "CRX 파일 하나를 올리면 포함 스크립트를 정적으로 스캔해 난독화 의심 파일 위치 하나를 HTML로 즉시 보여준다."
+      }
+    ]
+  },
+  {
+    "id": "maps-route-to-gpx",
+    "source": {
+      "id": "source-maps-route-to-gpx",
+      "sourceName": "Google Maps Extended Routes",
+      "research": {
+        "key": "chrome_web_store:okeampldbdmpachkggljgpngbooaclal",
+        "url": "https://chromewebstore.google.com/detail/google-maps-extended-rout/okeampldbdmpachkggljgpngbooaclal"
+      },
+      "platform": "web",
+      "value": "Google Maps 장거리 경로를 경유지·구간·회차점 정보가 남는 라이딩 GPX로 바꾸는 도구",
+      "detail": "경유지가 포함된 공개 Google Maps 경로 URL 하나를 입력하면 경로를 한 번 변환해 선택한 구조가 보존된 GPX 파일 한 개를 제공합니다.",
+      "evidence": "Chrome Web Store 원본은 자전거·오토바이 장거리 경로 편집·최적화·내보내기를 명시하고, 수집 시점 카테고리 7위와 평점 5.0이 확인됩니다.",
+      "preservedFlow": "공개 Google Maps 경로 URL 입력 → 경로 구조 변환 → 기기·참가자에게 전달할 GPX 파일"
+    },
+    "payers": [
+      {
+        "id": "payer-route-gpx-1",
+        "value": "라이딩 코스를 짜는 자전거 동호회 운영자",
+        "detail": "참가자에게 보낼 장거리 경로를 지도에서 직접 편집하고 구간별 파일로 다시 정리한다."
+      },
+      {
+        "id": "payer-route-gpx-2",
+        "value": "고객 투어를 준비하는 오토바이 투어 가이드",
+        "detail": "경유지와 회차점을 포함한 긴 경로를 수작업으로 다듬어 참가자에게 전달한다."
+      },
+      {
+        "id": "payer-route-gpx-3",
+        "value": "장거리 라이딩 영상을 만드는 콘텐츠 제작자",
+        "detail": "촬영용 코스를 공개하기 전 지도 경로를 편집하고 공유 가능한 GPX로 다시 만든다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-route-gpx-1",
+        "value": "확정한 장거리 경로를 기기에 넣기 직전",
+        "detail": "Google Maps에서 만든 경유지와 트랙을 잃지 않은 GPX 파일을 내비게이션 기기에 바로 옮겨야 한다."
+      },
+      {
+        "id": "moment-route-gpx-2",
+        "value": "경로의 구간과 회차점을 함께 공유할 순간",
+        "detail": "긴 경로를 따라갈 사람이 경유지·구간·회차점을 같은 파일에서 확인하도록 GPX 한 개를 보내야 한다."
+      },
+      {
+        "id": "moment-route-gpx-3",
+        "value": "출발 전에 경로 파일을 최종 확인할 순간",
+        "detail": "경유지·구간 분리·회차점 이름 중 필요한 정보가 GPX에 남았는지 실제 이동 전에 확인해야 한다."
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-route-gpx-1",
+        "kind": "replace",
+        "value": "경유지를 보존한 GPX로 내보내기",
+        "detail": "공개 Google Maps 경로를 입력받아 경로를 편집·최적화하고 기존 경유지를 보존한 GPX 파일로 내보낸다.",
+        "resultTitle": "경유지 보존 장거리 경로 GPX",
+        "platform": "web",
+        "smallestBuild": "경유지가 포함된 공개 Google Maps 경로 URL 1개를 받아 경로를 1회 편집·최적화하고 경유지 보존 GPX 파일 1개를 제공한다."
+      },
+      {
+        "id": "twist-route-gpx-2",
+        "kind": "add",
+        "value": "구간별 트랙으로 나눈 GPX로 내보내기",
+        "detail": "경로 편집과 최적화는 유지하고 결과 GPX만 구간별 트랙으로 나누어 제공한다.",
+        "resultTitle": "구간별로 나눈 라이딩 경로 GPX",
+        "platform": "web",
+        "smallestBuild": "경유지가 포함된 공개 Google Maps 경로 URL 1개를 받아 경로를 1회 편집·최적화하고 구간별 트랙 GPX 파일 1개를 제공한다."
+      },
+      {
+        "id": "twist-route-gpx-3",
+        "kind": "add",
+        "value": "회차점 이름을 포함한 GPX로 내보내기",
+        "detail": "지도 경로를 편집·최적화하는 원래 흐름은 유지하며 회차점 이름을 결과 GPX에 포함한다.",
+        "resultTitle": "회차점 이름 포함 라이딩 GPX",
+        "platform": "web",
+        "smallestBuild": "경유지가 포함된 공개 Google Maps 경로 URL 1개를 받아 경로를 1회 편집·최적화하고 회차점 이름 포함 GPX 파일 1개를 제공한다."
+      }
+    ]
+  }
+]

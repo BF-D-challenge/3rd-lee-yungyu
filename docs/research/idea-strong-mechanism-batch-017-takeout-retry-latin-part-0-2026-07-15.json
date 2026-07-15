@@ -1,0 +1,115 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-takeout-tools-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구글 저장 장소 좌표 CSV 변환 파일’은 다른 지도 앱으로 옮기려는 여행 기록자가 Google Takeout ZIP을 받은 직후 파일 하나를 한 번 파싱해 장소명·주소·좌표가 행별로 담긴 CSV 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구글 저장 장소 GPX waypoint 변환 파일’은 새 지도 앱으로 옮기려는 여행 기록자가 Takeout ZIP 하나를 한 번 파싱해 장소명·좌표가 담긴 GPX waypoint 파일 하나를 즉시 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구글 저장 목록별 GeoJSON 위치 파일’은 저장 목록을 지도·분석 도구에서 재사용하려는 여행 기록자가 Takeout ZIP 하나를 한 번 파싱해 목록 이름 속성이 붙은 GeoJSON 파일 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구글 저장 장소 GPX waypoint 변환 파일’은 복잡한 Takeout을 정리하려는 지역 연구자가 ZIP 하나를 한 번 파싱해 장소명·좌표가 담긴 GPX waypoint 파일 하나를 받는 실제 작업 순간과 결과가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구글 저장 목록별 GeoJSON 위치 파일’은 새 지도 앱으로 가져가려는 지역 연구자가 Takeout ZIP 하나를 한 번 파싱해 목록별 속성이 유지된 GeoJSON 파일 하나를 받으므로 입력·처리·결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구글 저장 장소 좌표 CSV 변환 파일’은 지도 데이터를 다시 쓰려는 지역 연구자가 Takeout ZIP 하나에서 이름·주소·좌표를 한 번 추출해 장소별 행의 CSV 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구글 저장 목록별 GeoJSON 위치 파일’은 고객의 저장 장소를 이전하는 프리랜서가 Takeout ZIP 하나를 받은 뒤 장소명·좌표·목록 이름을 한 번 파싱해 목록 속성 포함 GeoJSON 하나를 즉시 받는 반복 업무 해결책이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘구글 저장 장소 좌표 CSV 변환 파일’은 고객 데이터를 이전하는 프리랜서가 새 지도 앱에 가져오기 직전 Takeout ZIP 하나를 한 번 파싱해 CSV 하나를 받지만 CSV가 해당 앱의 가져오기 형식인지 제목과 결과만으로 확실하지 않다.",
+      "risk_flags": [
+        "moment_twist_mismatch",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구글 저장 장소 GPX waypoint 변환 파일’은 고객의 저장 장소를 이전하는 프리랜서가 재사용 직전 Takeout ZIP 하나를 한 번 파싱해 장소명·좌표가 담긴 표준 GPX waypoint 파일 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

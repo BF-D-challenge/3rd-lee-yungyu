@@ -49,6 +49,8 @@ export interface FourCardCellProps {
   onFill?: () => void;
   /** 채워진 카드 탭 → 그 축만 교체 */
   onSwap?: () => void;
+  /** 캐러셀 미리보기에서는 내부 버튼을 탭 순서와 입력 대상에서 제외 */
+  interactive?: boolean;
   /** 루트에 병합할 추가 클래스 */
   className?: string;
   /** 카드 프레임(aspect-ratio 박스) 폭 제어 — 기본 max-w-[200px]. 모바일 2×2에서 뷰포트 높이 기반 clamp로 대체 */
@@ -57,13 +59,13 @@ export interface FourCardCellProps {
 
 /* 원본 실측: .flip{transition:transform .72s cubic-bezier(.4,0,.15,1)} */
 const FLIP = "transform 720ms cubic-bezier(.4,0,.15,1)";
+const CARD_ASPECT_RATIO = "84 / 122";
+const CARD_BORDER_RADIUS = "8px";
 
 const FLOAT_CSS = `
 @keyframes fc-floaty{from{translate:0 0}to{translate:0 -5px}}
 .fc-floaty{animation:fc-floaty 5s ease-in-out infinite alternate}
-@keyframes fc-pulse{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:0;transform:scale(1.075)}}
-.fc-pulse{animation:fc-pulse 1.9s ease-in-out infinite}
-@media (prefers-reduced-motion:reduce){.fc-floaty{animation:none}.fc-pulse{animation:none;opacity:.6}}
+@media (prefers-reduced-motion:reduce){.fc-floaty{animation:none}}
 `;
 
 export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(function FourCardCell(
@@ -80,6 +82,7 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
     floatDelay = 0,
     onFill,
     onSwap,
+    interactive = true,
     className,
     frameClassName,
   },
@@ -164,7 +167,7 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
   const face = shown ?? content;
 
   return (
-    <div className={cn("flex min-w-0 flex-col", className)}>
+    <div className={cn("flex w-full min-w-0 flex-col", className)}>
       <style>{FLOAT_CSS}</style>
       <div
         ref={ref}
@@ -174,15 +177,8 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
           frameClassName ?? "max-w-[200px]",
           hot && "scale-[1.05]",
         )}
-        style={{ aspectRatio: "300 / 485", perspective: "1200px" }}
+        style={{ aspectRatio: CARD_ASPECT_RATIO, perspective: "1200px" }}
       >
-        {/* 조준 링 — 원본 slotpulse의 다크 등가. 색은 장식 토큰(deco) */}
-        {pulse && !hot && (
-          <span
-            aria-hidden
-            className="fc-pulse pointer-events-none absolute inset-0 rounded-card border-2 border-deco"
-          />
-        )}
         {/* 퍼플 블룸 오라 — 플립 순간 피었다가 잔광으로 남는다 */}
         <div
           ref={auraRef}
@@ -203,6 +199,8 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
               type="button"
               onClick={onSwap}
               aria-label={`${axisLabel} 카드 교체`}
+              aria-hidden={interactive ? undefined : true}
+              tabIndex={interactive ? undefined : -1}
               className="absolute inset-0 w-full"
               style={{
                 transformStyle: "preserve-3d",
@@ -212,8 +210,8 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
             >
               {/* 뒷면 — 덱과 같은 인그레이빙 카드지 */}
               <div
-                className="absolute inset-0 overflow-hidden rounded-card"
-                style={{ backfaceVisibility: "hidden" }}
+                className="absolute inset-0 overflow-hidden"
+                style={{ backfaceVisibility: "hidden", borderRadius: CARD_BORDER_RADIUS }}
               >
                 <div
                   aria-hidden
@@ -223,35 +221,36 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
               </div>
               {/* 앞면 — CardSurface 오로라 위에 축 의미색 리치 텍스트 */}
               <div
-                className="absolute inset-0 overflow-hidden rounded-card border"
+                className="absolute inset-0 overflow-hidden border"
                 style={{
                   backfaceVisibility: "hidden",
                   transform: "rotateY(180deg)",
-                  borderColor: `color-mix(in srgb, ${axisColor} 55%, transparent)`,
+                  borderColor: "rgba(255,255,255,.16)",
+                  borderRadius: CARD_BORDER_RADIUS,
                   containerType: "inline-size",
                 }}
               >
-                <CardSurface tier="filled" phase={axisIndex} calm injectStyle={false} className="rounded-card" />
+                <CardSurface tier="filled" phase={axisIndex} calm injectStyle={false} />
                 {/* 축 의미색 틴트 오버레이 */}
                 <span
                   aria-hidden
                   className="pointer-events-none absolute inset-0"
                   style={{
-                    background: `linear-gradient(160deg, color-mix(in srgb, ${axisColor} 26%, transparent), transparent 52%, rgba(6,9,14,.72) 100%)`,
+                    background: `linear-gradient(160deg, color-mix(in srgb, ${axisColor} 9%, transparent), transparent 44%, rgba(6,9,14,.72) 100%)`,
                   }}
                 />
                 <div className="absolute inset-0 flex flex-col justify-end p-[7cqi] text-left">
                   <span
-                    className="mb-[3cqi] text-[8.5cqi] font-black leading-none tracking-tight"
+                    className="mb-[3cqi] text-[7cqi] font-black leading-none tracking-tight"
                     style={{ color: axisColor }}
                   >
                     {face?.eyebrow ?? axisLabel}
                   </span>
                   <strong
-                    className="text-[10.5cqi] font-bold leading-[1.25] text-ink"
+                    className="text-[8.75cqi] font-bold leading-[1.25] text-ink"
                     style={{
                       display: "-webkit-box",
-                      WebkitLineClamp: 4,
+                      WebkitLineClamp: 3,
                       WebkitBoxOrient: "vertical",
                       overflow: "hidden",
                     }}
@@ -260,7 +259,7 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
                   </strong>
                   {face?.detail ? (
                     <p
-                      className="mt-[4cqi] text-[7.5cqi] leading-[1.4] text-mist"
+                      className="mt-[4cqi] text-[6.5cqi] leading-[1.4] text-mist"
                       style={{
                         display: "-webkit-box",
                         WebkitLineClamp: 2,
@@ -276,17 +275,26 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
             </button>
           </div>
         ) : (
-          /* 빈 칸 — 점선 자리 표시 + CardSurface(empty/aim/hot) 물성 */
+          /* 빈 칸 — 현재 칸은 축 색상 점선, 나머지는 흐린 점선 */
           <button
             type="button"
             onClick={onFill}
             aria-label={`${axisLabel} 칸 채우기`}
+            aria-hidden={interactive ? undefined : true}
+            tabIndex={interactive ? undefined : -1}
             className={cn(
-              "absolute inset-0 flex w-full flex-col items-center justify-center overflow-hidden rounded-card border border-dashed transition-colors",
-              pulse ? "border-deco/80" : "border-white/20 hover:border-deco/60",
-              hot && "border-deco shadow-glow-deco",
+              "absolute inset-0 flex w-full flex-col items-center justify-center overflow-hidden border border-dashed transition-colors",
+              !(pulse || hot) && "border-white/20 hover:border-white/35",
+              hot && "shadow-glow-deco",
             )}
-            style={{ containerType: "inline-size" }}
+            style={{
+              containerType: "inline-size",
+              borderColor: pulse || hot
+                ? `color-mix(in srgb, ${axisColor} ${hot ? 92 : 72}%, transparent)`
+                : undefined,
+              borderRadius: CARD_BORDER_RADIUS,
+              background: hot ? `color-mix(in srgb, ${axisColor} 10%, transparent)` : undefined,
+            }}
           >
             <CardSurface
               tier={hot ? "hot" : "empty"}
@@ -294,7 +302,6 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
               phase={axisIndex}
               calm
               injectStyle={false}
-              className="rounded-card"
             />
             <span
               aria-hidden
@@ -303,18 +310,28 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
                 background: `radial-gradient(90% 60% at 50% 118%, color-mix(in srgb, ${axisColor} 22%, transparent), transparent 60%)`,
               }}
             />
-            <span
-              className="relative text-[26cqi] font-semibold leading-none"
-              style={{ color: `color-mix(in srgb, ${axisColor} 70%, transparent)` }}
-            >
-              ?
-            </span>
+            {pulse || hot ? (
+              <span
+                className="relative max-w-[78%] text-center text-[8cqi] font-black leading-[1.3]"
+                style={{ color: "rgba(244,241,233,.94)" }}
+              >
+                여기에 카드 놓기
+              </span>
+            ) : (
+              <span
+                className="relative text-[26cqi] font-semibold leading-none"
+                style={{ color: "rgba(255,255,255,.24)" }}
+              >
+                ?
+              </span>
+            )}
             {badge && (
               <span
                 className={cn(
-                  "absolute left-1.5 top-1.5 text-[9px] tabular-nums tracking-[.04em]",
-                  pulse ? "text-deco" : "text-caption/60",
+                  "absolute left-2 top-2 text-[9px] tabular-nums tracking-[.04em]",
+                  pulse || hot ? "font-bold" : "text-caption/60",
                 )}
+                style={pulse || hot ? { color: axisColor } : undefined}
               >
                 {badge}
               </span>

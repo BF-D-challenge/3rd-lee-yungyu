@@ -1,0 +1,139 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1043963852-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제목은 비스듬한 파이프의 절단 길이와 각도를 명확히 보여주며, 배관 기술자가 두 엘보 사이 중심거리를 맞출 때 치수 텍스트 한 줄을 입력해 한 번 계산하고 절단 길이·각도 도면 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1043963852-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제목은 두 엘보 사이 중심거리와 제작 치수를 보여주지만, 시험 준비생의 순간은 비스듬한 파이프 절단이고 한 줄 치수 입력으로 중심거리를 계산해 도면을 내므로 절단 순간과 계산 대상의 연결을 문구로 더 명확히 해야 한다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525176875-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제목은 장소·날짜로 골든아워 시각표를 얻는 문제와 결과를 명확히 보여주며, 사진작가가 로케이션 답사 전에 텍스트 한 줄을 입력해 태양 위치를 한 번 계산하고 골든아워 시작·종료 시각표 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-525176875-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "제목과 smallest_build는 월출 시각·방향을 결과로 제시하지만, 영상감독의 실제 순간은 촬영 당일 일몰 방향 확인이고 payer가 필요한 태양 정보와 월출 결과가 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525176875-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "제목과 smallest_build는 일몰 시각·방향을 제시하지만, 부동산 외관 사진 촬영자의 실제 순간과 payer가 제시한 필요는 월출 장면 촬영 시간이며 일몰 결과와 자연스럽게 연결되지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1446555252-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제목은 보유 룬으로 지금 제작 가능한 룬워드를 명확히 보여주며, 반복 플레이어가 제작 직전에 룬 이름 텍스트 한 덩어리를 입력해 가능 여부를 한 번 계산하고 제작 가능한 룬워드 목록 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1446555252-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제목은 보유 룬의 무기용 룬워드를 보여주지만, 파밍 플레이어의 순간은 부족한 룬 확인이고 smallest_build 결과는 무기용 목록으로만 제시되어 부족한 룬을 알 수 있는지가 불명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1446555252-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제목은 룬 하나가 부족한 룬워드 목록을 명확히 보여주며, 빌드 플레이어가 무기용 후보를 골라 볼 때 보유 룬 텍스트 한 덩어리를 한 번 대조해 해당 목록 하나를 받지만 moment가 무기용 필터를 직접 요구해 twist와 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-validemail-co-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제목은 CSV의 이메일 형식 오류와 표시 목록을 명확히 보여주며, 소형 마케터가 캠페인 업로드 직전에 CSV 파일 하나를 입력해 주소 형식을 한 번 검증하고 오류 표시 CSV 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-validemail-co-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "제목과 smallest_build는 일회용 이메일 도메인 표시 CSV를 명확히 제시하지만, CSV를 공개 일회용 도메인 목록이라는 외부 데이터와 대조해야 하므로 오프라인 단일 입력·처리 MVP 규칙을 위반한다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    }
+  ]
+}

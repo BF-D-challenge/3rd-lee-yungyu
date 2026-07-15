@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6443780213-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "result_title만 읽어도 멀리서 읽히는 부채 문구 이미지라는 문제와 결과가 보이며, 문구 텍스트 1개를 받아 외곽선을 적용한 출력용 이미지 1장을 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6443780213-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "result_title만 읽어도 부채 크기에 맞춘 문구 이미지라는 처리와 결과가 보이며, 문구 텍스트 1개를 받아 고정된 부채 인쇄 규격에 맞춘 이미지 1장을 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6443780213-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "result_title만 읽어도 폭에 맞춘 두 줄 부채 글자 이미지라는 문제와 결과가 보이며, 긴 응원 문구 텍스트 1개를 받아 두 줄로 배치한 이미지 1장을 만든다.",
+      "risk_flags": []
+    }
+  ]
+}

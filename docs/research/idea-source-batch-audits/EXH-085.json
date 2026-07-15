@@ -1,0 +1,27 @@
+{
+  "batch_id": "EXH-085",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 6,
+  "decision_rows": 6,
+  "decision_counts": {
+    "Candidate": 3,
+    "Fail": 3
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 3,
+      "sample": [
+        "trustmrr:helpy-travel"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

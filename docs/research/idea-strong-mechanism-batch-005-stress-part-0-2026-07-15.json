@@ -1,0 +1,134 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-photo-string-art-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진으로 만드는 120핀 입문 스트링 도안’은 공방 운영자가 고객 사진으로 작품 제작을 시작하기 직전 사진 한 장을 받아 120핀 선 연결 패턴을 한 번 생성하고 번호 도안 PDF 한 개를 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-photo-string-art-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진으로 만드는 240핀 정밀 스트링 도안’은 공방 강사가 수업 실습 사진을 고르는 순간 사진 한 장을 받아 240핀 선 연결 패턴을 한 번 생성하고 도안 PDF 한 개로 난이도를 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-photo-string-art-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진으로 만드는 180핀 표준 스트링 도안’은 온라인 제작자가 주문 사진의 제작 가능 여부를 답하기 직전 사진 한 장을 받아 180핀 패턴을 한 번 생성하고 선 연결 도안 PDF 한 개를 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-smokify-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘금연 시작일로 버틴 일수 바로 계산’은 금연 성과를 확인하는 순간 시작일·하루 개비·한 갑 가격이라는 세 입력을 받아야 하므로 입력 1개 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_input"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-smokify-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘금연 시작일로 아낀 담배값 계산’은 담배 구매를 망설이는 직장인에게 시작일·하루 개비·한 갑 가격 세 입력을 요구하므로 입력 1개 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_input"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-smokify-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘금연 시작일로 안 피운 개비 계산’은 금연 재시작 직후 시작일·하루 개비·한 갑 가격 세 입력을 받아야 하므로 입력 1개 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_input"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-exif-data-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진 GPS 위치 삭제 후 공개 파일’은 SNS 게시 직전 사진 한 장의 GPS 메타데이터를 삭제해 파일 한 개를 만드는 흐름은 명확하지만, 위치 정보 제거는 OS 기본 공유 기능으로 더 간단히 처리할 수 있다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-exif-data-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진 전체 EXIF 삭제 후 게시 파일’은 납품 직전 사진 한 장의 전체 EXIF를 삭제해 파일 한 개를 만드는 흐름은 명확하지만, 전체 메타데이터 제거는 OS 기본 파일·사진 내보내기 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-exif-data-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진 기기 모델 삭제 후 납품 파일’은 판매자가 마켓 업로드 직전 사진 한 장에서 기기 모델 메타데이터만 한 번 삭제하고 결과 사진 파일 한 개를 받는 전문적 처리로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-mermaidonline-live-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 투명 배경 PNG 다이어그램’은 백엔드 개발자가 PR 직전 Mermaid 코드 텍스트 하나를 한 번 렌더링해 투명 배경 PNG 파일 한 개로 결과를 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

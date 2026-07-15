@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 전달 직전에 공개 노션 URL 하나를 입력하면 표 행이 끊기지 않도록 PDF 한 개로 변환해 제공하므로 문제·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 인쇄 검수 순간 공개 노션 URL 하나를 입력하면 이미지 원본 비율을 유지한 PDF 한 개를 생성하므로 문제·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 노션 원본을 열 수 없는 사람에게 전달할 때 공개 URL 하나를 입력하면 다크 페이지 대비를 보존한 PDF 한 개를 제공하므로 문제·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교사가 수업 자료 전달 직전에 공개 노션 URL 하나를 입력하면 이미지 비율을 고정한 PDF 한 개로 변환하므로 문제·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교사가 인쇄 상태를 검수할 때 공개 노션 URL 하나를 입력하면 다크 페이지 대비가 보존된 PDF 한 개를 즉시 생성하므로 문제·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교사가 원본을 열 수 없는 사람에게 전달할 때 공개 노션 URL 하나를 입력하면 표 페이지 나눔이 보존된 PDF 한 개를 제공하므로 문제·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팀 리더가 외부 협력사 전달 직전에 공개 노션 URL 하나를 입력하면 다크 페이지 대비를 보존한 PDF 한 개로 변환하므로 문제·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팀 리더가 인쇄 상태를 검수할 때 공개 노션 URL 하나를 입력하면 표 행이 끊기지 않는 PDF 한 개를 제공하므로 문제·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팀 리더가 노션 원본을 열 수 없는 협력사에 전달할 때 공개 URL 하나를 입력하면 이미지 비율을 보존한 PDF 한 개를 생성하므로 문제·처리·결과가 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

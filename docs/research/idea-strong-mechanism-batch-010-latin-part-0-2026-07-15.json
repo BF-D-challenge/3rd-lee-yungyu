@@ -1,0 +1,235 @@
+{
+  "results": [
+    {
+      "id": "next-latin-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘성공 JSON을 반환하는 가상 API’는 백엔드를 기다리는 프론트엔드 개발자가 API 설정 텍스트 1개를 입력하면 1회 모킹 처리 후 성공 응답의 로컬 mock URL 1개를 받는 흐름으로 payer·moment·twist가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘빈 목록을 반환하는 가상 API’는 오류 화면을 확인하려는 프론트엔드 개발자가 API 설정 텍스트 1개를 넣어 빈 목록 응답의 mock URL 1개를 받으므로 빈 목록이 특정 오류 상태라는 moment·twist 연결이 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘오류 JSON을 반환하는 가상 API’는 데모 직전 성공 응답을 연결하려는 프론트엔드 개발자가 API 설정 텍스트 1개를 넣어 오류 mock URL 1개를 받으므로 데모 moment와 오류 twist가 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘빈 목록을 반환하는 가상 API’는 오류 상태를 반복 확인하는 QA 엔지니어가 API 설정 텍스트 1개를 입력해 빈 목록 mock URL 1개를 받지만, 백엔드 미준비 moment가 빈 목록 테스트 필요성을 충분히 드러내지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘오류 JSON을 반환하는 가상 API’는 오류 상태를 반복 확인하는 QA 엔지니어가 API 설정 텍스트 1개를 넣으면 1회 모킹 처리 후 오류 JSON mock URL 1개를 받아 payer·moment·twist가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘성공 JSON을 반환하는 가상 API’는 데모 직전 응답 연결이 필요한 QA 엔지니어가 API 설정 텍스트 1개를 입력해 성공 응답 mock URL 1개를 받는 단일 모킹 결과로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘오류 JSON을 반환하는 가상 API’는 외부 API 연결을 만드는 노코드 제작자가 API 설정 텍스트 1개를 넣어 1회 오류 모킹 후 오류 JSON mock URL 1개를 받으므로 백엔드 미준비 moment와 twist가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘성공 JSON을 반환하는 가상 API’는 오류 화면을 확인하려는 노코드 제작자가 API 설정 텍스트 1개를 입력해 성공 mock URL 1개를 받으므로 오류 확인 moment와 성공 twist가 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-jjacifoecglgcnngpjhkckcofiliddei-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘빈 목록을 반환하는 가상 API’는 데모 직전 응답 연결이 필요한 노코드 제작자가 API 설정 텍스트 1개를 넣어 빈 목록 mock URL 1개를 받지만, 데모 moment에서 빈 목록을 써야 하는 이유가 불명확하다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-cipdlgmjblnniiicohcmcafcncippbha-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘페이지 404 링크 색상 표시 CSV’는 게시 직전 콘텐츠 편집자가 공개 웹페이지 URL 1개를 입력하면 링크를 1회 스캔 처리해 404 링크가 표시된 CSV 1개를 받는 구체적인 세로 조각이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-cipdlgmjblnniiicohcmcafcncippbha-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘페이지 리다이렉트 링크 점검 CSV’는 캠페인 직전 콘텐츠 편집자가 공개 웹페이지 URL 1개를 넣어 링크를 1회 스캔하고 리다이렉트 링크가 표시된 CSV 1개를 받으므로 moment와 twist가 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-cipdlgmjblnniiicohcmcafcncippbha-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘응답 실패 외부 링크 점검 CSV’는 납품 직전 콘텐츠 편집자가 공개 웹페이지 URL 1개를 입력해 링크를 1회 스캔하고 응답 실패 외부 링크가 표시된 CSV 1개를 받는 흐름이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-cipdlgmjblnniiicohcmcafcncippbha-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘페이지 리다이렉트 링크 점검 CSV’는 게시 직전 이커머스 담당자가 공개 웹페이지 URL 1개를 스캔해 리다이렉트 링크 CSV 1개를 받지만, 이 payer의 순간에는 리다이렉트보다 구매 링크 오류 점검 필요성이 더 직접적이다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-cipdlgmjblnniiicohcmcafcncippbha-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘응답 실패 외부 링크 점검 CSV’는 캠페인 직전 이커머스 담당자가 공개 웹페이지 URL 1개를 넣고 링크를 1회 스캔해 응답 실패 외부 링크 CSV 1개를 받으므로 실제 운영 순간과 결과가 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-cipdlgmjblnniiicohcmcafcncippbha-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘페이지 404 링크 색상 표시 CSV’는 고객에게 웹사이트를 납품하는 순간과 이커머스 담당자의 payer가 자연스럽게 연결되지 않지만, 공개 웹페이지 URL 1개를 스캔해 404 CSV 1개를 제공하는 MVP 흐름은 구체적이다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-cipdlgmjblnniiicohcmcafcncippbha-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘응답 실패 외부 링크 점검 CSV’는 납품 전 웹사이트를 검사하는 제작 대행 QA가 공개 웹페이지 URL 1개를 입력해 링크를 1회 스캔하고 응답 실패 외부 링크 CSV 1개를 받는 흐름이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-cipdlgmjblnniiicohcmcafcncippbha-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘페이지 404 링크 색상 표시 CSV’는 캠페인 직전 제작 대행 QA가 공개 웹페이지 URL 1개를 입력해 링크를 1회 스캔하고 404 링크 표시 CSV 1개를 받아 광고 유입 전 점검 결과를 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-cipdlgmjblnniiicohcmcafcncippbha-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘페이지 리다이렉트 링크 점검 CSV’는 납품 직전 제작 대행 QA가 공개 웹페이지 URL 1개를 넣어 링크를 1회 스캔하고 리다이렉트 링크 CSV 1개를 받아 납품 오류를 줄이는 구체적 결과를 얻는다.",
+      "risk_flags": []
+    }
+  ]
+}

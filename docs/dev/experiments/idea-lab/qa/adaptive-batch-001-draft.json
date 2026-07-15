@@ -1,0 +1,282 @@
+[
+  {
+    "id": "candidate-youtube-tag-extractor",
+    "source": {
+      "id": "source-youtube-tag-extractor",
+      "sourceName": "YouTube Tag Extractor",
+      "research": { "key": "chrome_web_store:idickfnblhhleimfneihpmddjabiodlp", "url": "https://chromewebstore.google.com/detail/youtube-tag-extractor/idickfnblhhleimfneihpmddjabiodlp" },
+      "platform": "plugin",
+      "value": "YouTube 영상의 숨은 태그를 추출하고 캡처하는 도구",
+      "detail": "영상 URL 하나를 넣으면 공개 페이지에서 확인 가능한 태그를 목록으로 보여주고 캡처할 수 있습니다.",
+      "evidence": "Chrome Web Store 원본 설명: hidden tags extraction and clean screenshots",
+      "preservedFlow": "YouTube URL 입력 → 영상 태그 추출 → 태그 목록·캡처"
+    },
+    "payers": [
+      { "id": "payer-yt-solo-strategist", "value": "경쟁 영상을 매주 분석하는 1인 콘텐츠 기획자", "detail": "비슷한 영상의 제목과 태그를 직접 메모해 다음 콘텐츠 주제를 정합니다." },
+      { "id": "payer-yt-brand-marketer", "value": "자사 채널 유입을 늘리려는 소형 브랜드 마케터", "detail": "게시 전 비슷한 영상의 검색 키워드와 태그를 비교합니다." },
+      { "id": "payer-yt-video-editor", "value": "여러 고객 채널을 관리하는 영상 편집자", "detail": "편집을 넘기기 전 영상마다 참고할 태그와 근거 화면을 정리합니다." }
+    ],
+    "moments": [
+      { "id": "moment-yt-before-topic", "value": "다음 영상 주제를 정하기 직전", "detail": "경쟁 영상에서 반복되는 검색 단서를 빠르게 모으고 싶은 순간" },
+      { "id": "moment-yt-before-publish", "value": "제목과 설명을 올리기 10분 전", "detail": "내 영상에 넣을 키워드를 감으로 정하고 싶지 않은 순간" },
+      { "id": "moment-yt-client-handoff", "value": "고객에게 편집 결과를 보내기 전", "detail": "참고한 영상의 태그 근거를 캡처 한 장으로 남기고 싶은 순간" }
+    ],
+    "twists": [
+      { "id": "twist-yt-tag-list", "kind": "replace", "value": "복잡한 분석 대신 태그 목록만 남기기", "detail": "원본의 태그 추출은 유지하고 결과를 바로 복사할 수 있게 줄입니다.", "resultTitle": "영상 태그 한눈에 보기", "platform": "web", "smallestBuild": "YouTube URL 하나를 넣으면 태그 목록과 복사 버튼이 나오는 화면" },
+      { "id": "twist-yt-evidence-capture", "kind": "add", "value": "태그와 영상 제목을 한 장의 근거 캡처로 묶기", "detail": "추출 결과에 영상 제목과 확인 시각을 붙여 보고용 결과를 만듭니다.", "resultTitle": "태그 근거 캡처", "platform": "web", "smallestBuild": "YouTube URL 하나를 넣으면 영상 제목·태그·확인 시각이 한 장으로 저장되는 화면" },
+      { "id": "twist-yt-keyword-groups", "kind": "add", "value": "태그를 주제별 세 묶음으로만 정리하기", "detail": "태그를 무작정 늘리지 않고 제목·장소·문제 키워드 세 묶음으로 보여줍니다.", "resultTitle": "태그 주제 세 묶음", "platform": "web", "smallestBuild": "YouTube URL 하나를 넣으면 태그가 제목·장소·문제 세 묶음으로 정리되는 화면" }
+    ]
+  },
+  {
+    "id": "candidate-enhanced-github",
+    "source": {
+      "id": "source-enhanced-github",
+      "sourceName": "Enhanced GitHub",
+      "research": { "key": "chrome_web_store:anlikcnbgdeidpacdbdljnabclhahhmd", "url": "https://chromewebstore.google.com/detail/enhanced-github/anlikcnbgdeidpacdbdljnabclhahhmd" },
+      "platform": "plugin",
+      "value": "GitHub 저장소와 파일별 크기, 다운로드 링크, 내용 복사를 보여주는 도구",
+      "detail": "저장소 URL을 열면 파일별 용량과 바로 받을 링크를 확인할 수 있습니다.",
+      "evidence": "Chrome Web Store 원본 설명: repo size, file size, download link, copy file contents",
+      "preservedFlow": "GitHub 저장소 URL 입력 → 파일 크기·링크 계산 → 용량 정보·복사 결과"
+    },
+    "payers": [
+      { "id": "payer-gh-solo-dev", "value": "여러 오픈소스 도구를 비교하는 1인 개발자", "detail": "설치 전에 저장소가 얼마나 무거운지와 필요한 파일을 직접 확인합니다." },
+      { "id": "payer-gh-tech-lead", "value": "팀 의존성을 점검하는 테크 리드", "detail": "새 라이브러리를 검토할 때 저장소 구조와 큰 파일을 빠르게 살핍니다." },
+      { "id": "payer-gh-maintainer", "value": "배포 파일을 정리하는 오픈소스 관리자", "detail": "릴리스 전에 용량이 큰 파일과 공유할 파일 링크를 확인합니다." }
+    ],
+    "moments": [
+      { "id": "moment-gh-before-install", "value": "라이브러리를 설치하기 직전", "detail": "저장소 전체를 내려받기 전에 용량과 큰 파일부터 알고 싶은 순간" },
+      { "id": "moment-gh-review-pr", "value": "코드 리뷰에서 큰 파일이 보인 직후", "detail": "문제 파일을 찾아 팀원에게 정확한 링크를 보내고 싶은 순간" },
+      { "id": "moment-gh-release", "value": "릴리스 파일을 공유하기 전", "detail": "다운로드할 파일과 저장소 전체 크기를 한 번에 확인하고 싶은 순간" }
+    ],
+    "twists": [
+      { "id": "twist-gh-repo-size", "kind": "replace", "value": "기능 설명 대신 저장소·파일 용량만 먼저 보여주기", "detail": "원본의 크기 확인 흐름을 유지하고 첫 결과를 숫자로 단순화합니다.", "resultTitle": "GitHub 저장소 용량표", "platform": "web", "smallestBuild": "GitHub 저장소 URL 하나를 넣으면 전체 용량과 큰 파일 5개가 나오는 화면" },
+      { "id": "twist-gh-copy-link", "kind": "add", "value": "큰 파일의 다운로드 링크와 내용 복사를 한 줄에 제공하기", "detail": "파일 크기를 확인한 뒤 바로 공유할 수 있는 결과로 좁힙니다.", "resultTitle": "큰 파일 링크 복사", "platform": "web", "smallestBuild": "GitHub 저장소 URL 하나를 넣으면 큰 파일의 크기·다운로드 링크·복사 버튼이 나오는 화면" },
+      { "id": "twist-gh-release-check", "kind": "add", "value": "릴리스 전에 용량 초과 파일을 표시하기", "detail": "파일 목록을 다시 읽지 않고 공유 전 확인할 경고 한 줄을 붙입니다.", "resultTitle": "릴리스 용량 경고", "platform": "web", "smallestBuild": "GitHub 저장소 URL 하나를 넣으면 기준보다 큰 파일과 공유 링크가 표시되는 화면" }
+    ]
+  },
+  {
+    "id": "candidate-base44-downloader",
+    "source": {
+      "id": "source-base44-downloader",
+      "sourceName": "Base44 Downloader",
+      "research": { "key": "chrome_web_store:ngbhbpaflbegfjgaibhldjlmmfonpief", "url": "https://chromewebstore.google.com/detail/base44-downloader/ngbhbpaflbegfjgaibhldjlmmfonpief" },
+      "platform": "plugin",
+      "value": "Base44 코드 워크스페이스 파일을 정리된 JSON 또는 ZIP으로 내보내는 도구",
+      "detail": "워크스페이스 파일을 받아 플랫폼 밖에서도 보관할 수 있는 깨끗한 파일 묶음으로 바꿉니다.",
+      "evidence": "Chrome Web Store 원본 설명: export workspace files to clean JSON or ZIP with local-only processing",
+      "preservedFlow": "워크스페이스 파일 입력 → 파일 구조 파싱·정리 → JSON·ZIP 내보내기"
+    },
+    "payers": [
+      { "id": "payer-base44-solo-builder", "value": "노코드로 서비스를 만드는 1인 빌더", "detail": "플랫폼에 묶인 파일을 따로 보관해 다른 도구로 옮길 준비를 합니다." },
+      { "id": "payer-base44-agency", "value": "고객 프로젝트를 넘겨야 하는 소형 제작 대행사", "detail": "작업이 끝나면 고객에게 읽기 쉬운 파일 묶음을 전달합니다." },
+      { "id": "payer-base44-migration", "value": "프로토타입을 다른 개발 환경으로 옮기는 개발자", "detail": "이전 전에 파일 구조가 빠지지 않았는지 백업본을 확인합니다." }
+    ],
+    "moments": [
+      { "id": "moment-base44-backup", "value": "플랫폼을 바꾸기 전", "detail": "나중에 접근하지 못할까 봐 현재 워크스페이스를 먼저 보관하고 싶은 순간" },
+      { "id": "moment-base44-handoff", "value": "고객에게 프로젝트를 넘기기 전", "detail": "플랫폼 화면이 아니라 파일로 전달해야 하는 순간" },
+      { "id": "moment-base44-debug", "value": "작동하지 않는 화면을 다시 살펴볼 때", "detail": "파일 구조를 정리해 어떤 부분을 확인해야 할지 찾고 싶은 순간" }
+    ],
+    "twists": [
+      { "id": "twist-base44-clean-json", "kind": "replace", "value": "ZIP보다 읽기 쉬운 JSON 한 파일을 기본 결과로 만들기", "detail": "원본의 로컬 내보내기 흐름을 유지하고 파일 구조를 먼저 확인하게 합니다.", "resultTitle": "워크스페이스 클린 JSON", "platform": "web", "smallestBuild": "워크스페이스 파일을 올리면 파일 목록과 정리된 JSON을 내려받는 화면" },
+      { "id": "twist-base44-zip-manifest", "kind": "add", "value": "ZIP 안에 파일 목록표를 함께 넣기", "detail": "백업을 풀지 않아도 어떤 파일이 들어 있는지 확인할 수 있게 합니다.", "resultTitle": "목록표가 붙은 ZIP 백업", "platform": "web", "smallestBuild": "워크스페이스 파일을 올리면 파일 목록표와 원본 폴더가 함께 든 ZIP을 내려받는 화면" },
+      { "id": "twist-base44-local-only", "kind": "add", "value": "업로드 파일이 서버로 가지 않는 로컬 처리 표시를 붙이기", "detail": "플랫폼 이전용 파일이라는 불안을 줄이고 처리 범위를 명확히 합니다.", "resultTitle": "로컬 전용 워크스페이스 백업", "platform": "web", "smallestBuild": "워크스페이스 파일을 올리면 브라우저 안에서만 변환하고 JSON 또는 ZIP을 저장하는 화면" }
+    ]
+  },
+  {
+    "id": "candidate-clip-mojo",
+    "source": {
+      "id": "source-clip-mojo",
+      "sourceName": "Clip Mojo: Color Picker + Palette Manager",
+      "research": { "key": "chrome_web_store:jmfaeffbldefkinlnmjpdbekggcblenh", "url": "https://chromewebstore.google.com/detail/clip-mojo-color-picker-+/jmfaeffbldefkinlnmjpdbekggcblenh" },
+      "platform": "plugin",
+      "value": "웹페이지 색상을 집어 팔레트·조화·WCAG 대비를 확인하는 도구",
+      "detail": "현재 페이지에서 색 하나를 고르면 함께 쓸 색과 읽기 쉬운 대비를 보여줍니다.",
+      "evidence": "Chrome Web Store 원본 설명: eyedropper, palette, harmony, swatch export, WCAG contrast",
+      "preservedFlow": "웹페이지 색상 선택 → 팔레트·조화·대비 계산 → 스와치·검사표"
+    },
+    "payers": [
+      { "id": "payer-clip-brand-designer", "value": "소형 브랜드의 화면 색을 정하는 디자이너", "detail": "웹페이지와 배너에서 고른 색을 브랜드 팔레트로 정리합니다." },
+      { "id": "payer-clip-frontend", "value": "디자인 파일 없이 화면을 맞추는 프론트엔드 개발자", "detail": "기존 사이트 색을 집어 코드에 쓸 색 조합을 확인합니다." },
+      { "id": "payer-clip-content-creator", "value": "썸네일 색을 반복해서 고르는 콘텐츠 제작자", "detail": "참고 이미지에서 색을 뽑아 제목과 배경의 대비를 확인합니다." }
+    ],
+    "moments": [
+      { "id": "moment-clip-pick-color", "value": "메인 색상을 확정하는 순간", "detail": "눈대중으로 고른 색이 다른 화면에서도 어울리는지 확인하고 싶은 순간" },
+      { "id": "moment-clip-handoff", "value": "개발자에게 색을 넘기기 전", "detail": "색상 이름 대신 정확한 값과 함께 쓸 색을 보내고 싶은 순간" },
+      { "id": "moment-clip-accessibility", "value": "게시 전 글자 대비를 점검할 때", "detail": "예쁜 색이 실제로 읽히는지 한 번에 확인하고 싶은 순간" }
+    ],
+    "twists": [
+      { "id": "twist-clip-swatch", "kind": "replace", "value": "복잡한 팔레트 관리 대신 색상 스와치와 값만 남기기", "detail": "색 선택 흐름을 유지하고 바로 복사할 결과를 앞에 둡니다.", "resultTitle": "웹페이지 색상 스와치", "platform": "web", "smallestBuild": "현재 페이지에서 색 하나를 고르면 HEX 값과 함께 쓸 색 4개가 나오는 화면" },
+      { "id": "twist-clip-contrast", "kind": "add", "value": "고른 색과 흰색·검은색 글자의 대비를 함께 표시하기", "detail": "팔레트를 고르는 순간 읽을 수 있는 조합인지 바로 확인합니다.", "resultTitle": "읽히는 색 조합 검사", "platform": "web", "smallestBuild": "현재 페이지에서 색 하나를 고르면 글자 색 두 가지의 WCAG 대비 결과가 나오는 화면" },
+      { "id": "twist-clip-harmony", "kind": "add", "value": "고른 색에서 세 가지 조화 조합만 제안하기", "detail": "끝없는 색 생성 대신 바로 비교할 세 묶음으로 결과를 줄입니다.", "resultTitle": "세 가지 색 조화 제안", "platform": "web", "smallestBuild": "현재 페이지에서 색 하나를 고르면 보색·유사색·삼색 조합 세 묶음이 나오는 화면" }
+    ]
+  },
+  {
+    "id": "candidate-print-notion",
+    "source": {
+      "id": "source-print-notion",
+      "sourceName": "Print Notion - Export Notion to PDF",
+      "research": { "key": "chrome_web_store:ijaopicbldggjdgbnfdlkljeggibmcha", "url": "https://chromewebstore.google.com/detail/print-notion-export-notio/ijaopicbldggjdgbnfdlkljeggibmcha" },
+      "platform": "plugin",
+      "value": "Notion 페이지와 데이터베이스를 레이아웃을 보존한 PDF로 내보내는 도구",
+      "detail": "Notion URL을 받아 표와 어두운 화면의 모양을 유지한 인쇄용 문서로 바꿉니다.",
+      "evidence": "Chrome Web Store 원본 설명: export Notion to PDF while keeping layouts, tables and dark mode",
+      "preservedFlow": "Notion URL 입력 → 레이아웃 보존 PDF 변환 → 인쇄·공유용 문서"
+    },
+    "payers": [
+      { "id": "payer-print-consultant", "value": "고객에게 정리된 보고서를 보내는 컨설턴트", "detail": "Notion 작업 페이지를 외부 사람이 열 수 있는 문서로 전달합니다." },
+      { "id": "payer-print-ops", "value": "팀 운영 문서를 보관하는 소규모 조직 담당자", "detail": "회의록과 절차서를 매달 PDF로 저장합니다." },
+      { "id": "payer-print-freelancer", "value": "Notion으로 납품물을 관리하는 프리랜서", "detail": "작업 내용을 인쇄하거나 고객에게 보낼 파일로 바꿉니다." }
+    ],
+    "moments": [
+      { "id": "moment-print-report", "value": "고객 보고서를 보내기 전", "detail": "Notion 화면 링크 대신 고정된 PDF를 첨부해야 하는 순간" },
+      { "id": "moment-print-archive", "value": "월간 문서를 보관하는 날", "detail": "페이지가 계속 바뀌기 전에 당시 모양을 파일로 남기고 싶은 순간" },
+      { "id": "moment-print-meeting", "value": "회의 자료를 인쇄하기 직전", "detail": "표와 제목이 잘리지 않은 문서를 바로 준비해야 하는 순간" }
+    ],
+    "twists": [
+      { "id": "twist-print-layout", "kind": "replace", "value": "배치 변환보다 한 페이지 레이아웃 보존에 집중하기", "detail": "원본의 PDF 변환 흐름을 작은 단일 페이지 결과로 줄입니다.", "resultTitle": "레이아웃 그대로 PDF", "platform": "web", "smallestBuild": "Notion 페이지 URL 하나를 넣으면 표와 제목이 보존된 PDF 미리보기가 나오는 화면" },
+      { "id": "twist-print-dark", "kind": "add", "value": "어두운 Notion 화면을 밝은 인쇄용 색으로 바꾸는 선택 추가", "detail": "원본 레이아웃은 유지하면서 종이에서 읽히는 결과를 제공합니다.", "resultTitle": "어두운 페이지 인쇄 변환", "platform": "web", "smallestBuild": "Notion 페이지 URL 하나를 넣으면 다크모드 표를 읽기 쉬운 인쇄용 PDF로 미리보는 화면" },
+      { "id": "twist-print-share", "kind": "add", "value": "PDF 파일과 함께 읽기 전용 공유 문구를 만들기", "detail": "내보낸 문서가 누구의 어떤 보고서인지 바로 전달되게 합니다.", "resultTitle": "보내기 좋은 Notion PDF", "platform": "web", "smallestBuild": "Notion 페이지 URL 하나를 넣으면 PDF와 제목·기준일이 붙은 공유 문구가 나오는 화면" }
+    ]
+  },
+  {
+    "id": "candidate-blurred-out",
+    "source": {
+      "id": "source-blurred-out",
+      "sourceName": "Blurred Out",
+      "research": { "key": "chrome_web_store:goncjmclfcobfokbehhinncaoakndmlj", "url": "https://chromewebstore.google.com/detail/blurred-out/goncjmclfcobfokbehhinncaoakndmlj" },
+      "platform": "plugin",
+      "value": "화면을 공유할 때 웹페이지의 특정 영역만 선택해 블러 처리하는 도구",
+      "detail": "전체 화면을 가리지 않고 주소·이름·알림처럼 보여주면 안 되는 부분만 가립니다.",
+      "evidence": "Chrome Web Store 원본 설명: selectively blur parts of a website when sharing your screen",
+      "preservedFlow": "공유할 웹 화면 선택 → 민감 영역 선택·블러 → 가려진 화면 공유"
+    },
+    "payers": [
+      { "id": "payer-blur-support", "value": "고객 화면을 함께 보며 문제를 해결하는 고객지원 담당자", "detail": "고객 데이터는 가린 채 오류 화면만 보여주고 안내합니다." },
+      { "id": "payer-blur-educator", "value": "브라우저 화면으로 수업하는 강사", "detail": "학생 이름과 개인 알림을 숨기고 설명할 화면만 공유합니다." },
+      { "id": "payer-blur-sales", "value": "제품 데모를 하는 1인 영업자", "detail": "실제 계정의 이메일과 내부 숫자를 가리고 기능을 보여줍니다." }
+    ],
+    "moments": [
+      { "id": "moment-blur-start-share", "value": "화면 공유 버튼을 누르기 직전", "detail": "공유할 화면에 개인정보가 섞였는지 급히 가려야 하는 순간" },
+      { "id": "moment-blur-popup", "value": "알림이나 이름이 화면에 뜬 직후", "detail": "공유를 끊지 않고 보이는 영역 하나만 숨기고 싶은 순간" },
+      { "id": "moment-blur-record", "value": "브라우저 데모를 녹화하기 전", "detail": "실제 계정 화면을 쓰면서 시청자에게 보여줄 정보만 남기고 싶은 순간" }
+    ],
+    "twists": [
+      { "id": "twist-blur-region", "kind": "replace", "value": "자동 탐지 대신 사용자가 드래그한 한 영역만 블러 처리하기", "detail": "원본의 선택 블러를 한 번의 드래그와 해제로 줄입니다.", "resultTitle": "드래그 한 번 화면 가리기", "platform": "plugin", "smallestBuild": "현재 웹페이지에서 영역 하나를 드래그하면 그 부분만 블러 처리되는 화면" },
+      { "id": "twist-blur-preview", "kind": "add", "value": "공유 전에 원본과 블러 화면을 나란히 미리보기", "detail": "무엇을 가렸는지 확인한 뒤 공유를 시작하게 합니다.", "resultTitle": "공유 전 블러 미리보기", "platform": "plugin", "smallestBuild": "현재 웹페이지에서 영역을 고르면 원본·블러 결과를 나란히 확인하는 화면" },
+      { "id": "twist-blur-dismiss", "kind": "add", "value": "새로 고침하면 블러가 사라진다는 경계 표시를 붙이기", "detail": "일회성 화면 보호라는 범위를 분명히 해 과도한 보안을 약속하지 않습니다.", "resultTitle": "일회성 화면 보호", "platform": "plugin", "smallestBuild": "현재 웹페이지에서 선택 영역을 블러 처리하고 새로고침 시 해제된다는 안내가 보이는 화면" }
+    ]
+  },
+  {
+    "id": "candidate-app-privacy-insights",
+    "source": {
+      "id": "source-app-privacy-insights",
+      "sourceName": "App Privacy Insights",
+      "research": { "key": "app_store:1575583991", "url": "https://apps.apple.com/us/app/app-privacy-insights/id1575583991?uo=4" },
+      "platform": "app",
+      "value": "iOS App Privacy Report NDJSON를 앱별 권한·네트워크 로그로 읽어주는 도구",
+      "detail": "설정에서 내보낸 파일을 기기 안에서 분석해 어떤 앱이 무엇에 접근했는지 보여줍니다.",
+      "evidence": "App Store 원본 설명: analyze App Privacy Report NDJSON, permission logs and network activity",
+      "preservedFlow": "iOS 개인정보 리포트 파일 입력 → 로그 파싱·분류 → 앱별 접근·네트워크 결과"
+    },
+    "payers": [
+      { "id": "payer-privacy-conscious", "value": "아이폰 앱 권한을 직접 확인하려는 개인정보 민감 사용자", "detail": "설정에 쌓인 리포트를 읽고 낯선 접근이 있었는지 확인합니다." },
+      { "id": "payer-app-qa", "value": "출시 전 앱의 네트워크 접근을 점검하는 모바일 QA 담당자", "detail": "테스트 기기 로그에서 예상하지 않은 접근을 찾아 개발자에게 보냅니다." },
+      { "id": "payer-family-device", "value": "가족 기기의 과도한 앱 권한을 확인하는 보호자", "detail": "어떤 앱이 위치·카메라·네트워크를 자주 쓰는지 설명해 줍니다." }
+    ],
+    "moments": [
+      { "id": "moment-privacy-export", "value": "설정에서 개인정보 리포트를 막 내보낸 직후", "detail": "긴 NDJSON 파일을 열어보지 않고 먼저 이상한 앱을 찾고 싶은 순간" },
+      { "id": "moment-privacy-unknown", "value": "모르는 네트워크 접근을 발견한 직후", "detail": "어떤 앱의 어느 활동인지 근거와 함께 확인하고 싶은 순간" },
+      { "id": "moment-privacy-release", "value": "앱 테스트를 끝내고 출시 전 점검할 때", "detail": "권한과 네트워크 사용이 실제 기능과 맞는지 확인해야 하는 순간" }
+    ],
+    "twists": [
+      { "id": "twist-privacy-app-summary", "kind": "replace", "value": "원시 로그 대신 앱별 접근 요약표만 먼저 보여주기", "detail": "파일 분석 흐름은 유지하고 첫 화면을 앱 단위 결과로 줄입니다.", "resultTitle": "앱별 개인정보 접근표", "platform": "app", "smallestBuild": "App Privacy Report 파일 하나를 선택하면 앱별 권한·네트워크 횟수가 나오는 화면" },
+      { "id": "twist-privacy-timeline", "kind": "add", "value": "앱별 접근을 시간순 한 줄 타임라인으로 보기", "detail": "숫자만 보지 않고 언제 접근했는지 확인하게 합니다.", "resultTitle": "앱 접근 타임라인", "platform": "app", "smallestBuild": "App Privacy Report 파일 하나를 선택하면 선택한 앱의 접근 시각과 종류가 시간순으로 나오는 화면" },
+      { "id": "twist-privacy-local-export", "kind": "add", "value": "분석 결과를 기기 안에만 저장하고 CSV로 내보내기", "detail": "민감한 로그를 서버로 보내지 않는 결과 경계를 분명히 합니다.", "resultTitle": "기기 안에 남는 개인정보 리포트", "platform": "app", "smallestBuild": "App Privacy Report 파일 하나를 선택하면 앱별 요약을 기기에 저장하고 CSV로 내보내는 화면" }
+    ]
+  },
+  {
+    "id": "candidate-zero-bounce",
+    "source": {
+      "id": "source-zero-bounce",
+      "sourceName": "Zero Bounce",
+      "research": { "key": "trustmrr:zero-bounce", "url": "https://trustmrr.com/startup/zero-bounce" },
+      "platform": "web",
+      "value": "이메일 발송 전에 스팸·인증·콘텐츠·도메인 문제를 검사하는 도구",
+      "detail": "보낼 메시지와 발신 도메인을 점검해 발송 전 고칠 문제를 알려줍니다.",
+      "evidence": "TrustMRR에서 실제 매출이 확인된 이메일 전달 가능성 검사 제품",
+      "preservedFlow": "이메일·도메인 입력 → 전달 가능성 규칙 검사 → 발송 전 문제 목록"
+    },
+    "payers": [
+      { "id": "payer-bounce-newsletter", "value": "매주 뉴스레터를 보내는 1인 운영자", "detail": "발송 전에 스팸으로 갈 만한 표현과 인증 문제를 직접 확인합니다." },
+      { "id": "payer-bounce-sales", "value": "영업 메일을 보내는 소규모 세일즈 담당자", "detail": "첫 연락 메일이 반송되거나 스팸 처리되지 않도록 도메인을 점검합니다." },
+      { "id": "payer-bounce-agency", "value": "여러 고객의 캠페인을 만드는 이메일 대행사", "detail": "고객별 발송 전 체크 결과를 한 장 리포트로 남깁니다." }
+    ],
+    "moments": [
+      { "id": "moment-bounce-before-send", "value": "대량 발송 버튼을 누르기 10분 전", "detail": "한 번 잘못 보내면 되돌리기 어려워 기술 문제를 먼저 확인하고 싶은 순간" },
+      { "id": "moment-bounce-after-fail", "value": "메일 반송률이 갑자기 오른 직후", "detail": "콘텐츠 문제인지 도메인 인증 문제인지 분리하고 싶은 순간" },
+      { "id": "moment-bounce-client-report", "value": "고객에게 캠페인 점검 결과를 보고하기 전", "detail": "문제와 수정 방법을 숫자보다 항목별로 보여주고 싶은 순간" }
+    ],
+    "twists": [
+      { "id": "twist-bounce-checklist", "kind": "replace", "value": "종합 점수 대신 발송 전 고칠 체크리스트를 먼저 보여주기", "detail": "전달 가능성 검사 흐름을 오늘의 수정 행동으로 바꿉니다.", "resultTitle": "발송 전 이메일 체크리스트", "platform": "web", "smallestBuild": "이메일 본문과 발신 도메인을 넣으면 고칠 항목 5개와 확인 방법이 나오는 화면" },
+      { "id": "twist-bounce-one-issue", "kind": "add", "value": "가장 급한 문제 하나를 첫 화면에 고정하기", "detail": "긴 진단 결과보다 발송을 막는 한 가지부터 처리하게 합니다.", "resultTitle": "먼저 고칠 이메일 문제 하나", "platform": "web", "smallestBuild": "이메일 본문과 발신 도메인을 넣으면 발송 전에 먼저 고칠 문제 하나와 근거가 나오는 화면" },
+      { "id": "twist-bounce-explain", "kind": "add", "value": "SPF·DKIM 같은 용어 옆에 확인할 행동을 붙이기", "detail": "전문 용어를 읽는 데서 끝나지 않고 다음 수정으로 이어지게 합니다.", "resultTitle": "이메일 인증 문제 쉽게 설명", "platform": "web", "smallestBuild": "이메일 본문과 발신 도메인을 넣으면 인증 문제의 쉬운 뜻과 확인할 설정 위치가 나오는 화면" }
+    ]
+  },
+  {
+    "id": "candidate-aliexpress-price-tracker",
+    "source": {
+      "id": "source-aliexpress-price-tracker",
+      "sourceName": "Aliexpress price tracker",
+      "research": { "key": "chrome_web_store:clhjbcgdmgadajjppmgilhiihhplccha", "url": "https://chromewebstore.google.com/detail/aliexpress-price-tracker/clhjbcgdmgadajjppmgilhiihhplccha" },
+      "platform": "plugin",
+      "value": "AliExpress 상품의 3개월·6개월 가격 이력을 보여주는 도구",
+      "detail": "상품 URL 하나를 넣으면 현재 가격이 과거 최저가와 비교해 진짜 할인인지 보여줍니다.",
+      "evidence": "Chrome Web Store 원본 설명: track 3 or 6 month AliExpress price history",
+      "preservedFlow": "AliExpress 상품 URL 입력 → 3·6개월 가격 이력 조회 → 현재가·과거 최저가 비교표"
+    },
+    "payers": [
+      { "id": "payer-price-smart-shopper", "value": "해외 직구 전에 가격을 확인하는 절약형 쇼핑객", "detail": "세일 문구보다 실제로 싼 가격인지 직접 비교합니다." },
+      { "id": "payer-price-reseller", "value": "상품을 소량 구매해 판매하는 온라인 셀러", "detail": "매입가가 평소보다 낮은지 확인한 뒤 주문합니다." },
+      { "id": "payer-price-gadget-buyer", "value": "전자 액세서리를 자주 바꾸는 얼리어답터", "detail": "지금 사도 되는지 가격 흐름을 보고 구매를 미룹니다." }
+    ],
+    "moments": [
+      { "id": "moment-price-sale", "value": "세일 배너를 본 직후", "detail": "할인율보다 실제 가격이 최근 최저인지 확인하고 싶은 순간" },
+      { "id": "moment-price-cart", "value": "장바구니 결제 직전", "detail": "며칠 기다리면 더 내려갈지 마지막으로 판단하는 순간" },
+      { "id": "moment-price-resell", "value": "재고를 들이기 전", "detail": "매입 가격이 평소보다 높아 마진을 깎지 않는지 확인하는 순간" }
+    ],
+    "twists": [
+      { "id": "twist-price-lowest", "kind": "replace", "value": "복잡한 알림 대신 현재가와 과거 최저가만 비교하기", "detail": "가격 이력의 핵심을 구매 직전 한 표로 줄입니다.", "resultTitle": "지금 사도 되는 가격표", "platform": "web", "smallestBuild": "상품 URL 하나를 넣으면 현재가·3개월 최저가·차이가 나오는 화면" },
+      { "id": "twist-price-window", "kind": "add", "value": "3개월과 6개월 기준을 한 번에 바꿔보기", "detail": "짧은 세일과 긴 가격 흐름을 같은 화면에서 비교합니다.", "resultTitle": "3개월·6개월 가격 비교", "platform": "web", "smallestBuild": "상품 URL 하나를 넣으면 3개월·6개월 최저가와 현재가를 전환해 보는 화면" },
+      { "id": "twist-price-note", "kind": "add", "value": "구매 판단을 한 줄 메모로 남기기", "detail": "가격을 확인한 뒤 사거나 기다린 이유를 기록합니다.", "resultTitle": "구매 전 가격 판단 메모", "platform": "web", "smallestBuild": "상품 URL 하나를 넣으면 가격표와 함께 지금 구매·기다림 메모를 저장하는 화면" }
+    ]
+  },
+  {
+    "id": "candidate-html2email",
+    "source": {
+      "id": "source-html2email",
+      "sourceName": "Html2Email: HTML editor and Inserter for Gmail & Yahoo Mail",
+      "research": { "key": "chrome_web_store:pgdmhodlebnljmmknpicldhgdnllonmd", "url": "https://chromewebstore.google.com/detail/html2email-html-editor-an/pgdmhodlebnljmmknpicldhgdnllonmd" },
+      "platform": "plugin",
+      "value": "HTML 코드를 Gmail·Yahoo Mail 작성창에 넣고 편집하는 도구",
+      "detail": "HTML 코드 하나를 붙여넣어 서식 있는 이메일을 미리 보고 작성창으로 옮깁니다.",
+      "evidence": "Chrome Web Store 원본 설명: edit and insert HTML emails into Gmail and Yahoo Mail",
+      "preservedFlow": "HTML 코드 입력 → 메일 서식 삽입·편집 → 작성창 미리보기"
+    },
+    "payers": [
+      { "id": "payer-html-newsletter", "value": "브랜드 뉴스레터를 직접 만드는 마케터", "detail": "디자이너가 준 HTML을 메일 작성창에서 확인하고 발송합니다." },
+      { "id": "payer-html-small-brand", "value": "정기 프로모션 메일을 보내는 소형 브랜드 운영자", "detail": "코드를 직접 고치기보다 화면에서 서식과 링크를 확인합니다." },
+      { "id": "payer-html-agency", "value": "여러 고객의 이메일 템플릿을 전달하는 대행사 실무자", "detail": "고객별 HTML을 작성창에 넣고 보내기 전 모양을 점검합니다." }
+    ],
+    "moments": [
+      { "id": "moment-html-before-send", "value": "HTML 이메일을 발송하기 직전", "detail": "코드가 실제 메일에서 어떻게 보이는지 마지막으로 확인하는 순간" },
+      { "id": "moment-html-preview", "value": "새 템플릿을 처음 붙여넣은 직후", "detail": "표·버튼·이미지가 깨지지 않았는지 작성창에서 보고 싶은 순간" },
+      { "id": "moment-html-client-approval", "value": "고객 승인용 메일을 보내기 전", "detail": "소스 코드가 아닌 실제 수신 화면으로 시안을 확인해야 하는 순간" }
+    ],
+    "twists": [
+      { "id": "twist-html-paste", "kind": "replace", "value": "복잡한 템플릿 관리 대신 HTML 붙여넣기와 미리보기만 남기기", "detail": "원본의 작성창 삽입 흐름을 한 번의 입력으로 줄입니다.", "resultTitle": "HTML 메일 바로 미리보기", "platform": "plugin", "smallestBuild": "HTML 코드 하나를 붙여넣으면 메일 모양과 작성창 삽입 버튼이 나오는 화면" },
+      { "id": "twist-html-safe-preview", "kind": "add", "value": "발송 전 링크와 이미지가 빠졌는지 한 줄로 점검하기", "detail": "서식 미리보기 뒤에 실수하기 쉬운 항목만 확인합니다.", "resultTitle": "메일 링크·이미지 점검", "platform": "plugin", "smallestBuild": "HTML 코드 하나를 붙여넣으면 미리보기와 깨진 링크·이미지 경고가 나오는 화면" },
+      { "id": "twist-html-clean-copy", "kind": "add", "value": "작성창에 넣기 전 불필요한 스타일 한 묶음을 정리하기", "detail": "원본 HTML 삽입을 유지하면서 메일에서 깨질 가능성을 줄입니다.", "resultTitle": "메일용 HTML 정리본", "platform": "plugin", "smallestBuild": "HTML 코드 하나를 붙여넣으면 메일용 정리 코드와 미리보기가 함께 나오는 화면" }
+    ]
+  }
+]

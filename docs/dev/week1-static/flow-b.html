@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>오늘 해볼까 — 1주차 정적 테스트 Flow B</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #121212;
+        --surface: #191919;
+        --card: #202020;
+        --line: rgba(255, 255, 255, 0.1);
+        --text: #f8f7f3;
+        --muted: #aaa8a3;
+        --accent: #ff4458;
+        --source: #6db4f5;
+        --payer: #7de4be;
+        --moment: #e8c56a;
+        --twist: #ff8091;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-width: 320px;
+        background:
+          radial-gradient(circle at 50% 0, rgba(255, 68, 88, 0.1), transparent 28rem),
+          var(--bg);
+        color: var(--text);
+        font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      button, a { font: inherit; }
+      a { color: inherit; text-decoration: none; }
+
+      .page-head {
+        width: min(100% - 32px, 720px);
+        margin: 48px auto 28px;
+        text-align: center;
+      }
+      .page-head p { color: var(--muted); line-height: 1.6; }
+      .eyebrow {
+        display: inline-flex;
+        padding: 7px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: #dedbd4;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
+
+      .jump {
+        position: sticky;
+        top: 12px;
+        z-index: 20;
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        width: fit-content;
+        margin: 0 auto 24px;
+        padding: 6px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(18, 18, 18, 0.9);
+        backdrop-filter: blur(14px);
+      }
+      .jump a {
+        display: grid;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        border-radius: 50%;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .jump a:hover, .jump a:focus-visible { background: var(--card); color: white; }
+
+      main { display: grid; gap: 72px; padding: 12px 16px 100px; }
+      .stage { scroll-margin-top: 80px; }
+      .stage-label {
+        width: min(100%, 390px);
+        margin: 0 auto 12px;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: 0.06em;
+      }
+      .phone {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: min(100%, 390px);
+        min-height: 760px;
+        margin: 0 auto;
+        padding: 18px 18px 22px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 34px;
+        background: #151515;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+      }
+      .status {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        color: #dbd9d4;
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .brand { font-size: 13px; font-weight: 850; }
+      .appbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+      .screen-meta { color: var(--muted); font-size: 11px; font-weight: 800; }
+      h1 { margin: 18px 0 8px; font-size: 28px; line-height: 1.18; letter-spacing: -0.04em; }
+      h2 { margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.035em; }
+      p { margin: 0; }
+      .sub { color: var(--muted); font-size: 14px; line-height: 1.55; }
+      .spacer { flex: 1; }
+      .panel {
+        margin-top: 20px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--card);
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.07);
+        color: #e8e5de;
+        font-size: 11px;
+        font-weight: 800;
+      }
+      .cta {
+        position: relative;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 54px;
+        margin-top: 14px;
+        padding: 0 22px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--accent);
+        color: white;
+        font-weight: 850;
+        box-shadow: 0 12px 28px rgba(255, 68, 88, 0.22);
+      }
+      .cta.secondary { background: #292929; box-shadow: none; }
+      .next-link { position: relative; z-index: 4; margin-top: 12px; text-align: center; color: var(--muted); font-size: 12px; }
+
+      .idea-summary { display: grid; gap: 14px; }
+      .idea-summary strong { display: block; font-size: 19px; line-height: 1.35; }
+      .axis-row { display: flex; flex-wrap: wrap; gap: 7px; }
+      .axis {
+        padding: 6px 9px;
+        border-radius: 999px;
+        color: #111;
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .axis.source { background: var(--source); }
+      .axis.payer { background: var(--payer); }
+      .axis.moment { background: var(--moment); }
+      .axis.twist { background: var(--twist); }
+      .build-one {
+        padding: 15px;
+        border-radius: 16px;
+        background: #171717;
+        color: #f0eee8;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .praise-list { display: grid; gap: 10px; margin-top: 20px; }
+      .praise-choice {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        min-height: 58px;
+        padding: 14px 15px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--card);
+        color: #efede7;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .praise-choice input { accent-color: var(--accent); }
+      .praise-choice:has(input:checked) { border-color: rgba(255, 68, 88, 0.75); background: rgba(255, 68, 88, 0.08); }
+      .name-setting {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 18px;
+        padding: 15px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: #1c1c1c;
+      }
+      .name-setting small { display: block; margin-top: 4px; color: var(--muted); line-height: 1.45; }
+      .switch { width: 42px; height: 24px; flex: 0 0 auto; border-radius: 999px; background: #373737; box-shadow: inset 0 0 0 1px var(--line); }
+
+      .deal-zone { position: relative; min-height: 370px; margin-top: 42px; }
+      .deck-shadow, .deal-card {
+        position: absolute;
+        left: 50%;
+        width: 210px;
+        height: 286px;
+        border-radius: 24px;
+      }
+      .deck-shadow {
+        top: 70px;
+        transform: translateX(-50%) rotate(5deg);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: repeating-linear-gradient(135deg, #262626 0 8px, #202020 8px 16px);
+      }
+      .deal-card {
+        z-index: 2;
+        top: 35px;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        transform: translateX(-50%) rotate(-4deg);
+        border: 1px solid rgba(255, 128, 145, 0.45);
+        background: linear-gradient(145deg, #292122, #1b1b1b);
+        text-align: center;
+        box-shadow: 0 22px 50px rgba(0, 0, 0, 0.45);
+        animation: deal 900ms cubic-bezier(.18,.88,.24,1.1) both;
+      }
+      .deal-card strong { font-size: 20px; line-height: 1.45; }
+      @keyframes deal {
+        from { opacity: 0; transform: translate(65%, -120px) rotate(18deg) scale(.78); }
+        to { opacity: 1; transform: translateX(-50%) rotate(-4deg) scale(1); }
+      }
+
+      .empty-stack { position: relative; min-height: 330px; margin: 34px 0 4px; }
+      .empty-card {
+        position: absolute;
+        left: 50%;
+        top: 26px;
+        display: grid;
+        width: 218px;
+        height: 284px;
+        place-items: center;
+        padding: 24px;
+        transform: translateX(-50%);
+        border: 1px dashed rgba(255, 255, 255, 0.2);
+        border-radius: 24px;
+        background: #1c1c1c;
+        color: var(--muted);
+        text-align: center;
+        line-height: 1.55;
+      }
+      .empty-card::before, .empty-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: #181818;
+      }
+      .empty-card::before { transform: translate(8px, 10px) rotate(3deg); }
+      .empty-card::after { transform: translate(-8px, 18px) rotate(-4deg); }
+
+      .slots { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+      .slot {
+        min-height: 116px;
+        padding: 13px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: var(--card);
+      }
+      .slot small { display: block; margin-bottom: 10px; font-size: 10px; font-weight: 900; }
+      .slot strong { font-size: 13px; line-height: 1.4; }
+      .slot.source small { color: var(--source); }
+      .slot.payer small { color: var(--payer); }
+      .slot.moment small { color: var(--moment); }
+      .slot.twist small { color: var(--twist); }
+      .slot.source { border-bottom: 4px solid var(--source); }
+      .slot.payer { border-bottom: 4px solid var(--payer); }
+      .slot.moment { border-bottom: 4px solid var(--moment); }
+      .slot.twist { border-bottom: 4px solid var(--twist); }
+      .slot-note { display: block; margin-top: 7px; color: var(--muted); font-size: 10px; line-height: 1.35; }
+      .slot-actions { display: flex; gap: 8px; margin-top: 9px; color: var(--muted); font-size: 9px; font-weight: 800; }
+      .fan { position: relative; height: 175px; margin: 12px 0 0; }
+      .fan-card {
+        position: absolute;
+        left: calc(50% - 54px);
+        bottom: -68px;
+        width: 108px;
+        height: 154px;
+        transform-origin: 50% 160%;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 18px;
+        background: repeating-linear-gradient(135deg, #2e2e2e 0 7px, #242424 7px 14px);
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.35);
+      }
+      .fan-card:nth-child(1) { transform: rotate(-36deg); }
+      .fan-card:nth-child(2) { transform: rotate(-18deg); }
+      .fan-card:nth-child(3) { transform: rotate(0deg); }
+      .fan-card:nth-child(4) { transform: rotate(18deg); }
+      .fan-card:nth-child(5) { transform: rotate(36deg); }
+      #b5 .phone { background: #0d0d0d; }
+      #b5 .slots { gap: 9px; }
+      #b5 .slot { min-height: 154px; }
+      #b5 .fan { height: 118px; overflow: hidden; }
+      #b5 .fan-card { bottom: -88px; width: 76px; height: 108px; left: calc(50% - 38px); }
+      .deck-caption-b5 { margin: 7px 0 -4px; color: var(--muted); font-size: 10px; text-align: center; }
+      .toast { position: relative; z-index: 5; min-height: 0; max-height: 0; margin: 0; overflow: hidden; color: var(--payer); font-size: 11px; text-align: center; opacity: 0; transition: max-height .2s ease, margin .2s ease, opacity .2s ease; }
+      .toast.show { max-height: 24px; margin-top: 8px; opacity: 1; }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .deal-card { animation: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="page-head">
+      <span class="eyebrow">WEEK 1 · FLOW B · STATIC TEST</span>
+      <h1>칭찬을 보낸 사람이<br />자기 아이디어를 뽑기까지</h1>
+      <p>설명 없이 화면만 보여주고, 참가자가 다음 행동을 찾는지 관찰합니다.</p>
+    </header>
+
+    <nav class="jump" aria-label="화면 바로가기">
+      <a href="#b1">B1</a><a href="#b2">B2</a><a href="#b3">B3</a><a href="#b4">B4</a><a href="#b5">B5</a>
+    </nav>
+
+    <main>
+      <!-- TEST SCRIPT — 1) 네 카드가 각각 무엇인지 말한다. 2) 결과에서 원본과 달라진 한 가지를 찾는다. 3) 잠긴 제작 문구를 여는 방법을 찾는다. 4) 오늘 무료 카드와 잠긴 다음 카드의 차이를 말한다. 5) 보낸 사람 확인과 다음 카드 미리 보기의 차이를 설명한다. 6) 받은 사람이 어디서 자신의 네 장 뽑기를 시작하는지 찾는다. -->
+      <section class="stage" id="b1">
+        <p class="stage-label">B1 · 친구의 실행 보기</p>
+        <article class="phone">
+          <div class="status"><span>9:41</span><span>● ● ●</span></div>
+          <span class="brand">오늘 해볼까</span>
+          <h1>윤규님이 오늘<br />이걸 만들어요</h1>
+          <p class="sub">아이디어가 아니라, 오늘 만들 화면을 보고 칭찬해주세요.</p>
+          <div class="panel idea-summary">
+            <div class="axis-row">
+              <span class="axis source">검증된 원본</span><span class="axis payer">돈 낼 사람</span>
+              <span class="axis moment">필요한 순간</span><span class="axis twist">한 끗 변화</span>
+            </div>
+            <strong>회의가 끝나면 결정만 남기는 1분 음성 메모</strong>
+            <p class="sub">말한 내용을 글로 바꾸는 흐름은 유지하고, 전체 받아쓰기 대신 결정된 문장 세 줄만 보여줘요.</p>
+            <div class="build-one"><span class="pill">오늘 만들 화면 1개</span><br /><br />1분 음성을 올리면 결정된 내용만 세 줄로 보여주는 웹 화면</div>
+          </div>
+          <div class="spacer"></div>
+          <a class="cta" href="#b2">익명 칭찬 보내기</a>
+          <p class="next-link">이름은 기본적으로 보이지 않아요</p>
+        </article>
+      </section>
+
+      <!-- TEST SCRIPT — 1) 네 카드가 각각 무엇인지 말한다. 2) 결과에서 원본과 달라진 한 가지를 찾는다. 3) 잠긴 제작 문구를 여는 방법을 찾는다. 4) 오늘 무료 카드와 잠긴 다음 카드의 차이를 말한다. 5) 보낸 사람 확인과 다음 카드 미리 보기의 차이를 설명한다. 6) 받은 사람이 어디서 자신의 네 장 뽑기를 시작하는지 찾는다. -->
+      <section class="stage" id="b2">
+        <p class="stage-label">B2 · 칭찬 고르기</p>
+        <article class="phone">
+          <div class="status"><span>9:41</span><span>● ● ●</span></div>
+          <span class="brand">오늘 해볼까</span>
+          <h1>어떤 점이<br />좋았나요?</h1>
+          <p class="sub">한 문장만 고르면 카드로 전달돼요. 직접 비평하거나 조언할 필요는 없어요.</p>
+          <div class="praise-list">
+            <label class="praise-choice"><input type="radio" name="praise" checked />오늘 만들 크기라 진짜 시작할 것 같아요</label>
+            <label class="praise-choice"><input type="radio" name="praise" />누가 쓸지 바로 보여서 좋았어요</label>
+            <label class="praise-choice"><input type="radio" name="praise" />원본에서 한 가지만 바꾼 점이 영리해요</label>
+            <label class="praise-choice"><input type="radio" name="praise" />완성되면 제가 첫 사용자 할게요</label>
+          </div>
+          <div class="name-setting">
+            <div><strong>30일 뒤 이름 공개 허용</strong><small>끄면 계속 익명이고, 결제해도 이름은 공개되지 않아요.</small></div>
+            <span class="switch" aria-label="이름 공개 꺼짐"></span>
+          </div>
+          <div class="spacer"></div>
+          <a class="cta" href="#b3">이 문장 보내기</a>
+        </article>
+      </section>
+
+      <!-- TEST SCRIPT — 1) 네 카드가 각각 무엇인지 말한다. 2) 결과에서 원본과 달라진 한 가지를 찾는다. 3) 잠긴 제작 문구를 여는 방법을 찾는다. 4) 오늘 무료 카드와 잠긴 다음 카드의 차이를 말한다. 5) 보낸 사람 확인과 다음 카드 미리 보기의 차이를 설명한다. 6) 받은 사람이 어디서 자신의 네 장 뽑기를 시작하는지 찾는다. -->
+      <section class="stage" id="b3">
+        <p class="stage-label">B3 · 칭찬 카드 전달</p>
+        <article class="phone">
+          <div class="status"><span>9:41</span><span>● ● ●</span></div>
+          <span class="brand">오늘 해볼까</span>
+          <h1>칭찬 한 장이<br />도착했어요</h1>
+          <p class="sub">선택한 문장이 윤규님의 실제 칭찬 카드 덱에 들어갔습니다.</p>
+          <div class="deal-zone" aria-label="칭찬 카드가 덱에 들어가는 모션">
+            <div class="deck-shadow"></div>
+            <div class="deal-card"><strong>“오늘 만들 크기라<br />진짜 시작할 것 같아요”</strong></div>
+          </div>
+          <div class="spacer"></div>
+          <a class="cta" href="#b4">내 칭찬 카드 만들기</a>
+          <a class="cta secondary" href="#b4">여기서 닫기</a>
+        </article>
+      </section>
+
+      <!-- TEST SCRIPT — 1) 네 카드가 각각 무엇인지 말한다. 2) 결과에서 원본과 달라진 한 가지를 찾는다. 3) 잠긴 제작 문구를 여는 방법을 찾는다. 4) 오늘 무료 카드와 잠긴 다음 카드의 차이를 말한다. 5) 보낸 사람 확인과 다음 카드 미리 보기의 차이를 설명한다. 6) 받은 사람이 어디서 자신의 네 장 뽑기를 시작하는지 찾는다. -->
+      <section class="stage" id="b4">
+        <p class="stage-label">B4 · 내 칭찬 카드 제안</p>
+        <article class="phone">
+          <div class="status"><span>9:41</span><span>● ● ●</span></div>
+          <span class="brand">오늘 해볼까</span>
+          <h1>당신의 빈 카드에도<br />칭찬을 받아볼까요?</h1>
+          <p class="sub">먼저 오늘 만들 아이디어를 네 장으로 뽑아야, 친구가 무엇을 칭찬할지 알 수 있어요.</p>
+          <div class="empty-stack">
+            <div class="empty-card"><span><strong>아직 받은 칭찬이 없어요</strong><br /><br />아이디어를 뽑고 공유하면<br />실제로 도착한 칭찬만 쌓여요.</span></div>
+          </div>
+          <div class="spacer"></div>
+          <a class="cta" href="#b5">내 아이디어 네 장 뽑기</a>
+          <p class="next-link">가입이나 결제 없이 시작해요</p>
+        </article>
+      </section>
+
+      <!-- TEST SCRIPT — 1) 네 카드가 각각 무엇인지 말한다. 2) 결과에서 원본과 달라진 한 가지를 찾는다. 3) 잠긴 제작 문구를 여는 방법을 찾는다. 4) 오늘 무료 카드와 잠긴 다음 카드의 차이를 말한다. 5) 보낸 사람 확인과 다음 카드 미리 보기의 차이를 설명한다. 6) 받은 사람이 어디서 자신의 네 장 뽑기를 시작하는지 찾는다. -->
+      <section class="stage" id="b5">
+        <p class="stage-label">B5 · 네 장 뽑기 (A1과 동일)</p>
+        <article class="phone">
+          <div class="status"><span>9:41</span><span>● ● ●</span></div>
+          <div class="appbar"><span class="brand">오늘 해볼까</span><span class="screen-meta">4 / 4</span></div>
+          <h1>첫 미팅 10분 전,<br />당신은 뭘 만들까요?</h1>
+          <p class="sub">검증된 흐름은 그대로 두고, 딱 한 가지만 바꿔요.</p>
+          <div class="slots">
+            <div class="slot source"><small>01 검증된 원본</small><strong>정보 하나를 넣으면 상대 정보를 찾아 정리</strong><span class="slot-note">원본 · 1Lookup</span><span class="slot-actions">바꾸기 · 직접 쓰기</span></div>
+            <div class="slot payer"><small>02 돈 낼 사람</small><strong>매주 잠재 고객을 찾는 1인 영업자</strong><span class="slot-note">미팅 전마다 직접 검색</span><span class="slot-actions">바꾸기 · 직접 쓰기</span></div>
+            <div class="slot moment"><small>03 필요한 순간</small><strong>첫 미팅 10분 전</strong><span class="slot-note">검색할 시간은 부족한 순간</span><span class="slot-actions">바꾸기 · 직접 쓰기</span></div>
+            <div class="slot twist"><small>04 한 끗 변화</small><strong>긴 리포트 대신 30초 음성 브리핑</strong><span class="slot-note">결과를 듣는 방식만 변경</span><span class="slot-actions">바꾸기 · 직접 쓰기</span></div>
+          </div>
+          <div class="fan" aria-hidden="true">
+            <div class="fan-card"></div><div class="fan-card"></div><div class="fan-card"></div><div class="fan-card"></div><div class="fan-card"></div>
+          </div>
+          <p class="deck-caption-b5">덱은 계속 돌고, 뽑은 카드는 슬롯으로 날아가요</p>
+          <div class="spacer"></div>
+          <a class="cta" href="flow-a.html#a2">네 장으로 결과 보기</a>
+          <button class="cta secondary" id="b5-reroll" type="button">4장 다시 뽑기</button>
+          <p class="toast" id="b5-toast" role="status">네 장을 새 조합으로 다시 뽑았어요</p>
+        </article>
+      </section>
+    </main>
+    <script>
+      const rerollButton = document.querySelector("#b5-reroll");
+      const rerollToast = document.querySelector("#b5-toast");
+      rerollButton?.addEventListener("click", () => {
+        rerollToast?.classList.add("show");
+        window.setTimeout(() => rerollToast?.classList.remove("show"), 1800);
+      });
+    </script>
+  </body>
+</html>

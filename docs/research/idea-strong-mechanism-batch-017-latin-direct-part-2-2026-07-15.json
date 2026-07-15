@@ -1,0 +1,220 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-taillens-tool-for-frontend-developers-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 디자인 오류 직후 공개 URL·CSS selector와 margin/padding 값을 한 덩어리로 입력하면 spacing class를 한 번 변환해 최소 변경 diff 파일 한 개를 받으므로 제목·순간·변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-taillens-tool-for-frontend-developers-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 코드 리뷰 직전 공개 URL·CSS selector와 text/background color 값을 입력하면 color class를 한 번 변환해 한 줄 diff 파일을 받으므로 제목·순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-taillens-tool-for-frontend-developers-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 class 재조합 전에 공개 URL·CSS selector와 breakpoint·class 값을 입력하면 현재 class를 한 번 읽고 지정 breakpoint class 한 줄의 diff 파일을 받으므로 입력·처리·결과가 단일하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-taillens-tool-for-frontend-developers-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 퍼블리셔가 디자인 오류 직후 공개 URL·CSS selector와 색상 값을 입력하면 color class로 한 번 변환된 한 줄 diff 파일을 받아 최소 수정 여부를 확인하므로 payer와 moment가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-taillens-tool-for-frontend-developers-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 퍼블리셔가 코드 리뷰 직전 공개 URL·CSS selector와 breakpoint·class 값을 입력하면 지정 breakpoint class만 추가된 diff 파일 한 개를 받아 변경 범위를 확인하므로 제목과 카드 순간이 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-taillens-tool-for-frontend-developers-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 퍼블리셔가 class 재조합 전에 공개 URL·CSS selector와 margin/padding 값을 입력하면 spacing class 한 줄만 바뀐 diff 파일을 받아 교체 내용을 확인하므로 한 끗 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-taillens-tool-for-frontend-developers-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 브라우저에서 디자인 오류를 발견한 직후 공개 URL·CSS selector와 breakpoint·class 값을 입력하면 지정 breakpoint class 한 줄의 diff 파일을 받아 최소 수정을 확인하므로 payer·moment·twist가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-taillens-tool-for-frontend-developers-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 코드 리뷰 직전 공개 URL·CSS selector와 margin/padding 값을 입력하면 spacing class만 한 번 바뀐 diff 파일을 받아 수정을 검토하므로 단일 입력·처리·결과가 성립한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-taillens-tool-for-frontend-developers-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 class 재조합 전에 공개 URL·CSS selector와 text/background color 값을 입력하면 color class 한 줄의 diff 파일을 받아 교체 내용을 확인하므로 제목과 필요한 순간이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-fonzo-io-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 최종 SVG 세트를 받은 직후 SVG ZIP 하나를 입력하면 glyph 웹폰트로 한 번 변환해 파일명 기반 CSS class가 포함된 패키지 ZIP 한 개를 받으므로 payer·moment·twist가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-fonzo-io-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 아이콘을 웹 프로젝트에 넣기 직전 SVG ZIP 하나를 입력하면 viewBox를 한 번 같은 em 영역으로 정규화해 정렬된 웹폰트 패키지 ZIP 한 개를 받으므로 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-fonzo-io-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 웹폰트를 넘기기 전 SVG ZIP 하나를 입력하면 glyph 웹폰트로 한 번 변환해 class·codepoint 미리보기 HTML이 포함된 패키지 ZIP 한 개를 받으므로 사용법 확인이라는 twist가 결과에 반영된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-fonzo-io-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 최종 SVG 세트를 받은 직후 SVG ZIP 하나를 입력하면 모든 viewBox를 한 번 같은 em 영역으로 정규화한 웹폰트 패키지 ZIP 한 개를 받아 기존 규칙에 맞출 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-fonzo-io-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 웹 프로젝트에 넣기 직전 SVG ZIP 하나를 입력하면 glyph 웹폰트로 한 번 변환해 class·codepoint 미리보기 HTML이 포함된 패키지 ZIP 한 개를 받으므로 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-fonzo-io-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 다른 개발자에게 웹폰트를 넘기기 전 SVG ZIP 하나를 입력하면 glyph 웹폰트로 한 번 변환해 파일명 기반 CSS class가 포함된 패키지 ZIP 한 개를 받으므로 파일명 유지라는 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-fonzo-io-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 최종 SVG 세트를 받은 직후 SVG ZIP 하나를 입력하면 glyph 웹폰트로 한 번 변환해 class·codepoint 미리보기 HTML이 포함된 패키지 ZIP 한 개를 받아 매핑을 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-fonzo-io-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 아이콘을 웹 프로젝트에 넣기 직전 SVG ZIP 하나를 입력하면 glyph 웹폰트로 한 번 변환해 파일명 기반 CSS class가 포함된 패키지 ZIP 한 개를 받으므로 제목과 twist가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-fonzo-io-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 웹폰트를 넘기기 전 SVG ZIP 하나를 입력하면 viewBox를 한 번 같은 em 영역으로 정규화해 정렬된 웹폰트 패키지 ZIP 한 개를 받으므로 전달 전 확인이라는 moment와 결과가 맞는다.",
+      "risk_flags": []
+    }
+  ]
+}

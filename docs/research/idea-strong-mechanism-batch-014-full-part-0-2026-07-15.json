@@ -1,0 +1,436 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자사 웹을 앱으로 보여주려는 소상공인이 모바일 웹 완성 직후 공개 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용해 설치 가능한 debug APK 한 개를 받으므로 제목·결제자·순간·한 끗 변화가 모두 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자사 웹을 앱으로 보여주려는 소상공인이 모바일 웹 완성 직후 공개 URL 하나를 입력하면 Android 뒤로가기를 웹 탐색처럼 처리해 설치 가능한 debug APK 한 개를 받으므로 제목과 사용 순간이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자사 웹을 앱으로 보여주려는 소상공인이 모바일 웹 완성 직후 공개 URL 하나를 입력하면 자사 도메인 안에서만 열리도록 설정된 설치 가능한 debug APK 한 개를 받으므로 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소상공인이 사용자의 홈 화면 앱 요구 직후 공개 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용한 설치 가능한 debug APK 한 개를 즉시 받으므로 결제자·순간·결과가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소상공인이 사용자의 홈 화면 앱 요구 직후 공개 URL 하나를 입력하면 웹식 Android 뒤로가기를 적용한 설치 가능한 debug APK 한 개를 즉시 받으므로 한 끗 변화가 분명하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소상공인이 사용자의 홈 화면 앱 요구 직후 공개 URL 하나를 입력하면 자사 도메인 안에서만 열리는 설치 가능한 debug APK 한 개를 즉시 받으므로 제목과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소상공인이 테스트 단말에 설치본을 보여주기 직전 공개 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용한 debug APK 한 개를 받아 즉시 설치 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소상공인이 테스트 직전 공개 URL 하나를 입력하면 웹식 뒤로가기를 적용한 debug APK 한 개를 받아 실제 단말 동작을 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소상공인이 테스트 직전 공개 URL 하나를 입력하면 자사 도메인 고정 설정을 적용한 debug APK 한 개를 받아 설치 확인할 수 있으므로 순간과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 모바일 웹 납품 직후 공개 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용한 설치 가능한 debug APK 한 개를 받아 반복 포장 작업을 줄일 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 모바일 웹 납품 직후 공개 URL 하나를 입력하면 Android 뒤로가기를 웹처럼 처리한 debug APK 한 개를 받아 고객용 설치본을 만들 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 모바일 웹 납품 직후 공개 URL 하나를 입력하면 자사 도메인 안에서만 열리는 debug APK 한 개를 받아 고객용 설치본을 만들 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 사용자의 홈 화면 앱 요구 직후 공개 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용한 debug APK 한 개를 즉시 납품할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 사용자의 홈 화면 앱 요구 직후 공개 URL 하나를 입력하면 웹식 뒤로가기를 적용한 debug APK 한 개를 즉시 납품할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 사용자의 홈 화면 앱 요구 직후 공개 URL 하나를 입력하면 자사 도메인 고정 설정이 적용된 debug APK 한 개를 즉시 납품할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 테스트 단말 제시 직전 공개 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용한 설치 가능한 debug APK 한 개를 받아 실제 설치를 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 테스트 단말 제시 직전 공개 URL 하나를 입력하면 웹식 뒤로가기를 적용한 설치 가능한 debug APK 한 개를 받아 실제 동작을 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 테스트 단말 제시 직전 공개 URL 하나를 입력하면 자사 도메인 안에서만 열리는 설치 가능한 debug APK 한 개를 받아 실제 설치를 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "커뮤니티 매니저가 회원용 웹서비스 완성 직후 공개 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용한 설치 가능한 debug APK 한 개를 받아 회원용 설치본을 준비할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "커뮤니티 매니저가 회원용 웹서비스 완성 직후 공개 URL 하나를 입력하면 웹식 Android 뒤로가기를 적용한 debug APK 한 개를 받아 회원용 설치본을 준비할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "커뮤니티 매니저가 회원용 웹서비스 완성 직후 공개 URL 하나를 입력하면 자사 도메인 안에서만 열리는 debug APK 한 개를 받아 회원용 설치본을 준비할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "커뮤니티 매니저가 회원의 홈 화면 앱 요구 직후 공개 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용한 debug APK 한 개를 즉시 제공할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "커뮤니티 매니저가 회원의 홈 화면 앱 요구 직후 공개 URL 하나를 입력하면 웹식 뒤로가기를 적용한 debug APK 한 개를 즉시 제공할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "커뮤니티 매니저가 회원의 홈 화면 앱 요구 직후 공개 URL 하나를 입력하면 자사 도메인 고정 설정이 적용된 debug APK 한 개를 즉시 제공할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "커뮤니티 매니저가 테스트 단말에 설치본을 보여주기 직전 공개 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용한 debug APK 한 개를 받아 설치를 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "커뮤니티 매니저가 테스트 직전 공개 URL 하나를 입력하면 웹식 뒤로가기를 적용한 debug APK 한 개를 받아 실제 단말 동작을 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-webtoapp-no-code-app-converter-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "커뮤니티 매니저가 테스트 직전 공개 URL 하나를 입력하면 자사 도메인 안에서만 열리는 debug APK 한 개를 받아 설치와 접근 범위를 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 컴포넌트 확정 직후 URL#selector 텍스트 하나를 입력하면 인라인 스타일을 분리한 HTML/CSS 코드 파일 한 개를 받아 구현을 시작할 수 있어 제목과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 컴포넌트 확정 직후 URL#selector 하나를 입력하면 지정 요소를 React JSX로 변환한 JSX 코드 파일 한 개를 받아 구현을 시작할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 컴포넌트 확정 직후 URL#selector 하나를 입력하면 지정 요소의 스타일을 Tailwind class로 변환한 컴포넌트 코드 파일 한 개를 받으므로 입력·처리·결과가 단일하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 수작업 구현 직전 URL#selector 하나를 입력하면 인라인 스타일을 분리한 HTML/CSS 코드 파일 한 개를 받아 빠르게 재현할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 수작업 구현 직전 URL#selector 하나를 입력하면 지정 컴포넌트를 React JSX로 변환한 JSX 파일 한 개를 받아 재현할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 수작업 구현 직전 URL#selector 하나를 입력하면 스타일을 Tailwind class로 변환한 컴포넌트 코드 파일 한 개를 받아 재현할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 팀에 코드 구조를 넘기기 전 URL#selector 하나를 입력하면 인라인 스타일을 분리한 HTML/CSS 코드 파일 한 개를 즉시 공유할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 팀에 코드 구조를 넘기기 전 URL#selector 하나를 입력하면 지정 컴포넌트를 React JSX로 변환한 JSX 파일 한 개를 즉시 공유할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 팀에 코드 구조를 넘기기 전 URL#selector 하나를 입력하면 스타일을 Tailwind class로 변환한 컴포넌트 코드 파일 한 개를 즉시 공유할 수 있다.",
+      "risk_flags": []
+    }
+  ]
+}

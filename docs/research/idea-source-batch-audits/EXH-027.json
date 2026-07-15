@@ -1,0 +1,35 @@
+{
+  "batch_id": "EXH-027",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 66,
+    "Reserve": 3,
+    "Candidate": 28,
+    "Merge": 3
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 66,
+      "sample": [
+        "app_store:922103212",
+        "app_store:6478748744",
+        "trustmrr:social-networking-app-b2c",
+        "app_store:1132442892",
+        "app_store:469964520",
+        "chrome_web_store:hdokiejnpimakedhajhdlcegeplioahd",
+        "app_store:1448707412"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

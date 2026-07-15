@@ -4,14 +4,12 @@
 
 | Scenario | 자동화 위치 | 핵심 검증 |
 |---|---|---|
-| 1–3 | `idea-lab.spec.ts` | 첫 방문, 네 장 뽑기, 단일 교체, 직접 입력 |
+| 1–3 | `idea-lab.spec.ts` | 첫 방문, 네 장 뽑기, 카드 뽑기식 단일 교체와 취소 |
 | 4–5 | `idea-lab.spec.ts` | native/clipboard 성공, 취소, 같은 URL 재시도, 계측 |
-| 6 | `idea-lab.spec.ts` | 생성된 칭찬 링크, 긍정 칭찬 4개, opened 이벤트 |
-| 7–8 | `praise-flow.spec.ts` | 영구 익명, 중복 방지, 30일 뒤 무료 이름 공개 |
-| 9–10 | `praise-flow.spec.ts` | 빈 상태 CTA, 기존 링크 재공유, 오늘 카드 뒤집기 |
-| 11–13 | `praise-flow.spec.ts` | 하루 한 장, 잠금 정보 비노출, 두 fake door |
+| 6 | `idea-lab.spec.ts` | 생성된 응원 링크, 완성 아이디어와 네 축, 응원 진입 |
+| 응원 여정 7개 | `praise-flow.spec.ts` | 아이디어 확인, 기본·직접 응원, 익명·이름 공개, 오류·빈 상태·받은 카드 |
 | 14 | 세 E2E spec | Primary, 네 의미색, dark color scheme |
-| 15–17 | `responsive-and-regression.spec.ts` | 네 해상도, reduced motion, 폐기 구현 회귀 방지 |
+| 15–17 | `responsive-and-regression.spec.ts` | 여섯 화면 크기, reduced motion, 폐기 구현 회귀 방지 |
 
 순수 날짜·스케줄·익명 공개 규칙과 저장소/Supabase 응답 변환은 `tests/unit/`에서 별도로 검증한다.
 

@@ -1,0 +1,81 @@
+{
+  "batch_id": "EXH-057",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 57,
+    "Candidate": 40,
+    "Merge": 1,
+    "Reserve": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 71,
+      "sample": [
+        "chrome_web_store:fdjamakpfbbddfjaooikfcpapjohcfmg",
+        "app_store:1503291383",
+        "app_store:1460664010",
+        "trustmrr:laxi-ai",
+        "app_store:1530496970",
+        "app_store:1483037022",
+        "trustmrr:selfietopro",
+        "app_store:504065732"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1460664010",
+          "decision": "Candidate",
+          "reason": "지원 장치를 Bluetooth로 입력받아 시스템별 최적화 가능성을 처리하고, 튜닝 가능성을 즉시 확인하는 세로 조각이다."
+        },
+        {
+          "key": "app_store:1483037022",
+          "decision": "Candidate",
+          "reason": "그림과 참고 이미지를 입력받아 채색·필터 처리를 하고, 완성된 디지털 그림을 즉시 확인하는 세로 조각이다."
+        }
+      ],
+      "false_reject_rate": 0.25
+    },
+    {
+      "round": 2,
+      "fail_count": 59,
+      "sample": [
+        "app_store:316391924",
+        "trustmrr:getmomentum",
+        "app_store:1540637587",
+        "app_store:1522122685",
+        "app_store:1435286486",
+        "chrome_web_store:onkalnlfmpkgkadgpamkkanhaildpkji"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1540637587",
+          "decision": "Candidate",
+          "reason": "아동의 글자·음절·단어 답변을 받아 글자-소리 관계 기반 연습을 처리하고, 읽기·철자 성과 보고서를 만드는 2일 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 3,
+      "fail_count": 57,
+      "sample": [
+        "trustmrr:provamoda-ai",
+        "app_store:316391924",
+        "app_store:1434518367",
+        "app_store:395672275",
+        "app_store:314376561",
+        "trustmrr:laxi-ai"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

@@ -1,0 +1,1123 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#121212">
+  <title>오늘 해볼까 · 1주차 사용자 테스트 · Flow A</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #121212;
+      --surface: #191919;
+      --surface-raised: #212121;
+      --surface-soft: #292929;
+      --text: #f7f7f4;
+      --muted: #aaa9a4;
+      --dim: #777670;
+      --line: rgba(255, 255, 255, .11);
+      --line-strong: rgba(255, 255, 255, .2);
+      --source: #6db4f5;
+      --payer: #7de4be;
+      --moment: #e8c56a;
+      --twist: #ff8091;
+      --ink: #11151a;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 50% -120px, rgba(109, 180, 245, .12), transparent 360px),
+        var(--bg);
+      font-family: Pretendard, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "Apple SD Gothic Neo", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, a { font: inherit; }
+    button { color: inherit; }
+    button:focus-visible, a:focus-visible { outline: 2px solid var(--moment); outline-offset: 3px; }
+    h1, h2, h3, p { margin: 0; }
+
+    .page {
+      width: min(100%, 500px);
+      margin: 0 auto;
+      padding: 0 14px 80px;
+    }
+
+    .page-head {
+      padding: 28px 6px 18px;
+    }
+    .eyebrow {
+      color: var(--source);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .page-head h1 {
+      margin-top: 9px;
+      font-size: clamp(28px, 8vw, 38px);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+    }
+    .page-head > p:last-child {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .anchor-nav {
+      position: sticky;
+      top: 8px;
+      z-index: 100;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(18, 18, 18, .88);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .32);
+      backdrop-filter: blur(18px);
+    }
+    .anchor-nav a {
+      display: grid;
+      place-items: center;
+      min-height: 35px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: color .2s ease, background .2s ease;
+    }
+    .anchor-nav a[aria-current="step"] {
+      color: var(--ink);
+      background: var(--source);
+    }
+
+    .prototype-step {
+      scroll-margin-top: 74px;
+      padding-top: 42px;
+    }
+    .step-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 4px 12px;
+    }
+    .step-kicker {
+      color: var(--source);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .06em;
+    }
+    .step-head h2 {
+      margin-top: 4px;
+      font-size: 21px;
+      letter-spacing: -.03em;
+    }
+    .step-goal {
+      max-width: 140px;
+      color: var(--dim);
+      font-size: 11px;
+      line-height: 1.35;
+      text-align: right;
+    }
+
+    .phone {
+      position: relative;
+      min-height: 760px;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      border-radius: 34px;
+      background: #0d0d0d;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, .42);
+    }
+    .phone::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 8px;
+      z-index: 20;
+      width: 108px;
+      height: 4px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, .52);
+      transform: translateX(-50%);
+    }
+    .status-bar {
+      height: 32px;
+      padding: 0 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .screen {
+      min-height: 728px;
+      padding: 8px 18px 30px;
+      display: flex;
+      flex-direction: column;
+    }
+    .appbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 34px;
+      margin-bottom: 14px;
+    }
+    .brand {
+      color: var(--source);
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .screen-meta {
+      color: var(--dim);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .screen-title {
+      font-size: 27px;
+      line-height: 1.16;
+      letter-spacing: -.042em;
+    }
+    .screen-copy {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .spacer { flex: 1; }
+
+    .primary, .secondary, .tertiary {
+      width: 100%;
+      min-height: 52px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+    .primary {
+      border: 0;
+      color: var(--ink);
+      background: var(--source);
+      box-shadow: 0 10px 24px rgba(109, 180, 245, .18);
+    }
+    .primary.mint { background: var(--payer); box-shadow: 0 10px 24px rgba(125, 228, 190, .16); }
+    .primary.gold { background: var(--moment); box-shadow: 0 10px 24px rgba(232, 197, 106, .16); }
+    .secondary {
+      margin-top: 8px;
+      border: 1px solid var(--line-strong);
+      color: var(--text);
+      background: transparent;
+    }
+    .tertiary {
+      min-height: 40px;
+      border: 0;
+      color: var(--muted);
+      background: transparent;
+    }
+    .next-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      margin: 12px 4px 0;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    /* A1 · four cards */
+    .draw-stage {
+      position: relative;
+      min-height: 436px;
+      margin-top: 18px;
+    }
+    .four-cards {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+    .axis-card {
+      position: relative;
+      min-height: 154px;
+      padding: 13px 12px 40px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(155deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
+    }
+    .axis-card::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 4px;
+      background: var(--axis);
+    }
+    .axis-card.source { --axis: var(--source); }
+    .axis-card.payer { --axis: var(--payer); }
+    .axis-card.moment { --axis: var(--moment); }
+    .axis-card.twist { --axis: var(--twist); }
+    .axis-label {
+      color: var(--axis);
+      font-size: 10px;
+      font-weight: 900;
+    }
+    .axis-card b {
+      display: block;
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.34;
+      letter-spacing: -.02em;
+    }
+    .axis-card small {
+      display: block;
+      margin-top: 7px;
+      color: var(--dim);
+      font-size: 10px;
+      line-height: 1.35;
+    }
+    .card-actions {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      display: flex;
+      gap: 5px;
+    }
+    .card-actions span {
+      flex: 1;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .deck-caption {
+      position: absolute;
+      left: 50%;
+      bottom: 83px;
+      z-index: 4;
+      color: var(--dim);
+      font-size: 10px;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+    .fan-window {
+      position: absolute;
+      left: -18px;
+      right: -18px;
+      bottom: -13px;
+      height: 128px;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, #000 17%, #000 83%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 17%, #000 83%, transparent);
+    }
+    .fan {
+      position: absolute;
+      left: 50%;
+      bottom: -39px;
+      width: 0;
+      height: 0;
+      animation: spin 16s linear infinite;
+    }
+    .fan i {
+      position: absolute;
+      left: -18px;
+      top: -26px;
+      width: 36px;
+      height: 52px;
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: 8px;
+      background: linear-gradient(145deg, #333b47, #17191e);
+      box-shadow: inset 0 0 0 3px rgba(109, 180, 245, .08), 0 8px 18px rgba(0, 0, 0, .35);
+      transform: rotate(var(--angle)) translateY(-98px);
+    }
+    .fan i::before {
+      content: "✦";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: rgba(109, 180, 245, .78);
+      font-size: 11px;
+    }
+    .fly-card {
+      position: absolute;
+      left: 50%;
+      bottom: 40px;
+      z-index: 4;
+      width: 36px;
+      height: 52px;
+      border: 1px solid rgba(255, 255, 255, .32);
+      border-radius: 8px;
+      background: linear-gradient(145deg, var(--source), #485d8f);
+      opacity: 0;
+      animation: fly 5.2s cubic-bezier(.4, 0, .15, 1) infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes fly {
+      0%, 60% { opacity: 0; transform: translate(-50%, 0) rotate(-12deg); }
+      63% { opacity: 1; }
+      74% { opacity: 1; transform: translate(-118px, -246px) rotate(0) scale(1.1); }
+      78%, 100% { opacity: 0; transform: translate(-118px, -246px) rotate(0) scale(1.1); }
+    }
+
+    /* A2/A3 · buildPrompt */
+    .axis-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      margin: 4px 0 12px;
+    }
+    .axis-chip {
+      min-height: 42px;
+      padding: 7px 5px;
+      border: 1px solid color-mix(in srgb, var(--axis), transparent 62%);
+      border-radius: 13px;
+      background: color-mix(in srgb, var(--axis), transparent 91%);
+      color: var(--axis);
+      font-size: 9px;
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: center;
+    }
+    .axis-chip:nth-child(1) { --axis: var(--source); }
+    .axis-chip:nth-child(2) { --axis: var(--payer); }
+    .axis-chip:nth-child(3) { --axis: var(--moment); }
+    .axis-chip:nth-child(4) { --axis: var(--twist); }
+    .prompt-title {
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .prompt-box {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(109, 180, 245, .24);
+      border-radius: 20px;
+      background: #11151a;
+    }
+    .prompt-content {
+      padding: 15px;
+      color: #dedfdf;
+      font: 10.5px/1.5 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      white-space: pre-line;
+    }
+    .prompt-content strong { color: var(--text); }
+    .prompt-preview { height: 357px; }
+    .locked-copy {
+      filter: blur(4px);
+      user-select: none;
+    }
+    .lock-overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      min-height: 166px;
+      padding: 66px 20px 16px;
+      background: linear-gradient(transparent 0, rgba(17, 21, 26, .91) 35%, #11151a 66%);
+      text-align: center;
+    }
+    .lock-icon {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin: 0 auto 8px;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      background: var(--surface-raised);
+      font-size: 15px;
+    }
+    .lock-overlay b {
+      display: block;
+      font-size: 13px;
+    }
+    .lock-overlay span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+    }
+    .reward-note {
+      margin: 9px 4px 13px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+      text-align: center;
+    }
+    .unlock-banner {
+      margin-bottom: 11px;
+      padding: 11px 13px;
+      border: 1px solid rgba(125, 228, 190, .25);
+      border-radius: 16px;
+      color: var(--payer);
+      background: rgba(125, 228, 190, .07);
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+    }
+    .prompt-open {
+      height: 418px;
+      overflow-y: auto;
+      border-color: rgba(125, 228, 190, .3);
+      scrollbar-width: thin;
+      scrollbar-color: var(--payer) transparent;
+    }
+    .prompt-open .prompt-content { font-size: 9.5px; }
+    .shared-link {
+      margin: 9px 0 12px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    /* Praise card system */
+    .empty-table, .praise-table {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 50% 34%, rgba(232, 197, 106, .09), transparent 160px),
+        linear-gradient(145deg, #171817, #0f100f);
+    }
+    .empty-table {
+      min-height: 354px;
+      margin-top: 20px;
+    }
+    .empty-stack-card {
+      position: absolute;
+      left: 50%;
+      top: 58px;
+      width: 174px;
+      height: 222px;
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      background: #17191d;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .32);
+      transform: translateX(-50%) rotate(var(--rotate)) translateY(var(--y));
+    }
+    .empty-stack-card:nth-child(1) { --rotate: -7deg; --y: 11px; opacity: .34; }
+    .empty-stack-card:nth-child(2) { --rotate: 6deg; --y: 7px; opacity: .52; }
+    .empty-stack-card:nth-child(3) { --rotate: 0deg; --y: 0; }
+    .card-back-pattern {
+      position: absolute;
+      inset: 9px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(109, 180, 245, .25);
+      border-radius: 14px;
+      background:
+        linear-gradient(45deg, rgba(109, 180, 245, .08) 25%, transparent 25%, transparent 75%, rgba(109, 180, 245, .08) 75%),
+        linear-gradient(-45deg, rgba(109, 180, 245, .08) 25%, transparent 25%, transparent 75%, rgba(109, 180, 245, .08) 75%);
+      background-size: 18px 18px;
+    }
+    .card-back-pattern span {
+      display: grid;
+      place-items: center;
+      width: 56px;
+      height: 56px;
+      border: 1px solid rgba(109, 180, 245, .4);
+      border-radius: 50%;
+      color: var(--source);
+      background: #15191e;
+      font-size: 23px;
+    }
+    .empty-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 20px;
+      color: var(--dim);
+      font-size: 11px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .empty-message {
+      margin: 17px 2px 16px;
+      text-align: center;
+    }
+    .empty-message h3 {
+      font-size: 19px;
+      letter-spacing: -.025em;
+    }
+    .empty-message p {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .praise-table {
+      min-height: 386px;
+      margin: 4px 0 10px;
+      perspective: 1100px;
+    }
+    .next-card {
+      position: absolute;
+      left: 50%;
+      top: 23px;
+      width: 188px;
+      height: 250px;
+      padding: 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: 22px;
+      background: #17191d;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
+      transform: translateX(-50%) rotate(7deg);
+    }
+    .next-card .card-back-pattern { inset: 10px; }
+    .next-lock {
+      position: absolute;
+      right: 13px;
+      top: 12px;
+      z-index: 3;
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(13, 13, 13, .86);
+      font-size: 9px;
+      font-weight: 900;
+    }
+    .today-card {
+      position: absolute;
+      left: 50%;
+      top: 73px;
+      z-index: 4;
+      width: 204px;
+      height: 270px;
+      padding: 0;
+      border: 0;
+      border-radius: 24px;
+      background: transparent;
+      transform: translateX(-50%);
+      transform-style: preserve-3d;
+      transition: transform .65s cubic-bezier(.2, .72, .2, 1);
+      cursor: pointer;
+    }
+    .today-card.is-flipped { transform: translateX(-50%) rotateY(180deg); }
+    .card-face {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      border-radius: 24px;
+      box-shadow: 0 22px 48px rgba(0, 0, 0, .45);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .today-back {
+      background: #17191d;
+    }
+    .today-back .card-back-pattern { inset: 11px; }
+    .today-back small {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 24px;
+      z-index: 2;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .today-front {
+      padding: 20px 18px;
+      color: #17130b;
+      background: linear-gradient(155deg, #f2d987, #d9aa55);
+      transform: rotateY(180deg);
+    }
+    .today-front .card-day {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+    .today-front .suit {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin: 32px auto 20px;
+      border: 1px solid rgba(23, 19, 11, .28);
+      border-radius: 50%;
+      font-size: 21px;
+    }
+    .today-front blockquote {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.4;
+      letter-spacing: -.025em;
+      text-align: center;
+    }
+    .today-front .sender {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 20px;
+      font-size: 10px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .flip-hint {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 16px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      text-align: center;
+    }
+    .pay-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+      margin-bottom: 10px;
+    }
+    .pay-action {
+      min-height: 76px;
+      padding: 10px 8px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      color: var(--text);
+      background: var(--surface);
+      font-size: 11px;
+      font-weight: 900;
+      line-height: 1.35;
+      text-align: left;
+      cursor: pointer;
+    }
+    .pay-action span {
+      display: block;
+      margin-top: 5px;
+      color: var(--moment);
+      font-size: 10px;
+    }
+    .pay-note {
+      color: var(--dim);
+      font-size: 9px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 200;
+      max-width: calc(100% - 34px);
+      padding: 11px 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(33, 33, 33, .94);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, .4);
+      font-size: 12px;
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 10px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 370px) {
+      .page { padding-inline: 8px; }
+      .phone { border-radius: 28px; }
+      .screen { padding-inline: 14px; }
+      .axis-card { min-height: 160px; padding-inline: 10px; }
+      .prompt-content { font-size: 9.5px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+      .fan { transform: rotate(22deg); }
+      .fly-card { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="page-head">
+      <p class="eyebrow">Week 1 · Flow A · 5 screens</p>
+      <h1>아이디어를 만들고<br>칭찬 한 장을 만나는 흐름</h1>
+      <p>설명 없이 위에서 아래로 진행해 주세요. 상단의 A1–A5를 누르면 원하는 화면으로 바로 이동합니다.</p>
+    </header>
+
+    <nav class="anchor-nav" aria-label="Flow A 화면 이동">
+      <a href="#a1" aria-current="step">A1</a>
+      <a href="#a2">A2</a>
+      <a href="#a3">A3</a>
+      <a href="#a4">A4</a>
+      <a href="#a5">A5</a>
+    </nav>
+
+    <article class="prototype-step" id="a1" data-step="A1">
+      <!--
+        PRD §12 TEST SCRIPT (all six questions; ask without explaining the UI)
+        Q1. 네 카드가 각각 무엇인지 말한다.
+        Q2. 결과에서 원본과 달라진 한 가지를 찾는다.
+        Q3. 잠긴 제작 문구를 여는 방법을 찾는다.
+        Q4. 오늘 무료 카드와 잠긴 다음 카드의 차이를 말한다.
+        Q5. 보낸 사람 확인과 다음 카드 미리 보기의 차이를 설명한다.
+        Q6. 받은 사람이 어디서 자신의 네 장 뽑기를 시작하는지 찾는다.
+        FAILURE CHECKS: 취향 설정을 먼저 찾는 사람이 2명 이상인지; 잠긴 카드에 칭찬 문구가 이미 노출됐다고 보는 사람이 2명 이상인지; 칭찬이 없는데 결제가 필요하다고 보는 사람이 2명 이상인지; 공유 보상과 990원 결제를 같은 상품으로 보는지; 아이디어 조합 카드와 익명 칭찬 카드를 같은 기능으로 보는지.
+      -->
+      <header class="step-head">
+        <div><p class="step-kicker">A1 · START</p><h2>네 장 뽑기</h2></div>
+        <p class="step-goal">취향 질문 없이 네 축을 이해하고 시작하는가</p>
+      </header>
+      <div class="phone">
+        <div class="status-bar"><span>9:41</span><span>● ● ●</span></div>
+        <section class="screen" aria-label="A1 네 장 뽑기 화면">
+          <div class="appbar"><span class="brand">오늘 해볼까</span><span class="screen-meta">4 / 4</span></div>
+          <h3 class="screen-title">첫 미팅 10분 전,<br>당신은 뭘 만들까요?</h3>
+          <p class="screen-copy">검증된 흐름은 그대로 두고, 딱 한 가지만 바꿔요.</p>
+
+          <div class="draw-stage">
+            <div class="four-cards">
+              <div class="axis-card source">
+                <span class="axis-label">01 검증된 원본</span>
+                <b>정보 하나를 넣으면 상대 정보를 찾아 정리</b>
+                <small>원본 · 1Lookup</small>
+                <div class="card-actions"><span>바꾸기</span><span>직접 쓰기</span></div>
+              </div>
+              <div class="axis-card payer">
+                <span class="axis-label">02 돈 낼 사람</span>
+                <b>매주 잠재 고객을 찾는 1인 영업자</b>
+                <small>미팅 전마다 직접 검색</small>
+                <div class="card-actions"><span>바꾸기</span><span>직접 쓰기</span></div>
+              </div>
+              <div class="axis-card moment">
+                <span class="axis-label">03 필요한 순간</span>
+                <b>첫 미팅 10분 전</b>
+                <small>검색할 시간은 부족한 순간</small>
+                <div class="card-actions"><span>바꾸기</span><span>직접 쓰기</span></div>
+              </div>
+              <div class="axis-card twist">
+                <span class="axis-label">04 한 끗 변화</span>
+                <b>긴 리포트 대신 30초 음성 브리핑</b>
+                <small>결과를 듣는 방식만 변경</small>
+                <div class="card-actions"><span>바꾸기</span><span>직접 쓰기</span></div>
+              </div>
+            </div>
+            <span class="deck-caption">덱은 계속 돌고, 뽑은 카드는 슬롯으로 날아가요</span>
+            <span class="fly-card" aria-hidden="true"></span>
+            <div class="fan-window" aria-hidden="true"><div class="fan" id="fan"></div></div>
+          </div>
+          <div class="spacer"></div>
+          <button class="primary" type="button" data-jump="a2">네 장으로 결과 보기</button>
+          <button class="secondary" type="button" data-toast="네 장을 새 조합으로 다시 뽑았어요">4장 다시 뽑기</button>
+        </section>
+      </div>
+      <a class="next-link" href="#a2">다음 · A2 결과 이해 ↓</a>
+    </article>
+
+    <article class="prototype-step" id="a2" data-step="A2">
+      <!--
+        PRD §12 TEST SCRIPT (all six questions; ask without explaining the UI)
+        Q1. 네 카드가 각각 무엇인지 말한다.
+        Q2. 결과에서 원본과 달라진 한 가지를 찾는다.
+        Q3. 잠긴 제작 문구를 여는 방법을 찾는다.
+        Q4. 오늘 무료 카드와 잠긴 다음 카드의 차이를 말한다.
+        Q5. 보낸 사람 확인과 다음 카드 미리 보기의 차이를 설명한다.
+        Q6. 받은 사람이 어디서 자신의 네 장 뽑기를 시작하는지 찾는다.
+        FAILURE CHECKS: 취향 설정을 먼저 찾는 사람이 2명 이상인지; 잠긴 카드에 칭찬 문구가 이미 노출됐다고 보는 사람이 2명 이상인지; 칭찬이 없는데 결제가 필요하다고 보는 사람이 2명 이상인지; 공유 보상과 990원 결제를 같은 상품으로 보는지; 아이디어 조합 카드와 익명 칭찬 카드를 같은 기능으로 보는지.
+      -->
+      <header class="step-head">
+        <div><p class="step-kicker">A2 · RESULT</p><h2>결과 이해</h2></div>
+        <p class="step-goal">원본과 한 끗, 무료 잠금 해제 조건을 찾는가</p>
+      </header>
+      <div class="phone">
+        <div class="status-bar"><span>9:41</span><span>● ● ●</span></div>
+        <section class="screen" aria-label="A2 결과와 잠긴 6블록 브리프 화면">
+          <div class="appbar"><span class="brand">이번에 만들 아이디어</span><span class="screen-meta">앱</span></div>
+          <div class="axis-strip" aria-label="결과에 사용한 네 카드">
+            <span class="axis-chip">검증된 원본<br>1Lookup</span>
+            <span class="axis-chip">돈 낼 사람<br>1인 영업자</span>
+            <span class="axis-chip">필요한 순간<br>미팅 10분 전</span>
+            <span class="axis-chip">한 끗 변화<br>30초 음성</span>
+          </div>
+          <p class="prompt-title">AI 코딩 도구에 붙여 넣을 제작 문구</p>
+          <div class="prompt-box prompt-preview" aria-label="제목, 훅, UVP 공개. 타겟부터 잠김">
+            <div class="prompt-content"><strong>[미팅 전 30초 상대 브리핑] 앱 아이디어 브리프</strong>
+첫 미팅 10분 전. 미팅 전에 상대 회사와 담당자를 매번 직접 검색합니다. 그 순간의 당신에게 필요한 건 단 하나 — 이름이나 회사 주소 하나를 넣고 30초 음성 요약을 듣는 화면.
+
+<strong>1) UVP — 전과 후가 한 줄로 갈린다</strong>
+지금까지: 검색할 시간은 부족하지만 아무것도 모르고 들어갈 수는 없는 순간. 그런데 방법이 없었다.
+이제부터: 이름이나 회사 주소 하나를 넣고 30초 음성 요약을 듣는 화면. 그게 전부다.
+이미 돈으로 증명된 1Lookup 흐름을 80~90% 그대로 쓴다. 당신이 새로 감당할 위험은 딱 하나(하나 바꾸기): 긴 리포트를 빼고 30초 음성 브리핑으로 바꾸기.
+
+<span class="locked-copy"><strong>2) 타겟 — 이미 행동하는 사람만 노린다</strong>
+매주 잠재 고객을 찾는 1인 영업자. 미팅 전에 상대 회사와 담당자를 매번 직접 검색합니다. 반복 행동이 이미 있으므로 시장 교육이 필요 없다.
+
+<strong>3) 기존에 잘되는 앱 vs 차별점</strong>
+- 원본: 1Lookup — 정보 하나를 넣으면 상대 정보를 찾아 정리해주는 웹 서비스 (증명된 근거: TrustMRR에서 실제 매출이 확인된 데이터 검증 제품)
+- 원본이 놓친 순간: 첫 미팅 10분 전 (검색할 시간은 부족하지만 아무것도 모르고 들어갈 수는 없는 순간)
+- 유일 주장: “첫 미팅 10분 전”의 매주 잠재 고객을 찾는 1인 영업자를 위한 유일한 앱 — 찾고 확인하는 과정은 그대로 두고 결과를 듣는 방식만 바꿉니다.
+
+<strong>4) 전체 플로우 — 검증된 3단계 + 한 끗</strong>
+정보 입력 → 여러 출처 확인 → 결과와 근거 정리 → 한 끗: 긴 리포트를 빼고 30초 음성 브리핑으로 바꾸기
+오늘 만들 최소 화면: 이름이나 회사 주소 하나를 넣고 30초 음성 요약을 듣는 화면
+
+<strong>5) AI 코딩 도구 제작 지시</strong>
+앱 형태의 “미팅 전 30초 상대 브리핑” MVP를 만들어줘. 원본 흐름(정보 입력 → 여러 출처 확인 → 결과와 근거 정리)을 그대로 유지하고, 위 한 가지 변화 외에 새로운 핵심 기능을 추가하지 마.
+첫 화면에서 사용자가 무엇을 넣고, 시스템이 무엇을 처리하며, 어떤 결과를 받는지 고등학생도 이해할 문장으로 보여줘.
+오늘 만들 범위는 이름이나 회사 주소 하나를 넣고 30초 음성 요약을 듣는 화면 하나로 제한해. 성공·빈 상태·처리 실패 상태를 각각 만들고, 확인되지 않은 데이터나 가짜 사용자 반응은 표시하지 마.
+
+<strong>6) 플로우 이미지 프롬프트 (이미지 생성 AI에 붙여넣기)</strong>
+A single wide image showing 5 identical modern smartphone mockups side by side, each a real mobile app UI screen, connected by thin arrows with Korean step labels. DESIGN SYSTEM (same across all panels): dark charcoal background #121212, near-black cards with 20px rounded corners and subtle borders, large friendly Korean sans-serif headlines (Pretendard style), full-width pill-shaped CTA button at bottom of each screen, minimal flat icons, clean flat UI; one single accent color used only on buttons and chips. ATMOSPHERE RULE: screens 2-4 stay strictly clean flat UI; screens 1 and 5 are hero moments and may be slightly conceptual with a soft glow bleeding beyond the card edge, but UI text stays crisp. The app is "미팅 전 30초 상대 브리핑" (앱). Screen 1 '정보 입력'. Screen 2 '여러 출처 확인'. Screen 3 '결과와 근거 정리'. Screen 4 '한 끗 변화 — 긴 리포트를 빼고 30초 음성 브리핑으로 바꾸기'. Screen 5 '오늘 만들 화면 — 이름이나 회사 주소 하나를 넣고 30초 음성 요약을 듣는 화면'. Landscape 16:9, numbered badges 1-5, no real people, no watermark.
+
+핵심 반복 — 첫 미팅 10분 전, 당신에게는 “미팅 전 30초 상대 브리핑”. 오늘 이름이나 회사 주소 하나를 넣고 30초 음성 요약을 듣는 화면부터 만든다.</span></div>
+            <div class="lock-overlay"><span class="lock-icon">↗</span><b>공유하면 나머지 제작 문구가 열려요</b><span>2) 타겟부터 6) 이미지 프롬프트까지 · 무료</span></div>
+          </div>
+          <p class="reward-note">공유 보상은 무료예요. 칭찬 카드의 990원 선택지와는 다른 기능입니다.</p>
+          <div class="spacer"></div>
+          <button class="primary" type="button" data-jump="a3">링크 공유하고 전체 문구 열기</button>
+          <button class="tertiary" type="button" data-toast="결과는 그대로 보관돼요">지금은 결과만 저장하기</button>
+        </section>
+      </div>
+      <a class="next-link" href="#a3">다음 · A3 공유 완료 ↓</a>
+    </article>
+
+    <article class="prototype-step" id="a3" data-step="A3">
+      <!--
+        PRD §12 TEST SCRIPT (all six questions; ask without explaining the UI)
+        Q1. 네 카드가 각각 무엇인지 말한다.
+        Q2. 결과에서 원본과 달라진 한 가지를 찾는다.
+        Q3. 잠긴 제작 문구를 여는 방법을 찾는다.
+        Q4. 오늘 무료 카드와 잠긴 다음 카드의 차이를 말한다.
+        Q5. 보낸 사람 확인과 다음 카드 미리 보기의 차이를 설명한다.
+        Q6. 받은 사람이 어디서 자신의 네 장 뽑기를 시작하는지 찾는다.
+        FAILURE CHECKS: 취향 설정을 먼저 찾는 사람이 2명 이상인지; 잠긴 카드에 칭찬 문구가 이미 노출됐다고 보는 사람이 2명 이상인지; 칭찬이 없는데 결제가 필요하다고 보는 사람이 2명 이상인지; 공유 보상과 990원 결제를 같은 상품으로 보는지; 아이디어 조합 카드와 익명 칭찬 카드를 같은 기능으로 보는지.
+      -->
+      <header class="step-head">
+        <div><p class="step-kicker">A3 · SHARED</p><h2>공유 완료</h2></div>
+        <p class="step-goal">무료 보상이 열리고 다음 목적지로 이동하는가</p>
+      </header>
+      <div class="phone">
+        <div class="status-bar"><span>9:41</span><span>● ● ●</span></div>
+        <section class="screen" aria-label="A3 공유 완료와 열린 6블록 브리프 화면">
+          <div class="appbar"><span class="brand">공유를 마쳤어요</span><span class="screen-meta">무료 보상</span></div>
+          <div class="unlock-banner">✓ 2) 타겟부터 6) 이미지 프롬프트까지 열렸어요</div>
+          <p class="prompt-title">AI 코딩 도구에 붙여 넣을 제작 문구</p>
+          <div class="prompt-box prompt-open" tabindex="0" aria-label="열린 전체 제작 문구. 내부 스크롤 가능">
+            <div class="prompt-content" id="fullPrompt"><strong>[미팅 전 30초 상대 브리핑] 앱 아이디어 브리프</strong>
+첫 미팅 10분 전. 미팅 전에 상대 회사와 담당자를 매번 직접 검색합니다. 그 순간의 당신에게 필요한 건 단 하나 — 이름이나 회사 주소 하나를 넣고 30초 음성 요약을 듣는 화면.
+
+<strong>1) UVP — 전과 후가 한 줄로 갈린다</strong>
+지금까지: 검색할 시간은 부족하지만 아무것도 모르고 들어갈 수는 없는 순간. 그런데 방법이 없었다.
+이제부터: 이름이나 회사 주소 하나를 넣고 30초 음성 요약을 듣는 화면. 그게 전부다.
+이미 돈으로 증명된 1Lookup 흐름을 80~90% 그대로 쓴다. 당신이 새로 감당할 위험은 딱 하나(하나 바꾸기): 긴 리포트를 빼고 30초 음성 브리핑으로 바꾸기.
+
+<strong>2) 타겟 — 이미 행동하는 사람만 노린다</strong>
+매주 잠재 고객을 찾는 1인 영업자. 미팅 전에 상대 회사와 담당자를 매번 직접 검색합니다. 반복 행동이 이미 있으므로 시장 교육이 필요 없다.
+
+<strong>3) 기존에 잘되는 앱 vs 차별점</strong>
+- 원본: 1Lookup — 정보 하나를 넣으면 상대 정보를 찾아 정리해주는 웹 서비스 (증명된 근거: TrustMRR에서 실제 매출이 확인된 데이터 검증 제품)
+- 원본이 놓친 순간: 첫 미팅 10분 전 (검색할 시간은 부족하지만 아무것도 모르고 들어갈 수는 없는 순간)
+- 유일 주장: “첫 미팅 10분 전”의 매주 잠재 고객을 찾는 1인 영업자를 위한 유일한 앱 — 찾고 확인하는 과정은 그대로 두고 결과를 듣는 방식만 바꿉니다.
+
+<strong>4) 전체 플로우 — 검증된 3단계 + 한 끗</strong>
+정보 입력 → 여러 출처 확인 → 결과와 근거 정리 → 한 끗: 긴 리포트를 빼고 30초 음성 브리핑으로 바꾸기
+오늘 만들 최소 화면: 이름이나 회사 주소 하나를 넣고 30초 음성 요약을 듣는 화면
+
+<strong>5) AI 코딩 도구 제작 지시</strong>
+앱 형태의 “미팅 전 30초 상대 브리핑” MVP를 만들어줘. 원본 흐름(정보 입력 → 여러 출처 확인 → 결과와 근거 정리)을 그대로 유지하고, 위 한 가지 변화 외에 새로운 핵심 기능을 추가하지 마.
+첫 화면에서 사용자가 무엇을 넣고, 시스템이 무엇을 처리하며, 어떤 결과를 받는지 고등학생도 이해할 문장으로 보여줘.
+오늘 만들 범위는 이름이나 회사 주소 하나를 넣고 30초 음성 요약을 듣는 화면 하나로 제한해. 성공·빈 상태·처리 실패 상태를 각각 만들고, 확인되지 않은 데이터나 가짜 사용자 반응은 표시하지 마.
+
+<strong>6) 플로우 이미지 프롬프트 (이미지 생성 AI에 붙여넣기)</strong>
+A single wide image showing 5 identical modern smartphone mockups side by side, each a real mobile app UI screen, connected by thin arrows with Korean step labels. DESIGN SYSTEM (same across all panels): dark charcoal background #121212, near-black cards with 20px rounded corners and subtle borders, large friendly Korean sans-serif headlines (Pretendard style), full-width pill-shaped CTA button at bottom of each screen, minimal flat icons, clean flat UI; one single accent color used only on buttons and chips. ATMOSPHERE RULE: screens 2-4 stay strictly clean flat UI; screens 1 and 5 are hero moments and may be slightly conceptual with a soft glow bleeding beyond the card edge, but UI text stays crisp. The app is "미팅 전 30초 상대 브리핑" (앱). Screen 1 '정보 입력'. Screen 2 '여러 출처 확인'. Screen 3 '결과와 근거 정리'. Screen 4 '한 끗 변화 — 긴 리포트를 빼고 30초 음성 브리핑으로 바꾸기'. Screen 5 '오늘 만들 화면 — 이름이나 회사 주소 하나를 넣고 30초 음성 요약을 듣는 화면'. Landscape 16:9, numbered badges 1-5, no real people, no watermark.
+
+핵심 반복 — 첫 미팅 10분 전, 당신에게는 “미팅 전 30초 상대 브리핑”. 오늘 이름이나 회사 주소 하나를 넣고 30초 음성 요약을 듣는 화면부터 만든다.</div>
+          </div>
+          <p class="shared-link">링크 전송 완료 · 실제 칭찬이 오면 오늘의 카드 큐에 들어가요.</p>
+          <div class="spacer"></div>
+          <button class="primary mint" type="button" data-copy>전체 제작 문구 복사하기</button>
+          <button class="secondary" type="button" data-jump="a4">오늘의 칭찬 보러 가기</button>
+        </section>
+      </div>
+      <a class="next-link" href="#a4">다음 · A4 칭찬 비어 있음 ↓</a>
+    </article>
+
+    <article class="prototype-step" id="a4" data-step="A4">
+      <!--
+        PRD §12 TEST SCRIPT (all six questions; ask without explaining the UI)
+        Q1. 네 카드가 각각 무엇인지 말한다.
+        Q2. 결과에서 원본과 달라진 한 가지를 찾는다.
+        Q3. 잠긴 제작 문구를 여는 방법을 찾는다.
+        Q4. 오늘 무료 카드와 잠긴 다음 카드의 차이를 말한다.
+        Q5. 보낸 사람 확인과 다음 카드 미리 보기의 차이를 설명한다.
+        Q6. 받은 사람이 어디서 자신의 네 장 뽑기를 시작하는지 찾는다.
+        FAILURE CHECKS: 취향 설정을 먼저 찾는 사람이 2명 이상인지; 잠긴 카드에 칭찬 문구가 이미 노출됐다고 보는 사람이 2명 이상인지; 칭찬이 없는데 결제가 필요하다고 보는 사람이 2명 이상인지; 공유 보상과 990원 결제를 같은 상품으로 보는지; 아이디어 조합 카드와 익명 칭찬 카드를 같은 기능으로 보는지.
+      -->
+      <header class="step-head">
+        <div><p class="step-kicker">A4 · EMPTY</p><h2>칭찬 카드 비어 있음</h2></div>
+        <p class="step-goal">칭찬이 없을 때 결제 대신 공유를 선택하는가</p>
+      </header>
+      <div class="phone">
+        <div class="status-bar"><span>9:41</span><span>● ● ●</span></div>
+        <section class="screen" aria-label="A4 오늘의 칭찬 빈 상태 화면">
+          <div class="appbar"><span class="brand">오늘의 칭찬</span><span class="screen-meta">도착 0장</span></div>
+          <h3 class="screen-title">당신의 첫 칭찬은<br>아직 오는 중이에요.</h3>
+          <p class="screen-copy">실제로 친구가 보낸 칭찬만 카드가 됩니다. 가짜 카드는 만들지 않아요.</p>
+          <div class="empty-table" role="img" aria-label="아직 도착한 칭찬이 없는 빈 카드 스택">
+            <div class="empty-stack-card"><div class="card-back-pattern"><span>✦</span></div></div>
+            <div class="empty-stack-card"><div class="card-back-pattern"><span>✦</span></div></div>
+            <div class="empty-stack-card"><div class="card-back-pattern"><span>✦</span></div></div>
+            <p class="empty-label">아직 실제로 도착한 칭찬이 없어요</p>
+          </div>
+          <div class="empty-message">
+            <h3>결제할 것은 없어요</h3>
+            <p>링크를 다시 보내 첫 칭찬을 받아오세요.<br>칭찬이 도착하면 매일 한 장 무료로 뒤집어요.</p>
+          </div>
+          <div class="spacer"></div>
+          <button class="primary" type="button" data-toast="칭찬을 받을 공유 링크를 준비했어요">칭찬 받아오기 · 링크 다시 공유</button>
+          <button class="tertiary" type="button" data-jump="a5">도착한 상태 미리 보기</button>
+        </section>
+      </div>
+      <a class="next-link" href="#a5">다음 · A5 오늘의 칭찬 ↓</a>
+    </article>
+
+    <article class="prototype-step" id="a5" data-step="A5">
+      <!--
+        PRD §12 TEST SCRIPT (all six questions; ask without explaining the UI)
+        Q1. 네 카드가 각각 무엇인지 말한다.
+        Q2. 결과에서 원본과 달라진 한 가지를 찾는다.
+        Q3. 잠긴 제작 문구를 여는 방법을 찾는다.
+        Q4. 오늘 무료 카드와 잠긴 다음 카드의 차이를 말한다.
+        Q5. 보낸 사람 확인과 다음 카드 미리 보기의 차이를 설명한다.
+        Q6. 받은 사람이 어디서 자신의 네 장 뽑기를 시작하는지 찾는다.
+        FAILURE CHECKS: 취향 설정을 먼저 찾는 사람이 2명 이상인지; 잠긴 카드에 칭찬 문구가 이미 노출됐다고 보는 사람이 2명 이상인지; 칭찬이 없는데 결제가 필요하다고 보는 사람이 2명 이상인지; 공유 보상과 990원 결제를 같은 상품으로 보는지; 아이디어 조합 카드와 익명 칭찬 카드를 같은 기능으로 보는지.
+      -->
+      <header class="step-head">
+        <div><p class="step-kicker">A5 · TODAY</p><h2>오늘의 칭찬 카드</h2></div>
+        <p class="step-goal">오늘 무료 카드와 잠긴 다음 카드를 구분하는가</p>
+      </header>
+      <div class="phone">
+        <div class="status-bar"><span>9:41</span><span>● ● ●</span></div>
+        <section class="screen" aria-label="A5 오늘의 칭찬 카드 뒤집기 화면">
+          <div class="appbar"><span class="brand">오늘의 칭찬</span><span class="screen-meta">오늘 1장 무료</span></div>
+          <h3 class="screen-title">당신에게 온 한 장,<br>직접 뒤집어 보세요.</h3>
+          <p class="screen-copy">뒤에 보이는 카드는 내일 열려요. 문구와 보낸 사람은 아직 보이지 않아요.</p>
+
+          <div class="praise-table">
+            <div class="next-card" aria-label="내일 무료로 열리는 잠긴 다음 칭찬. 내용은 숨김">
+              <span class="next-lock">내일 무료</span>
+              <div class="card-back-pattern"><span>✦</span></div>
+            </div>
+            <button class="today-card" id="todayCard" type="button" aria-label="오늘의 무료 칭찬 카드를 뒤집기" aria-pressed="false">
+              <span class="card-face today-back">
+                <span class="card-back-pattern"><span>✦</span></span>
+                <small>탭해서 오늘 카드 뒤집기</small>
+              </span>
+              <span class="card-face today-front">
+                <span class="card-day">Today · Free</span>
+                <span class="suit">✦</span>
+                <blockquote>“이 한 끗이 좋아요.<br>완성되면 꼭 써보고 싶어요.”</blockquote>
+                <span class="sender">익명의 응원 · 오늘 도착</span>
+              </span>
+            </button>
+            <p class="flip-hint" id="flipHint">오늘 카드는 무료 · 다시 누르면 뒷면</p>
+          </div>
+
+          <div class="pay-actions" aria-label="서로 다른 두 990원 가짜 문">
+            <button class="pay-action" type="button" data-toast="오늘 카드의 보낸 사람 확인 의사를 기록했어요">오늘 카드<br>누가 보냈는지 보기<span>990원 · 이름 확인</span></button>
+            <button class="pay-action" type="button" data-toast="다음 카드 미리 보기 의사를 기록했어요">잠긴 다음 카드<br>미리 보기<span>990원 · 내용 조기 열람</span></button>
+          </div>
+          <p class="pay-note">서로 다른 선택지예요. 이름 공개에 동의하지 않은 발신자는 결제해도 공개되지 않습니다.</p>
+          <div class="spacer"></div>
+          <button class="secondary" type="button" data-jump="a1">새 아이디어 네 장 뽑기</button>
+        </section>
+      </div>
+      <a class="next-link" href="#a1">처음 · A1 네 장 뽑기 ↑</a>
+    </article>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const fan = document.getElementById("fan");
+    fan.innerHTML = Array.from({ length: 24 }, (_, index) =>
+      `<i style="--angle:${index * 15}deg"></i>`
+    ).join("");
+
+    const navLinks = [...document.querySelectorAll(".anchor-nav a")];
+    const steps = [...document.querySelectorAll(".prototype-step")];
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      navLinks.forEach((link) => {
+        const active = link.getAttribute("href") === `#${visible.target.id}`;
+        if (active) link.setAttribute("aria-current", "step");
+        else link.removeAttribute("aria-current");
+      });
+    }, { rootMargin: "-18% 0px -55%", threshold: [0, .2, .5] });
+    steps.forEach((step) => observer.observe(step));
+
+    document.querySelectorAll("[data-jump]").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.getElementById(button.dataset.jump).scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    const toast = document.getElementById("toast");
+    let toastTimer;
+    function showToast(message) {
+      window.clearTimeout(toastTimer);
+      toast.textContent = message;
+      toast.classList.add("show");
+      toastTimer = window.setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+    document.querySelectorAll("[data-toast]").forEach((button) => {
+      button.addEventListener("click", () => showToast(button.dataset.toast));
+    });
+
+    document.querySelector("[data-copy]").addEventListener("click", async () => {
+      const text = document.getElementById("fullPrompt").innerText;
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("전체 제작 문구를 복사했어요");
+      } catch {
+        showToast("이 브라우저에서는 길게 눌러 복사해 주세요");
+      }
+    });
+
+    const todayCard = document.getElementById("todayCard");
+    const flipHint = document.getElementById("flipHint");
+    todayCard.addEventListener("click", () => {
+      const flipped = todayCard.classList.toggle("is-flipped");
+      todayCard.setAttribute("aria-pressed", String(flipped));
+      todayCard.setAttribute("aria-label", flipped ? "오늘의 칭찬 앞면. 다시 뒤집기" : "오늘의 무료 칭찬 카드를 뒤집기");
+      flipHint.textContent = flipped ? "오늘 카드 공개 · 다음 카드는 내일 무료" : "오늘 카드는 무료 · 다시 누르면 뒷면";
+    });
+  </script>
+</body>
+</html>

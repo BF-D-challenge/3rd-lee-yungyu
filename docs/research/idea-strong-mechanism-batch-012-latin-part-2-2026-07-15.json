@@ -1,0 +1,122 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6444574623-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘ODT 원본 서식 보존 DOCX 변환’은 사무 담당자가 외부 제출 직전에 ODT 파일 1개를 원본 서식 우선으로 변환해 제출 가능한 DOCX 파일 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6444574623-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘ODT 표 구조 보존 DOCX 변환’은 사무 담당자가 수업 자료 공유 직전에 ODT 파일 1개를 표 구조 우선으로 DOCX로 변환하지만 수업 자료 공유는 해당 결제자의 행정 문서 제출 순간과 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6444574623-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘ODT 이미지 배치 보존 DOCX 변환’은 사무 담당자가 고객 수정 요청 직전에 ODT 파일 1개를 이미지 배치 우선으로 DOCX로 변환하지만 고객 수정 요청 전달은 해당 결제자의 행정 문서 제출 순간과 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6444574623-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘ODT 표 구조 보존 DOCX 변환’은 교사가 외부 제출 직전에 ODT 파일 1개를 표 구조 우선으로 DOCX로 변환하지만 외부 제출은 수업 자료 배포자의 결제자 순간과 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6444574623-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘ODT 이미지 배치 보존 DOCX 변환’은 교사가 수업 자료 공유 직전에 ODT 파일 1개를 이미지 배치 우선으로 변환해 이미지가 배치된 DOCX 파일 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6444574623-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘ODT 원본 서식 보존 DOCX 변환’은 교사가 고객 수정 요청 직전에 ODT 파일 1개를 원본 서식 우선으로 DOCX로 변환하지만 고객 수정 요청 전달은 수업 자료 배포자의 결제자 순간과 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6444574623-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘ODT 이미지 배치 보존 DOCX 변환’은 프리랜서가 외부 제출 직전에 ODT 파일 1개를 이미지 배치 우선으로 변환해 이미지가 배치된 DOCX 파일 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6444574623-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘ODT 원본 서식 보존 DOCX 변환’은 프리랜서가 수업 자료 공유 직전에 ODT 파일 1개를 원본 서식 우선으로 DOCX로 변환하지만 수업 자료 공유는 문서 납품 프리랜서의 결제자 순간과 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6444574623-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘ODT 표 구조 보존 DOCX 변환’은 프리랜서가 고객 수정 요청 직전에 ODT 파일 1개를 표 구조 우선으로 변환해 표가 유지된 DOCX 파일 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

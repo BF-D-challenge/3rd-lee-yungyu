@@ -1,0 +1,79 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-1582051883-211",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "라벨과 값을 입력해 색상을 지정하고 차트 이미지를 저장하는 흐름은 구체적이지만 제목만으로 문제와 결과가 드러나지 않고 범용 스프레드시트·차트 도구가 더 편하다.",
+      "risk_flags": [
+        "title_unclear",
+        "generic_tool"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-212",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "라벨과 값을 입력해 색상을 지정하고 실시간 막대차트 이미지를 저장하는 흐름은 가능하지만 제목만으로 문제와 결과가 드러나지 않으며 범용 차트 도구가 더 편하다.",
+      "risk_flags": [
+        "title_unclear",
+        "generic_tool"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-220",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "라벨과 값을 입력해 색상을 지정하고 발표용 막대차트 이미지를 저장하는 흐름은 구체적이지만 제목만으로 문제와 결과가 보이지 않고 범용 스프레드시트·차트 도구로 대체 가능하다.",
+      "risk_flags": [
+        "title_unclear",
+        "generic_tool"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "라벨과 값을 입력해 색상을 지정하고 월별 매출 차트 이미지를 저장하는 흐름은 구체적이지만 제목만으로 문제와 결과가 드러나지 않으며 범용 차트 도구가 더 편하다.",
+      "risk_flags": [
+        "title_unclear",
+        "generic_tool"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-222",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "라벨과 값을 입력해 색상을 지정하고 실시간 막대차트 이미지를 저장하는 흐름은 가능하지만 제목만으로 문제와 결과가 드러나지 않고 범용 차트 도구가 더 편하다.",
+      "risk_flags": [
+        "title_unclear",
+        "generic_tool"
+      ]
+    }
+  ]
+}

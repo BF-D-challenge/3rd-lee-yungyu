@@ -1,0 +1,62 @@
+{
+  "batch_id": "EXH-034",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 29,
+    "Fail": 66,
+    "Reserve": 3,
+    "Merge": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 76,
+      "sample": [
+        "app_store:288362053",
+        "app_store:1619362440",
+        "app_store:6473775926",
+        "chrome_web_store:gpkdjhcfaldbdhhoahlfphfmmnaibamm",
+        "trustmrr:oulang",
+        "app_store:6744858677",
+        "chrome_web_store:hplabloglpkgkkakldlgbnjkliakpklg",
+        "chrome_web_store:noondiphcddnnabmjcihcjfbhfklnnep"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1619362440",
+          "decision": "Candidate",
+          "reason": "취침 전 상태와 기분을 입력받아 개인화 모노럴 비트를 생성하고 수면용 소리를 즉시 재생하는 세로 조각이 가능하다."
+        },
+        {
+          "key": "app_store:6744858677",
+          "decision": "Merge",
+          "reason": "텍스트 입력에서 영상을 자동 생성해 저장하는 흐름이 기존 숏폼 영상 생성 앱과 실질적으로 같다."
+        }
+      ],
+      "false_reject_rate": 0.25
+    },
+    {
+      "round": 2,
+      "fail_count": 66,
+      "sample": [
+        "chrome_web_store:plmkckmepaemlbdcihcfiffecmmnofil",
+        "app_store:1464496236",
+        "trustmrr:pagedone",
+        "chrome_web_store:pejkokffkapolfffcgbmdmhdelanoaih",
+        "app_store:365876050",
+        "trustmrr:presentationgpt",
+        "app_store:388947468"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

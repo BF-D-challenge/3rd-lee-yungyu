@@ -1,0 +1,55 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-1582051883-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라벨과 수치를 입력해 색상을 적용한 뒤 발표용 막대차트 이미지 하나를 저장하므로 입력·처리·결과가 구체적이고 실제 발표 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1582051883-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "월별 매출 데이터를 입력해 항목별 색상을 적용한 뒤 차트 이미지 하나로 내보내므로 입력·처리·결과와 사용 순간이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1582051883-102",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보고서 수치를 입력하고 편집할 때 실시간으로 미리보기를 보여준다는 흐름은 이해되지만 단일 처리 후 최종 결과가 저장되는지와 입력 범위가 불명확하다.",
+      "risk_flags": [
+        "결과_모호",
+        "반복편집_암시"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라벨과 항목별 수치를 입력해 색상을 적용한 뒤 발표용 막대차트 이미지 하나를 저장하므로 발표 직전의 문제·처리·결과가 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

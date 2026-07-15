@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-mermaidonline-live-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저가 PR 설명 직전에 Mermaid 코드 텍스트 1개를 한 번 렌더링해 편집 가능한 SVG 다이어그램 파일 1개를 즉시 얻으므로 제목·순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mermaidonline-live-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저가 기술 문서 삽입 직전에 Mermaid 코드 텍스트 1개를 한 번 렌더링해 투명 배경 PNG 다이어그램 파일 1개를 즉시 얻으므로 제목·순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mermaidonline-live-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저가 슬라이드 삽입 직전에 Mermaid 코드 텍스트 1개를 한 번 렌더링해 2배 해상도 PNG 다이어그램 파일 1개를 즉시 얻으므로 제목·순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "독립 일러스트레이터가 손그림 사진 1장을 디지털 채색 직전에 한 번 페이지 보정·그림자 제거해 투명 배경 선화 PNG 1개를 즉시 얻으므로 제목·순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "독립 일러스트레이터가 인쇄 파일 전달 직전에 손그림 사진 1장을 한 번 연필 번짐 제거해 투명 배경 선화 PNG 1개를 즉시 얻으므로 제목·순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "독립 일러스트레이터가 선을 디지털 레이어로 옮기는 순간 스케치 사진 1장을 한 번 배경 분리해 투명 배경 선화 PNG 1개를 즉시 얻으므로 제목·순간·변화가 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

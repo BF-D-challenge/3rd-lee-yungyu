@@ -1,0 +1,447 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-608515289-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치를 처리해 시간별 예보를 보여주지만 기본 날씨 앱으로 더 쉽게 확인할 수 있고 제목만으로 아파트 단지 단위 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-608515289-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "관측소 입력 후 예보를 보여주지만 기본 날씨 앱으로 대체 가능하고 농장 미세 날씨라는 결과가 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-608515289-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 입력 후 지역 예보를 보여주지만 기본 날씨 앱으로 더 편하게 확인할 수 있고 출근지·집 비교 결과가 제목에 보이지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1067198688-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 입력으로 비 시작·종료 시각을 보여주지만 기본 날씨 앱이나 범용 날씨 서비스로 대체 가능하고 배달 주소 결과가 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1067198688-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "촬영지 위치를 처리해 강수 시각을 보여주지만 범용 날씨 앱으로 더 쉽게 확인할 수 있고 촬영용 결과가 제목에 보이지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1067198688-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공원 위치 입력 후 강수 변화를 보여주지만 기본 날씨 기능으로 대체 가능하고 촬영지·주차장 비교라는 결과가 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-972387337-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원고 텍스트를 받아 구조화된 문서를 만들지만 사용자가 먼저 원고를 계속 기록해야 하고 범용 문서·AI 도구로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "pre_logging",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-972387337-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원고 텍스트 입력 후 순서를 재구성하지만 투고 전까지 지속적인 원고 기록이 필요하고 범용 문서 도구로 대체 가능하다.",
+      "risk_flags": [
+        "pre_logging",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-972387337-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "시놉시스와 장면 텍스트를 처리해 원고를 만들지만 사전 기록과 지속 편집이 필요하며 범용 AI·문서 도구가 더 편하다.",
+      "risk_flags": [
+        "pre_logging",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1416894836-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "음악 파일에 EQ를 적용해 재생하지만 OS 기본 음악 플레이어로 더 쉽게 할 수 있고 보컬 선명도라는 결과가 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1416894836-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "음악 파일을 EQ 처리해 재생하지만 기본 플레이어의 EQ 기능으로 대체 가능하고 장르별 조정 결과가 제목에 보이지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1416894836-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "FLAC 파일에 저음 보정을 적용해 재생하지만 범용 음악 플레이어로 더 편하게 처리할 수 있고 소음 환경 보정 결과가 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1462255869-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한으로 미세먼지와 옷차림을 보여주지만 OS 기본 날씨 기능으로 대체 가능하고 어린이집 기준 결과가 제목에 보이지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1462255869-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한을 처리해 캠핑장 날씨를 보여주지만 기본 날씨 앱으로 더 쉽게 확인할 수 있고 비·바람·미세먼지 한눈 결과가 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1462255869-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한으로 체감온도와 복장을 제안하지만 OS 기본 날씨 기능으로 대체 가능하고 출근 시간대 맞춤 결과가 제목에 보이지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6752289576-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진과 장식 요소를 받아 배경화면을 만들지만 OS 기본 사진 편집 기능으로 더 편하게 할 수 있고 반려동물용 결과가 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6752289576-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진·프레임·스티커를 처리해 배경화면을 만들지만 범용 사진 편집 앱으로 대체 가능하고 한국 기념일 조합 결과가 제목에 보이지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6752289576-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여러 사진을 콜라주로 만들어 배경화면으로 반환하지만 기본 사진 편집으로 충분하고 성장 사진 세로 콜라주라는 결과가 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-noise-reducer-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "음성·영상 파일 하나에서 소음을 제거해 오디오를 반환하지만 범용 AI 오디오 도구로 한 번에 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-noise-reducer-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인터뷰 파일을 처리해 깨끗한 오디오를 만들지만 범용 AI 소음 제거 도구로 대체 가능하고 카페 소음 제거 결과가 제목에 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "generic_ai",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-noise-reducer-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영상 또는 음성 파일 입력으로 배경음을 줄이지만 범용 AI 도구가 더 편하고 영상가용 납품 결과가 제목에 보이지 않는다.",
+      "risk_flags": [
+        "generic_ai",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-545993260-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치를 처리해 단기 날씨 지도를 보여주지만 기본 날씨 앱으로 더 쉽게 확인할 수 있고 등산로 강수·번개 결과가 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-545993260-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 입력 후 날씨 이동 지도를 보여주지만 OS 기본 기능으로 대체 가능하고 행사장 반경 결과가 제목에 보이지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-545993260-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 입력으로 단기 날씨 지도를 제공하지만 기본 날씨 앱으로 더 편하게 처리할 수 있고 캠핑장 날씨 결과가 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "os_default",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-395149950-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "책 바코드를 입력해 책 목록에 등록하지만 사용자가 문제 전에 소장 도서를 계속 기록해야 하므로 사전 기록 의존 규칙을 위반한다.",
+      "risk_flags": [
+        "pre_logging"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-395149950-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "바코드 처리 후 책 목록을 만들지만 연구실 책을 찾기 전에 목록을 미리 계속 등록해야 하므로 사전 기록 의존 규칙에 걸린다.",
+      "risk_flags": [
+        "pre_logging"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-395149950-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "책 바코드 하나를 등록해 목록에 넣지만 소유 도서를 미리 기록해야 실제 확인이 가능하므로 문제 전 기록 필수 규칙을 위반한다.",
+      "risk_flags": [
+        "pre_logging"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-413936865-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "하늘 카메라 화면을 처리해 별자리 이름을 즉시 표시하는 조각은 구체적이지만 제목만으로 천체 식별 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-413936865-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "하늘을 향한 카메라 입력으로 위성·별자리 이름을 보여주는 흐름은 가능하지만 제목만으로 아이에게 설명할 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-413936865-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 화면에서 천체를 식별해 이름을 보여주는 단일 처리는 구체적이지만 제목만으로 행성·별자리 확인 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    }
+  ]
+}

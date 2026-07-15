@@ -1,0 +1,135 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6759006922-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘최근 운동 기록 상세 JSON 추출’은 개발자가 Apple Health 권한으로 심박·수면까지 필요로 하는 순간에 운동 기록만 뽑아 결과 범위가 어긋나며, 단일 권한 입력→1회 추출→상세 JSON 1개라는 흐름은 구체적이다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-586447913-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘PDF 본문을 편집용 DOCX로 변환’은 사무 담당자가 PDF 오탈자를 고쳐야 할 때 PDF 1개를 입력해 본문을 1회 변환하고 편집 가능한 DOCX 1개를 얻는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-586447913-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘PDF 이미지 배치 유지 DOCX’는 학원 교사가 표 항목과 제목을 재배치하려는 순간에 이미지 위치 보존을 제공해 payer·moment·twist가 어긋나며, PDF 1개→1회 변환→DOCX 1개 흐름만 구체적이다.",
+      "risk_flags": [
+        "moment_twist_mismatch",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-586447913-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘PDF 표 구조 보존 DOCX 변환’은 프리랜서가 편집 가능한 Word 원본을 전달하려는 순간에 표 구조 보존만 강조해 stated paragraph 재작성 문제와 한 끗 변화가 어긋나며, PDF 1개→1회 변환→DOCX 1개 흐름은 명확하다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6471380298-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘공유 전 UTM 추적 URL 정리’는 편집자가 고객에게 보내기 직전 웹페이지 URL 1개에서 utm 쿼리를 1회 제거해 정리된 링크 1개를 얻는 결과가 분명하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6471380298-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘삭제 목록이 보이는 정리 URL’은 운영자가 URL 1개를 입력해 추적 쿼리를 제거하지만 정리된 링크와 삭제 목록이라는 결과 2개를 요구해 1입력·1처리·1결과 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6471380298-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘광고 식별자 제거 링크 확인’은 개인정보 담당자가 외부 공유 직전 웹페이지 URL 1개에서 광고 식별자 쿼리를 1회 제거해 정리된 링크 1개를 확인하는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6759467015-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Markdown 코드·표 가독성 미리보기’는 개발자가 전달 전 Markdown 파일 1개를 1회 렌더링해 코드·표 중심 문서 화면 1개로 검수하는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6759467015-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘Markdown Mermaid 다이어그램 미리보기’는 원본의 일반 Markdown 렌더링 범위를 넘어 Mermaid 전용 다이어그램 렌더링을 추가한 메커니즘 드리프트이며, 파일 1개→1회 렌더링→화면 1개 흐름 자체는 명확하다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6759467015-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Markdown 수식 깨짐 즉시 미리보기’는 프로젝트 매니저가 오류를 찾을 때 Markdown 파일 1개를 입력해 수식을 1회 렌더링하고 KaTeX 문서 화면 1개를 확인하는 결과가 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

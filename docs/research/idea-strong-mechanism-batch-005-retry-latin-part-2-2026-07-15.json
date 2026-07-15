@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6760979290-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘연필 얼룩 제거 후 투명 선화 PNG’는 웹툰 작가가 손그림 사진을 디지털 채색 직전에 한 번 처리해 얼룩을 제거하고 투명 선화 PNG 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘흰 종이 배경을 투명 선화로 변환’은 웹툰 작가가 손그림 도안을 인쇄 파일로 넘기기 직전 사진 1장에서 흰 배경을 분리해 투명 선화 PNG 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스케치 사진의 종이 그림자 제거 선화’는 웹툰 작가가 손그림 선을 디지털 레이어로 옮길 때 사진 1장의 페이지 보정과 그림자 제거 후 투명 선화 PNG 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘흰 종이 배경을 투명 선화로 변환’은 굿즈 제작자가 손그림 사진을 디지털 채색 직전에 한 번 배경 분리해 투명 선화 PNG 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스케치 사진의 종이 그림자 제거 선화’는 굿즈 제작자가 손그림 도안을 인쇄 파일로 넘기기 직전 사진 1장의 페이지 보정과 그림자 제거 후 투명 선화 PNG 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘연필 얼룩 제거 후 투명 선화 PNG’는 굿즈 제작자가 손그림 선을 디지털 레이어로 옮길 때 사진 1장에서 연필 번짐을 제거해 투명 선화 PNG 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

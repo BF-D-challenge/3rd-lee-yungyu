@@ -1,0 +1,55 @@
+{
+  "batch_id": "EXH-060",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 55,
+    "Candidate": 40,
+    "Merge": 4,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 67,
+      "sample": [
+        "app_store:1546171987",
+        "trustmrr:gtp-image-2",
+        "chrome_web_store:fiabciakcmgepblmdkmemdbbkilneeeh",
+        "app_store:1615910343",
+        "app_store:6770531486",
+        "app_store:1175969205",
+        "app_store:6443677513"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6443677513",
+          "decision": "Candidate",
+          "reason": "파일 하나를 입력받아 ZIP으로 압축하거나 해제하고, 저장·공유 가능한 파일 하나를 즉시 만든다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 2,
+      "fail_count": 55,
+      "sample": [
+        "app_store:1546171987",
+        "app_store:880575127",
+        "chrome_web_store:fiabciakcmgepblmdkmemdbbkilneeeh",
+        "chrome_web_store:icokiikdmaaecdehkchflilmbmmedpga",
+        "chrome_web_store:akimgimeeoiognljlfchpbkpfbmeapkh",
+        "trustmrr:grow-fit-club"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

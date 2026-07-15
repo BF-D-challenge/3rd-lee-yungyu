@@ -1,0 +1,238 @@
+{
+  "results": [
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "업로드 메타데이터를 검수하는 영상 대행 편집자가 경쟁 영상 URL 하나를 넣으면 숨은 태그를 한 번 추출해 원래 순서의 TXT 목록 하나를 즉시 받아 제목 수정에 활용할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "업로드 메타데이터를 검수하는 영상 대행 편집자가 경쟁 영상 URL 하나를 넣으면 숨은 태그를 한 번 추출·중복 제거해 CSV 하나를 즉시 받아 제목 수정에 활용할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "업로드 메타데이터를 검수하는 영상 대행 편집자가 경쟁 영상 URL 하나를 넣으면 숨은 태그를 한 번 추출·길이순 정렬해 긴 태그 우선 CSV 하나를 즉시 받아 제목 수정에 활용할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "업로드 메타데이터를 검수하는 영상 대행 편집자가 조사 브리프에 넣을 영상 URL 하나를 입력하면 숨은 태그를 한 번 추출해 원래 순서의 TXT 목록 하나를 즉시 받을 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "업로드 메타데이터를 검수하는 영상 대행 편집자가 조사 브리프용 영상 URL 하나를 입력하면 숨은 태그를 한 번 추출·중복 제거해 CSV 하나를 즉시 받을 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "업로드 메타데이터를 검수하는 영상 대행 편집자가 조사 브리프용 영상 URL 하나를 입력하면 숨은 태그를 한 번 추출·길이순 정렬해 긴 태그 우선 CSV 하나를 즉시 받을 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "업로드 메타데이터를 검수하는 영상 대행 편집자가 업로드 전 영상 URL 하나를 입력하면 숨은 태그를 한 번 추출해 원래 순서의 TXT 파일 하나를 즉시 받아 누락 여부를 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "업로드 메타데이터를 검수하는 영상 대행 편집자가 업로드 전 영상 URL 하나를 입력하면 숨은 태그를 한 번 추출·중복 제거해 CSV 파일 하나를 즉시 받아 누락 여부를 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "업로드 메타데이터를 검수하는 영상 대행 편집자가 업로드 전 영상 URL 하나를 입력하면 숨은 태그를 한 번 추출·길이순 정렬해 긴 태그 우선 CSV 하나를 즉시 받아 누락 여부를 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 버그를 재현하는 웹 QA 엔지니어가 현재 사이트 권한 하나를 허용하면 session cookie만 한 번 필터링·마스킹해 구조 JSON 파일 하나를 즉시 받아 증거로 저장할 수 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 버그를 재현하는 웹 QA 엔지니어가 현재 사이트 권한 하나를 허용하면 SameSite·Secure 플래그만 한 번 추출하고 값을 마스킹해 JSON 파일 하나를 즉시 받을 수 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 버그를 재현하는 웹 QA 엔지니어가 현재 사이트 권한 하나를 허용하면 쿠키를 domain·path별로 한 번 그룹화·마스킹해 JSON 파일 하나를 즉시 받을 수 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 버그를 재현하는 웹 QA 엔지니어가 초기화 전 현재 사이트 권한 하나를 허용하면 session cookie만 한 번 필터링·마스킹해 JSON 파일 하나를 즉시 받아 재현 상태의 증거로 남길 수 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 버그를 재현하는 웹 QA 엔지니어가 초기화 전 현재 사이트 권한 하나를 허용하면 SameSite·Secure 플래그만 한 번 추출·마스킹해 JSON 파일 하나를 즉시 받을 수 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 버그를 재현하는 웹 QA 엔지니어가 초기화 전 현재 사이트 권한 하나를 허용하면 쿠키를 domain·path별로 한 번 그룹화·마스킹해 JSON 파일 하나를 즉시 받을 수 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 버그를 재현하는 웹 QA 엔지니어가 현재 사이트 권한 하나를 허용하면 session cookie만 한 번 필터링·마스킹해 JSON 파일 하나를 즉시 받아 개발팀에 구조 증거로 전달할 수 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 버그를 재현하는 웹 QA 엔지니어가 현재 사이트 권한 하나를 허용하면 SameSite·Secure 플래그만 한 번 추출·마스킹해 JSON 파일 하나를 즉시 받아 개발팀에 전달할 수 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 버그를 재현하는 웹 QA 엔지니어가 현재 사이트 권한 하나를 허용하면 쿠키를 domain·path별로 한 번 그룹화·마스킹해 JSON 파일 하나를 즉시 받아 개발팀에 전달할 수 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    }
+  ]
+}

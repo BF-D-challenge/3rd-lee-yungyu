@@ -1,0 +1,428 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-443332137-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "일본어 문장을 입력해 영어로 말하는 원본 흐름과 한국어 문장을 출장 영어로 바꾸는 제목·트위스트가 불일치한다.",
+      "risk_flags": [
+        "input_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-443332137-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "일본어 문장 입력을 전제로 한 원본인데 한국어 면접 답변을 영어로 바꾸도록 제안해 입력과 결과가 어긋난다.",
+      "risk_flags": [
+        "input_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-443332137-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "일본어 문장을 영어로 말하는 처리와 한국어 호텔 응대 문장을 바꾸는 트위스트가 일치하지 않는다.",
+      "risk_flags": [
+        "input_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-406541444-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 파일 하나를 입력해 빈티지 효과를 적용하고 서울 골목의 90년대 캠코더풍 영상 하나를 즉시 결과로 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-406541444-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "사진 또는 영상 파일 하나에 빈티지 효과를 적용할 수 있지만 카페 사진을 원하는 순간에 가족 영상 트위스트를 제시해 사용 맥락이 흔들린다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-406541444-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "사진 파일 하나에 빛샘과 흔들림을 적용해 결과 이미지를 만들 수 있으나 부모의 생일 영상 필요와 카페 사진 트위스트가 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1554606485-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 파일을 편집해 이미지를 만드는 기능은 기본 사진 편집기나 범용 디자인 도구가 더 편리하다.",
+      "risk_flags": [
+        "generic_editor"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1554606485-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 사진 파일에 프레임을 적용하는 결과는 기본 사진 편집기나 쇼핑몰 디자인 도구로 더 쉽게 만들 수 있다.",
+      "risk_flags": [
+        "generic_editor"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1554606485-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "디저트 사진 파일에서 제품을 오려 저장하는 처리는 OS 기본 누끼·사진 편집 기능이 더 편리하다.",
+      "risk_flags": [
+        "os_basic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1326943979-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "문제 하나를 입력해 정답 해설을 받는 결과는 범용 AI 한 번으로 더 간단히 얻을 수 있고 ABA Wizard라는 제목만으로 문제와 결과도 불명확하다.",
+      "risk_flags": [
+        "generic_ai",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1326943979-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "ABA 문제 하나의 오답 해설은 범용 AI나 기존 학습 도구로 더 편리하게 처리할 수 있으며 제목만으로 기능이 드러나지 않는다.",
+      "risk_flags": [
+        "generic_ai",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1326943979-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "BCBA 문제 하나를 풀고 참고문헌을 확인하는 결과는 범용 AI 한 번으로 대체 가능하고 제목이 사용 문제를 설명하지 않는다.",
+      "risk_flags": [
+        "generic_ai",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-366297822-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "전례 날짜를 입력해 기도문을 조립하는 기능은 설치와 전례 데이터 준비가 선행되어야 하며 iLiturgia라는 제목만으로 결과가 보이지 않는다.",
+      "risk_flags": [
+        "preinstall_dependency",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-366297822-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "날짜 입력 후 오프라인 기도문을 보려면 문제 발생 전에 앱과 전례 데이터를 준비해야 하고 제목만으로 기능을 알기 어렵다.",
+      "risk_flags": [
+        "preinstall_dependency",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-366297822-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "전례 날짜에서 미사독서를 생성하는 흐름은 사전 설치·데이터 준비가 필요하며 iLiturgia라는 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "preinstall_dependency",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1147146782-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "고객 정보와 작업 주기를 미리 기록해야 주간 목록이 생성되므로 문제 전에 기록이 필요하고 Doing Windows라는 제목도 불명확하다.",
+      "risk_flags": [
+        "preconfiguration",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1147146782-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "고객별 주기와 완료 작업을 사전에 기록해야 다음 방문 목록을 만들 수 있어 문제 전 기록 조건을 위반한다.",
+      "risk_flags": [
+        "preconfiguration"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1147146782-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "완료한 작업을 주기에 맞춰 재예약하려면 고객과 주기를 미리 입력해야 하므로 즉시 문제를 해결하는 세로 조각이 아니다.",
+      "risk_flags": [
+        "preconfiguration"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-342138881-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "노래 파일과 단일 기기 마이크 입력을 한 번 녹음해 음정 보정·효과를 적용하고 축가 결과 오디오 하나를 즉시 듣는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-342138881-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "친구와 듀엣하려면 상대방의 새 행동과 참여가 필요해 단일 입력·단일 처리 조건과 상대방 행동 금지 규칙을 위반한다.",
+      "risk_flags": [
+        "other_person_dependency"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-342138881-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "노래 녹음과 단일 기기 마이크 입력에 노이즈 제거·보컬 효과를 적용해 공유 가능한 커버곡 오디오 하나를 즉시 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-699671405-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진과 음악처럼 둘 이상의 입력을 결합해야 하고 기본 편집기나 SNS 기능으로 더 편리하게 만들 수 있다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "generic_editor"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-699671405-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "돌잔치 사진 여러 장과 노래를 함께 입력해야 하므로 입력 1개 조건을 위반하고 범용 영상 편집 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "generic_editor"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-699671405-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 영상과 배경음악을 함께 처리해야 하는 다중 입력 조합이며 OS·SNS 기본 편집 기능이 더 편리하다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "generic_editor"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1521959252-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "디지털 캔버스의 붓질은 허용된 텍스트·URL·파일·사진·단일 권한 입력에 해당하지 않는다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1521959252-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "연필 드로잉과 붓질을 직접 입력으로 요구하므로 허용된 입력 유형과 입력 1개 처리 규칙을 충족하지 않는다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1521959252-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "디지털 붓질을 받아 색과 질감을 시뮬레이션하는 구조는 허용된 파일·사진 입력이 아니라 직접 조작 입력이다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-299504833-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "도시나 위치를 입력해 날씨를 확인하는 결과는 OS 기본 날씨 앱이 더 편리하고 제목도 차별적 문제와 결과를 보여주지 않는다.",
+      "risk_flags": [
+        "os_basic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-299504833-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "출장 도시를 입력해 예보를 보는 기능은 기본 날씨 앱으로 대체 가능해 한 끗 차별성이 없다.",
+      "risk_flags": [
+        "os_basic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-299504833-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "촬영지 입력 후 비와 바람을 확인하는 단일 결과는 기본 날씨 앱에서 더 쉽게 얻을 수 있다.",
+      "risk_flags": [
+        "os_basic_alternative"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,433 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-3-pixel-grid-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "delay 배열 텍스트를 받아 3x3 로딩 패턴으로 시각화하고 복사 가능한 설정을 내보내지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-3-pixel-grid-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "delay 배열 텍스트를 받아 3x3 로딩 패턴으로 시각화하고 복사 가능한 설정을 내보내지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-3-pixel-grid-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "delay 배열 텍스트를 받아 3x3 로딩 패턴으로 시각화하고 복사 가능한 설정을 내보내지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-hyperurls-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "URL 하나를 저장·태그·검색해 링크 목록을 만들지만 브라우저 북마크와 검색 기능으로 더 간단히 처리할 수 있다.",
+      "risk_flags": [
+        "generic_existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-hyperurls-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "URL 하나를 저장·태그·검색해 링크 목록을 만들지만 브라우저 북마크와 검색 기능으로 더 간단히 처리할 수 있다.",
+      "risk_flags": [
+        "generic_existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-hyperurls-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "URL 하나를 저장·태그·검색해 링크 목록을 만들지만 브라우저 북마크와 검색 기능으로 더 간단히 처리할 수 있다.",
+      "risk_flags": [
+        "generic_existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-will-u-be-my-valentine-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "맞춤 문구 텍스트를 받아 개인화 페이지 하나를 구성해 공유하지만 제목만으로 어떤 입력과 결과를 얻는지 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-will-u-be-my-valentine-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "맞춤 문구 텍스트를 받아 개인화 페이지 하나를 구성해 공유하지만 제목만으로 어떤 입력과 결과를 얻는지 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-will-u-be-my-valentine-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "맞춤 문구 텍스트를 받아 개인화 페이지 하나를 구성해 공유하지만 제목만으로 어떤 입력과 결과를 얻는지 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-loveyuu-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선물 내용 텍스트를 받아 QR 코드를 한 번 생성하지만 범용 QR 생성기가 같은 결과를 더 편하게 제공한다.",
+      "risk_flags": [
+        "generic_existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-loveyuu-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선물 내용 텍스트를 받아 QR 코드를 한 번 생성하지만 범용 QR 생성기가 같은 결과를 더 편하게 제공한다.",
+      "risk_flags": [
+        "generic_existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-loveyuu-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선물 내용 텍스트를 받아 QR 코드를 한 번 생성하지만 범용 QR 생성기가 같은 결과를 더 편하게 제공한다.",
+      "risk_flags": [
+        "generic_existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-amounio-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공동 지출 내역 텍스트를 받아 커플별 분담액을 계산해 정산 결과 하나를 보여주지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "encryption_claim"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-amounio-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공동 지출 내역 텍스트를 받아 커플별 분담액을 계산해 정산 결과 하나를 보여주지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "encryption_claim"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-amounio-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공동 지출 내역 텍스트를 받아 커플별 분담액을 계산해 정산 결과 하나를 보여주지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "encryption_claim"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-framesnapr-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "스크린샷 이미지 하나에 프레임과 편집 효과를 적용해 공유용 이미지 하나를 만들지만 제목과 결과 표현이 모호하다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "result_vagueness"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-framesnapr-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "스크린샷 이미지 하나에 프레임과 편집 효과를 적용해 공유용 이미지 하나를 만들지만 제목과 결과 표현이 모호하다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "result_vagueness"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-framesnapr-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "스크린샷 이미지 하나에 프레임과 편집 효과를 적용해 공유용 이미지 하나를 만들지만 제목과 결과 표현이 모호하다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "result_vagueness"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-verify-forge-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "이메일 주소 텍스트 하나를 받아 유효성을 검사하고 검증 결과 하나를 반환하지만 제목만으로 처리 목적과 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-verify-forge-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "이메일 주소 텍스트 하나를 받아 유효성을 검사하고 검증 결과 하나를 반환하지만 제목만으로 처리 목적과 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-verify-forge-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "이메일 주소 텍스트 하나를 받아 유효성을 검사하고 검증 결과 하나를 반환하지만 제목만으로 처리 목적과 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-puresignup-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "가입 이메일 주소 텍스트 하나를 받아 일회용 여부를 검사하고 차단 여부 하나를 보여주지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-puresignup-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "가입 이메일 주소 텍스트 하나를 받아 일회용 여부를 검사하고 차단 여부 하나를 보여주지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-puresignup-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "가입 이메일 주소 텍스트 하나를 받아 일회용 여부를 검사하고 차단 여부 하나를 보여주지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-fonzo-io-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "SVG 파일을 받아 웹폰트로 변환하지만 입력이 여러 아이콘일 수 있고 결과도 아이콘과 웹폰트 두 개로 분리되어 1입력·1결과 조건을 벗어난다.",
+      "risk_flags": [
+        "multiple_input",
+        "multiple_output"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-fonzo-io-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "SVG 파일을 받아 웹폰트로 변환하지만 입력이 여러 아이콘일 수 있고 결과도 아이콘과 웹폰트 두 개로 분리되어 1입력·1결과 조건을 벗어난다.",
+      "risk_flags": [
+        "multiple_input",
+        "multiple_output"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-fonzo-io-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "SVG 파일을 받아 웹폰트로 변환하지만 입력이 여러 아이콘일 수 있고 결과도 아이콘과 웹폰트 두 개로 분리되어 1입력·1결과 조건을 벗어난다.",
+      "risk_flags": [
+        "multiple_input",
+        "multiple_output"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-dajfjkknefodcaoncilnjfkkpgpioolh-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "농구공 던지기 동작을 입력으로 받아 골대 진입을 계산하고 점수를 보여주지만 허용된 텍스트·URL·파일·사진·단일 권한 입력에 해당하지 않는다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-dajfjkknefodcaoncilnjfkkpgpioolh-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "농구공 던지기 동작을 입력으로 받아 골대 진입을 계산하고 점수를 보여주지만 허용된 텍스트·URL·파일·사진·단일 권한 입력에 해당하지 않는다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-dajfjkknefodcaoncilnjfkkpgpioolh-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "농구공 던지기 동작을 입력으로 받아 골대 진입을 계산하고 점수를 보여주지만 허용된 텍스트·URL·파일·사진·단일 권한 입력에 해당하지 않는다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    }
+  ]
+}

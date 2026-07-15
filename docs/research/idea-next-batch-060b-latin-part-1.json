@@ -1,0 +1,139 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-477962899-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진과 문구를 입력해 문구를 배치한 밈 이미지를 저장·공유하는 흐름은 구체적이지만 OS 기본 사진 편집이나 범용 이미지 편집 앱으로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_editor",
+        "os_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-477962899-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 이미지와 유행 문구를 입력해 밈 이미지를 저장·공유하는 결과는 구체적이지만 기존 이미지 편집 기능으로 충분하고 결제자인 소상공인과 제시된 대학생 원본 근거도 어긋난다.",
+      "risk_flags": [
+        "generic_editor",
+        "payer_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-477962899-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "친구 사진과 축하 문구를 입력해 생일 밈 이미지를 저장·공유하는 흐름은 명확하지만 OS 기본 사진 편집이나 범용 이미지 편집 앱으로 대체 가능하다.",
+      "risk_flags": [
+        "generic_editor",
+        "os_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-477962899-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 이미지와 유행 문구를 입력해 밈 이미지를 저장·공유하는 결과는 명확하지만 OS 기본 편집 기능으로 충분하고 단체채팅 순간과 브랜드 SNS 제작 목적이 자연스럽게 연결되지 않는다.",
+      "risk_flags": [
+        "generic_editor",
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-477962899-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진과 축하 문구를 입력해 공유용 밈 이미지를 만드는 처리는 가능하지만 친구 생일 사진 순간에 상품 이미지용 문구를 배치하는 twist가 서로 충돌하고 범용 편집 앱으로 대체된다.",
+      "risk_flags": [
+        "twist_mismatch",
+        "generic_editor"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-477962899-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진과 문구를 입력해 워터마크 없는 밈 이미지를 저장·공유하는 흐름은 명확하지만 OS 기본 사진 편집이나 범용 이미지 편집 앱으로 더 쉽게 할 수 있다.",
+      "risk_flags": [
+        "generic_editor",
+        "os_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-477962899-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진과 문구를 입력해 워터마크 없는 밈 이미지를 저장·공유하는 결과는 구체적이지만 가게 홍보라는 순간과 친구 생일 사진을 편집하는 결제자 목적이 어긋나며 범용 편집 앱으로 대체 가능하다.",
+      "risk_flags": [
+        "moment_mismatch",
+        "generic_editor"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-477962899-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진과 문구를 입력해 밈 이미지를 저장·공유하는 처리는 명확하지만 친구 생일 사진을 편집하는 결제자와 가게 홍보 순간이 맞지 않고 OS 기본 편집 기능으로 충분하다.",
+      "risk_flags": [
+        "moment_mismatch",
+        "generic_editor"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-477962899-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 이미지와 유행 문구를 입력해 밈 이미지를 저장·공유하는 결과는 구체적이지만 친구 생일 사진을 편집하는 결제자와 상품 홍보용 twist가 충돌하고 범용 이미지 편집 앱으로 대체 가능하다.",
+      "risk_flags": [
+        "twist_mismatch",
+        "generic_editor"
+      ]
+    }
+  ]
+}

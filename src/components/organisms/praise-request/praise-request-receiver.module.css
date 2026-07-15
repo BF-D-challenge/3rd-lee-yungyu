@@ -3,9 +3,7 @@
   min-height: 100dvh;
   color: #f5f5f2;
   color-scheme: dark;
-  background:
-    radial-gradient(120% 60% at 50% -10%, rgba(125, 228, 190, 0.1), transparent 55%),
-    #0d2a23;
+  background: #08090c;
 }
 
 .frame {
@@ -21,7 +19,7 @@
   flex-direction: column;
   width: 100%;
   overflow: hidden;
-  background: #0b1916;
+  background: #0a0a0b;
 }
 
 @media (min-width: 481px) {
@@ -35,7 +33,7 @@
     width: 100%;
     max-width: 420px;
     height: min(844px, calc(100dvh - 64px));
-    border: 1px solid rgba(125, 228, 190, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
   }
 }
@@ -46,7 +44,7 @@
 }
 
 .eyebrow {
-  color: var(--praise-receiver-mint, #7de4be);
+  color: rgba(255, 255, 255, 0.5);
   font-size: 11px;
   font-weight: 850;
   letter-spacing: 0.14em;
@@ -67,7 +65,7 @@
 }
 
 .progressDot[data-done="true"] {
-  background: var(--praise-receiver-mint, #7de4be);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .stepViewport {
@@ -113,7 +111,7 @@
   flex: 0 0 auto;
   padding: 12px 20px calc(14px + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: #0b1916;
+  background: #0a0a0b;
 }
 
 .backRow {
@@ -121,7 +119,8 @@
 }
 
 .backButton {
-  padding: 6px 4px;
+  min-height: 48px;
+  padding: 8px 4px;
   border: 0;
   border-radius: 8px;
   color: rgba(255, 255, 255, 0.56);
@@ -136,7 +135,7 @@
 }
 
 .backButton:focus-visible {
-  outline: 2px solid var(--praise-receiver-mint, #7de4be);
+  outline: 2px solid rgba(255, 255, 255, 0.6);
   outline-offset: 3px;
 }
 
@@ -157,8 +156,8 @@
   flex: 0 0 auto;
   padding: 4px 10px;
   border-radius: 999px;
-  color: var(--praise-receiver-mint, #7de4be);
-  background: rgba(125, 228, 190, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.06);
   font-size: 10.5px;
   font-weight: 700;
   white-space: nowrap;
@@ -173,7 +172,7 @@
 }
 
 .previewLabel {
-  color: var(--praise-receiver-mint, #7de4be);
+  color: rgba(255, 255, 255, 0.5);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -195,17 +194,59 @@
   line-height: 1.6;
 }
 
+.contextSection {
+  margin-top: 20px;
+}
+
+.contextHeading {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.contextList {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 0;
+}
+
+.contextItem {
+  display: grid;
+  grid-template-columns: minmax(82px, 0.34fr) 1fr;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.contextItem dt {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.contextItem dd {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
 .buildCard {
   position: relative;
   margin-top: 20px;
   padding: 16px 18px;
-  border: 1px solid rgba(125, 228, 190, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  background: rgba(125, 228, 190, 0.05);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .buildLabel {
-  color: var(--praise-receiver-mint, #7de4be);
+  color: rgba(255, 255, 255, 0.5);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.06em;
@@ -225,6 +266,24 @@
   line-height: 1.6;
 }
 
+.requestNote {
+  margin-top: 20px;
+  padding: 16px 18px;
+  border-left: 3px solid #ff4458;
+  border-radius: 0 8px 8px 0;
+  background: rgba(255, 68, 88, 0.06);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.requestLabel {
+  margin-bottom: 4px;
+  color: #ff7b89;
+  font-size: 11px;
+  font-weight: 800;
+}
+
 .stepHeading {
   margin: 0;
   font-size: clamp(17px, 4.6vw, 19px);
@@ -232,16 +291,26 @@
   letter-spacing: -0.01em;
 }
 
+.stepDescription {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 .praiseGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 18px;
 }
 
 .praiseOption {
-  min-height: 88px;
-  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 56px;
+  padding: 12px 16px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
   color: rgba(255, 255, 255, 0.86);
@@ -256,21 +325,75 @@
 }
 
 .praiseOption:focus-visible {
-  outline: 3px solid var(--praise-receiver-mint, #7de4be);
+  outline: 3px solid rgba(255, 255, 255, 0.6);
   outline-offset: 2px;
 }
 
 .praiseOption[data-selected="true"] {
-  border-color: var(--praise-receiver-mint, #7de4be);
-  background: rgba(125, 228, 190, 0.1);
+  border-color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .praiseHeart {
-  margin-right: 4px;
-  color: var(--praise-receiver-mint, #7de4be);
+  flex: 0 0 auto;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.customField,
+.nameField {
+  margin-top: 16px;
+}
+
+.customLabel {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.customInput {
+  width: 100%;
+  height: 48px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  color: inherit;
+  background: rgba(0, 0, 0, 0.24);
+  font-size: 16px;
+  outline: none;
+}
+
+.customInput:focus-visible {
+  border-color: #ff4458;
+  outline: 2px solid rgba(255, 68, 88, 0.4);
+  outline-offset: 2px;
+}
+
+.characterCount {
+  display: block;
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 11px;
+  text-align: right;
+}
+
+.selectionPreview {
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.selectionPreview p:last-child {
+  margin-top: 8px;
 }
 
 .revealSection {
+  min-width: 0;
   margin-top: 18px;
   padding: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -279,6 +402,7 @@
 }
 
 .revealTitle {
+  padding: 0;
   color: rgba(255, 255, 255, 0.86);
   font-size: 15px;
   font-weight: 700;
@@ -287,20 +411,23 @@
 
 .revealOption {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   margin-top: 12px;
-  padding: 4px 2px;
+  min-height: 48px;
+  padding: 8px 4px;
   cursor: pointer;
 }
 
 .revealOption input {
-  margin-top: 3px;
-  accent-color: var(--praise-receiver-mint, #7de4be);
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: #ff4458;
 }
 
 .revealOption input:focus-visible {
-  outline: 2px solid var(--praise-receiver-mint, #7de4be);
+  outline: 2px solid rgba(255, 255, 255, 0.6);
   outline-offset: 3px;
 }
 
@@ -311,13 +438,13 @@
 
 .senderNameInput {
   width: 100%;
-  height: 44px;
-  margin-top: 10px;
+  height: 48px;
   padding: 0 12px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 10px;
   color: inherit;
   background: rgba(0, 0, 0, 0.24);
+  font-size: 16px;
   outline: none;
   transition: border-color 160ms ease;
 }
@@ -333,6 +460,13 @@
   color: rgba(255, 255, 255, 0.46);
   font-size: 11.5px;
   line-height: 1.6;
+}
+
+.formError {
+  margin-top: 12px;
+  color: #ff96a1;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .primaryButton {
@@ -398,10 +532,21 @@
   margin-top: 26px;
   padding: 8px 14px;
   border-radius: 999px;
-  color: #0b1916;
-  background: var(--praise-receiver-mint, #7de4be);
+  color: #0a0a0b;
+  background: rgba(255, 255, 255, 0.92);
   font-size: 12px;
   font-weight: 800;
+  text-align: center;
+}
+
+.sentContent {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 24px 20px;
   text-align: center;
 }
 
@@ -426,4 +571,22 @@
   place-items: center;
   padding: 24px;
   text-align: center;
+}
+
+.notFoundNote {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressDot,
+  .backButton,
+  .praiseOption,
+  .senderNameInput,
+  .primaryButton,
+  .secondaryButton {
+    transition: none;
+  }
 }

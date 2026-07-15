@@ -1,0 +1,467 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-invoice-maker-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "거래처·항목·금액 여러 입력을 받아 청구서를 만드는 기능이며 네이버페이 서식만으로는 범용 문서·AI보다 나은 한 끗 결과가 아니다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "generic_generator",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-invoice-maker-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "거래처·항목·금액을 여러 번 입력해야 하고 카카오톡 전송용 파일은 기존 문서·청구서 도구로 더 쉽게 만들 수 있다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "generic_generator",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-invoice-maker-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "거래처·항목·금액 입력과 청구서 생성은 구체적이지만 외주별 부가세 합계만으로는 범용 계산·문서 도구보다 우위가 없다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "generic_generator",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-text-to-pdf-converter-topdf-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "텍스트 하나를 PDF로 바꾸는 결과는 구체적이지만 iPhone·iPad 기본 공유·인쇄 기능이나 범용 AI가 더 편하다.",
+      "risk_flags": [
+        "existing_alternative",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-text-to-pdf-converter-topdf-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "메신저 안내문 텍스트를 PDF로 변환하는 일은 기본 문서·공유 기능으로 처리 가능해 별도 세로 조각의 필요성이 약하다.",
+      "risk_flags": [
+        "existing_alternative",
+        "generic_generator"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-text-to-pdf-converter-topdf-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "텍스트 입력 후 제출용 PDF를 만드는 결과는 명확하지만 문서 앱이나 범용 AI 한 번이 더 간단하다.",
+      "risk_flags": [
+        "existing_alternative",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-quotas-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "근무시간을 문제 전에 계속 기록해야 추적 결과가 생기므로 사후 단일 입력·처리·결과 조건을 충족하지 못한다.",
+      "risk_flags": [
+        "prior_logging",
+        "ongoing_tracking"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-quotas-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "재택·외근 시간을 지속적으로 기록해야 하며 주간 누적은 캘린더·스프레드시트로 더 쉽게 확인할 수 있다.",
+      "risk_flags": [
+        "prior_logging",
+        "ongoing_tracking",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-quotas-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "초과근무와 청구 가능 시간을 보려면 사전에 반복 기록이 필요해 허용된 단일 입력 조건을 위반한다.",
+      "risk_flags": [
+        "prior_logging",
+        "ongoing_tracking"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-logmo-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "활동을 매번 기록해야 로그가 쌓이고 이모지 표시 자체는 메모·메신저로 더 쉽게 할 수 있다.",
+      "risk_flags": [
+        "prior_logging",
+        "ongoing_tracking",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-logmo-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "육아 중 활동을 지속 입력해야 하며 운동·산책·휴식 이모지 로그는 기본 메모 기능보다 구체적 이점이 없다.",
+      "risk_flags": [
+        "prior_logging",
+        "ongoing_tracking",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-logmo-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "식사와 낮잠을 계속 기록해야 개인 로그가 만들어지고 해당 결과는 범용 메모 앱으로 충분히 대체된다.",
+      "risk_flags": [
+        "prior_logging",
+        "ongoing_tracking",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-peachcalendar-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "약속 일정과 시간을 반복 등록해야 하며 네일샵 약속 캘린더는 OS 기본 캘린더보다 편리한 결과가 아니다.",
+      "risk_flags": [
+        "prior_logging",
+        "ongoing_tracking",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-peachcalendar-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "예약을 계속 입력해야 하고 빈 시간 확인은 기본 캘린더가 이미 제공하므로 별도 기능의 한 끗 변화가 없다.",
+      "risk_flags": [
+        "prior_logging",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-peachcalendar-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "학생별 수업 시간을 반복 등록해야 하며 상담 예약 캘린더는 OS 기본 캘린더로 대체 가능하다.",
+      "risk_flags": [
+        "prior_logging",
+        "ongoing_tracking",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-gogoresume-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "이력서뿐 아니라 채용 공고도 필요하지만 입력 정의에 빠져 있고 공고 맞춤 이력서 생성은 범용 AI 한 번으로 대체된다.",
+      "risk_flags": [
+        "missing_required_input",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-gogoresume-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "resume만 입력으로 제시되어 사람인 공고별 조정에 필요한 공고 정보가 빠졌으며 결과는 범용 AI가 더 간단히 제공한다.",
+      "risk_flags": [
+        "missing_required_input",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-gogoresume-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "직무기술서와 이력서라는 복수 입력이 필요한데 하나만 명시됐고 핵심어 반영은 범용 AI의 일반 기능이다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "missing_required_input",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6759912958-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "페이지 수·작업시간·마감이라는 세 입력을 요구해 입력 1개 조건을 위반하며 간트차트까지 처리 단계와 결과가 복수다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "multiple_outputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6759912958-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "웹소설 일정 계산에 페이지 수·작업시간·마감 입력이 모두 필요해 단일 입력 조각으로 성립하지 않는다.",
+      "risk_flags": [
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6759912958-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "표지와 본문을 나누려면 여러 작업 정보와 마감을 입력해야 하므로 1개 입력·1회 처리·1개 결과 규칙을 충족하지 못한다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "multiple_outputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6738304985-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "외국어 사진 한 장에서 번역문을 얻는 흐름은 명확하지만 카메라 번역은 OS·범용 번역 앱으로 더 쉽게 해결된다.",
+      "risk_flags": [
+        "existing_alternative",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6738304985-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "표지판 사진을 번역하는 결과는 구체적이나 기본 카메라·번역 기능과 범용 AI가 이미 같은 처리를 제공한다.",
+      "risk_flags": [
+        "existing_alternative",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6738304985-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "약품 라벨 사진 번역은 입력과 결과가 명확하지만 번역 기능만으로는 범용 번역 도구보다 나은 차별성이 없다.",
+      "risk_flags": [
+        "existing_alternative",
+        "generic_ai",
+        "safety_sensitive"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-315556628-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "터치와 압력을 연속 입력해 그림을 완성하는 작업은 단일 입력·처리·결과보다 지속적 창작 도구에 가깝고 기존 드로잉 앱이 더 적합하다.",
+      "risk_flags": [
+        "continuous_input",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-315556628-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "색 혼합과 스케치는 반복적인 터치 입력이 필요한 범용 캔버스 기능으로, 단일 입력 조각과 기존 앱 대비 차별성이 없다.",
+      "risk_flags": [
+        "continuous_input",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-315556628-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "압력에 따른 수채 브러시는 연속 터치와 브러시 렌더링이 필요한 기능이라 반나절 세로 조각의 단일 결과 조건과 맞지 않는다.",
+      "risk_flags": [
+        "continuous_input",
+        "existing_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6777972680-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "아이의 시도라는 허용되지 않은 행동 입력을 부모가 기록해야 하며 별·진행·인증서로 결과도 여러 개다.",
+      "risk_flags": [
+        "invalid_input",
+        "prior_logging",
+        "multiple_outputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6777972680-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "쪽쪽이 없이 잠든 행동을 전제로 부모가 기록해야 하고 별·진행·인증서를 함께 만들어 단일 결과 조건을 위반한다.",
+      "risk_flags": [
+        "invalid_input",
+        "prior_logging",
+        "multiple_outputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6777972680-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "아이의 행동이라는 허용되지 않은 입력과 지속 기록이 필요하며 인증서 외에 별과 진행 기록도 함께 산출한다.",
+      "risk_flags": [
+        "invalid_input",
+        "prior_logging",
+        "multiple_outputs"
+      ]
+    }
+  ]
+}

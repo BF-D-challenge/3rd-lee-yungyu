@@ -1,0 +1,101 @@
+{
+  "batch_id": "EXH-031",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 42,
+    "Fail": 50,
+    "Merge": 5,
+    "Reserve": 3
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 74,
+      "sample": [
+        "app_store:6737198486",
+        "chrome_web_store:oocalimimngaihdkbihfgmpkcpnmlaoa",
+        "app_store:6446788829",
+        "app_store:6744645984",
+        "app_store:1494440076",
+        "chrome_web_store:iecfbnfofbedknhocdmdnkbjebpddmin",
+        "chrome_web_store:igcabpfhefbokdbcmmjngfkaifghpfbf",
+        "app_store:1483998235"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6446788829",
+          "decision": "Candidate",
+          "reason": "팀·리그·대회를 하나 입력받아 경기 데이터의 점수·통계를 정리하고 점수와 일정을 보여주는 세로 조각을 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.125
+    },
+    {
+      "round": 2,
+      "fail_count": 62,
+      "sample": [
+        "app_store:504270602",
+        "chrome_web_store:ndeibfhiocekjgafdadefcpiodkfcjbh",
+        "app_store:6446788829",
+        "app_store:284981670",
+        "chrome_web_store:flkddebefldhkdkgjojkpikmhmebgakf",
+        "chrome_web_store:pajmmdmjkjjhogcgloaphjibbpdhmklp",
+        "app_store:399603784"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6446788829",
+          "decision": "Candidate",
+          "reason": "팀·리그·대회를 하나 선택하면 실시간 점수·통계와 경기 일정을 표시하는 세로 조각을 2일 안에 만들 수 있다."
+        },
+        {
+          "key": "chrome_web_store:pajmmdmjkjjhogcgloaphjibbpdhmklp",
+          "decision": "Candidate",
+          "reason": "일수·시간·초 하나를 입력하면 카운트다운을 처리해 남은 수를 표시하는 즉시 결과를 반나절에 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 3,
+      "fail_count": 53,
+      "sample": [
+        "chrome_web_store:ioldgkajbollaojdlohmjnddnfniepkh",
+        "app_store:6446937682",
+        "trustmrr:islamic-ai-companion-deeny",
+        "app_store:1438243180",
+        "app_store:1452441389",
+        "trustmrr:lobstack-ai"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1438243180",
+          "decision": "Candidate",
+          "reason": "웹페이지 입력 → 색상 반전·테마 처리 → 야간 모드 결과의 1회 세로 조각을 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 4,
+      "fail_count": 50,
+      "sample": [
+        "app_store:339986225",
+        "app_store:1503128132",
+        "app_store:291676451",
+        "app_store:741292507",
+        "app_store:336377331"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

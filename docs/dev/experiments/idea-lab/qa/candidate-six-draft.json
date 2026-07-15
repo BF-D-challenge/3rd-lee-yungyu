@@ -1,0 +1,164 @@
+[
+  {
+    "id": "cohort-first-result",
+    "source": {
+      "id": "source-yeira-lms",
+      "sourceName": "Yeira LMS",
+      "platform": "web",
+      "value": "교육 운영자가 강의 진행과 성적을 한곳에서 추적하는 교육용 LMS 대시보드",
+      "detail": "교육 과정과 참여자를 등록하고 사람별 진행·성적 상태를 모아 운영자가 다음 조치를 고르게 합니다.",
+      "evidence": "TrustMRR 최근 30일 $1.8k·성장 62%; 교육 사업자·HR팀용 코스 생성·전달·진도/성적 추적 흐름 확인; B09-01 재감사 UX 3/3",
+      "preservedFlow": "교육 참여자와 기준 설정 → 사람별 진행 상태 수집 → 운영자가 다음 조치 대상을 확인"
+    },
+    "payers": [
+      { "id": "payer-cohort-instructor", "value": "매달 20~100명 유료 코호트를 혼자 운영하는 강사", "detail": "카톡·노션·Zoom을 섞어 운영하며 누가 첫 결과물을 못 냈는지 명단과 제출 폼을 매번 대조합니다." },
+      { "id": "payer-paid-challenge", "value": "4주 유료 챌린지를 반복해서 여는 1인 운영자", "detail": "참가자의 인증 글은 많지만 돈을 낸 사람이 첫 결과까지 갔는지는 스프레드시트로 다시 셉니다." },
+      { "id": "payer-portfolio-coach", "value": "결과물 중심 부트캠프를 운영하는 소형 코치", "detail": "영상 진도율보다 이력서·디자인·코드 같은 첫 산출물이 없는 수강생을 먼저 찾아야 합니다." }
+    ],
+    "moments": [
+      { "id": "moment-day-three-empty", "value": "결제 후 3일째인데 첫 제출이 한 건도 없는 저녁", "detail": "관심이 식기 전에 막힌 사람에게 먼저 연락해야 하는 순간" },
+      { "id": "moment-day-seven-risk", "value": "결제 후 7일째 환불·이탈 위험자를 확인하는 아침", "detail": "전체 진도표가 아니라 실제 결과물 0개인 사람만 바로 골라야 하는 순간" },
+      { "id": "moment-before-feedback", "value": "이번 주 피드백 시간을 배정하기 직전", "detail": "이미 잘하는 사람보다 아직 첫 결과도 못 낸 사람에게 시간을 먼저 써야 하는 순간" }
+    ],
+    "twists": [
+      { "id": "twist-first-output-not-progress", "kind": "replace", "value": "영상 진도율을 첫 결과물 제출 여부로 바꾸기", "detail": "사람별 상태를 모으는 흐름은 유지하고 성공 기준만 시청률에서 실제 산출물로 바꿉니다.", "resultTitle": "첫 제출 없는 수강생 찾기", "platform": "web", "smallestBuild": "결제자 이메일 명단과 이 도구가 만든 제출 링크를 연결해 D+7 제출 기록 없는 이름만 보여주는 웹 화면" },
+      { "id": "twist-zero-list-only", "kind": "remove", "value": "전체 분석을 빼고 오늘 연락할 결과물 0명만 남기기", "detail": "상태 수집은 유지하고 운영자가 보는 결과를 먼저 연락할 사람 목록 하나로 줄입니다.", "resultTitle": "오늘 먼저 연락할 수강생", "platform": "web", "smallestBuild": "이름·결제일·제출 여부 CSV를 넣으면 오늘 연락할 사람과 이유 한 줄만 뜨는 웹 화면" },
+      { "id": "twist-one-submit-link", "kind": "add", "value": "사진·파일·URL 중 하나를 받는 제출 링크 한 개 더하기", "detail": "진행 상태를 보는 흐름에 강의 종류와 상관없이 첫 결과를 받는 공통 입력만 더합니다.", "resultTitle": "첫 결과 제출 링크", "platform": "web", "smallestBuild": "수강생이 이메일과 사진·파일·URL 중 하나를 내면 같은 이메일의 명단 상태가 제출 완료로 바뀌는 공유 링크" }
+    ]
+  },
+  {
+    "id": "three-table-seating",
+    "source": {
+      "id": "source-seating-hero",
+      "sourceName": "Seating Hero",
+      "platform": "web",
+      "value": "행사 참석자와 테이블 수를 넣으면 조건에 맞는 자리 배치를 만드는 좌석 계획 서비스",
+      "detail": "결혼식·리셉션·조직 행사에서 함께 앉을 사람과 피할 사람을 반영해 좌석표를 만듭니다.",
+      "evidence": "TrustMRR 최근 30일 매출 $1.3k·성장 4%, 행사 좌석 계획 메커니즘 확인",
+      "preservedFlow": "참석자와 좌석 조건 입력 → 충돌 없는 배치 계산 → 테이블별 좌석표 확인"
+    },
+    "payers": [
+      { "id": "payer-small-wedding-planner", "value": "한 달에 소규모 결혼식을 여러 건 맡는 1인 웨딩 플래너", "detail": "최종 참석자와 가족 관계를 메신저로 받은 뒤 엑셀에서 테이블을 여러 번 다시 나눕니다." },
+      { "id": "payer-paid-workshop-host", "value": "20~40명 유료 워크숍을 반복해서 여는 운영자", "detail": "팀·직무·처음 온 사람을 섞어야 하지만 참가자 이름표를 보며 자리를 손으로 바꿉니다." },
+      { "id": "payer-private-event-manager", "value": "단체 예약 좌석을 자주 배치하는 소형 식당 매니저", "detail": "어린이 의자·휠체어·가족 단위를 반영해 예약 명단을 테이블별로 다시 적습니다." }
+    ],
+    "moments": [
+      { "id": "moment-guest-list-final", "value": "행사 이틀 전 최종 참석자 명단이 확정된 밤", "detail": "연락을 돌리기 전에 누가 어느 테이블인지 한 번에 끝내야 하는 순간" },
+      { "id": "moment-last-minute-cancel", "value": "행사 당일 한 팀이 취소해 빈자리가 생긴 순간", "detail": "전체 좌석을 무너뜨리지 않고 빈자리와 인접 사람만 다시 배치해야 하는 순간" },
+      { "id": "moment-seating-conflict", "value": "같이 앉히면 안 되는 두 사람을 뒤늦게 들은 순간", "detail": "다른 조건은 유지하면서 충돌 한 곳만 빠르게 풀어야 하는 순간" }
+    ],
+    "twists": [
+      { "id": "twist-three-tables-only", "kind": "remove", "value": "복잡한 도면 편집을 빼고 12명·3테이블 배치만 남기기", "detail": "참석자를 좌석에 배치하는 흐름은 유지하고 첫 결과를 작은 행사 한 구역으로 줄입니다.", "resultTitle": "12명 3테이블 자리표", "platform": "web", "smallestBuild": "참석자 12명과 테이블 3개를 넣으면 테이블별 이름 목록이 나오는 웹 화면" },
+      { "id": "twist-one-relationship-rule", "kind": "add", "value": "참석자마다 함께·따로 중 관계 조건 하나 더하기", "detail": "좌석 배치는 유지하고 꼭 지켜야 할 관계 조건 한 개만 더합니다.", "resultTitle": "관계 충돌 없는 자리표", "platform": "web", "smallestBuild": "이름 목록에 함께·따로 조건을 한 개씩 고르면 충돌 여부와 좌석표가 나오는 웹 화면" },
+      { "id": "twist-three-layouts", "kind": "replace", "value": "직접 끌어놓기를 조건을 만족하는 배치안 세 개로 바꾸기", "detail": "조건을 반영해 좌석을 정하는 흐름은 유지하고 작업 방식을 수동 편집에서 선택으로 바꿉니다.", "resultTitle": "고르는 자리 배치 3안", "platform": "web", "smallestBuild": "참석자 이름과 테이블 수, 관계 조건을 넣으면 조건 충족 이유가 붙은 배치안 세 개가 나오는 웹 화면" }
+    ]
+  },
+  {
+    "id": "family-notice-one-sheet",
+    "source": {
+      "id": "source-cozi-family-organizer",
+      "sourceName": "Cozi Family Organizer",
+      "platform": "app",
+      "value": "가족의 일정·할 일·준비물을 한곳에 모아 모두가 같은 목록을 보게 하는 가족 정리 앱",
+      "detail": "가족별 색으로 일정과 할 일을 구분하고 다음 주에 놓치면 안 될 일을 함께 확인하게 합니다.",
+      "evidence": "미국 App Store 4.807점·평가 392,060개, 가족 공유 일정·할 일 메커니즘 확인",
+      "preservedFlow": "가족 일정·할 일 입력 → 사람과 날짜별로 정리 → 가족이 한 목록에서 확인"
+    },
+    "payers": [
+      { "id": "payer-multi-child-parent", "value": "학교·학원이 다른 두 아이의 공지를 챙기는 부모", "detail": "가정통신문, 학원 카톡, 알림장 사진이 섞여 준비물과 서명 마감을 다시 적습니다." },
+      { "id": "payer-double-income-parent", "value": "등하원과 준비물을 교대로 맡는 맞벌이 부모", "detail": "누가 무엇을 챙길지 부부 카톡에서 다시 묻고 같은 공지 사진을 여러 번 전달합니다." },
+      { "id": "payer-shared-caregiver", "value": "부모와 조부모가 함께 아이 일정을 돌보는 가정", "detail": "학교 용어와 여러 날짜가 섞인 공지를 돌봄 담당자마다 다르게 이해합니다." }
+    ],
+    "moments": [
+      { "id": "moment-sunday-notices", "value": "일요일 밤 공지 사진 다섯 장을 한꺼번에 받은 순간", "detail": "월요일 준비물과 이번 주 마감을 아이별로 다시 나눠야 하는 순간" },
+      { "id": "moment-morning-missing", "value": "등교 20분 전 준비물 하나가 안 보이는 아침", "detail": "긴 공지를 다시 읽지 않고 오늘 아이가 들고 갈 것만 확인해야 하는 순간" },
+      { "id": "moment-signature-deadline", "value": "체험학습·동의서 제출 마감 전날", "detail": "누가 서명하고 어느 아이 가방에 넣을지 한 번에 닫아야 하는 순간" }
+    ],
+    "twists": [
+      { "id": "twist-screenshot-input", "kind": "replace", "value": "일정 직접 입력을 공지 스크린샷 한 장씩 추가하기로 바꾸기", "detail": "가족 일정을 정리하는 흐름은 유지하고 입력만 이미 받은 공지 사진으로 바꿉니다.", "resultTitle": "공지 한 장이 이번 주 할 일로", "platform": "web", "smallestBuild": "공지 스크린샷 한 장을 올리면 아이별 준비물·서명·마감과 근거 원문 한 줄이 나오는 모바일 웹 화면" },
+      { "id": "twist-seven-days-only", "kind": "remove", "value": "월간 달력을 빼고 앞으로 7일 준비물·서명·마감만 남기기", "detail": "가족 할 일을 한곳에 모으는 흐름은 유지하고 지금 행동할 필요 없는 일정을 덜어냅니다.", "resultTitle": "이번 주 준비물 한 장", "platform": "web", "smallestBuild": "공지 텍스트를 붙이면 앞으로 7일의 준비물·서명·마감과 각각의 원문 한 줄만 보여주는 웹 화면" },
+      { "id": "twist-child-owner-chip", "kind": "add", "value": "할 일마다 아이와 챙길 사람 색표 하나 더하기", "detail": "일정과 할 일은 그대로 두고 누구 것인지와 누가 챙길지만 색표로 더합니다.", "resultTitle": "누가 챙길지 보이는 가족 공지", "platform": "web", "smallestBuild": "공지 한 장에서 뽑은 할 일 옆에 아이 이름과 담당자 색표를 고르는 모바일 웹 화면" }
+    ]
+  },
+  {
+    "id": "game-assessment-rehearsal",
+    "source": {
+      "id": "source-game-assessment-prep",
+      "sourceName": "Game Assessment Prep",
+      "platform": "web",
+      "value": "채용 게임형 평가와 비슷한 연습 문제를 직접 풀고 전략과 결과를 확인하는 준비 서비스",
+      "detail": "인지·공간·성향 게임의 규칙을 익히고 실제 평가 전에 반복 연습하게 합니다.",
+      "evidence": "TrustMRR 최근 30일 매출 $7k·성장 9%, HireVue 게임형 평가 11종 연습 메커니즘 확인",
+      "preservedFlow": "평가 유형 선택 → 비슷한 게임을 직접 연습 → 결과와 다음 전략 확인"
+    },
+    "payers": [
+      { "id": "payer-first-game-assessment", "value": "처음 게임형 인적성 초대를 받은 신입 지원자", "detail": "규칙을 모른 채 제한 시간이 시작될까 불안해 후기와 영상을 여러 개 찾아봅니다." },
+      { "id": "payer-career-game-assessment", "value": "오랜만에 인적성을 보는 경력 이직자", "detail": "직무 면접은 익숙하지만 빠른 판단 게임의 조작과 시간 배분은 낯섭니다." },
+      { "id": "payer-retry-game-assessment", "value": "지난 게임형 평가에서 탈락해 다시 지원하는 구직자", "detail": "점수만 보고는 어디서 느렸는지 몰라 같은 실수를 반복할까 걱정합니다." }
+    ],
+    "moments": [
+      { "id": "moment-assessment-invite", "value": "게임형 평가 링크와 72시간 마감을 받은 직후", "detail": "무작정 시작하기 전에 조작과 판단 규칙을 한 번 경험하고 싶은 순간" },
+      { "id": "moment-night-before-assessment", "value": "실전 평가 전날 밤 10분만 남은 때", "detail": "여러 유형을 공부하기보다 가장 낯선 규칙 하나를 짧게 연습해야 하는 순간" },
+      { "id": "moment-after-slow-practice", "value": "무료 연습에서 시간 초과가 반복된 직후", "detail": "총점보다 어느 판단에서 멈췄는지 보고 다음 한 번을 고쳐야 하는 순간" }
+    ],
+    "twists": [
+      { "id": "twist-one-five-minute-game", "kind": "remove", "value": "11개 게임을 빼고 가장 낯선 유형 한 개의 5분 연습만 남기기", "detail": "실전과 비슷한 게임 연습은 유지하고 한 번에 배울 범위만 한 유형으로 줄입니다.", "resultTitle": "게임형 인적성 5분 리허설", "platform": "web", "smallestBuild": "규칙 설명 한 장 뒤 5분짜리 판단 게임 하나를 풀고 결과를 보는 웹 화면" },
+      { "id": "twist-slow-decision-replay", "kind": "replace", "value": "총점을 가장 오래 걸린 문제 세 개의 복기로 바꾸기", "detail": "연습 결과를 주는 흐름은 유지하고 비교 점수 대신 실제 지연 문제와 정답을 보여줍니다.", "resultTitle": "느린 문제 3개 복기", "platform": "web", "smallestBuild": "짧은 게임 뒤 가장 오래 걸린 문제 세 개의 걸린 초·내 답·정답과 다음 기준 한 줄을 보여주는 웹 화면" },
+      { "id": "twist-one-retry-cue", "kind": "add", "value": "같은 규칙을 한 번 더 풀기 전 개선 기준 한 줄 더하기", "detail": "연습과 결과 확인은 유지하고 다음 시도에서 바꿀 판단 기준 하나만 더합니다.", "resultTitle": "한 줄 고치고 한 번 더", "platform": "web", "smallestBuild": "첫 게임 결과 뒤 개선 기준 한 줄을 보고 같은 규칙의 두 번째 3분 게임을 푸는 웹 화면" }
+    ]
+  },
+  {
+    "id": "interactive-video-checkpoint",
+    "source": {
+      "id": "source-interactive-video-saas",
+      "sourceName": "Interactive Video SaaS",
+      "platform": "web",
+      "value": "교육·훈련 영상을 드래그해 질문과 선택을 넣고 시청자의 반응을 확인하는 인터랙티브 영상 서비스",
+      "detail": "기존 영상에 질문·분기를 넣어 끝까지 봤는지가 아니라 중요한 내용을 이해했는지 확인합니다.",
+      "evidence": "TrustMRR 최근 30일 매출 $29k·성장 11%, 교육·훈련·마케팅 인터랙티브 영상 메커니즘 확인",
+      "preservedFlow": "영상 입력 → 특정 시점에 질문·행동 추가 → 시청자의 답과 이해 상태 확인"
+    },
+    "payers": [
+      { "id": "payer-video-course-instructor", "value": "녹화 강의를 반복 판매하는 1인 온라인 강사", "detail": "수강생이 영상을 봤다는 기록은 있지만 핵심 개념을 이해했는지 같은 질문을 다시 받습니다." },
+      { "id": "payer-franchise-trainer", "value": "신입 교육 영상을 보내는 소형 매장 운영자", "detail": "근무 전 영상을 보냈어도 안전·응대 절차를 실제로 이해했는지 다시 구두로 확인합니다." },
+      { "id": "payer-saas-onboarding", "value": "고객 온보딩 영상을 혼자 만드는 작은 SaaS 고객성공 담당자", "detail": "같은 설정 질문이 반복돼 영상의 어느 구간이 이해되지 않는지 찾지 못합니다." }
+    ],
+    "moments": [
+      { "id": "moment-before-video-send", "value": "10분 설명 영상을 새 수강생·직원에게 보내기 직전", "detail": "그냥 재생 링크를 보내지 않고 꼭 알아야 할 한 가지를 확인하고 싶은 순간" },
+      { "id": "moment-repeat-question", "value": "영상에 설명한 질문이 세 번째로 다시 온 순간", "detail": "전체 영상을 다시 찍기 전에 막힌 시점과 개념 하나를 찾아야 하는 순간" },
+      { "id": "moment-before-live-session", "value": "라이브 피드백·업무 시작 30분 전", "detail": "참가자가 기본 내용을 이해했는지 빠르게 확인해 시간을 실습에 쓰고 싶은 순간" }
+    ],
+    "twists": [
+      { "id": "twist-one-checkpoint", "kind": "remove", "value": "복잡한 분기 편집기를 빼고 영상 중간 질문 한 개만 남기기", "detail": "영상에 상호작용을 넣는 흐름은 유지하고 첫 검증에 필요한 질문 수를 하나로 줄입니다.", "resultTitle": "영상 중간 확인 한 문제", "platform": "web", "smallestBuild": "영상 URL과 시점, 객관식 한 문제를 넣으면 답해야 이어 보는 공유 링크가 나오는 웹 화면" },
+      { "id": "twist-confusing-moment", "kind": "add", "value": "시청자가 이해 안 됐어요를 누르는 시점 기록 하나 더하기", "detail": "영상 시청과 반응 수집은 유지하고 설명이 막힌 정확한 시각만 더합니다.", "resultTitle": "막힌 초가 보이는 설명 영상", "platform": "web", "smallestBuild": "영상 재생 중 이해 안 됐어요 버튼을 누르면 운영자에게 해당 초와 횟수가 보이는 공유 화면" },
+      { "id": "twist-one-concept-result", "kind": "replace", "value": "완료율을 핵심 개념 한 문제의 정답 여부로 바꾸기", "detail": "시청자 상태를 확인하는 흐름은 유지하고 성공 기준만 끝까지 보기에서 이해 증거로 바꿉니다.", "resultTitle": "봤음 대신 이해함 확인", "platform": "web", "smallestBuild": "영상 하나와 확인 문제 하나를 공유하고 시청자별 정답·미응답만 보여주는 웹 화면" }
+    ]
+  },
+  {
+    "id": "screen-recording-tutorial",
+    "source": {
+      "id": "source-screensage-pro",
+      "sourceName": "ScreenSage Pro",
+      "platform": "app",
+      "value": "화면을 녹화하면 다른 사람이 따라 할 수 있는 튜토리얼로 정리해주는 macOS 도구",
+      "detail": "사용자가 실제로 작업하는 화면을 기록하고 설명 자료로 바꿔 반복 안내를 줄입니다.",
+      "evidence": "TrustMRR 최근 30일 매출 $3.2k·성장 30%, 화면 녹화·튜토리얼 제작 메커니즘 확인",
+      "preservedFlow": "화면 작업 녹화 → 중요한 단계 추출·정리 → 따라 할 수 있는 튜토리얼 공유"
+    },
+    "payers": [
+      { "id": "payer-solo-cs", "value": "같은 사용법 질문에 매일 답하는 1인 SaaS 운영자", "detail": "고객마다 화면 공유를 다시 켜고 같은 설정 위치를 처음부터 설명합니다." },
+      { "id": "payer-ops-consultant", "value": "고객 업무 도구를 세팅해주는 1인 운영 컨설턴트", "detail": "프로젝트가 끝날 때마다 클릭 순서를 문서와 스크린샷으로 다시 만듭니다." },
+      { "id": "payer-academy-admin", "value": "수강 신청·출결 도구를 인계하는 소형 학원 관리자", "detail": "새 직원이 올 때마다 여러 관리 화면의 순서를 옆에서 반복해서 보여줍니다." }
+    ],
+    "moments": [
+      { "id": "moment-third-explanation", "value": "같은 클릭 순서를 세 번째로 설명한 직후", "detail": "다음 질문에는 링크 하나만 보내고도 상대가 끝까지 따라오게 만들고 싶은 순간" },
+      { "id": "moment-before-handoff", "value": "새 직원·고객에게 업무를 넘기기 전날", "detail": "긴 매뉴얼 대신 실제 화면에서 해야 할 순서를 짧게 남겨야 하는 순간" },
+      { "id": "moment-after-ui-change", "value": "서비스 화면이 바뀌어 기존 매뉴얼이 틀린 순간", "detail": "문서 전체를 고치지 않고 달라진 작업 한 개만 다시 기록해야 하는 순간" }
+    ],
+    "twists": [
+      { "id": "twist-sixty-second-recording", "kind": "remove", "value": "긴 녹화와 편집을 빼고 60초 작업 한 개만 기록하기", "detail": "실제 화면을 따라 하게 하는 흐름은 유지하고 튜토리얼 범위를 한 작업으로 줄입니다.", "resultTitle": "60초 한 작업 매뉴얼", "platform": "web", "smallestBuild": "60초 화면 녹화 한 개를 올리면 제목과 핵심 단계 세 개가 나오는 웹 화면" },
+      { "id": "twist-private-blur", "kind": "add", "value": "공유 전에 이메일·이름·금액을 가리는 확인 단계 하나 더하기", "detail": "녹화와 튜토리얼 생성은 유지하고 잘못 노출될 개인정보를 사용자가 한 번 확인해 가립니다.", "resultTitle": "가리고 보내는 화면 매뉴얼", "platform": "web", "smallestBuild": "녹화 한 개에서 감지한 민감 영역 세 곳을 가린 뒤 공유 미리보기를 보는 웹 화면" },
+      { "id": "twist-step-checklist", "kind": "replace", "value": "긴 영상 공유를 시간표시가 붙은 단계 체크리스트로 바꾸기", "detail": "화면 작업을 기록하는 흐름은 유지하고 받는 사람이 보는 결과만 따라 하기 목록으로 바꿉니다.", "resultTitle": "클릭 순서 체크리스트", "platform": "web", "smallestBuild": "60초 녹화를 올리면 단계 세 줄과 원본 영상의 해당 초 링크가 나오는 웹 화면" }
+    ]
+  }
+]

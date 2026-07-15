@@ -1,0 +1,132 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-payping-1-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘연체 청구서 300자 카카오톡 안내’는 공급업체가 통화 직전 청구서 PDF의 거래처명·청구번호·금액·기한·계좌를 추출해 TXT 안내문으로 받는 흐름은 구체적이지만, 범용 AI 한 번으로 PDF 요약과 300자 문안 생성이 더 편해 generic AI 대체에 해당한다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-taillens-tool-for-frontend-developers-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Tailwind 간격 class 최소 수정 diff’는 프론트엔드 개발자가 디자인 오류 직후 공개 URL·CSS selector·margin 또는 padding 값을 한 번 입력해 현재 class를 읽고 간격 class 한 줄 diff 파일 하나를 받으므로 payer·moment·twist와 MVP가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-taillens-tool-for-frontend-developers-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Tailwind 반응형 breakpoint 최소 수정 diff’는 퍼블리셔가 코드 리뷰 직전 공개 URL·CSS selector·breakpoint와 class 값을 입력해 지정 breakpoint class 한 줄만 추가된 diff 파일 하나를 받으므로 payer·moment·twist와 MVP가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-taillens-tool-for-frontend-developers-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Tailwind 색상 class 최소 수정 diff’는 UI 엔지니어가 class 재조합 직전 공개 URL·CSS selector·text 또는 background color 값을 입력해 현재 class를 읽고 색상 class 한 줄만 바뀐 diff 파일 하나를 받으므로 payer·moment·twist와 MVP가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-fonzo-io-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘SVG 파일명 유지 웹폰트 패키지’는 프론트엔드 개발자가 SVG ZIP을 전달받은 직후 입력해 glyph 웹폰트로 한 번 변환하고 파일명 기반 CSS class가 포함된 패키지 ZIP 하나를 받으므로 payer·moment·twist와 MVP가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-fonzo-io-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘글리프 미리보기 포함 웹폰트 패키지’는 UI 엔지니어가 아이콘을 프로젝트에 넣기 직전 SVG ZIP 하나를 입력해 웹폰트로 변환하고 class·codepoint 미리보기 HTML이 포함된 패키지 ZIP 하나를 받으므로 payer·moment·twist와 MVP가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-fonzo-io-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘SVG 크기 정렬 웹폰트 패키지’는 퍼블리셔가 아이콘 웹폰트를 넘기기 전 단색 SVG ZIP 하나를 입력해 viewBox를 같은 em 영역으로 정규화하고 정렬된 웹폰트 패키지 ZIP 하나를 받으므로 payer·moment·twist와 MVP가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-resume-parse-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘이력서 기본정보·최근직장 JSON 추출 파일’은 채용담당자가 PDF 하나에서 이름·연락처·최근 직장을 추출해 JSON 하나를 받는 흐름은 명확하지만, 범용 AI 한 번으로 동일한 PDF 필드 추출이 더 편해 generic AI 대체에 해당한다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-resume-parse-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘이력서 기술 키워드·근거 위치 JSON’은 리크루팅 실무자가 PDF 하나에서 기술 키워드와 페이지·문장 위치를 추출해 JSON 하나를 받는 흐름은 명확하지만, 범용 AI 한 번으로 동일한 문서 추출이 더 편해 generic AI 대체에 해당한다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-resume-parse-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘이력서 경력 타임라인 CSV 추출 파일’은 채용 서비스 개발자가 PDF 하나에서 회사·직무·시작·종료일을 추출해 CSV 하나를 받는 흐름은 명확하지만, 범용 AI 한 번으로 동일한 구조화가 더 편해 generic AI 대체에 해당한다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-octree-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "LaTeX로 논문 초안을 쓰는 대학원생이 컴파일 오류 직후 .tex 파일 하나를 입력하면 명령 밖의 %, _, &, #만 정적 검사·이스케이프해 수정된 .tex 파일 하나를 받으므로 제목과 순간·한 끗 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-octree-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "LaTeX 기술 문서를 납품하는 프리랜서 편집자가 PDF 변환 직전에 .tex 파일 하나를 입력하면 단순 tabular 행의 열 개수를 한 번 검사해 부족한 마지막 빈 셀을 보정한 수정 파일 하나를 받으므로 제목과 사용 순간·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-octree-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "LaTeX 수업 자료를 만드는 공학 강사가 공동 작업자에게 넘기기 전 .tex 파일 하나를 입력하면 한 줄의 단순 중괄호 짝만 정적 검사·보정해 수정된 .tex 파일 하나를 받으므로 제목과 순간·한 끗 변화가 분명하다.",
+      "risk_flags": []
+    }
+  ]
+}

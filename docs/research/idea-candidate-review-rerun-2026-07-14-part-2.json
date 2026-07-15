@@ -1,0 +1,717 @@
+{
+  "results": [
+    {
+      "id": "rerun-chrome-web-store-iahnhfdhidomcpggpaimmmahffihkfnj-9",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "JSON 문서 하나를 입력해 보기와 Unicode·Base64·URL 변환을 여러 번 처리하고 여러 결과를 내므로 1입력·1처리·1결과 조건을 위반하며 제목도 문제와 결과를 드러내지 않는다.",
+      "risk_flags": [
+        "multiple_processes",
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-iahnhfdhidomcpggpaimmmahffihkfnj-10",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "JSON 문서 하나를 입력해 보기와 Unicode·Base64·URL 변환을 여러 번 처리하고 여러 결과를 내므로 단일 처리 조건을 위반하며 제목도 모호하다.",
+      "risk_flags": [
+        "multiple_processes",
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-iahnhfdhidomcpggpaimmmahffihkfnj-11",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "JSON 문서 하나를 입력해 구조화 보기와 세 종류의 값 변환을 함께 수행해 결과가 여러 개이며 제목만으로 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "multiple_processes",
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-iahnhfdhidomcpggpaimmmahffihkfnj-12",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "JSON 문서 입력 하나에서 보기와 Unicode·Base64·URL 변환 결과를 동시에 만들기 때문에 처리와 결과가 단일하지 않고 제목도 기능명에 그친다.",
+      "risk_flags": [
+        "multiple_processes",
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-iahnhfdhidomcpggpaimmmahffihkfnj-13",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "JSON 문서 하나를 넣어 구조화 보기와 복수 변환을 함께 제공하므로 1회 처리·1결과가 아니며 JSON-handle만으로 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "multiple_processes",
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-iahnhfdhidomcpggpaimmmahffihkfnj-14",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "JSON 문서 하나에서 보기와 여러 인코딩 변환을 수행해 복수 결과를 만들고 제목도 사용 순간이나 해결 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "multiple_processes",
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-iahnhfdhidomcpggpaimmmahffihkfnj-15",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "JSON 입력 하나로 저장·보기·Unicode·Base64·URL 변환을 모두 처리하므로 단일 처리 조각이 아니고 제목만 읽어서는 해결 대상이 드러나지 않는다.",
+      "risk_flags": [
+        "multiple_processes",
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-iahnhfdhidomcpggpaimmmahffihkfnj-16",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "JSON 문서 하나를 입력해 트리 보기와 여러 문자열 변환을 함께 출력하므로 1입력·1처리·1결과가 아니며 기능명도 모호하다.",
+      "risk_flags": [
+        "multiple_processes",
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-iahnhfdhidomcpggpaimmmahffihkfnj-17",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "JSON 문서 입력 후 보기와 세 가지 변환 결과를 동시에 내는 복합 도구라 단일 세로 조각 조건을 충족하지 못하고 제목도 문제와 결과를 보여주지 않는다.",
+      "risk_flags": [
+        "multiple_processes",
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용을 입력해 간격 반복으로 다음 복습 카드를 산출하는 흐름은 구체적이지만 Dome Flashcards라는 제목만으로 문제와 결과가 즉시 보이지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용을 입력해 간격 반복 처리 후 오늘 복습 목록을 내는 흐름은 가능하지만 제목이 복습 문제와 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용을 입력해 반복 일정에 따라 다음 복습 카드를 산출할 수 있으나 제목만으로 통학 중 복습 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-3",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용을 입력해 간격 반복으로 오늘 복습 목록을 만드는 단일 흐름은 성립하지만 Dome Flashcards라는 제목이 해결 결과를 드러내지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-4",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용을 입력해 다음 복습 카드를 정하는 처리는 구체적이지만 제목만 읽어서는 누적 카드 복습 문제와 결과를 알기 어렵다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-5",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용에서 간격 반복 처리로 다음 복습 목록을 내는 세로 조각은 가능하나 제목이 한국어·영어 복습 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-6",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용을 입력해 간격 반복으로 다음 복습 카드를 산출하는 구조는 유효하지만 제목만으로 시험 복습 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-7",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용 입력에서 복습 일정과 다음 카드 목록을 만드는 흐름은 구체적이나 Dome Flashcards라는 제목은 사용 결과를 명시하지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-8",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용을 넣어 오늘 복습할 카드를 산출하는 단일 흐름은 가능하지만 제목만으로 누적 복습 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-9",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용 하나를 간격 반복 처리해 오늘 복습 목록 하나를 만드는 조각은 성립하지만 제목이 문제와 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-10",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용을 입력해 다음 복습 카드를 정하는 흐름은 가능하나 Dome Flashcards만으로 시험 전 복습 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-11",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용에서 간격 반복으로 다음 복습 목록을 생성하는 단일 처리는 타당하지만 제목이 통학 복습 결과를 보여주지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-12",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용을 입력해 오늘 복습 목록을 산출할 수 있으나 제목만으로 공무원 시험 복습 문제와 결과를 이해하기 어렵다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-13",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용 하나를 간격 반복 처리해 다음 복습 카드를 내는 흐름은 구체적이지만 제목이 시험 전 복습 결과를 명확히 하지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-14",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 입력에서 복습 일정에 맞춘 다음 카드 목록을 만드는 것은 가능하지만 Dome Flashcards라는 제목만으로 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-15",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용을 입력하고 간격 반복으로 다음 복습 목록을 받는 단일 조각은 가능하나 제목이 통학 중 복습 목적을 드러내지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-16",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 내용을 기반으로 다음 복습 카드를 산출하는 처리는 구체적이지만 제목만으로 학원생의 복습 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-trustmrr-dome-flashcards-17",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플래시카드 입력 하나를 간격 반복 처리해 다음 복습 목록을 내는 흐름은 유효하나 제목이 시험 복습 문제와 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "vague_title"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피를 입력해 저장 후 모음으로 보여주는 흐름은 가능하지만 메모·북마크 같은 OS 기본 기능으로 더 간단히 해결할 수 있어 차별적 한 끗이 없다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 입력과 저장으로 모음을 만드는 결과는 구체적이지만 저녁 메뉴 검색은 기존 메모·북마크의 범용 저장과 검색으로 더 쉽게 할 수 있다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 본문을 입력해 저장 목록을 만드는 단일 흐름은 가능하지만 범용 메모 앱에 붙여넣는 편이 더 쉬워 별도 제품의 한 끗이 없다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-3",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피를 입력해 저장 모음과 재료 검색 결과를 만드는 기능은 기존 메모·북마크로 대체 가능해 엄격한 차별성 게이트를 통과하지 못한다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-4",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 본문을 저장해 모음으로 보여주는 결과는 구체적이나 범용 메모 저장보다 편리하다는 근거가 없어 별도 앱 조각으로 부적합하다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-5",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 입력에서 저장 모음을 만드는 흐름은 단순하지만 메모·북마크로 충분해 한국 반찬 태그만으로는 차별적 가치가 부족하다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-6",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피를 입력해 저장 모음으로 돌려주는 기능은 가능하지만 가족 식단 관리라는 결과가 일반 메모 저장을 넘어서지 않는다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-7",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 저장과 태그 부여 결과는 구체적이지만 메모 앱에서 동일하게 처리할 수 있어 제품의 필수 한 끗이 없다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-8",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피를 저장하고 재료로 검색하는 입력·처리·결과는 가능하지만 기존 메모·북마크의 저장·검색이 더 간단하다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-9",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 입력 후 저장 모음을 내는 단일 흐름은 명확하지만 범용 메모 기능으로 대체 가능해 별도 서비스의 필요성이 없다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-10",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 본문을 입력해 한 장으로 저장하는 결과는 가능하지만 메모 앱에 붙여넣는 것보다 나은 변화가 제시되지 않았다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-11",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 입력과 저장 모음 결과는 구체적이지만 한 줄 태그는 메모의 태그·검색으로 대체 가능해 차별성이 부족하다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-12",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 본문을 입력해 저장 모음으로 만드는 흐름은 가능하나 가족 식단 재검색을 위해 새 앱을 쓸 이유가 범용 메모보다 강하지 않다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-13",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피를 저장하고 태그를 붙이는 처리와 모음 결과는 명확하지만 기존 메모·북마크가 같은 결과를 더 쉽게 제공한다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-14",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 입력에서 재료 검색 가능한 저장 모음을 만드는 조각은 가능하지만 범용 메모의 저장·검색을 넘는 한 끗이 없다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-15",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 입력과 저장 결과는 구체적이나 한국 반찬 태그만 추가된 범용 보관 기능으로 OS 기본 기능 대체가 가능하다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-16",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피를 저장해 재료 검색 결과를 내는 흐름은 단순하지만 기존 메모·북마크가 동일한 필요를 더 쉽게 충족한다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-fekfpgdgajbfdjkfimainjjhfcfoonlj-17",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 본문을 입력해 저장 모음을 만드는 결과는 가능하지만 범용 메모 저장과 비교해 추가 가치가 없어 별도 MVP로 부적합하다.",
+      "risk_flags": [
+        "generic_storage",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-jnloekndgehbebkkaehndhihcpoliaal-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카드 이동을 여러 차례 입력해야 한 판의 완성 여부가 나오므로 입력 1개·처리 1회·결과 1개 조건을 위반한다.",
+      "risk_flags": [
+        "multi_turn_interaction"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-jnloekndgehbebkkaehndhihcpoliaal-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카드게임은 카드 이동을 반복 처리해야 완성 여부라는 결과에 도달하므로 단일 입력·단일 처리 세로 조각이 아니다.",
+      "risk_flags": [
+        "multi_turn_interaction"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-jnloekndgehbebkkaehndhihcpoliaal-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카드 이동 선택 하나로는 완성 여부를 만들 수 없고 여러 이동과 취소 상호작용이 필요해 1회 처리 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_turn_interaction"
+      ]
+    },
+    {
+      "id": "rerun-chrome-web-store-jnloekndgehbebkkaehndhihcpoliaal-3",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카드 이동을 반복해 게임 상태를 갱신해야 한 판의 결과가 나오므로 단일 입력·처리·결과 구조가 성립하지 않는다.",
+      "risk_flags": [
+        "multi_turn_interaction"
+      ]
+    }
+  ]
+}

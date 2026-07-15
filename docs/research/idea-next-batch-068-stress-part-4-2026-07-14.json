@@ -1,0 +1,447 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-jijkkfpjbhbnigfkmapgjdhgfjdefmbh-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "SpigotMC 검색어를 입력해 검색 결과를 보여주지만 일반 브라우저 검색이 더 편하고 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_search",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-jijkkfpjbhbnigfkmapgjdhgfjdefmbh-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "플러그인명이나 오류 문구를 받아 검색 결과를 보여주지만 일반 검색엔진으로 충분하며 제목만으로 기능이 명확하지 않다.",
+      "risk_flags": [
+        "generic_search",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-jijkkfpjbhbnigfkmapgjdhgfjdefmbh-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "서버 버전 키워드를 포함해 검색하는 처리는 가능하지만 일반 검색보다 한 끗 이득이 없고 제목만으로 결과가 보이지 않는다.",
+      "risk_flags": [
+        "generic_search",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-961048437-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "수입·지출을 입력해 파이 차트를 보여주지만 범용 가계부나 스프레드시트로 더 쉽게 할 수 있는 일반 기록 기능이다.",
+      "risk_flags": [
+        "generic_tracking",
+        "generic_chart"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-961048437-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "수입·지출을 기록해 차트로 보여주는 구조는 구체적이지만 프리랜서의 기존 가계부·스프레드시트 대안보다 낫지 않다.",
+      "risk_flags": [
+        "generic_tracking",
+        "generic_chart"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-961048437-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원화 수입·지출을 입력해 비중을 계산하지만 범용 계산·가계부 기능으로 대체 가능해 독립적인 한 끗 변화가 없다.",
+      "risk_flags": [
+        "generic_tracking",
+        "generic_chart"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-speedtestio-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인터넷 연결 권한으로 속도를 측정해 결과를 보여주지만 브라우저와 OS 기본 진단으로 이미 쉽게 할 수 있는 범용 기능이다.",
+      "risk_flags": [
+        "generic_speedtest",
+        "os_or_browser_builtin"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-speedtestio-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "연결 상태를 측정해 속도 결과를 내지만 온라인 수업 전 검증은 기존 속도측정 서비스로 충분하고 제목도 문제를 설명하지 않는다.",
+      "risk_flags": [
+        "generic_speedtest",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-speedtestio-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "회선에서 속도를 측정해 결과를 보여주지만 PC방 관리자의 기존 네트워크 진단 도구보다 편한 차별점이 없다.",
+      "risk_flags": [
+        "generic_speedtest",
+        "generic_utility"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1585170231-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "지출명·목표액·기준일을 입력해 잔액과 진행률을 계산하지만 목표 관리와 기록을 계속 축적해야 하므로 즉시 한 입력·한 결과 조각이 아니다.",
+      "risk_flags": [
+        "requires_tracking",
+        "multi_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1585170231-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "월세와 수입을 입력해 남은 금액을 계산하려면 목표와 기간을 먼저 설정하고 계속 기록해야 하므로 문제 순간의 단일 처리로 끝나지 않는다.",
+      "risk_flags": [
+        "requires_setup",
+        "requires_tracking"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1585170231-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "고정비와 보너스를 입력해 진행률을 보여주지만 목표·기준일 등 사전 설정과 누적 기록이 필요해 반나절 MVP의 즉시 조각을 벗어난다.",
+      "risk_flags": [
+        "requires_setup",
+        "requires_tracking"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-844299567-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "무게·부피·온도를 입력해 단위를 변환하는 결과는 구체적이지만 범용 단위변환기나 계산기로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "generic_converter"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-844299567-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "밀리리터를 미국식 부피로 바꾸는 한 번의 계산은 명확하지만 일반 변환기와 차별되는 순간 특화가 없다.",
+      "risk_flags": [
+        "generic_converter"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-844299567-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "화씨 온도를 입력해 섭씨를 보여주는 결과는 단순하지만 검색·계산기·범용 AI 한 번으로 더 편하게 얻을 수 있다.",
+      "risk_flags": [
+        "generic_converter",
+        "generic_calculation"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-giddpkhnoflfjlopldfoblpjieknlnoh-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "PX와 기준 화면 너비를 바탕으로 VW를 계산하지만 CSS 계산기나 간단한 수식으로 충분한 범용 변환이다.",
+      "risk_flags": [
+        "generic_converter"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-giddpkhnoflfjlopldfoblpjieknlnoh-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "픽셀값을 VW로 변환하는 입력·결과는 구체적이지만 웹 검색이나 계산기보다 편한 차별점이 없다.",
+      "risk_flags": [
+        "generic_converter"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-giddpkhnoflfjlopldfoblpjieknlnoh-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "VW 값을 PX로 환산하는 한 번의 계산은 가능하지만 범용 단위변환과 동일해 별도 제품의 필요성이 없다.",
+      "risk_flags": [
+        "generic_converter"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6453164567-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "게임 카테고리를 입력해 몸짓 단어 하나를 즉시 생성하는 흐름은 적합하지만 제목만으로 몸짓 게임과 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6453164567-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "워크숍 카테고리에서 도전 단어 하나를 생성하는 결과는 즉시 사용할 수 있지만 앱 제목만 읽어 기능을 알기 어렵다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6453164567-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "가족용 카테고리를 입력해 쉬운 몸짓 단어 하나를 보여주는 흐름은 구체적이나 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-ats-pass-resume-builder-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "이력서와 채용 공고를 함께 넣어 ATS형 문서를 생성해야 하므로 명시된 단일 입력 조건을 벗어나고 범용 AI로 대체 가능하다.",
+      "risk_flags": [
+        "multi_input",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-ats-pass-resume-builder-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영문 공고 요구사항과 이력서를 반영해 문서를 만들려면 두 입력이 필요하며 범용 AI 한 번으로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "multi_input",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-ats-pass-resume-builder-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "경력 문장을 ATS 이력서로 바꾸는 결과는 구체적이지 않고 ATS 통과를 보장할 수 없으며 범용 AI 작성 기능과 중복된다.",
+      "risk_flags": [
+        "generic_ai",
+        "unclear_outcome"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-842384706-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "고객 주문을 메뉴에서 입력해 주문을 보여주지만 메뉴 사전 설정과 매장 운영 흐름이 필요하고 기존 POS가 더 적합하다.",
+      "risk_flags": [
+        "requires_setup",
+        "existing_pos"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-842384706-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "세트 주문을 항목별로 입력해 확인하는 처리는 가능하지만 기존 주문 시스템이 제공하는 범용 POS 기능이며 메뉴 설정이 선행된다.",
+      "risk_flags": [
+        "requires_setup",
+        "existing_pos"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-842384706-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "포장 주문 항목을 메뉴에서 골라 표시하려면 메뉴 데이터 구축이 필요하고 기존 POS·주문 앱으로 더 편하게 할 수 있다.",
+      "risk_flags": [
+        "requires_setup",
+        "existing_pos"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-blastgo-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "블록 조작을 입력으로 받아 게임 결과를 내는 구조는 텍스트·URL·파일·사진·단일 권한 입력 허용 조건을 위반한다.",
+      "risk_flags": [
+        "unsupported_input",
+        "interactive_game"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-blastgo-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "블록 배치 조작과 반복 루프가 핵심 입력이므로 허용된 단일 입력 형식이 아니며 일반 게임 제작 범위를 넘어선다.",
+      "risk_flags": [
+        "unsupported_input",
+        "interactive_game"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-blastgo-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "게임 조작을 받아 플레이 결과를 만드는 방식은 허용 입력 조건을 벗어나고 한 번의 처리·결과 조각으로도 구체화되지 않는다.",
+      "risk_flags": [
+        "unsupported_input",
+        "interactive_game",
+        "multi_step_loop"
+      ]
+    }
+  ]
+}

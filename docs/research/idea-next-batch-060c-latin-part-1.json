@@ -1,0 +1,142 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1466747898-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "한국어 낱말 1개를 조회해 뜻을 보여주는 구조는 구체적이지만 제목만으로 수능 지문과 결과가 드러나지 않고 OS 사전·웹 검색·범용 AI 한 번으로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_title",
+        "easy_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1466747898-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "한국어 낱말 1개를 조회해 속뜻과 한자 힌트 1개를 주지만 제목만으로 공시·법률용어 결과가 보이지 않고 사전 검색이나 범용 AI가 더 간편하다.",
+      "risk_flags": [
+        "generic_title",
+        "easy_substitute",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1466747898-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "한국어 낱말 1개를 처리해 속뜻을 보여주는 흐름은 명확하지만 보고서 작성 결과가 제목에 드러나지 않으며 일반 사전·범용 AI 한 번으로 대체 가능하다.",
+      "risk_flags": [
+        "generic_title",
+        "easy_substitute",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1466747898-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "한국어 낱말 1개를 조회해 한자 의미 힌트 1개를 제공하지만 공시 법률용어라는 사용 순간과 수험생 결제자가 자연스럽지 않고 범용 사전 검색으로 충분하다.",
+      "risk_flags": [
+        "easy_substitute",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1466747898-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "한국어 낱말 1개에서 속뜻과 한자 힌트를 내는 구조는 가능하지만 수험생이 회사 보고서 표현을 다루는 조합이 어색하고 일반 사전·범용 AI가 더 편하다.",
+      "risk_flags": [
+        "easy_substitute",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1466747898-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "한국어 낱말 1개를 조회해 속뜻과 한자 힌트 1개를 주지만 공공기관 직원의 보고서 작성과 수능 지문 순간이 불일치하고 전문 기능도 일반 검색으로 대체된다.",
+      "risk_flags": [
+        "easy_substitute",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1466747898-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "한국어 낱말 1개를 처리해 한자 의미를 보여주지만 공공기관 직원이 기출문제 오답을 보는 조합이 부자연스럽고 사전 검색이나 범용 AI가 더 간단하다.",
+      "risk_flags": [
+        "easy_substitute",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1466747898-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "한국어 낱말 1개에서 속뜻과 한자 힌트 1개를 제공하지만 보고서 직원과 수능 지문 순간이 맞지 않고 제목에도 문제·결과가 없으며 범용 검색으로 대체 가능하다.",
+      "risk_flags": [
+        "generic_title",
+        "easy_substitute",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1466747898-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "한국어 낱말 1개를 조회해 속뜻을 주지만 공공기관 직원과 공시 법률용어 암기 순간이 어긋나고 일반 사전·범용 AI 한 번이 더 편하다.",
+      "risk_flags": [
+        "easy_substitute",
+        "payer_moment_mismatch"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-epbobagokhieoonfplomdklollconnkl-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "result_title은 웹페이지를 APA 7판 인용문으로 바꾸는 결과를 명확히 보여주며, 과제 참고문헌 제출 직전 대학생이 공개 URL 하나를 입력해 한 번 변환하고 APA 7판 한 줄을 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-epbobagokhieoonfplomdklollconnkl-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "result_title은 웹페이지를 Chicago 인용문으로 바꾸는 결과를 명확히 보여주며, 원고 출처 표기를 마무리하는 에디터가 공개 URL 하나를 입력해 한 번 변환하고 Chicago 저자-날짜 한 줄을 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-epbobagokhieoonfplomdklollconnkl-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "result_title은 웹페이지를 MLA 9판 인용문으로 바꾸는 결과를 명확히 보여주며, 보고서 납품 직전 실무자가 공개 URL 하나를 입력해 한 번 변환하고 MLA 9판 한 줄을 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    }
+  ]
+}

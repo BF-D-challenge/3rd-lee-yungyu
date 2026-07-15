@@ -1,0 +1,142 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-exam-forge-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘강의자료 사례 적용 문제 시험지’는 자격시험 스터디 운영자가 모의고사 시작 전에 슬라이드 PDF 1개를 넣어 사례 적용 문제와 풀이가 담긴 시험지 PDF 1개를 받는 흐름이지만 범용 AI 한 번으로 대체하기 쉽다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-kejbdjndbnbjgmefkgdddjlbokphdefk-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 누락 태그 진단 보고서’는 퍼포먼스 마케터가 캠페인 시작 전에 공개 웹페이지 URL 1개를 점검해 누락된 전환 태그만 표시한 HTML 보고서 1개를 받는 흐름으로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-kejbdjndbnbjgmefkgdddjlbokphdefk-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 동의 전 태그 진단 보고서’는 프론트엔드 개발자가 배포 직후 공개 웹페이지 URL 1개를 점검해 동의 전 실행 태그 보고서 1개를 받는 흐름이지만 URL 점검만으로 동의 전 실행을 어떻게 판별하는지 불명확하다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-kejbdjndbnbjgmefkgdddjlbokphdefk-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 중복 태그 발화 보고서’는 분석 대행자가 전환 누락 원인을 찾을 때 공개 웹페이지 URL 1개를 점검해 중복 실행 태그만 표시한 HTML 보고서 1개를 받는 흐름으로 원본 진단 메커니즘과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-pinstats-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘Pinterest 핀 노출 대비 저장률 카드’는 콘텐츠 마케터가 다음 핀 주제를 고르기 전에 공개 핀 URL 1개를 넣어 노출·저장률 카드 1개를 받도록 했지만 공개 URL만으로 계정 분석 지표인 노출 수를 얻기 어렵다.",
+      "risk_flags": [
+        "prior_record_required",
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-pinstats-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Pinterest 핀 최근 반응 통계 카드’는 쇼핑몰 운영자가 주간 보고서 전에 공개 핀 URL 1개로 최근 반응 카드 1개를 받는 흐름이지만 ‘최근 반응’의 구체적인 수치 항목이 제목과 smallest_build에 드러나지 않는다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-pinstats-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘Pinterest 핀 클릭률 성과 카드’는 Pinterest 대행자가 핀 비교 전에 공개 핀 URL 1개로 클릭률 카드 1개를 받도록 했지만 클릭 수와 노출 수는 공개 URL만으로 확보하기 어려운 계정 분석 데이터다.",
+      "risk_flags": [
+        "prior_record_required",
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-appgrowkit-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘앱스토어 키워드 공백 개선 보고서’는 인디 개발자가 업데이트 직전 공개 App Store URL 1개에서 키워드 공백 보고서 1개를 받도록 했지만 키워드 순위 공백을 판단하려면 URL 밖의 검색·경쟁 데이터가 추가로 필요하다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-appgrowkit-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘앱스토어 스크린샷 메시지 누락 보고서’는 모바일 그로스 마케터가 회의 전에 공개 App Store URL 1개를 분석해 누락 메시지 보고서 1개를 받지만 스크린샷 문구의 누락 여부를 범용 AI 한 번으로도 쉽게 판단할 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-appgrowkit-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘앱스토어 리뷰 불만 주제 보고서’는 ASO 대행자가 스크린샷 문구를 정할 때 공개 App Store URL 1개에서 불만 주제 보고서 1개를 받지만 리뷰 주제 묶기는 범용 AI 한 번으로 대체하기 쉽다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    }
+  ]
+}

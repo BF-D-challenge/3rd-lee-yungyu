@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-1582051883-111",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "라벨과 값을 입력해 색상을 지정하고 차트 이미지로 저장하는 흐름은 구체적이지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "라벨과 값을 입력해 색상을 지정하고 차트 이미지를 저장할 수 있지만 제목이 일반적이고 카드 문구의 실시간 미리보기와 최종 저장 결과가 어긋난다.",
+      "risk_flags": [
+        "generic_title",
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "라벨과 값을 입력해 항목별 색상을 적용한 발표용 막대차트 이미지로 저장하는 처리는 명확하지만 제목만으로 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-121",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "월별 매출 라벨과 값을 입력해 색상을 지정하고 차트 이미지를 저장하는 흐름은 자연스럽지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-122",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "라벨과 값을 입력해 색상을 지정하고 차트 이미지를 저장할 수 있지만 제목이 일반적이고 실시간 미리보기 문구가 최종 저장 결과와 일치하지 않는다.",
+      "risk_flags": [
+        "generic_title",
+        "result_mismatch"
+      ]
+    }
+  ]
+}

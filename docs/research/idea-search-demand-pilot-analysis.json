@@ -1,0 +1,1046 @@
+{
+  "created_at": "2026-07-14",
+  "source": "Naver DataLab Search Trends",
+  "period": {
+    "start_date": "2024-07-01",
+    "end_date": "2026-06-30",
+    "time_unit": "month"
+  },
+  "rows": 30,
+  "keyword_groups": 90,
+  "interpretation_rule": {
+    "observable_group": "최근 12개월 중 상대지수가 0보다 큰 달이 6개월 이상",
+    "comparison_limit": "서로 다른 API 요청의 상대지수 절댓값은 비교하지 않음"
+  },
+  "cohorts": [
+    {
+      "cohort": "current_app_checkpoint",
+      "label": "현재 좋은 원본",
+      "rows": 10,
+      "any_observable": 7,
+      "any_observable_rate": 0.7,
+      "two_plus_observable": 5,
+      "two_plus_observable_rate": 0.5,
+      "zero_observable": 3,
+      "zero_observable_rate": 0.3,
+      "any_rising": 2,
+      "any_rising_rate": 0.2
+    },
+    {
+      "cohort": "stage2_deep_review",
+      "label": "2단계 정밀검사 후보",
+      "rows": 5,
+      "any_observable": 1,
+      "any_observable_rate": 0.2,
+      "two_plus_observable": 0,
+      "two_plus_observable_rate": 0,
+      "zero_observable": 4,
+      "zero_observable_rate": 0.8,
+      "any_rising": 1,
+      "any_rising_rate": 0.2
+    },
+    {
+      "cohort": "stage2_reject",
+      "label": "2단계 탈락",
+      "rows": 10,
+      "any_observable": 9,
+      "any_observable_rate": 0.9,
+      "two_plus_observable": 7,
+      "two_plus_observable_rate": 0.7,
+      "zero_observable": 1,
+      "zero_observable_rate": 0.1,
+      "any_rising": 1,
+      "any_rising_rate": 0.1
+    },
+    {
+      "cohort": "random_control",
+      "label": "무작위 대조군",
+      "rows": 5,
+      "any_observable": 3,
+      "any_observable_rate": 0.6,
+      "two_plus_observable": 3,
+      "two_plus_observable_rate": 0.6,
+      "zero_observable": 2,
+      "zero_observable_rate": 0.4,
+      "any_rising": 1,
+      "any_rising_rate": 0.2
+    }
+  ],
+  "false_negative_audit": {
+    "baseline": "current_app_checkpoint",
+    "rule_tested": "관찰 가능한 검색어 묶음이 하나도 없으면 낮춤",
+    "false_negatives": 3,
+    "baseline_rows": 10,
+    "false_negative_rate": 0.3,
+    "allowed_rate": 0.05,
+    "passed": false
+  },
+  "adoption_decision": {
+    "use_as_filter": false,
+    "use_as_automatic_ranking": false,
+    "use_as_manual_supporting_evidence": true,
+    "reason": "현재 좋은 원본 30%를 잘못 낮추고, 2단계 탈락 원본의 90%에는 오히려 검색 신호가 있어 품질을 구분하지 못함"
+  },
+  "rows_detail": [
+    {
+      "pilot_rank": 1,
+      "key": "trustmrr:1lookup",
+      "name": "1Lookup",
+      "cohort": "current_app_checkpoint",
+      "observable_groups": 3,
+      "rising_groups": 3,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "연락처 확인",
+          "active_months_last_12": 12,
+          "direction": "rising",
+          "yoy_percent": 168.213
+        },
+        {
+          "intent": "result",
+          "label": "상대 정보 조회",
+          "active_months_last_12": 12,
+          "direction": "rising",
+          "yoy_percent": 28.987
+        },
+        {
+          "intent": "category",
+          "label": "정보 검증",
+          "active_months_last_12": 12,
+          "direction": "rising",
+          "yoy_percent": 130.893
+        }
+      ]
+    },
+    {
+      "pilot_rank": 2,
+      "key": "trustmrr:bankconv",
+      "name": "BankConv",
+      "cohort": "current_app_checkpoint",
+      "observable_groups": 0,
+      "rising_groups": 0,
+      "signal_class": "sparse",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "거래내역 정리",
+          "active_months_last_12": 5,
+          "direction": "sparse",
+          "yoy_percent": -92.09
+        },
+        {
+          "intent": "result",
+          "label": "PDF를 표로",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "category",
+          "label": "금융 문서 변환",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        }
+      ]
+    },
+    {
+      "pilot_rank": 3,
+      "key": "trustmrr:fastpassphoto",
+      "name": "FastPassPhoto",
+      "cohort": "current_app_checkpoint",
+      "observable_groups": 3,
+      "rising_groups": 0,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "사진 규격",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": -3.052
+        },
+        {
+          "intent": "result",
+          "label": "사진 인화",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": -13.868
+        },
+        {
+          "intent": "category",
+          "label": "증명사진 제작",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": -17.97
+        }
+      ]
+    },
+    {
+      "pilot_rank": 4,
+      "key": "app_store:430234732",
+      "name": "Site Audit Pro",
+      "cohort": "current_app_checkpoint",
+      "observable_groups": 2,
+      "rising_groups": 0,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "현장 사진 정리",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "result",
+          "label": "사진대지",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": 12.5
+        },
+        {
+          "intent": "category",
+          "label": "현장 보고",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -26.319
+        }
+      ]
+    },
+    {
+      "pilot_rank": 5,
+      "key": "trustmrr:due-date-radar",
+      "name": "Due Date Radar",
+      "cohort": "current_app_checkpoint",
+      "observable_groups": 0,
+      "rising_groups": 0,
+      "signal_class": "sparse",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "문서 기한",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "result",
+          "label": "만료 알림",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "category",
+          "label": "기한 관리",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        }
+      ]
+    },
+    {
+      "pilot_rank": 6,
+      "key": "trustmrr:text-2-ics",
+      "name": "TEXT-2-ICS",
+      "cohort": "current_app_checkpoint",
+      "observable_groups": 0,
+      "rising_groups": 0,
+      "signal_class": "sparse",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "일정 옮기기",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "result",
+          "label": "캘린더 파일",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "category",
+          "label": "일정 변환",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        }
+      ]
+    },
+    {
+      "pilot_rank": 7,
+      "key": "trustmrr:voice-cleaner",
+      "name": "Voice Cleaner",
+      "cohort": "current_app_checkpoint",
+      "observable_groups": 1,
+      "rising_groups": 1,
+      "signal_class": "partial",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "녹음 잡음",
+          "active_months_last_12": 5,
+          "direction": "sparse",
+          "yoy_percent": -25.862
+        },
+        {
+          "intent": "result",
+          "label": "깨끗한 음성",
+          "active_months_last_12": 11,
+          "direction": "rising",
+          "yoy_percent": 148.996
+        },
+        {
+          "intent": "category",
+          "label": "오디오 정리",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": -100
+        }
+      ]
+    },
+    {
+      "pilot_rank": 8,
+      "key": "app_store:1130616675",
+      "name": "Rocket Money - Bills & Budgets",
+      "cohort": "current_app_checkpoint",
+      "observable_groups": 2,
+      "rising_groups": 0,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "모르는 결제",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": 1
+        },
+        {
+          "intent": "result",
+          "label": "구독 해지",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": -14.718
+        },
+        {
+          "intent": "category",
+          "label": "구독 관리",
+          "active_months_last_12": 1,
+          "direction": "sparse",
+          "yoy_percent": 0
+        }
+      ]
+    },
+    {
+      "pilot_rank": 9,
+      "key": "chrome_web_store:bekopgepchoeepdmokgkpkfhegkeohbl",
+      "name": "Language Learning with Netflix & YouTube-AFL",
+      "cohort": "current_app_checkpoint",
+      "observable_groups": 3,
+      "rising_groups": 0,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "영상 영어 공부",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -53.396
+        },
+        {
+          "intent": "result",
+          "label": "이중 자막",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -72.148
+        },
+        {
+          "intent": "category",
+          "label": "영상 쉐도잉",
+          "active_months_last_12": 9,
+          "direction": "falling",
+          "yoy_percent": -75.399
+        }
+      ]
+    },
+    {
+      "pilot_rank": 10,
+      "key": "trustmrr:catalister",
+      "name": "Catalister",
+      "cohort": "current_app_checkpoint",
+      "observable_groups": 1,
+      "rising_groups": 0,
+      "signal_class": "partial",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "상품 등록",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -63.161
+        },
+        {
+          "intent": "result",
+          "label": "대량 업로드",
+          "active_months_last_12": 3,
+          "direction": "sparse",
+          "yoy_percent": -94.558
+        },
+        {
+          "intent": "category",
+          "label": "상품표 변환",
+          "active_months_last_12": 2,
+          "direction": "sparse",
+          "yoy_percent": -91.339
+        }
+      ]
+    },
+    {
+      "pilot_rank": 11,
+      "key": "chrome_web_store:gjojcncjnnbbpiegeaifacnbmknddohf",
+      "name": "VlogMap – Extract and map locations from videos & reels",
+      "cohort": "stage2_deep_review",
+      "observable_groups": 0,
+      "rising_groups": 0,
+      "signal_class": "sparse",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "영상 속 장소",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "result",
+          "label": "여행지 지도",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": -100
+        },
+        {
+          "intent": "category",
+          "label": "여행 경로 추출",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        }
+      ]
+    },
+    {
+      "pilot_rank": 12,
+      "key": "chrome_web_store:pfdemlpmcgaabgdldjfklmaeieaamaap",
+      "name": "SEO Analyzer: One-Click Website Audit",
+      "cohort": "stage2_deep_review",
+      "observable_groups": 0,
+      "rising_groups": 0,
+      "signal_class": "sparse",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "검색 노출 문제",
+          "active_months_last_12": 1,
+          "direction": "sparse",
+          "yoy_percent": -62.5
+        },
+        {
+          "intent": "result",
+          "label": "SEO 검사",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "category",
+          "label": "메타태그 검사",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": -100
+        }
+      ]
+    },
+    {
+      "pilot_rank": 13,
+      "key": "chrome_web_store:pbnncbpphfheokgambglknpokckilmph",
+      "name": "Schema Markup Validator & Generator",
+      "cohort": "stage2_deep_review",
+      "observable_groups": 1,
+      "rising_groups": 1,
+      "signal_class": "partial",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "구조화 데이터 오류",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "result",
+          "label": "리치 결과 검사",
+          "active_months_last_12": 10,
+          "direction": "rising",
+          "yoy_percent": 157.937
+        },
+        {
+          "intent": "category",
+          "label": "JSON-LD 만들기",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        }
+      ]
+    },
+    {
+      "pilot_rank": 14,
+      "key": "chrome_web_store:nkkdeadncmkfpmoafagdoanfkipoogkl",
+      "name": "Data Scraper - AI Data Miner",
+      "cohort": "stage2_deep_review",
+      "observable_groups": 0,
+      "rising_groups": 0,
+      "signal_class": "sparse",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "웹 자료 정리",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "result",
+          "label": "웹을 엑셀로",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": -100
+        },
+        {
+          "intent": "category",
+          "label": "노코드 수집",
+          "active_months_last_12": 1,
+          "direction": "sparse",
+          "yoy_percent": -78.261
+        }
+      ]
+    },
+    {
+      "pilot_rank": 15,
+      "key": "chrome_web_store:lkcagbfjnkomcinoddgooolagloogehp",
+      "name": "IBM Equal Access Accessibility Checker",
+      "cohort": "stage2_deep_review",
+      "observable_groups": 0,
+      "rising_groups": 0,
+      "signal_class": "sparse",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "접근성 오류",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "result",
+          "label": "접근성 검사",
+          "active_months_last_12": 2,
+          "direction": "sparse",
+          "yoy_percent": 6.667
+        },
+        {
+          "intent": "category",
+          "label": "WCAG 검사",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": -100
+        }
+      ]
+    },
+    {
+      "pilot_rank": 16,
+      "key": "chrome_web_store:bagapgnffhmfccajdbbjcgalkphdjccn",
+      "name": "PerfectPost: makes Linkedin 10x better",
+      "cohort": "stage2_reject",
+      "observable_groups": 1,
+      "rising_groups": 0,
+      "signal_class": "partial",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "링크드인 글",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "result",
+          "label": "게시물 생성",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "category",
+          "label": "AI 글쓰기",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -54.492
+        }
+      ]
+    },
+    {
+      "pilot_rank": 17,
+      "key": "chrome_web_store:liecbddmkiiihnedobmlmillhodjkdmb",
+      "name": "Loom – Screen Recorder & Screen Capture",
+      "cohort": "stage2_reject",
+      "observable_groups": 2,
+      "rising_groups": 0,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "화면 설명",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -27.346
+        },
+        {
+          "intent": "result",
+          "label": "녹화 공유",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "category",
+          "label": "스크린 레코더",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -43.79
+        }
+      ]
+    },
+    {
+      "pilot_rank": 18,
+      "key": "chrome_web_store:blckodkdfiedapfpjiobdkedmocgihco",
+      "name": "TTS Reader",
+      "cohort": "stage2_reject",
+      "observable_groups": 3,
+      "rising_groups": 0,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "문서 듣기",
+          "active_months_last_12": 9,
+          "direction": "falling",
+          "yoy_percent": -97.338
+        },
+        {
+          "intent": "result",
+          "label": "텍스트 음성",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": -5.889
+        },
+        {
+          "intent": "category",
+          "label": "TTS",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": -0.224
+        }
+      ]
+    },
+    {
+      "pilot_rank": 19,
+      "key": "chrome_web_store:dgiglgeckbcbhkdiilhleinfobldljjj",
+      "name": "WeatherNow – Hourly & Weekly Forecast",
+      "cohort": "stage2_reject",
+      "observable_groups": 3,
+      "rising_groups": 0,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "오늘 날씨",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": -1.198
+        },
+        {
+          "intent": "result",
+          "label": "날씨 예보",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": 3.067
+        },
+        {
+          "intent": "category",
+          "label": "미세먼지",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": 0.81
+        }
+      ]
+    },
+    {
+      "pilot_rank": 20,
+      "key": "app_store:368494609",
+      "name": "QR Reader for iPhone",
+      "cohort": "stage2_reject",
+      "observable_groups": 3,
+      "rising_groups": 0,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "코드 스캔",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": -16.261
+        },
+        {
+          "intent": "result",
+          "label": "문서 스캔",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -38.2
+        },
+        {
+          "intent": "category",
+          "label": "스캐너 앱",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -31.098
+        }
+      ]
+    },
+    {
+      "pilot_rank": 21,
+      "key": "app_store:708423616",
+      "name": "Todo - Task List Organizer",
+      "cohort": "stage2_reject",
+      "observable_groups": 3,
+      "rising_groups": 0,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "할 일 정리",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -55.875
+        },
+        {
+          "intent": "result",
+          "label": "투두리스트",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": 17.1
+        },
+        {
+          "intent": "category",
+          "label": "일정 관리",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -33.366
+        }
+      ]
+    },
+    {
+      "pilot_rank": 22,
+      "key": "app_store:1472638797",
+      "name": "Fitness Coach - Workout Plan",
+      "cohort": "stage2_reject",
+      "observable_groups": 3,
+      "rising_groups": 1,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "운동 계획",
+          "active_months_last_12": 12,
+          "direction": "rising",
+          "yoy_percent": 39.044
+        },
+        {
+          "intent": "result",
+          "label": "맞춤 운동",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -67.847
+        },
+        {
+          "intent": "category",
+          "label": "운동 앱",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -37.868
+        }
+      ]
+    },
+    {
+      "pilot_rank": 23,
+      "key": "chrome_web_store:ojplmecpdpgccookcobabopnaifgidhf",
+      "name": "Buyhatke: Price History & Tracker, Spend Lens",
+      "cohort": "stage2_reject",
+      "observable_groups": 1,
+      "rising_groups": 0,
+      "signal_class": "partial",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "가격 변동",
+          "active_months_last_12": 3,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "result",
+          "label": "최저가 알림",
+          "active_months_last_12": 3,
+          "direction": "sparse",
+          "yoy_percent": -58.538
+        },
+        {
+          "intent": "category",
+          "label": "가격 추적",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": -15.93
+        }
+      ]
+    },
+    {
+      "pilot_rank": 24,
+      "key": "chrome_web_store:abdfkmgniiijbffflcfmkfejigmcepec",
+      "name": "Transcript Assistant – Meeting Transcripts for Google Meet, Zoom & Teams",
+      "cohort": "stage2_reject",
+      "observable_groups": 0,
+      "rising_groups": 0,
+      "signal_class": "sparse",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "회의 기록",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": -100
+        },
+        {
+          "intent": "result",
+          "label": "회의 전사",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": -100
+        },
+        {
+          "intent": "category",
+          "label": "회의 자막",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": -100
+        }
+      ]
+    },
+    {
+      "pilot_rank": 25,
+      "key": "chrome_web_store:kohfgcgbkjodfcfkcackpagifgbcmimk",
+      "name": "NaturalReader - AI Text to Speech",
+      "cohort": "stage2_reject",
+      "observable_groups": 2,
+      "rising_groups": 0,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "전자책 듣기",
+          "active_months_last_12": 4,
+          "direction": "sparse",
+          "yoy_percent": -32.787
+        },
+        {
+          "intent": "result",
+          "label": "영어 음성 읽기",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -27.149
+        },
+        {
+          "intent": "category",
+          "label": "텍스트 리더",
+          "active_months_last_12": 7,
+          "direction": "falling",
+          "yoy_percent": -49.162
+        }
+      ]
+    },
+    {
+      "pilot_rank": 26,
+      "key": "trustmrr:ticketdesk-ai",
+      "name": "Ticketdesk AI",
+      "cohort": "random_control",
+      "observable_groups": 0,
+      "rising_groups": 0,
+      "signal_class": "sparse",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "고객 문의",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "result",
+          "label": "문의 자동화",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": null
+        },
+        {
+          "intent": "category",
+          "label": "고객지원 AI",
+          "active_months_last_12": 2,
+          "direction": "sparse",
+          "yoy_percent": -66.667
+        }
+      ]
+    },
+    {
+      "pilot_rank": 27,
+      "key": "trustmrr:ai-headshot-generator",
+      "name": "AI Headshot Generator",
+      "cohort": "random_control",
+      "observable_groups": 3,
+      "rising_groups": 1,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "프로필 사진",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -24.719
+        },
+        {
+          "intent": "result",
+          "label": "AI 프로필",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": 16.138
+        },
+        {
+          "intent": "category",
+          "label": "프로필 제작",
+          "active_months_last_12": 12,
+          "direction": "rising",
+          "yoy_percent": 131.761
+        }
+      ]
+    },
+    {
+      "pilot_rank": 28,
+      "key": "app_store:975017240",
+      "name": "Focus - Timer for Productivity",
+      "cohort": "random_control",
+      "observable_groups": 2,
+      "rising_groups": 0,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "집중 시간",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": -13.389
+        },
+        {
+          "intent": "result",
+          "label": "포모도로",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": -7.535
+        },
+        {
+          "intent": "category",
+          "label": "생산성 타이머",
+          "active_months_last_12": 4,
+          "direction": "sparse",
+          "yoy_percent": null
+        }
+      ]
+    },
+    {
+      "pilot_rank": 29,
+      "key": "app_store:1230088754",
+      "name": "Capital·com: 온라인 거래 플랫폼",
+      "cohort": "random_control",
+      "observable_groups": 2,
+      "rising_groups": 0,
+      "signal_class": "broad",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "온라인 투자",
+          "active_months_last_12": 2,
+          "direction": "sparse",
+          "yoy_percent": -35.294
+        },
+        {
+          "intent": "result",
+          "label": "CFD 거래",
+          "active_months_last_12": 12,
+          "direction": "stable",
+          "yoy_percent": 11.633
+        },
+        {
+          "intent": "category",
+          "label": "해외 거래",
+          "active_months_last_12": 12,
+          "direction": "falling",
+          "yoy_percent": -39.494
+        }
+      ]
+    },
+    {
+      "pilot_rank": 30,
+      "key": "chrome_web_store:ohhjfajndpfpbimipmehmdkblnbelaec",
+      "name": "Smooth Cursorify",
+      "cohort": "random_control",
+      "observable_groups": 0,
+      "rising_groups": 0,
+      "signal_class": "sparse",
+      "groups": [
+        {
+          "intent": "problem",
+          "label": "커서 꾸미기",
+          "active_months_last_12": 2,
+          "direction": "sparse",
+          "yoy_percent": 10
+        },
+        {
+          "intent": "result",
+          "label": "커서 애니메이션",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": -100
+        },
+        {
+          "intent": "category",
+          "label": "커서 확장",
+          "active_months_last_12": 0,
+          "direction": "sparse",
+          "yoy_percent": -100
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1145 @@
+{
+  "mode": "source-fidelity",
+  "model": {
+    "provider": "local",
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimension": 384,
+    "normalization": "L2",
+    "similarity": "cosine via normalized dot product"
+  },
+  "scope": {
+    "combinations": 54,
+    "scenarios": 2,
+    "singleTwist": 54,
+    "doubleTwist": 0
+  },
+  "policy": {
+    "minimum": 0.8,
+    "targetMaximum": 0.99,
+    "aboveTargetMaximum": "allowed because an overseas product mechanic may be copied exactly",
+    "portfolioDuplicates": "allowed and not evaluated in this mode"
+  },
+  "summary": {
+    "percentiles": {
+      "50": 0.975014,
+      "75": 0.976002,
+      "90": 0.976002,
+      "95": 0.976002,
+      "99": 0.976002,
+      "99.5": 0.976002,
+      "99.9": 0.976002,
+      "99.95": 0.976002,
+      "99.99": 0.976002,
+      "100": 0.976002
+    },
+    "belowMinimum": 0,
+    "inTargetBand": 54,
+    "exactAllowed": 0,
+    "pass": 54,
+    "passRate": 1.0
+  },
+  "lowest": [
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-1__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-3__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-2__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-2__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-1__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-3__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-1__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-2__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-3__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-3__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-2__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-1__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-2__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-2__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-3__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-1__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-3__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-1__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-2__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-1__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-3__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-2__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-1__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-3__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-2__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-1__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-3__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-2__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-3__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-3__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-3__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-1__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-2__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-1__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-2__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-2__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-3__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-1__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-2__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-1__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-1__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-1__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-3__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-3__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-3__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-2__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-2__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-2__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-1__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-1__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    }
+  ],
+  "highest": [
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-3__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-2__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-3__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-1__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-1__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-1__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-2__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-2__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-2__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-3__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-3__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-1__moment-freight-invoice-audit-3__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송사 청구서를 대조하는 물류사 정산 담당자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-1__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-1__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-1__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-2__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-1__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-3__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-2__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-2__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-1__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-2__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-3__moment-freight-invoice-audit-1__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "여러 화물 비용을 검수하는 3PL 비용 검수자",
+      "moment": "운송사 화물 청구서 PDF를 막 받은 직후",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-3__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-3__twist-freight-invoice-audit-2",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 동일 비용 중복 후보 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-3__twist-freight-invoice-audit-1",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "월말 증빙 자료를 재무팀에 넘기기 직전",
+      "twistTitles": [
+        "화물 청구서 내부 합계 불일치 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976002,
+      "id": "freight-invoice-internal-audit__payer-freight-invoice-audit-2__moment-freight-invoice-audit-2__twist-freight-invoice-audit-3",
+      "scenarioId": "freight-invoice-internal-audit",
+      "sourceName": "DocuAudit",
+      "payer": "운송비 증빙을 검토하는 화주 재무 담당자",
+      "moment": "청구서 지급 승인을 누르기 직전",
+      "twistTitles": [
+        "화물 청구서 필수 3항목 누락 CSV"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-3__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-1__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-2__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-3__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-1__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-2__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-3__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-1__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.974026,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-2__twist-pdf-layout-translation-3",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "각주 링크를 보존한 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-1__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-3__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-1__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-3__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-2__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-2__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-1__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-2__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.970162,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-3__twist-pdf-layout-translation-2",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "이미지 캡션을 살린 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-3__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-2__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "내부 회의용 번역 PDF를 공유하기 직전",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-2__moment-pdf-layout-translation-1__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "외국 자료를 빠르게 검토하는 기업 리서처",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-1__moment-pdf-layout-translation-3__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "해외 매뉴얼을 한국어로 바꾸는 기술문서 담당자",
+      "moment": "표와 그림을 유지한 번역본을 회의에서 열어야 하는 순간",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    },
+    {
+      "similarity": 0.969522,
+      "id": "pdf-layout-translation__payer-pdf-layout-translation-3__moment-pdf-layout-translation-1__twist-pdf-layout-translation-1",
+      "scenarioId": "pdf-layout-translation",
+      "sourceName": "PDF-Translator",
+      "payer": "수입 관련 영어 서류를 처리하는 무역 실무자",
+      "moment": "외국어 PDF 문서를 막 전달받은 직후",
+      "twistTitles": [
+        "표 배치를 유지한 영어 PDF 한국어 번역"
+      ]
+    }
+  ]
+}

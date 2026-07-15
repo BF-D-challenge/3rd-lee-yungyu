@@ -1,0 +1,160 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-figma-ai-rename-plugin-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 반복 레이어의 순번 이름 정리’는 외주 디자이너가 컴포넌트화 직전에 Figma 프레임 파일 하나를 분석해 반복 요소에 순번을 붙인 레이어 이름 미리보기 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-figma-ai-rename-plugin-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 UI 역할명 정리’는 외주 디자이너가 리뷰 링크를 보내기 직전 Figma 프레임 파일 하나를 분석해 버튼·입력창 역할명이 적용된 레이어 미리보기 하나를 받지만, 개발 인수인계 payer와 디자인 리뷰 moment의 연결이 다소 약하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-figma-ai-rename-plugin-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 계층 경로명 표시’는 인수인계를 앞둔 외주 디자이너가 전달 직전 Figma 프레임 파일 하나를 분석해 계층 경로명이 적용된 레이어 이름 미리보기 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-dino-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘PDF 정산표를 편집 가능한 Excel로 변환’은 정산 담당자가 금액 합산 직전에 표 PDF 파일 하나를 추출 처리해 편집 가능한 Excel 파일 하나를 받으므로 payer·moment·twist가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-dino-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘PDF 표 수치를 바로 쓰는 CSV 추출’은 정산 담당자가 엑셀 업로드 직전 표 PDF 파일 하나에서 행과 열을 추출해 CSV 파일 하나를 받는 구체적인 단일 변환이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-dino-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘PDF 표의 항목 구조를 담은 JSON 변환’은 정산 담당자가 PDF 파일 하나를 구조화해 JSON 파일 하나를 받지만, 엑셀로 옮겨 합산하려는 payer·moment에 JSON 결과가 바로 맞는지는 불명확하다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-dino-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘PDF 표 수치를 바로 쓰는 CSV 추출’은 리서치 운영자가 CSV를 얻는 처리는 명확하지만, payer와 무관한 ‘PDF 정산표 금액을 합산하기 직전’ moment가 카드 상황과 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-dino-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘PDF 표의 항목 구조를 담은 JSON 변환’은 리서치 운영자가 보고서 PDF 하나를 구조화해 JSON 하나를 받지만, 엑셀 업로드 직전이라는 moment에 JSON 결과를 제시해 payer·moment·twist 연결이 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-dino-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘PDF 정산표를 편집 가능한 Excel로 변환’은 리서치 운영자가 문서 디지털화 직후 표 PDF 파일 하나를 추출 처리해 Excel 파일 하나를 받으므로 입력·처리·결과와 moment가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-dino-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘PDF 표의 항목 구조를 담은 JSON 변환’은 문서 전환 실무자가 PDF 파일 하나를 구조화해 JSON 파일 하나를 받지만, 금액 합산 직전에는 JSON보다 표 계산용 결과가 더 직접적인지 문구상 불명확하다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-dino-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘PDF 정산표를 편집 가능한 Excel로 변환’은 문서 전환 실무자가 엑셀 업로드 직전 표 PDF 파일 하나를 추출해 Excel 파일 하나를 받으므로 payer·moment·twist가 정확히 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-dino-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘PDF 표 수치를 바로 쓰는 CSV 추출’은 문서 전환 실무자가 PDF를 받은 순간 표 PDF 파일 하나에서 행과 열을 추출해 CSV 파일 하나를 받는 단순하고 자연스러운 변환이다.",
+      "risk_flags": []
+    }
+  ]
+}

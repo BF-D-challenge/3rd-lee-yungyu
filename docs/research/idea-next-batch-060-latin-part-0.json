@@ -1,0 +1,132 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1485387513-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캐릭터와 헤어·메이크업·의상을 입력해 스타일링하고 새 캐릭터 룩을 얻는 흐름은 구체적이지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title-ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1485387513-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캐릭터와 스타일 선택을 입력해 한복과 머리장식을 조합하고 새 캐릭터 룩을 얻는 흐름은 자연스럽지만 제목만으로 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title-ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1485387513-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캐릭터와 스타일 선택을 입력해 어린이날 무대 의상과 얼굴 페인트를 조합하고 새 룩을 얻는 흐름은 구체적이지만 제목만으로 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title-ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1485387513-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캐릭터와 헤어·메이크업·의상을 입력해 한복과 머리장식 스타일을 만들고 새 캐릭터 룩을 얻지만 교사의 순간과 제목에서 결과가 즉시 선명하지 않다.",
+      "risk_flags": [
+        "title-ambiguity",
+        "moment-mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1485387513-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캐릭터와 스타일 선택을 입력해 어린이날 무대 의상과 얼굴 페인트를 조합하고 새 룩을 얻지만 교사의 순간과 제목에서 결과가 즉시 선명하지 않다.",
+      "risk_flags": [
+        "title-ambiguity",
+        "moment-mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1485387513-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캐릭터와 헤어·메이크업·의상을 입력해 앞머리·염색·드라이 스타일을 적용하고 새 캐릭터 룩을 얻는 흐름은 구체적이지만 제목만으로 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title-ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1485387513-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캐릭터와 스타일 선택을 입력해 어린이날 무대 의상과 얼굴 페인트를 조합하고 새 룩을 얻는 흐름은 자연스럽지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title-ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1485387513-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캐릭터와 스타일 선택을 입력해 앞머리·염색·드라이를 적용하고 새 캐릭터 룩을 얻는 흐름은 구체적이지만 제목만으로 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title-ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1485387513-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캐릭터와 스타일 선택을 입력해 한복과 머리장식을 조합하고 새 캐릭터 룩을 얻는 흐름은 자연스럽지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title-ambiguity"
+      ]
+    }
+  ]
+}

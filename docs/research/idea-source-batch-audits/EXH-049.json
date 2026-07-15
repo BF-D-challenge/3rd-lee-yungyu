@@ -1,0 +1,99 @@
+{
+  "batch_id": "EXH-049",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 49,
+    "Candidate": 47,
+    "Reserve": 3,
+    "Merge": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 70,
+      "sample": [
+        "app_store:6758240860",
+        "app_store:6466298983",
+        "trustmrr:breathe",
+        "trustmrr:savemrr",
+        "trustmrr:thecalcs",
+        "app_store:1294341144",
+        "chrome_web_store:mpjjeolcjagbldlodoiioaojfgpecnlc"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6466298983",
+          "decision": "Candidate",
+          "reason": "셀카 사진 하나를 받아 AI가 현실적인 재촬영 결과를 만들고, 바로 확인할 사진 한 장을 제공한다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 2,
+      "fail_count": 58,
+      "sample": [
+        "chrome_web_store:nngceckbapebfimnlniiiahkandclblb",
+        "trustmrr:tikmatiz",
+        "trustmrr:breathe",
+        "chrome_web_store:gpdkajdgppoccfpeocndflnlmjemalfh",
+        "app_store:1168932344",
+        "app_store:1407188159"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1407188159",
+          "decision": "Candidate",
+          "reason": "제품 포장 하나를 스캔하고 수량을 반영해 최신 재고와 구매 목록을 즉시 만드는 2일 세로 조각이다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 3,
+      "fail_count": 53,
+      "sample": [
+        "app_store:6744358897",
+        "app_store:1572525917",
+        "trustmrr:savemrr",
+        "chrome_web_store:agclkeiefbaaklnngobenbpgnghncacb",
+        "app_store:1455690574",
+        "trustmrr:typemyvibe"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6744358897",
+          "decision": "Candidate",
+          "reason": "입력 영어 문장 하나를 받아 문법 오류를 교정하고 맞춤 피드백을 즉시 보여주는 2일 세로 조각이 남는다."
+        },
+        {
+          "key": "chrome_web_store:agclkeiefbaaklnngobenbpgnghncacb",
+          "decision": "Candidate",
+          "reason": "입력 스트리머 하나를 받아 라이브 상태를 처리하고 해당 라이브 스트림을 자동으로 여는 2일 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.3333333333333333
+    },
+    {
+      "round": 4,
+      "fail_count": 49,
+      "sample": [
+        "chrome_web_store:nngceckbapebfimnlniiiahkandclblb",
+        "app_store:6758240860",
+        "app_store:636377390",
+        "trustmrr:breathe",
+        "app_store:6447772133"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

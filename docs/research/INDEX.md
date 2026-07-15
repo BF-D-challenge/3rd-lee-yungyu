@@ -1,11 +1,11 @@
 ---
 name: research--index
-description: docs/research 전체 지도 — 리서치 문서 코퍼스 6개 토픽, JSONL 데이터셋 3종, 디자인 레퍼런스 에셋, 낱개 실측·대본 문서까지 전부의 진입점과 한 줄 요약을 담은 최상위 인덱스.
+description: docs/research 전체 지도 — 리서치 문서 코퍼스, 최종 아이디어 결정 장부, JSONL 데이터셋, 디자인 레퍼런스 에셋, 낱개 실측·대본 문서까지 전부의 진입점과 한 줄 요약을 담은 최상위 인덱스.
 metadata:
   type: research
   topic: research-index
   category: index
-  date: 2026-07-10
+  date: 2026-07-13
 ---
 
 # docs/research 전체 지도
@@ -21,6 +21,8 @@ metadata:
 
 | 토픽 | 종류 | 한 줄 요약 | entryPoint |
 |---|---|---|---|
+| [idea-final-decisions-62.jsonl](idea-final-decisions-62.jsonl) | 결정 장부 (JSONL 62) | 최종 Experiment Pass 4·Merge 11·Custom Reserve 5·Fail 42와 UX·게이트·사유 정본 | [JSONL](idea-final-decisions-62.jsonl) |
+| [newsletter-leads/](newsletter-leads/) | 외부 발견 큐 (JSONL 7) | 뉴스레터 사례를 8,406개 전수 심사와 분리해 Hold·Merge·Fail로 기록하는 안전한 입구 | [README.md](newsletter-leads/README.md) |
 | [gas-app/](gas-app/) | 문서 코퍼스 (12) | Gas 앱(익명 칭찬/투표) 성장·붕괴·규제·인프라 벤치마크 | [SUMMARY.md](gas-app/SUMMARY.md) |
 | [idea-tools-2026/](idea-tools-2026/) | 문서 코퍼스 (6) | 아이디어 검증 SaaS의 결제 순간 딜리버러블 4층 구조 | [SUMMARY.md](idea-tools-2026/SUMMARY.md) |
 | [oneul-haebolkka-demand/](oneul-haebolkka-demand/) | 문서 코퍼스 (4) | "오늘 해볼까" 수요 신호 교차검증 — 중~강, 포지셔닝 조건부 | [SUMMARY.md](oneul-haebolkka-demand/SUMMARY.md) |
@@ -131,6 +133,34 @@ entryPoint: [store-seo-title/SUMMARY.md](store-seo-title/SUMMARY.md)
 |---|---|
 | [store-seo-title/SUMMARY.md](store-seo-title/SUMMARY.md) | 앱스토어(Apple RSS·크롬 웹스토어) 상위 랭킹 제목 분석으로 "이름+구분자+검색키워드" 제목 공식을 도출하고, 오늘 해볼까 카드 40장의 제목을 브랜드 이름+SEO 부제 형태로 개선 적용한 기록. |
 | [store-seo-title/INDEX.md](store-seo-title/INDEX.md) | store-seo-title 토픽의 파일 안내 — 현재 SUMMARY.md 하나뿐이며, 스토어 SEO 제목 공식 리서치와 카드 제목 개선 적용 결과가 담겨 있다. |
+
+---
+
+## idea-source-coverage (아이디어 원본 검토 장부)
+
+TrustMRR·App Store·Chrome Web Store의 컴팩트 원본 8,406건을 한 장부로 합쳐 `unseen`부터 사용자 승인까지 검토 상태를 추적한다. 현재 앱에 있다는 사실과 품질 승인을 분리하고, 정규화 이름은 중복 후보 탐색에만 사용한다.
+
+entryPoint: [idea-source-coverage-summary.md](idea-source-coverage-summary.md)
+
+| 경로 | 설명 |
+|---|---|
+| [idea-source-coverage-summary.md](idea-source-coverage-summary.md) | 데이터셋별 수, 초기 상태, 앱 원본 연결 상태, 다음 회차 사용법을 정리한 사람용 요약. |
+| [idea-source-coverage.jsonl](idea-source-coverage.jsonl) | 원본 1건=1행(8,406행). `review_status`·`review_batch`·`rejection_code`·`matched_scenario_ids`로 반복 검사를 막는다. |
+| [../../scripts/research/build-idea-source-coverage.mjs](../../scripts/research/build-idea-source-coverage.mjs) | 세 컴팩트 데이터셋과 현재 Idea Lab 시나리오를 읽어 장부·요약을 재생성하는 스크립트. |
+
+---
+
+## newsletter-leads (외부 발견 큐)
+
+뉴스레터에서 발견한 제품·운영 사례를 카드 원본으로 오인하지 않도록 분리한 큐다. 모든 행이 `denominator_effect: 0`이므로 8,406개 원본 장부와 EXH 통계에는 영향을 주지 않는다. 공식 제품 원문과 27개 조합 감사를 통과하기 전에는 앱 데이터에 넣지 않는다.
+
+entryPoint: [newsletter-leads/README.md](newsletter-leads/README.md)
+
+| 경로 | 설명 |
+|---|---|
+| [newsletter-leads/README.md](newsletter-leads/README.md) | 분리 원칙, 뉴스레터별 역할, 정식 후보로 이동하는 조건, 검증 명령을 설명한다. |
+| [newsletter-leads/newsletter-leads.jsonl](newsletter-leads/newsletter-leads.jsonl) | 뉴스레터 발견 사례 1건=1행. `Hold`·`Merge`·`Fail`만 허용하며 `Candidate`는 넣지 않는다. |
+| [../../scripts/research/verify-newsletter-idea-leads.mjs](../../scripts/research/verify-newsletter-idea-leads.mjs) | 분모 오염, 중복 ID, 무근거 8,406개 키, 조기 Candidate 승격을 검사한다. |
 
 ---
 

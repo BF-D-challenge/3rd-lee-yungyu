@@ -1,0 +1,1145 @@
+{
+  "mode": "source-fidelity",
+  "model": {
+    "provider": "local",
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimension": 384,
+    "normalization": "L2",
+    "similarity": "cosine via normalized dot product"
+  },
+  "scope": {
+    "combinations": 108,
+    "scenarios": 4,
+    "singleTwist": 108,
+    "doubleTwist": 0
+  },
+  "policy": {
+    "minimum": 0.8,
+    "targetMaximum": 0.99,
+    "aboveTargetMaximum": "allowed because an overseas product mechanic may be copied exactly",
+    "portfolioDuplicates": "allowed and not evaluated in this mode"
+  },
+  "summary": {
+    "percentiles": {
+      "50": 0.985662,
+      "75": 0.987331,
+      "90": 0.991315,
+      "95": 0.991315,
+      "99": 0.991315,
+      "99.5": 0.991315,
+      "99.9": 0.991315,
+      "99.95": 0.991315,
+      "99.99": 0.991315,
+      "100": 0.991315
+    },
+    "belowMinimum": 0,
+    "inTargetBand": 81,
+    "exactAllowed": 27,
+    "pass": 108,
+    "passRate": 1.0
+  },
+  "lowest": [
+    {
+      "similarity": 0.973202,
+      "id": "website-to-android-apk__payer-website-android-apk-3__moment-website-android-apk-3__twist-website-android-apk-3",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "회원용 웹서비스를 운영하는 커뮤니티 매니저",
+      "moment": "테스트 단말에 설치본을 보여주기 직전",
+      "twistTitles": [
+        "자사 도메인 고정 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.973202,
+      "id": "website-to-android-apk__payer-website-android-apk-1__moment-website-android-apk-1__twist-website-android-apk-3",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "자사 웹을 앱으로 보여주려는 소상공인 운영자",
+      "moment": "모바일 대응 웹사이트가 완성된 직후",
+      "twistTitles": [
+        "자사 도메인 고정 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.973202,
+      "id": "website-to-android-apk__payer-website-android-apk-3__moment-website-android-apk-2__twist-website-android-apk-3",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "회원용 웹서비스를 운영하는 커뮤니티 매니저",
+      "moment": "사용자가 홈 화면 앱을 요구한 직후",
+      "twistTitles": [
+        "자사 도메인 고정 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.973202,
+      "id": "website-to-android-apk__payer-website-android-apk-1__moment-website-android-apk-2__twist-website-android-apk-3",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "자사 웹을 앱으로 보여주려는 소상공인 운영자",
+      "moment": "사용자가 홈 화면 앱을 요구한 직후",
+      "twistTitles": [
+        "자사 도메인 고정 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.973202,
+      "id": "website-to-android-apk__payer-website-android-apk-3__moment-website-android-apk-1__twist-website-android-apk-3",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "회원용 웹서비스를 운영하는 커뮤니티 매니저",
+      "moment": "모바일 대응 웹사이트가 완성된 직후",
+      "twistTitles": [
+        "자사 도메인 고정 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.973202,
+      "id": "website-to-android-apk__payer-website-android-apk-1__moment-website-android-apk-3__twist-website-android-apk-3",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "자사 웹을 앱으로 보여주려는 소상공인 운영자",
+      "moment": "테스트 단말에 설치본을 보여주기 직전",
+      "twistTitles": [
+        "자사 도메인 고정 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.973202,
+      "id": "website-to-android-apk__payer-website-android-apk-2__moment-website-android-apk-3__twist-website-android-apk-3",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "지역 고객 사이트를 만드는 웹 대행자",
+      "moment": "테스트 단말에 설치본을 보여주기 직전",
+      "twistTitles": [
+        "자사 도메인 고정 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.973202,
+      "id": "website-to-android-apk__payer-website-android-apk-2__moment-website-android-apk-1__twist-website-android-apk-3",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "지역 고객 사이트를 만드는 웹 대행자",
+      "moment": "모바일 대응 웹사이트가 완성된 직후",
+      "twistTitles": [
+        "자사 도메인 고정 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.973202,
+      "id": "website-to-android-apk__payer-website-android-apk-2__moment-website-android-apk-2__twist-website-android-apk-3",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "지역 고객 사이트를 만드는 웹 대행자",
+      "moment": "사용자가 홈 화면 앱을 요구한 직후",
+      "twistTitles": [
+        "자사 도메인 고정 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.974469,
+      "id": "website-to-android-apk__payer-website-android-apk-3__moment-website-android-apk-3__twist-website-android-apk-1",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "회원용 웹서비스를 운영하는 커뮤니티 매니저",
+      "moment": "테스트 단말에 설치본을 보여주기 직전",
+      "twistTitles": [
+        "웹사이트 favicon 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.974469,
+      "id": "website-to-android-apk__payer-website-android-apk-3__moment-website-android-apk-2__twist-website-android-apk-1",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "회원용 웹서비스를 운영하는 커뮤니티 매니저",
+      "moment": "사용자가 홈 화면 앱을 요구한 직후",
+      "twistTitles": [
+        "웹사이트 favicon 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.974469,
+      "id": "website-to-android-apk__payer-website-android-apk-3__moment-website-android-apk-1__twist-website-android-apk-1",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "회원용 웹서비스를 운영하는 커뮤니티 매니저",
+      "moment": "모바일 대응 웹사이트가 완성된 직후",
+      "twistTitles": [
+        "웹사이트 favicon 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.974469,
+      "id": "website-to-android-apk__payer-website-android-apk-2__moment-website-android-apk-3__twist-website-android-apk-1",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "지역 고객 사이트를 만드는 웹 대행자",
+      "moment": "테스트 단말에 설치본을 보여주기 직전",
+      "twistTitles": [
+        "웹사이트 favicon 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.974469,
+      "id": "website-to-android-apk__payer-website-android-apk-1__moment-website-android-apk-1__twist-website-android-apk-1",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "자사 웹을 앱으로 보여주려는 소상공인 운영자",
+      "moment": "모바일 대응 웹사이트가 완성된 직후",
+      "twistTitles": [
+        "웹사이트 favicon 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.974469,
+      "id": "website-to-android-apk__payer-website-android-apk-2__moment-website-android-apk-2__twist-website-android-apk-1",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "지역 고객 사이트를 만드는 웹 대행자",
+      "moment": "사용자가 홈 화면 앱을 요구한 직후",
+      "twistTitles": [
+        "웹사이트 favicon 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.974469,
+      "id": "website-to-android-apk__payer-website-android-apk-2__moment-website-android-apk-1__twist-website-android-apk-1",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "지역 고객 사이트를 만드는 웹 대행자",
+      "moment": "모바일 대응 웹사이트가 완성된 직후",
+      "twistTitles": [
+        "웹사이트 favicon 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.974469,
+      "id": "website-to-android-apk__payer-website-android-apk-1__moment-website-android-apk-2__twist-website-android-apk-1",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "자사 웹을 앱으로 보여주려는 소상공인 운영자",
+      "moment": "사용자가 홈 화면 앱을 요구한 직후",
+      "twistTitles": [
+        "웹사이트 favicon 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.974469,
+      "id": "website-to-android-apk__payer-website-android-apk-1__moment-website-android-apk-3__twist-website-android-apk-1",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "자사 웹을 앱으로 보여주려는 소상공인 운영자",
+      "moment": "테스트 단말에 설치본을 보여주기 직전",
+      "twistTitles": [
+        "웹사이트 favicon 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.977533,
+      "id": "website-to-android-apk__payer-website-android-apk-3__moment-website-android-apk-3__twist-website-android-apk-2",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "회원용 웹서비스를 운영하는 커뮤니티 매니저",
+      "moment": "테스트 단말에 설치본을 보여주기 직전",
+      "twistTitles": [
+        "웹 뒤로가기 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.977533,
+      "id": "website-to-android-apk__payer-website-android-apk-1__moment-website-android-apk-1__twist-website-android-apk-2",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "자사 웹을 앱으로 보여주려는 소상공인 운영자",
+      "moment": "모바일 대응 웹사이트가 완성된 직후",
+      "twistTitles": [
+        "웹 뒤로가기 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.977533,
+      "id": "website-to-android-apk__payer-website-android-apk-2__moment-website-android-apk-2__twist-website-android-apk-2",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "지역 고객 사이트를 만드는 웹 대행자",
+      "moment": "사용자가 홈 화면 앱을 요구한 직후",
+      "twistTitles": [
+        "웹 뒤로가기 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.977533,
+      "id": "website-to-android-apk__payer-website-android-apk-3__moment-website-android-apk-2__twist-website-android-apk-2",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "회원용 웹서비스를 운영하는 커뮤니티 매니저",
+      "moment": "사용자가 홈 화면 앱을 요구한 직후",
+      "twistTitles": [
+        "웹 뒤로가기 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.977533,
+      "id": "website-to-android-apk__payer-website-android-apk-3__moment-website-android-apk-1__twist-website-android-apk-2",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "회원용 웹서비스를 운영하는 커뮤니티 매니저",
+      "moment": "모바일 대응 웹사이트가 완성된 직후",
+      "twistTitles": [
+        "웹 뒤로가기 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.977533,
+      "id": "website-to-android-apk__payer-website-android-apk-1__moment-website-android-apk-3__twist-website-android-apk-2",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "자사 웹을 앱으로 보여주려는 소상공인 운영자",
+      "moment": "테스트 단말에 설치본을 보여주기 직전",
+      "twistTitles": [
+        "웹 뒤로가기 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.977533,
+      "id": "website-to-android-apk__payer-website-android-apk-2__moment-website-android-apk-3__twist-website-android-apk-2",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "지역 고객 사이트를 만드는 웹 대행자",
+      "moment": "테스트 단말에 설치본을 보여주기 직전",
+      "twistTitles": [
+        "웹 뒤로가기 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.977533,
+      "id": "website-to-android-apk__payer-website-android-apk-2__moment-website-android-apk-1__twist-website-android-apk-2",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "지역 고객 사이트를 만드는 웹 대행자",
+      "moment": "모바일 대응 웹사이트가 완성된 직후",
+      "twistTitles": [
+        "웹 뒤로가기 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.977533,
+      "id": "website-to-android-apk__payer-website-android-apk-1__moment-website-android-apk-2__twist-website-android-apk-2",
+      "scenarioId": "website-to-android-apk",
+      "sourceName": "WebToApp: No Code App Converter",
+      "payer": "자사 웹을 앱으로 보여주려는 소상공인 운영자",
+      "moment": "사용자가 홈 화면 앱을 요구한 직후",
+      "twistTitles": [
+        "웹 뒤로가기 적용 Android 설치본"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-2__moment-page-performance-cause-1__twist-page-performance-cause-3",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "고객 랜딩페이지를 납품하는 웹 대행자",
+      "moment": "새 페이지를 공개하기 직전 성능을 확인할 때",
+      "twistTitles": [
+        "웹페이지 긴 자바스크립트 작업 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-2__moment-page-performance-cause-1__twist-page-performance-cause-2",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "고객 랜딩페이지를 납품하는 웹 대행자",
+      "moment": "새 페이지를 공개하기 직전 성능을 확인할 때",
+      "twistTitles": [
+        "웹페이지 화면 흔들림 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-2__moment-page-performance-cause-1__twist-page-performance-cause-1",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "고객 랜딩페이지를 납품하는 웹 대행자",
+      "moment": "새 페이지를 공개하기 직전 성능을 확인할 때",
+      "twistTitles": [
+        "웹페이지 첫 화면 지연 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-1__moment-page-performance-cause-3__twist-page-performance-cause-3",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "자사몰을 직접 운영하는 개발자",
+      "moment": "고객에게 개선 근거를 보내기 전",
+      "twistTitles": [
+        "웹페이지 긴 자바스크립트 작업 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-1__moment-page-performance-cause-1__twist-page-performance-cause-3",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "자사몰을 직접 운영하는 개발자",
+      "moment": "새 페이지를 공개하기 직전 성능을 확인할 때",
+      "twistTitles": [
+        "웹페이지 긴 자바스크립트 작업 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-1__moment-page-performance-cause-3__twist-page-performance-cause-1",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "자사몰을 직접 운영하는 개발자",
+      "moment": "고객에게 개선 근거를 보내기 전",
+      "twistTitles": [
+        "웹페이지 첫 화면 지연 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-1__moment-page-performance-cause-2__twist-page-performance-cause-3",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "자사몰을 직접 운영하는 개발자",
+      "moment": "사용자가 사이트가 느리다고 말한 직후",
+      "twistTitles": [
+        "웹페이지 긴 자바스크립트 작업 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-1__moment-page-performance-cause-2__twist-page-performance-cause-2",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "자사몰을 직접 운영하는 개발자",
+      "moment": "사용자가 사이트가 느리다고 말한 직후",
+      "twistTitles": [
+        "웹페이지 화면 흔들림 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-1__moment-page-performance-cause-2__twist-page-performance-cause-1",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "자사몰을 직접 운영하는 개발자",
+      "moment": "사용자가 사이트가 느리다고 말한 직후",
+      "twistTitles": [
+        "웹페이지 첫 화면 지연 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-2__moment-page-performance-cause-2__twist-page-performance-cause-1",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "고객 랜딩페이지를 납품하는 웹 대행자",
+      "moment": "사용자가 사이트가 느리다고 말한 직후",
+      "twistTitles": [
+        "웹페이지 첫 화면 지연 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-1__moment-page-performance-cause-3__twist-page-performance-cause-2",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "자사몰을 직접 운영하는 개발자",
+      "moment": "고객에게 개선 근거를 보내기 전",
+      "twistTitles": [
+        "웹페이지 화면 흔들림 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-2__moment-page-performance-cause-2__twist-page-performance-cause-2",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "고객 랜딩페이지를 납품하는 웹 대행자",
+      "moment": "사용자가 사이트가 느리다고 말한 직후",
+      "twistTitles": [
+        "웹페이지 화면 흔들림 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-3__moment-page-performance-cause-1__twist-page-performance-cause-3",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "콘텐츠 사이트를 관리하는 퍼블리셔",
+      "moment": "새 페이지를 공개하기 직전 성능을 확인할 때",
+      "twistTitles": [
+        "웹페이지 긴 자바스크립트 작업 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-2__moment-page-performance-cause-3__twist-page-performance-cause-1",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "고객 랜딩페이지를 납품하는 웹 대행자",
+      "moment": "고객에게 개선 근거를 보내기 전",
+      "twistTitles": [
+        "웹페이지 첫 화면 지연 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-2__moment-page-performance-cause-3__twist-page-performance-cause-2",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "고객 랜딩페이지를 납품하는 웹 대행자",
+      "moment": "고객에게 개선 근거를 보내기 전",
+      "twistTitles": [
+        "웹페이지 화면 흔들림 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-2__moment-page-performance-cause-3__twist-page-performance-cause-3",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "고객 랜딩페이지를 납품하는 웹 대행자",
+      "moment": "고객에게 개선 근거를 보내기 전",
+      "twistTitles": [
+        "웹페이지 긴 자바스크립트 작업 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-3__moment-page-performance-cause-1__twist-page-performance-cause-1",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "콘텐츠 사이트를 관리하는 퍼블리셔",
+      "moment": "새 페이지를 공개하기 직전 성능을 확인할 때",
+      "twistTitles": [
+        "웹페이지 첫 화면 지연 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-3__moment-page-performance-cause-1__twist-page-performance-cause-2",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "콘텐츠 사이트를 관리하는 퍼블리셔",
+      "moment": "새 페이지를 공개하기 직전 성능을 확인할 때",
+      "twistTitles": [
+        "웹페이지 화면 흔들림 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-3__moment-page-performance-cause-2__twist-page-performance-cause-1",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "콘텐츠 사이트를 관리하는 퍼블리셔",
+      "moment": "사용자가 사이트가 느리다고 말한 직후",
+      "twistTitles": [
+        "웹페이지 첫 화면 지연 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-3__moment-page-performance-cause-2__twist-page-performance-cause-2",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "콘텐츠 사이트를 관리하는 퍼블리셔",
+      "moment": "사용자가 사이트가 느리다고 말한 직후",
+      "twistTitles": [
+        "웹페이지 화면 흔들림 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-3__moment-page-performance-cause-2__twist-page-performance-cause-3",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "콘텐츠 사이트를 관리하는 퍼블리셔",
+      "moment": "사용자가 사이트가 느리다고 말한 직후",
+      "twistTitles": [
+        "웹페이지 긴 자바스크립트 작업 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-3__moment-page-performance-cause-3__twist-page-performance-cause-1",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "콘텐츠 사이트를 관리하는 퍼블리셔",
+      "moment": "고객에게 개선 근거를 보내기 전",
+      "twistTitles": [
+        "웹페이지 첫 화면 지연 원인 측정 보고서"
+      ]
+    },
+    {
+      "similarity": 0.985321,
+      "id": "single-page-performance-cause-report__payer-page-performance-cause-3__moment-page-performance-cause-3__twist-page-performance-cause-2",
+      "scenarioId": "single-page-performance-cause-report",
+      "sourceName": "Lightspeed.run",
+      "payer": "콘텐츠 사이트를 관리하는 퍼블리셔",
+      "moment": "고객에게 개선 근거를 보내기 전",
+      "twistTitles": [
+        "웹페이지 화면 흔들림 원인 측정 보고서"
+      ]
+    }
+  ],
+  "highest": [
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-3__moment-code-static-security-3__twist-code-static-security-3",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "사내 웹 도구를 운영하는 풀스택 개발자",
+      "moment": "검수된 코드를 다른 팀에 넘기기 직전",
+      "twistTitles": [
+        "코드 속 전체 허용 CORS 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-2__moment-code-static-security-2__twist-code-static-security-1",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "여러 고객 프로젝트를 검수하는 개발 대행사 리드",
+      "moment": "AI가 만든 코드를 기존 프로젝트에 합친 직후",
+      "twistTitles": [
+        "코드 속 비밀키 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-3__moment-code-static-security-3__twist-code-static-security-2",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "사내 웹 도구를 운영하는 풀스택 개발자",
+      "moment": "검수된 코드를 다른 팀에 넘기기 직전",
+      "twistTitles": [
+        "위험한 eval 호출 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-1__moment-code-static-security-1__twist-code-static-security-2",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "고객 웹사이트를 납품하는 인디 SaaS 개발자",
+      "moment": "웹 프로젝트 ZIP을 배포 서버에 올리기 직전",
+      "twistTitles": [
+        "위험한 eval 호출 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-1__moment-code-static-security-1__twist-code-static-security-3",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "고객 웹사이트를 납품하는 인디 SaaS 개발자",
+      "moment": "웹 프로젝트 ZIP을 배포 서버에 올리기 직전",
+      "twistTitles": [
+        "코드 속 전체 허용 CORS 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-1__moment-code-static-security-2__twist-code-static-security-1",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "고객 웹사이트를 납품하는 인디 SaaS 개발자",
+      "moment": "AI가 만든 코드를 기존 프로젝트에 합친 직후",
+      "twistTitles": [
+        "코드 속 비밀키 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-1__moment-code-static-security-2__twist-code-static-security-2",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "고객 웹사이트를 납품하는 인디 SaaS 개발자",
+      "moment": "AI가 만든 코드를 기존 프로젝트에 합친 직후",
+      "twistTitles": [
+        "위험한 eval 호출 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-1__moment-code-static-security-2__twist-code-static-security-3",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "고객 웹사이트를 납품하는 인디 SaaS 개발자",
+      "moment": "AI가 만든 코드를 기존 프로젝트에 합친 직후",
+      "twistTitles": [
+        "코드 속 전체 허용 CORS 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-1__moment-code-static-security-3__twist-code-static-security-1",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "고객 웹사이트를 납품하는 인디 SaaS 개발자",
+      "moment": "검수된 코드를 다른 팀에 넘기기 직전",
+      "twistTitles": [
+        "코드 속 비밀키 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-1__moment-code-static-security-3__twist-code-static-security-2",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "고객 웹사이트를 납품하는 인디 SaaS 개발자",
+      "moment": "검수된 코드를 다른 팀에 넘기기 직전",
+      "twistTitles": [
+        "위험한 eval 호출 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-1__moment-code-static-security-3__twist-code-static-security-3",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "고객 웹사이트를 납품하는 인디 SaaS 개발자",
+      "moment": "검수된 코드를 다른 팀에 넘기기 직전",
+      "twistTitles": [
+        "코드 속 전체 허용 CORS 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-2__moment-code-static-security-1__twist-code-static-security-1",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "여러 고객 프로젝트를 검수하는 개발 대행사 리드",
+      "moment": "웹 프로젝트 ZIP을 배포 서버에 올리기 직전",
+      "twistTitles": [
+        "코드 속 비밀키 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-2__moment-code-static-security-1__twist-code-static-security-2",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "여러 고객 프로젝트를 검수하는 개발 대행사 리드",
+      "moment": "웹 프로젝트 ZIP을 배포 서버에 올리기 직전",
+      "twistTitles": [
+        "위험한 eval 호출 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-2__moment-code-static-security-1__twist-code-static-security-3",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "여러 고객 프로젝트를 검수하는 개발 대행사 리드",
+      "moment": "웹 프로젝트 ZIP을 배포 서버에 올리기 직전",
+      "twistTitles": [
+        "코드 속 전체 허용 CORS 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-1__moment-code-static-security-1__twist-code-static-security-1",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "고객 웹사이트를 납품하는 인디 SaaS 개발자",
+      "moment": "웹 프로젝트 ZIP을 배포 서버에 올리기 직전",
+      "twistTitles": [
+        "코드 속 비밀키 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-2__moment-code-static-security-2__twist-code-static-security-2",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "여러 고객 프로젝트를 검수하는 개발 대행사 리드",
+      "moment": "AI가 만든 코드를 기존 프로젝트에 합친 직후",
+      "twistTitles": [
+        "위험한 eval 호출 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-3__moment-code-static-security-1__twist-code-static-security-3",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "사내 웹 도구를 운영하는 풀스택 개발자",
+      "moment": "웹 프로젝트 ZIP을 배포 서버에 올리기 직전",
+      "twistTitles": [
+        "코드 속 전체 허용 CORS 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-2__moment-code-static-security-2__twist-code-static-security-3",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "여러 고객 프로젝트를 검수하는 개발 대행사 리드",
+      "moment": "AI가 만든 코드를 기존 프로젝트에 합친 직후",
+      "twistTitles": [
+        "코드 속 전체 허용 CORS 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-3__moment-code-static-security-3__twist-code-static-security-1",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "사내 웹 도구를 운영하는 풀스택 개발자",
+      "moment": "검수된 코드를 다른 팀에 넘기기 직전",
+      "twistTitles": [
+        "코드 속 비밀키 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-3__moment-code-static-security-2__twist-code-static-security-3",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "사내 웹 도구를 운영하는 풀스택 개발자",
+      "moment": "AI가 만든 코드를 기존 프로젝트에 합친 직후",
+      "twistTitles": [
+        "코드 속 전체 허용 CORS 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-3__moment-code-static-security-2__twist-code-static-security-2",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "사내 웹 도구를 운영하는 풀스택 개발자",
+      "moment": "AI가 만든 코드를 기존 프로젝트에 합친 직후",
+      "twistTitles": [
+        "위험한 eval 호출 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-3__moment-code-static-security-2__twist-code-static-security-1",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "사내 웹 도구를 운영하는 풀스택 개발자",
+      "moment": "AI가 만든 코드를 기존 프로젝트에 합친 직후",
+      "twistTitles": [
+        "코드 속 비밀키 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-3__moment-code-static-security-1__twist-code-static-security-2",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "사내 웹 도구를 운영하는 풀스택 개발자",
+      "moment": "웹 프로젝트 ZIP을 배포 서버에 올리기 직전",
+      "twistTitles": [
+        "위험한 eval 호출 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-3__moment-code-static-security-1__twist-code-static-security-1",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "사내 웹 도구를 운영하는 풀스택 개발자",
+      "moment": "웹 프로젝트 ZIP을 배포 서버에 올리기 직전",
+      "twistTitles": [
+        "코드 속 비밀키 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-2__moment-code-static-security-3__twist-code-static-security-3",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "여러 고객 프로젝트를 검수하는 개발 대행사 리드",
+      "moment": "검수된 코드를 다른 팀에 넘기기 직전",
+      "twistTitles": [
+        "코드 속 전체 허용 CORS 위치 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-2__moment-code-static-security-3__twist-code-static-security-2",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "여러 고객 프로젝트를 검수하는 개발 대행사 리드",
+      "moment": "검수된 코드를 다른 팀에 넘기기 직전",
+      "twistTitles": [
+        "위험한 eval 호출 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.991315,
+      "id": "code-static-security-locations__payer-code-static-security-2__moment-code-static-security-3__twist-code-static-security-1",
+      "scenarioId": "code-static-security-locations",
+      "sourceName": "Beesecure",
+      "payer": "여러 고객 프로젝트를 검수하는 개발 대행사 리드",
+      "moment": "검수된 코드를 다른 팀에 넘기기 직전",
+      "twistTitles": [
+        "코드 속 비밀키 위치 확인 보고서"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-3__moment-web-component-code-1__twist-web-component-code-2",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "디자인 시스템을 정리하는 UI 엔지니어",
+      "moment": "참고할 컴포넌트가 최종 확정된 직후",
+      "twistTitles": [
+        "웹 컴포넌트 React JSX 변환 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-2__moment-web-component-code-3__twist-web-component-code-1",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "고객 사이트를 제작하는 퍼블리셔",
+      "moment": "구현 코드 구조를 팀에 넘기기 전",
+      "twistTitles": [
+        "인라인 스타일 제거 HTML CSS 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-2__moment-web-component-code-3__twist-web-component-code-2",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "고객 사이트를 제작하는 퍼블리셔",
+      "moment": "구현 코드 구조를 팀에 넘기기 전",
+      "twistTitles": [
+        "웹 컴포넌트 React JSX 변환 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-2__moment-web-component-code-3__twist-web-component-code-3",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "고객 사이트를 제작하는 퍼블리셔",
+      "moment": "구현 코드 구조를 팀에 넘기기 전",
+      "twistTitles": [
+        "웹 컴포넌트 Tailwind 클래스 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-3__moment-web-component-code-1__twist-web-component-code-1",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "디자인 시스템을 정리하는 UI 엔지니어",
+      "moment": "참고할 컴포넌트가 최종 확정된 직후",
+      "twistTitles": [
+        "인라인 스타일 제거 HTML CSS 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-3__moment-web-component-code-3__twist-web-component-code-1",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "디자인 시스템을 정리하는 UI 엔지니어",
+      "moment": "구현 코드 구조를 팀에 넘기기 전",
+      "twistTitles": [
+        "인라인 스타일 제거 HTML CSS 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-3__moment-web-component-code-1__twist-web-component-code-3",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "디자인 시스템을 정리하는 UI 엔지니어",
+      "moment": "참고할 컴포넌트가 최종 확정된 직후",
+      "twistTitles": [
+        "웹 컴포넌트 Tailwind 클래스 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-3__moment-web-component-code-2__twist-web-component-code-1",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "디자인 시스템을 정리하는 UI 엔지니어",
+      "moment": "같은 모양을 손으로 다시 만들기 직전",
+      "twistTitles": [
+        "인라인 스타일 제거 HTML CSS 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-3__moment-web-component-code-2__twist-web-component-code-2",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "디자인 시스템을 정리하는 UI 엔지니어",
+      "moment": "같은 모양을 손으로 다시 만들기 직전",
+      "twistTitles": [
+        "웹 컴포넌트 React JSX 변환 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-3__moment-web-component-code-2__twist-web-component-code-3",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "디자인 시스템을 정리하는 UI 엔지니어",
+      "moment": "같은 모양을 손으로 다시 만들기 직전",
+      "twistTitles": [
+        "웹 컴포넌트 Tailwind 클래스 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-2__moment-web-component-code-2__twist-web-component-code-2",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "고객 사이트를 제작하는 퍼블리셔",
+      "moment": "같은 모양을 손으로 다시 만들기 직전",
+      "twistTitles": [
+        "웹 컴포넌트 React JSX 변환 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-2__moment-web-component-code-2__twist-web-component-code-3",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "고객 사이트를 제작하는 퍼블리셔",
+      "moment": "같은 모양을 손으로 다시 만들기 직전",
+      "twistTitles": [
+        "웹 컴포넌트 Tailwind 클래스 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-1__moment-web-component-code-3__twist-web-component-code-2",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "레퍼런스 화면을 구현하는 프론트엔드 개발자",
+      "moment": "구현 코드 구조를 팀에 넘기기 전",
+      "twistTitles": [
+        "웹 컴포넌트 React JSX 변환 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-2__moment-web-component-code-2__twist-web-component-code-1",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "고객 사이트를 제작하는 퍼블리셔",
+      "moment": "같은 모양을 손으로 다시 만들기 직전",
+      "twistTitles": [
+        "인라인 스타일 제거 HTML CSS 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-2__moment-web-component-code-1__twist-web-component-code-3",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "고객 사이트를 제작하는 퍼블리셔",
+      "moment": "참고할 컴포넌트가 최종 확정된 직후",
+      "twistTitles": [
+        "웹 컴포넌트 Tailwind 클래스 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-2__moment-web-component-code-1__twist-web-component-code-2",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "고객 사이트를 제작하는 퍼블리셔",
+      "moment": "참고할 컴포넌트가 최종 확정된 직후",
+      "twistTitles": [
+        "웹 컴포넌트 React JSX 변환 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-2__moment-web-component-code-1__twist-web-component-code-1",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "고객 사이트를 제작하는 퍼블리셔",
+      "moment": "참고할 컴포넌트가 최종 확정된 직후",
+      "twistTitles": [
+        "인라인 스타일 제거 HTML CSS 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-1__moment-web-component-code-3__twist-web-component-code-3",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "레퍼런스 화면을 구현하는 프론트엔드 개발자",
+      "moment": "구현 코드 구조를 팀에 넘기기 전",
+      "twistTitles": [
+        "웹 컴포넌트 Tailwind 클래스 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-1__moment-web-component-code-3__twist-web-component-code-1",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "레퍼런스 화면을 구현하는 프론트엔드 개발자",
+      "moment": "구현 코드 구조를 팀에 넘기기 전",
+      "twistTitles": [
+        "인라인 스타일 제거 HTML CSS 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-1__moment-web-component-code-2__twist-web-component-code-3",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "레퍼런스 화면을 구현하는 프론트엔드 개발자",
+      "moment": "같은 모양을 손으로 다시 만들기 직전",
+      "twistTitles": [
+        "웹 컴포넌트 Tailwind 클래스 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-1__moment-web-component-code-2__twist-web-component-code-2",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "레퍼런스 화면을 구현하는 프론트엔드 개발자",
+      "moment": "같은 모양을 손으로 다시 만들기 직전",
+      "twistTitles": [
+        "웹 컴포넌트 React JSX 변환 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-1__moment-web-component-code-2__twist-web-component-code-1",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "레퍼런스 화면을 구현하는 프론트엔드 개발자",
+      "moment": "같은 모양을 손으로 다시 만들기 직전",
+      "twistTitles": [
+        "인라인 스타일 제거 HTML CSS 코드"
+      ]
+    },
+    {
+      "similarity": 0.986003,
+      "id": "web-component-code-extractor__payer-web-component-code-1__moment-web-component-code-1__twist-web-component-code-3",
+      "scenarioId": "web-component-code-extractor",
+      "sourceName": "scrapestudio.co",
+      "payer": "레퍼런스 화면을 구현하는 프론트엔드 개발자",
+      "moment": "참고할 컴포넌트가 최종 확정된 직후",
+      "twistTitles": [
+        "웹 컴포넌트 Tailwind 클래스 코드"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "results": [
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 고객에게 전달 직전 공개 Notion URL 하나를 입력하면 표 페이지 나눔을 보존해 잘림 없는 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 전달 직전 공개 Notion URL 하나를 입력하면 이미지 원본 비율을 보존해 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 고객 전달 직전 공개 Notion URL 하나를 입력하면 다크 페이지의 인쇄 대비를 보존한 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 인쇄 상태를 검수할 때 공개 Notion URL 하나를 입력하면 표 페이지 나눔을 보존한 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 인쇄 검수 직전 공개 Notion URL 하나를 입력하면 이미지 비율을 보존한 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 인쇄 검수 시 공개 Notion URL 하나를 입력하면 다크 페이지 대비를 보존한 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 원본을 열 수 없는 사람에게 보낼 때 공개 Notion URL 하나를 입력하면 표가 잘리지 않는 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 원본을 열 수 없는 사람에게 보낼 때 공개 Notion URL 하나를 입력하면 이미지 비율이 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 원본을 열 수 없는 사람에게 보낼 때 공개 Notion URL 하나를 입력하면 다크 페이지 대비가 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교사가 수업 자료 전달 직전 공개 Notion URL 하나를 입력하면 표 페이지 나눔을 보존한 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교사가 수업 자료 전달 직전 공개 Notion URL 하나를 입력하면 이미지 비율이 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교사가 수업 자료 전달 직전 공개 Notion URL 하나를 입력하면 다크 페이지 대비가 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교사가 인쇄 상태를 검수할 때 공개 Notion URL 하나를 입력하면 표 페이지 나눔을 보존한 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교사가 인쇄 상태를 검수할 때 공개 Notion URL 하나를 입력하면 이미지 비율이 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교사가 인쇄 상태를 검수할 때 공개 Notion URL 하나를 입력하면 다크 페이지 대비가 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교사가 원본을 열 수 없는 사람에게 보낼 때 공개 Notion URL 하나를 입력하면 표가 잘리지 않는 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교사가 원본을 열 수 없는 사람에게 보낼 때 공개 Notion URL 하나를 입력하면 이미지 비율이 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교사가 원본을 열 수 없는 사람에게 보낼 때 공개 Notion URL 하나를 입력하면 다크 페이지 대비가 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팀 리더가 협력사 전달 직전 공개 Notion URL 하나를 입력하면 표 페이지 나눔을 보존한 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팀 리더가 협력사 전달 직전 공개 Notion URL 하나를 입력하면 이미지 비율이 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팀 리더가 협력사 전달 직전 공개 Notion URL 하나를 입력하면 다크 페이지 대비가 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팀 리더가 인쇄 상태를 검수할 때 공개 Notion URL 하나를 입력하면 표 페이지 나눔을 보존한 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팀 리더가 인쇄 상태를 검수할 때 공개 Notion URL 하나를 입력하면 이미지 비율이 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팀 리더가 인쇄 상태를 검수할 때 공개 Notion URL 하나를 입력하면 다크 페이지 대비가 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팀 리더가 원본을 열 수 없는 사람에게 보낼 때 공개 Notion URL 하나를 입력하면 표가 잘리지 않는 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팀 리더가 원본을 열 수 없는 사람에게 보낼 때 공개 Notion URL 하나를 입력하면 이미지 비율이 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팀 리더가 원본을 열 수 없는 사람에게 보낼 때 공개 Notion URL 하나를 입력하면 다크 페이지 대비가 보존된 PDF 한 개를 제공하므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    }
+  ]
+}

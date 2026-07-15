@@ -1,0 +1,86 @@
+{
+  "batch_id": "EXH-014",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "sonnet",
+  "audit_model": "sonnet",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 99,
+  "decision_counts": {
+    "Fail": 79,
+    "Candidate": 10,
+    "Merge": 9,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 86,
+      "sample": [
+        "chrome_web_store:hjphhbgleggdljkdlmlblbamlnkmdgag",
+        "trustmrr:howsthisgoing",
+        "app_store:350742701",
+        "chrome_web_store:gomekmidlodglbbmalcneegieacbdmki",
+        "chrome_web_store:fdenmiceboghfohpgafcljihfieboodl",
+        "trustmrr:miniaturia",
+        "app_store:545519333",
+        "trustmrr:open-claw-org",
+        "app_store:6756174280"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:miniaturia",
+          "decision": "Candidate",
+          "reason": "주제/이미지 입력 → AI 썸네일 생성 → 즉시 다운로드 가능한 썸네일 결과물로 반나절 안에 만들 수 있는 세로 조각."
+        }
+      ],
+      "false_reject_rate": 0.1111111111111111
+    },
+    {
+      "round": 2,
+      "fail_count": 80,
+      "sample": [
+        "app_store:1593176959",
+        "app_store:6474284856",
+        "app_store:1571083536",
+        "chrome_web_store:kekchpijkaijdcppfehiplaghiokpcld",
+        "chrome_web_store:djhmkpliepbdnjpofgmcchjhgjhiomdj",
+        "chrome_web_store:bbcgolpihcpibnjpnafbaccaclagclmf",
+        "app_store:6451431247",
+        "app_store:640564761"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6474284856",
+          "decision": "Merge",
+          "reason": "습관 기록 입력→오늘의 작은 행동 제안→완료 체크라는 입력·처리·즉시결과 구조가 meal-habit-loop와 실질적으로 동일(대상이 식사냐 범용 루틴이냐만 다름)"
+        },
+        {
+          "key": "app_store:640564761",
+          "decision": "Candidate",
+          "reason": "카메라로 찍은 사진 연속 입력 하나를 어니언스킨 정렬 처리해 재생 가능한 짧은 클립이라는 제목만 봐도 보이는 산출물로 반나절~2일에 만들 수 있음"
+        }
+      ],
+      "false_reject_rate": 0.25
+    },
+    {
+      "round": 3,
+      "fail_count": 79,
+      "sample": [
+        "app_store:1062022008",
+        "app_store:6738967378",
+        "app_store:6742218180",
+        "chrome_web_store:kekchpijkaijdcppfehiplaghiokpcld",
+        "chrome_web_store:djhmkpliepbdnjpofgmcchjhgjhiomdj",
+        "app_store:288429040",
+        "trustmrr:bidcraftr",
+        "app_store:6451431247"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

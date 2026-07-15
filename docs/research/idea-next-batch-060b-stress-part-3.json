@@ -1,0 +1,437 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-298398207-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "주행거리·연료비·정비·여행비를 지속 기록해야 월간 통계와 CSV가 나오므로 단일 입력·1회 처리·1결과 세로 조각이 아니다.",
+      "risk_flags": [
+        "prior_logging",
+        "multi_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-298398207-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "지난 수리 내역과 차량비를 미리 축적해야 하며 제주 여행비 분리까지 요구해 즉시 단일 결과를 만들 수 없다.",
+      "risk_flags": [
+        "prior_logging",
+        "scope_creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-298398207-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "자동차검사 전 정비 이력은 사전에 계속 기록해야 확인할 수 있어 문제 순간의 단일 입력·처리·결과가 아니다.",
+      "risk_flags": [
+        "prior_logging"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6458534300-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "드럼 마이크 녹음 또는 영상 URL 하나를 받아 음정을 측정하고 목표 튜닝 수치 한 세트를 즉시 보여주는 구체적 조합이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6458534300-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레퍼런스 음과 내 스네어를 함께 대조하고 러그별 조정까지 해야 하므로 입력과 처리 범위가 단일 조각을 넘는다.",
+      "risk_flags": [
+        "multi_input",
+        "scope_creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6458534300-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "유튜브 음색 재현에는 레퍼런스와 마이크 녹음이 모두 필요하고 러그별 측정 결과도 여러 개라 단일 결과가 아니다.",
+      "risk_flags": [
+        "multi_input",
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-336901296-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한으로 바람·날씨·파도 예보를 조회하는 기능은 기본 날씨 앱에서 더 쉽게 얻을 수 있다.",
+      "risk_flags": [
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-336901296-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한으로 항구의 시간별 바람·파도를 보는 것은 기본 날씨 서비스로 대체 가능해 독립적인 한 끗 가치가 약하다.",
+      "risk_flags": [
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-336901296-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한 입력 후 풍향·돌풍·파도를 조회하는 흐름이 범용 날씨 앱과 겹쳐 세로 조각의 차별성이 없다.",
+      "risk_flags": [
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-978307846-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단일 기기의 위치 권한으로 산행 중 경로를 한 번 기록해 GPX 파일 하나를 내보내는 흐름은 가능하지만 제목만으로 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-978307846-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "하산 후 경로를 확인하려면 산행 전에 위치 기록을 켜야 하므로 문제 순간에 새로 처리할 수 없는 사전 기록 의존 조합이다.",
+      "risk_flags": [
+        "prior_logging"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-978307846-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단일 위치 권한으로 라이딩 경로를 기록해 GPX 트랙 하나를 만들 수 있지만 OS Maps라는 제목만으로 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6446832902-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "패턴·색상·텍스처를 조합해 배경을 만드는 기능은 기본 배경 편집기나 범용 디자인·AI 도구가 더 쉽게 제공한다.",
+      "risk_flags": [
+        "generic_tool",
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6446832902-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "패턴·색상 입력만으로 카카오톡 프로필과 맞춘 홈·잠금화면 세트를 만들려면 외부 프로필 정보가 추가로 필요하고 결과도 복수다.",
+      "risk_flags": [
+        "missing_input",
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6446832902-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "패턴·색상·텍스처를 섞어 테마 배경을 만드는 것은 범용 디자인 앱이나 생성형 AI 한 번으로 더 쉽게 할 수 있다.",
+      "risk_flags": [
+        "generic_tool"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-951627022-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아날로그 사진 여러 장을 한 번 촬영해 경계·회전·크롭·색상 보정 후 디지털 사진 묶음으로 만드는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-951627022-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "앨범 사진을 가족별로 묶으려면 얼굴 분류라는 원본에 없는 처리가 추가되어 단일 스캔 결과를 벗어난다.",
+      "risk_flags": [
+        "new_mechanism",
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-951627022-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "빛바랜 졸업사진 한 장을 사진으로 입력해 경계·회전·크롭·색상 보정을 처리하고 보정 사진 하나를 결과로 내는 조합이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-586447913-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "PDF를 Word로 변환해 편집하는 기능은 Microsoft Word 자체와 범용 문서 도구가 이미 제공하므로 더 편한 대안이 있다.",
+      "risk_flags": [
+        "os_basic",
+        "generic_tool"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-586447913-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "PDF 변환 뒤 금액과 납기를 수정하는 것은 변환이라는 단일 결과를 넘어 문서 편집까지 요구하며 Word에서 바로 가능하다.",
+      "risk_flags": [
+        "os_basic",
+        "scope_creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-586447913-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "PDF를 Word로 바꾼 뒤 과제 초안을 편집하는 기능은 범용 문서 편집기와 AI가 더 쉽게 수행한다.",
+      "risk_flags": [
+        "generic_tool",
+        "scope_creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-365745482-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "GPX 파일 하나를 입력해 경로·고도·속도를 구조화하고 지도와 고도 그래프를 보여줄 수 있지만 제목만으로 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear",
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-365745482-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "GPX 파일 하나에서 속도·고도 정보를 계산해 지도와 그래프로 보여주는 흐름은 가능하지만 제목이 결과를 충분히 설명하지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-365745482-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "GPX 경로 하나를 입력해 오프라인 지도 위 트랙을 표시하는 조각은 가능하지만 원본 결과가 지도와 그래프로 복수이고 제목도 모호하다.",
+      "risk_flags": [
+        "title_unclear",
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1176374647-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "혈당 또는 인슐린 수치를 기록해 저장하는 기능은 Apple 건강 앱의 기본 기록 기능으로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic",
+        "medical_context"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1176374647-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "결제자의 혈압 기록은 원본 입력인 혈당·인슐린과 불일치해 처리 대상이 명확하지 않다.",
+      "risk_flags": [
+        "input_mismatch",
+        "medical_context"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1176374647-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "혈압 수치를 건강 데이터에 남기는 것은 원본 메커니즘의 혈당·인슐린 기록과 달라 새 입력·처리가 필요하다.",
+      "risk_flags": [
+        "input_mismatch",
+        "new_mechanism",
+        "medical_context"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-313147645-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "신문 URL 하나를 번역하는 결과는 범용 AI나 브라우저 번역 기능이 더 쉽게 제공하므로 독립적인 세로 조각 가치가 없다.",
+      "risk_flags": [
+        "generic_ai",
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-313147645-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "해외 정책 원문 URL을 한국어로 번역하는 것은 범용 번역·AI 도구로 한 번에 처리할 수 있다.",
+      "risk_flags": [
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-313147645-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "외국 신문 링크를 원하는 언어로 번역하는 기능은 브라우저 번역이나 범용 AI가 더 편해 규칙 6을 위반한다.",
+      "risk_flags": [
+        "generic_ai",
+        "os_basic"
+      ]
+    }
+  ]
+}

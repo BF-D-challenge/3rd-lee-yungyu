@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1441536768-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "재료·중량·조리 설정을 입력하면 수비드 온도와 타이머를 계산해 완료·과조리 경고를 주는 흐름은 구체적이지만, 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "broad_ai_overlap"
+      ]
+    }
+  ]
+}

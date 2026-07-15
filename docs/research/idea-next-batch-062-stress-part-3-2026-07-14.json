@@ -1,0 +1,394 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1039012558-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "반려동물 사진 1장을 Minecraft 텍스처로 편집해 게임 스킨 이미지 1개를 즉시 내보내므로 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1039012558-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "음식 사진에서 색을 자동 추출해 월드에 적용하려면 색상 추출과 게임 월드 적용이라는 원본에 없는 처리가 추가된다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "external_apply"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1039012558-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "학교 로고 사진 1장을 참고해 블록 텍스처를 편집하고 수정된 텍스처 이미지 1개를 내보내므로 원본 편집 흐름과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-417188140-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "판매가와 세율을 입력해 부가세 포함 금액을 계산하고 공급가액과 세금 1세트를 즉시 보여주므로 실제 판매 순간에 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-417188140-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "부가세 포함 금액과 세율을 입력해 공급가액을 역산하고 세전·세금·총액 1세트를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-417188140-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여러 영수증의 세금 합계를 처리하려면 복수 금액 입력과 집계 기능이 필요해 원본의 단일 상품 계산 세로 조각을 벗어난다.",
+      "risk_flags": [
+        "multi_input",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1483037022-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "그림과 색상을 입력해 말풍선·칸·채색을 편집하고 완성된 웹툰 컷 1개를 즉시 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1483037022-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이돌 의상 사진을 참고 입력으로 사용해 브러시·색상·레이어로 캐릭터를 채색하고 완성 그림 1개를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1483037022-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카페 사진에서 팔레트를 추출해 적용하려면 원본의 그림 편집 외에 이미지 색상 분석 기능을 새로 추가해야 한다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "generic_image_processing"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1477446992-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "108배 동작을 아이폰 근접 센서로 세고 경과시간을 계산해 횟수·총시간·평균시간 1세트를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1477446992-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "수행 중 센서가 동작 횟수와 시간을 측정하고 현재 속도를 횟수·경과시간·평균시간으로 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1477446992-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "108배 동작을 센서로 세어 총시간과 평균시간을 보여주는 흐름은 맞지만 가족 공유가 결과인지 단순 확인인지 문구가 불명확하다.",
+      "risk_flags": [
+        "sharing_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-321926476-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "투구 시작·포구 탭과 거리값을 입력해 시간 기반 구속을 계산하고 투구 속도 1개와 CSV 기록을 즉시 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-321926476-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "투구 시작·종료 탭으로 한 투구의 시간을 재고 거리 기반 구속 수치와 기록을 즉시 보여줘 피로 전 비교가 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-321926476-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "탭 타이밍으로 구속과 CSV를 만들 수 있지만 투수별 기록을 구분하려면 선수 식별 입력이 추가되는지 문구가 불명확하다.",
+      "risk_flags": [
+        "entity_label_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-586060296-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "양손 동작으로 타이머를 시작·정지해 큐브 기록시간과 평균·Ao5·Ao12 통계 1세트를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-586060296-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "각 기록의 시간과 평균 통계는 만들 수 있지만 2×2·3×3별 분리 집계에는 큐브 종류 선택과 누적 기록이 필요해 입력 범위가 불명확하다.",
+      "risk_flags": [
+        "multi_session",
+        "category_input_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-586060296-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "다섯 번의 시작·정지 동작을 측정해 기록시간과 Ao5·평균 통계 1세트를 즉시 계산한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-405239907-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단일 기기 GPS 권한으로 배달 한 건의 주행을 기록하고 거리·시간·속도 통계 1세트를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-405239907-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "주행 기록에 장소명을 붙여 저장하려면 원본의 GPS 측정·통계 외에 이름 입력과 저장 관리 기능이 추가된다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "persistent_storage"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-405239907-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "지도와 함께 경로를 다시 보려면 원본의 주행 통계·속도 그래프 외에 지도 표시 기능이 필요하다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "map_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6502340091-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "PDF 1개를 입력해 텍스트를 한국어 음성으로 변환하고 이동 중 들을 오디오 1개를 즉시 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6502340091-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기사나 자격증 PDF 1개를 입력해 음성으로 변환하고 재생속도를 조정한 청취용 오디오 1개를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6502340091-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "문서를 짧은 팟캐스트로 만들려면 TTS를 넘어 요약·구성 생성이 필요해 범용 AI 한 번으로 처리하기 쉽고 원본 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "generic_ai_overlap"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1289128334-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "양궁 한 라운드의 점수를 입력해 실력등급과 핸디캡 1세트를 계산하고 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1289128334-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "점수 입력으로 등급과 핸디캡을 계산할 수 있지만 코치에게 보낼 요약이라는 전달 결과가 원본 결과에 포함되는지 불명확하다.",
+      "risk_flags": [
+        "sharing_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1289128334-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "화살 위치를 함께 기록하려면 단순 궁술 점수 입력과 등급 계산 외에 위치 데이터 입력·기록 기능이 추가된다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "multi_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-478293637-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음악 파일 1개를 입력해 솔로 구간의 템포를 낮추고 반복 재생 구간 1개를 즉시 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-478293637-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "반주 파일 1개를 입력해 피치를 낮추고 원하는 구간을 반복해 강사용 연습 음원 1개를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-478293637-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "합주곡 파일 1개에서 어려운 네 마디를 지정해 반복 재생하고 연습용 구간 1개를 즉시 제공한다.",
+      "risk_flags": []
+    }
+  ]
+}

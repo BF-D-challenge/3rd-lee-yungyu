@@ -1,0 +1,133 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-328205875-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "터치로 과일·문자를 고르고 일치 여부를 처리해 도시락과 스티커를 주는 흐름은 구체적이지만 제목만으로 학습 문제와 최종 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-328205875-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "터치로 과일을 고르고 개수를 판정해 도시락과 스티커를 주는 흐름은 가능하지만 ‘1부터 10까지 세기’만으로는 즉시 결과가 제목에 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-328205875-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "터치로 재료를 선택하고 모양 차이를 판정해 도시락과 스티커를 주는 흐름은 가능하지만 제목의 문제와 결과가 추상적이다.",
+      "risk_flags": [
+        "title_unclear",
+        "asset_scope"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-328205875-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "터치로 과일을 고르고 개수를 판정해 도시락과 스티커를 주는 흐름은 가능하지만 ‘1부터 10까지 세기’만으로는 즉시 결과가 제목에 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-328205875-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "터치로 재료를 선택하고 모양 차이를 판정해 도시락과 스티커를 주는 흐름은 가능하지만 제목의 문제와 결과가 추상적이다.",
+      "risk_flags": [
+        "title_unclear",
+        "asset_scope"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-328205875-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "터치로 과일·문자를 고르고 첫소리와 색깔을 판정해 도시락과 스티커를 주는 흐름은 구체적이지만 제목만으로 학습 문제와 최종 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-328205875-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "터치로 재료를 선택하고 모양 차이를 판정해 도시락과 스티커를 주는 흐름은 가능하지만 제목의 문제와 결과가 추상적이다.",
+      "risk_flags": [
+        "title_unclear",
+        "asset_scope"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-328205875-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "터치로 과일·문자를 고르고 첫소리와 색깔을 판정해 도시락과 스티커를 주는 흐름은 구체적이지만 제목만으로 학습 문제와 최종 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-328205875-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "터치로 과일을 고르고 개수를 판정해 도시락과 스티커를 주는 흐름은 가능하지만 ‘1부터 10까지 세기’만으로는 즉시 결과가 제목에 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    }
+  ]
+}

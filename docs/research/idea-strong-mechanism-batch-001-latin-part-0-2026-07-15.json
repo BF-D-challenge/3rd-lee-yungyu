@@ -1,0 +1,120 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6443780213-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘멀리서 보이는 응원 부채 문구’는 부채 문구 텍스트 1개를 받아 굵은 외곽선 디자인 1회로 처리해 즉시 응원용 이미지 1장을 제공하며 콘서트 전날 팬의 필요 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6443780213-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘긴 구호 두 줄 부채 글자’는 문구 텍스트 1개를 두 줄로 한 번 배치해 즉시 응원용 이미지 1장을 제공하며 팬미팅 입장 전 팬의 필요 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6443780213-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘부채 크기에 맞춘 응원 문구’는 문구 텍스트 1개를 인쇄 크기에 맞춘 이미지 1장으로 처리하지만 아이돌 콘서트 팬의 결제자와 야구장 출발 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6443780213-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘긴 구호 두 줄 부채 글자’는 문구 텍스트 1개를 두 줄로 한 번 배치해 즉시 응원용 이미지 1장을 제공하며 팬클럽 총무가 팬미팅 전 제작하는 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6443780213-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘부채 크기에 맞춘 응원 문구’는 문구 텍스트 1개를 인쇄 크기에 맞춘 이미지 1장으로 한 번 처리하며 팬클럽 총무의 팬미팅 입장 전 제작 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6443780213-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘멀리서 보이는 응원 부채 문구’는 문구 텍스트 1개를 굵은 외곽선 이미지 1장으로 처리하지만 팬미팅 응원물을 준비하는 총무의 결제자와 야구장 출발 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6443780213-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘부채 크기에 맞춘 응원 문구’는 문구 텍스트 1개를 인쇄 크기에 맞춘 이미지 1장으로 처리하지만 야구장 관중의 결제자와 콘서트 전날 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6443780213-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘멀리서 보이는 응원 부채 문구’는 문구 텍스트 1개를 굵은 외곽선 이미지 1장으로 처리하지만 야구장 관중의 결제자와 팬미팅 입장 전 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6443780213-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘긴 구호 두 줄 부채 글자’는 문구 텍스트 1개를 두 줄로 한 번 배치해 즉시 응원용 이미지 1장을 제공하며 야구장 관중이 출발 전 준비하는 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    }
+  ]
+}

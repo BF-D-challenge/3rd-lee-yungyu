@@ -1,0 +1,405 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-608540795-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "연습 세션 녹음을 입력해 음정 점수와 그래프를 내는 흐름은 가능하지만 제목만으로 그래프 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title-ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-608540795-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "연습 세션 녹음에서 박자·음정 그래프를 내는 처리는 가능하지만 밴드 연주자와 찬송가 합주라는 대상·상황이 자연스럽게 맞지 않는다.",
+      "risk_flags": [
+        "payer-twist-mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-608540795-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "연습 세션 녹음에서 음정 점수와 그래프를 내지만 개인 강사의 레슨 기록 결제자와 대학 실기곡 결과가 어긋난다.",
+      "risk_flags": [
+        "payer-twist-mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-427459998-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "급여·공제액을 입력해 PAYE 세율로 계산하는 원본 흐름은 영국용인데 한국 월급·부양가족 세금 계산으로 바꾸려면 다른 세법과 계산 로직이 필요하다.",
+      "risk_flags": [
+        "jurisdiction-mismatch",
+        "tax-risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-427459998-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "급여·공제액을 PAYE로 계산하는 처리만으로는 프리랜서 소득과 원천징수를 함께 산출할 수 없다.",
+      "risk_flags": [
+        "mechanism-mismatch",
+        "tax-risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-427459998-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "급여·공제액을 PAYE로 계산하는 원본과 달리 카드의 필요 순간은 프리랜서 수입 합산 세금 추정으로 서로 맞지 않는다.",
+      "risk_flags": [
+        "moment-mechanism-mismatch",
+        "tax-risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6751769519-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "감마·베타·오류함수 값을 입력해 함수 계산을 한 번 수행하고 고정밀 수치 결과를 보여주는 전문 계산기 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6751769519-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "베타함수 등 특수함수 입력을 계산해 고정밀 결과를 즉시 보여주므로 대학원생의 수식 검산 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6751769519-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오류함수·베타함수 입력을 받아 고정밀 특수함수 값을 한 번 계산해 보여주는 흐름이 연구원의 필요와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6738232291-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "GPX 파일 하나를 입력해 지도 경로로 변환하고 인쇄 가능한 결과를 내므로 라이더의 출발 전 확인 순간과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6738232291-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "GPX 파일을 지도에 표시해 인쇄하는 처리는 명확하지만 운전 연수 코스 결제자와 둘레길 GPX 결과가 맞지 않는다.",
+      "risk_flags": [
+        "payer-twist-mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6738232291-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "등산 GPX를 살피는 산악 동호인의 순간인데 결과 트위스트가 운전면허 시험 코스 GPX로 바뀌어 대상과 상황이 어긋난다.",
+      "risk_flags": [
+        "payer-twist-mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1458740001-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "회식 사진을 입력해 인물을 잘라내고 문구를 붙여 채팅용 스티커 파일로 내보내는 단일 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1458740001-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "친구 사진을 입력해 피사체를 오려 캡션을 붙이고 메신저용 스티커로 저장하므로 크리에이터의 즉시 제작 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1458740001-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "덕질 사진을 입력해 오려내기와 한국어 캡션 처리를 거쳐 반응 스티커 팩을 만드는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1330314351-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영상 파일을 입력해 앞뒤를 자르고 저장·공유하는 기능은 스마트폰 기본 사진·영상 편집으로 더 편리하게 할 수 있다.",
+      "risk_flags": [
+        "os-basic-feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1330314351-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영상 파일에서 불필요한 구간을 잘라 저장하는 처리는 OS 기본 편집 기능과 차별되는 한 끗이 없다.",
+      "risk_flags": [
+        "os-basic-feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1330314351-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "릴스 영상의 도입부를 자르고 공유하는 단일 처리는 기본 갤러리 편집과 범용 앱으로 더 쉽게 해결된다.",
+      "risk_flags": [
+        "os-basic-feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760979290-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "스케치 사진을 입력해 종이색·그림자·번짐을 제거하고 투명 배경 선화 PNG 하나를 내보내는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760979290-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "손그림 사진을 입력해 페이지 노이즈를 정리하고 디지털 선화 파일 하나로 저장하므로 학생의 포트폴리오 정리 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760979290-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "누렇게 찍힌 스케치 사진을 입력해 종이색과 그림자를 제거한 투명 PNG 선화 하나를 만드는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1175031995-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한만으로 실시간 번개 데이터와 인근 알림을 제공하려면 지속적인 외부 데이터 수집과 모니터링이 필요해 입력 1개·결과 1개의 세로 조각을 벗어난다.",
+      "risk_flags": [
+        "continuous-monitoring",
+        "external-live-data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1175031995-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한 입력 뒤 실시간 낙뢰 탐지와 반복 알림을 제공하는 구조라 단일 처리·단일 결과가 아니며 안전 판단 위험도 있다.",
+      "risk_flags": [
+        "continuous-monitoring",
+        "safety-risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1175031995-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한만으로 캠핑장 주변 번개를 실시간 감시하고 알림까지 하려면 외부 실시간 데이터와 지속 실행이 필요하다.",
+      "risk_flags": [
+        "continuous-monitoring",
+        "external-live-data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-339407922-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "배관 굽힘 측정값을 입력해 오프셋·새들·90도 공식을 한 번 계산하고 굽힘 결과 하나를 보여주는 전문 도구 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-339407922-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "도면의 새들 치수를 입력해 배관 굽힘 공식을 처리하고 결과를 즉시 보여주므로 현장 검산 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-339407922-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "장애물 높이와 간격을 입력해 90도 굽힘값을 계산하고 수축을 포함한 결과를 하나로 보여주는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-580488128-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "출발역과 도착역으로 경로·시간·요금을 계산하는 기능은 카카오맵·네이버지도 같은 OS 범용 지도 서비스가 더 편리하게 제공한다.",
+      "risk_flags": [
+        "generic-map-feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-580488128-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "역 두 곳을 입력해 병원 이동 경로와 요금을 보여주는 처리는 기존 범용 지도·대중교통 앱으로 더 쉽게 해결된다.",
+      "risk_flags": [
+        "generic-map-feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-580488128-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "역 입력으로 막차와 환승 경로를 계산하는 기능은 실시간 교통 데이터가 필요한 범용 대중교통 앱 영역이며 기존 앱이 더 편리하다.",
+      "risk_flags": [
+        "generic-map-feature",
+        "external-live-data"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-qranalytica-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘투명 PNG QR 파일 만들기’는 목적지 URL 하나를 동적 QR로 처리해 PNG 하나를 만드는 결과는 분명하지만 온라인 쇼핑몰 포장 운영자와 행사 포스터 인쇄 직전의 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-qranalytica-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘A4 출력용 QR 테스트 만들기’는 목적지 URL 하나를 동적 QR로 처리해 PDF 하나를 만드는 흐름은 구체적이지만 온라인 쇼핑몰 포장 운영자와 상품 포장 스티커 발주 순간이 자연스럽게 연결되지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-qranalytica-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘인쇄용 SVG QR 파일 만들기’는 목적지 URL 하나를 동적 QR로 처리해 SVG 하나를 만드는 결과는 명확하지만 온라인 쇼핑몰 포장 운영자와 학원 안내문 PDF 게시 직전의 순간이 불일치한다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-qranalytica-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘A4 출력용 QR 테스트 만들기’는 지역 학원 안내문 제작자가 행사 포스터 직전에 목적지 URL 하나를 동적 QR로 처리해 실제 크기 확인용 PDF 하나를 즉시 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-qranalytica-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘인쇄용 SVG QR 파일 만들기’는 목적지 URL 하나를 동적 QR로 처리해 SVG 하나를 만드는 결과는 구체적이지만 지역 학원 안내문 제작자와 상품 포장 스티커 발주 직전의 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-qranalytica-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘투명 PNG QR 파일 만들기’는 지역 학원 안내문 제작자가 게시 직전 목적지 URL 하나를 동적 QR로 처리해 안내물에 얹기 쉬운 투명 PNG 하나를 즉시 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-gifduo-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘256픽셀 프로필 GIF 만들기’는 뉴스레터 운영자가 소개 페이지 교체 직전 정적 프로필 사진 하나를 애니메이션 처리해 256픽셀 GIF 하나를 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-gifduo-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘512픽셀 프로필 GIF 만들기’는 정적 프로필 사진 하나를 512픽셀 GIF 하나로 만드는 결과는 명확하지만 뉴스레터 운영자와 커뮤니티 프로필 업로드 직전의 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-gifduo-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘투명 여백 프로필 GIF 만들기’는 뉴스레터 운영자가 캠페인 프로필 게시 직전 정적 사진 하나를 애니메이션 처리해 투명 여백 정사각 GIF 하나를 즉시 받는 흐름이 성립한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-gifduo-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘512픽셀 프로필 GIF 만들기’는 정적 프로필 사진 하나를 512픽셀 GIF 하나로 만드는 처리는 구체적이지만 온라인 커뮤니티 운영자와 소개 페이지 프로필 교체 순간이 자연스럽게 연결되지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-gifduo-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘투명 여백 프로필 GIF 만들기’는 온라인 커뮤니티 운영자가 프로필 업로드 직전 정적 사진 하나를 애니메이션 처리해 투명 여백 정사각 GIF 하나를 즉시 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-gifduo-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘256픽셀 프로필 GIF 만들기’는 온라인 커뮤니티 운영자가 캠페인 프로필 게시 직전 정적 사진 하나를 애니메이션 처리해 256픽셀 GIF 하나를 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

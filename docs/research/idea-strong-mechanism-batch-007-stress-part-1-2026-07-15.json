@@ -1,0 +1,136 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-pdf-dino-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보고서 수치를 모으는 리서치 운영자가 업로드 직전 표 PDF 파일 1개를 입력하면 표의 중첩 항목을 한 번 구조화해 JSON 파일 1개를 받으므로 제목·순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-pdf-dino-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "문서 전환 실무자가 PDF를 받은 순간 표 PDF 파일 1개를 입력하면 행과 열을 한 번 추출해 바로 쓸 CSV 파일 1개를 받으므로 제목·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-videosubtitleone-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "숏폼 제작자가 게시 직전 말소리 영상 파일 1개를 입력하면 기본 자막 스타일을 한 번 적용해 자막이 입혀진 MP4 영상 1개를 받으므로 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-videosubtitleone-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "온라인 강사가 납품 직전 말소리 영상 파일 1개를 입력하면 발화 진행형 자막 효과를 한 번 적용해 노래방형 MP4 영상 1개를 받으므로 순간과 한 끗 변화가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-videosubtitleone-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "SaaS 마케팅 담당자가 공유 직전 말소리 영상 파일 1개를 입력하면 강조 자막 스타일을 한 번 적용해 핵심 단어가 색으로 표시된 MP4 영상 1개를 받지만 어떤 단어를 핵심으로 정하는지 카드에 명확하지 않다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-memosyne-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 고객의 확정 메시지 텍스트 1개를 입력하면 약속 날짜와 시간을 한 번 추출해 단일 약속 ICS 파일 1개를 받으므로 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-memosyne-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "개인 레슨 강사가 보강일과 과제 마감이 함께 온 메시지 텍스트 1개를 처리하지만 반복 수업 일정 1개만 ICS 파일로 만들어 payer와 순간의 여러 일정 정리 필요를 충족하지 못한다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-memosyne-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "행사 운영 담당자가 협력자의 일정과 담당 일이 담긴 메시지 텍스트 1개를 받는 순간에도 마감 할 일 1개만 ICS 파일로 변환해 payer와 순간의 공유·준비 일정 필요와 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-exam-forge-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "중고등학교 교사가 복습 직전 강의 노트 PDF 파일 1개를 입력하면 개념 확인 문제와 해설을 한 번 생성해 시험지 PDF 1개를 받지만 범용 AI 한 번으로도 같은 자료 기반 결과를 만들기 쉽다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-exam-forge-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "학원 강사가 보충 수업 직전 강의 자료 PDF 파일 1개를 입력하면 시간 제한 모의시험지와 해설을 한 번 생성해 PDF 1개를 받지만 범용 AI 한 번으로도 같은 자료 기반 결과를 만들기 쉽다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    }
+  ]
+}

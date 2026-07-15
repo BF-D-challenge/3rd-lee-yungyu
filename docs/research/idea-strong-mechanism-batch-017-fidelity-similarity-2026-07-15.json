@@ -1,0 +1,1145 @@
+{
+  "mode": "source-fidelity",
+  "model": {
+    "provider": "local",
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimension": 384,
+    "normalization": "L2",
+    "similarity": "cosine via normalized dot product"
+  },
+  "scope": {
+    "combinations": 162,
+    "scenarios": 6,
+    "singleTwist": 162,
+    "doubleTwist": 0
+  },
+  "policy": {
+    "minimum": 0.8,
+    "targetMaximum": 0.99,
+    "aboveTargetMaximum": "allowed because an overseas product mechanic may be copied exactly",
+    "portfolioDuplicates": "allowed and not evaluated in this mode"
+  },
+  "summary": {
+    "percentiles": {
+      "50": 0.977271,
+      "75": 0.990364,
+      "90": 0.991437,
+      "95": 0.991437,
+      "99": 0.991437,
+      "99.5": 0.991437,
+      "99.9": 0.991437,
+      "99.95": 0.991437,
+      "99.99": 0.991437,
+      "100": 0.991437
+    },
+    "belowMinimum": 0,
+    "inTargetBand": 108,
+    "exactAllowed": 54,
+    "pass": 162,
+    "passRate": 1.0
+  },
+  "lowest": [
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-1__moment-sitemap-llms-text-1__twist-sitemap-llms-text-1",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "자사 문서 사이트를 직접 운영하는 1인 SaaS 개발자",
+      "moment": "사이트맵을 새로 공개한 직후",
+      "twistTitles": [
+        "사이트맵 제목 URL llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-3__moment-sitemap-llms-text-3__twist-sitemap-llms-text-3",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "개발자 문서 포털을 배포하는 테크니컬 라이터",
+      "moment": "AI 크롤러 안내 파일을 배포하기 직전",
+      "twistTitles": [
+        "중복 경로 제거 llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-3__moment-sitemap-llms-text-3__twist-sitemap-llms-text-2",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "개발자 문서 포털을 배포하는 테크니컬 라이터",
+      "moment": "AI 크롤러 안내 파일을 배포하기 직전",
+      "twistTitles": [
+        "사이트맵 경로별 섹션 llms.txt 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-3__moment-sitemap-llms-text-3__twist-sitemap-llms-text-1",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "개발자 문서 포털을 배포하는 테크니컬 라이터",
+      "moment": "AI 크롤러 안내 파일을 배포하기 직전",
+      "twistTitles": [
+        "사이트맵 제목 URL llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-3__moment-sitemap-llms-text-2__twist-sitemap-llms-text-3",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "개발자 문서 포털을 배포하는 테크니컬 라이터",
+      "moment": "사이트 문서 구조를 크게 바꾼 직후",
+      "twistTitles": [
+        "중복 경로 제거 llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-3__moment-sitemap-llms-text-2__twist-sitemap-llms-text-2",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "개발자 문서 포털을 배포하는 테크니컬 라이터",
+      "moment": "사이트 문서 구조를 크게 바꾼 직후",
+      "twistTitles": [
+        "사이트맵 경로별 섹션 llms.txt 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-3__moment-sitemap-llms-text-2__twist-sitemap-llms-text-1",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "개발자 문서 포털을 배포하는 테크니컬 라이터",
+      "moment": "사이트 문서 구조를 크게 바꾼 직후",
+      "twistTitles": [
+        "사이트맵 제목 URL llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-3__moment-sitemap-llms-text-1__twist-sitemap-llms-text-3",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "개발자 문서 포털을 배포하는 테크니컬 라이터",
+      "moment": "사이트맵을 새로 공개한 직후",
+      "twistTitles": [
+        "중복 경로 제거 llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-3__moment-sitemap-llms-text-1__twist-sitemap-llms-text-2",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "개발자 문서 포털을 배포하는 테크니컬 라이터",
+      "moment": "사이트맵을 새로 공개한 직후",
+      "twistTitles": [
+        "사이트맵 경로별 섹션 llms.txt 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-2__moment-sitemap-llms-text-3__twist-sitemap-llms-text-3",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "여러 고객 사이트를 관리하는 콘텐츠 대행 실무자",
+      "moment": "AI 크롤러 안내 파일을 배포하기 직전",
+      "twistTitles": [
+        "중복 경로 제거 llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-2__moment-sitemap-llms-text-3__twist-sitemap-llms-text-2",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "여러 고객 사이트를 관리하는 콘텐츠 대행 실무자",
+      "moment": "AI 크롤러 안내 파일을 배포하기 직전",
+      "twistTitles": [
+        "사이트맵 경로별 섹션 llms.txt 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-2__moment-sitemap-llms-text-3__twist-sitemap-llms-text-1",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "여러 고객 사이트를 관리하는 콘텐츠 대행 실무자",
+      "moment": "AI 크롤러 안내 파일을 배포하기 직전",
+      "twistTitles": [
+        "사이트맵 제목 URL llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-2__moment-sitemap-llms-text-2__twist-sitemap-llms-text-3",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "여러 고객 사이트를 관리하는 콘텐츠 대행 실무자",
+      "moment": "사이트 문서 구조를 크게 바꾼 직후",
+      "twistTitles": [
+        "중복 경로 제거 llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-3__moment-sitemap-llms-text-1__twist-sitemap-llms-text-1",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "개발자 문서 포털을 배포하는 테크니컬 라이터",
+      "moment": "사이트맵을 새로 공개한 직후",
+      "twistTitles": [
+        "사이트맵 제목 URL llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-2__moment-sitemap-llms-text-2__twist-sitemap-llms-text-1",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "여러 고객 사이트를 관리하는 콘텐츠 대행 실무자",
+      "moment": "사이트 문서 구조를 크게 바꾼 직후",
+      "twistTitles": [
+        "사이트맵 제목 URL llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-1__moment-sitemap-llms-text-1__twist-sitemap-llms-text-2",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "자사 문서 사이트를 직접 운영하는 1인 SaaS 개발자",
+      "moment": "사이트맵을 새로 공개한 직후",
+      "twistTitles": [
+        "사이트맵 경로별 섹션 llms.txt 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-2__moment-sitemap-llms-text-2__twist-sitemap-llms-text-2",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "여러 고객 사이트를 관리하는 콘텐츠 대행 실무자",
+      "moment": "사이트 문서 구조를 크게 바꾼 직후",
+      "twistTitles": [
+        "사이트맵 경로별 섹션 llms.txt 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-1__moment-sitemap-llms-text-2__twist-sitemap-llms-text-1",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "자사 문서 사이트를 직접 운영하는 1인 SaaS 개발자",
+      "moment": "사이트 문서 구조를 크게 바꾼 직후",
+      "twistTitles": [
+        "사이트맵 제목 URL llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-1__moment-sitemap-llms-text-2__twist-sitemap-llms-text-2",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "자사 문서 사이트를 직접 운영하는 1인 SaaS 개발자",
+      "moment": "사이트 문서 구조를 크게 바꾼 직후",
+      "twistTitles": [
+        "사이트맵 경로별 섹션 llms.txt 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-1__moment-sitemap-llms-text-2__twist-sitemap-llms-text-3",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "자사 문서 사이트를 직접 운영하는 1인 SaaS 개발자",
+      "moment": "사이트 문서 구조를 크게 바꾼 직후",
+      "twistTitles": [
+        "중복 경로 제거 llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-1__moment-sitemap-llms-text-3__twist-sitemap-llms-text-1",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "자사 문서 사이트를 직접 운영하는 1인 SaaS 개발자",
+      "moment": "AI 크롤러 안내 파일을 배포하기 직전",
+      "twistTitles": [
+        "사이트맵 제목 URL llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-1__moment-sitemap-llms-text-1__twist-sitemap-llms-text-3",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "자사 문서 사이트를 직접 운영하는 1인 SaaS 개발자",
+      "moment": "사이트맵을 새로 공개한 직후",
+      "twistTitles": [
+        "중복 경로 제거 llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-1__moment-sitemap-llms-text-3__twist-sitemap-llms-text-3",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "자사 문서 사이트를 직접 운영하는 1인 SaaS 개발자",
+      "moment": "AI 크롤러 안내 파일을 배포하기 직전",
+      "twistTitles": [
+        "중복 경로 제거 llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-2__moment-sitemap-llms-text-1__twist-sitemap-llms-text-1",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "여러 고객 사이트를 관리하는 콘텐츠 대행 실무자",
+      "moment": "사이트맵을 새로 공개한 직후",
+      "twistTitles": [
+        "사이트맵 제목 URL llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-2__moment-sitemap-llms-text-1__twist-sitemap-llms-text-2",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "여러 고객 사이트를 관리하는 콘텐츠 대행 실무자",
+      "moment": "사이트맵을 새로 공개한 직후",
+      "twistTitles": [
+        "사이트맵 경로별 섹션 llms.txt 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-2__moment-sitemap-llms-text-1__twist-sitemap-llms-text-3",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "여러 고객 사이트를 관리하는 콘텐츠 대행 실무자",
+      "moment": "사이트맵을 새로 공개한 직후",
+      "twistTitles": [
+        "중복 경로 제거 llms.txt 변환 파일"
+      ]
+    },
+    {
+      "similarity": 0.974295,
+      "id": "sitemap-to-llms-text__payer-sitemap-llms-text-1__moment-sitemap-llms-text-3__twist-sitemap-llms-text-2",
+      "scenarioId": "sitemap-to-llms-text",
+      "sourceName": "SiteMapToLlm",
+      "payer": "자사 문서 사이트를 직접 운영하는 1인 SaaS 개발자",
+      "moment": "AI 크롤러 안내 파일을 배포하기 직전",
+      "twistTitles": [
+        "사이트맵 경로별 섹션 llms.txt 파일"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-2__moment-football-matchday-card-2__twist-football-matchday-card-2",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "유소년 축구클럽 경기를 알리는 코치",
+      "moment": "디자인 담당자 없이 경기 공지를 올려야 할 때",
+      "twistTitles": [
+        "축구 경기 정보 세로형 스토리 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-3__moment-football-matchday-card-3__twist-football-matchday-card-2",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "지역 풋살리그 여러 경기를 공지하는 운영자",
+      "moment": "경기 정보를 수정해 다시 공지하기 직전",
+      "twistTitles": [
+        "축구 경기 정보 세로형 스토리 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-3__moment-football-matchday-card-3__twist-football-matchday-card-1",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "지역 풋살리그 여러 경기를 공지하는 운영자",
+      "moment": "경기 정보를 수정해 다시 공지하기 직전",
+      "twistTitles": [
+        "축구 경기 정보 정사각형 매치데이 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-3__moment-football-matchday-card-2__twist-football-matchday-card-2",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "지역 풋살리그 여러 경기를 공지하는 운영자",
+      "moment": "디자인 담당자 없이 경기 공지를 올려야 할 때",
+      "twistTitles": [
+        "축구 경기 정보 세로형 스토리 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-3__moment-football-matchday-card-2__twist-football-matchday-card-1",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "지역 풋살리그 여러 경기를 공지하는 운영자",
+      "moment": "디자인 담당자 없이 경기 공지를 올려야 할 때",
+      "twistTitles": [
+        "축구 경기 정보 정사각형 매치데이 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-3__moment-football-matchday-card-1__twist-football-matchday-card-2",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "지역 풋살리그 여러 경기를 공지하는 운영자",
+      "moment": "게시할 경기 정보가 최종 확정된 직후",
+      "twistTitles": [
+        "축구 경기 정보 세로형 스토리 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-3__moment-football-matchday-card-1__twist-football-matchday-card-1",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "지역 풋살리그 여러 경기를 공지하는 운영자",
+      "moment": "게시할 경기 정보가 최종 확정된 직후",
+      "twistTitles": [
+        "축구 경기 정보 정사각형 매치데이 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-2__moment-football-matchday-card-3__twist-football-matchday-card-2",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "유소년 축구클럽 경기를 알리는 코치",
+      "moment": "경기 정보를 수정해 다시 공지하기 직전",
+      "twistTitles": [
+        "축구 경기 정보 세로형 스토리 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-2__moment-football-matchday-card-3__twist-football-matchday-card-1",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "유소년 축구클럽 경기를 알리는 코치",
+      "moment": "경기 정보를 수정해 다시 공지하기 직전",
+      "twistTitles": [
+        "축구 경기 정보 정사각형 매치데이 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-2__moment-football-matchday-card-2__twist-football-matchday-card-1",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "유소년 축구클럽 경기를 알리는 코치",
+      "moment": "디자인 담당자 없이 경기 공지를 올려야 할 때",
+      "twistTitles": [
+        "축구 경기 정보 정사각형 매치데이 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-1__moment-football-matchday-card-1__twist-football-matchday-card-2",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "아마추어 축구팀 SNS를 맡은 선수 겸 운영자",
+      "moment": "게시할 경기 정보가 최종 확정된 직후",
+      "twistTitles": [
+        "축구 경기 정보 세로형 스토리 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-2__moment-football-matchday-card-1__twist-football-matchday-card-1",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "유소년 축구클럽 경기를 알리는 코치",
+      "moment": "게시할 경기 정보가 최종 확정된 직후",
+      "twistTitles": [
+        "축구 경기 정보 정사각형 매치데이 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-1__moment-football-matchday-card-3__twist-football-matchday-card-2",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "아마추어 축구팀 SNS를 맡은 선수 겸 운영자",
+      "moment": "경기 정보를 수정해 다시 공지하기 직전",
+      "twistTitles": [
+        "축구 경기 정보 세로형 스토리 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-1__moment-football-matchday-card-3__twist-football-matchday-card-1",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "아마추어 축구팀 SNS를 맡은 선수 겸 운영자",
+      "moment": "경기 정보를 수정해 다시 공지하기 직전",
+      "twistTitles": [
+        "축구 경기 정보 정사각형 매치데이 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-1__moment-football-matchday-card-1__twist-football-matchday-card-1",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "아마추어 축구팀 SNS를 맡은 선수 겸 운영자",
+      "moment": "게시할 경기 정보가 최종 확정된 직후",
+      "twistTitles": [
+        "축구 경기 정보 정사각형 매치데이 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-1__moment-football-matchday-card-2__twist-football-matchday-card-2",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "아마추어 축구팀 SNS를 맡은 선수 겸 운영자",
+      "moment": "디자인 담당자 없이 경기 공지를 올려야 할 때",
+      "twistTitles": [
+        "축구 경기 정보 세로형 스토리 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-2__moment-football-matchday-card-1__twist-football-matchday-card-2",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "유소년 축구클럽 경기를 알리는 코치",
+      "moment": "게시할 경기 정보가 최종 확정된 직후",
+      "twistTitles": [
+        "축구 경기 정보 세로형 스토리 카드"
+      ]
+    },
+    {
+      "similarity": 0.974651,
+      "id": "football-matchday-social-card__payer-football-matchday-card-1__moment-football-matchday-card-2__twist-football-matchday-card-1",
+      "scenarioId": "football-matchday-social-card",
+      "sourceName": "myterrace.net",
+      "payer": "아마추어 축구팀 SNS를 맡은 선수 겸 운영자",
+      "moment": "디자인 담당자 없이 경기 공지를 올려야 할 때",
+      "twistTitles": [
+        "축구 경기 정보 정사각형 매치데이 카드"
+      ]
+    },
+    {
+      "similarity": 0.975855,
+      "id": "web-element-visual-feedback-file__payer-web-visual-feedback-1__moment-web-visual-feedback-2__twist-web-visual-feedback-2",
+      "scenarioId": "web-element-visual-feedback-file",
+      "sourceName": "Beep Productivity Inc.",
+      "payer": "고객 웹사이트 수정 요청을 정리하는 소형 대행사 PM",
+      "moment": "개발자에게 수정 요청을 보내기 직전",
+      "twistTitles": [
+        "웹 수정 위치가 표시된 모바일 피드백"
+      ]
+    },
+    {
+      "similarity": 0.975855,
+      "id": "web-element-visual-feedback-file__payer-web-visual-feedback-2__moment-web-visual-feedback-1__twist-web-visual-feedback-2",
+      "scenarioId": "web-element-visual-feedback-file",
+      "sourceName": "Beep Productivity Inc.",
+      "payer": "웹 수정 요청을 정리하는 1인 브랜드 웹 운영자",
+      "moment": "라이브 웹페이지에서 고칠 요소를 발견한 직후",
+      "twistTitles": [
+        "웹 수정 위치가 표시된 모바일 피드백"
+      ]
+    },
+    {
+      "similarity": 0.975855,
+      "id": "web-element-visual-feedback-file__payer-web-visual-feedback-2__moment-web-visual-feedback-1__twist-web-visual-feedback-1",
+      "scenarioId": "web-element-visual-feedback-file",
+      "sourceName": "Beep Productivity Inc.",
+      "payer": "웹 수정 요청을 정리하는 1인 브랜드 웹 운영자",
+      "moment": "라이브 웹페이지에서 고칠 요소를 발견한 직후",
+      "twistTitles": [
+        "웹 수정 위치가 표시된 데스크톱 피드백"
+      ]
+    },
+    {
+      "similarity": 0.975855,
+      "id": "web-element-visual-feedback-file__payer-web-visual-feedback-2__moment-web-visual-feedback-1__twist-web-visual-feedback-3",
+      "scenarioId": "web-element-visual-feedback-file",
+      "sourceName": "Beep Productivity Inc.",
+      "payer": "웹 수정 요청을 정리하는 1인 브랜드 웹 운영자",
+      "moment": "라이브 웹페이지에서 고칠 요소를 발견한 직후",
+      "twistTitles": [
+        "CSS selector가 붙은 웹 수정 피드백"
+      ]
+    },
+    {
+      "similarity": 0.975855,
+      "id": "web-element-visual-feedback-file__payer-web-visual-feedback-1__moment-web-visual-feedback-3__twist-web-visual-feedback-3",
+      "scenarioId": "web-element-visual-feedback-file",
+      "sourceName": "Beep Productivity Inc.",
+      "payer": "고객 웹사이트 수정 요청을 정리하는 소형 대행사 PM",
+      "moment": "웹페이지 최종 검수 결과를 고객에게 공유하기 전",
+      "twistTitles": [
+        "CSS selector가 붙은 웹 수정 피드백"
+      ]
+    }
+  ],
+  "highest": [
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-1__moment-latex-error-fix-3__twist-latex-error-fix-3",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "LaTeX로 논문 초안을 쓰는 대학원생",
+      "moment": "LaTeX 원고를 공동 작업자에게 넘기기 전",
+      "twistTitles": [
+        "LaTeX 표 열 개수 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-3__moment-latex-error-fix-3__twist-latex-error-fix-3",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "수업 자료를 LaTeX로 만드는 공학 강사",
+      "moment": "LaTeX 원고를 공동 작업자에게 넘기기 전",
+      "twistTitles": [
+        "LaTeX 표 열 개수 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-3__moment-latex-error-fix-3__twist-latex-error-fix-1",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "수업 자료를 LaTeX로 만드는 공학 강사",
+      "moment": "LaTeX 원고를 공동 작업자에게 넘기기 전",
+      "twistTitles": [
+        "LaTeX 특수문자 4종 이스케이프 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-3__moment-latex-error-fix-2__twist-latex-error-fix-3",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "수업 자료를 LaTeX로 만드는 공학 강사",
+      "moment": "논문이나 기술 문서를 PDF로 만들기 직전",
+      "twistTitles": [
+        "LaTeX 표 열 개수 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-3__moment-latex-error-fix-2__twist-latex-error-fix-2",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "수업 자료를 LaTeX로 만드는 공학 강사",
+      "moment": "논문이나 기술 문서를 PDF로 만들기 직전",
+      "twistTitles": [
+        "LaTeX 중괄호 문법 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-3__moment-latex-error-fix-2__twist-latex-error-fix-1",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "수업 자료를 LaTeX로 만드는 공학 강사",
+      "moment": "논문이나 기술 문서를 PDF로 만들기 직전",
+      "twistTitles": [
+        "LaTeX 특수문자 4종 이스케이프 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-3__moment-latex-error-fix-1__twist-latex-error-fix-3",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "수업 자료를 LaTeX로 만드는 공학 강사",
+      "moment": "LaTeX 원고가 컴파일 오류로 멈춘 직후",
+      "twistTitles": [
+        "LaTeX 표 열 개수 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-3__moment-latex-error-fix-1__twist-latex-error-fix-2",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "수업 자료를 LaTeX로 만드는 공학 강사",
+      "moment": "LaTeX 원고가 컴파일 오류로 멈춘 직후",
+      "twistTitles": [
+        "LaTeX 중괄호 문법 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-2__moment-latex-error-fix-3__twist-latex-error-fix-3",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "기술 문서를 LaTeX로 납품하는 프리랜서 편집자",
+      "moment": "LaTeX 원고를 공동 작업자에게 넘기기 전",
+      "twistTitles": [
+        "LaTeX 표 열 개수 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-2__moment-latex-error-fix-3__twist-latex-error-fix-2",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "기술 문서를 LaTeX로 납품하는 프리랜서 편집자",
+      "moment": "LaTeX 원고를 공동 작업자에게 넘기기 전",
+      "twistTitles": [
+        "LaTeX 중괄호 문법 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-2__moment-latex-error-fix-3__twist-latex-error-fix-1",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "기술 문서를 LaTeX로 납품하는 프리랜서 편집자",
+      "moment": "LaTeX 원고를 공동 작업자에게 넘기기 전",
+      "twistTitles": [
+        "LaTeX 특수문자 4종 이스케이프 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-2__moment-latex-error-fix-2__twist-latex-error-fix-3",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "기술 문서를 LaTeX로 납품하는 프리랜서 편집자",
+      "moment": "논문이나 기술 문서를 PDF로 만들기 직전",
+      "twistTitles": [
+        "LaTeX 표 열 개수 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-2__moment-latex-error-fix-2__twist-latex-error-fix-2",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "기술 문서를 LaTeX로 납품하는 프리랜서 편집자",
+      "moment": "논문이나 기술 문서를 PDF로 만들기 직전",
+      "twistTitles": [
+        "LaTeX 중괄호 문법 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-2__moment-latex-error-fix-2__twist-latex-error-fix-1",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "기술 문서를 LaTeX로 납품하는 프리랜서 편집자",
+      "moment": "논문이나 기술 문서를 PDF로 만들기 직전",
+      "twistTitles": [
+        "LaTeX 특수문자 4종 이스케이프 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-2__moment-latex-error-fix-1__twist-latex-error-fix-3",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "기술 문서를 LaTeX로 납품하는 프리랜서 편집자",
+      "moment": "LaTeX 원고가 컴파일 오류로 멈춘 직후",
+      "twistTitles": [
+        "LaTeX 표 열 개수 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-2__moment-latex-error-fix-1__twist-latex-error-fix-2",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "기술 문서를 LaTeX로 납품하는 프리랜서 편집자",
+      "moment": "LaTeX 원고가 컴파일 오류로 멈춘 직후",
+      "twistTitles": [
+        "LaTeX 중괄호 문법 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-2__moment-latex-error-fix-1__twist-latex-error-fix-1",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "기술 문서를 LaTeX로 납품하는 프리랜서 편집자",
+      "moment": "LaTeX 원고가 컴파일 오류로 멈춘 직후",
+      "twistTitles": [
+        "LaTeX 특수문자 4종 이스케이프 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-1__moment-latex-error-fix-3__twist-latex-error-fix-2",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "LaTeX로 논문 초안을 쓰는 대학원생",
+      "moment": "LaTeX 원고를 공동 작업자에게 넘기기 전",
+      "twistTitles": [
+        "LaTeX 중괄호 문법 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-1__moment-latex-error-fix-3__twist-latex-error-fix-1",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "LaTeX로 논문 초안을 쓰는 대학원생",
+      "moment": "LaTeX 원고를 공동 작업자에게 넘기기 전",
+      "twistTitles": [
+        "LaTeX 특수문자 4종 이스케이프 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-1__moment-latex-error-fix-2__twist-latex-error-fix-3",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "LaTeX로 논문 초안을 쓰는 대학원생",
+      "moment": "논문이나 기술 문서를 PDF로 만들기 직전",
+      "twistTitles": [
+        "LaTeX 표 열 개수 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-1__moment-latex-error-fix-2__twist-latex-error-fix-2",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "LaTeX로 논문 초안을 쓰는 대학원생",
+      "moment": "논문이나 기술 문서를 PDF로 만들기 직전",
+      "twistTitles": [
+        "LaTeX 중괄호 문법 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-1__moment-latex-error-fix-2__twist-latex-error-fix-1",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "LaTeX로 논문 초안을 쓰는 대학원생",
+      "moment": "논문이나 기술 문서를 PDF로 만들기 직전",
+      "twistTitles": [
+        "LaTeX 특수문자 4종 이스케이프 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-1__moment-latex-error-fix-1__twist-latex-error-fix-3",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "LaTeX로 논문 초안을 쓰는 대학원생",
+      "moment": "LaTeX 원고가 컴파일 오류로 멈춘 직후",
+      "twistTitles": [
+        "LaTeX 표 열 개수 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-1__moment-latex-error-fix-1__twist-latex-error-fix-2",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "LaTeX로 논문 초안을 쓰는 대학원생",
+      "moment": "LaTeX 원고가 컴파일 오류로 멈춘 직후",
+      "twistTitles": [
+        "LaTeX 중괄호 문법 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-1__moment-latex-error-fix-1__twist-latex-error-fix-1",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "LaTeX로 논문 초안을 쓰는 대학원생",
+      "moment": "LaTeX 원고가 컴파일 오류로 멈춘 직후",
+      "twistTitles": [
+        "LaTeX 특수문자 4종 이스케이프 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-3__moment-latex-error-fix-3__twist-latex-error-fix-2",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "수업 자료를 LaTeX로 만드는 공학 강사",
+      "moment": "LaTeX 원고를 공동 작업자에게 넘기기 전",
+      "twistTitles": [
+        "LaTeX 중괄호 문법 오류 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.991437,
+      "id": "latex-static-error-fix-file__payer-latex-error-fix-3__moment-latex-error-fix-1__twist-latex-error-fix-1",
+      "scenarioId": "latex-static-error-fix-file",
+      "sourceName": "Octree",
+      "payer": "수업 자료를 LaTeX로 만드는 공학 강사",
+      "moment": "LaTeX 원고가 컴파일 오류로 멈춘 직후",
+      "twistTitles": [
+        "LaTeX 특수문자 4종 이스케이프 수정 파일"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-1__moment-svg-webfont-package-3__twist-svg-webfont-package-2",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "고객 사이트에 아이콘 세트를 넣는 프론트엔드 개발자",
+      "moment": "아이콘 웹폰트를 다른 개발자에게 넘기기 전",
+      "twistTitles": [
+        "SVG 크기 정렬 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-1__moment-svg-webfont-package-3__twist-svg-webfont-package-1",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "고객 사이트에 아이콘 세트를 넣는 프론트엔드 개발자",
+      "moment": "아이콘 웹폰트를 다른 개발자에게 넘기기 전",
+      "twistTitles": [
+        "SVG 파일명 유지 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-3__moment-svg-webfont-package-3__twist-svg-webfont-package-2",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "레거시 웹 프로젝트를 유지보수하는 퍼블리셔",
+      "moment": "아이콘 웹폰트를 다른 개발자에게 넘기기 전",
+      "twistTitles": [
+        "SVG 크기 정렬 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-3__moment-svg-webfont-package-3__twist-svg-webfont-package-1",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "레거시 웹 프로젝트를 유지보수하는 퍼블리셔",
+      "moment": "아이콘 웹폰트를 다른 개발자에게 넘기기 전",
+      "twistTitles": [
+        "SVG 파일명 유지 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-3__moment-svg-webfont-package-2__twist-svg-webfont-package-3",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "레거시 웹 프로젝트를 유지보수하는 퍼블리셔",
+      "moment": "아이콘을 실제 웹 프로젝트에 넣기 직전",
+      "twistTitles": [
+        "글리프 미리보기 포함 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-3__moment-svg-webfont-package-2__twist-svg-webfont-package-2",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "레거시 웹 프로젝트를 유지보수하는 퍼블리셔",
+      "moment": "아이콘을 실제 웹 프로젝트에 넣기 직전",
+      "twistTitles": [
+        "SVG 크기 정렬 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-3__moment-svg-webfont-package-2__twist-svg-webfont-package-1",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "레거시 웹 프로젝트를 유지보수하는 퍼블리셔",
+      "moment": "아이콘을 실제 웹 프로젝트에 넣기 직전",
+      "twistTitles": [
+        "SVG 파일명 유지 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-3__moment-svg-webfont-package-1__twist-svg-webfont-package-3",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "레거시 웹 프로젝트를 유지보수하는 퍼블리셔",
+      "moment": "최종 SVG 아이콘 세트를 전달받은 직후",
+      "twistTitles": [
+        "글리프 미리보기 포함 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-3__moment-svg-webfont-package-1__twist-svg-webfont-package-2",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "레거시 웹 프로젝트를 유지보수하는 퍼블리셔",
+      "moment": "최종 SVG 아이콘 세트를 전달받은 직후",
+      "twistTitles": [
+        "SVG 크기 정렬 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-3__moment-svg-webfont-package-1__twist-svg-webfont-package-1",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "레거시 웹 프로젝트를 유지보수하는 퍼블리셔",
+      "moment": "최종 SVG 아이콘 세트를 전달받은 직후",
+      "twistTitles": [
+        "SVG 파일명 유지 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-2__moment-svg-webfont-package-3__twist-svg-webfont-package-3",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "디자인 시스템 아이콘을 배포하는 UI 엔지니어",
+      "moment": "아이콘 웹폰트를 다른 개발자에게 넘기기 전",
+      "twistTitles": [
+        "글리프 미리보기 포함 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-2__moment-svg-webfont-package-3__twist-svg-webfont-package-2",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "디자인 시스템 아이콘을 배포하는 UI 엔지니어",
+      "moment": "아이콘 웹폰트를 다른 개발자에게 넘기기 전",
+      "twistTitles": [
+        "SVG 크기 정렬 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-2__moment-svg-webfont-package-3__twist-svg-webfont-package-1",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "디자인 시스템 아이콘을 배포하는 UI 엔지니어",
+      "moment": "아이콘 웹폰트를 다른 개발자에게 넘기기 전",
+      "twistTitles": [
+        "SVG 파일명 유지 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-2__moment-svg-webfont-package-2__twist-svg-webfont-package-3",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "디자인 시스템 아이콘을 배포하는 UI 엔지니어",
+      "moment": "아이콘을 실제 웹 프로젝트에 넣기 직전",
+      "twistTitles": [
+        "글리프 미리보기 포함 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-2__moment-svg-webfont-package-2__twist-svg-webfont-package-2",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "디자인 시스템 아이콘을 배포하는 UI 엔지니어",
+      "moment": "아이콘을 실제 웹 프로젝트에 넣기 직전",
+      "twistTitles": [
+        "SVG 크기 정렬 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-2__moment-svg-webfont-package-2__twist-svg-webfont-package-1",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "디자인 시스템 아이콘을 배포하는 UI 엔지니어",
+      "moment": "아이콘을 실제 웹 프로젝트에 넣기 직전",
+      "twistTitles": [
+        "SVG 파일명 유지 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-2__moment-svg-webfont-package-1__twist-svg-webfont-package-3",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "디자인 시스템 아이콘을 배포하는 UI 엔지니어",
+      "moment": "최종 SVG 아이콘 세트를 전달받은 직후",
+      "twistTitles": [
+        "글리프 미리보기 포함 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-3__moment-svg-webfont-package-3__twist-svg-webfont-package-3",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "레거시 웹 프로젝트를 유지보수하는 퍼블리셔",
+      "moment": "아이콘 웹폰트를 다른 개발자에게 넘기기 전",
+      "twistTitles": [
+        "글리프 미리보기 포함 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-2__moment-svg-webfont-package-1__twist-svg-webfont-package-2",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "디자인 시스템 아이콘을 배포하는 UI 엔지니어",
+      "moment": "최종 SVG 아이콘 세트를 전달받은 직후",
+      "twistTitles": [
+        "SVG 크기 정렬 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-1__moment-svg-webfont-package-2__twist-svg-webfont-package-3",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "고객 사이트에 아이콘 세트를 넣는 프론트엔드 개발자",
+      "moment": "아이콘을 실제 웹 프로젝트에 넣기 직전",
+      "twistTitles": [
+        "글리프 미리보기 포함 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-1__moment-svg-webfont-package-3__twist-svg-webfont-package-3",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "고객 사이트에 아이콘 세트를 넣는 프론트엔드 개발자",
+      "moment": "아이콘 웹폰트를 다른 개발자에게 넘기기 전",
+      "twistTitles": [
+        "글리프 미리보기 포함 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-1__moment-svg-webfont-package-2__twist-svg-webfont-package-2",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "고객 사이트에 아이콘 세트를 넣는 프론트엔드 개발자",
+      "moment": "아이콘을 실제 웹 프로젝트에 넣기 직전",
+      "twistTitles": [
+        "SVG 크기 정렬 웹폰트 패키지"
+      ]
+    },
+    {
+      "similarity": 0.990364,
+      "id": "svg-icons-to-webfont-package__payer-svg-webfont-package-1__moment-svg-webfont-package-2__twist-svg-webfont-package-1",
+      "scenarioId": "svg-icons-to-webfont-package",
+      "sourceName": "Fonzo.io",
+      "payer": "고객 사이트에 아이콘 세트를 넣는 프론트엔드 개발자",
+      "moment": "아이콘을 실제 웹 프로젝트에 넣기 직전",
+      "twistTitles": [
+        "SVG 파일명 유지 웹폰트 패키지"
+      ]
+    }
+  ]
+}

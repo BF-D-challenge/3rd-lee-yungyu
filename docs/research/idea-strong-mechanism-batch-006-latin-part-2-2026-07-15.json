@@ -1,0 +1,78 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-meyoo-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘상품별 광고·원가 차감 실이익 표’는 이커머스 운영 대행자가 월 정산 순간 CSV 하나를 넣고 비용 차감 계산 1회 후 상품별 실이익 정산표를 받는 흐름과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-meyoo-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘광고비까지 뺀 상품 실이익 표’는 이커머스 운영 대행자가 가격 변경 직전 비용 포함 마진을 확인하려고 CSV 하나를 넣어 광고비 포함 상품 실이익 정산표를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-meyoo-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘주문별 비용을 뺀 실제 실이익 표’는 운영 대행자가 광고 지속 상품을 고르는 순간 CSV 하나의 주문·비용을 한 번 계산해 주문별 실이익 정산표를 받는 흐름과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-meyoo-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘광고비까지 뺀 상품 실이익 표’는 브랜드 정산 담당자가 월 정산 때 CSV 하나를 넣고 광고비 포함 실이익 계산 1회 후 상품별 정산표를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-meyoo-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘주문별 비용을 뺀 실제 실이익 표’는 브랜드 정산 담당자가 가격 변경 전 CSV 하나로 주문별 실이익을 계산받지만 상품 가격 판단에는 상품별 합산 결과가 더 직접적이다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-meyoo-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘상품별 광고·원가 차감 실이익 표’는 브랜드 정산 담당자가 광고 지속 상품을 고를 때 CSV 하나를 넣고 주문 비용을 한 번 차감해 상품별 실이익 정산표를 받는 흐름과 맞는다.",
+      "risk_flags": []
+    }
+  ]
+}

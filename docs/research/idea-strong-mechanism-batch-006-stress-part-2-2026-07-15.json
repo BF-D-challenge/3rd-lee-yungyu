@@ -1,0 +1,146 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-cable-identifier-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘케이블 사진의 규격 속도 확인’은 케이블 사진 한 장에서 형태를 한 번 인식해 규격·전송 속도 사양 카드 한 장을 보여주며, 사내 IT 담당자가 교체 구매 직전에 확인하는 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-previewly-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘SaaS 링크 1200×630 OG 이미지’는 공개 서비스 URL에서 로고와 설명을 외부에서 읽어 1200×630 PNG를 생성하므로, URL 외부 데이터 의존성이 있고 범용 AI 이미지 생성으로 대체하기도 쉽다.",
+      "risk_flags": [
+        "external_data_required",
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-previewly-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘SaaS 공유 링크 다크 OG 이미지’는 공개 서비스 URL의 외부 로고·설명을 읽은 뒤 어두운 배경 PNG를 생성해야 하므로 외부 데이터 의존성이 있고 범용 AI 한 번으로도 처리하기 쉽다.",
+      "risk_flags": [
+        "external_data_required",
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-previewly-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘서비스 제목 강조형 OG 이미지’는 공개 서비스 URL에서 로고·설명을 외부 수집해 제목 강조 PNG를 만들어야 하므로 외부 데이터 의존성이 있고 범용 AI 이미지 생성으로 대체 가능하다.",
+      "risk_flags": [
+        "external_data_required",
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-local-styler-figma-plugin-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 파일 색상 스타일 세트’는 Figma 파일 하나에서 색상 값을 한 번 추출해 색상 로컬 스타일 세트 하나를 보여주며, 브랜드 디자이너가 컴포넌트 정리 전에 확인하는 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-local-styler-figma-plugin-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘Figma 파일 효과 그리드 스타일’은 Figma 파일 하나에서 효과·그리드를 추출해 세트를 보여주지만, 디자인 시스템 담당자가 인수인계 직전에 필요하다고 밝힌 색상·글꼴 기준과 결과가 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-local-styler-figma-plugin-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘Figma 파일 타이포 스타일 세트’는 Figma 파일 하나에서 글꼴·크기·계층을 추출해 세트를 보여주지만, 리브랜딩 색상 적용 직후 새 색상 값과 재사용을 확인하려는 순간과 결과가 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-yt-clipper-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘YouTube 구간 세로 숏폼 클립’은 URL·시작 시각·끝 시각이라는 복수 입력으로 외부 영상을 가져와 세로 MP4를 만들어야 하므로 단일 입력 규칙을 위반하고 외부 데이터에 의존한다.",
+      "risk_flags": [
+        "multi_input",
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-yt-clipper-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘YouTube 구간 원본비율 클립’은 URL·시작 시각·끝 시각을 각각 받아 외부 영상을 구간 추출해야 하므로 단일 입력 규칙을 위반하고 외부 데이터에 의존한다.",
+      "risk_flags": [
+        "multi_input",
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-yt-clipper-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘YouTube 구간 정사각 클립’은 URL·시작 시각·끝 시각이라는 복수 입력으로 외부 영상을 처리해 정사각 MP4를 만들어야 하므로 단일 입력 규칙을 위반하고 외부 데이터에 의존한다.",
+      "risk_flags": [
+        "multi_input",
+        "external_data_required"
+      ]
+    }
+  ]
+}

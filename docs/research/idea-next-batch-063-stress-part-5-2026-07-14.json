@@ -1,0 +1,397 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-348094874-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "마이크 권한으로 기타 소리를 한 번 측정해 음정·주파수·센트를 즉시 보여주므로 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-348094874-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "마이크 권한으로 바이올린 음정을 측정해 센트를 보여주지만 ‘합주팀 기준음’의 처리 방식이 원본에 명확하지 않다.",
+      "risk_flags": [
+        "unsupported_reference_tone"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-348094874-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "마이크 권한으로 악기 소리를 측정해 음정·주파수를 보여주지만 국악기 지원 여부가 원본에서 확인되지 않는다.",
+      "risk_flags": [
+        "instrument_scope_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-319766917-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "중국어 단어 하나를 입력해 자동완성과 발음 검색을 처리하고 예문·어법을 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-319766917-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "중국어 또는 한국어 표현을 입력해 자동완성과 예문을 보여주지만 ‘중국 현지 예문’이라는 결과 범위가 원본보다 구체화되어 있다.",
+      "risk_flags": [
+        "result_scope_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-319766917-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "간체자 일부를 입력해 표제어 자동완성을 거쳐 실무 예문과 어법을 즉시 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-673085116-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영어 단어 하나를 입력해 발음과 사전 뜻·표제어 결과를 즉시 보여주므로 실제 메일 확인 순간에 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-673085116-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단어를 입력해 발음과 뜻을 보여주는 처리는 구체적이지만 카드의 영어 면접 맥락과 ‘해외 고객 메시지’ 입력 상황이 서로 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-673085116-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한국어 단어 하나를 입력해 영어 표현과 발음·사전 결과를 즉시 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-288054534-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한을 한 번 받아 위치·시간대별 기도 시간과 키블라 방향을 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-288054534-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출장지 위치를 입력해 현지 기도 시간과 키블라 방향이라는 하나의 구체적 결과를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-288054534-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공항 도착지 위치를 입력해 해당 지역의 기도 시간과 키블라 방향을 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-955289220-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "게임 아이템 사진 한 장을 식별·검색해 해당 아이템의 상세 정보를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-955289220-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이템 사진으로 식별하는 입력은 명확하지만 DLC별 시너지 정보가 원본의 일반 아이템 정보에 포함되는지 불분명하다.",
+      "risk_flags": [
+        "synergy_data_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-955289220-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "아이템 사진으로 정보를 찾는 원본 처리와 달리 수집 여부를 판단하려면 별도 수집 기록이나 상태 관리가 필요하다.",
+      "risk_flags": [
+        "requires_prior_tracking"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1180884341-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장에 헤어 효과를 적용해 보정 사진을 만드는 기능은 OS 사진 편집이나 범용 AI 한 번으로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_photo_editing",
+        "os_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1180884341-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 사진을 다듬는 상황에 인물 사진·얼굴 효과 입력을 적용하고 결과도 범용 사진 편집으로 대체 가능하다.",
+      "risk_flags": [
+        "input_mismatch",
+        "generic_photo_editing"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1180884341-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "프로필 사진 보정은 입력·처리·결과가 가능하지만 OS 기본 편집이나 범용 AI 한 번이 더 간단하다.",
+      "risk_flags": [
+        "generic_photo_editing",
+        "os_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1001893116-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "문제와 어린이 답변을 여러 번 입력해 1분 게임을 진행하므로 입력 1개·처리 1회·결과 1개의 세로 조각 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_step_interaction"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1001893116-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "연산 문제를 반복 입력하고 게임을 진행해야 하므로 단일 입력·단일 처리 구조가 아니다.",
+      "risk_flags": [
+        "multi_step_interaction"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1001893116-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "구구단 문제와 답변을 여러 차례 처리하는 시간 게임이라 한 번의 입력에서 하나의 결과가 나오지 않는다.",
+      "risk_flags": [
+        "multi_step_interaction"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-308296029-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "악기 소리를 입력해 실시간 주파수와 조율 결과를 보여줄 수 있지만 ‘일렉트릭 연결’과 마이크 입력의 경계가 불명확하다.",
+      "risk_flags": [
+        "input_method_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-308296029-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "어쿠스틱 기타 소리를 입력해 피치와 조율 결과를 보여주는 구조는 가능하지만 ‘연결’이 별도 장비를 요구하는지 불명확하다.",
+      "risk_flags": [
+        "hardware_requirement_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-308296029-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "베이스 소리를 입력해 스트로브 표시와 조율 결과를 보여주지만 원본의 입력 표현이 구체적인 단일 기기 입력으로 정리되지 않았다.",
+      "risk_flags": [
+        "input_method_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-336829635-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한을 받아 바람·파도·조수 예보라는 현재 지역 해양 날씨 결과를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-336829635-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출항지 위치를 입력해 지역별 바람·파도 예보를 즉시 확인하므로 출항 직전 판단 순간과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-336829635-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제주 해변 위치를 선택해 수상 활동에 필요한 해양 날씨 예보를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-khlafnpamapdkjifagknfnjjjdhdhhhi-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "상품 사진 한 장을 이미지 역검색해 알리바바 출처 상품 링크 목록을 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-khlafnpamapdkjifagknfnjjjdhdhhhi-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "도매 상품 사진을 입력해 이미지 검색을 처리하고 사입처 후보 링크 목록을 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-khlafnpamapdkjifagknfnjjjdhdhhhi-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "경쟁 상품 이미지 한 장을 역검색해 원본 상품 링크 목록을 즉시 확인할 수 있다.",
+      "risk_flags": []
+    }
+  ]
+}

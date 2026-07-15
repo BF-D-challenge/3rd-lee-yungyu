@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-docswrite-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디지털 퍼블리셔가 Google Doc 원고를 CMS에 옮기기 직전에 공개 URL 하나를 입력해 표 구조를 보존하도록 한 번 변환하고 Gutenberg HTML 게시 초안 파일 하나를 받는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-docswrite-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디지털 퍼블리셔가 클라이언트 원고를 WordPress에 납품하기 직전에 공개 Google Doc URL 하나를 입력해 제목 계층을 보존하도록 한 번 변환하고 Gutenberg HTML 게시 초안 파일 하나를 받는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-docswrite-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디지털 퍼블리셔가 긴 문서를 CMS 편집기에 붙여 넣기 전에 공개 Google Doc URL 하나를 입력해 이미지 캡션을 보존하도록 한 번 변환하고 캡션 포함 Gutenberg HTML 파일 하나를 받는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-meyoo-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소형 셀러가 월 정산에서 실제 잔액을 확인할 때 주문·상품·결제액·수수료·광고비·원가가 담긴 CSV 하나를 입력해 주문별 실이익을 한 번 계산하고 정산표 파일 하나를 받는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-meyoo-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소형 셀러가 상품 가격을 바꾸기 직전 주문·상품·결제액·수수료·광고비·원가가 담긴 CSV 하나를 입력해 SKU별 실이익을 한 번 합산하고 상품별 정산표 파일 하나를 받는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-meyoo-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소형 셀러가 광고를 계속할 상품을 고를 때 비용 열이 포함된 주문 CSV 하나를 입력해 광고비 포함 실이익을 한 번 계산하고 해당 결과를 담은 정산표 파일 하나를 받는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    }
+  ]
+}

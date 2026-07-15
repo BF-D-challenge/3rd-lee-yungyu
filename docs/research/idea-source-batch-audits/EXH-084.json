@@ -1,0 +1,56 @@
+{
+  "batch_id": "EXH-084",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 60,
+    "Candidate": 34,
+    "Merge": 3,
+    "Reserve": 3
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 71,
+      "sample": [
+        "trustmrr:promptzone",
+        "app_store:6758592434",
+        "app_store:1060472593",
+        "trustmrr:flowtion",
+        "app_store:6740145405",
+        "chrome_web_store:acehchockcmgigjilbjhecnepiohkfld",
+        "chrome_web_store:agleiimpggapjekcdhdjbmegjbbkleie",
+        "chrome_web_store:mmcblfncjaclajmegihojiekebofjcen"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6740145405",
+          "decision": "Candidate",
+          "reason": "오디오 입력 → 지연 시간과 필터·변조·피드백 처리 → 캐릭터 있는 반복음이라는 한 번의 오디오 효과 세로 조각이 명확하다."
+        }
+      ],
+      "false_reject_rate": 0.125
+    },
+    {
+      "round": 2,
+      "fail_count": 60,
+      "sample": [
+        "app_store:925110974",
+        "app_store:1440255819",
+        "chrome_web_store:bhloflhklmhfpedakmangadcdofhnnoh",
+        "trustmrr:cartql",
+        "chrome_web_store:fihnjjcciajhdojfnbdddfaoknhalnja",
+        "chrome_web_store:icdhilhfkbabomhmfcgoejcfhpalhdfd"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

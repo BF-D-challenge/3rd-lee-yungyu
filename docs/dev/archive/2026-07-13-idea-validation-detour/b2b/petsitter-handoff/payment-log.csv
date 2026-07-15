@@ -1,0 +1,6 @@
+prospect_id,source_channel,segment,recent_event_date,recent_problem,weekly_direct_jobs,current_workaround,minutes_per_report,price_shown_krw,offer_type,action,amount_paid_krw,refundable,payment_status,lost_reason_code,quote_paraphrase,link_sent_to_client,client_response,next_step,consent_to_followup,deletion_due_at
+P001,community,independent_petsitter,,,,,,9900,monthly,,,,pending,,,,,,,
+P002,dm,independent_petsitter,,,,,,9900,monthly,,,,pending,,,,,,,
+P003,referral,independent_petsitter,,,,,,9900,monthly,,,,pending,,,,,,,
+P004,community,independent_petsitter,,,,,,9900,monthly,,,,pending,,,,,,,
+P005,dm,independent_petsitter,,,,,,9900,monthly,,,,pending,,,,,,,

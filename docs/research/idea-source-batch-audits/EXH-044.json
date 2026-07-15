@@ -1,0 +1,92 @@
+{
+  "batch_id": "EXH-044",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 60,
+    "Candidate": 33,
+    "Merge": 6,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 74,
+      "sample": [
+        "chrome_web_store:nonifodikannfdcffnmiopjjglglepab",
+        "app_store:445290463",
+        "chrome_web_store:fcphghnknhkimeagdglkljinmpbagone",
+        "trustmrr:dialbridge",
+        "trustmrr:mosaico-studio",
+        "chrome_web_store:jaoafpkngncfpfggjefnekilbkcpjdgp",
+        "app_store:6553966660",
+        "app_store:663592361"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:nonifodikannfdcffnmiopjjglglepab",
+          "decision": "Candidate",
+          "reason": "콘텐츠 하나를 받아 온체인 NFT로 민팅하는 입력 → 처리 → 결과 세로 조각이 원문에 명확하다."
+        },
+        {
+          "key": "app_store:445290463",
+          "decision": "Candidate",
+          "reason": "직접 올린 파일 하나를 eBook으로 열어 최근 읽은 페이지를 확인하는 입력 → 처리 → 결과 조각이 남는다."
+        },
+        {
+          "key": "chrome_web_store:fcphghnknhkimeagdglkljinmpbagone",
+          "decision": "Candidate",
+          "reason": "YouTube 영상의 FPS를 기준으로 화질을 자동 설정하는 입력 → 처리 → 결과 세로 조각이 명확하다."
+        },
+        {
+          "key": "app_store:663592361",
+          "decision": "Candidate",
+          "reason": "검색어 또는 웹사이트를 받아 추적·광고·쿠키 팝업을 차단하고 보호된 검색 결과나 웹페이지를 즉시 보여주는 세로 조각이 남는다."
+        }
+      ],
+      "false_reject_rate": 0.5
+    },
+    {
+      "round": 2,
+      "fail_count": 64,
+      "sample": [
+        "trustmrr:hypeflare",
+        "chrome_web_store:hdkbnhcgfcokjhlfiicbphafdnipnhjf",
+        "app_store:623690732",
+        "trustmrr:natal-navigator",
+        "trustmrr:dawnce",
+        "app_store:368724832",
+        "app_store:334235181"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:natal-navigator",
+          "decision": "Candidate",
+          "reason": "출생 정보 → 나탈 차트와 세계 지도 생성 → 삶의 영역별 유리하거나 불리한 위치 확인이 2일 세로 조각으로 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 3,
+      "fail_count": 60,
+      "sample": [
+        "trustmrr:webtracky",
+        "trustmrr:clawstack",
+        "app_store:1296160654",
+        "chrome_web_store:ighjodkhjaliganonnlmdedfgnomaebi",
+        "app_store:623690732",
+        "app_store:966782397"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

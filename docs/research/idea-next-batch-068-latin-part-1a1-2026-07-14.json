@@ -1,0 +1,89 @@
+{
+  "results": [
+    {
+      "id": "next-latin-chrome-web-store-jkhnlbnfjlclkanjkjlilpedadnoigab-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "URL과 시각을 입력해 알림을 예약하고 팝업을 받는 흐름은 구체적이지만 브라우저 북마크·OS 알림·리마인더 앱으로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_os_feature"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-jkhnlbnfjlclkanjkjlilpedadnoigab-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "정책자료 URL과 오후 시각을 입력해 알림 팝업을 받는 흐름은 명확하지만 기존 캘린더·리마인더·브라우저 기능이 더 편하다.",
+      "risk_flags": [
+        "generic_os_feature"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6747954692-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "CBZ 또는 ZIP 파일 하나를 입력해 페이지를 분리·표시하고 전체 화면으로 읽게 하는 세로 조각은 가능하지만 제목만으로 해결할 문제와 결과가 충분히 드러나지 않고 아이패드 결제자와 아이폰 사용 순간도 어긋난다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "device_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6747954692-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "다운로드한 ZIP 파일 하나를 입력해 작품 페이지를 열고 스와이프로 넘겨 읽는 결과는 구체적이지만 제목만으로 문제와 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6747954692-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "만화 파일 하나를 입력해 페이지를 표시·확대하고 전체 화면으로 읽는 처리는 구체적이지만 제목만으로 해결할 문제와 결과가 충분히 보이지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6747954692-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "CBZ 또는 ZIP 파일 하나를 입력해 작품 페이지를 열고 넘겨 읽는 결과는 만화 수집가의 순간에 자연스럽지만 제목만으로 문제와 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    }
+  ]
+}

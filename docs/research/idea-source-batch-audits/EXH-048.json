@@ -1,0 +1,62 @@
+{
+  "batch_id": "EXH-048",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 33,
+    "Fail": 61,
+    "Reserve": 2,
+    "Merge": 4
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 72,
+      "sample": [
+        "app_store:6505016734",
+        "trustmrr:saasurfer",
+        "app_store:1431593126",
+        "trustmrr:hireme",
+        "app_store:591626572",
+        "app_store:1080235090",
+        "trustmrr:craftscenes",
+        "chrome_web_store:hdiegimcikljdcgohlcnilgephloaiaa"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:hireme",
+          "decision": "Candidate",
+          "reason": "채용 공고 입력 → 직무별 이력서 맞춤화 → 지원에 쓸 맞춤 이력서 생성의 2일 세로 조각이 남는다."
+        },
+        {
+          "key": "app_store:591626572",
+          "decision": "Candidate",
+          "reason": "100 words → talking-letter puzzle → definition animation is a concrete two-day educational slice."
+        }
+      ],
+      "false_reject_rate": 0.25
+    },
+    {
+      "round": 2,
+      "fail_count": 61,
+      "sample": [
+        "app_store:1418851042",
+        "app_store:1484450218",
+        "app_store:958083643",
+        "trustmrr:saasurfer",
+        "app_store:1543177337",
+        "trustmrr:getviralseo-com-get-organic-seo-aeo-traffic-for-your-business",
+        "chrome_web_store:hdiegimcikljdcgohlcnilgephloaiaa"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

@@ -1,0 +1,79 @@
+{
+  "batch_id": "EXH-017",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 98,
+  "decision_counts": {
+    "Fail": 51,
+    "Candidate": 43,
+    "Merge": 4
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 69,
+      "sample": [
+        "trustmrr:roam",
+        "trustmrr:tinytune",
+        "app_store:1222822904",
+        "app_store:6749840287",
+        "chrome_web_store:mhccpoafgdgbhnjfhkcmgknndkeenfhe",
+        "trustmrr:contentbase",
+        "app_store:6780200289"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:tinytune",
+          "decision": "Candidate",
+          "reason": "데이터 파일 하나를 받아 LLM을 미세조정하고 결과 모델 하나를 확인하는 세로 조각이 가능하다."
+        },
+        {
+          "key": "app_store:1222822904",
+          "decision": "Candidate",
+          "reason": "단일 기기 권한을 받아 연결하고 제어한 뒤 상태 하나를 즉시 확인하는 조각이 남는다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 2,
+      "fail_count": 55,
+      "sample": [
+        "app_store:6451037644",
+        "app_store:1131084339",
+        "app_store:719972451",
+        "trustmrr:tinytune",
+        "app_store:6749840287",
+        "app_store:310633997"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:tinytune",
+          "decision": "Candidate",
+          "reason": "자체 데이터를 입력받아 오픈소스 LLM을 미세조정하고, 조정된 모델을 즉시 확인하는 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 3,
+      "fail_count": 51,
+      "sample": [
+        "app_store:719972451",
+        "app_store:1222822904",
+        "chrome_web_store:kiopofhkdofecpfmflnomigoogdpcaep",
+        "app_store:888585740",
+        "trustmrr:contentbase",
+        "trustmrr:dena-ai"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}
