@@ -1,0 +1,403 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1339993499-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "예산 봉투와 금액을 입력해 잔액을 계산하는 흐름은 구체적이지만 제목만으로 지출 후 남은 금액 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title-unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1339993499-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "봉투와 택시비를 입력하면 교통비 잔액 하나가 나오지만 제목만으로 문제와 결과가 즉시 보이지 않는다.",
+      "risk_flags": [
+        "title-unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1339993499-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "생활비별 금액을 입력해 남은 봉투 잔액을 계산하는 처리는 맞지만 제목만으로 필요한 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title-unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1369253556-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라로 차량 불빛 장면을 한 번 입력하면 장노출 처리 후 빛궤적 사진 한 장이 즉시 나온다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1369253556-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캠핑 불꽃과 랜턴 장면을 카메라로 입력하면 장노출 처리 후 빛궤적 사진 한 장을 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1369253556-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랜턴으로 그린 움직임을 카메라로 입력하면 장노출 처리 후 허공의 빛궤적 사진 한 장이 나온다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-571243369-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "마이크 소리를 입력해 음정을 분석하는 흐름은 구체적이지만 허용 입력 목록에 없는 오디오·마이크 입력을 요구한다.",
+      "risk_flags": [
+        "input-not-allowed"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-571243369-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기타나 피아노 소리를 마이크로 입력해 음정 수치를 내지만 허용 입력 목록에 없는 오디오·마이크 입력이다.",
+      "risk_flags": [
+        "input-not-allowed"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-571243369-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "악기 소리를 마이크로 입력해 음이름과 MIDI 번호를 계산하지만 허용 입력 목록에 없는 오디오 입력을 요구한다.",
+      "risk_flags": [
+        "input-not-allowed"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6783925526-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "직업상담사 문제의 답안을 입력하면 채점 처리 후 오답과 선택지별 해설이라는 단일 결과를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6783925526-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "상담이론 문제 답안을 입력하면 정답 비교와 해설 처리 후 선택지별 판단 근거를 하나의 복습 결과로 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6783925526-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "노동시장·고용정책 문제 답안을 입력하면 채점 처리 후 오답 이유와 해설을 하나의 복습 결과로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1626025800-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 이름·설명 등 정보를 입력하고 편집하면 6.5·6.9인치 앱스토어 미리보기라는 구체적 결과가 나온다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1626025800-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "수정한 앱 정보를 입력하면 편집 처리 후 등록 전 상품 페이지 미리보기 하나를 즉시 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1626025800-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 정보와 문구를 입력하면 화면 비율별 편집 처리 후 앱스토어 미리보기라는 단일 결과가 제공된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1550430722-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치를 입력해 강수 레이더와 예측을 조회하는 흐름은 구체적이지만 스마트폰 기본 날씨 기능으로 더 쉽게 해결된다.",
+      "risk_flags": [
+        "os-basic-feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1550430722-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현장 위치를 입력해 강수 영상을 확인하는 결과는 명확하지만 OS 기본 날씨 앱으로 대체 가능하다.",
+      "risk_flags": [
+        "os-basic-feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1550430722-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "출근 위치를 입력해 지역 강수 예측을 얻지만 일반 날씨 앱의 기본 기능과 겹쳐 한 끗 변화가 없다.",
+      "risk_flags": [
+        "os-basic-feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6782520129-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "청소년상담사 문제 답변을 입력하면 선택지별 정답 비교와 해설 처리 후 오답 이유라는 하나의 학습 결과가 나온다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6782520129-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "심리측정 문제 답변을 입력하면 정답 근거를 비교 처리해 헷갈린 선택지의 맞고 틀린 이유를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6782520129-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "청소년복지법 문제 답변을 입력하면 선택지별 해설 비교 후 오답 이유 하나를 복습 결과로 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6758646187-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "탭·스와이프를 입력해 가짜 종료 화면을 보여주지만 허용 입력 목록에 없는 제스처 입력을 요구한다.",
+      "risk_flags": [
+        "input-not-allowed"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6758646187-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "아이의 조작을 탭·스와이프로 받아 무반응 화면을 만들지만 허용된 텍스트·URL·파일·사진·권한 입력이 아니다.",
+      "risk_flags": [
+        "input-not-allowed"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6758646187-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "탭과 스와이프를 처리해 검은 화면을 표시하는 기능은 입력 규칙상 허용되지 않는 제스처 입력을 전제로 한다.",
+      "risk_flags": [
+        "input-not-allowed"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1064894258-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "커플 프로필과 기념일을 미리 기록해야 날짜 목록이 작동하고 일반 캘린더·날짜 계산으로 더 쉽게 해결된다.",
+      "risk_flags": [
+        "prior-recording",
+        "generic-calendar"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1064894258-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "행사 날짜를 사전에 기록해야 다음 기념일 결과를 얻으며 OS 기본 캘린더로 대체 가능한 기능이다.",
+      "risk_flags": [
+        "prior-recording",
+        "os-basic-feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1064894258-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "100일과 생일을 미리 등록해야 행사 목록이 나오고 날짜 계산·캘린더 기능만으로 충분히 처리된다.",
+      "risk_flags": [
+        "prior-recording",
+        "generic-calendar"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-796959408-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "절삭 속도·공구·가공 조건을 입력해 회전수와 이송을 계산하는 결과는 구체적이지만 일본어 제목만으로 문제와 결과를 알기 어렵다.",
+      "risk_flags": [
+        "title-opaque"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-796959408-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "드릴 지름과 소재 조건을 입력해 작업 전 권장 절삭 조건표를 만들 수 있으나 제목이 한국 사용자에게 의미를 전달하지 않는다.",
+      "risk_flags": [
+        "title-opaque"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-796959408-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "밀링 조건을 입력해 이송 속도와 절삭 속도 표를 산출하는 세로 조각은 가능하지만 제목만으로 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title-opaque"
+      ]
+    }
+  ]
+}

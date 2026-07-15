@@ -1,0 +1,243 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1644199292-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스타듀밸리 분실 아이템 세이브 복구’는 세이브 파일 1개를 입력해 분실 아이템 값을 1회 수정하고 복구된 세이브 파일 1개를 결과로 내므로 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1644199292-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스타듀밸리 농장 자금 세이브 수정’은 세이브 파일 1개를 입력해 자금 값을 1회 변경하고 수정된 세이브 파일 1개를 결과로 내므로 촬영 전 준비 순간과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1644199292-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘촬영용 스타듀밸리 인벤토리 세팅’은 세이브 파일 1개를 수정해 결과 파일 1개를 내지만 오래된 세이브 복구 순간과 촬영용 인벤토리 세팅이 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘스타듀밸리 농장 자금 세이브 수정’은 세이브 파일 1개에서 자금만 바꾼 결과 파일 1개를 내지만 희귀 아이템 분실 직후라는 순간과 자금 수정 결과가 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘촬영용 스타듀밸리 인벤토리 세팅’은 세이브 파일 1개를 입력해 인벤토리 아이템을 1회 추가하고 세팅된 세이브 파일 1개를 결과로 내므로 촬영 준비 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1644199292-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스타듀밸리 분실 아이템 세이브 복구’는 세이브 파일 1개에서 지정 아이템을 1회 복구해 복구된 세이브 파일 1개를 결과로 내므로 문제와 결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1644199292-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘촬영용 스타듀밸리 인벤토리 세팅’은 세이브 파일 1개를 수정해 결과 파일 1개를 내지만 분실 아이템 직후라는 순간과 촬영용 아이템 세팅이 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘스타듀밸리 분실 아이템 세이브 복구’는 세이브 파일 1개에서 아이템을 추가한 결과 파일 1개를 내지만 촬영용 농장 세팅 순간과 분실 복구 결과가 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스타듀밸리 농장 자금 세이브 수정’은 세이브 파일 1개를 입력해 자금 필드 1개를 1회 수정하고 변경된 세이브 파일 1개를 결과로 내므로 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-300590611-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘식사 전 한 손 탭 동물 소리’는 헛간 화면 탭 1회를 입력해 문을 열고 동물 1마리와 소리 1개를 즉시 결과로 내므로 짧은 놀이 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-300590611-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘탭하면 동물 이름과 소리 공개’는 탭 1회로 동물과 소리 1개를 내지만 맞벌이 부모의 결제자와 어린이집 자유놀이 순간이 자연스럽게 연결되지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘차례대로 탭하는 헛간 동물 공개’는 탭 1회로 동물과 소리 1개를 내지만 동물 이름 연습 순간에 어린이집 차례 놀이를 붙여 필요한 순간과 한 끗 변화가 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘탭하면 동물 이름과 소리 공개’는 탭 1회로 동물과 소리 1개를 내지만 어린이집 교사의 식사 준비 순간과 이름 따라 말하기 결과가 자연스럽게 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차례대로 탭하는 헛간 동물 공개’는 헛간 화면 탭 1회로 다음 동물과 소리 1개를 즉시 공개하므로 어린이집 자유놀이의 차례 활동과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-300590611-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘식사 전 한 손 탭 동물 소리’는 탭 1회로 동물과 소리 1개를 내지만 어린이집 교사의 동물 이름 연습 순간과 식사 전 놀이 상황이 서로 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘차례대로 탭하는 헛간 동물 공개’는 탭 1회로 동물과 소리 1개를 내지만 영유아 부모의 식사 준비 순간에 어린이집 차례 놀이를 요구해 결제자와 한 끗 변화가 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘식사 전 한 손 탭 동물 소리’는 탭 1회로 동물과 소리 1개를 내지만 영유아 부모의 어린이집 자유놀이 순간과 식사 전 놀이 맥락이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘탭하면 동물 이름과 소리 공개’는 헛간 화면 탭 1회로 동물 1마리와 이름·소리 1개를 즉시 공개하므로 영유아의 말소리 연습 순간과 자연스럽다.",
+      "risk_flags": []
+    }
+  ]
+}

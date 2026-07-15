@@ -1,0 +1,121 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-1312141691-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HAR 파일의 실패 API 요청 요약’은 모바일 QA 엔지니어가 실패한 로그인 요청의 HAR 파일 하나를 입력해 실패 상태 요청을 한 번 추려 HTML 요약 보고서 하나를 얻는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1312141691-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HAR 파일의 느린 API 요청 표시’는 모바일 QA 엔지니어가 실패 직후 HAR 파일 하나를 입력해 요청별 소요 시간을 한 번 비교하고 느린 요청 목록 하나를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1312141691-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HAR 파일의 요청·응답 본문 비교’는 모바일 QA 엔지니어가 실패 직후 HAR 파일 하나에서 한 요청을 선택해 요청·응답 본문을 한 번 추출하고 비교 화면 하나를 얻는 구조가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1312141691-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HAR 파일의 실패 API 요청 요약’은 로그인 오류를 재현한 QA 엔지니어가 HAR 파일 하나를 입력해 실패 상태 요청을 한 번 추려 HTML 요약 보고서 하나로 확인하는 결과가 분명하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1312141691-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HAR 파일의 느린 API 요청 표시’는 로그인 오류 재현 후 HAR 파일 하나를 입력해 요청별 소요 시간을 한 번 비교하고 느린 요청 목록 하나를 보여주므로 payer·moment·twist가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1312141691-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HAR 파일의 요청·응답 본문 비교’는 로그인 오류를 재현하고 받은 HAR 파일 하나에서 선택한 요청의 양쪽 본문을 한 번 추출해 비교 화면 하나를 보여주는 MVP가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1312141691-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘HAR 파일의 실패 API 요청 요약’은 QA 엔지니어가 외부 API 장애 기록을 전달받아야 HAR 파일 하나를 실패 요청 요약 보고서로 만들 수 있어 상대방의 새 행동이 필요한 순간이다.",
+      "risk_flags": [
+        "external_action_required",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1312141691-121",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘HAR 파일의 느린 API 요청 표시’는 QA 엔지니어가 외부 API 장애 기록을 전달받아야 HAR 파일 하나의 요청 시간을 비교해 느린 요청 목록을 만들 수 있어 외부 전달 행동이 필수다.",
+      "risk_flags": [
+        "external_action_required",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1312141691-122",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘HAR 파일의 요청·응답 본문 비교’는 QA 엔지니어가 외부 API 장애 기록을 전달받아야 HAR 파일 하나에서 선택 요청의 양쪽 본문을 추출해 비교 화면을 만들 수 있어 외부 행동이 필수다.",
+      "risk_flags": [
+        "external_action_required",
+        "payer_moment_mismatch"
+      ]
+    }
+  ]
+}

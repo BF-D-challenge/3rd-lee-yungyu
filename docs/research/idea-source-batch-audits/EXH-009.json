@@ -1,0 +1,59 @@
+{
+  "batch_id": "EXH-009",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "sonnet",
+  "audit_model": "sonnet",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 99,
+  "decision_counts": {
+    "Fail": 85,
+    "Merge": 6,
+    "Candidate": 8
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 89,
+      "sample": [
+        "trustmrr:sales-farmer",
+        "chrome_web_store:hlanfmghaojmigedmefffglkjhigliid",
+        "chrome_web_store:ahcnibnmfekjlbmmhombonmfeicmphki",
+        "trustmrr:veo3-gen",
+        "app_store:1494704742",
+        "app_store:1575583991",
+        "app_store:1634898254",
+        "app_store:498405045",
+        "chrome_web_store:bpncppnllngfgpcclmpjdlhokgbdkpdh"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:hlanfmghaojmigedmefffglkjhigliid",
+          "decision": "Merge",
+          "reason": "현재 웹페이지 입력→반복 항목 구조화→표 내보내기라는 입력·처리·즉시결과가 current-page-to-clean-csv와 실질적으로 같음."
+        }
+      ],
+      "false_reject_rate": 0.1111111111111111
+    },
+    {
+      "round": 2,
+      "fail_count": 85,
+      "sample": [
+        "trustmrr:zescale",
+        "app_store:6444266283",
+        "app_store:6749840624",
+        "app_store:410395246",
+        "app_store:1436799971",
+        "trustmrr:stat-ai",
+        "app_store:1200842933",
+        "trustmrr:ploxto",
+        "app_store:1338655056"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

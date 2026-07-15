@@ -1,0 +1,154 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-qranalytica-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘인쇄용 SVG QR 파일 만들기’는 행사 포스터 담당자가 인쇄 직전 목적지 URL 하나를 입력해 동적 QR을 한 번 생성하고 인쇄용 SVG 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-qranalytica-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘A4 출력용 QR 테스트 만들기’는 포장물 운영자가 발주 직전 목적지 URL 하나를 입력해 동적 QR을 한 번 생성하고 A4 스캔 테스트 PDF 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-qranalytica-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘투명 PNG QR 파일 만들기’는 학원 안내문 제작자가 게시 직전 목적지 URL 하나를 입력해 동적 QR을 한 번 생성하고 투명 배경 PNG 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-gifduo-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘256픽셀 프로필 GIF 만들기’는 뉴스레터 운영자가 프로필 사진 한 장을 입력해 애니메이션 GIF로 한 번 변환하고 256px GIF 파일 하나를 프로필 교체 직전에 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-gifduo-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘투명 여백 프로필 GIF 만들기’는 커뮤니티 운영자가 정사각형 프로필 사진 한 장을 입력해 애니메이션 GIF로 한 번 변환하고 투명 여백 정사각 GIF 파일 하나를 업로드 직전에 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-gifduo-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘512픽셀 프로필 GIF 만들기’는 소상공인 마케터가 정사각형 프로필 사진 한 장을 입력해 애니메이션 GIF로 한 번 변환하고 512px GIF 파일 하나를 게시 직전에 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-vibe-app-scanner-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹앱 보안 헤더 문제 확인’은 1인 빌더가 로그인 없는 공개 웹앱 URL 하나를 입력해 보안 헤더를 한 번 점검하고 관찰된 문제와 재현 URL 하나를 공개 직전에 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-vibe-app-scanner-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘공개 관리 경로 노출 확인’은 개발팀이 고객 전달 직전 공개 웹앱 URL 하나를 입력해 공개 관리 경로를 한 번 점검하고 관찰된 응답 문제와 재현 URL 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-vibe-app-scanner-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HTTPS 쿠키 설정 문제 확인’은 프리랜서 개발자가 데모 공개 직전 로그인 없는 공개 웹앱 URL 하나를 입력해 HTTPS·쿠키 설정을 한 번 점검하고 관찰된 문제와 재현 URL 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-moldaspace-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘스케치 속 밝은 원목 공간 렌더’는 인테리어 스케치 한 장을 입력해 AI로 한 번 렌더링하고 공간 이미지 하나를 받지만 범용 AI 이미지 생성 한 번으로 대체하기 쉽다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-moldaspace-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘스케치 속 콘크리트 공간 렌더’는 실내 스케치 한 장을 입력해 AI로 한 번 렌더링하고 콘크리트 톤 공간 이미지 하나를 받지만 범용 AI 이미지 생성 한 번으로 대체하기 쉽다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-moldaspace-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘스케치 속 짙은 원목 공간 렌더’는 실내 스케치 한 장을 입력해 AI로 한 번 렌더링하고 짙은 원목 톤 공간 이미지 하나를 받지만 범용 AI 이미지 생성 한 번으로 대체하기 쉽다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    }
+  ]
+}

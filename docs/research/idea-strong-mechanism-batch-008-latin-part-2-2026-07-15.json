@@ -1,0 +1,173 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-mirage-detect-image-editing-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘과도한 보정 영역 사진 히트맵’은 사진 파일 하나를 탐지해 히트맵 이미지 하나를 내는 결과는 명확하지만, 광고 소재 QA 담당자의 결제자와 중고거래 게시물 승인 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-mirage-detect-image-editing-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘복제 흔적이 표시된 사진 히트맵’은 사진 한 장을 탐지해 히트맵 한 장을 출력하지만, 광고 소재 QA 담당자와 보도 사진 송고 직전 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-mirage-detect-image-editing-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘경계 불일치가 보이는 사진 히트맵’은 브랜드 콘텐츠 QA 담당자가 광고 소재 최종 승인 직전에 사진 파일 하나를 분석해 경계 의심 영역 히트맵 이미지 하나를 확인하는 흐름으로 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-ios-app-growing-fast-with-seo-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘양각 부조로 바뀐 도안 STL 파일’은 이미지 하나를 STL 하나로 변환하지만, 쿠키 커터 제작자가 슬라이서에 넣기 직전에 필요한 외곽 커터와 양각 부조 결과가 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-ios-app-growing-fast-with-seo-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘외곽 커터로 바뀐 도안 STL 파일’은 이미지 하나를 외곽 커터 STL 하나로 변환하지만, 쿠키 커터 제작자의 결제자와 도장 시제품 파일을 보내기 직전 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-ios-app-growing-fast-with-seo-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘음각 도장으로 바뀐 도안 STL 파일’은 이미지 하나를 음각 STL 하나로 변환하지만, 쿠키 커터 제작자와 수업용 학생 도안을 출력하는 순간 및 음각 도장 결과가 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-ios-app-growing-fast-with-seo-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘외곽 커터로 바뀐 도안 STL 파일’은 이미지 하나를 외곽 커터 STL 하나로 변환하지만, 도장 시제품을 만드는 제작자가 쿠키 커터 도안을 슬라이서에 넣는 순간과 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-ios-app-growing-fast-with-seo-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘음각 도장으로 바뀐 도안 STL 파일’은 도장 시제품 제작자가 보내기 직전에 이미지 파일 하나를 한 번 변환해 음각 도장 STL 파일 하나를 확인하는 흐름으로 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-ios-app-growing-fast-with-seo-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘양각 부조로 바뀐 도안 STL 파일’은 이미지 하나를 양각 STL 하나로 변환하지만, 도장 시제품 제작자의 결제자와 수업용 학생 도안을 바로 출력하는 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-ios-app-growing-fast-with-seo-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘음각 도장으로 바뀐 도안 STL 파일’은 이미지 하나를 음각 STL 하나로 변환하지만, 초등 교사가 쿠키 커터 도안을 슬라이서에 넣는 순간에 음각 도장을 확인하는 흐름은 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-ios-app-growing-fast-with-seo-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘양각 부조로 바뀐 도안 STL 파일’은 이미지 하나를 양각 STL 하나로 변환하지만, 수업에서 학생 도안을 출력하는 교사와 도장 시제품 파일을 보내기 직전 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-ios-app-growing-fast-with-seo-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘외곽 커터로 바뀐 도안 STL 파일’은 초등 교사가 수업용 학생 도안을 바로 출력할 때 이미지 파일 하나를 한 번 변환해 외곽 커터 STL 파일 하나를 받는 흐름으로 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

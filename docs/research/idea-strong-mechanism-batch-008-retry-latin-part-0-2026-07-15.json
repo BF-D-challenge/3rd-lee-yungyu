@@ -1,0 +1,160 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6461213251-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘협찬 고지 위치가 보이는 네이버 후기’는 육아용품 구매 직전 네이버 글 URL 하나에서 대가성 문구를 한 번 검사해 본문 앞·중간·뒤 위치 하나를 보여주므로 대상·순간·결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6461213251-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘대가성 표현 횟수가 표시된 후기’는 네이버 글 URL 하나를 분석해 횟수 하나를 보여주지만, 육아용품 구매자가 가전 후보를 고르는 순간으로 연결되어 payer와 moment가 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6461213251-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘네이버 후기의 대가성 문구 모음’은 네이버 글 URL 하나에서 대가성 문구를 한 번 탐지해 원문 문장 목록 하나를 보여주지만, 육아용품 구매자와 동료에게 보낼 맛집 링크 선택 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6461213251-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘대가성 표현 횟수가 표시된 후기’는 네이버 글 URL 하나를 분석해 표현 횟수 하나를 보여주지만, 가전 구매자가 육아용품 후기를 마지막 확인하는 순간으로 제시되어 payer와 moment가 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6461213251-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘네이버 후기의 대가성 문구 모음’은 가전 구매 직전 네이버 글 URL 하나에서 대가성 문구를 한 번 탐지해 원문 문장 목록 하나를 보여주므로 payer·moment·twist와 MVP 입력·처리·결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6461213251-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘협찬 고지 위치가 보이는 네이버 후기’는 가전 구매자가 네이버 글 URL 하나를 분석해 고지 위치 하나를 확인하는 구조지만, 실제 moment가 동료에게 보낼 맛집 링크 선택으로 제시되어 payer와 moment가 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6461213251-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘네이버 후기의 대가성 문구 모음’은 회식 총무가 네이버 글 URL 하나에서 대가성 문구를 탐지해 문장 목록 하나를 얻는 구조지만, moment가 육아용품 결제 직전으로 제시되어 payer와 moment가 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6461213251-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘협찬 고지 위치가 보이는 네이버 후기’는 회식 총무가 네이버 글 URL 하나를 분석해 고지 위치 하나를 확인하는 구조지만, 가전 구매 순간으로 연결되어 payer와 moment가 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6461213251-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘대가성 표현 횟수가 표시된 후기’는 회식 장소 선택 직전 네이버 글 URL 하나에서 대가성 표현을 한 번 탐지해 발견 횟수 하나를 보여주므로 payer·moment·twist와 MVP 범위가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6762625967-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘본문이 읽히는 HWP PDF 변환’은 공공기관 HWP 파일이 아이폰에서 열리지 않는 순간 파일 하나를 한 번 변환해 읽을 수 있는 PDF 하나를 출력하므로 입력·처리·결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6762625967-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치가 보존된 HWP PDF’는 HWP 문서를 전달하기 직전 파일 하나를 한 번 변환해 표 배치가 유지된 PDF 하나를 출력하므로 payer·moment·twist와 MVP가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6762625967-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 위치가 유지된 HWP PDF’는 마감 전 HWP 파일 하나를 한 번 변환해 이미지 위치가 유지된 PDF 하나를 출력하므로 휴대폰에서 즉시 확인하려는 순간과 결과가 자연스럽다.",
+      "risk_flags": []
+    }
+  ]
+}

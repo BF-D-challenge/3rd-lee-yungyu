@@ -1,0 +1,220 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-octree-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "LaTeX 원고가 컴파일 오류로 멈춘 대학원생이 .tex 파일 하나를 받아 명령 밖의 %, _, &, #만 정적 검사·이스케이프한 수정 .tex 파일 하나를 즉시 얻는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-octree-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "PDF 변환 직전의 대학원생이 .tex 파일 하나를 받아 한 줄 안 단순 중괄호 짝만 정적 보정한 수정 .tex 파일 하나를 즉시 얻는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-octree-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공동 작업자에게 넘기기 전인 대학원생이 .tex 파일 하나를 받아 단순 tabular 행의 열 개수와 부족한 마지막 셀을 한 번 검사·보정한 수정 .tex 파일 하나를 즉시 얻는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-octree-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "컴파일 오류 직후의 LaTeX 프리랜서 편집자가 .tex 파일 하나를 받아 한 줄 안 단순 중괄호 짝만 정적 보정한 수정 .tex 파일 하나를 즉시 얻는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-octree-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "납품 전인 LaTeX 프리랜서 편집자가 .tex 파일 하나를 받아 단순 tabular 행의 열 개수와 부족한 마지막 셀을 한 번 검사·보정한 수정 .tex 파일 하나를 즉시 얻는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-octree-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공동 작업자에게 넘기기 전인 LaTeX 프리랜서 편집자가 .tex 파일 하나를 받아 명령 밖의 %, _, &, #만 정적 검사·이스케이프한 수정 .tex 파일 하나를 즉시 얻는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-octree-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "컴파일 오류 직후의 공학 강사가 .tex 파일 하나를 받아 단순 tabular 행의 열 개수와 부족한 마지막 셀을 한 번 검사·보정한 수정 .tex 파일 하나를 즉시 얻는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-octree-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "PDF 변환 직전의 공학 강사가 .tex 파일 하나를 받아 명령 밖의 %, _, &, #만 정적 검사·이스케이프한 수정 .tex 파일 하나를 즉시 얻는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-octree-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공동 작업자에게 넘기기 전인 공학 강사가 .tex 파일 하나를 받아 한 줄 안 단순 중괄호 짝만 정적 보정한 수정 .tex 파일 하나를 즉시 얻는 흐름이 제목·payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beep-productivity-inc-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라이브 웹페이지에서 수정 요소를 발견한 대행사 PM이 공개 URL·CSS selector·댓글 한 덩어리를 받아 1440px 화면에서 대상 요소를 캡처·테두리 표시하고 위치와 댓글이 붙은 HTML 피드백 파일 하나를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beep-productivity-inc-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자에게 요청하기 직전의 대행사 PM이 공개 URL·CSS selector·댓글 한 덩어리를 받아 390px 화면에서 대상 요소를 캡처·테두리 표시하고 위치와 댓글이 붙은 HTML 피드백 파일 하나를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beep-productivity-inc-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "최종 검수 결과를 공유하기 전의 대행사 PM이 공개 URL·CSS selector·댓글 한 덩어리를 받아 대상 요소를 캡처하고 위치·댓글·복사 가능한 selector가 붙은 HTML 피드백 파일 하나를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beep-productivity-inc-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라이브 웹페이지에서 수정 요소를 발견한 1인 운영자가 공개 URL·CSS selector·댓글 한 덩어리를 받아 390px 화면에서 대상 요소를 캡처·테두리 표시하고 위치와 댓글이 붙은 HTML 피드백 파일 하나를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beep-productivity-inc-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자에게 요청하기 직전의 1인 운영자가 공개 URL·CSS selector·댓글 한 덩어리를 받아 대상 요소를 캡처하고 위치·댓글·복사 가능한 selector가 붙은 HTML 피드백 파일 하나를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beep-productivity-inc-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "최종 검수 결과를 고객에게 공유하기 전의 1인 운영자가 공개 URL·CSS selector·댓글 한 덩어리를 받아 1440px 화면에서 대상 요소를 캡처·테두리 표시하고 위치와 댓글이 붙은 HTML 피드백 파일 하나를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beep-productivity-inc-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라이브 웹페이지에서 수정 요소를 발견한 프리랜서 디자이너가 공개 URL·CSS selector·댓글 한 덩어리를 받아 대상 요소를 캡처하고 위치·댓글·복사 가능한 selector가 붙은 HTML 피드백 파일 하나를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beep-productivity-inc-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발자에게 요청하기 직전의 프리랜서 디자이너가 공개 URL·CSS selector·댓글 한 덩어리를 받아 1440px 화면에서 대상 요소를 캡처·테두리 표시하고 위치와 댓글이 붙은 HTML 피드백 파일 하나를 즉시 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beep-productivity-inc-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "최종 검수 결과를 고객에게 공유하기 전의 프리랜서 디자이너가 공개 URL·CSS selector·댓글 한 덩어리를 받아 390px 화면에서 대상 요소를 캡처·테두리 표시하고 위치와 댓글이 붙은 HTML 피드백 파일 하나를 즉시 얻는다.",
+      "risk_flags": []
+    }
+  ]
+}

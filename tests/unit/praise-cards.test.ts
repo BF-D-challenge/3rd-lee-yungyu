@@ -2,10 +2,8 @@ import { describe, expect, it } from "vitest";
 import {
   addLocalDays,
   buildDailyPraiseSchedule,
-  getNextCardPreviewFakeDoor,
   getPraiseCardsState,
   getPraiseQueue,
-  getSenderIdentityFakeDoor,
   getSenderIdentityState,
   getTodayPraiseCard,
   localDateKey,
@@ -251,7 +249,7 @@ describe("today card, queue, and aggregate state", () => {
     expect(JSON.stringify(queue)).not.toContain("보낸 사람");
   });
 
-  it("builds an empty state with both fake doors unavailable", () => {
+  it("builds an empty state without placeholder cards", () => {
     const state = getPraiseCardsState([null, { broken: true }], localTime(2026, 6, 12));
 
     expect(state).toMatchObject({
@@ -262,8 +260,6 @@ describe("today card, queue, and aggregate state", () => {
       queue: [],
       historyCount: 0,
       totalCount: 0,
-      nextPreviewFakeDoor: { feature: "next-card-preview", status: "unavailable", cardId: null },
-      senderIdentityFakeDoor: { feature: "sender-identity", status: "unavailable", cardId: null },
     });
   });
 
@@ -274,8 +270,6 @@ describe("today card, queue, and aggregate state", () => {
     expect(state.kind).toBe("waiting");
     expect(state.today).toBeNull();
     expect(state.next).toEqual({ id: "future", availableAt: startOfLocalDay(future.availableAt), queuePosition: 1 });
-    expect(state.nextPreviewFakeDoor.status).toBe("available");
-    expect(state.senderIdentityFakeDoor.status).toBe("unavailable");
   });
 
   it("advances one card per local day and exposes only the actual next card as locked", () => {
@@ -317,33 +311,23 @@ describe("today card, queue, and aggregate state", () => {
 
     expect(before.today?.id).toBe("named");
     expect(before.today?.sender).toMatchObject({ status: "locked", displayName: null, revealAt });
-    expect(before.senderIdentityFakeDoor.status).toBe("available");
-
     expect(after.kind).toBe("today");
     expect(after.today?.sender).toEqual({ status: "revealed", displayName: "민정", revealAt });
-    expect(after.senderIdentityFakeDoor.status).toBe("already-free");
   });
 });
 
-describe("fake-door and sender identity rules", () => {
-  it("offers next-card preview only for a real locked card without revealing its contents", () => {
-    const next = { id: "next-id", availableAt: localTime(2026, 6, 13), queuePosition: 1 };
+describe("sender identity rules", () => {
+  it("shows an explicitly named sender immediately without a paid reveal", () => {
+    const record = makeRecord({
+      senderRevealConsent: "named",
+      senderName: "민정",
+    });
 
-    expect(getNextCardPreviewFakeDoor(null)).toMatchObject({
-      feature: "next-card-preview",
-      status: "unavailable",
-      priceWon: 990,
-      cardId: null,
+    expect(getSenderIdentityState(record, record.receivedAt)).toEqual({
+      status: "revealed",
+      displayName: "민정",
+      revealAt: record.receivedAt,
     });
-    const available = getNextCardPreviewFakeDoor(next);
-    expect(available).toMatchObject({
-      feature: "next-card-preview",
-      status: "available",
-      priceWon: 990,
-      cardId: "next-id",
-    });
-    expect(available).not.toHaveProperty("message");
-    expect(available).not.toHaveProperty("senderName");
   });
 
   it("forbids sender lookup for permanent anonymity even if a name is present in raw input", () => {
@@ -353,11 +337,6 @@ describe("fake-door and sender identity rules", () => {
       status: "forever-anonymous",
       displayName: null,
       revealAt: null,
-    });
-    expect(getSenderIdentityFakeDoor(record, addLocalDays(record.receivedAt, 100))).toMatchObject({
-      feature: "sender-identity",
-      status: "forbidden",
-      cardId: record.id,
     });
   });
 
@@ -369,7 +348,6 @@ describe("fake-door and sender identity rules", () => {
       displayName: null,
       revealAt: null,
     });
-    expect(getSenderIdentityFakeDoor(record, record.receivedAt).status).toBe("unavailable");
   });
 
   it("keeps the name absent before 30 days and makes it free exactly at the boundary", () => {
@@ -381,14 +359,11 @@ describe("fake-door and sender identity rules", () => {
       displayName: null,
       revealAt,
     });
-    expect(getSenderIdentityFakeDoor(record, revealAt - 1).status).toBe("available");
-
     expect(getSenderIdentityState(record, revealAt)).toEqual({
       status: "revealed",
       displayName: "서연",
       revealAt,
     });
-    expect(getSenderIdentityFakeDoor(record, revealAt).status).toBe("already-free");
   });
 
   it("preserves the 30-local-day reveal boundary across DST", () => {
@@ -409,6 +384,40 @@ describe("fake-door and sender identity rules", () => {
 });
 
 describe("praiseRecordFromVote", () => {
+  it("parses immediate name consent and keeps the related idea title", () => {
+    const at = localTime(2026, 6, 12, 17, 45);
+    const record = praiseRecordFromVote(
+      {
+        at,
+        comment: supportComment(validSupportPayload({
+          praise: "대상이 명확해서 이해하기 쉬워요",
+          reveal: "named",
+          senderName: "  지수  ",
+          ideaTitle: "  결정만 남기는 음성 메모  ",
+        })),
+      },
+      { id: "vote-id" },
+    );
+
+    expect(record).toMatchObject({
+      senderRevealConsent: "named",
+      senderName: "지수",
+      ideaTitle: "결정만 남기는 음성 메모",
+    });
+  });
+
+  it("uses the request title when a legacy payload has no idea title", () => {
+    const record = praiseRecordFromVote(
+      {
+        at: localTime(2026, 6, 12),
+        comment: supportComment(validSupportPayload()),
+      },
+      { id: "vote-id", ideaTitle: "공유 요청의 아이디어" },
+    );
+
+    expect(record?.ideaTitle).toBe("공유 요청의 아이디어");
+  });
+
   it("parses and cleans a valid opted-in support payload", () => {
     const at = localTime(2026, 6, 12, 17, 45);
     const requestedDay = new Date(2026, 6, 15, 20);

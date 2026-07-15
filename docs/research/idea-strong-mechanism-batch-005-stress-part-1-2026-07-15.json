@@ -1,0 +1,126 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-mermaidonline-live-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 편집 가능한 SVG 다이어그램’은 PR 첨부용 기술 리드가 흐름도 삽입 직전에 Mermaid 코드 블록 하나를 한 번 렌더링해 편집 가능한 SVG 한 개를 받는 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-mermaidonline-live-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 2배 해상도 PNG 다이어그램’은 발표 자료를 만드는 기술 강사가 시퀀스 그림 삽입 직전에 Mermaid 코드 블록 하나를 한 번 렌더링해 2배 해상도 PNG 한 개를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1119117405-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 자투리 최소 절단 배치 PDF’는 소규모 목공 작업자가 재단소 주문 직전에 치수·톱날 폭·부품 목록을 담은 텍스트 블록 하나를 한 번 계산해 자투리 최소 배치 PDF 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1119117405-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 부품 번호 표시 절단 PDF’는 가구 제작자가 톱질 직전에 판재·톱날 폭·부품 목록 텍스트 하나를 한 번 배치 계산해 부품 번호가 표시된 절단 PDF 한 개를 받는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1119117405-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 재단 순서 표시 PDF’는 인테리어 실무자가 고객 치수 변경 순간에 치수·톱날 폭·부품 목록 텍스트 하나를 한 번 계산해 재단 순서가 표시된 배치 PDF 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760979290-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스케치 사진의 종이 그림자 제거 선화’는 일러스트레이터가 채색 앱 투입 직전에 스케치 사진 한 장을 한 번 보정·그림자 제거해 투명 배경 선화 PNG 한 개를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760979290-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘흰 종이 배경을 투명 선화로 변환’은 웹툰 작가가 인쇄 파일 전달 직전에 스케치 사진 한 장을 한 번 배경 분리해 투명 배경 선화 PNG 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760979290-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘연필 얼룩 제거 후 투명 선화 PNG’는 굿즈 제작자가 노트 콘티를 디지털 원고로 옮기는 순간 사진 한 장을 한 번 얼룩 제거해 투명 배경 선화 PNG 한 개를 받는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-288054534-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘현재 위치의 한국 현지시각 기도표’는 한국 유학생이 낯선 장소에서 기도 직전 현재 위치 권한 하나를 한 번 위치·시간대 계산해 현지 기도 시간표 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-288054534-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘현재 위치에서 바라볼 키블라 방향’은 출장 중인 무슬림 직장인이 예배 장소 도착 직후 현재 위치 권한 하나를 한 번 방향 계산해 키블라 방향 카드 한 개를 받지만, moment_detail이 시간과 방향을 동시에 요구해 방향만 제공하는 twist와 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    }
+  ]
+}

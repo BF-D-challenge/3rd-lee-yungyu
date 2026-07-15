@@ -1,0 +1,526 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-6745445528-100",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "모바일 QA 엔지니어가 재현된 API 오류 순간 원시 JSON 한 덩어리를 한 번 검증해 첫 오류 줄을 받는 흐름은 명확하지만, JSON 검증·오류 표시가 브라우저 기본 개발자 도구나 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "모바일 QA 엔지니어가 재현된 API 오류 순간 원시 JSON 한 덩어리를 한 번 형식화해 접었다 펼치는 트리를 받는 흐름은 명확하지만, JSON 포맷·접기 기능이 브라우저 기본 도구나 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-102",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "모바일 QA 엔지니어가 재현된 API 오류 순간 원시 JSON 한 덩어리를 한 번 형식화해 전체 키 경로가 붙은 트리 하나를 받는 흐름은 명확하지만, JSON 탐색·경로 표시가 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-110",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "모바일 QA 엔지니어가 배포 전 원시 JSON 한 덩어리를 한 번 검증해 첫 오류 줄을 받는 흐름은 명확하지만, JSON 검증·오류 표시가 브라우저 기본 개발자 도구나 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-111",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "모바일 QA 엔지니어가 배포 전 원시 JSON 한 덩어리를 한 번 형식화해 접었다 펼치는 트리 하나를 받는 흐름은 명확하지만, JSON 포맷·접기 기능이 브라우저 기본 도구나 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "모바일 QA 엔지니어가 배포 전 원시 JSON 한 덩어리를 한 번 형식화해 전체 키 경로가 붙은 트리 하나를 받는 흐름은 명확하지만, JSON 탐색·경로 표시가 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "모바일 QA 엔지니어가 협력사 API 필드 대조 순간 원시 JSON 한 덩어리를 한 번 검증해 첫 오류 줄을 받는 흐름은 명확하지만, JSON 검증·오류 표시가 브라우저 기본 개발자 도구나 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-121",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "모바일 QA 엔지니어가 협력사 API 필드 대조 순간 원시 JSON 한 덩어리를 한 번 형식화해 접었다 펼치는 트리 하나를 받는 흐름은 명확하지만, JSON 포맷·접기 기능이 브라우저 기본 도구나 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-122",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "모바일 QA 엔지니어가 협력사 API 필드 대조 순간 원시 JSON 한 덩어리를 한 번 형식화해 전체 키 경로가 붙은 트리 하나를 받는 흐름은 명확하지만, JSON 탐색·경로 표시가 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-200",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기술 PM이 재현된 API 오류 순간 원시 JSON 한 덩어리를 한 번 검증해 첫 오류 줄을 받는 흐름은 명확하지만, JSON 검증·오류 표시가 브라우저 기본 개발자 도구나 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-201",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기술 PM이 재현된 API 오류 순간 원시 JSON 한 덩어리를 한 번 형식화해 접었다 펼치는 트리 하나를 받는 흐름은 명확하지만, JSON 포맷·접기 기능이 브라우저 기본 도구나 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기술 PM이 재현된 API 오류 순간 원시 JSON 한 덩어리를 한 번 형식화해 전체 키 경로가 붙은 트리 하나를 받는 흐름은 명확하지만, JSON 탐색·경로 표시가 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기술 PM이 배포 전 원시 JSON 한 덩어리를 한 번 검증해 첫 오류 줄을 받는 흐름은 명확하지만, JSON 검증·오류 표시가 브라우저 기본 개발자 도구나 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-211",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기술 PM이 배포 전 원시 JSON 한 덩어리를 한 번 형식화해 접었다 펼치는 트리 하나를 받는 흐름은 명확하지만, JSON 포맷·접기 기능이 브라우저 기본 도구나 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-212",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기술 PM이 배포 전 원시 JSON 한 덩어리를 한 번 형식화해 전체 키 경로가 붙은 트리 하나를 받는 흐름은 명확하지만, JSON 탐색·경로 표시가 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-220",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기술 PM이 협력사 API 필드 대조 순간 원시 JSON 한 덩어리를 한 번 검증해 첫 오류 줄을 받는 흐름은 명확하지만, JSON 검증·오류 표시가 브라우저 기본 개발자 도구나 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기술 PM이 협력사 API 필드 대조 순간 원시 JSON 한 덩어리를 한 번 형식화해 접었다 펼치는 트리 하나를 받는 흐름은 명확하지만, JSON 포맷·접기 기능이 브라우저 기본 도구나 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6745445528-222",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기술 PM이 협력사 API 필드 대조 순간 원시 JSON 한 덩어리를 한 번 형식화해 전체 키 경로가 붙은 트리 하나를 받는 흐름은 명확하지만, JSON 탐색·경로 표시가 범용 JSON 도구로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "육상 코치가 여러 참가자의 결승선 기록 확정 순간 카메라로 결승선을 한 번 포토피니시 처리해 선수별 통과 시각 이미지를 받는 흐름은 명확하지만, 다수 선수 식별과 정밀 시각 산출은 반나절~2일 MVP 범위를 넘고 공식 기록 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-001",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "육상 코치가 여러 참가자의 결승선 기록 확정 순간 카메라로 결승선을 한 번 포토피니시 처리해 순위선이 겹쳐진 결과 이미지 하나를 받는 흐름은 명확하지만, 다수 선수 식별과 정밀 순위 산출은 반나절~2일 MVP 범위를 넘고 공식 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-002",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "육상 코치가 여러 참가자의 결승선 기록 확정 순간 카메라로 결승선을 한 번 포토피니시 처리해 순위가 보이는 이미지 하나를 받는 흐름은 명확하지만, 다수 선수 식별과 정밀 순위 산출은 반나절~2일 MVP 범위를 넘고 공식 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-010",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "육상 코치가 육안으로 선착순을 가르기 어려운 순간 카메라로 결승선을 한 번 포토피니시 처리해 선수별 통과 시각 이미지를 받는 흐름은 명확하지만, 다수 선수 식별과 정밀 시각 산출은 반나절~2일 MVP 범위를 넘고 공식 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "육상 코치가 육안으로 선착순을 가르기 어려운 순간 카메라로 결승선을 한 번 포토피니시 처리해 순위선이 겹쳐진 결과 이미지 하나를 받는 흐름은 명확하지만, 다수 선수 식별과 정밀 순위 산출은 반나절~2일 MVP 범위를 넘고 공식 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-012",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "육상 코치가 육안으로 선착순을 가르기 어려운 순간 카메라로 결승선을 한 번 포토피니시 처리해 순위가 보이는 이미지 하나를 받는 흐름은 명확하지만, 다수 선수 식별과 정밀 순위 산출은 반나절~2일 MVP 범위를 넘고 공식 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-020",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "육상 코치가 참가자별 시간을 기록표에 옮기기 직전 카메라로 결승선을 한 번 포토피니시 처리해 선수별 통과 시각 이미지를 받는 흐름은 명확하지만, 다수 선수 식별과 정밀 시각 산출은 반나절~2일 MVP 범위를 넘고 공식 기록 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-021",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "육상 코치가 참가자별 시간을 기록표에 옮기기 직전 카메라로 결승선을 한 번 포토피니시 처리해 순위선이 겹쳐진 결과 이미지 하나를 받는 흐름은 명확하지만, 다수 선수 식별과 정밀 순위 산출은 반나절~2일 MVP 범위를 넘고 공식 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "육상 코치가 참가자별 시간을 기록표에 옮기기 직전 카메라로 결승선을 한 번 포토피니시 처리해 순위가 보이는 이미지 하나를 받는 흐름은 명확하지만, 다수 선수 식별과 정밀 순위 산출은 반나절~2일 MVP 범위를 넘고 공식 기록 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-100",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "체육교사가 여러 참가자의 결승선 기록 확정 순간 카메라로 결승선을 한 번 포토피니시 처리해 선수별 통과 시각 이미지를 받는 흐름은 명확하지만, 수업 참가자 식별과 정밀 시각 산출은 반나절~2일 MVP 범위를 넘고 공식 기록 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "체육교사가 여러 참가자의 결승선 기록 확정 순간 카메라로 결승선을 한 번 포토피니시 처리해 순위선이 겹쳐진 결과 이미지 하나를 받는 흐름은 명확하지만, 수업 참가자 식별과 정밀 순위 산출은 반나절~2일 MVP 범위를 넘고 공식 기록 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-102",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "체육교사가 여러 참가자의 결승선 기록 확정 순간 카메라로 결승선을 한 번 포토피니시 처리해 순위가 보이는 이미지 하나를 받는 흐름은 명확하지만, 수업 참가자 식별과 정밀 순위 산출은 반나절~2일 MVP 범위를 넘고 공식 기록 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-110",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "체육교사가 육안으로 선착순을 가르기 어려운 순간 카메라로 결승선을 한 번 포토피니시 처리해 선수별 통과 시각 이미지를 받는 흐름은 명확하지만, 수업 참가자 식별과 정밀 시각 산출은 반나절~2일 MVP 범위를 넘고 공식 기록 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-111",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "체육교사가 육안으로 선착순을 가르기 어려운 순간 카메라로 결승선을 한 번 포토피니시 처리해 순위선이 겹쳐진 결과 이미지 하나를 받는 흐름은 명확하지만, 수업 참가자 식별과 정밀 순위 산출은 반나절~2일 MVP 범위를 넘고 공식 기록 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "체육교사가 육안으로 선착순을 가르기 어려운 순간 카메라로 결승선을 한 번 포토피니시 처리해 순위가 보이는 이미지 하나를 받는 흐름은 명확하지만, 수업 참가자 식별과 정밀 순위 산출은 반나절~2일 MVP 범위를 넘고 공식 기록 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "체육교사가 참가자별 시간을 기록표에 옮기기 직전 카메라로 결승선을 한 번 포토피니시 처리해 선수별 통과 시각 이미지를 받는 흐름은 명확하지만, 수업 참가자 식별과 정밀 시각 산출은 반나절~2일 MVP 범위를 넘고 공식 기록 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-121",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "체육교사가 참가자별 시간을 기록표에 옮기기 직전 카메라로 결승선을 한 번 포토피니시 처리해 순위선이 겹쳐진 결과 이미지 하나를 받는 흐름은 명확하지만, 수업 참가자 식별과 정밀 순위 산출은 반나절~2일 MVP 범위를 넘고 공식 기록 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-app-store-430807521-122",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "체육교사가 참가자별 시간을 기록표에 옮기기 직전 카메라로 결승선을 한 번 포토피니시 처리해 순위가 보이는 이미지 하나를 받는 흐름은 명확하지만, 수업 참가자 식별과 정밀 순위 산출은 반나절~2일 MVP 범위를 넘고 공식 기록 판정 위험이 있다.",
+      "risk_flags": [
+        "mvp_too_large",
+        "safety_or_regulation_risk"
+      ]
+    }
+  ]
+}

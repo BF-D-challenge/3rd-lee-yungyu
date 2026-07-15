@@ -1,0 +1,87 @@
+{
+  "batch_id": "EXH-053",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 55,
+    "Candidate": 41,
+    "Reserve": 2,
+    "Merge": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 71,
+      "sample": [
+        "chrome_web_store:jplgfhpmjnbigmhklmmbgecoobifkmpa",
+        "app_store:1556970037",
+        "app_store:1537292587",
+        "chrome_web_store:dhpejadloippifpocekdponhfhlmnhgi",
+        "app_store:1077137248",
+        "app_store:1326943979",
+        "app_store:1240380955",
+        "trustmrr:resu-genius"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1537292587",
+          "decision": "Candidate",
+          "reason": "시작·종료 일정을 한 번 입력하면 표의 시간 칸에 배치해 한눈에 보는 일정표를 반나절에 만들 수 있다."
+        },
+        {
+          "key": "trustmrr:resu-genius",
+          "decision": "Candidate",
+          "reason": "CV 또는 개인 정보를 받아 직무 중심으로 재작성하고 맞춤 이력서 하나를 수초 내 산출하는 세로 조각이다."
+        }
+      ],
+      "false_reject_rate": 0.25
+    },
+    {
+      "round": 2,
+      "fail_count": 62,
+      "sample": [
+        "app_store:331177714",
+        "app_store:1638253339",
+        "app_store:1446461114",
+        "chrome_web_store:ienfdfooajmkbebiaplehejbamefbboi",
+        "app_store:1545864950",
+        "trustmrr:elaric-ai",
+        "trustmrr:findit"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1638253339",
+          "decision": "Candidate",
+          "reason": "단일 기기 걸음 권한으로 걸음 수를 계산해 즉시 포인트를 보여주는 2일 세로 조각이 남는다."
+        },
+        {
+          "key": "trustmrr:findit",
+          "decision": "Candidate",
+          "reason": "단일 기기 블루투스 권한으로 기기를 탐색해 찾은 기기를 보여주는 2일 세로 조각이 남는다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 3,
+      "fail_count": 55,
+      "sample": [
+        "chrome_web_store:abmegjbfpbiheedegdhjhnboefgdnanm",
+        "app_store:6618112702",
+        "app_store:451119145",
+        "trustmrr:drawcharts",
+        "app_store:1380676511",
+        "chrome_web_store:neehpgpjljonlimdmpanfghdbbkfadog"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

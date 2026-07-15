@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-filexhost-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘대용량 파일 바로 다운로드 링크’는 메일 첨부 제한에 걸린 1인 영상 제작자가 파일을 보낼 때 파일 하나를 업로드해 즉시 다운로드 링크 하나를 얻는 문제·순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-filexhost-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘대용량 파일 브라우저 미리보기 링크’는 큰 시안 파일을 고객에게 바로 전달하려는 프리랜서 디자이너가 파일 하나를 업로드해 브라우저 미리보기 링크 하나를 즉시 얻는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-filexhost-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘조회 횟수가 보이는 파일 공유 링크’는 회의 직전 자료를 잠깐 공유하는 영상 제작자가 파일 하나를 업로드해 조회 횟수가 표시된 공유 링크 하나를 즉시 얻는 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-filexhost-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘대용량 파일 브라우저 미리보기 링크’는 메일 첨부 제한으로 고객에게 큰 디자인 파일을 보내야 하는 프리랜서 디자이너가 파일 하나를 업로드해 브라우저 미리보기 링크 하나를 즉시 얻는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-filexhost-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘조회 횟수가 보이는 파일 공유 링크’는 고객에게 큰 시안을 바로 전달하는 프리랜서 디자이너가 파일 하나를 업로드해 조회 횟수가 표시된 공유 링크 하나를 즉시 얻는 문제·순간·결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-filexhost-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘대용량 파일 바로 다운로드 링크’는 회의 직전 자료를 잠깐 공유하는 프리랜서 디자이너가 파일 하나를 업로드해 클릭 즉시 다운로드되는 링크 하나를 얻는 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-filexhost-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘조회 횟수가 보이는 파일 공유 링크’는 메일 첨부 제한으로 파일을 보내야 하는 현장 실무자가 파일 하나를 업로드해 조회 횟수가 표시된 공유 링크 하나를 즉시 얻는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-filexhost-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘대용량 파일 바로 다운로드 링크’는 고객에게 큰 시안 파일을 바로 전달하는 현장 실무자가 파일 하나를 업로드해 클릭 즉시 다운로드되는 공유 링크 하나를 얻는 문제·순간·결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-filexhost-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘대용량 파일 브라우저 미리보기 링크’는 회의 직전 자료를 잠깐 공유하는 현장 실무자가 파일 하나를 업로드해 브라우저에서 바로 보는 공유 링크 하나를 즉시 얻는 흐름이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 // v4는 백엔드 없이 URL 자체가 데이터 캐리어다 (Supabase는 3주차, R21).
 import type { Combo } from "./draw";
 import { formatById, painById, type Track } from "./combos";
+import { decodeBinaryBase64Url, encodeBinaryBase64Url } from "./base64-url";
 
 export interface CardPayload {
   seedId: string;
@@ -40,14 +41,12 @@ export const toPayload = (c: Combo, fromName?: string, preferenceId?: string): C
 
 export function encodeSlug(payload: CardPayload): string {
   const json = JSON.stringify(payload);
-  return btoa(encodeURIComponent(json)).replaceAll("+", "-").replaceAll("/", "_").replaceAll("=", "");
+  return encodeBinaryBase64Url(encodeURIComponent(json));
 }
 
 export function decodeSlug(slug: string): CardPayload | null {
   try {
-    const b64 = slug.replaceAll("-", "+").replaceAll("_", "/");
-    const padded = b64 + "=".repeat((4 - (b64.length % 4)) % 4);
-    const payload = JSON.parse(decodeURIComponent(atob(padded))) as CardPayload;
+    const payload = JSON.parse(decodeURIComponent(decodeBinaryBase64Url(slug))) as CardPayload;
     // 최소 무결성: 참조 데이터가 실제로 존재해야 렌더 가능
     if (!payload.seedLabel || !painById(payload.painId) || !formatById(payload.formatId)) return null;
     return payload;
@@ -84,14 +83,12 @@ const isRenderable = (p: CardPayload | undefined): p is CardPayload =>
 
 export function encodeDuelSlug(a: CardPayload, b: CardPayload, meta?: RoundMeta): string {
   const json = JSON.stringify(meta ? { v: DUEL_VERSION, a, b, ...meta } : { v: 1, a, b });
-  return btoa(encodeURIComponent(json)).replaceAll("+", "-").replaceAll("/", "_").replaceAll("=", "");
+  return encodeBinaryBase64Url(encodeURIComponent(json));
 }
 
 export function decodeDuelSlug(slug: string): DuelPayload | null {
   try {
-    const b64 = slug.replaceAll("-", "+").replaceAll("_", "/");
-    const padded = b64 + "=".repeat((4 - (b64.length % 4)) % 4);
-    const parsed = JSON.parse(decodeURIComponent(atob(padded))) as {
+    const parsed = JSON.parse(decodeURIComponent(decodeBinaryBase64Url(slug))) as {
       v?: number;
       a?: CardPayload;
       b?: CardPayload;

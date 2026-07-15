@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { FakeDoorSheet } from "@/components/molecules/fake-door-sheet";
 import { IdeaLab, type IdeaLabSharePayload } from "@/components/organisms/idea-lab";
 import { PraiseCardDeck, type PraiseCard } from "@/components/organisms/praise-cards";
 import { fetchVotes, type Vote } from "@/lib/backend/votes";
@@ -15,19 +14,30 @@ import {
   type SavedPraiseRequest,
 } from "@/lib/praise-share";
 import { shareOrCopy } from "@/lib/share";
-import { fakeDoor, track, trackShare } from "@/lib/track";
+import { track, trackShare } from "@/lib/track";
 
 type View = "idea" | "praise";
-type Door = "sender" | "next" | null;
 
 const requestUrl = (slug: string) => `${window.location.origin}${praiseRequestPath(slug)}`;
 const formatDate = (timestamp: number) => new Intl.DateTimeFormat("ko-KR", { month: "long", day: "numeric" }).format(timestamp);
+const readPraiseKey = (requestId: string) => `oneul:read-praise:${requestId}`;
+
+const loadReadPraiseIds = (requestId: string): string[] => {
+  try {
+    const value = JSON.parse(localStorage.getItem(readPraiseKey(requestId)) ?? "[]") as unknown;
+    return Array.isArray(value) ? value.filter((id): id is string => typeof id === "string") : [];
+  } catch {
+    return [];
+  }
+};
 
 export function TodayApp() {
   const [view, setView] = useState<View>("idea");
   const [request, setRequest] = useState<SavedPraiseRequest | null>(null);
+  const [ideaDraft, setIdeaDraft] = useState<IdeaLabSharePayload | null>(null);
   const [votes, setVotes] = useState<Vote[]>([]);
-  const [door, setDoor] = useState<Door>(null);
+  const [readPraiseIds, setReadPraiseIds] = useState<string[]>([]);
+  const [praiseShareNotice, setPraiseShareNotice] = useState("");
   const [now, setNow] = useState(() => Date.now());
 
   const refresh = useCallback(async (slug: string) => {
@@ -39,11 +49,15 @@ export function TodayApp() {
     const latest = loadLatestPraiseRequest();
     if (!latest) return;
     setRequest(latest);
-    void refresh(latest.slug);
-  }, [refresh]);
+  }, []);
 
   useEffect(() => {
-    if (view !== "praise" || !request) return;
+    if (!request) return;
+    setReadPraiseIds(loadReadPraiseIds(request.card.id));
+  }, [request]);
+
+  useEffect(() => {
+    if (!request) return;
     const update = () => { void refresh(request.slug); };
     update();
     window.addEventListener("focus", update);
@@ -52,35 +66,38 @@ export function TodayApp() {
       window.removeEventListener("focus", update);
       window.clearInterval(timer);
     };
-  }, [refresh, request, view]);
+  }, [refresh, request]);
 
   const records = useMemo(
     () => votes
       .map((vote, index) => praiseRecordFromVote(vote, {
         id: vote.id ?? `${request?.card.id ?? "praise"}:${vote.at}:${index}`,
+        ideaTitle: request?.card.title,
       }))
       .filter((record) => record !== null),
-    [request?.card.id, votes],
+    [request?.card.id, request?.card.title, votes],
   );
   const praiseState = useMemo(() => getPraiseCardsState(records, now), [now, records]);
+  const unreadPraiseCount = useMemo(() => {
+    const read = new Set(readPraiseIds);
+    return records.filter((record) => !read.has(record.id)).length;
+  }, [readPraiseIds, records]);
   const todayCard: PraiseCard | null = praiseState.today
     ? {
         id: praiseState.today.id,
         message: praiseState.today.message,
         arrivedAt: formatDate(praiseState.today.receivedAt),
-        anonymousLabel: praiseState.today.sender.status === "revealed"
-          ? `보낸 사람 · ${praiseState.today.sender.displayName}`
-          : "익명의 칭찬",
+        ...(praiseState.today.ideaTitle ? { ideaTitle: praiseState.today.ideaTitle } : {}),
+        ...(praiseState.today.sender.status === "revealed"
+          ? { anonymousLabel: `보낸 사람 · ${praiseState.today.sender.displayName}` }
+          : {}),
         emblem: "spark",
       }
     : null;
 
   const shareIdea = async (payload: IdeaLabSharePayload) => {
-    const storedDraft = request?.prompt === payload.prompt
-      ? request
-      : loadLatestPraiseRequest()?.prompt === payload.prompt
-        ? loadLatestPraiseRequest()
-        : null;
+    const latestDraft = request?.prompt === payload.prompt ? request : loadLatestPraiseRequest();
+    const storedDraft = latestDraft?.prompt === payload.prompt ? latestDraft : null;
     const saved = storedDraft ?? (() => {
       const card = praiseRequestFromIdea(payload);
       const slug = encodePraiseRequest(card);
@@ -94,35 +111,54 @@ export function TodayApp() {
     if (!storedDraft) track("praise_request_created", { request_id: saved.card.id });
     const result = await shareOrCopy(requestUrl(saved.slug), {
       title: saved.card.title,
-      text: `${saved.card.summary}\n익명 칭찬 카드 한 장을 남겨주세요.`,
+      text: `${saved.card.summary}\n짧은 응원이나 의견을 남겨주세요.`,
     });
     trackShare(result.ok ? "praise_request_share_completed" : "praise_request_share_cancelled", result.method, {
       request_id: saved.card.id,
     });
-    if (!result.ok) return false;
-    return true;
+    return result;
   };
 
   const requestPraise = async () => {
+    setPraiseShareNotice("");
+    if (ideaDraft && ideaDraft.prompt !== request?.prompt) {
+      const result = await shareIdea(ideaDraft);
+      setPraiseShareNotice(result.ok
+        ? result.method === "clipboard" ? "링크를 복사했어요." : "공유했어요."
+        : "공유를 마치지 않았어요. 다시 시도해 주세요.");
+      return;
+    }
     if (!request) {
       setView("idea");
       return;
     }
     const result = await shareOrCopy(requestUrl(request.slug), {
       title: request.card.title,
-      text: `${request.card.summary}\n익명 칭찬 카드 한 장을 남겨주세요.`,
+      text: `${request.card.summary}\n짧은 응원이나 의견을 남겨주세요.`,
     });
     trackShare(result.ok ? "praise_request_reshare_completed" : "praise_request_reshare_cancelled", result.method, {
       request_id: request.card.id,
     });
+    setPraiseShareNotice(result.ok
+      ? result.method === "clipboard" ? "링크를 복사했어요." : "공유했어요."
+      : "공유를 마치지 않았어요. 다시 시도해 주세요.");
   };
 
-  const openDoor = (nextDoor: Exclude<Door, null>) => {
-    fakeDoor("demand_report", 990, { feature: nextDoor === "sender" ? "sender_identity" : "next_praise_preview" });
-    setDoor(nextDoor);
+  const markPraiseRead = (card: PraiseCard) => {
+    if (!request) return;
+    setReadPraiseIds((current) => {
+      if (current.includes(card.id)) return current;
+      const next = [...current, card.id];
+      try { localStorage.setItem(readPraiseKey(request.card.id), JSON.stringify(next)); } catch { /* optional storage */ }
+      return next;
+    });
   };
 
   const isIdea = view === "idea";
+  const hasShareableIdea = Boolean(request || ideaDraft);
+  const praiseEmptyDescription = hasShareableIdea
+    ? "완성한 아이디어를 공유하고 친구의 응원을 받아보세요."
+    : "먼저 아이디어를 만들고 친구에게 공유해보세요.";
 
   return (
     <div className="flex min-h-dvh justify-center text-ink">
@@ -131,49 +167,48 @@ export function TodayApp() {
           isIdea ? "flex h-dvh flex-col overflow-hidden" : "min-h-dvh"
         }`}
       >
-        <nav className="sticky top-0 z-50 flex-none border-b border-white/10 bg-bg/90 px-4 py-2.5 backdrop-blur-xl">
+        <nav className="sticky top-0 z-50 flex-none border-b border-white/10 bg-bg/90 px-4 py-1 backdrop-blur-xl">
           <div className="flex items-center justify-between gap-3">
-            <button type="button" onClick={() => setView("idea")} className="text-sm font-black text-primary">오늘 해볼까</button>
-            <div className="flex rounded-full border border-white/10 bg-white/[.035] p-1 text-[11px] font-bold">
-              <button type="button" onClick={() => setView("idea")} className={`rounded-full px-3.5 py-1.5 transition-colors ${view === "idea" ? "bg-primary text-white" : "text-mist"}`}>아이디어 뽑기</button>
-              <button type="button" onClick={() => setView("praise")} className={`rounded-full px-3.5 py-1.5 transition-colors ${view === "praise" ? "bg-primary text-white" : "text-mist"}`}>오늘의 칭찬{records.length ? ` ${records.length}` : ""}</button>
+            <button type="button" onClick={() => setView("idea")} className="min-h-12 rounded-lg px-1 text-sm font-black text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">오늘 해볼까</button>
+            <div className="flex rounded-full border border-white/10 bg-white/[.035] p-1 text-[11px] font-bold" role="group" aria-label="화면 전환">
+              <button type="button" aria-pressed={view === "idea"} onClick={() => setView("idea")} className={`min-h-12 rounded-full px-3.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${view === "idea" ? "bg-white/[.12] text-ink" : "text-mist hover:text-ink"}`}>아이디어 만들기</button>
+              <button
+                type="button"
+                aria-label={unreadPraiseCount ? `받은 응원, 새 응원 ${unreadPraiseCount}개` : "받은 응원"}
+                aria-pressed={view === "praise"}
+                onClick={() => setView("praise")}
+                className={`flex min-h-12 items-center gap-1.5 rounded-full px-3.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${view === "praise" ? "bg-white/[.12] text-ink" : "text-mist hover:text-ink"}`}
+              >
+                받은 응원
+                {unreadPraiseCount ? (
+                  <span aria-hidden="true" className="inline-grid min-h-5 min-w-5 place-items-center rounded-full bg-primary px-1 text-[10px] leading-none text-white">
+                    {unreadPraiseCount}
+                  </span>
+                ) : null}
+              </button>
             </div>
           </div>
         </nav>
 
       {isIdea ? (
-        <div className="min-h-0 flex-1"><IdeaLab onShare={shareIdea} onViewPraise={() => setView("praise")} /></div>
+        <div className="min-h-0 flex-1"><IdeaLab onShare={shareIdea} onDraftReady={setIdeaDraft} onViewPraise={() => setView("praise")} /></div>
       ) : (
-        <section className="px-4 py-7">
-          <div className="mb-5">
-            <p className="text-xs font-black tracking-[.14em] text-primary">DAILY ONE CARD</p>
-            <h1 className="mt-2 text-3xl font-bold">매일 익명의 칭찬 한 장</h1>
-            <p className="mt-2 text-sm leading-6 text-mist">
-              오늘 카드는 무료로 뒤집을 수 있어요. 다음 카드는 내일 열리고, 기다리기 어렵다면 미리 보기를 선택할 수 있어요.
-            </p>
-          </div>
+        <section className="px-4 py-6">
           <PraiseCardDeck
             card={todayCard}
+            initiallyFaceUp={Boolean(todayCard && readPraiseIds.includes(todayCard.id))}
             hasNextCard={Boolean(praiseState.next)}
-            nextCardLabel={praiseState.next ? `다음 칭찬은 ${formatDate(praiseState.next.availableAt)}에 열려요` : "잠긴 다음 칭찬이 없어요"}
-            shareActionLabel={request ? "링크 다시 공유하기" : "아이디어 먼저 뽑기"}
+            nextCardLabel={praiseState.next ? `다음 응원은 ${formatDate(praiseState.next.availableAt)}에 열려요.` : undefined}
+            emptyDescription={praiseEmptyDescription}
+            shareActionLabel={hasShareableIdea ? "내 아이디어 공유하기" : "먼저 아이디어 만들기"}
             onRequestPraise={requestPraise}
-            onRevealSender={praiseState.senderIdentityFakeDoor.status === "available" ? () => openDoor("sender") : undefined}
-            revealSenderHint="30일 뒤엔 무료로 확인할 수 있어요"
-            showForeverAnonymousNote={praiseState.senderIdentityFakeDoor.status === "forbidden"}
-            onPreviewNext={praiseState.nextPreviewFakeDoor.status === "available" ? () => openDoor("next") : undefined}
+            onReveal={markPraiseRead}
+            onStartIdea={() => setView("idea")}
             palette={{ accent: "#ff4458", cardBack: "#3a1830", cardBackLine: "#ff9cab" }}
           />
-          {!request && !todayCard ? <p className="mt-4 text-center text-xs text-caption">먼저 네 장을 뽑아 결과를 공유하면 칭찬을 받을 수 있어요.</p> : null}
+          {praiseShareNotice ? <p role="status" className="mt-3 text-center text-sm text-mist">{praiseShareNotice}</p> : null}
         </section>
       )}
-
-        <FakeDoorSheet
-          open={door !== null}
-          onClose={() => setDoor(null)}
-          product="demand_report"
-          title={door === "sender" ? "이 칭찬을 보낸 사람 확인" : "다음 칭찬 카드 미리 보기"}
-        />
       </main>
     </div>
   );

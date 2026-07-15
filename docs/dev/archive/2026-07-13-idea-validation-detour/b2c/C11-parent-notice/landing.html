@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>부모님공문 — 수기 파일럿</title>
+  <style>
+    :root { color-scheme:light; --ink:#1d2031; --muted:#606475; --line:#e1dfeb; --paper:#fdfcf8; --brand:#6c48d8; --brand2:#eee9ff; --warm:#fff1d8; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:radial-gradient(circle at 90% 0,#eee9ff 0,transparent 32rem),var(--paper); font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; line-height:1.55; }
+    main { width:min(1080px,calc(100% - 40px)); margin:0 auto; padding:32px 0 48px; }
+    .tag { display:inline-flex; gap:8px; align-items:center; padding:7px 12px; border:1px solid #d0c5f5; border-radius:999px; background:#fff; color:#5337aa; font-size:13px; font-weight:700; }
+    .dot { width:7px; height:7px; border-radius:50%; background:#ef9b15; }
+    .hero { display:grid; grid-template-columns:1.08fr .92fr; gap:48px; align-items:center; min-height:600px; }
+    h1 { margin:20px 0 16px; max-width:720px; font-size:clamp(38px,5.2vw,66px); line-height:1.08; letter-spacing:-.045em; }
+    .lead { margin:0 0 22px; max-width:650px; color:var(--muted); font-size:clamp(17px,2vw,21px); }
+    .claim { margin:0 0 28px; padding-left:15px; border-left:4px solid var(--brand); font-weight:750; font-size:17px; }
+    .price { display:flex; flex-wrap:wrap; gap:10px; align-items:baseline; margin-bottom:14px; }
+    .price strong { font-size:27px; }
+    .price span { color:var(--muted); font-size:14px; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; }
+    .button { border:0; border-radius:14px; padding:15px 18px; background:var(--brand); color:#fff; font:inherit; font-weight:800; opacity:.72; cursor:not-allowed; }
+    .button.secondary { color:#5337aa; background:var(--brand2); }
+    .placeholder { margin:10px 0 0; color:#825b00; font-size:12px; font-weight:700; }
+    .card { padding:24px; border:1px solid var(--line); border-radius:24px; background:rgba(255,255,255,.88); box-shadow:0 18px 60px rgba(64,42,133,.11); }
+    .card h2 { margin:0 0 14px; font-size:19px; }
+    .input { padding:14px; border-radius:13px; background:#f3f2f7; color:#55596b; font-size:14px; }
+    .arrow { margin:10px 0; color:var(--brand); text-align:center; font-weight:900; }
+    .result { padding:18px; border:2px solid #c8b9f6; border-radius:16px; background:#faf8ff; }
+    .result b { display:block; margin-bottom:10px; color:#5337aa; }
+    .task { display:grid; grid-template-columns:1fr auto; gap:5px 10px; padding:8px 0; border-top:1px solid #e9e4f8; font-size:14px; }
+    .task:first-of-type { border-top:0; }
+    .task span:last-child { color:var(--muted); font-size:12px; }
+    .safe { margin-top:14px; padding:13px; border-radius:12px; background:var(--warm); font-size:13px; }
+    .fine { margin:16px 0 0; color:var(--muted); font-size:12px; }
+    @media (max-width:760px) {
+      main { width:min(100% - 28px,560px); padding-top:20px; }
+      .hero { grid-template-columns:1fr; gap:28px; min-height:0; }
+      h1 { margin-top:16px; font-size:39px; }
+      .lead { font-size:17px; }
+      .claim { font-size:15px; }
+      .actions { display:grid; }
+      .button { width:100%; }
+      .card { padding:18px; border-radius:20px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="tag"><span class="dot"></span>4주 수기 파일럿 · 코드 없는 검증</div>
+        <h1>월요일 아침,<br>준비물 하나를 또 빠뜨렸나요?</h1>
+        <p class="lead">첫째 학교 앱, 둘째 학원 카톡, 가족 단톡방까지 다시 열어도 이번 주 할 일은 아이별로 흩어져 있습니다.</p>
+        <p class="claim">여러 아이·여러 채널의 공지에서 이번 주 가족이 할 일만 한 장으로 합칩니다.</p>
+        <div class="price"><strong>가족 1가구 · 4주 4,900원</strong><span>주 2회 정리 · 담당·완료 체크</span></div>
+        <div class="actions">
+          <button class="button" type="button" aria-disabled="true">[PLACEHOLDER] 4주 패스 결제</button>
+          <button class="button secondary" type="button" aria-disabled="true">[PLACEHOLDER] 예약금 1,000원</button>
+        </div>
+        <p class="placeholder">현재 버튼은 검증 문구용 placeholder이며 결제되지 않습니다.</p>
+        <p class="fine">예약금은 본 결제에서 전액 차감됩니다. 실험 미진행 또는 첫 스크린샷 제출 전 취소 시 전액 환불합니다.</p>
+      </div>
+      <div class="card" aria-label="입력과 결과 예시">
+        <h2>공지 1장 → 이번 주 가족 한 장</h2>
+        <div class="input">가린 학교·학원 공지 스크린샷 1장</div>
+        <div class="arrow">↓</div>
+        <div class="result">
+          <b>이번 주 가족 한 장</b>
+          <div class="task"><span>첫째 · 실내화 가져가기</span><span>화 08:30 · 아빠 □</span></div>
+          <div class="task"><span>둘째 · 동의 여부 원문 확인</span><span>수 18:00 · 엄마 ✓</span></div>
+        </div>
+        <div class="safe"><b>원본보다 먼저 개인정보를 줄입니다.</b><br>이름·얼굴·반번호·연락처·주소·QR을 가린 이미지만 받고, 원본은 결과 전달 뒤 24시간 안에 삭제합니다.</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

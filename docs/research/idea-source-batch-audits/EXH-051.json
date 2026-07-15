@@ -1,0 +1,81 @@
+{
+  "batch_id": "EXH-051",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 44,
+    "Merge": 3,
+    "Fail": 51,
+    "Reserve": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 75,
+      "sample": [
+        "chrome_web_store:njcclgngifdadihoigbjiojoiohipdhk",
+        "app_store:1175974437",
+        "chrome_web_store:mkeimkkbcndbdlfkbfhhlfgkilcfniic",
+        "chrome_web_store:henoooadlnkicamlpjbkenolnhgnochc",
+        "app_store:467703220",
+        "app_store:1017567032",
+        "app_store:1299642230",
+        "chrome_web_store:aelfcidmdlhdpgdkdcbammhbpmbigpgm"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:njcclgngifdadihoigbjiojoiohipdhk",
+          "decision": "Candidate",
+          "reason": "열린 탭 목록을 한 번 클릭해 공유 가능한 탭 묶음을 즉시 만들 수 있어 2일 세로 조각이 남는다."
+        }
+      ],
+      "false_reject_rate": 0.125
+    },
+    {
+      "round": 2,
+      "fail_count": 57,
+      "sample": [
+        "app_store:6502886443",
+        "app_store:1281387986",
+        "app_store:1017567032",
+        "trustmrr:reciply",
+        "app_store:464228677",
+        "chrome_web_store:nbcojefnccbanplpoffopkoepjmhgdgh"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6502886443",
+          "decision": "Candidate",
+          "reason": "Apple Watch 수면 데이터를 입력받아 가벼운 수면 단계를 판단하고, 선택한 시간대에 진동 알람을 실행하는 세로 조각이 가능하다."
+        },
+        {
+          "key": "chrome_web_store:nbcojefnccbanplpoffopkoepjmhgdgh",
+          "decision": "Candidate",
+          "reason": "차단 웹사이트 주소를 입력받아 VPN 프록시로 연결을 암호화하고 접속 결과를 제공하는 2일 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.3333333333333333
+    },
+    {
+      "round": 3,
+      "fail_count": 51,
+      "sample": [
+        "app_store:6758871573",
+        "trustmrr:codefor-food",
+        "app_store:1673723000",
+        "chrome_web_store:henoooadlnkicamlpjbkenolnhgnochc",
+        "app_store:1156813708",
+        "trustmrr:reciply"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

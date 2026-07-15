@@ -1,0 +1,79 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-1582051883-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라벨과 값을 1회 입력해 색상을 지정하고 발표용 막대차트 이미지 1개를 저장하는 흐름은 구체적이지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "english_copy"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-012",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보고서 수치를 1회 입력해 편집하고 실시간 막대차트 미리보기 1개를 확인하는 흐름은 구체적이지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "english_copy"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-020",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라벨과 값을 1회 입력해 색상을 지정하고 발표용 막대차트 이미지 1개를 저장하는 흐름은 구체적이지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "english_copy"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-021",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "월별 매출 라벨과 값을 1회 입력해 항목별 색상을 적용하고 차트 이미지 1개를 내보내는 흐름은 구체적이지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "english_copy"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보고서 수치를 1회 입력해 편집하고 실시간 막대차트 미리보기 1개를 확인하는 흐름은 구체적이지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "english_copy"
+      ]
+    }
+  ]
+}

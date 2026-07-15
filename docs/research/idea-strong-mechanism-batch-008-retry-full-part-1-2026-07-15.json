@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-6762625967-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "본문을 읽지 못하는 보호자가 받은 HWP/HWPX 파일 하나를 한 번 변환해 본문이 읽히는 PDF 한 개를 즉시 얻는 흐름이 제목·payer·moment·twist와 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6762625967-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보호자가 받은 HWP/HWPX 파일 하나를 한 번 변환해 표 배치가 유지된 PDF 한 개를 즉시 얻으므로 제목과 실제 확인 순간, 표 보존 twist가 구체적으로 연결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6762625967-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보호자가 받은 HWP/HWPX 파일 하나를 한 번 변환해 이미지 위치가 유지된 PDF 한 개를 즉시 얻으므로 제목과 실제 확인 순간, 이미지 보존 twist가 구체적으로 연결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6762625967-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "다른 사람에게 전달하기 전 보호자가 HWP/HWPX 파일 하나를 한 번 변환해 본문이 읽히는 PDF 한 개를 얻으므로 payer·moment·twist와 입력·처리·결과가 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6762625967-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "다른 사람에게 전달하기 전 보호자가 HWP/HWPX 파일 하나를 한 번 변환해 표 배치가 유지된 PDF 한 개를 얻으므로 payer·moment·twist와 입력·처리·결과가 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6762625967-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "다른 사람에게 전달하기 전 보호자가 HWP/HWPX 파일 하나를 한 번 변환해 이미지 위치가 유지된 PDF 한 개를 얻으므로 payer·moment·twist와 입력·처리·결과가 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6762625967-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "마감 전 보호자가 HWP/HWPX 파일 하나를 한 번 변환해 본문이 읽히는 PDF 한 개를 즉시 얻으므로 제목·payer·moment·twist와 구체적인 MVP 흐름이 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6762625967-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "마감 전 보호자가 HWP/HWPX 파일 하나를 한 번 변환해 표 배치가 유지된 PDF 한 개를 즉시 얻으므로 제목·payer·moment·twist와 구체적인 MVP 흐름이 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6762625967-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "마감 전 보호자가 HWP/HWPX 파일 하나를 한 번 변환해 이미지 위치가 유지된 PDF 한 개를 즉시 얻으므로 제목·payer·moment·twist와 구체적인 MVP 흐름이 일치한다.",
+      "risk_flags": []
+    }
+  ]
+}

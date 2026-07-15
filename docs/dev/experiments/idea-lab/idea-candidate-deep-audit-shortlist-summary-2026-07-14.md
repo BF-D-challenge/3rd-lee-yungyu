@@ -1,0 +1,80 @@
+# Candidate 심층 감사 후보
+
+- 1차 게이트 pass: 854
+- 심층 감사 shortlist: 150
+- 기준: 시장 신호 순위가 높은 원본 우선, 같은 이름 클러스터 중복 제거, 카테고리별 최대 5개
+- 앱 반영: 아직 하지 않음
+
+## 카테고리별 수
+
+- Productivity: 5
+- Mobile Apps: 5
+- Artificial Intelligence: 5
+- Design Tools: 5
+- Developer Tools: 5
+- Utilities: 5
+- Fintech: 5
+- SaaS: 5
+- lifestyle-games: 5
+- Education: 4
+- Health & Fitness: 4
+- lifestyle-well-being: 4
+- lifestyle-news-weather: 4
+- lifestyle-fun: 4
+- graphics-design: 4
+- E-commerce: 3
+- Content Creation: 3
+- lifestyle-entertainment: 3
+- json: 3
+- lifestyle-art-design: 3
+- books: 3
+- weather: 3
+- Real Estate: 2
+- Social Media: 2
+- : 2
+- Entertainment: 2
+- Games: 2
+- todo: 2
+- lifestyle-household: 2
+- productivity-education: 2
+- news: 2
+- developer-tools: 2
+- Weather, weather: 2
+- Lifestyle: 1
+- Analytics: 1
+- lifestyle-news-weather, reader: 1
+- github: 1
+- transcript: 1
+- productivity-developer: 1
+- Marketing: 1
+- No-Code: 1
+- analytics: 1
+- productivity-tools: 1
+- finance: 1
+- productivity-communication: 1
+- all-extensions, lifestyle-games: 1
+- make-chrome-yours-privacy-security: 1
+- all-apps, education, 교육: 1
+- Grafik und Design, Graphics & Design, all-apps, graphics-design, 그래픽 및 디자인: 1
+- all-apps, entertainment: 1
+- Navegación, Navegação, Navigation, navigation, 내비게이션: 1
+- all-apps, reference: 1
+- Music, Musik, Musique, Música, all-apps, music, 음악: 1
+- reference, 참고: 1
+- magazines-newspapers: 1
+- Music, Musik, all-apps, music: 1
+- reference: 1
+- shopping: 1
+- weather, 天気: 1
+- all-apps, lifestyle, 라이프스타일: 1
+- Navigation, navigation: 1
+- navigation, 내비게이션: 1
+- lifestyle: 1
+- magazines-newspapers, news: 1
+- Educación, Education, education: 1
+- Estilo de vida, Lifestyle, Style de vie, all-apps, lifestyle: 1
+- all-apps, education: 1
+- education: 1
+- Reference, reference: 1
+- Food & Drink, food-drink: 1
+- music: 1

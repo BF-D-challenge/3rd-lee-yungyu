@@ -1,0 +1,33 @@
+{
+  "batch_id": "EXH-066",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 41,
+    "Candidate": 51,
+    "Merge": 6,
+    "Reserve": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 41,
+      "sample": [
+        "app_store:1420774597",
+        "trustmrr:emailagent-dev",
+        "app_store:994377555",
+        "app_store:321560858",
+        "app_store:381253120"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

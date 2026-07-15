@@ -1,0 +1,131 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6444574623-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "문서를 납품하는 프리랜서가 고객 수정 요청 직전에 ODT 파일 1개를 표 구조 우선으로 DOCX로 변환해 표가 유지된 DOCX 1개를 받는 흐름이 제목과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-404167677-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소규모 사무실 IT 담당자가 새 장비를 LAN에 설치한 직후 단일 기기 네트워크 권한으로 장치를 1회 스캔해 IP·MAC 장치 목록 1개를 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-404167677-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공유 작업실 운영자가 인터넷 장애를 점검하는 순간 단일 기기 네트워크 권한으로 LAN 응답 상태를 1회 스캔해 응답 없는 장치 목록 1개를 확인하는 흐름이 제목과 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-404167677-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "매장 네트워크 설치 기사가 낯선 기기 문의 직후 현재 LAN을 스캔하려면 이전 스캔 기록을 사전에 보유해야 하므로 단일 권한 입력만으로 완료되지 않는다.",
+      "risk_flags": [
+        "prior_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-428087720-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인쇄소 자재 담당자가 다음 작업에 롤을 배정하기 직전 두께·외경·심지를 담은 텍스트 1개를 1회 계산해 예상 미터 길이 1개를 얻는 세로 조각이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-428087720-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "필름 가공 공장 반장이 발주 직전에 세 가지 롤 치수를 계산하지만 원본의 선형 길이 계산에 없는 오차 범위 산출을 추가해 메커니즘이 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-428087720-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "원단 롤 재고 관리자가 고객 주문 수락 직전 두께·외경·심지를 담은 텍스트 1개로 선형 길이를 1회 계산해 예상 피트 길이 1개를 확인하는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1020967894-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현장 측량 보조자가 좌표 기록 직전 단일 기기의 GPS 권한으로 현재 신호와 위치 상태를 1회 진단해 좌표·정확도 진단표 1개를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1020967894-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "야외 배송 기사 관리자가 출발 직전 GPS 권한으로 진단하는 것은 맞지만 원본의 속도 상태 대신 방향을 추가해 GPS 진단 메커니즘과 결과가 변형됐다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1020967894-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "위치 기반 앱 QA 엔지니어가 오류 재현 직전 단일 기기의 GPS 권한으로 위성 신호와 위치 고정 상태를 1회 진단해 지연 원인 요약 1개를 확인하는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-docswrite-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔가 Google Doc 완성 직전 공개 URL 하나를 입력하면 제목 계층을 보존해 Gutenberg HTML 게시 초안 파일 하나를 받는 흐름이 제목·순간·한 끗 변화에 맞고 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔가 Google Doc 완성 직전 공개 URL 하나를 입력하면 이미지 캡션을 포함한 Gutenberg HTML 게시 초안 파일 하나를 받아 서식 검수를 줄이는 흐름이 자연스럽고 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔가 Google Doc 완성 직전 공개 URL 하나를 입력하면 표 구조를 보존한 Gutenberg HTML 게시 초안 파일 하나를 받아 바로 붙여 넣을 수 있어 순간과 한 끗 변화가 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔가 클라이언트 원고를 WordPress에 납품하기 직전 공개 Google Doc URL 하나를 입력하면 제목 계층이 보존된 Gutenberg HTML 파일 하나를 받아 검수하는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔가 클라이언트 원고 납품 직전 공개 Google Doc URL 하나를 입력하면 이미지 캡션이 포함된 Gutenberg HTML 파일 하나를 받아 제목과 표를 확인하는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔가 클라이언트 원고 납품 직전 공개 Google Doc URL 하나를 입력하면 표 구조가 보존된 Gutenberg HTML 파일 하나를 받아 붙여 넣기 전 확인할 수 있어 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제품 문서를 CMS 편집기에 처음 붙여 넣는 디지털 퍼블리셔가 긴 Google Doc의 공개 URL 하나를 입력하면 제목 계층을 보존한 Gutenberg HTML 게시 초안 파일 하나를 받아 게시 가능 여부를 판단하는 흐름이 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제품 문서를 CMS 편집기에 처음 붙여 넣는 디지털 퍼블리셔가 긴 Google Doc의 공개 URL 하나를 입력하면 이미지 캡션이 포함된 Gutenberg HTML 게시 초안 파일 하나를 받아 재손질 필요를 판단하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제품 문서를 CMS 편집기에 처음 붙여 넣는 디지털 퍼블리셔가 긴 Google Doc의 공개 URL 하나를 입력하면 표 구조가 보존된 Gutenberg HTML 게시 초안 파일 하나를 받아 전체 문서를 다시 손질할지 판단할 수 있다.",
+      "risk_flags": []
+    }
+  ]
+}

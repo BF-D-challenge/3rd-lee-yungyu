@@ -1,0 +1,228 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1313357241-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 파일 하나를 입력해 노치 위치를 고려한 인물 배경화면으로 한 번 변환하고 저장 가능한 배경화면 하나를 결과로 내보내므로 제목과 사용 순간이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1313357241-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 파일 하나를 입력해 다이내믹 아일랜드 주변에 유리 프레임을 합성하고 저장 가능한 배경화면 하나를 결과로 내보내므로 제목과 순간이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1313357241-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 파일 하나를 입력해 상단 가장자리를 노치 형태에 맞춘 배경화면으로 한 번 합성하고 저장 가능한 결과물 하나를 내보내므로 제목과 사용 순간이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1313357241-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 파일 하나를 입력해 다이내믹 아일랜드용 유리 프레임을 합성하고 배경화면 하나를 저장하게 하므로 프리랜서의 아이폰 브랜딩 순간과 결과가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1313357241-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "사진 파일 하나를 노치와 이어지는 배경화면 하나로 합성하는 결과는 분명하지만 프로필 사진을 홈 화면에 적용하는 순간과 최애 사진 중심의 처리 대상이 완전히 일치하지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1313357241-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 파일 하나를 인물 얼굴이 노치에 가리지 않는 배경화면으로 한 번 배치해 저장 가능한 결과 하나를 내보내므로 친구에게 보여줄 순간과 제목이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1313357241-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 파일 하나를 노치와 이어지는 배경화면으로 합성해 저장 가능한 결과 하나를 내보내므로 팬 사진 구매자가 새 아이폰에 적용하는 순간과 한 끗 변화가 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1313357241-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "사진 파일 하나를 얼굴이 노치 아래에 오도록 배치한 배경화면 하나로 내보내는 처리는 구체적이지만 팬 사진 구매자가 프로필 사진을 적용하는 순간과 인물 배치 대상의 관계가 모호하다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1313357241-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 파일 하나에 다이내믹 아일랜드 유리 프레임을 합성해 저장 가능한 배경화면 하나를 내보내므로 팬 사진을 친구에게 보여주는 순간과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6773472779-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 하나에 피부톤 우선 LUT를 한 번 적용해 색보정된 클립 하나를 즉시 미리 보여주므로 게시 전 판단 순간과 제목의 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6773472779-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 하나를 입력해 세로 숏폼 기준으로 색보정과 LUT를 한 번 처리하고 세로 클립 하나를 보여주므로 납품 전 즉시 확인이라는 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6773472779-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 하나에 따뜻한 노을 LUT를 한 번 적용해 색보정된 클립 하나를 미리 보여주므로 여행 장면 선택 순간과 제목의 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6773472779-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 하나를 세로 숏폼 기준으로 한 번 색보정해 세로 클립 하나를 보여주므로 모바일 크리에이터가 게시 전 확인하는 순간과 결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6773472779-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 하나에 피부톤 우선 LUT를 한 번 적용해 보정된 클립 하나를 미리 보여주므로 여행 영상의 분위기 좋은 장면을 고르는 순간과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6773472779-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 하나에 노을용 따뜻한 LUT를 한 번 적용해 색보정된 클립 하나를 즉시 보여주므로 여행 브이로그의 게시 전 색감 확인 순간과 제목이 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6773472779-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 하나에 따뜻한 노을 LUT를 한 번 적용해 색보정된 클립 하나를 보여주므로 영화 동아리 학생이 게시 전 톤을 판단하는 순간과 구체적인 결과가 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6773472779-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "영상 클립 하나에 피부톤 우선 LUT를 한 번 적용해 보정 클립 하나를 내보내는 결과는 분명하지만 영화 동아리 학생의 클라이언트 납품 순간과 payer 맥락이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6773472779-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "영상 클립 하나를 세로 숏폼 기준으로 색보정해 세로 클립 하나를 보여주는 처리는 구체적이지만 영화 동아리 학생이 여행 영상의 대표 장면을 고르는 순간과 payer 맥락이 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    }
+  ]
+}

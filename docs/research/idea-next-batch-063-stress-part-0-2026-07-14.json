@@ -1,0 +1,436 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-366975354-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치와 시각을 처리해 오늘 달·일출·일몰을 보여주지만 제목만으로 천문 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-366975354-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치와 시각으로 달 정보를 계산할 수 있으나 음력 날짜를 제공한다는 결과가 원본 즉시 결과에 명시되지 않아 결제자와 사용 순간이 어긋난다.",
+      "risk_flags": [
+        "result_mismatch",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-366975354-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치와 시각으로 달·태양 출몰을 계산하지만 절기·음력 확인이 필요한 순간과 원본 결과가 일치하지 않는다.",
+      "risk_flags": [
+        "moment_mismatch",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1608038451-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 한 번으로 얼굴 위 안경을 배치해 결제 전 착용 화면을 보여주지만 제목만으로 비교 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1608038451-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 화면에서 안경을 얼굴에 배치해 비교 가능한 셀카를 만들 수 있지만 친구에게 보내는 행위는 카드 결과에 포함되지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1608038451-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카메라로 안경을 배치하는 원본 처리에서 색상 필터와 휴양지 선글라스 비교 기능을 추가로 상상해야 하므로 원본 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "new_function"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-400147868-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "대출금·금리 등 금융 숫자를 한 번 계산해 월 상환액을 보여주지만 제목만으로 대출 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-400147868-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "금융 숫자를 입력해 상환액과 수익률을 계산할 수 있으나 제목만으로 금리 비교 결과가 구체적으로 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-400147868-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현금흐름 입력 후 NPV·IRR을 계산하는 흐름은 구체적이지만 제목만으로 투자안 회수 결과가 보이지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6446788829-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "응원 팀과 리그를 입력해 실시간 점수와 일정을 보여줄 수 있지만 기존 스포츠 앱과 차별점 및 제목의 결과가 불명확하다.",
+      "risk_flags": [
+        "existing_alternative",
+        "title_unclear",
+        "live_data_dependency"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6446788829-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "팀·리그 입력으로 점수와 일정을 조회하는 원본 처리에서 F1 선수 선호 관리까지 확장하고 기존 스포츠 앱과 직접 겹친다.",
+      "risk_flags": [
+        "existing_alternative",
+        "new_function",
+        "live_data_dependency"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6446788829-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "팀과 리그를 입력해 경기 점수·통계를 보여주는 흐름은 가능하지만 기사 기록과 팀 기록까지의 결과 범위가 넓고 기존 대안과 겹친다.",
+      "risk_flags": [
+        "existing_alternative",
+        "scope_unclear",
+        "live_data_dependency"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525117691-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 한 장을 셀 단위 색상·기호로 변환해 인쇄용 차트를 만들 수 있지만 제목만으로 변환 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525117691-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "무늬 사진을 입력해 셀별 기호 차트를 출력하는 흐름은 구체적이지만 제목만으로 수업용 도안 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525117691-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "이미지를 셀 차트로 바꾸는 처리는 가능하지만 뜨개·비즈 설계와 십자수 차트 결과의 매체가 혼재한다.",
+      "risk_flags": [
+        "result_mismatch",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1020967894-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단일 기기 GPS 권한을 한 번 받아 위성 상태를 진단하고 등산 중 위치 오류와 좌표 결과를 즉시 보여주며 사용 순간도 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1020967894-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "GPS 권한으로 신호와 좌표를 진단할 수 있지만 방위 결과는 원본 즉시 결과에 포함되지 않는다.",
+      "risk_flags": [
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1020967894-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단일 GPS 권한으로 신호 상태와 좌표를 진단해 지도 위치 불일치 원인을 확인하는 구체적 결과를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6451340162-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "스케치와 카메라 화면으로 종이 위 선 가이드를 보여주는 흐름은 구체적이지만 제목만으로 투사 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6451340162-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원본은 선택한 스케치를 투사하는 처리인데 단계별 드로잉 진행을 추가로 요구하므로 원본 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "new_function"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6451340162-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "참고 이미지를 카메라로 종이에 투사해 윤곽과 비율을 연습하는 결과는 원본 처리와 맞지만 제목만으로 결과가 불명확하다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-586918472-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "마이크 입력을 FFT로 처리해 특정 소리의 스펙트럼을 보여줄 수 있지만 제목만으로 소리 진단 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-586918472-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "마이크로 주파수 분포는 볼 수 있으나 층간소음의 원인을 특정한다는 순간과 결과까지는 원본 처리로 보장되지 않는다.",
+      "risk_flags": [
+        "overclaim",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-586918472-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "스펙트럼은 주파수 분포만 제공하므로 벽 너머 저음의 누출 위치나 방음 원인을 확인한다는 결과는 원본 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "overclaim",
+        "new_function"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-404658834-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "연습문제 답변을 채점·분석해 점수와 약점을 보여주는 흐름은 구체적이지만 제목만으로 진단 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-404658834-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "문제 답변을 채점해 취약 주제를 보여줄 수 있으나 한국 소방 구급시험 콘텐츠가 원본 NREMT 범위를 벗어날 위험이 있다.",
+      "risk_flags": [
+        "content_localization",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-404658834-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "답변을 채점하고 해설로 약점을 보여주는 처리는 맞지만 한국 응급의료 문항 콘텐츠를 별도로 확보해야 한다.",
+      "risk_flags": [
+        "content_dependency",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-528532387-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "출발지·목적지 입력으로 경로를 보여주는 기능은 지도·교통 앱의 기본 기능과 직접 겹쳐 별도 한 끗 가치가 없다.",
+      "risk_flags": [
+        "existing_alternative",
+        "live_data_dependency"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-528532387-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "출발지와 목적지를 처리해 환승 시간·요금을 보여주는 기능은 기존 지도와 교통 앱이 더 편리하게 제공한다.",
+      "risk_flags": [
+        "existing_alternative",
+        "live_data_dependency"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-528532387-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "막차 경로 검색은 출발지·목적지 입력 후 시간표를 조회하는 기존 지도·교통 앱 기능과 동일해 MVP의 독자적 변화가 없다.",
+      "risk_flags": [
+        "existing_alternative",
+        "live_data_dependency"
+      ]
+    }
+  ]
+}

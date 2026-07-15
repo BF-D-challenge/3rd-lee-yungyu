@@ -1,0 +1,414 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1242529905-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공원명과 현재 위치를 입력해 관심 지점을 거리순으로 보여주지만 지도 앱의 범용 POI 검색이 더 편하고 제목만으로 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_map",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1242529905-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공원 탐색과 현재 위치로 캠핑장·화장실을 찾는 흐름은 구체적이지만 지도 앱으로 더 쉽게 해결되며 제목만으로 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "generic_map",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1242529905-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공원명과 위치를 처리해 탐방시설 목록을 주지만 지도 앱의 주변 장소 검색과 차별성이 없고 한국 사용자의 실제 순간으로도 약하다.",
+      "risk_flags": [
+        "generic_map",
+        "market_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6766812660-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 한 장을 입력해 구슬 색상과 격자로 변환하고 제작용 퓨즈비즈 도안 하나를 즉시 보여주는 흐름이 구체적이며 제작 직전 순간과 자연스럽게 연결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6766812660-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "픽셀 캐릭터 사진을 입력해 비즈 색상표와 격자로 처리하고 제작 패턴 하나를 반환해 공방의 제작 전 요구와 잘 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6766812660-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "픽셀 아트나 사진을 입력해 제한된 색상과 격자로 바꾸고 수업용 비즈 패턴 하나를 즉시 확인할 수 있어 세로 조각이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6741347498-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 묶음을 입력해 배경 제거 이미지를 저장하는 결과는 명확하지만 범용 AI 배경 제거를 한 번 쓰는 편이 더 간단하다.",
+      "risk_flags": [
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6741347498-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "최대 15장의 상품 사진을 처리해 배경 없는 이미지를 주지만 범용 AI나 기존 사진 도구로 동일 결과를 더 쉽게 얻을 수 있다.",
+      "risk_flags": [
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6741347498-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 파일을 입력해 배경 제거본을 저장하는 단일 결과는 구체적이나 범용 AI 배경 제거와 중복된다.",
+      "risk_flags": [
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1090757314-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "활·화살·거리·바람을 입력해 적중 정보를 계산하지만 국내에서 사냥 전 실제 사용 순간이 드물고 제목만으로 문제와 결과가 충분히 보이지 않는다.",
+      "risk_flags": [
+        "market_mismatch",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1090757314-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "장비와 풍향·경사 조건을 넣어 탄도 결과를 내지만 해외 활 사냥이라는 특수 상황에 의존해 한국 사용 순간과 결제자가 자연스럽게 연결되지 않는다.",
+      "risk_flags": [
+        "market_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1090757314-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "활·화살과 환경 조건으로 탄도를 계산하는 흐름은 있으나 사냥 연습 표적이라는 비일상적 상황이고 제목만으로 결과가 불명확하다.",
+      "risk_flags": [
+        "market_mismatch",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1515971634-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원단·패턴·프로젝트를 입력해 목록을 만들지만 문제 발생 전에 재고와 프로젝트를 기록해 둬야 작동한다.",
+      "risk_flags": [
+        "prior_recording"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1515971634-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원단 사진과 패턴명을 입력해 제작 목록을 만들려면 공방 재고를 미리 기록해야 하므로 즉시 해결 카드가 아니다.",
+      "risk_flags": [
+        "prior_recording"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1515971634-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원단과 패턴 정보를 연결해 목록을 주지만 여러 프로젝트와 재고를 사전에 입력·관리해야 하므로 문제 순간의 단회 처리 조건을 위반한다.",
+      "risk_flags": [
+        "prior_recording"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-505410049-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "과목과 공부시간을 입력해 로그를 저장하지만 공부 기록을 지속적으로 쌓아야 가치가 생기는 구조라 문제 순간의 단회 결과가 아니다.",
+      "risk_flags": [
+        "prior_recording",
+        "tracking_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-505410049-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "일일 공부 기록을 입력해 공유 로그를 만들지만 지속적인 사전 기록과 공유 관계가 필요해 즉시 카드 조건을 충족하지 못한다.",
+      "risk_flags": [
+        "prior_recording",
+        "tracking_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-505410049-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공부 기록을 날짜별로 남겨 누적 확인하는 결과는 기록을 계속 축적해야 하므로 입력 1회·결과 1개의 즉시 해결이 아니다.",
+      "risk_flags": [
+        "prior_recording",
+        "tracking_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-602496538-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "레시피 하나를 선택해 단계별 추출 시간을 진행하고 커피 타이머 하나를 제공하므로 추출 직전의 필요와 입력·처리·결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-602496538-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "추출 레시피를 한 번 선택하면 뜸들이기와 추출 시간을 순서대로 보여줘 원두 테스트 순간에 구체적인 타이머 결과를 준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-602496538-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "분쇄도·물 온도에 맞는 레시피를 선택해 단계별 시간을 실행하고 캠핑 중 한 잔의 추출 타이머를 제공하는 MVP가 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1582051883-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라벨과 수치를 한 번 입력해 색상 막대차트 이미지 하나로 저장하므로 보고서 작성 직전의 문제와 결과가 명확하고 2일 MVP가 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1582051883-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "발표용 라벨·값을 입력하고 차트를 편집한 뒤 이미지 하나를 저장하는 흐름이 구체적이며 결과가 즉시 확인된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1582051883-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "월별 매출 수치를 입력해 항목별 색상 막대차트 이미지 하나를 내보내므로 소상공인의 즉시 시각화 순간과 잘 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6743149318-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "스포츠 영상 파일에서 시작·종료 지점을 지정해 구간 시간 하나를 계산하는 흐름은 구체적이지만 제목만으로 기능과 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6743149318-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "수영 영상과 두 지점을 입력해 구간 타임을 계산하는 결과는 명확하지만 초보자에게 Chrono Tap이라는 제목만으로 용도가 전달되지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6743149318-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "육상 영상을 입력해 구간별 Lap 시간을 산출하는 단일 처리는 가능하지만 제목만 읽어서는 영상 시간 측정 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-532934740-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진에 표시를 추가해 편집본을 저장하는 결과는 구체적이지만 스마트폰 기본 사진 마크업 기능으로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "os_basic_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-532934740-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카메라 롤 사진에 손글씨와 문자를 넣어 저장하는 흐름은 명확하나 OS 기본 사진 편집 기능과 중복된다.",
+      "risk_flags": [
+        "os_basic_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-532934740-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진에 하자 위치와 설명을 표시해 저장하지만 기본 사진 마크업이 같은 입력·처리·결과를 더 편리하게 제공한다.",
+      "risk_flags": [
+        "os_basic_feature"
+      ]
+    }
+  ]
+}

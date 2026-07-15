@@ -1,0 +1,61 @@
+{
+  "batch_id": "EXH-025",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 60,
+    "Candidate": 32,
+    "Merge": 7,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 72,
+      "sample": [
+        "chrome_web_store:ihhkmalpkhkoedlmcnilbbhhbhnicjga",
+        "app_store:1446075923",
+        "app_store:433592412",
+        "app_store:333903271",
+        "trustmrr:begen",
+        "app_store:1636235979",
+        "app_store:6759998621",
+        "app_store:395149950"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:begen",
+          "decision": "Merge",
+          "reason": "짧은 영상 입력에서 장면·자막·음성을 생성하는 story-short-video와 입력·처리·결과가 실질적으로 같다."
+        },
+        {
+          "key": "app_store:395149950",
+          "decision": "Candidate",
+          "reason": "CSV 파일을 받아 책 정보를 분류하고 개인 도서 카탈로그 하나를 반나절~2일에 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.25
+    },
+    {
+      "round": 2,
+      "fail_count": 60,
+      "sample": [
+        "app_store:6444249757",
+        "trustmrr:tariq-1",
+        "chrome_web_store:gjclgildlkoabdlnemaldiegjigdmjka",
+        "chrome_web_store:egklnakpfebebppkechbgeoanhbniajm",
+        "app_store:1064216828",
+        "trustmrr:nourish"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

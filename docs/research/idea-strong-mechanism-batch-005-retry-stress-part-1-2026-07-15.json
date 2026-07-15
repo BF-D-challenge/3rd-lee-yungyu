@@ -1,0 +1,67 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6760979290-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘흰 종이 배경을 투명 선화로 변환’은 웹툰 작가가 손그림 사진 1장을 입력해 배경 분리 처리 후 투명 선화 PNG 1개를 얻는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760979290-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘연필 얼룩 제거 후 투명 선화 PNG’는 굿즈 제작자가 스케치 사진 1장을 입력해 번짐 제거 처리 후 투명 선화 PNG 1개를 얻는 흐름이 구체적이고 순간과도 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-402405770-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘필름 현상 온도 보정 시간표’는 아마추어 사진가가 필름·약품·희석·온도 텍스트 1개를 입력해 온도 보정 계산 후 현상 시간표 1개를 얻는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-402405770-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘푸시 1스톱 필름 현상 시간표’는 사진 실무자가 필름·약품·희석·온도만 입력하도록 되어 있어 푸시 1스톱 조건을 처리할 근거가 없고, 그 결과 시간표를 만들 수 없다.",
+      "risk_flags": [
+        "result_unclear",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-402405770-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘교반 시점 포함 필름 현상표’는 암실 강사가 필름·약품·희석·온도 텍스트 1개를 입력해 단계 시간 계산 후 교반 시점이 포함된 시간표 1개를 얻는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

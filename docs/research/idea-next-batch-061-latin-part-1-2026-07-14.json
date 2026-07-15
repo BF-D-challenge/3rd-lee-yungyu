@@ -1,0 +1,228 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-485251405-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 하나를 받아 달·태양 계산으로 시간을 보여주지만 ‘오늘 입질’ 예측 근거가 불명확하고 낚시 전문점 운영자와 실제 사용 순간의 결제 주체도 어긋난다.",
+      "risk_flags": [
+        "payer_mismatch",
+        "unsupported_prediction"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-485251405-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 입력으로 달·태양 기반 시간을 계산하는 원본에서 조수 데이터와 바다낚시 시간표를 추가해 원본 메커니즘을 벗어나며 외부 데이터 의존성이 생긴다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "external_data"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6753624290-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카드 종류 또는 번호를 받아 Luhn 기반 테스트 번호를 생성하고 JSON·텍스트·PDF로 내보내는 흐름은 구체적이지만 제목만으로 검증·테스트 데이터 결과가 명확하지 않다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6753624290-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "입력한 카드 번호를 한 번 Luhn 검증해 유효 여부와 카드 유형을 즉시 보여주는 단일 입력·처리·결과 흐름이 명확하고 오프라인 MVP로 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6753624290-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카드 종류를 받아 테스트 번호를 생성하고 파일로 저장하는 흐름은 가능하지만 제목만으로 국내 테스트 번호와 파일 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6753624290-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카드 번호를 받아 Luhn 검증과 카드 유형 표시를 하는 흐름은 구체적이지만 제목만으로 검증 결과가 명확하지 않다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6753624290-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카드 번호를 받아 검증 결과를 JSON·텍스트 파일로 저장하는 처리는 가능하지만 제목만으로 오류 재현용 기록 결과가 보이지 않는다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6753624290-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카드 종류를 받아 테스트 번호를 일괄 생성하는 흐름은 오프라인 MVP로 가능하지만 제목만으로 국내용·일괄 생성 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6753624290-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카드 번호를 받아 검증하고 JSON·텍스트 파일로 저장하는 단일 처리 흐름은 구체적이지만 제목만으로 검증 기록 결과가 명확하지 않다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6753624290-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카드 종류를 받아 테스트 번호를 일괄 생성하는 흐름은 가능하지만 제목만으로 국내 결제용 일괄 생성 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6753624290-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카드 번호 하나를 받아 Luhn 검증으로 유효 여부와 카드 유형을 즉시 표시하는 구체적인 단일 처리 결과이며 외부망 없이 반나절 MVP가 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1526081216-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "JSON 문서 하나를 받아 구조를 펼쳐 한국 쇼핑몰 응답의 중첩 필드를 트리로 보여주는 입력·처리·결과가 명확하고 오프라인 MVP로 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1526081216-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "복사한 JSON 하나를 검증해 오류 위치와 수정 가능한 구조를 즉시 보여주므로 입력·처리·결과가 구체적이고 단일 기기에서 구현 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1526081216-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "JSON 문서 하나를 받아 CSV·YAML·Swift·Kotlin 타입 코드 중 결과를 생성하는 원본 변환 흐름이 명확하고 외부 행동 없이 MVP가 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1526081216-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이폰에서 복사한 JSON 하나를 검증해 오류 위치와 구조를 즉시 확인하는 구체적인 흐름이며 파일·권한·상대방 행동 없이 구현 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1526081216-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "JSON 문서 하나를 Swift·Kotlin 타입 코드로 변환해 앱 모델 코드를 하나의 결과로 보여주는 흐름이 원본 메커니즘과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1526081216-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "JSON 문서 하나를 받아 트리 구조로 펼쳐 쇼핑몰 API의 중첩 데이터를 확인하는 결과가 구체적이고 반나절 MVP로 세로 조각이 가능하다.",
+      "risk_flags": []
+    }
+  ]
+}

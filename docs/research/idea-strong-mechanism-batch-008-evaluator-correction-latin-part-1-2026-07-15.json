@@ -1,0 +1,46 @@
+{
+  "results": [
+    {
+      "id": "next-latin-chrome-web-store-epbobagokhieoonfplomdklollconnkl-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "에디터가 제출 직전 공개 웹페이지 URL 하나를 넣으면 MLA 9판 인용문 한 줄을 얻는 흐름은 구체적이지만, 이 단발성 URL→인용문 변환은 범용 AI 한 번으로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-epbobagokhieoonfplomdklollconnkl-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "에디터가 원고 출처 표기를 마무리할 때 공개 웹페이지 URL 하나를 넣어 Chicago 저자-날짜 인용문 한 줄을 받는 흐름은 명확하지만, 범용 AI 한 번으로 더 쉽게 대체할 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-epbobagokhieoonfplomdklollconnkl-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "에디터가 보고서 납품 직전 공개 웹페이지 URL 하나를 넣어 APA 7판 인용문 한 줄을 받는 흐름은 구체적이지만, 이 단일 변환은 범용 AI 한 번으로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    }
+  ]
+}

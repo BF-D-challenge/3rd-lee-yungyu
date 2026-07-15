@@ -8,4 +8,5 @@ export type {
   IdeaLabScenario,
   IdeaLabSelection,
   IdeaLabSharePayload,
+  IdeaLabShareResult,
 } from "./types";

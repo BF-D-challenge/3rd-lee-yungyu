@@ -1,0 +1,191 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-beesecure-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 배포 직전 웹 프로젝트 ZIP 하나를 입력하면 하드코딩된 비밀키 패턴을 정적 검사해 파일·행 위치가 담긴 HTML 보고서 하나를 즉시 받는 흐름이 제목과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 AI 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 위험한 eval 계열 호출을 정적 검사해 파일·행 위치가 담긴 HTML 보고서 하나를 즉시 받는 흐름이 제목과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "인디 SaaS 개발자가 코드를 다른 팀에 넘기기 직전 웹 프로젝트 ZIP 하나를 입력하면 보안 헤더 누락을 검사해 누락 파일·행 위치 HTML 보고서를 받지만, 설정 누락에는 특정 행 위치를 부여하기 어려워 결과가 불명확하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 배포 직전 고객 웹 프로젝트 ZIP 하나를 입력하면 위험한 eval 계열 호출을 정적 검사해 해당 파일·행 위치 HTML 보고서 하나를 즉시 받아 수작업 검수를 줄인다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "개발 대행사 리드가 AI 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 보안 헤더 누락을 정적 검사해 파일·행 위치 HTML 보고서 하나를 받지만, 순간에는 위험 패턴 점검을 원하고 결과는 헤더 누락이라 연결이 약하며 누락 행 위치도 불명확하다.",
+      "risk_flags": [
+        "moment_twist_mismatch",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 검수 코드를 넘기기 직전 웹 프로젝트 ZIP 하나를 입력하면 하드코딩된 비밀키 패턴을 정적 검사해 파일·행 위치 HTML 보고서 하나를 즉시 받아 인수인계 근거로 쓴다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "풀스택 개발자가 배포 직전 웹 프로젝트 ZIP 하나를 입력하면 보안 헤더 누락을 정적 검사해 파일·행 위치 HTML 보고서 하나를 받지만, 누락 설정에 행 위치를 표시한다는 결과가 불명확하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 AI 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 하드코딩된 비밀키 패턴을 정적 검사해 파일·행 위치 HTML 보고서 하나를 즉시 받아 위험한 비밀정보 노출을 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-beesecure-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 검수 코드를 넘기기 직전 웹 프로젝트 ZIP 하나를 입력하면 위험한 eval 계열 호출을 정적 검사해 파일·행 위치 HTML 보고서 하나를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-webtoapp-no-code-app-converter-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소상공인 운영자가 모바일 웹 완성 직후 공개 웹사이트 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용해 설치 가능한 debug APK 하나를 즉시 받아 앱 출시를 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-webtoapp-no-code-app-converter-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소상공인 운영자가 홈 화면 앱을 요구받은 직후 공개 웹사이트 URL 하나를 입력하면 Android 뒤로가기를 웹 탐색처럼 처리해 설치 가능한 debug APK 하나를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-webtoapp-no-code-app-converter-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소상공인 운영자가 테스트 단말에 설치본을 보여주기 직전 공개 웹사이트 URL 하나를 입력하면 자사 도메인 내부 이동만 허용해 설치 가능한 debug APK 하나를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-webtoapp-no-code-app-converter-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 모바일 웹 완성 직후 공개 웹사이트 URL 하나를 입력하면 Android 뒤로가기를 웹 탐색처럼 처리해 설치 가능한 debug APK 하나를 즉시 납품용으로 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-webtoapp-no-code-app-converter-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 고객의 홈 화면 앱 요구 직후 공개 웹사이트 URL 하나를 입력하면 자사 도메인 밖 이동을 막아 설치 가능한 debug APK 하나를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-webtoapp-no-code-app-converter-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 테스트 단말에 설치본을 보여주기 직전 공개 웹사이트 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용해 설치 가능한 debug APK 하나를 즉시 받는다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,407 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1571233700-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치와 날짜를 받아 월상·공전 정지·황도대 이동을 계산해 달 단계 달력을 주지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1571233700-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치와 날짜를 처리해 상담 전 확인할 달 단계와 시간을 제공하지만 제목만으로 사용 순간과 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1571233700-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치와 날짜로 달 상태를 계산하는 원본 흐름에 한국 공휴일 대조라는 새 외부 일정 기능을 추가해 원본 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "scope_creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-935559685-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "3초 골프 스윙 영상 1개를 받아 궤적과 자세를 시각화하고 저장 가능한 스윙 트레이스 영상 1개를 즉시 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-935559685-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "촬영한 3초 스윙 영상 1개를 처리해 궤적을 시각화한 코치 전달용 트레이스 영상 1개를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-935559685-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "골프 스윙 영상 처리 카드에 야구 타격 선수를 결제자로 지정해 입력 대상과 실제 사용 맥락이 서로 맞지 않는다.",
+      "risk_flags": [
+        "payer_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525311993-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "입력을 이미 녹음된 파일이라고 했지만 처리는 녹음이며, 고음질 녹음 자체는 OS 기본 기능으로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "input_process_mismatch",
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525311993-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "WAV 녹음 카드에 AAC 변환과 공유를 추가해 원본의 단일 녹음 결과를 벗어나고 입력·처리·결과도 일치하지 않는다.",
+      "risk_flags": [
+        "scope_creep",
+        "input_process_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525311993-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "백그라운드 음성 녹음은 OS 기본 녹음 기능으로 대체 가능하고 화면을 닫은 뒤 유지되는 동작도 단일 결과 세로 조각보다 플랫폼 기능에 의존한다.",
+      "risk_flags": [
+        "os_basic"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-328205875-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "색상·문자·과일 터치 선택을 1회 판정해 도시락 완성과 스티커 보상이라는 구체적인 결과 1개를 즉시 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-328205875-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이가 고른 김밥 재료의 색상·모양·문자 일치를 처리해 차이 학습과 도시락 완성 결과를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-328205875-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "도시락에 넣을 재료의 개수 선택을 판정해 1부터 10까지 세기와 완성 보상이라는 단일 놀이 결과를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1264568098-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "철자 답안을 난이도별 게임 규칙으로 평가해 연습 결과를 주지만 입력 형식과 평가 결과가 제목만으로 구체적으로 드러나지 않는다.",
+      "risk_flags": [
+        "result_vague"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1264568098-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "학원 숙제 단어 답안 1세트를 입력받아 난이도별로 채점하고 즉시 점수라는 구체적인 결과를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1264568098-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "철자 답안을 평가할 수는 있지만 틀린 철자만 다시 푸는 복습 범위와 결과가 카드의 기본 결과인 연습 결과보다 명확하지 않다.",
+      "risk_flags": [
+        "result_vague"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-510119487-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "근육 해부학 객관식 답변 1개를 구조·AOIN 기준으로 평가해 지식 점수와 오답 1개를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-510119487-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "단일 답변 평가 카드에 틀린 근육 카드를 다시 찾아 복습하는 기록·탐색 기능을 추가해 원본의 1회 평가 흐름을 벗어난다.",
+      "risk_flags": [
+        "scope_creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-510119487-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "목·어깨 근육의 객관식 답변 1개를 기시·정지 기준으로 처리해 정답 여부와 오답을 즉시 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-527031134-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "커피 샘플별 감각 점수와 결점 체크를 입력받아 합산하고 한 플라이트의 총점과 CSV 1개를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-527031134-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "수입 샘플의 항목 점수와 결점을 처리해 총점과 결점 표시가 포함된 CSV 결과 1개를 즉시 내보낸다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-527031134-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "커핑 점수와 결점 체크를 합산해 로스터 팀에 보낼 수 있는 총점 CSV 1개를 생성한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1145935738-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "식사 기록과 음식 항목을 입력받아 칼로리·영양소를 계산하고 체중감량 목표와의 차이 1개를 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1145935738-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "편의점 식사 항목을 처리해 단백질과 탄수화물 수치를 계산하고 목표 대비 부족분이라는 구체적 결과를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1145935738-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "집밥 식사 기록으로 영양소를 계산할 수 있지만 만성질환 환자의 개인 목표가 입력에 없어 목표 비교 결과가 확정되지 않는다.",
+      "risk_flags": [
+        "missing_goal_input",
+        "medical_context"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-470531169-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "GPS 위치로 지역 날씨를 확인해 방목 위험 게이지를 만들지만 날씨 데이터 의존성과 위험 상승 기준이 구체적으로 제시되지 않았다.",
+      "risk_flags": [
+        "risk_threshold_unclear",
+        "external_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-470531169-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "GPS 위치와 지역 날씨를 처리해 폭염 뒤 방목 위험 단계를 줄 수 있으나 위험 단계 산정 기준과 즉시 결과가 불명확하다.",
+      "risk_flags": [
+        "risk_threshold_unclear",
+        "external_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-470531169-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "GPS 위치에서 날씨 기반 목초 위험 상승 여부를 계산하지만 목초 상태 자체를 입력받지 않아 결과의 근거와 범위가 모호하다.",
+      "risk_flags": [
+        "input_insufficient",
+        "external_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1092841332-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "날짜 1개를 받아 행성 위치를 계산하고 출생 차트와 트랜싯을 보여주지만 출생 차트에 필요한 시간·장소 입력이 빠져 있다.",
+      "risk_flags": [
+        "input_insufficient"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1092841332-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "날짜 1개 입력의 차트 계산 카드에 커플 두 명의 생년월일 비교를 추가해 입력 수와 처리 범위가 원본 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "scope_creep",
+        "input_count_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1092841332-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "날짜만으로 계산하는 원본 흐름에 출생 차트 연결을 추가했지만 출생 정보 입력이 없고 두 종류의 결과를 결합해 1입력·1처리·1결과 규칙을 위반한다.",
+      "risk_flags": [
+        "scope_creep",
+        "input_insufficient",
+        "multiple_results"
+      ]
+    }
+  ]
+}

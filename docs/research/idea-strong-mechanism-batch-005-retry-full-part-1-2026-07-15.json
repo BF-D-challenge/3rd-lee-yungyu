@@ -1,0 +1,220 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀 기술 발표를 준비하는 엔지니어링 매니저가 PR 설명 직전 Mermaid 코드 블록 텍스트 1개를 한 번 렌더링해 투명 배경 PNG 다이어그램 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀 기술 발표를 준비하는 엔지니어링 매니저가 PR 설명 직전 Mermaid 코드 블록 텍스트 1개를 한 번 렌더링해 2배 해상도 PNG 다이어그램 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀 기술 발표를 준비하는 엔지니어링 매니저가 PR 설명 직전 Mermaid 코드 블록 텍스트 1개를 한 번 렌더링해 편집 가능한 SVG 다이어그램 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀 기술 발표를 준비하는 엔지니어링 매니저가 기술 문서에 흐름도를 삽입하기 직전 Mermaid 코드 블록 텍스트 1개를 한 번 렌더링해 투명 배경 PNG 다이어그램 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀 기술 발표를 준비하는 엔지니어링 매니저가 기술 문서에 흐름도를 삽입하기 직전 Mermaid 코드 블록 텍스트 1개를 한 번 렌더링해 2배 해상도 PNG 다이어그램 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀 기술 발표를 준비하는 엔지니어링 매니저가 기술 문서에 흐름도를 삽입하기 직전 Mermaid 코드 블록 텍스트 1개를 한 번 렌더링해 편집 가능한 SVG 다이어그램 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀 기술 발표를 준비하는 엔지니어링 매니저가 발표 슬라이드에 시퀀스 그림을 넣기 직전 Mermaid 코드 블록 텍스트 1개를 한 번 렌더링해 투명 배경 PNG 다이어그램 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀 기술 발표를 준비하는 엔지니어링 매니저가 발표 슬라이드에 시퀀스 그림을 넣기 직전 Mermaid 코드 블록 텍스트 1개를 한 번 렌더링해 2배 해상도 PNG 다이어그램 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-mermaidonline-live-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀 기술 발표를 준비하는 엔지니어링 매니저가 발표 슬라이드에 시퀀스 그림을 넣기 직전 Mermaid 코드 블록 텍스트 1개를 한 번 렌더링해 편집 가능한 SVG 다이어그램 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6760979290-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디지털 채색을 하는 독립 일러스트레이터가 손그림 사진 1장을 채색 직전에 한 번 페이지 보정·그림자 제거해 투명 배경 선화 PNG 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6760979290-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디지털 채색을 하는 독립 일러스트레이터가 손그림 사진 1장을 채색 직전에 한 번 연필 번짐 제거해 투명 배경 선화 PNG 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6760979290-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디지털 채색을 하는 독립 일러스트레이터가 흰 종이 스케치 사진 1장을 채색 직전에 한 번 배경 분리해 투명 배경 선화 PNG 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6760979290-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디지털 채색을 하는 독립 일러스트레이터가 손그림 도안 사진 1장을 인쇄 직전에 한 번 페이지 보정·그림자 제거해 투명 배경 선화 PNG 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6760979290-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디지털 채색을 하는 독립 일러스트레이터가 손그림 도안 사진 1장을 인쇄 직전에 한 번 연필 번짐 제거해 투명 배경 선화 PNG 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6760979290-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디지털 채색을 하는 독립 일러스트레이터가 손그림 도안 사진 1장을 인쇄 직전에 한 번 배경 분리해 투명 배경 선화 PNG 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6760979290-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디지털 채색을 하는 독립 일러스트레이터가 손그림 선 사진 1장을 디지털 레이어로 옮기는 순간 한 번 페이지 보정·그림자 제거해 투명 배경 선화 PNG 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6760979290-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디지털 채색을 하는 독립 일러스트레이터가 손그림 선 사진 1장을 디지털 레이어로 옮기는 순간 한 번 연필 번짐 제거해 투명 배경 선화 PNG 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6760979290-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디지털 채색을 하는 독립 일러스트레이터가 손그림 선 사진 1장을 디지털 레이어로 옮기는 순간 한 번 배경 분리해 투명 배경 선화 PNG 1개를 즉시 얻는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    }
+  ]
+}

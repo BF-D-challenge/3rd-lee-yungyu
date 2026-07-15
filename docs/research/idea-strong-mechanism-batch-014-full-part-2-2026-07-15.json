@@ -1,0 +1,436 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-lightspeed-run-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 새 페이지 공개 직전 공개 웹사이트 URL 하나를 입력하면 LCP와 가장 큰 요소를 1회 측정해 HTML 보고서 한 파일로 즉시 확인할 수 있어 제목·순간·한 끗 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 새 페이지 공개 직전 공개 웹사이트 URL 하나를 입력하면 CLS와 움직인 요소를 1회 측정해 HTML 보고서 한 파일로 즉시 확인할 수 있어 제목·순간·한 끗 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 새 페이지 공개 직전 공개 웹사이트 URL 하나를 입력하면 긴 JavaScript 작업과 파일 URL을 1회 측정해 HTML 보고서 한 파일로 즉시 확인할 수 있어 제목·순간·한 끗 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 사이트가 느리다는 말을 들은 직후 해당 공개 웹사이트 URL 하나를 입력하면 LCP와 가장 큰 요소를 1회 측정해 HTML 보고서 한 파일로 즉시 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 사이트가 느리다는 말을 들은 직후 해당 공개 웹사이트 URL 하나를 입력하면 CLS와 움직인 요소를 1회 측정해 HTML 보고서 한 파일로 즉시 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 사이트가 느리다는 말을 들은 직후 해당 공개 웹사이트 URL 하나를 입력하면 긴 JavaScript 작업과 파일 URL을 1회 측정해 HTML 보고서 한 파일로 즉시 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 고객에게 개선 근거를 보내기 전 공개 웹사이트 URL 하나를 입력하면 LCP와 가장 큰 요소를 1회 측정해 HTML 보고서 한 파일로 즉시 제공할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 고객에게 개선 근거를 보내기 전 공개 웹사이트 URL 하나를 입력하면 CLS와 움직인 요소를 1회 측정해 HTML 보고서 한 파일로 즉시 제공할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 고객에게 개선 근거를 보내기 전 공개 웹사이트 URL 하나를 입력하면 긴 JavaScript 작업과 파일 URL을 1회 측정해 HTML 보고서 한 파일로 즉시 제공할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 웹 프로젝트 ZIP 하나를 배포 직전 입력하면 하드코딩된 비밀키 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 웹 프로젝트 ZIP 하나를 배포 직전 입력하면 위험한 eval 계열 호출을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 웹 프로젝트 ZIP 하나를 배포 직전 입력하면 와일드카드 CORS 설정 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 AI 생성 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 하드코딩된 비밀키 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 AI 생성 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 위험한 eval 계열 호출을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 AI 생성 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 와일드카드 CORS 설정 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 검수된 코드를 다른 팀에 넘기기 전 웹 프로젝트 ZIP 하나를 입력하면 하드코딩된 비밀키 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 검수된 코드를 다른 팀에 넘기기 전 웹 프로젝트 ZIP 하나를 입력하면 위험한 eval 계열 호출을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 SaaS 개발자가 검수된 코드를 다른 팀에 넘기기 전 웹 프로젝트 ZIP 하나를 입력하면 와일드카드 CORS 설정 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 웹 프로젝트 ZIP 하나를 배포 직전 입력하면 하드코딩된 비밀키 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 웹 프로젝트 ZIP 하나를 배포 직전 입력하면 위험한 eval 계열 호출을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 웹 프로젝트 ZIP 하나를 배포 직전 입력하면 와일드카드 CORS 설정 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 AI 생성 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 하드코딩된 비밀키 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 AI 생성 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 위험한 eval 계열 호출을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 AI 생성 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 와일드카드 CORS 설정 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 검수된 코드를 다른 팀에 넘기기 전 웹 프로젝트 ZIP 하나를 입력하면 하드코딩된 비밀키 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 검수된 코드를 다른 팀에 넘기기 전 웹 프로젝트 ZIP 하나를 입력하면 위험한 eval 계열 호출을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 대행사 리드가 검수된 코드를 다른 팀에 넘기기 전 웹 프로젝트 ZIP 하나를 입력하면 와일드카드 CORS 설정 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 웹 프로젝트 ZIP 하나를 배포 직전 입력하면 하드코딩된 비밀키 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 웹 프로젝트 ZIP 하나를 배포 직전 입력하면 위험한 eval 계열 호출을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 웹 프로젝트 ZIP 하나를 배포 직전 입력하면 와일드카드 CORS 설정 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 AI 생성 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 하드코딩된 비밀키 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 AI 생성 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 위험한 eval 계열 호출을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 AI 생성 코드를 합친 직후 웹 프로젝트 ZIP 하나를 입력하면 와일드카드 CORS 설정 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 검수된 코드를 다른 팀에 넘기기 전 웹 프로젝트 ZIP 하나를 입력하면 하드코딩된 비밀키 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 검수된 코드를 다른 팀에 넘기기 전 웹 프로젝트 ZIP 하나를 입력하면 위험한 eval 계열 호출을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-beesecure-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 검수된 코드를 다른 팀에 넘기기 전 웹 프로젝트 ZIP 하나를 입력하면 와일드카드 CORS 설정 패턴을 1회 정적 검사해 파일·행 위치가 담긴 HTML 보고서 한 개를 즉시 받는다.",
+      "risk_flags": []
+    }
+  ]
+}

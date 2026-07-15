@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6740976022-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "응원 문구·템플릿·사진을 함께 입력해 배경 제거와 디자인 구성을 거쳐 인쇄용 PDF 한 장을 만드는 흐름은 구체적이지만 입력과 처리 단계가 여러 개이고 초보자가 제목만으로 결과 형태를 완전히 예상하기 어렵다.",
+      "risk_flags": [
+        "multi_input",
+        "multi_step"
+      ]
+    }
+  ]
+}

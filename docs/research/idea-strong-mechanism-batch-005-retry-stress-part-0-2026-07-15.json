@@ -1,0 +1,52 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-mermaidonline-live-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 투명 배경 PNG 다이어그램’은 PR 직전 백엔드 개발자가 Mermaid 코드 블록 1개를 한 번 렌더링해 투명 배경 PNG 파일 1개를 즉시 확인하는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-mermaidonline-live-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 편집 가능한 SVG 다이어그램’은 기술 문서 삽입 직전 테크 리드가 Mermaid 코드 블록 1개를 한 번 렌더링해 편집 가능한 SVG 파일 1개를 즉시 확인하는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-mermaidonline-live-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Mermaid 코드의 2배 해상도 PNG 다이어그램’은 발표 슬라이드 삽입 직전 엔지니어링 매니저가 Mermaid 코드 블록 1개를 한 번 렌더링해 2배 해상도 PNG 파일 1개를 즉시 확인하는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6760979290-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스케치 사진의 종이 그림자 제거 선화’는 디지털 채색 직전 일러스트레이터가 노트북 스케치 사진 1장을 한 번 보정·그림자 제거해 투명 배경 선화 PNG 1개를 즉시 얻는 결과가 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

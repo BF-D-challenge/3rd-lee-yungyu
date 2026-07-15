@@ -1,0 +1,418 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-314269183-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "영어 단어를 입력해 정의와 철자를 보여주는 흐름은 구체적이지만 OS 사전이나 범용 AI 한 번으로 더 쉽게 해결할 수 있다.",
+      "risk_flags": [
+        "generic_ai",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-314269183-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "계약서 단어 검색은 명확하지만 부분 철자로 가능한 단어를 찾는 결과가 원본의 정의·혼동어 검색 처리와 맞지 않는다.",
+      "risk_flags": [
+        "mechanism_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-314269183-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "단어를 입력해 발음과 정의를 보는 흐름은 구체적이지만 범용 AI나 OS 사전이 더 간편하다.",
+      "risk_flags": [
+        "generic_ai",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6744274650-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "재료·방향·인원수를 입력해 배치 레시피를 산출하는 흐름은 명확하지만 범용 AI 한 번으로 더 쉽게 계산할 수 있다.",
+      "risk_flags": [
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6744274650-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "남은 술로 칵테일을 찾는 결과는 재료·인원수 기반 레시피 배율 계산이라는 원본 처리와 맞지 않는다.",
+      "risk_flags": [
+        "mechanism_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6744274650-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "소주·과일로 가능한 음료를 찾는 결과는 기존 레시피를 인원수에 맞게 조정하는 원본 처리에서 벗어난다.",
+      "risk_flags": [
+        "mechanism_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1450650398-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "촬영 입력 한 번에 노출·초점·화이트밸런스를 적용해 온라인몰용 사진 또는 동영상 하나를 만드는 흐름이 구체적이고 실제 촬영 순간에 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1450650398-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "프리셋 저장 후 다음 촬영에 재사용하려면 사전 설정 기록이 필요해 원본의 즉시 촬영 처리와 추가 기능 요구를 벗어난다.",
+      "risk_flags": [
+        "prior_setup",
+        "new_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1450650398-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 촬영 한 번에 공연장 조명용 셔터·화이트밸런스를 적용해 설정된 사진 또는 동영상 하나를 만드는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1397865865-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "운송장 번호 하나를 입력해 배송 상태를 조회하고 현재 위치 하나를 보여주므로 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1397865865-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "운송장 번호로 배송 상태를 보는 흐름은 맞지만 우체국·CJ를 함께 지원한다는 범위가 원본의 우편 조회 처리보다 넓어 명확화가 필요하다.",
+      "risk_flags": [
+        "carrier_scope"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1397865865-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여러 택배의 진행 상황을 보려면 여러 운송장 입력과 여러 결과가 필요해 1입력·1처리·1결과 조건을 위반한다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "multiple_outputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6756866511-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 피드 또는 사진 하나에 필름 프리셋을 적용해 필름 룩 사진 하나를 즉시 보여주므로 촬영 순간과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6756866511-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진에 필름 프리셋을 적용하는 흐름은 맞지만 ‘색감 통일’은 여러 사진이나 기존 기준이 필요한지 제목만으로 불명확하다.",
+      "risk_flags": [
+        "unclear_scope"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6756866511-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "제주 여행 사진 하나를 입력해 한 가지 필름 룩을 적용하고 저장된 사진 하나를 만드는 세로 조각이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-527588389-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기타 소리를 입력해 튜닝 판정을 내리는 흐름은 구체적이지만 허용 입력 목록에 오디오·마이크 입력이 포함되지 않는다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-527588389-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기타 소리를 입력해 음정을 판정하는 흐름은 구체적이지만 허용 입력 목록에 오디오·마이크 입력이 포함되지 않는다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-527588389-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기타 소리를 입력해 튜닝 상태를 보는 흐름은 구체적이지만 허용 입력 목록에 오디오·마이크 입력이 포함되지 않는다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6747758024-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "손가락 또는 Apple Pencil 그림은 허용된 텍스트·URL·파일·사진·단일 권한 입력에 해당하지 않는다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6747758024-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "손가락 또는 Apple Pencil 그림은 허용된 입력 유형이 아니며 웹툰 장면 변환도 원본의 직접 픽셀 그리기 처리와 다르다.",
+      "risk_flags": [
+        "unsupported_input",
+        "mechanism_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6747758024-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "손가락 또는 Apple Pencil 그림은 허용된 입력 유형이 아니므로 픽셀 GIF 생성 흐름을 통과시킬 수 없다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760207676-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기분과 시간을 입력해 영화를 추천하는 결과는 범용 AI 한 번이나 OTT 자체 추천 기능으로 더 쉽게 해결할 수 있다.",
+      "risk_flags": [
+        "generic_ai",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760207676-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "장르와 시간을 입력해 영화를 추천하는 기능은 범용 AI나 OTT 추천 기능이 더 간편해 독립적인 한 끗 가치가 약하다.",
+      "risk_flags": [
+        "generic_ai",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760207676-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여러 OTT의 현재 작품을 필터링하려면 외부 카탈로그 데이터가 필요하고 범용 검색·AI가 더 편리하다.",
+      "risk_flags": [
+        "generic_ai",
+        "external_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1052459780-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "수유 기록 하나로 경과시간을 계산하는 흐름은 명확하지만 개인별 수유 간격 없이 다음 수유 시점을 단정하는 근거가 부족하다.",
+      "risk_flags": [
+        "insufficient_input",
+        "health_context"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1052459780-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "마지막 수유 시간을 찾으려면 문제 전에 수유 기록을 계속 남겨야 하므로 사전 기록 의존 조건에 걸린다.",
+      "risk_flags": [
+        "prior_logging"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1052459780-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "수유량과 시간을 입력해 계산하는 흐름은 구체적이지만 다음 수유 시점을 산출할 개인별 간격 정보가 입력에 없다.",
+      "risk_flags": [
+        "insufficient_input",
+        "health_context"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-352000376-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주간·야간·휴무와 날짜를 입력해 앞으로의 근무 일정을 한눈에 보여주는 흐름이 실제 근무표 정리 순간에 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-352000376-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교대일 입력 한 번으로 이번 달 출근표 이미지를 결과로 보여주므로 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-352000376-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "데이·이브닝·나이트 근무와 날짜를 입력해 색상별 근무 일정을 한눈에 보여주는 결과가 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,415 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-387692731-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "5개 문제를 풀어 Mensa 유형으로 채점하고 점수표를 보여주는 흐름은 구체적이지만 제목만으로 문제 유형과 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-387692731-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원본은 5개 문제와 로컬 점수표인데 twist가 20문제 누적 기록으로 바뀌어 입력·처리·결과 범위를 벗어난다.",
+      "risk_flags": [
+        "source_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-387692731-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원본의 점수표 결과에 사고 과정 한국어 설명을 추가해 원본 메커니즘에 없는 기능을 상상했다.",
+      "risk_flags": [
+        "mechanism_expansion"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6779909576-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오디오 파일 또는 마이크를 받아 샘플을 편집해 짧은 비트 파일을 만드는 흐름은 구체적이지만 Resamplr라는 제목만으로 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6779909576-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오디오 파일을 잘라 패드에 배치하고 WAV 루프를 만드는 결과는 구체적이지만 제목만으로 사용 목적과 산출물이 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6779909576-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "마이크 입력을 샘플링·반복해 오디오 파일로 저장하는 단일 흐름은 자연스럽지만 Resamplr라는 제목만으로 문제와 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1239098425-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 장면의 수동 초점·노출 등을 조정해 사진을 남기는 흐름은 가능하지만 제목만으로 해결 문제와 최종 결과가 충분히 보이지 않는다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1239098425-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 장면을 수동 설정해 RAW와 JPEG 사진으로 남기는 흐름은 구체적이지만 제목만으로 결과와 사용 순간이 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1239098425-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "촬영 장면에 ISO와 화이트밸런스를 적용해 음식 사진을 만드는 흐름은 자연스럽지만 제목만으로 문제와 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-493493802-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단어와 운율·의미 제약을 검색해 조건에 맞는 후보 목록을 보여주는 흐름은 구체적이지만 RhymeZone 제목만으로 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-493493802-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영어 단어와 제약을 받아 동음어·유의어 목록을 보여주는 흐름은 자연스럽지만 제목만으로 해결 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-493493802-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단어와 뜻·라임 조건을 입력해 후보 단어 목록을 좁히는 흐름은 구체적이지만 RhymeZone라는 제목만으로 목적이 선명하지 않다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1382661240-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "동물 그림자 게임 선택은 허용된 텍스트·URL·파일·사진·단일 기기 권한 입력에 해당하지 않아 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1382661240-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "동물 그림자 게임 선택을 입력으로 삼는 구조가 허용 입력 범위를 벗어나며 보호자와 아이의 함께 풀이도 추가 상호작용이다.",
+      "risk_flags": [
+        "unsupported_input",
+        "extra_actor"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1382661240-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "동물 그림자 선택은 허용 입력이 아니고 선택 직후 다음 퍼즐까지 제공해 원본의 단일 문제 결과보다 범위를 넓혔다.",
+      "risk_flags": [
+        "unsupported_input",
+        "mechanism_expansion"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-366107163-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "노래 음성을 받아 현재 음정을 감지해 색상 미터로 보여주는 흐름은 구체적이지만 iShala라는 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-366107163-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원본은 노래 음성의 현재 음정 미터인데 반주 재생 기능을 추가해 원본 메커니즘을 벗어났다.",
+      "risk_flags": [
+        "mechanism_expansion"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-366107163-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "노래 음성의 높낮이를 감지해 색상 미터로 보여주는 결과는 원본과 일치하지만 iShala 제목이 기능을 설명하지 않는다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-363556704-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단일 기기 GPS 입력으로 랩타임을 계산해 주행 성능을 보여주는 흐름은 가능하지만 성능 결과가 구체적으로 정의되지 않았다.",
+      "risk_flags": [
+        "result_vague"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-363556704-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원본의 서킷 랩타이머를 출퇴근 경로 비교 도구로 바꾸어 필요 순간과 사용 목적이 자연스럽게 맞지 않는다.",
+      "risk_flags": [
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-363556704-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "GPS 주행을 기록해 종료 직후 구간별 성능을 보여주는 흐름은 자연스럽지만 원본의 driving performance insights가 구체적 지표로 좁혀지지 않았다.",
+      "risk_flags": [
+        "result_vague"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-516561342-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 한 장을 입력해 필터·스티커·프레임을 적용하고 꾸며진 사진 한 장을 즉시 내보내는 흐름이 제목·사용 순간·결과 모두 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-516561342-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이 사진 한 장을 편집해 귀여운 장식이 적용된 공유용 사진 한 장을 만드는 흐름이 허용 입력과 원본 처리에 정확히 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-516561342-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "스마트폰 사진 한 장에 얼굴을 가리지 않는 스티커와 프레임을 적용해 결과 이미지 한 장을 만드는 세로 조각이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-933081417-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원본은 일본어 텍스트 입력인데 twist가 카메라로 표지판을 비추는 사진 입력과 OCR을 요구해 원본 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "source_mismatch",
+        "mechanism_expansion"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-933081417-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "일본어 단어 또는 문장을 입력해 정의·예문·발음을 검색하고 사용 맥락을 보여주는 흐름이 학습 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-933081417-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "도쿄 여행객의 결제자와 JLPT 문법이 막힌 필요 순간이 서로 맞지 않아 실제 사용 순간의 자연스러운 조합이 아니다.",
+      "risk_flags": [
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-414141811-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주제별 문제를 입력으로 선택하고 답안을 즉시 채점해 전체 또는 오답 문제를 복습하는 결과가 구체적이며 2일 MVP로 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-414141811-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "원본의 주제별 문제 선택·즉시 채점·오답 복습에 실전 무작위 문제 모드를 추가해 원본에 없는 기능을 상상했다.",
+      "risk_flags": [
+        "mechanism_expansion"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-414141811-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주제별 FAA 문제를 풀고 즉시 채점한 뒤 틀린 문제와 해설만 복습하는 단일 입력·처리·결과 흐름이 원본과 일치한다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6761405215-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 리뷰 발행 직전에 앱 이름 1개로 아이콘을 한 번 검색·가공해 불필요한 투명 여백이 정리된 PNG 파일 1개를 즉시 얻으므로 결제자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6761405215-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "경쟁 앱 비교표를 완성할 때 앱 이름 1개로 아이콘을 한 번 검색·가공해 iOS 둥근 마스크 PNG 1개를 즉시 얻으므로 마케터의 규격 통일 순간과 결과가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6752672420-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "천체 촬영 직후 FITS 이미지 1개를 한 번 플레이트 솔빙해 중심 좌표가 찍힌 하늘 차트 1개를 즉시 보여주므로 촬영 위치 확인이라는 사진가의 순간과 결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6752672420-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "다음 촬영 구도를 수정할 때 FITS 이미지 1개를 한 번 플레이트 솔빙해 주요 천체 라벨이 붙은 하늘 차트 1개를 즉시 보여주므로 지도교사의 검토 순간과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6752672420-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "관측 기록 제출 직전에 FITS 이미지 1개를 한 번 플레이트 솔빙해 촬영 영역 경계가 표시된 하늘 차트 1개를 즉시 보여주므로 운영자의 기록 확인 순간과 결과가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-842218231-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "레슨 중 한 소절의 음정 이탈을 확인하려고 마이크 권한 1개로 음정을 한 번 분석해 시간별 음정 그래프 1개를 보여주지만, 제목의 ‘이탈 구간’이 실제 결과에서 어떻게 표시되는지 불명확하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-842218231-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "합창 연습 직후 마이크 권한 1개로 짧은 한 소절의 음정 변화를 한 번 분석해 가장 크게 벗어난 구간 1개를 표시하지만, 비교할 목표 음이나 기준이 smallest_build에 없어 이탈 판정 근거가 불명확하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-842218231-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "녹음 직전 마이크 권한 1개로 한 소절을 분석해 현재 음과 목표 음의 차이 1개를 보여주려 하지만, 목표 음 입력이나 기준이 없어 smallest_build만으로 결과를 산출할 수 없다.",
+      "risk_flags": [
+        "result_unclear",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6444574623-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "외부 제출 직전에 ODT 파일 1개를 한 번 DOCX로 변환해 원본 문단과 글꼴 배치를 우선 보존한 제출용 DOCX 파일 1개를 즉시 얻으므로 사무 담당자의 호환성 문제와 결과가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6444574623-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "수업 자료 공유 직전에 ODT 파일 1개를 한 번 DOCX로 변환해 이미지 위치와 크기가 보존된 DOCX 파일 1개를 즉시 얻으므로 교사의 배포 순간과 결과가 자연스럽다.",
+      "risk_flags": []
+    }
+  ]
+}

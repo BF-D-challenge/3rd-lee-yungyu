@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-hyperfocal-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진 색감 초안 Lightroom 파일’은 고객이 보낸 참고 사진의 색감을 오늘 편집에 옮겨야 하는 웨딩 사진가가 사진 파일 1개를 입력하면 색감 특성을 한 번 처리해 Lightroom용 XMP 색감 시작 파일 1개를 받는 흐름을 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-hyperfocal-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘영상 색감 초안 LUT 파일’은 사진과 짧은 영상을 같은 톤으로 동시에 시작해야 하는 콘텐츠 제작자가 영상 파일 1개를 입력하면 색감 특성을 한 번 처리해 영상 편집용 LUT 파일 1개를 받는 흐름을 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-hyperfocal-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진 색감 초안 Photoshop 파일’은 마감 전 새 촬영물의 색감 초안이 필요한 1인 크리에이터가 사진 파일 1개를 입력하면 색감 특성을 한 번 처리해 Photoshop ACR용 XMP 색감 시작 파일 1개를 받는 흐름을 구체적으로 보여준다.",
+      "risk_flags": []
+    }
+  ]
+}

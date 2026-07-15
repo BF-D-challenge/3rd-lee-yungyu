@@ -1,0 +1,370 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1391683719-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "맥주 시음 메모를 항목별 기록으로 바꾸는 입력·처리·결과는 구체적이지만 기본 메모 앱이나 범용 AI 한 번으로 더 간단히 처리할 수 있다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1391683719-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "맥주 시음 메모를 구조화된 기록으로 만드는 흐름은 가능하지만 기본 메모 앱이나 범용 AI 한 번보다 편리하지 않다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1391683719-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "맥주 시음 메모를 향·맛·색상·평점 기록으로 바꾸지만 개인 메모 수준이라 기본 메모 앱이나 범용 AI 한 번이 더 편하다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1391683719-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "시음 메모 하나를 구조화된 기록으로 만드는 흐름은 명확하지만 바텐더에게도 기본 메모 앱이나 범용 AI 한 번보다 낫다는 근거가 없다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1391683719-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "맥주 시음 메모를 항목별 기록으로 처리할 수 있으나 기본 메모 앱이나 범용 AI 한 번으로 충분해 별도 결제 이유가 약하다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1391683719-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "시음 메모를 향·맛·색상·평점 기록으로 바꾸는 결과는 구체적이지만 기본 메모 앱이나 범용 AI 한 번이 더 편하다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1391683719-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "맥주 시음 메모 하나를 구조화된 기록으로 저장하지만 콘텐츠 제작자에게도 기본 메모 앱이나 범용 AI 한 번보다 편리하지 않다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1391683719-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "시음 메모를 항목별 기록으로 정리하는 흐름은 명확하지만 기본 메모 앱이나 범용 AI 한 번으로 대체 가능하다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1391683719-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "맥주 시음 메모를 구조화해 저장하지만 펍에서의 한 끗 변화가 작고 기본 메모 앱이나 범용 AI 한 번이 더 편하다.",
+      "risk_flags": [
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-832823029-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭과 나침반·자이로 권한을 처리해 외계인 표시를 즉시 보여주지만 제목만으로 결과가 충분히 드러나지 않고 일회성 장난의 결제 근거가 약하다.",
+      "risk_flags": [
+        "weak_title",
+        "novelty_payer"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-832823029-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭과 나침반·자이로 권한으로 레이더 속 외계인을 보여주는 흐름은 가능하지만 제목만으로 결과가 명확하지 않고 일회성 장난의 결제 근거가 약하다.",
+      "risk_flags": [
+        "weak_title",
+        "novelty_payer"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-832823029-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭과 센서 방향을 처리해 촬영 직전 외계인을 표시하지만 제목만으로 사진 효과 결과가 드러나지 않고 일회성 사용의 결제 근거가 약하다.",
+      "risk_flags": [
+        "weak_title",
+        "novelty_payer"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-832823029-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭과 나침반·자이로 권한으로 레이더 외계인을 표시하지만 이벤트 운영자에게 반복 결제할 필요와 제목의 결과 설명이 부족하다.",
+      "risk_flags": [
+        "weak_title",
+        "novelty_payer"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-832823029-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭과 센서 방향을 처리해 촬영용 외계인을 보여주지만 제목만으로 결과가 명확하지 않고 이벤트 운영자의 일회성 결제 이유가 약하다.",
+      "risk_flags": [
+        "weak_title",
+        "novelty_payer"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-832823029-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭과 나침반·자이로 권한으로 외계인을 표시하는 흐름은 구체적이지만 제목만으로 결과가 명확하지 않고 일회성 이벤트 효과의 결제 근거가 약하다.",
+      "risk_flags": [
+        "weak_title",
+        "novelty_payer"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-832823029-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭과 센서 방향을 처리해 촬영용 외계인을 보여주지만 제목만으로 결과가 충분히 드러나지 않고 코스프레 팬의 반복 결제 필요가 약하다.",
+      "risk_flags": [
+        "weak_title",
+        "novelty_payer"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-832823029-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭과 나침반·자이로 권한으로 외계인 표시를 만들지만 기본 카메라 효과나 범용 AR 도구가 더 편할 가능성이 있고 제목도 모호하다.",
+      "risk_flags": [
+        "weak_title",
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-832823029-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭과 센서 방향으로 레이더 외계인을 표시할 수 있지만 일회성 장난의 결제 이유와 제목만으로 결과를 이해할 근거가 약하다.",
+      "risk_flags": [
+        "weak_title",
+        "novelty_payer"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-jkhnlbnfjlclkanjkjlilpedadnoigab-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "URL과 재방문 시각 두 입력을 받아 알림을 예약하므로 1개 입력 규칙을 어기며 브라우저 북마크와 OS 알림 조합이 더 간단하다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-jkhnlbnfjlclkanjkjlilpedadnoigab-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기사 URL과 알림 시각을 별도로 입력해 팝업을 예약하므로 단일 입력 규칙을 어기고 기본 북마크·리마인더가 더 편하다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-jkhnlbnfjlclkanjkjlilpedadnoigab-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "채용공고 URL과 마감 전 알림 시각이라는 두 입력이 필요하고 브라우저 북마크와 OS 알림으로 동일한 결과를 더 쉽게 만들 수 있다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-jkhnlbnfjlclkanjkjlilpedadnoigab-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "웹페이지 URL과 알림 시각을 입력해 팝업을 예약하므로 1개 입력 규칙을 위반하며 기본 북마크·리마인더가 더 편리하다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-jkhnlbnfjlclkanjkjlilpedadnoigab-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기사 탭의 URL과 알림 시각을 입력해 재방문 팝업을 만들지만 두 입력이 필요하고 기본 북마크·알림 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-jkhnlbnfjlclkanjkjlilpedadnoigab-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "참고자료 URL과 재방문 시각을 별도로 입력해야 하므로 단일 입력 규칙을 어기고 브라우저 북마크와 OS 알림이 더 편하다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-jkhnlbnfjlclkanjkjlilpedadnoigab-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "채용공고 URL과 확인 시각을 입력해 알림을 예약하므로 입력 1개 규칙을 어기며 기본 북마크·리마인더와 차별성이 없다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "os_alternative"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-mirage-detect-image-editing-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘과도한 보정 영역 사진 히트맵’은 보도 사진 담당자가 송고 직전 사진 파일 하나를 받아 과도한 보정 영역을 한 번 탐지하고 의심 구역 히트맵 이미지 한 장을 받는 흐름을 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-mirage-detect-image-editing-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘경계 불일치가 보이는 사진 히트맵’은 브랜드 콘텐츠 QA 담당자가 최종 승인 직전 사진 파일 하나를 받아 경계 불일치를 한 번 탐지하고 의심 영역 히트맵 이미지 한 장을 받는 흐름을 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-ios-app-growing-fast-with-seo-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘양각 부조로 바뀐 도안 STL 파일’은 공방 운영자가 슬라이서 투입 직전 고대비 도안 이미지 하나를 받아 양각 부조로 한 번 변환하고 STL 파일 한 개를 받는 흐름을 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-ios-app-growing-fast-with-seo-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘음각 도장으로 바뀐 도안 STL 파일’은 굿즈 공방 제작자가 시제품 출력 직전 고대비 도안 이미지 하나를 받아 음각 도장 형태로 한 번 변환하고 STL 파일 한 개를 받는 흐름을 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-ios-app-growing-fast-with-seo-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘외곽 커터로 바뀐 도안 STL 파일’은 초등 교사가 수업 중 출력 직전 고대비 도안 이미지 하나를 받아 외곽선 커터로 한 번 변환하고 STL 파일 한 개를 받는 흐름을 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-corsproxy-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘GET CORS 오류 응답 미리보기’는 프론트엔드 개발자가 오류 직후 cURL 텍스트 하나를 입력하지만 외부 API에 프록시 요청을 실행해 외부 응답을 받아야 하므로 오프라인 단일 조각 검수에서 탈락한다.",
+      "risk_flags": [
+        "external_action_required",
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-corsproxy-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘인증 헤더 CORS 응답 점검’은 노코드 제작자가 데모 직전 인증 헤더 포함 cURL 텍스트 하나를 입력하지만 외부 API에 프록시 요청을 실행해 외부 응답을 받아야 하므로 오프라인 단일 조각 검수에서 탈락한다.",
+      "risk_flags": [
+        "external_action_required",
+        "external_data_required",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-corsproxy-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘JSON POST CORS 응답 확인’은 QA 엔지니어가 버그 재현 직후 JSON POST cURL 텍스트 하나를 입력하지만 외부 API에 POST 요청을 실행해 외부 응답을 받아야 하므로 오프라인 단일 조각 검수에서 탈락한다.",
+      "risk_flags": [
+        "external_action_required",
+        "external_data_required",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-novel-translator-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘장 구분 보존 한국어 소설 EPUB’은 해외 웹소설 독자가 다음 장을 읽기 직전 영어 EPUB 파일 하나를 받아 한 번 번역하고 장 구분이 보존된 한국어 EPUB 파일 하나를 받지만 제목에 번역이라는 핵심 결과가 직접 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-novel-translator-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘각주 링크 보존 한국어 소설본’은 출판 편집자가 초벌 원고를 받은 직후 영어 EPUB 파일 하나를 받아 한 번 번역하고 각주 링크가 보존된 한국어 EPUB 파일 하나를 받지만 제목에 번역이라는 핵심 결과가 직접 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    }
+  ]
+}

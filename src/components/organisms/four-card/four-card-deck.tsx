@@ -16,6 +16,7 @@ import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef } from "rea
 import { backSvg } from "../slot/card-back";
 
 export type DeckCard = { axis: string; key: string; label: string };
+export type FanDeckVariant = "compact" | "responsive";
 
 export interface FanDeckHandle {
   /** 한 번에 뽑기 한 스텝 (원본 autoAll) — 아펙스 카드를 axis 칸으로 비행, 안착 시 onPick→onDone */
@@ -26,6 +27,8 @@ export interface FanDeckHandle {
 
 export interface FanDeckProps {
   cards: DeckCard[];
+  /** 현재 모바일 컬럼과 이전 반응형 슬롯 화면의 기하 차이만 선택한다. */
+  variant?: FanDeckVariant;
   /** 축 → 사람이 읽는 라벨 (aria-label) */
   axisLabels: Record<string, string>;
   /** 모달/시트가 떠 있을 때 덱 입력과 진행 중 드래그를 막는다. */
@@ -42,29 +45,30 @@ export interface FanDeckProps {
   getTargetRect: (axis: string) => DOMRect | null;
   /** 드래그 중 슬롯 위 하이라이트용 (null = 벗어남) */
   onDragOver: (axis: string | null) => void;
-  /** 아크 비행이 슬롯에 닿는 순간 호출 — 해당 축만 채움/교체 */
-  onPick: (card: DeckCard) => void;
+  /** 아크 비행이 슬롯에 닿는 순간 호출 — 실제 도착 축만 채움/교체 */
+  onPick: (card: DeckCard, targetAxis: string) => void;
 }
 
 type WCard = HTMLDivElement & { _base: number; _hov?: boolean; _deck: number; _skin?: string };
 
 const EASE = "cubic-bezier(.65,0,.35,1)";
 const SPRING = "cubic-bezier(.34,1.56,.64,1)";
+const DECK_CARD_CORNER_RADIUS = 24;
 
 const DECK_CSS = `
-.fd-host{pointer-events:none;
-  mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%),
-              linear-gradient(to top,transparent 0,#000 18%);
-  mask-composite:intersect;
-  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%),
-                       linear-gradient(to top,transparent 0,#000 18%);
-  -webkit-mask-composite:source-in}
+.fd-host{pointer-events:none;overflow:visible!important;
+  mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%)}
+.fd-host[data-variant="responsive"]{
+  mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%)}
 .fd-wheel{position:absolute;left:50%;width:0;height:0;will-change:transform;z-index:5}
 .fd-card{position:absolute;pointer-events:auto;cursor:grab;touch-action:none;user-select:none;
   -webkit-user-select:none;will-change:transform;transition:transform .8s ${EASE},opacity .5s ease}
 .fd-card.noT{transition:opacity .5s ease}
 .fd-card .pull{position:absolute;inset:0;transition:transform .26s ${SPRING}}
 .fd-card:hover .pull,.fd-card:focus-visible .pull{transform:translateY(-30px) scale(1.03)}
+.fd-card:focus-visible{outline:2px solid #fff;outline-offset:3px;box-shadow:0 0 0 5px rgba(255,68,88,.55)}
 .fd-card:hover{z-index:600!important}
 .fd-card svg{display:block;width:100%;height:100%}
 .fd-card:hover svg{filter:drop-shadow(0 10px 14px rgba(0,0,0,.55))}
@@ -73,7 +77,7 @@ const DECK_CSS = `
 .fd-card[data-active="false"] .pull,.fd-card[data-active="false"]:hover .pull{transform:none}
 .fd-host[data-disabled="true"] .fd-card{pointer-events:none}
 .fd-host[data-interactive="false"] .fd-card{pointer-events:none;cursor:default}
-.fd-fly{position:fixed;z-index:30;pointer-events:none;will-change:transform}
+.fd-fly{position:fixed;z-index:2147483000;pointer-events:none;will-change:transform}
 .fd-fly svg{display:block;width:100%;height:100%;filter:drop-shadow(0 16px 22px rgba(0,0,0,.55))}
 @media (prefers-reduced-motion:reduce){.fd-card,.fd-card .pull{transition:none}}
 `;
@@ -81,6 +85,7 @@ const DECK_CSS = `
 export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
   {
     cards,
+    variant = "compact",
     axisLabels,
     disabled = false,
     interactive = true,
@@ -167,21 +172,29 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     const flies = new Set<HTMLDivElement>();
     let WP = { spacing: 1, n: 0 };
 
-    // 앱 전체가 ≤480px 모바일 컬럼으로 통일됨 → 덱은 모바일 파라미터만 사용(반경 640·카드 84×122·슬리버 12px).
-    const mobile = () => true;
+    const compact = variant === "compact";
+    const mobile = () => compact || host.clientWidth < 680;
     const geom = () => {
       const w = host.clientWidth;
       const h = host.clientHeight;
-      const r = 640;
-      const cw = 84;
-      const ch = 122;
-      return { w, h, r, cw, ch, cy: h + r - 150 }; // 원본 실측: 아펙스 카드 중심 150px
+      const isMobile = mobile();
+      const r = isMobile ? 640 : 1050;
+      const cw = isMobile ? 84 : 100;
+      const ch = isMobile ? 122 : 146;
+      // compact는 낮은 덱 밴드에서도 카드가 잘리지 않게 맞추고, responsive는 이전 고정 기하를 보존한다.
+      const apex = compact
+        ? Math.min(150, Math.max(56, h - ch / 2 - 8))
+        : isMobile
+          ? 150
+          : 175;
+      return { w, h, r, cw, ch, cy: h + r - apex };
     };
     const wheelParams = () => {
       const g = geom();
-      const spacing = ((12 / g.r) * 180) / Math.PI; // 슬리버 12px
-      // +6 — mask-image 페이드 뒤로 카드가 부족해 틈이 보이지 않게 하는 culling 버퍼(D9 deckClipFix)
-      const halfVis = (Math.asin(Math.min(0.95, (g.w / 2 + g.cw) / g.r)) * 180) / Math.PI + 6;
+      const isMobile = mobile();
+      const spacing = (((isMobile ? 12 : 14) / g.r) * 180) / Math.PI;
+      const halfVis =
+        (Math.asin(Math.min(0.95, (g.w / 2 + g.cw) / g.r)) * 180) / Math.PI + (isMobile ? 6 : 8);
       return { spacing, n: Math.ceil((2 * halfVis) / spacing) };
     };
 
@@ -255,7 +268,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       if (c._skin !== eff) {
         c._skin = eff;
         const pull = c.firstElementChild as HTMLElement | null;
-        if (pull) pull.innerHTML = backSvg();
+        if (pull) pull.innerHTML = backSvg(DECK_CARD_CORNER_RADIUS);
       }
     };
 
@@ -267,7 +280,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       c.style.width = `${w}px`;
       c.style.height = `${h}px`;
       c.style.transform = `rotate(${ang}deg)`;
-      c.innerHTML = backSvg();
+      c.innerHTML = backSvg(DECK_CARD_CORNER_RADIUS);
       document.body.appendChild(c);
       flies.add(c);
       return c;
@@ -294,19 +307,29 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       const s2 = toRect.width / w0;
       const D = RM ? 0 : flightDurationRef.current;
       const t0 = performance.now();
+      let settled = false;
+      let watchdog: number | null = null;
+      const settle = () => {
+        if (settled) return;
+        settled = true;
+        if (watchdog !== null) window.clearTimeout(watchdog);
+        dropClone(clone);
+        done();
+      };
       const step = (now: number) => {
+        if (settled) return;
         const p = D ? Math.min(1, (now - t0) / D) : 1;
         const e = easeIO(p);
         const x = (1 - e) * (1 - e) * c0.x + 2 * (1 - e) * e * c1.x + e * e * c2.x;
         const y = (1 - e) * (1 - e) * c0.y + 2 * (1 - e) * e * c1.y + e * e * c2.y;
         clone.style.transform = `translate(${x - bx}px,${y - by}px) rotate(${ang0 * (1 - e)}deg) scale(${s0 + (s2 - s0) * e})`;
         if (p < 1) requestAnimationFrame(step);
-        else {
-          dropClone(clone);
-          done();
-        }
+        else settle();
       };
-      requestAnimationFrame(step);
+      if (D) {
+        requestAnimationFrame(step);
+        watchdog = window.setTimeout(() => step(t0 + D), D + 100);
+      } else step(t0);
     };
 
     /** ★버그픽스 이식: 카드 제거 시 _hov가 남아 있으면 hoverSlow 누수 → 휠 영구 감속 */
@@ -378,7 +401,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         busy = false;
         if (disposed) return;
         removeCard(c);
-        onPickRef.current(card);
+        onPickRef.current(card, eff);
       });
     };
 
@@ -393,6 +416,10 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       let oy = 0;
       let vx = 0;
       let lx = 0;
+      const detachGlobalPointerListeners = () => {
+        window.removeEventListener("pointerup", up, true);
+        window.removeEventListener("pointercancel", cancel, true);
+      };
       c.addEventListener("pointerenter", () => {
         if (!c._hov) {
           c._hov = true;
@@ -407,8 +434,11 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       });
       c.addEventListener("pointerdown", (e) => {
         if (!interactiveRef.current || disabledRef.current || busy || held || !isActive(c)) return; // 원본: busy||curAxis()<0 게이트의 다크 등가
+        e.preventDefault();
         pid = e.pointerId;
         c.setPointerCapture(pid);
+        window.addEventListener("pointerup", up, { capture: true, once: true });
+        window.addEventListener("pointercancel", cancel, { capture: true, once: true });
         sx = e.clientX;
         sy = e.clientY;
         drag = false;
@@ -417,6 +447,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       });
       c.addEventListener("pointermove", (e) => {
         if (pid === null) return;
+        e.preventDefault();
         if (disabledRef.current) {
           cancel();
           return;
@@ -452,49 +483,53 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
           onDragOverRef.current(over ? axis : null);
         }
       });
-      const up = () => {
+      function up() {
         if (pid === null) return;
         if (disabledRef.current) {
           cancel();
           return;
         }
+        const activePid = pid;
+        pid = null;
+        detachGlobalPointerListeners();
         try {
-          c.releasePointerCapture(pid);
+          c.releasePointerCapture(activePid);
         } catch {
           /* already released */
         }
-        pid = null;
         onDragOverRef.current(null);
         if (!drag) {
           drawToReel(c); // 탭 → 유효 축 릴로 (조준 중엔 curAxis)
           return;
         }
         const card = deckOf(c);
-        const rect = getRectRef.current(effAxis(c));
+        const targetAxis = effAxis(c);
+        const rect = getRectRef.current(targetAxis);
         if (clone && clone._commit && rect) {
-          const cr = clone.getBoundingClientRect();
-          flyTo(clone, { x: cr.left + cr.width / 2, y: cr.top + cr.height / 2 }, clone._rot || 0, rect, () => {
-            busy = false;
-            if (disposed) return;
-            removeCard(c);
-            onPickRef.current(card);
-          });
+          dropClone(clone);
           clone = null;
+          busy = false;
+          if (!disposed) {
+            removeCard(c);
+            onPickRef.current(card, targetAxis);
+          }
         } else if (clone) {
           fallAway(clone, c, ox, oy); // 릴 밖 → 낙하 버림
           clone = null;
         } else busy = false;
         drag = false;
-      };
+      }
       /** 제스처 취소는 탭/드롭으로 오해하지 않고 깨끗이 정리 (원본 codex #3) */
-      const cancel = () => {
+      function cancel() {
         if (pid === null) return;
+        const activePid = pid;
+        pid = null;
+        detachGlobalPointerListeners();
         try {
-          c.releasePointerCapture(pid);
+          c.releasePointerCapture(activePid);
         } catch {
           /* already released */
         }
-        pid = null;
         onDragOverRef.current(null);
         if (clone) {
           dropClone(clone);
@@ -503,9 +538,12 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         }
         drag = false;
         busy = false;
-      };
+      }
       c.addEventListener("pointerup", up);
       c.addEventListener("pointercancel", cancel);
+      c.addEventListener("lostpointercapture", () => {
+        if (pid !== null) up();
+      });
       c.addEventListener("keydown", (e) => {
         if (
           interactiveRef.current &&
@@ -622,7 +660,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
           if (disposed) return;
           const card = deckOf(c);
           removeCard(c);
-          onPickRef.current(card);
+          onPickRef.current(card, axis);
           onDone();
         });
         return true;
@@ -642,12 +680,13 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     };
     // poolKey와 disabled가 덱 정체성 — disabled 전환 시 진행 중 body 클론까지 cleanup한다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [disabled, flightDurationMs, interactive, poolKey]);
+  }, [disabled, flightDurationMs, interactive, poolKey, variant]);
 
   return (
     <div
       ref={hostRef}
-      className="fd-host absolute inset-0 h-full w-full overflow-hidden"
+      className="fd-host absolute inset-0 h-full w-full overflow-visible"
+      data-variant={variant}
       data-disabled={disabled ? "true" : undefined}
       data-interactive={interactive ? undefined : "false"}
       aria-label={interactive ? "카드 덱 — 끌어 놓거나 탭해서 칸을 채워보세요" : "카드 덱"}

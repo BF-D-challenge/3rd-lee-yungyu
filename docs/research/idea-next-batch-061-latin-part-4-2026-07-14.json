@@ -1,0 +1,240 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1294341144-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "제목만으로 기억해야 할 준비물과 도착 결과가 보이지 않고, ‘every item he needs’라는 추상 입력과 기억 게임 처리도 구체적이지 않다.",
+      "risk_flags": [
+        "title_opaque",
+        "input_vague",
+        "process_vague"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1294341144-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "제목만으로 기억해야 할 준비물과 도착 결과가 보이지 않고, ‘every item he needs’라는 추상 입력과 기억 게임 처리도 구체적이지 않다.",
+      "risk_flags": [
+        "title_opaque",
+        "input_vague",
+        "process_vague"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1294341144-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "제목만으로 기억해야 할 준비물과 도착 결과가 보이지 않고, ‘every item he needs’라는 추상 입력과 기억 게임 처리도 구체적이지 않다.",
+      "risk_flags": [
+        "title_opaque",
+        "input_vague",
+        "process_vague"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1294341144-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "제목만으로 기억해야 할 준비물과 도착 결과가 보이지 않고, ‘every item he needs’라는 추상 입력과 기억 게임 처리도 구체적이지 않다.",
+      "risk_flags": [
+        "title_opaque",
+        "input_vague",
+        "process_vague"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1294341144-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "제목만으로 기억해야 할 준비물과 도착 결과가 보이지 않고, ‘every item he needs’라는 추상 입력과 기억 게임 처리도 구체적이지 않다.",
+      "risk_flags": [
+        "title_opaque",
+        "input_vague",
+        "process_vague"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1294341144-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "제목만으로 기억해야 할 준비물과 도착 결과가 보이지 않고, ‘every item he needs’라는 추상 입력과 기억 게임 처리도 구체적이지 않다.",
+      "risk_flags": [
+        "title_opaque",
+        "input_vague",
+        "process_vague"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "세이브 파일 1개를 업로드해 자금·인벤토리·진행도를 수정하고 수정 파일 1개를 저장하는 흐름은 구체적이지만 제목만으로 부족한 자금 복구라는 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_underspecified"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "세이브 파일 1개를 업로드해 누락 아이템을 수정하고 수정 파일 1개를 저장하는 흐름은 구체적이지만 제목만으로 진행 막힘 해결이라는 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_underspecified"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "세이브 파일 1개를 업로드해 자금·재료·진행도를 수정하고 수정 파일 1개를 저장하는 흐름은 구체적이지만 제목만으로 복구 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_underspecified"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "세이브 파일 1개를 업로드해 누락 아이템을 수정하고 수정 파일 1개를 저장하는 흐름은 구체적이지만 제목만으로 세이브 복구 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_underspecified"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "세이브 파일 1개를 업로드해 농장 진행도를 수정하고 수정 파일 1개를 저장하는 흐름은 구체적이지만 제목만으로 진행 막힘 해결이라는 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_underspecified"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "세이브 파일 1개를 업로드해 부족한 자금을 수정하고 수정 파일 1개를 저장하는 흐름은 구체적이지만 제목만으로 자금 부족 해결이라는 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_underspecified"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "세이브 파일 1개를 업로드해 농장 진행도를 수정하고 수정 파일 1개를 저장하는 흐름은 구체적이지만 제목만으로 커뮤니티센터 복구 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_underspecified"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "세이브 파일 1개를 업로드해 부족한 자금을 수정하고 수정 파일 1개를 저장하는 흐름은 구체적이지만 제목만으로 진행 막힘 해결이라는 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_underspecified"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1644199292-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "세이브 파일 1개를 업로드해 커뮤니티센터 누락 아이템을 수정하고 수정 파일 1개를 저장하는 흐름은 구체적이지만 제목만으로 복구 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_underspecified"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-298840058-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이폰 마이크 음성 1개를 FFT로 분석해 진폭·주파수 그래프 1개를 보여주는 흐름은 구체적이지만 ‘FFT’만으로 음향 문제와 결과가 초보자에게 드러나지 않는다.",
+      "risk_flags": [
+        "title_opaque"
+      ]
+    }
+  ]
+}

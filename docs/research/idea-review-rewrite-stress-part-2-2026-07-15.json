@@ -1,0 +1,252 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-284980812-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "도시 밤하늘 밝은 별 이름 찾기는 기기 방향 권한 하나를 받아 가리킨 방향의 밝은 천체를 식별하고 이름과 기본 정보 하나를 즉시 보여 주므로 제목·입력·처리·결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-284980812-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 속 밤하늘 천체 이름 표시는 사진 입력을 약속하지만 실제 입력은 방향 센서 권한 하나이고 사진 처리 결과도 제공하지 않아 제목과 원본 메커니즘이 어긋난다.",
+      "risk_flags": [
+        "input_not_allowed",
+        "mechanism_drift",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-284980812-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이와 보는 밤하늘 별 이름은 방향 센서 권한으로 천체를 식별해 이름과 설명 하나를 보여 주지만 결제자는 천체 사진 취미자이고 순간은 촬영 전이라 아이 관람이라는 한 끗과 자연스럽게 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1313357241-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "노치에 안 가리는 인물 사진 배경은 사진 파일 하나를 받아 노치 위치에 맞춰 배치하고 저장 가능한 배경화면 하나를 내보내므로 입력·처리·결과와 사용 순간이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1313357241-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "노치와 이어지는 최애 사진 배경은 사진 파일 하나를 받아 상단 가장자리를 노치 형태에 맞게 합성하고 저장 가능한 배경화면 하나를 제공하므로 결제자와 순간과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1313357241-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "다이내믹 아일랜드 유리 프레임 배경은 사진 파일 하나에 유리 형태를 합성해 저장 가능한 배경화면 하나를 만들므로 원본 메커니즘과 MVP 범위가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6449972752-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "버스킹 전 기타 줄별 튜닝 확인은 마이크로 기타 소리를 받아 음정을 감지하고 튜닝 힌트를 주지만 제목의 6현·줄별 확인은 여러 줄을 반복 측정하는 다단계 결과를 암시한다.",
+      "risk_flags": [
+        "multi_step",
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6449972752-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "중고 기타 음정 맞음 여부 확인은 마이크 입력 하나를 음정과 기준음으로 비교해 맞음 여부와 튜닝 힌트 하나를 보여 주므로 판매 현장의 즉시 확인 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6449972752-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "초보 기타 줄 조정 방향 표시는 마이크로 연주한 한 줄의 음정을 기준음과 비교해 올리거나 내릴 방향 하나를 보여 주므로 입력·처리·결과가 단순하고 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-880510678-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "등산 GPX 오르막 구간 고도 차트는 GPX 파일 하나에서 고도 데이터를 처리하지만 지도와 고도 차트라는 두 결과를 함께 제공해 단일 결과 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-880510678-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "받은 GPX 전체 경로 즉시 미리보기는 GPX 파일 하나를 읽어 전체 GPS 경로와 웨이포인트를 포함한 지도 하나로 표시하므로 제목과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-880510678-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "자전거 GPX 속도 변화 지도 표시는 GPX 파일 하나에서 속도를 처리하지만 경로 지도와 속도 차트라는 두 결과를 함께 요구해 단일 결과 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-832421010-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "노래 한 음의 음계와 Hz 확인은 마이크 입력 하나에서 기본 주파수를 추정해 해당 음의 음계 위치와 Hz라는 하나의 음정 결과를 즉시 보여 주므로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-832421010-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "합창 중 현재 음정 위치 표시는 마이크에 들어온 소리 하나의 피치를 보여 주지만 특정 합창 파트의 음정을 구분할 입력이나 처리가 없어 결제자의 문제와 결과가 완전히 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-832421010-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "흥얼거린 멜로디 현재 음 표시는 현재 마이크 음 하나의 음계와 Hz를 보여 주지만 멜로디를 채보하려는 결제자의 필요에는 연속 음 기록 결과가 없어 제목과 실제 결과 사이에 간극이 있다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-561352659-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "오프라인 현재 위치 무료 야영지 목록은 현재 위치 권한만으로 작동한다고 했지만 저장된 무료 캠핑 장소 데이터가 사전에 필요하고 미국 국립공원 전용 맥락도 한국 사용 순간과 맞지 않는다.",
+      "risk_flags": [
+        "prior_record_required",
+        "external_data_required",
+        "korean_context_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-561352659-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "화장실 있는 무료 야영지 거리 목록은 현재 위치 권한 외에 사전 저장된 장소와 화장실 데이터가 필요하며 미국 국립공원 중심 결제자·맥락도 한국 사용 순간과 어긋난다.",
+      "risk_flags": [
+        "prior_record_required",
+        "external_data_required",
+        "korean_context_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-561352659-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "캠핑카 진입 가능한 무료 야영지는 현재 위치 권한만으로는 저장된 장소와 캠핑카 진입 조건 데이터가 없어 작동하지 않고 미국 오지 캠핑 맥락도 한국 사용 순간과 맞지 않는다.",
+      "risk_flags": [
+        "prior_record_required",
+        "external_data_required",
+        "korean_context_mismatch"
+      ]
+    }
+  ]
+}

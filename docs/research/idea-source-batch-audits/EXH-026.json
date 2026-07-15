@@ -1,0 +1,92 @@
+{
+  "batch_id": "EXH-026",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 99,
+  "decision_counts": {
+    "Candidate": 35,
+    "Fail": 57,
+    "Merge": 4,
+    "Reserve": 3
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 72,
+      "sample": [
+        "app_store:6759818519",
+        "app_store:6752922875",
+        "app_store:900833042",
+        "chrome_web_store:chdcepakhbkbgcljkaoikoopjkphphbd",
+        "trustmrr:lingo-widget-daily-vocabolary",
+        "app_store:6737280679",
+        "chrome_web_store:olbnljglpoldbbmbbgfamakgmikahjhk",
+        "app_store:905953485"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6759818519",
+          "decision": "Candidate",
+          "reason": "스파게티 건면 하나를 화면 원에 맞춰 처리하고 인분·그램·예상 kcal를 즉시 확인하는 2일 세로 조각이다."
+        },
+        {
+          "key": "app_store:6737280679",
+          "decision": "Candidate",
+          "reason": "판매 차량 매물 사진과 구성 데이터를 한 번 스캔해 숨은 소프트웨어 패키지를 식별하는 세로 조각이 남는다."
+        },
+        {
+          "key": "app_store:905953485",
+          "decision": "Candidate",
+          "reason": "단일 기기의 인터넷 연결을 한 번 처리해 IP 변경과 트래픽 암호화 결과를 즉시 확인하는 세로 조각이다."
+        }
+      ],
+      "false_reject_rate": 0.375
+    },
+    {
+      "round": 2,
+      "fail_count": 63,
+      "sample": [
+        "app_store:1465944282",
+        "chrome_web_store:mmlchojlammogjjleajohapmdannphjk",
+        "app_store:414419105",
+        "chrome_web_store:ldnheaepmnmbjjjahokphckbpgciiaed",
+        "app_store:463624852",
+        "app_store:998542154",
+        "app_store:6746427272"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:414419105",
+          "decision": "Candidate",
+          "reason": "팟캐스트 피드 하나를 받아 에피소드 다운로드와 재생목록 처리를 거쳐 기기에서 바로 청취할 수 있다."
+        },
+        {
+          "key": "chrome_web_store:ldnheaepmnmbjjjahokphckbpgciiaed",
+          "decision": "Candidate",
+          "reason": "웹사이트 URL 하나를 받아 페이지 구조를 변환하고 편집 가능한 Figma 디자인 하나를 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 3,
+      "fail_count": 57,
+      "sample": [
+        "app_store:368677368",
+        "trustmrr:clawdhost",
+        "app_store:1049797239",
+        "app_store:998542154",
+        "chrome_web_store:mjjgmlmpeaikcaajghilhnioimmaibon",
+        "trustmrr:larrybrain-openclaw-marketplace"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

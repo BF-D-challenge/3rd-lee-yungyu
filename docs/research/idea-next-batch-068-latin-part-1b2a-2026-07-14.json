@@ -1,0 +1,18 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6757637581-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "입력은 애플워치 화면 탭으로 허용된 텍스트·URL·파일·사진·단일 기기 권한에 해당하지 않으며, 탭 처리로 슛 정확도를 계산해 최고 점수를 내는 구조다.",
+      "risk_flags": [
+        "input_not_allowed"
+      ]
+    }
+  ]
+}

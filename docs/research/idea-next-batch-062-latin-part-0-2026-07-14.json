@@ -1,0 +1,52 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-516561342-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장을 필터·스티커·프레임으로 꾸며 편집 사진을 만드는 입력·처리·결과는 구체적이지만 제목만으로 특정 문제와 결과가 보이지 않고 기본 사진 편집 기능과 차별성이 없어 범용 대안이 더 편하다.",
+      "risk_flags": [
+        "generic-editor",
+        "weak-title",
+        "no-differentiator"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-516561342-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장을 얼굴을 가리지 않는 장식으로 처리해 꾸며진 결과 이미지를 만드는 흐름은 가능하지만 제목만으로 문제와 결과가 드러나지 않으며 장식 배치가 기본 편집 기능과 차별화되지 않는다.",
+      "risk_flags": [
+        "generic-editor",
+        "weak-title",
+        "vague-twist"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-516561342-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장에 필터·스티커·프레임을 적용해 꾸며진 사진을 만드는 입력·처리·결과는 명확하지만 제목이 일반적인 편집 기능만 제시하고 편집 직후 공유는 별도 한 끗 변화가 아닌 기본 흐름이다.",
+      "risk_flags": [
+        "generic-editor",
+        "weak-title",
+        "no-differentiator"
+      ]
+    }
+  ]
+}

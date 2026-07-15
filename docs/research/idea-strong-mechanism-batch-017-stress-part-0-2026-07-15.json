@@ -1,0 +1,127 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-sessionwatcher-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AI 코딩 도구 비용을 관리하는 1인 개발자가 긴 작업 직전 Mac 로그를 입력하면 Codex와 Claude Code의 오늘 토큰을 도구별로 합산해 메뉴 막대 카드 하나로 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-sessionwatcher-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여러 고객 MVP를 만드는 대행사 리드가 사용량 급증 직후 Mac 세션 로그를 입력하면 최근 세션의 입력·출력 토큰을 합산해 비율 카드 하나로 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-sessionwatcher-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사용량 제한을 관리하는 인디 창업자가 코딩 작업을 마치기 전 Mac 세션 로그를 입력하면 작업 경로별 토큰을 합산해 상위 프로젝트 세 개를 메뉴 막대 카드 하나로 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-takeout-tools-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "저장 장소를 다른 지도 앱으로 옮기는 여행 기록자가 Takeout ZIP 하나를 입력하면 장소명·주소·위도·경도를 파싱해 장소별 한 행의 CSV 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-takeout-tools-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현장 조사 장소를 지도 파일로 정리하는 연구자가 Takeout ZIP 하나를 입력하면 장소명·좌표·목록 이름을 파싱해 목록 속성이 붙은 GeoJSON 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-takeout-tools-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객의 저장 장소를 이전하는 프리랜서가 Takeout ZIP 하나를 입력하면 장소명과 좌표를 파싱해 GPX waypoint 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-sitemaptollm-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "문서 사이트를 운영하는 1인 SaaS 개발자가 공개 사이트맵 URL 하나를 입력하면 페이지 제목과 URL을 파싱해 한 페이지 한 줄의 llms.txt 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-sitemaptollm-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여러 고객 사이트를 관리하는 콘텐츠 실무자가 공개 사이트맵 URL 하나를 입력하면 경로를 정규화해 쿼리와 중복 URL이 제거된 llms.txt 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-sitemaptollm-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "문서 포털을 배포하는 테크니컬 라이터가 공개 사이트맵 URL 하나를 입력하면 URL 경로를 파싱해 첫 경로 구간별 섹션이 붙은 llms.txt 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-octree-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "LaTeX 원고의 컴파일 오류를 고치려는 대학원생이 .tex 파일 하나를 입력하면 명령 밖 특수문자만 정적 검사해 수정된 파일 하나를 받지만, 제목은 모든 컴파일 오류를 고치는 결과처럼 읽혀 실제 수정 범위가 불명확하다.",
+      "risk_flags": [
+        "title_unclear",
+        "result_unclear"
+      ]
+    }
+  ]
+}

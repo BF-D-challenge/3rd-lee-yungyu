@@ -1,0 +1,424 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1340469417-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "선택 레시피를 입력해 재료를 합산하고 쇼핑 목록을 만드는 흐름은 구체적이지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1340469417-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선택 레시피를 합산해 쇼핑 목록을 만드는 원본 처리만으로는 알레르기 레시피 선별이나 어린이집 운영 맥락을 지원하지 않는다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "payer_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1340469417-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피를 합산해 쇼핑 목록을 만들 수는 있지만 우유·달걀 제외 필터는 원본의 단순 합산을 넘어선 새 기능이다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1134770838-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "전기값을 입력해 옴의 법칙으로 전압·전류·저항 중 계산값을 보여주지만 입력 항목이 불명확하고 제목도 문제와 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "input_ambiguity",
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1134770838-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "전기값을 입력해 옴의 법칙 결과를 대조하는 처리만으로는 차단기 용량 결정이나 안전 판단을 뒷받침하지 못한다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "safety_risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1134770838-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "전기값을 입력해 옴의 법칙 계산값을 보여주는 흐름은 가능하지만 ‘부하 전력으로 예상 전류’가 어떤 입력과 공식인지 제목과 문구에서 불명확하다.",
+      "risk_flags": [
+        "input_ambiguity",
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1239684967-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진을 입력해 자르고 문구·프레임을 적용한 스티커를 만들 수 있지만 제목만으로 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1239684967-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "사진을 입력해 문구를 넣은 스티커를 만들 수 있으나 브랜드용 일러스트레이터라는 결제자와 가족 인사말을 만드는 사용 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1239684967-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "사진을 입력해 문구 스티커를 만드는 흐름은 구체적이지만 아이 가족 스티커 결제자와 친구 사진·유행어 사용 순간이 일치하지 않는다.",
+      "risk_flags": [
+        "payer_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-316133247-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영어 단어를 입력해 정의·예문·발음을 보여주는 처리는 구체적이지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-316133247-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "영어 단어 입력 후 사전 정의와 예문을 보여줄 수 있으나 대학원생의 논문 독해 맥락과 이메일 표현·시험 단어 트위스트가 서로 다르다.",
+      "risk_flags": [
+        "payer_mismatch",
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-316133247-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "영어 단어를 조회해 정의·예문·발음을 보여줄 수 있으나 토익 직장인의 발표 발음 확인과 논문 전문용어 트위스트가 자연스럽게 연결되지 않는다.",
+      "risk_flags": [
+        "payer_mismatch",
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-908905093-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "위치 권한과 날짜·시간을 입력해 일출·일몰을 계산하고 골든아워 시각을 보여주지만 제목만으로 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-908905093-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "위치와 시간을 입력해 태양 데이터를 계산하고 야외 활동 시각을 보여주는 흐름은 가능하지만 제목이 기능을 설명하지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-908905093-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "위치와 날짜·시간으로 일출 시각을 계산할 수 있으나 웰니스 강사의 야외 수업 맥락과 설악산 산행 계획 트위스트가 일치하지 않는다.",
+      "risk_flags": [
+        "payer_mismatch",
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-486154808-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치를 입력해 날씨·예보·경보를 보여주는 결과는 구체적이지만 OS 기본 날씨 기능으로 더 쉽게 해결할 수 있다.",
+      "risk_flags": [
+        "os_default_replacement"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-486154808-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치만으로 날씨를 조회하는 원본 흐름에서 캠핑장 위치를 별도로 입력하거나 이동 경로를 확인하는 처리는 제공되지 않는다.",
+      "risk_flags": [
+        "missing_input",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-486154808-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 날씨 조회만 가능한 입력으로는 배달 경로의 날씨를 확인할 수 없고 OS 기본 날씨 기능보다도 뚜렷한 차이가 없다.",
+      "risk_flags": [
+        "missing_input",
+        "os_default_replacement"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1211287819-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공연 구성과 인터벌 시간을 입력해 막별 시각과 타이머·알림을 제공할 수 있지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1211287819-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "막별 시간을 입력해 종료 예정 시각을 계산할 수 있으나 지역 축제 진행자와 학교 공연 트위스트의 사용 맥락이 일치하지 않는다.",
+      "risk_flags": [
+        "payer_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1211287819-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "막과 휴식 시간을 입력해 다음 순서와 종료 시각을 계산하는 처리는 구체적이지만 제목이 기능을 충분히 설명하지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1665566403-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "응원 문구 텍스트 하나를 입력해 색상·속도·방향을 적용하고 콘서트용 스크롤 전광판 화면 하나를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1665566403-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "응원 문구 텍스트 하나를 입력해 큰 글씨와 속도를 설정하고 야구장에서 보여줄 LED 전광판 화면 하나를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1665566403-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "텍스트를 입력해 스크롤 전광판을 만들 수 있지만 프로포즈 결제자·고백 순간과 구단 색상·선수 이름 트위스트가 서로 맞지 않는다.",
+      "risk_flags": [
+        "payer_mismatch",
+        "twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6761981766-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "지출을 입력해 월간 합산과 예산 잔액을 보여주려면 이전 지출을 계속 기록해야 하므로 문제 전에 기록이 필요한 추적형 기능이다.",
+      "risk_flags": [
+        "prior_logging_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6761981766-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "구독료를 입력해 월 지출과 예산을 계산하려면 기존 월별 지출 기록이 전제되어 규칙상 독립적인 한 번 처리로 성립하지 않는다.",
+      "risk_flags": [
+        "prior_logging_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6761981766-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "OTT 구독료 하나만 입력해서는 이번 달 고정비 잔액을 알 수 없고 누적 지출 기록이 필요하다.",
+      "risk_flags": [
+        "prior_logging_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6501961979-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "테스트 카드 번호나 카드 종류 텍스트 하나를 입력해 형식을 검증하거나 테스트 번호를 생성하고 복사 가능한 결과 하나를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6501961979-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오류 카드 번호 텍스트 하나를 입력해 유효성 검사를 수행하고 결제 테스트에 복사할 검증 결과 하나를 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6501961979-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "테스트 카드 번호 텍스트 하나를 입력해 형식 유효성을 검증하고 새 결제수단 연동에 사용할 결과 하나를 즉시 제공한다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,1145 @@
+{
+  "mode": "source-fidelity",
+  "model": {
+    "provider": "local",
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimension": 384,
+    "normalization": "L2",
+    "similarity": "cosine via normalized dot product"
+  },
+  "scope": {
+    "combinations": 54,
+    "scenarios": 2,
+    "singleTwist": 54,
+    "doubleTwist": 0
+  },
+  "policy": {
+    "minimum": 0.8,
+    "targetMaximum": 0.99,
+    "aboveTargetMaximum": "allowed because an overseas product mechanic may be copied exactly",
+    "portfolioDuplicates": "allowed and not evaluated in this mode"
+  },
+  "summary": {
+    "percentiles": {
+      "50": 0.983286,
+      "75": 0.985247,
+      "90": 0.987383,
+      "95": 0.987383,
+      "99": 0.987383,
+      "99.5": 0.987383,
+      "99.9": 0.987383,
+      "99.95": 0.987383,
+      "99.99": 0.987383,
+      "100": 0.987383
+    },
+    "belowMinimum": 0,
+    "inTargetBand": 54,
+    "exactAllowed": 0,
+    "pass": 54,
+    "passRate": 1.0
+  },
+  "lowest": [
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-2__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-3__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-3__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-1__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-2__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-2__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-3__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-1__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-1__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-2__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-3__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-3__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-3__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-1__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-1__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-2__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-2__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-1__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-1__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-2__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-3__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-2__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-3__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-1__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-2__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-1__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-3__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-2__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-1__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-3__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-3__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-2__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-1__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-3__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-2__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-1__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-1__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-2__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-1__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-2__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-3__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-2__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-3__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-1__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-3__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-2__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-1__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-2__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-1__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-2__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    }
+  ],
+  "highest": [
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-3__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-3__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-1__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-3__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-2__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-1__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-2__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-1__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.987383,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-2__twist-scene-white-balance-3",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "색온도 수치가 찍힌 조명 장면"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-3__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-1__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-3__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-2__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-3__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-2__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-1__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-2__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.985247,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-1__twist-scene-white-balance-1",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "촬영 장면 색온도 Kelvin 측정"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-1__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-2__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-1__moment-scene-white-balance-3__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "색을 맞춰 제품 사진을 납품하는 사진가",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-1__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-2__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-3__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-2__moment-scene-white-balance-3__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "현장 조명을 맞추는 영상 촬영감독",
+      "moment": "색이 어긋난 장면을 재촬영하기 직전",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-1__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "첫 제품 촬영을 시작하기 직전",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983403,
+      "id": "scene-white-balance__payer-scene-white-balance-3__moment-scene-white-balance-2__twist-scene-white-balance-2",
+      "scenarioId": "scene-white-balance",
+      "sourceName": "White Balance Meter AI - KEV",
+      "payer": "소규모 스튜디오 조명을 담당하는 운영자",
+      "moment": "촬영 중 광원을 교체한 직후",
+      "twistTitles": [
+        "조명 장면 화이트밸런스 권장값"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-3__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-1__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-2__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-1__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-3__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-2__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-3__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-2__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.983169,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-1__twist-raster-to-svg-3",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "복잡한 이미지의 간결한 SVG 윤곽"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-1__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-2__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-2__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-1__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-1__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-3__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-3__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-3__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.98208,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-2__twist-raster-to-svg-2",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "깨진 로고 모서리를 다듬은 SVG"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-1__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-1__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "저해상도 로고를 제작 파일로 넘기기 직전",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-2__moment-raster-to-svg-3__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "레이저 커팅 공방을 운영하는 제작자",
+      "moment": "확대 가능한 로고 원본 SVG를 요청받은 순간",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-1__moment-raster-to-svg-2__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "소형 인쇄소에서 대형 출력하는 디자이너",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    },
+    {
+      "similarity": 0.981969,
+      "id": "raster-to-svg__payer-raster-to-svg-3__moment-raster-to-svg-2__twist-raster-to-svg-1",
+      "scenarioId": "raster-to-svg",
+      "sourceName": "Vectorize!",
+      "payer": "로고 원본을 납품하는 프리랜서 디자이너",
+      "moment": "확대하자 픽셀 윤곽이 깨진 것을 발견한 순간",
+      "twistTitles": [
+        "픽셀 로고의 단순화 SVG 윤곽선"
+      ]
+    }
+  ]
+}

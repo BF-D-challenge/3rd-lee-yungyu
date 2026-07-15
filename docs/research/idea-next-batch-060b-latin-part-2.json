@@ -1,0 +1,134 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-352000376-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "勤務シフト를 입력해 날짜별 근무 유형으로 배치하고 한눈에 보는 근무표를 얻는 흐름은 구체적이지만 ‘Shift Worker’라는 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-352000376-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "勤務シフト를 입력해 데이·이브닝·나이트를 색상별로 배치해 내일 근무를 확인하지만 제목이 추상적이라 초보자가 용도를 즉시 알기 어렵다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-352000376-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "勤務シフト를 입력해 날짜별 출근표 이미지를 얻는 흐름은 가능하지만 간호사 결제자와 ‘알바’ 교대 표현이 어긋나 사용 대상과 결과가 불명확하다.",
+      "risk_flags": [
+        "generic_title",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-352000376-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "勤務シフト를 날짜에 입력해 근무표를 확인하는 흐름은 가능하지만 편의점 점장에게 간호사 데이·이브닝·나이트 표현을 적용해 결제자와 결과가 맞지 않는다.",
+      "risk_flags": [
+        "generic_title",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-352000376-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "勤務シフト를 입력해 알바 교대일을 월간 출근표 이미지로 바꾸므로 입력·처리·결과는 구체적이지만 제목이 문제와 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-352000376-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "勤務シフト를 날짜별 주간·야간·휴무로 배치해 가족 약속 전 근무일을 확인하는 흐름은 자연스럽지만 제목만으로 용도가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-352000376-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "勤務シフト를 입력해 월간 출근표 이미지를 얻을 수 있지만 생산직 근로자에게 ‘알바 교대일’이라는 표현을 써 결제자와 카드 결과가 어긋난다.",
+      "risk_flags": [
+        "generic_title",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-352000376-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "勤務シフト를 날짜에 주간·야간·휴무로 배치해 내일 출근을 확인하는 흐름은 구체적이지만 제목이 문제와 결과를 보여주지 않는다.",
+      "risk_flags": [
+        "generic_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-352000376-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "勤務シフト를 입력해 근무 유형을 확인하는 처리는 가능하지만 생산직 근로자에게 간호사 전용 데이·이브닝·나이트 표현을 사용해 사용 맥락이 부자연스럽다.",
+      "risk_flags": [
+        "generic_title",
+        "payer_twist_mismatch"
+      ]
+    }
+  ]
+}

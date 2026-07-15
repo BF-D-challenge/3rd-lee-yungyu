@@ -1,0 +1,427 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1115022026-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "구매 목록과 가상 수표를 입력해 활동 기록을 남기는 흐름은 결과가 추상적이고 일반 기록·AI 조언으로 대체 가능하다.",
+      "risk_flags": [
+        "vague_result",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1115022026-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "구매 목록과 가상 수표를 입력해 풍요 활동을 기록하지만 부업 우선순위라는 문제와 구체적 결과가 연결되지 않는다.",
+      "risk_flags": [
+        "vague_result",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1115022026-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "가상 월급과 구매 희망을 기록해 활동 결과를 만드는 방식은 재무 습관 문제를 해결하는 구체적 결과가 없고 기록을 선행해야 한다.",
+      "risk_flags": [
+        "prior_recording",
+        "vague_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-320969612-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "출발역과 도착역으로 경로를 계산하는 결과는 명확하지만 실시간 운행 정보와 지도 데이터가 필요하고 기존 지도 앱이 더 편하다.",
+      "risk_flags": [
+        "external_data",
+        "existing_app"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-320969612-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "역 두 곳을 입력해 지연을 반영한 경로를 내는 흐름은 실시간 외부 데이터 의존과 기존 지도 앱 대체 가능성 때문에 부적합하다.",
+      "risk_flags": [
+        "external_data",
+        "existing_app"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-320969612-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "출발역과 도착역 입력만으로 파업·지연 대체 경로를 제공하려면 외부 실시간 데이터가 필요해 1~2일 독립 MVP가 어렵다.",
+      "risk_flags": [
+        "external_data",
+        "scope"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6762064461-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프레임별 핀 기록을 입력해 점수표와 통계를 즉시 만들 수 있지만 BowlrIQ라는 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6762064461-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프레임·핀 기록을 입력해 리그전과 연습전 기록을 저장하는 흐름은 가능하지만 제목과 스플릿 원인 결과의 연결이 불명확하다.",
+      "risk_flags": [
+        "opaque_title",
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6762064461-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프레임·핀 기록을 입력해 비율 기반 연습 과제를 내는 흐름은 가능하지만 BowlrIQ 제목만으로 결과가 보이지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-300590611-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면을 한 번 탭하면 농장 동물 하나와 이름·소리가 즉시 공개되어 입력·처리·결과가 구체적이고 2일 MVP로 충분하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-300590611-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "빨간 농장 문을 탭하면 소·돼지·닭 중 하나와 소리가 나와 아이의 짧은 관심 전환 순간에 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-300590611-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "문 탭 한 번으로 동물과 이름·울음소리를 순서대로 보여주므로 잠자리의 반복 놀이와 즉시 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-588959204-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "원화 수입·지출·이체를 한 건 입력하면 거래를 대조해 계좌별 잔액 하나를 보여주므로 사용 순간과 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-588959204-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "하루 거래를 입력해 식비·교통비를 달력으로 확인하는 결과가 카드·현금 지출 혼동 문제와 자연스럽게 이어진다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-588959204-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "거래 내역을 입력하고 대조 처리하면 통장별 현재 잔액이 나와 예산 초과를 즉시 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6754900760-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "QR 또는 비밀 키로 인증 코드를 만드는 흐름은 명확하지만 운영체제·비밀번호 관리자 기본 인증 기능이 더 편하다.",
+      "risk_flags": [
+        "existing_app",
+        "security_sensitive"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6754900760-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "QR·비밀 키 입력과 오프라인 코드 결과는 구체적이지만 문자 지연 문제는 기존 인증 앱으로 이미 해결된다.",
+      "risk_flags": [
+        "existing_app",
+        "security_sensitive"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6754900760-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "비밀 키를 입력해 30초 코드 하나를 내는 기능은 기존 인증 도구와 중복되고 보안 책임이 큰 별도 앱을 만들 이유가 약하다.",
+      "risk_flags": [
+        "existing_app",
+        "security_sensitive"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-535960556-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한으로 다음 지점 거리를 보여주려면 지도·장소 데이터가 필요하고 기존 지도 앱이 더 편하다.",
+      "risk_flags": [
+        "external_data",
+        "existing_app"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-535960556-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한으로 고도와 숙소 거리를 계산하려면 사전 지도 데이터와 경로 데이터가 필요해 즉시 독립 MVP가 어렵다.",
+      "risk_flags": [
+        "prior_data",
+        "scope"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-535960556-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한으로 갈림길 경로를 보여주는 결과는 가능하지만 오프라인 지도 데이터 준비가 선행되고 가족 공유는 새 상대 행동을 요구한다.",
+      "risk_flags": [
+        "prior_data",
+        "external_action"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-835148977-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보유 재료를 입력해 만들 수 있는 칵테일 목록을 내는 흐름은 구체적이지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-835148977-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보유 재료를 체크해 즉시 칵테일 목록을 제공하지만 Beachbum Berry라는 제목만으로 결과를 알기 어렵다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-835148977-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "재료·잔·난이도를 입력해 레시피를 필터링하는 결과는 명확하지만 제목만으로 사용 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-723185418-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치나 목적지를 입력해 토지 관리 기관과 경계를 보여주는 흐름은 가능하지만 캠핑 가능 여부라는 순간의 문제와 결과가 어긋난다.",
+      "risk_flags": [
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-723185418-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "목적지 입력으로 토지 소유와 경계를 보여줄 수 있지만 야영 가능 구역을 찾는 결과까지는 제공하지 않아 문구 수정이 필요하다.",
+      "risk_flags": [
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-723185418-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "위치나 목적지 입력으로 기관별 경계를 표시하는 결과는 구체적이지만 인터넷 없는 현장 사용을 위한 데이터 준비 여부가 불명확하다.",
+      "risk_flags": [
+        "offline_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6751245004-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "CSV 파일을 입력해 이름·전화번호 열을 매핑하고 정리된 리드 목록을 내는 흐름은 가능하지만 Cold Call X라는 제목이 문제와 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6751245004-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "리드 목록을 입력해 통화 메모와 마지막 연락일을 기록하는 것은 원본의 목록 구성에서 벗어난 새 기록 기능이다.",
+      "risk_flags": [
+        "new_feature",
+        "prior_recording"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6751245004-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "리드 목록을 입력해 미통화·관심도별 콜 목록을 만들고 재연락 일정을 잡는 것은 원본 처리 범위를 넘어선 새 기능이다.",
+      "risk_flags": [
+        "new_feature",
+        "external_action"
+      ]
+    }
+  ]
+}

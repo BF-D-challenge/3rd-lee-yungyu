@@ -1,0 +1,68 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-ndgimibanhlabgdgjcpbbndiehljcpfh-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘인수인계용 검증 locator 3종 파일’은 화면 자동화를 맡은 프론트엔드 개발자가 DOM 변경 직후 요소 HTML 텍스트 하나를 넣어 세 형식 locator를 한 번 생성·검증하고 locator 텍스트 파일 하나를 받는 흐름은 구체적이지만, 제목만으로 locator의 의미와 해결 결과가 초보자에게 충분히 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-ndgimibanhlabgdgjcpbbndiehljcpfh-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘깨진 선택자를 대신할 짧은 locator 파일’은 웹 테스트 자동화 컨설턴트가 납품 직전 대상 요소 HTML 텍스트 하나를 넣어 선택자를 한 번 생성·검증하고 대체 locator 텍스트 파일 하나를 받는 흐름은 구체적이지만, 제목의 locator 용어가 초보자에게 결과를 충분히 설명하지 못한다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 디자인 값 CSS 변수 파일’은 새 디자인 시스템을 만드는 프로덕트 디자이너가 리디자인 기준 사이트를 정한 직후 공개 웹사이트 URL 하나를 넣어 디자인 요소를 한 번 추출하고 바로 붙일 CSS variables 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 디자인 값 Figma 토큰 파일’은 기존 CSS를 정리하는 프론트엔드 개발자가 컴포넌트 구현 순간 공개 웹사이트 URL 하나를 넣어 색상·폰트·간격·그림자·효과를 한 번 추출하고 Figma 호환 token JSON 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 색상·간격 JSON 토큰 파일’은 브랜드 일관성을 검수하는 디자인 QA가 검수 직전 공개 웹사이트 URL 하나를 넣어 디자인 요소를 한 번 추출하고 이름 붙은 JSON token 파일 하나를 받아 기준과 비교하는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

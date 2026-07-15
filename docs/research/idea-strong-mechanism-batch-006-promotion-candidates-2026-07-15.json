@@ -1,0 +1,81 @@
+[
+  {
+    "id": "doc-to-cms-draft",
+    "source": {
+      "id": "source-doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "research": {
+        "key": "trustmrr:docswrite",
+        "url": "https://trustmrr.com/startup/docswrite"
+      },
+      "platform": "web",
+      "value": "Google Doc 원고를 제목·이미지 캡션·표가 깨지지 않는 CMS 게시 초안으로 바꾸는 도구",
+      "detail": "공개 Google Doc URL 하나를 입력하면 문서를 한 번 읽어 서식을 보존한 Gutenberg HTML 파일 한 개로 변환합니다.",
+      "evidence": "TrustMRR에서 최근 30일 매출 1,200달러가 확인되고 Google Doc을 WordPress·Contentful 등 CMS로 서식 손실 없이 옮기는 기능이 명시된 제품",
+      "preservedFlow": "공개 Google Doc URL 입력 → 문서 서식 보존 변환 → CMS에 붙여 넣을 Gutenberg HTML 파일"
+    },
+    "payers": [
+      {
+        "id": "payer-doc-to-cms-1",
+        "value": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+        "detail": "Google Doc을 WordPress로 옮길 때 제목·표·이미지가 자주 흐트러지며, 서식을 다시 손으로 고치는 시간이 반복된다."
+      },
+      {
+        "id": "payer-doc-to-cms-2",
+        "value": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+        "detail": "작성된 문서를 CMS마다 복사해 붙여 넣고 깨진 문단과 표를 수정하는 작업을 매번 수행한다."
+      },
+      {
+        "id": "payer-doc-to-cms-3",
+        "value": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+        "detail": "편집자가 만든 Google Doc을 게시용 형식으로 바꿔야 하며, 서식 손실 여부를 미리 확인하려고 수작업 검수를 한다."
+      }
+    ],
+    "moments": [
+      {
+        "id": "moment-doc-to-cms-1",
+        "value": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+        "detail": "발행 일정이 이미 잡혀 있어 서식을 다시 고치는 지연 없이 바로 붙여 넣을 결과가 필요하다."
+      },
+      {
+        "id": "moment-doc-to-cms-2",
+        "value": "클라이언트 원고를 WordPress에 납품하기 직전",
+        "detail": "고객에게 보낼 게시 초안의 제목과 표가 깨지지 않았는지 즉시 확인해야 한다."
+      },
+      {
+        "id": "moment-doc-to-cms-3",
+        "value": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+        "detail": "전체 문서를 다시 손질하기 전에 게시 가능한 형식인지 한 번에 판단해야 한다."
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-doc-to-cms-1",
+        "kind": "replace",
+        "value": "제목 계층을 보존한 게시 초안 만들기",
+        "detail": "공개 Google Doc URL을 읽어 CMS용 형식으로 변환하는 흐름은 유지하고 제목 단계만 보존한다.",
+        "resultTitle": "Google Doc 제목 계층 보존 게시 초안",
+        "platform": "web",
+        "smallestBuild": "공개 Google Doc URL 하나를 입력하면 문서를 한 번 변환해 제목 계층이 보존된 Gutenberg HTML 파일 하나를 즉시 제공한다."
+      },
+      {
+        "id": "twist-doc-to-cms-2",
+        "kind": "add",
+        "value": "이미지 캡션까지 보존한 게시 초안 만들기",
+        "detail": "공개 Google Doc URL 입력과 서식 보존 변환은 유지하고 이미지와 연결된 캡션만 함께 옮긴다.",
+        "resultTitle": "이미지 캡션이 남은 CMS 게시 초안",
+        "platform": "web",
+        "smallestBuild": "공개 Google Doc URL 하나를 입력하면 문서를 한 번 변환해 이미지 캡션이 포함된 Gutenberg HTML 파일 하나를 즉시 제공한다."
+      },
+      {
+        "id": "twist-doc-to-cms-3",
+        "kind": "add",
+        "value": "표 모양을 유지한 게시 초안 만들기",
+        "detail": "공개 Google Doc URL을 CMS 형식으로 바꾸는 처리는 유지하고 문서의 표 구조만 유지한다.",
+        "resultTitle": "표가 깨지지 않는 CMS 게시 초안",
+        "platform": "web",
+        "smallestBuild": "공개 Google Doc URL 하나를 입력하면 문서를 한 번 변환해 표 구조가 보존된 Gutenberg HTML 파일 하나를 즉시 제공한다."
+      }
+    ]
+  }
+]

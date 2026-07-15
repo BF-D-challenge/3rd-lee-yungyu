@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6740976022-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "응원 문구·템플릿·사진 여러 입력을 받아 디자인 구성과 배경 제거를 함께 수행해 인쇄용 PDF를 만드는 조합이라 1개 입력→1회 처리→1개 결과 규칙을 위반한다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "multiple_processing_steps"
+      ]
+    }
+  ]
+}

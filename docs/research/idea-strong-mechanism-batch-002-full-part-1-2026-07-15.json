@@ -1,0 +1,172 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-carmaster-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 차량 청취 기준으로 보컬 명료도 보정해 보정된 오디오 파일 하나를 납품 전 즉시 받는 흐름이 제목·payer·moment·twist에 구체적으로 맞고 MVP도 세로 조각 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나의 차량 청취 체감 음량을 한 번 균일화해 음량을 맞춘 오디오 파일 하나를 클라이언트 납품 전에 받는 흐름이 구체적이고 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 차량 청취 기준으로 저역 과밀 정리 처리해 정리된 오디오 파일 하나를 차량용 홍보 영상 음원 확정 전에 받는 흐름이 제목과 실제 순간에 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나의 차량 청취 보컬 명료도를 한 번 보정해 오디오 파일 하나를 차량용 홍보 영상 확정 전에 즉시 받는 구조가 payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나의 차량 청취 체감 음량을 한 번 균일화해 음량을 맞춘 오디오 파일 하나를 홍보 영상 음원 확정 전에 받는 구조가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 차량 청취 기준으로 저역 과밀 정리해 정리된 오디오 파일 하나를 발매 직전 차량에서 처음 확인할 때 받는 구조가 스튜디오의 납품 순간과 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나의 차량 청취 보컬 명료도를 한 번 보정해 보정된 오디오 파일 하나를 발매 직전 첫 차량 확인 때 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나의 차량 청취 체감 음량을 한 번 균일화해 음량을 맞춘 오디오 파일 하나를 발매 직전 차량 확인 때 받는 흐름이 payer와 moment에 자연스럽게 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나의 차량 저역 과밀을 한 번 정리해 오디오 파일 하나를 클라이언트 납품 전 차량 스피커 재생에 사용할 수 있게 하는 구조가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나의 차량 청취 보컬 명료도를 한 번 보정해 보정된 오디오 파일 하나를 클라이언트 납품 전 즉시 받는 흐름이 제목과 twist에 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나의 차량 청취 체감 음량을 한 번 균일화해 음량을 맞춘 오디오 파일 하나를 클라이언트 납품 전에 받는 구조가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나를 차량 청취 기준으로 저역 과밀 정리해 정리된 오디오 파일 하나를 차량용 홍보 영상 음원 확정 전에 받는 흐름이 실제 사용 순간과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나의 차량 청취 보컬 명료도를 한 번 보정해 보정된 오디오 파일 하나를 홍보 영상 음원 확정 전에 즉시 받는 구조가 payer·moment·twist에 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-carmaster-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "랩 음악 파일 하나의 차량 청취 체감 음량을 한 번 균일화해 음량을 맞춘 오디오 파일 하나를 차량용 홍보 영상 확정 전에 받는 흐름이 구체적이고 MVP 가능하다.",
+      "risk_flags": []
+    }
+  ]
+}

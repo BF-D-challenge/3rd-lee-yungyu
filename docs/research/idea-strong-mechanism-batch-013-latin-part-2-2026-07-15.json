@@ -1,0 +1,190 @@
+{
+  "results": [
+    {
+      "id": "next-latin-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "브랜드 디자이너가 상품 등록 순간 공개 웹페이지 URL 하나에서 PNG 이미지만 필터링해 PNG 이미지 ZIP 파일 하나를 받는 흐름이 제목·결제자·순간·한 끗 변화와 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "브랜드 디자이너가 레퍼런스 보드 제작 순간 공개 웹페이지 URL 하나에서 기준을 넘는 고용량 이미지만 필터링해 이미지 ZIP 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "브랜드 디자이너가 기존 페이지 이미지를 편집기로 옮길 때 공개 웹페이지 URL 하나에서 최소 가로폭 이미지만 필터링해 이미지 ZIP 하나를 받지만, 이관 순간이 브랜드 디자이너의 결제 순간과 다소 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 콘텐츠를 CMS로 이관하는 편집자가 상품 등록 순간 공개 웹페이지 URL 하나에서 기준을 넘는 이미지만 필터링해 고용량 이미지 ZIP 하나를 받지만, 상품 등록 순간과 CMS 이관 결제자의 맥락이 명확히 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 콘텐츠를 CMS로 이관하는 편집자가 디자인 보드 제작 순간 공개 웹페이지 URL 하나에서 최소 가로폭 이미지만 필터링해 이미지 ZIP 하나를 받지만, 디자인 보드 순간이 해당 결제자의 역할과 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 콘텐츠를 CMS로 이관하는 편집자가 기존 페이지를 새 편집기로 옮기는 순간 공개 웹페이지 URL 하나에서 PNG 이미지만 필터링해 PNG 이미지 ZIP 파일 하나를 받는 흐름이 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 QA 엔지니어가 로그인 버그 재현 순간 단일 사이트 쿠키 권한으로 session cookie만 필터링·마스킹해 현재 사이트 세션 쿠키 JSON 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 QA 엔지니어가 세션 초기화 전 단일 사이트 쿠키 권한으로 SameSite·Secure 플래그만 추출하고 값을 마스킹해 보안 플래그 JSON 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 QA 엔지니어가 개발팀에 이슈를 전달할 때 단일 사이트 쿠키 권한으로 쿠키를 domain·path별 한 번 그룹화·마스킹해 그룹 JSON 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 로그인 버그 증거를 저장할 때 단일 사이트 쿠키 권한으로 SameSite·Secure 플래그만 추출·마스킹해 보안 플래그 JSON 하나를 받는 흐름이 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 세션 초기화 전에 단일 사이트 쿠키 권한으로 쿠키를 domain·path별 한 번 그룹화·마스킹해 그룹 JSON 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 개발팀에 브라우저 이슈를 전달할 때 단일 사이트 쿠키 권한으로 session cookie만 필터링·마스킹해 세션 쿠키 JSON 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기술 담당자가 로그인 버그 증거를 저장할 때 단일 사이트 쿠키 권한으로 쿠키를 domain·path별 한 번 그룹화·마스킹해 그룹 JSON 하나를 받는 흐름이 결제자와 순간에 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기술 담당자가 세션 초기화 전에 단일 사이트 쿠키 권한으로 session cookie만 필터링·마스킹해 세션 쿠키 JSON 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기술 담당자가 개발팀에 브라우저 이슈를 전달할 때 단일 사이트 쿠키 권한으로 SameSite·Secure 플래그만 추출·마스킹해 보안 플래그 JSON 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "batch_id": "EXH-070",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 39,
+    "Fail": 57,
+    "Merge": 3,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 64,
+      "sample": [
+        "app_store:1399907836",
+        "trustmrr:hydranode-ai",
+        "trustmrr:userbase",
+        "app_store:641501350",
+        "app_store:6451212658",
+        "app_store:370901726",
+        "trustmrr:dohackersknow-me"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:userbase",
+          "decision": "Candidate",
+          "reason": "정적 JavaScript·HTML·CSS를 받아 비공개 웹앱으로 만들고 동작 결과를 확인하는 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 2,
+      "fail_count": 57,
+      "sample": [
+        "chrome_web_store:cacoibopgjlodngfokahhkphgcohakai",
+        "app_store:6451193597",
+        "app_store:1399907836",
+        "chrome_web_store:pammoohiikakoflbnodhikfoogopgebe",
+        "app_store:6742104120",
+        "app_store:366968925"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

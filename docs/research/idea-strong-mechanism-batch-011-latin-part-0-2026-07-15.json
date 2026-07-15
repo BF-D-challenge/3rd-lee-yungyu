@@ -1,0 +1,150 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-pdf-translator-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "표 배치를 유지한 영어 PDF 한국어 번역이라는 제목이 분명하고, 기술문서 담당자가 외국어 PDF를 받은 직후 파일 하나를 번역·처리해 표 배치가 보존된 한국어 PDF 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-translator-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "이미지 캡션을 살린 PDF 한국어 번역이라는 제목이 분명하고, 기술문서 담당자가 회의용 PDF 공유 직전에 파일 하나를 번역·처리해 캡션 배치가 보존된 한국어 PDF 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-translator-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "각주 링크를 보존한 PDF 한국어 번역이라는 제목이 분명하고, 기술문서 담당자가 회의 직전 영어 PDF 하나를 번역·처리해 각주 링크가 유지된 한국어 PDF 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-translator-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "이미지 캡션을 살린 PDF 한국어 번역이라는 제목이 분명하고, 기업 리서처가 외국어 PDF를 받은 직후 파일 하나를 번역·처리해 캡션 배치가 유지된 한국어 PDF 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-translator-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "각주 링크를 보존한 PDF 한국어 번역이라는 제목이 분명하고, 기업 리서처가 회의용 PDF 공유 직전에 파일 하나를 번역·처리해 각주 링크가 보존된 한국어 PDF 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-translator-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "표 배치를 유지한 영어 PDF 한국어 번역이라는 제목이 분명하고, 기업 리서처가 회의 직전 영어 PDF 하나를 번역·처리해 표 배치가 유지된 한국어 PDF 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-translator-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "각주 링크를 보존한 PDF 한국어 번역이라는 제목이 분명하고, 무역 실무자가 외국어 서류를 받은 직후 PDF 하나를 번역·처리해 각주 링크가 유지된 한국어 PDF 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-translator-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "표 배치를 유지한 영어 PDF 한국어 번역이라는 제목이 분명하고, 무역 실무자가 회의용 PDF 공유 직전에 파일 하나를 번역·처리해 표 배치가 보존된 한국어 PDF 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-pdf-translator-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "이미지 캡션을 살린 PDF 한국어 번역이라는 제목이 분명하고, 무역 실무자가 회의 직전 영어 PDF 하나를 번역·처리해 이미지 캡션 배치가 유지된 한국어 PDF 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chromapick-chrome-extension-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹페이지 색 토큰을 바로 복사하는 텍스트라는 제목이 분명하고, 브랜드 디자이너가 참고 URL을 받은 직후 URL 하나를 읽어 색상을 추출해 Figma에 붙일 색 토큰 텍스트 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chromapick-chrome-extension-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹페이지 폰트 스택을 복사하는 텍스트라는 제목이 분명하고, 브랜드 디자이너가 시안 작업 직전에 URL 하나를 읽어 폰트 스택을 추출해 Figma에 붙일 텍스트 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chromapick-chrome-extension-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "웹페이지 색 대비를 확인하는 스타일 텍스트는 브랜드 디자이너가 개발 전달 전 URL 하나를 처리해 대비값 텍스트를 받는 흐름은 명확하지만, 원본의 색상·폰트 추출 메커니즘에 없던 대비 계산을 추가해 메커니즘이 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    }
+  ]
+}

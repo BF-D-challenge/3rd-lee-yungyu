@@ -1,0 +1,130 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-657878530-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한 1개를 세 단어 주소로 변환해 만남 위치를 얻는 흐름은 구체적이지만 제목만으로는 행사장의 정확한 만남 위치 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-657878530-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한을 세 단어 주소로 바꾸는 결과는 구체적이지만 행사 운영자가 배송 입구를 안내하는 순간과 행사 만남 장소 결제자·문구가 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-657878530-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한을 세 단어 주소로 바꾸는 처리는 명확하지만 행사 운영자가 주차 차량 위치를 다시 찾는 순간과 결제자·문구의 조합이 자연스럽지 않다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-657878530-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한을 세 단어 주소로 바꿔 주소를 얻는 결과는 구체적이지만 매장 관리자가 행사장 만남 지점을 정하는 순간에 주차장 출입구를 전달하는 한 끗 변화가 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-657878530-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한을 세 단어 주소로 바꿔 주소를 얻는 흐름은 가능하지만 배송 입구를 안내하는 매장 관리자의 순간에 산책로 입구를 지정하는 문구가 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-657878530-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한을 세 단어 주소로 바꿔 주소를 얻는 결과는 명확하지만 매장 관리자가 차량 위치를 찾는 순간에 행사장 만남 지점을 공유하는 문구가 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-657878530-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한을 세 단어 주소로 변환하는 처리는 구체적이지만 촬영 코디네이터가 행사장 만남 지점을 정하는 순간에 산책로 입구를 지정하는 조합이 자연스럽지 않다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-657878530-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한을 세 단어 주소로 변환해 주소를 얻을 수 있지만 촬영 코디네이터가 배송 입구를 안내하는 순간에 행사장 만남 지점을 공유하는 문구가 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-657878530-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한을 세 단어 주소로 변환하는 결과는 구체적이지만 촬영 코디네이터가 차량 위치를 찾는 순간에 지하 주차장 출입구를 전달하는 결제자·문구 조합이 불명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    }
+  ]
+}

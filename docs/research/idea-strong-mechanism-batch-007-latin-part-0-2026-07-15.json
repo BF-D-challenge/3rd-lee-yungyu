@@ -1,0 +1,148 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1312141691-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "실패한 API를 확인하는 프론트엔드 개발자가 실패 HAR를 막 저장한 순간 HAR 파일 하나에서 실패 요청을 한 번 추려 실패 요청 요약 보고서 하나를 받는 흐름이 제목·순간·변화와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1312141691-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "실패한 API를 확인하는 프론트엔드 개발자가 로그인 오류 재현 직후 HAR 파일 하나의 요청별 소요 시간을 한 번 비교해 느린 요청 목록 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1312141691-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "실패한 API를 확인하는 프론트엔드 개발자가 외부 API 장애 기록을 받은 직후 HAR 파일 하나에서 선택한 요청의 요청·응답 본문을 한 번 추출해 나란히 비교하는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1312141691-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 장애를 재현하는 모바일 QA 엔지니어가 실패 HAR를 저장한 순간 HAR 파일 하나의 요청별 소요 시간을 한 번 비교해 느린 요청 목록 하나를 받는 흐름이 검수 순간과 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1312141691-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 장애를 재현하는 모바일 QA 엔지니어가 로그인 오류 재현 직후 HAR 파일 하나에서 선택한 요청의 양쪽 본문을 한 번 추출해 비교 화면 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1312141691-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 장애를 재현하는 모바일 QA 엔지니어가 외부 API 장애 기록을 받은 직후 HAR 파일 하나에서 실패 상태 요청을 한 번 추려 HTML 요약 보고서 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1312141691-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "외부 API 연동을 검수하는 백엔드 개발자가 실패 HAR를 막 저장한 순간 HAR 파일 하나에서 선택한 요청의 요청·응답 본문을 한 번 추출해 비교 화면 하나를 받는 흐름이 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1312141691-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "외부 API 연동을 검수하는 백엔드 개발자가 로그인 오류 재현 직후 HAR 파일 하나에서 실패 상태 요청을 한 번 추려 HTML 요약 보고서 하나를 받는 흐름이 디버깅 순간과 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1312141691-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "외부 API 연동을 검수하는 백엔드 개발자가 외부 API 장애 기록을 받은 직후 HAR 파일 하나의 요청별 소요 시간을 한 번 비교해 느린 요청 목록 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6705123515-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "버튼 촉감을 정하는 iOS 앱 개발자가 구현 직전 햅틱 종류 텍스트 하나를 입력해 한 번 재생하고 대응 Swift 코드 카드 하나를 받으므로 제목·순간·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6705123515-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "버튼 촉감을 정하는 iOS 앱 개발자가 결제 성공·실패 촉감을 정하는 순간 햅틱 종류 텍스트 하나를 입력해 성공 알림으로 한 번 재생하고 Swift 코드 하나를 받는 흐름이 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6705123515-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "버튼 촉감을 정하는 iOS 앱 개발자가 완성 화면의 햅틱을 검수하는 순간 햅틱 종류 텍스트 하나를 입력해 경고 알림으로 한 번 재생하고 대응 코드 카드 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    }
+  ]
+}

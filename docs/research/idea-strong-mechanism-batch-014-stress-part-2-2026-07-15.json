@@ -1,0 +1,136 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-lightspeed-run-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 웹사이트 URL 한 개를 받아 1회 성능 측정으로 CLS 수치와 움직인 요소가 담긴 HTML 보고서 한 개를 반환하므로, 퍼블리셔가 고객에게 개선 근거를 보내기 직전 필요한 결과와 한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-trainy-train-identifier-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "열차 사진 파일 한 장에서 차량 특징을 식별해 차량 형식이 강조된 후보 모델 사양 카드 PNG 한 장을 반환하므로, 박물관 담당자가 출처 불명 사진을 받은 직후 확인하려는 문제와 결과가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-trainy-train-identifier-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "열차 사진 파일 한 장에서 식별 근거가 되는 외형 특징을 처리해 외형 포인트가 강조된 후보 모델 사양 카드 PNG 한 장을 반환하므로, 에디터가 캡션 확정 직전에 필요한 검증 결과와 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-trainy-train-identifier-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "열차 사진 파일 한 장을 처리해 운영 국가·사업자가 강조된 후보 모델 사양 카드 PNG 한 장을 반환하지만, 모형 열차 판매자가 카탈로그 모델명을 입력해야 하는 순간의 핵심 문제와 강조 결과가 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-shiptested-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "package.json이 포함된 코드 ZIP 한 개를 받아 첫 페이지 렌더 테스트를 생성하고 실행한 뒤 테스트 코드 파일 한 개를 반환하므로, 입력 후 생성과 실행의 두 처리가 필요하다.",
+      "risk_flags": [
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-shiptested-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "package.json이 포함된 코드 ZIP 한 개를 받아 API 응답 형식 테스트를 생성하고 실행한 뒤 테스트 코드 파일 한 개를 반환하므로, 입력 후 생성과 실행의 두 처리가 필요하다.",
+      "risk_flags": [
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-shiptested-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "package.json이 포함된 코드 ZIP 한 개를 받아 폼 제출 테스트를 생성하고 실행한 뒤 테스트 코드 파일 한 개를 반환하므로, 입력 후 생성과 실행의 두 처리가 필요하다.",
+      "risk_flags": [
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-formnx-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "폼 정의 텍스트 한 덩어리를 받아 필수값 검증을 적용하고 제출 가능한 단일 HTML 폼 파일 한 개를 반환하므로, 행사 신청 접수 직전 누락을 막으려는 운영자의 순간과 결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-formnx-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "폼 정의 텍스트 한 덩어리를 받아 허니팟 스팸 필드를 추가한 단일 HTML 폼 파일 한 개를 반환하지만, 원본의 폼 구성 메커니즘에 없는 스팸 방지 기능을 새로 도입하고 카드의 필수 정보 검증 순간과도 어긋난다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-formnx-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "폼 정의 텍스트 한 덩어리를 받아 지정된 한 조건부 질문을 연결하고 제출 가능한 단일 HTML 폼 파일 한 개를 반환하므로, 수기 접수 누락 직후 다음 신청부터 오류를 막으려는 소상공인의 순간과 자연스럽다.",
+      "risk_flags": []
+    }
+  ]
+}

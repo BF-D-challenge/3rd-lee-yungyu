@@ -1,0 +1,406 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-521577043-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "와인 병을 계속 기록해 둬야 재고가 작동하므로 문제 전에 기록이 필요한 관리 기능이며 구매 직후 한 병 등록이라는 결과도 제목만으로 드러나지 않는다.",
+      "risk_flags": [
+        "pre_logging",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-521577043-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "빈 병을 빼려면 이전에 재고를 기록해야 하고 시음 별점 축적은 반복 기록을 전제로 하므로 즉시 단일 결과 카드가 아니다.",
+      "risk_flags": [
+        "pre_logging",
+        "ongoing_tracking"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-521577043-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "손님에게 목록을 보여주려면 사전에 병별 재고를 계속 입력해야 하며 보관 칸 기능도 원본의 단순 기록보다 확장되어 있다.",
+      "risk_flags": [
+        "pre_logging",
+        "scope_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-997362197-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 파일을 자르고 편집 영상으로 저장하는 흐름은 구체적이지만 한국어 음성 자막 변환은 원본의 단순 클립 편집을 넘어선 기능이다.",
+      "risk_flags": [
+        "scope_drift",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-997362197-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상에 자막을 넣는다는 문제와 결과는 이해되지만 자막 생성이 원본 메커니즘에 명시되지 않아 구현 범위가 불명확하다.",
+      "risk_flags": [
+        "scope_drift",
+        "unclear_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-997362197-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진·영상 파일을 입력해 세로형으로 자르고 합쳐 저장 가능한 하나의 게시물 영상을 만드는 흐름이 구체적이고 2일 MVP로 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1526081216-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "JSON 문서 하나를 입력해 구조를 펼치고 CSV·YAML 또는 코드 결과 하나를 출력하는 개발 순간이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1526081216-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "JSON 문서 하나를 검증·시각화해 중첩 오류 위치와 구조를 즉시 보여주므로 입력·처리·결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1526081216-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "복사한 JSON을 한 번 검증·변환해 오류 위치 또는 CSV·타입 코드 결과를 즉시 내므로 세로 조각이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1356726417-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "차량과 업그레이드 선택을 입력해 포르자 튜닝 공식을 적용하고 주행용 설정 하나를 출력하는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1356726417-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "차량·업그레이드와 안정형 또는 공격형 선택을 처리해 해당 주행용 튜닝값 하나를 보여주므로 실제 사용 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1356726417-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "차량과 업그레이드를 입력해 드리프트·랠리 상황의 튜닝값을 계산하는 게임 특화 결과가 구체적이며 MVP 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-329884406-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "잔액과 보고서를 얻으려면 거래를 사전에 계속 기록해야 하므로 문제 전에 기록이 필요한 관리 기능이다.",
+      "risk_flags": [
+        "pre_logging"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-329884406-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카드값과 할부를 확인하려면 이전 거래 내역을 지속 입력해야 하며 신혼부부 공동 관리도 단일 입력·결과 조각과 맞지 않는다.",
+      "risk_flags": [
+        "pre_logging",
+        "multi_user"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-329884406-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "할부 청구액을 자동 합산하려면 카드 거래를 먼저 기록하거나 연동해야 하므로 허용된 단일 입력만으로 즉시 작동하지 않는다.",
+      "risk_flags": [
+        "pre_logging",
+        "integration_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1442742654-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "운동 유형 하나를 선택해 간격 타이머를 실행하고 시각·청각 진행 신호 하나를 제공하므로 사용 순간과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1442742654-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "운동 타이머 흐름은 맞지만 음악 재생과 음성 안내를 동시에 제공한다는 부분이 원본의 고정 간격 타이머보다 확장되어 있다.",
+      "risk_flags": [
+        "scope_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1442742654-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "맨몸 서킷 유형을 선택해 세트·휴식 타이머를 실행하고 운동 신호를 즉시 제공하는 단일 기기 기능이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6477182657-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 권한으로 사진을 촬영해 렌즈·색상 처리를 적용하고 Leica 스타일 사진 하나를 즉시 만드는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6477182657-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 촬영 또는 사진 파일을 받아 노출·색상을 조정하고 분위기 있는 결과 사진 하나를 출력하므로 필요 순간이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6477182657-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 촬영 뒤 렌즈 느낌과 배경 흐림을 선택해 처리된 인물 사진 하나를 만드는 범위가 원본과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-293760823-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "효과음 하나를 선택해 재생하고 즉시 들려주는 단일 입력·처리·결과가 명확하며 별도 기록이나 상대방 행동이 필요 없다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-293760823-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "선택한 방귀 효과음 하나를 버튼으로 재생해 즉시 들려주는 구조가 구체적이고 반나절 MVP로 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-293760823-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "효과음 재생 자체는 명확하지만 영상에 넣는 결과가 아니라 단순 재생만 제시되어 크리에이터의 문제와 결과가 완전히 맞물리지 않는다.",
+      "risk_flags": [
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-338257907-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "랩타임과 주행 분석을 얻으려면 주행 중 GPS 기록을 먼저 수행해야 하므로 문제 전에 기록해야만 작동하는 기능이다.",
+      "risk_flags": [
+        "pre_logging",
+        "tracking_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-338257907-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "방금 달린 구간의 제동·가속 비교는 주행 중 지속적인 센서 기록이 선행되어야 하므로 단일 즉시 처리 조각이 아니다.",
+      "risk_flags": [
+        "pre_logging",
+        "tracking_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-338257907-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "섹터 기록과 제동 지점 분석은 주행 데이터를 사전에 수집해야 하므로 문제 전에 설치·기록이 필요한 조건을 위반한다.",
+      "risk_flags": [
+        "pre_logging",
+        "tracking_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760257782-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "RSS URL 하나로 읽기 목록을 만드는 처리는 명확하지만 광고·팝업이 많은 일반 웹페이지를 정리한다는 문제와 RSS 입력이 완전히 일치하지 않는다.",
+      "risk_flags": [
+        "input_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760257782-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여러 사이트를 한곳에 모으려면 RSS URL 여러 개가 필요하지만 허용된 입력은 URL 하나뿐이다.",
+      "risk_flags": [
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760257782-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기사 본문 추출을 하려면 기사 URL이나 페이지가 입력되어야 하는데 제시된 입력은 RSS URL 하나라 문제·입력·결과가 어긋난다.",
+      "risk_flags": [
+        "input_mismatch"
+      ]
+    }
+  ]
+}

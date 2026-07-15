@@ -1,0 +1,432 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-faceaura-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "셀카 한 장을 처리해 헤드샷을 만드는 흐름은 구체적이지만 FaceAura라는 제목만으로 문제와 결과가 보이지 않고 범용 이미지 AI 한 번으로 대체 가능하다.",
+      "risk_flags": [
+        "opaque_title",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-faceaura-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "입력은 셀카인데 한 끗 변화는 빛바랜 부모님 사진 복원이라 입력·순간·결과가 서로 맞지 않는다.",
+      "risk_flags": [
+        "input_twist_mismatch",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-faceaura-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "소개팅 프로필 수요와 셀카 헤드샷 결과는 연결되지만 제목이 불명확하고 범용 이미지 AI로 쉽게 대체된다.",
+      "risk_flags": [
+        "opaque_title",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-stoxia-ai-stoic-journal-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "손글씨 사진을 디지털 저널로 옮기는 결과는 구체적이지만 휴대폰 기본 스캔·OCR과 메모 앱으로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "os_basic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-stoxia-ai-stoic-journal-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "일기 사진에서 디지털 기록을 만드는 흐름은 명확하지만 검색 가능한 기록은 기본 OCR·메모 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "os_basic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-stoxia-ai-stoic-journal-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상담 전 일기 사진을 읽기 쉬운 기록으로 보관하는 결과는 구체적이나 기본 문서 스캔·OCR보다 뚜렷한 차별성이 없다.",
+      "risk_flags": [
+        "os_basic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-tidify-simple-daily-planner-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "할 일 목록과 캘린더라는 두 입력을 요구해 1입력 원칙을 위반하고 일정 앱의 기본 시간 배치 기능과 겹친다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "basic_calendar_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-tidify-simple-daily-planner-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "할 일 목록과 캘린더를 함께 입력해야 하므로 단일 입력 조건을 충족하지 못한다.",
+      "risk_flags": [
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-tidify-simple-daily-planner-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공시 공부 시간표를 만들려면 할 일 목록과 캘린더 두 입력이 필요해 1입력·1처리 조건에서 벗어난다.",
+      "risk_flags": [
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-property-polish-ai-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "매물 사진 한 장을 정리·스테이징해 게시용 사진 한 장으로 만드는 흐름은 자연스럽지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_clarity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-property-polish-ai-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "어수선한 원룸 사진을 게시용 이미지로 바꾸는 입력·처리·결과는 맞지만 Property Polish AI라는 제목이 구체적 상황을 설명하지 않는다.",
+      "risk_flags": [
+        "title_clarity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-property-polish-ai-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "매물 사진을 가상 가구 배치 이미지로 바꾸는 흐름은 시행사 수요와 맞지만 제목만으로 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_clarity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-mermaidonline-live-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Mermaid 문법 한 개를 렌더링해 다이어그램 하나를 보여주는 흐름은 구체적이나 제목만으로 입력과 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-mermaidonline-live-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "Mermaid 코드 한 개를 붙여넣어 서비스 구조도를 확인하는 결과는 명확하지만 mermaidonline.live라는 제목이 문제를 설명하지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-mermaidonline-live-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "시퀀스 문법을 입력해 다이어그램 하나를 즉시 확인하는 조합은 가능하지만 제목만으로 기능을 알기 어렵다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-raymond-le-crayon-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이 사진 한 장을 개인화 색칠공부 선화 한 장으로 바꾸는 흐름은 교사의 실제 순간과 맞지만 제목만으로 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-raymond-le-crayon-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "입력은 아이 사진으로 정의했지만 twist는 반려동물 사진을 요구해 입력과 한 끗 변화가 불일치한다.",
+      "risk_flags": [
+        "input_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-raymond-le-crayon-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "가족사진을 색칠페이지로 바꾸는 처리는 자연스럽지만 가족 여행 사진을 선물하는 결제자와 아이 생일 순간의 연결이 약하고 제목도 불명확하다.",
+      "risk_flags": [
+        "moment_mismatch",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-orka-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "상품 사진 한 장을 쇼핑몰용 모델컷 한 장으로 바꾸는 흐름은 명확하지만 ORKA라는 제목만으로 문제와 결과를 알기 어렵다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-orka-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "의류 사진을 세로 모델컷으로 변환하는 입력·처리·결과는 자사몰 업무와 맞지만 제목이 기능을 설명하지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-orka-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한복 상품 사진을 전통 스튜디오 착용컷으로 만드는 흐름은 구체적이나 ORKA라는 제목만으로 결과가 보이지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-formslides-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "질문과 응답 규칙을 넣어 조건부 폼 미리보기 하나를 만드는 흐름은 자연스럽지만 Formslides만으로 결과와 사용 순간이 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_clarity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-formslides-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "만족도 응답에 따라 후속 질문이 나오는 폼을 만드는 입력·처리·결과는 구체적이나 제목이 기능을 명확히 전달하지 않는다.",
+      "risk_flags": [
+        "title_clarity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-formslides-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "행사 참석 여부에 따라 안내가 바뀌는 폼 미리보기는 실용적이지만 Formslides라는 제목만으로 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "title_clarity"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-resume-parse-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "이력서 파일 한 개에서 지정 후보자 필드를 추출하는 흐름은 명확하지만 입력 문구가 real resumes로 모호하고 결과가 필드인지 데이터인지 불분명하다.",
+      "risk_flags": [
+        "vague_input",
+        "unclear_result"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-resume-parse-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "신입 이력서 파일에서 학교·자격증·희망직무를 구조화하는 흐름은 자연스럽지만 입력과 결과 문구가 영어·추상 표현으로 되어 있다.",
+      "risk_flags": [
+        "vague_input",
+        "unclear_result"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-resume-parse-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "외국인 이력서 파일에서 비자·근무지역을 추출하는 결과는 구체적이나 real resumes와 customizable parsing fields가 실제 카드 문구로는 불명확하다.",
+      "risk_flags": [
+        "vague_input",
+        "unclear_result"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-magic-room-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "방 사진 한 장을 한국 아파트 스타일의 방 이미지 한 장으로 바꾸는 흐름은 구체적이지만 Magic Room이라는 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-magic-room-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이방 사진 한 장을 어린이방 디자인 이미지로 변환하는 흐름은 고객 상담 순간과 맞지만 제목이 기능을 설명하지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-magic-room-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "원룸 사진 한 장을 수납 중심 배치 이미지로 바꾸는 결과는 구체적이나 Magic Room만으로는 사용자가 해결할 문제를 알기 어렵다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    }
+  ]
+}

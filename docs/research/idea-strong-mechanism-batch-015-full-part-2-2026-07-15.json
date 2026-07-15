@@ -1,0 +1,118 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-6757283848-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주문제작 케이크 홈베이커가 테스트 레시피를 판매 배치로 키우기 전에 총 반죽 중량과 재료별 비율 텍스트 한 덩어리를 입력하면 baker's percentage를 한 번 계산해 목표량별 재료 그램표 하나를 즉시 받으므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6757283848-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주문 수량이 바뀐 주문제작 케이크 홈베이커가 총 반죽 중량과 재료별 비율 텍스트 한 덩어리를 입력하면 baker's percentage를 한 번 계산해 밀가루 100% 기준 배합표 하나를 즉시 받으므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6757283848-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주문 수량이 바뀐 주문제작 케이크 홈베이커가 총 반죽 중량과 재료별 비율 텍스트 한 덩어리를 입력하면 중량을 한 번 계산해 1g 단위 계량표 하나를 즉시 받지만, 제목의 ‘실패 줄이는 생산표’만으로는 재료별 결과가 명확히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6757283848-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주문 수량이 바뀐 주문제작 케이크 홈베이커가 새 총 반죽 중량과 재료별 비율 텍스트 한 덩어리를 입력하면 baker's percentage를 한 번 계산해 재료별 그램표 하나를 즉시 받으므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6757283848-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주문 수량이 바뀐 주문제작 케이크 홈베이커가 새 총 반죽 중량과 재료별 비율 텍스트 한 덩어리를 입력하면 baker's percentage를 한 번 계산해 밀가루 100% 기준 배합표 하나를 즉시 받으므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6757283848-212",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주문 수량이 바뀐 주문제작 케이크 홈베이커가 새 총 반죽 중량과 재료별 비율 텍스트 한 덩어리를 입력하면 재료 중량을 한 번 계산해 1g 단위 계량표 하나를 즉시 받지만, 제목의 ‘실패 줄이는 생산표’만으로는 재료별 결과가 명확히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6757283848-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "재료를 저울에 올리기 직전인 주문제작 케이크 홈베이커가 총 반죽 중량과 재료별 비율 텍스트 한 덩어리를 입력하면 baker's percentage를 한 번 계산해 재료별 그램표 하나를 즉시 받으므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6757283848-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "재료를 저울에 올리기 직전인 주문제작 케이크 홈베이커가 총 반죽 중량과 재료별 비율 텍스트 한 덩어리를 입력하면 baker's percentage를 한 번 계산해 밀가루 100% 기준 배합표 하나를 즉시 받으므로 제목·순간·한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6757283848-222",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "재료를 저울에 올리기 직전인 주문제작 케이크 홈베이커가 총 반죽 중량과 재료별 비율 텍스트 한 덩어리를 입력하면 재료 중량을 한 번 계산해 1g 단위 계량표 하나를 즉시 받지만, 제목의 ‘실패 줄이는 생산표’만으로는 재료별 결과가 명확히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    }
+  ]
+}

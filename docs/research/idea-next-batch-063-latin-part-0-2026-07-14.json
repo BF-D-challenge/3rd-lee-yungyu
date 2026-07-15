@@ -1,0 +1,228 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6751769519-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "감마·베타·오류함수 입력을 계산해 고정밀 값을 내지만 제목만으로 필요한 문제와 결과가 충분히 드러나지 않고 기록 기능은 최소 조각에 포함되지 않는다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6751769519-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "베타함수 입력을 계산해 고정밀 결과를 내는 흐름은 구체적이지만 제목만으로 논문 수식 대조라는 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6751769519-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오류함수 입력을 계산해 고정밀 결과를 내는 흐름은 가능하지만 제목만으로 물리 계산 검산과 결과가 충분히 보이지 않고 시간순 기록은 최소 조각과 어긋난다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6751769519-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "특수함수 입력을 계산해 고정밀 결과를 내는 세로 조각은 명확하지만 제목만으로 통계 모델 검산 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6751769519-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "베타함수 입력을 계산해 고정밀 결과를 내지만 제목만으로 논문 대조 문제와 결과가 명확하지 않고 오류함수 기록이라는 한 끗이 최소 처리와 맞지 않는다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6751769519-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오류함수 입력을 계산해 고정밀 결과를 내는 흐름은 구체적이지만 제목만으로 연구 검증 문제와 결과가 보이지 않고 감마함수 기록은 원본 최소 조각에 없다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6751769519-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "감마·베타·오류함수 입력을 계산해 고정밀 결과를 내는 기능은 가능하지만 제목만으로 반복 검증 문제와 결과가 불명확하며 시간순 재확인은 최소 조각에 빠져 있다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6751769519-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "베타함수 입력을 계산해 고정밀 결과를 내지만 제목만으로 논문 대조 문제와 결과가 충분히 드러나지 않고 감마함수 기록은 원본 처리와 불일치한다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6751769519-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오류함수 입력을 계산해 고정밀 결과를 내는 조각은 구체적이지만 제목만으로 검증 문제와 결과가 명확하지 않고 베타함수 계산으로 한 끗이 흔들린다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "twist_scope_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1458740001-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장을 오려 캡션을 넣고 WhatsApp용 스티커로 내보내는 결과는 구체적이지만 사진 편집·배경 제거와 범용 이미지 도구로 대체될 여지가 있다.",
+      "risk_flags": [
+        "generic_alternative",
+        "platform_dependency"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1458740001-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "사진을 오려 한국어 캡션을 넣어 메신저용 팩으로 내보내는 흐름은 자연스럽지만 범용 이미지 편집으로도 한 번에 처리할 수 있고 WhatsApp 의존성이 있다.",
+      "risk_flags": [
+        "generic_alternative",
+        "platform_dependency"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1458740001-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "친구 사진을 입력해 인물을 오리고 반응 문구를 넣어 스티커로 저장하는 결과는 명확하지만 OS 사진 오려내기와 범용 편집 도구로 대체 가능하다.",
+      "risk_flags": [
+        "os_alternative",
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1458740001-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "사진을 오려 한국어 캡션을 추가하고 WhatsApp용 스티커로 내보내는 세로 조각은 가능하지만 범용 이미지 편집으로 대체될 여지가 크다.",
+      "risk_flags": [
+        "generic_alternative",
+        "platform_dependency"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1458740001-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "친구 사진을 오려 반응 문구를 넣어 채팅용 스티커로 저장하는 결과는 구체적이지만 OS 기본 오려내기와 범용 이미지 도구가 더 간편할 수 있다.",
+      "risk_flags": [
+        "os_alternative",
+        "generic_alternative"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1458740001-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "회식 사진을 입력해 인물을 오리고 문구를 넣어 WhatsApp용 스티커로 내보내는 결과는 명확하지만 범용 사진 편집과 플랫폼 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "os_alternative",
+        "generic_alternative",
+        "platform_dependency"
+      ]
+    }
+  ]
+}

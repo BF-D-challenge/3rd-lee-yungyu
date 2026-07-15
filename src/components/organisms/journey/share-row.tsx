@@ -13,20 +13,6 @@ const CHANNELS = [
   { id: "story", label: "📸 스토리" },
 ] as const;
 
-export async function copyText(text: string): Promise<void> {
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch {
-    // 클립보드 API 실패(비HTTPS 등) 폴백
-    const ta = document.createElement("textarea");
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand("copy");
-    ta.remove();
-  }
-}
-
 export function ShareRow({ payload }: { payload: CardPayload }) {
   const [toast, setToast] = useState<string | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>();

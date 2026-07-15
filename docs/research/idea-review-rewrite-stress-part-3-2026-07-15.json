@@ -1,0 +1,256 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6773472779-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 1개에 피부톤 우선 색보정·LUT를 1회 적용해 색보정된 영상 클립 1개를 즉시 미리보는 흐름이 제목과 순간에 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6773472779-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 1개에 따뜻한 노을 LUT를 1회 적용해 색보정된 영상 클립 1개를 즉시 미리보는 흐름이 납품 전 필요와 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6773472779-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 1개에 세로 숏폼 기준 색보정·LUT를 1회 적용해 세로 색보정 클립 1개를 보여주므로 입력·처리·결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1252988123-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "정규식과 검사 텍스트라는 2개 입력을 요구한 뒤 이메일 매치와 캡처 그룹을 검사하므로 입력 1개 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1252988123-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "정규식과 텍스트를 입력받아 매치와 치환이라는 복수 결과를 만들고 원본의 매치 검사에 치환 기능을 추가하므로 단일 처리·결과와 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "multi_input",
+        "multi_result",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1252988123-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "정규식과 텍스트라는 2개 입력을 받아 날짜·레벨 그룹 목록을 검사하므로 입력 1개 규칙을 충족하지 않는다.",
+      "risk_flags": [
+        "multi_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-939507215-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "단일 위치 권한으로 주행을 기록하지만 최대 속도와 이동 거리라는 2개 통계를 결과로 내므로 단일 결과 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-939507215-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한으로 주행을 기록해 최대 속도와 이동 거리를 함께 보여주며 운전 중 휴대폰 확인을 유도할 수 있어 단일 결과와 안전 게이트를 모두 위반한다.",
+      "risk_flags": [
+        "multi_result",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-939507215-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한으로 한 구간을 기록해 최대 속도와 이동 거리를 함께 보여주고 자동차 리뷰어의 차량 테스트와 렌터카 여행 트위스트가 어긋난다.",
+      "risk_flags": [
+        "multi_result",
+        "payer_twist_mismatch",
+        "moment_twist_mismatch",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6766812660-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 1개를 아이용 큰 격자와 제한 팔레트로 1회 변환해 퓨즈비즈 패턴 이미지 1개를 즉시 보여주므로 제작 전 판단 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6766812660-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 1개를 작은 굿즈 패턴으로 변환하는 결과가 아이와 만드는 대형 픽셀 작품이라는 결제자·상황과 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6766812660-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 1개에 외곽선 강조 변환을 1회 적용해 제작용 퓨즈비즈 패턴 이미지 1개를 보여주므로 판매용 샘플 확인 순간과 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-602496538-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 1개를 받아도 붓기·대기·압착의 다단계 타이머를 진행하므로 처리 1회 규칙의 단일 처리 조건을 충족하지 않는다.",
+      "risk_flags": [
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-602496538-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "분쇄도별 레시피 1개를 받아 여러 추출 단계의 시간을 진행하므로 입력 1개 뒤 단일 처리 조건을 위반한다.",
+      "risk_flags": [
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-602496538-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "빠른 레시피 1개를 받아도 여러 추출 단계의 시간을 순차 진행하므로 단일 처리 규칙을 충족하지 않는다.",
+      "risk_flags": [
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-402405770-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현상 단계와 온도라는 2개 입력으로 보정 계산 후 여러 현상 단계 타이머를 제공하므로 입력 1개와 단일 처리 조건을 모두 위반한다.",
+      "risk_flags": [
+        "multi_input",
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-402405770-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현상 단계와 온도를 입력받아 보정 계산과 교반 간격 안내를 포함한 다단계 타이머를 제공하므로 1입력·1처리 조건을 충족하지 않는다.",
+      "risk_flags": [
+        "multi_input",
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-402405770-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현상 단계와 온도라는 2개 입력을 받아 보정 계산 뒤 소량 희석 공정의 여러 타이머 단계를 진행하므로 단일 입력·처리 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_input",
+        "multi_step"
+      ]
+    }
+  ]
+}

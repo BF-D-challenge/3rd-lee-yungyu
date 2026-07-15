@@ -1,0 +1,232 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-mockphine-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘막힌 API의 성공 JSON 응답 확인’은 엔드포인트 경로와 성공 JSON 텍스트 하나를 받아 로컬 모의 응답을 한 번 제공하고 서빙 요청과 성공 응답 하나를 보여주므로 구조는 구체적이지만 초보자에게 API·JSON·로컬 엔드포인트가 어렵다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mockphine-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘막힌 API의 빈 결과 화면 확인’은 엔드포인트 경로와 빈 결과 JSON 텍스트 하나를 받아 한 번 모의 응답하고 서빙 요청과 빈 응답 하나를 보여주므로 구조는 구체적이지만 초보자에게 API·JSON·로컬 엔드포인트가 어렵다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mockphine-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘막힌 API의 오류 JSON 화면 확인’은 엔드포인트 경로와 오류 상태 JSON 텍스트 하나를 받아 한 번 오류 모의 응답하고 서빙 요청과 오류 응답 하나를 보여주므로 구조는 구체적이지만 초보자에게 API·JSON·로컬 엔드포인트가 어렵다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mockphine-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘막힌 API의 빈 결과 화면 확인’은 엔드포인트 경로와 빈 결과 JSON 텍스트 하나를 받아 한 번 모의 응답하고 서빙 요청과 빈 응답 하나를 보여주므로 구조는 구체적이지만 초보자에게 API·JSON·로컬 엔드포인트가 어렵다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mockphine-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘막힌 API의 오류 JSON 화면 확인’은 엔드포인트 경로와 오류 상태 JSON 텍스트 하나를 받아 한 번 오류 모의 응답하고 서빙 요청과 오류 응답 하나를 보여주므로 구조는 구체적이지만 초보자에게 API·JSON·로컬 엔드포인트가 어렵다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mockphine-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘막힌 API의 성공 JSON 응답 확인’은 엔드포인트 경로와 성공 JSON 텍스트 하나를 받아 로컬 모의 응답을 한 번 제공하고 서빙 요청과 성공 응답 하나를 보여주므로 구조는 구체적이지만 초보자에게 API·JSON·로컬 엔드포인트가 어렵다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mockphine-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘막힌 API의 오류 JSON 화면 확인’은 엔드포인트 경로와 오류 상태 JSON 텍스트 하나를 받아 한 번 오류 모의 응답하고 서빙 요청과 오류 응답 하나를 보여주므로 구조는 구체적이지만 초보자에게 API·JSON·로컬 엔드포인트가 어렵다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-mockphine-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘막힌 API의 성공 JSON 응답 확인’은 엔드포인트 경로와 성공 JSON 텍스트 하나를 받아 로컬 모의 응답을 한 번 제공하고 서빙 요청과 성공 응답 하나를 보여주지만 QA 중 오류 화면 순간과 성공 응답 변화가 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-mockphine-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘막힌 API의 빈 결과 화면 확인’은 엔드포인트 경로와 빈 결과 JSON 텍스트 하나를 받아 한 번 모의 응답하고 서빙 요청과 빈 응답 하나를 보여주므로 구조는 구체적이지만 초보자에게 API·JSON·로컬 엔드포인트가 어렵다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사진의 Lightroom 색감 초안’은 참고 사진 파일 한 장의 색감 특성을 한 번 처리해 Lightroom용 XMP 프리셋 하나를 제공하지만 사진과 짧은 영상 톤을 함께 맞추는 순간에 사진용 결과만 준다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사진의 Photoshop 색감 초안’은 참고 사진 파일 한 장을 한 번 처리해 Photoshop ACR XMP 프리셋 하나를 제공하므로 촬영 직후 사진 보정 초안에는 구체적이지만 초보자에게 ACR·XMP가 어렵다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사진의 영상 색감 LUT 초안’은 참고 사진 파일 한 장의 색감 특성을 한 번 처리해 영상 편집용 LUT 파일 하나를 제공하므로 다음 촬영물의 영상 색감 시작에는 구체적이지만 초보자에게 LUT가 어렵다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사진의 Photoshop 색감 초안’은 참고 사진 파일 한 장을 한 번 처리해 Photoshop ACR XMP 프리셋 하나를 제공하므로 프리랜서 사진가의 다음 촬영물 보정 시작과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사진의 영상 색감 LUT 초안’은 참고 사진 한 장에서 영상용 LUT 하나를 만들지만 사진가의 촬영 직후 첫 보정본 순간과 영상 LUT 결과가 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사진의 Lightroom 색감 초안’은 참고 사진 한 장에서 Lightroom XMP 하나를 만들지만 사진과 짧은 영상의 톤을 맞추는 순간에 사진용 결과만 준다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사진의 영상 색감 LUT 초안’은 참고 사진 파일 한 장의 색감 특성을 한 번 처리해 영상 편집용 LUT 하나를 제공하므로 다음 촬영물의 동일한 색감 시작과 자연스럽지만 초보자에게 LUT가 어렵다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사진의 Lightroom 색감 초안’은 참고 사진 파일 한 장을 한 번 처리해 Lightroom XMP 프리셋 하나를 제공하므로 촬영 직후 사진 보정 초안에는 구체적이지만 사진과 영상 모두의 톤을 맞추는 순간에는 범위가 좁다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사진의 Photoshop 색감 초안’은 참고 사진 한 장에서 Photoshop ACR XMP 하나를 만들지만 사진과 짧은 영상의 톤을 맞추는 순간에 사진용 결과만 준다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    }
+  ]
+}

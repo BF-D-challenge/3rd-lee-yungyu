@@ -1,0 +1,57 @@
+{
+  "batch_id": "EXH-064",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 61,
+    "Candidate": 36,
+    "Reserve": 2,
+    "Merge": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 77,
+      "sample": [
+        "app_store:1590978658",
+        "trustmrr:postiv-io",
+        "trustmrr:quizparti",
+        "chrome_web_store:apnigoloonhabnplobkhailjllggdnll",
+        "app_store:1337550955",
+        "app_store:543364901",
+        "trustmrr:sharkall",
+        "app_store:6744374898"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:apnigoloonhabnplobkhailjllggdnll",
+          "decision": "Candidate",
+          "reason": "여러 소매점 장바구니 입력 → 상품을 하나로 묶어 링크 생성 → 공유 가능한 통합 장바구니 결과를 2일 안에 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.125
+    },
+    {
+      "round": 2,
+      "fail_count": 61,
+      "sample": [
+        "app_store:6461348120",
+        "app_store:428974099",
+        "trustmrr:mangoform",
+        "app_store:6759348900",
+        "chrome_web_store:jlkpafdhmdhiahnmcmjejmlidghcobeb",
+        "app_store:390411817",
+        "chrome_web_store:ancooclifmcdfafbgjmgpmcembfaknka"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

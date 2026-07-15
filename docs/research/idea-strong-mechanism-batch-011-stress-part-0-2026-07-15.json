@@ -1,0 +1,130 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-glamour-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘셀피 사진의 퍼스널컬러 시즌 팔레트’는 컨설턴트가 고객 셀피를 상담 시작 순간 업로드하면 피부톤을 분석해 시즌 팔레트 한 장을 보여주지만 범용 AI의 이미지 분석 한 번으로 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-glamour-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘셀피 맞춤 의상·메이크업 색 조합’은 브라이덜 스타일리스트가 제안서 확정 직전 셀피 한 장을 입력해 퍼스널 컬러를 분석하고 추천 조합 한 세트를 받지만 범용 AI의 이미지 분석 한 번으로 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-glamour-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘셀피에서 피할 색을 표시한 팔레트’는 패션 스타일리스트가 상담 중 셀피 한 장을 입력해 피부톤을 분석하고 피해야 할 색이 표시된 팔레트 한 장을 받지만 범용 AI의 이미지 분석 한 번으로 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-pdf-translator-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치를 유지한 영어 PDF 한국어 번역’은 기술문서 담당자가 외국어 PDF를 받은 직후 파일 하나를 입력하면 한국어 번역과 표 배치 보존을 한 번 처리해 번역 PDF 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-pdf-translator-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘각주 링크를 보존한 PDF 한국어 번역’은 기업 리서처가 회의 공유 직전 영어 PDF 하나를 입력하면 한국어 번역과 각주 링크 보존을 한 번 처리해 수정 가능한 번역 PDF 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-pdf-translator-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 캡션을 살린 PDF 한국어 번역’은 무역 실무자가 회의 직전 영어 PDF 하나를 입력하면 한국어 번역과 이미지 캡션 배치 보존을 한 번 처리해 번역 PDF 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-chromapick-chrome-extension-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 색 토큰을 바로 복사하는 텍스트’는 브랜드 디자이너가 참고 사이트 URL 하나를 받은 직후 입력하면 공개 페이지에서 색상 코드를 추출해 Figma용 색 토큰 텍스트 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-chromapick-chrome-extension-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 색 대비를 확인하는 스타일 텍스트’는 UI 디자이너가 시안 확정 직전 공개 웹페이지 URL 하나를 입력하면 색상 조합의 대비를 계산해 Figma용 스타일 텍스트 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-chromapick-chrome-extension-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 폰트 스택을 복사하는 텍스트’는 프론트엔드 디자이너가 개발 전달 전 공개 웹페이지 URL 하나를 입력하면 사용된 폰트 스택을 추출해 Figma용 텍스트 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-docuaudit-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘화물 청구서 합계 불일치 감사 CSV’는 물류사 정산 담당자가 지급 전 운송사 화물 청구서 PDF 하나를 입력하면 문서의 합계 항목을 대조해 불일치 행이 표시된 감사 CSV 한 개를 받는다.",
+      "risk_flags": []
+    }
+  ]
+}

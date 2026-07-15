@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-full-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 디자인 값 CSS 변수 파일’은 기존 CSS를 정리하는 프론트엔드 개발자가 리디자인 기준 사이트를 정한 직후 공개 웹사이트 URL 하나를 입력해 디자인 요소를 한 번 추출하고 바로 붙일 CSS variables 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 색상·간격 JSON 토큰 파일’은 기존 CSS를 정리하는 프론트엔드 개발자가 리디자인 기준 사이트를 정한 직후 공개 웹사이트 URL 하나를 입력해 디자인 요소를 한 번 추출하고 이름 붙은 JSON token 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 디자인 값 Figma 토큰 파일’은 기존 CSS를 정리하는 프론트엔드 개발자가 리디자인 기준 사이트를 정한 직후 공개 웹사이트 URL 하나를 입력해 디자인 요소를 한 번 추출하고 Figma 호환 token JSON 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 디자인 값 CSS 변수 파일’은 기존 CSS를 정리하는 프론트엔드 개발자가 컴포넌트 CSS를 구현하려는 순간 공개 웹사이트 URL 하나를 입력해 디자인 요소를 한 번 추출하고 CSS variables 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 색상·간격 JSON 토큰 파일’은 기존 CSS를 정리하는 프론트엔드 개발자가 컴포넌트 CSS를 구현하려는 순간 공개 웹사이트 URL 하나를 입력해 디자인 요소를 한 번 추출하고 JSON token 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 디자인 값 Figma 토큰 파일’은 기존 CSS를 정리하는 프론트엔드 개발자가 컴포넌트 CSS를 구현하려는 순간 공개 웹사이트 URL 하나를 입력해 디자인 요소를 한 번 추출하고 Figma 호환 token JSON 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 디자인 값 CSS 변수 파일’은 기존 CSS를 정리하는 프론트엔드 개발자가 브랜드 화면 검수를 시작하기 직전 공개 웹사이트 URL 하나를 입력해 디자인 요소를 한 번 추출하고 CSS variables 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 색상·간격 JSON 토큰 파일’은 기존 CSS를 정리하는 프론트엔드 개발자가 브랜드 화면 검수를 시작하기 직전 공개 웹사이트 URL 하나를 입력해 디자인 요소를 한 번 추출하고 JSON token 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-lcgfgelbpgaepigopgkoloicjjkgihcg-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹사이트 디자인 값 Figma 토큰 파일’은 기존 CSS를 정리하는 프론트엔드 개발자가 브랜드 화면 검수를 시작하기 직전 공개 웹사이트 URL 하나를 입력해 디자인 요소를 한 번 추출하고 Figma 호환 token JSON 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-516561342-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장을 입력해 필터·스티커·프레임을 적용하고 꾸며진 사진 한 장을 얻는 흐름은 구체적이지만, OS 기본 사진 편집이나 범용 사진 편집 앱으로 더 쉽게 대체되어 차별적 한 끗과 결제 이유가 없다.",
+      "risk_flags": [
+        "generic_editor",
+        "os_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-516561342-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "스마트폰 사진 한 장에 필터·스티커·프레임을 적용해 장식된 사진을 만드는 입력·처리·결과는 명확하지만, 아이 사진 꾸미기는 기본 사진 편집 기능이나 범용 앱으로 충분해 별도 결제 가치가 없다.",
+      "risk_flags": [
+        "generic_editor",
+        "os_substitute"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-516561342-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장을 입력해 얼굴을 가리지 않는 장식을 적용하고 결과 이미지를 만드는 흐름은 가능하지만, 일반 스티커·프레임 편집은 OS 기본 기능이나 범용 편집 앱으로 대체 가능해 새로운 기능적 차별성이 없다.",
+      "risk_flags": [
+        "generic_editor",
+        "os_substitute"
+      ]
+    }
+  ]
+}

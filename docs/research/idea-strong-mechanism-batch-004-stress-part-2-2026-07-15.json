@@ -1,0 +1,133 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-validemail-co-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "행사 초대 메일 운영자가 직전 CSV 하나를 입력하면 도메인을 한 번 확인해 존재하지 않는 도메인만 표시한 정제 CSV 하나를 받으므로 제목·순간·변화가 구체적이다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-filexhost-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 제작자가 첨부 제한 순간 일반 파일 하나를 입력하면 한 번 업로드해 즉시 다운로드 링크 하나를 받으므로 결제자·순간·결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-filexhost-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서 디자이너가 고객에게 보낼 일반 파일 하나를 입력하면 한 번 업로드해 조회 횟수가 표시되는 공유 링크 하나를 즉시 받으므로 필요 순간과 한 끗 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-filexhost-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현장 실무자가 회의 직전 일반 파일 하나를 입력하면 한 번 업로드해 브라우저 미리보기 링크 하나를 즉시 받아 대용량 자료를 바로 공유할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-myjson-online-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 백엔드 없이 연결할 JSON 텍스트 하나를 입력하면 한 번 저장해 읽기 전용 URL 하나를 즉시 받으므로 문제와 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-myjson-online-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로토타입 개발자가 수정 전 보존할 JSON 텍스트 하나를 입력하면 한 번 저장해 포맷된 브라우저 미리보기 URL 하나를 즉시 받으므로 순간과 결과가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-myjson-online-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발팀이 시연 직전 JSON 텍스트 하나를 저장해 버전 번호가 붙은 스냅샷 URL 하나를 받지만, 단일 입력만으로는 ‘수정본’과 이전 버전 보존의 의미가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "prior_record_required",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-mockphine-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 막힌 경로와 JSON이 담긴 텍스트 블록 하나를 입력하면 한 번 모의 응답을 서빙해 성공 데이터 테스트 주소 하나를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-mockphine-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "QA 실무자는 성공 상태 화면을 확인하려는 순간인데 입력한 경로와 JSON으로 오류 응답 주소를 받도록 되어 있어 payer의 순간과 twist가 정면으로 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-mockphine-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "풀스택 개발자가 오류 상태를 재현하려고 경로와 JSON 텍스트 하나를 입력해 빈 목록 응답 주소 하나를 받지만, 제목의 ‘빈 화면’이 실제 결과인 빈 목록 JSON을 정확히 설명하지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-chordprep-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘G키로 바뀐 연주 코드표’는 합주 직전 밴드 기타리스트가 텍스트 블록 1개를 넣으면 코드 인식과 G키 조옮김 1회를 거쳐 조옮김 표시가 있는 코드 시트 1장을 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-chordprep-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘한 장으로 인쇄하는 G키 코드표’는 예배 시작 전 반주자가 텍스트 블록 1개를 넣으면 코드 인식과 G키 조옮김 1회를 거쳐 인쇄용 코드 시트 1장을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-chordprep-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘카포 2 기준 연주 코드표’는 공연 리허설 직후 음악 감독이 텍스트 블록 1개를 넣으면 코드 인식과 카포 2 기준 계산 1회를 거쳐 연주용 코드 시트 1장을 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

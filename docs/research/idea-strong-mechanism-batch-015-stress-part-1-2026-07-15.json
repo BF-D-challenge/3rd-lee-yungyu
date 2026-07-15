@@ -1,0 +1,142 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-880510678-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GPX 코스 총거리와 상승고도 계산’은 행사 운영 담당자가 위험 구간을 확인할 때 GPX 파일 하나를 입력해 경로·고도를 한 번 계산하고 총거리·상승고도 요약 보고서 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-880510678-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GPX 파일의 거리별 고도 변화’는 코치가 현장 답사 후 GPX 파일 하나의 좌표·고도를 한 번 파싱해 거리별 고도 프로필 하나를 확인하는 순간과 결과가 자연스럽게 연결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1517487743-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "‘도메인 서버 주소 A·AAAA 응답 확인’은 도메인 텍스트 하나로 DNS를 한 번 조회해 A·AAAA 응답 하나를 보여주지만 터미널의 기본 DNS 조회로 대체할 수 있다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1517487743-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "‘도메인 TXT·CNAME 검증값 확인’은 인프라 담당자가 도메인 하나를 조회해 TXT·CNAME 응답 하나를 받는 구조지만 터미널의 기본 DNS 조회로 대체할 수 있다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1517487743-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "‘도메인의 MX 메일 경로 확인’은 컨설턴트가 도메인 하나를 입력해 MX 조회를 한 번 실행하고 메일 서버 경로 하나를 받지만 터미널의 기본 DNS 조회로 대체할 수 있다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-538386564-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Visio 도면 전체 상세 미리보기’는 프로젝트 매니저가 회의 직전 VSD·VDX·VSDX 파일 하나를 입력해 한 번 렌더링하고 확대 가능한 전체 도면 미리보기 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-538386564-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘Visio 도형 속성 데이터 즉시 확인’은 파일 하나를 렌더링한 뒤 선택 도형의 Shape Data를 보여주므로 선택이라는 추가 조작이 필요하고 원본의 단순 도면 미리보기 메커니즘에서도 벗어난다.",
+      "risk_flags": [
+        "multi_step",
+        "mechanism_drift",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-538386564-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘Visio 도면 레이어별 가시성 확인’은 납품 승인 담당자의 특정 도형 속성 확인 순간과 레이어별 미리보기 결과가 맞지 않고 레이어 가시성은 원본의 도면 렌더링 메커니즘에서 추가된 기능이다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6759006922-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘최근 30일 활동 기록 일별 JSON’은 선수의 기존 Apple Health 활동 기록과 권한 하나를 바탕으로 최근 30일 데이터를 추출해 JSON 파일 하나를 만들지만 문제 전에 기록된 건강 데이터가 반드시 필요하다.",
+      "risk_flags": [
+        "prior_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6759006922-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "‘심박·수면 기록 일별 JSON’은 기존 Apple Health 기록과 권한 하나로 심박·수면을 추출해 JSON 파일 하나를 만들지만 사전 기록이 필요하고 ‘최근 운동 기록’이라는 순간과 심박·수면 결과도 어긋난다.",
+      "risk_flags": [
+        "prior_record_required",
+        "moment_twist_mismatch"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "batch_id": "EXH-054",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 54,
+    "Fail": 44,
+    "Reserve": 1,
+    "Merge": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 72,
+      "sample": [
+        "trustmrr:mailhub-sh",
+        "app_store:6757429299",
+        "chrome_web_store:efhpnnnhjokjihpofcoddnljncegbagi",
+        "chrome_web_store:jnmmnipcjejnofidackkaghkddddhaml",
+        "chrome_web_store:gpdjojdkbbmdfjfahjcgigfpmkopogic",
+        "app_store:978597106",
+        "app_store:336902466",
+        "chrome_web_store:ghmbeldphafepmbegfdlkpapadhbakde"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:mailhub-sh",
+          "decision": "Candidate",
+          "reason": "transactional Tailwind email → API로 생성·전송·모니터링 → 전송 상태를 확인하는 세로 조각"
+        },
+        {
+          "key": "app_store:6757429299",
+          "decision": "Candidate",
+          "reason": "Apple Watch 심박수 → OSC로 실시간 전송 → VRChat 아바타 애니메이션 또는 Chatbox BPM 표시"
+        },
+        {
+          "key": "chrome_web_store:gpdjojdkbbmdfjfahjcgigfpmkopogic",
+          "decision": "Candidate",
+          "reason": "아이디어 → Pinterest 저장 → 저장된 Pinterest 아이디어 확인의 단일 행동 세로 조각이 가능하다."
+        },
+        {
+          "key": "app_store:336902466",
+          "decision": "Candidate",
+          "reason": "채널·카테고리·키워드 → 방송 일정 검색·즐겨찾기 → 방송 전 알림 또는 캘린더 항목"
+        },
+        {
+          "key": "chrome_web_store:ghmbeldphafepmbegfdlkpapadhbakde",
+          "decision": "Candidate",
+          "reason": "로그인·비밀번호 → 암호화된 비밀번호 관리 → 안전하게 보관된 자격 증명"
+        }
+      ],
+      "false_reject_rate": 0.625
+    },
+    {
+      "round": 2,
+      "fail_count": 61,
+      "sample": [
+        "chrome_web_store:aldcepfggoodbldeclmhipcolmlhdihi",
+        "app_store:594457652",
+        "app_store:301246856",
+        "chrome_web_store:jnmmnipcjejnofidackkaghkddddhaml",
+        "chrome_web_store:mbigdiginijamkjogpignicdieagghjl",
+        "app_store:1203926545",
+        "chrome_web_store:ppnhmbecmjohhacmbjcefmmfhanjecaa"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:mbigdiginijamkjogpignicdieagghjl",
+          "decision": "Candidate",
+          "reason": "Snapchat Web 장면 하나를 입력받아 언어를 인식하고 번역해 번역문 하나를 즉시 확인할 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 3,
+      "fail_count": 57,
+      "sample": [
+        "trustmrr:torneopro",
+        "trustmrr:pixaro",
+        "app_store:1040443949",
+        "chrome_web_store:gpdjojdkbbmdfjfahjcgigfpmkopogic",
+        "app_store:1203926545",
+        "trustmrr:quotas"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:quotas",
+          "decision": "Candidate",
+          "reason": "근무 시간 입력 → 시간 추적 → 기록된 근무 시간이라는 단일 흐름을 2일 세로 조각으로 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 4,
+      "fail_count": 44,
+      "sample": [
+        "app_store:963555704",
+        "chrome_web_store:jigflhhckdjdefdjmodlkomnmdonfbbn",
+        "chrome_web_store:pfjnkpmfmmnmhppfoemcgpedgcnajbed",
+        "trustmrr:linkorio",
+        "chrome_web_store:ghmbeldphafepmbegfdlkpapadhbakde"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

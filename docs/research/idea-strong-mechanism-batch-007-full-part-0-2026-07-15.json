@@ -1,0 +1,127 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-1312141691-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HAR 파일의 실패 API 요청 요약’은 실패한 API를 확인하는 프론트엔드 개발자가 API 실패 직후 HAR 파일 하나를 업로드하면 실패 상태 요청만 한 번 추려 HTML 요약 보고서 하나로 확인하게 해 payer·moment·twist가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1312141691-001",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HAR 파일의 느린 API 요청 표시’는 프론트엔드 개발자가 실패 HAR를 업로드해 요청별 소요 시간을 비교하고 느린 요청 목록을 받지만, 실패 직후라는 moment와 느린 요청이라는 twist의 연결과 느림의 기준이 다소 불명확하다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1312141691-002",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘HAR 파일의 요청·응답 본문 비교’는 프론트엔드 개발자가 HAR 업로드 후 요청을 선택하는 추가 단계로 선택된 요청의 양쪽 본문을 추출해 비교 화면을 보여주므로 입력 1개·처리 1회·결과 1개의 단일 흐름을 벗어난다.",
+      "risk_flags": [
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1312141691-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HAR 파일의 실패 API 요청 요약’은 로그인 오류를 재현한 프론트엔드 개발자가 HAR 파일 하나를 업로드하면 실패 상태 요청만 한 번 추려 HTML 요약 보고서 하나로 개발자 전달 근거를 얻어 payer·moment·twist가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1312141691-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HAR 파일의 느린 API 요청 표시’는 로그인 오류 HAR를 받은 프론트엔드 개발자가 파일 하나의 요청별 소요 시간을 비교해 느린 요청 목록 하나를 받지만, 로그인 오류 순간에 느린 요청 표시가 핵심 문제와 직접 연결되는지는 불명확하다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1312141691-012",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘HAR 파일의 요청·응답 본문 비교’는 로그인 오류 HAR를 업로드한 뒤 사용자가 요청을 선택해야 양쪽 본문을 추출하고 비교 화면을 보여주므로 단일 입력·단일 처리 조건을 충족하지 못한다.",
+      "risk_flags": [
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1312141691-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HAR 파일의 실패 API 요청 요약’은 장애 기록을 전달받은 프론트엔드 개발자가 HAR 파일 하나를 업로드하면 실패 상태 요청만 한 번 추려 HTML 요약 보고서 하나로 담당자에게 전달할 근거를 얻어 payer·moment·twist가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-1312141691-021",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘HAR 파일의 느린 API 요청 표시’는 장애 HAR를 받은 프론트엔드 개발자가 파일 하나의 요청별 소요 시간을 비교해 느린 요청 목록 하나를 받지만, 장애 전달 직후의 필요와 느린 요청 표시의 직접적인 일치가 약하다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1312141691-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘HAR 파일의 요청·응답 본문 비교’는 장애 HAR를 업로드한 뒤 사용자가 요청을 선택해야 양쪽 본문을 추출하고 비교 화면을 보여주므로 입력 1개·처리 1회·결과 1개의 단일 흐름을 벗어난다.",
+      "risk_flags": [
+        "multi_step"
+      ]
+    }
+  ]
+}

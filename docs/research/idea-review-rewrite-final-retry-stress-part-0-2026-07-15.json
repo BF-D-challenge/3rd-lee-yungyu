@@ -1,0 +1,83 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1313357241-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 1장을 입력해 상단을 유리 질감으로 노치·다이내믹 아일랜드에 맞게 1회 처리하고, 끊김 없는 배경화면 1장을 즉시 내보내므로 문제와 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1313357241-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 1장을 입력해 유리 글자를 배치하고 배경화면 1장을 내보내지만, 원본의 액체 유리 배경화면 처리에서 글자 배치 기능으로 메커니즘이 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1313357241-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 1장을 입력해 화면 구멍 주변에 도형을 배치하고 배경화면 1장을 내보내지만, 원본의 액체 유리 배경화면 처리에서 별도 도형 배치 기능으로 메커니즘이 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6773472779-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 1개를 입력해 선명한 시네마틱 LUT를 1회 적용하고, 색보정된 클립 1개를 즉시 미리보고 내보내므로 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6773472779-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 1개를 입력해 통일 색감 LUT를 1회 적용하고 보정 클립 1개를 내보내지만, 여러 영상의 색감 통일이라는 문제를 단일 클립 처리만으로 확인하기 어렵다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6773472779-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 클립 1개를 입력해 대비감 있는 LUT를 1회 적용하고, 납품 전 확인할 보정 클립 1개를 즉시 미리보고 내보내므로 문제와 결과가 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

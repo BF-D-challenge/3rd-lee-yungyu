@@ -1,0 +1,267 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1119117405-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 재단 순서 표시 PDF’는 가구 제작자가 주문 직전 판재 크기·톱날 폭·부품 목록을 한 번 계산해 재단 순서가 표시된 PDF 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1119117405-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 부품 번호 표시 절단 PDF’는 가구 제작자가 작업대에서 판재 크기·톱날 폭·부품 목록을 한 번 계산해 부품 번호가 표시된 PDF 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1119117405-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 자투리 최소 절단 배치 PDF’는 가구 제작자가 치수 변경 순간 판재 크기·톱날 폭·부품 목록을 입력해 자투리를 줄인 배치 PDF 하나를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1119117405-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 부품 번호 표시 절단 PDF’는 인테리어 실무자가 주문 직전 판재 크기·톱날 폭·부품 목록을 한 번 계산해 번호가 표시된 절단 PDF 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1119117405-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 자투리 최소 절단 배치 PDF’는 인테리어 실무자가 작업대에서 치수와 수량 목록을 한 번 처리해 자투리 최소 배치 PDF 하나를 받으므로 순간과 결과가 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1119117405-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘판재 치수로 재단 순서 표시 PDF’는 인테리어 실무자가 고객 변경 목록을 다시 입력해 한 번 계산하고 재단 순서가 표시된 PDF 하나를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스케치 사진의 종이 그림자 제거 선화’는 일러스트레이터가 채색 직전 스케치 사진 1장을 한 번 보정해 그림자가 제거된 투명 선화 PNG 하나를 받는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘연필 얼룩 제거 후 투명 선화 PNG’는 일러스트레이터가 인쇄 전 스케치 사진 1장에서 한 번 연필 번짐을 제거해 투명 선화 PNG 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘흰 종이 배경을 투명 선화로 변환’은 일러스트레이터가 흰 종이 스케치 사진 1장을 한 번 배경 분리해 투명 선화 PNG 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘연필 얼룩 제거 후 투명 선화 PNG’는 웹툰 작가가 채색 직전 스케치 사진 1장을 한 번 처리해 얼룩이 제거된 투명 선화 PNG 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘흰 종이 배경을 투명 선화로 변환’은 웹툰 작가가 인쇄 전 흰 종이 스케치 사진 1장을 한 번 분리해 투명 선화 PNG 하나를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스케치 사진의 종이 그림자 제거 선화’는 웹툰 작가가 디지털 원고 전 스케치 사진 1장을 한 번 보정해 그림자 제거 투명 선화 PNG 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘흰 종이 배경을 투명 선화로 변환’은 굿즈 제작자가 채색 앱 투입 직전 흰 종이 스케치 사진 1장을 한 번 분리해 투명 선화 PNG 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘스케치 사진의 종이 그림자 제거 선화’는 굿즈 제작자가 인쇄 파일 전 스케치 사진 1장을 한 번 보정해 그림자 제거 투명 선화 PNG 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6760979290-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘연필 얼룩 제거 후 투명 선화 PNG’와 사진 1장 처리 결과는 분명하지만, 굿즈 제작자의 인쇄·디자인 업무와 ‘노트 콘티를 디지털 원고로 옮기는 순간’이 맞지 않아 카드 순간을 고쳐야 한다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6449972752-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘기타 표준 E 음정과 센트 오차’는 세션 연주자가 공연 직전 기타 소리를 한 번 감지해 현재 음과 센트 오차 하나를 즉시 확인하는 구체적 결과다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6449972752-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘지금 울린 기타 줄 이름과 튜닝 힌트’는 기타 소리 1회의 음정만으로 실제로 울린 줄을 식별한다고 요구해 원본의 음정 감지 메커니즘을 벗어나며 결과도 확정할 수 없다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6449972752-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘기타 음정이 목표에 들어온 초록 판정’은 세션 연주자가 합주 직전 기타 소리 한 번을 감지해 목표음 도달 판정 하나를 즉시 확인하는 단일 결과다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6449972752-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘지금 울린 기타 줄 이름과 튜닝 힌트’는 홈레코딩 작업자가 공연 직전 기타 소리 1회를 처리하는 순간과 맞지 않고, 음정만으로 줄 이름을 확정하는 점도 불명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "mechanism_drift",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6449979290-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘기타 음정이 목표에 들어온 초록 판정’은 홈레코딩 작업자가 녹음 직전 기타 소리 한 번을 감지해 목표음 도달 판정 하나를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6449972752-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘기타 표준 E 음정과 센트 오차’는 홈레코딩 작업자가 합주 시작 직전 기타 소리 1회를 처리하는 결과는 명확하지만, 해당 payer의 ‘멤버들이 기다리는’ 순간과 자연스럽게 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    }
+  ]
+}

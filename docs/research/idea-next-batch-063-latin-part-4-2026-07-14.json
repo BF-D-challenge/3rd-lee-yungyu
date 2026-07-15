@@ -1,0 +1,199 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6760676992-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "주류·스타일·맛 프로필을 여러 개 입력해야 하고, 칵테일 검색은 범용 레시피 검색이나 AI 한 번으로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "generic_ai_replacement"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6760676992-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위스키·스타일·맛 프로필을 여러 개 입력해야 하며, 레시피와 제조 팁은 범용 검색이나 AI 한 번으로 얻을 수 있다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "generic_ai_replacement"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6760676992-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "소주 베이스와 맛을 포함한 복수 입력이 필요하고, 어울리는 칵테일 검색은 범용 레시피 검색이나 AI가 더 간단하다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "generic_ai_replacement"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-288054534-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 1개를 입력하면 위치·시간대·계산법을 처리해 다음 기도 시간과 키블라 방향이라는 구체적 결과를 즉시 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-288054534-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공항 도착지 위치 1개를 입력하면 현지 시간대에 맞춰 기도 시간과 키블라 방향을 함께 계산해 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-288054534-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여행지 위치 1개를 입력하면 현지 시간대와 계산법을 반영해 기도 시간과 키블라 방향을 즉시 반환한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-288054534-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공항 도착지 위치 1개를 입력하면 현지 기도 시간과 키블라 방향을 계산해 낯선 지역에서 바로 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-288054534-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여행지 위치 1개를 선택하면 현지 시간대에 맞는 기도 시간과 키블라 방향을 한 번에 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-288054534-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 1개를 입력하면 지역 시간대별 기도 시간과 키블라 방향을 계산해 이동 중 계획에 바로 쓸 결과를 준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-288054534-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여행지 위치 1개를 선택하면 현지 기도 시간과 키블라 방향을 계산해 도착 직후 필요한 정보를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-288054534-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 1개를 입력하면 현지 시간대별 기도 시간과 키블라 방향을 계산해 이동 일정 조정에 필요한 결과를 준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-288054534-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공항 도착지 위치 1개를 입력하면 현지 기도 시간과 키블라 방향을 계산해 라마단 이동 계획에 바로 활용할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-336829635-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한으로 해양 예보를 조회하는 흐름은 가능하지만, 날씨·바람·파도 확인은 OS 기본 날씨나 범용 날씨 앱이 더 편하다.",
+      "risk_flags": [
+        "os_builtin_replacement"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-336829635-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "제주 해변 위치를 입력해 해양 예보를 받는 처리는 가능하나, 출항지 날씨 확인은 기본 날씨 앱이나 범용 검색으로 대체 가능하다.",
+      "risk_flags": [
+        "os_builtin_replacement"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-336829635-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "출항지 위치 1개로 바람·파도 예보를 조회할 수 있지만, 수상 활동 전 날씨 확인은 기존 날씨 앱이 더 직접적이다.",
+      "risk_flags": [
+        "os_builtin_replacement"
+      ]
+    }
+  ]
+}

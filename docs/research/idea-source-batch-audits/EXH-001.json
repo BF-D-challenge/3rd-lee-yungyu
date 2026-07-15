@@ -1,0 +1,44 @@
+{
+  "batch_id": "EXH-001",
+  "status": "passed",
+  "threshold_exclusive": 0.05,
+  "full_fail_reaudit_count": 66,
+  "final_fail_count": 14,
+  "rounds": [
+    {
+      "round": 1,
+      "seed": 20260714,
+      "fail_count": 68,
+      "sample_count": 7,
+      "false_reject_count": 2,
+      "false_reject_rate": 0.285714,
+      "status": "failed_reaudit_required",
+      "corrections": [
+        {
+          "batch_position": 13,
+          "name": "Gauth: AI Study Companion",
+          "from": "Fail",
+          "to": "Merge"
+        },
+        {
+          "batch_position": 84,
+          "name": "Captime",
+          "from": "Fail",
+          "to": "Candidate"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "seed": 2026071402,
+      "fail_count": 14,
+      "sample_count": 7,
+      "sample_policy": "3 app_store, all 2 chrome_web_store, all 2 trustmrr",
+      "sample_positions": [48, 51, 100, 56, 86, 88, 43],
+      "false_reject_count": 0,
+      "false_reject_rate": 0,
+      "status": "passed"
+    }
+  ],
+  "report": "docs/dev/experiments/idea-lab/batches/EXH-001-fail-shadow-audit-2026-07-14.md"
+}

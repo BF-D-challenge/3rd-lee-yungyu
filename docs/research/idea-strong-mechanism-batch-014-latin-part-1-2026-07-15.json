@@ -1,0 +1,192 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-webtoapp-no-code-app-converter-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "회원용 웹서비스를 운영하는 커뮤니티 매니저가 모바일 웹 완성 직후 공개 URL 하나를 입력하면 자사 도메인 안에서만 열리는 Android 앱으로 처리되어 설치 가능한 debug APK 한 개를 받으므로 문제·순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-webtoapp-no-code-app-converter-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "회원용 웹서비스를 운영하는 커뮤니티 매니저가 홈 화면 앱을 요구받은 직후 공개 URL 하나를 입력하면 favicon을 앱 아이콘으로 적용한 뒤 설치 가능한 debug APK 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-webtoapp-no-code-app-converter-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "회원용 웹서비스를 운영하는 커뮤니티 매니저가 테스트 단말에 보여주기 직전 공개 URL 하나를 입력하면 웹 탐색처럼 동작하는 뒤로가기가 적용된 설치용 debug APK 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-scrapestudio-co-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "레퍼런스 화면을 구현하는 프론트엔드 개발자가 컴포넌트 확정 직후 URL#selector 하나를 입력하면 인라인 스타일이 HTML과 CSS로 분리된 코드 파일 한 개를 받아 바로 구현을 시작한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-scrapestudio-co-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "레퍼런스 화면을 구현하는 프론트엔드 개발자가 같은 모양을 손으로 만들기 직전 URL#selector 하나를 입력하면 지정 컴포넌트가 React JSX로 변환된 코드 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-scrapestudio-co-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "레퍼런스 화면을 구현하는 프론트엔드 개발자가 구현 코드를 팀에 넘기기 전 URL#selector 하나를 입력하면 지정 컴포넌트의 스타일이 Tailwind class로 변환된 코드 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-scrapestudio-co-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 사이트를 제작하는 퍼블리셔가 컴포넌트 확정 직후 URL#selector 하나를 입력하면 지정 요소의 구조가 React JSX로 변환된 JSX 코드 파일 한 개를 받아 구현을 시작한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-scrapestudio-co-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 사이트를 제작하는 퍼블리셔가 같은 모양을 손으로 만들기 직전 URL#selector 하나를 입력하면 지정 컴포넌트의 스타일이 Tailwind class로 변환된 컴포넌트 코드 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-scrapestudio-co-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 사이트를 제작하는 퍼블리셔가 구현 코드 구조를 팀에 넘기기 전 URL#selector 하나를 입력하면 인라인 스타일이 분리된 HTML/CSS 코드 파일 한 개를 받아 공유한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-scrapestudio-co-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디자인 시스템을 정리하는 UI 엔지니어가 컴포넌트 확정 직후 URL#selector 하나를 입력하면 지정 요소의 스타일이 Tailwind class로 변환된 코드 파일 한 개를 받아 자산화한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-scrapestudio-co-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디자인 시스템을 정리하는 UI 엔지니어가 같은 모양을 손으로 만들기 직전 URL#selector 하나를 입력하면 인라인 스타일이 HTML과 CSS로 분리된 코드 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-scrapestudio-co-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "디자인 시스템을 정리하는 UI 엔지니어가 구현 코드 구조를 팀에 넘기기 전 URL#selector 하나를 입력하면 지정 컴포넌트가 React JSX로 변환된 JSX 코드 파일 한 개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-contextblur-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 화면을 공유하는 CS 리드가 화면공유 직전 공개 웹페이지 URL 하나를 입력하면 이메일·전화번호 후보가 자동 블러 처리된 전체 페이지 PNG 한 장을 받지만, 자동 탐지 누락 시 개인정보가 노출될 수 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-contextblur-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 화면을 공유하는 CS 리드가 녹화 미리보기에서 민감정보를 발견한 직후 공개 URL 하나를 입력하면 금액·계좌형 숫자가 블러 처리된 전체 페이지 PNG 한 장을 받지만, payer_detail의 이메일·전화번호 우려와 twist의 대상이 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-contextblur-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 화면을 공유하는 CS 리드가 외부 발표용 화면 확정 전에 공개 URL 하나를 입력하면 사람 이름 후보가 자동 블러 처리된 전체 페이지 PNG 한 장을 받지만, payer_detail의 이메일·전화번호 우려와 twist의 대상이 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "safety_or_regulation_risk"
+      ]
+    }
+  ]
+}

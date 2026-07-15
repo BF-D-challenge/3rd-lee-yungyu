@@ -1,0 +1,16 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1441536768-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "재료·양·조리 설정을 한 번 입력하면 수비드 온도와 타이머를 계산해 완료·과조리 경고를 즉시 제공하므로 조리 직전의 구체적 필요와 단일 세로 조각이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

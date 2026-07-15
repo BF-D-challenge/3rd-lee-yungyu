@@ -1,0 +1,116 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-880510678-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "산악 가이드가 참가자에게 GPX 파일 하나를 입력하면 좌표와 웨이포인트를 한 번 파싱해 경로·웨이포인트 지도 한 개를 보여주므로, 발송 전 코스 검수라는 순간과 한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-880510678-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "산악 가이드가 GPX 파일 하나를 입력하면 좌표와 고도를 한 번 파싱해 거리별 고도 프로필 한 개를 보여주므로, 위험한 고도 구간을 확인하는 순간과 결과가 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-880510678-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "산악 가이드가 답사 후 GPX 파일 하나의 경로와 고도를 한 번 계산해 총거리·상승고도 요약 보고서 한 개를 즉시 확인하므로, 기록 검수 순간의 안내 자료 준비에 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-880510678-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자전거 행사 운영자가 참가자 발송 전 GPX 파일 하나를 입력하면 좌표와 고도를 한 번 파싱해 거리별 고도 프로필 한 개를 보여주므로, 코스의 거리와 오르막을 검수하는 순간에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-880510678-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "자전거 행사 운영자가 GPX 파일 하나를 입력해 경로와 고도를 한 번 계산하는 것은 구체적이지만, 고도 위험 구간을 확인하는 순간에 총거리·상승고도 요약 보고서만 결과로 주어져 필요한 거리별 흐름과 한 끗 변화가 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-880510678-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자전거 행사 운영자가 답사 후 GPX 파일 하나를 입력하면 좌표와 웨이포인트를 한 번 파싱해 경로·웨이포인트 지도 한 개를 보여주므로, 계획 코스와 기록을 검수하는 순간에 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-880510678-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "트레일 러닝 코치가 발송 전 GPX 파일 하나를 입력하면 경로와 고도를 한 번 계산해 총거리·상승고도 요약 보고서 한 개를 보여주므로, 선수에게 코스 수치를 설명하기 전 검수하는 순간과 결과가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-880510678-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "트레일 러닝 코치가 위험한 고도 구간을 확인하려고 GPX 파일 하나를 입력해 좌표와 웨이포인트를 한 번 파싱하지만, 경로·웨이포인트 지도 한 개만으로는 필요한 거리별 고도 흐름을 제공하지 못한다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-880510678-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "트레일 러닝 코치가 답사 후 GPX 파일 하나를 입력하면 좌표와 고도를 한 번 파싱해 거리별 고도 프로필 한 개를 보여주므로, 기록 검수 순간에 고도 흐름을 확인하려는 목적과 일치한다.",
+      "risk_flags": []
+    }
+  ]
+}

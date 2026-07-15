@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-videosubtitleone-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘영상 대사를 읽기 쉬운 기본 자막으로 변환’은 숏폼 게시 직전 영상 제작자가 영상 파일 하나를 입력해 모든 대사에 기본 자막 스타일을 한 번 적용하고 자막이 입혀진 MP4 하나를 받는 문제와 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-videosubtitleone-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘영상 대사 진행이 보이는 노래방 자막’은 온라인 강사가 납품 직전 영상 파일 하나에 자막을 적용해 MP4 하나를 받는 흐름은 보이지만, 원본의 자막 텍스트·배경·폰트 적용을 넘어 발화 위치가 움직이는 노래방형 진행 효과를 추가해 메커니즘이 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-videosubtitleone-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘밝은 영상에 고대비 배경 자막 입히기’는 SaaS 마케팅 담당자가 고객 공유 직전 영상 파일 하나를 입력해 자막에 반투명 검정 배경과 흰 글자를 한 번 적용하고 고대비 자막 MP4 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

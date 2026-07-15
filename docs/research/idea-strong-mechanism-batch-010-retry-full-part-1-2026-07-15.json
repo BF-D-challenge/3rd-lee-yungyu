@@ -1,0 +1,328 @@
+{
+  "results": [
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라이딩 코스를 짜는 자전거 동호회 운영자가 확정 경로를 기기에 넣기 직전, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 경유지를 보존한 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라이딩 코스를 짜는 자전거 동호회 운영자가 확정 경로를 기기에 넣기 직전, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 구간별 트랙 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라이딩 코스를 짜는 자전거 동호회 운영자가 확정 경로를 기기에 넣기 직전, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 회차점 이름이 포함된 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라이딩 코스를 짜는 자전거 동호회 운영자가 경로의 구간과 회차점을 함께 공유할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 경유지를 보존한 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라이딩 코스를 짜는 자전거 동호회 운영자가 경로의 구간과 회차점을 함께 공유할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 구간별 트랙 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라이딩 코스를 짜는 자전거 동호회 운영자가 경로의 구간과 회차점을 함께 공유할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 회차점 이름이 포함된 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라이딩 코스를 짜는 자전거 동호회 운영자가 출발 전에 경로 파일을 최종 확인할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 경유지를 보존한 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라이딩 코스를 짜는 자전거 동호회 운영자가 출발 전에 경로 파일을 최종 확인할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 구간별 트랙 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라이딩 코스를 짜는 자전거 동호회 운영자가 출발 전에 경로 파일을 최종 확인할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 회차점 이름이 포함된 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 투어를 준비하는 오토바이 투어 가이드가 확정 경로를 기기에 넣기 직전, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 경유지를 보존한 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 투어를 준비하는 오토바이 투어 가이드가 확정 경로를 기기에 넣기 직전, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 구간별 트랙 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 투어를 준비하는 오토바이 투어 가이드가 확정 경로를 기기에 넣기 직전, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 회차점 이름이 포함된 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 투어를 준비하는 오토바이 투어 가이드가 경로의 구간과 회차점을 함께 공유할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 경유지를 보존한 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 투어를 준비하는 오토바이 투어 가이드가 경로의 구간과 회차점을 함께 공유할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 구간별 트랙 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 투어를 준비하는 오토바이 투어 가이드가 경로의 구간과 회차점을 함께 공유할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 회차점 이름이 포함된 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 투어를 준비하는 오토바이 투어 가이드가 출발 전에 경로 파일을 최종 확인할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 경유지를 보존한 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 투어를 준비하는 오토바이 투어 가이드가 출발 전에 경로 파일을 최종 확인할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 구간별 트랙 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "고객 투어를 준비하는 오토바이 투어 가이드가 출발 전에 경로 파일을 최종 확인할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 회차점 이름이 포함된 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "장거리 라이딩 영상을 만드는 콘텐츠 제작자가 확정 경로를 기기에 넣기 직전, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 경유지를 보존한 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "장거리 라이딩 영상을 만드는 콘텐츠 제작자가 확정 경로를 기기에 넣기 직전, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 구간별 트랙 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "장거리 라이딩 영상을 만드는 콘텐츠 제작자가 확정 경로를 기기에 넣기 직전, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 회차점 이름이 포함된 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "장거리 라이딩 영상을 만드는 콘텐츠 제작자가 경로의 구간과 회차점을 함께 공유할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 경유지를 보존한 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "장거리 라이딩 영상을 만드는 콘텐츠 제작자가 경로의 구간과 회차점을 함께 공유할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 구간별 트랙 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "장거리 라이딩 영상을 만드는 콘텐츠 제작자가 경로의 구간과 회차점을 함께 공유할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 회차점 이름이 포함된 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "장거리 라이딩 영상을 만드는 콘텐츠 제작자가 출발 전에 경로 파일을 최종 확인할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 경유지를 보존한 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "장거리 라이딩 영상을 만드는 콘텐츠 제작자가 출발 전에 경로 파일을 최종 확인할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 구간별 트랙 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "장거리 라이딩 영상을 만드는 콘텐츠 제작자가 출발 전에 경로 파일을 최종 확인할 때, 공개 Google Maps 경로 URL 1개를 한 번 편집·최적화해 회차점 이름이 포함된 GPX 파일 1개를 받으므로 제목과 순간·변화가 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

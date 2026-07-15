@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-kejbdjndbnbjgmefkgdddjlbokphdefk-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 누락 태그 진단 보고서’는 퍼포먼스 마케터가 광고 캠페인 시작 전 공개 웹페이지 URL 1개를 점검해 누락된 태그만 골라 HTML 보고서 1개로 즉시 확인하게 한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-kejbdjndbnbjgmefkgdddjlbokphdefk-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘웹페이지의 설치 태그 ID 목록 보고서’는 프론트엔드 개발자가 추적 코드 배포 직후 공개 웹페이지 URL 1개를 점검해 태그 ID와 위치를 HTML 보고서 1개로 보지만, 누락·중복 오류를 찾으려는 순간과 ‘ID 목록’ 한 끗 변화가 충분히 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-kejbdjndbnbjgmefkgdddjlbokphdefk-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 중복 태그 발화 보고서’는 분석 대행자가 전환 수치 누락 원인을 찾을 때 공개 웹페이지 URL 1개를 한 번 점검해 중복 발화 태그만 표시한 HTML 보고서 1개를 즉시 만든다.",
+      "risk_flags": []
+    }
+  ]
+}

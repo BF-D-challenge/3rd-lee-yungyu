@@ -1,0 +1,240 @@
+{
+  "results": [
+    {
+      "id": "next-latin-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 LeetCode 프로필 URL 하나를 입력해 난이도별 풀이를 분석하고 분포를 크게 보여주는 PNG 카드 하나를 만들어 지원서 첨부 직전의 개발자 취업 준비생에게 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 LeetCode 프로필 URL 하나로 최근 풀이 기록을 분석해 꾸준함 카드 하나를 만들지만 개발자 취업 준비생의 지원 서류 직전 순간과 수강생 주간 피드백 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 LeetCode 프로필 URL 하나로 주제별 풀이를 분석해 강약점 색상 카드 하나를 만들지만 개발자 취업 준비생의 지원 서류 직전과 상담 화면 직전 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 LeetCode 프로필 URL 하나로 최근 풀이를 분석해 꾸준함 카드 하나를 만들지만 코딩 테스트 강사의 수강생 피드백 목적과 개발자 지원 서류 첨부 직전 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 LeetCode 프로필 URL 하나를 입력해 주제별 풀이를 분석하고 강약점을 색으로 나눈 카드 하나를 만들어 강사의 주간 피드백 순간에 바로 쓸 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 LeetCode 프로필 URL 하나를 입력해 풀이 데이터를 난이도별로 분석하고 분포 PNG 카드 하나를 만들어 코치의 상담 직전 요약 요구에 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 LeetCode 프로필 URL 하나로 주제별 풀이를 분석해 강약점 카드 하나를 만들지만 부트캠프 코치의 지원 서류 직전 순간은 상담용 강약점 확인 목적과 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 LeetCode 프로필 URL 하나로 풀이 데이터를 분석해 난이도 분포 카드 하나를 만들지만 코치의 주간 피드백에서 필요한 부족한 주제를 보여주지 않아 순간과 한 끗 변화가 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-caipeabgogcpmihgldebnaalinnaaeda-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 LeetCode 프로필 URL 하나를 입력해 최근 풀이 기록을 분석하고 꾸준함 한 줄의 PNG 카드 하나를 만들어 코치의 상담 직전 확인 순간에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 Notion 페이지 URL 하나를 입력해 표 페이지 나눔을 보존하도록 PDF로 변환하고 파일 하나를 제공해 프리랜서의 고객 납품 직전 요구를 해결한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 Notion 페이지 URL 하나를 입력해 이미지 비율을 보존한 PDF 파일 하나를 만들지만 프리랜서의 고객 납품 목적과 수업 자료를 인쇄소에 넘기는 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 Notion 페이지 URL 하나를 입력해 다크 페이지 대비를 보존한 PDF 하나를 만들지만 고객 납품 프리랜서의 순간과 외부 협력사 매뉴얼 전달 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 Notion 페이지 URL 하나로 이미지 비율이 보존된 PDF 하나를 만들지만 수업 자료를 인쇄해 배포하는 교사의 결제자와 고객 최종 문서 발송 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 Notion 페이지 URL 하나를 입력해 다크 페이지 인쇄 대비를 보존한 PDF 하나를 만들어 교사의 인쇄소 전달 직전 문제와 자연스럽게 연결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 Notion 페이지 URL 하나로 표 페이지 나눔을 보존한 PDF 하나를 만들지만 수업 자료를 인쇄하는 교사의 순간과 외부 협력사 운영 매뉴얼 전달 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 Notion 페이지 URL 하나를 입력해 다크 페이지 대비를 보존한 PDF 하나를 만들어 팀 리더가 고객에게 최종 문서를 발송하기 직전 바로 사용할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 Notion 페이지 URL 하나로 표 페이지 나눔이 보존된 PDF 하나를 만들지만 운영 매뉴얼을 보내는 팀 리더의 순간과 수업 자료를 인쇄소에 넘기는 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공개 Notion 페이지 URL 하나를 입력해 이미지 원본 비율을 보존한 PDF 파일 하나를 만들어 팀 리더의 외부 협력사 매뉴얼 전달 직전 요구에 적합하다.",
+      "risk_flags": []
+    }
+  ]
+}

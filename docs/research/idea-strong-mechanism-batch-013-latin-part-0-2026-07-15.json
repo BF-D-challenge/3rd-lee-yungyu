@@ -1,0 +1,198 @@
+{
+  "results": [
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GitHub 예제 폴더 구조 보존 ZIP 받기’는 개발자가 예제 실행 직전에 공개 GitHub 하위 폴더 URL 하나를 입력하면 한 번 압축해 구조를 보존한 ZIP 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GitHub 폴더와 포함 파일 목록 ZIP’은 공개 하위 폴더 URL 하나를 압축해 manifest 포함 ZIP 하나를 주지만, payer인 실습 개발자와 학생 전달 직전 moment가 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Git 메타데이터 뺀 GitHub 코드 ZIP’은 개발자가 검토 직전 공개 하위 폴더 URL 하나를 처리해 메타데이터 없는 코드 ZIP 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GitHub 폴더와 포함 파일 목록 ZIP’은 강사가 공개 하위 폴더 URL 하나를 압축해 manifest ZIP 하나를 만들지만, 예제 실행 직전 moment는 수업 자료 배포 payer와 덜 자연스럽다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Git 메타데이터 뺀 GitHub 코드 ZIP’은 강사가 자료 전달 직전 공개 하위 폴더 URL 하나를 압축해 구조가 정리된 코드 ZIP 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GitHub 예제 폴더 구조 보존 ZIP 받기’는 강사가 공개 하위 폴더 URL 하나로 구조 보존 ZIP 하나를 만들지만, 동료 코드 검토 직전 moment가 수업 샘플 배포 payer와 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Git 메타데이터 뺀 GitHub 코드 ZIP’은 기술 PM이 공개 하위 폴더 URL 하나를 처리해 코드 ZIP 하나를 받지만, 예제 실행 직전이라는 moment가 검토 범위 공유 payer와 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GitHub 예제 폴더 구조 보존 ZIP 받기’는 기술 PM이 공개 하위 폴더 URL 하나로 구조 보존 ZIP 하나를 만들지만, 학생에게 수업 자료를 전달하는 moment와 payer가 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GitHub 폴더와 포함 파일 목록 ZIP’은 기술 PM이 검토 직전 공개 하위 폴더 URL 하나를 압축해 manifest 포함 ZIP 하나를 받는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-bnjjngeaknajbdcgpfkgnonkmififhfo-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹 폼 입력 타입별 더미값 채우기’는 QA 엔지니어가 제출 직전 공개 테스트 폼 URL 하나를 처리해 타입별 가짜값이 채워진 현재 폼 화면 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-bnjjngeaknajbdcgpfkgnonkmififhfo-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘수정 전후 같은 값으로 폼 재현하기’는 공개 테스트 폼 URL 하나를 채워 재현값 화면 하나를 주지만, smallest_build에 seed 입력이나 동일 seed를 정하는 방식이 없어 재현 조건이 불명확하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-bnjjngeaknajbdcgpfkgnonkmififhfo-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘한국 주소·전화 형식으로 테스트 폼 채우기’는 QA 엔지니어가 고객 시연 직전 공개 폼 URL 하나를 처리해 한국식 더미값 화면 하나를 받지만, 시연 moment가 회귀 검증 payer와 다소 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-bnjjngeaknajbdcgpfkgnonkmififhfo-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘수정 전후 같은 값으로 폼 재현하기’는 프론트엔드 개발자가 제출 직전 공개 폼 URL 하나를 채워 같은 seed의 재현값 화면 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-bnjjngeaknajbdcgpfkgnonkmififhfo-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘한국 주소·전화 형식으로 테스트 폼 채우기’는 프론트엔드 개발자가 회귀 검사 직후 공개 폼 URL 하나를 처리해 한국식 주소·전화 더미값 화면 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-bnjjngeaknajbdcgpfkgnonkmififhfo-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹 폼 입력 타입별 더미값 채우기’는 프론트엔드 개발자가 시연 직전 공개 테스트 폼 URL 하나를 처리해 타입에 맞는 가짜값이 채워진 폼 화면 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "batch_id": "EXH-018",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 45,
+    "Candidate": 50,
+    "Reserve": 2,
+    "Merge": 3
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 45,
+      "sample": [
+        "trustmrr:heyrudy",
+        "app_store:518684914",
+        "trustmrr:anonymous-startup-19",
+        "app_store:1591214233",
+        "app_store:906388170"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

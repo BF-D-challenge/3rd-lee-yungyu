@@ -1,0 +1,88 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1313357241-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘노치에 안 가리는 최애 사진 배경’은 사진 파일 1개를 입력해 노치와 자연스럽게 이어지도록 한 번 배치하고 저장 가능한 배경화면 이미지 1개를 만드는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1313357241-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘아일랜드에 안 잘리는 제품 로고 배경’은 이미지 1개를 배치해 배경 1개를 만드는 흐름은 명확하지만, 개인 사진 사용자와 제품 로고 결과의 대상이 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1313357241-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘노치에 안 잘리는 반려동물 배경’은 사진 파일 1개에서 배경 이미지 1개를 만드는 처리는 구체적이지만, 브랜드 이미지를 쓰는 사업자와 반려동물 결과가 일치하지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6773472779-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘피부톤 살린 납품 영상 색보정’은 영상 파일 1개에 피부톤 우선 LUT를 한 번 적용해 납품용 색보정 클립 1개를 즉시 보여주는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6773472779-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘여행 분위기 살린 따뜻한 영상’은 영상 파일 1개에 따뜻한 LUT를 적용해 클립 1개를 만드는 흐름은 명확하지만, 상품 릴스를 만드는 온라인 셀러와 여행 장면 결과가 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6773472779-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘상품 색이 또렷한 릴스 영상’은 영상 파일 1개에 제품 색 강조 LUT를 적용해 클립 1개를 만드는 결과는 구체적이지만, 여행 브이로그 크리에이터와 상품 영상 결과가 일치하지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    }
+  ]
+}

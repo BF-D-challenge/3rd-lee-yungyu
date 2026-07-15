@@ -1,0 +1,406 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-983851989-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "도형의 수치 하나를 입력해 길이·각도·면적을 계산하고 값을 보여주지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-983851989-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "도형의 변·각도 값을 입력해 관련 계산값을 즉시 검산할 수 있지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-983851989-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "도형 값을 입력해 길이·각도·면적을 계산하는 원본 처리로는 원뿔형 구조의 부피를 확인할 수 없어 입력·처리·결과가 어긋난다.",
+      "risk_flags": [
+        "mechanism_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-365729342-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라켓 줄을 두드린 소리를 한 번 녹음해 음파를 분석하고 스트링 장력 수치와 교체 판단을 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-365729342-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라켓 줄 소리를 녹음해 장력을 계산하고 라켓별 측정값을 남기지만 히스토리 저장까지 포함해 단일 결과가 다소 넓다.",
+      "risk_flags": [
+        "scope_broad"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-365729342-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "라켓 줄 소리를 녹음해 장력을 계산하려면 비교할 과거 기록을 먼저 축적해야 하므로 문제 전에 기록이 필요한 구조다.",
+      "risk_flags": [
+        "pre_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6475700817-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "샘플 사진을 카메라로 입력해 AR 선을 겹쳐 보여주고 한복 윤곽을 따라 그린 결과를 즉시 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6475700817-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라에 주변 사물을 비추면 AR 선을 겹쳐 보여주어 카페 컵과 소품의 윤곽을 바로 따라 그릴 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6475700817-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라에 컵과 소품을 비추고 AR 선을 겹쳐 초보자에게 단순화된 스케치 결과를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-284947174-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영수증 사진 또는 지출을 입력해 기록·예산·보고서를 만들지만 한 입력에 여러 처리와 결과가 묶여 범위가 넓다.",
+      "risk_flags": [
+        "scope_broad"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-284947174-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카드 지출을 입력해 기록하고 예산 잔액을 보여주지만 보고서까지 포함되어 단일 처리·결과가 명확하지 않다.",
+      "risk_flags": [
+        "scope_broad"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-284947174-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교통비 지출을 입력해 기록·예산·PDF 보고서를 만들 수 있지만 단일 입력에 결과가 여러 개라 MVP 초점이 흐리다.",
+      "risk_flags": [
+        "scope_broad"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1502216965-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "이미지나 GIF를 입력해 시각 참고 보드로 배치하고 웹툰 배경 참고 결과를 보여주지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1502216965-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여러 이미지와 GIF를 입력해 한 화면의 참고 보드로 구성하지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1502216965-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "이미지를 참고 보드로 구성하는 원본 처리와 게임 원화가의 입력·결과가 맞지 않고 여행 스케치로 목적도 바뀐다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6787101016-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오디오 책 파일을 입력해 하나의 M4B로 합치고 음량을 정규화하지만 제목만으로 변환 문제와 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6787101016-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여러 오디오 책 파일을 입력해 한 파일로 합쳐 바로 들을 수 있지만 제목만으로 변환 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6787101016-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "장별 오디오 파일을 입력해 M4B로 합치고 음량을 균일화하지만 제목만으로 문제와 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-337350026-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "터치와 박자 조작은 허용된 텍스트·URL·파일·사진·단일 권한 입력에 해당하지 않아 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "input_type_invalid"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-337350026-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "터치와 박자 조작은 허용된 입력 유형이 아니므로 샘플 소리를 재생하는 카드라도 오프라인 입력 규칙을 통과하지 못한다.",
+      "risk_flags": [
+        "input_type_invalid"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-337350026-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "터치와 박자 조작은 허용된 입력 유형이 아니므로 타블라·탄푸라 소리를 재생하는 카드라도 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "input_type_invalid"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6762279908-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "하루 일정 텍스트를 한 번 입력해 시간대별로 배치하고 오늘의 계획표 하나를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6762279908-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "일정 텍스트를 계획표로 배치하는 원본 처리에 위젯 제공이 추가되어 카드 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "unsupported_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6762279908-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "일정 텍스트를 시간대에 배치하는 원본 처리만으로는 10분 단위 색상 구분을 보장하지 않아 새 기능을 요구한다.",
+      "risk_flags": [
+        "unsupported_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6778368917-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영화 제목 하나를 입력해 관련 작품·인물·장르 정보를 연결하고 상세 정보와 시청 목록을 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6778368917-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영화 제목 하나를 입력해 관련 작품과 장르를 연결하고 주말 후보 목록을 결과로 정리한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6778368917-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "작품 제목 하나를 입력해 상세 정보와 관련 정보를 연결하고 개인 시청 목록에 저장한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-474274646-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "레시피 URL 하나를 입력해 조리 정보를 구조화하고 읽기 쉬운 저장 레시피를 만들지만 제목만으로 변환 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-474274646-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "레시피 URL 하나를 입력해 내용을 정렬하고 광고에 방해받지 않는 읽기 쉬운 레시피 카드로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-474274646-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 URL을 구조화하는 원본 처리에는 조리 단계 정리만 있고 타이머 기능이 없어 카드 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "unsupported_feature"
+      ]
+    }
+  ]
+}

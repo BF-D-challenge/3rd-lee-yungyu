@@ -1,0 +1,20 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1441536768-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "재료·양·조리 설정을 입력해 수비드 온도와 타이머를 계산하고 완료 경고를 주는 흐름은 구체적이지만, 제목만으로 놓침 문제와 결과가 명확하지 않고 일반 타이머와 범용 AI로도 대체 가능하다.",
+      "risk_flags": [
+        "title_unclear",
+        "os_timer_substitute",
+        "general_ai_substitute"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-framera-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유튜브 편집자가 게시 직전 썸네일이 필요할 때 영상 파일 하나에서 지정 시점의 프레임을 한 번 추출해 원본 해상도 PNG 한 장을 저장하므로 제목·순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-framera-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유튜브 편집자가 클라이언트 검수용 장면을 보내야 할 때 영상 파일 하나에서 지정 시점의 프레임을 한 번 추출해 고화질 JPG 한 장을 저장하므로 제목·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-framera-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "유튜브 편집자가 인용 이미지를 급히 뽑을 때 영상 파일 하나에서 지정 시점의 프레임을 한 번 추출해 타임코드가 포함된 JPG 한 장을 저장하므로 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-framera-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "숏폼 콘텐츠 제작자가 게시 직전 썸네일이 필요할 때 영상 파일 하나에서 지정 시점의 프레임을 한 번 추출해 고화질 JPG 한 장을 저장하므로 제목·순간·변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-framera-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "숏폼 콘텐츠 제작자가 클라이언트 검수용 장면을 보낼 때 영상 파일 하나에서 지정 시점의 프레임을 한 번 추출해 타임코드가 포함된 JPG 한 장을 저장하므로 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-framera-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "숏폼 콘텐츠 제작자가 인용 이미지를 급히 뽑을 때 영상 파일 하나에서 지정 시점의 프레임을 한 번 추출해 원본 해상도 PNG 한 장을 저장하므로 제목·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-framera-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 제작사 납품 담당자가 게시 직전 썸네일이 필요할 때 영상 파일 하나에서 지정 시점의 프레임을 한 번 추출해 타임코드가 포함된 JPG 한 장을 저장하므로 납품 흐름과 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-framera-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 제작사 납품 담당자가 클라이언트 검수용 장면을 보낼 때 영상 파일 하나에서 지정 시점의 프레임을 한 번 추출해 원본 해상도 PNG 한 장을 저장하므로 제목·순간·변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-framera-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영상 제작사 납품 담당자가 인용 이미지를 급히 뽑을 때 영상 파일 하나에서 지정 시점의 프레임을 한 번 추출해 고화질 JPG 한 장을 저장하므로 제목과 카드 순간이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "batch_id": "EXH-022",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 43,
+    "Fail": 51,
+    "Merge": 5,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 65,
+      "sample": [
+        "chrome_web_store:imbapipknlceciahfiiaaoeipmnlflpf",
+        "app_store:6767364919",
+        "trustmrr:1devtool",
+        "trustmrr:sessionwatcher",
+        "trustmrr:frenchico",
+        "app_store:1431720653",
+        "trustmrr:werewolf-undercover"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:imbapipknlceciahfiiaaoeipmnlflpf",
+          "decision": "Candidate",
+          "reason": "브라우저 탭 내용과 기록 → 검색·정리·복원 → 검색 결과 탭 목록과 복원된 탭을 2일 조각으로 만들 수 있다."
+        },
+        {
+          "key": "trustmrr:sessionwatcher",
+          "decision": "Candidate",
+          "reason": "Claude Code·Codex 사용량 → 토큰 집계 → 메뉴 막대의 현재 사용량 표시를 2일 세로 조각으로 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 2,
+      "fail_count": 58,
+      "sample": [
+        "app_store:1585297308",
+        "trustmrr:europass-ai",
+        "chrome_web_store:oofgbpoabipfcfjapgnbbjjaenockbdp",
+        "app_store:566347057",
+        "app_store:687287242",
+        "app_store:6738304985"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:oofgbpoabipfcfjapgnbbjjaenockbdp",
+          "decision": "Candidate",
+          "reason": "차단된 웹사이트 하나를 입력 대상으로 삼아 VPN 연결을 처리하고, 해당 사이트 접속이라는 즉시 결과를 반나절~2일 세로 조각으로 만들 수 있다."
+        },
+        {
+          "key": "app_store:6738304985",
+          "decision": "Candidate",
+          "reason": "카메라로 촬영한 텍스트 하나를 받아 AI 번역을 처리하고 번역된 텍스트를 즉시 제공하는 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.3333333333333333
+    },
+    {
+      "round": 3,
+      "fail_count": 51,
+      "sample": [
+        "chrome_web_store:ehghldfhokocddhldnionfhmegfljlcm",
+        "chrome_web_store:jmdodfdgfgjfeadijicnhlmbhhinakoh",
+        "trustmrr:evrika-study",
+        "app_store:335393788",
+        "chrome_web_store:nbnjbddbbcnnlceoglkfoolmknejieoi",
+        "app_store:1463753771"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

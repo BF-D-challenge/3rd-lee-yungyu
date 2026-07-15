@@ -24,7 +24,7 @@ export default defineConfig({
     command:
       "env NEXT_PUBLIC_GOOGLE_LOGIN=0 NEXT_PUBLIC_SUPABASE_URL= NEXT_PUBLIC_SUPABASE_ANON_KEY= SUPABASE_URL= SUPABASE_PUBLISHABLE_KEY= SUPABASE_ANON_KEY= npm run dev -- --port 3100",
     url: baseURL,
-    reuseExistingServer: false,
+    reuseExistingServer: process.env.PLAYWRIGHT_REUSE_EXISTING_SERVER === "1",
     timeout: 120_000,
     stdout: "pipe",
     stderr: "pipe",

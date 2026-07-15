@@ -1,0 +1,67 @@
+{
+  "batch_id": "EXH-058",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 62,
+    "Candidate": 31,
+    "Merge": 5,
+    "Reserve": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 72,
+      "sample": [
+        "chrome_web_store:bfegaehidkkcfaikpaijcdahnpikhobf",
+        "chrome_web_store:pocmbgcdpelogndeiihhflkbcigjojic",
+        "app_store:972002786",
+        "trustmrr:dopaai",
+        "trustmrr:shelfscenes",
+        "app_store:1291813218",
+        "app_store:6740374480",
+        "app_store:6739755879"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:dopaai",
+          "decision": "Merge",
+          "reason": "콘텐츠 입력 → 장면·음성·캐릭터 기반 자동 제작 → 숏폼 결과가 story-short-video와 실질적으로 같다."
+        },
+        {
+          "key": "trustmrr:shelfscenes",
+          "decision": "Candidate",
+          "reason": "엘프 사진과 장면 입력 → AI 영상 생성 → 말하는 캐릭터 영상이라는 2일 세로 조각이 분명하다."
+        },
+        {
+          "key": "app_store:1291813218",
+          "decision": "Candidate",
+          "reason": "원래 가격과 할인율 입력 → 할인 계산 → 할인 판매가 확인이라는 단일 계산 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.375
+    },
+    {
+      "round": 2,
+      "fail_count": 62,
+      "sample": [
+        "chrome_web_store:njboofjpggbholgpjkdllgnancfangoo",
+        "trustmrr:tools-circle",
+        "app_store:972002786",
+        "app_store:1450064785",
+        "chrome_web_store:dmjbglakodlaodocplnbmhpdhngllhoe",
+        "trustmrr:opsot",
+        "app_store:1660522326"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

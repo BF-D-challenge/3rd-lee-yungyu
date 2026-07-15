@@ -1,0 +1,1145 @@
+{
+  "mode": "source-fidelity",
+  "model": {
+    "provider": "local",
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimension": 384,
+    "normalization": "L2",
+    "similarity": "cosine via normalized dot product"
+  },
+  "scope": {
+    "combinations": 54,
+    "scenarios": 2,
+    "singleTwist": 54,
+    "doubleTwist": 0
+  },
+  "policy": {
+    "minimum": 0.8,
+    "targetMaximum": 0.99,
+    "aboveTargetMaximum": "allowed because an overseas product mechanic may be copied exactly",
+    "portfolioDuplicates": "allowed and not evaluated in this mode"
+  },
+  "summary": {
+    "percentiles": {
+      "50": 0.990351,
+      "75": 0.991201,
+      "90": 0.991201,
+      "95": 0.991201,
+      "99": 0.991201,
+      "99.5": 0.991201,
+      "99.9": 0.991201,
+      "99.95": 0.991201,
+      "99.99": 0.991201,
+      "100": 0.991201
+    },
+    "belowMinimum": 0,
+    "inTargetBand": 27,
+    "exactAllowed": 27,
+    "pass": 54,
+    "passRate": 1.0
+  },
+  "lowest": [
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-3__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-1__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-1__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-2__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-2__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-2__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-3__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-3__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-3__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-1__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-1__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-1__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-1__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-2__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-2__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-3__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-3__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-3__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-1__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-1__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-1__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-2__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-2__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-2__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-3__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-2__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-3__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-1__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-3__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-1__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-1__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-2__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-2__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-2__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-3__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-3__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-3__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-1__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-1__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-1__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-2__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-2__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-2__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-3__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-3__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-3__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-1__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-1__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-1__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-2__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    }
+  ],
+  "highest": [
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-3__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-3__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-2__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-2__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-2__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-1__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-1__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-1__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-3__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-3__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-3__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-2__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-2__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-2__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-1__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-1__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-2__moment-mermaid-export-1__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "설계 변경을 검토하는 개발팀 테크 리드",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-3__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-3__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-3__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-2__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-2__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-2__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "기술 문서에 흐름도를 삽입하기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-1__twist-mermaid-export-3",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 편집 가능한 SVG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-1__twist-mermaid-export-2",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 2배 해상도 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-3__moment-mermaid-export-3__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "개발팀의 기술 발표를 준비하는 엔지니어링 매니저",
+      "moment": "발표 슬라이드에 시퀀스 그림을 넣기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.991201,
+      "id": "mermaid-diagram-export__payer-mermaid-export-1__moment-mermaid-export-1__twist-mermaid-export-1",
+      "scenarioId": "mermaid-diagram-export",
+      "sourceName": "mermaidonline.live",
+      "payer": "시스템 설계를 문서로 공유하는 백엔드 개발자",
+      "moment": "PR 설명에 다이어그램을 붙이기 직전",
+      "twistTitles": [
+        "Mermaid 코드의 투명 배경 PNG 다이어그램"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-3__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-2__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-3__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-2__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-2__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-2__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-1__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-1__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-3__moment-sketch-line-art-1__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "손그림 도안을 인쇄 파일로 만드는 굿즈 제작자",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-3__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-3__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-3__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-2__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-2__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-1__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-1__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-1__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-2__moment-sketch-line-art-1__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "아날로그 콘티를 디지털 원고로 옮기는 웹툰 작가",
+      "moment": "손그림 사진을 디지털 채색에 넣기 직전",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-3__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-3__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-3__twist-sketch-line-art-1",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 선을 디지털 레이어로 옮기는 순간",
+      "twistTitles": [
+        "스케치 사진의 종이 그림자 제거 선화"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-2__twist-sketch-line-art-3",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "흰 종이 배경을 투명 선화로 변환"
+      ]
+    },
+    {
+      "similarity": 0.9895,
+      "id": "sketch-line-art__payer-sketch-line-art-1__moment-sketch-line-art-2__twist-sketch-line-art-2",
+      "scenarioId": "sketch-line-art",
+      "sourceName": "Sketch Clean",
+      "payer": "종이 스케치를 디지털 채색하는 독립 일러스트레이터",
+      "moment": "손그림 도안을 인쇄 파일로 넘기기 직전",
+      "twistTitles": [
+        "연필 얼룩 제거 후 투명 선화 PNG"
+      ]
+    }
+  ]
+}

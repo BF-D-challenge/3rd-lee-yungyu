@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "「확장 프로그램 과도한 권한 위치 보고서」는 프리랜서가 배포 승인 직전에 CRX 파일 하나를 올려 권한을 정적으로 스캔하고 과도한 권한 위치가 담긴 HTML 보고서 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "「확장 프로그램 외부 전송 도메인 보고서」는 프리랜서가 배포 승인 직전에 CRX 파일 하나를 올려 내부 코드를 정적으로 스캔하고 외부 전송 도메인 목록이 담긴 HTML 보고서 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "「확장 프로그램 난독화 스크립트 위치표」는 프리랜서가 배포 승인 직전에 CRX 파일 하나를 올려 포함 스크립트를 정적으로 스캔하고 난독화 의심 파일 위치가 담긴 HTML 결과 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "「확장 프로그램 과도한 권한 위치 보고서」는 프리랜서가 보안 점검 보고서 제출 직전에 CRX 파일 하나를 올려 권한을 정적으로 스캔하고 과도한 권한 위치가 담긴 HTML 보고서 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "「확장 프로그램 외부 전송 도메인 보고서」는 프리랜서가 보안 점검 보고서 제출 직전에 CRX 파일 하나를 올려 내부 코드를 정적으로 스캔하고 외부 전송 도메인 목록이 담긴 HTML 보고서 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "「확장 프로그램 난독화 스크립트 위치표」는 프리랜서가 보안 점검 보고서 제출 직전에 CRX 파일 하나를 올려 포함 스크립트를 정적으로 스캔하고 난독화 의심 파일 위치가 담긴 HTML 결과 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "「확장 프로그램 과도한 권한 위치 보고서」는 프리랜서가 고객 컴퓨터에 설치하기 직전에 CRX 파일 하나를 올려 권한을 정적으로 스캔하고 과도한 권한 위치가 담긴 HTML 보고서 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "「확장 프로그램 외부 전송 도메인 보고서」는 프리랜서가 고객 컴퓨터에 설치하기 직전에 CRX 파일 하나를 올려 내부 코드를 정적으로 스캔하고 외부 전송 도메인 목록이 담긴 HTML 보고서 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "「확장 프로그램 난독화 스크립트 위치표」는 프리랜서가 고객 컴퓨터에 설치하기 직전에 CRX 파일 하나를 올려 포함 스크립트를 정적으로 스캔하고 난독화 의심 파일 위치가 담긴 HTML 결과 하나를 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

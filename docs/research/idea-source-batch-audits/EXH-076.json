@@ -1,0 +1,61 @@
+{
+  "batch_id": "EXH-076",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 27,
+    "Fail": 69,
+    "Merge": 4
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 80,
+      "sample": [
+        "app_store:758103884",
+        "trustmrr:https-quickresumemaker-com",
+        "app_store:515191813",
+        "app_store:1147394645",
+        "trustmrr:unbannnable",
+        "chrome_web_store:gphhapmejobijbbhgpjhcjognlahblep",
+        "chrome_web_store:jgjimhmiddinkiohnmlinhgjaejnfafk",
+        "trustmrr:smartbill"
+      ],
+      "rescues": [
+        {
+          "key": "trustmrr:https-quickresumemaker-com",
+          "decision": "Candidate",
+          "reason": "이력서 내용을 입력해 AI 제안과 템플릿을 적용하고 전문 이력서 하나를 만들 수 있다."
+        },
+        {
+          "key": "trustmrr:smartbill",
+          "decision": "Merge",
+          "reason": "작업 항목·가격을 받아 조건과 금액을 계산하고 고객용 견적서를 만드는 시나리오와 실질적으로 같다."
+        }
+      ],
+      "false_reject_rate": 0.25
+    },
+    {
+      "round": 2,
+      "fail_count": 69,
+      "sample": [
+        "app_store:410599593",
+        "app_store:515191813",
+        "trustmrr:draped",
+        "trustmrr:potatie",
+        "app_store:1482277134",
+        "trustmrr:evento",
+        "trustmrr:click-shop-beauty-confidently"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

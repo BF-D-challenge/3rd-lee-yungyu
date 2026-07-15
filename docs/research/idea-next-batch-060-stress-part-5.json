@@ -1,0 +1,412 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-657878530-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한 한 번을 세 단어 주소로 변환해 행사장의 특정 만남 지점 주소 하나를 즉시 보여주므로 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-657878530-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한 한 번을 세 단어 주소로 변환해 도로명주소가 없는 배송 입구의 위치 주소 하나를 제공하므로 사용 순간과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-657878530-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주차 후 현재 위치 권한을 세 단어 주소 하나로 바꿔 지하 주차장 출입구를 다시 찾게 하므로 단일 세로 조각이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-475772902-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기기 방향과 위치라는 복수 권한을 요구해 단일 기기 권한 입력 제한을 벗어나며 별자리 확인 결과도 한 번의 식별보다 넓게 제시된다.",
+      "risk_flags": [
+        "multiple_permissions"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-475772902-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "방향과 위치의 복수 권한이 필요하고 국제우주정거사 위치 안내는 현재 궤도 데이터까지 필요해 단일 권한·단일 처리 조건이 불명확하다.",
+      "risk_flags": [
+        "multiple_permissions",
+        "live_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-475772902-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "방향과 위치의 복수 권한을 요구하며 계절별 별자리 탐색은 현재 방향의 천체 하나를 식별하는 원본 조각보다 범위가 넓다.",
+      "risk_flags": [
+        "multiple_permissions",
+        "scope_creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-949490225-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진과 규격을 받아 크롭·배치해 인쇄 파일을 만드는 흐름은 구체적이지만 사진 한 장 입력과 여러 장 배치 결과의 수량이 문구상 모호하다.",
+      "risk_flags": [
+        "output_count_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-949490225-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진과 원하는 크기를 한 번 입력해 실제 크기로 배치한 인쇄용 파일 하나를 만들므로 소규모 출력 상황과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-949490225-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진과 이름표 규격을 입력해 크롭·배치된 PDF 또는 JPEG 하나를 출력하므로 프린터 사용 직전의 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1113930361-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "연습문제 답변을 시험 기준으로 채점해 점수와 합격 여부를 내는 흐름은 맞지만 공식 핸드북과 답변이라는 복수 입력 및 채점 기준 제공 방식이 불명확하다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "criteria_dependency"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1113930361-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "최근 모의시험 점수를 보여주려면 사용자가 이전 시험을 기록해 두어야 하므로 문제 발생 전에 기록이 필수라는 규칙을 위반한다.",
+      "risk_flags": [
+        "pre_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1113930361-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "틀린 문제만 모아 복습하려면 이전 풀이와 오답 기록이 선행되어야 하므로 사전 기록 필수 조건에 걸린다.",
+      "risk_flags": [
+        "pre_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6736364779-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "팟캐스트 URL을 오프라인 저장하는 결과는 Apple Podcasts 같은 기본·범용 플레이어에서 더 직접적으로 할 수 있어 차별적인 한 끗 변화가 없다.",
+      "risk_flags": [
+        "os_default_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6736364779-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "원본 메커니즘은 URL의 오프라인 재생인데 번역 비교를 추가해 범위를 벗어나고 번역은 범용 AI 한 번으로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "scope_creep",
+        "generic_ai_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6736364779-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "최신 에피소드 수집과 순차 재생은 단일 에피소드 URL 하나의 처리보다 여러 항목·피드 관리가 필요해 입력 1개와 단일 결과 조건을 위반한다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "scope_creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1273954643-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "교재 사진 한 장을 OCR하고 음성으로 변환해 백그라운드 재생 하나를 제공하므로 허용된 사진 입력과 구체적 결과가 맞물린다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1273954643-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "원본 입력은 이미지·스크린샷인데 PDF를 챕터별 재생목록으로 나누는 기능을 추가해 원본 메커니즘과 단일 결과 범위를 벗어난다.",
+      "risk_flags": [
+        "scope_creep",
+        "multiple_outputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1273954643-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영어 문장 스크린샷 하나를 인식해 음성으로 바꾸고 반복 재생하므로 입력·처리·결과가 단순하고 실제 학습 순간에 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1552407475-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "이메일 텍스트를 번역하는 것만으로는 범용 AI나 기존 번역 기능이 더 편리해 별도 카드로 만들 한 끗 차이가 없다.",
+      "risk_flags": [
+        "generic_ai_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1552407475-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "계약서 번역과 대체 표현 비교는 범용 AI 한 번으로 처리할 수 있어 원본 번역 앱의 차별적 세로 조각이 부족하다.",
+      "risk_flags": [
+        "generic_ai_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1552407475-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "메뉴판 사진 번역은 휴대폰 기본 카메라·번역 기능으로 더 편하게 할 수 있어 기존 대안보다 나은 한 끗 변화가 없다.",
+      "risk_flags": [
+        "os_default_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-314600768-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한 한 번으로 최근 지진 데이터를 거리·규모순으로 정렬해 주변 목록과 지도 하나를 보여주므로 재난 확인 순간과 결과가 구체적이다.",
+      "risk_flags": [
+        "external_data_dependency"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-314600768-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "해외 가족 지역을 확인하려면 현재 위치 외에 가족의 별도 위치 입력이 필요해 허용된 단일 권한 입력과 맞지 않는다.",
+      "risk_flags": [
+        "missing_location_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-314600768-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "일본 가족 거주지를 확인하려면 현재 위치 권한만으로는 부족하고 일본 지역을 별도로 입력해야 하므로 원본 입력 계약을 위반한다.",
+      "risk_flags": [
+        "missing_location_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1468880337-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "파일 하나를 입력해 헥스·ASCII와 시그니처를 분석하고 결과 화면 하나를 보여주므로 개발자의 단일 검수 세션으로 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1468880337-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "펌웨어 파일 하나의 헤더와 매직 넘버를 헥스 분석 결과로 보여주므로 입력·처리·결과가 명확하고 MVP 범위도 작다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1468880337-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "바이너리 파일 하나에서 특정 헥사 패턴을 검색해 위치를 표시하므로 단일 파일 입력과 단일 분석 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1079178243-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "멤버십 바코드는 사용 전에 등록·기록해야 하고 Apple Wallet 등 기본 기능이 더 편리할 수 있어 사전 기록 및 기본 기능 대체 조건에 걸린다.",
+      "risk_flags": [
+        "pre_record_required",
+        "os_default_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1079178243-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "쿠폰 만료일 알림은 문제 전에 사용자가 만료일을 등록해 기록해야 작동하므로 사전 기록 필수 조건을 위반한다.",
+      "risk_flags": [
+        "pre_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1079178243-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인터넷 없이 카드 위젯을 보이려면 카드를 미리 등록·저장해야 하고 OS 지갑 기능과 중복되어 독립적인 한 끗 변화가 부족하다.",
+      "risk_flags": [
+        "pre_record_required",
+        "os_default_alternative"
+      ]
+    }
+  ]
+}

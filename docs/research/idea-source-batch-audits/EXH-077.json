@@ -1,0 +1,61 @@
+{
+  "batch_id": "EXH-077",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 62,
+    "Candidate": 34,
+    "Merge": 4
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 77,
+      "sample": [
+        "app_store:1230446484",
+        "trustmrr:translate-desk",
+        "app_store:1050339928",
+        "chrome_web_store:ilgaabojccagggalemipkfjbcdemjgee",
+        "trustmrr:deepsearch-ai-truthfinder",
+        "app_store:319766917",
+        "app_store:1596225943",
+        "app_store:6474068474"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1050339928",
+          "decision": "Candidate",
+          "reason": "손가락 움직임을 받아 흐르는 선과 색을 생성하고, 고해상도 배경화면·포스터 파일을 즉시 만든다."
+        },
+        {
+          "key": "app_store:319766917",
+          "decision": "Candidate",
+          "reason": "검색어 하나를 받아 사전 표제어를 조회하고, 뜻·예문·원어민 음성을 즉시 보여주는 세로 조각이 남는다."
+        }
+      ],
+      "false_reject_rate": 0.25
+    },
+    {
+      "round": 2,
+      "fail_count": 62,
+      "sample": [
+        "app_store:475915064",
+        "app_store:690602681",
+        "app_store:1183992776",
+        "trustmrr:prosewrites",
+        "app_store:742044692",
+        "trustmrr:analyx",
+        "app_store:6744393018"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

@@ -1,0 +1,417 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-401818935-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "카메라 문서를 감지·보정해 PDF로 만드는 입력·처리·결과는 구체적이지만 OS 기본 문서 스캔 기능으로 대체하기 쉬워 차별성이 없다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-401818935-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "계약서 사진을 감지·보정해 제출용 PDF로 만드는 흐름은 명확하지만 OS 기본 문서 스캔 기능으로 대체하기 쉽다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-401818935-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영수증 사진 여러 장을 보정해 PDF로 묶는 입력·처리·결과는 명확하지만 OS 기본 문서 스캔 기능으로 대체하기 쉽다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-400666114-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "타브 파일 하나를 불러와 재생 속도와 구간을 처리하고 후렴 반복이 가능한 연습 화면 하나를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-400666114-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "자작 리프를 한 줄 타브로 입력하는 방식은 원본의 GP·PowerTab 파일 입력을 벗어나므로 제시된 메커니즘과 일치하지 않는다.",
+      "risk_flags": [
+        "input_mismatch",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-400666114-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "타브 파일 하나를 입력해 재생 속도를 낮추고 어려운 마디를 반복 재생하는 연습 화면 하나를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-775737172-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "일반 텍스트를 입력해 집중 편집과 HTML 미리보기를 수행하지만 처리와 결과가 각각 두 가지라 한 번의 처리·결과로 좁혀야 한다.",
+      "risk_flags": [
+        "multi_step",
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-775737172-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "에세이 텍스트를 입력해 현재 문단 중심으로 편집하고 HTML 미리보기를 보여주지만 집중 편집과 미리보기의 결과가 분리되어 있다.",
+      "risk_flags": [
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-775737172-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "회의 메모 텍스트를 입력해 집중 편집과 HTML 미리보기를 제공하지만 원본에 없는 문서 정돈 결과를 암시해 결과를 명확히 고쳐야 한다.",
+      "risk_flags": [
+        "result_ambiguity",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6754755473-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "녹음 음성을 입력해 역재생 오디오를 만드는 흐름은 명확하지만 허용 입력 목록에 오디오가 없어 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "audio_input_disallowed"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6754755473-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "노래 녹음을 입력해 역재생 클립을 만드는 흐름은 명확하지만 허용 입력 목록에 오디오가 없어 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "audio_input_disallowed"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6754755473-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "친구 음성 녹음을 입력해 역재생 효과음을 만드는 흐름은 명확하지만 허용 입력 목록에 오디오가 없어 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "audio_input_disallowed"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-968925225-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선수 이미지와 선수 목록이라는 두 입력을 받아 배치하고 라인업 이미지를 만들므로 입력 1개 규칙을 충족하지 않는다.",
+      "risk_flags": [
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-968925225-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선수 이미지와 목록을 별도로 입력해 포메이션 이미지로 만드는 구조라 입력 1개 처리 1회 규칙을 충족하지 않는다.",
+      "risk_flags": [
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-968925225-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선수 이미지와 팀 목록을 함께 입력해야 후보와 선발을 배치할 수 있어 단일 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "multiple_inputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6761313552-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "키트 사진과 기본 정보를 한 번 입력해 컬렉션에 기록하고 보관 목록 카드 하나를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6761313552-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "키트 사진과 메모를 한 번 입력해 개인 컬렉션에 기록하고 다음 제작 후보 목록 하나를 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6761313552-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "미개봉 키트 중 후보를 고르려면 사전에 여러 키트를 컬렉션에 기록해 두어야 하므로 문제 전에 기록이 필요한 구조다.",
+      "risk_flags": [
+        "prior_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1401723604-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "DAISY 전자책 파일 하나를 입력해 본문을 음성으로 재생하고 현재 읽는 위치 하나를 하이라이트한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1401723604-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "DAISY 파일을 입력해 음성 재생과 위치 하이라이트를 제공하지만 보호자의 필요와 단일 사용자 입력·처리 결과의 연결이 문구상 불명확하다.",
+      "risk_flags": [
+        "audience_mismatch",
+        "multi_option"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1401723604-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "지난 독서 위치에서 이어 읽으려면 이전 읽기 위치가 사전에 저장되어 있어야 하므로 문제 전에 기록이 필요한 구조다.",
+      "risk_flags": [
+        "prior_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6744280832-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주제와 그림을 입력해 면접 순서대로 발화를 녹음하고 다시 듣지만 두 입력과 연습·녹음의 복합 처리라 단일 조각으로 문구를 좁혀야 한다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6744280832-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "그림 문제와 답변을 입력해 녹음 후 재생하는 흐름은 가능하지만 입력과 처리 단계를 한 개씩으로 명확히 분리해야 한다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6744280832-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "면접 주제와 그림을 받아 순서대로 발화를 녹음하고 재생하지만 두 입력과 복합 연습 과정이 단일 처리 규칙에 맞지 않게 표현되어 있다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "multi_step"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6752773778-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기분을 입력해 게임 하나를 추천하는 흐름은 구체적이지만 카드의 남은 시간 조건이 입력에 없어 해당 변화를 실제로 처리할 수 없다.",
+      "risk_flags": [
+        "missing_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6752773778-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기분 하나를 입력해 이동 중 즐길 게임 하나를 추천하고 바로 탐색할 결과 하나를 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6752773778-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기분 하나를 입력해 가족과 할 편안한 게임 하나를 추천하고 탐색 결과 하나를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-468993411-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "금액과 납부일을 입력해 알림 카드를 만드는 흐름은 명확하지만 OS 기본 캘린더·미리 알림 기능으로 더 쉽게 대체할 수 있다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-468993411-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "구독료 금액과 결제일을 입력해 다음 납부 카드를 만드는 흐름은 명확하지만 OS 기본 미리 알림 기능으로 대체하기 쉽다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-468993411-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "월세 금액과 납부일을 입력해 다가오는 청구서 카드를 만드는 흐름은 명확하지만 OS 기본 캘린더·미리 알림 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    }
+  ]
+}

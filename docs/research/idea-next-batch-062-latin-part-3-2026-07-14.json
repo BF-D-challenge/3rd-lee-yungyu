@@ -1,0 +1,47 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-478293637-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음악 파일 1개를 입력해 템포를 낮추고 솔로 구간을 반복 재생한다는 처리는 구체적이지만 제목만으로 기타 연습 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-478293637-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음악 파일 1개를 입력해 피치를 낮추는 처리는 명확하지만 제목이 문제와 결과를 보여주지 않고, 카드 결과가 음역 조정이 아닌 반복 연습용 구간으로 적혀 처리와 어긋난다.",
+      "risk_flags": [
+        "opaque_title",
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-478293637-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음악 파일 1개에 반복 지점을 설정해 어려운 네 마디를 반복 재생하는 세로 조각은 구체적이지만 제목만으로 합주 전 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    }
+  ]
+}

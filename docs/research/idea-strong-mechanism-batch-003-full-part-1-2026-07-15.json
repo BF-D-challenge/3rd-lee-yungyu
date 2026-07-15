@@ -1,0 +1,238 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-milestone-clip-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로젝트 홍보 콘텐츠를 만드는 개발자 마케터가 공개 저장소 수치가 바뀐 순간 공개 GitHub URL 1개를 입력하면 이름·별·포크 수를 세로형으로 배치한 MP4 1개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로젝트 홍보 콘텐츠를 만드는 개발자 마케터가 공개 저장소 수치가 바뀐 순간 공개 GitHub URL 1개를 입력하면 이름·별·포크 수를 정사각형으로 배치한 MP4 1개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로젝트 홍보 콘텐츠를 만드는 개발자 마케터가 공개 저장소 수치가 바뀐 순간 공개 GitHub URL 1개를 입력하면 이름·별·포크 수를 가로형으로 배치한 MP4 1개를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로젝트 홍보 콘텐츠를 만드는 개발자 마케터가 프로젝트 별 수가 목표를 넘은 직후 공개 GitHub URL 1개를 입력하면 최신 이름·별·포크 수를 세로형 MP4 1개로 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로젝트 홍보 콘텐츠를 만드는 개발자 마케터가 프로젝트 별 수가 목표를 넘은 직후 공개 GitHub URL 1개를 입력하면 최신 이름·별·포크 수를 정사각형 MP4 1개로 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로젝트 홍보 콘텐츠를 만드는 개발자 마케터가 프로젝트 별 수가 목표를 넘은 직후 공개 GitHub URL 1개를 입력하면 최신 이름·별·포크 수를 가로형 MP4 1개로 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로젝트 홍보 콘텐츠를 만드는 개발자 마케터가 포크 증가를 주간 업데이트로 올릴 순간 공개 GitHub URL 1개를 입력하면 이름·별·포크 수를 세로형 MP4 1개로 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로젝트 홍보 콘텐츠를 만드는 개발자 마케터가 포크 증가를 주간 업데이트로 올릴 순간 공개 GitHub URL 1개를 입력하면 이름·별·포크 수를 정사각형 MP4 1개로 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-milestone-clip-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로젝트 홍보 콘텐츠를 만드는 개발자 마케터가 포크 증가를 주간 업데이트로 올릴 순간 공개 GitHub URL 1개를 입력하면 이름·별·포크 수를 가로형 MP4 1개로 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출시 직전 1인 AI 웹앱 빌더가 공개 직전 로그인 없는 URL 1개를 입력하면 HTTP 보안 헤더를 한 번 점검해 관찰된 문제와 재현 URL 1개를 받지만 보안 점검 결과의 오판 위험이 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-001",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출시 직전 1인 AI 웹앱 빌더가 공개 직전 로그인 없는 URL 1개를 입력하면 HTTPS·쿠키 설정을 한 번 점검해 관찰된 문제와 재현 URL 1개를 받지만 보안 점검 결과의 오판 위험이 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-002",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출시 직전 1인 AI 웹앱 빌더가 공개 직전 로그인 없는 URL 1개를 입력하면 공개 관리 경로 응답을 한 번 점검해 문제와 재현 URL 1개를 받지만 관리 경로 탐지의 보안·권한 위험이 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-010",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출시 직전 1인 AI 웹앱 빌더가 고객에게 테스트 링크를 전달하기 직전 로그인 없는 URL 1개를 입력하면 HTTP 보안 헤더 문제와 재현 URL 1개를 받지만 보안 점검 결과의 오판 위험이 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출시 직전 1인 AI 웹앱 빌더가 고객에게 테스트 링크를 전달하기 직전 로그인 없는 URL 1개를 입력하면 HTTPS·쿠키 설정 문제와 재현 URL 1개를 받지만 보안 점검 결과의 오판 위험이 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-012",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출시 직전 1인 AI 웹앱 빌더가 고객에게 테스트 링크를 전달하기 직전 로그인 없는 URL 1개를 입력하면 공개 관리 경로 응답 문제와 재현 URL 1개를 받지만 관리 경로 탐지의 보안·권한 위험이 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-020",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출시 직전 1인 AI 웹앱 빌더가 AI 프로토타입 데모 공개 직전 로그인 없는 URL 1개를 입력하면 HTTP 보안 헤더 문제와 재현 URL 1개를 받지만 보안 점검 결과의 오판 위험이 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-021",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출시 직전 1인 AI 웹앱 빌더가 AI 프로토타입 데모 공개 직전 로그인 없는 URL 1개를 입력하면 HTTPS·쿠키 설정 문제와 재현 URL 1개를 받지만 보안 점검 결과의 오판 위험이 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-vibe-app-scanner-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출시 직전 1인 AI 웹앱 빌더가 AI 프로토타입 데모 공개 직전 로그인 없는 URL 1개를 입력하면 공개 관리 경로 응답 문제와 재현 URL 1개를 받지만 관리 경로 탐지의 보안·권한 위험이 있다.",
+      "risk_flags": [
+        "safety_or_regulation_risk"
+      ]
+    }
+  ]
+}

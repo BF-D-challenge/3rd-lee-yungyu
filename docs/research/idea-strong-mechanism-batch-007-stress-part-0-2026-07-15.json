@@ -1,0 +1,124 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1312141691-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "실패한 API를 확인하는 프론트엔드 개발자가 API 요청이 실패한 HAR를 저장한 순간 HAR 파일 하나에서 실패 요청을 한 번 추려 실패 요청 요약 보고서 하나를 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1312141691-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "로그인 장애를 재현하는 모바일 QA 엔지니어가 로그인 오류 HAR를 받은 순간 HAR 파일 하나에서 선택한 요청의 본문을 한 번 추출해 요청·응답 비교 화면 하나를 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1312141691-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "외부 API 연동을 검수하는 백엔드 개발자가 장애 기록을 전달받은 직후 HAR 파일 하나에서 요청별 소요 시간을 한 번 비교해 느린 요청 목록 하나를 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6705123515-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "버튼 촉감을 정하는 iOS 앱 개발자가 구현 직전에 햅틱 종류 텍스트 하나를 입력해 한 번 재생하고 대응 Swift 코드 카드 하나를 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6705123515-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "알림 경험을 설계하는 모바일 UI 디자이너가 결제 알림 촉감을 정하는 순간 햅틱 종류 텍스트 하나를 입력해 경고 햅틱을 한 번 재생하고 대응 코드 카드 하나를 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6705123515-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "햅틱 동작을 검수하는 앱 QA 담당자가 완성 화면을 검수하는 순간 햅틱 종류 텍스트 하나를 입력해 성공 햅틱을 한 번 재생하고 Swift 코드 하나를 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-figma-ai-rename-plugin-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "복잡한 목업을 정리하는 프로덕트 디자이너가 프레임을 컴포넌트로 나누기 직전 Figma 프레임 파일 하나를 한 번 분석해 버튼·입력창 역할명이 적용된 레이어 미리보기 하나를 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-figma-ai-rename-plugin-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "컴포넌트화를 준비하는 디자인 시스템 담당자가 리뷰 링크를 보내기 직전 Figma 프레임 파일 하나에서 반복 요소를 한 번 식별해 순번이 붙은 레이어 이름 미리보기 하나를 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-figma-ai-rename-plugin-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개발 인수인계를 앞둔 외주 디자이너가 파일을 넘기기 직전 Figma 프레임 파일 하나의 계층을 한 번 분석해 경로명이 적용된 레이어 이름 미리보기 하나를 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-pdf-dino-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "PDF 정산표를 엑셀로 옮기는 정산 담당자가 금액을 합산하기 직전 표 PDF 파일 하나에서 표 데이터를 한 번 추출해 편집 가능한 Excel 파일 하나를 받는다.",
+      "risk_flags": []
+    }
+  ]
+}

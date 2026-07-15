@@ -1,0 +1,77 @@
+{
+  "batch_id": "EXH-020",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 48,
+    "Fail": 43,
+    "Merge": 7,
+    "Reserve": 2
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 56,
+      "sample": [
+        "app_store:6761327593",
+        "chrome_web_store:jmlenepjghcaamoohdpjgnmaaememald",
+        "app_store:6541753681",
+        "app_store:6454900894",
+        "trustmrr:treendly",
+        "app_store:379693831"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6761327593",
+          "decision": "Candidate",
+          "reason": "기기 움직임과 3D 장면을 받아 카메라 움직임을 전송하고 실시간 뷰포트에서 확인하는 세로 조각이 가능하다."
+        },
+        {
+          "key": "app_store:6541753681",
+          "decision": "Candidate",
+          "reason": "Apple Watch 음성 녹음을 받아 시작·중지하고 로컬 녹음 파일 하나를 남기는 2일 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.3333333333333333
+    },
+    {
+      "round": 2,
+      "fail_count": 45,
+      "sample": [
+        "app_store:1626245204",
+        "app_store:1622598042",
+        "app_store:1447612543",
+        "app_store:488575683",
+        "chrome_web_store:fhjfipcjninejjbejpcplejjlkglhmdj"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:fhjfipcjninejjbejpcplejjlkglhmdj",
+          "decision": "Candidate",
+          "reason": "페르시아어 텍스트를 입력으로 받아 자동 감지·방향 설정을 한 번 처리하고, 올바른 표시 결과를 즉시 확인하는 세로 조각이다."
+        }
+      ],
+      "false_reject_rate": 0.2
+    },
+    {
+      "round": 3,
+      "fail_count": 43,
+      "sample": [
+        "app_store:428912452",
+        "trustmrr:photoaigenerator-1000-users-photos-ugc-videos-and-mobile-app",
+        "app_store:1481416790",
+        "app_store:493859859",
+        "app_store:6741470807"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

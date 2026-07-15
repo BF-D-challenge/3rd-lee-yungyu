@@ -1,0 +1,220 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-pdf-translator-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치를 유지한 영어 PDF 한국어 번역’은 기술문서 담당자가 외국어 PDF를 받은 직후 영어 PDF 파일 하나를 표 배치를 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 캡션을 살린 PDF 한국어 번역’은 기술문서 담당자가 외국어 PDF를 받은 직후 영어 PDF 파일 하나를 이미지 캡션 배치를 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘각주 링크를 보존한 PDF 한국어 번역’은 기술문서 담당자가 외국어 PDF를 받은 직후 영어 PDF 파일 하나를 각주 링크와 수정 가능성을 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치를 유지한 영어 PDF 한국어 번역’은 기술문서 담당자가 회의용 PDF 공유 직전 영어 PDF 파일 하나를 표 배치를 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 캡션을 살린 PDF 한국어 번역’은 기술문서 담당자가 회의용 PDF 공유 직전 영어 PDF 파일 하나를 이미지 캡션 배치를 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘각주 링크를 보존한 PDF 한국어 번역’은 기술문서 담당자가 회의용 PDF 공유 직전 영어 PDF 파일 하나를 각주 링크와 수정 가능성을 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치를 유지한 영어 PDF 한국어 번역’은 기업 리서처가 회의 직전 영어 PDF 파일 하나를 표 배치를 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 캡션을 살린 PDF 한국어 번역’은 기업 리서처가 회의 직전 영어 PDF 파일 하나를 이미지 캡션 배치를 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘각주 링크를 보존한 PDF 한국어 번역’은 기업 리서처가 회의 직전 영어 PDF 파일 하나를 각주 링크와 수정 가능성을 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치를 유지한 영어 PDF 한국어 번역’은 기업 리서처가 외국어 PDF를 받은 직후 영어 PDF 파일 하나를 표 배치를 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 캡션을 살린 PDF 한국어 번역’은 기업 리서처가 외국어 PDF를 받은 직후 영어 PDF 파일 하나를 이미지 캡션 배치를 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘각주 링크를 보존한 PDF 한국어 번역’은 기업 리서처가 외국어 PDF를 받은 직후 영어 PDF 파일 하나를 각주 링크와 수정 가능성을 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치를 유지한 영어 PDF 한국어 번역’은 기업 리서처가 회의용 PDF 공유 직전 영어 PDF 파일 하나를 표 배치를 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 캡션을 살린 PDF 한국어 번역’은 기업 리서처가 회의용 PDF 공유 직전 영어 PDF 파일 하나를 이미지 캡션 배치를 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘각주 링크를 보존한 PDF 한국어 번역’은 기업 리서처가 회의용 PDF 공유 직전 영어 PDF 파일 하나를 각주 링크와 수정 가능성을 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치를 유지한 영어 PDF 한국어 번역’은 기업 리서처가 회의에서 번역본을 열어야 할 때 영어 PDF 파일 하나를 표 배치를 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 캡션을 살린 PDF 한국어 번역’은 기업 리서처가 회의에서 번역본을 열어야 할 때 영어 PDF 파일 하나를 이미지 캡션 배치를 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-pdf-translator-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘각주 링크를 보존한 PDF 한국어 번역’은 기업 리서처가 회의에서 번역본을 열어야 할 때 영어 PDF 파일 하나를 각주 링크와 수정 가능성을 유지해 한국어 PDF 한 개로 처리·생성하는 결과를 구체적으로 보여준다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-beep-productivity-inc-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹 수정 위치가 표시된 데스크톱 피드백’은 소형 대행사 PM이 라이브 페이지에서 고칠 요소를 발견한 직후 공개 URL·CSS selector·댓글 한 덩어리를 입력하면 1440px 화면에서 대상 요소를 한 번 캡처해 위치와 댓글이 붙은 HTML 피드백 파일 하나를 반환하므로 payer·moment·twist가 자연스럽고 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-beep-productivity-inc-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘CSS selector가 붙은 웹 수정 피드백’은 1인 브랜드 웹 운영자가 개발자에게 수정 요청을 보내기 직전 공개 URL·CSS selector·댓글 한 덩어리를 입력하면 대상 요소를 한 번 캡처해 위치·댓글·복사 가능한 selector가 붙은 HTML 피드백 파일 하나를 반환하므로 payer·moment·twist가 자연스럽고 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-beep-productivity-inc-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹 수정 위치가 표시된 모바일 피드백’은 프리랜서 디자이너가 최종 검수 결과를 공유하기 전 공개 URL·CSS selector·댓글 한 덩어리를 입력하면 390px 화면에서 대상 요소를 한 번 캡처해 위치와 댓글이 붙은 HTML 피드백 파일 하나를 반환하므로 payer·moment·twist가 자연스럽고 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

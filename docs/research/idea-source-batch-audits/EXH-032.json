@@ -1,0 +1,56 @@
+{
+  "batch_id": "EXH-032",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 61,
+    "Candidate": 34,
+    "Merge": 2,
+    "Reserve": 3
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 69,
+      "sample": [
+        "trustmrr:adventory",
+        "trustmrr:colorcraft",
+        "chrome_web_store:bgfhbflmeekopanooidljpnmnljdihld",
+        "app_store:6737512463",
+        "chrome_web_store:elaobedgdmbhchnbjcfpkcgdjhfnemdk",
+        "chrome_web_store:bjeicinigicmeicfnibabdfanajpigln",
+        "trustmrr:indietool"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:bjeicinigicmeicfnibabdfanajpigln",
+          "decision": "Candidate",
+          "reason": "헤드라인 입력 → 클릭베이트 표현을 정보성 요약으로 변환 → 대체 헤드라인 표시의 2일 세로 조각이 명확하다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 2,
+      "fail_count": 61,
+      "sample": [
+        "trustmrr:adventory",
+        "trustmrr:metricmap-tech-analytics-platform-for-saas-and-ecommerce-founders",
+        "app_store:529379082",
+        "app_store:1453327924",
+        "app_store:6466241694",
+        "trustmrr:layered-market",
+        "app_store:1610773520"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

@@ -1,0 +1,91 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-carmaster-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량 재생 저역 뭉침 정리 음원’은 독립 프로듀서가 발매 직전 차 안에서 랩 음악 파일 하나를 차량 기준으로 저역 과밀 처리해 정리된 오디오 파일 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-carmaster-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량 청취 음량 들쭉날쭉함 보정’은 납품 전 엔지니어가 랩 음악 파일 하나를 차량 기준 체감 음량 균일화 처리해 보정된 오디오 파일 하나를 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-carmaster-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량에서 묻히는 랩 보컬 보정’은 스튜디오가 영상 공개 전 랩 음악 파일 하나의 보컬 명료도를 차량 기준으로 한 번 보정해 보정된 오디오 파일 하나를 받는 결과가 분명하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-sqlflow-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘CSV를 PostgreSQL 이관 SQL로 변환’은 백엔드 개발자가 운영 DB 투입 전 CSV 하나의 열 구조와 값을 한 번 해석해 검토 표시가 있는 PostgreSQL SQL 파일 하나를 받는 구체적 결과를 제시한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-sqlflow-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘CSV를 T-SQL 이관 SQL로 변환’은 데이터 엔지니어가 개발 환경 이관 직전 CSV 하나를 T-SQL 문법으로 한 번 변환해 검토 표시가 있는 SQL 파일 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-sqlflow-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘CSV를 MySQL 이관 SQL로 변환’은 풀스택 개발자가 DB 방언이 다른 프로젝트의 CSV 하나를 열·값 해석 후 MySQL SQL로 한 번 변환해 검토 표시가 있는 파일 하나를 받는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-chordprep-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘곡 코드 텍스트의 목표 키 코드표’는 반주자가 합주 직전 가사·코드 텍스트를 목표 키로 조옮김해 코드 시트 하나를 받는 결과는 분명하지만, 텍스트 외 목표 키 입력까지 요구해 1개 입력 규칙과 제목의 목표 키 구체성이 모호하다.",
+      "risk_flags": [
+        "multi_input",
+        "title_unclear"
+      ]
+    }
+  ]
+}

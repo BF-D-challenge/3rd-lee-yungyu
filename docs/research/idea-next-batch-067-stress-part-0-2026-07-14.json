@@ -1,0 +1,428 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-425128442-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "배변 알림 시간을 입력해 알람·콘텐츠를 제공하지만 최종 결과가 아이의 행동에 의존하고 제목에서도 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "external_behavior",
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-425128442-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "배변 알림 시간 입력으로 알람을 만들 수 있으나 아이의 이동이라는 상대방 행동이 필수이고 ‘미루는 순간’과 정해진 알림 처리가 어긋난다.",
+      "risk_flags": [
+        "external_behavior",
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-425128442-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "배변 알림 시간에서 알람과 콘텐츠를 만들 뿐 배변실수 직후의 격려·이름 음성·보상은 원본 처리에 없고 아이의 반응도 필요하다.",
+      "risk_flags": [
+        "new_feature",
+        "external_behavior"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-542466961-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플레이 타일을 입력해 가능한 단어 목록을 반환하는 흐름은 구체적이지만 제목만으로 ‘타일에서 만들 수 있는 단어’ 결과까지는 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-542466961-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "플레이 타일로 가능한 단어를 찾는 처리인데 상대 단어의 유효성 판정이 필요한 순간과 입력·결과가 일치하지 않는다.",
+      "risk_flags": [
+        "moment_mismatch",
+        "external_behavior"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-542466961-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "플레이 타일에서 단어 목록은 만들 수 있지만 최고 점수 단어를 찾는 기능은 원본의 단어 검색을 넘어선 새 처리다.",
+      "risk_flags": [
+        "new_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1482172285-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선수 명단과 유니폼 이미지를 함께 입력해야 하므로 입력 1개 규칙을 위반하고 타순 결정과 영상 생성이라는 처리도 한 번에 과하다.",
+      "risk_flags": [
+        "multi_input",
+        "scope_risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1482172285-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선수 명단과 유니폼 이미지를 받아 라인업 영상을 만들지만 입력이 2개이고 학교 단체방 공유까지 요구해 반나절 MVP 경계가 불명확하다.",
+      "risk_flags": [
+        "multi_input",
+        "scope_risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1482172285-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선수 명단과 유니폼 이미지를 입력해야 하는데 이름·등번호만으로 생성한다는 트위스트가 원본 입력과 달라 일관되지 않는다.",
+      "risk_flags": [
+        "multi_input",
+        "input_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-638323895-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한 하나로 가까운 버거킹 매장을 찾아 매장 하나를 보여주는 흐름은 가능하지만 브랜드 앱 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguous"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-638323895-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치에서 가까운 매장을 찾는 처리인데 할인 혜택과 픽업 주문은 원본 결과에 없고 주문 단계도 추가된다.",
+      "risk_flags": [
+        "new_feature",
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-638323895-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치로 가까운 매장을 찾을 수 있지만 대기시간과 모바일 쿠폰은 원본 입력·처리·결과로 보장되지 않는다.",
+      "risk_flags": [
+        "new_feature",
+        "data_dependency"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-569156857-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기기 마이크 권한의 현재 소리를 FFT·데시벨 분석해 그래프로 보여주는 흐름은 명확하지만 ‘Octave RTA’라는 제목이 초보자에게 문제와 결과를 설명하지 못한다.",
+      "risk_flags": [
+        "title_ambiguous",
+        "technical_term"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-569156857-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "마이크 소리를 주파수·음량으로 처리해 실시간 시각화를 제공하는 세로 조각은 가능하지만 제목만으로 일반 사용자가 결과를 예측하기 어렵다.",
+      "risk_flags": [
+        "title_ambiguous",
+        "technical_term"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-569156857-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "마이크 소리의 실시간 그래프는 만들 수 있으나 스냅샷을 겹쳐 전후 비교하는 기능은 원본 처리에 없는 새 기능이다.",
+      "risk_flags": [
+        "new_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1454088469-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인물 사진 파일 하나를 AI로 처리해 제거 사진을 만드는 흐름은 구체적이지만 범용 AI·기본 사진 편집 기능으로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_ai",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1454088469-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 파일에서 행인을 제거해 결과 사진을 만들 수 있으나 범용 AI 이미지 편집이나 사진 앱의 지우개 기능이 더 편리한 범용 작업이다.",
+      "risk_flags": [
+        "generic_ai",
+        "os_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1454088469-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 파일을 받아 잡티를 제거하는 결과는 가능하지만 거리 간판·사람 동시 제거와 원터치 보정은 원본보다 확장된 범용 AI 편집이다.",
+      "risk_flags": [
+        "generic_ai",
+        "new_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-585235293-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "상품 수치와 가격을 입력해 단위당 가치를 계산하고 더 나은 상품과 절약액 하나를 즉시 보여주는 구체적인 흐름이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-585235293-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 수치를 비교하는 기본 처리는 맞지만 자주 사는 규격을 미리 저장해야 하므로 문제 전에 기록이 필수라는 규칙을 위반한다.",
+      "risk_flags": [
+        "prior_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-585235293-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "상품 수치와 가격을 입력해 단가를 계산하고 어느 상품이 싼지와 실제 절약액 하나를 즉시 반환한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1407188159-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "냉동식품 패키지와 수량을 입력해 재고를 갱신하려면 문제 전에 식품을 계속 기록해야 하므로 사후 즉시 해결 조각이 아니다.",
+      "risk_flags": [
+        "prior_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1407188159-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "패키지 입력으로 재고 목록을 갱신할 수 있지만 한 봉지를 먹은 직후의 최신 재고를 알려면 이전 수량 기록이 반드시 필요하다.",
+      "risk_flags": [
+        "prior_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1407188159-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "냉동식품 패키지 입력만으로는 장보기 전 남은 수량을 알 수 없고 지속적인 입고·소비 기록이 선행되어야 한다.",
+      "risk_flags": [
+        "prior_record_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-471629622-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지역 하나를 입력해 날씨 레이어와 5일 예보를 처리하고 해당 지역의 현재·미래 날씨 지도 하나를 보여주는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-471629622-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지역 하나를 입력해 5일 예보와 날씨 레이어를 표시하므로 야외 일정 판단에 필요한 날씨 결과 하나가 즉시 나온다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-471629622-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "지역 입력으로 5일 날씨 지도는 가능하지만 시간대별 변화 표시는 원본의 단순 5일 예보를 넘어선 추가 데이터 처리다.",
+      "risk_flags": [
+        "new_feature",
+        "data_dependency"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1505268848-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "GAB 비언어 답안 12개를 입력해 제한시간 채점과 분야별 분석을 수행하고 정답률·분야별 달성률을 반환한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1505268848-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "답안 채점과 분석은 가능하지만 오답과 미학습 문제를 다음 테스트로 재출제하려면 이전 테스트 기록을 저장·관리해야 한다.",
+      "risk_flags": [
+        "prior_record_required",
+        "new_feature"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1505268848-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "GAB 비언어 답안 12개를 입력해 채점·분석하고 도표 유형별 정답률이라는 단일 결과를 즉시 보여주는 흐름이다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-6752672420-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 이미지 중심 좌표 하늘 차트’는 관측 기록을 정리하는 소형 천문대 운영자가 천체 촬영 직후 대상 확인을 위해 FITS 이미지 1개를 입력하고 플레이트 솔빙 1회 후 중심 좌표가 찍힌 하늘 차트 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 사진 촬영 영역 경계 확인’은 관측 기록을 정리하는 소형 천문대 운영자가 촬영 직후 대상을 확인하려고 FITS 이미지 1개를 입력하고 플레이트 솔빙 1회 후 촬영 영역 경계가 표시된 하늘 차트 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 사진 속 주요 천체 라벨’은 관측 기록을 정리하는 소형 천문대 운영자가 촬영 직후 대상을 확인하려고 FITS 이미지 1개를 입력하고 플레이트 솔빙 1회 후 주요 천체 라벨이 붙은 하늘 차트 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 이미지 중심 좌표 하늘 차트’는 관측 기록을 정리하는 소형 천문대 운영자가 다음 촬영의 구도를 수정할 때 FITS 이미지 1개를 입력하고 플레이트 솔빙 1회 후 중심 좌표가 찍힌 하늘 차트 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 사진 촬영 영역 경계 확인’은 관측 기록을 정리하는 소형 천문대 운영자가 다음 촬영의 구도를 수정할 때 FITS 이미지 1개를 입력하고 플레이트 솔빙 1회 후 촬영 영역 경계가 표시된 하늘 차트 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 사진 속 주요 천체 라벨’은 관측 기록을 정리하는 소형 천문대 운영자가 다음 촬영의 구도를 수정할 때 FITS 이미지 1개를 입력하고 플레이트 솔빙 1회 후 주요 천체 라벨이 붙은 하늘 차트 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 이미지 중심 좌표 하늘 차트’는 관측 기록을 정리하는 소형 천문대 운영자가 관측 기록 제출 직전에 FITS 이미지 1개를 입력하고 플레이트 솔빙 1회 후 중심 좌표가 찍힌 하늘 차트 1개를 받아 근거로 쓰는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 사진 촬영 영역 경계 확인’은 관측 기록을 정리하는 소형 천문대 운영자가 기록 제출 직전에 FITS 이미지 1개를 입력하고 플레이트 솔빙 1회 후 촬영 영역 경계가 표시된 하늘 차트 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘천체 사진 속 주요 천체 라벨’은 관측 기록을 정리하는 소형 천문대 운영자가 기록 제출 직전에 FITS 이미지 1개를 입력하고 플레이트 솔빙 1회 후 주요 천체 라벨이 붙은 하늘 차트 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

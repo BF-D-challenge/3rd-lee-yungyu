@@ -1,0 +1,417 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-680263335-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "가게 카드 사진 1장을 입력해 OCR로 상호·주소·전화번호를 인식하고 검색 가능한 카드 1개를 즉시 저장하는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-680263335-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "가게 카드 사진을 OCR 처리해 검색 카드로 만드는 원본과 달리 QR 링크 저장까지 요구해 입력·처리·결과 범위를 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-680263335-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "가게 카드 사진에서 상호·주소·전화번호를 추출하는 원본 처리에 영업시간 추출을 추가해 결과가 원본보다 확장된다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-426108998-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "연습 요청을 입력해 랜덤 지연 신호와 타이머를 실행하는 기능은 OS 타이머·알람으로 더 쉽게 대체할 수 있다.",
+      "risk_flags": [
+        "os_substitute",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-426108998-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "연습 요청에서 랜덤 출발 신호를 만드는 원본에 반응속도 측정 결과까지 추가해 처리와 결과가 확장된다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "os_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-426108998-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "연습 요청을 받아 랜덤 출발 신호를 재생하는 기능은 OS 타이머로 대체 가능하고 제목만으로 문제와 결과도 드러나지 않는다.",
+      "risk_flags": [
+        "os_substitute",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1391683719-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "시음 메모 1개를 입력해 향·맛·색상·평점 항목으로 구조화하고 맥주 시음 기록 1개를 즉시 남기는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1391683719-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "맥주 시음 메모 1개를 향·맛·색상·평점으로 정리해 개인 시음 기록 1개를 만드는 세로 조각이 원본과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1391683719-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "시음 메모 1개를 입력해 색상과 평점을 포함한 구조화된 맥주 기록 1개를 즉시 저장하는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-377851554-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "다트 점수를 입력해 남은 점수와 승패를 계산하는 기능은 계산기나 스프레드시트로 더 쉽게 처리할 수 있고 제목도 불명확하다.",
+      "risk_flags": [
+        "os_substitute",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-377851554-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "다트 점수 입력과 계산 결과는 OS 계산기나 메모 앱으로 대체 가능하며 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "os_substitute",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-377851554-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "다트 점수를 입력해 평균을 계산하는 단순 산술 결과는 범용 계산기로 더 편하게 얻을 수 있다.",
+      "risk_flags": [
+        "os_substitute",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760988558-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 여러 장을 PDF 하나로 묶는 기능은 OS 파일·사진 기능으로 대체 가능하고 트위스트의 배경 제거는 원본 처리와 다르다.",
+      "risk_flags": [
+        "os_substitute",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760988558-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진을 PDF로 변환하는 원본에 배경 제거 처리를 추가해 입력·처리·결과가 달라진다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6760988558-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진을 하나의 PDF로 묶는 원본과 달리 HEIC를 JPG로 변환하는 별도 기능을 제시했다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "os_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6753310758-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "금주 시작일과 색상을 입력해 홈 화면 위젯을 만드는 흐름은 구체적이지만 Nomo Widgets라는 제목만으로 금주 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6753310758-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "금주 시계를 만드는 원본 처리에서 절주 목표 기간 확인으로 의미가 바뀌어 결과가 원본과 일치하지 않는다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6753310758-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "금주 시작일을 표시하는 원본에 카페인 중단 기간을 적용해 대상 문제와 결과가 달라지고 제목도 불명확하다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6747307749-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진과 스티커를 배치해 스토리 이미지를 만드는 기능은 인스타그램 자체 편집 기능으로 더 쉽게 수행할 수 있다.",
+      "risk_flags": [
+        "os_or_host_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6747307749-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진과 스티커를 입력해 꾸민 이미지를 만드는 기능은 브랜드 계정 여부와 무관하게 인스타그램 기본 편집으로 대체 가능하다.",
+      "risk_flags": [
+        "os_or_host_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6747307749-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여행 사진에 선택한 스티커를 배치하는 결과는 인스타그램 스토리 작성 과정에서 바로 제공된다.",
+      "risk_flags": [
+        "os_or_host_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-832823029-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭과 단일 기기의 나침반·자이로 권한을 입력해 방향에 맞는 외계인 표시 1개를 즉시 보여주는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-832823029-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭과 센서 권한 1회로 외계인 표시를 생성해 파티 현장에서 바로 확인하는 단일 기기 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-832823029-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭과 나침반·자이로 권한을 받아 센서 방향에 맞는 외계인 장면 1개를 즉시 표시한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-896890211-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캡션이 있는 Snapchat 스크린샷 1장을 입력해 캡션·카운트다운 워터마크를 제거하고 수정 이미지 1개를 저장한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-896890211-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "Snapchat 스크린샷 처리 기능을 중고거래 대화 캡처의 문구 제거로 확장해 원본 대상과 처리 범위를 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-896890211-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캡션이 있는 Snapchat 스크린샷 1장에서 문구와 카운트다운을 제거해 워터마크 없는 이미지 1개를 만드는 흐름이 원본과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1193474997-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진과 그림 일기 내용을 받아 감정 그림 일기를 만드는 흐름은 가능하지만 YOUKA라는 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1193474997-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진과 사용자가 그린 내용을 일기 페이지로 만드는 원본은 유지되지만 제목만으로 기록 문제와 결과를 알 수 없다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1193474997-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "아이 사진과 한 줄 이야기는 원본의 사용자가 그린 일기 내용 입력과 달라 새 입력 방식을 요구한다.",
+      "risk_flags": [
+        "mechanism_drift",
+        "opaque_title"
+      ]
+    }
+  ]
+}

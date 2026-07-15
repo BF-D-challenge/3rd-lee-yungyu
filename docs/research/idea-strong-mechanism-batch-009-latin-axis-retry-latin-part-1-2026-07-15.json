@@ -1,0 +1,182 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1520204499-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘복잡한 이미지의 간결한 SVG 윤곽’은 레이저 커팅 공방 제작자가 픽셀 윤곽이 깨진 순간 JPG·PNG 하나를 한 번 벡터 변환해 세부 수준을 낮춘 SVG 하나를 얻는 흐름을 구체적으로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1520204499-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘픽셀 로고의 단순화 SVG 윤곽선’은 레이저 커팅 공방 제작자가 확대 가능한 로고 SVG를 요청받은 순간 JPG·PNG 하나를 한 번 벡터 변환해 단순화된 SVG 하나를 얻는 흐름을 명확히 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1520204499-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘복잡한 이미지의 간결한 SVG 윤곽’은 로고 납품 프리랜서가 저해상도 로고를 넘기기 직전 JPG·PNG 하나를 한 번 벡터 변환해 세부 수준을 낮춘 SVG 하나를 만드는 결과를 설명한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1520204499-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘픽셀 로고의 단순화 SVG 윤곽선’은 로고 납품 프리랜서가 깨진 픽셀 경계를 발견한 순간 JPG·PNG 하나를 한 번 처리해 윤곽이 단순화된 SVG 하나를 얻는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1520204499-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘깨진 로고 모서리를 다듬은 SVG’는 로고 납품 프리랜서가 확대 가능한 SVG를 요청받은 순간 JPG·PNG 하나를 한 번 벡터 변환해 모서리가 매끄러운 SVG 하나를 만드는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6755650844-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘트레이딩 카드 좌우 센터링 점수’는 카드숍 매입 담당자가 여러 카드 중 좋은 카드를 고를 때 정면 사진 한 장을 한 번 분석해 좌우 테두리 점수 하나를 즉시 받는 흐름을 명확히 한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6755650844-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘트레이딩 카드 상하 센터링 점수’는 카드숍 매입 담당자가 상태와 가격을 확정하기 직전 정면 사진 한 장을 한 번 분석해 상하 테두리 점수 하나를 얻는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6755650844-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘카드 테두리 치우침 경계 표시’는 카드숍 매입 담당자가 선별 근거를 기록하기 직전 정면 사진 한 장을 한 번 분석해 경계 오버레이 하나를 받지만, 기록 가능한 결과인지 제목에서 다소 불명확하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6755650844-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘트레이딩 카드 상하 센터링 점수’는 등급감정 대행 카드샵 직원이 여러 카드 중 좋은 카드를 고를 때 정면 사진 한 장을 한 번 분석해 상하 점수 하나를 즉시 확인하는 흐름을 구체화한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6755650844-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘카드 테두리 치우침 경계 표시’는 등급감정 대행 카드샵 직원이 상태와 가격을 확정하기 직전 정면 사진 한 장을 한 번 분석해 경계 오버레이 하나를 얻지만, 가격 판단 결과와의 연결이 제목에서 약하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6755650844-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "‘트레이딩 카드 좌우 센터링 점수’는 등급감정 대행 카드샵 직원이 선별 근거를 기록하기 직전 정면 사진 한 장을 한 번 분석해 좌우 점수 하나를 얻지만, 기록용 결과라는 점이 제목에 드러나지 않는다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6755650844-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘카드 테두리 치우침 경계 표시’는 전문 수집가가 여러 장 중 좋은 카드를 고를 때 정면 사진 한 장을 한 번 분석해 경계 오버레이 하나를 얻지만, 선별 판단에 필요한 점수나 비교 기준이 제목에 없다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6755650844-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘트레이딩 카드 좌우 센터링 점수’는 전문 수집가가 카드 상태와 가격을 확정하기 직전 정면 사진 한 장을 한 번 분석해 좌우 테두리 점수 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6755650844-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘트레이딩 카드 상하 센터링 점수’는 전문 수집가가 선별 근거를 기록하기 직전 정면 사진 한 장을 한 번 분석해 상하 점수 하나를 얻지만, 기록 가능한 결과라는 사용 목적이 제목에서 불명확하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    }
+  ]
+}

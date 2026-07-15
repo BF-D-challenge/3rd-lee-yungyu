@@ -1,0 +1,56 @@
+{
+  "batch_id": "EXH-052",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 30,
+    "Merge": 4,
+    "Fail": 66
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 75,
+      "sample": [
+        "app_store:1135991142",
+        "app_store:1073576068",
+        "app_store:1178765645",
+        "app_store:1091496983",
+        "app_store:1042280626",
+        "chrome_web_store:okdfcljlaacbdacenfeaiekllplonlfm",
+        "trustmrr:ideasplusbusiness",
+        "app_store:307312434"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1073576068",
+          "decision": "Candidate",
+          "reason": "방송국 설정 하나를 받아 시각 신호를 전송하고, 가까이 둔 라디오 시계의 보정 결과를 확인하는 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.125
+    },
+    {
+      "round": 2,
+      "fail_count": 66,
+      "sample": [
+        "app_store:6498982583",
+        "chrome_web_store:llaficoajjainaijghjlofdfmbjpebpa",
+        "app_store:1052718459",
+        "app_store:1091496983",
+        "chrome_web_store:kkfkknaikhhjojoidojlenioadfjecof",
+        "chrome_web_store:elpmkbbdldhoiggkjfpgibmjioncklbn",
+        "app_store:307312434"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

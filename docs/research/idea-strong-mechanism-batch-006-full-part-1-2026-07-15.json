@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-docswrite-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "콘텐츠 대행 실무자가 CMS로 옮기기 직전에 공개 Google Doc URL 하나를 한 번 변환해 제목 계층이 보존된 Gutenberg HTML 파일 하나를 받으므로 제목·결제자·순간·한 끗 변화와 MVP 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "콘텐츠 대행 실무자가 CMS로 옮기기 직전에 공개 Google Doc URL 하나를 한 번 변환해 이미지 캡션이 포함된 Gutenberg HTML 파일 하나를 받으므로 입력·처리·결과와 캡션 보존 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "콘텐츠 대행 실무자가 CMS로 옮기기 직전에 공개 Google Doc URL 하나를 한 번 변환해 표 구조가 보존된 Gutenberg HTML 파일 하나를 받으므로 표 깨짐을 줄이는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "콘텐츠 대행 실무자가 클라이언트 원고를 WordPress에 납품하기 직전에 공개 Google Doc URL 하나를 한 번 변환해 제목 계층이 보존된 Gutenberg HTML 파일 하나를 받으므로 순간과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "콘텐츠 대행 실무자가 클라이언트 원고를 납품하기 직전에 공개 Google Doc URL 하나를 한 번 변환해 이미지 캡션이 포함된 Gutenberg HTML 파일 하나를 받으므로 캡션 보존이라는 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "콘텐츠 대행 실무자가 클라이언트 원고를 납품하기 직전에 공개 Google Doc URL 하나를 한 번 변환해 표 구조가 보존된 Gutenberg HTML 파일 하나를 받으므로 결제자·순간·결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "콘텐츠 대행 실무자가 긴 문서를 CMS 편집기에 처음 붙여 넣기 전에 공개 Google Doc URL 하나를 한 번 변환해 제목 계층이 보존된 Gutenberg HTML 파일 하나를 받아 게시 가능 여부를 판단한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "콘텐츠 대행 실무자가 긴 문서를 CMS 편집기에 처음 붙여 넣기 전에 공개 Google Doc URL 하나를 한 번 변환해 이미지 캡션이 포함된 Gutenberg HTML 파일 하나를 받으므로 결과가 단일하고 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docswrite-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "콘텐츠 대행 실무자가 긴 문서를 CMS 편집기에 처음 붙여 넣기 전에 공개 Google Doc URL 하나를 한 번 변환해 표 구조가 보존된 Gutenberg HTML 파일 하나를 받으므로 표 보존이라는 한 끗 변화가 순간과 맞는다.",
+      "risk_flags": []
+    }
+  ]
+}

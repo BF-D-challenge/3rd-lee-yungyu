@@ -1,0 +1,133 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-6784176363-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한 줄 메모를 입력해 한 번 스와이프하고 Daily·Work·Trash·Archive 중 하나로 분류하는 흐름은 구체적이지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-001",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한 줄 업무 아이디어 입력 후 위로 스와이프해 업무 메모로 분류하는 처리는 구체적이지만 원본의 위 방향과 업무 메모 결과 매핑이 명시되지 않고 제목도 모호하다.",
+      "risk_flags": [
+        "direction_mapping_unclear",
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-002",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한 줄 메모 입력 후 왼쪽 스와이프로 Trash에 버리는 결과는 구체적이지만 제목만으로 즉시 삭제 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-010",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "퇴근길에 내일 할 일을 떠올린 사용자는 회의 중 일을 놓치는 팀 리더라는 결제자와 자연스럽게 맞지 않아 실제 사용 순간과 결제자 조합이 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "퇴근길의 업무 아이디어를 위로 밀어 업무 메모로 정리하는 흐름은 가능하지만 회의 중 일을 놓치는 팀 리더라는 결제자와 필요한 순간이 불일치하고 위 방향 매핑도 불명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "direction_mapping_unclear"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-012",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "퇴근길에 불필요한 메모를 왼쪽으로 버리는 처리는 가능하지만 회의 중 일을 놓치는 팀 리더라는 결제자와 필요한 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-020",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메모 위치를 망설이는 순간 한 줄 입력 후 오른쪽 스와이프로 오늘 할 일에 분류하는 흐름은 구체적이지만 제목만으로 문제와 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-021",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메모 위치를 망설이는 순간 위로 밀어 업무 메모로 정리하는 입력·처리·결과는 구체적이지만 방향과 결과의 원본 매핑 및 제목이 명확하지 않다.",
+      "risk_flags": [
+        "direction_mapping_unclear",
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-full-app-store-6784176363-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "메모 위치를 망설이는 순간 왼쪽으로 밀어 버리는 단일 처리와 결과는 구체적이지만 제목만으로 삭제 문제와 결과가 충분히 보이지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    }
+  ]
+}

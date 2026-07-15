@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-latin-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘경유지 보존 장거리 경로 GPX’는 동호회 운영자가 장거리 경로를 기기에 넣기 직전 공개 Google Maps 경로 URL 1개를 편집·최적화해 경유지 보존 GPX 파일 1개를 받는 흐름과 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구간별로 나눈 라이딩 경로 GPX’는 동호회 운영자가 경로 구간과 회차점을 공유할 때 공개 Google Maps 경로 URL 1개를 편집·최적화해 구간별 트랙 GPX 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘회차점 이름 포함 라이딩 GPX’는 동호회 운영자가 출발 전 경로 파일을 확인할 때 공개 Google Maps 경로 URL 1개를 편집·최적화해 회차점 이름이 포함된 GPX 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구간별로 나눈 라이딩 경로 GPX’는 오토바이 투어 가이드가 확정 경로를 기기에 넣기 직전 공개 Google Maps 경로 URL 1개를 편집·최적화해 구간별 트랙 GPX 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘회차점 이름 포함 라이딩 GPX’는 오토바이 투어 가이드가 구간과 회차점을 공유할 때 공개 Google Maps 경로 URL 1개를 편집·최적화해 회차점 이름 포함 GPX 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘경유지 보존 장거리 경로 GPX’는 오토바이 투어 가이드가 출발 전 파일을 최종 확인할 때 공개 Google Maps 경로 URL 1개를 편집·최적화해 경유지 보존 GPX 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘회차점 이름 포함 라이딩 GPX’는 라이딩 콘텐츠 제작자가 확정 경로를 기기에 넣기 직전 공개 Google Maps 경로 URL 1개를 편집·최적화해 회차점 이름 포함 GPX 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘경유지 보존 장거리 경로 GPX’는 라이딩 콘텐츠 제작자가 구간과 회차점을 공유할 때 공개 Google Maps 경로 URL 1개를 편집·최적화해 경유지 보존 GPX 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구간별로 나눈 라이딩 경로 GPX’는 라이딩 콘텐츠 제작자가 출발 전 파일을 최종 확인할 때 공개 Google Maps 경로 URL 1개를 편집·최적화해 구간별 트랙 GPX 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-430807521-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "육상부 코치가 결승선 통과 장면을 카메라로 한 번 포토피니시 처리해 선수별 통과 시각 이미지 하나를 즉시 확인하므로 제목·지불자·순간·한 끗 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-430807521-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "육상부 코치가 결승선 통과 장면을 한 번 포토피니시 처리해 순위선이 겹쳐진 결과 이미지 하나를 즉시 확인하므로 제목·지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-430807521-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "육상부 코치가 기록표에 옮기기 전 결승선 장면을 한 번 포토피니시 처리해 순위가 보이는 이미지 하나를 즉시 확인하므로 제목과 카드 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-430807521-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "체육교사가 결승선 통과 장면을 카메라로 한 번 포토피니시 처리해 순위선이 겹쳐진 결과 이미지 하나를 즉시 확인하므로 수업 중 기록 확정 순간과 잘 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-430807521-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "체육교사가 육안 판정이 어려운 결승선 장면을 한 번 포토피니시 처리해 순위가 보이는 이미지 하나를 즉시 확인하므로 지불자·순간·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-430807521-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "체육교사가 기록표 작성 직전에 결승선 장면을 한 번 포토피니시 처리해 선수별 통과 시각 이미지 하나를 즉시 확인하므로 카드의 순간과 결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-430807521-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "달리기 대회 운영자가 결승선 통과 장면을 한 번 포토피니시 처리해 순위가 보이는 이미지 하나를 즉시 확인하므로 기록 확정과 포토피니시 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-430807521-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "달리기 대회 운영자가 육안으로 순서를 가리기 어려운 결승선 장면을 한 번 포토피니시 처리해 선수별 통과 시각 이미지 하나를 즉시 확인하므로 제목과 사용 순간이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-430807521-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "달리기 대회 운영자가 기록표에 옮기기 전 결승선 장면을 한 번 포토피니시 처리해 순위선이 겹쳐진 이미지 하나를 즉시 확인하므로 입력·처리·결과가 한 번씩이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1520204499-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인쇄소 디자이너가 저해상도 JPG 또는 PNG 파일 하나를 한 번 벡터 변환해 윤곽이 단순화된 SVG 파일 하나를 즉시 얻으므로 제작 파일 전달 순간과 결과가 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1520204499-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인쇄소 디자이너가 픽셀 윤곽이 깨진 JPG 또는 PNG 파일 하나를 한 번 벡터 변환해 모서리가 매끄러운 SVG 파일 하나를 즉시 얻으므로 문제와 결과가 분명하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1520204499-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인쇄소 디자이너가 확대 가능한 원본을 요청받은 JPG 또는 PNG 파일 하나를 한 번 벡터 변환해 세부 수준을 낮춘 SVG 파일 하나를 즉시 얻으므로 납품 순간과 결과가 연결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1520204499-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "레이저 커팅 제작자가 저해상도 JPG 또는 PNG 파일 하나를 한 번 벡터 변환해 모서리가 매끄러운 SVG 파일 하나를 즉시 얻으므로 제작 파일 전달 순간과 카드 결과가 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

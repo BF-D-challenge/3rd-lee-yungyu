@@ -1,0 +1,133 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1575583991-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 배포 전 개인정보 검수 담당자가 App Privacy Report NDJSON 파일 1개를 입력하면 권한 이벤트를 시간순으로 처리해 앱별 접근 시간표 1개를 받으므로 제목·순간·한 끗 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1575583991-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 QA 엔지니어가 고객 문의 직후 App Privacy Report NDJSON 파일 1개를 입력하면 이벤트를 최신순으로 처리해 최근 앱 활동 요약 1개를 받으므로 제목·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1575583991-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "개인정보 보호 컨설턴트가 감사 제출 직전 App Privacy Report NDJSON 파일 1개를 입력하면 네트워크 도메인을 앱별로 처리해 외부 도메인 목록 1개를 받으므로 제목·순간·한 끗 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1468880337-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "임베디드 개발자가 확장자를 믿기 어려운 순간 바이너리 파일 1개를 입력하면 시작 바이트를 처리해 감지된 파일 시그니처 1개를 받으므로 제목·순간·한 끗 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1468880337-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "디지털 포렌식 실무자가 손상 오프셋을 확인하려면 바이너리 파일 외에 지정한 텍스트 검색어도 입력해야 하므로 입력 2개가 필요해 단일 입력 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1468880337-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "데이터 복구 기사가 특정 바이트 패턴을 검수하는 순간 바이너리 파일 1개를 입력하면 전체 바이트를 집계해 최다 바이트 빈도 결과 1개를 받으므로 제목·순간·한 끗 변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6749187530-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소형 카페 운영자가 첫 슬러시 배치를 투입하기 직전 재료·용량·당도·알코올 정보 텍스트 1개를 입력하면 배합값을 처리해 추가 설탕량 1개를 받으므로 제목·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6749187530-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "케이터링 운영자의 순간은 얼지 않는 배치를 고치는 때인데, 현재 배합과 목표 용량 텍스트 1개를 환산해 재료표를 보여주는 결과는 그 문제와 한 끗 변화가 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6749187530-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "바 매니저의 순간은 행사 인원에 맞춰 배치를 증량하는 때인데, 혼합물 정보 텍스트 1개로 추가 물의 양을 계산하는 결과는 해당 순간의 필요와 한 끗 변화가 맞지 않고 목표 농도도 불명확하다.",
+      "risk_flags": [
+        "moment_twist_mismatch",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6761405215-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "모바일 UX 디자이너가 마감 직전 앱 이름 텍스트 1개를 입력해 아이콘을 검색하려면 App Store의 별도 외부 데이터가 필요하므로 입력 처리만으로 즉시 1024px PNG를 만들 수 없다.",
+      "risk_flags": [
+        "external_data_required"
+      ]
+    }
+  ]
+}

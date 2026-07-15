@@ -1,0 +1,238 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-298840058-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이폰 마이크 음성을 FFT로 1회 분석해 진폭·주파수 그래프를 내므로 입력·처리·결과는 구체적이지만 제목만으로 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-298840058-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이폰 마이크의 테스트음을 FFT 분석해 주파수 피크 그래프로 보여주지만 제목이 문제와 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-298840058-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이폰 마이크 음성을 FFT로 처리해 진폭·주파수 그래프를 즉시 표시하지만 제목만으로 방 안 울림 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-298840058-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이폰 마이크에 테스트음을 입력해 FFT 주파수 피크 그래프를 얻는 흐름은 구체적이지만 제목이 사용 목적과 결과를 드러내지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-298840058-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이폰 마이크 음성을 FFT 분석해 홈레코딩 방의 주파수 그래프로 보여주지만 제목만으로 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-298840058-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이폰 마이크의 테스트음을 FFT 처리해 주파수별 피크 그래프로 표시하지만 제목만으로 방 울림 문제와 분석 결과가 보이지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-298840058-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이폰 마이크 음성을 FFT로 분석해 홈레코딩 방의 주파수 그래프를 만들지만 제목이 문제와 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-298840058-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이폰 마이크의 보컬 음성을 FFT 처리해 진폭·주파수 그래프로 보여주는 흐름은 구체적이지만 제목만으로 목적과 결과가 불명확하다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1115974495-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "식단 사진 한 장을 입력해 날짜·시간 워터마크를 1회 추가하고 타임스탬프 사진 파일로 즉시 결과를 내며 결제자와 순간도 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1115974495-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공사 사진 한 장을 입력해 날짜·시간 워터마크를 추가하고 현장 기록용 타임스탬프 사진 파일을 즉시 만들며 결제자와 순간이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1115974495-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "아이 성장 사진 한 장에 날짜·시간 워터마크를 추가하는 처리는 구체적이지만 식단 사진을 남기는 결제자와 아이 성장 순간·결과가 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1115974495-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "식단 사진에 날짜·시간 워터마크를 추가해 타임스탬프 파일을 만들지만 공사 현장 소장이라는 결제자와 식사 순간·결과가 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1115974495-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공사 사진 한 장에 날짜·시간 워터마크를 추가해 현장 기록 파일을 만들지만 결제자가 공사 현장 소장인데 원본 흐름상 카드의 연결은 명확하지 않다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1115974495-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "아이 성장 사진에 날짜·시간 워터마크를 추가해 타임스탬프 파일을 만들지만 공사 현장 소장과 아이 성장 순간·결과가 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1115974495-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "식단 사진 한 장에 날짜·시간 워터마크를 추가해 기록 파일을 만들지만 아이 성장 사진을 정리하는 부모라는 결제자와 식사 순간이 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1115974495-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "식단 사진에 날짜·시간 워터마크를 추가하는 입력·처리·결과는 구체적이지만 아이 성장 사진을 정리하는 부모와 공사 촬영 직후 순간이 불일치한다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1115974495-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "공사 사진 한 장에 날짜·시간 워터마크를 추가해 타임스탬프 파일을 만들지만 아이 성장 사진을 정리하는 부모와 성장 기록 순간·결과가 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    }
+  ]
+}

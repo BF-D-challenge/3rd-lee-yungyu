@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-figma-ai-rename-plugin-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 반복 레이어의 순번 이름 정리’는 개발 인수인계를 앞둔 외주 디자이너가 컴포넌트 분할 직전에 Figma 프레임 파일 하나를 입력하면 반복 요소를 한 번 식별해 순번이 붙은 레이어 이름 미리보기 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-figma-ai-rename-plugin-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 UI 역할명 정리’는 개발 인수인계를 앞둔 외주 디자이너가 공유 직전에 Figma 프레임 파일 하나를 입력하면 시각 요소를 한 번 분석해 버튼·입력창 같은 UI 역할명이 적용된 레이어 이름 미리보기 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-figma-ai-rename-plugin-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘Figma 레이어의 계층 경로명 표시’는 개발 인수인계 직전의 외주 디자이너가 Figma 프레임 파일 하나를 입력하면 레이어 계층을 한 번 분석해 부모 구조가 드러나는 경로명 적용 이름 미리보기 하나를 받는 흐름이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

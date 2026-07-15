@@ -1,0 +1,126 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6461213251-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘협찬 고지 위치가 보이는 네이버 후기’는 육아용품을 결제하기 직전 부모가 네이버 글 URL 하나를 입력하면 대가성 문구를 한 번 찾아 본문 앞·중간·뒤 위치 한 개를 보여주므로 순간과 한 끗 변화가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6461213251-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘직접 구매 근거가 보이는 네이버 후기’는 가전 최종 선택 직전 URL 하나에서 직접 구매 문장 하나를 찾지만, 원본의 대가성 문구 탐지 메커니즘에서 직접 구매 근거 탐지로 벗어난다.",
+      "risk_flags": [
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6461213251-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘대가성 표현 횟수가 표시된 후기’는 맛집 링크를 고르기 직전 네이버 글 URL 하나를 입력해 대가성 표현을 한 번 탐지하고 발견 횟수 한 개를 보여주므로 입력·처리·결과와 원본 메커니즘이 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1140451547-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘직선 궤적선이 표시된 골프 영상’은 레슨 직후 코치가 골프 영상 파일 하나를 한 번 편집해 직선 궤적선이 들어간 MP4 한 개를 받으므로 즉시 피드백 순간과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1140451547-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘드로우 궤적선이 표시된 골프 영상’은 SNS 업로드 직전 아마추어 골퍼가 영상 파일 하나를 한 번 처리해 드로우 궤적선이 들어간 MP4 한 개를 받으므로 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1140451547-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘페이드 궤적선이 표시된 골프 영상’은 대회 하이라이트 공유 직전 콘텐츠 담당자가 영상 파일 하나를 한 번 편집해 페이드 궤적선이 들어간 MP4 한 개를 받으므로 결제자·순간·결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6762625967-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘본문이 읽히는 HWP PDF 변환’은 이동 중 공공기관 문서를 확인하려는 프리랜서가 HWP/HWPX 파일 하나를 한 번 변환해 본문이 읽히는 PDF 한 개를 받으므로 한국 사용 순간과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6762625967-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘이미지 위치가 유지된 HWP PDF’는 학교 안내문을 전달하기 직전 보호자가 HWP/HWPX 파일 하나를 한 번 변환해 이미지 위치가 유지된 PDF 한 개를 받으므로 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6762625967-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘표 배치가 보존된 HWP PDF’는 마감 직전 대학생이 HWP/HWPX 과제 파일 하나를 한 번 변환해 표 배치가 유지된 PDF 한 개를 받으므로 모바일 확인 순간과 한 끗 변화가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-mirage-detect-image-editing-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘복제 흔적이 표시된 사진 히트맵’은 중고거래 게시물 승인 직전 운영자가 사진 파일 하나를 한 번 분석해 복제 의심 영역이 표시된 히트맵 이미지 한 장을 받으므로 원본 메커니즘과 검수 순간이 일치한다.",
+      "risk_flags": []
+    }
+  ]
+}

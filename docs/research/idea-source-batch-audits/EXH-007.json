@@ -1,0 +1,60 @@
+{
+  "batch_id": "EXH-007",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "sonnet",
+  "audit_model": "sonnet",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 97,
+  "decision_counts": {
+    "Fail": 85,
+    "Reserve": 1,
+    "Candidate": 2,
+    "Merge": 9
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 86,
+      "sample": [
+        "app_store:1669007652",
+        "app_store:1313192037",
+        "app_store:360593530",
+        "app_store:6738209974",
+        "app_store:6744685731",
+        "chrome_web_store:pgdmhodlebnljmmknpicldhgdnllonmd",
+        "app_store:1671705818",
+        "app_store:6480409654",
+        "chrome_web_store:jbjkfjnokaapdlpiaaeamokdacnieagh"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:pgdmhodlebnljmmknpicldhgdnllonmd",
+          "decision": "Candidate",
+          "reason": "HTML 코드 텍스트 입력 → 에디터로 편집·삽입 처리 → 서식 적용된 이메일 본문이라는 세로 조각을 반나절 안에 만들 수 있음"
+        }
+      ],
+      "false_reject_rate": 0.1111111111111111
+    },
+    {
+      "round": 2,
+      "fail_count": 85,
+      "sample": [
+        "app_store:1397424959",
+        "app_store:1611993508",
+        "app_store:6738209974",
+        "trustmrr:mobile-app-5",
+        "app_store:341776037",
+        "chrome_web_store:nchdkiiggpcnpjhljlfkiidfagkcpmjd",
+        "trustmrr:podspot",
+        "app_store:1668337467",
+        "app_store:417352269"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

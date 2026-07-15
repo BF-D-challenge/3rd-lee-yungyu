@@ -1,0 +1,417 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1350338180-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장을 입력해 색상 필터를 적용하고 결과 사진을 내지만 OS 기본 편집이나 범용 이미지 AI로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "generic_filter",
+        "os_basic_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1350338180-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 입력과 뉴욕풍 필터 결과는 구체적이지만 한국식 날짜 스탬프는 원본 필터 메커니즘에 없는 새 기능이다.",
+      "risk_flags": [
+        "generic_filter",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1350338180-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 입력과 색상 필터 결과는 구체적이지만 서울 야경용 별도 색조는 원본의 일반 뉴욕풍 필터를 벗어난 확장이다.",
+      "risk_flags": [
+        "generic_filter",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-532997527-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹페이지 URL과 간격을 입력해 반복 확인하고 문구 변화 알림을 내지만 'Auto Refresh 5'만으로 문제와 결과가 초보자에게 즉시 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "background_polling"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-532997527-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹페이지 URL과 간격을 입력해 재입고 문구 변화와 알림을 만들 수 있지만 제목만으로 반복 감시와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear",
+        "background_polling"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-532997527-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "URL과 간격으로 페이지 변화를 감지하는 구조는 가능하지만 쇼핑몰 운영자와 취소표 페이지 감시라는 twist가 서로 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1435689225-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "무용수 구성 정보를 입력해 무대 배치 이미지와 PDF를 만들지만 'Formation'이라는 제목과 입력 형식이 문제와 결과를 충분히 설명하지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "input_underspecified"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1435689225-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "공연 인원 구성을 입력해 학교 축제용 배치 이미지와 PDF를 만들 수 있으나 제목만으로 용도와 산출물이 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear",
+        "input_underspecified"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1435689225-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "공연자 구성을 입력해 인원별 배치 이미지와 PDF를 만들 수 있지만 제목과 구성 입력이 구체적인 사용 결과를 바로 보여주지 않는다.",
+      "risk_flags": [
+        "title_unclear",
+        "input_underspecified"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6755928075-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "러닝 인증 사진 한 장을 입력해 한강 야간 러닝용 폰트·색상·레이아웃을 적용하고 즉시 공유할 인증 사진 한 장을 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6755928075-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "러닝 인증 사진 한 장을 입력해 제주 해안 분위기의 여백 많은 스타일을 적용하고 완주 인증 사진 한 장을 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6755928075-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장만 입력하는데 거리와 페이스를 담으려면 별도 기록 데이터가 필요해 입력 1개 처리 1회 결과 1개의 조건을 충족하지 못한다.",
+      "risk_flags": [
+        "missing_input",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6447179702-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장을 입력해 선화 파일을 출력하는 구조지만 범용 이미지 AI의 단일 변환으로 더 편리하게 처리할 수 있다.",
+      "risk_flags": [
+        "generic_ai_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6447179702-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 사진을 입력해 선화 파일을 출력하지만 범용 이미지 AI 한 번으로 동일한 결과를 만들 수 있어 차별적인 세로 조각이 약하다.",
+      "risk_flags": [
+        "generic_ai_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6447179702-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장에서 투명 선화를 만드는 결과는 구체적이지만 범용 이미지 AI가 더 간단한 대안이다.",
+      "risk_flags": [
+        "generic_ai_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-953739548-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기기 연락처를 한 번 입력으로 받아 이름·번호 열이 있는 스프레드시트 파일 하나로 즉시 변환한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-953739548-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "휴대폰 연락처를 입력해 고객관리용 스프레드시트 파일 하나를 만들고 메일 첨부 가능한 결과를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-953739548-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기기 주소록을 입력해 거래처 연락처를 공유 가능한 스프레드시트 파일 하나로 변환한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1437885179-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 권한과 촬영을 입력해 셔터음 없는 고화질 사진·영상 파일을 즉시 저장한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1437885179-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 촬영 한 번으로 회의 자료를 방해 없이 기록하는 무음 사진·영상 결과를 저장한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1437885179-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라를 입력으로 받아 공연 리허설을 방해하지 않는 무음 고화질 영상 하나를 저장한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6742751800-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "M3U 파일 또는 IPTV 링크 하나를 입력해 채널을 파싱·검색하고 국내 스포츠 채널을 찾을 수 있는 목록 하나를 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6742751800-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "M3U 파일 또는 링크를 입력해 여러 소스의 채널을 검색하고 자주 보는 채널 목록을 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6742751800-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "M3U 파일 또는 IPTV 링크를 입력해 채널을 파싱·검색하고 여러 해외축구 소스의 채널 목록을 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1459763927-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "입력은 Bristol 놀이터 정보인데 결과는 서울 동네 시설을 요구해 원본 데이터와 한국 사용 순간이 일치하지 않는다.",
+      "risk_flags": [
+        "location_mismatch",
+        "data_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1459763927-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "Bristol 놀이터 정보를 입력해 서울 이주 부모에게 추천하려 하므로 필요한 지역 데이터가 없어 단일 입력·결과 조각이 성립하지 않는다.",
+      "risk_flags": [
+        "location_mismatch",
+        "data_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1459763927-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "Bristol 정보로 서울 유아용 시설 필터를 제공하려 해 원본 입력과 한국 사용 순간이 맞지 않는다.",
+      "risk_flags": [
+        "location_mismatch",
+        "data_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1450105878-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "계좌번호를 미리 입력하고 위젯을 설치·기록해야 필요한 순간에 작동하므로 문제 전에 사전 설정이 필수다.",
+      "risk_flags": [
+        "preconfiguration_required",
+        "os_widget_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1450105878-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "은행·계좌번호·이름을 사전에 저장하고 위젯을 설치해야 하므로 즉시 필요한 순간의 단일 입력 처리 결과가 아니다.",
+      "risk_flags": [
+        "preconfiguration_required",
+        "os_widget_alternative"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1450105878-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여러 계좌를 미리 기록하고 위젯을 설치해야 하며 계좌 복사는 OS 기본 기능으로도 대체 가능하다.",
+      "risk_flags": [
+        "preconfiguration_required",
+        "os_basic_alternative"
+      ]
+    }
+  ]
+}

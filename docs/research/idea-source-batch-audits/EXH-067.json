@@ -1,0 +1,75 @@
+{
+  "batch_id": "EXH-067",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 56,
+    "Candidate": 39,
+    "Merge": 4,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 68,
+      "sample": [
+        "chrome_web_store:cipfemdibanodhkdnbijhladjcchhhnh",
+        "trustmrr:prepora",
+        "app_store:708032904",
+        "app_store:6449518113",
+        "app_store:1467344437",
+        "app_store:6448163027",
+        "app_store:1241140495"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1241140495",
+          "decision": "Candidate",
+          "reason": "단일 위치 권한을 받아 GPS 위치와 항해 차트·조수·날씨를 결합하고, 복잡하지 않은 해상 항해 지도를 반나절~2일에 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 2,
+      "fail_count": 59,
+      "sample": [
+        "app_store:864979091",
+        "trustmrr:prothumbs",
+        "app_store:6479604296",
+        "app_store:6448163027",
+        "trustmrr:supermission",
+        "app_store:1133880811"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1133880811",
+          "decision": "Candidate",
+          "reason": "웹페이지 하나를 받아 읽기 편한 형태로 표시하고, 북마크 가능한 커뮤니티 열람 화면을 2일 안에 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 3,
+      "fail_count": 56,
+      "sample": [
+        "app_store:6758928120",
+        "app_store:1009076561",
+        "chrome_web_store:anpdgilpfngjdnolgofhlekehojfgdbm",
+        "trustmrr:flutterfasttemplate",
+        "app_store:1041858138",
+        "app_store:1192750649"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

@@ -1,0 +1,254 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6477182657-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "iPhone 사진 1장을 입력해 Leica 색감과 수동 조정을 거쳐 결과 사진을 만드는 흐름은 구체적이지만 제목만으로 밋밋한 사진 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_vague"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6477182657-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "iPhone 카메라 촬영 1회 후 수동 초점·노출과 Leica 색감을 적용해 재촬영 결과를 만드는 흐름은 가능하지만 제목에 해결 문제와 결과가 명시되지 않는다.",
+      "risk_flags": [
+        "title_vague"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6477182657-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "눈앞의 풍경을 iPhone으로 한 번 촬영하고 Leica 색감을 적용해 분위기 있는 사진을 얻는 흐름은 자연스럽지만 제목만으로 문제와 결과가 선명하지 않다.",
+      "risk_flags": [
+        "title_vague"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6477182657-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "밋밋한 iPhone 사진 1장을 입력해 풍경별 Leica 색감을 처리하고 분위기 있는 결과 사진을 만드는 흐름은 구체적이나 제목이 문제를 직접 보여주지 않는다.",
+      "risk_flags": [
+        "title_vague"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6477182657-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인물 사진 1장에 Leica 렌즈·색상을 적용하는 기본 흐름은 맞지만 원본에 없는 배경 흐림 선택을 추가해 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "unsupported_feature"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1570594940-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "하늘을 향한 카메라 화면 1개를 천체 위치와 시간에 대조해 현재 보이는 천체 지도를 보여주는 흐름은 구체적이지만 제목만으로 밝은 점 식별 문제가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_vague",
+        "sensor_context_implicit"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1570594940-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "하늘 카메라 화면을 한 번 대조해 현재 행성 위치 지도를 보여주는 흐름은 아이의 질문 순간에 자연스럽지만 제목에 질문 문제와 결과가 함께 드러나지 않는다.",
+      "risk_flags": [
+        "title_vague",
+        "sensor_context_implicit"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1570594940-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캠핑장에서 하늘 화면 1개를 입력해 별자리 위치를 표시하는 결과는 구체적이지만 제목만으로 방향을 찾는 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_vague",
+        "sensor_context_implicit"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1570594940-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "밝은 점을 카메라로 비추고 천체 위치를 대조해 현재 하늘 지도를 보여주는 흐름은 부모 상황에 맞지만 제목이 밝은 점 식별 문제를 직접 설명하지 않는다.",
+      "risk_flags": [
+        "title_vague",
+        "sensor_context_implicit"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1570594940-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이에게 질문받은 하늘 화면을 천체 위치와 대조해 별 이름이 포함된 현재 하늘 지도를 보여주는 흐름은 자연스럽지만 제목만으로 사용 순간이 선명하지 않다.",
+      "risk_flags": [
+        "title_vague",
+        "sensor_context_implicit"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1570594940-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캠핑장 하늘 화면 1개를 입력해 별자리 방향을 현재 지도에 표시하는 단일 흐름은 가능하지만 제목에서 방향 찾기 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_vague",
+        "sensor_context_implicit"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1570594940-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "도심의 밝은 점을 카메라 화면으로 대조해 현재 천체 지도를 보여주는 입력·처리·결과는 구체적이나 제목이 밝은 점 확인 문제를 명시하지 않는다.",
+      "risk_flags": [
+        "title_vague",
+        "sensor_context_implicit"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1570594940-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이의 별 이름 질문에 하늘 카메라 화면을 대조해 천체 지도를 보여주는 흐름은 한 번에 수행되지만 제목만으로 질문 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_vague",
+        "sensor_context_implicit"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1570594940-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "하늘 카메라 화면 1개를 천체 위치 정보와 처리해 행성 위치 지도를 보여주는 흐름은 단일 세로 조각이지만 제목에 별자리 방향 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_vague",
+        "sensor_context_implicit"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1294341144-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "필요한 준비물 목록을 입력해 기억 미션을 처리하고 파티까지 안전히 도착하는 게임 결과를 만드는 흐름은 가능하지만 영문 입력·처리 문구와 제목이 문제와 결과를 초보자에게 명확히 전달하지 않는다.",
+      "risk_flags": [
+        "english_copy",
+        "title_vague"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1294341144-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "파티 준비물 목록을 입력해 기억 미션을 진행하고 안전한 도착 결과를 만드는 구조는 원본과 맞지만 영문 문구와 제목만으로 해결 문제와 결과가 선명하지 않다.",
+      "risk_flags": [
+        "english_copy",
+        "title_vague"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1294341144-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "우비와 장화 같은 준비물 목록을 한 번 입력해 순서 기억 미션을 처리하고 목적지 도착 결과를 만드는 흐름은 구체적이지만 제목과 영문 문구가 초보자에게 불명확하다.",
+      "risk_flags": [
+        "english_copy",
+        "title_vague"
+      ]
+    }
+  ]
+}

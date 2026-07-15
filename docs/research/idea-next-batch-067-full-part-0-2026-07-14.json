@@ -1,0 +1,60 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-1582051883-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라벨과 값을 한 번 입력해 색상을 적용한 발표용 막대차트 이미지로 저장하는 흐름은 구체적이지만 제목만으로는 문제 상황이 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-001",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "월별 매출 라벨과 값을 입력해 항목별 색상의 막대차트 이미지 하나로 내보내는 결과는 구체적이지만 제목만으로는 사용 순간과 문제가 보이지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-002",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보고서 수치 라벨과 값을 입력해 편집 중 막대차트 미리보기 하나를 확인하는 흐름은 자연스럽지만 제목만으로는 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-010",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "발표 직전 라벨과 값을 입력해 항목별 막대차트 이미지를 저장하는 한 번의 처리와 결과가 구체적이지만 제목만으로는 해당 문제 상황이 보이지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    }
+  ]
+}

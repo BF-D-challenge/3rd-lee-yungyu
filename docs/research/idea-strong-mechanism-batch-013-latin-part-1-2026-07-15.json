@@ -1,0 +1,188 @@
+{
+  "results": [
+    {
+      "id": "next-latin-chrome-web-store-bnjjngeaknajbdcgpfkgnonkmififhfo-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘한국 주소·전화 형식으로 테스트 폼 채우기’는 노코드 제작자가 폼 제출 전 공개 테스트 폼 URL 하나를 입력하면 한국식 가짜 주소·전화값으로 한 번 채워진 폼 화면 하나를 즉시 받는 흐름으로 payer·moment·twist·smallest_build가 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-bnjjngeaknajbdcgpfkgnonkmififhfo-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹 폼 입력 타입별 더미값 채우기’는 노코드 제작자가 회귀 검사 직후 공개 테스트 폼 URL 하나를 입력하면 입력 타입에 맞는 가짜값으로 한 번 채워진 현재 폼 화면 하나를 즉시 받아 payer·moment·twist·smallest_build가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-bnjjngeaknajbdcgpfkgnonkmififhfo-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘수정 전후 같은 값으로 폼 재현하기’는 고객 시연 직전 공개 폼 URL 하나를 입력해 seed 기반 값이 채워진 화면 하나만 반환하므로 수정 전후 재현을 확인할 이전 기록이나 두 시점의 처리가 없어 payer·moment·twist·smallest_build의 결과가 성립하지 않는다.",
+      "risk_flags": [
+        "prior_record_required",
+        "multi_step",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 태그 원래순서 TXT 목록’은 영상 제작자가 제목 수정 직전 유튜브 영상 URL 하나를 입력하면 숨은 태그를 한 번 추출해 원래 순서의 TXT 파일 하나를 즉시 받는 흐름으로 payer·moment·twist·smallest_build가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 중복 제거 태그 CSV’는 영상 제작자가 경쟁 영상 브리프 작성 중 영상 URL 하나를 입력하면 숨은 태그를 한 번 추출·중복 제거해 CSV 파일 하나를 즉시 받아 payer·moment·twist·smallest_build가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 경쟁 영상 긴 태그 우선 목록’은 영상 제작자가 업로드 전 메타데이터 검수 때 영상 URL 하나를 입력하면 숨은 태그를 한 번 추출·길이순 정렬해 CSV 하나로 즉시 받으므로 payer·moment·twist·smallest_build가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 중복 제거 태그 CSV’는 콘텐츠 마케터가 경쟁 영상 제목을 고치려는 순간 영상 URL 하나를 입력해 숨은 태그를 한 번 추출·중복 제거하고 CSV 하나를 즉시 받는 구조라 payer·moment·twist·smallest_build가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 경쟁 영상 긴 태그 우선 목록’은 콘텐츠 마케터가 경쟁 영상 브리프에 근거를 넣을 때 영상 URL 하나를 입력하면 태그를 한 번 추출·길이순 정렬해 CSV 하나를 즉시 받으므로 payer·moment·twist·smallest_build가 자연스럽게 연결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 태그 원래순서 TXT 목록’은 콘텐츠 마케터가 업로드 전 메타데이터를 검수할 때 영상 URL 하나를 입력해 숨은 태그를 한 번 추출하고 원래 순서의 TXT 파일 하나를 즉시 받는 흐름으로 payer·moment·twist·smallest_build가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 경쟁 영상 긴 태그 우선 목록’은 영상 대행 편집자가 경쟁 영상 태그를 확인해 제목을 고칠 때 영상 URL 하나를 입력하면 태그를 한 번 추출·길이순 정렬해 CSV 하나를 즉시 받으므로 payer·moment·twist·smallest_build가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 태그 원래순서 TXT 목록’은 영상 대행 편집자가 경쟁 영상 브리프에 태그 근거를 넣는 순간 영상 URL 하나를 입력해 숨은 태그를 한 번 추출하고 원래 순서 TXT 하나를 즉시 받으므로 payer·moment·twist·smallest_build가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-idickfnblhhleimfneihpmddjabiodlp-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘유튜브 영상 중복 제거 태그 CSV’는 영상 대행 편집자가 고객 영상 업로드 전 영상 URL 하나를 입력하면 숨은 태그를 한 번 추출·중복 제거해 CSV 파일 하나를 즉시 받아 payer·moment·twist·smallest_build가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘상품 페이지 최소 가로폭 이미지 ZIP’은 이커머스 운영자가 상품 등록 중 공개 웹페이지 URL 하나를 입력하면 이미지 가로폭을 한 번 필터링해 조건에 맞는 ZIP 파일 하나를 즉시 받으므로 payer·moment·twist·smallest_build가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 PNG 이미지 선별 ZIP 파일’은 이커머스 운영자가 디자인 보드용 이미지를 모을 때 공개 웹페이지 URL 하나를 입력하면 PNG만 한 번 필터링해 ZIP 파일 하나를 즉시 받으므로 payer·moment·twist·smallest_build가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 고용량 이미지 선별 ZIP’은 이커머스 운영자가 기존 페이지 이미지를 편집기로 옮길 때 공개 웹페이지 URL 하나를 입력하면 파일 크기를 한 번 필터링해 기준을 넘는 이미지 ZIP 하나를 즉시 받으므로 payer·moment·twist·smallest_build가 맞는다.",
+      "risk_flags": []
+    }
+  ]
+}

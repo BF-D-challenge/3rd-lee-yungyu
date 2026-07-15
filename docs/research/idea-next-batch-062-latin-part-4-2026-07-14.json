@@ -1,0 +1,46 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-478293637-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "음악 파일 1개를 입력해 템포·피치 조정과 구간 반복을 한 번 처리하고 느린 기타 솔로 연습 구간을 얻는 흐름은 구체적이지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-478293637-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "음악 파일 1개를 입력해 피치를 낮추고 어려운 구간의 반복 지점을 설정해 음역에 맞는 반복 연습 구간을 얻는 흐름은 자연스럽지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-478293637-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "음악 파일 1개를 입력해 기타 음원을 느리게 재생하고 어려운 네 마디를 반복 처리해 합주 전 연습 구간을 얻는 흐름은 구체적이지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    }
+  ]
+}

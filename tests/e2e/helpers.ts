@@ -11,7 +11,10 @@ export interface TestPraiseRequestCard {
   summary: string;
   smallestBuild: string;
   source: string;
+  payer?: string;
+  moment?: string;
   twist: string;
+  flow?: string;
   createdAt: number;
 }
 
@@ -33,7 +36,10 @@ export function makePraiseRequest(overrides: Partial<TestPraiseRequestCard> = {}
     summary: "작은 팀의 기획자가 회의 직후 쓰는 웹 아이디어",
     smallestBuild: "1분 음성을 올리면 결정된 내용만 세 줄로 보여주는 웹 화면",
     source: "말을 녹음하면 글로 바꾸고 정리해주는 서비스",
+    payer: "작은 팀의 기획자",
+    moment: "회의가 끝난 직후",
     twist: "전체 받아쓰기를 숨기고 결정된 문장만 보여주기",
+    flow: "녹음 → 결정 추출 → 결정 세 줄 확인",
     createdAt: FIXED_NOW.getTime(),
     ...overrides,
   };
@@ -54,12 +60,14 @@ export function praiseVote({
   praise = "작은 디테일까지 챙기는 모습이 정말 멋졌어요.",
   reveal = "forever-anonymous",
   senderName,
+  ideaTitle,
   at = FIXED_NOW.getTime(),
 }: {
   id?: string;
   praise?: string;
-  reveal?: "forever-anonymous" | "after-30d";
+  reveal?: "named" | "forever-anonymous" | "after-30d";
   senderName?: string;
+  ideaTitle?: string;
   at?: number;
 } = {}): TestVote {
   return {
@@ -71,6 +79,7 @@ export function praiseVote({
       praise,
       reveal,
       ...(senderName ? { senderName } : {}),
+      ...(ideaTitle ? { ideaTitle } : {}),
     })}`,
   };
 }
@@ -118,13 +127,13 @@ export async function trackedEvents(page: Page): Promise<Array<Record<string, un
 }
 
 export function axisCard(page: Page, label: string): Locator {
-  return page.getByRole("article").filter({ hasText: label });
+  return page.locator(`article.idea-lab__slot[data-axis-label="${label}"]`);
 }
 
 export async function drawAll(page: Page) {
-  await page.getByRole("button", { name: /4장 한 번에 뽑기/ }).click();
+  await page.getByRole("button", { name: "4장 자동 채우기", exact: true }).click();
   await expect(page.getByRole("button", { name: /4장 다시 뽑기/ })).toBeEnabled();
-  await expect(page.getByText("네 장이 완성됐어요.", { exact: false })).toBeVisible();
+  await expect(page.locator(".idea-lab__status")).toContainText("네 장이 완성됐어요.");
 }
 
 export async function seedPraiseStorage(
@@ -155,6 +164,8 @@ export async function seedPraiseStorage(
 }
 
 export async function openPraiseTab(page: Page) {
-  await page.getByRole("button", { name: /오늘의 칭찬/ }).click();
-  await expect(page.getByRole("heading", { name: "매일 익명의 칭찬 한 장" })).toBeVisible();
+  const tab = page.getByRole("button", { name: /받은 응원/ });
+  await tab.click();
+  await expect(tab).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator("section[data-state='filled'], section[data-state='empty']")).toBeVisible();
 }

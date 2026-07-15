@@ -1,0 +1,220 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-docuaudit-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화주 재무 담당자가 지급 전 운송사 화물 청구서 PDF 하나를 입력하면 행 금액 합계와 인쇄 총액을 한 번 대조해 불일치 행이 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화주 재무 담당자가 지급 전 운송사 화물 청구서 PDF 하나를 입력하면 운송장 번호·청구일·금액이 같은 행을 한 번 찾아 중복 후보가 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화주 재무 담당자가 지급 전 운송사 화물 청구서 PDF 하나를 입력하면 운송장 번호·청구일·통화의 기재 여부를 한 번 확인해 누락 위치가 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화주 재무 담당자가 지급 승인 직전 운송사 화물 청구서 PDF 하나를 입력하면 행 금액 합계와 인쇄 총액을 한 번 대조해 불일치 행이 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화주 재무 담당자가 지급 승인 직전 운송사 화물 청구서 PDF 하나를 입력하면 운송장 번호·청구일·금액이 같은 행을 한 번 찾아 중복 후보가 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화주 재무 담당자가 지급 승인 직전 운송사 화물 청구서 PDF 하나를 입력하면 운송장 번호·청구일·통화의 기재 여부를 한 번 확인해 누락 위치가 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화주 재무 담당자가 월말 증빙을 넘기기 전 운송사 화물 청구서 PDF 하나를 입력하면 행 금액 합계와 인쇄 총액을 한 번 대조해 불일치 행이 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화주 재무 담당자가 월말 증빙을 넘기기 전 운송사 화물 청구서 PDF 하나를 입력하면 운송장 번호·청구일·금액이 같은 행을 한 번 찾아 중복 후보가 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화주 재무 담당자가 월말 증빙을 넘기기 전 운송사 화물 청구서 PDF 하나를 입력하면 운송장 번호·청구일·통화의 기재 여부를 한 번 확인해 누락 위치가 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "3PL 비용 검수자가 지급 전 운송사 화물 청구서 PDF 하나를 입력하면 행 금액 합계와 인쇄 총액을 한 번 대조해 불일치 행이 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "3PL 비용 검수자가 지급 전 운송사 화물 청구서 PDF 하나를 입력하면 운송장 번호·청구일·금액이 같은 행을 한 번 찾아 중복 후보가 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "3PL 비용 검수자가 지급 전 운송사 화물 청구서 PDF 하나를 입력하면 운송장 번호·청구일·통화의 기재 여부를 한 번 확인해 누락 위치가 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "3PL 비용 검수자가 지급 승인 직전 운송사 화물 청구서 PDF 하나를 입력하면 행 금액 합계와 인쇄 총액을 한 번 대조해 불일치 행이 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "3PL 비용 검수자가 지급 승인 직전 운송사 화물 청구서 PDF 하나를 입력하면 운송장 번호·청구일·금액이 같은 행을 한 번 찾아 중복 후보가 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "3PL 비용 검수자가 지급 승인 직전 운송사 화물 청구서 PDF 하나를 입력하면 운송장 번호·청구일·통화의 기재 여부를 한 번 확인해 누락 위치가 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "3PL 비용 검수자가 월말 증빙을 넘기기 전 운송사 화물 청구서 PDF 하나를 입력하면 행 금액 합계와 인쇄 총액을 한 번 대조해 불일치 행이 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "3PL 비용 검수자가 월말 증빙을 넘기기 전 운송사 화물 청구서 PDF 하나를 입력하면 운송장 번호·청구일·금액이 같은 행을 한 번 찾아 중복 후보가 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-docuaudit-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "3PL 비용 검수자가 월말 증빙을 넘기기 전 운송사 화물 청구서 PDF 하나를 입력하면 운송장 번호·청구일·통화의 기재 여부를 한 번 확인해 누락 위치가 표시된 감사 CSV 하나를 받으므로 제목·순간·변화가 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

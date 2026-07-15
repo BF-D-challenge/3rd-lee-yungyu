@@ -1,0 +1,60 @@
+{
+  "batch_id": "EXH-016",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 98,
+  "decision_counts": {
+    "Fail": 52,
+    "Candidate": 41,
+    "Reserve": 1,
+    "Merge": 4
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 65,
+      "sample": [
+        "chrome_web_store:aapbdbdomjkkjkaonfhkkikfgjllcleb",
+        "trustmrr:limesnap",
+        "chrome_web_store:dnjklpokjknbbjejbpcicakjefigcnda",
+        "app_store:6472631409",
+        "app_store:1084209377",
+        "trustmrr:glowly",
+        "app_store:1490580239"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:aapbdbdomjkkjkaonfhkkikfgjllcleb",
+          "decision": "Candidate",
+          "reason": "번역할 텍스트 하나를 받아 언어를 번역하고 번역 결과를 보여주는 세로 조각이 가능하다."
+        },
+        {
+          "key": "trustmrr:limesnap",
+          "decision": "Merge",
+          "reason": "콘텐츠를 받아 장면·자막·음성을 자동 생성해 숏폼을 저장하는 흐름이 story-short-video와 실질적으로 같다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 2,
+      "fail_count": 52,
+      "sample": [
+        "trustmrr:limesnap",
+        "chrome_web_store:epogeefdgellhbbnafbcppbnclkomhoc",
+        "app_store:1455054515",
+        "trustmrr:glowly",
+        "app_store:436672029",
+        "app_store:390017969"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

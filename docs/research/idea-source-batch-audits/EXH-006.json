@@ -1,0 +1,36 @@
+{
+  "batch_id": "EXH-006",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "sonnet",
+  "audit_model": "sonnet",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 98,
+  "decision_counts": {
+    "Fail": 78,
+    "Merge": 15,
+    "Candidate": 4,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 78,
+      "sample": [
+        "chrome_web_store:aopddeflghjljihihabdclejbojaomaf",
+        "app_store:1531466462",
+        "chrome_web_store:clldacgmdnnanihiibdgemajcfkmfhia",
+        "chrome_web_store:ghgabhipcejejjmhhchfonmamedcbeod",
+        "app_store:975017240",
+        "app_store:1119601770",
+        "app_store:1541469491",
+        "trustmrr:hyrox-fitness-app"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

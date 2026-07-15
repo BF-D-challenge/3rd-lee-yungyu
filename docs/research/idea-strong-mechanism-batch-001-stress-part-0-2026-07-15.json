@@ -1,0 +1,172 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-964220645-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘공유 사진 속 얼굴 자동 가리기’는 사진 한 장을 입력해 얼굴을 자동 모자이크하고 검열 사진 한 장을 보여주지만, 판매자의 실제 필요에는 주소표지·번호판도 포함되어 제목과 대상 범위가 좁다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-964220645-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진 속 주소표지 직접 픽셀 가리기’는 사진 한 장을 입력해 손가락으로 영역을 지정하고 결과 사진 한 장을 만들지만, 일반 사진 편집기나 OS 기본 마크업으로 대체하기 쉬운 수동 기능이다.",
+      "risk_flags": [
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-964220645-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘차량 번호판 가린 공유 사진’은 사진 한 장을 입력해 번호판을 자동 모자이크하고 공유 가능한 검열 사진 한 장을 즉시 보여줘 결제자와 공유 직전 순간 및 자동화의 한 끗이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6670228620-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘직급별 회식비 개인 분담금’은 참가자 이름·비율·총액이라는 여러 값을 입력해 참가자별 여러 금액을 계산하므로 입력 1개·결과 1개 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_input",
+        "multi_result",
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6670228620-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘회식비 부족액 거스름돈 확인’은 참가자 이름·비율·총액을 입력해 분담금과 부족액 또는 거스름돈을 함께 산출하므로 여러 입력과 여러 결과가 필요하다.",
+      "risk_flags": [
+        "multi_input",
+        "multi_result",
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6670228620-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘500원 단위 회식비 정산표’는 참가자 이름·비율·총액을 입력해 참가자별 여러 금액을 표시하므로 입력 1개·결과 1개 세로 조각이 아니며 일반 계산기로도 처리 가능하다.",
+      "risk_flags": [
+        "multi_input",
+        "multi_result",
+        "os_basic_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-733449239-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘두 변으로 면취 누락 각도 계산’은 두 변이라는 복수 숫자를 입력하고 추가 조건 없이 각도를 산출한다고 해 입력 1개 규칙과 결과의 수학적 조건이 불명확하다.",
+      "risk_flags": [
+        "multi_input",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-733449239-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘철공 면취 형상 치수 한눈표’는 두 변 또는 각도 숫자라는 복수 입력을 받아 각도와 변 길이라는 여러 치수를 결과로 표시하므로 단일 입력·단일 결과 규칙을 위반한다.",
+      "risk_flags": [
+        "multi_input",
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-733449239-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘면취 각도로 누락 변 길이 계산’은 한 각도와 한 변이라는 두 숫자를 입력해 누락 변 길이를 계산하므로 단일 입력 규칙에 맞지 않는다.",
+      "risk_flags": [
+        "multi_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6443780213-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘멀리서 보이는 응원 부채 문구’는 문구 텍스트 한 줄을 입력해 굵은 외곽선 디자인을 한 번 적용하고 바로 쓸 응원 이미지 한 장을 보여줘 순간과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6443780213-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘부채 크기에 맞춘 응원 문구’는 문구 텍스트 한 줄을 입력해 고정된 부채 출력 크기에 맞춘 이미지 한 장을 즉시 만들어 팬미팅 준비 순간에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6443780213-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘긴 구호 두 줄 부채 글자’는 문구 텍스트 한 줄을 입력해 두 줄 배치로 한 번 디자인하고 응원 이미지 한 장을 즉시 보여줘 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘노션 표 잘림 없는 인쇄용 PDF’는 프리랜서가 전달 직전에 공개 Notion URL 1개를 입력해 표 페이지 나눔을 보존하고 PDF 파일 1개를 받는 문제와 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘노션 다크 페이지 인쇄용 PDF’는 교사가 인쇄 검수 직전에 공개 Notion URL 1개를 입력해 다크 페이지 대비를 보존하고 PDF 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ijaopicbldggjdgbnfdlkljeggibmcha-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘노션 이미지 비율 보존 PDF’는 팀 리더가 외부 협력사에 전달하기 직전 공개 Notion URL 1개를 입력해 이미지 원본 비율을 고정하고 PDF 파일 1개를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘경유지 보존 장거리 경로 GPX’는 동호회 운영자가 경로를 기기에 넣기 직전 공개 Google Maps 경로 URL 1개를 입력해 1회 편집·최적화하고 경유지 보존 GPX 파일 1개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘회차점 이름 포함 라이딩 GPX’는 투어 가이드가 구간과 회차점을 공유할 때 공개 Google Maps 경로 URL 1개를 입력해 경로를 처리하고 회차점 이름이 포함된 GPX 파일 1개를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-okeampldbdmpachkggljgpngbooaclal-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘구간별로 나눈 라이딩 경로 GPX’는 콘텐츠 제작자가 출발 전 공개 Google Maps 경로 URL 1개를 입력해 경로를 편집·최적화하고 구간별 트랙 GPX 파일 1개를 받는 세로 조각이다.",
+      "risk_flags": []
+    }
+  ]
+}

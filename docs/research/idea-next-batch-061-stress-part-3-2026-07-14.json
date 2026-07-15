@@ -1,0 +1,397 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-920856839-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영어 단어·숙어를 입력해 4지선다로 확인하고 약한 단어 학습 결과를 내는 흐름은 가능하지만 제목과 숙련도 결과가 다소 포괄적이다.",
+      "risk_flags": [
+        "vague_result"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-920856839-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "모의토익 직후의 문제는 공항 표현의 발음·뜻 확인으로 이어지지 않아 결제자·필요한 순간·결과가 어긋난다.",
+      "risk_flags": [
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-920856839-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영어 단어를 입력해 4지선다로 오답을 판정하고 오답 카드와 숙련도 결과를 즉시 제공해 출국 전 어휘 점검 순간에 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1570594940-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "하늘을 향한 카메라 화면 하나를 천체 위치와 대조해 현재 보이는 밝은 점의 이름과 위치를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1570594940-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "카메라 화면을 입력해 한강에서 보이는 별자리와 현재 위치를 대조하므로 아이의 질문에 바로 답할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1570594940-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "하늘 카메라 화면과 시각 정보를 천체 데이터와 대조해 캠핑장에서 오늘 밤 볼 행성의 위치를 즉시 표시한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-308630840-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "칵테일 키워드 검색 후 재료와 제조법을 보여주는 기능은 범용 검색이나 한 번의 AI 질의로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_lookup"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-308630840-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "편의점 재료를 검색해 레시피를 확인하는 결과는 범용 AI나 검색 한 번으로 더 편리하게 얻을 수 있다.",
+      "risk_flags": [
+        "generic_lookup"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-308630840-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "취향 키워드로 칵테일 레시피를 찾는 것은 데이터베이스 검색에 그쳐 범용 AI 한 번보다 낫다는 한 끗이 없다.",
+      "risk_flags": [
+        "generic_lookup"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1440996640-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 권한을 받아 태양 위치를 지도에 표시하는 흐름은 가능하지만 AE 지도와 최종 결과의 의미가 제목만으로 명확하지 않다.",
+      "risk_flags": [
+        "unclear_output"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1440996640-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "위치 권한으로 태양 경로를 표시할 수 있으나 계절 경로를 시간 흐름으로 관찰한다는 결과가 단일 처리·단일 결과보다 넓다.",
+      "risk_flags": [
+        "scope_creep"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1440996640-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치에서 태양·달 위치를 표시할 수 있지만 AE 지도와 주기 대조가 일반 사용자에게 구체적인 결과로 읽히지 않는다.",
+      "risk_flags": [
+        "unclear_output"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525997288-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "숫자와 메모를 줄별 재계산하는 결과는 OS 기본 계산기나 일반 계산 앱의 테이프 기능으로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "basic_utility"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525997288-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "견적과 생활비의 줄별 수정·합계 갱신은 범용 계산기와 메모 앱으로 충분해 독자적인 한 끗 변화가 없다.",
+      "risk_flags": [
+        "basic_utility"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525997288-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "계산 항목을 고쳐 최종 합계를 갱신하는 기능은 OS 기본 계산·메모 기능보다 편리하다고 보기 어렵다.",
+      "risk_flags": [
+        "basic_utility"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-467703220-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보호자가 기상 시간을 한 번 입력하면 예약 시점에 캐릭터 음성·영상 통화가 재생되어 아이를 깨우는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-467703220-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "출발 직전 아이를 달래는 상황과 보호자 통화 예약 입력·기상용 결과가 맞지 않고 배변 성공 후 즉시 재생은 원래 메커니즘을 벗어난다.",
+      "risk_flags": [
+        "moment_mismatch",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-467703220-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "배변 훈련 거부 순간에 진료 직전 격려 통화를 제공하는 것은 원래 기상 예약 통화 메커니즘과 필요 순간이 다르다.",
+      "risk_flags": [
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1294341144-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "소풍 가방의 준비물 목록을 입력해 기억 게임을 처리하고 아이가 필요한 물건을 챙겼는지 즉시 확인하는 결과를 준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1294341144-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "우비와 장화 등 준비물 목록을 입력해 기억 순서를 확인하고 파티에 필요한 물건을 챙겼는지 결과로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1294341144-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "파티 의상과 소품 목록을 입력해 기억 미션을 한 번 수행하고 아이의 준비물 기억 성공 여부를 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-417698849-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "목적지와 현재 위치로 경로를 계산하는 기능은 OS 기본 지도·내비게이션으로 이미 제공되어 새 세로 조각의 독자성이 없다.",
+      "risk_flags": [
+        "basic_utility"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-417698849-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "거래처 주소의 막힘 적은 길 안내는 기존 내비게이션 앱이 더 직접적으로 제공하는 범용 기능이다.",
+      "risk_flags": [
+        "basic_utility"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-417698849-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "교통을 반영한 예상 도착 안내는 OS 기본 내비게이션의 핵심 기능이므로 별도 카드로 만들 근거가 없다.",
+      "risk_flags": [
+        "basic_utility"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1644199292-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "세이브 파일 하나를 입력해 자금·아이템 값을 수정하고 바로 쓸 수 있는 수정 세이브 파일을 결과로 내보낸다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1644199292-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "막힌 진행의 세이브 파일을 업로드해 필요한 진행도 값을 수정하고 복구된 파일을 즉시 저장할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1644199292-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "스타듀밸리 세이브 파일을 입력해 누락 아이템 값을 편집하고 커뮤니티센터 진행이 반영된 파일을 내보낸다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-298840058-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이폰 마이크의 소리를 한 번 입력해 FFT로 분석하고 방의 특정 음역대 피크를 진폭·주파수 그래프로 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-298840058-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "스피커 테스트음을 마이크로 입력해 주파수별 피크를 계산하고 보컬이 묻히는 음역을 그래프로 확인하게 한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-298840058-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "리허설 보컬을 아이폰 마이크로 입력해 FFT 분석을 수행하고 음역대별 진폭 변화를 즉시 그래프로 보여준다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1451490992-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "수직 점프 고속 카메라 영상을 한 번 처리해 비행 시간으로 점프 높이를 내는 흐름은 구체적이지만 제목 ‘JumpEye’만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1451490992-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "수직 점프 고속 카메라 영상 입력에서 비행 시간을 계산해 점프 높이를 내는 흐름은 구체적이지만 제목 ‘JumpEye’만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1451490992-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "슬로모션 점프 영상을 한 번 분석해 비행 시간과 수직 점프 높이를 보여주는 조각은 가능하지만 제목 ‘JumpEye’만으로 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1451490992-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "수직 점프 고속 영상을 입력해 비행 시간을 측정하고 점프 높이를 보여주는 흐름은 배구 훈련 순간에 맞지만 제목 ‘JumpEye’가 기능을 설명하지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1451490992-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "수직 점프 영상을 한 번 처리해 비행 시간 기반 점프 높이를 얻는 결과는 구체적이지만 제목 ‘JumpEye’만 읽어서는 문제와 결과를 알 수 없다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1451490992-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "고속 점프 영상을 입력해 비행 시간을 계산하고 수직 점프 높이를 내는 흐름은 체대 입시 확인 순간에 맞지만 제목 ‘JumpEye’가 결과를 드러내지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1451490992-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "수직 점프 고속 카메라 영상 하나를 처리해 체대 입시 점프 기록을 높이로 보여주는 조각은 가능하지만 제목 ‘JumpEye’만으로 기능이 불명확하다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1451490992-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "훈련 직후 점프 영상을 입력해 비행 시간으로 점프 높이를 계산하는 흐름은 자연스럽지만 제목 ‘JumpEye’만으로 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1451490992-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "배구 블로킹 영상을 한 번 분석해 비행 시간 기반 수직 점프 높이를 보여주는 흐름은 구체적이지만 제목 ‘JumpEye’가 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-485251405-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사용자 위치 하나를 입력해 달과 태양 정보를 계산하고 주말 출조에 참고할 위치별 최고의 낚시 시간을 즉시 보여주는 흐름이 제목과 실제 사용 순간에 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-485251405-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "현재 위치 하나를 입력해 달과 태양 정보를 계산하고 새벽의 최고의 낚시 시간을 즉시 보여주므로 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-485251405-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "처음 가는 저수지의 위치를 입력해 달과 태양 정보를 계산하고 출조 날짜별 최적 낚시 시각을 달력으로 보여주는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-485251405-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "출조 지역 위치 하나를 입력해 달과 태양 정보를 계산하고 동호회 총무가 주말 날짜별 최고의 낚시 시간을 확인하는 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-485251405-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "낚시 위치를 입력해 달과 태양 정보를 계산하고 출조 날짜별 최적 낚시 시각을 달력과 시간표로 보여주는 흐름이 원본 메커니즘과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-485251405-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지역 저수지 위치 하나를 입력해 달과 태양 정보를 계산하고 오늘의 입질 시간을 즉시 보여주므로 실제 출조 순간의 입력·처리·결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-485251405-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치를 입력해 달과 태양 정보를 계산하고 최고의 낚시 시간을 보여주지만 ‘지역 낚시 포인트를 찾는’ 전문점 운영자의 결제 이유와 시간 결과가 맞지 않는다.",
+      "risk_flags": [
+        "payer_result_mismatch"
+      ]
+    }
+  ]
+}

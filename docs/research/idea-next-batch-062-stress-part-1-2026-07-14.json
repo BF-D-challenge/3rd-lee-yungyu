@@ -1,0 +1,429 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1496845136-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "미니어처 이미지와 보유 색상을 받아 도색 단계를 시뮬레이션하고 결과 미리보기를 제공하지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1496845136-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "미니어처 이미지와 보유 색상을 처리해 단계별 도색 비교를 보여주지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1496845136-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "미니어처 이미지와 보유 색상을 받아 도료 조합의 완성색을 미리 보여주지만 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-319043985-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주 3회 달리기 일정을 받아 걷기·달리기 간격을 계산하고 다음 운동 계획을 제공하지만 제목만으로 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-319043985-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "주 3회 달리기 일정을 받아 운동·휴식 간격을 계산하고 다음 계획을 보여주지만 제목만으로 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-319043985-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "주 3회 달리기 일정만으로 미세먼지 나쁜 날을 판별할 수 없어 외부 대기질 정보와 추가 처리가 필요하다.",
+      "risk_flags": [
+        "missing_input",
+        "external_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6782095826-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기기 마이크 입력을 한 번 측정해 A·C 가중 순간·평균·최대 음압 수치를 즉시 보여주며 공연 직전 사용 순간과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6782095826-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기기 마이크 입력을 한 번 측정해 합주실의 순간·평균·최대 음압 수치를 즉시 보여주며 사용 순간과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6782095826-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "아파트 주민의 층간소음 측정 카드인데 한 끗 변화가 합주실 저음 피크 비교로 바뀌어 결제자·순간·결과가 서로 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-344784375-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영상·오디오 파일을 받아 재생하는 기능은 아이폰 기본 플레이어가 더 편리한 범용 재생 기능이다.",
+      "risk_flags": [
+        "os_default_overlap"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-344784375-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영상·오디오 파일 입력으로 자막 형식과 속도 조절 결과를 명시하지 않아 원본의 다양한 형식 재생 세로 조각과 카드 결과가 어긋난다.",
+      "risk_flags": [
+        "input_result_mismatch",
+        "os_default_overlap"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-344784375-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "영상·오디오 파일 하나만 입력받는 카드에서 NAS 접근은 네트워크 위치 정보가 추가로 필요하고 기본 플레이어와도 겹친다.",
+      "risk_flags": [
+        "missing_input",
+        "os_default_overlap"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1146647134-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "저항·전압·전류 값을 한 번 입력받아 전자공학 공식을 계산하고 LED에 필요한 회로 값을 즉시 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1146647134-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "트레이스 폭 계산에는 전류·두께 등 입력이 필요하지만 카드 입력은 저항·전압·전류 값으로 제한되어 구체적인 결과를 만들 수 없다.",
+      "risk_flags": [
+        "missing_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1146647134-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "PCB 배선 폭을 정하는 순간과 전압분배 회로값 결과가 달라 카드의 결제자·필요 순간·한 끗 변화가 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1458716890-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "하늘을 바라본 입력만으로는 위치·방향 정보가 부족하고 카메라와 위치 등 복수 권한이 필요해 허용된 단일 기기 권한 조건을 넘는다.",
+      "risk_flags": [
+        "multiple_permissions",
+        "missing_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1458716890-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "하늘 입력만으로 도심 옥상의 천체를 식별할 수 없으며 위치·방향 권한이 추가로 필요하다.",
+      "risk_flags": [
+        "multiple_permissions",
+        "missing_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1458716890-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "하늘 입력만으로 행성 식별에 필요한 관측 위치와 방향을 확보할 수 없어 단일 입력·단일 권한 조건에 맞지 않는다.",
+      "risk_flags": [
+        "multiple_permissions",
+        "missing_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-570972794-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 한 개를 받아 인분별 쇼핑 목록을 만드는 처리와 ‘재료로 요리 선택’이라는 필요 순간이 어긋나며 제목도 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "moment_process_mismatch",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-570972794-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 한 개 입력으로 여러 메뉴의 재료를 묶을 수 없어 카드가 요구하는 그룹 쇼핑 목록 결과를 만들 수 없다.",
+      "risk_flags": [
+        "multiple_inputs_required"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-570972794-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "레시피 한 개를 인원수에 맞춰 쇼핑 목록으로 바꾸는 기능은 범용 AI나 기존 레시피 앱에서 더 쉽게 처리할 수 있고 제목도 불명확하다.",
+      "risk_flags": [
+        "generic_ai_overlap",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-405891908-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진을 자르고 회전하고 문구를 넣어 공유하는 기능은 휴대폰 기본 사진 편집·메시지 기능과 직접 겹친다.",
+      "risk_flags": [
+        "os_default_overlap"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-405891908-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 입력 후 자르기·회전·문구 추가 결과는 기본 사진 편집기와 메시지 앱만으로도 더 편리하게 얻을 수 있다.",
+      "risk_flags": [
+        "os_default_overlap"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-405891908-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장에 명절 문구를 넣는 처리는 기본 편집 기능 또는 범용 이미지 도구와 차별되는 한 끗 결과가 없다.",
+      "risk_flags": [
+        "os_default_overlap",
+        "generic_ai_overlap"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6742728012-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치와 목적지를 받아 길 안내를 제공하는 기능은 지도·내비게이션 기본 기능이 더 편리하며 게임풍 스타일만으로는 차별 결과가 부족하다.",
+      "risk_flags": [
+        "os_default_overlap"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6742728012-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치와 목적지 입력으로 제주 경로를 안내하는 기능은 기존 지도 앱이 동일한 결과를 더 완전하게 제공한다.",
+      "risk_flags": [
+        "os_default_overlap"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6742728012-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치와 목적지로 경로를 표시하는 기능은 익숙한 지도 앱보다 게임풍 표현만 추가된 기본 내비게이션 기능이다.",
+      "risk_flags": [
+        "os_default_overlap"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1325756279-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진·영상에 필터·효과·텍스트를 적용하는 기능은 기본 사진 편집기와 범용 편집 앱에서 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "os_default_overlap",
+        "generic_ai_overlap"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1325756279-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진·영상 하나에 한국어 폰트와 스티커를 적용하는 결과는 기존 SNS·사진 편집 기능과 겹쳐 독립적인 한 끗 변화가 없다.",
+      "risk_flags": [
+        "os_default_overlap"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1325756279-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여행 영상에 VHS 효과를 적용해 저장하는 처리는 범용 편집 앱이나 AI 한 번으로 더 편리하게 할 수 있다.",
+      "risk_flags": [
+        "generic_ai_overlap",
+        "os_default_overlap"
+      ]
+    }
+  ]
+}

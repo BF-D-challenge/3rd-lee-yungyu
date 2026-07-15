@@ -1,0 +1,172 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-6443780213-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘폭에 맞춘 두 줄 부채 글자 이미지’는 부채 문구 텍스트 1개를 두 줄로 배치해 출력용 글자 이미지 1장으로 만드는 결과가 분명하고, 출력 직전 잘 안 보이는 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘부채 크기에 맞춘 문구 이미지’는 문구 텍스트 1개를 부채 인쇄 크기에 맞게 조정해 출력 이미지 1장으로 제공하는 결과가 분명하고, 출력 직전 문제와 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘멀리서 보이는 부채 문구 이미지’는 문구 텍스트 1개에 굵은 외곽선을 적용해 읽기 쉬운 이미지 1장으로 만들며, 멀리서 안 보이는 응원 순간과 한 끗 변화가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘폭에 맞춘 두 줄 부채 글자 이미지’는 긴 문구 텍스트 1개를 두 줄로 배치해 이미지 1장으로 제공하므로 입력·처리·결과가 단순하고, 읽기 어려운 출력 직전 상황과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘부채 크기에 맞춘 문구 이미지’는 응원 문구 텍스트 1개를 인쇄 크기에 맞게 조정해 출력 이미지 1장으로 만들며, 공연용 부채 제작자의 즉시 출력 순간과 자연스럽게 연결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘멀리서 보이는 부채 문구 이미지’는 문구 텍스트 1개에 굵은 외곽선을 한 번 적용해 출력용 이미지 1장으로 만들고, 인쇄 마감 직전 가독성 문제를 해결한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘폭에 맞춘 두 줄 부채 글자 이미지’는 긴 문구 텍스트 1개를 두 줄로 처리해 부채용 이미지 1장으로 즉시 제공하므로, 마감 직전 긴 문구를 읽기 쉽게 만드는 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘부채 크기에 맞춘 문구 이미지’는 문구 텍스트 1개를 인쇄 크기에 맞게 조정해 출력 가능한 이미지 1장으로 만들며, 제작자가 당일 인쇄해야 하는 상황에 적합하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘멀리서 보이는 부채 문구 이미지’는 문구 텍스트 1개에 굵은 외곽선을 적용해 이미지 1장으로 제공하므로, 출력 직전 원거리 가독성 문제와 처리 방식이 자연스럽게 연결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘폭에 맞춘 두 줄 부채 글자 이미지’는 긴 문구 텍스트 1개를 두 줄 배치해 부채용 이미지 1장으로 만들며, 가독성이 떨어지는 제작 마감 순간에 구체적인 결과를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘부채 크기에 맞춘 문구 이미지’는 텍스트 1개를 부채 인쇄 크기에 맞춰 조정하고 출력 이미지 1장으로 반환하므로, 제작자가 출력 직전 겪는 크기 문제와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘멀리서 보이는 부채 문구 이미지’는 문구 텍스트 1개에 굵은 외곽선을 한 번 적용해 읽기 쉬운 이미지 1장으로 만들고, 한눈에 안 읽히는 출력 미리보기 순간과 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘폭에 맞춘 두 줄 부채 글자 이미지’는 긴 응원 문구 텍스트 1개를 두 줄로 배치해 이미지 1장으로 제공하므로, 부채 문구가 답답하게 보이는 순간에 필요한 단일 결과가 분명하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6443780213-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘부채 크기에 맞춘 문구 이미지’는 응원 문구 텍스트 1개를 실제 인쇄 크기에 맞게 조정해 출력 이미지 1장으로 만들며, 부채 제작자의 가독성 문제와 자연스럽게 연결된다.",
+      "risk_flags": []
+    }
+  ]
+}

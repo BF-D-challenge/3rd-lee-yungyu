@@ -1,0 +1,34 @@
+{
+  "batch_id": "EXH-015",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 98,
+  "decision_counts": {
+    "Fail": 54,
+    "Candidate": 34,
+    "Merge": 9,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 54,
+      "sample": [
+        "app_store:1084807225",
+        "trustmrr:ai-voice-calls",
+        "app_store:6448106860",
+        "trustmrr:facekit",
+        "chrome_web_store:ijpgjiobapjdadigoagamcmhmdfdggmg",
+        "app_store:1450140018"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

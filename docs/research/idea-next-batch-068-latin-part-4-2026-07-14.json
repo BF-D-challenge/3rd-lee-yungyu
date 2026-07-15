@@ -1,0 +1,346 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1369253556-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단일 카메라 입력을 장노출 처리해 빛궤적 사진을 만드는 흐름은 구체적이지만, 캠퍼의 순간과 차량 불빛·랜턴 글씨 결과가 한 장면으로 자연스럽게 연결되지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1369253556-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "any light source를 장노출 처리해 빛궤적을 만드는 원본 처리로는 캠핑 입력에서 폭포 물 흐름과 조명을 겹쳐 담는 결과를 만들 수 없다.",
+      "risk_flags": [
+        "source_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1369253556-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "폭포 물결을 부드럽게 찍으려는 순간에는 빛궤적 결과가 맞지 않고, 입력인 광원만으로 폭포 흐름을 처리한다는 근거도 없다.",
+      "risk_flags": [
+        "moment_twist_mismatch",
+        "source_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1369253556-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "폭포·계곡 촬영자가 캠핑 불꽃을 찍는 순간에 서울 차량 불빛의 장노출 결과를 얻는 조합이라 결제자·순간·결과가 어긋난다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1369253556-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "캠핑 불꽃과 랜턴 입력을 처리하는 흐름은 가능하지만 폭포 촬영자의 필요 순간과 서울 야경 차량 불빛 결과가 연결되지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1369253556-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "폭포 물결을 찍으려는 순간에 캠핑 랜턴 글씨의 빛궤적을 결과로 제시해 입력 장면과 결과가 불일치한다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6783925526-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "직업상담사 1급 문제 답안을 입력해 선택지별 채점·해설을 처리하고 오답 복습 결과를 즉시 보여주는 단일 학습 흐름이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6783925526-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "문제 답안 채점은 가능하지만 오답을 누적해 모으고 재복습하려면 문제 전에 기록이 필요해 원본의 즉시 채점 흐름을 벗어난다.",
+      "risk_flags": [
+        "prior_record_required"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6783925526-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "문제 답안을 입력해 채점하는 원본 처리와 달리 랜덤 문제 출제와 풀이 입력을 새로 요구해 입력 1개·처리 1회·결과 1개 조건을 벗어난다.",
+      "risk_flags": [
+        "new_function",
+        "input_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6783925526-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "답안 채점 결과를 오답만 모아 재복습하려면 이전 오답 기록이 필요하므로 문제 전에 기록해야 한다는 금지 조건에 해당한다.",
+      "risk_flags": [
+        "prior_record_required"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6783925526-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "출퇴근 중 이미 푼 답안을 채점하는 흐름이 아니라 랜덤 사례 문제를 새로 출제해야 하므로 제공된 답안 입력과 처리·결과가 맞지 않는다.",
+      "risk_flags": [
+        "new_function",
+        "input_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6783925526-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "직업상담사 1급 답안을 채점해 선택지별 해설을 보여주는 처리는 구체적이지만, 출퇴근 중 노동시장 문제와 모의고사 답안 채점 결과의 관계가 명확하지 않다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6783925526-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "답안 채점 원본으로는 상담 사례 문제를 랜덤 출제할 수 없으므로 입력·처리·결과가 새 문제풀이 기능으로 확장된다.",
+      "risk_flags": [
+        "new_function",
+        "input_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6783925526-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "문제 답안을 채점해 선택지별 해설을 보여줄 수 있지만, 상담이론이 헷갈린 순간과 모의고사 전체 답안 채점 결과의 범위가 불명확하다.",
+      "risk_flags": [
+        "moment_scope_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6783925526-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "오답을 모아 재복습하려면 사용자의 이전 풀이를 저장해야 하므로 문제 전에 기록해야 작동하는 기능이다.",
+      "risk_flags": [
+        "prior_record_required"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1626025800-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 정보를 입력·편집해 미리보기를 만드는 흐름은 가능하지만 아이콘 배치 확인에 필요한 아이콘 파일이 입력에 포함되는지 불명확하다.",
+      "risk_flags": [
+        "input_ambiguous"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1626025800-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 정보를 편집해 6.5·6.9인치 미리보기를 만드는 처리는 구체적이지만 새 스크린샷 파일이 입력에 포함되는지 문구만으로는 명확하지 않다.",
+      "risk_flags": [
+        "input_ambiguous"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1626025800-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 정보를 입력·수정해 등록 전 상품 페이지 미리보기 하나를 생성하는 단일 텍스트 입력 기반 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1626025800-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 정보를 편집해 화면 미리보기를 만들 수 있지만 아이콘 배치 비교에 필요한 아이콘 입력이 명시되지 않았다.",
+      "risk_flags": [
+        "input_ambiguous"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1626025800-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 정보 수정이라는 단일 입력을 처리해 등록 전 상품 페이지 미리보기 하나를 즉시 생성하므로 흐름과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1626025800-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "국문 앱 이름과 설명을 앱 정보로 입력·편집해 6.5·6.9인치 스토어 화면 미리보기 하나를 확인하는 세로 조각이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1626025800-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 정보 수정 입력을 처리해 등록 전 상품 페이지 미리보기 하나를 생성하므로 외부 행동 없이 2일 MVP가 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1626025800-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 이름과 설명을 입력해 6.5·6.9인치 화면에서 노출되는 스토어 미리보기 하나를 비교할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1626025800-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앱 정보 수정 후 미리보기 생성은 구체적이지만 아이콘 배치를 확인하려면 아이콘 파일도 입력해야 한다는 점이 빠져 있다.",
+      "risk_flags": [
+        "input_ambiguous"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6782520129-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "청소년상담사 2급 문제 답변을 입력해 선택지별 정답·오답 해설을 처리하고 맞고 틀린 이유를 즉시 보여주는 단일 학습 흐름이다.",
+      "risk_flags": []
+    }
+  ]
+}

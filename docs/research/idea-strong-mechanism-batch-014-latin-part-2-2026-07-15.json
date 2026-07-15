@@ -1,0 +1,188 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-contextblur-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 금액·계좌번호 노출 차단 화면’은 세일즈 엔지니어가 화면공유 직전 공개 웹페이지 URL 하나를 입력하면 금액·계좌형 숫자를 블러 처리해 가려진 전체 페이지 PNG 한 장을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-contextblur-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 사람 이름 노출 차단 화면’은 세일즈 엔지니어가 녹화 미리보기 직후 공개 웹페이지 URL 하나를 입력해 사람 이름 후보를 블러 처리한 전체 페이지 PNG 한 장을 받지만, payer가 주로 금액·계좌 정보를 가린다는 설명과 twist가 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-contextblur-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 이메일·전화번호 노출 차단 화면’은 세일즈 엔지니어가 외부 발표 화면 확정 전에 공개 웹페이지 URL 하나를 입력해 이메일·전화번호 후보를 블러 처리한 전체 페이지 PNG 한 장을 받지만, payer가 주로 금액·계좌 정보를 가린다는 설명과 twist가 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-contextblur-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 사람 이름 노출 차단 화면’은 제품 매니저가 화면공유 직전 공개 웹페이지 URL 하나를 입력하면 사람 이름 후보를 블러 처리해 가려진 전체 페이지 PNG 한 장을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-contextblur-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 이메일·전화번호 노출 차단 화면’은 제품 매니저가 녹화 미리보기 직후 공개 웹페이지 URL 하나를 입력해 이메일·전화번호 후보를 블러 처리한 전체 페이지 PNG 한 장을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-contextblur-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 금액·계좌번호 노출 차단 화면’은 제품 매니저가 외부 발표 화면 확정 전에 공개 웹페이지 URL 하나를 입력하면 금액·계좌형 숫자를 블러 처리해 가려진 전체 페이지 PNG 한 장을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-lightspeed-run-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 첫 화면 지연 원인 측정 보고서’는 자사몰 개발자가 공개 웹사이트 URL 하나를 공개 직전에 1회 측정해 LCP 수치와 가장 큰 요소가 담긴 HTML 보고서 한 파일을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-lightspeed-run-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 화면 흔들림 원인 측정 보고서’는 자사몰 개발자가 느리다는 피드백 직후 공개 웹사이트 URL 하나를 1회 측정해 CLS 수치와 움직인 요소가 담긴 HTML 보고서 한 파일을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-lightspeed-run-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 긴 자바스크립트 작업 보고서’는 자사몰 개발자가 고객에게 개선 근거를 보내기 전 공개 웹사이트 URL 하나를 1회 측정해 긴 JavaScript 작업과 파일 URL이 담긴 HTML 보고서 한 파일을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-lightspeed-run-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 화면 흔들림 원인 측정 보고서’는 웹 대행자가 새 페이지 공개 직전 공개 웹사이트 URL 하나를 1회 측정해 CLS 수치와 움직인 요소가 담긴 HTML 보고서 한 파일을 받아 납품 근거로 쓸 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-lightspeed-run-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 긴 자바스크립트 작업 보고서’는 웹 대행자가 사이트가 느리다는 말을 들은 직후 공개 웹사이트 URL 하나를 1회 측정해 긴 JavaScript 작업과 파일 URL이 담긴 HTML 보고서 한 파일을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-lightspeed-run-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 첫 화면 지연 원인 측정 보고서’는 웹 대행자가 고객에게 개선 근거를 보내기 전 공개 웹사이트 URL 하나를 1회 측정해 LCP 수치와 가장 큰 요소가 담긴 HTML 보고서 한 파일을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-lightspeed-run-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 긴 자바스크립트 작업 보고서’는 퍼블리셔가 새 페이지 공개 직전 공개 웹사이트 URL 하나를 1회 측정해 긴 JavaScript 작업과 파일 URL이 담긴 HTML 보고서 한 파일을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-lightspeed-run-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 첫 화면 지연 원인 측정 보고서’는 퍼블리셔가 사이트가 느리다는 말을 들은 직후 공개 웹사이트 URL 하나를 1회 측정해 LCP 수치와 가장 큰 요소가 담긴 HTML 보고서 한 파일을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-lightspeed-run-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 화면 흔들림 원인 측정 보고서’는 퍼블리셔가 고객에게 개선 근거를 보내기 전 공개 웹사이트 URL 하나를 1회 측정해 CLS 수치와 움직인 요소가 담긴 HTML 보고서 한 파일을 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

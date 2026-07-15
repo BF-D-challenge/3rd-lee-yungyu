@@ -1,0 +1,239 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-sessionwatcher-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘오늘 Codex Claude Code 토큰 사용량 카드’는 비용을 관리하는 1인 개발자가 긴 생성 전 Mac 로그를 한 번 읽어 도구별 오늘 토큰을 합산하고 메뉴 막대 카드 하나로 확인하는 결과가 분명하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-sessionwatcher-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "1인 개발자가 사용량 급증 직후 Mac 로그를 한 번 읽어 프로젝트별로 합산하지만 상위 프로젝트 세 개를 동시에 보여줘 입력 1개·처리 1회·결과 1개의 단일 결과 기준을 벗어난다.",
+      "risk_flags": [
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sessionwatcher-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "비용을 관리하는 개발자가 작업 종료 전 Mac 로그에서 최근 세션의 입력·출력 토큰을 합산해 비율 카드 하나를 받는 흐름은 가능하지만 제목만으로 결과가 비율임이 선명하지 않다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sessionwatcher-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "대행사 리드가 코드 생성 전 Mac 로그를 한 번 읽어 프로젝트별 토큰을 합산하지만 상위 프로젝트 세 개를 표시해 단일 결과 기준을 위반한다.",
+      "risk_flags": [
+        "multi_result"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sessionwatcher-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "프로젝트별 사용량을 관리하는 대행사 리드가 급증 직후 Mac 로그에서 최근 세션의 입출력 비율만 받아서는 어느 프로젝트가 원인인지 알 수 없어 payer·moment·twist가 어긋난다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "moment_twist_mismatch",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sessionwatcher-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "프로젝트별 사용량을 관리하는 대행사 리드가 작업 종료 전 Mac 로그에서 도구별 오늘 토큰만 합산하므로 필요한 고객 프로젝트별 결과와 twist가 맞지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sessionwatcher-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사용량 제한을 관리하는 인디 창업자가 생성 전 Mac 로그에서 최근 세션 입출력 토큰 비율만 받아서는 오늘 사용량이나 잔여 한도를 판단할 수 없고 제목도 비율 결과를 설명하지 않는다.",
+      "risk_flags": [
+        "payer_twist_mismatch",
+        "result_unclear",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-sessionwatcher-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사용량 제한을 관리하는 인디 창업자가 사용량 급증 직후 Mac 로그를 한 번 읽어 Codex와 Claude Code의 오늘 토큰을 도구별로 합산하고 카드 하나로 확인하는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-sessionwatcher-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인디 창업자가 작업 종료 전 Mac 로그를 읽어 프로젝트별 토큰을 합산하지만 상위 프로젝트 세 개라는 복수 결과를 반환하고 moment_detail의 고객별 계획도 payer와 맞지 않는다.",
+      "risk_flags": [
+        "multi_result",
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여행 기록자가 Takeout ZIP 하나를 한 번 파싱해 장소명·주소·좌표를 장소별 행으로 만들고 CSV 파일 하나를 받으므로 저장 장소 이전 순간의 문제와 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여행 기록자가 새 지도 앱으로 가져오기 직전 Takeout ZIP 하나에서 장소명과 좌표를 한 번 추출해 GPX waypoint 파일 하나를 받는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여행 기록자가 목록을 동료나 고객에게 넘기기 전 Takeout ZIP 하나를 한 번 파싱해 목록 속성이 붙은 GeoJSON 파일 하나를 받으므로 payer·moment·twist가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지역 연구자가 Takeout ZIP 하나를 한 번 파싱해 장소명과 좌표를 GPX waypoint로 변환한 파일 하나를 즉시 받아 복잡한 JSON을 정리하는 문제가 해결된다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지역 연구자가 새 지도 앱으로 가져오기 직전 Takeout ZIP 하나에서 장소명·좌표·목록 이름을 한 번 읽어 목록 속성 GeoJSON 하나를 받으므로 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지역 연구자가 동료나 고객에게 넘기기 전 Takeout ZIP 하나를 한 번 파싱해 장소명·주소·위도·경도가 행별로 담긴 CSV 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도 데이터 프리랜서가 고객의 Takeout ZIP 하나를 한 번 파싱해 목록 이름을 유지한 GeoJSON 파일 하나를 즉시 받아 반복적인 파일 구조 분석을 줄인다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도 데이터 프리랜서가 새 지도 앱으로 가져오기 직전 Takeout ZIP 하나에서 장소명·주소·좌표를 한 번 추출해 행별 CSV 파일 하나를 받으므로 payer와 moment가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-takeout-tools-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지도 데이터 프리랜서가 고객에게 넘기기 전 Takeout ZIP 하나를 한 번 파싱해 장소명과 좌표가 담긴 GPX waypoint 파일 하나를 반환받는 좁은 MVP다.",
+      "risk_flags": []
+    }
+  ]
+}

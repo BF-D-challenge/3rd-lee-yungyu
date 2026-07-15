@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-docuaudit-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘화물 청구서 내부 합계 불일치 CSV’는 물류사 정산 담당자가 PDF를 받은 직후 비용 행 합계와 인쇄 총액을 대조해 불일치 행이 표시된 CSV를 받는 입력·처리·결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-docuaudit-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘화물 청구서 필수 3항목 누락 CSV’는 화주 재무 담당자가 지급 승인 직전 청구서 PDF의 운송장 번호·청구일·통화 기재 여부를 확인해 누락 위치가 표시된 CSV를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-docuaudit-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘화물 청구서 동일 비용 중복 후보 CSV’는 3PL 비용 검수자가 월말 자료 제출 직전 PDF에서 운송장 번호·청구일·금액이 같은 행을 찾아 중복 후보 CSV를 받는 흐름이 자연스럽고 단일 입력·처리·결과로 구현 가능하다.",
+      "risk_flags": []
+    }
+  ]
+}

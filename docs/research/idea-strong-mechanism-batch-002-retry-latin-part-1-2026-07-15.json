@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-chordprep-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘G키로 바뀐 연주 코드표’는 합주 직전 곡 키를 바꾸는 밴드 기타리스트가 텍스트 블록 1개를 넣으면 G키 조옮김을 한 번 처리해 조옮김 표시 코드 시트 1장을 받는 흐름을 명확히 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chordprep-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘카포 2 기준 연주 코드표’는 예배 시작 전 새 키가 필요한 밴드 기타리스트가 텍스트 블록 1개를 넣으면 카포 2 기준 계산을 한 번 처리해 연주용 코드 시트 1장을 받는 흐름을 명확히 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chordprep-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘한 장으로 인쇄하는 G키 코드표’는 리허설 직후 세션팀에 전달할 음악 감독이 텍스트 블록 1개를 넣으면 G키 조옮김과 한 장 배치를 한 번 처리해 인쇄용 코드 시트 1장을 받는 흐름을 명확히 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chordprep-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘카포 2 기준 연주 코드표’는 합주 직전 조옮김표가 필요한 예배 반주자가 텍스트 블록 1개를 넣으면 카포 2 기준 계산을 한 번 처리해 연주용 코드 시트 1장을 받는 흐름을 명확히 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chordprep-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘한 장으로 인쇄하는 G키 코드표’는 예배 시작 전 새 키를 반영해야 하는 예배 반주자가 텍스트 블록 1개를 넣으면 G키 조옮김과 한 장 배치를 한 번 처리해 인쇄용 코드 시트 1장을 받는 흐름을 명확히 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chordprep-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘G키로 바뀐 연주 코드표’는 리허설 직후 새 코드표를 보내야 하는 예배 반주자가 텍스트 블록 1개를 넣으면 G키 조옮김을 한 번 처리해 조옮김 표시 코드 시트 1장을 받는 흐름을 명확히 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chordprep-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘한 장으로 인쇄하는 G키 코드표’는 합주 직전 코드를 바꿔야 하는 음악 감독이 텍스트 블록 1개를 넣으면 G키 조옮김과 한 장 배치를 한 번 처리해 인쇄용 코드 시트 1장을 받는 흐름을 명확히 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chordprep-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘G키로 바뀐 연주 코드표’는 예배 시작 전 새 키가 필요한 음악 감독이 텍스트 블록 1개를 넣으면 G키 조옮김을 한 번 처리해 조옮김 표시 코드 시트 1장을 받는 흐름을 명확히 보여준다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-chordprep-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘카포 2 기준 연주 코드표’는 리허설 직후 코드표를 전달해야 하는 음악 감독이 텍스트 블록 1개를 넣으면 카포 2 기준 계산을 한 번 처리해 연주용 코드 시트 1장을 받는 흐름을 명확히 보여준다.",
+      "risk_flags": []
+    }
+  ]
+}

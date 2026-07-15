@@ -1,0 +1,184 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-chordprep-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘카포 2 기준 연주 코드표’는 예배 직전 반주자가 텍스트 블록 1개를 입력하면 코드 인식과 카포 2 계산을 한 번 처리해 연주용 코드 시트 1장을 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘한 장으로 인쇄하는 G키 코드표’는 예배 직전 반주자가 텍스트 블록 1개를 입력하면 코드 인식과 G키 조옮김을 한 번 처리해 인쇄용 코드 시트 1장을 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-120",
+      "status": "fail",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘G키로 바뀐 연주 코드표’는 예배 반주자가 공연 리허설 직후 세션팀에 전달하는 순간을 대상으로 하여 payer인 예배 반주자와 공연용 moment·twist가 어긋나며, 텍스트 1개 처리와 코드 시트 1장 결과 자체는 명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-121",
+      "status": "fail",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘카포 2 기준 연주 코드표’는 예배 반주자가 공연 리허설 직후 세션팀에 전달하는 순간을 대상으로 하여 payer인 예배 반주자와 공연용 moment·twist가 어긋나며, 텍스트 1개 처리와 코드 시트 1장 결과 자체는 명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-122",
+      "status": "fail",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘한 장으로 인쇄하는 G키 코드표’는 예배 반주자가 공연 리허설 직후 세션팀에 전달하는 순간을 대상으로 하여 payer인 예배 반주자와 공연용 moment·twist가 어긋나며, 텍스트 1개 처리와 인쇄용 코드 시트 1장 결과 자체는 명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘G키로 바뀐 연주 코드표’는 공연 직전 음악 감독이 텍스트 블록 1개를 입력하면 코드 인식과 G키 조옮김을 한 번 처리해 조옮김 코드 시트 1장을 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘카포 2 기준 연주 코드표’는 공연 직전 세션 연주자에게 전달할 음악 감독이 텍스트 블록 1개를 입력하면 코드 인식과 카포 2 계산을 한 번 처리해 연주용 코드 시트 1장을 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘한 장으로 인쇄하는 G키 코드표’는 공연 직전 음악 감독이 텍스트 블록 1개를 입력하면 코드 인식과 G키 조옮김을 한 번 처리해 인쇄용 코드 시트 1장을 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-210",
+      "status": "fail",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘G키로 바뀐 연주 코드표’는 공연용 음악 감독이 예배 시작 전 팀의 새 키를 반영하는 순간을 대상으로 하여 payer인 공연 음악 감독과 예배용 moment가 어긋나며, 텍스트 1개 처리와 코드 시트 1장 결과 자체는 명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-211",
+      "status": "fail",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘카포 2 기준 연주 코드표’는 공연용 음악 감독이 예배 시작 전 팀의 새 키를 반영하는 순간을 대상으로 하여 payer인 공연 음악 감독과 예배용 moment가 어긋나며, 텍스트 1개 처리와 코드 시트 1장 결과 자체는 명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-212",
+      "status": "fail",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘한 장으로 인쇄하는 G키 코드표’는 공연용 음악 감독이 예배 시작 전 팀의 새 키를 반영하는 순간을 대상으로 하여 payer인 공연 음악 감독과 예배용 moment가 어긋나며, 텍스트 1개 처리와 인쇄용 코드 시트 1장 결과 자체는 명확하다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘G키로 바뀐 연주 코드표’는 공연 직전 음악 감독이 텍스트 블록 1개를 입력하면 코드 인식과 G키 조옮김을 한 번 처리해 조옮김 코드 시트 1장을 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘카포 2 기준 연주 코드표’는 공연 직전 음악 감독이 텍스트 블록 1개를 입력하면 코드 인식과 카포 2 계산을 한 번 처리해 연주용 코드 시트 1장을 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-chordprep-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘한 장으로 인쇄하는 G키 코드표’는 공연 직전 음악 감독이 텍스트 블록 1개를 입력하면 코드 인식과 G키 조옮김을 한 번 처리해 인쇄용 코드 시트 1장을 받는 흐름이 명확하다.",
+      "risk_flags": []
+    }
+  ]
+}

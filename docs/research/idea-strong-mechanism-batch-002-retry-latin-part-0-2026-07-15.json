@@ -1,0 +1,126 @@
+{
+  "results": [
+    {
+      "id": "next-latin-trustmrr-hyperfocal-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진 색감 초안 Lightroom 파일’은 웨딩 사진가가 고객 참고 사진을 편집에 옮길 때 사진 1개를 색감 분석해 Lightroom용 XMP 색감 시작 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진 색감 초안 Photoshop 파일’은 웨딩 사진가가 사진과 짧은 영상을 같은 톤으로 동시에 시작하려는 순간에 사진 1개만 처리해 Photoshop 파일 1개만 출력하므로, moment와 twist의 범위가 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-022",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘영상 색감 초안 LUT 파일’은 웨딩 사진가가 사진과 영상 파일에서 색감 방향을 얻으려는 순간에 영상 1개만 처리해 LUT 1개를 출력하므로, 카드 순간이 smallest_build와 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘사진 색감 초안 Photoshop 파일’은 콘텐츠 제작자가 고객 참고 사진을 편집에 옮길 때 사진 1개를 색감 분석해 Photoshop ACR용 XMP 색감 시작 파일 1개를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-112",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘영상 색감 초안 LUT 파일’은 콘텐츠 제작자가 사진과 짧은 영상을 같은 톤으로 동시에 시작하려는 순간에 영상 1개만 처리해 LUT 1개만 출력하므로, 사진까지 다루려는 moment와 twist가 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-120",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진 색감 초안 Lightroom 파일’은 콘텐츠 제작자가 사진과 영상 파일에서 전체 방향을 확인하려는 순간에 사진 1개만 처리해 Lightroom용 XMP 파일 1개를 출력하므로, moment_detail의 범위와 smallest_build가 맞지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘영상 색감 초안 LUT 파일’은 여행 크리에이터가 고객 참고 사진의 색감을 옮기려는 순간에 영상 1개를 처리해 LUT 1개를 출력하므로, 사진 참고색을 입력으로 요구하는 moment와 영상-only twist가 충돌한다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진 색감 초안 Lightroom 파일’은 여행 크리에이터가 사진과 짧은 영상을 같은 톤으로 동시에 시작하려는 순간에 사진 1개만 처리해 Lightroom용 XMP 파일 1개만 출력하므로, 영상까지 포함한 moment를 충족하지 못한다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-trustmrr-hyperfocal-221",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘사진 색감 초안 Photoshop 파일’은 여행 크리에이터가 새 촬영물의 사진과 영상 전체 방향을 확인하려는 순간에 사진 1개만 처리해 Photoshop ACR용 XMP 파일 1개를 출력하므로, moment_detail과 smallest_build의 입력 범위가 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    }
+  ]
+}

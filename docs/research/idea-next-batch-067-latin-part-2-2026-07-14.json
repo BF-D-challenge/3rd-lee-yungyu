@@ -1,0 +1,166 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-602496538-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AeroPress 레시피 1개를 선택하면 단계별 추출 시간을 1회 진행해 한 잔의 타이머 결과를 제공하며 사용 순간과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-602496538-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "레시피 선택 후 단계별 타이머는 가능하지만 분쇄도와 물 온도를 입력받는 처리나 그에 따른 레시피 확인 결과가 원본에 없어 문구가 입력·결과와 어긋난다.",
+      "risk_flags": [
+        "input_output_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-602496538-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AeroPress 레시피 1개를 선택하면 뜸들이기와 추출 시간을 순서대로 진행해 캠핑 중 바로 사용할 타이머 결과를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-602496538-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "레시피 선택 후 단계별 타이머는 예비 바리스타의 시험 순간에 맞지만 분쇄도와 물 온도를 입력받아 시간을 확인한다는 처리가 원본에 없다.",
+      "risk_flags": [
+        "input_output_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-602496538-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "AeroPress 레시피 1개를 선택하면 캠핑 중 뜸들이기와 추출 시간을 순서대로 진행해 구체적인 타이머 결과를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-602496538-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "선택한 원두 레시피 1개를 입력해 단계별 추출 시간을 1회 진행하고 캠핑 중 사용할 타이머 결과를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-602496538-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캠핑용 AeroPress 레시피 1개를 선택하면 뜸들이기와 추출 시간을 순서대로 진행해 즉시 타이머 결과를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-602496538-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "선택한 원두 레시피 1개를 입력해 단계별 추출 타이머를 진행하므로 새 원두의 시간을 맞추려는 순간과 결과가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-602496538-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캠핑용 레시피 선택과 단계별 타이머는 원본에 맞지만 분쇄도와 물 온도에 맞춰 레시피 시간을 확인하는 기능은 제공된 입력·처리에 없다.",
+      "risk_flags": [
+        "input_output_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1582051883-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "라벨과 값 1세트를 입력해 색상을 지정한 막대차트 1개를 생성하고 발표용 이미지로 저장하는 흐름이 구체적이며 2일 MVP가 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1582051883-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "월별 매출 라벨과 값 1세트를 입력해 항목별 색상 막대차트 1개를 편집하고 이미지로 내보내므로 발표 직전 사용 순간과 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1582051883-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보고서 라벨과 값 1세트를 편집하면 실시간 막대차트 미리보기 1개를 확인하고 이미지로 저장할 수 있어 입력·처리·결과가 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1582051883-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "월별 매출 라벨과 값 1세트를 입력해 항목별 색상 막대차트 1개를 만들고 발표자료용 이미지로 내보내는 흐름이 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

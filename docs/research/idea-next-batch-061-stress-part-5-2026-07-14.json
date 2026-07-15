@@ -1,0 +1,444 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-298883838-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "치즈 이름·국가·우유 종류를 입력해 라이브러리에서 설명·사진·와인을 조회하지만 일반 검색으로 더 쉽게 대체되고 제목만으로 결과가 명확하지 않다.",
+      "risk_flags": [
+        "generic_lookup",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-298883838-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "치즈 정보 입력 후 설명·사진·추천 와인을 보여주지만 편의점 와인 조합이라는 한 끗 차이가 처리 결과에 반영되지 않고 일반 검색으로 대체 가능하다.",
+      "risk_flags": [
+        "twist_mismatch",
+        "generic_lookup"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-298883838-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "치즈 정보를 입력해 설명·사진·추천 와인을 조회하는 구조지만 메뉴 설명 작성이라는 결과가 없고 일반 검색으로 충분하다.",
+      "risk_flags": [
+        "generic_lookup",
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6785076374-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "다중 터치 건반 연주는 허용된 텍스트·URL·파일·사진·단일 권한 입력에 해당하지 않아 규칙상 입력 게이트를 통과하지 못한다.",
+      "risk_flags": [
+        "unsupported_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6785076374-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "다중 터치 건반 입력으로 효과음과 패드를 만들지만 터치 연주가 허용 입력 유형이 아니며 결과도 영상 편집용 파일로 구체화되지 않았다.",
+      "risk_flags": [
+        "unsupported_input",
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6785076374-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "다중 터치 건반과 효과 조정은 허용 입력 유형이 아니고 작곡 참고용 사운드라는 결과가 단일 결과로 명확하지 않다.",
+      "risk_flags": [
+        "unsupported_input",
+        "multiple_outputs"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-505555988-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치 권한으로 레이더 지도를 표시하지만 기상 앱의 범용 기능을 그대로 재현해 OS·기본 날씨 기능보다 편하지 않다.",
+      "risk_flags": [
+        "os_substitute",
+        "external_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-505555988-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한을 받아 강수 레이더를 표시하지만 촬영지 판단은 기본 날씨·지도 앱으로 더 쉽게 할 수 있고 사진가용 결과도 아니다.",
+      "risk_flags": [
+        "os_substitute",
+        "generic_lookup"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-505555988-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "위치 권한 후 강수 레이더를 보여주는 처리지만 제주 시간별 이동 재생은 원본의 단순 표시를 넘어선 기능이며 기본 날씨 앱으로 대체 가능하다.",
+      "risk_flags": [
+        "twist_overreach",
+        "os_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1534785237-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 사진 한 장을 받아 배경을 제거해 투명 이미지를 만들지만 iOS 기본 사진 기능과 범용 이미지 AI로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "os_substitute",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1534785237-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인물·상품 사진을 입력해 투명 이미지를 만들지만 중고거래 등록이라는 결과보다 범용 배경 제거 기능에 머물고 기존 도구로 대체 가능하다.",
+      "risk_flags": [
+        "generic_ai",
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1534785237-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 입력 후 투명 배경 이미지를 출력하지만 단색 배경 전환이 처리에 포함되지 않아 twist와 결과가 어긋난다.",
+      "risk_flags": [
+        "twist_mismatch",
+        "generic_ai"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6753586211-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 한 장에 필터와 배치를 적용해 배경화면을 만들지만 사진 편집과 배경 지정은 OS 기본 기능으로 더 쉽게 할 수 있다.",
+      "risk_flags": [
+        "os_substitute",
+        "generic_editing"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6753586211-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여행 사진을 입력해 세로 배경화면을 출력하지만 브랜드 콘텐츠 제작이라는 문제와 결과가 연결되지 않고 범용 편집 기능이다.",
+      "risk_flags": [
+        "generic_editing",
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6753586211-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "벚꽃 사진을 필터·레이아웃 처리해 배경화면으로 만들지만 새 학기용이라는 상황만 바뀌었을 뿐 OS 기본 기능으로 충분하다.",
+      "risk_flags": [
+        "os_substitute",
+        "generic_editing"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-320551309-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "검침값 하나를 입력해 사용량과 비용 그래프를 출력할 수 있지만 요금 단가와 비교 기준이 없어 실제 비용 결과를 재현하기 어렵다.",
+      "risk_flags": [
+        "missing_tariff",
+        "ambiguous_history"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-320551309-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "검침값 또는 CSV를 처리해 수도 비용 그래프를 만들지만 카페용 요금 단가와 기간 기준이 명시되지 않아 결과가 불완전하다.",
+      "risk_flags": [
+        "missing_tariff",
+        "ambiguous_history"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-320551309-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "fail"
+      },
+      "reason": "가스 검침값과 지난달 값을 받아 사용량·비용 그래프를 만들지만 두 시점 데이터와 요금 기준이 동시에 필요해 입력 1개 처리 조건이 흐려진다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "missing_tariff"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-836464625-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "포즈·체형 설정을 조작해 3D 참고 이미지를 만들지만 설정 조작은 허용된 입력 유형이 아니고 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "unsupported_input",
+        "opaque_title"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-836464625-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인체 포즈 설정 후 참고 이미지를 출력하지만 터치 기반 3D 조작이 허용 입력에 포함되지 않고 웹툰 작가용 결과도 구체적이지 않다.",
+      "risk_flags": [
+        "unsupported_input",
+        "result_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-836464625-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "포즈와 조명을 설정해 참고 이미지를 만들지만 다중 조작 입력이 규칙에 맞지 않고 조명 명암 결과가 원본의 단일 참고 이미지보다 확장됐다.",
+      "risk_flags": [
+        "unsupported_input",
+        "twist_overreach"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1115974495-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "식단 사진 한 장을 입력해 날짜·시간 워터마크를 한 번 추가하고 타임스탬프 사진 파일 하나를 즉시 출력한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1115974495-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "공사 사진 한 장을 입력해 날짜·시간을 새긴 현장 기록 사진 파일 하나를 즉시 출력한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1115974495-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이 성장 사진 한 장을 입력해 오늘의 날짜·시간 워터마크가 붙은 사진 파일 하나를 즉시 출력한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-338971047-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "대출 수치 입력 후 상환액·현재가치·수익률을 함께 계산하는 다기능 계산기라 입력 1개·결과 1개가 아니며 일반 금융 계산기로 대체 가능하다.",
+      "risk_flags": [
+        "multiple_outputs",
+        "generic_calculator"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-338971047-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현금흐름·이자율·기간을 넣어 여러 금융 지표를 계산하지만 채권 수익률이라는 단일 결과로 좁혀지지 않고 범용 계산기와 차별성이 없다.",
+      "risk_flags": [
+        "multiple_outputs",
+        "generic_calculator"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-338971047-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "금융 수치를 입력해 상환액·현재가치·수익률을 출력하는 구조는 여러 결과를 내며 사업 회수기간 twist도 원본 처리와 맞지 않는다.",
+      "risk_flags": [
+        "multiple_outputs",
+        "twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6749865705-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "4択 답변을 입력받아 정답 여부를 보여주지만 선택지 터치는 허용된 입력 유형이 아니고 일반 퀴즈 앱이 더 편하다.",
+      "risk_flags": [
+        "unsupported_input",
+        "generic_quiz"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6749865705-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "단어 한 개의 4択 답변을 처리해 정답 결과를 내지만 선택형 입력이 허용되지 않으며 오답 복습용 데이터가 별도로 제공되지 않는다.",
+      "risk_flags": [
+        "unsupported_input",
+        "missing_content"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6749865705-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "TOEIC 단어의 4択 답변을 받아 정답 여부를 출력하지만 선택형 입력이 규칙에 맞지 않고 범용 단어 퀴즈로 대체 가능하다.",
+      "risk_flags": [
+        "unsupported_input",
+        "generic_quiz"
+      ]
+    }
+  ]
+}

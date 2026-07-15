@@ -1,0 +1,60 @@
+{
+  "batch_id": "EXH-023",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 41,
+    "Merge": 3,
+    "Fail": 55,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 64,
+      "sample": [
+        "trustmrr:brewbrand",
+        "app_store:1133867070",
+        "app_store:1454213029",
+        "chrome_web_store:flliilndjeohchalpbbcdekjklbdgfkk",
+        "chrome_web_store:dkkmpkpjimkollpfgbbglcikcmgmdlhn",
+        "chrome_web_store:cmeakgjggjdlcpncigglobpjbkabhmjl",
+        "app_store:1131342792"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1454213029",
+          "decision": "Candidate",
+          "reason": "걸음 수 입력 → 내장 만보기로 추적 → 현재 걸음 수와 개인 목표 진행 결과를 반나절~2일 세로 조각으로 만들 수 있다."
+        },
+        {
+          "key": "chrome_web_store:dkkmpkpjimkollpfgbbglcikcmgmdlhn",
+          "decision": "Candidate",
+          "reason": "콘텐츠 입력 → 클릭 기반 생성·분석 → LinkedIn 성장에 쓰는 콘텐츠 결과를 2일 세로 조각으로 만들 수 있다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 2,
+      "fail_count": 55,
+      "sample": [
+        "app_store:1080913331",
+        "app_store:6532603739",
+        "app_store:1473428031",
+        "trustmrr:lancer-app",
+        "chrome_web_store:dmghijelimhndkbmpgbldicpogfkceaj",
+        "trustmrr:pluma"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

@@ -1,0 +1,80 @@
+{
+  "batch_id": "EXH-033",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Fail": 51,
+    "Candidate": 42,
+    "Reserve": 4,
+    "Merge": 3
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 68,
+      "sample": [
+        "chrome_web_store:gjoijpfmdhbjkkgnmahganhoinjjpohk",
+        "app_store:739013038",
+        "app_store:459313476",
+        "trustmrr:angular-material-blocks",
+        "app_store:6444837964",
+        "app_store:602991338",
+        "app_store:922014305"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:gjoijpfmdhbjkkgnmahganhoinjjpohk",
+          "decision": "Candidate",
+          "reason": "YouTube 영상을 입력해 한 번 클릭으로 화면을 촬영하고, 영상 스크린샷 하나를 즉시 만들 수 있다."
+        },
+        {
+          "key": "app_store:459313476",
+          "decision": "Candidate",
+          "reason": "음표나 화음 하나를 입력해 식별 연습을 처리하고, 정답 하나를 즉시 확인하는 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.2857142857142857
+    },
+    {
+      "round": 2,
+      "fail_count": 57,
+      "sample": [
+        "chrome_web_store:ppmcbemphmekpnpbddecgkbemenginpf",
+        "chrome_web_store:lcpipfmjdfelofldlehfiogoogpkjiea",
+        "app_store:739013038",
+        "app_store:1574452924",
+        "trustmrr:ai-humanizer",
+        "app_store:6450435935"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:739013038",
+          "decision": "Candidate",
+          "reason": "카메라·마이크 입력 → Ai 모의면접 → 반복 가능한 면접 연습 결과가 2일 세로 조각으로 남는다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 3,
+      "fail_count": 51,
+      "sample": [
+        "app_store:1303314426",
+        "app_store:739013038",
+        "chrome_web_store:cjfkekdmofjjhibaiokenecedjbpdmdf",
+        "app_store:1024369566",
+        "trustmrr:alltoken",
+        "trustmrr:everlearns"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

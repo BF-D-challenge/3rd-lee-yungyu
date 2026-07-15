@@ -1,0 +1,639 @@
+{
+  "mode": "source-fidelity",
+  "model": {
+    "provider": "local",
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimension": 384,
+    "normalization": "L2",
+    "similarity": "cosine via normalized dot product"
+  },
+  "scope": {
+    "combinations": 27,
+    "scenarios": 1,
+    "singleTwist": 27,
+    "doubleTwist": 0
+  },
+  "policy": {
+    "minimum": 0.8,
+    "targetMaximum": 0.99,
+    "aboveTargetMaximum": "allowed because an overseas product mechanic may be copied exactly",
+    "portfolioDuplicates": "allowed and not evaluated in this mode"
+  },
+  "summary": {
+    "percentiles": {
+      "50": 0.964778,
+      "75": 0.973626,
+      "90": 0.973626,
+      "95": 0.973626,
+      "99": 0.973626,
+      "99.5": 0.973626,
+      "99.9": 0.973626,
+      "99.95": 0.973626,
+      "99.99": 0.973626,
+      "100": 0.973626
+    },
+    "belowMinimum": 0,
+    "inTargetBand": 27,
+    "exactAllowed": 0,
+    "pass": 27,
+    "passRate": 1.0
+  },
+  "lowest": [
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-2__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-1__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-2__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-2__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-1__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-3__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-3__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-1__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-3__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-3__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-2__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-1__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-3__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-1__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-1__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-3__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-2__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-2__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-2__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-1__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-3__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-3__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-1__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-2__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-2__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-1__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-3__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    }
+  ],
+  "highest": [
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-3__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-1__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-2__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-2__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-1__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-3__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-3__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-1__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.973626,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-2__twist-doc-to-cms-3",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "표가 깨지지 않는 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-2__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-2__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-3__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-1__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-1__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-3__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-1__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-2__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.964778,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-3__twist-doc-to-cms-1",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "Google Doc 제목 계층 보존 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-3__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-1__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-3__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-3__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "긴 문서를 CMS 편집기에 처음 붙여 넣는 순간",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-1__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-2__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-3__moment-doc-to-cms-2__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "제품 문서를 CMS에 게시하는 디지털 퍼블리셔",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-1__moment-doc-to-cms-1__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "주 3회 이상 블로그를 발행하는 콘텐츠 담당자",
+      "moment": "Google Doc 원고를 완성하고 CMS에 옮기기 직전",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    },
+    {
+      "similarity": 0.955593,
+      "id": "doc-to-cms-draft__payer-doc-to-cms-2__moment-doc-to-cms-2__twist-doc-to-cms-2",
+      "scenarioId": "doc-to-cms-draft",
+      "sourceName": "Docswrite",
+      "payer": "여러 고객 사이트에 글을 납품하는 콘텐츠 대행 실무자",
+      "moment": "클라이언트 원고를 WordPress에 납품하기 직전",
+      "twistTitles": [
+        "이미지 캡션이 남은 CMS 게시 초안"
+      ]
+    }
+  ]
+}

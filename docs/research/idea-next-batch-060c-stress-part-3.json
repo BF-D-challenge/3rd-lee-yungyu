@@ -1,0 +1,416 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-475312085-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "SQLite 또는 CSV 하나를 입력해 SQL로 조회한 뒤 필터링된 CSV나 DDL 하나를 얻는 흐름과 개발자 사용 순간이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-475312085-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "SQLite 또는 CSV를 조회해 수정 CSV를 얻는 흐름은 명확하지만 외부 미팅 중 수업용 성적표를 확인한다는 결제자와 순간의 연결이 어색하다.",
+      "risk_flags": [
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-475312085-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "테스트 DB 하나를 입력해 SQL로 구조를 확인하고 DDL 파일 하나로 내보내는 흐름이 데이터 엔지니어의 출장 중 상황과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6766152470-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단일 아이폰에서 공개 API 정보를 읽어 앱에 보이는 기기 정보와 설명 하나를 제공하며 설치 직후 권한 점검 순간도 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6766152470-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단일 기기의 배터리·저장공간 정보를 읽어 식별 가능성을 설명하는 결과는 가능하지만 광고 추적과 기기 정보의 인과가 문구상 불명확하다.",
+      "risk_flags": [
+        "causality_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6766152470-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "자녀의 기기에서 정보를 읽으려면 자녀의 기기 접근이나 협조가 필요할 수 있어 상대방의 새 행동 없이 성립하는 단일 기기 입력 조건을 위반한다.",
+      "risk_flags": [
+        "other_device_access",
+        "consent_dependency"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1124131441-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앨범 페이지 사진 한 장을 자동 분할·보정해 개별 사진 파일로 만드는 결과가 가족 기록자의 실제 보존 순간과 정확히 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1124131441-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사진 묶음 한 장을 분리·보정해 개별 파일로 저장하므로 스튜디오 직원의 납품 전 정리 업무와 입력·처리·결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1124131441-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "앨범 페이지를 개별 사진으로 저장하는 흐름은 명확하지만 300dpi 저장은 원본 메커니즘에 명시되지 않은 추가 요구다.",
+      "risk_flags": [
+        "unsupported_quality_requirement"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-286799607-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "마이크의 악기음을 받아 음정을 측정해 튜닝 미터를 보여주지만 국악기별 기준음 변경 지원은 원본 메커니즘만으로 확인되지 않는다.",
+      "risk_flags": [
+        "unsupported_customization"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-286799607-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "마이크 입력에서 음정을 측정해 튜닝 미터를 제공하는 흐름은 타당하지만 카포와 노래 키 조율의 관계가 문구상 부정확하다.",
+      "risk_flags": [
+        "concept_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-286799607-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "악기음을 측정해 튜닝 미터를 내는 흐름은 구체적이지만 공연장 소음 속 정확도 보장은 원본 메커니즘에 없는 조건이다.",
+      "risk_flags": [
+        "accuracy_risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6477182124-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "방송국 검색어 하나로 방송국을 찾아 재생하는 흐름은 가능하지만 Radio App이라는 제목만으로는 문제와 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6477182124-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "검색어로 지역·해외 방송을 찾아 재생하는 처리는 명확하지만 스포츠 중계나 현지 뉴스의 실제 방송 제공 여부가 보장되지 않는다.",
+      "risk_flags": [
+        "content_availability",
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6477182124-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "검색어에서 라디오 재생으로 이어지는 흐름은 자연스럽지만 잠금 화면 청취는 원본 처리보다 확장된 OS 통합 기능이다.",
+      "risk_flags": [
+        "unsupported_os_integration",
+        "title_ambiguity"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1149994032-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "인물 사진 보정은 입력과 결과가 명확하지만 기본 사진 편집 기능이나 범용 이미지 AI 한 번으로 더 쉽게 대체될 수 있다.",
+      "risk_flags": [
+        "os_or_general_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1149994032-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "사진에서 행인을 제거하고 보정하는 결과는 구체적이나 OS 기본 편집 기능 또는 범용 이미지 AI가 더 간편한 대체 수단이다.",
+      "risk_flags": [
+        "os_or_general_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1149994032-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인물 사진 입력에 카페 메뉴 사진 보정이라는 다른 대상이 섞였고 사진 편집 자체도 OS 기본 기능이나 범용 이미지 AI로 대체 가능하다.",
+      "risk_flags": [
+        "input_twist_mismatch",
+        "os_or_general_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1466747898-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한국어 낱말 하나를 입력해 속뜻과 한자 의미 힌트 하나를 즉시 보여주므로 수능 지문의 낯선 어휘를 만난 순간과 결과가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1466747898-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오답 단어 하나를 입력해 속뜻과 한자 의미를 조회하는 흐름이 수험생의 막힌 어휘를 바로 이해하는 순간과 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1466747898-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보고서의 특정 낱말 하나를 입력해 속뜻과 한자 의미 힌트 하나를 받는 세로 조각이 공공기관 직원의 실제 작성 순간에 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1181449615-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "객관식 답변을 채점해 해설과 준비 상태를 보여줄 수 있지만 평가할 문제 본문이나 시험 문항이 입력에 포함되지 않아 처리 대상이 불명확하다.",
+      "risk_flags": [
+        "missing_question_context"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1181449615-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "답안을 검토해 해설을 주는 흐름은 가능하지만 답변만으로 어떤 법규 문제를 채점하는지와 준비 상태의 산출 기준이 अस्पष्ट하다.",
+      "risk_flags": [
+        "missing_question_context",
+        "result_vague"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1181449615-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사례 답변을 채점하고 해설을 제공하는 흐름은 타당하지만 타코그래프 문항과 답변의 관계 및 준비 상태 결과가 충분히 구체적이지 않다.",
+      "risk_flags": [
+        "missing_question_context",
+        "result_vague"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-301270080-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "ECG 답안을 평가해 결과를 내는 교육 흐름은 가능하지만 시험 결과가 점수인지 정오인지 설명이 없어 결과가 구체적이지 않다.",
+      "risk_flags": [
+        "result_vague"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-301270080-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "리듬 스트립 답안을 채점하는 입력·처리는 명확하지만 12유도 심전도와 기초 리듬 평가의 범위가 섞여 시험 결과가 모호하다.",
+      "risk_flags": [
+        "scope_mismatch",
+        "result_vague"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-301270080-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "ECG 답안을 받아 리듬 식별 결과를 낼 수 있지만 임상 관점 해설은 원본의 교육 평가 범위를 넘어설 수 있고 결과 형식도 불명확하다.",
+      "risk_flags": [
+        "scope_expansion",
+        "result_vague"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-946930094-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "문서 사진 한 장을 OCR해 편집 가능한 산출물을 만드는 흐름은 명확하지만 TXT와 PDF 중 결과가 둘로 제시되어 단일 결과 조건이 흐려진다.",
+      "risk_flags": [
+        "multiple_output_options"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-946930094-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영수증 또는 회의판 사진에서 문자를 추출하는 처리는 구체적이지만 공유용 문서가 TXT인지 PDF인지 정해지지 않아 결과 하나가 불명확하다.",
+      "risk_flags": [
+        "multiple_output_options"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-946930094-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "영수증 사진을 OCR해 PDF 증빙으로 저장하는 사용 순간은 자연스럽지만 원본 전체 문구가 TXT 또는 PDF로 갈려 단일 결과 조건을 충족하지 않는다.",
+      "risk_flags": [
+        "multiple_output_options"
+      ]
+    }
+  ]
+}

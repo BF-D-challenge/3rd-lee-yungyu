@@ -1,0 +1,98 @@
+{
+  "batch_id": "EXH-041",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 100,
+  "decision_counts": {
+    "Candidate": 48,
+    "Merge": 7,
+    "Fail": 41,
+    "Reserve": 4
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 64,
+      "sample": [
+        "chrome_web_store:afpiijfkjbkkfoeepflocpfcmghcohfi",
+        "app_store:473937342",
+        "app_store:1382661240",
+        "app_store:948897052",
+        "app_store:1078875308",
+        "app_store:1493968688",
+        "chrome_web_store:kdojjbmaidnebdjancpcgajkgeboebpe"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1078875308",
+          "decision": "Candidate",
+          "reason": "캘린더 권한 입력 → 일정·리마인더 읽기와 위젯 렌더링 → 홈 화면 일정 확인의 2일 세로 조각이 명확하다."
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 2,
+      "fail_count": 53,
+      "sample": [
+        "trustmrr:easy-save-ai",
+        "chrome_web_store:lphicbbhfmllgmomkkhjfkpbdlncafbn",
+        "trustmrr:opencharacter",
+        "chrome_web_store:fcmecilpdddmffmnjhdmillmddahmfnh",
+        "app_store:1518522560",
+        "trustmrr:apps-review"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:1518522560",
+          "decision": "Candidate",
+          "reason": "장시간 앉아 있는 상태를 받아 일어서기 알림을 주고, 5분 스트레칭 루틴을 즉시 제공하는 세로 조각이다."
+        }
+      ],
+      "false_reject_rate": 0.16666666666666666
+    },
+    {
+      "round": 3,
+      "fail_count": 44,
+      "sample": [
+        "chrome_web_store:pebhlgoleljlpkjdceakhjnoioceicfl",
+        "chrome_web_store:ajhnlmebdlgghbfaoleihpchdmmmgbmg",
+        "app_store:948897052",
+        "chrome_web_store:ebfkhmjpdjojecendlbkchjohblodlob",
+        "app_store:1481812175"
+      ],
+      "rescues": [
+        {
+          "key": "chrome_web_store:ajhnlmebdlgghbfaoleihpchdmmmgbmg",
+          "decision": "Candidate",
+          "reason": "Solana wallet을 받아 토큰 전송·수신·교환을 처리하고 real-time prices를 보여주는 지갑 거래 세로 조각이 가능하다."
+        },
+        {
+          "key": "app_store:948897052",
+          "decision": "Candidate",
+          "reason": "favorite shows를 선택해 TV schedules를 확인하고 방송 전 alerts를 설정하는 단일 프로그램 알림 세로 조각이 가능하다."
+        }
+      ],
+      "false_reject_rate": 0.4
+    },
+    {
+      "round": 4,
+      "fail_count": 41,
+      "sample": [
+        "trustmrr:crayvon-ai-humanizer-for-germans",
+        "chrome_web_store:jnmbobjmhlngoefaiojfljckilhhlhcj",
+        "chrome_web_store:hknokjoehkhcklmkebopffelpdeblokf",
+        "trustmrr:reveille",
+        "app_store:1086719653"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

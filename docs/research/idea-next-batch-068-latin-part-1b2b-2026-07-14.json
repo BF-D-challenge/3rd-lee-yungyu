@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1441536768-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "재료·양·조리 설정을 한 번 입력해 수비드 온도·타이머와 완료·과조리 경고를 얻는 세로 조각은 명확하지만, 영어 제목만으로 문제와 결과가 충분히 드러나지 않고 중량만으로 조리 시간을 산정하는 근거도 불명확하다.",
+      "risk_flags": [
+        "title_unclear",
+        "time_calculation_ambiguous"
+      ]
+    }
+  ]
+}

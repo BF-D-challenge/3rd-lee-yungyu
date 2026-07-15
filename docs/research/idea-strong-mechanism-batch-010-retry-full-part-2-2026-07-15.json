@@ -1,0 +1,328 @@
+{
+  "results": [
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사내 IT 관리자가 설치 승인 직전에 CRX 파일 하나를 올려 권한을 정적으로 스캔하고 과도한 권한 위치가 표시된 HTML 보고서 하나를 받으므로 제목·지불자·순간·변화가 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사내 IT 관리자가 설치 승인 직전에 CRX 파일 하나를 올려 코드를 정적으로 스캔하고 외부 전송 도메인 목록이 담긴 HTML 보고서 하나를 받으므로 제목·지불자·순간·변화가 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사내 IT 관리자가 설치 승인 직전에 CRX 파일 하나를 올려 스크립트를 정적으로 스캔하고 난독화 의심 파일 위치가 담긴 HTML 결과 하나를 받으므로 제목·지불자·순간·변화가 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사내 IT 관리자가 보안 근거를 보고할 때 CRX 파일 하나를 올려 권한을 정적으로 스캔하고 과도한 권한 위치가 표시된 HTML 보고서 하나를 받으므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사내 IT 관리자가 보안 근거를 보고할 때 CRX 파일 하나를 올려 코드를 정적으로 스캔하고 외부 전송 도메인 목록 HTML 보고서 하나를 받으므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사내 IT 관리자가 보안 근거를 보고할 때 CRX 파일 하나를 올려 스크립트를 정적으로 스캔하고 난독화 의심 파일 위치 HTML 결과 하나를 받으므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사내 IT 관리자가 설치 여부를 설명할 때 CRX 파일 하나를 올려 권한을 정적으로 스캔하고 과도한 권한 위치 HTML 보고서 하나를 제시하므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사내 IT 관리자가 설치 여부를 설명할 때 CRX 파일 하나를 올려 코드를 정적으로 스캔하고 외부 전송 도메인 목록 HTML 보고서 하나를 제시하므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사내 IT 관리자가 설치 여부를 설명할 때 CRX 파일 하나를 올려 스크립트를 정적으로 스캔하고 난독화 의심 파일 위치 HTML 결과 하나를 제시하므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 설치 승인 직전에 CRX 파일 하나를 올려 권한을 정적으로 스캔하고 과도한 권한 위치 HTML 보고서 하나를 받으므로 제목·지불자·순간·변화가 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 설치 승인 직전에 CRX 파일 하나를 올려 코드를 정적으로 스캔하고 외부 전송 도메인 목록 HTML 보고서 하나를 받으므로 제목·지불자·순간·변화가 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 설치 승인 직전에 CRX 파일 하나를 올려 스크립트를 정적으로 스캔하고 난독화 의심 파일 위치 HTML 결과 하나를 받으므로 제목·지불자·순간·변화가 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 보안 근거를 보고할 때 CRX 파일 하나를 올려 권한을 정적으로 스캔하고 과도한 권한 위치 HTML 보고서 하나를 받으므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 보안 근거를 보고할 때 CRX 파일 하나를 올려 코드를 정적으로 스캔하고 외부 전송 도메인 목록 HTML 보고서 하나를 받으므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 보안 근거를 보고할 때 CRX 파일 하나를 올려 스크립트를 정적으로 스캔하고 난독화 의심 파일 위치 HTML 결과 하나를 받으므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 설치 여부를 설명할 때 CRX 파일 하나를 올려 권한을 정적으로 스캔하고 과도한 권한 위치 HTML 보고서 하나를 제시하므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 설치 여부를 설명할 때 CRX 파일 하나를 올려 코드를 정적으로 스캔하고 외부 전송 도메인 목록 HTML 보고서 하나를 제시하므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 설치 여부를 설명할 때 CRX 파일 하나를 올려 스크립트를 정적으로 스캔하고 난독화 의심 파일 위치 HTML 결과 하나를 제시하므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 설치 승인 직전에 CRX 파일 하나를 올려 권한을 정적으로 스캔하고 과도한 권한 위치 HTML 보고서 하나를 받으므로 제목·지불자·순간·변화가 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 설치 승인 직전에 CRX 파일 하나를 올려 코드를 정적으로 스캔하고 외부 전송 도메인 목록 HTML 보고서 하나를 받으므로 제목·지불자·순간·변화가 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 설치 승인 직전에 CRX 파일 하나를 올려 스크립트를 정적으로 스캔하고 난독화 의심 파일 위치 HTML 결과 하나를 받으므로 제목·지불자·순간·변화가 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 보안 근거를 보고할 때 CRX 파일 하나를 올려 권한을 정적으로 스캔하고 과도한 권한 위치 HTML 보고서 하나를 받으므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 보안 근거를 보고할 때 CRX 파일 하나를 올려 코드를 정적으로 스캔하고 외부 전송 도메인 목록 HTML 보고서 하나를 받으므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 보안 근거를 보고할 때 CRX 파일 하나를 올려 스크립트를 정적으로 스캔하고 난독화 의심 파일 위치 HTML 결과 하나를 받으므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 설치 여부를 설명할 때 CRX 파일 하나를 올려 권한을 정적으로 스캔하고 과도한 권한 위치 HTML 보고서 하나를 제시하므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 설치 여부를 설명할 때 CRX 파일 하나를 올려 코드를 정적으로 스캔하고 외부 전송 도메인 목록 HTML 보고서 하나를 제시하므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프리랜서가 설치 여부를 설명할 때 CRX 파일 하나를 올려 스크립트를 정적으로 스캔하고 난독화 의심 파일 위치 HTML 결과 하나를 제시하므로 지불자·순간·한 끗 변화가 자연스럽다.",
+      "risk_flags": []
+    }
+  ]
+}

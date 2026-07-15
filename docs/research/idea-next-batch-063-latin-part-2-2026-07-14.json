@@ -1,0 +1,229 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-339407922-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "배관 굽힘 맥락과 계산 결과는 카드 내용에서 구체적이지만 제목만으로는 오프셋·새들·90도 굽힘 계산 결과가 충분히 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-339407922-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "측정값 입력 후 배관 굽힘 결과를 즉시 확인하는 흐름은 구체적이지만 제목만으로 계산 문제와 결과가 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-339407922-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오프셋 치수 입력과 굽힘 결과 확인은 한 번의 계산으로 완결되지만 제목만으로 수축값 검산 결과까지 알기 어렵다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-339407922-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "새들 치수 입력 후 굽힘 결과를 한 화면에 보여주는 구조는 구체적이나 제목만으로 현장 검산 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-339407922-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "전선관 오프셋 치수를 입력해 굽힘값을 얻는 단일 처리 흐름은 명확하지만 제목만으로 계산 결과가 충분히 보이지 않는다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-339407922-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "장애물 높이와 간격을 입력해 90도 굽힘값을 얻는 결과가 구체적이지만 제목만으로 문제와 결과를 바로 파악하기 어렵다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-000",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭 한 번으로 헛간이 열리고 동물과 소리가 나오는 결과는 구체적이지만 제목만으로 아이를 위한 동물 놀이 결과까지 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-011",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "탭 입력 뒤 동물 공개와 이름·울음소리가 즉시 제공되는 구조는 명확하지만 제목만으로 식사 전 주의 전환 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-022",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "단일 탭으로 농장 동물과 소리를 반복 제공하는 MVP는 가능하지만 제목만으로 잠자리용 반복 놀이 결과를 알기 어렵다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-101",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "탭 후 동물 이름과 울음소리를 즉시 들려주는 입력·처리·결과가 구체적이지만 제목만으로 언어 놀이 목적이 명확하지 않다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-112",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "화면 탭 하나로 동물 공개와 소리 재생이 끝나는 구조는 구체적이지만 제목만으로 식사 전 짧은 놀이 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "헛간 탭 후 동물과 소리를 즉시 보여주는 흐름은 명확하지만 제목만으로 잠자리용 차분한 반복 놀이임을 알기 어렵다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-202",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "탭 입력에 따라 소·돼지·닭과 소리가 즉시 나오는 세로 조각은 가능하지만 제목만으로 등원 전 놀이 문제와 결과가 충분히 보이지 않는다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "전선관 오프셋 치수를 입력해 굽힘 결과를 확인하는 한 번의 계산 흐름은 구체적이나 제목만으로 현장 각도 계산 문제를 알기 어렵다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-300590611-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "동물 공개와 이름·울음소리 재생이라는 단일 결과는 명확하지만 제목만으로 보호자가 원하는 차분한 반복 놀이임을 파악하기 어렵다.",
+      "risk_flags": [
+        "title_ambiguity",
+        "english_title"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "batch_id": "EXH-002",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "sonnet",
+  "audit_model": "sonnet",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 97,
+  "decision_counts": {
+    "Fail": 81,
+    "Merge": 9,
+    "Candidate": 7
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 81,
+      "sample": [
+        "app_store:1574460221",
+        "trustmrr:project-a",
+        "app_store:1386975827",
+        "chrome_web_store:abdfkmgniiijbffflcfmkfejigmcepec",
+        "app_store:338010821",
+        "app_store:1136617388",
+        "app_store:578246316",
+        "app_store:1191985736",
+        "app_store:484829437"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 확장 프로그램 배포 승인 직전에 CRX 파일 하나를 올리면 권한을 정적으로 처리해 과도한 권한의 위치가 담긴 HTML 보고서 하나를 받는 흐름이 제목·payer·moment·twist와 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 확장 프로그램 배포 승인 직전에 CRX 파일 하나를 올리면 내부 코드를 정적으로 처리해 외부 전송 도메인 목록이 담긴 HTML 보고서 하나를 받는 흐름이 제목·payer·moment·twist와 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 확장 프로그램 배포 승인 직전에 CRX 파일 하나를 올리면 포함 스크립트를 정적으로 처리해 난독화 의심 파일 위치가 담긴 HTML 결과 하나를 받는 흐름이 제목·payer·moment·twist와 구체적으로 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 고객사 보안 점검 보고서 제출 직전에 CRX 파일 하나를 올리면 권한을 정적으로 처리해 과도한 권한 위치가 담긴 HTML 보고서 하나를 받아 계약 검수를 마무리하는 흐름이 제목·payer·moment·twist와 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 고객사 보안 점검 보고서 제출 직전에 CRX 파일 하나를 올리면 내부 코드를 정적으로 처리해 외부 전송 도메인 목록이 담긴 HTML 보고서 하나를 받아 검수 근거를 제시하는 흐름이 제목·payer·moment·twist와 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 고객사 보안 점검 보고서 제출 직전에 CRX 파일 하나를 올리면 포함 스크립트를 정적으로 처리해 난독화 의심 파일 위치가 담긴 HTML 결과 하나를 받아 검수 근거를 제시하는 흐름이 제목·payer·moment·twist와 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 고객 컴퓨터에 업무 확장을 설치하기 직전에 CRX 파일 하나를 올리면 권한을 정적으로 처리해 과도한 권한 위치가 담긴 HTML 보고서 하나를 즉시 받는 흐름이 제목·payer·moment·twist와 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 고객 컴퓨터에 업무 확장을 설치하기 직전에 CRX 파일 하나를 올리면 내부 코드를 정적으로 처리해 외부 전송 도메인 목록이 담긴 HTML 보고서 하나를 즉시 받는 흐름이 제목·payer·moment·twist와 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-chrome-web-store-nkgaaaiaadfgellaglahphkfjipcgmin-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "보안 컨설턴트가 고객 컴퓨터에 업무 확장을 설치하기 직전에 CRX 파일 하나를 올리면 포함 스크립트를 정적으로 처리해 난독화 의심 파일 위치가 담긴 HTML 결과 하나를 즉시 받는 흐름이 제목·payer·moment·twist와 맞는다.",
+      "risk_flags": []
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-6752672420-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아마추어 천체사진가가 촬영 직후 FITS 파일 1개를 넣으면 플레이트 솔빙 1회 후 중심 좌표가 표시된 하늘 차트 1개를 받아 촬영 위치를 즉시 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아마추어 천체사진가가 촬영 직후 FITS 파일 1개를 넣으면 플레이트 솔빙 1회 후 촬영 영역 경계가 표시된 하늘 차트 1개를 받아 대상 구도를 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아마추어 천체사진가가 촬영 직후 FITS 파일 1개를 넣으면 플레이트 솔빙 1회 후 주요 천체 라벨이 붙은 하늘 차트 1개를 받아 사진 속 대상을 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "다음 촬영의 구도를 수정하려는 아마추어 천체사진가가 FITS 파일 1개를 넣으면 플레이트 솔빙 1회 후 중심 좌표가 표시된 하늘 차트 1개를 받아 장비 조정 근거를 얻을 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "다음 촬영의 구도를 수정하려는 아마추어 천체사진가가 FITS 파일 1개를 넣으면 플레이트 솔빙 1회 후 촬영 영역 경계가 표시된 하늘 차트 1개를 받아 시야를 조정할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "다음 촬영의 구도를 수정하려는 아마추어 천체사진가가 FITS 파일 1개를 넣으면 플레이트 솔빙 1회 후 주요 천체 라벨이 붙은 하늘 차트 1개를 받아 촬영 대상을 기준으로 조정할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "관측 기록 제출 직전인 아마추어 천체사진가가 FITS 파일 1개를 넣으면 플레이트 솔빙 1회 후 중심 좌표가 표시된 하늘 차트 1개를 받아 촬영 영역의 근거를 기록할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "관측 기록 제출 직전인 아마추어 천체사진가가 FITS 파일 1개를 넣으면 플레이트 솔빙 1회 후 촬영 영역 경계가 표시된 하늘 차트 1개를 받아 기록 근거를 확인할 수 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-app-store-6752672420-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "관측 기록 제출 직전인 아마추어 천체사진가가 FITS 파일 1개를 넣으면 플레이트 솔빙 1회 후 주요 천체 라벨이 붙은 하늘 차트 1개를 받아 사진 속 대상을 기록할 수 있다.",
+      "risk_flags": []
+    }
+  ]
+}

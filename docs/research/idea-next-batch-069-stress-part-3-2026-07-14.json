@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-6740976022-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "pass"
+      },
+      "reason": "응원 문구·템플릿·사진을 입력해 디자인 구성과 배경 제거를 거쳐 인쇄용 PDF를 만든다는 흐름은 보이지만, 입력이 1개인지 불명확하고 ‘PDF 팬’이라는 결과 표현이 모호하다.",
+      "risk_flags": [
+        "multiple_inputs",
+        "ambiguous_result"
+      ]
+    }
+  ]
+}

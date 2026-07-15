@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-corsproxy-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GET CORS 오류 응답 미리보기’는 개발자가 CORS 오류 직후 cURL 명령 텍스트 하나를 입력해 프록시 GET 요청을 한 번 실행하고 접근 가능한 응답을 미리보는 결과를 담지만, ‘오류 응답’이 실제 결과인 접근 가능한 응답과 혼동될 수 있다.",
+      "risk_flags": [
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-corsproxy-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘인증 헤더 CORS 응답 점검’은 노코드 자동화 제작자가 데모 직전 인증 헤더 포함 cURL 명령 텍스트 하나를 입력해 프록시 요청을 한 번 실행하고 해당 API 응답 미리보기 하나를 확인하는 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-corsproxy-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘JSON POST CORS 응답 확인’은 QA 엔지니어가 버그 재현 요청 직후 JSON 본문 포함 cURL 명령 텍스트 하나를 입력해 프록시 POST 요청을 한 번 실행하고 접근 가능한 응답 미리보기 하나를 얻는 조합이다.",
+      "risk_flags": []
+    }
+  ]
+}

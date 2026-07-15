@@ -1,0 +1,137 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 콘텐츠 이관 편집자가 마감 순간 공개 웹페이지 URL 하나를 입력하면 PNG 이미지만 한 번 선별해 조건에 맞는 이미지 ZIP 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-nbmkpdgmnjbiohfpiofmjhpbeakpmlfd-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "프로덕트 디자이너가 리디자인 순간 공개 웹페이지 URL 하나를 입력해 구조를 한 번 변환하고 편집 가능한 SVG 하나를 받지만 임의 웹페이지의 편집 가능한 구조 변환은 2일 MVP 범위를 넘을 가능성이 크다.",
+      "risk_flags": [
+        "mvp_too_large"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-nbmkpdgmnjbiohfpiofmjhpbeakpmlfd-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "프론트엔드 개발자가 구현 분석 순간 공개 웹페이지 URL 하나를 입력해 전체 길이 PNG 하나를 받지만 브라우저 기본 전체 페이지 캡처로 대체 가능하고 원본의 편집 가능한 디자인 변환 메커니즘도 사라진다.",
+      "risk_flags": [
+        "os_basic_substitute",
+        "mechanism_drift"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-nbmkpdgmnjbiohfpiofmjhpbeakpmlfd-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "UX 컨설턴트가 워크숍 직전 공개 웹페이지 URL 하나를 입력해 구조를 한 번 변환하고 회색조 SVG 와이어프레임 하나를 받지만 임의 페이지를 구조화된 SVG로 변환하는 MVP 범위가 크다.",
+      "risk_flags": [
+        "mvp_too_large"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-jonplpbnhmanoekkgcepnedhghflblmo-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "three.js 개발자가 디버깅 순간 공개 데모 URL 하나를 입력해 장면 계층을 한 번 검사하고 hierarchy JSON 하나를 받지만 임의 three.js 런타임을 안정적으로 해석하는 2일 MVP 범위가 크다.",
+      "risk_flags": [
+        "mvp_too_large"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-jonplpbnhmanoekkgcepnedhghflblmo-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "기술 아티스트가 속성 오류 조사 순간 공개 데모 URL 하나를 입력해 재질·텍스처를 한 번 검사하고 inventory JSON 하나를 받지만 임의 WebGL 장면의 재질 정보를 안정적으로 추출하는 MVP 범위가 크다.",
+      "risk_flags": [
+        "mvp_too_large"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-jonplpbnhmanoekkgcepnedhghflblmo-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "WebGL QA 엔지니어가 납품 검수 순간 공개 데모 URL 하나를 입력해 오브젝트 속성을 한 번 검사하고 선택 가능한 HTML 하나를 받지만 임의 three.js 장면의 속성 탐색과 표시를 지원하는 MVP 범위가 크다.",
+      "risk_flags": [
+        "mvp_too_large"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 QA 엔지니어가 로그인 버그 재현 순간 현재 사이트 권한 하나를 입력해 session cookie만 한 번 마스킹하고 구조 JSON 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프론트엔드 개발자가 세션 초기화 전 현재 사이트 권한 하나를 입력해 쿠키를 domain·path별로 한 번 그룹화·마스킹하고 JSON 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ijolfnkijbagodcigeebgjhlkdgcebmf-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "기술 담당자가 브라우저 이슈 전달 순간 현재 사이트 권한 하나를 입력해 SameSite·Secure 플래그만 한 번 추출하고 값을 마스킹한 JSON 하나를 받는다.",
+      "risk_flags": []
+    }
+  ]
+}

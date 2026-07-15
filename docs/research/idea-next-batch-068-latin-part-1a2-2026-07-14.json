@@ -1,0 +1,92 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-6747954692-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "CBZ·ZIP 파일 1개를 입력해 페이지를 전환하고 전체 화면 만화로 보여주는 흐름이 구체적이며 수집가의 다운로드 직후 순간과 자연스럽고 2일 내 파일 뷰어 세로 조각이 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6747954692-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "CBZ·ZIP 파일 1개를 입력해 라이브러리에 표시하고 확대·페이지 전환 후 전체 화면 독서 결과를 내므로 출퇴근 중 파일 열기라는 실제 순간과 맞고 MVP 범위가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6747954692-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "아이폰의 CBZ 파일 1개를 입력해 페이지를 표시·확대하고 전체 화면으로 읽게 하는 단일 처리 결과가 구체적이며 별도 상대 행동 없이 파일 뷰어 MVP로 구현 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6747954692-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "다운로드한 CBZ 파일 1개를 입력해 작품별로 표시하고 페이지를 넘겨 전체 화면으로 읽는 결과가 명확하며 출퇴근 직후의 필요와 파일 기반 MVP가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6747954692-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "ZIP 만화 파일 1개를 입력해 작품 단위로 열고 페이지를 전환해 전체 화면 독서를 제공하므로 입력·처리·결과가 일치하고 2일 내 세로 조각이 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-6757637581-000",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "애플워치 화면 탭을 핵심 입력으로 요구하지만 허용된 입력 유형인 텍스트·URL·파일·사진·단일 기기 권한에 해당하지 않는다.",
+      "risk_flags": [
+        "disallowed_input_type"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-6757637581-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "최고 정확도 기록을 위해 애플워치 화면 탭을 입력으로 받아야 하는데 화면 탭은 허용된 텍스트·URL·파일·사진·단일 기기 권한 입력이 아니다.",
+      "risk_flags": [
+        "disallowed_input_type"
+      ]
+    }
+  ]
+}

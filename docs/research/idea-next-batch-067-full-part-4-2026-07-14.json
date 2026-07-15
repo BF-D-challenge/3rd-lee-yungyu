@@ -1,0 +1,65 @@
+{
+  "results": [
+    {
+      "id": "next-full-app-store-1582051883-200",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "라벨과 값을 입력해 색상을 지정하고 차트 이미지를 저장하는 흐름은 구체적이지만, 범용 AI나 스프레드시트의 차트 기능으로 더 쉽게 처리할 수 있고 제목만으로 문제와 결과도 드러나지 않는다.",
+      "risk_flags": [
+        "generic_alternative",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-201",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "월별 매출 라벨과 수치를 입력해 항목별 색상 막대차트 이미지로 내보내는 결과는 구체적이지만, 범용 AI나 스프레드시트 차트 기능이 더 편리하고 제목만으로 문제와 결과가 보이지 않는다.",
+      "risk_flags": [
+        "generic_alternative",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-202",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "보고서 수치를 입력하고 편집해 막대차트 미리보기를 확인하는 흐름은 가능하지만, 범용 AI나 스프레드시트의 차트 기능이 더 편리하고 미리보기는 최종 결과가 아니라 제목만으로도 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_alternative",
+        "intermediate_result",
+        "title_unclear"
+      ]
+    },
+    {
+      "id": "next-full-app-store-1582051883-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "발표용 라벨과 값을 입력해 색상을 지정한 막대차트 이미지를 저장하는 흐름은 구체적이지만, 범용 AI나 스프레드시트 차트 기능으로 더 쉽게 만들 수 있고 제목만으로 문제와 결과가 드러나지 않는다.",
+      "risk_flags": [
+        "generic_alternative",
+        "title_unclear"
+      ]
+    }
+  ]
+}

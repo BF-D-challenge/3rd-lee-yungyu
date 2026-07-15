@@ -1,0 +1,1145 @@
+{
+  "mode": "source-fidelity",
+  "model": {
+    "provider": "local",
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimension": 384,
+    "normalization": "L2",
+    "similarity": "cosine via normalized dot product"
+  },
+  "scope": {
+    "combinations": 81,
+    "scenarios": 3,
+    "singleTwist": 81,
+    "doubleTwist": 0
+  },
+  "policy": {
+    "minimum": 0.8,
+    "targetMaximum": 0.99,
+    "aboveTargetMaximum": "allowed because an overseas product mechanic may be copied exactly",
+    "portfolioDuplicates": "allowed and not evaluated in this mode"
+  },
+  "summary": {
+    "percentiles": {
+      "50": 0.972608,
+      "75": 0.976151,
+      "90": 0.98235,
+      "95": 0.98235,
+      "99": 0.98235,
+      "99.5": 0.98235,
+      "99.9": 0.98235,
+      "99.95": 0.98235,
+      "99.99": 0.98235,
+      "100": 0.98235
+    },
+    "belowMinimum": 0,
+    "inTargetBand": 81,
+    "exactAllowed": 0,
+    "pass": 81,
+    "passRate": 1.0
+  },
+  "lowest": [
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-2__moment-masked-cookie-profile-2__twist-masked-cookie-profile-2",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "세션 설정을 확인하는 프론트엔드 개발자",
+      "moment": "세션 환경을 초기화하기 전에 쿠키 구성을 확인하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 보안 플래그 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-1__moment-masked-cookie-profile-1__twist-masked-cookie-profile-3",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "로그인 버그를 재현하는 웹 QA 엔지니어",
+      "moment": "로그인 버그 증거로 현재 쿠키 구조를 저장하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 도메인 경로 그룹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-1__moment-masked-cookie-profile-2__twist-masked-cookie-profile-2",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "로그인 버그를 재현하는 웹 QA 엔지니어",
+      "moment": "세션 환경을 초기화하기 전에 쿠키 구성을 확인하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 보안 플래그 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-1__moment-masked-cookie-profile-2__twist-masked-cookie-profile-3",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "로그인 버그를 재현하는 웹 QA 엔지니어",
+      "moment": "세션 환경을 초기화하기 전에 쿠키 구성을 확인하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 도메인 경로 그룹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-1__moment-masked-cookie-profile-3__twist-masked-cookie-profile-1",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "로그인 버그를 재현하는 웹 QA 엔지니어",
+      "moment": "개발팀에 브라우저 이슈를 전달하는 순간",
+      "twistTitles": [
+        "현재 사이트 세션 쿠키 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-1__moment-masked-cookie-profile-3__twist-masked-cookie-profile-2",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "로그인 버그를 재현하는 웹 QA 엔지니어",
+      "moment": "개발팀에 브라우저 이슈를 전달하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 보안 플래그 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-1__moment-masked-cookie-profile-3__twist-masked-cookie-profile-3",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "로그인 버그를 재현하는 웹 QA 엔지니어",
+      "moment": "개발팀에 브라우저 이슈를 전달하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 도메인 경로 그룹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-2__moment-masked-cookie-profile-1__twist-masked-cookie-profile-1",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "세션 설정을 확인하는 프론트엔드 개발자",
+      "moment": "로그인 버그 증거로 현재 쿠키 구조를 저장하는 순간",
+      "twistTitles": [
+        "현재 사이트 세션 쿠키 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-2__moment-masked-cookie-profile-1__twist-masked-cookie-profile-2",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "세션 설정을 확인하는 프론트엔드 개발자",
+      "moment": "로그인 버그 증거로 현재 쿠키 구조를 저장하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 보안 플래그 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-2__moment-masked-cookie-profile-1__twist-masked-cookie-profile-3",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "세션 설정을 확인하는 프론트엔드 개발자",
+      "moment": "로그인 버그 증거로 현재 쿠키 구조를 저장하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 도메인 경로 그룹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-2__moment-masked-cookie-profile-2__twist-masked-cookie-profile-1",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "세션 설정을 확인하는 프론트엔드 개발자",
+      "moment": "세션 환경을 초기화하기 전에 쿠키 구성을 확인하는 순간",
+      "twistTitles": [
+        "현재 사이트 세션 쿠키 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-2__moment-masked-cookie-profile-2__twist-masked-cookie-profile-3",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "세션 설정을 확인하는 프론트엔드 개발자",
+      "moment": "세션 환경을 초기화하기 전에 쿠키 구성을 확인하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 도메인 경로 그룹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-2__moment-masked-cookie-profile-3__twist-masked-cookie-profile-1",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "세션 설정을 확인하는 프론트엔드 개발자",
+      "moment": "개발팀에 브라우저 이슈를 전달하는 순간",
+      "twistTitles": [
+        "현재 사이트 세션 쿠키 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-2__moment-masked-cookie-profile-3__twist-masked-cookie-profile-2",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "세션 설정을 확인하는 프론트엔드 개발자",
+      "moment": "개발팀에 브라우저 이슈를 전달하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 보안 플래그 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-2__moment-masked-cookie-profile-3__twist-masked-cookie-profile-3",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "세션 설정을 확인하는 프론트엔드 개발자",
+      "moment": "개발팀에 브라우저 이슈를 전달하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 도메인 경로 그룹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-3__moment-masked-cookie-profile-1__twist-masked-cookie-profile-1",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "고객 브라우저 이슈를 지원하는 기술 담당자",
+      "moment": "로그인 버그 증거로 현재 쿠키 구조를 저장하는 순간",
+      "twistTitles": [
+        "현재 사이트 세션 쿠키 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-3__moment-masked-cookie-profile-1__twist-masked-cookie-profile-2",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "고객 브라우저 이슈를 지원하는 기술 담당자",
+      "moment": "로그인 버그 증거로 현재 쿠키 구조를 저장하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 보안 플래그 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-3__moment-masked-cookie-profile-1__twist-masked-cookie-profile-3",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "고객 브라우저 이슈를 지원하는 기술 담당자",
+      "moment": "로그인 버그 증거로 현재 쿠키 구조를 저장하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 도메인 경로 그룹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-3__moment-masked-cookie-profile-2__twist-masked-cookie-profile-1",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "고객 브라우저 이슈를 지원하는 기술 담당자",
+      "moment": "세션 환경을 초기화하기 전에 쿠키 구성을 확인하는 순간",
+      "twistTitles": [
+        "현재 사이트 세션 쿠키 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-3__moment-masked-cookie-profile-2__twist-masked-cookie-profile-2",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "고객 브라우저 이슈를 지원하는 기술 담당자",
+      "moment": "세션 환경을 초기화하기 전에 쿠키 구성을 확인하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 보안 플래그 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-3__moment-masked-cookie-profile-2__twist-masked-cookie-profile-3",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "고객 브라우저 이슈를 지원하는 기술 담당자",
+      "moment": "세션 환경을 초기화하기 전에 쿠키 구성을 확인하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 도메인 경로 그룹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-3__moment-masked-cookie-profile-3__twist-masked-cookie-profile-1",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "고객 브라우저 이슈를 지원하는 기술 담당자",
+      "moment": "개발팀에 브라우저 이슈를 전달하는 순간",
+      "twistTitles": [
+        "현재 사이트 세션 쿠키 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-3__moment-masked-cookie-profile-3__twist-masked-cookie-profile-2",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "고객 브라우저 이슈를 지원하는 기술 담당자",
+      "moment": "개발팀에 브라우저 이슈를 전달하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 보안 플래그 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-3__moment-masked-cookie-profile-3__twist-masked-cookie-profile-3",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "고객 브라우저 이슈를 지원하는 기술 담당자",
+      "moment": "개발팀에 브라우저 이슈를 전달하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 도메인 경로 그룹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-1__moment-masked-cookie-profile-1__twist-masked-cookie-profile-2",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "로그인 버그를 재현하는 웹 QA 엔지니어",
+      "moment": "로그인 버그 증거로 현재 쿠키 구조를 저장하는 순간",
+      "twistTitles": [
+        "사이트 쿠키 보안 플래그 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-1__moment-masked-cookie-profile-1__twist-masked-cookie-profile-1",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "로그인 버그를 재현하는 웹 QA 엔지니어",
+      "moment": "로그인 버그 증거로 현재 쿠키 구조를 저장하는 순간",
+      "twistTitles": [
+        "현재 사이트 세션 쿠키 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.963846,
+      "id": "masked-cookie-profile__payer-masked-cookie-profile-1__moment-masked-cookie-profile-2__twist-masked-cookie-profile-1",
+      "scenarioId": "masked-cookie-profile",
+      "sourceName": "Cookie Manager Pro",
+      "payer": "로그인 버그를 재현하는 웹 QA 엔지니어",
+      "moment": "세션 환경을 초기화하기 전에 쿠키 구성을 확인하는 순간",
+      "twistTitles": [
+        "현재 사이트 세션 쿠키 마스킹 JSON"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-2__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-1__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-2__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-1__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-3__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-3__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-3__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-1__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-2__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-3__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-1__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-2__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-3__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-2__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-1__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-3__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-1__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-2__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-3__moment-design-token-export-2__twist-design-token-export-1",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "브랜드 일관성을 검수하는 디자인 QA",
+      "moment": "컴포넌트 CSS를 구현하려는 순간",
+      "twistTitles": [
+        "웹사이트 디자인 값 CSS 변수 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-1__twist-design-token-export-2",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "리디자인 기준 사이트를 정한 직후",
+      "twistTitles": [
+        "웹사이트 색상·간격 JSON 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-1__twist-design-token-export-3",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "리디자인 기준 사이트를 정한 직후",
+      "twistTitles": [
+        "웹사이트 디자인 값 Figma 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-2__twist-design-token-export-1",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "컴포넌트 CSS를 구현하려는 순간",
+      "twistTitles": [
+        "웹사이트 디자인 값 CSS 변수 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-2__twist-design-token-export-2",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "컴포넌트 CSS를 구현하려는 순간",
+      "twistTitles": [
+        "웹사이트 색상·간격 JSON 토큰 파일"
+      ]
+    }
+  ],
+  "highest": [
+    {
+      "similarity": 0.98235,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-1__twist-youtube-tag-export-1",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 영상 태그 원래순서 TXT 목록"
+      ]
+    },
+    {
+      "similarity": 0.98235,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-2__twist-youtube-tag-export-1",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 영상 태그 원래순서 TXT 목록"
+      ]
+    },
+    {
+      "similarity": 0.98235,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-2__twist-youtube-tag-export-1",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 영상 태그 원래순서 TXT 목록"
+      ]
+    },
+    {
+      "similarity": 0.98235,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-1__twist-youtube-tag-export-1",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 영상 태그 원래순서 TXT 목록"
+      ]
+    },
+    {
+      "similarity": 0.98235,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-3__twist-youtube-tag-export-1",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 영상 태그 원래순서 TXT 목록"
+      ]
+    },
+    {
+      "similarity": 0.98235,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-3__twist-youtube-tag-export-1",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 영상 태그 원래순서 TXT 목록"
+      ]
+    },
+    {
+      "similarity": 0.98235,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-1__twist-youtube-tag-export-1",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 영상 태그 원래순서 TXT 목록"
+      ]
+    },
+    {
+      "similarity": 0.98235,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-3__twist-youtube-tag-export-1",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 영상 태그 원래순서 TXT 목록"
+      ]
+    },
+    {
+      "similarity": 0.98235,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-2__twist-youtube-tag-export-1",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 영상 태그 원래순서 TXT 목록"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-1__moment-design-token-export-3__twist-design-token-export-2",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "새 디자인 시스템을 만드는 프로덕트 디자이너",
+      "moment": "브랜드 화면 검수를 시작하기 직전",
+      "twistTitles": [
+        "웹사이트 색상·간격 JSON 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-3__moment-design-token-export-3__twist-design-token-export-2",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "브랜드 일관성을 검수하는 디자인 QA",
+      "moment": "브랜드 화면 검수를 시작하기 직전",
+      "twistTitles": [
+        "웹사이트 색상·간격 JSON 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-1__moment-design-token-export-1__twist-design-token-export-1",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "새 디자인 시스템을 만드는 프로덕트 디자이너",
+      "moment": "리디자인 기준 사이트를 정한 직후",
+      "twistTitles": [
+        "웹사이트 디자인 값 CSS 변수 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-1__moment-design-token-export-1__twist-design-token-export-2",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "새 디자인 시스템을 만드는 프로덕트 디자이너",
+      "moment": "리디자인 기준 사이트를 정한 직후",
+      "twistTitles": [
+        "웹사이트 색상·간격 JSON 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-1__moment-design-token-export-1__twist-design-token-export-3",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "새 디자인 시스템을 만드는 프로덕트 디자이너",
+      "moment": "리디자인 기준 사이트를 정한 직후",
+      "twistTitles": [
+        "웹사이트 디자인 값 Figma 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-1__moment-design-token-export-2__twist-design-token-export-1",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "새 디자인 시스템을 만드는 프로덕트 디자이너",
+      "moment": "컴포넌트 CSS를 구현하려는 순간",
+      "twistTitles": [
+        "웹사이트 디자인 값 CSS 변수 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-1__moment-design-token-export-2__twist-design-token-export-2",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "새 디자인 시스템을 만드는 프로덕트 디자이너",
+      "moment": "컴포넌트 CSS를 구현하려는 순간",
+      "twistTitles": [
+        "웹사이트 색상·간격 JSON 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-1__moment-design-token-export-2__twist-design-token-export-3",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "새 디자인 시스템을 만드는 프로덕트 디자이너",
+      "moment": "컴포넌트 CSS를 구현하려는 순간",
+      "twistTitles": [
+        "웹사이트 디자인 값 Figma 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-1__moment-design-token-export-3__twist-design-token-export-1",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "새 디자인 시스템을 만드는 프로덕트 디자이너",
+      "moment": "브랜드 화면 검수를 시작하기 직전",
+      "twistTitles": [
+        "웹사이트 디자인 값 CSS 변수 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-3__moment-design-token-export-3__twist-design-token-export-3",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "브랜드 일관성을 검수하는 디자인 QA",
+      "moment": "브랜드 화면 검수를 시작하기 직전",
+      "twistTitles": [
+        "웹사이트 디자인 값 Figma 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-1__moment-design-token-export-3__twist-design-token-export-3",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "새 디자인 시스템을 만드는 프로덕트 디자이너",
+      "moment": "브랜드 화면 검수를 시작하기 직전",
+      "twistTitles": [
+        "웹사이트 디자인 값 Figma 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-1__twist-design-token-export-1",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "리디자인 기준 사이트를 정한 직후",
+      "twistTitles": [
+        "웹사이트 디자인 값 CSS 변수 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-3__moment-design-token-export-1__twist-design-token-export-3",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "브랜드 일관성을 검수하는 디자인 QA",
+      "moment": "리디자인 기준 사이트를 정한 직후",
+      "twistTitles": [
+        "웹사이트 디자인 값 Figma 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-3__moment-design-token-export-2__twist-design-token-export-2",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "브랜드 일관성을 검수하는 디자인 QA",
+      "moment": "컴포넌트 CSS를 구현하려는 순간",
+      "twistTitles": [
+        "웹사이트 색상·간격 JSON 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-3__moment-design-token-export-1__twist-design-token-export-2",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "브랜드 일관성을 검수하는 디자인 QA",
+      "moment": "리디자인 기준 사이트를 정한 직후",
+      "twistTitles": [
+        "웹사이트 색상·간격 JSON 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-3__moment-design-token-export-2__twist-design-token-export-3",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "브랜드 일관성을 검수하는 디자인 QA",
+      "moment": "컴포넌트 CSS를 구현하려는 순간",
+      "twistTitles": [
+        "웹사이트 디자인 값 Figma 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-3__moment-design-token-export-1__twist-design-token-export-1",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "브랜드 일관성을 검수하는 디자인 QA",
+      "moment": "리디자인 기준 사이트를 정한 직후",
+      "twistTitles": [
+        "웹사이트 디자인 값 CSS 변수 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-3__twist-design-token-export-2",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "브랜드 화면 검수를 시작하기 직전",
+      "twistTitles": [
+        "웹사이트 색상·간격 JSON 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-3__moment-design-token-export-3__twist-design-token-export-1",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "브랜드 일관성을 검수하는 디자인 QA",
+      "moment": "브랜드 화면 검수를 시작하기 직전",
+      "twistTitles": [
+        "웹사이트 디자인 값 CSS 변수 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-3__twist-design-token-export-3",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "브랜드 화면 검수를 시작하기 직전",
+      "twistTitles": [
+        "웹사이트 디자인 값 Figma 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-3__twist-design-token-export-1",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "브랜드 화면 검수를 시작하기 직전",
+      "twistTitles": [
+        "웹사이트 디자인 값 CSS 변수 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-2__twist-design-token-export-3",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "컴포넌트 CSS를 구현하려는 순간",
+      "twistTitles": [
+        "웹사이트 디자인 값 Figma 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-2__twist-design-token-export-2",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "컴포넌트 CSS를 구현하려는 순간",
+      "twistTitles": [
+        "웹사이트 색상·간격 JSON 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-2__twist-design-token-export-1",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "컴포넌트 CSS를 구현하려는 순간",
+      "twistTitles": [
+        "웹사이트 디자인 값 CSS 변수 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-1__twist-design-token-export-3",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "리디자인 기준 사이트를 정한 직후",
+      "twistTitles": [
+        "웹사이트 디자인 값 Figma 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-2__moment-design-token-export-1__twist-design-token-export-2",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "기존 CSS를 정리하는 프론트엔드 개발자",
+      "moment": "리디자인 기준 사이트를 정한 직후",
+      "twistTitles": [
+        "웹사이트 색상·간격 JSON 토큰 파일"
+      ]
+    },
+    {
+      "similarity": 0.976151,
+      "id": "website-design-token-export__payer-design-token-export-3__moment-design-token-export-2__twist-design-token-export-1",
+      "scenarioId": "website-design-token-export",
+      "sourceName": "Design Analyzer - Extract Design Elements",
+      "payer": "브랜드 일관성을 검수하는 디자인 QA",
+      "moment": "컴포넌트 CSS를 구현하려는 순간",
+      "twistTitles": [
+        "웹사이트 디자인 값 CSS 변수 파일"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-2__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-1__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-3__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-1__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-2__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-3__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-2__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-1__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.972608,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-3__twist-youtube-tag-export-2",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 영상 중복 제거 태그 CSV"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-2__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "경쟁 영상 조사 브리프에 태그 근거를 넣는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-1__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "경쟁 영상의 태그를 확인해 제목을 고치려는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-3__moment-youtube-tag-export-3__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "업로드 메타데이터를 검수하는 영상 대행 편집자",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-2__moment-youtube-tag-export-3__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "경쟁 영상 브리프를 만드는 콘텐츠 마케터",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    },
+    {
+      "similarity": 0.969267,
+      "id": "youtube-hidden-tag-export__payer-youtube-tag-export-1__moment-youtube-tag-export-3__twist-youtube-tag-export-3",
+      "scenarioId": "youtube-hidden-tag-export",
+      "sourceName": "YouTube Tag Extractor",
+      "payer": "유튜브 채널을 매주 운영하는 영상 제작자",
+      "moment": "고객 영상 업로드 전 메타데이터를 검수하는 순간",
+      "twistTitles": [
+        "유튜브 경쟁 영상 긴 태그 우선 목록"
+      ]
+    }
+  ]
+}

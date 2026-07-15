@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-07-12",
+  "policy": {
+    "comparison": "each generated combination versus its own overseas source product mechanic",
+    "minimum": 0.8,
+    "targetMaximum": 0.99,
+    "aboveTargetMaximum": "allowed",
+    "portfolioDuplicates": "allowed",
+    "separateHardGate": "solo vibe-coded MVP in half a day to two days"
+  },
+  "scope": {
+    "scenarios": 30,
+    "combinations": 1620,
+    "singleTwist": 810,
+    "doubleTwist": 810
+  },
+  "primaryModel": {
+    "name": "text-embedding-3-small",
+    "dimension": 1536,
+    "minimum": 0.854882,
+    "median": 0.933004,
+    "p90": 0.947795,
+    "maximum": 0.954513,
+    "belowMinimum": 0,
+    "inTargetBand": 1620,
+    "aboveTargetAllowed": 0,
+    "pass": 1620,
+    "passRate": 1
+  },
+  "crossCheckModel": {
+    "name": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "dimension": 384,
+    "minimum": 0.827295,
+    "median": 0.959794,
+    "p90": 0.981821,
+    "maximum": 0.99404,
+    "belowMinimum": 0,
+    "inTargetBand": 1593,
+    "aboveTargetAllowed": 27,
+    "pass": 1620,
+    "passRate": 1
+  }
+}

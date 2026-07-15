@@ -1,0 +1,120 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-1505140281-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 음악가가 싱글 게시 직전에 오디오 파일 하나를 입력해 주파수를 한 번 분석하고 음량 반응 파형 MP4 영상 하나를 즉시 얻는 흐름이 제목과 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1505140281-011",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인디 음악가가 오디오 파일 하나를 주파수별 막대 MP4 영상으로 변환하는 결과는 명확하지만, 카드의 팟캐스트 홍보 클립 순간이 싱글·데모 게시를 위한 결제자와 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1505140281-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "인디 음악가가 음원 납품 직전에 오디오 파일 하나를 입력해 주파수를 한 번 분석하고 회전하는 원형 스펙트럼 MP4 영상 하나를 즉시 얻는 흐름이 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1505140281-101",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "팟캐스트 제작자가 오디오 파일 하나를 주파수별 막대 MP4 영상으로 변환하는 결과는 구체적이지만, 카드의 싱글 게시 직전 순간이 팟캐스트 제작자의 결제 상황과 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1505140281-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팟캐스트 제작자가 홍보 클립 게시 직전에 오디오 파일 하나를 주파수 분석해 회전하는 원형 스펙트럼 MP4 영상 하나를 즉시 얻는 흐름이 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1505140281-120",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "팟캐스트 제작자가 납품 직전에 오디오 파일 하나를 주파수 분석해 음량 반응 파형 MP4 영상 하나를 얻는 결과는 명확하지만, 팟캐스트 납품에 영상이 요구되는 순간은 일반적이지 않아 문구 확인이 필요하다.",
+      "risk_flags": [
+        "korean_context_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1505140281-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음원 유통사 콘텐츠 담당자가 싱글 게시 직전에 오디오 파일 하나를 주파수 분석해 회전하는 원형 스펙트럼 MP4 영상 하나를 즉시 얻는 흐름이 결제자와 순간에 맞다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-1505140281-210",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "음원 유통사 콘텐츠 담당자가 오디오 파일 하나를 음량 반응 파형 MP4 영상으로 변환하는 결과는 명확하지만, 팟캐스트 홍보 클립 순간이 음원 유통 업무와 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-1505140281-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음원 유통사 콘텐츠 담당자가 납품 직전에 오디오 파일 하나를 주파수 분석해 주파수별 막대 MP4 영상 하나를 즉시 얻는 흐름이 자연스럽고 구체적이다.",
+      "risk_flags": []
+    }
+  ]
+}

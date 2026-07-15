@@ -1,0 +1,418 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-dbkidnlfklnjanneifjjojofckpcogcl-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "PDF 여러 개를 편집·서명·병합·공유·인쇄하는 범용 기능 묶음이라 입력 1개·처리 1회·결과 1개의 세로 조각과 2일 MVP 범위가 불명확하다.",
+      "risk_flags": [
+        "범용PDF",
+        "범위과다"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-dbkidnlfklnjanneifjjojofckpcogcl-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "PDF 입력에서 편집·서명·병합·공유·인쇄까지 처리하는 범용 편집기라 휴대폰에서 서명 PDF 하나를 만드는 한 끗보다 기능 범위와 구현 부담이 크다.",
+      "risk_flags": [
+        "범용PDF",
+        "범위과다"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-dbkidnlfklnjanneifjjojofckpcogcl-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "여러 PDF를 편집·서명·병합·공유·인쇄하는 구조로 입력과 결과가 복수이고 단순 병합 도구보다 범용 기능이 과해 2일 세로 조각이 어렵다.",
+      "risk_flags": [
+        "범용PDF",
+        "복수입력"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-398335225-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "복식 팀 이름과 점수를 입력해 한 화면의 현재 점수판으로 표시하므로 경기 시작 직후 단일 기기에서 입력 1회·갱신 1회·점수판 1개가 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-398335225-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "참가자와 점수를 입력해 현재 점수판을 표시하는 흐름은 맞지만 당구 경기 순간에 보드게임 라운드 점수를 표시한다는 문구가 결제자와 어긋난다.",
+      "risk_flags": [
+        "대상불일치"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-398335225-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "참가자와 점수 입력에서 경기 점수판을 만드는 흐름은 가능하지만 보드게임 진행자에게 당구 선수별 점수와 순서를 보여준다는 한 끗이 서로 맞지 않는다.",
+      "risk_flags": [
+        "대상불일치"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6784176363-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한 줄 메모를 입력해 오른쪽 스와이프로 Daily에 분류하고 오늘 할 일 목록으로 보여주므로 회의 중 즉시 처리 가능한 단일 기기 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6784176363-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한 줄 메모를 입력해 왼쪽 스와이프로 버리고 Trash 결과를 남기므로 퇴근길에 불필요한 메모를 즉시 정리하는 세로 조각이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-6784176363-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "업무 아이디어 한 줄을 입력해 위로 스와이프하고 Work 메모로 분류하므로 기록 직후 분류 결과가 하나로 구체적이며 2일 MVP가 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-295952485-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "구매 금액과 VAT 비율의 단순 산술을 계산하는 기능은 OS 기본 계산기나 범용 계산이 더 간편해 독립 카드의 한 끗 변화가 없다.",
+      "risk_flags": [
+        "기본기능대체"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-295952485-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "상품 가격과 직접 입력한 세율로 세금을 계산하는 단순 산술은 여행 중 OS 계산기로도 처리 가능해 별도 카드의 필요성이 약하다.",
+      "risk_flags": [
+        "기본기능대체"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-295952485-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현지 금액과 판매세율을 곱해 세금을 구하는 계산은 OS 기본 계산기보다 편하지 않아 범용 계산 기능 대체 규칙에 걸린다.",
+      "risk_flags": [
+        "기본기능대체"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-nafpfdcmppffipmhcpkbplhkoiekndck-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 파일에서 촬영일과 카메라 정보를 읽는 EXIF 확인은 OS 파일 정보나 사진 앱의 기본 상세 보기로 대체 가능하다.",
+      "risk_flags": [
+        "기본기능대체"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-nafpfdcmppffipmhcpkbplhkoiekndck-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 파일의 위치·촬영 설정을 표시하는 기능은 OS 사진 정보 보기로 확인할 수 있어 별도 EXIF 카드의 우위가 없다.",
+      "risk_flags": [
+        "기본기능대체",
+        "개인정보"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-nafpfdcmppffipmhcpkbplhkoiekndck-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "사진 파일에서 렌즈와 노출값을 읽어 표시하는 처리는 기본 사진 앱의 정보 기능으로 대체 가능하다.",
+      "risk_flags": [
+        "기본기능대체"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-acgpoaendigegjigblconnippbmmdiml-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "문제가 생긴 뒤가 아니라 브라우저 확장 설치와 새 탭 사용을 먼저 전제로 하므로 설치·사전 설정 없이는 작동하지 않는 카드다.",
+      "risk_flags": [
+        "사전설치필수",
+        "기본기능대체"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-acgpoaendigegjigblconnippbmmdiml-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "고객 업무를 적으려면 Quick Todo Tab 확장을 문제 전에 설치해야 하므로 사전 설치 필수 규칙을 위반한다.",
+      "risk_flags": [
+        "사전설치필수"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-acgpoaendigegjigblconnippbmmdiml-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "지원 일정과 할 일을 새 탭에 남기는 기능은 확장 설치와 브라우저 환경을 미리 갖춰야 하므로 즉시 순간 카드로 성립하지 않는다.",
+      "risk_flags": [
+        "사전설치필수",
+        "기본기능대체"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-338890846-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "과목을 입력해 플래시카드·모의시험을 제시하고 정답·해설을 보여주는 흐름은 가능하지만 실제 문제와 해설 데이터가 입력으로 명시되지 않아 결과가 불명확하다.",
+      "risk_flags": [
+        "콘텐츠불명확"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-338890846-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "항공 과목 선택에서 문제와 해설을 보여주는 세로 조각은 보이지만 FAA 문제은행과 해설의 제공 방식이 빠져 있어 2일 MVP 범위가 불명확하다.",
+      "risk_flags": [
+        "콘텐츠불명확",
+        "규정정확성"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-338890846-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "모의시험 직후 정답과 해설을 보여주는 결과는 구체적이지만 과목만 입력하고 실제 문제·규정 근거를 어떻게 제공하는지 명시되지 않았다.",
+      "risk_flags": [
+        "콘텐츠불명확",
+        "규정정확성"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-lcdinflfffodmodbkhaijglgjpeefodo-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "프로그램을 입력해 시청 상태와 평점을 기록하는 흐름은 가능하지만 회차별 완료를 결과로 삼으려면 에피소드 입력과 진행 위치 처리가 추가로 필요하다.",
+      "risk_flags": [
+        "입력불일치"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-lcdinflfffodmodbkhaijglgjpeefodo-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "TV 프로그램 입력 후 시청 상태를 저장하는 결과는 보이지만 예능의 다음 시청 위치를 표시하려면 회차·진행 위치가 입력과 처리에 포함되어야 한다.",
+      "risk_flags": [
+        "입력불일치"
+      ]
+    },
+    {
+      "id": "next-stress-chrome-web-store-lcdinflfffodmodbkhaijglgjpeefodo-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "작품 하나와 별점을 저장하는 흐름은 명확하지만 회차별 시청 상태를 추적한다는 결과가 프로그램 하나 입력만으로는 충분히 정의되지 않는다.",
+      "risk_flags": [
+        "입력불일치"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1445113851-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "참가자와 규칙을 입력해 소셜 게임을 진행하는 결과는 상대방들의 참여와 새 행동을 필수로 요구하므로 오프라인 단독 실행 카드 규칙에 걸린다.",
+      "risk_flags": [
+        "상대방참여필수"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1445113851-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "참가자 이름과 벌칙 규칙만 입력해도 실제 게임 결과를 만들려면 회식 참석자들의 참여 행동이 필수라 단일 사용자 세로 조각이 아니다.",
+      "risk_flags": [
+        "상대방참여필수"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1445113851-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "인원에 맞는 질문 규칙을 입력한 뒤 디지털 게임을 진행하려면 친구 모임 구성원들의 참여가 전제되어 상대방 새 행동 필수 규칙을 위반한다.",
+      "risk_flags": [
+        "상대방참여필수"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1586151492-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "한 장의 사진을 입력해 9개로 분할하고 즉시 저장 가능한 구궁격 이미지 9장을 결과로 내므로 인스타그램 게시 직전의 세로 조각이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1586151492-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "여행 사진 한 장을 입력해 아홉 칸 이미지로 자르고 저장하므로 프로필 격자 게시 순간에 입력 1개·처리 1회·결과 9장이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1586151492-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "세로 사진 한 장을 입력해 게시용 구궁격 이미지 9장으로 분할하므로 브랜드 티저 공개 직전의 구체적인 결과와 2일 MVP 범위가 성립한다.",
+      "risk_flags": []
+    }
+  ]
+}

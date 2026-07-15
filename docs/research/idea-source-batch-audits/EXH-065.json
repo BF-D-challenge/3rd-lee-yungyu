@@ -1,0 +1,55 @@
+{
+  "batch_id": "EXH-065",
+  "status": "passed",
+  "reviewed_at": "2026-07-14",
+  "method": "fresh structured review plus context-isolated 10% Fail shadow audit",
+  "model": "gpt-5.6-luna",
+  "audit_model": "gpt-5.6-luna",
+  "threshold": "false reject rate < 5%",
+  "source_rows": 100,
+  "decision_rows": 99,
+  "decision_counts": {
+    "Fail": 57,
+    "Candidate": 37,
+    "Merge": 4,
+    "Reserve": 1
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "fail_count": 65,
+      "sample": [
+        "app_store:6478008762",
+        "app_store:894443858",
+        "app_store:1547252782",
+        "app_store:6782444507",
+        "trustmrr:fastlaunchapi",
+        "app_store:6463052823",
+        "chrome_web_store:jffpdldabgdnlabhpcnglofiganjknom"
+      ],
+      "rescues": [
+        {
+          "key": "app_store:6463052823",
+          "decision": "Candidate",
+          "reason": "목적지와 GPS 권한을 받아 경로를 계산하고 turn-by-turn directions와 대체 경로를 즉시 보여주는 조각"
+        }
+      ],
+      "false_reject_rate": 0.14285714285714285
+    },
+    {
+      "round": 2,
+      "fail_count": 57,
+      "sample": [
+        "chrome_web_store:eopgmefbafmikfhhbdinpdpbiicbchce",
+        "app_store:894443858",
+        "app_store:6759795486",
+        "app_store:1200952700",
+        "app_store:511852665",
+        "trustmrr:tyxter"
+      ],
+      "rescues": [],
+      "false_reject_rate": 0.0
+    }
+  ],
+  "final_false_reject_rate": 0.0
+}

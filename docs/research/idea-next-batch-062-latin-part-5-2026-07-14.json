@@ -1,0 +1,44 @@
+{
+  "results": [
+    {
+      "id": "next-latin-app-store-478293637-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음악 파일 하나를 입력해 어려운 구간에 반복 지점을 설정하고 템포·피치를 조정한 연습용 구간 하나를 즉시 얻는 흐름이 구체적이며 밴드 합주 전 실제 사용 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-latin-app-store-478293637-210",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음악 파일을 처리해 반복 연습 구간을 만드는 구조는 구체적이지만, 내 음역에 맞춘 키 조절이라는 순간과 기타 솔로를 느리게 반복한다는 한 끗 변화가 서로 어긋난다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-latin-app-store-478293637-221",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "음악 파일에서 특정 네 마디를 반복하는 결과는 구체적이지만, 합주 전 구간 반복이 필요한 순간과 보컬 음역용 피치 조정이라는 한 끗 변화가 자연스럽게 연결되지 않는다.",
+      "risk_flags": [
+        "moment_twist_mismatch"
+      ]
+    }
+  ]
+}

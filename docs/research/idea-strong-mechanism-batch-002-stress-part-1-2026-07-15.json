@@ -1,0 +1,102 @@
+{
+  "results": [
+    {
+      "id": "next-stress-trustmrr-chordprep-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘공연용 한 페이지 조옮김 코드표’는 예배 직전 반주자가 원곡 가사·코드 텍스트 하나를 넣어 목표 키로 조옮김하고 한 페이지 인쇄용 코드 시트 한 장을 받는 흐름이 payer·moment·twist와 일치한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-chordprep-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘카포 위치에 맞춘 곡 코드표 표시’는 공연 직전 세션 연주자가 원곡 가사·코드 텍스트 하나로 카포 기준 코드를 계산해 코드 시트 한 장을 받지만 smallest_build에 카포 위치 입력이 빠져 처리 조건이 불명확하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-trustmrr-mockphine-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘막힌 API의 성공 JSON 응답 확인’은 백엔드 전 프론트 개발자가 막힌 순간 엔드포인트 경로와 성공 JSON을 담은 텍스트 하나로 로컬 모의 응답을 만들고 서빙 요청과 성공 응답 하나를 확인하는 흐름이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-mockphine-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘막힌 API의 오류 JSON 화면 확인’은 프론트엔드 QA 담당자가 오류 화면을 재현할 때 엔드포인트 경로와 오류 상태 JSON 하나를 넣어 로컬에서 오류 응답을 반환하고 서빙 요청과 오류 응답 하나를 확인하는 흐름이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-mockphine-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘막힌 API의 빈 결과 화면 확인’은 통합 전 풀스택 개발자가 준비 라우트를 점검할 때 엔드포인트 경로와 빈 결과 JSON 하나를 넣어 로컬 모의 응답을 만들고 서빙 요청과 빈 응답 하나를 확인하는 흐름이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-hyperfocal-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사진의 Lightroom 색감 초안’은 소형 스튜디오가 다음 촬영물 편집을 시작할 때 참고 사진 파일 한 장의 색감 특성에서 보정값을 만들고 Lightroom용 XMP 프리셋 파일 하나를 받는 흐름이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-hyperfocal-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사진의 영상 색감 LUT 초안’은 프리랜서 사진가가 촬영 직후 참고 사진 파일 한 장에서 시작용 색상 변환을 만들고 영상 편집용 LUT 파일 하나를 받는 흐름으로 payer·moment·twist가 자연스럽다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-trustmrr-hyperfocal-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘참고 사진의 Photoshop 색감 초안’은 브랜드 운영자가 사진과 영상의 톤을 맞출 때 참고 사진 파일 한 장의 색감 특성으로 보정값을 만들고 Photoshop ACR용 XMP 프리셋 파일 하나를 받는 흐름이다.",
+      "risk_flags": []
+    }
+  ]
+}

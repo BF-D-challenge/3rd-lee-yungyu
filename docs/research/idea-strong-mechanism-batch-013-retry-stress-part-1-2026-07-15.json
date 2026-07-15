@@ -1,0 +1,66 @@
+{
+  "results": [
+    {
+      "id": "next-stress-chrome-web-store-ffabmkklhbepgcgfonabamgnfafbdlkn-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘GitHub 폴더와 포함 파일 목록 ZIP’은 오픈소스 일부를 검토하는 기술 PM이 필요한 하위 폴더 URL 하나를 입력해 압축하고 포함 파일 manifest가 든 ZIP 하나를 검토 범위를 고정하는 순간 즉시 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘상품 페이지 최소 가로폭 이미지 ZIP’은 이커머스 운영자가 공개 상품 페이지 URL 하나를 입력해 이미지 가로폭을 한 번 필터링하고 조건에 맞는 이미지 ZIP 하나를 등록 자료로 즉시 받는 순간과 자연스럽게 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 고용량 이미지 선별 ZIP’은 브랜드 디자이너가 공개 페이지 URL 하나를 입력해 파일 크기를 한 번 필터링하고 기준을 넘는 이미지 ZIP 하나를 레퍼런스 보드에 넘기기 직전 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-nnffbdeachhbpfapjklmpnmjcgamcdmm-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "‘웹페이지 PNG 이미지 선별 ZIP 파일’은 CMS 이관 편집자가 공개 웹페이지 URL 하나를 입력해 PNG 형식만 한 번 골라 PNG ZIP 하나를 다른 작업으로 넘기기 직전 즉시 받는 흐름이 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-chrome-web-store-ndgimibanhlabgdgjcpbbndiehljcpfh-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "‘요소 HTML의 검증 locator 3종 파일’은 QA 엔지니어가 HTML 텍스트 하나를 입력해 locator를 생성·검증하는 구조는 보이지만, 한국식 속성 우선 규칙을 적용한 Playwright·XPath·CSS 선택자 생성과 검증 결과는 범용 AI 한 번으로 더 쉽게 대체된다.",
+      "risk_flags": [
+        "generic_ai_substitute"
+      ]
+    }
+  ]
+}

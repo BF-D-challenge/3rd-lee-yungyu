@@ -1,0 +1,436 @@
+{
+  "results": [
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 컴포넌트 확정 후 `URL#selector` 하나로 지정 요소의 인라인 스타일을 분리해 HTML/CSS 코드 파일 하나를 받는다는 점이 제목과 흐름에 구체적으로 드러난다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 구현 직전 `URL#selector` 하나로 지정 컴포넌트 구조를 React JSX로 변환해 JSX 코드 파일 하나를 받는 결과가 명확하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 구현 직전 `URL#selector` 하나로 선택 컴포넌트의 스타일을 Tailwind 클래스로 바꿔 코드 파일 하나를 받는 흐름이 구체적이다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 손으로 재구현하기 직전 `URL#selector` 하나로 인라인 스타일을 분리하고 HTML/CSS 코드 파일 하나를 즉시 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 손작업 직전 `URL#selector` 하나로 선택 요소의 구조를 JSX로 변환해 공유 가능한 JSX 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 손으로 만들기 직전 `URL#selector` 하나로 컴포넌트 스타일을 Tailwind 클래스로 변환한 코드 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 팀에 넘기기 전에 `URL#selector` 하나로 인라인 스타일을 분리한 HTML/CSS 코드 파일 하나를 만들어 공유한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 팀 전달 전에 `URL#selector` 하나로 선택 컴포넌트를 React JSX로 바꾼 JSX 파일 하나를 즉시 공유한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "퍼블리셔가 팀 전달 전에 `URL#selector` 하나로 선택 컴포넌트의 스타일을 Tailwind 클래스로 변환한 코드 파일 하나를 공유한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-200",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 참고 요소 확정 후 `URL#selector` 하나로 인라인 스타일을 분리해 HTML/CSS 코드 자산 파일 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-201",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 참고 요소 확정 후 `URL#selector` 하나로 구조를 React JSX로 변환해 JSX 코드 파일 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-202",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 참고 요소 확정 후 `URL#selector` 하나로 스타일을 Tailwind 클래스로 변환한 컴포넌트 코드 파일 하나를 얻는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-210",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 손으로 재구성하기 직전 `URL#selector` 하나로 인라인 스타일을 분리한 HTML/CSS 파일 하나를 받아 출발한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-211",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 손으로 재구성하기 직전 `URL#selector` 하나로 선택 구조를 JSX로 변환한 JSX 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-212",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 손으로 재구성하기 직전 `URL#selector` 하나로 스타일을 Tailwind 클래스로 바꾼 컴포넌트 코드 파일 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-220",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 팀 전달 전에 `URL#selector` 하나로 인라인 스타일을 분리한 HTML/CSS 코드 파일 하나를 즉시 공유한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-221",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 팀 전달 전에 `URL#selector` 하나로 선택 구조를 React JSX로 변환한 JSX 코드 파일 하나를 즉시 공유한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-scrapestudio-co-222",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "UI 엔지니어가 팀 전달 전에 `URL#selector` 하나로 스타일을 Tailwind 클래스로 변환한 컴포넌트 코드 파일 하나를 즉시 공유한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-000",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자사몰 개발자가 공개 직전 URL 하나를 1회 측정해 LCP 수치와 가장 큰 요소가 담긴 HTML 보고서 하나를 받으므로 순간과 결과가 맞는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-001",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자사몰 개발자가 공개 직전 URL 하나를 1회 측정해 CLS 수치와 화면을 움직인 요소가 담긴 HTML 보고서 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-002",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자사몰 개발자가 공개 직전 URL 하나를 1회 측정해 긴 JavaScript 작업과 해당 파일 URL이 담긴 HTML 보고서 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-010",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사이트가 느리다는 말을 들은 개발자가 URL 하나를 1회 측정해 LCP 수치와 가장 큰 요소가 담긴 HTML 보고서 하나로 원인을 확인한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-011",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사이트 지연 직후 개발자가 URL 하나를 1회 측정해 CLS 수치와 움직인 요소가 담긴 HTML 보고서 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-012",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사이트 지연 직후 개발자가 URL 하나를 1회 측정해 긴 JavaScript 작업과 파일 URL이 담긴 HTML 보고서 하나를 받는다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-020",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자사몰 개발자가 고객에게 근거를 보내기 전 URL 하나를 1회 측정해 LCP와 가장 큰 요소가 담긴 HTML 보고서 하나를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-021",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자사몰 개발자가 고객 전달 전 URL 하나를 1회 측정해 CLS와 움직인 요소가 담긴 HTML 보고서 하나를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-022",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "자사몰 개발자가 고객 전달 전 URL 하나를 1회 측정해 긴 JavaScript 작업과 파일 URL이 담긴 HTML 보고서 하나를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-100",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 공개 직전 고객 페이지 URL 하나를 1회 측정해 LCP 수치와 가장 큰 요소가 담긴 HTML 보고서 하나를 납품 근거로 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-101",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 공개 직전 고객 페이지 URL 하나를 1회 측정해 CLS 수치와 움직인 요소가 담긴 HTML 보고서 하나를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-102",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 공개 직전 고객 페이지 URL 하나를 1회 측정해 긴 JavaScript 작업과 파일 URL이 담긴 HTML 보고서 하나를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-110",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사용자가 느리다고 말한 직후 웹 대행자가 URL 하나를 1회 측정해 LCP와 가장 큰 요소가 담긴 HTML 보고서 하나를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-111",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사용자가 느리다고 말한 직후 웹 대행자가 URL 하나를 1회 측정해 CLS와 움직인 요소가 담긴 HTML 보고서 하나를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-112",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "사용자가 느리다고 말한 직후 웹 대행자가 URL 하나를 1회 측정해 긴 JavaScript 작업과 파일 URL이 담긴 HTML 보고서 하나를 제공한다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-120",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 고객에게 근거를 보내기 전 URL 하나를 1회 측정해 LCP와 가장 큰 요소가 담긴 HTML 보고서 하나를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-121",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 고객에게 근거를 보내기 전 URL 하나를 1회 측정해 CLS와 움직인 요소가 담긴 HTML 보고서 하나를 만든다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-full-trustmrr-lightspeed-run-122",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "웹 대행자가 고객에게 근거를 보내기 전 URL 하나를 1회 측정해 긴 JavaScript 작업과 파일 URL이 담긴 HTML 보고서 하나를 만든다.",
+      "risk_flags": []
+    }
+  ]
+}

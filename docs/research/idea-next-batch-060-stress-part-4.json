@@ -1,0 +1,446 @@
+{
+  "results": [
+    {
+      "id": "next-stress-app-store-1565641091-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "워드 파일에서 당사자명을 찾아 치환해 수정본을 만드는 흐름은 구체적이지만 휴대폰 기본 문서 편집기나 범용 문서 앱이 더 편리하다.",
+      "risk_flags": [
+        "os_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1565641091-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "워드 파일의 단어를 일괄 치환하는 결과는 명확하지만 휴대폰 기본 문서 편집기나 범용 문서 앱으로 더 쉽게 처리할 수 있다.",
+      "risk_flags": [
+        "os_substitute",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1565641091-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "워드 파일의 시즌 문구를 찾아 수정하는 흐름은 가능하지만 기본 문서 편집 기능이 더 편리하다.",
+      "risk_flags": [
+        "os_substitute",
+        "payer_twist_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-892542000-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "게임 직후 점수 기록을 처리해 게임별 통계를 보여주지만 여러 번의 사전 기록이 필요한지와 제목만으로 결과가 충분히 드러나는지가 불명확하다.",
+      "risk_flags": [
+        "history_dependency",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-892542000-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "플레이·점수 기록에서 모임별 승률과 비교 그래프를 만드는 흐름은 가능하지만 통계에 필요한 누적 기록과 제목의 결과 표현이 불명확하다.",
+      "risk_flags": [
+        "history_dependency",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-892542000-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "보유 게임 중 아직 하지 않은 게임을 알려면 게임 목록과 과거 기록이 추가로 필요해 원본의 점수·플레이 통계 처리에서 벗어난다.",
+      "risk_flags": [
+        "history_dependency",
+        "scope_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-949207089-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "PDF·ZIP·RAR 파일을 받아 메타데이터로 정리하는 결과는 구체적이지만 대량 파일의 메타데이터 확보 방식과 제목만으로 정리 결과가 드러나는지가 불명확하다.",
+      "risk_flags": [
+        "metadata_dependency",
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-949207089-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "압축 만화 파일을 메타데이터 기반으로 검색하는 흐름은 가능하지만 출판 검토 파일과 책 라이브러리의 사용 순간 연결이 약하다.",
+      "risk_flags": [
+        "metadata_dependency",
+        "moment_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-949207089-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "ZIP 파일을 받아 메타데이터로 정리한다는 처리와 장르별 분류 결과 사이의 근거가 원문에 없어 문구 보완이 필요하다.",
+      "risk_flags": [
+        "metadata_dependency",
+        "unsupported_classification"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-363360636-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "현재 위치와 검색 조건이라는 복수 입력으로 외부 AIS 피드를 조회해야 하므로 단일 입력·단일 처리 조건과 독립 MVP 조건을 충족하지 못한다.",
+      "risk_flags": [
+        "multiple_input",
+        "external_live_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-363360636-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "촬영할 선박을 찾으려면 위치와 검색 조건을 입력하고 외부 실시간 AIS 데이터를 받아야 하므로 허용된 단일 입력 흐름을 벗어난다.",
+      "risk_flags": [
+        "multiple_input",
+        "external_live_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-363360636-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "선박 이름과 속도를 보려면 위치·조건 입력 외에 외부 실시간 AIS 피드가 필수라서 단일 기기 입력만으로 완결되지 않는다.",
+      "risk_flags": [
+        "multiple_input",
+        "external_live_data"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6502994389-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "ROM 파일 하나를 실행해 화면을 보여주는 결과는 명확하지만 여러 콘솔 에뮬레이션을 반나절~2일에 구현하기 어렵고 플랫폼·법적 의존성이 크다.",
+      "risk_flags": [
+        "mvp_scope",
+        "platform_dependency",
+        "legal_risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6502994389-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "GBA ROM을 실행하려면 핵심 에뮬레이터와 게임패드 입력 처리가 필요해 반나절~2일 세로 조각으로 보기 어렵다.",
+      "risk_flags": [
+        "mvp_scope",
+        "platform_dependency",
+        "legal_risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6502994389-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "게임보이 ROM을 플레이 화면으로 바꾸는 핵심 처리가 단순 파일 처리보다 복잡해 제시된 기간의 MVP 범위를 넘는다.",
+      "risk_flags": [
+        "mvp_scope",
+        "platform_dependency",
+        "legal_risk"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6749187530-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "재료·용량·당도·알코올이라는 복수 입력을 계산하는 기능은 구체적이지만 일반 계산기나 범용 AI로 더 쉽게 대체할 수 있다.",
+      "risk_flags": [
+        "multiple_input",
+        "calculator_or_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6749187530-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "첫 배치의 상태와 레시피 정보를 함께 넣어 재계산해야 하므로 단일 입력 조건을 벗어나며 일반 계산·AI 조언으로 대체 가능하다.",
+      "risk_flags": [
+        "multiple_input",
+        "calculator_or_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6749187530-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "재료·용량·당도·도수를 입력해 조정안을 계산하는 기능은 명확하지만 전용 앱보다 계산기나 범용 AI가 더 간단하다.",
+      "risk_flags": [
+        "multiple_input",
+        "calculator_or_ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6445915563-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "문제 세트를 제한시간으로 풀어 점수와 약점을 내는 흐름은 구체적이지만 제목만으로 약점 분석 결과까지는 드러나지 않는다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6445915563-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "오답 문제를 제한시간 모의시험으로 처리해 점수와 약점을 보여주는 흐름은 가능하지만 제목의 문제·결과 표현이 부족하다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-6445915563-2",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "지식 문제를 45분 동안 풀고 약점을 산출하는 결과는 명확하지만 제목만으로 학습 진단 결과가 충분히 보이지 않는다.",
+      "risk_flags": [
+        "result_unclear"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-1485387513-0",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캐릭터와 스타일 선택을 한 번 처리해 새 헤어·메이크업·의상 룩을 즉시 보여주는 단일 창작 흐름이 구체적이고 짧은 MVP로 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1485387513-1",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "캐릭터 스타일 선택을 처리해 어린이날 무대용 새 룩을 보여주므로 입력·처리·결과가 자연스럽고 원본 스타일링 메커니즘 안에 있다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-1485387513-2",
+      "status": "pass",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "pass",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "헤어·얼굴 페인트·한복과 장식 선택을 한 번에 처리해 완성 캐릭터 룩을 보여주는 결과가 구체적이며 세로 조각이 가능하다.",
+      "risk_flags": []
+    },
+    {
+      "id": "next-stress-app-store-298252561-0",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "단어를 검색해 뜻·용례·발음을 보여주는 기능은 명확하지만 OS 기본 사전이나 범용 AI 한 번으로 더 편리하게 해결할 수 있다.",
+      "risk_flags": [
+        "os_substitute",
+        "ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-298252561-1",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "일본어 단어 검색 결과를 보여주는 기능은 구체적이지만 기본 사전·번역기와 범용 AI가 더 편리하고 책갈피 폴더는 원본 처리에 없다.",
+      "risk_flags": [
+        "os_substitute",
+        "ai_substitute",
+        "scope_mismatch"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-298252561-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "단어 입력에서 발음과 용례를 보여주는 결과는 명확하지만 기본 사전이나 범용 AI로 대체 가능하다.",
+      "risk_flags": [
+        "os_substitute",
+        "ai_substitute"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525176875-0",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "촬영 위치와 날짜를 넣어 골든아워 시각·방향을 계산하는 흐름은 구체적이지만 영문 제목만으로 촬영 문제와 결과가 초보자에게 즉시 드러나지 않는다.",
+      "risk_flags": [
+        "result_unclear",
+        "multiple_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525176875-1",
+      "status": "review",
+      "hard_gate": "pass",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "pass",
+        "expert": "pass"
+      },
+      "reason": "위치와 날짜에서 일몰·월출 시각과 방향을 계산하는 흐름은 자연스럽지만 영문 제목만으로 채광·촬영 결과를 명확히 알기 어렵다.",
+      "risk_flags": [
+        "result_unclear",
+        "multiple_input"
+      ]
+    },
+    {
+      "id": "next-stress-app-store-525176875-2",
+      "status": "fail",
+      "hard_gate": "fail",
+      "ux": {
+        "beginner": "fail",
+        "intermediate": "fail",
+        "expert": "fail"
+      },
+      "reason": "태양 궤도 계산 원본은 유지되지만 태양광 시공 담당자와 은하수 촬영 순간, 베란다 일조 검토가 서로 달라 결제자·순간·변화가 맞지 않는다.",
+      "risk_flags": [
+        "payer_moment_mismatch",
+        "twist_mismatch",
+        "multiple_input"
+      ]
+    }
+  ]
+}

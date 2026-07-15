@@ -1,0 +1,267 @@
+{
+  "lookup-brief": {
+    "twists": [
+      {
+        "id": "twist-company-url-only",
+        "kind": "replace",
+        "value": "전화번호·이름 조회를 회사 공식 URL 하나로 바꾸기",
+        "detail": "공개 정보를 찾아 근거와 함께 정리하는 흐름은 유지하고 개인정보 입력을 없앱니다.",
+        "resultTitle": "회사 URL로 찾는 첫 연락 근거",
+        "platform": "web",
+        "smallestBuild": "회사 공식 URL 하나를 넣으면 소개·최근 변화·내 제안과 이어지는 공개 사실과 각 출처 링크 한 개가 나오는 웹 화면"
+      },
+      {
+        "id": "twist-three-evidence-lines",
+        "kind": "remove",
+        "value": "긴 인물·회사 리포트를 빼고 첫 연락에 쓸 공개 근거 세 줄만 남기기",
+        "detail": "여러 공개 출처를 확인하는 흐름은 유지하고 사용자가 읽는 결과를 세 줄로 제한합니다.",
+        "resultTitle": "첫 연락 근거 3줄",
+        "platform": "web",
+        "smallestBuild": "회사 공식 URL 하나를 넣으면 근거 URL이 붙은 사실 세 줄과 확인 불가 항목만 보여주는 웹 화면"
+      },
+      {
+        "id": "twist-checked-date",
+        "kind": "add",
+        "value": "각 공개 근거에 확인 날짜와 오래된 정보 경고 하나 더하기",
+        "detail": "공개 정보를 모아 연락 단서로 쓰는 흐름은 유지하고 정보의 시점을 바로 판단하게 합니다.",
+        "resultTitle": "날짜가 보이는 회사 근거 카드",
+        "platform": "web",
+        "smallestBuild": "회사 공식 URL 하나를 넣으면 공개 근거 세 줄·출처·게시일과 1년 이상 지난 정보 표시가 나오는 웹 화면"
+      }
+    ]
+  },
+  "voice-notes": {
+    "twists": [
+      {
+        "id": "twist-one-minute-three-boxes",
+        "kind": "replace",
+        "value": "어디서나 받아쓰기를 브라우저 1분 녹음과 고정된 세 칸으로 바꾸기",
+        "detail": "말을 글로 바꾸는 흐름은 유지하고 설치 없이 기록·다음 행동·확인할 것으로 정리합니다.",
+        "resultTitle": "1분 음성 3칸 기록",
+        "platform": "web",
+        "smallestBuild": "브라우저에서 1분을 녹음하면 기록·다음 행동·확인할 것 세 칸이 채워지는 모바일 웹 화면"
+      },
+      {
+        "id": "twist-owner-deadline",
+        "kind": "add",
+        "value": "말한 내용에서 담당자와 기한이 들린 할 일만 표시하기",
+        "detail": "음성 변환과 고정 결과는 유지하고 실행에 필요한 사람·날짜가 빠졌는지 한 번 확인하게 합니다.",
+        "resultTitle": "누가 언제까지가 보이는 음성 메모",
+        "platform": "web",
+        "smallestBuild": "브라우저 1분 녹음 뒤 할 일 세 줄에 담당자·기한 또는 미확인 표시가 붙는 모바일 웹 화면"
+      },
+      {
+        "id": "twist-source-audio-jump",
+        "kind": "remove",
+        "value": "전체 받아쓰기 화면을 빼고 세 칸과 해당 음성 위치만 남기기",
+        "detail": "말을 구조화하는 흐름은 유지하고 긴 원문 대신 결과의 근거가 된 10초 구간만 다시 듣게 합니다.",
+        "resultTitle": "근거 음성으로 확인하는 3칸 메모",
+        "platform": "web",
+        "smallestBuild": "1분 녹음에서 만든 세 칸마다 해당 발화의 10초 재생 버튼 하나가 붙는 모바일 웹 화면"
+      }
+    ]
+  },
+  "shirt-preview": {
+    "twists": [
+      {
+        "id": "twist-flat-front-back",
+        "kind": "remove",
+        "value": "3D 회전과 편집기를 빼고 앞·뒤 2D 목업 두 장만 남기기",
+        "detail": "그림을 옷에 입혀 주문 전 확인하는 흐름은 유지하고 렌더링 범위를 두 각도로 줄입니다.",
+        "resultTitle": "앞뒤 두 장 티셔츠 목업",
+        "platform": "web",
+        "smallestBuild": "투명 PNG 하나, 인쇄 면(앞/뒤), 티셔츠 색을 고르면 앞·뒤 2D 목업 두 장이 나오는 웹 화면"
+      },
+      {
+        "id": "twist-print-boundary",
+        "kind": "add",
+        "value": "목업에 실제 인쇄 가능 영역과 그림 크기 표시 하나 더하기",
+        "detail": "2D 목업 확인은 유지하고 주문 뒤 위치가 달라지는 실수를 막을 기준선만 더합니다.",
+        "resultTitle": "인쇄선이 보이는 단체티 목업",
+        "platform": "web",
+        "smallestBuild": "투명 PNG와 옷 색을 넣으면 앞면 목업에 인쇄 영역·가로 길이·중앙선이 표시되는 웹 화면"
+      },
+      {
+        "id": "twist-two-colors",
+        "kind": "replace",
+        "value": "고객 승인 기능을 같은 그림의 옷 색상 두 개 비교로 바꾸기",
+        "detail": "제작 전 모습을 확인하는 흐름은 유지하고 상대방 행동 없이 내부에서 색 조합을 고르게 합니다.",
+        "resultTitle": "색상 2안 단체티 비교",
+        "platform": "web",
+        "smallestBuild": "투명 PNG 하나와 티셔츠 색 두 개를 고르면 같은 크기의 앞면 목업 두 장이 나란히 뜨는 웹 화면"
+      }
+    ]
+  },
+  "story-short-video": {
+    "twists": [
+      {
+        "id": "twist-four-scene-muted",
+        "kind": "remove",
+        "value": "음성·음악·긴 편집을 빼고 세로 장면 네 개와 자막만 남기기",
+        "detail": "글을 장면으로 바꿔 숏폼을 만드는 흐름은 유지하고 30초 무음 초안 한 편으로 줄입니다.",
+        "resultTitle": "글 한 편이 30초 무음 숏폼으로",
+        "platform": "web",
+        "smallestBuild": "600자 이하 글을 넣으면 세로 장면 네 개와 자막으로 된 30초 무음 MP4 초안이 나오는 웹 화면"
+      },
+      {
+        "id": "twist-link-to-muted-draft",
+        "kind": "replace",
+        "value": "새 원고 작성을 공개 글·상품·공지 URL 하나로 바꾸기",
+        "detail": "글에서 장면과 자막을 만드는 흐름은 유지하고 이미 공개한 페이지를 입력으로 재사용합니다.",
+        "resultTitle": "페이지 URL로 만드는 무음 숏폼 초안",
+        "platform": "web",
+        "smallestBuild": "공개 URL 하나를 넣고 가져온 제목·본문을 확인하면 장면 네 개짜리 30초 무음 초안이 나오는 웹 화면"
+      },
+      {
+        "id": "twist-storyboard-first",
+        "kind": "add",
+        "value": "영상 생성 전에 장면 네 개의 자막·이미지 콘티 확인 한 번 더하기",
+        "detail": "글을 숏폼으로 바꾸는 흐름은 유지하고 잘못 만든 영상을 기다리지 않도록 짧은 승인 단계를 더합니다.",
+        "resultTitle": "4장 콘티부터 보는 무음 숏폼",
+        "platform": "web",
+        "smallestBuild": "글이나 공개 URL 하나를 넣으면 장면 네 개의 이미지·자막을 먼저 고치고 30초 무음 MP4로 만드는 웹 화면"
+      }
+    ]
+  },
+  "reddit-growth-guide": {
+    "moments": [
+      {
+        "id": "moment-question-found",
+        "value": "내 고객이 묻는 Reddit 게시물을 방금 발견한 순간",
+        "detail": "대화가 끝나기 전에 광고처럼 보이지 않는 실제 경험 답변을 남겨야 하는 순간"
+      },
+      {
+        "id": "moment-draft-sounds-promotional",
+        "value": "직접 쓴 답변을 읽어보니 상품 홍보처럼 보이는 순간",
+        "detail": "게시 전에 과장된 주장과 불필요한 상품 언급을 걷어내야 하는 순간"
+      },
+      {
+        "id": "moment-launch-community-reply",
+        "value": "출시 첫 주 관련 커뮤니티 질문에 처음 답하려는 밤",
+        "detail": "링크를 던지기보다 내가 실제로 겪은 문제와 해결을 짧게 연결해야 하는 순간"
+      }
+    ],
+    "twists": [
+      {
+        "id": "twist-question-text-three-lines",
+        "kind": "remove",
+        "value": "질문 자동 탐색과 강의를 빼고 사용자가 붙인 질문에 답변 세 문장만 만들기",
+        "detail": "상품과 Reddit 대화를 연결하는 흐름은 유지하고 플랫폼 수집 없이 현재 질문 하나만 처리합니다.",
+        "resultTitle": "Reddit 질문에 경험 답변 3문장",
+        "platform": "web",
+        "smallestBuild": "Reddit 질문 텍스트와 내 경험 한 줄을 넣으면 경험·도움·선택적 상품 연결 세 문장과 직접 경험·출처 필요 표시가 나오는 웹 화면"
+      },
+      {
+        "id": "twist-no-product-name",
+        "kind": "replace",
+        "value": "홍보 게시물을 상품명과 링크가 없는 도움 답변으로 바꾸기",
+        "detail": "질문에 맞는 콘텐츠를 만드는 흐름은 유지하고 첫 답변에서는 직접 홍보를 제거합니다.",
+        "resultTitle": "상품명 없는 Reddit 도움 답변",
+        "platform": "web",
+        "smallestBuild": "질문 텍스트와 내가 해본 해결 한 줄을 넣으면 상품명·링크 없이 경험·방법·주의점 세 문장이 나오는 웹 화면"
+      },
+      {
+        "id": "twist-claim-check",
+        "kind": "add",
+        "value": "게시 전 각 주장에 내가 직접 겪음 또는 출처 필요 표시 하나 더하기",
+        "detail": "경험 답변 작성은 유지하고 꾸며낸 사례와 근거 없는 숫자를 사용자가 한 번 걸러냅니다.",
+        "resultTitle": "근거를 확인한 Reddit 답변 3문장",
+        "platform": "web",
+        "smallestBuild": "질문과 답변 초안을 넣으면 세 문장마다 직접 경험·출처 필요 표시와 고친 문장이 나오는 웹 화면"
+      }
+    ]
+  },
+  "video-dubbing-localizer": {
+    "twists": [
+      {
+        "id": "twist-thirty-second-only",
+        "kind": "remove",
+        "value": "전체 영상과 다국어 내보내기를 빼고 선택한 30초 한 언어 미리보기만 남기기",
+        "detail": "영상의 말을 번역·더빙하는 흐름은 유지하고 첫 확인 범위를 30초 한 언어로 줄입니다.",
+        "resultTitle": "30초 한 언어 더빙 미리보기",
+        "platform": "web",
+        "smallestBuild": "영상 파일 하나를 올린 뒤 30초 구간과 언어 하나를 선택하면 자막과 중립 음성 미리보기가 나오는 웹 화면"
+      },
+      {
+        "id": "twist-neutral-voice-only",
+        "kind": "remove",
+        "value": "화자 음성 복제와 감정 연기를 빼고 중립 음성 하나만 사용하기",
+        "detail": "번역·자막·더빙은 유지하고 동의와 품질 위험이 큰 음성 모사를 제거합니다.",
+        "resultTitle": "중립 음성 30초 영상 번역",
+        "platform": "web",
+        "smallestBuild": "영상 30초와 언어 하나를 넣으면 원문 자막·번역 자막·중립 음성을 번갈아 확인하는 웹 화면"
+      },
+      {
+        "id": "twist-three-term-check",
+        "kind": "add",
+        "value": "30초 더빙 전에 브랜드명·인명·제품명 세 개의 표기와 발음 확인 더하기",
+        "detail": "짧은 번역 더빙은 유지하고 다시 렌더링하게 만드는 고유명사 오류만 먼저 막습니다.",
+        "resultTitle": "고유명사 3개 확인한 30초 더빙",
+        "platform": "web",
+        "smallestBuild": "영상 30초와 언어를 고른 뒤 추출된 고유명사 최대 세 개를 고치면 중립 음성 미리보기가 나오는 웹 화면"
+      }
+    ]
+  },
+  "meal-habit-loop": {
+    "twists": [
+      {
+        "id": "twist-chosen-action-only",
+        "kind": "replace",
+        "value": "식사 사진 인식과 AI 추천을 사용자가 고른 행동 한 개로 바꾸기",
+        "detail": "작은 식사 행동을 매일 확인하는 흐름은 유지하고 음식 판단과 의료 조언을 제거합니다.",
+        "resultTitle": "내가 고른 식사 행동 한 번 체크",
+        "platform": "web",
+        "smallestBuild": "물 한 컵·채소 먼저·야식 안 먹기 중 행동 하나를 고르고 오늘 완료만 누르는 모바일 웹 화면"
+      },
+      {
+        "id": "twist-today-without-streak",
+        "kind": "remove",
+        "value": "칼로리·연속일·점수를 빼고 오늘 행동과 완료 버튼만 남기기",
+        "detail": "선택한 행동을 실천하는 흐름은 유지하고 기록을 놓쳤을 때 포기하게 만드는 평가를 덜어냅니다.",
+        "resultTitle": "오늘만 다시 하는 식사 습관",
+        "platform": "web",
+        "smallestBuild": "선택한 식사 행동 한 줄과 오늘 완료·못함 두 버튼만 보여주는 모바일 웹 화면"
+      },
+      {
+        "id": "twist-seven-day-same-action",
+        "kind": "replace",
+        "value": "매일 다른 챌린지를 같은 식사 행동의 7일 체크표로 바꾸기",
+        "detail": "작은 행동 제안과 완료 확인은 유지하고 무엇을 할지 매일 다시 고르는 부담을 없앱니다.",
+        "resultTitle": "같은 식사 행동 7일 체크",
+        "platform": "web",
+        "smallestBuild": "식사 행동 하나를 고르면 오늘을 포함한 7칸에 완료 여부만 남기는 모바일 웹 화면"
+      }
+    ]
+  },
+  "amazon-listing-images": {
+    "twists": [
+      {
+        "id": "twist-one-reference-one-photo",
+        "kind": "remove",
+        "value": "검색어·상위 상품 전체 분석과 이미지 세트를 빼고 경쟁 URL 하나와 내 사진 하나만 쓰기",
+        "detail": "경쟁 상품 이미지를 참고해 판매 이미지를 만드는 흐름은 유지하고 입력과 결과를 각각 하나로 줄입니다.",
+        "resultTitle": "경쟁 URL로 만드는 메인 이미지 1장",
+        "platform": "web",
+        "smallestBuild": "Amazon 경쟁 상품 상세 URL 하나와 내 상품 사진 하나를 넣으면 구성 차이 세 줄과 흰 배경 메인 이미지 초안 한 장이 나오는 웹 화면"
+      },
+      {
+        "id": "twist-mobile-side-by-side",
+        "kind": "add",
+        "value": "완성 전에 내 초안과 경쟁 이미지를 모바일 검색 크기로 나란히 보기",
+        "detail": "경쟁 구성을 참고한 메인 이미지 생성은 유지하고 작은 썸네일에서 구분되는지 한 번 확인합니다.",
+        "resultTitle": "검색 썸네일로 비교한 메인 이미지",
+        "platform": "web",
+        "smallestBuild": "경쟁 URL과 내 사진으로 만든 메인 초안을 모바일 검색 크기의 참고 이미지 옆에서 비교하는 웹 화면"
+      },
+      {
+        "id": "twist-three-layouts-one-output",
+        "kind": "replace",
+        "value": "자동 이미지 세트를 참고 상품의 구도 세 줄과 메인 초안 한 장으로 바꾸기",
+        "detail": "경쟁 이미지를 분석하는 흐름은 유지하고 복제 대신 배경·크기·여백 기준만 추출해 내 사진에 적용합니다.",
+        "resultTitle": "구도 3줄이 붙은 상품 메인 초안",
+        "platform": "web",
+        "smallestBuild": "경쟁 URL 하나와 내 사진 하나를 넣으면 배경·제품 비율·여백 기준과 새 메인 초안 한 장이 나오는 웹 화면"
+      }
+    ]
+  }
+}
