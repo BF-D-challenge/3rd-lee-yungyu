@@ -728,7 +728,7 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
   const shareAndUnlock = async () => {
     if (!sharePayload || busy) return;
     setBusy(true);
-    let result: IdeaLabShareResult = { ok: false, method: "kakao" };
+    let result: IdeaLabShareResult = { ok: false, method: null };
     const url = window.location.href;
     try {
       if (onShare) {
@@ -745,12 +745,14 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
     if (result.ok) {
       setPromptUnlocked(true);
       setPromptExpanded(false);
-      setMessage("카카오톡 공유 화면을 열었어요. 오늘 만들 자료가 열렸습니다.");
+      setMessage("제작 자료 3개를 열었어요.");
+    } else if (result.reason === "cancelled") {
+      setMessage("");
     } else {
       setMessage(
         result.reason === "not_configured" || result.reason === "sdk_unavailable"
-          ? "카카오톡 공유를 준비하지 못했어요. 잠시 후 다시 시도해 주세요."
-          : "카카오톡 공유 화면을 열지 못했어요. 결과는 그대로 보관돼요.",
+          ? "선택한 공유 방법을 준비하지 못했어요. 잠시 후 다시 시도해 주세요."
+          : "공유를 시작하지 못했어요. 결과는 그대로 보관돼요.",
       );
     }
   };
@@ -1118,49 +1120,39 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
 
               {!promptUnlocked ? (
                 <div className="idea-lab__unlock-guide">
-                  <h3>친구에게 공유하세요, 만들 자료가 바로 열려요</h3>
-                  <ul>
-                    <li><span>1</span><b>타깃 · 차별점 · 검증 가설</b></li>
-                    <li><span>2</span><b>AI 코딩 프롬프트</b></li>
-                    <li><span>3</span><b>이미지 프롬프트 · 예시 이미지</b></li>
-                  </ul>
-                  <figure className="idea-lab__unlock-example">
-                    <Image
-                      src="/images/idea-lab/image-prompt-example.png"
-                      alt="맛집 영상 링크 입력부터 지도와 여행 동선까지 이어지는 맛핀 화면 예시"
-                      width={1672}
-                      height={941}
-                      sizes="(max-width: 460px) calc(100vw - 64px), 376px"
-                    />
-                    <figcaption>맛핀 예시 · 링크 입력부터 여행 동선까지</figcaption>
-                  </figure>
-                  <div className="idea-lab__cta-bar idea-lab__cta-bar--stack idea-lab__cta-bar--inline">
-                    {tasteApplied || message.includes("못했어요") ? (
-                      <p className="idea-lab__result-note" aria-live="polite">{message}</p>
-                    ) : null}
-                    <button
-                      type="button"
-                      className="idea-lab__cta idea-lab__cta--primary"
-                      onClick={shareAndUnlock}
-                      disabled={busy}
-                    >
-                      공유하고 결과 보기
-                    </button>
-                    <p className="idea-lab__privacy-note">
-                      카카오톡에서 친구를 직접 선택해요. 자동으로 게시되지 않아요.
+                  <header className="idea-lab__unlock-intro">
+                    <small>친구 한 명에게 먼저 보여주세요</small>
+                    <h3>보내는 순간, 오늘 만들 제작 자료 3개가 열려요</h3>
+                    <p>
+                      혼자 저장해두면 아이디어로 끝납니다. 친구 반응을 받고
+                      바로 만들기까지 한 번에 이어가세요.
                     </p>
-                    <button type="button" className="idea-lab__text-action" onClick={startTasteSurvey}>
-                      다른 아이디어 뽑기
-                    </button>
-                  </div>
+                  </header>
+
+                  <dl className="idea-lab__unlock-summary">
+                    <div>
+                      <dt>친구가 받는 것</dt>
+                      <dd>아이디어 한 장과 한 줄 반응 링크</dd>
+                    </div>
+                    <div>
+                      <dt>내가 받는 것</dt>
+                      <dd>전체 브리프와 바로 붙여넣는 AI 프롬프트 2개</dd>
+                    </div>
+                  </dl>
+                  {tasteApplied || message.includes("못했어요") ? (
+                    <p className="idea-lab__result-note" aria-live="polite">{message}</p>
+                  ) : null}
+                  <p className="idea-lab__privacy-note">
+                    인스타그램 · 카카오톡 · 링크 복사 중에서 직접 선택해요.
+                  </p>
                 </div>
               ) : (
                 <div className="idea-lab__unlocked-content">
                   <p className="idea-lab__banner" aria-live="polite">
-                    카카오톡 공유 화면을 열었어요. 만들 자료가 모두 열렸습니다.
+                    제작 자료 3개를 열었어요.
                   </p>
 
-                  <div className="idea-lab__artifacts" aria-label="독립 제작 프롬프트">
+                  <div className="idea-lab__artifacts" aria-label="제작 자료">
                     <section className="idea-lab__artifact idea-lab__artifact--development">
                       <div className="idea-lab__artifact-head">
                         <div><b>AI 코딩 프롬프트</b></div>
@@ -1226,18 +1218,37 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
                   >
                     {copiedArtifact === "brief" ? "복사했어요 ✓" : "전체 아이디어 브리프 복사"}
                   </button>
-                  {onViewPraise ? (
-                    <button type="button" className="idea-lab__text-action" onClick={onViewPraise}>
-                      받은 응원 보기 →
-                    </button>
-                  ) : null}
-                  <button type="button" className="idea-lab__text-action" onClick={startTasteSurvey}>
-                    다른 아이디어 뽑기
-                  </button>
                 </div>
               )}
             </aside>
           </div>
+          <footer className="idea-lab__cta-bar idea-lab__cta-bar--stack idea-lab__cta-bar--result">
+            {!promptUnlocked ? (
+              <button
+                type="button"
+                className="idea-lab__cta idea-lab__cta--primary"
+                onClick={shareAndUnlock}
+                disabled={busy}
+              >
+                {busy ? "공유하는 중…" : "공유하고 제작 자료 3개 열기"}
+              </button>
+            ) : onViewPraise ? (
+              <button
+                type="button"
+                className="idea-lab__cta idea-lab__cta--primary"
+                onClick={onViewPraise}
+              >
+                받은 응원 보기 →
+              </button>
+            ) : null}
+            <button
+              type="button"
+              className="idea-lab__cta idea-lab__cta--ghost"
+              onClick={startTasteSurvey}
+            >
+              다른 아이디어 뽑기
+            </button>
+          </footer>
         </div>
       ) : null}
     </section>
@@ -1409,8 +1420,8 @@ const IDEA_LAB_CSS = `
 
 .idea-lab__cta-bar--stack{grid-template-columns:1fr}
 .idea-lab__result-note{margin:0;color:var(--lab-muted);font-size:11px;text-align:center;text-wrap:balance}
-.idea-lab__stage--result>.idea-lab__cta-bar{position:static;flex:none;padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--lab-line);background:linear-gradient(to top,var(--lab-bg),color-mix(in srgb,var(--lab-bg) 88%,transparent))}
-.idea-lab__cta-bar--inline{position:static;min-height:0;margin-top:18px;padding:18px 0 2px;border-top:1px solid var(--lab-line);background:none}
+.idea-lab__stage--result>.idea-lab__cta-bar{position:relative;bottom:auto;flex:none;padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--lab-line);background:linear-gradient(to top,var(--lab-bg) 72%,color-mix(in srgb,var(--lab-bg) 92%,transparent))}
+.idea-lab__cta-bar--result{z-index:10;box-shadow:0 -12px 28px rgba(0,0,0,.22)}
 .idea-lab__stage--result.is-from-handoff:not(.is-shared-handoff) .idea-lab__result-summary{animation:idea-result-content-in 200ms var(--lab-ease) 20ms both}
 .idea-lab__stage--result.is-from-handoff .idea-lab__locked-details{animation:idea-result-content-in 200ms var(--lab-ease) 60ms both}
 .idea-lab__stage--result.is-from-handoff .idea-lab__unlock-guide{animation:idea-result-content-in 200ms var(--lab-ease) 120ms both}
@@ -1442,30 +1453,58 @@ const IDEA_LAB_CSS = `
 /* ── 결과 상세 → 공유 → 같은 화면에서 제작 자료 열기 ── */
 .idea-lab__privacy-note{margin:0;color:#9aa3af;font-size:11px;font-weight:700;line-height:1.45;text-align:center;text-wrap:balance}
 .idea-lab__text-action{justify-self:center;min-height:48px;padding:0 10px;border:0;background:transparent;color:#aeb6c2;font-size:12px;font-weight:800;text-decoration:underline;text-decoration-color:rgba(255,255,255,.22);text-underline-offset:4px;cursor:pointer}
-.idea-lab__locked-details{position:relative;height:460px;overflow:hidden;margin-top:0;pointer-events:none;user-select:none;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 48%,rgba(0,0,0,.88) 60%,rgba(0,0,0,.5) 76%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,#000 48%,rgba(0,0,0,.88) 60%,rgba(0,0,0,.5) 76%,transparent 100%)}
+.idea-lab__locked-details{position:relative;height:460px;overflow:hidden;margin-top:0;pointer-events:none;user-select:none;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 34%,rgba(0,0,0,.92) 46%,rgba(0,0,0,.72) 60%,rgba(0,0,0,.38) 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,#000 34%,rgba(0,0,0,.92) 46%,rgba(0,0,0,.72) 60%,rgba(0,0,0,.38) 78%,transparent 100%)}
+.idea-lab__locked-details::after{content:"";position:absolute;z-index:2;right:0;bottom:0;left:0;height:280px;pointer-events:none;background:linear-gradient(180deg,rgba(5,6,8,0) 0%,rgba(5,6,8,.18) 20%,rgba(5,6,8,.68) 68%,#050608 100%);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);-webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.45) 24%,#000 52%,#000 100%);mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.45) 24%,#000 52%,#000 100%)}
 .idea-lab__locked-details-body{opacity:1;filter:none}
 .idea-lab__stage--result.is-unlocked .idea-lab__locked-details{height:auto;overflow:visible;pointer-events:auto;user-select:text;-webkit-mask-image:none;mask-image:none}
-.idea-lab__unlock-guide{padding:18px 4px 12px;text-align:center}
-.idea-lab__unlock-guide h3{margin:0;font-size:18px;line-height:1.35;letter-spacing:-.025em;text-wrap:balance}.idea-lab__unlock-guide ul{display:grid;width:max-content;max-width:100%;justify-items:start;gap:8px;margin:14px auto 0;padding:0;list-style:none}.idea-lab__unlock-guide li{display:flex;align-items:center;justify-content:flex-start;gap:9px;text-align:left}.idea-lab__unlock-guide li span{display:grid;width:24px;height:24px;flex:none;place-items:center;border-radius:50%;background:rgba(255,68,88,.14);color:#ff9ca8;font-weight:900}.idea-lab__unlock-guide li b{line-height:1.35}
-.idea-lab__unlock-example{width:calc(100% - 32px);max-width:376px;margin:20px auto 0}.idea-lab__unlock-example img{display:block;width:100%;height:auto;border-radius:12px}.idea-lab__unlock-example figcaption{margin-top:8px;color:var(--lab-muted);line-height:1.4;text-align:center}
-.idea-lab__stage--result .idea-lab__result-section{margin:0;padding:30px 4px;border:0;border-top:1px solid var(--lab-line);border-radius:0;background:none}
+.idea-lab__stage--result.is-unlocked .idea-lab__locked-details::after{display:none}
+.idea-lab__unlock-guide{padding:32px 20px 18px;border-top:0;text-align:left}
+.idea-lab__unlock-intro small{display:block;color:#ff9ca8;font-size:11px;font-weight:850;letter-spacing:.02em}.idea-lab__unlock-intro h3{margin:6px 0 0;color:#d9dde4;font-size:18px;font-weight:760;letter-spacing:-.02em;word-break:keep-all;text-wrap:pretty}.idea-lab__unlock-intro p{margin:10px 0 0;color:#aeb6c2;font-size:13px;word-break:keep-all;text-wrap:pretty}
+.idea-lab__unlock-summary{display:grid;margin:20px 0 0}.idea-lab__unlock-summary>div{padding:14px 0;border-top:1px solid var(--lab-line)}.idea-lab__unlock-summary dt{color:#ff9ca8;font-size:12px;font-weight:800}.idea-lab__unlock-summary dd{margin:4px 0 0;color:#d9dde4;font-size:15px;font-weight:700;word-break:keep-all;text-wrap:pretty}
+.idea-lab__unlock-guide .idea-lab__result-note{margin-top:18px;text-align:left}
+.idea-lab__unlock-guide .idea-lab__privacy-note{margin-top:18px;text-align:left;text-wrap:pretty}
+@media(prefers-reduced-transparency:reduce){.idea-lab__locked-details::after{-webkit-backdrop-filter:none;backdrop-filter:none;background:linear-gradient(180deg,rgba(5,6,8,0) 0%,rgba(5,6,8,.72) 52%,#050608 100%)}}
+.idea-lab__stage--result .idea-lab__result-section{margin:0;padding:30px 4px;border:0;border-top:1px solid var(--lab-line);border-radius:0;background:none}.idea-lab__stage--result .idea-lab__result-section:first-child{border-top:0}
 .idea-lab__result-section-head{display:block}.idea-lab__result-section-head h3{margin:0;color:var(--lab-text);font-size:20px;line-height:1.35;letter-spacing:-.02em}
 .idea-lab__stage--result .idea-lab__result-section>p{margin:14px 0 0;color:#e4e1dc;font-size:16px;line-height:1.68}
-.idea-lab__difference-list{display:grid;grid-template-columns:minmax(0,1fr);gap:0;margin-top:16px}.idea-lab__difference-list>div{padding:0 0 16px}.idea-lab__difference-list>div+div{padding:16px 0 0;border-top:1px solid var(--lab-line)}.idea-lab__difference-list b{display:block;color:#8dc8ff;line-height:1.45}.idea-lab__difference-list p{margin:7px 0 0;color:#dfe2e7;line-height:1.62}.idea-lab__difference-list .is-ours{padding-left:14px;border-left:3px solid var(--good,#6fce9f)}.idea-lab__difference-list .is-ours b{color:var(--good,#6fce9f)}
+.idea-lab__difference-list{display:grid;grid-template-columns:minmax(0,1fr);gap:0;margin-top:16px}.idea-lab__difference-list>div{padding:0 0 16px}.idea-lab__difference-list>div+div{padding:16px 0 0;border-top:1px solid var(--lab-line)}.idea-lab__difference-list b{display:block;color:#8dc8ff;line-height:1.45}.idea-lab__difference-list p{margin:7px 0 0;color:#dfe2e7;line-height:1.62}.idea-lab__difference-list .is-ours{padding-left:0;border-left:0}.idea-lab__difference-list .is-ours b{color:var(--good,#6fce9f)}
 .idea-lab__stage--result .idea-lab__flow-copy{color:#e4e1dc;font-weight:700;line-height:1.72}
 .idea-lab__stage--result .idea-lab__closing-line{margin-top:26px;padding-top:18px;border-top:1px dashed var(--lab-line);color:#d9dce2;font-size:16px;font-weight:750}
 .idea-lab__stage--result .idea-lab__result-cards{padding:6px 4px 0;border:0;border-top:1px solid var(--lab-line);border-radius:0;background:none}.idea-lab__stage--result .idea-lab__result-cards summary{font-size:14px}.idea-lab__stage--result .idea-lab__result-cards dl{padding:4px 0 18px}.idea-lab__stage--result .idea-lab__result-cards dt{font-size:12px}.idea-lab__stage--result .idea-lab__result-cards dd{font-size:15px;line-height:1.6}
-@media(max-height:760px){.idea-lab__result-summary{padding:18px}.idea-lab__result-summary .idea-lab__result-head{margin-top:0}.idea-lab__result-summary .idea-lab__result-hook{margin-top:15px}.idea-lab__locked-details{height:400px}.idea-lab__unlock-guide{padding:16px 4px 10px}.idea-lab__unlock-guide ul{gap:6px;margin-top:11px}}
+@media(max-height:760px){.idea-lab__result-summary{padding:18px}.idea-lab__result-summary .idea-lab__result-head{margin-top:0}.idea-lab__result-summary .idea-lab__result-hook{margin-top:15px}.idea-lab__locked-details{height:400px}.idea-lab__unlock-guide{padding:28px 16px 12px}}
 .idea-lab__stage--result.is-unlocked .idea-lab__locked-details{height:auto}
 .idea-lab__unlocked-content{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;padding:28px 4px 0;border-top:1px solid var(--lab-line)}
 .idea-lab__unlocked-content .idea-lab__banner{margin:0 0 2px}
-.idea-lab__banner{margin-bottom:12px;padding:11px 13px;border:1px solid color-mix(in srgb,var(--good,#6fce9f) 34%,transparent);border-radius:12px;background:color-mix(in srgb,var(--good,#6fce9f) 10%,transparent);color:var(--good,#6fce9f);font-size:12px;font-weight:800;text-align:center}
+.idea-lab__banner{margin-bottom:12px;padding:11px 13px;border:1px solid color-mix(in srgb,var(--good,#6fce9f) 34%,transparent);border-radius:12px;background:color-mix(in srgb,var(--good,#6fce9f) 10%,transparent);color:var(--good,#6fce9f);font-size:12px;font-weight:800;text-align:left}
 .idea-lab__linkstate{margin:12px 0 0;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--good,#6fce9f) 8%,transparent);color:color-mix(in srgb,var(--good,#6fce9f) 88%,#fff);font-size:10.5px;line-height:1.4;text-align:center}
 .idea-lab__artifacts{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;margin-bottom:10px}.idea-lab__artifact{overflow:hidden;border:1px solid var(--lab-line);border-radius:13px;background:#090c11}.idea-lab__artifact-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border-bottom:1px solid var(--lab-line)}.idea-lab__artifact-head small{display:block;color:#7e8794;font-size:9px}.idea-lab__artifact-head b{display:block;margin-top:2px;font-size:12px}.idea-lab__artifact-head>span{flex:none;color:var(--good,#6fce9f);font-size:9px;font-weight:800}.idea-lab__artifact pre{max-height:132px;overflow:hidden;white-space:pre-wrap;word-break:break-word;margin:0;padding:12px;color:#c2c9d2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;line-height:1.55;mask-image:linear-gradient(#000 58%,transparent)}.idea-lab__artifact-example{margin:0;padding:0 12px 12px}.idea-lab__artifact-example img{display:block;width:100%;height:auto;border-radius:10px}.idea-lab__artifact-example figcaption{margin-top:8px;color:var(--lab-muted);line-height:1.4;text-align:center}.idea-lab__artifact>button{display:flex;width:100%;min-height:48px;align-items:center;justify-content:center;border:0;border-top:1px solid var(--lab-line);background:rgba(255,255,255,.035);color:var(--lab-text);font-size:11px;font-weight:850;cursor:pointer}.idea-lab__artifact>button:active{transform:scale(.98)}@media(hover:hover) and (pointer:fine){.idea-lab__artifact>button:hover{background:rgba(255,255,255,.07)}}
 .idea-lab__prompt{overflow:hidden;border:1px solid var(--lab-line);border-radius:13px;background:#090c11}.idea-lab__prompt-head{display:flex;align-items:center;justify-content:space-between;padding:12px;border-bottom:1px solid var(--lab-line)}.idea-lab__prompt-head small{display:block;color:#7e8794;font-size:9px}.idea-lab__prompt-head b{display:block;margin-top:2px;font-size:12px}.idea-lab__prompt-tag{color:#828b96;font-size:9px;font-weight:800}.idea-lab__prompt.is-unlocked .idea-lab__prompt-tag{color:var(--good,#6fce9f)}
 .idea-lab__prompt-copy{position:relative;max-height:170px;overflow:hidden;padding:12px}.idea-lab__prompt.is-unlocked .idea-lab__prompt-copy{max-height:220px}.idea-lab__prompt.is-unlocked.is-expanded .idea-lab__prompt-copy{max-height:none}.idea-lab__prompt.is-unlocked:not(.is-expanded) .idea-lab__prompt-copy::after{content:"";position:absolute;right:0;bottom:0;left:0;height:72px;pointer-events:none;background:linear-gradient(transparent,#090c11)}.idea-lab__prompt-copy p{margin:0 0 7px;color:#c2c9d2;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;line-height:1.55}.idea-lab__prompt-copy p.is-locked{opacity:.72}
 .idea-lab__prompt-toggle{display:flex;width:100%;min-height:48px;align-items:center;justify-content:center;border:0;border-top:1px solid var(--lab-line);background:rgba(255,255,255,.025);color:var(--lab-text);font-size:11px;font-weight:800;cursor:pointer;transition:background .16s var(--lab-ease),transform .16s var(--lab-ease)}.idea-lab__prompt-toggle:active{transform:scale(.98)}@media(hover:hover) and (pointer:fine){.idea-lab__prompt-toggle:hover{background:rgba(255,255,255,.06)}}
 .idea-lab__lock{position:absolute;right:0;bottom:0;left:0;display:grid;height:104px;place-content:end center;padding-bottom:13px;text-align:center;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}.idea-lab__lock::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent,rgba(9,12,17,.97) 52%)}.idea-lab__lock b{font-size:12px}.idea-lab__lock span{margin-top:4px;color:#828a95;font-size:9.5px}
+
+/* 전체 아이디어 제작 흐름의 읽기 리듬: 제목 1.5, 본문 1.75 */
+.idea-lab :where(
+  p,
+  figcaption,
+  dd,
+  pre,
+  .idea-lab__result-story span,
+  .idea-lab__result-story strong
+){line-height:1.75!important}
+.idea-lab :where(
+  h1,
+  h2,
+  h3,
+  h4,
+  .idea-lab__result-name,
+  .idea-lab__idea-preview strong,
+  .idea-lab__taste-choice strong,
+  .idea-lab__difference-list b,
+  .idea-lab__artifact-head b,
+  .idea-lab__prompt-head b,
+  .idea-lab__unlock-summary dt
+){line-height:1.5!important}
 
 /* 공유 뒤 같은 결과 화면에 열리는 제작 자료도 최소 14pt 읽기 기준을 유지한다. */
 .idea-lab .idea-lab__stage--result .idea-lab__locked-details :where(p,b,strong,small,li){font-size:max(14pt,1em)!important}

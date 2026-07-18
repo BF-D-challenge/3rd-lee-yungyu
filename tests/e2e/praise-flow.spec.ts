@@ -1,5 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import {
+  chooseKakaoShare,
   drawAll,
   FIXED_NOW,
   installShareMock,
@@ -179,9 +180,10 @@ test.describe("A안 아이디어 응원 여정", () => {
     }
     await expect(page.locator(".idea-lab__stage--result")).toBeVisible({ timeout: DRAW_ALL_SETTLE_TIMEOUT });
     await page.getByRole("button", {
-      name: "공유하고 결과 보기",
+      name: "공유하고 제작 자료 3개 열기",
       exact: true,
     }).press("Enter");
+    await chooseKakaoShare(page);
     await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
 
     const saved = await page.evaluate(() =>
@@ -248,6 +250,7 @@ test.describe("A안 아이디어 응원 여정", () => {
 
     await expect(page.getByText("완성한 아이디어를 공유하고 친구의 응원을 받아보세요.", { exact: true })).toBeVisible();
     await page.getByRole("button", { name: "내 아이디어 공유하기", exact: true }).click();
+    await chooseKakaoShare(page);
     await expect(page.getByText("카카오톡 공유 화면을 열었어요.", { exact: true })).toBeVisible();
     await expect.poll(() => page.evaluate(() => {
       const saved = localStorage.getItem("oneul:latest-praise-request:v1");
@@ -278,6 +281,7 @@ test.describe("A안 아이디어 응원 여정", () => {
     }
 
     await page.getByRole("button", { name: "친구 한 명 더 초대하기", exact: true }).click();
+    await chooseKakaoShare(page);
     await expect(page.getByText("카카오톡 공유 화면을 열었어요.", { exact: true })).toBeVisible();
     await expect.poll(async () => (await shareCalls(page)).length).toBe(1);
   });
@@ -378,7 +382,8 @@ test.describe("A안 아이디어 응원 여정", () => {
     await expect(page.getByText("현재 공유 중인 버전 · 원본", { exact: true })).toBeVisible();
     await expect(page.getByRole("listitem", { name: "수정본 1 반응 0개", exact: true })).toBeVisible();
     await page.getByRole("button", { name: "수정한 아이디어 다시 물어보기", exact: true }).click();
-    await expect(page.getByText("수정본 1의 카카오톡 공유 화면을 열었어요.", { exact: true })).toBeVisible();
+    await chooseKakaoShare(page);
+    await expect(page.getByText("수정본 1 · 카카오톡 공유 화면을 열었어요.", { exact: true })).toBeVisible();
 
     const revised = await page.evaluate(() => JSON.parse(localStorage.getItem("oneul:latest-praise-request:v1") ?? "null") as {
       slug: string;

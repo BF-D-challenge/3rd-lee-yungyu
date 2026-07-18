@@ -1,3 +1,6 @@
+import { toPublicShareUrl } from "./public-share-url";
+import { createShareCardFile } from "./share-card-image";
+
 export const KAKAO_JAVASCRIPT_SDK_URL =
   "https://t1.kakaocdn.net/kakao_js_sdk/2.8.1/kakao.min.js";
 export const KAKAO_JAVASCRIPT_SDK_INTEGRITY =
@@ -25,18 +28,40 @@ interface KakaoJavascriptSdk {
   init: (javascriptKey: string) => void;
   isInitialized: () => boolean;
   Share: {
+    uploadImage?: (settings: { file: FileList }) => Promise<Array<{
+      url: string;
+      length: number;
+      content_type: string;
+      width: number;
+      height: number;
+    }>>;
     sendDefault: (settings: {
       objectType: "text";
       text: string;
-      link: {
-        mobileWebUrl: string;
-        webUrl: string;
+      link: KakaoShareLink;
+      buttonTitle: string;
+      installTalk: boolean;
+      serverCallbackArgs?: Record<string, string>;
+    } | {
+      objectType: "feed";
+      content: {
+        title: string;
+        description: string;
+        imageUrl: string;
+        imageWidth: number;
+        imageHeight: number;
+        link: KakaoShareLink;
       };
       buttonTitle: string;
       installTalk: boolean;
       serverCallbackArgs?: Record<string, string>;
     }) => void;
   };
+}
+
+interface KakaoShareLink {
+  mobileWebUrl: string;
+  webUrl: string;
 }
 
 declare global {
@@ -46,7 +71,6 @@ declare global {
 }
 
 const KAKAO_TEXT_LIMIT = 200;
-
 const compact = (value: string | undefined): string =>
   value?.replace(/\s+/g, " ").trim() ?? "";
 
@@ -55,6 +79,24 @@ const kakaoMessage = (title: string | undefined, text: string | undefined): stri
   const characters = Array.from(message || "오늘 해볼까에서 만든 아이디어예요. 같이 봐주세요.");
   if (characters.length <= KAKAO_TEXT_LIMIT) return characters.join("");
   return `${characters.slice(0, KAKAO_TEXT_LIMIT - 1).join("")}…`;
+};
+
+const kakaoDescription = (text: string | undefined): string => {
+  const characters = Array.from(compact(text) || "친구의 짧은 응원이나 의견을 남겨주세요.");
+  if (characters.length <= KAKAO_TEXT_LIMIT) return characters.join("");
+  return `${characters.slice(0, KAKAO_TEXT_LIMIT - 1).join("")}…`;
+};
+
+const shareImageFiles = async (
+  url: string,
+  options: KakaoShareOptions,
+): Promise<FileList | null> => {
+  if (typeof DataTransfer === "undefined") return null;
+  const imageFile = await createShareCardFile(url, options);
+  if (!imageFile) return null;
+  const transfer = new DataTransfer();
+  transfer.items.add(imageFile);
+  return transfer.files;
 };
 
 /**
@@ -91,14 +133,41 @@ export async function shareToKakao(
   }
 
   try {
-    const absoluteUrl = new URL(url, window.location.origin).toString();
+    const absoluteUrl = toPublicShareUrl(url);
+    const link = {
+      mobileWebUrl: absoluteUrl,
+      webUrl: absoluteUrl,
+    };
+    const imageFiles = kakao.Share.uploadImage
+      ? await shareImageFiles(absoluteUrl, options)
+      : null;
+
+    if (imageFiles && kakao.Share.uploadImage) {
+      const [image] = await kakao.Share.uploadImage({ file: imageFiles });
+      if (!image?.url) throw new Error("Kakao image upload returned no URL.");
+      kakao.Share.sendDefault({
+        objectType: "feed",
+        content: {
+          title: compact(options.title) || "오늘 해볼까에서 만든 아이디어",
+          description: kakaoDescription(options.text),
+          imageUrl: image.url,
+          imageWidth: image.width,
+          imageHeight: image.height,
+          link,
+        },
+        buttonTitle: options.buttonTitle ?? "친구 반응 남기기",
+        installTalk: true,
+        ...(options.serverCallbackArgs
+          ? { serverCallbackArgs: options.serverCallbackArgs }
+          : {}),
+      });
+      return { ok: true, method: "kakao" };
+    }
+
     kakao.Share.sendDefault({
       objectType: "text",
       text: kakaoMessage(options.title, options.text),
-      link: {
-        mobileWebUrl: absoluteUrl,
-        webUrl: absoluteUrl,
-      },
+      link,
       buttonTitle: options.buttonTitle ?? "친구 반응 남기기",
       installTalk: true,
       ...(options.serverCallbackArgs

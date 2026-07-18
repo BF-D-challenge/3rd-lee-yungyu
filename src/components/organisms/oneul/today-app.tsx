@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ShareSheet } from "@/components/molecules/share-sheet";
 import { IdeaLab, type IdeaLabSharePayload } from "@/components/organisms/idea-lab";
 import { PraiseCardDeck, type PraiseCard } from "@/components/organisms/praise-cards";
 import { registerFeedbackRequest } from "@/lib/backend/feedback-api";
@@ -24,7 +25,12 @@ import {
   secureSavedPraiseRequest,
   type SavedPraiseRequest,
 } from "@/lib/praise-share";
-import { shareToKakao } from "@/lib/kakao-share";
+import {
+  shareByChannel,
+  shareSuccessNotice,
+  type ShareChannel,
+  type ShareResult,
+} from "@/lib/share-channel";
 import { track, trackIdeaEvent, trackShare } from "@/lib/track";
 import { AuthAccountMenu } from "./auth-account-menu";
 
@@ -33,6 +39,8 @@ type View = "idea" | "praise";
 const requestUrl = (slug: string) => `${window.location.origin}${praiseRequestPath(slug)}`;
 const formatDate = (timestamp: number) => new Intl.DateTimeFormat("ko-KR", { month: "long", day: "numeric" }).format(timestamp);
 const readPraiseKey = (requestId: string) => `oneul:read-praise:${requestId}`;
+const shareCompletionSignal = (result: ShareResult) =>
+  result.method === "copy" || result.fallback === "copy" ? "link_copied" : "picker_opened";
 
 const loadReadPraiseIds = (requestId: string): string[] => {
   try {
@@ -109,7 +117,27 @@ export function TodayApp() {
   const [editUvp, setEditUvp] = useState("");
   const [editDifference, setEditDifference] = useState("");
   const [showDirectFeedback, setShowDirectFeedback] = useState(false);
+  const [shareSheetOpen, setShareSheetOpen] = useState(false);
   const [now, setNow] = useState(() => Date.now());
+  const shareChoiceResolver = useRef<((channel: ShareChannel | null) => void) | null>(null);
+
+  const chooseShareChannel = () => new Promise<ShareChannel | null>((resolve) => {
+    shareChoiceResolver.current?.(null);
+    shareChoiceResolver.current = resolve;
+    setShareSheetOpen(true);
+  });
+
+  const finishShareChannelChoice = (channel: ShareChannel | null) => {
+    setShareSheetOpen(false);
+    const resolve = shareChoiceResolver.current;
+    shareChoiceResolver.current = null;
+    resolve?.(channel);
+  };
+
+  useEffect(() => () => {
+    shareChoiceResolver.current?.(null);
+    shareChoiceResolver.current = null;
+  }, []);
 
   useEffect(() => {
     const latest = loadLatestPraiseRequest();
@@ -243,6 +271,10 @@ export function TodayApp() {
     : null;
 
   const shareIdea = async (payload: IdeaLabSharePayload) => {
+    const channel = await chooseShareChannel();
+    if (!channel) {
+      return { ok: false, method: null, reason: "cancelled" } satisfies ShareResult;
+    }
     const latestDraft = request?.prompt === payload.prompt ? request : loadLatestPraiseRequest();
     const storedDraft = latestDraft?.prompt === payload.prompt ? latestDraft : null;
     const draft = storedDraft ?? (() => {
@@ -251,19 +283,19 @@ export function TodayApp() {
       return { slug, card, prompt: payload.prompt } satisfies SavedPraiseRequest;
     })();
     const saved = secureSavedPraiseRequest(draft);
-    // 카카오톡 공유 화면을 열지 못해도 같은 결과 링크로 다시 요청할 수 있게 초안은 먼저 보존한다.
-    // 제작 문구 해제는 아래 shareToKakao가 공유 화면을 연 경우에만 IdeaLab이 처리한다.
+    // 선택한 공유 경로가 실패해도 같은 결과 링크로 다시 요청할 수 있게 초안은 먼저 보존한다.
+    // 제작 문구 해제는 아래 공유 요청이 성공한 경우에만 IdeaLab이 처리한다.
     saveLatestPraiseRequest(saved);
     setRequest(saved);
     setVotes([]);
     const access = praiseOwnerAccess(saved);
     const registration = access ? await registerFeedbackRequest("card", access) : "failed";
     if (registration === "failed") {
-      trackShare("praise_request_share_cancelled", "kakao", {
+      trackShare("praise_request_share_cancelled", channel, {
         request_id: saved.card.id,
         reason: "secure_registration_failed",
       });
-      return { ok: false, method: "kakao" as const, reason: "launch_failed" as const };
+      return { ok: false, method: channel, reason: "launch_failed" } satisfies ShareResult;
     }
     if (!storedDraft) {
       track("praise_request_created", { request_id: saved.card.id });
@@ -274,7 +306,7 @@ export function TodayApp() {
         entry_path: window.location.pathname,
       });
     }
-    const result = await shareToKakao(requestUrl(saved.slug), {
+    const result = await shareByChannel(channel, requestUrl(saved.slug), {
       title: saved.card.title,
       text: `${saved.card.summary}\n짧은 응원이나 의견을 남겨주세요.`,
       buttonTitle: "친구 반응 남기기",
@@ -282,7 +314,7 @@ export function TodayApp() {
     });
     trackShare(result.ok ? "praise_request_share_completed" : "praise_request_share_cancelled", result.method, {
       request_id: saved.card.id,
-      completion_signal: result.ok ? "picker_opened" : "launch_failed",
+      completion_signal: result.ok ? shareCompletionSignal(result) : "launch_failed",
     });
     return result;
   };
@@ -292,14 +324,16 @@ export function TodayApp() {
     if (ideaDraft && ideaDraft.prompt !== request?.prompt) {
       const result = await shareIdea(ideaDraft);
       setPraiseShareNotice(result.ok
-        ? "카카오톡 공유 화면을 열었어요."
-        : "카카오톡 공유 화면을 열지 못했어요. 다시 시도해 주세요.");
+        ? shareSuccessNotice(result)
+        : result.reason === "cancelled" ? "" : "공유를 시작하지 못했어요. 다시 시도해 주세요.");
       return;
     }
     if (!request) {
       setView("idea");
       return;
     }
+    const channel = await chooseShareChannel();
+    if (!channel) return;
     const secured = secureSavedPraiseRequest(request);
     const access = praiseOwnerAccess(secured);
     const registration = access ? await registerFeedbackRequest("card", access) : "failed";
@@ -311,7 +345,7 @@ export function TodayApp() {
       saveLatestPraiseRequest(secured);
       setRequest(secured);
     }
-    const result = await shareToKakao(requestUrl(secured.slug), {
+    const result = await shareByChannel(channel, requestUrl(secured.slug), {
       title: secured.card.title,
       text: `${secured.card.summary}\n짧은 응원이나 의견을 남겨주세요.`,
       buttonTitle: "친구 반응 남기기",
@@ -319,7 +353,7 @@ export function TodayApp() {
     });
     trackShare(result.ok ? "praise_request_reshare_completed" : "praise_request_reshare_cancelled", result.method, {
       request_id: secured.card.id,
-      completion_signal: result.ok ? "picker_opened" : "launch_failed",
+      completion_signal: result.ok ? shareCompletionSignal(result) : "launch_failed",
     });
     if (feedbackSummary.total > 0) {
       trackIdeaEvent("received_feedback_reinvite", {
@@ -331,8 +365,8 @@ export function TodayApp() {
       });
     }
     setPraiseShareNotice(result.ok
-      ? "카카오톡 공유 화면을 열었어요."
-      : "카카오톡 공유 화면을 열지 못했어요. 다시 시도해 주세요.");
+      ? shareSuccessNotice(result)
+      : "공유를 시작하지 못했어요. 다시 시도해 주세요.");
   };
 
   const startEdit = () => {
@@ -377,6 +411,8 @@ export function TodayApp() {
 
   const shareRevision = async () => {
     if (!activeRevision || !revisionHistory || !request) return;
+    const channel = await chooseShareChannel();
+    if (!channel) return;
     const card = revisionCardFrom(revisionHistory.originCard, activeRevision);
     const draft = {
       slug: activeRevision.slug,
@@ -394,7 +430,7 @@ export function TodayApp() {
     saveLatestPraiseRequest(saved);
     setRequest(saved);
     setVotes([]);
-    const result = await shareToKakao(requestUrl(saved.slug), {
+    const result = await shareByChannel(channel, requestUrl(saved.slug), {
       title: saved.card.title,
       text: `${saved.card.summary}\n짧은 응원이나 의견을 남겨주세요.`,
       buttonTitle: "친구 반응 남기기",
@@ -405,7 +441,7 @@ export function TodayApp() {
       origin_request_id: saved.card.originRequestId,
       revision_id: saved.card.revisionId,
       version: saved.card.version,
-      completion_signal: result.ok ? "picker_opened" : "launch_failed",
+      completion_signal: result.ok ? shareCompletionSignal(result) : "launch_failed",
     });
     if (result.ok) {
       trackIdeaEvent("idea_revision_shared", {
@@ -415,7 +451,7 @@ export function TodayApp() {
         version: saved.card.version,
         entry_path: window.location.pathname,
       });
-      setRevisionNotice(`수정본 ${activeRevision.version}의 카카오톡 공유 화면을 열었어요.`);
+      setRevisionNotice(`수정본 ${activeRevision.version} · ${shareSuccessNotice(result)}`);
     }
   };
 
@@ -448,16 +484,7 @@ export function TodayApp() {
         }`}
       >
         <nav className="sticky top-0 z-50 flex-none overflow-x-auto border-b border-white/10 bg-bg/90 px-4 py-1 backdrop-blur-xl">
-          <div className="flex min-w-max items-center justify-between gap-3">
-            <button
-              type="button"
-              aria-label="오늘 해볼까"
-              onClick={() => setView("idea")}
-              className="min-h-12 shrink-0 whitespace-nowrap rounded-lg px-1 text-sm font-black text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              <span className="min-[370px]:hidden">오늘</span>
-              <span className="hidden min-[370px]:inline">오늘 해볼까</span>
-            </button>
+          <div className="flex w-max min-w-full items-center justify-center">
             <div className="flex shrink-0 rounded-full border border-white/10 bg-white/[.035] p-1 text-[11px] font-bold" role="group" aria-label="화면 전환">
               <button
                 type="button"
@@ -670,6 +697,11 @@ export function TodayApp() {
         </section>
       )}
       </main>
+      <ShareSheet
+        open={shareSheetOpen}
+        onSelect={finishShareChannelChoice}
+        onDismiss={() => finishShareChannelChoice(null)}
+      />
     </div>
   );
 }

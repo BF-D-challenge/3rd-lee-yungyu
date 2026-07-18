@@ -5,10 +5,14 @@ import {
 } from "../../src/components/organisms/idea-lab/sample-data";
 import {
   axisCard,
+  chooseKakaoShare,
   clipboardWrites,
   drawAll,
   installShareMock,
+  installInstagramShareMock,
+  instagramShareCalls,
   kakaoShareCalls,
+  kakaoUploadCalls,
   shareIdeaFromResult,
   shareCalls,
   trackedEvents,
@@ -133,7 +137,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(page.getByRole("button", { name: /결과 자세히 보기/ })).toHaveCount(0);
     await expect(page.getByRole("button", { name: /4장 다시 뽑기/ })).toHaveCount(0);
 
-    const result = page.locator(".idea-lab__stage--result aside.idea-lab__result");
+    const result = page.locator(".idea-lab__stage--result");
     await expect(result.locator(".idea-lab__result-name")).not.toHaveText("");
     await expect(result.locator(".idea-lab__result-name")).not.toContainText("—");
     await expect(result.locator(".idea-lab__result-head > span")).toHaveCount(0);
@@ -152,20 +156,19 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(lockedDetails).not.toContainText("유일 주장");
     await expect(lockedDetails.locator(".idea-lab__result-section")).toHaveCount(3);
     await expect(result.getByRole("heading", {
-      name: "친구에게 공유하세요, 만들 자료가 바로 열려요",
+      name: "보내는 순간, 오늘 만들 제작 자료 3개가 열려요",
       exact: true,
     })).toBeVisible();
     await expect(result.locator(".idea-lab__prompt")).toHaveCount(0);
     await expect(result.locator(".idea-lab__unlocked-content")).toHaveCount(0);
-    await expect(result.getByRole("img", {
-      name: /맛집 영상 링크 입력부터 지도와 여행 동선까지 이어지는 맛핀 화면 예시/,
-    })).toBeVisible();
+    await expect(result.locator(".idea-lab__unlock-summary > div")).toHaveCount(2);
+    await expect(result.locator(".idea-lab__share-preview")).toHaveCount(0);
     await expect(page.getByRole("button", {
-      name: "공유하고 결과 보기",
+      name: "공유하고 제작 자료 3개 열기",
       exact: true,
     })).toBeEnabled();
     await expect(page.getByText(
-      "카카오톡에서 친구를 직접 선택해요. 자동으로 게시되지 않아요.",
+      "인스타그램 · 카카오톡 · 링크 복사 중에서 직접 선택해요.",
       { exact: true },
     )).toBeVisible();
     await expect(page.getByRole("button", {
@@ -195,6 +198,25 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     expect(resultGeometry.detailsOneColumn).toBe(true);
     expect(resultGeometry.detailsMasked).toBe(true);
     expect(resultGeometry.summaryHeight).toBeLessThanOrEqual(430);
+    const fixedActions = await result.evaluate((stage) => {
+      const scroller = stage.querySelector<HTMLElement>(".idea-lab__stage-scroll")!;
+      const actions = stage.querySelector<HTMLElement>(".idea-lab__cta-bar--result")!;
+      const stageRect = stage.getBoundingClientRect();
+      const scrollRect = scroller.getBoundingClientRect();
+      const actionRect = actions.getBoundingClientRect();
+      return {
+        directChild: actions.parentElement === stage,
+        scrollBeforeActions: scrollRect.bottom <= actionRect.top + 1,
+        dockedToBottom: Math.abs(stageRect.bottom - actionRect.bottom) <= 1,
+        buttons: actions.querySelectorAll("button").length,
+      };
+    });
+    expect(fixedActions).toEqual({
+      directChild: true,
+      scrollBeforeActions: true,
+      dockedToBottom: true,
+      buttons: 2,
+    });
     const resultTypeScale = await page.locator(".idea-lab__stage--result").evaluate((stage) => {
       const fontSize = (selector: string) =>
         Number.parseFloat(getComputedStyle(stage.querySelector<HTMLElement>(selector)!).fontSize);
@@ -286,7 +308,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await shareIdeaFromResult(page);
     await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
     await expect(page.getByText(
-      "카카오톡 공유 화면을 열었어요. 만들 자료가 모두 열렸습니다.",
+      "제작 자료 3개를 열었어요.",
       { exact: true },
     )).toBeVisible();
     await expect(page.getByRole("button", { name: "AI 코딩 프롬프트 복사" })).toBeEnabled();
@@ -297,7 +319,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(page.locator(".idea-lab__result-summary"))
       .not.toHaveAttribute("data-combination-id", beforeCombination!);
     await expect(page.getByRole("button", {
-      name: "공유하고 결과 보기",
+      name: "공유하고 제작 자료 3개 열기",
       exact: true,
     })).toBeEnabled();
     await expect(page.getByRole("button", { name: "AI 코딩 프롬프트 복사" })).toHaveCount(0);
@@ -390,7 +412,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(page.locator(".idea-lab__stage--shared")).toHaveCount(0);
     await expect(page.locator(".idea-lab")).toHaveAttribute("data-stage", "result");
     await expect(sharedStage.getByText(
-      "카카오톡 공유 화면을 열었어요. 만들 자료가 모두 열렸습니다.",
+      "제작 자료 3개를 열었어요.",
       { exact: true },
     ))
       .toBeVisible();
@@ -423,22 +445,39 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     const kakaoCalls = await kakaoShareCalls(page);
     expect(kakaoCalls).toHaveLength(1);
     expect(kakaoCalls[0]).toMatchObject({
-      objectType: "text",
+      objectType: "feed",
       buttonTitle: "친구 반응 남기기",
       installTalk: true,
-      link: {
-        webUrl: calls[0].url,
-        mobileWebUrl: calls[0].url,
+      content: {
+        imageUrl: "https://k.kakaocdn.net/dn/oneul-haebolkka-share.png",
+        imageWidth: 1080,
+        imageHeight: 1920,
+        link: {
+          webUrl: calls[0].url,
+          mobileWebUrl: calls[0].url,
+        },
       },
       serverCallbackArgs: {
         request_id: expect.any(String),
       },
     });
+    expect(await kakaoUploadCalls(page)).toEqual([
+      expect.objectContaining({
+        files: [
+          expect.objectContaining({
+            name: "oneul-haebolkka-share.png",
+            type: "image/png",
+            width: 1080,
+            height: 1920,
+          }),
+        ],
+      }),
+    ]);
     expect(await clipboardWrites(page)).toHaveLength(0);
     await assertShareEvents(page);
   });
 
-  test("Scenario 4b. Web Share와 클립보드를 쓰지 않고 카카오톡으로만 공유한다", async ({ page }) => {
+  test("Scenario 4b. 하단 시트에서 카카오톡을 선택하면 Web Share와 클립보드를 쓰지 않는다", async ({ page }) => {
     await installShareMock(page, "kakao");
     await openIdeaLab(page);
     await drawAll(page);
@@ -459,6 +498,83 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await assertShareEvents(page);
   });
 
+  test("Scenario 4c. 공유 하단 시트는 세 경로를 보여주고 링크 복사로도 자료를 연다", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await installShareMock(page, "kakao");
+    await openIdeaLab(page);
+    await drawAll(page);
+    await goResult(page);
+
+    await page.getByRole("button", {
+      name: "공유하고 제작 자료 3개 열기",
+      exact: true,
+    }).click();
+    const sheet = page.getByRole("dialog", { name: "공유", exact: true });
+    await expect(sheet).toBeVisible();
+    await expect(sheet.locator(".share-sheet__channel")).toHaveText([
+      "카카오톡",
+      "인스타그램",
+      "링크 복사",
+    ]);
+    for (const channel of ["인스타그램", "카카오톡", "링크 복사"]) {
+      await expect(sheet.getByRole("button", { name: channel, exact: true })).toBeVisible();
+    }
+
+    await page.keyboard.press("Escape");
+    await expect(sheet).toHaveCount(0);
+    await expect(page.locator(".idea-lab__stage--result")).not.toHaveClass(/is-unlocked/);
+    await page.getByRole("button", {
+      name: "공유하고 제작 자료 3개 열기",
+      exact: true,
+    }).click();
+    await expect(sheet).toBeVisible();
+    await sheet.getByRole("button", { name: "링크 복사", exact: true }).click();
+    await expect(sheet).toHaveCount(0);
+    await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
+    expect(await shareCalls(page)).toHaveLength(0);
+    expect(await clipboardWrites(page)).toHaveLength(1);
+    const events = await trackedEvents(page);
+    expect(events.find((entry) => entry.event === "praise_request_share_completed")).toMatchObject({
+      share_method: "copy",
+      completion_signal: "link_copied",
+    });
+  });
+
+  test("Scenario 4d. 인스타그램 선택 시 9:16 PNG와 수신자 링크를 기기 공유창에 전달한다", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await installInstagramShareMock(page);
+    await openIdeaLab(page);
+    await drawAll(page);
+    await goResult(page);
+
+    await page.getByRole("button", {
+      name: "공유하고 제작 자료 3개 열기",
+      exact: true,
+    }).click();
+    const sheet = page.getByRole("dialog", { name: "공유", exact: true });
+    await expect(sheet).toBeVisible();
+    await sheet.getByRole("button", { name: "인스타그램", exact: true }).click();
+
+    await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
+    const calls = await instagramShareCalls(page);
+    expect(calls).toHaveLength(1);
+    expect(calls[0].text).toContain("https://bfd-seven.vercel.app/praise/");
+    expect(calls[0].files).toEqual([
+      expect.objectContaining({
+        name: "oneul-haebolkka-share.png",
+        type: "image/png",
+        width: 1080,
+        height: 1920,
+      }),
+    ]);
+    expect(calls[0].files[0].size).toBeGreaterThan(10_000);
+    const events = await trackedEvents(page);
+    expect(events.find((entry) => entry.event === "praise_request_share_completed")).toMatchObject({
+      share_method: "instagram",
+      completion_signal: "picker_opened",
+    });
+  });
+
   test("Scenario 5. 카카오톡 실행 실패 후 결과를 유지하고 동일 URL로 다시 시도한다", async ({ page }) => {
     await installShareMock(page, "fail-once");
 
@@ -467,11 +583,12 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await goResult(page);
 
     const kakaoButton = page.getByRole("button", {
-      name: "공유하고 결과 보기",
+      name: "공유하고 제작 자료 3개 열기",
       exact: true,
     });
     await kakaoButton.click();
-    await expect(page.getByText("카카오톡 공유 화면을 열지 못했어요. 결과는 그대로 보관돼요.", { exact: true })).toBeVisible();
+    await chooseKakaoShare(page);
+    await expect(page.getByText("공유를 시작하지 못했어요. 결과는 그대로 보관돼요.", { exact: true })).toBeVisible();
     await expect(page.locator(".idea-lab__stage--result")).not.toHaveClass(/is-unlocked/);
     await expect(kakaoButton).toBeEnabled();
     expect(await clipboardWrites(page)).toHaveLength(0);
@@ -486,6 +603,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     const firstUrl = firstCalls[0].url;
 
     await kakaoButton.click();
+    await chooseKakaoShare(page);
     await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
     await expect(page.getByRole("button", { name: "AI 코딩 프롬프트 복사" })).toBeEnabled();
 
@@ -571,7 +689,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
       getComputedStyle(element).getPropertyValue("--action-primary").trim().toLowerCase());
     expect(actionPrimary).toBe("#d92d45");
     await expect(page.getByRole("button", {
-      name: "공유하고 결과 보기",
+      name: "공유하고 제작 자료 3개 열기",
       exact: true,
     }))
       .toHaveCSS("background-color", "rgb(217, 45, 69)");

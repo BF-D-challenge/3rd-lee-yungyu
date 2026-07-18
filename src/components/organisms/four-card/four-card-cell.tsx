@@ -245,7 +245,8 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
                     {face?.eyebrow ?? axisLabel}
                   </span>
                   <strong
-                    className="text-[8.25cqi] font-bold leading-[1.22] text-ink"
+                    data-card-title
+                    className="text-[8.25cqi] font-bold leading-[1.5] text-ink"
                     style={{
                       display: "-webkit-box",
                       WebkitLineClamp: 3,
@@ -257,7 +258,8 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
                   </strong>
                   {face?.detail ? (
                     <p
-                      className="mt-[2.5cqi] text-[5.5cqi] leading-[1.3] text-mist"
+                      data-card-body
+                      className="mt-[2.5cqi] text-[5.5cqi] leading-[1.75] text-mist"
                       style={{
                         display: "-webkit-box",
                         WebkitLineClamp: 2,
@@ -314,23 +316,26 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
               }}
             />
             {pulse || hot ? (
-              <span className="relative flex max-w-[82%] flex-col items-center gap-[4cqi] text-center">
+              <span
+                data-empty-guide
+                className="pointer-events-none relative z-10 flex max-w-[82%] flex-col items-center gap-[4cqi] text-center"
+              >
                 <strong
-                  className="text-[8cqi] font-black leading-[1.3]"
+                  className="text-[8cqi] font-black leading-[1.5]"
                   style={{ color: "rgba(244,241,233,.94)" }}
                 >
-                  눌러서 카드 뽑기
+                  카드를 눌러 뽑거나
                 </strong>
                 <small
-                  className="text-[5.5cqi] font-semibold leading-[1.35]"
+                  className="text-[5.5cqi] font-semibold leading-[1.75]"
                   style={{ color: "rgba(255,255,255,.52)" }}
                 >
-                  아래 카드를 끌어 놓아도 돼요
+                  아래 덱에서 끌어 놓으세요
                 </small>
               </span>
             ) : (
               <span
-                className="relative text-[26cqi] font-semibold leading-none"
+                className="relative z-10 text-[26cqi] font-semibold leading-none"
                 style={{ color: "rgba(255,255,255,.24)" }}
               >
                 ?

@@ -1,4 +1,4 @@
-import type { KakaoShareResult } from "@/lib/kakao-share";
+import type { ShareResult } from "@/lib/share-channel";
 
 export const IDEA_LAB_AXIS_IDS = ["source", "payer", "moment", "twist"] as const;
 
@@ -80,11 +80,11 @@ export interface IdeaLabSharePayload {
   selection: IdeaLabSelection;
 }
 
-export type IdeaLabShareResult = KakaoShareResult;
+export type IdeaLabShareResult = ShareResult;
 
 export interface IdeaLabProps {
   initialScenarioId?: string;
-  /** 실제 앱에 연결할 때 카카오톡 공유 화면을 연 결과를 돌려준다. 성공한 경우에만 전체 브리프와 독립 프롬프트 2종이 열린다. */
+  /** 실제 앱에 연결할 때 선택한 공유 경로의 결과를 돌려준다. 성공한 경우에만 전체 브리프와 독립 프롬프트 2종이 열린다. */
   onShare?: (payload: IdeaLabSharePayload) => IdeaLabShareResult | Promise<IdeaLabShareResult>;
   /** 네 장이 완성될 때 최신 공유 초안을 상위 화면에 전달한다. */
   onDraftReady?: (payload: IdeaLabSharePayload) => void;

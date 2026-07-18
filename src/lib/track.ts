@@ -1,6 +1,7 @@
 // PRD §8 계측. v4 단계에선 GA4 미연결 — 콘솔+localStorage 적재로 실측을 대체한다.
 
 import { authenticatedForTracking } from "./auth-session";
+import type { ShareChannel } from "./share-channel";
 
 const EVENTS_KEY = "events";
 const IDEA_EVENT_KEYS = "idea:event-keys:v1";
@@ -39,8 +40,8 @@ export type FakeDoorProduct = "plan" | "day_pass" | "demand_report";
 export const fakeDoor = (product: FakeDoorProduct, price: number, params: Record<string, unknown> = {}) =>
   track(`pay_${product}_click`, { product, price, ...params });
 
-/** 공유 이벤트: 모든 발신 경로는 Kakao JavaScript SDK로 통일한다. */
-export const trackShare = (event: string, method: "kakao", params: Record<string, unknown> = {}) =>
+/** 공유 이벤트: 사용자가 하단 시트에서 선택한 실제 채널을 함께 기록한다. */
+export const trackShare = (event: string, method: ShareChannel, params: Record<string, unknown> = {}) =>
   track(event, { share_method: method, ...params });
 
 export type IdeaFunnelEventName =
