@@ -7,11 +7,11 @@ export interface TopBarProps {
   className?: string;
 }
 
-/** 상단 바 — 중앙 워드마크만 (미니멀). right 슬롯은 우측에 겹쳐 뜬다 */
+/** 상단 바 — 핵심 제작기와 같은 좌측 정렬·산세리프 워드마크를 사용한다. */
 export function TopBar({ right, className }: TopBarProps) {
   return (
-    <header className={cn("relative flex h-14 items-center justify-center", className)}>
-      <Link href="/" className="font-serif text-base tracking-tight text-mist transition-colors hover:text-ink">
+    <header className={cn("relative flex h-14 items-center", className)}>
+      <Link href="/" className="text-base font-extrabold tracking-[-0.025em] text-primary transition-colors hover:text-primary-hover">
         오늘 해볼까
       </Link>
       {right && <div className="absolute right-0 top-1/2 -translate-y-1/2">{right}</div>}

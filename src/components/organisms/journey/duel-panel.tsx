@@ -23,7 +23,7 @@ export function DuelPanel({ slug }: { slug: string }) {
           <p className="mt-3 text-sm text-mist">링크가 잘못됐거나 만료됐을 수 있어요.</p>
           <Link
             href="/"
-            className="mt-6 inline-flex min-h-[48px] items-center text-sm text-gold underline-offset-4 hover:underline"
+            className="mt-6 inline-flex min-h-[48px] items-center text-sm font-semibold text-primary underline-offset-4 hover:underline"
           >
             오늘 해볼까 구경하기 →
           </Link>
@@ -98,10 +98,15 @@ export function DuelPanel({ slug }: { slug: string }) {
           onSelect={controller.selectPraise}
           onSubmit={controller.submitPraise}
         />
+        {controller.legacyExpired ? (
+          <p role="alert" className="mt-5 text-center text-sm text-amber-200">
+            이 대결은 예전 링크라 응원을 안전하게 보낼 수 없어요. 만든 친구에게 새 링크를 부탁해 주세요.
+          </p>
+        ) : null}
       </PageShell>
 
       <DuelLoginSheet
-        open={controller.authState === "anonymous"}
+        open={controller.authState === "anonymous" && !controller.legacyExpired}
         onAuthenticated={controller.receiveAuthenticated}
         onReturnFocus={() => radioRefs.current[activeRadio]?.focus()}
       />

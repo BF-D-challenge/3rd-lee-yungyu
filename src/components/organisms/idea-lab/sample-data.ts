@@ -49,85 +49,85 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         url: "https://trustmrr.com/startup/1lookup",
       },
       platform: "web",
-      value: "정보 하나를 넣으면 상대 정보를 찾아 정리해주는 웹 서비스",
+      value: "전화번호·이메일·IP를 실시간으로 검증하는 API 서비스",
       detail:
-        "전화번호·이메일·IP 중 하나를 넣으면 쓸 수 있는 정보인지 확인하고 근거를 한곳에 보여줍니다.",
-      evidence: "TrustMRR에서 실제 매출이 확인된 데이터 검증 제품",
-      preservedFlow: "정보 입력 → 여러 출처 확인 → 결과와 근거 정리",
+        "하나의 API로 입력값이 유효한지 확인하고 서비스 가입·리드 수집·로그인 흐름에서 바로 판정합니다.",
+      evidence: "TrustMRR에서 실제 매출이 확인된 실시간 데이터 검증 API 제품",
+      preservedFlow: "전화번호·이메일·IP 입력 → 실시간 API 검증 → 유효성 결과 반환",
     },
     payers: [
       {
-        id: "payer-solo-sales",
-        value: "매주 잠재 고객을 찾는 1인 영업자",
+        id: "payer-saas-builder",
+        value: "회원가입 폼을 만드는 1인 SaaS 개발자",
         detail:
-          "연락할 사람을 고르거나 만나기 전마다 상대 회사와 담당자를 직접 검색합니다.",
+          "오타·가짜 이메일과 전화번호가 가입 DB에 쌓이지 않게 제출 직전에 값을 검사합니다.",
       },
       {
         id: "payer-recruiter",
-        value: "하루에 후보자 여러 명을 확인하는 채용 담당자",
+        value: "리드 목록을 정리하는 B2B 영업 운영자",
         detail:
-          "후보자에게 연락하거나 만나기 전 공개 정보를 여러 화면에서 교차 확인합니다.",
+          "연락처를 CRM에 넣기 전에 도달 가능한 이메일·전화번호만 남기려고 반복 검증합니다.",
       },
       {
-        id: "payer-agency",
-        value: "새 광고주를 자주 만나는 소형 대행사 대표",
+        id: "payer-service-operator",
+        value: "로그인·결제 이상을 줄여야 하는 서비스 운영자",
         detail:
-          "연락할 광고주를 고르거나 제안하기 전 회사 규모와 최근 활동을 직접 찾습니다.",
+          "의심스러운 IP나 비정상 입력을 허용하기 전에 한 번 더 확인합니다.",
       },
     ],
     moments: [
       {
-        id: "moment-before-call",
-        value: "처음 연락하거나 만날 사람을 확인하는 10분 전",
+        id: "moment-signup-submit",
+        value: "회원가입 폼을 제출하기 직전",
         detail:
-          "검색할 시간은 부족해 상대의 핵심 정보만 빠르게 확인하고 싶은 순간",
+          "오타·가짜 연락처를 저장하기 전에 즉시 유효성을 판정해야 하는 순간",
       },
       {
-        id: "moment-before-email",
-        value: "처음 메시지를 보내기 직전",
+        id: "moment-lead-import",
+        value: "새 리드 목록을 CRM에 넣기 전",
         detail:
-          "상대와 맞지 않는 뻔한 문장 대신 근거 있는 첫 문장을 보내고 싶은 순간",
+          "연락 가능한 값만 남겨 후속 영업 낭비를 줄여야 하는 순간",
       },
       {
-        id: "moment-lead-list",
-        value: "이번 주 연락할 사람을 고르는 월요일 아침",
-        detail: "긴 후보 목록에서 먼저 연락할 사람을 정해야 하는 순간",
+        id: "moment-risk-check",
+        value: "로그인·결제 요청을 승인하기 전",
+        detail:
+          "IP·연락처 데이터의 위험 신호를 빠르게 확인하고 허용 여부를 정해야 하는 순간",
       },
     ],
     twists: [
       {
-        id: "twist-company-url-only",
+        id: "twist-one-value-status",
         kind: "replace",
-        value: "전화번호·이름 조회를 회사 공식 URL 하나로 바꾸기",
+        value: "여러 조회 화면 대신 입력값 하나의 상태만 먼저 보여주기",
         detail:
-          "공개 정보를 찾아 근거와 함께 정리하는 흐름은 유지하고 개인정보 입력을 없앱니다.",
-        resultTitle: "회사 URL로 찾는 첫 연락 근거",
+          "전화번호·이메일·IP를 실시간으로 검증하는 흐름은 유지하고 유효·무효·확인 필요 상태를 먼저 보여줍니다.",
+        resultTitle: "한 값의 유효성 상태",
         platform: "web",
         smallestBuild:
-          "회사 공식 URL 하나를 넣으면 소개·최근 변화·내 제안과 이어지는 공개 사실과 각 출처 링크 한 개가 나오는 웹 화면",
+          "전화번호·이메일·IP 중 하나를 넣으면 유효·무효·확인 필요와 판정 이유가 나오는 웹 화면",
       },
       {
-        id: "twist-three-evidence-lines",
-        kind: "remove",
-        value:
-          "긴 인물·회사 리포트를 빼고 첫 연락에 쓸 공개 근거 세 줄만 남기기",
-        detail:
-          "여러 공개 출처를 확인하는 흐름은 유지하고 사용자가 읽는 결과를 세 줄로 제한합니다.",
-        resultTitle: "첫 연락 근거 3줄",
-        platform: "web",
-        smallestBuild:
-          "회사 공식 URL 하나를 넣으면 근거 URL이 붙은 사실 세 줄과 확인 불가 항목만 보여주는 웹 화면",
-      },
-      {
-        id: "twist-checked-date",
+        id: "twist-validation-reason",
         kind: "add",
-        value: "각 공개 근거에 확인 날짜와 오래된 정보 경고 하나 더하기",
+        value: "유효하지 않은 이유와 다음 확인 항목 한 줄 더하기",
         detail:
-          "공개 정보를 모아 연락 단서로 쓰는 흐름은 유지하고 정보의 시점을 바로 판단하게 합니다.",
-        resultTitle: "날짜가 보이는 회사 근거 카드",
+          "실시간 API 검증은 유지하고 실패 코드와 사용자가 다시 확인할 값 하나를 함께 보여줍니다.",
+        resultTitle: "다음 확인이 보이는 검증 결과",
         platform: "web",
         smallestBuild:
-          "회사 공식 URL 하나를 넣으면 공개 근거 세 줄·출처·게시일과 1년 이상 지난 정보 표시가 나오는 웹 화면",
+          "값 하나를 넣으면 유효성 상태·실패 이유·다음 확인 항목 한 줄이 나오는 웹 화면",
+      },
+      {
+        id: "twist-auto-detect-type",
+        kind: "add",
+        value: "전화번호·이메일·IP 유형을 자동 판별해 같은 입력창에서 검사하기",
+        detail:
+          "입력값 하나를 실시간으로 검증하는 흐름은 유지하고 유형을 고르는 단계를 없앱니다.",
+        resultTitle: "유형을 알아서 고르는 데이터 검증",
+        platform: "web",
+        smallestBuild:
+          "전화번호·이메일·IP 중 하나를 붙여넣으면 유형을 자동 판별하고 검증 결과를 보여주는 웹 화면",
       },
     ],
   },
@@ -140,81 +140,81 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         key: "trustmrr:voicetype-com",
         url: "https://trustmrr.com/startup/voicetype-com",
       },
-      platform: "plugin",
-      value: "말하면 바로 글자로 바꾸어 입력칸에 넣어주는 브라우저 확장",
+      platform: "web",
+      value: "말하면 글자로 바꾸어 타이핑을 대신하는 음성 받아쓰기 제품",
       detail:
-        "키보드 대신 말한 내용을 받아 적고, 현재 보고 있는 입력칸에 글을 넣어줍니다.",
-      evidence: "TrustMRR에서 실제 매출이 확인된 음성 받아쓰기 제품",
-      preservedFlow: "말하기 → 음성을 글자로 변환 → 현재 입력칸에 결과 넣기",
+        "음성으로 말한 내용을 텍스트로 바꿔 현재 입력 작업에 바로 사용할 수 있습니다.",
+      evidence: "TrustMRR에서 실제 매출이 확인된 AI 음성 받아쓰기 제품",
+      preservedFlow: "말하기 → 음성을 글자로 변환 → 입력칸에 텍스트 삽입",
     },
     payers: [
       {
-        id: "payer-pm",
-        value: "회의가 많은 작은 팀의 기획자",
-        detail: "회의가 끝날 때마다 결정 사항과 할 일을 다시 정리합니다.",
+        id: "payer-ops-writer",
+        value: "회의·고객응대 후 웹 폼을 채우는 운영 담당자",
+        detail:
+          "회의·통화 후 같은 내용을 CRM·문의 폼에 반복해서 타이핑합니다.",
       },
       {
         id: "payer-field",
-        value: "현장에서 긴 메모를 남기는 점검 담당자",
-        detail: "손이 자유롭지 않은 상태에서 기록을 많이 남겨야 합니다.",
+        value: "현장에서 모바일 입력 폼을 작성하는 점검 담당자",
+        detail: "손이 자유롭지 않아 관찰 내용을 입력칸에 남기는 데 시간이 걸립니다.",
       },
       {
         id: "payer-solo-maker",
-        value: "아이디어를 말로 먼저 풀어내는 1인 제작자",
-        detail: "생각이 떠오를 때 문서 형식까지 잡느라 흐름을 자주 놓칩니다.",
+        value: "초안을 말로 풀어내는 1인 제작자",
+        detail: "아이디어·답장·작업 메모를 타이핑하다가 생각의 흐름을 놓칩니다.",
       },
     ],
     moments: [
       {
-        id: "moment-meeting-end",
-        value: "회의가 끝난 직후 5분",
-        detail: "기억이 생생할 때 결정과 다음 행동을 남겨야 하는 순간",
+        id: "moment-hard-to-type",
+        value: "키보드를 잡기 어려운 채 입력칸을 채워야 할 때",
+        detail: "손을 쓰기 어렵거나 이동 중이라도 지금 입력을 끝내야 하는 순간",
       },
       {
         id: "moment-walking",
-        value: "이동 중에 아이디어가 떠오른 순간",
-        detail: "휴대폰으로 긴 문장을 쓰기 어렵지만 잊고 싶지 않은 순간",
+        value: "말한 내용을 잊기 전에 바로 남겨야 할 때",
+        detail: "생각이 끊기기 전에 긴 문장을 입력칸에 보관해야 하는 순간",
       },
       {
-        id: "moment-report",
-        value: "현장 점검을 마치고 보고해야 할 때",
-        detail: "사진과 관찰 내용을 사무실로 돌아가기 전에 정리해야 하는 순간",
+        id: "moment-send-draft",
+        value: "짧은 답변·초안을 빠르게 전송하기 직전",
+        detail: "타이핑보다 말하기가 빨라 지금 문장을 바로 제출·전송해야 하는 순간",
       },
     ],
     twists: [
       {
-        id: "twist-one-minute-three-boxes",
+        id: "twist-one-minute-three-fields",
         kind: "replace",
-        value:
-          "어디서나 받아쓰기를 브라우저 1분 녹음과 고정된 세 칸으로 바꾸기",
+        value: "한 번 말한 내용을 기록·다음 행동·확인할 세 입력칸에 채우기",
         detail:
-          "말을 글로 바꾸는 흐름은 유지하고 설치 없이 기록·다음 행동·확인할 것으로 정리합니다.",
-        resultTitle: "1분 음성 3칸 기록",
+          "말하기→글자 변환→입력칸 삽입 흐름은 유지하고 결과를 고정된 세 입력칸으로 나눕니다.",
+        resultTitle: "음성으로 채우는 기록 3칸",
         platform: "web",
         smallestBuild:
-          "브라우저에서 1분을 녹음하면 기록·다음 행동·확인할 것 세 칸이 채워지는 모바일 웹 화면",
+          "1분 녹음 뒤 기록·다음 행동·확인할 것 세 입력칸이 텍스트로 채워지는 모바일 웹 화면",
       },
       {
         id: "twist-owner-deadline",
         kind: "add",
-        value: "말한 내용에서 담당자와 기한이 들린 할 일만 표시하기",
+        value: "말한 내용에서 담당자와 기한이 들린 할 일을 입력칸 옆에 표시하기",
         detail:
-          "음성 변환과 고정 결과는 유지하고 실행에 필요한 사람·날짜가 빠졌는지 한 번 확인하게 합니다.",
-        resultTitle: "누가 언제까지가 보이는 음성 메모",
+          "음성 변환과 입력칸 삽입은 유지하고 실행에 필요한 사람·날짜가 빠졌는지 한 번 확인하게 합니다.",
+        resultTitle: "누가 언제까지가 보이는 음성 입력",
         platform: "web",
         smallestBuild:
-          "브라우저 1분 녹음 뒤 할 일 세 줄에 담당자·기한 또는 미확인 표시가 붙는 모바일 웹 화면",
+          "1분 녹음 뒤 입력된 할 일 세 줄에 담당자·기한 또는 미확인 표시가 붙는 모바일 웹 화면",
       },
       {
         id: "twist-source-audio-jump",
         kind: "remove",
-        value: "전체 받아쓰기 화면을 빼고 세 칸과 해당 음성 위치만 남기기",
+        value: "입력한 문장마다 해당 음성 위치를 다시 듣기",
         detail:
-          "말을 구조화하는 흐름은 유지하고 긴 원문 대신 결과의 근거가 된 10초 구간만 다시 듣게 합니다.",
-        resultTitle: "근거 음성으로 확인하는 3칸 메모",
+          "말하기→글자 변환→입력칸 삽입은 유지하고 긴 원문 대신 각 문장의 근거 구간만 다시 듣게 합니다.",
+        resultTitle: "근거 음성으로 확인하는 입력",
         platform: "web",
         smallestBuild:
-          "1분 녹음에서 만든 세 칸마다 해당 발화의 10초 재생 버튼 하나가 붙는 모바일 웹 화면",
+          "음성으로 채운 문장마다 해당 발화의 10초 재생 버튼 하나가 붙는 모바일 웹 화면",
       },
     ],
   },

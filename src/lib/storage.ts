@@ -1,5 +1,6 @@
 // localStorage 키 일원화 — 화면들이 문자열 키를 직접 만지지 않는다.
 import type { Seed } from "./draw";
+import { isFeedbackWriteAccess, type FeedbackWriteAccess } from "./feedback-access";
 import type { CardPayload } from "./share";
 
 const KEYS = {
@@ -38,6 +39,7 @@ export const saveSeed = (seed: Seed): void => write(KEYS.seed, seed);
 export interface PublishedCard {
   slug: string;
   payload: CardPayload;
+  feedbackReadToken?: string;
   publishedAt: number;
 }
 
@@ -69,6 +71,15 @@ export const addVote = (slug: string, vote: Vote): void => {
   write(KEYS.voted(slug), true);
 };
 export const hasVoted = (slug: string): boolean => read<unknown>(KEYS.voted(slug)) === true;
+export const removeVote = (slug: string): void => {
+  if (typeof window === "undefined") return;
+  try {
+    localStorage.removeItem(KEYS.votes(slug));
+    localStorage.removeItem(KEYS.voted(slug));
+  } catch {
+    /* 스토리지 실패 시 원격 전송 결과가 진실의 원천이다. */
+  }
+};
 
 /** 응원 직후 한마디만 뒤늦게 붙일 때 — 표는 늘리지 않고 마지막 응원에 코멘트만 단다 */
 export const attachComment = (slug: string, comment: string): void => {
@@ -132,6 +143,7 @@ export interface PendingDuelVote {
   candidateId: string | null;
   praiseId: DuelPraiseId | null;
   idempotencyKey: string | null;
+  feedbackAccess?: FeedbackWriteAccess | null;
   createdAt: number;
 }
 
@@ -149,6 +161,7 @@ const isPendingDuelVote = (value: unknown): value is PendingDuelVote => {
     (vote.candidateId === null || typeof vote.candidateId === "string") &&
     (vote.praiseId === null || vote.praiseId === "need" || vote.praiseId === "notify" || vote.praiseId === "cheer") &&
     (vote.idempotencyKey === null || typeof vote.idempotencyKey === "string") &&
+    (vote.feedbackAccess === undefined || vote.feedbackAccess === null || isFeedbackWriteAccess(vote.feedbackAccess)) &&
     typeof vote.createdAt === "number"
   );
 };
@@ -178,6 +191,8 @@ export interface Duel {
   slug: string;
   a: CardPayload;
   b: CardPayload;
+  feedback?: FeedbackWriteAccess;
+  feedbackReadToken?: string;
   createdAt: number;
 }
 

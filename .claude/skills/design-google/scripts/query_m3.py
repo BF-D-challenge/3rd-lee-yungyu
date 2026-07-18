@@ -236,9 +236,9 @@ def _default_corpus_candidates() -> Tuple[Path, ...]:
     skill_root = script.parent.parent
     candidates: List[Path] = []
 
-    # A repository copy lives at <repo>/.claude/skills/material-design-3.
+    # A repository copy lives at <repo>/.claude/skills/design-google.
     if (
-        skill_root.name == "material-design-3"
+        skill_root.name == "design-google"
         and skill_root.parent.name == "skills"
         and skill_root.parent.parent.name == ".claude"
     ):
@@ -247,7 +247,7 @@ def _default_corpus_candidates() -> Tuple[Path, ...]:
 
     # A runtime-synced copy resolves against the active repository working tree.
     cwd = Path.cwd().resolve()
-    if cwd.name == "material-design-3":
+    if cwd.name == "design-google":
         candidates.append(cwd)
     for root in (cwd,) + tuple(cwd.parents):
         candidates.append(root / "docs" / "research" / "material-design-3")

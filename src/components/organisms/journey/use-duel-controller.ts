@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { checkAuthSession, consumeAuthPending, type AuthSession } from "@/lib/auth-session";
 import { castDuelVote, type DuelPraiseId, type DuelSide, type DuelVoteResult } from "@/lib/backend/votes";
+import { feedbackApiConfigured } from "@/lib/backend/feedback-api";
 import { loadDuelDraft, saveDuelDraft } from "@/lib/duel-draft";
 import { legacyRoundId, openerKey, trackGrowth, trackUniqueRoundOpened } from "@/lib/growth";
 import { decodeDuelSlug, prefillSpinUrl, type DuelPayload } from "@/lib/share";
@@ -104,7 +105,8 @@ export function useDuelController(slug: string) {
 
   const roundId = duel?.roundId ?? legacyRoundId(slug);
   const rootRoundId = duel?.rootRoundId ?? roundId;
-  const canSelect = authState === "authenticated" && submitState === "idle";
+  const legacyExpired = Boolean(duel && feedbackApiConfigured() && !duel.feedback);
+  const canSelect = !legacyExpired && authState === "authenticated" && submitState === "idle";
   const activeRadio = chosen ?? rovingSide;
 
   const receiveAuthenticated = (nextSession: AuthSession) => {
@@ -161,6 +163,7 @@ export function useDuelController(slug: string) {
       candidateId,
       praiseId: praise,
       idempotencyKey: `duel-v1:${roundId}:${session.actorId}`,
+      access: duel.feedback,
     });
 
     setSubmitState(result);
@@ -200,6 +203,7 @@ export function useDuelController(slug: string) {
     praise,
     submitState,
     canSelect,
+    legacyExpired,
     activeRadio,
     radioRefs,
     receiveAuthenticated,

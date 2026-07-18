@@ -12,7 +12,7 @@ export const Chip = forwardRef<HTMLButtonElement, ChipProps>(
       ref={ref}
       aria-pressed={selected}
       className={cn(
-        "inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-input px-4 text-sm transition-all duration-200",
+        "ui-motion inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-input px-4 text-sm",
         selected ? "glass-gold text-gold" : "glass text-ink hover:bg-white/10",
         className,
       )}

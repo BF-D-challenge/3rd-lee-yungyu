@@ -27,7 +27,7 @@ Resolution uses this precedence:
 4. `docs/research/material-design-3` under the current directory or an ancestor
 
 Step 4 allows the runtime-synced script at
-`/Users/yungyulee/.agents/skills/material-design-3/scripts/query_m3.py` to find
+`/Users/yungyulee/.agents/skills/design-google/scripts/query_m3.py` to find
 the active repository corpus when the command runs anywhere inside that
 repository.
 
@@ -35,9 +35,9 @@ Examples:
 
 ```bash
 M3_CORPUS_DIR=/tmp/m3-corpus \
-  python3 .claude/skills/material-design-3/scripts/query_m3.py "motion easing"
+  python3 .claude/skills/design-google/scripts/query_m3.py "motion easing"
 
-python3 /Users/yungyulee/.agents/skills/material-design-3/scripts/query_m3.py \
+python3 /Users/yungyulee/.agents/skills/design-google/scripts/query_m3.py \
   "navigation rail" --corpus "$PWD/docs/research/material-design-3"
 ```
 
@@ -48,23 +48,23 @@ silently replaced with another corpus.
 
 ```bash
 # Natural-language lookup
-python3 .claude/skills/material-design-3/scripts/query_m3.py \
+python3 .claude/skills/design-google/scripts/query_m3.py \
   "How should a button communicate a disabled state?"
 
 # Component and page-type filters
-python3 .claude/skills/material-design-3/scripts/query_m3.py \
+python3 .claude/skills/design-google/scripts/query_m3.py \
   "selection indicator" --component "navigation rail" --page-type component
 
 # Filter-only inventory query
-python3 .claude/skills/material-design-3/scripts/query_m3.py \
+python3 .claude/skills/design-google/scripts/query_m3.py \
   --component button --limit 20
 
 # Repeated values use OR within the same filter
-python3 .claude/skills/material-design-3/scripts/query_m3.py \
+python3 .claude/skills/design-google/scripts/query_m3.py \
   "window size" --page-type adaptive --page-type responsive
 
 # Machine-readable output
-python3 .claude/skills/material-design-3/scripts/query_m3.py \
+python3 .claude/skills/design-google/scripts/query_m3.py \
   "md sys color primary" --json --limit 3
 ```
 

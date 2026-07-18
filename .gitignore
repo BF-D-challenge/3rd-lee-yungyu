@@ -12,6 +12,7 @@ node_modules/
 
 # 빌드 결과물
 .next/
+.next-e2e/
 out/
 dist/
 build/
@@ -32,6 +33,9 @@ service-account*.json
 # Claude Code 개인 설정 (팀 공용 .claude/settings.json 은 올림)
 .claude/settings.local.json
 CLAUDE.local.md
+
+# 구현 참고용 내부 조사 자료
+.claude/knowledge/research/tarot-card-dot-art/
 
 # macOS
 .DS_Store

@@ -10,26 +10,26 @@ import { PageShell } from "@/components/layouts/page-shell";
 import { TopBar } from "@/components/layouts/top-bar";
 import { duelUrl, encodeDuelSlug, encodeSlug, shareOrCopy, type CardPayload } from "@/lib/share";
 import { addDuel, loadPublished, type PublishedCard } from "@/lib/storage";
-import { authEnabled, getUser, signInWithGoogle } from "@/lib/backend/auth";
+import { authEnabled } from "@/lib/backend/auth";
+import {
+  beginAuth,
+  checkAuthSession,
+  consumeAuthPending,
+  markAuthPending,
+} from "@/lib/auth-session";
 import { fetchPublished, publishCard } from "@/lib/backend/published";
+import { prepareFeedbackAccess } from "@/lib/backend/secure-feedback";
+import { writeAccessFrom } from "@/lib/feedback-access";
+import { newRoundId } from "@/lib/growth";
 import { fakeDoor, track, trackShare } from "@/lib/track";
 import { cardTitle, PublishCard } from "./publish-card";
 import { ShareRow } from "./share-row";
 
 const CONFIRMED_KEY = "oneul:confirmed";
-type AuthUser = Awaited<ReturnType<typeof getUser>>;
 
 const cleanFromName = (value: string | undefined): string | undefined => {
   const firstWord = value?.trim().replace(/\s+/g, " ").split(" ")[0]?.replace(/님$/, "");
   return firstWord ? firstWord.slice(0, 16) : undefined;
-};
-
-const userDisplayName = (user: AuthUser | undefined): string | undefined => {
-  const meta = user?.user_metadata as Record<string, unknown> | undefined;
-  const raw = [meta?.name, meta?.full_name, meta?.preferred_username, meta?.user_name].find(
-    (value): value is string => typeof value === "string" && value.trim().length > 0,
-  );
-  return cleanFromName(raw);
 };
 
 const withFromName = (payload: CardPayload, fromName: string | undefined): CardPayload => {
@@ -53,18 +53,39 @@ export function PublishFlow() {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [prevCard, setPrevCard] = useState<PublishedCard | null>(null);
   const [duelToast, setDuelToast] = useState<string | null>(null);
+  const [securityNotice, setSecurityNotice] = useState<string | null>(null);
+  const [authPending, setAuthPending] = useState(false);
   const published = useRef(false);
   const toastTimer = useRef<ReturnType<typeof setTimeout>>();
 
   // 발행 확정 + 공유 화면 진입 (가짜 통과·OAuth 복귀 공용)
   // 로그인 상태면 Supabase(published_cards)에도 동기화 — 기기 간 동일 대시보드의 실질 가치.
-  const finishAuth = async (p: CardPayload, user?: AuthUser) => {
-    const nextPayload = withFromName(p, userDisplayName(user) ?? p.fromName);
+  const finishAuth = async (p: CardPayload, displayName?: string) => {
+    const namedPayload = withFromName(p, displayName ?? p.fromName);
+    const existing = loadPublished().find(
+      (card) => card.payload.feedback?.requestId === namedPayload.feedback?.requestId,
+    );
+    const access = await prepareFeedbackAccess(
+      "card",
+      namedPayload.feedback,
+      existing?.feedbackReadToken,
+    );
+    if (!access) {
+      setSecurityNotice("안전한 공유 링크를 준비하지 못했어요. 잠시 후 다시 시도해 주세요.");
+      return;
+    }
+    const nextPayload = { ...namedPayload, feedback: writeAccessFrom(access) };
+    setSecurityNotice(null);
     setPayload(nextPayload);
     rememberConfirmed(nextPayload);
     if (!published.current) {
       published.current = true;
-      await publishCard({ slug: encodeSlug(nextPayload), payload: nextPayload, publishedAt: Date.now() });
+      await publishCard({
+        slug: encodeSlug(nextPayload),
+        payload: nextPayload,
+        feedbackReadToken: access.readToken,
+        publishedAt: Date.now(),
+      });
     }
     const list = await fetchPublished();
     setPrevCard(list[1] ?? null); // 직전 발행 카드 — 있으면 A/B 대결 진입점
@@ -75,17 +96,23 @@ export function PublishFlow() {
 
   // OAuth 리다이렉트 복귀 감지 — Supabase 세션이 있으면 발행 완료 상태로 (env 미설정이면 no-op)
   useEffect(() => {
-    if (!authEnabled || !payload) return;
+    if (!authEnabled || !payload || authed) return;
     const p = payload;
     let cancelled = false;
-    void getUser().then((user) => {
-      if (!cancelled && user) void finishAuth(p, user);
+    void checkAuthSession().then((session) => {
+      if (!cancelled && session) {
+        setAuthPending(false);
+        if (consumeAuthPending("creator")) {
+          track("auth_done", { context: "creator", method: session.demo ? "demo" : "google" });
+        }
+        void finishAuth(p, session.displayName);
+      }
     });
     return () => {
       cancelled = true;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [payload]);
+  }, [authed, payload]);
 
   useEffect(() => {
     let next: CardPayload | null = null;
@@ -102,32 +129,60 @@ export function PublishFlow() {
     }
     setPayload(next);
     track("view_publish");
-    track("auth_prompt");
   }, [router]);
 
   if (!payload) return null;
 
   const signIn = async () => {
-    track("auth_done", { method: "google" });
-    if (authEnabled) {
-      const { error } = await signInWithGoogle(window.location.href);
-      if (!error) return; // OAuth 리다이렉트 진행 — 복귀 시 위 useEffect가 발행 완료
-      // OAuth 시작 실패 시 데모처럼 통과(graceful)
+    if (authPending) return;
+    setAuthPending(true);
+    setSecurityNotice(null);
+    track("auth_prompt", { context: "creator" });
+    markAuthPending("creator");
+    const result = await beginAuth(window.location.href);
+    if (result.status === "redirecting") return;
+
+    setAuthPending(false);
+    if (result.status === "error") {
+      consumeAuthPending("creator");
+      setSecurityNotice("Google 로그인을 시작하지 못했어요. 잠시 후 다시 시도해 주세요.");
+      return;
     }
-    const user = authEnabled ? await getUser() : null;
-    void finishAuth(payload, user); // env 미설정 → 기존 가짜 통과 유지
+
+    consumeAuthPending("creator");
+    track("auth_done", { context: "creator", method: result.session.demo ? "demo" : "google" });
+    void finishAuth(payload, result.session.displayName);
   };
 
   const askDuel = async () => {
     if (!prevCard) return;
     const a = payload;
     const b = prevCard.payload;
-    const result = await shareOrCopy(duelUrl(a, b), {
+    const access = await prepareFeedbackAccess("duel");
+    if (!access) {
+      setDuelToast("안전한 대결 링크를 준비하지 못했어요.");
+      return;
+    }
+    const roundId = newRoundId();
+    const meta = {
+      roundId,
+      rootRoundId: roundId,
+      feedback: writeAccessFrom(access),
+    };
+    const slug = encodeDuelSlug(a, b, meta);
+    const result = await shareOrCopy(duelUrl(a, b, meta), {
       title: "오늘 해볼까 A/B 대결",
       text: `${cardTitle(a)} vs ${cardTitle(b)} — 오늘 해볼까에서 뽑았어. 뭐가 나아?`,
     });
     if (!result.ok) return;
-    addDuel({ slug: encodeDuelSlug(a, b), a, b, createdAt: Date.now() });
+    addDuel({
+      slug,
+      a,
+      b,
+      feedback: meta.feedback,
+      feedbackReadToken: access.readToken,
+      createdAt: Date.now(),
+    });
     trackShare("duel_created", result.method, { via: "publish" });
     setDuelToast(result.method === "native" ? "공유했어요" : "대결 링크를 복사했어요");
     clearTimeout(toastTimer.current);
@@ -151,10 +206,20 @@ export function PublishFlow() {
         <div className="mt-10" data-anim style={{ animation: "fade-up .4s ease .15s both" }}>
           {!authed ? (
             <>
-              <Button variant="aurora" size="lg" className="w-full" onClick={signIn}>
+              <Button
+                variant="aurora"
+                size="lg"
+                className="w-full"
+                disabled={authPending}
+                aria-busy={authPending}
+                onClick={signIn}
+              >
                 <span className="font-serif font-bold">G</span> 구글로 3초 만에 시작
               </Button>
               <p className="mt-2 text-center text-xs text-caption">카드 보관·투표 결과 확인용</p>
+              {securityNotice ? (
+                <p role="alert" className="mt-3 text-center text-sm text-amber-200">{securityNotice}</p>
+              ) : null}
             </>
           ) : (
             <div data-anim style={{ animation: "fade-up .35s ease both" }}>

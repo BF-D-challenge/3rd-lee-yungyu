@@ -13,6 +13,10 @@ import { duelUrl, encodeDuelSlug, shareOrCopy, shareUrl } from "@/lib/share";
 import { addDuel, type PublishedCard, type Vote } from "@/lib/storage";
 import { fetchVotes } from "@/lib/backend/votes";
 import { fetchPublished } from "@/lib/backend/published";
+import { publishCard } from "@/lib/backend/published";
+import { prepareFeedbackAccess } from "@/lib/backend/secure-feedback";
+import { writeAccessFrom } from "@/lib/feedback-access";
+import { newRoundId } from "@/lib/growth";
 import { fakeDoor, track, trackShare } from "@/lib/track";
 import { DuelStatus } from "./duel-status";
 import { cardTitle } from "./publish-card";
@@ -46,7 +50,15 @@ export function DemandBoard() {
     //   (fetchVotes) 서버(Supabase)에서 읽는다 — 로그인 상태면 기기가 바뀌어도 동일한 대시보드.
     let cancelled = false;
     void fetchPublished()
-      .then((cards) => Promise.all(cards.map(async (card) => ({ card, votes: await fetchVotes(card.slug) }))))
+      .then((cards) => Promise.all(cards.map(async (card) => ({
+        card,
+        votes: await fetchVotes(
+          card.slug,
+          card.payload.feedback && card.feedbackReadToken
+            ? { requestId: card.payload.feedback.requestId, readToken: card.feedbackReadToken }
+            : undefined,
+        ),
+      }))))
       .then((loaded) => {
         if (!cancelled) setRows(loaded);
       });
@@ -65,9 +77,24 @@ export function DemandBoard() {
   };
 
   const copyShare = async (row: Row) => {
-    const result = await shareOrCopy(shareUrl(row.card.payload), {
-      title: cardTitle(row.card.payload),
-      text: `${cardTitle(row.card.payload)} — 오늘 해볼까에서 뽑았어. 어때?`,
+    const access = await prepareFeedbackAccess(
+      "card",
+      row.card.payload.feedback,
+      row.card.feedbackReadToken,
+    );
+    if (!access) {
+      setToast("안전한 링크를 준비하지 못했어요.");
+      return;
+    }
+    const payload = { ...row.card.payload, feedback: writeAccessFrom(access) };
+    const card = { ...row.card, payload, feedbackReadToken: access.readToken };
+    await publishCard(card);
+    setRows((current) => current?.map((item) => (
+      item.card.slug === row.card.slug ? { ...item, card } : item
+    )) ?? current);
+    const result = await shareOrCopy(shareUrl(payload), {
+      title: cardTitle(payload),
+      text: `${cardTitle(payload)} — 오늘 해볼까에서 뽑았어. 어때?`,
     });
     if (!result.ok) return;
     trackShare("card_share", result.method, { channel: "link", stage: "dashboard" });
@@ -81,12 +108,31 @@ export function DemandBoard() {
     if (!first || !second) return;
     const a = first.card.payload;
     const b = second.card.payload;
-    const result = await shareOrCopy(duelUrl(a, b), {
+    const access = await prepareFeedbackAccess("duel");
+    if (!access) {
+      setToast("안전한 대결 링크를 준비하지 못했어요.");
+      return;
+    }
+    const roundId = newRoundId();
+    const meta = {
+      roundId,
+      rootRoundId: roundId,
+      feedback: writeAccessFrom(access),
+    };
+    const slug = encodeDuelSlug(a, b, meta);
+    const result = await shareOrCopy(duelUrl(a, b, meta), {
       title: "오늘 해볼까 A/B 대결",
       text: `${cardTitle(a)} vs ${cardTitle(b)} — 오늘 해볼까에서 뽑았어. 뭐가 나아?`,
     });
     if (!result.ok) return;
-    addDuel({ slug: encodeDuelSlug(a, b), a, b, createdAt: Date.now() });
+    addDuel({
+      slug,
+      a,
+      b,
+      feedback: meta.feedback,
+      feedbackReadToken: access.readToken,
+      createdAt: Date.now(),
+    });
     trackShare("duel_created", result.method, { via: "dashboard" });
     setDuelRev((r) => r + 1);
     setToast(result.method === "native" ? "공유했어요" : "대결 링크를 복사했어요");
@@ -103,7 +149,7 @@ export function DemandBoard() {
     <PageShell>
       <TopBar />
       <div className="mx-auto mt-4 max-w-narrow">
-        <h1 className="text-center font-serif text-2xl text-ink">내 카드</h1>
+        <h1 className="text-center text-2xl font-semibold tracking-tight text-ink">내 카드</h1>
 
         {rows.length >= 2 && (
           <div className="mt-4 text-center" data-anim style={{ animation: "fade-up .4s ease both" }}>
@@ -131,7 +177,7 @@ export function DemandBoard() {
               const unlocked = n >= REPORT_MIN_VOTES;
               return (
                 <GlassCard key={row.card.slug} className="p-5" data-anim style={{ animation: "fade-up .4s ease both" }}>
-                  <h2 className="font-serif text-lg leading-snug text-ink">{cardTitle(row.card.payload)}</h2>
+                  <h2 className="text-lg font-semibold leading-snug text-ink">{cardTitle(row.card.payload)}</h2>
                   <p className="mt-2 text-sm text-gold">
                     📬 <b>{n}명</b> 도착 · 🔥 <b>{needN}명</b> 필요해
                   </p>
@@ -179,11 +225,13 @@ export function DemandBoard() {
 
         <DuelStatus key={duelRev} onCopied={showToast} />
 
-        <div className="mt-8 pb-4 text-center">
-          <Button variant="ghost" onClick={() => router.push("/start")}>
-            🌱 새 씨앗으로 또 뽑기
-          </Button>
-        </div>
+        {rows.length > 0 ? (
+          <div className="mt-8 pb-4 text-center">
+            <Button variant="ghost" onClick={() => router.push("/start")}>
+              🌱 새 씨앗으로 또 뽑기
+            </Button>
+          </div>
+        ) : null}
       </div>
 
       {toast && (

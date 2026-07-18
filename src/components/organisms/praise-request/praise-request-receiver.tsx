@@ -3,15 +3,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { castVote, hasVoted } from "@/lib/backend/votes";
+import { feedbackApiConfigured } from "@/lib/backend/feedback-api";
+import { IDEA_FEEDBACK_MESSAGES } from "@/lib/idea-feedback";
 import { decodePraiseRequest } from "@/lib/praise-share";
-import { track } from "@/lib/track";
+import { track, trackIdeaEvent } from "@/lib/track";
 import styles from "./praise-request-receiver.module.css";
 
-const PRAISES = [
-  "무슨 앱인지 바로 이해됐어요",
-  "실제로 써보고 싶어요",
-  "차별점이 더 선명하면 좋겠어요",
-] as const;
+const PRAISES = Object.values(IDEA_FEEDBACK_MESSAGES);
 
 const CUSTOM_PRAISE = "custom";
 const MAX_PRAISE_LENGTH = 80;
@@ -35,9 +33,19 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
   const [sent, setSent] = useState(alreadySent);
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState(false);
+  const legacyExpired = Boolean(card && feedbackApiConfigured() && !card.feedback);
 
   useEffect(() => {
-    if (card) track("praise_request_opened", { request_id: card.id });
+    if (card) {
+      track("praise_request_opened", { request_id: card.id });
+      trackIdeaEvent("idea_share_opened", {
+        request_id: card.id,
+        origin_request_id: card.originRequestId ?? card.id,
+        revision_id: card.revisionId,
+        version: card.version ?? 0,
+        entry_path: window.location.pathname,
+      });
+    }
   }, [card]);
 
   if (!card) {
@@ -83,8 +91,21 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
     };
 
     try {
-      await castVote(slug, "cheer", `support:v1:${JSON.stringify(note)}`);
+      const result = await castVote(
+        slug,
+        "cheer",
+        `support:v1:${JSON.stringify(note)}`,
+        card.feedback,
+      );
+      if (result === "failed") throw new Error("응원이 원격 저장소에 도달하지 않았습니다.");
       track("praise_card_sent", { request_id: card.id, reveal });
+      trackIdeaEvent("idea_feedback_sent", {
+        request_id: card.id,
+        origin_request_id: card.originRequestId ?? card.id,
+        revision_id: card.revisionId,
+        version: card.version ?? 0,
+        entry_path: window.location.pathname,
+      });
       setSent(true);
       setStep("sent");
     } catch {
@@ -161,7 +182,9 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
 
                   <div className={styles.requestNote}>
                     <p className={styles.requestLabel}>친구가 부탁한 것</p>
-                    <p>이해되는지, 써보고 싶은지, 차별점이 보이는지 솔직하게 알려주세요.</p>
+                    <p>{legacyExpired
+                      ? "보안 업데이트 전에 만든 링크예요. 아이디어를 만든 친구에게 새 링크를 요청해 주세요."
+                      : "이해되는지, 써보고 싶은지, 차별점이 보이는지 솔직하게 알려주세요."}</p>
                   </div>
                 </div>
 
@@ -170,8 +193,9 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
                     type="button"
                     className={styles.primaryButton}
                     onClick={() => setStep("praise")}
+                    disabled={legacyExpired}
                   >
-                    반응 보내기
+                    {legacyExpired ? "새 공유 링크가 필요해요" : "반응 보내기"}
                   </button>
                 </div>
               </div>
@@ -338,7 +362,20 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
                 </div>
 
                 <div className={styles.ctaDock}>
-                  <button type="button" className={styles.primaryButton} onClick={() => router.push("/")}>
+                    <button
+                      type="button"
+                      className={styles.primaryButton}
+                      onClick={() => {
+                        trackIdeaEvent("receiver_started_idea", {
+                          request_id: card.id,
+                          origin_request_id: card.originRequestId ?? card.id,
+                          revision_id: card.revisionId,
+                          version: card.version ?? 0,
+                          entry_path: window.location.pathname,
+                        });
+                        router.push("/");
+                      }}
+                    >
                     나도 아이디어 만들기
                   </button>
                   <button type="button" className={styles.secondaryButton} onClick={() => router.back()}>

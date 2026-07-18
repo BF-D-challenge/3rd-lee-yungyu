@@ -20,6 +20,7 @@ export async function publishCard(card: PublishedCard): Promise<void> {
         user_id: user.id,
         slug: card.slug,
         payload: card.payload,
+        feedback_read_token: card.feedbackReadToken ?? null,
         published_at: new Date(card.publishedAt).toISOString(),
       },
       { onConflict: "user_id,slug" },
@@ -38,13 +39,16 @@ export async function fetchPublished(): Promise<PublishedCard[]> {
   try {
     const { data, error } = await sb
       .from("published_cards")
-      .select("slug,payload,published_at")
+      .select("slug,payload,feedback_read_token,published_at")
       .eq("user_id", user.id)
       .order("published_at", { ascending: false });
     if (error || !data) return localLoadPublished();
     return data.map((r) => ({
       slug: r.slug as string,
       payload: r.payload as PublishedCard["payload"],
+      ...(typeof r.feedback_read_token === "string"
+        ? { feedbackReadToken: r.feedback_read_token }
+        : {}),
       publishedAt: new Date(r.published_at as string).getTime(),
     }));
   } catch {

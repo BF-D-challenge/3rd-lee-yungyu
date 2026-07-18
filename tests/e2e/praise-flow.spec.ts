@@ -17,6 +17,8 @@ const PRAISE_OPTIONS = [
   "차별점이 더 선명하면 좋겠어요",
 ] as const;
 
+const DRAW_ALL_SETTLE_TIMEOUT = 20_000;
+
 async function storedVotes(page: Page, slug: string): Promise<TestVote[]> {
   return page.evaluate((key) => JSON.parse(localStorage.getItem(key) ?? "[]"), `oneul:votes:${slug}`);
 }
@@ -129,7 +131,7 @@ test.describe("A안 아이디어 응원 여정", () => {
     await expectNoLegacyMonetization(page);
   });
 
-  test("응원 전송 실패를 안내하고 같은 화면에서 다시 보낼 수 있다", async ({ page }) => {
+  test("브라우저 UUID 생성 API가 실패해도 세션 식별자로 응원을 보낸다", async ({ page }) => {
     const request = makePraiseRequest({ id: "request-retry" });
     const selectedPraise = PRAISE_OPTIONS[0];
 
@@ -139,7 +141,7 @@ test.describe("A안 아이디어 응원 여정", () => {
     await page.getByRole("button", { name: "다음", exact: true }).click();
     await page.getByRole("radio", { name: "익명으로 보내기" }).check();
 
-    // castVote가 ID를 만드는 지점만 한 번 실패시켜 전송 오류와 재시도를 검증한다.
+    // 일부 보안 브라우저가 randomUUID를 막아도 세션 한정 식별자로 전송을 이어간다.
     await page.evaluate(() => {
       const randomUUID = crypto.randomUUID.bind(crypto);
       let shouldFail = true;
@@ -157,11 +159,6 @@ test.describe("A안 아이디어 응원 여정", () => {
 
     const sendButton = page.getByRole("button", { name: "응원 카드 보내기", exact: true });
     await sendButton.click();
-    await expect(page.getByText("응원을 보내지 못했어요. 잠시 후 다시 시도해주세요.", { exact: true })).toBeVisible();
-    await expect(sendButton).toBeEnabled();
-    expect(await storedVotes(page, request.slug)).toHaveLength(0);
-
-    await sendButton.click();
     await expect(page.getByRole("heading", { name: "응원을 보냈어요." })).toBeVisible();
     expect(await storedVotes(page, request.slug)).toHaveLength(1);
   });
@@ -170,9 +167,11 @@ test.describe("A안 아이디어 응원 여정", () => {
     const selectedPraise = PRAISE_OPTIONS[2];
     await installShareMock(page, "native");
     await page.goto("/");
-    const autoFill = page.getByRole("button", { name: "4장 자동 채우기", exact: true });
+    await page.locator(".idea-lab__slot.is-carousel-active .idea-lab__card-frame button").press("Enter");
+    const autoFill = page.getByRole("button", { name: "나머지 자동으로 뽑기", exact: true });
+    await expect(autoFill).toBeVisible();
     await autoFill.press("Enter");
-    await expect(page.locator(".idea-lab__status")).toContainText("네 장이 완성됐어요.");
+    await expect(page.locator(".idea-lab__status")).toContainText("네 장이 완성됐어요.", { timeout: DRAW_ALL_SETTLE_TIMEOUT });
     const resultButton = page.getByRole("button", { name: /결과 자세히 보기/ });
     await resultButton.press("Enter");
     const shareButton = page.getByRole("button", { name: /친구에게 알리고 시작하기/ });
@@ -249,6 +248,34 @@ test.describe("A안 아이디어 응원 여정", () => {
     })).toEqual({ hasSavedRequest: true, copiedLinks: 1 });
   });
 
+  test("받은 반응을 네 가지 신호로 요약하고 친구 한 명을 더 초대한다", async ({ page }) => {
+    const request = makePraiseRequest({ id: "request-feedback-summary" });
+    await installShareMock(page, "clipboard");
+    await seedPraiseStorage(page, {
+      request,
+      votes: [
+        praiseVote({ id: "feedback-1", praise: PRAISE_OPTIONS[0] }),
+        praiseVote({ id: "feedback-2", praise: PRAISE_OPTIONS[0] }),
+        praiseVote({ id: "feedback-3", praise: PRAISE_OPTIONS[1] }),
+        praiseVote({ id: "feedback-4", praise: PRAISE_OPTIONS[2] }),
+        praiseVote({ id: "feedback-5", praise: "가격이 얼마인지 궁금해요" }),
+      ],
+    });
+    await page.goto("/");
+    await openReceivedPraise(page, "filled");
+
+    await expect(page.getByRole("heading", { name: "친구 반응 5개", exact: true })).toBeVisible();
+    for (const label of ["바로 이해 2개", "써보고 싶음 1개", "차별점 보완 1개", "직접 쓴 의견 1개"]) {
+      await expect(page.getByRole("listitem", { name: label, exact: true })).toBeVisible();
+    }
+
+    await page.getByRole("button", { name: "친구 한 명 더 초대하기", exact: true }).click();
+    await expect(page.getByText("링크를 복사했어요.", { exact: true })).toBeVisible();
+    await expect.poll(() => page.evaluate(() => (
+      (window as typeof window & { __clipboardWrites?: string[] }).__clipboardWrites ?? []
+    ).length)).toBe(1);
+  });
+
   test("공개 응원 카드는 아이디어 제목과 보낸 사람을 함께 보여준다", async ({ page }) => {
     const request = makePraiseRequest({ id: "request-inbox-named" });
     const message = "오늘 바로 검증할 수 있는 범위라서 좋아요";
@@ -312,5 +339,87 @@ test.describe("A안 아이디어 응원 여정", () => {
     await expect(page.getByText(privateName, { exact: false })).toHaveCount(0);
     await expect(page.getByText(/보낸 사람 ·/)).toHaveCount(0);
     await expectNoLegacyMonetization(page);
+  });
+
+  test("차별점 반응을 수정본으로 저장하고 재공유한 뒤 원본 반응과 분리한다", async ({ page, context }) => {
+    const request = makePraiseRequest({ id: "request-revision-flow" });
+    await installShareMock(page, "clipboard");
+    await seedPraiseStorage(page, {
+      request,
+      votes: [praiseVote({ id: "original-feedback", praise: PRAISE_OPTIONS[2] })],
+    });
+    await page.goto("/");
+    await openReceivedPraise(page, "filled");
+
+    await expect(page.getByRole("button", { name: "차별점 문장 고치기", exact: true })).toBeVisible();
+    await page.getByRole("button", { name: "차별점 문장 고치기", exact: true }).click();
+    const uvp = "회의 음성 하나를 올리면 결정과 담당자만 바로 공유하는 웹 화면";
+    const difference = "결정과 담당자만 먼저 보여주기";
+    await page.getByRole("textbox", { name: "한 문장 UVP", exact: true }).fill(uvp);
+    await page.getByRole("textbox", { name: "차별점", exact: true }).fill(difference);
+
+    await page.getByRole("button", { name: "원본으로 되돌리기", exact: true }).click();
+    await expect(page.getByRole("textbox", { name: "한 문장 UVP", exact: true })).toHaveValue(request.card.summary);
+    await expect(page.getByRole("textbox", { name: "차별점", exact: true })).toHaveValue(request.card.twist);
+    await page.getByRole("textbox", { name: "한 문장 UVP", exact: true }).fill(uvp);
+    await page.getByRole("textbox", { name: "차별점", exact: true }).fill(difference);
+    await page.getByRole("button", { name: "수정본 저장", exact: true }).click();
+    await expect(page.getByText("수정본 1을 저장했어요.", { exact: true })).toBeVisible();
+    await expect(page.getByText(uvp, { exact: true })).toBeVisible();
+
+    await page.reload();
+    await openReceivedPraise(page, "filled");
+    await expect(page.getByText("현재 공유 중인 버전 · 원본", { exact: true })).toBeVisible();
+    await expect(page.getByRole("listitem", { name: "수정본 1 반응 0개", exact: true })).toBeVisible();
+    await page.getByRole("button", { name: "수정한 아이디어 다시 물어보기", exact: true }).click();
+    await expect(page.getByText("수정본 1을 다시 물어봤어요.", { exact: true })).toBeVisible();
+
+    const revised = await page.evaluate(() => JSON.parse(localStorage.getItem("oneul:latest-praise-request:v1") ?? "null") as {
+      slug: string;
+      card: TestPraiseRequestCard;
+    });
+    expect(revised.card.version).toBe(1);
+    expect(revised.card.originRequestId).toBe(request.card.id);
+    expect(revised.card.id).not.toBe(request.card.id);
+    expect(revised.card.summary).toBe(uvp);
+    expect(revised.card.twist).toBe(difference);
+
+    const receiver = await context.newPage();
+    await receiver.clock.install({ time: FIXED_NOW });
+    await receiver.goto(`/praise/${revised.slug}`);
+    await expect(receiver.getByText(uvp, { exact: true })).toBeVisible();
+    await expect(receiver.getByText(difference, { exact: true })).toBeVisible();
+    await receiver.getByRole("button", { name: "반응 보내기", exact: true }).click();
+    await receiver.getByRole("button", { name: PRAISE_OPTIONS[1], exact: true }).click();
+    await receiver.getByRole("button", { name: "다음", exact: true }).click();
+    await receiver.getByRole("radio", { name: "익명으로 보내기" }).check();
+    await receiver.getByRole("button", { name: "응원 카드 보내기", exact: true }).click();
+    await expect(receiver.getByRole("heading", { name: "응원을 보냈어요." })).toBeVisible();
+
+    await page.bringToFront();
+    await page.clock.runFor(15_000);
+    await page.reload();
+    await openReceivedPraise(page, "filled");
+    await expect(page.getByText("현재 공유 중인 버전 · 수정본 1", { exact: true })).toBeVisible();
+    await expect(page.getByRole("listitem", { name: "원본 반응 1개", exact: true })).toBeVisible();
+    await expect(page.getByRole("listitem", { name: "수정본 1 반응 1개", exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "친구 반응 1개", exact: true })).toBeVisible();
+
+    const events = await trackedEvents(page);
+    expect(events).toEqual(expect.arrayContaining([
+      expect.objectContaining({ event: "idea_revision_saved", revision_id: expect.any(String), version: 1 }),
+      expect.objectContaining({ event: "idea_revision_shared", revision_id: expect.any(String), version: 1 }),
+    ]));
+    expect(JSON.stringify(events)).not.toContain("결정과 담당자만");
+    await receiver.close();
+  });
+
+  test("반응이 없으면 다음 수정 조언을 만들지 않는다", async ({ page }) => {
+    const request = makePraiseRequest({ id: "request-no-feedback" });
+    await seedPraiseStorage(page, { request });
+    await page.goto("/");
+    await openReceivedPraise(page, "empty");
+    await expect(page.getByText("다음에 무엇을 고칠까요?", { exact: true })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "차별점 문장 고치기", exact: true })).toHaveCount(0);
   });
 });

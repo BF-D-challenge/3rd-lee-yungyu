@@ -57,4 +57,4 @@ metadata:
 
 ## Query Skill
 
-저장소의 `.claude/skills/material-design-3`가 이 코퍼스를 조회하는 스킬 원본이다. 완성 후 `/Users/yungyulee/.agents/skills/material-design-3`에 동기화해 Codex 런타임에서 사용한다.
+저장소의 `.claude/skills/design-google`가 이 코퍼스를 조회하는 스킬 원본이다. 완성 후 `/Users/yungyulee/.agents/skills/design-google`에 동기화해 Codex 런타임에서 사용한다.
