@@ -1,5 +1,10 @@
 export { IdeaLab } from "./idea-lab";
-export { IDEA_LAB_AXIS_META, IDEA_LAB_SCENARIOS, PLATFORM_LABELS } from "./sample-data";
+export {
+  IDEA_LAB_AXIS_META,
+  IDEA_LAB_SCENARIOS,
+  KOREA_POPULAR_IDEA_LAB_SCENARIOS,
+  PLATFORM_LABELS,
+} from "./sample-data";
 export type {
   IdeaLabAxisId,
   IdeaLabChangeKind,

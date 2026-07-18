@@ -2,17 +2,22 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const authMocks = vi.hoisted(() => ({
   signInWithGoogle: vi.fn(),
+  signOut: vi.fn(),
 }));
 
 vi.mock("@/lib/backend/auth", () => ({
   authEnabled: true,
   getUser: vi.fn(),
   signInWithGoogle: authMocks.signInWithGoogle,
+  signOut: authMocks.signOut,
 }));
 
 import {
   beginAuth,
+  consumeAuthPending,
   consumeAuthReturnTo,
+  endAuthSession,
+  markAuthPending,
   peekAuthReturnTo,
   prepareAuthRedirect,
 } from "@/lib/auth-session";
@@ -28,11 +33,14 @@ const makeStorage = () => {
 
 beforeEach(() => {
   vi.stubGlobal("sessionStorage", makeStorage());
+  vi.stubGlobal("localStorage", makeStorage());
   vi.stubGlobal("window", {
     location: new URL("https://bfd-seven.vercel.app/vs/long-card-slug?from=share"),
   });
   authMocks.signInWithGoogle.mockReset();
   authMocks.signInWithGoogle.mockResolvedValue({ error: null });
+  authMocks.signOut.mockReset();
+  authMocks.signOut.mockResolvedValue(undefined);
 });
 
 describe("Google OAuth redirect handoff", () => {
@@ -59,5 +67,35 @@ describe("Google OAuth redirect handoff", () => {
   it("does not loop back into an auth callback page", () => {
     prepareAuthRedirect("/auth/complete?error=exchange_failed");
     expect(consumeAuthReturnTo()).toBe("/");
+  });
+
+  it("clears local demo and redirect state when the account signs out", async () => {
+    localStorage.setItem("oneul:demo-auth", "1");
+    sessionStorage.setItem("oneul:auth-pending", "creator");
+    sessionStorage.setItem("oneul:auth-active", "1");
+    sessionStorage.setItem("oneul:auth-return-to", "/dashboard");
+
+    await endAuthSession();
+
+    expect(authMocks.signOut).toHaveBeenCalledOnce();
+    expect(localStorage.getItem("oneul:demo-auth")).toBeNull();
+    expect(sessionStorage.getItem("oneul:auth-pending")).toBeNull();
+    expect(sessionStorage.getItem("oneul:auth-active")).toBeNull();
+    expect(sessionStorage.getItem("oneul:auth-return-to")).toBeNull();
+  });
+
+  it("accepts a recent auth handoff once and expires stale attribution", () => {
+    const now = vi.spyOn(Date, "now");
+    now.mockReturnValue(1_000);
+    markAuthPending("receiver");
+    now.mockReturnValue(2_000);
+    expect(consumeAuthPending("receiver")).toBe(true);
+    expect(consumeAuthPending("receiver")).toBe(false);
+
+    now.mockReturnValue(10_000);
+    markAuthPending("creator");
+    now.mockReturnValue(10_000 + 10 * 60 * 1_000 + 1);
+    expect(consumeAuthPending("creator")).toBe(false);
+    expect(sessionStorage.getItem("oneul:auth-pending")).toBeNull();
   });
 });

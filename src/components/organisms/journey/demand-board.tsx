@@ -9,7 +9,8 @@ import { GlassCard } from "@/components/atoms/glass-card";
 import { FakeDoorSheet } from "@/components/molecules/fake-door-sheet";
 import { PageShell } from "@/components/layouts/page-shell";
 import { TopBar } from "@/components/layouts/top-bar";
-import { duelUrl, encodeDuelSlug, shareOrCopy, shareUrl } from "@/lib/share";
+import { shareToKakao } from "@/lib/kakao-share";
+import { duelUrl, encodeDuelSlug, shareUrl } from "@/lib/share";
 import { addDuel, type PublishedCard, type Vote } from "@/lib/storage";
 import { fetchVotes } from "@/lib/backend/votes";
 import { fetchPublished } from "@/lib/backend/published";
@@ -71,12 +72,12 @@ export function DemandBoard() {
   if (!rows) return null;
 
   const showToast = () => {
-    setToast("링크를 복사했어요");
+    setToast("카카오톡 공유 화면을 열었어요");
     clearTimeout(timer.current);
     timer.current = setTimeout(() => setToast(null), 2000);
   };
 
-  const copyShare = async (row: Row) => {
+  const shareCard = async (row: Row) => {
     const access = await prepareFeedbackAccess(
       "card",
       row.card.payload.feedback,
@@ -92,13 +93,17 @@ export function DemandBoard() {
     setRows((current) => current?.map((item) => (
       item.card.slug === row.card.slug ? { ...item, card } : item
     )) ?? current);
-    const result = await shareOrCopy(shareUrl(payload), {
+    const result = await shareToKakao(shareUrl(payload), {
       title: cardTitle(payload),
       text: `${cardTitle(payload)} — 오늘 해볼까에서 뽑았어. 어때?`,
+      buttonTitle: "카드 봐주기",
     });
-    if (!result.ok) return;
-    trackShare("card_share", result.method, { channel: "link", stage: "dashboard" });
-    setToast(result.method === "native" ? "공유했어요" : "링크를 복사했어요");
+    if (!result.ok) {
+      setToast("카카오톡 공유 화면을 열지 못했어요");
+      return;
+    }
+    trackShare("card_share", result.method, { channel: "kakao", stage: "dashboard" });
+    setToast("카카오톡 공유 화면을 열었어요");
     clearTimeout(timer.current);
     timer.current = setTimeout(() => setToast(null), 2000);
   };
@@ -120,9 +125,10 @@ export function DemandBoard() {
       feedback: writeAccessFrom(access),
     };
     const slug = encodeDuelSlug(a, b, meta);
-    const result = await shareOrCopy(duelUrl(a, b, meta), {
+    const result = await shareToKakao(duelUrl(a, b, meta), {
       title: "오늘 해볼까 A/B 대결",
       text: `${cardTitle(a)} vs ${cardTitle(b)} — 오늘 해볼까에서 뽑았어. 뭐가 나아?`,
+      buttonTitle: "둘 중 골라주기",
     });
     if (!result.ok) return;
     addDuel({
@@ -135,7 +141,7 @@ export function DemandBoard() {
     });
     trackShare("duel_created", result.method, { via: "dashboard" });
     setDuelRev((r) => r + 1);
-    setToast(result.method === "native" ? "공유했어요" : "대결 링크를 복사했어요");
+    setToast("카카오톡 공유 화면을 열었어요");
     clearTimeout(timer.current);
     timer.current = setTimeout(() => setToast(null), 2000);
   };
@@ -156,7 +162,7 @@ export function DemandBoard() {
             <Button variant="glass" onClick={createDuel}>
               🆚 A/B 대결 만들기
             </Button>
-            <p className="mt-1.5 text-xs text-caption">최근 카드 2장으로 만들고 링크를 복사해요</p>
+            <p className="mt-1.5 text-xs text-caption">최근 카드 2장을 카카오톡으로 물어봐요</p>
           </div>
         )}
 
@@ -213,8 +219,8 @@ export function DemandBoard() {
                   </BlurVeil>
                   <p className="mt-2 text-xs text-caption">도착한 응원 {n}개 · 자가·중복 제외</p>
                   <div className="mt-3 text-center">
-                    <Button variant="ghost" onClick={() => copyShare(row)}>
-                      🔗 카드 다시 공유
+                    <Button variant="ghost" onClick={() => shareCard(row)}>
+                      💬 카카오톡으로 다시 공유
                     </Button>
                   </div>
                 </GlassCard>

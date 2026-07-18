@@ -39,8 +39,8 @@ export type FakeDoorProduct = "plan" | "day_pass" | "demand_report";
 export const fakeDoor = (product: FakeDoorProduct, price: number, params: Record<string, unknown> = {}) =>
   track(`pay_${product}_click`, { product, price, ...params });
 
-/** 공유 이벤트: native(공유시트)/clipboard(복사)를 구분해 계측한다 (shareOrCopy와 짝) */
-export const trackShare = (event: string, method: "native" | "clipboard", params: Record<string, unknown> = {}) =>
+/** 공유 이벤트: 모든 발신 경로는 Kakao JavaScript SDK로 통일한다. */
+export const trackShare = (event: string, method: "kakao", params: Record<string, unknown> = {}) =>
   track(event, { share_method: method, ...params });
 
 export type IdeaFunnelEventName =

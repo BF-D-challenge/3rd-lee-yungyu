@@ -292,11 +292,60 @@ drop policy if exists published_cards_delete_own on public.published_cards;
 create policy published_cards_delete_own on public.published_cards
   for delete to authenticated using ((select auth.uid()) = user_id);
 
+-- ----------------------------------------------------------------------------
+-- 7. idea_taste_answers — 다시 뽑기마다 한 번 답한 추상 취향 신호.
+--    결과/제품명/자유입력은 저장하지 않고 질문·답변·태그 ID만 append-only로 남긴다.
+-- ----------------------------------------------------------------------------
+create table if not exists public.idea_taste_answers (
+  id          uuid primary key,
+  user_id     uuid not null references auth.users (id) on delete cascade,
+  question_id text not null check (char_length(question_id) between 1 and 64),
+  answer_id   text not null check (char_length(answer_id) between 1 and 64),
+  trait_id    text check (trait_id is null or char_length(trait_id) between 1 and 64),
+  created_at  timestamptz not null default now(),
+  constraint idea_taste_answers_known_choice check (
+    (question_id, answer_id, coalesce(trait_id, '')) in (
+      ('audience', 'personal', 'audience:personal'),
+      ('audience', 'work', 'audience:work'),
+      ('audience', 'either', ''),
+      ('input', 'lightweight', 'input:lightweight'),
+      ('input', 'media', 'input:media'),
+      ('input', 'either', ''),
+      ('outcome', 'create', 'outcome:create'),
+      ('outcome', 'decide', 'outcome:decide'),
+      ('outcome', 'either', ''),
+      ('surface', 'browser', 'surface:browser'),
+      ('surface', 'mobile', 'surface:mobile'),
+      ('surface', 'either', '')
+    )
+  )
+);
+
+create index if not exists idx_idea_taste_answers_user_created
+  on public.idea_taste_answers (user_id, created_at desc);
+
+alter table public.idea_taste_answers enable row level security;
+
+-- 2026-05 이후 Data API 자동 노출이 기본 해제될 수 있으므로 권한을 명시한다.
+revoke all on table public.idea_taste_answers from anon;
+revoke all on table public.idea_taste_answers from authenticated;
+grant select, insert on table public.idea_taste_answers to authenticated;
+grant all on table public.idea_taste_answers to service_role;
+
+drop policy if exists idea_taste_answers_select_own on public.idea_taste_answers;
+create policy idea_taste_answers_select_own on public.idea_taste_answers
+  for select to authenticated using ((select auth.uid()) = user_id);
+
+drop policy if exists idea_taste_answers_insert_own on public.idea_taste_answers;
+create policy idea_taste_answers_insert_own on public.idea_taste_answers
+  for insert to authenticated with check ((select auth.uid()) = user_id);
+
 -- ============================================================================
 -- 끝. 요약
---   테이블 6  : profiles, ideas, votes, spins, purchases, published_cards
+--   테이블 7  : profiles, ideas, votes, spins, purchases, published_cards, idea_taste_answers
 --   ENUM   4  : vote_type, product_type, purchase_status, seed_track
---   RLS 정책 19: profiles×3, ideas×4, votes×3, spins×3, purchases×2, published_cards×4
+--   RLS 정책 21: profiles×3, ideas×4, votes×3, spins×3, purchases×2,
+--                 published_cards×4, idea_taste_answers×2
 --   Edge Function 위임: capability 토큰 기반 익명 응원 / rate-limit / 익명 스핀 캡 / 결제 상태 전이
 --   ⚠ 라이브 DB에는 이 파일에 없는 card_votes/duel_votes 테이블이 이미 존재함(2026-07-08 REST 프로브로 확인).
 --     본 파일과 라이브 스키마가 어긋나 있으니, 다음 정리 작업 때 card_votes/duel_votes 정의도

@@ -9,7 +9,8 @@ import { trackGrowth, newRoundId } from "@/lib/growth";
 import { drawIdeaCandidates, selectionEventParams, type IdeaCandidate } from "@/lib/idea";
 import { legacyTasteFor, preferenceForId, type PreferenceId } from "@/lib/preferences";
 import { buildDeck, type AxisId } from "@/lib/pools";
-import { duelUrl, encodeDuelSlug, shareOrCopy, toPayload, type RoundMeta } from "@/lib/share";
+import { shareToKakao } from "@/lib/kakao-share";
+import { duelUrl, encodeDuelSlug, toPayload, type RoundMeta } from "@/lib/share";
 import { prepareFeedbackAccess } from "@/lib/backend/secure-feedback";
 import { writeAccessFrom, type FeedbackOwnerAccess } from "@/lib/feedback-access";
 import { addDuel } from "@/lib/storage";
@@ -24,7 +25,7 @@ export interface IdeaDrawBoardProps {
   onEditPreferences: () => void;
 }
 
-type ShareState = { kind: "idle" } | { kind: "success"; message: string } | { kind: "error"; message: string; url: string };
+type ShareState = { kind: "idle" } | { kind: "success"; message: string } | { kind: "error"; message: string };
 export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, rootRoundId = null, onEditPreferences }: IdeaDrawBoardProps) {
   const [candidates, setCandidates] = useState<[IdeaCandidate, IdeaCandidate] | null>(null);
   const [deckCards, setDeckCards] = useState<ReturnType<typeof buildDeck>>([]);
@@ -125,7 +126,7 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
       feedbackRef.current?.readToken,
     );
     if (!feedback) {
-      setShareState({ kind: "error", message: "안전한 공유 링크를 준비하지 못했어요.", url: "" });
+      setShareState({ kind: "error", message: "안전한 공유 링크를 준비하지 못했어요." });
       return;
     }
     feedbackRef.current = feedback;
@@ -133,12 +134,13 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
     const slug = encodeDuelSlug(payloadA, payloadB, meta);
     const url = duelUrl(payloadA, payloadB, meta);
     trackGrowth("share_sheet_opened", { round_id: roundId, origin_round_id: sourceRoundId, user_id: session.actorId });
-    const result = await shareOrCopy(url, {
+    const result = await shareToKakao(url, {
       title: "오늘 만들 후보 두 장",
       text: "오늘 만들 후보 두 장을 뽑았어. 하나만 골라주고 힘 좀 줘.",
+      buttonTitle: "후보 골라주기",
     });
     if (!result.ok) {
-      setShareState({ kind: "error", message: "공유나 복사를 완료하지 못했어요.", url });
+      setShareState({ kind: "error", message: "카카오톡 공유 화면을 열지 못했어요." });
       return;
     }
     addDuel({
@@ -159,7 +161,7 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
     });
     setShareState({
       kind: "success",
-      message: result.method === "native" ? "라운드 공유를 마쳤어요." : "라운드 링크를 복사했어요.",
+      message: "카카오톡 공유 화면을 열었어요.",
     });
   };
 
@@ -257,7 +259,7 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
       <div data-primary-actions role="group" aria-label="라운드 주요 작업" className="fixed bottom-0 left-1/2 z-40 grid w-full max-w-[760px] -translate-x-1/2 gap-2 border-t border-white/10 bg-[#0a0a0b]/95 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 shadow-[0_-12px_30px_rgba(0,0,0,.35)] backdrop-blur-xl sm:px-6 min-[600px]:grid-cols-[minmax(0,1fr)_auto] min-[840px]:grid-cols-[minmax(280px,420px)_minmax(160px,200px)] min-[840px]:justify-end">
         <Button type="button" variant="aurora" size="lg" disabled={!complete} onClick={shareRound} className="w-full px-4 text-sm sm:px-7 sm:text-base">
           <Users aria-hidden className="h-5 w-5" />
-          BF.D에게 골라달라고 하기
+          카카오톡으로 골라달라고 하기
         </Button>
         <Button type="button" variant="glass" size="lg" disabled={!complete} onClick={redrawRound} className="w-full px-4 text-sm sm:px-7 sm:text-base">
           <RefreshCw aria-hidden className="h-5 w-5" />
@@ -273,15 +275,6 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
           }`}
         >
           <p>{shareState.message}</p>
-          {shareState.kind === "error" ? (
-            <input
-              aria-label="직접 복사할 라운드 주소"
-              readOnly
-              value={shareState.url}
-              onFocus={(event) => event.currentTarget.select()}
-              className="mt-2 h-12 w-full rounded-input border border-white/15 bg-black/30 px-3 text-xs text-ink outline-none focus:border-glow"
-            />
-          ) : null}
         </div>
       ) : null}
     </PageShell>

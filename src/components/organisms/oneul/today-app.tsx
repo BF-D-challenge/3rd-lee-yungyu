@@ -24,8 +24,9 @@ import {
   secureSavedPraiseRequest,
   type SavedPraiseRequest,
 } from "@/lib/praise-share";
-import { shareOrCopy } from "@/lib/share";
+import { shareToKakao } from "@/lib/kakao-share";
 import { track, trackIdeaEvent, trackShare } from "@/lib/track";
+import { AuthAccountMenu } from "./auth-account-menu";
 
 type View = "idea" | "praise";
 
@@ -250,19 +251,19 @@ export function TodayApp() {
       return { slug, card, prompt: payload.prompt } satisfies SavedPraiseRequest;
     })();
     const saved = secureSavedPraiseRequest(draft);
-    // 공유가 취소돼도 같은 결과 링크로 다시 요청할 수 있게 초안은 먼저 보존한다.
-    // 제작 문구 해제는 아래 shareOrCopy가 성공한 경우에만 IdeaLab이 처리한다.
+    // 카카오톡 공유 화면을 열지 못해도 같은 결과 링크로 다시 요청할 수 있게 초안은 먼저 보존한다.
+    // 제작 문구 해제는 아래 shareToKakao가 공유 화면을 연 경우에만 IdeaLab이 처리한다.
     saveLatestPraiseRequest(saved);
     setRequest(saved);
     setVotes([]);
     const access = praiseOwnerAccess(saved);
     const registration = access ? await registerFeedbackRequest("card", access) : "failed";
     if (registration === "failed") {
-      trackShare("praise_request_share_cancelled", "clipboard", {
+      trackShare("praise_request_share_cancelled", "kakao", {
         request_id: saved.card.id,
         reason: "secure_registration_failed",
       });
-      return { ok: false, method: "clipboard" as const };
+      return { ok: false, method: "kakao" as const, reason: "launch_failed" as const };
     }
     if (!storedDraft) {
       track("praise_request_created", { request_id: saved.card.id });
@@ -273,12 +274,15 @@ export function TodayApp() {
         entry_path: window.location.pathname,
       });
     }
-    const result = await shareOrCopy(requestUrl(saved.slug), {
+    const result = await shareToKakao(requestUrl(saved.slug), {
       title: saved.card.title,
       text: `${saved.card.summary}\n짧은 응원이나 의견을 남겨주세요.`,
+      buttonTitle: "친구 반응 남기기",
+      serverCallbackArgs: { request_id: saved.card.id },
     });
     trackShare(result.ok ? "praise_request_share_completed" : "praise_request_share_cancelled", result.method, {
       request_id: saved.card.id,
+      completion_signal: result.ok ? "picker_opened" : "launch_failed",
     });
     return result;
   };
@@ -288,8 +292,8 @@ export function TodayApp() {
     if (ideaDraft && ideaDraft.prompt !== request?.prompt) {
       const result = await shareIdea(ideaDraft);
       setPraiseShareNotice(result.ok
-        ? result.method === "clipboard" ? "링크를 복사했어요." : "공유했어요."
-        : "공유를 마치지 않았어요. 다시 시도해 주세요.");
+        ? "카카오톡 공유 화면을 열었어요."
+        : "카카오톡 공유 화면을 열지 못했어요. 다시 시도해 주세요.");
       return;
     }
     if (!request) {
@@ -307,12 +311,15 @@ export function TodayApp() {
       saveLatestPraiseRequest(secured);
       setRequest(secured);
     }
-    const result = await shareOrCopy(requestUrl(secured.slug), {
+    const result = await shareToKakao(requestUrl(secured.slug), {
       title: secured.card.title,
       text: `${secured.card.summary}\n짧은 응원이나 의견을 남겨주세요.`,
+      buttonTitle: "친구 반응 남기기",
+      serverCallbackArgs: { request_id: secured.card.id },
     });
     trackShare(result.ok ? "praise_request_reshare_completed" : "praise_request_reshare_cancelled", result.method, {
       request_id: secured.card.id,
+      completion_signal: result.ok ? "picker_opened" : "launch_failed",
     });
     if (feedbackSummary.total > 0) {
       trackIdeaEvent("received_feedback_reinvite", {
@@ -324,8 +331,8 @@ export function TodayApp() {
       });
     }
     setPraiseShareNotice(result.ok
-      ? result.method === "clipboard" ? "링크를 복사했어요." : "공유했어요."
-      : "공유를 마치지 않았어요. 다시 시도해 주세요.");
+      ? "카카오톡 공유 화면을 열었어요."
+      : "카카오톡 공유 화면을 열지 못했어요. 다시 시도해 주세요.");
   };
 
   const startEdit = () => {
@@ -387,15 +394,18 @@ export function TodayApp() {
     saveLatestPraiseRequest(saved);
     setRequest(saved);
     setVotes([]);
-    const result = await shareOrCopy(requestUrl(saved.slug), {
+    const result = await shareToKakao(requestUrl(saved.slug), {
       title: saved.card.title,
       text: `${saved.card.summary}\n짧은 응원이나 의견을 남겨주세요.`,
+      buttonTitle: "친구 반응 남기기",
+      serverCallbackArgs: { request_id: saved.card.id },
     });
     trackShare(result.ok ? "praise_request_share_completed" : "praise_request_share_cancelled", result.method, {
       request_id: saved.card.id,
       origin_request_id: saved.card.originRequestId,
       revision_id: saved.card.revisionId,
       version: saved.card.version,
+      completion_signal: result.ok ? "picker_opened" : "launch_failed",
     });
     if (result.ok) {
       trackIdeaEvent("idea_revision_shared", {
@@ -405,7 +415,7 @@ export function TodayApp() {
         version: saved.card.version,
         entry_path: window.location.pathname,
       });
-      setRevisionNotice(`수정본 ${activeRevision.version}을 다시 물어봤어요.`);
+      setRevisionNotice(`수정본 ${activeRevision.version}의 카카오톡 공유 화면을 열었어요.`);
     }
   };
 
@@ -433,29 +443,48 @@ export function TodayApp() {
   return (
     <div className="flex min-h-dvh justify-center text-ink">
       <main
-        className={`relative w-full max-w-[440px] bg-bg shadow-[0_0_0_1px_rgba(255,255,255,.05),0_40px_120px_rgba(0,0,0,.5)] ${
+        className={`today-app-shell relative w-full max-w-[440px] bg-bg shadow-[0_0_0_1px_rgba(255,255,255,.05),0_40px_120px_rgba(0,0,0,.5)] ${
           isIdea ? "flex h-dvh flex-col overflow-hidden" : "min-h-dvh"
         }`}
       >
-        <nav className="sticky top-0 z-50 flex-none border-b border-white/10 bg-bg/90 px-4 py-1 backdrop-blur-xl">
-          <div className="flex items-center justify-between gap-3">
-            <button type="button" onClick={() => setView("idea")} className="min-h-12 rounded-lg px-1 text-sm font-black text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">오늘 해볼까</button>
-            <div className="flex rounded-full border border-white/10 bg-white/[.035] p-1 text-[11px] font-bold" role="group" aria-label="화면 전환">
-              <button type="button" aria-pressed={view === "idea"} onClick={() => setView("idea")} className={`min-h-12 rounded-full px-3.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${view === "idea" ? "bg-white/[.12] text-ink" : "text-mist hover:text-ink"}`}>아이디어 만들기</button>
+        <nav className="sticky top-0 z-50 flex-none overflow-x-auto border-b border-white/10 bg-bg/90 px-4 py-1 backdrop-blur-xl">
+          <div className="flex min-w-max items-center justify-between gap-3">
+            <button
+              type="button"
+              aria-label="오늘 해볼까"
+              onClick={() => setView("idea")}
+              className="min-h-12 shrink-0 whitespace-nowrap rounded-lg px-1 text-sm font-black text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              <span className="min-[370px]:hidden">오늘</span>
+              <span className="hidden min-[370px]:inline">오늘 해볼까</span>
+            </button>
+            <div className="flex shrink-0 rounded-full border border-white/10 bg-white/[.035] p-1 text-[11px] font-bold" role="group" aria-label="화면 전환">
+              <button
+                type="button"
+                aria-label="아이디어 만들기"
+                aria-pressed={view === "idea"}
+                onClick={() => setView("idea")}
+                className={`min-h-12 whitespace-nowrap rounded-full px-2.5 transition-colors min-[370px]:px-3.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${view === "idea" ? "bg-white/[.12] text-ink" : "text-mist hover:text-ink"}`}
+              >
+                <span className="min-[370px]:hidden">아이디어</span>
+                <span className="hidden min-[370px]:inline">아이디어 만들기</span>
+              </button>
               <button
                 type="button"
                 aria-label={unreadPraiseCount ? `받은 응원, 새 응원 ${unreadPraiseCount}개` : "받은 응원"}
                 aria-pressed={view === "praise"}
                 onClick={() => setView("praise")}
-                className={`flex min-h-12 items-center gap-1.5 rounded-full px-3.5 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${view === "praise" ? "bg-white/[.12] text-ink" : "text-mist hover:text-ink"}`}
+                className={`flex min-h-12 items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 transition-colors min-[370px]:px-3.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${view === "praise" ? "bg-white/[.12] text-ink" : "text-mist hover:text-ink"}`}
               >
-                받은 응원
+                <span className="min-[370px]:hidden">응원</span>
+                <span className="hidden min-[370px]:inline">받은 응원</span>
                 {unreadPraiseCount ? (
-                  <span aria-hidden="true" className="inline-grid min-h-5 min-w-5 place-items-center rounded-full bg-primary px-1 text-[10px] leading-none text-white">
+                  <span aria-hidden="true" className="inline-grid min-h-5 min-w-5 place-items-center rounded-full bg-action px-1 text-[10px] leading-none text-white">
                     {unreadPraiseCount}
                   </span>
                 ) : null}
               </button>
+              <AuthAccountMenu />
             </div>
           </div>
         </nav>
@@ -536,7 +565,7 @@ export function TodayApp() {
                   <button
                     key={action.kind}
                     type="button"
-                    className={`min-h-12 w-full rounded-lg px-4 text-sm font-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${index === 0 ? "bg-primary text-white hover:bg-primary-hover" : "border border-white/15 bg-white/[.04] text-ink hover:bg-white/[.08]"}`}
+                    className={`min-h-12 w-full rounded-lg px-4 text-sm font-black transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${index === 0 ? "bg-action text-white hover:bg-action-hover" : "border border-white/15 bg-white/[.04] text-ink hover:bg-white/[.08]"}`}
                     onClick={() => {
                       if (action.kind === "edit-difference") startEdit();
                       if (action.kind === "read-custom") openDirectFeedback();
@@ -578,7 +607,7 @@ export function TodayApp() {
                 </div>
               </dl>
               <div className="mt-3 grid gap-2">
-                <button type="button" className="min-h-12 w-full rounded-lg bg-primary px-4 text-sm font-black text-white hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" onClick={() => { void shareRevision(); }}>
+                <button type="button" className="min-h-12 w-full rounded-lg bg-action px-4 text-sm font-black text-white hover:bg-action-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" onClick={() => { void shareRevision(); }}>
                   수정한 아이디어 다시 물어보기
                 </button>
                 <button type="button" className="min-h-12 w-full rounded-lg border border-white/15 bg-white/[.04] px-4 text-sm font-black text-ink hover:bg-white/[.08] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" onClick={startEdit}>
@@ -604,7 +633,7 @@ export function TodayApp() {
                 </label>
               </div>
               <div className="mt-3 grid gap-2">
-                <button type="button" className="min-h-12 w-full rounded-lg bg-primary px-4 text-sm font-black text-white hover:bg-primary-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" onClick={saveRevision} disabled={!editUvp.trim() || !editDifference.trim()}>
+                <button type="button" className="min-h-12 w-full rounded-lg bg-action px-4 text-sm font-black text-white hover:bg-action-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" onClick={saveRevision} disabled={!editUvp.trim() || !editDifference.trim()}>
                   수정본 저장
                 </button>
                 <button type="button" className="min-h-12 w-full rounded-lg border border-white/15 bg-white/[.04] px-4 text-sm font-black text-ink hover:bg-white/[.08] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" onClick={resetEditToOriginal}>

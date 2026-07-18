@@ -83,6 +83,14 @@
   animation: stepIn 220ms ease both;
 }
 
+.stepBack {
+  animation-name: stepBack;
+}
+
+.stepFocus {
+  outline: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .step {
     animation: none;
@@ -93,6 +101,17 @@
   from {
     opacity: 0;
     transform: translateX(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes stepBack {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
   }
   to {
     opacity: 1;
@@ -373,8 +392,8 @@
 .characterCount {
   display: block;
   margin-top: 6px;
-  color: rgba(255, 255, 255, 0.42);
-  font-size: 11px;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 12px;
   text-align: right;
 }
 
@@ -476,7 +495,7 @@
   border: 0;
   border-radius: 12px;
   color: #fff;
-  background: #ff4458;
+  background: var(--action-primary);
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
@@ -484,11 +503,11 @@
 }
 
 .primaryButton:hover:not(:disabled) {
-  background: #ff5a6c;
+  background: var(--action-primary-hover);
 }
 
 .primaryButton:active:not(:disabled) {
-  background: #e63a4d;
+  background: var(--action-primary-pressed);
 }
 
 .primaryButton:disabled {

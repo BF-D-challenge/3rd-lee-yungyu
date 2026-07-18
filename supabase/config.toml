@@ -1,2 +1,4 @@
 [functions.feedback-api]
+# 카드 응원은 익명 capability 링크를 지원한다. 대결 쓰기는 함수 내부에서
+# Supabase Auth JWT를 별도로 검증하므로 gateway 전역 검증은 비활성화한다.
 verify_jwt = false

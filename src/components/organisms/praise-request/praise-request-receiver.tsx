@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { castVote, hasVoted } from "@/lib/backend/votes";
 import { feedbackApiConfigured } from "@/lib/backend/feedback-api";
@@ -26,6 +26,7 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
   const card = useMemo(() => decodePraiseRequest(slug), [slug]);
   const alreadySent = useMemo(() => hasVoted(slug), [slug]);
   const [step, setStep] = useState<ReceiverStep>(() => (alreadySent ? "sent" : "intro"));
+  const [direction, setDirection] = useState<"forward" | "backward">("forward");
   const [selected, setSelected] = useState<PraiseChoice | null>(null);
   const [customPraise, setCustomPraise] = useState("");
   const [reveal, setReveal] = useState<RevealChoice>("forever-anonymous");
@@ -33,6 +34,8 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
   const [sent, setSent] = useState(alreadySent);
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState(false);
+  const stepFocusRef = useRef<HTMLElement | null>(null);
+  const previousStepRef = useRef(step);
   const legacyExpired = Boolean(card && feedbackApiConfigured() && !card.feedback);
 
   useEffect(() => {
@@ -47,6 +50,15 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
       });
     }
   }, [card]);
+
+  useEffect(() => {
+    if (previousStepRef.current === step) return;
+    previousStepRef.current = step;
+    const frame = window.requestAnimationFrame(() => {
+      stepFocusRef.current?.focus({ preventScroll: true });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [step]);
 
   if (!card) {
     return (
@@ -70,12 +82,16 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
   const selectedPraise = selected === CUSTOM_PRAISE ? customPraise.trim() : selected ?? "";
   const canContinue = selectedPraise.length > 0;
   const canSend = canContinue && (reveal === "forever-anonymous" || senderName.trim().length > 0);
+  const moveToStep = (next: ReceiverStep) => {
+    setDirection(STEP_ORDER.indexOf(next) < STEP_ORDER.indexOf(step) ? "backward" : "forward");
+    setStep(next);
+  };
 
   const send = async () => {
     if (sending || sent || !canSend) return;
     if (hasVoted(slug)) {
       setSent(true);
-      setStep("sent");
+      moveToStep("sent");
       return;
     }
 
@@ -107,7 +123,7 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
         entry_path: window.location.pathname,
       });
       setSent(true);
-      setStep("sent");
+      moveToStep("sent");
     } catch {
       setSendError(true);
     } finally {
@@ -150,7 +166,7 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
 
           <div className={styles.stepViewport}>
             {step === "intro" ? (
-              <div className={styles.step} key="intro">
+              <div className={`${styles.step} ${direction === "backward" ? styles.stepBack : ""}`} key="intro">
                 <div className={styles.scrollArea}>
                   <div className={styles.receiverAppbarRow}>
                     <span className={styles.receiverAppbarBrand}>친구가 오늘 만든 아이디어예요</span>
@@ -159,7 +175,13 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
 
                   <div className={styles.previewCard}>
                     <p className={styles.previewLabel}>친구가 시작하려는 제품</p>
-                    <h1 className={styles.heroTitle}>{card.title}</h1>
+                    <h1
+                      ref={(node) => { stepFocusRef.current = node; }}
+                      tabIndex={-1}
+                      className={`${styles.heroTitle} ${styles.stepFocus}`}
+                    >
+                      {card.title}
+                    </h1>
                     <p className={styles.heroSummary}>{card.summary}</p>
                   </div>
 
@@ -192,7 +214,7 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
                   <button
                     type="button"
                     className={styles.primaryButton}
-                    onClick={() => setStep("praise")}
+                    onClick={() => moveToStep("praise")}
                     disabled={legacyExpired}
                   >
                     {legacyExpired ? "새 공유 링크가 필요해요" : "반응 보내기"}
@@ -202,16 +224,22 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
             ) : null}
 
             {step === "praise" ? (
-              <div className={styles.step} key="praise">
+              <div className={`${styles.step} ${direction === "backward" ? styles.stepBack : ""}`} key="praise">
                 <div className={styles.scrollArea}>
                   <div className={styles.backRow}>
-                    <button type="button" className={styles.backButton} onClick={() => setStep("intro")}>
+                    <button type="button" className={styles.backButton} onClick={() => moveToStep("intro")}>
                       ‹ 아이디어 다시 보기
                     </button>
                   </div>
 
                   <div className={styles.receiverAppbarRow}>
-                    <h2 className={styles.stepHeading}>어떤 반응을 보낼까요?</h2>
+                    <h2
+                      ref={(node) => { stepFocusRef.current = node; }}
+                      tabIndex={-1}
+                      className={`${styles.stepHeading} ${styles.stepFocus}`}
+                    >
+                      어떤 반응을 보낼까요?
+                    </h2>
                     <span className={styles.receiverAppbarMeta}>하나 고르기</span>
                   </div>
                   <p className={styles.stepDescription}>읽고 난 뒤 가장 가까운 반응 하나를 골라주세요.</p>
@@ -269,7 +297,7 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
                   <button
                     type="button"
                     className={styles.primaryButton}
-                    onClick={() => setStep("reveal")}
+                    onClick={() => moveToStep("reveal")}
                     disabled={!canContinue}
                   >
                     다음
@@ -279,10 +307,10 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
             ) : null}
 
             {step === "reveal" ? (
-              <div className={styles.step} key="reveal">
+              <div className={`${styles.step} ${direction === "backward" ? styles.stepBack : ""}`} key="reveal">
                 <div className={styles.scrollArea}>
                   <div className={styles.backRow}>
-                    <button type="button" className={styles.backButton} onClick={() => setStep("praise")}>
+                    <button type="button" className={styles.backButton} onClick={() => moveToStep("praise")}>
                       ‹ 반응 다시 고르기
                     </button>
                   </div>
@@ -293,7 +321,13 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
                   </div>
 
                   <fieldset className={styles.revealSection}>
-                    <legend className={styles.revealTitle}>보낸 사람에게 이름을 보여줄까요?</legend>
+                    <legend
+                      ref={(node) => { stepFocusRef.current = node; }}
+                      tabIndex={-1}
+                      className={`${styles.revealTitle} ${styles.stepFocus}`}
+                    >
+                      보낸 사람에게 이름을 보여줄까요?
+                    </legend>
                     <label className={styles.revealOption}>
                       <input
                         type="radio"
@@ -354,10 +388,16 @@ export function PraiseRequestReceiver({ slug }: { slug: string }) {
             ) : null}
 
             {step === "sent" ? (
-              <div className={styles.step} key="sent">
+              <div className={`${styles.step} ${direction === "backward" ? styles.stepBack : ""}`} key="sent">
                 <div className={styles.sentContent}>
                   <span className={styles.sentPill}>전달 완료</span>
-                  <h2 className={styles.sentHeading}>응원을 보냈어요.</h2>
+                  <h2
+                    ref={(node) => { stepFocusRef.current = node; }}
+                    tabIndex={-1}
+                    className={`${styles.sentHeading} ${styles.stepFocus}`}
+                  >
+                    응원을 보냈어요.
+                  </h2>
                   <p className={styles.sentNote}>친구는 이 메시지를 응원 카드로 받게 됩니다.</p>
                 </div>
 

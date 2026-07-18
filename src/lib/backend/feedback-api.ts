@@ -19,7 +19,10 @@ const invoke = async <T>(body: Record<string, unknown>): Promise<RemoteResult<T>
   const client = getSupabase();
   if (!client) return { status: "disabled" };
   try {
-    const { data, error } = await client.functions.invoke(FUNCTION_NAME, { body });
+    const { data, error } = await client.functions.invoke(FUNCTION_NAME, {
+      body,
+      timeout: 10_000,
+    });
     if (error || !data || data.ok !== true) return { status: "failed" };
     return { status: "ok", data: data as T };
   } catch {

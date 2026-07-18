@@ -1,4 +1,4 @@
-import { authEnabled, getUser, signInWithGoogle } from "./backend/auth";
+import { authEnabled, getUser, signInWithGoogle, signOut } from "./backend/auth";
 
 const DEMO_AUTH_KEY = "oneul:demo-auth";
 const DEMO_ACTOR_KEY = "oneul:demo-actor";
@@ -7,6 +7,7 @@ const AUTH_TRACK_KEY = "oneul:auth-active";
 const AUTH_RETURN_TO_KEY = "oneul:auth-return-to";
 const AUTH_CALLBACK_PATH = "/auth/callback";
 const AUTH_COMPLETE_PATH = "/auth/complete";
+const AUTH_PENDING_TTL_MS = 10 * 60 * 1_000;
 
 export interface AuthSession {
   actorId: string;
@@ -93,6 +94,14 @@ export function consumeAuthPending(context: AuthContext): boolean {
     const raw = sessionStorage.getItem(AUTH_PENDING_KEY);
     if (!raw) return false;
     const value = JSON.parse(raw) as { context?: string; at?: number };
+    const fresh = typeof value.at === "number"
+      && Number.isFinite(value.at)
+      && Date.now() - value.at >= 0
+      && Date.now() - value.at <= AUTH_PENDING_TTL_MS;
+    if (!fresh) {
+      sessionStorage.removeItem(AUTH_PENDING_KEY);
+      return false;
+    }
     if (value.context !== context) return false;
     sessionStorage.removeItem(AUTH_PENDING_KEY);
     return true;
@@ -168,4 +177,24 @@ export async function beginAuth(redirectTo: string): Promise<BeginAuthResult> {
     status: "authenticated",
     session: { actorId: demoActorId(), authenticated: true, demo: true },
   };
+}
+
+/** 실제 OAuth와 로컬 데모 세션을 같은 계정 UI에서 안전하게 종료한다. */
+export async function endAuthSession(): Promise<void> {
+  try {
+    await signOut();
+  } finally {
+    try {
+      localStorage.removeItem(DEMO_AUTH_KEY);
+    } catch {
+      // 브라우저 저장소가 막혀도 실제 Supabase 로그아웃 결과는 유지한다.
+    }
+    try {
+      sessionStorage.removeItem(AUTH_PENDING_KEY);
+      sessionStorage.removeItem(AUTH_TRACK_KEY);
+      sessionStorage.removeItem(AUTH_RETURN_TO_KEY);
+    } catch {
+      // 세션 저장소 정리는 로그아웃 완료 여부에 영향을 주지 않는다.
+    }
+  }
 }

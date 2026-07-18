@@ -1,8 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
+  compactIdeaHeroSentence,
   normalizeIdeaBuild,
   normalizeIdeaDifference,
   normalizeIdeaFlow,
+  normalizeIdeaHeroMechanism,
+  normalizeIdeaHeroSentence,
   normalizeIdeaMoment,
   normalizeIdeaSource,
   normalizeIdeaTarget,
@@ -24,7 +27,7 @@ describe("idea copy normalization", () => {
         "웹",
       ),
     ).toBe(
-      "“상품 사진”만 넣으면 전자상거래용 생활 배경 이미지가 바로 나오는 웹 화면 — 상품 사진 한 장과 배경 장면 하나만 선택해 생성",
+      "“상품 사진”만 넣으면 전자상거래용 생활 배경 이미지가 바로 나오는 웹 화면. 상품 사진 한 장과 배경 장면 하나만 선택해 생성",
     );
   });
 
@@ -59,5 +62,28 @@ describe("idea copy normalization", () => {
         "상품 상세페이지 사진이 부족할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
       ),
     ).toBe("상품 상세페이지 사진이 부족할 때");
+  });
+
+  it("normalizes a hero sentence without rewriting its evidence", () => {
+    expect(normalizeIdeaHeroSentence("  링크를 다시 찾느라   목록을 훑습니다.  "))
+      .toBe("링크를 다시 찾느라 목록을 훑습니다");
+  });
+
+  it("ends a hero mechanism with the result instead of the UI container", () => {
+    expect(normalizeIdeaHeroMechanism(
+      "전화번호 하나를 넣으면 유효·무효와 판정 이유가 나오는 웹 화면",
+    )).toBe("전화번호 하나를 넣으면 유효·무효와 판정 이유가 나옵니다.");
+    expect(normalizeIdeaHeroMechanism(
+      "웹 프로젝트 ZIP 파일 하나를 입력받아 위험한 호출을 검사하고 HTML 보고서 한 개를 즉시 반환한다.",
+    )).toBe(
+      "웹 프로젝트 ZIP 파일 하나를 넣으면 위험한 호출을 검사하고 HTML 보고서 한 개를 반환합니다.",
+    );
+  });
+
+  it("shortens a hero story at a readable boundary", () => {
+    expect(compactIdeaHeroSentence(
+      "저장한 영상을 다시 찾느라 목록을 여러 번 훑고 장소를 별도로 검색합니다.",
+      28,
+    )).toBe("저장한 영상을 다시 찾느라 목록을 여러 번 훑고…");
   });
 });

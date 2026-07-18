@@ -28,7 +28,8 @@ import {
   type AxisValue,
 } from "@/lib/pools";
 import { buildSpinAllSlots, filledRequired, REQUIRED, SPIN_CAP, useSlot, type Slots } from "@/lib/slot-store";
-import { encodeSlug, shareOrCopy, shareUrl, toPayload } from "@/lib/share";
+import { shareToKakao } from "@/lib/kakao-share";
+import { encodeSlug, shareUrl, toPayload } from "@/lib/share";
 import { prepareFeedbackAccess } from "@/lib/backend/secure-feedback";
 import { publishCard } from "@/lib/backend/published";
 import { writeAccessFrom } from "@/lib/feedback-access";
@@ -247,11 +248,12 @@ export function SlotMachine({ initialIntroActive = true }: SlotMachineProps) {
       });
       url = shareUrl(payload);
     }
-    const result = await shareOrCopy(url, {
+    const result = await shareToKakao(url, {
       title: combo?.appName ?? combo?.title ?? "오늘 해볼까",
       text: combo
         ? "오늘 해볼까에서 뽑은 아이디어야. 뭐가 나아?"
         : "오늘 해볼까에서 아이디어를 뽑아볼래?",
+      buttonTitle: combo ? "아이디어 봐주기" : "아이디어 뽑아보기",
     });
     if (!result.ok) return;
     trackShare("paywall_share_boost", result.method, {

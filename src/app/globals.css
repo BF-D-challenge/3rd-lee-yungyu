@@ -16,6 +16,10 @@
   --primary-hover: #ff5f70;
   --primary-pressed: #e63d50;
   --primary-soft: rgba(255, 68, 88, 0.16);
+  /* 흰 텍스트가 올라가는 액션 전용. 브랜드 강조색과 분리해 WCAG AA를 지킨다. */
+  --action-primary: #d92d45;
+  --action-primary-hover: #c62842;
+  --action-primary-pressed: #ad2338;
   --gold: #c9a962;
   --glow: var(--primary);
   --rose: #e0899a; /* 고통(pain) 시맨틱 — flip 카드 앞면 통증 아크 */
@@ -38,8 +42,8 @@
   --glass-border: rgba(255, 255, 255, 0.16);
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 
-  --shadow-hard: 0 3px 0 0 var(--primary-pressed);
-  --shadow-pressed: 0 1px 0 0 var(--primary-pressed);
+  --shadow-hard: 0 3px 0 0 var(--action-primary-pressed);
+  --shadow-pressed: 0 1px 0 0 var(--action-primary-pressed);
   --glow-hero: 0 0 40px 0 rgba(255, 68, 88, 0.34);
   --r-btn: 9px;
   --r-input: 13px;
@@ -181,12 +185,12 @@ textarea:focus-visible,
   .aurora {
     position: relative;
     color: #fff;
-    background: var(--primary);
-    box-shadow: 0 10px 28px rgba(255, 68, 88, 0.28);
+    background: var(--action-primary);
+    box-shadow: 0 10px 28px rgba(217, 45, 69, 0.28);
   }
 
   .aurora:active {
-    background: var(--primary-pressed);
+    background: var(--action-primary-pressed);
   }
 
   /* 위에서 빛 받은 1px 하이라이트 링 */
@@ -263,7 +267,7 @@ textarea:focus-visible,
 
 @media (hover: hover) and (pointer: fine) {
   .aurora:hover {
-    background: var(--primary-hover);
+    background: var(--action-primary-hover);
   }
 }
 

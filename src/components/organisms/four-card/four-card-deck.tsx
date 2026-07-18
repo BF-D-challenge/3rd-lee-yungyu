@@ -20,9 +20,11 @@ export type FanDeckVariant = "compact" | "responsive";
 
 export interface FanDeckHandle {
   /** 한 번에 뽑기 한 스텝 (원본 autoAll) — 아펙스 카드를 axis 칸으로 비행, 안착 시 onPick→onDone */
-  drawTo: (axis: string, onDone: () => void) => boolean;
+  drawTo: (axis: string, onDone: () => void, skipMotion?: boolean) => boolean;
   /** 자동 시퀀스 동안 벨트 잠금 (원본 autoAll의 busy 유지 — 탭/드래그 차단 + 호버 크롤 .05) */
   hold: (on: boolean) => void;
+  /** -1(왼쪽)~1(오른쪽)의 카드에 실제 호버와 같은 포커스 곡선을 적용한다. null이면 해제. */
+  previewAt: (position: number | null) => void;
 }
 
 export interface FanDeckProps {
@@ -35,6 +37,8 @@ export interface FanDeckProps {
   disabled?: boolean;
   /** false면 덱은 장식·비행 출발점만 담당하고 사용자 입력은 받지 않는다. drawTo는 계속 사용할 수 있다. */
   interactive?: boolean;
+  /** 호버 포커스만 허용하고 탭·드래그·키보드 뽑기와 접근성 노출은 막는다. */
+  previewOnly?: boolean;
   /** 프로그램 비행 시간. 반복 흐름을 막지 않도록 260ms를 기본으로 사용한다. */
   flightDurationMs?: number;
   /** 현재 조준 축 = 다음 빈 필수 칸 (원본 curAxis). null이면 게이트 해제 → 카드 고유 축 */
@@ -77,6 +81,7 @@ const DECK_CSS = `
 .fd-card[data-active=false] .pull,.fd-card[data-active=false]:hover .pull{transform:none}
 .fd-host[data-disabled=true] .fd-card{pointer-events:none}
 .fd-host[data-interactive=false] .fd-card{pointer-events:none;cursor:default}
+.fd-host[data-preview-only=true] .fd-card{cursor:default}
 .fd-fly{position:fixed;z-index:2147483000;pointer-events:none;will-change:transform}
 .fd-fly svg{display:block;width:100%;height:100%;filter:drop-shadow(0 16px 22px rgba(0,0,0,.55))}
 @media (hover:hover) and (pointer:fine){.fd-host[data-variant=responsive] .fd-card:hover .pull{transform:translateY(-22px)}}
@@ -90,6 +95,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     axisLabels,
     disabled = false,
     interactive = true,
+    previewOnly = false,
     flightDurationMs = 260,
     aimAxis,
     inactiveAxes,
@@ -113,6 +119,8 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
   disabledRef.current = disabled;
   const interactiveRef = useRef(interactive);
   interactiveRef.current = interactive;
+  const previewOnlyRef = useRef(previewOnly);
+  previewOnlyRef.current = previewOnly;
   const flightDurationRef = useRef(flightDurationMs);
   flightDurationRef.current = flightDurationMs;
   const axisLabelsRef = useRef(axisLabels);
@@ -130,8 +138,10 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
   useImperativeHandle(
     handleRef,
     () => ({
-      drawTo: (axis, onDone) => apiRef.current?.drawTo(axis, onDone) ?? false,
+      drawTo: (axis, onDone, skipMotion) =>
+        apiRef.current?.drawTo(axis, onDone, skipMotion) ?? false,
       hold: (on) => apiRef.current?.hold(on),
+      previewAt: (position) => apiRef.current?.previewAt(position),
     }),
     [],
   );
@@ -322,7 +332,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         ? preferred
         : activeApexCard();
       cardsEl.forEach((card) => {
-        const accessible = interactiveRef.current && card === next && isActive(card);
+        const accessible = interactiveRef.current && !previewOnlyRef.current && card === next && isActive(card);
         card.tabIndex = accessible ? 0 : -1;
         if (accessible) {
           const eff = effAxis(card);
@@ -358,7 +368,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       c.dataset.axis = eff;
       const active = isActive(c);
       c.dataset.active = String(active);
-      if (!interactiveRef.current || !active || c !== rovingCard) {
+      if (!interactiveRef.current || previewOnlyRef.current || !active || c !== rovingCard) {
         c.removeAttribute("role");
         c.removeAttribute("aria-label");
         c.setAttribute("aria-hidden", "true");
@@ -400,6 +410,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       toRect: DOMRect,
       done: () => void,
       skipMotion = false,
+      durationMs?: number,
     ) => {
       // translate는 클론의 실제 DOM 기준점(left/top) 기준 — 드롭 위치≠기준점이어도 안 튄다
       const bx = parseFloat(clone.style.left) + parseFloat(clone.style.width) / 2;
@@ -409,7 +420,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       const c1 = { x: (c0.x + c2.x) / 2, y: Math.min(c0.y, c2.y) - 120 };
       const w0 = parseFloat(clone.style.width);
       const s2 = toRect.width / w0;
-      const D = RM || skipMotion ? 0 : flightDurationRef.current;
+      const D = RM || skipMotion ? 0 : durationMs ?? flightDurationRef.current;
       const t0 = performance.now();
       let settled = false;
       let watchdog: number | null = null;
@@ -417,8 +428,11 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         if (settled) return;
         settled = true;
         if (watchdog !== null) window.clearTimeout(watchdog);
-        dropClone(clone);
+        // 목적지 카드가 같은 프레임에 먼저 마운트된 뒤 클론을 걷어 정체성의 공백을 없앤다.
         done();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => dropClone(clone));
+        });
       };
       const step = (now: number) => {
         if (settled) return;
@@ -544,7 +558,14 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       c.addEventListener("focus", () => focusCard(c));
       c.addEventListener("blur", () => clearFocus(c));
       c.addEventListener("pointerdown", (e) => {
-        if (!interactiveRef.current || disabledRef.current || busy || held || !isActive(c)) return; // 원본: busy||curAxis()<0 게이트의 다크 등가
+        if (
+          !interactiveRef.current ||
+          previewOnlyRef.current ||
+          disabledRef.current ||
+          busy ||
+          held ||
+          !isActive(c)
+        ) return; // 원본: busy||curAxis()<0 게이트의 다크 등가
         e.preventDefault();
         pid = e.pointerId;
         c.setPointerCapture(pid);
@@ -619,13 +640,28 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         const targetAxis = effAxis(c);
         const rect = getRectRef.current(targetAxis);
         if (clone && clone._commit && rect) {
-          dropClone(clone);
+          const landingClone = clone;
           clone = null;
-          busy = false;
-          if (!disposed) {
-            removeCard(c);
-            onPickRef.current(card, targetAxis);
-          }
+          const cloneRect = landingClone.getBoundingClientRect();
+          const cloneCenter = {
+            x: cloneRect.left + cloneRect.width / 2,
+            y: cloneRect.top + cloneRect.height / 2,
+          };
+          flyTo(
+            landingClone,
+            cloneCenter,
+            landingClone._rot ?? 0,
+            rect,
+            () => {
+              busy = false;
+              if (!disposed) {
+                removeCard(c);
+                onPickRef.current(card, targetAxis);
+              }
+            },
+            false,
+            140,
+          );
         } else if (clone) {
           fallAway(clone, c, ox, oy); // 릴 밖 → 낙하 버림
           clone = null;
@@ -661,6 +697,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       c.addEventListener("keydown", (e) => {
         if (
           interactiveRef.current &&
+          !previewOnlyRef.current &&
           (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "Home") &&
           !disabledRef.current &&
           !busy &&
@@ -680,6 +717,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         }
         if (
           interactiveRef.current &&
+          !previewOnlyRef.current &&
           (e.key === "Enter" || e.key === " ") &&
           !disabledRef.current &&
           !busy &&
@@ -707,7 +745,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         c.style.height = `${g.ch}px`;
         c.style.left = `${-g.cw / 2}px`;
         c.style.top = `${-g.ch / 2}px`;
-        if (interactiveRef.current) {
+        if (interactiveRef.current && !previewOnlyRef.current) {
           c.setAttribute("role", "button");
           c.setAttribute("tabindex", "-1");
         } else {
@@ -849,7 +887,32 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       hold: (on) => {
         held = on;
       },
-      drawTo: (axis, onDone) => {
+      previewAt: (position) => {
+        if (position === null || disabledRef.current || disposed) {
+          clearFocus();
+          return;
+        }
+        const ordered = activeCardsInVisualOrder();
+        if (ordered.length === 0) {
+          clearFocus();
+          return;
+        }
+        const clamped = Math.max(-1, Math.min(1, position));
+        const hostRect = host.getBoundingClientRect();
+        const targetX = hostRect.left + ((clamped + 1) / 2) * hostRect.width;
+        let card: WCard | null = null;
+        let closestDistance = Infinity;
+        ordered.forEach((candidate) => {
+          const rect = visualRect(candidate);
+          const distance = Math.abs(targetX - (rect.left + rect.width / 2));
+          if (distance < closestDistance) {
+            card = candidate;
+            closestDistance = distance;
+          }
+        });
+        if (card) focusCard(card, true);
+      },
+      drawTo: (axis, onDone, skipMotion = false) => {
         if (disabledRef.current || busy || disposed) return false;
         const rect = getRectRef.current(axis);
         const c = apexCard();
@@ -869,7 +932,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
           removeCard(c);
           onPickRef.current(card, axis);
           onDone();
-        });
+        }, skipMotion);
         return true;
       },
     };
@@ -891,7 +954,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     };
     // poolKey와 disabled가 덱 정체성 — disabled 전환 시 진행 중 body 클론까지 cleanup한다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [disabled, flightDurationMs, interactive, poolKey, variant]);
+  }, [disabled, flightDurationMs, interactive, poolKey, previewOnly, variant]);
 
   return (
     <div
@@ -900,9 +963,10 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       data-variant={variant}
       data-disabled={disabled ? "true" : undefined}
       data-interactive={interactive ? undefined : "false"}
-      role={interactive ? "group" : undefined}
-      aria-label={interactive ? "카드 덱 — 끌어 놓거나 탭해서 칸을 채워보세요" : "카드 덱"}
-      aria-hidden={interactive ? undefined : true}
+      data-preview-only={previewOnly ? "true" : undefined}
+      role={interactive && !previewOnly ? "group" : undefined}
+      aria-label={interactive && !previewOnly ? "카드 덱 — 끌어 놓거나 탭해서 칸을 채워보세요" : "카드 덱"}
+      aria-hidden={interactive && !previewOnly ? undefined : true}
     >
       <style suppressHydrationWarning>{DECK_CSS}</style>
       <div ref={wheelRef} className="fd-wheel" />

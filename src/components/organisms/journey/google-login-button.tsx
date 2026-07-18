@@ -10,9 +10,15 @@ export interface GoogleLoginButtonProps {
   context: "creator" | "receiver";
   onAuthenticated: (session: AuthSession) => void;
   returnTo?: string;
+  label?: string;
 }
 
-export function GoogleLoginButton({ context, onAuthenticated, returnTo }: GoogleLoginButtonProps) {
+export function GoogleLoginButton({
+  context,
+  onAuthenticated,
+  returnTo,
+  label = "Google로 시작하기",
+}: GoogleLoginButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const delayTimer = useRef<ReturnType<typeof setTimeout>>();
   const [pending, setPending] = useState(false);
@@ -58,8 +64,8 @@ export function GoogleLoginButton({ context, onAuthenticated, returnTo }: Google
         aria-busy={pending}
         onClick={login}
       >
-        {showLoader ? <LoaderCircle aria-hidden className="h-5 w-5 animate-spin" /> : <LogIn aria-hidden className="h-5 w-5" />}
-        {showLoader ? "연결하는 중" : "Google로 시작하기"}
+        {showLoader ? <LoaderCircle aria-hidden data-anim className="h-5 w-5 animate-spin" /> : <LogIn aria-hidden className="h-5 w-5" />}
+        {showLoader ? "연결하는 중" : label}
       </Button>
       <p role="alert" className="mt-2 min-h-5 text-center text-xs text-rose">
         {error}

@@ -8,7 +8,7 @@ const variants: Record<Variant, string> = {
   // 주요 CTA: Aurora Mesh (PRD §7 — .aurora가 그라데이션·글로우·링 전부 담당)
   aurora: "aurora font-semibold",
   // 레거시 gold 호출부도 Primary 단일색으로 수렴한다.
-  gold: "bg-primary text-white font-semibold shadow-hard hover:bg-[var(--primary-hover)] active:bg-[var(--primary-pressed)] active:shadow-none",
+  gold: "bg-action text-white font-semibold shadow-hard hover:bg-action-hover active:bg-action-pressed active:shadow-none",
   glass: "glass text-ink hover:bg-white/10",
   ghost: "text-mist hover:text-ink",
 };

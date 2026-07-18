@@ -10,8 +10,8 @@ import { addDuel, loadDuels, type Duel } from "@/lib/storage";
 import { prepareFeedbackAccess } from "@/lib/backend/secure-feedback";
 import { writeAccessFrom } from "@/lib/feedback-access";
 import { newRoundId } from "@/lib/growth";
-import { track } from "@/lib/track";
-import { copyText } from "@/lib/copy-text";
+import { shareToKakao } from "@/lib/kakao-share";
+import { trackShare } from "@/lib/track";
 import { cn } from "@/lib/utils";
 import { cardTitle } from "./publish-card";
 
@@ -46,7 +46,7 @@ export function DuelStatus({ onCopied }: { onCopied?: () => void }) {
 
   if (rows.length === 0) return null;
 
-  const copy = async (row: DuelRow) => {
+  const share = async (row: DuelRow) => {
     const access = await prepareFeedbackAccess(
       "duel",
       row.duel.feedback,
@@ -71,8 +71,13 @@ export function DuelStatus({ onCopied }: { onCopied?: () => void }) {
     setRows((current) => current.map((item) => (
       item.duel.slug === row.duel.slug ? { ...item, duel: secured } : item
     )));
-    await copyText(`${location.origin}/vs/${secured.slug}`);
-    track("card_share", { channel: "link", stage: "dashboard", kind: "duel" });
+    const result = await shareToKakao(`${location.origin}/vs/${secured.slug}`, {
+      title: "오늘 해볼까 A/B 대결",
+      text: `${cardTitle(secured.a)} vs ${cardTitle(secured.b)} — 둘 중 하나만 골라줘.`,
+      buttonTitle: "둘 중 골라주기",
+    });
+    if (!result.ok) return;
+    trackShare("card_share", result.method, { channel: "kakao", stage: "dashboard", kind: "duel" });
     onCopied?.();
   };
 
@@ -94,8 +99,8 @@ export function DuelStatus({ onCopied }: { onCopied?: () => void }) {
               <CheerBar label="B" count={b} total={total} leading={lead === "b"} />
             </div>
             <div className="mt-3 text-center">
-              <Button variant="ghost" onClick={() => copy(row)}>
-                🔗 대결 링크 다시 복사
+              <Button variant="ghost" onClick={() => share(row)}>
+                💬 카카오톡으로 다시 공유
               </Button>
             </div>
           </GlassCard>

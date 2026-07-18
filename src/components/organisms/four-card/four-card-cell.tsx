@@ -46,7 +46,7 @@ export interface FourCardCellProps {
   /** 부유 시작 지연 인덱스 (원본 i*.35s) */
   floatDelay?: number;
   /** 빈 칸 탭 → 풀에서 한 장 채움 */
-  onFill?: () => void;
+  onFill?: (options?: { skipMotion?: boolean }) => void;
   /** 채워진 카드 탭 → 그 축만 교체 */
   onSwap?: () => void;
   /** 캐러셀 미리보기에서는 내부 버튼을 탭 순서와 입력 대상에서 제외 */
@@ -276,7 +276,12 @@ export const FourCardCell = forwardRef<HTMLDivElement, FourCardCellProps>(functi
           /* 빈 칸 — 현재 칸은 축 색상 점선, 나머지는 흐린 점선 */
           <button
             type="button"
-            onClick={onFill}
+            onClick={() => onFill?.()}
+            onKeyDown={(event) => {
+              if (event.key !== "Enter" && event.key !== " ") return;
+              event.preventDefault();
+              onFill?.({ skipMotion: true });
+            }}
             aria-label={`${axisLabel} 카드 뽑기`}
             aria-hidden={interactive ? undefined : true}
             tabIndex={interactive ? undefined : -1}
