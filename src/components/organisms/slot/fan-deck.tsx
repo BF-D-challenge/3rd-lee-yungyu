@@ -9,8 +9,9 @@ import {
 } from "../four-card/four-card-deck";
 
 export interface FanDeckHandle {
-  drawTo: (axis: AxisId, onDone: () => void) => boolean;
+  drawTo: (axis: AxisId, onDone: () => void, skipMotion?: boolean) => boolean;
   hold: (on: boolean) => void;
+  previewAt: (position: number | null) => void;
 }
 
 export interface FanDeckProps {
@@ -62,8 +63,10 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
   );
 
   useImperativeHandle(handleRef, () => ({
-    drawTo: (axis, onDone) => sharedRef.current?.drawTo(axis, onDone) ?? false,
+    drawTo: (axis, onDone, skipMotion) =>
+      sharedRef.current?.drawTo(axis, onDone, skipMotion) ?? false,
     hold: (on) => sharedRef.current?.hold(on),
+    previewAt: (position) => sharedRef.current?.previewAt(position),
   }), []);
 
   return (

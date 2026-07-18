@@ -37,6 +37,7 @@ export function FakeDoorSheet({ open, onClose, product, title }: FakeDoorSheetPr
       <Dialog.Portal>
         <Dialog.Overlay
           className="fixed inset-0 z-50 bg-black/60"
+          data-anim
           style={{ animation: "bloom 160ms ease-out both" }}
         />
         <Dialog.Content
@@ -44,6 +45,7 @@ export function FakeDoorSheet({ open, onClose, product, title }: FakeDoorSheetPr
             "glass-strong fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-narrow rounded-t-card p-6",
             "pb-[max(1.5rem,env(safe-area-inset-bottom))] outline-none",
           )}
+          data-anim
           style={{ animation: "fade-up 240ms var(--ease-drawer) both" }}
           onOpenAutoFocus={() => {
             returnFocusRef.current = document.activeElement instanceof HTMLElement

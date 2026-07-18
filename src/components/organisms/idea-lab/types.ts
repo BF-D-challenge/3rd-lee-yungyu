@@ -1,3 +1,5 @@
+import type { KakaoShareResult } from "@/lib/kakao-share";
+
 export const IDEA_LAB_AXIS_IDS = ["source", "payer", "moment", "twist"] as const;
 
 export type IdeaLabAxisId = (typeof IDEA_LAB_AXIS_IDS)[number];
@@ -28,7 +30,8 @@ export interface IdeaLabSourceOption extends IdeaLabOption {
 export type IdeaLabResearchDataset =
   | "trustmrr"
   | "app_store"
-  | "chrome_web_store";
+  | "chrome_web_store"
+  | "deep_research";
 
 export type IdeaLabResearchKey = `${IdeaLabResearchDataset}:${string}`;
 
@@ -67,19 +70,21 @@ export interface IdeaLabSelection {
 export interface IdeaLabSharePayload {
   title: string;
   summary: string;
+  /** 아이디어의 포지셔닝·가설·두 독립 프롬프트를 모두 담은 전체 브리프 */
   prompt: string;
+  /** AI 코딩 도구의 새 프로젝트 첫 메시지로 바로 쓰는 독립 산출물 */
+  developmentPrompt: string;
+  /** 이미지 생성 AI에 바로 쓰는 독립 산출물 */
+  imagePrompt: string;
   platform: IdeaLabPlatform;
   selection: IdeaLabSelection;
 }
 
-export interface IdeaLabShareResult {
-  ok: boolean;
-  method: "native" | "clipboard";
-}
+export type IdeaLabShareResult = KakaoShareResult;
 
 export interface IdeaLabProps {
   initialScenarioId?: string;
-  /** 실제 앱에 연결할 때 공유 결과를 돌려준다. 성공한 경우에만 전체 제작 문구가 열린다. */
+  /** 실제 앱에 연결할 때 카카오톡 공유 화면을 연 결과를 돌려준다. 성공한 경우에만 전체 브리프와 독립 프롬프트 2종이 열린다. */
   onShare?: (payload: IdeaLabSharePayload) => IdeaLabShareResult | Promise<IdeaLabShareResult>;
   /** 네 장이 완성될 때 최신 공유 초안을 상위 화면에 전달한다. */
   onDraftReady?: (payload: IdeaLabSharePayload) => void;

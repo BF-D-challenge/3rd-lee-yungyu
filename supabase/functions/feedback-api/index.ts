@@ -167,6 +167,23 @@ Deno.serve(async (request: Request) => {
   if (authError) return json(500, { ok: false, error: "database_error" }, origin);
   if (!registered) return json(401, { ok: false, error: "unauthorized" }, origin);
 
+  // 이 함수는 익명 카드 응원과 로그인 대결 응원을 함께 받는다. 따라서 gateway의
+  // verify_jwt는 끄되, 대결 쓰기만 Supabase Auth가 JWT를 직접 검증하게 한다.
+  let authenticatedUserId: string | null = null;
+  if (
+    requestedChannel === "duel"
+    && (requestedAction === "cast" || requestedAction === "comment")
+  ) {
+    const authorization = request.headers.get("authorization") ?? "";
+    const jwt = authorization.match(/^Bearer\s+(.+)$/i)?.[1];
+    if (!jwt) return json(401, { ok: false, error: "authentication_required" }, origin);
+    const { data: authData, error: userError } = await supabase.auth.getUser(jwt);
+    if (userError || !authData.user) {
+      return json(401, { ok: false, error: "invalid_user_token" }, origin);
+    }
+    authenticatedUserId = authData.user.id;
+  }
+
   if (requestedAction === "read") {
     if (requestedChannel === "card") {
       const excludeVoterToken = text(body.excludeVoterToken, 256);
@@ -208,7 +225,11 @@ Deno.serve(async (request: Request) => {
 
   const voterToken = text(body.voterToken, 256, true);
   if (!voterToken) return json(400, { ok: false, error: "invalid_voter" }, origin);
-  const voterHash = await hash(`${requestedId}:${voterToken}`);
+  const voterHash = await hash(
+    authenticatedUserId
+      ? `${requestedId}:user:${authenticatedUserId}`
+      : `${requestedId}:${voterToken}`,
+  );
   const comment = text(body.comment, MAX_COMMENT_LENGTH);
   if (comment === null) return json(400, { ok: false, error: "invalid_comment" }, origin);
 
@@ -245,27 +266,26 @@ Deno.serve(async (request: Request) => {
   if (praiseId === null || (praiseId && !PRAISE_IDS.has(praiseId))) {
     return json(400, { ok: false, error: "invalid_praise" }, origin);
   }
-  const roundId = text(body.roundId, 160);
-  const userId = text(body.userId, 256);
-  const candidateId = text(body.candidateId, 256);
-  const idempotencyKey = text(body.idempotencyKey, 512);
-  if ([roundId, userId, candidateId, idempotencyKey].some((value) => value === null)) {
+  const roundId = text(body.roundId, 160, true);
+  if (!roundId || !authenticatedUserId) {
     return json(400, { ok: false, error: "invalid_metadata" }, origin);
   }
+  const candidateId = `${roundId}:${side}`;
+  const idempotencyKey = `duel-v1:${roundId}:${authenticatedUserId}`;
   const { error } = await supabase.from("duel_votes").upsert(
     {
       slug: requestedId,
       side,
       comment: comment || null,
       voter_fp: voterHash,
-      round_id: roundId || null,
-      user_id: userId ? await hash(userId) : null,
-      candidate_id: candidateId || null,
+      round_id: roundId,
+      user_id: await hash(authenticatedUserId),
+      candidate_id: candidateId,
       praise_id: praiseId || null,
-      idempotency_key: idempotencyKey ? await hash(idempotencyKey) : null,
+      idempotency_key: await hash(idempotencyKey),
     },
     {
-      onConflict: idempotencyKey ? "idempotency_key" : "slug,voter_fp",
+      onConflict: "idempotency_key",
       ignoreDuplicates: true,
     },
   );

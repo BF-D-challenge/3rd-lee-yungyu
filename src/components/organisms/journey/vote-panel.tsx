@@ -3,7 +3,7 @@
 // [S5] 수신자 응원 화면 — 카드 히어로 + 2×2 긍정 응원칩 (Aurora 글래스).
 // 무로그인·설치문구 0자·부정 선택지 0 (PRD §6.3 · K의 심장, R9 · CLAUDE.local.md K 보호).
 import Link from "next/link";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/atoms/button";
 import { PageShell } from "@/components/layouts/page-shell";
@@ -45,7 +45,22 @@ export function VotePanel({ slug }: { slug: string }) {
   const [sendError, setSendError] = useState(false);
   const [commentSaving, setCommentSaving] = useState(false);
   const [commentError, setCommentError] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const voteCommitTimer = useRef<number | null>(null);
+  const successRef = useRef<HTMLElement>(null);
   const legacyExpired = Boolean(payload && feedbackApiConfigured() && !payload.feedback);
+
+  useEffect(() => {
+    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setReducedMotion(query.matches);
+    sync();
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => () => {
+    if (voteCommitTimer.current !== null) window.clearTimeout(voteCommitTimer.current);
+  }, []);
 
   useEffect(() => {
     const decoded = decodeSlug(slug);
@@ -90,7 +105,13 @@ export function VotePanel({ slug }: { slug: string }) {
       return;
     }
     track("card_vote", { vote_type: type });
-    setTimeout(() => setVoted(true), 520); // 필 애니메이션이 끝난 뒤 응원 후 화면으로 스왑
+    const commit = () => {
+      voteCommitTimer.current = null;
+      setVoted(true);
+      requestAnimationFrame(() => successRef.current?.focus({ preventScroll: true }));
+    };
+    if (reducedMotion) commit();
+    else voteCommitTimer.current = window.setTimeout(commit, 380);
   };
 
   const saveComment = async (text: string, via: "preset" | "custom") => {
@@ -173,7 +194,7 @@ export function VotePanel({ slug }: { slug: string }) {
                   className={cn(
                     "glass relative flex min-h-[108px] flex-col items-center justify-center overflow-hidden rounded-card",
                     "transition-[opacity,transform] duration-200 active:scale-[.98]",
-                    dimmed ? "scale-95 opacity-25" : "opacity-100",
+                    dimmed ? (reducedMotion ? "opacity-25" : "scale-95 opacity-25") : "opacity-100",
                   )}
                   style={{ boxShadow: chip.glow === "none" ? undefined : chip.glow }}
                 >
@@ -187,7 +208,7 @@ export function VotePanel({ slug }: { slug: string }) {
                         borderRadius: "inherit",
                         transformOrigin: "left",
                         transform: isSel ? "scaleX(1)" : "scaleX(0)",
-                        transition: "transform .36s cubic-bezier(.65,0,.35,1)",
+                        transition: reducedMotion ? "none" : "transform .36s cubic-bezier(.65,0,.35,1)",
                         ...(isSel ? { "--aurora-accent-stop": chip.stop } : {}),
                       } as CSSProperties
                     }
@@ -220,7 +241,14 @@ export function VotePanel({ slug }: { slug: string }) {
           ) : null}
         </>
       ) : (
-        <section className="mt-5 text-center" data-anim style={{ animation: "fade-up .45s ease both" }}>
+        <section
+          ref={successRef}
+          role="status"
+          tabIndex={-1}
+          className="mt-5 text-center outline-none"
+          data-anim
+          style={{ animation: "fade-up .45s ease both" }}
+        >
           <span
             data-anim
             className="text-[44px] leading-none"
@@ -258,7 +286,9 @@ export function VotePanel({ slug }: { slug: string }) {
               </div>
               {customOpen && (
                 <form onSubmit={submitCustom} className="mt-2 flex gap-2">
+                  <label htmlFor="vote-comment" className="sr-only">한마디 남기기</label>
                   <input
+                    id="vote-comment"
                     value={customText}
                     onChange={(e) => setCustomText(e.target.value)}
                     maxLength={40}

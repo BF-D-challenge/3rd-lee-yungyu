@@ -54,7 +54,7 @@ export default function AuthCompletePage() {
   return (
     <PageShell>
       <TopBar />
-      <main className="mx-auto flex min-h-[60dvh] max-w-narrow items-center justify-center px-4">
+      <section className="mx-auto flex min-h-[60dvh] max-w-narrow items-center justify-center px-4">
         <div className="glass-strong w-full rounded-card px-6 py-8 text-center">
           {error ? (
             <>
@@ -68,13 +68,13 @@ export default function AuthCompletePage() {
             </>
           ) : (
             <>
-              <LoaderCircle aria-hidden className="mx-auto h-7 w-7 animate-spin text-ink" />
+              <LoaderCircle aria-hidden data-anim className="mx-auto h-7 w-7 animate-spin text-ink" />
               <h1 className="mt-4 font-serif text-xl text-ink">Google 계정을 확인하고 있어요</h1>
               <p role="status" className="mt-2 text-sm text-mist">잠시만 기다려 주세요.</p>
             </>
           )}
         </div>
-      </main>
+      </section>
     </PageShell>
   );
 }

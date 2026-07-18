@@ -1,4 +1,5 @@
 import type { IdeaLabAxisMeta, IdeaLabScenario } from "./types";
+import { isKoreaPopularScenarioId } from "./korea-demand";
 
 export const IDEA_LAB_AXIS_META: Record<
   "source" | "payer" | "moment" | "twist",
@@ -124,7 +125,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         value: "전화번호·이메일·IP 유형을 자동 판별해 같은 입력창에서 검사하기",
         detail:
           "입력값 하나를 실시간으로 검증하는 흐름은 유지하고 유형을 고르는 단계를 없앱니다.",
-        resultTitle: "유형을 알아서 고르는 데이터 검증",
+        resultTitle: "전화번호·이메일·IP 자동 검사",
         platform: "web",
         smallestBuild:
           "전화번호·이메일·IP 중 하나를 붙여넣으면 유형을 자동 판별하고 검증 결과를 보여주는 웹 화면",
@@ -2389,9 +2390,9 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
       },
       platform: "app",
       value:
-        "식사 사진과 하루 습관을 기록하면 작은 행동 하나를 제안하고 매일 실천을 확인하는 앱",
+        "음식 사진과 하루 습관을 확인해 다음 끼니에 할 행동 하나를 제안하고 다시 사진으로 실천을 확인하는 앱",
       detail:
-        "음식 사진과 기록한 습관을 바탕으로 오늘 해볼 식사 행동과 짧은 챌린지를 보여줍니다.",
+        "사진을 숫자로만 평가하지 않고 지금 바꿀 수 있는 한 가지 행동을 제안한 뒤 다음 식사에서 지켰는지 확인합니다.",
       evidence: "TrustMRR에서 실제 매출이 확인된 식사 습관 기록 제품",
       preservedFlow:
         "식사 사진·습관 기록 → 오늘의 작은 행동 제안 → 챌린지 완료 확인",
@@ -2399,73 +2400,73 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
     payers: [
       {
         id: "payer-nutria-shift-worker",
-        value: "근무 시간이 매주 달라지는 교대 근무 간호사",
+        value: "체지방을 줄이고 싶지만 야근 뒤 식단을 자주 무너뜨리는 직장인",
         detail:
-          "근무표가 바뀔 때마다 식사 시간을 메모하지만 며칠 뒤 기록을 다시 놓칩니다.",
+          "식단 앱을 여러 번 깔았지만 망한 한 끼를 망한 하루로 여기며 며칠 뒤 기록을 포기합니다.",
       },
       {
         id: "payer-nutria-solo-worker",
-        value: "배달과 외식이 잦은 1인 가구 직장인",
+        value: "헬스는 하지만 음식 사진 기록을 며칠 만에 그만두는 20~30대 직장인",
         detail:
-          "식사 앱을 새로 받을 때마다 사진을 며칠 올린 뒤 복잡한 기록을 포기합니다.",
+          "칼로리 숫자보다 다음 끼니에 무엇을 바꿀지 한 문장으로 듣고 다시 사진으로 확인받고 싶습니다.",
       },
       {
         id: "payer-nutria-sales",
-        value: "출장 일정이 자주 바뀌는 현장 영업사원",
+        value: "야식·배달 패턴을 끊고 싶은 혼자 사는 직장인",
         detail:
-          "이동 중 먹은 식사를 메모장과 사진첩에 따로 남겨 일주일 뒤에는 패턴을 찾지 못합니다.",
+          "식사 사진을 남겨도 숫자만 보고 끝나므로 다음 행동을 약속하고 지켰는지 확인받고 싶습니다.",
       },
     ],
     moments: [
       {
         id: "moment-nutria-new-shift",
-        value: "새 근무표로 첫 주를 시작하는 날",
-        detail: "바뀐 일정에서도 정해둔 식사 행동 하나를 지키고 싶은 순간",
+        value: "야근 뒤 치킨 사진을 찍어 보낸 밤",
+        detail: "오늘을 통째로 포기하기 전에 다음 끼니에 할 행동 하나를 정해야 하는 순간",
       },
       {
         id: "moment-nutria-restart",
-        value: "식사 기록을 사흘 놓친 저녁",
-        detail: "완벽한 기록 대신 오늘 한 번만 다시 체크하고 싶은 순간",
+        value: "식단 기록을 사흘 놓친 뒤 다시 시작하려는 저녁",
+        detail: "다정한 칼로리 숫자보다 정신이 번쩍 드는 한마디와 복귀 행동이 필요한 순간",
       },
       {
         id: "moment-nutria-weekly-review",
-        value: "다음 주 장보기를 하기 전",
-        detail: "이번 주에 반복된 식사 습관 하나만 확인하고 싶은 순간",
+        value: "다음 끼니를 고르기 직전",
+        detail: "이번 사진의 선택을 한 번 짚고 지금 바로 바꿀 행동 하나를 받아야 하는 순간",
       },
     ],
     twists: [
       {
         id: "twist-chosen-action-only",
         kind: "replace",
-        value: "식사 사진 인식과 AI 추천을 사용자가 고른 행동 한 개로 바꾸기",
+        value: "칼로리 숫자와 다정한 격려를 선택·패턴을 찌르는 팩폭 한 줄로 바꾸기",
         detail:
-          "작은 식사 행동을 매일 확인하는 흐름은 유지하고 음식 판단과 의료 조언을 제거합니다.",
-        resultTitle: "내가 고른 식사 행동 한 번 체크",
+          "음식 사진 확인→다음 행동 제안→다음 사진 확인 흐름은 유지하고 몸·인격이 아닌 선택과 패턴만 단호하게 말합니다.",
+        resultTitle: "한입코치 — 사진 한 장이면 다음 끼니로 복귀",
         platform: "web",
         smallestBuild:
-          "물 한 컵·채소 먼저·야식 안 먹기 중 행동 하나를 고르고 오늘 완료만 누르는 모바일 웹 화면",
+          "음식 사진 한 장을 올리면 관찰 한 줄·팩폭 한 줄·다음 끼니 행동 하나가 나오는 모바일 웹 화면",
       },
       {
         id: "twist-today-without-streak",
         kind: "remove",
-        value: "칼로리·연속일·점수를 빼고 오늘 행동과 완료 버튼만 남기기",
+        value: "칼로리·연속일·죄책감 문구를 빼고 오늘 행동과 다음 사진 확인만 남기기",
         detail:
-          "선택한 행동을 실천하는 흐름은 유지하고 기록을 놓쳤을 때 포기하게 만드는 평가를 덜어냅니다.",
-        resultTitle: "오늘만 다시 하는 식사 습관",
+          "팩폭 뒤 한 가지 복귀 행동을 확인하는 흐름은 유지하고 기록을 놓쳤을 때 포기하게 만드는 평가를 덜어냅니다.",
+        resultTitle: "오늘의 팩폭 뒤 한입 복귀",
         platform: "web",
         smallestBuild:
-          "선택한 식사 행동 한 줄과 오늘 완료·못함 두 버튼만 보여주는 모바일 웹 화면",
+          "음식 사진 뒤 팩폭 한 줄과 다음 끼니 행동 한 줄, 지켰어요·다시 할게요 두 버튼이 나오는 모바일 웹 화면",
       },
       {
         id: "twist-seven-day-same-action",
         kind: "replace",
-        value: "매일 다른 챌린지를 같은 식사 행동의 7일 체크표로 바꾸기",
+        value: "매일 다른 챌린지를 같은 복귀 행동의 7일 사진 확인표로 바꾸기",
         detail:
-          "작은 행동 제안과 완료 확인은 유지하고 무엇을 할지 매일 다시 고르는 부담을 없앱니다.",
-        resultTitle: "같은 식사 행동 7일 체크",
+          "팩폭·다음 행동 제안·실행 확인은 유지하고 같은 패턴이 줄어드는지 사진으로 확인합니다.",
+        resultTitle: "7일 동안 한입씩 복귀",
         platform: "web",
         smallestBuild:
-          "식사 행동 하나를 고르면 오늘을 포함한 7칸에 완료 여부만 남기는 모바일 웹 화면",
+          "사진을 올릴 때마다 같은 복귀 행동의 7일 실행 여부와 다음 사진 버튼이 보이는 모바일 웹 화면",
       },
     ],
   },
@@ -3632,56 +3633,56 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
     },
     payers: [
       {
-        id: "payer-video-trip-planner",
-        value: "브이로그 여러 편을 보며 자유여행 동선을 짜는 직장인 여행자",
+        id: "payer-food-video-saver",
+        value: "인스타·틱톡에서 맛집 영상을 주 3개 이상 저장하는 20~30대 직장인",
         detail:
-          "영상마다 흩어진 장소를 메모하고 지도에서 다시 찾아 이동 순서를 직접 비교합니다.",
+          "저장은 3초 만에 하지만 막상 가려는 날에는 영상·상호·위치를 다시 찾느라 저장함을 여러 번 뒤집니다.",
       },
       {
         id: "payer-small-tour-designer",
-        value: "영상 속 명소를 소규모 투어 코스로 바꾸는 1인 여행 기획자",
+        value: "맛집·여행 영상을 모아 주말 코스를 짜는 1인 여행 기획자",
         detail:
-          "고객 취향에 맞는 새 코스를 만들 때 영상의 장소·근거 시점·이동 거리를 따로 정리합니다.",
+          "고객 취향에 맞는 코스를 만들 때 영상의 장소·근거 시점·이동 거리를 따로 정리합니다.",
       },
       {
         id: "payer-location-coordinator",
-        value: "출장·촬영 답사 동선을 반복해서 만드는 소형 프로젝트 코디네이터",
+        value: "동행자에게 영상 속 방문 장소를 골라주는 모임 리더",
         detail:
-          "참고 영상에서 후보 장소를 뽑고 하루 안에 갈 수 있는지 지도와 표를 오가며 확인합니다.",
+          "여러 영상에서 후보 장소를 뽑아 지도에 저장하고 오늘 갈 순서를 공유합니다.",
       },
     ],
     moments: [
       {
-        id: "moment-after-three-vlogs",
-        value: "여행 영상 세 편을 봤는데 장소 이름이 메모마다 흩어진 밤",
+        id: "moment-saved-food-reels-night",
+        value: "저장한 맛집 릴스 200개 중 오늘 갈 곳을 고르려는 저녁",
         detail:
-          "영상으로 돌아가 장소를 다시 찾지 않고 후보지만 한 번에 모아야 하는 순간",
+          "저장만 해둔 영상으로 돌아가지 않고 상호·메뉴·위치가 붙은 후보를 바로 고르고 싶은 순간",
       },
       {
-        id: "moment-before-booking-route",
-        value: "숙소·교통을 결제하기 전 방문 장소가 하루 동선인지 확인할 때",
+        id: "moment-before-sharing-food-route",
+        value: "친구가 보낸 맛집 영상 링크를 이번 주 식사 장소로 정할 때",
         detail:
-          "마음에 든 곳이 서로 너무 멀지 않은지 영상 근거와 지도에서 함께 확인해야 하는 순간",
+          "영상 속 장소가 실제로 어디인지 다시 검색하지 않고 지도에서 함께 확인해야 하는 순간",
       },
       {
-        id: "moment-before-sharing-itinerary",
-        value: "동행자나 고객에게 첫 여행 코스안을 보내기 직전",
+        id: "moment-before-travel-route",
+        value: "여행 출발 전 영상 속 장소를 하루 동선으로 정리할 때",
         detail:
           "장소를 고른 이유와 영상의 해당 장면까지 설명 가능한 목록이 필요한 순간",
       },
     ],
     twists: [
       {
-        id: "twist-captioned-youtube-only",
+        id: "twist-food-short-link",
         kind: "remove",
         value:
-          "여러 영상 플랫폼을 빼고 자막 있는 공개 YouTube 여행 영상 한 편만 받기",
+          "여행 영상 여러 편 대신 맛집 릴스·쇼츠 링크 한 개만 받기",
         detail:
-          "영상에서 장소를 찾아 지도에 옮기는 흐름은 유지하고 첫 입력을 처리 가능한 공개 영상 하나로 줄입니다.",
-        resultTitle: "여행 영상 한 편을 장소 목록으로",
+          "영상에서 장소를 찾아 지도에 옮기는 흐름은 유지하고 저장한 맛집 영상 하나에서 바로 시작합니다.",
+        resultTitle: "저장한 맛집 영상을 지도 핀으로",
         platform: "web",
         smallestBuild:
-          "자막 있는 공개 YouTube URL 하나를 넣으면 언급된 장소명·도시·지도 링크가 최대 열 곳 나오는 웹 화면",
+          "맛집 릴스·쇼츠 링크 하나를 붙여넣으면 상호·메뉴·도시·지도 링크가 붙은 장소 카드 하나가 나오는 웹 화면",
       },
       {
         id: "twist-timestamp-evidence",
@@ -3689,10 +3690,10 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         value: "각 장소에 영상의 나온 초와 근거 자막 한 줄 더하기",
         detail:
           "추출한 장소를 저장하는 흐름에 사용자가 직접 맞는 곳인지 되돌아가 확인할 근거만 더합니다.",
-        resultTitle: "나온 초와 지도 링크가 붙은 여행 장소 목록",
+        resultTitle: "영상 근거와 지도 링크가 붙은 장소 목록",
         platform: "web",
         smallestBuild:
-          "자막 있는 공개 YouTube URL 하나를 넣으면 장소마다 타임스탬프·근거 자막·지도 링크가 붙고 틀린 장소를 제외할 수 있는 웹 화면",
+          "공개 영상 URL 하나를 넣으면 장소마다 나온 초·근거 문장·지도 링크가 붙고 틀린 장소를 제외할 수 있는 웹 화면",
       },
       {
         id: "twist-one-day-route",
@@ -4990,19 +4991,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-youtube-transcript-dev-extract-download-video-tr-0",
         value: "유튜브 강의를 복습하는 대학생",
         detail:
-          "유튜브 강의를 복습하는 대학생이 자막 없는 영상을 글로 남길 때에 이 결과를 바로 사용합니다.",
+          "자막 없는 강의를 되감으며 중요한 구간을 직접 받아 적느라 복습 흐름이 자주 끊깁니다.",
       },
       {
         id: "payer-youtube-transcript-dev-extract-download-video-tr-1",
         value: "영상 내용을 정리하는 콘텐츠 기획자",
         detail:
-          "영상 내용을 정리하는 콘텐츠 기획자가 긴 강의의 핵심을 다시 찾을 때에 이 결과를 바로 사용합니다.",
+          "긴 영상을 다시 훑어 핵심 발언의 위치와 문장을 메모장에 옮기는 작업을 반복합니다.",
       },
       {
         id: "payer-youtube-transcript-dev-extract-download-video-tr-2",
         value: "자막 없는 해외 강의를 보는 직장인",
         detail:
-          "자막 없는 해외 강의를 보는 직장인이 영상 내용을 문서로 공유할 때에 이 결과를 바로 사용합니다.",
+          "해외 강의 내용을 동료에게 설명하려고 영상을 멈춰가며 원문과 요약을 따로 작성합니다.",
       },
     ],
     moments: [
@@ -5010,19 +5011,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-youtube-transcript-dev-extract-download-video-tr-0",
         value: "자막 없는 영상을 글로 남길 때",
         detail:
-          "자막 없는 영상을 글로 남길 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "자막이 없으면 검색과 인용이 어려워, 기억이 흐려지기 전에 말한 내용을 텍스트로 남겨야 합니다.",
       },
       {
         id: "moment-youtube-transcript-dev-extract-download-video-tr-1",
         value: "긴 강의의 핵심을 다시 찾을 때",
         detail:
-          "긴 강의의 핵심을 다시 찾을 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "필요한 발언을 찾으려고 영상을 처음부터 다시 보지 않도록, 핵심과 나온 시점을 함께 확인해야 합니다.",
       },
       {
         id: "moment-youtube-transcript-dev-extract-download-video-tr-2",
         value: "영상 내용을 문서로 공유할 때",
         detail:
-          "영상 내용을 문서로 공유할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "링크만 보내서는 필요한 대목을 전달하기 어려워, 읽고 인용할 수 있는 문서가 필요합니다.",
       },
     ],
     twists: [
@@ -5035,7 +5036,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "한국어 전사와 원문 전사를 선택해 다운로드",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 유튜브 영상 URL.를 넣으면 한국어 전사와 원문 전사를 선택해 다운로드 후 즉시 결과: 다운로드 가능한 전사·마인드맵 파일.",
+          "유튜브 영상 URL 하나를 넣고 한국어 전사나 원문 전사를 고르면 전사문과 마인드맵 파일을 내려받을 수 있는 웹 화면",
       },
       {
         id: "twist-youtube-transcript-dev-extract-download-video-tr-1",
@@ -5046,7 +5047,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "영상 URL 하나로 TXT 전사 파일만 먼저 제공",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 유튜브 영상 URL.를 넣으면 영상 URL 하나로 TXT 전사 파일만 먼저 제공 후 즉시 결과: 다운로드 가능한 전사·마인드맵 파일.",
+          "유튜브 영상 URL 하나를 넣으면 TXT 전사 파일부터 내려받을 수 있는 웹 화면",
       },
       {
         id: "twist-youtube-transcript-dev-extract-download-video-tr-2",
@@ -5057,7 +5058,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "전사문을 문단별 타임스탬프와 함께 정리",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 유튜브 영상 URL.를 넣으면 전사문을 문단별 타임스탬프와 함께 정리 후 즉시 결과: 다운로드 가능한 전사·마인드맵 파일.",
+          "유튜브 영상 URL 하나를 넣으면 문단별 타임스탬프가 붙은 전사문과 마인드맵 파일을 내려받을 수 있는 웹 화면",
       },
     ],
   },
@@ -5084,19 +5085,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-photogenius-0",
         value: "부모님 옛 사진을 정리하는 자녀",
         detail:
-          "부모님 옛 사진을 정리하는 자녀가 앨범 속 흐릿한 사진을 발견했을 때에 이 결과를 바로 사용합니다.",
+          "앨범 속 얼굴이 흐려 누구인지 알아보기 어려운 사진을 골라 사진관과 보정 앱을 번갈아 확인합니다.",
       },
       {
         id: "payer-photogenius-1",
         value: "가족사진을 보관하는 중년 부부",
         detail:
-          "가족사진을 보관하는 중년 부부가 기념일 선물로 옛 사진을 준비할 때에 이 결과를 바로 사용합니다.",
+          "기념일에 건넬 옛 사진의 얼룩과 흐린 얼굴을 직접 보정하려다 원본이 더 손상될까 망설입니다.",
       },
       {
         id: "payer-photogenius-2",
         value: "동네 사진관을 운영하는 사장",
         detail:
-          "동네 사진관을 운영하는 사장이 인화 전에 오래된 사진을 선명하게 만들 때에 이 결과를 바로 사용합니다.",
+          "낡은 사진을 인화하기 전 먼지와 흐린 얼굴을 손으로 고치며 고객에게 보정 강도를 여러 번 확인합니다.",
       },
     ],
     moments: [
@@ -5104,19 +5105,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-photogenius-0",
         value: "앨범 속 흐릿한 사진을 발견했을 때",
         detail:
-          "앨범 속 흐릿한 사진을 발견했을 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "얼굴과 배경이 흐리면 추억을 알아보기 어려워, 원본을 훼손하지 않고 복원 가능성을 먼저 봐야 합니다.",
       },
       {
         id: "moment-photogenius-1",
         value: "기념일 선물로 옛 사진을 준비할 때",
         detail:
-          "기념일 선물로 옛 사진을 준비할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "선물에 쓸 사진이 흐리면 다시 준비하기 어려워, 인화 전에 자연스러운 복원본을 확인해야 합니다.",
       },
       {
         id: "moment-photogenius-2",
         value: "인화 전에 오래된 사진을 선명하게 만들 때",
         detail:
-          "인화 전에 오래된 사진을 선명하게 만들 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "보정이 과하면 얼굴이 달라 보일 수 있어, 인화에 들어가기 전에 원본과 복원본을 비교해야 합니다.",
       },
     ],
     twists: [
@@ -5129,7 +5130,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "흑백 사진을 따뜻한 색감으로 복원하는 버튼 추가",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 오래된 사진 파일.를 넣으면 흑백 사진을 따뜻한 색감으로 복원하는 버튼 추가 후 즉시 결과: 보정·복원된 사진.",
+          "오래된 사진 파일 하나를 넣으면 흑백 사진을 따뜻한 색감으로 복원한 이미지가 나오는 웹 화면",
       },
       {
         id: "twist-photogenius-1",
@@ -5140,7 +5141,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "얼굴 복원 강도를 약·중·강 세 단계로 제한",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 오래된 사진 파일.를 넣으면 얼굴 복원 강도를 약·중·강 세 단계로 제한 후 즉시 결과: 보정·복원된 사진.",
+          "오래된 사진 파일 하나를 넣고 약·중·강 중 얼굴 복원 강도를 고르면 복원본이 나오는 웹 화면",
       },
       {
         id: "twist-photogenius-2",
@@ -5151,7 +5152,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "복원 전후를 한 화면에서 비교하는 한국어 결과 카드",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 오래된 사진 파일.를 넣으면 복원 전후를 한 화면에서 비교하는 한국어 결과 카드 후 즉시 결과: 보정·복원된 사진.",
+          "오래된 사진 파일 하나를 넣으면 복원 전후 이미지를 한국어 카드에서 나란히 비교하는 웹 화면",
       },
     ],
   },
@@ -5177,19 +5178,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-mockly-0",
         value: "앱 화면을 만드는 UX 디자이너",
         detail:
-          "앱 화면을 만드는 UX 디자이너가 채팅 기능 시안을 발표하기 직전에 이 결과를 바로 사용합니다.",
+          "채팅 기능이 아직 구현되지 않아 발표 자료에 넣을 대화 화면을 디자인 도구에서 말풍선마다 직접 배치합니다.",
       },
       {
         id: "payer-mockly-1",
         value: "신제품 소개 자료를 만드는 마케터",
         detail:
-          "신제품 소개 자료를 만드는 마케터가 앱스토어 소개 이미지를 만들 때에 이 결과를 바로 사용합니다.",
+          "앱스토어 소개 컷에 넣을 대화를 실제 기기에서 주고받고 화면을 캡처한 뒤 개인정보를 다시 가립니다.",
       },
       {
         id: "payer-mockly-2",
         value: "고객 시나리오를 시연하는 기획자",
         detail:
-          "고객 시나리오를 시연하는 기획자가 기획서에 대화 사례를 넣을 때에 이 결과를 바로 사용합니다.",
+          "기획서의 대화 흐름을 보여주려고 사람 이름·시간·읽음 표시가 있는 화면을 매번 새로 그립니다.",
       },
     ],
     moments: [
@@ -5197,19 +5198,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-mockly-0",
         value: "채팅 기능 시안을 발표하기 직전",
         detail:
-          "채팅 기능 시안을 발표하기 직전에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "말로만 설명하면 상호작용이 전달되지 않아, 발표 전에 실제처럼 보이는 대화 장면이 필요합니다.",
       },
       {
         id: "moment-mockly-1",
         value: "앱스토어 소개 이미지를 만들 때",
         detail:
-          "앱스토어 소개 이미지를 만들 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "기능 이점을 한 장에 보여주려면, 공개해도 되는 대화와 기기 목업을 함께 준비해야 합니다.",
       },
       {
         id: "moment-mockly-2",
         value: "기획서에 대화 사례를 넣을 때",
         detail:
-          "기획서에 대화 사례를 넣을 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "문장만 나열하면 고객의 행동 순서가 보이지 않아, 기획 검토 전에 대화 사례를 화면으로 보여줘야 합니다.",
       },
     ],
     twists: [
@@ -5222,7 +5223,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "카카오톡처럼 익숙한 한국형 말풍선 테마 제공",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 채팅 대화 내용.를 넣으면 카카오톡처럼 익숙한 한국형 말풍선 테마 제공 후 즉시 결과: 현실적인 대화 스크린샷.",
+          "채팅 대화 내용을 넣으면 카카오톡처럼 익숙한 말풍선 테마의 대화 스크린샷이 나오는 웹 화면",
       },
       {
         id: "twist-mockly-1",
@@ -5233,7 +5234,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "대화 내용을 붙여넣으면 스마트폰 목업 한 장 생성",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 채팅 대화 내용.를 넣으면 대화 내용을 붙여넣으면 스마트폰 목업 한 장 생성 후 즉시 결과: 현실적인 대화 스크린샷.",
+          "채팅 대화 내용을 붙여넣으면 스마트폰 목업에 담긴 대화 스크린샷 한 장이 나오는 웹 화면",
       },
       {
         id: "twist-mockly-2",
@@ -5244,7 +5245,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "시간·읽음 표시만 조절하는 초간단 채팅 화면 제작",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 채팅 대화 내용.를 넣으면 시간·읽음 표시만 조절하는 초간단 채팅 화면 제작 후 즉시 결과: 현실적인 대화 스크린샷.",
+          "채팅 대화 내용을 넣고 시간·읽음 표시만 조절하면 대화 스크린샷이 나오는 웹 화면",
       },
     ],
   },
@@ -5272,19 +5273,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-backdropboost-0",
         value: "온라인 쇼핑몰 상품 등록자",
         detail:
-          "온라인 쇼핑몰 상품 등록자가 상품 상세페이지 사진이 부족할 때에 이 결과를 바로 사용합니다.",
+          "같은 상품을 여러 장 촬영할 공간과 소품이 없어 흰 배경 사진만으로 상세페이지를 채우고 있습니다.",
       },
       {
         id: "payer-backdropboost-1",
         value: "인스타그램 광고를 만드는 소상공인",
         detail:
-          "인스타그램 광고를 만드는 소상공인이 광고용 생활 연출 컷이 필요할 때에 이 결과를 바로 사용합니다.",
+          "광고마다 제품을 다시 촬영하기 어려워 기존 상품 사진을 배경 이미지 위에 수작업으로 합성합니다.",
       },
       {
         id: "payer-backdropboost-2",
         value: "제품 사진이 부족한 1인 브랜드 대표",
         detail:
-          "제품 사진이 부족한 1인 브랜드 대표가 흰 배경 상품을 분위기 있게 보이고 싶을 때에 이 결과를 바로 사용합니다.",
+          "흰 배경 상품 사진은 준비됐지만 브랜드 분위기를 보여줄 연출 컷이 없어 게시를 미루고 있습니다.",
       },
     ],
     moments: [
@@ -5292,19 +5293,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-backdropboost-0",
         value: "상품 상세페이지 사진이 부족할 때",
         detail:
-          "상품 상세페이지 사진이 부족할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "비슷한 각도의 사진만 이어지면 상품 사용 장면이 보이지 않아, 등록 전에 다른 배경 컷이 필요합니다.",
       },
       {
         id: "moment-backdropboost-1",
         value: "광고용 생활 연출 컷이 필요할 때",
         detail:
-          "광고용 생활 연출 컷이 필요할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "촬영 없이 광고 소재를 바꿔야 해, 제품 형태를 지킨 생활 장면을 먼저 확인해야 합니다.",
       },
       {
         id: "moment-backdropboost-2",
         value: "흰 배경 상품을 분위기 있게 보이고 싶을 때",
         detail:
-          "흰 배경 상품을 분위기 있게 보이고 싶을 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "제품은 선명하지만 쓰이는 공간이 보이지 않아, 원본 상품을 건드리지 않는 배경 시안이 필요합니다.",
       },
     ],
     twists: [
@@ -5317,7 +5318,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "한국 쇼핑몰용 주방·거실·카페 배경 세 가지 제공",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 상품 사진.를 넣으면 한국 쇼핑몰용 주방·거실·카페 배경 세 가지 제공 후 즉시 결과: 전자상거래용 생활 배경 이미지.",
+          "상품 사진 한 장을 넣으면 주방·거실·카페 배경을 입힌 생활 연출 이미지 세 장이 나오는 웹 화면",
       },
       {
         id: "twist-backdropboost-1",
@@ -5328,7 +5329,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "상품 사진 한 장과 배경 장면 하나만 선택해 생성",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 상품 사진.를 넣으면 상품 사진 한 장과 배경 장면 하나만 선택해 생성 후 즉시 결과: 전자상거래용 생활 배경 이미지.",
+          "상품 사진 한 장과 배경 장면 하나를 고르면 전자상거래용 생활 연출 이미지가 나오는 웹 화면",
       },
       {
         id: "twist-backdropboost-2",
@@ -5339,7 +5340,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "제품은 유지하고 주변 배경만 생활 장면으로 교체",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 상품 사진.를 넣으면 제품은 유지하고 주변 배경만 생활 장면으로 교체 후 즉시 결과: 전자상거래용 생활 배경 이미지.",
+          "상품 사진 한 장을 넣으면 제품은 유지하고 주변만 생활 장면으로 바꾼 이미지가 나오는 웹 화면",
       },
     ],
   },
@@ -5367,19 +5368,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-tariffsapi-0",
         value: "수입 상품을 다루는 온라인 셀러",
         detail:
-          "수입 상품을 다루는 온라인 셀러가 해외 상품의 관세율을 확인할 때에 이 결과를 바로 사용합니다.",
+          "상품마다 국가와 품목 코드를 바꿔 관세 사이트를 조회하고 결과를 견적표에 손으로 옮깁니다.",
       },
       {
         id: "payer-tariffsapi-1",
         value: "무역 서류를 확인하는 중소기업 담당자",
         detail:
-          "무역 서류를 확인하는 중소기업 담당자가 수입 견적을 계산하기 직전에 이 결과를 바로 사용합니다.",
+          "수입 견적에 들어갈 국가·품목·관세율을 여러 문서에서 찾아 계산표에 대조합니다.",
       },
       {
         id: "payer-tariffsapi-2",
         value: "관세 데이터를 조회하는 무역 컨설턴트",
         detail:
-          "관세 데이터를 조회하는 무역 컨설턴트가 국가와 품목별 무역 데이터를 조회할 때에 이 결과를 바로 사용합니다.",
+          "고객이 요청한 국가와 품목 조합마다 API 응답을 읽어 필요한 관세 항목만 다시 정리합니다.",
       },
     ],
     moments: [
@@ -5387,19 +5388,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-tariffsapi-0",
         value: "해외 상품의 관세율을 확인할 때",
         detail:
-          "해외 상품의 관세율을 확인할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "관세율을 빠뜨리면 판매가와 마진 판단이 달라질 수 있어, 발주 전에 국가와 품목 기준을 확인해야 합니다.",
       },
       {
         id: "moment-tariffsapi-1",
         value: "수입 견적을 계산하기 직전",
         detail:
-          "수입 견적을 계산하기 직전에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "관세 항목이 빠진 견적은 다시 계산해야 하므로, 금액을 보내기 전에 적용 데이터를 확정해야 합니다.",
       },
       {
         id: "moment-tariffsapi-2",
         value: "국가와 품목별 무역 데이터를 조회할 때",
         detail:
-          "국가와 품목별 무역 데이터를 조회할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "원문 응답이 길면 비교가 어려워, 상담 전에 국가·품목·관세율만 같은 형식으로 정리해야 합니다.",
       },
     ],
     twists: [
@@ -5412,7 +5413,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "한국 수입자가 자주 찾는 국가·품목 코드 예시 제공",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: international imports and exports data query.를 넣으면 한국 수입자가 자주 찾는 국가·품목 코드 예시 제공 후 즉시 결과: real-time import and export data.",
+          "수출입 데이터 질의를 넣으면 한국 수입자가 자주 찾는 국가·품목 코드 예시와 실시간 수출입 데이터를 보여주는 웹 화면",
       },
       {
         id: "twist-tariffsapi-1",
@@ -5423,7 +5424,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "질의 결과에 국가·품목·관세율만 간결하게 표시",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: international imports and exports data query.를 넣으면 질의 결과에 국가·품목·관세율만 간결하게 표시 후 즉시 결과: real-time import and export data.",
+          "수출입 데이터 질의를 넣으면 국가·품목·관세율과 실시간 수출입 데이터만 간결하게 보여주는 웹 화면",
       },
       {
         id: "twist-tariffsapi-2",
@@ -5434,7 +5435,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "API 응답을 한국어 표와 JSON 두 형식으로 반환",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: international imports and exports data query.를 넣으면 API 응답을 한국어 표와 JSON 두 형식으로 반환 후 즉시 결과: real-time import and export data.",
+          "수출입 데이터 질의를 넣으면 실시간 수출입 데이터를 한국어 표와 JSON으로 반환하는 웹 화면",
       },
     ],
   },
@@ -5462,19 +5463,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-casora-0",
         value: "원룸 인테리어를 바꾸려는 자취생",
         detail:
-          "원룸 인테리어를 바꾸려는 자취생이 가구를 사기 전에 방 분위기를 볼 때에 이 결과를 바로 사용합니다.",
+          "가구를 산 뒤 방과 어울리지 않을까 걱정돼 쇼핑몰 사진과 방 사진을 번갈아 보며 머릿속으로 배치합니다.",
       },
       {
         id: "payer-casora-1",
         value: "집 꾸미기 상담을 하는 인테리어 디자이너",
         detail:
-          "집 꾸미기 상담을 하는 인테리어 디자이너가 벽지와 바닥 색을 고를 때에 이 결과를 바로 사용합니다.",
+          "벽지·바닥 후보를 상담 자료에 따로 붙여 고객이 완성된 방을 상상하도록 설명합니다.",
       },
       {
         id: "payer-casora-2",
         value: "신혼집 스타일을 고르는 예비부부",
         detail:
-          "신혼집 스타일을 고르는 예비부부가 가족에게 인테리어 안을 보여줄 때에 이 결과를 바로 사용합니다.",
+          "가족에게 각자 찾은 인테리어 사진을 보내지만 같은 방에 적용된 모습이 없어 의견이 갈립니다.",
       },
     ],
     moments: [
@@ -5482,19 +5483,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-casora-0",
         value: "가구를 사기 전에 방 분위기를 볼 때",
         detail:
-          "가구를 사기 전에 방 분위기를 볼 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "가구가 들어온 뒤 되돌리기 어려워, 구매 전에 현재 방에 어울리는 분위기를 확인해야 합니다.",
       },
       {
         id: "moment-casora-1",
         value: "벽지와 바닥 색을 고를 때",
         detail:
-          "벽지와 바닥 색을 고를 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "작은 색 차이도 방 전체 인상을 바꿔, 계약 전에 같은 사진으로 후보를 비교해야 합니다.",
       },
       {
         id: "moment-casora-2",
         value: "가족에게 인테리어 안을 보여줄 때",
         detail:
-          "가족에게 인테리어 안을 보여줄 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "참고 사진만으로는 의견을 모으기 어려워, 가족이 같은 전후 시안을 보고 결정해야 합니다.",
       },
     ],
     twists: [
@@ -5507,7 +5508,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "한국 원룸 사진에 맞춘 북유럽·호텔·내추럴 프리셋",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: room photo.를 넣으면 한국 원룸 사진에 맞춘 북유럽·호텔·내추럴 프리셋 후 즉시 결과: redesigned room.",
+          "방 사진 한 장을 넣으면 북유럽·호텔·내추럴 프리셋으로 새로 꾸민 방 시안이 나오는 웹 화면",
       },
       {
         id: "twist-casora-1",
@@ -5518,7 +5519,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "방 사진에 색상 하나만 바꿔 세 가지 결과 생성",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: room photo.를 넣으면 방 사진에 색상 하나만 바꿔 세 가지 결과 생성 후 즉시 결과: redesigned room.",
+          "방 사진 한 장을 넣고 색상 하나를 바꾸면 새 인테리어 시안 세 가지가 나오는 웹 화면",
       },
       {
         id: "twist-casora-2",
@@ -5529,101 +5530,102 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "가구를 실제로 바꾸기 전 전후 이미지를 나란히 표시",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: room photo.를 넣으면 가구를 실제로 바꾸기 전 전후 이미지를 나란히 표시 후 즉시 결과: redesigned room.",
+          "방 사진 한 장을 넣으면 가구를 바꾸기 전 원본과 새 인테리어 시안을 나란히 보여주는 웹 화면",
       },
     ],
   },
   {
-    id: "candidate-todo",
+    id: "worry-guardian-ritual",
     source: {
-      id: "source-todo",
-      sourceName: "微笑Todo-自律计划和时间打卡",
+      id: "source-finch",
+      sourceName: "Finch",
       research: {
-        key: "app_store:1551532207",
-        url: "https://apps.apple.com/kr/app/%E5%BE%AE%E7%AC%91todo-%E8%87%AA%E5%BE%8B%E8%AE%A1%E5%88%92%E5%92%8C%E6%97%B6%E9%97%B4%E6%89%93%E5%8D%A1/id1551532207?uo=4",
+        key: "app_store:1528595748",
+        url: "https://apps.apple.com/us/app/finch-self-care-pet/id1528595748",
       },
       platform: "app",
-      value: "구체적인 입력: 하루 활동과 습관. 핵심 처리: 일일 습관 완료 기록.",
+      value:
+        "셀프케어 행동을 기록하면 죄책감을 주지 않는 펫이 에너지를 얻고 함께 성장하는 앱",
       detail:
-        "즉시 결과: 오늘의 완료 표시와 기록. 필요한 순간: 매일의 습관 펀치.",
+        "할 일·저널링·호흡처럼 작은 돌봄 행동을 마치면 펫의 모험과 애착 가능한 기록으로 되돌려줍니다.",
       evidence:
-        "검증된 해외 원본: 微笑Todo-自律计划和时间打卡 (codex_cli_structured_exhaustive_review)",
+        "Finch Google Play 1,000만+ 다운로드·VC 없이 ARR 약 $30M, 펫 애착과 셀프케어 반복 행동의 결제 전환 확인",
       preservedFlow:
-        "구체적인 입력: 하루 활동과 습관. → 핵심 처리: 일일 습관 완료 기록. → 즉시 결과: 오늘의 완료 표시와 기록.",
+        "작은 셀프케어 행동 입력 → 짧은 돌봄 행동 완료 → 펫의 반응과 누적 기록 확인",
     },
     payers: [
       {
-        id: "payer-todo-0",
-        value: "매일 중국어를 공부하는 직장인",
+        id: "payer-night-worrier",
+        value: "사주·MBTI를 재미로 보며 밤마다 걱정을 되씹는 직장인",
         detail:
-          "매일 중국어를 공부하는 직장인이 오늘 습관을 완료하고 체크할 때에 이 결과를 바로 사용합니다.",
+          "친구에게 같은 말을 또 하기는 미안해 메모 앱이나 운세 콘텐츠를 반복해서 엽니다.",
       },
       {
-        id: "payer-todo-1",
-        value: "운동 루틴을 지키려는 대학생",
+        id: "payer-guiltfree-selfcare",
+        value: "셀프케어 앱의 할 일과 스트릭에 지친 대학생",
         detail:
-          "운동 루틴을 지키려는 대학생이 일주일 실천률을 돌아볼 때에 이 결과를 바로 사용합니다.",
+          "위로받으려 앱을 켰다가 못 지킨 목표와 죽는 펫 때문에 오히려 죄책감을 느낍니다.",
       },
       {
-        id: "payer-todo-2",
-        value: "아침 습관을 만들려는 취업준비생",
+        id: "payer-fortune-journal",
+        value: "운세를 본 뒤 실제 마음 변화를 기록하는 1인 생활자",
         detail:
-          "아침 습관을 만들려는 취업준비생이 잠들기 전 하루 기록을 남길 때에 이 결과를 바로 사용합니다.",
+          "오늘의 운세를 읽고 끝내지 않고 내 걱정 패턴을 짧게 남기는 행동을 반복합니다.",
       },
     ],
     moments: [
       {
-        id: "moment-todo-0",
-        value: "오늘 습관을 완료하고 체크할 때",
+        id: "moment-third-worry-night",
+        value: "같은 걱정을 오늘 밤 세 번째 다시 생각한 순간",
         detail:
-          "오늘 습관을 완료하고 체크할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "상담을 받을 정도라고 단정하긴 어렵지만 생각을 멈추고 잠들고 싶은 밤",
       },
       {
-        id: "moment-todo-1",
-        value: "일주일 실천률을 돌아볼 때",
+        id: "moment-friend-again",
+        value: "친구에게 같은 고민을 또 보내기 미안해진 밤",
         detail:
-          "일주일 실천률을 돌아볼 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "답장을 기다리는 대화 대신 걱정을 안전하게 맡기고 끝내고 싶은 순간",
       },
       {
-        id: "moment-todo-2",
-        value: "잠들기 전 하루 기록을 남길 때",
+        id: "moment-before-sleep-loop",
+        value: "불을 끈 뒤 내일 걱정이 다시 시작된 순간",
         detail:
-          "잠들기 전 하루 기록을 남길 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "긴 AI 채팅에 빠지지 않고 짧은 행동 하나로 오늘 생각을 닫아야 하는 순간",
       },
     ],
     twists: [
       {
-        id: "twist-todo-0",
+        id: "twist-guardian-ritual",
         kind: "replace",
-        value: "한국 직장인용 출근·공부·운동 습관 템플릿 제공",
+        value: "할 일 완료를 걱정 한 줄을 맡기는 90초 의식으로 바꾸기",
         detail:
-          "원본의 입력→처리→결과 흐름을 유지하면서 한국 직장인용 출근·공부·운동 습관 템플릿 제공만 적용합니다.",
-        resultTitle: "한국 직장인용 출근·공부·운동 습관 템플릿 제공",
+          "작은 행동 뒤 펫이 반응하는 원본 흐름은 유지하고, 끝없는 채팅 대신 시작과 끝이 있는 의식으로 바꿉니다.",
+        resultTitle: "걱정을 맡아주는 90초 마음수호신",
         platform: "app",
         smallestBuild:
-          "구체적인 입력: 하루 활동과 습관.를 넣으면 한국 직장인용 출근·공부·운동 습관 템플릿 제공 후 즉시 결과: 오늘의 완료 표시와 기록.",
+          "걱정 한 줄과 강도를 넣으면 수호동물이 받아 들고 90초 호흡 뒤 ‘오늘은 여기까지’ 완료 카드가 나오는 모바일 웹 화면",
       },
       {
-        id: "twist-todo-1",
+        id: "twist-birth-guardian",
         kind: "add",
-        value: "완료율 60% 달성 시 오늘의 미소 카드 생성",
+        value: "첫 시작에 생년월일로 죄책감 없는 수호동물 한 마리 만나기",
         detail:
-          "원본의 입력→처리→결과 흐름을 유지하면서 완료율 60% 달성 시 오늘의 미소 카드 생성만 적용합니다.",
-        resultTitle: "완료율 60% 달성 시 오늘의 미소 카드 생성",
+          "펫 애착과 작은 돌봄 행동은 유지하고 국내 사용자가 가볍게 들어오는 사주 문법만 입구에 더합니다.",
+        resultTitle: "사주로 만나는 죄책감 없는 수호동물",
         platform: "app",
         smallestBuild:
-          "구체적인 입력: 하루 활동과 습관.를 넣으면 완료율 60% 달성 시 오늘의 미소 카드 생성 후 즉시 결과: 오늘의 완료 표시와 기록.",
+          "생년월일을 넣어 수호동물 한 마리를 만난 뒤 오늘 걱정 한 줄을 맡기고 종료하는 모바일 웹 화면",
       },
       {
-        id: "twist-todo-2",
-        kind: "remove",
-        value: "습관을 오른쪽으로 밀면 완료되는 한 손 기록 화면",
+        id: "twist-seven-day-heart-map",
+        kind: "add",
+        value: "맡긴 걱정 7일치에서 반복 주제와 시간대만 보여주기",
         detail:
-          "원본의 입력→처리→결과 흐름을 유지하면서 습관을 오른쪽으로 밀면 완료되는 한 손 기록 화면만 적용합니다.",
-        resultTitle: "습관을 오른쪽으로 밀면 완료되는 한 손 기록 화면",
+          "매일 작은 행동과 누적 기록을 남기는 원본 흐름을 유지하고 일반 위로문 대신 내 데이터 패턴을 결과로 줍니다.",
+        resultTitle: "7일 뒤 열리는 내 마음 사용설명서",
         platform: "app",
         smallestBuild:
-          "구체적인 입력: 하루 활동과 습관.를 넣으면 습관을 오른쪽으로 밀면 완료되는 한 손 기록 화면 후 즉시 결과: 오늘의 완료 표시와 기록.",
+          "걱정·강도·시간 7개를 직접 넣으면 반복 단어·자주 불안한 시간대·내려놓은 횟수가 한 장에 나오는 모바일 웹 화면",
       },
     ],
   },
@@ -5650,19 +5652,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-tickoff-0",
         value: "매일 독서 습관을 만드는 직장인",
         detail:
-          "매일 독서 습관을 만드는 직장인이 새 습관을 등록하는 순간에 이 결과를 바로 사용합니다.",
+          "해보고 싶은 습관을 메모장에 적어두지만 시작 기준과 완료 표시가 흩어져 자주 잊습니다.",
       },
       {
         id: "payer-tickoff-1",
         value: "운동 목표를 기록하는 대학생",
         detail:
-          "운동 목표를 기록하는 대학생이 오늘 완료 표시를 남길 때에 이 결과를 바로 사용합니다.",
+          "운동한 날을 달력과 메모 앱에 따로 표시해 연속 기록을 직접 셉니다.",
       },
       {
         id: "payer-tickoff-2",
         value: "금융 공부를 이어가는 취준생",
         detail:
-          "금융 공부를 이어가는 취준생이 연속 기록이 며칠인지 확인할 때에 이 결과를 바로 사용합니다.",
+          "공부한 날마다 날짜를 적어두고 빠진 날이 없는지 지난 기록을 다시 훑습니다.",
       },
     ],
     moments: [
@@ -5670,19 +5672,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-tickoff-0",
         value: "새 습관을 등록하는 순간",
         detail:
-          "새 습관을 등록하는 순간에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "목표만 적으면 첫 행동이 흐려져, 무엇을 완료로 볼지 함께 정해야 합니다.",
       },
       {
         id: "moment-tickoff-1",
         value: "오늘 완료 표시를 남길 때",
         detail:
-          "오늘 완료 표시를 남길 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "완료를 바로 남기지 않으면 기록이 빠져, 오늘 행동을 잊기 전에 체크해야 합니다.",
       },
       {
         id: "moment-tickoff-2",
         value: "연속 기록이 며칠인지 확인할 때",
         detail:
-          "연속 기록이 며칠인지 확인할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "기록이 끊겼는지 달력을 세지 않고도, 다음 공부를 시작하기 전에 현재 흐름을 확인해야 합니다.",
       },
     ],
     twists: [
@@ -5695,7 +5697,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "한국 생활에 맞춘 독서·운동·공부 예시 습관 제공",
         platform: "app",
         smallestBuild:
-          "구체적인 입력: Add habits.를 넣으면 한국 생활에 맞춘 독서·운동·공부 예시 습관 제공 후 즉시 결과: interactive streak tracker.",
+          "습관 하나를 추가하면 독서·운동·공부 예시와 연속 기록표를 보여주는 웹 화면",
       },
       {
         id: "twist-tickoff-1",
@@ -5706,7 +5708,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "목록 보기와 스트릭 보기 두 화면만 제공",
         platform: "app",
         smallestBuild:
-          "구체적인 입력: Add habits.를 넣으면 목록 보기와 스트릭 보기 두 화면만 제공 후 즉시 결과: interactive streak tracker.",
+          "습관 하나를 추가하면 목록과 연속 기록 두 화면만 보여주는 웹 화면",
       },
       {
         id: "twist-tickoff-2",
@@ -5717,7 +5719,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "완료 체크 후 현재 연속 일수를 즉시 표시",
         platform: "app",
         smallestBuild:
-          "구체적인 입력: Add habits.를 넣으면 완료 체크 후 현재 연속 일수를 즉시 표시 후 즉시 결과: interactive streak tracker.",
+          "습관 하나를 추가하고 완료를 체크하면 현재 연속 일수를 바로 보여주는 웹 화면",
       },
     ],
   },
@@ -5744,19 +5746,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-programmer-calculator-0",
         value: "임베디드 개발자",
         detail:
-          "임베디드 개발자가 hex 문자열의 CRC를 확인할 때에 이 결과를 바로 사용합니다.",
+          "펌웨어 로그의 육각 바이트를 별도 계산기에 옮겨 CRC 값과 원문을 번갈아 검산합니다.",
       },
       {
         id: "payer-programmer-calculator-1",
         value: "네트워크 패킷을 점검하는 엔지니어",
         detail:
-          "네트워크 패킷을 점검하는 엔지니어가 진수 변환 결과를 검산할 때에 이 결과를 바로 사용합니다.",
+          "패킷 값을 진수별로 다시 변환해 문서에 적힌 값과 맞는지 수작업으로 대조합니다.",
       },
       {
         id: "payer-programmer-calculator-2",
         value: "코딩 테스트를 준비하는 개발자",
         detail:
-          "코딩 테스트를 준비하는 개발자가 프로토콜 값을 빠르게 계산할 때에 이 결과를 바로 사용합니다.",
+          "프로토콜 문제를 풀 때 문자열·육각값·CRC 계산기를 따로 열어 중간값을 옮겨 적습니다.",
       },
     ],
     moments: [
@@ -5764,19 +5766,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-programmer-calculator-0",
         value: "hex 문자열의 CRC를 확인할 때",
         detail:
-          "hex 문자열의 CRC를 확인할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "CRC가 다르면 데이터 손상인지 입력 형식 문제인지 갈리므로, 전송 전에 같은 조건으로 계산해야 합니다.",
       },
       {
         id: "moment-programmer-calculator-1",
         value: "진수 변환 결과를 검산할 때",
         detail:
-          "진수 변환 결과를 검산할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "변환값 하나가 틀리면 패킷 해석이 달라져, 디버깅을 이어가기 전에 원값과 결과를 대조해야 합니다.",
       },
       {
         id: "moment-programmer-calculator-2",
         value: "프로토콜 값을 빠르게 계산할 때",
         detail:
-          "프로토콜 값을 빠르게 계산할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "계산 도구를 오가다 중간값을 잘못 옮기기 쉬워, 답을 제출하기 전에 한 화면에서 검산해야 합니다.",
       },
     ],
     twists: [
@@ -5789,7 +5791,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "한국어 입력 예시와 CRC-32 결과를 한 화면에 표시",
         platform: "app",
         smallestBuild:
-          "구체적인 입력: 문자열 또는 육각 바이트.를 넣으면 한국어 입력 예시와 CRC-32 결과를 한 화면에 표시 후 즉시 결과: 변환값과 CRC 결과.",
+          "문자열이나 육각 바이트를 넣으면 한국어 입력 예시와 CRC-32 결과를 한 화면에 보여주는 웹 도구",
       },
       {
         id: "twist-programmer-calculator-1",
@@ -5800,7 +5802,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "문자열과 hex 바이트 입력을 탭으로 분리",
         platform: "app",
         smallestBuild:
-          "구체적인 입력: 문자열 또는 육각 바이트.를 넣으면 문자열과 hex 바이트 입력을 탭으로 분리 후 즉시 결과: 변환값과 CRC 결과.",
+          "문자열과 육각 바이트 입력을 탭으로 나눠 변환값과 CRC 결과를 보여주는 웹 도구",
       },
       {
         id: "twist-programmer-calculator-2",
@@ -5811,7 +5813,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "10진수·16진수 변환 결과를 동시에 출력",
         platform: "app",
         smallestBuild:
-          "구체적인 입력: 문자열 또는 육각 바이트.를 넣으면 10진수·16진수 변환 결과를 동시에 출력 후 즉시 결과: 변환값과 CRC 결과.",
+          "문자열이나 육각 바이트를 넣으면 10진수·16진수 변환값과 CRC 결과를 함께 보여주는 웹 도구",
       },
     ],
   },
@@ -5838,19 +5840,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-mergeitai-0",
         value: "수입 소상공인",
         detail:
-          "수입 소상공인이 거래처 명단과 결제 내역을 맞출 때에 이 결과를 바로 사용합니다.",
+          "거래처명과 입금자명이 달라 엑셀 두 열을 눈으로 오가며 같은 대상을 한 줄씩 찾습니다.",
       },
       {
         id: "payer-mergeitai-1",
         value: "핀테크 운영 담당자",
         detail:
-          "핀테크 운영 담당자가 두 고객 파일의 표기가 다를 때에 이 결과를 바로 사용합니다.",
+          "띄어쓰기·영문명·약칭이 다른 고객 파일을 정렬해 놓고 후보를 수작업으로 대조합니다.",
       },
       {
         id: "payer-mergeitai-2",
         value: "엑셀로 거래처를 관리하는 세무사",
         detail:
-          "엑셀로 거래처를 관리하는 세무사가 중복 고객을 정리하기 전에 이 결과를 바로 사용합니다.",
+          "중복으로 보이는 이름을 삭제하기 전 원본 행과 결제 내역을 다시 찾아 같은 고객인지 확인합니다.",
       },
     ],
     moments: [
@@ -5858,19 +5860,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-mergeitai-0",
         value: "거래처 명단과 결제 내역을 맞출 때",
         detail:
-          "거래처 명단과 결제 내역을 맞출 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "이름이 다르면 입금을 잘못 연결할 수 있어, 정산 전에 대응 후보와 원본 행을 확인해야 합니다.",
       },
       {
         id: "moment-mergeitai-1",
         value: "두 고객 파일의 표기가 다를 때",
         detail:
-          "두 고객 파일의 표기가 다를 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "표기만 다른 고객을 놓치거나 다른 사람을 합치지 않도록, 파일을 합치기 전에 대응 근거가 필요합니다.",
       },
       {
         id: "moment-mergeitai-2",
         value: "중복 고객을 정리하기 전",
         detail:
-          "중복 고객을 정리하기 전에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "잘못 합치면 거래 이력이 섞이므로, 삭제 전에 원본 위치가 남은 후보 목록을 검수해야 합니다.",
       },
     ],
     twists: [
@@ -5883,7 +5885,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "두 엑셀 열을 넣으면 한글·영문 표기까지 대응표로 반환",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: Excel의 두 열.를 넣으면 두 엑셀 열을 넣으면 한글·영문 표기까지 대응표로 반환 후 즉시 결과: 서로 대응하는 항목.",
+          "엑셀의 두 열을 넣으면 한글·영문 표기를 맞춘 대응표를 보여주는 웹 화면",
       },
       {
         id: "twist-mergeitai-1",
@@ -5894,7 +5896,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "사업자명과 입금자명을 유사도순으로 나란히 보여주기",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: Excel의 두 열.를 넣으면 사업자명과 입금자명을 유사도순으로 나란히 보여주기 후 즉시 결과: 서로 대응하는 항목.",
+          "엑셀의 두 열을 넣으면 사업자명과 입금자명을 유사도순으로 나란히 보여주는 웹 화면",
       },
       {
         id: "twist-mergeitai-2",
@@ -5905,7 +5907,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "매칭 결과에 원본 행 번호를 붙여 바로 검수",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: Excel의 두 열.를 넣으면 매칭 결과에 원본 행 번호를 붙여 바로 검수 후 즉시 결과: 서로 대응하는 항목.",
+          "엑셀의 두 열을 넣으면 원본 행 번호가 붙은 대응표를 바로 검수할 수 있는 웹 화면",
       },
     ],
   },
@@ -5933,19 +5935,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-base44-downloader-0",
         value: "Base44로 만든 앱의 1인 창업자",
         detail:
-          "Base44로 만든 앱의 1인 창업자가 플랫폼을 바꾸기 전 코드를 보관할 때에 이 결과를 바로 사용합니다.",
+          "플랫폼을 옮기기 전에 화면별 파일을 하나씩 열어 복사하며 빠진 코드가 없는지 확인합니다.",
       },
       {
         id: "payer-base44-downloader-1",
         value: "외주 개발 프리랜서",
         detail:
-          "외주 개발 프리랜서가 클라이언트에게 작업물을 넘기기 전에 이 결과를 바로 사용합니다.",
+          "납품할 코드와 설명 자료를 따로 모아 압축하고, 클라이언트가 열 수 있는 구조인지 다시 점검합니다.",
       },
       {
         id: "payer-base44-downloader-2",
         value: "코드 백업이 필요한 소규모 팀",
         detail:
-          "코드 백업이 필요한 소규모 팀이 워크스페이스 파일을 한 번에 내려받을 때에 이 결과를 바로 사용합니다.",
+          "워크스페이스 파일을 개별로 내려받아 폴더 구조를 다시 만들고 백업본이 빠지지 않았는지 확인합니다.",
       },
     ],
     moments: [
@@ -5953,19 +5955,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-base44-downloader-0",
         value: "플랫폼을 바꾸기 전 코드를 보관할 때",
         detail:
-          "플랫폼을 바꾸기 전 코드를 보관할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "이전 뒤 원본에 접근하지 못할 수 있어, 옮기기 전에 전체 코드와 구조를 보관해야 합니다.",
       },
       {
         id: "moment-base44-downloader-1",
         value: "클라이언트에게 작업물을 넘기기 전",
         detail:
-          "클라이언트에게 작업물을 넘기기 전에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "파일이 빠지면 인수인계가 멈추므로, 전달 전에 열어볼 수 있는 백업본을 확정해야 합니다.",
       },
       {
         id: "moment-base44-downloader-2",
         value: "워크스페이스 파일을 한 번에 내려받을 때",
         detail:
-          "워크스페이스 파일을 한 번에 내려받을 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "개별 다운로드는 누락을 알아차리기 어려워, 변경 전에 워크스페이스 전체를 한 묶음으로 받아야 합니다.",
       },
     ],
     twists: [
@@ -5979,7 +5981,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
           "Base44 워크스페이스를 한국어 파일명 안내와 함께 ZIP으로 백업",
         platform: "plugin",
         smallestBuild:
-          "구체적인 입력: Base44 코드 워크스페이스 파일.를 넣으면 Base44 워크스페이스를 한국어 파일명 안내와 함께 ZIP으로 백업 후 즉시 결과: 클린 JSON 또는 ZIP 내보내기.",
+          "Base44 코드 워크스페이스를 넣으면 한국어 파일명 안내와 함께 ZIP 백업본을 만드는 웹 화면",
       },
       {
         id: "twist-base44-downloader-1",
@@ -5990,7 +5992,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "코드 구조를 읽기 쉬운 JSON으로 정리해 내보내기",
         platform: "plugin",
         smallestBuild:
-          "구체적인 입력: Base44 코드 워크스페이스 파일.를 넣으면 코드 구조를 읽기 쉬운 JSON으로 정리해 내보내기 후 즉시 결과: 클린 JSON 또는 ZIP 내보내기.",
+          "Base44 코드 워크스페이스를 넣으면 코드 구조를 읽기 쉬운 JSON으로 정리해 내보내는 웹 화면",
       },
       {
         id: "twist-base44-downloader-2",
@@ -6001,7 +6003,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "이전용 ZIP과 검수용 JSON을 동시에 생성",
         platform: "plugin",
         smallestBuild:
-          "구체적인 입력: Base44 코드 워크스페이스 파일.를 넣으면 이전용 ZIP과 검수용 JSON을 동시에 생성 후 즉시 결과: 클린 JSON 또는 ZIP 내보내기.",
+          "Base44 코드 워크스페이스를 넣으면 이전용 ZIP과 검수용 JSON을 함께 만드는 웹 화면",
       },
     ],
   },
@@ -6028,19 +6030,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-not-for-me-drink-less-0",
         value: "절주를 시도하는 직장인",
         detail:
-          "절주를 시도하는 직장인이 어젯밤 마신 양을 기록할 때에 이 결과를 바로 사용합니다.",
+          "전날 마신 잔 수를 메모나 기억에 의존해 기록이 빠지고 지난 음주일을 다시 떠올립니다.",
       },
       {
         id: "payer-not-for-me-drink-less-1",
         value: "회식이 잦은 영업사원",
         detail:
-          "회식이 잦은 영업사원이 이번 주 회식 전 상태를 볼 때에 이 결과를 바로 사용합니다.",
+          "회식 일정은 캘린더에 있지만 최근 마신 날과 쉬었던 날은 따로 세어 봅니다.",
       },
       {
         id: "payer-not-for-me-drink-less-2",
         value: "음주 습관을 가볍게 기록하려는 대학생",
         detail:
-          "음주 습관을 가볍게 기록하려는 대학생이 며칠째 술을 쉬었는지 확인할 때에 이 결과를 바로 사용합니다.",
+          "술을 마신 날만 메모해 쉬었던 흐름과 현재 기록을 한눈에 보기 어렵습니다.",
       },
     ],
     moments: [
@@ -6048,19 +6050,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-not-for-me-drink-less-0",
         value: "어젯밤 마신 양을 기록할 때",
         detail:
-          "어젯밤 마신 양을 기록할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "기억이 흐려지기 전에 마신 양을 남겨야 다음 기록과 비교할 기준이 생깁니다.",
       },
       {
         id: "moment-not-for-me-drink-less-1",
         value: "이번 주 회식 전 상태를 볼 때",
         detail:
-          "이번 주 회식 전 상태를 볼 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "회식 전 최근 기록을 보면 오늘 선택을 스스로 정할 수 있어, 마신 날과 쉬었던 날을 함께 확인해야 합니다.",
       },
       {
         id: "moment-not-for-me-drink-less-2",
         value: "며칠째 술을 쉬었는지 확인할 때",
         detail:
-          "며칠째 술을 쉬었는지 확인할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "달력을 손으로 세지 않고도 쉬었던 흐름이 이어지는지 확인해 다음 기록을 남겨야 합니다.",
       },
     ],
     twists: [
@@ -6073,7 +6075,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "잔 수만 입력하면 이번 주 절주 기록을 달력으로 표시",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 음주 기록.를 넣으면 잔 수만 입력하면 이번 주 절주 기록을 달력으로 표시 후 즉시 결과: 현재 절주 진행 상태.",
+          "음주 기록에 잔 수를 넣으면 이번 주 마신 날과 쉬었던 날을 달력으로 보여주는 웹 화면",
       },
       {
         id: "twist-not-for-me-drink-less-1",
@@ -6084,7 +6086,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "회식 다음 날 음주 기록과 쉬었던 날짜를 한눈에 보기",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 음주 기록.를 넣으면 회식 다음 날 음주 기록과 쉬었던 날짜를 한눈에 보기 후 즉시 결과: 현재 절주 진행 상태.",
+          "음주 기록을 넣으면 회식 다음 날 기록과 쉬었던 날짜를 함께 보여주는 웹 화면",
       },
       {
         id: "twist-not-for-me-drink-less-2",
@@ -6095,7 +6097,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "비의료적 응원 문구와 현재 기록만 보여주는 간단한 추적기",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 음주 기록.를 넣으면 비의료적 응원 문구와 현재 기록만 보여주는 간단한 추적기 후 즉시 결과: 현재 절주 진행 상태.",
+          "음주 기록을 넣으면 비의료적 응원 문구와 현재 기록만 보여주는 웹 화면",
       },
     ],
   },
@@ -6123,19 +6125,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-cantsayno-0",
         value: "발렌타인데이를 준비하는 대학생",
         detail:
-          "발렌타인데이를 준비하는 대학생이 발렌타인 카드 링크를 만들 때에 이 결과를 바로 사용합니다.",
+          "고백 문구와 사진을 메신저에 따로 보내면 평범해 보여 카드 제작 도구에서 링크와 화면을 직접 꾸밉니다.",
       },
       {
         id: "payer-cantsayno-1",
         value: "커플 이벤트 업체",
         detail:
-          "커플 이벤트 업체가 고백 선물을 건네기 직전에 이 결과를 바로 사용합니다.",
+          "행사마다 사진·문구·버튼이 다른 고백 페이지를 새로 만들거나 외주 시안을 기다립니다.",
       },
       {
         id: "payer-cantsayno-2",
         value: "연인에게 고백하려는 직장인",
         detail:
-          "연인에게 고백하려는 직장인이 연인에게 장난스러운 선택지를 보낼 때에 이 결과를 바로 사용합니다.",
+          "장난스러운 고백을 하고 싶지만 메신저 문장만으로는 선택의 재미를 살리기 어렵습니다.",
       },
     ],
     moments: [
@@ -6143,19 +6145,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-cantsayno-0",
         value: "발렌타인 카드 링크를 만들 때",
         detail:
-          "발렌타인 카드 링크를 만들 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "링크를 열자마자 마음과 선택지가 보여야 해, 보내기 전에 모바일 카드의 흐름을 확인해야 합니다.",
       },
       {
         id: "moment-cantsayno-1",
         value: "고백 선물을 건네기 직전",
         detail:
-          "고백 선물을 건네기 직전에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "현장에서 링크가 열리지 않거나 문구가 어색하면 다시 준비하기 어려워, 선물을 건네기 전에 최종 카드를 확인해야 합니다.",
       },
       {
         id: "moment-cantsayno-2",
         value: "연인에게 장난스러운 선택지를 보낼 때",
         detail:
-          "연인에게 장난스러운 선택지를 보낼 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "상대가 부담 없이 반응하게 하려면, 보내기 전에 문구와 버튼 흐름을 직접 눌러봐야 합니다.",
       },
     ],
     twists: [
@@ -6168,7 +6170,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "한국어 ‘싫어요’ 버튼이 도망가는 발렌타인 카드",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: Valentine’s Day 카드·테마·애니메이션 스티커.를 넣으면 한국어 ‘싫어요’ 버튼이 도망가는 발렌타인 카드 후 즉시 결과: 공유 가능한 인터랙티브 발렌타인 카드.",
+          "발렌타인데이 카드 문구와 테마·스티커를 고르면 한국어 ‘싫어요’ 버튼이 도망가는 공유용 인터랙티브 카드가 나오는 웹 화면",
       },
       {
         id: "twist-cantsayno-1",
@@ -6180,7 +6182,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
           "커플 사진과 스티커를 넣어 한 번만 공유할 인터랙티브 카드 생성",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: Valentine’s Day 카드·테마·애니메이션 스티커.를 넣으면 커플 사진과 스티커를 넣어 한 번만 공유할 인터랙티브 카드 생성 후 즉시 결과: 공유 가능한 인터랙티브 발렌타인 카드.",
+          "커플 사진과 스티커를 넣으면 한 번만 공유할 수 있는 인터랙티브 발렌타인 카드를 만드는 웹 화면",
       },
       {
         id: "twist-cantsayno-2",
@@ -6191,7 +6193,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "버튼을 누를수록 고백 문구가 바뀌는 단일 모바일 페이지",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: Valentine’s Day 카드·테마·애니메이션 스티커.를 넣으면 버튼을 누를수록 고백 문구가 바뀌는 단일 모바일 페이지 후 즉시 결과: 공유 가능한 인터랙티브 발렌타인 카드.",
+          "발렌타인데이 카드 문구와 테마·스티커를 고르면 버튼을 누를수록 고백 문구가 바뀌는 공유용 모바일 페이지가 나오는 웹 화면",
       },
     ],
   },
@@ -6218,19 +6220,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-simplesvgs-0",
         value: "웹디자인 프리랜서",
         detail:
-          "웹디자인 프리랜서가 사이트 배포 전 SVG 용량을 줄일 때에 이 결과를 바로 사용합니다.",
+          "배포할 SVG를 압축 사이트에 하나씩 올리고 모양이 깨지지 않았는지 원본과 다시 비교합니다.",
       },
       {
         id: "payer-simplesvgs-1",
         value: "아이콘을 만드는 디자이너",
         detail:
-          "아이콘을 만드는 디자이너가 아이콘 파일을 전달하기 직전에 이 결과를 바로 사용합니다.",
+          "아이콘 파일에서 불필요한 메타데이터를 직접 지우고 전달본이 브라우저에서 열리는지 확인합니다.",
       },
       {
         id: "payer-simplesvgs-2",
         value: "소규모 쇼핑몰 개발자",
         detail:
-          "소규모 쇼핑몰 개발자가 페이지 로딩을 가볍게 만들 때에 이 결과를 바로 사용합니다.",
+          "상품 아이콘이 늘수록 SVG 용량을 일일이 확인하고 큰 파일만 따로 압축합니다.",
       },
     ],
     moments: [
@@ -6238,19 +6240,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-simplesvgs-0",
         value: "사이트 배포 전 SVG 용량을 줄일 때",
         detail:
-          "사이트 배포 전 SVG 용량을 줄일 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "아이콘 용량이 큰 채로 배포되지 않도록, 올리기 전에 모양을 유지한 최적화본이 필요합니다.",
       },
       {
         id: "moment-simplesvgs-1",
         value: "아이콘 파일을 전달하기 직전",
         detail:
-          "아이콘 파일을 전달하기 직전에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "전달 뒤 아이콘이 깨지면 다시 보내야 하므로, 원본과 최적화본을 확인하고 파일을 확정해야 합니다.",
       },
       {
         id: "moment-simplesvgs-2",
         value: "페이지 로딩을 가볍게 만들 때",
         detail:
-          "페이지 로딩을 가볍게 만들 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "무거운 아이콘이 페이지에 쌓이기 전에 대표 파일부터 안전하게 줄여 적용 가능성을 봐야 합니다.",
       },
     ],
     twists: [
@@ -6263,7 +6265,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "SVG를 올리면 브라우저 안에서 압축된 파일만 즉시 다운로드",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: SVG 파일.를 넣으면 SVG를 올리면 브라우저 안에서 압축된 파일만 즉시 다운로드 후 즉시 결과: 용량이 줄어든 SVG 파일.",
+          "SVG 파일 하나를 올리면 브라우저에서 압축한 SVG 파일을 바로 내려받는 웹 화면",
       },
       {
         id: "twist-simplesvgs-1",
@@ -6274,7 +6276,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "불필요한 메타데이터를 제거하고 원본 대비 용량만 표시",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: SVG 파일.를 넣으면 불필요한 메타데이터를 제거하고 원본 대비 용량만 표시 후 즉시 결과: 용량이 줄어든 SVG 파일.",
+          "SVG 파일 하나를 올리면 불필요한 메타데이터를 지우고 원본 대비 용량과 최적화 파일을 보여주는 웹 화면",
       },
       {
         id: "twist-simplesvgs-2",
@@ -6287,7 +6289,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
           "여러 파일 대신 대표 SVG 한 개를 안전하게 최적화하는 초소형 도구",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: SVG 파일.를 넣으면 여러 파일 대신 대표 SVG 한 개를 안전하게 최적화하는 초소형 도구 후 즉시 결과: 용량이 줄어든 SVG 파일.",
+          "대표 SVG 파일 하나를 올리면 모양을 유지한 최적화 파일 하나를 내려받는 웹 화면",
       },
     ],
   },
@@ -6315,19 +6317,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-michikanji-0",
         value: "JLPT를 준비하는 대학생",
         detail:
-          "JLPT를 준비하는 대학생이 모르는 한자의 획순을 찾을 때에 이 결과를 바로 사용합니다.",
+          "문제집의 한자를 사전에서 찾은 뒤 획순 영상과 JLPT 급수를 다른 화면에서 다시 확인합니다.",
       },
       {
         id: "payer-michikanji-1",
         value: "일본어 과외 강사",
         detail:
-          "일본어 과외 강사가 JLPT 급수별 복습을 할 때에 이 결과를 바로 사용합니다.",
+          "수업용 한자를 급수별로 골라 뜻·읽기·획순 자료를 각각 찾아 복습 목록을 만듭니다.",
       },
       {
         id: "payer-michikanji-2",
         value: "일본 유학을 준비하는 직장인",
         detail:
-          "일본 유학을 준비하는 직장인이 단어를 쓰기 전에 읽기를 확인할 때에 이 결과를 바로 사용합니다.",
+          "모르는 한자를 쓰기 전 읽기와 획순을 여러 사전에서 확인해 메모장에 옮깁니다.",
       },
     ],
     moments: [
@@ -6335,19 +6337,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-michikanji-0",
         value: "모르는 한자의 획순을 찾을 때",
         detail:
-          "모르는 한자의 획순을 찾을 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "잘못된 순서로 외우기 전에, 찾은 한자의 뜻·읽기와 획순을 함께 확인해야 합니다.",
       },
       {
         id: "moment-michikanji-1",
         value: "JLPT 급수별 복습을 할 때",
         detail:
-          "JLPT 급수별 복습을 할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "학생 수준과 다른 한자가 섞이지 않도록, 복습 자료를 만들기 전에 급수별 목록이 필요합니다.",
       },
       {
         id: "moment-michikanji-2",
         value: "단어를 쓰기 전에 읽기를 확인할 때",
         detail:
-          "단어를 쓰기 전에 읽기를 확인할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "읽기를 잘못 익힌 채 문장을 쓰지 않도록, 입력한 단어의 한자와 획순을 먼저 확인해야 합니다.",
       },
     ],
     twists: [
@@ -6360,7 +6362,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "한자·뜻·읽기를 검색하면 JLPT 급수와 획순 표시",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 한자·뜻·읽기 검색어.를 넣으면 한자·뜻·읽기를 검색하면 JLPT 급수와 획순 표시 후 즉시 결과: 인터랙티브 획순 다이어그램.",
+          "한자·뜻·읽기 중 하나를 검색하면 JLPT 급수와 인터랙티브 획순도를 보여주는 웹 화면",
       },
       {
         id: "twist-michikanji-1",
@@ -6372,7 +6374,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
           "한국어 뜻으로 찾은 한자의 붓글씨 순서를 애니메이션으로 재생",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 한자·뜻·읽기 검색어.를 넣으면 한국어 뜻으로 찾은 한자의 붓글씨 순서를 애니메이션으로 재생 후 즉시 결과: 인터랙티브 획순 다이어그램.",
+          "한국어 뜻을 검색하면 찾은 한자의 붓글씨 획순을 애니메이션으로 보여주는 웹 화면",
       },
       {
         id: "twist-michikanji-2",
@@ -6383,102 +6385,102 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "N5부터 N1까지 급수 필터를 눌러 해당 한자만 보기",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: 한자·뜻·읽기 검색어.를 넣으면 N5부터 N1까지 급수 필터를 눌러 해당 한자만 보기 후 즉시 결과: 인터랙티브 획순 다이어그램.",
+          "한자 검색어를 넣고 N5부터 N1까지 급수 필터를 고르면 해당 한자의 획순도를 보여주는 웹 화면",
       },
     ],
   },
   {
-    id: "candidate-finishdraft",
+    id: "silent-companion-session",
     source: {
-      id: "source-finishdraft",
-      sourceName: "Finishdraft",
+      id: "source-focusmate",
+      sourceName: "Focusmate",
       research: {
-        key: "trustmrr:finishdraft",
-        url: "https://trustmrr.com/startup/finishdraft",
+        key: "deep_research:focusmate",
+        url: "https://www.focusmate.com/",
       },
       platform: "web",
       value:
-        "구체적인 입력: Daily writing text. 핵심 처리: Distraction-free writing and habit visualization.",
+        "정해진 시간에 한 사람과 동시에 접속해 짧게 목표를 말하고 조용히 각자 할 일을 끝내는 1대1 바디더블링 서비스",
       detail:
-        "즉시 결과: Focused draft with writing habit view. 필요한 순간: During daily writing.",
+        "25·50·75분 세션을 예약하면 파트너와 시작·종료 의식을 나누고, 중간에는 말없이 서로의 존재로 행동을 이어갑니다.",
       evidence:
-        "검증된 해외 원본: Finishdraft (codex_cli_structured_exhaustive_review)",
+        "Focusmate 150개국+·수백만 세션, 무료 주 3회에서 월 $6.99~9.99 무제한 세션으로 결제되는 동시 존재 메커니즘 확인",
       preservedFlow:
-        "구체적인 입력: Daily writing text. → 핵심 처리: Distraction-free writing and habit visualization. → 즉시 결과: Focused draft with writing habit view.",
+        "한 사람과 시간 약속 → 둘이 동시에 접속해 존재 확인 → 짧은 공동 행동 뒤 세션 종료",
     },
     payers: [
       {
-        id: "payer-finishdraft-0",
-        value: "매일 글 쓰는 작가 지망생",
+        id: "payer-low-energy-couple",
+        value: "매일 연락하지만 긴 대화는 버거운 장거리 연인",
         detail:
-          "매일 글 쓰는 작가 지망생이 아침 글쓰기를 시작할 때에 이 결과를 바로 사용합니다.",
+          "연결감은 놓치기 싫어 통화나 카톡을 켜지만 서로 답할 에너지가 없는 밤이 반복됩니다.",
       },
       {
-        id: "payer-finishdraft-1",
-        value: "뉴스레터를 만드는 1인 운영자",
+        id: "payer-bestfriend-presence",
+        value: "각자 살며 주 3회 안부를 주고받는 절친 두 사람",
         detail:
-          "뉴스레터를 만드는 1인 운영자가 초고를 끝까지 써야 할 때에 이 결과를 바로 사용합니다.",
+          "할 말이 없을 때도 함께 있다는 느낌은 원하지만 전화 약속과 답장 의무는 부담스럽습니다.",
       },
       {
-        id: "payer-finishdraft-2",
-        value: "블로그를 꾸준히 쓰는 직장인",
+        id: "payer-adhd-close-pair",
+        value: "친한 사람과 바디더블링을 이미 해본 ADHD 직장인",
         detail:
-          "블로그를 꾸준히 쓰는 직장인이 이번 달 글쓰기 습관을 확인할 때에 이 결과를 바로 사용합니다.",
+          "누가 옆에 접속해 있기만 해도 일을 시작하기 쉬워 화상방이나 통화를 반복해서 켭니다.",
       },
     ],
     moments: [
       {
-        id: "moment-finishdraft-0",
-        value: "아침 글쓰기를 시작할 때",
+        id: "moment-alone-no-talk",
+        value: "대화할 기운은 없는데 혼자 있기는 싫은 밤",
         detail:
-          "아침 글쓰기를 시작할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "답장을 만들지 않아도 친한 사람의 실시간 존재만 확인하고 싶은 순간",
       },
       {
-        id: "moment-finishdraft-1",
-        value: "초고를 끝까지 써야 할 때",
+        id: "moment-call-too-heavy",
+        value: "전화를 걸기엔 부담스럽고 방은 너무 조용한 순간",
         detail:
-          "초고를 끝까지 써야 할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "상대를 방해하지 않으면서 같은 시간에 곁에 있다는 신호가 필요한 순간",
       },
       {
-        id: "moment-finishdraft-2",
-        value: "이번 달 글쓰기 습관을 확인할 때",
+        id: "moment-start-together",
+        value: "각자 할 일을 시작하기 전 누군가 곁에 있으면 좋겠는 순간",
         detail:
-          "이번 달 글쓰기 습관을 확인할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "목표를 설명하거나 성과를 비교하지 않고 함께 시작 버튼만 누르고 싶은 순간",
       },
     ],
     twists: [
       {
-        id: "twist-finishdraft-0",
+        id: "twist-private-campfire",
         kind: "replace",
-        value: "집중 모드에서 글을 쓰고 하루 분량만 히트맵에 표시",
+        value: "낯선 작업 파트너를 친한 한 명과의 비공개 모닥불로 바꾸기",
         detail:
-          "원본의 입력→처리→결과 흐름을 유지하면서 집중 모드에서 글을 쓰고 하루 분량만 히트맵에 표시만 적용합니다.",
-        resultTitle: "집중 모드에서 글을 쓰고 하루 분량만 히트맵에 표시",
+          "시간 약속과 동시 접속이라는 원본 엔진은 유지하고 생산성 평가 대신 친밀한 존재감을 결과로 줍니다.",
+        resultTitle: "말 안 해도 함께 있는 곁불",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: Daily writing text.를 넣으면 집중 모드에서 글을 쓰고 하루 분량만 히트맵에 표시 후 즉시 결과: Focused draft with writing habit view.",
+          "초대 링크로 두 사람이 같은 방에 들어오면 두 의자의 접속 상태와 ‘같이 장작 놓기’ 버튼 하나만 보이는 모바일 웹 화면",
       },
       {
-        id: "twist-finishdraft-1",
-        kind: "add",
-        value: "오늘 쓴 글자 수와 연속 작성일을 한 화면에 기록",
-        detail:
-          "원본의 입력→처리→결과 흐름을 유지하면서 오늘 쓴 글자 수와 연속 작성일을 한 화면에 기록만 적용합니다.",
-        resultTitle: "오늘 쓴 글자 수와 연속 작성일을 한 화면에 기록",
-        platform: "web",
-        smallestBuild:
-          "구체적인 입력: Daily writing text.를 넣으면 오늘 쓴 글자 수와 연속 작성일을 한 화면에 기록 후 즉시 결과: Focused draft with writing habit view.",
-      },
-      {
-        id: "twist-finishdraft-2",
+        id: "twist-presence-only",
         kind: "remove",
-        value: "방해 요소 없는 한국어 초고 화면과 GitHub식 기록 결합",
+        value: "카메라·채팅·목표 선언을 빼고 두 사람의 접속 신호만 남기기",
         detail:
-          "원본의 입력→처리→결과 흐름을 유지하면서 방해 요소 없는 한국어 초고 화면과 GitHub식 기록 결합만 적용합니다.",
-        resultTitle: "방해 요소 없는 한국어 초고 화면과 GitHub식 기록 결합",
+          "동시에 접속해 세션을 완결하는 흐름은 유지하고 답장·성과·외모 노출의 부담을 제거합니다.",
+        resultTitle: "두 자리만 켜지는 무언 동반방",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: Daily writing text.를 넣으면 방해 요소 없는 한국어 초고 화면과 GitHub식 기록 결합 후 즉시 결과: Focused draft with writing habit view.",
+          "두 명이 링크로 접속하면 켜진 자리·자리 비움·나감 상태가 정직하게 바뀌고 10분 뒤 함께 종료되는 모바일 웹 화면",
+      },
+      {
+        id: "twist-one-log-ritual",
+        kind: "add",
+        value: "세션 끝에 둘이 같은 장작 하나를 눌러 오늘의 불씨 남기기",
+        detail:
+          "시작·조용한 동시성·종료라는 원본 흐름은 유지하고 말 대신 공동 행동 한 번만 더합니다.",
+        resultTitle: "장작 하나로 끝나는 10분 동반",
+        platform: "web",
+        smallestBuild:
+          "두 사람이 10분간 동시에 머문 뒤 각자 장작 버튼을 누르면 오늘 날짜가 찍힌 불씨 한 개가 남는 모바일 웹 화면",
       },
     ],
   },
@@ -6505,19 +6507,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-prayer-timer-0",
         value: "이슬람 신자인 직장인",
         detail:
-          "이슬람 신자인 직장인이 오늘 기도 시간을 확인할 때에 이 결과를 바로 사용합니다.",
+          "업무 일정 사이 기도 시간을 놓치지 않으려고 지역별 시간표와 휴대폰 알람을 따로 맞춥니다.",
       },
       {
         id: "payer-prayer-timer-1",
         value: "무슬림 유학생",
         detail:
-          "무슬림 유학생이 출장지에서 지역 기도 일정을 볼 때에 이 결과를 바로 사용합니다.",
+          "낯선 지역에 갈 때마다 현지 기도 시간표를 검색하고 일정표에 다시 적습니다.",
       },
       {
         id: "payer-prayer-timer-2",
         value: "할랄 식당 운영자",
         detail:
-          "할랄 식당 운영자가 기도 전 알림을 설정할 때에 이 결과를 바로 사용합니다.",
+          "영업 중 기도 시간을 확인해 직원과 교대하려고 시간표를 보고 알람을 따로 설정합니다.",
       },
     ],
     moments: [
@@ -6525,19 +6527,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-prayer-timer-0",
         value: "오늘 기도 시간을 확인할 때",
         detail:
-          "오늘 기도 시간을 확인할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "업무 일정을 조정하려면 지역 기준의 오늘 시간을 미리 확인해 둘 필요가 있습니다.",
       },
       {
         id: "moment-prayer-timer-1",
         value: "출장지에서 지역 기도 일정을 볼 때",
         detail:
-          "출장지에서 지역 기도 일정을 볼 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "지역이 바뀌면 기도 시간도 달라져, 일정을 세우기 전에 해당 도시의 시간표가 필요합니다.",
       },
       {
         id: "moment-prayer-timer-2",
         value: "기도 전 알림을 설정할 때",
         detail:
-          "기도 전 알림을 설정할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "영업에 집중하다 시간을 놓치지 않도록, 오늘 일정에 맞는 알림을 미리 정해야 합니다.",
       },
     ],
     twists: [
@@ -6550,7 +6552,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "도시를 직접 선택하면 오늘의 이슬람 기도 시간 표시",
         platform: "plugin",
         smallestBuild:
-          "구체적인 입력: 현재 위치 권한.를 넣으면 도시를 직접 선택하면 오늘의 이슬람 기도 시간 표시 후 즉시 결과: 오늘의 기도 시간과 알림.",
+          "도시를 직접 고르면 오늘의 이슬람 기도 시간과 알림을 보여주는 웹 화면",
       },
       {
         id: "twist-prayer-timer-1",
@@ -6561,7 +6563,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "한국 주요 도시별 기도 시간을 한 화면에서 비교",
         platform: "plugin",
         smallestBuild:
-          "구체적인 입력: 현재 위치 권한.를 넣으면 한국 주요 도시별 기도 시간을 한 화면에서 비교 후 즉시 결과: 오늘의 기도 시간과 알림.",
+          "한국 주요 도시를 고르면 오늘의 기도 시간을 한 화면에서 비교하고 알림을 설정하는 웹 화면",
       },
       {
         id: "twist-prayer-timer-2",
@@ -6572,7 +6574,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "위치 권한 없이 도시명 입력만으로 일정과 알림 확인",
         platform: "plugin",
         smallestBuild:
-          "구체적인 입력: 현재 위치 권한.를 넣으면 위치 권한 없이 도시명 입력만으로 일정과 알림 확인 후 즉시 결과: 오늘의 기도 시간과 알림.",
+          "위치 권한 없이 도시명만 넣으면 오늘의 기도 일정과 알림을 보여주는 웹 화면",
       },
     ],
   },
@@ -6600,19 +6602,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-json-formatter-0",
         value: "한국인 백엔드 프리랜서",
         detail:
-          "한국인 백엔드 프리랜서가 API 응답 JSON을 읽어야 할 때에 이 결과를 바로 사용합니다.",
+          "압축된 API 응답을 편집기에 붙여넣고 줄바꿈한 뒤 필요한 키를 접었다 펴며 찾습니다.",
       },
       {
         id: "payer-json-formatter-1",
         value: "서울의 소규모 개발사",
         detail:
-          "서울의 소규모 개발사가 개발자에게 받은 설정 파일을 확인할 때에 이 결과를 바로 사용합니다.",
+          "개발자에게 받은 설정 파일을 텍스트 편집기로 열어 중첩 구조와 URL 값을 한 줄씩 확인합니다.",
       },
       {
         id: "payer-json-formatter-2",
         value: "코딩 학원 강사",
         detail:
-          "코딩 학원 강사가 웹훅 오류 원인을 찾을 때에 이 결과를 바로 사용합니다.",
+          "수강생의 웹훅 응답을 복사해 괄호와 쉼표 오류를 찾고 어느 필드에서 깨졌는지 설명합니다.",
       },
     ],
     moments: [
@@ -6620,19 +6622,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-json-formatter-0",
         value: "API 응답 JSON을 읽어야 할 때",
         detail:
-          "API 응답 JSON을 읽어야 할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "압축된 응답은 키와 값을 놓치기 쉬워, 디버깅 전에 구조를 펼쳐 읽을 수 있어야 합니다.",
       },
       {
         id: "moment-json-formatter-1",
         value: "개발자에게 받은 설정 파일을 확인할 때",
         detail:
-          "개발자에게 받은 설정 파일을 확인할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "설정값을 잘못 바꾸면 실행이 달라질 수 있어, 수정 전에 중첩 구조와 링크를 확인해야 합니다.",
       },
       {
         id: "moment-json-formatter-2",
         value: "웹훅 오류 원인을 찾을 때",
         detail:
-          "웹훅 오류 원인을 찾을 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "원인을 설명하려면 오류가 난 위치와 주변 필드를 함께 보여줘야 합니다.",
       },
     ],
     twists: [
@@ -6645,7 +6647,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "한국 개발자용 다크·라이트 테마 JSON 보기",
         platform: "plugin",
         smallestBuild:
-          "구체적인 입력: JSON 텍스트.를 넣으면 한국 개발자용 다크·라이트 테마 JSON 보기 후 즉시 결과: 읽기 쉬운 테마별 JSON.",
+          "JSON 텍스트를 넣으면 다크·라이트 테마로 읽기 쉽게 정리한 JSON을 보여주는 웹 화면",
       },
       {
         id: "twist-json-formatter-1",
@@ -6656,7 +6658,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "긴 JSON을 접었다 펴는 미리보기",
         platform: "plugin",
         smallestBuild:
-          "구체적인 입력: JSON 텍스트.를 넣으면 긴 JSON을 접었다 펴는 미리보기 후 즉시 결과: 읽기 쉬운 테마별 JSON.",
+          "JSON 텍스트를 넣으면 중첩 항목을 접었다 펼 수 있는 미리보기로 보여주는 웹 화면",
       },
       {
         id: "twist-json-formatter-2",
@@ -6667,7 +6669,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "URL을 클릭 가능한 링크로 표시",
         platform: "plugin",
         smallestBuild:
-          "구체적인 입력: JSON 텍스트.를 넣으면 URL을 클릭 가능한 링크로 표시 후 즉시 결과: 읽기 쉬운 테마별 JSON.",
+          "JSON 텍스트를 넣으면 URL 값을 클릭 가능한 링크로 바꿔 보여주는 웹 화면",
       },
     ],
   },
@@ -6695,19 +6697,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-billbatch-0",
         value: "해외 고객과 일하는 한국 프리랜서",
         detail:
-          "해외 고객과 일하는 한국 프리랜서가 PayPal 입금 내역을 정산할 때에 이 결과를 바로 사용합니다.",
+          "PayPal 거래 내역을 내려받아 고객·금액·통화를 정산표에 옮기고 청구서와 한 줄씩 맞춥니다.",
       },
       {
         id: "payer-billbatch-1",
         value: "소규모 온라인 수출업체 대표",
         detail:
-          "소규모 온라인 수출업체 대표가 해외 고객에게 청구서를 보낼 때에 이 결과를 바로 사용합니다.",
+          "해외 고객별 거래를 골라 통화와 항목을 청구서 양식에 다시 입력합니다.",
       },
       {
         id: "payer-billbatch-2",
         value: "PayPal을 쓰는 1인 개발자",
         detail:
-          "PayPal을 쓰는 1인 개발자가 월말 거래를 한꺼번에 문서화할 때에 이 결과를 바로 사용합니다.",
+          "월말마다 거래 내역을 고객별로 나누고 PDF 이름과 저장 폴더를 수작업으로 정리합니다.",
       },
     ],
     moments: [
@@ -6715,19 +6717,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-billbatch-0",
         value: "PayPal 입금 내역을 정산할 때",
         detail:
-          "PayPal 입금 내역을 정산할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "입금과 청구 항목이 다르면 정산이 꼬이므로, 마감 전에 거래별 문서를 맞춰야 합니다.",
       },
       {
         id: "moment-billbatch-1",
         value: "해외 고객에게 청구서를 보낼 때",
         detail:
-          "해외 고객에게 청구서를 보낼 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "고객명·통화·금액이 틀린 문서를 보내지 않도록, 발송 전에 거래 내역과 청구서를 대조해야 합니다.",
       },
       {
         id: "moment-billbatch-2",
         value: "월말 거래를 한꺼번에 문서화할 때",
         detail:
-          "월말 거래를 한꺼번에 문서화할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "거래가 섞인 채 보관되면 고객별 내역을 다시 찾기 어려워, 마감 전에 문서를 분리해야 합니다.",
       },
     ],
     twists: [
@@ -6740,7 +6742,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "PayPal CSV를 한국어 PDF 청구서로 변환",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: PayPal 거래내역 파일.를 넣으면 PayPal CSV를 한국어 PDF 청구서로 변환 후 즉시 결과: 전문 PDF 인보이스.",
+          "PayPal 거래 내역 CSV 파일을 넣으면 한국어 PDF 청구서로 바꿔주는 웹 화면",
       },
       {
         id: "twist-billbatch-1",
@@ -6751,7 +6753,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "원화 환산 칸을 추가한 한국 프리랜서용 양식",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: PayPal 거래내역 파일.를 넣으면 원화 환산 칸을 추가한 한국 프리랜서용 양식 후 즉시 결과: 전문 PDF 인보이스.",
+          "PayPal 거래 내역 파일을 넣으면 원화 환산 칸이 있는 PDF 청구서를 만드는 웹 화면",
       },
       {
         id: "twist-billbatch-2",
@@ -6762,101 +6764,102 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "거래 여러 건을 고객별 PDF로 묶기",
         platform: "web",
         smallestBuild:
-          "구체적인 입력: PayPal 거래내역 파일.를 넣으면 거래 여러 건을 고객별 PDF로 묶기 후 즉시 결과: 전문 PDF 인보이스.",
+          "PayPal 거래 내역 파일을 넣으면 거래 여러 건을 고객별 PDF 청구서로 묶는 웹 화면",
       },
     ],
   },
   {
-    id: "candidate-finance-quest",
+    id: "daily-character-world",
     source: {
-      id: "source-finance-quest",
-      sourceName: "Finance Quest",
+      id: "source-zeta-character-chat",
+      sourceName: "제타(Zeta)",
       research: {
-        key: "chrome_web_store:nahkhbckoojacpfmjonkbmmjhkknjmid",
-        url: "https://chromewebstore.google.com/detail/finance-quest/nahkhbckoojacpfmjonkbmmjhkknjmid",
+        key: "app_store:1619030760",
+        url: "https://apps.apple.com/kr/app/id1619030760",
       },
-      platform: "plugin",
-      value: "구체적인 입력: 금융 퀴즈 답변. 핵심 처리: 정답 채점.",
+      platform: "app",
+      value:
+        "수많은 AI 캐릭터와 세계를 고르고 대화하며 관계와 즉흥 서사를 이어가는 캐릭터 챗 앱",
       detail:
-        "즉시 결과: 금융 리터러시 학습 결과. 필요한 순간: 하루 금융 퀴즈.",
+        "사용자가 캐릭터를 고르면 설정에 맞는 대화와 사건이 실시간 생성되고, 대화 이력과 관계 맥락이 다음 상호작용을 만듭니다.",
       evidence:
-        "검증된 해외 원본: Finance Quest (codex_cli_structured_fail_rereview)",
+        "제타 MAU 402만·월 사용 1억 1,341만 시간·분기 매출 52억, 캐릭터 선택→대화→관계·서사 진행의 반복과 결제 확인",
       preservedFlow:
-        "구체적인 입력: 금융 퀴즈 답변. → 핵심 처리: 정답 채점. → 즉시 결과: 금융 리터러시 학습 결과.",
+        "캐릭터·세계 선택 → 대화와 선택으로 서사 진행 → 관계·대화 결과를 다음 접속에 이어가기",
     },
     payers: [
       {
-        id: "payer-finance-quest-0",
-        value: "취업 준비생",
+        id: "payer-zeta-bedtime",
+        value: "제타·크랙으로 자기 전 10~20분 노는 20대",
         detail:
-          "취업 준비생이 하루 5분 금융 상식을 공부할 때에 이 결과를 바로 사용합니다.",
+          "긴 게임을 켜기는 부담스러워 캐릭터 챗을 열지만 무엇과 대화할지 고르는 데 시간을 씁니다.",
       },
       {
-        id: "payer-finance-quest-1",
-        value: "사회초년생",
+        id: "payer-webnovel-status",
+        value: "회귀물·상태창 문법을 설명 없이 이해하는 웹소설 독자",
         detail:
-          "사회초년생이 투자 전 기본 개념을 점검할 때에 이 결과를 바로 사용합니다.",
+          "선택에 따른 판정과 스킬 축적을 좋아하지만 대화가 다음 날 사라지면 몰입이 끊깁니다.",
       },
       {
-        id: "payer-finance-quest-2",
-        value: "소규모 금융교육 강사",
+        id: "payer-character-memory",
+        value: "캐릭터 챗의 기억 한계 때문에 앱을 옮겨본 유료 사용자",
         detail:
-          "소규모 금융교육 강사가 금융 수업 시작 전 복습할 때에 이 결과를 바로 사용합니다.",
+          "관계와 사건을 오래 쌓기 위해 메모리·상위 모델·재화에 이미 돈을 써본 적이 있습니다.",
       },
     ],
     moments: [
       {
-        id: "moment-finance-quest-0",
-        value: "하루 5분 금융 상식을 공부할 때",
+        id: "moment-choice-fatigue",
+        value: "캐릭터를 고르다 30분이 지나버린 밤",
         detail:
-          "하루 5분 금융 상식을 공부할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "탐색 없이 바로 시작해 10분 안에 완결되는 한 편이 필요한 순간",
       },
       {
-        id: "moment-finance-quest-1",
-        value: "투자 전 기본 개념을 점검할 때",
+        id: "moment-yesterday-forgotten",
+        value: "어제 쌓은 대화와 설정을 캐릭터가 잊은 순간",
         detail:
-          "투자 전 기본 개념을 점검할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "대화량보다 내가 얻은 선택·스킬·결말이 오늘 판정에 실제로 남길 바라는 순간",
       },
       {
-        id: "moment-finance-quest-2",
-        value: "금융 수업 시작 전 복습할 때",
+        id: "moment-ten-minutes-bed",
+        value: "잠들기 전 딱 10분만 모험하고 싶은 순간",
         detail:
-          "금융 수업 시작 전 복습할 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "끝없는 채팅 대신 시작과 결말이 있고 실패해도 남는 결과가 필요한 순간",
       },
     ],
     twists: [
       {
-        id: "twist-finance-quest-0",
-        kind: "replace",
-        value: "한국 예금·주식 용어 중심의 하루 한 문제",
-        detail:
-          "원본의 입력→처리→결과 흐름을 유지하면서 한국 예금·주식 용어 중심의 하루 한 문제만 적용합니다.",
-        resultTitle: "한국 예금·주식 용어 중심의 하루 한 문제",
-        platform: "plugin",
-        smallestBuild:
-          "구체적인 입력: 금융 퀴즈 답변.를 넣으면 한국 예금·주식 용어 중심의 하루 한 문제 후 즉시 결과: 금융 리터러시 학습 결과.",
-      },
-      {
-        id: "twist-finance-quest-1",
-        kind: "add",
-        value: "정답 뒤 금융감독원 용어 풀이 한 줄 제공",
-        detail:
-          "원본의 입력→처리→결과 흐름을 유지하면서 정답 뒤 금융감독원 용어 풀이 한 줄 제공만 적용합니다.",
-        resultTitle: "정답 뒤 금융감독원 용어 풀이 한 줄 제공",
-        platform: "plugin",
-        smallestBuild:
-          "구체적인 입력: 금융 퀴즈 답변.를 넣으면 정답 뒤 금융감독원 용어 풀이 한 줄 제공 후 즉시 결과: 금융 리터러시 학습 결과.",
-      },
-      {
-        id: "twist-finance-quest-2",
+        id: "twist-one-world-24h",
         kind: "remove",
-        value: "직장인 월급·카드 상황형 보기로 구성",
+        value: "수만 개 캐릭터 탐색을 빼고 모두에게 같은 세계 하나만 24시간 열기",
         detail:
-          "원본의 입력→처리→결과 흐름을 유지하면서 직장인 월급·카드 상황형 보기로 구성만 적용합니다.",
-        resultTitle: "직장인 월급·카드 상황형 보기로 구성",
-        platform: "plugin",
+          "세계 속 대화와 선택으로 서사를 진행하는 원본 엔진은 유지하고 시작 전 선택 피로만 제거합니다.",
+        resultTitle: "24시간만 열리는 오늘의 이세카이",
+        platform: "app",
         smallestBuild:
-          "구체적인 입력: 금융 퀴즈 답변.를 넣으면 직장인 월급·카드 상황형 보기로 구성 후 즉시 결과: 금융 리터러시 학습 결과.",
+          "오늘의 세계 설명 뒤 바로 입장해 8~12턴 선택으로 한 결말을 보고 밤 9시에 닫히는 모바일 웹 화면",
+      },
+      {
+        id: "twist-permanent-skill",
+        kind: "add",
+        value: "완결 뒤 얻은 스킬·유물을 상태창에 저장해 다음 날 판정에 쓰기",
+        detail:
+          "대화 이력과 관계가 이어지는 원본 가치를 사용자가 직접 볼 수 있는 영구 상태와 규칙 보정으로 바꿔 보여줍니다.",
+        resultTitle: "어제의 스킬이 오늘을 바꾸는 상태창 모험",
+        platform: "app",
+        smallestBuild:
+          "짧은 모험 결말 뒤 스킬 카드 한 장이 상태창에 저장되고 다음 모험의 주사위 보정값으로 표시되는 모바일 웹 화면",
+      },
+      {
+        id: "twist-fair-dice-ending",
+        kind: "replace",
+        value: "AI 임의 판정을 서버 주사위와 보유 스킬 보정으로 바꾸기",
+        detail:
+          "캐릭터와 대화하며 사건을 진행하는 흐름은 유지하고 성공·실패 판정만 사용자가 납득 가능한 규칙으로 고정합니다.",
+        resultTitle: "전사해도 칭호가 남는 공정한 AI 모험",
+        platform: "app",
+        smallestBuild:
+          "선택 뒤 주사위 값·스킬 보정·최종 판정이 보이고 실패하면 전사자 명부 칭호 카드가 남는 모바일 웹 화면",
       },
     ],
   },
@@ -6884,19 +6887,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "payer-equatio-math-made-digital-0",
         value: "중학교 수학 교사",
         detail:
-          "중학교 수학 교사가 손글씨 수식을 학습지에 옮길 때에 이 결과를 바로 사용합니다.",
+          "손글씨 수식을 보며 분수·근호를 문서 편집기에 다시 입력하고 모양이 맞는지 줄마다 확인합니다.",
       },
       {
         id: "payer-equatio-math-made-digital-1",
         value: "수학 과외 강사",
         detail:
-          "수학 과외 강사가 수학 퀴즈를 급히 만들 때에 이 결과를 바로 사용합니다.",
+          "문제와 선택지를 수식 편집기로 따로 만든 뒤 퀴즈 문서에 복사해 배치합니다.",
       },
       {
         id: "payer-equatio-math-made-digital-2",
         value: "학원용 문제를 만드는 원장",
         detail:
-          "학원용 문제를 만드는 원장이 학생에게 디지털 식을 보여줄 때에 이 결과를 바로 사용합니다.",
+          "칠판이나 종이의 수식을 학생용 자료에 넣기 위해 디지털 수식으로 다시 입력합니다.",
       },
     ],
     moments: [
@@ -6904,19 +6907,19 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         id: "moment-equatio-math-made-digital-0",
         value: "손글씨 수식을 학습지에 옮길 때",
         detail:
-          "손글씨 수식을 학습지에 옮길 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "기호를 잘못 옮기면 문제가 달라지므로, 학습지를 배포하기 전에 원본과 디지털 수식을 대조해야 합니다.",
       },
       {
         id: "moment-equatio-math-made-digital-1",
         value: "수학 퀴즈를 급히 만들 때",
         detail:
-          "수학 퀴즈를 급히 만들 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "수식 입력에 막히면 문제 제작이 늦어져, 출제 전에 손글씨를 바로 편집 가능한 식으로 바꿔야 합니다.",
       },
       {
         id: "moment-equatio-math-made-digital-2",
         value: "학생에게 디지털 식을 보여줄 때",
         detail:
-          "학생에게 디지털 식을 보여줄 때에 입력 하나로 결과 하나를 확인하려는 순간입니다.",
+          "화면에서 수식이 깨지면 설명이 어려워, 수업 전에 학생이 볼 형태로 변환됐는지 확인해야 합니다.",
       },
     ],
     twists: [
@@ -6929,7 +6932,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "한국 교과서 분수·근호 입력 버튼 제공",
         platform: "plugin",
         smallestBuild:
-          "구체적인 입력: 수식·퀴즈를 입력하거나 손으로 작성.를 넣으면 한국 교과서 분수·근호 입력 버튼 제공 후 즉시 결과: 디지털 수식·퀴즈.",
+          "수식·퀴즈를 입력하거나 손으로 쓰면 한국 교과서의 분수·근호 버튼으로 디지털 수식과 퀴즈를 만드는 웹 화면",
       },
       {
         id: "twist-equatio-math-made-digital-1",
@@ -6940,7 +6943,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "손글씨 수식을 디지털 수식으로 변환",
         platform: "plugin",
         smallestBuild:
-          "구체적인 입력: 수식·퀴즈를 입력하거나 손으로 작성.를 넣으면 손글씨 수식을 디지털 수식으로 변환 후 즉시 결과: 디지털 수식·퀴즈.",
+          "손글씨 수식을 넣으면 편집 가능한 디지털 수식과 퀴즈로 바꿔주는 웹 화면",
       },
       {
         id: "twist-equatio-math-made-digital-2",
@@ -6951,7 +6954,7 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
         resultTitle: "수식 하나를 객관식 퀴즈로 바꾸기",
         platform: "plugin",
         smallestBuild:
-          "구체적인 입력: 수식·퀴즈를 입력하거나 손으로 작성.를 넣으면 수식 하나를 객관식 퀴즈로 바꾸기 후 즉시 결과: 디지털 수식·퀴즈.",
+          "수식 하나를 넣으면 디지털 수식이 담긴 객관식 퀴즈로 바꿔주는 웹 화면",
       },
     ],
   },
@@ -9503,6 +9506,14 @@ export const IDEA_LAB_SCENARIOS: IdeaLabScenario[] = [
     ],
   },
 ];
+
+/**
+ * 원본 100개는 근거와 향후 재평가를 위해 보존한다.
+ * 실제 뽑기에는 한국 수요 8점 이상인 원본만 넣는다.
+ */
+export const KOREA_POPULAR_IDEA_LAB_SCENARIOS = IDEA_LAB_SCENARIOS.filter(
+  (scenario) => isKoreaPopularScenarioId(scenario.id),
+);
 
 export const PLATFORM_LABELS = {
   web: "웹",

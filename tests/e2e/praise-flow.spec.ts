@@ -6,6 +6,7 @@ import {
   makePraiseRequest,
   praiseVote,
   seedPraiseStorage,
+  shareCalls,
   trackedEvents,
   type TestPraiseRequestCard,
   type TestVote,
@@ -71,13 +72,16 @@ test.describe("A안 아이디어 응원 여정", () => {
 
     await page.goto(`/praise/${request.slug}`);
     await page.getByRole("button", { name: "반응 보내기", exact: true }).click();
+    await expect(page.getByRole("heading", { name: "어떤 반응을 보낼까요?" })).toBeFocused();
     await page.getByRole("button", { name: selectedPraise }).click();
     await page.getByRole("button", { name: "다음", exact: true }).click();
+    await expect(page.getByText("보낸 사람에게 이름을 보여줄까요?", { exact: true })).toBeFocused();
     await expect(page.getByText(selectedPraise, { exact: true })).toBeVisible();
     await page.getByRole("radio", { name: "익명으로 보내기" }).check();
     await page.getByRole("button", { name: "응원 카드 보내기", exact: true }).click();
 
     await expect(page.getByRole("heading", { name: "응원을 보냈어요." })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "응원을 보냈어요." })).toBeFocused();
     await expect(page.getByText("친구는 이 메시지를 응원 카드로 받게 됩니다.", { exact: true })).toBeVisible();
     const votes = await storedVotes(page, request.slug);
     expect(votes).toHaveLength(1);
@@ -165,19 +169,20 @@ test.describe("A안 아이디어 응원 여정", () => {
 
   test("키보드로 아이디어를 공유한 뒤 친구의 응원 카드를 새로고침 없이 받는다", async ({ page, context }) => {
     const selectedPraise = PRAISE_OPTIONS[2];
-    await installShareMock(page, "native");
+    await installShareMock(page, "kakao");
     await page.goto("/");
     await page.locator(".idea-lab__slot.is-carousel-active .idea-lab__card-frame button").press("Enter");
-    const autoFill = page.getByRole("button", { name: "나머지 자동으로 뽑기", exact: true });
-    await expect(autoFill).toBeVisible();
-    await autoFill.press("Enter");
-    await expect(page.locator(".idea-lab__status")).toContainText("네 장이 완성됐어요.", { timeout: DRAW_ALL_SETTLE_TIMEOUT });
-    const resultButton = page.getByRole("button", { name: /결과 자세히 보기/ });
-    await resultButton.press("Enter");
-    const shareButton = page.getByRole("button", { name: /친구에게 알리고 시작하기/ });
-    await expect(shareButton).toBeEnabled();
-    await shareButton.press("Enter");
-    await expect(page.locator(".idea-lab__stage--shared")).toBeVisible();
+    for (const label of ["돈 낼 사람", "필요한 순간", "한 끗 변화"]) {
+      const drawButton = page.getByRole("button", { name: `${label} 카드 뽑기`, exact: true });
+      await expect(drawButton).toBeVisible();
+      await drawButton.press("Enter");
+    }
+    await expect(page.locator(".idea-lab__stage--result")).toBeVisible({ timeout: DRAW_ALL_SETTLE_TIMEOUT });
+    await page.getByRole("button", {
+      name: "공유하고 결과 보기",
+      exact: true,
+    }).press("Enter");
+    await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
 
     const saved = await page.evaluate(() =>
       JSON.parse(localStorage.getItem("oneul:latest-praise-request:v1") ?? "null") as {
@@ -193,10 +198,13 @@ test.describe("A안 아이디어 응원 여정", () => {
     const startResponse = receiver.getByRole("button", { name: "반응 보내기", exact: true });
     await startResponse.press("Enter");
     const praiseOption = receiver.getByRole("button", { name: selectedPraise });
+    await expect(praiseOption).toBeVisible();
     await praiseOption.press("Enter");
     const nextButton = receiver.getByRole("button", { name: "다음", exact: true });
+    await expect(nextButton).toBeEnabled();
     await nextButton.press("Enter");
     const anonymous = receiver.getByRole("radio", { name: "익명으로 보내기" });
+    await expect(anonymous).toBeVisible();
     await anonymous.press("Space");
     const sendButton = receiver.getByRole("button", { name: "응원 카드 보내기", exact: true });
     await sendButton.press("Enter");
@@ -233,24 +241,24 @@ test.describe("A안 아이디어 응원 여정", () => {
   });
 
   test("완성했지만 아직 공유하지 않은 아이디어도 받은 응원에서 바로 공유한다", async ({ page }) => {
-    await installShareMock(page, "clipboard");
+    await installShareMock(page, "kakao");
     await page.goto("/");
     await drawAll(page);
     await openReceivedPraise(page, "empty");
 
     await expect(page.getByText("완성한 아이디어를 공유하고 친구의 응원을 받아보세요.", { exact: true })).toBeVisible();
     await page.getByRole("button", { name: "내 아이디어 공유하기", exact: true }).click();
-    await expect(page.getByText("링크를 복사했어요.", { exact: true })).toBeVisible();
+    await expect(page.getByText("카카오톡 공유 화면을 열었어요.", { exact: true })).toBeVisible();
     await expect.poll(() => page.evaluate(() => {
       const saved = localStorage.getItem("oneul:latest-praise-request:v1");
-      const writes = (window as typeof window & { __clipboardWrites?: string[] }).__clipboardWrites ?? [];
-      return { hasSavedRequest: Boolean(saved), copiedLinks: writes.length };
-    })).toEqual({ hasSavedRequest: true, copiedLinks: 1 });
+      const calls = (window as typeof window & { __kakaoShareCalls?: unknown[] }).__kakaoShareCalls ?? [];
+      return { hasSavedRequest: Boolean(saved), kakaoCalls: calls.length };
+    })).toEqual({ hasSavedRequest: true, kakaoCalls: 1 });
   });
 
   test("받은 반응을 네 가지 신호로 요약하고 친구 한 명을 더 초대한다", async ({ page }) => {
     const request = makePraiseRequest({ id: "request-feedback-summary" });
-    await installShareMock(page, "clipboard");
+    await installShareMock(page, "kakao");
     await seedPraiseStorage(page, {
       request,
       votes: [
@@ -270,10 +278,8 @@ test.describe("A안 아이디어 응원 여정", () => {
     }
 
     await page.getByRole("button", { name: "친구 한 명 더 초대하기", exact: true }).click();
-    await expect(page.getByText("링크를 복사했어요.", { exact: true })).toBeVisible();
-    await expect.poll(() => page.evaluate(() => (
-      (window as typeof window & { __clipboardWrites?: string[] }).__clipboardWrites ?? []
-    ).length)).toBe(1);
+    await expect(page.getByText("카카오톡 공유 화면을 열었어요.", { exact: true })).toBeVisible();
+    await expect.poll(async () => (await shareCalls(page)).length).toBe(1);
   });
 
   test("공개 응원 카드는 아이디어 제목과 보낸 사람을 함께 보여준다", async ({ page }) => {
@@ -343,7 +349,7 @@ test.describe("A안 아이디어 응원 여정", () => {
 
   test("차별점 반응을 수정본으로 저장하고 재공유한 뒤 원본 반응과 분리한다", async ({ page, context }) => {
     const request = makePraiseRequest({ id: "request-revision-flow" });
-    await installShareMock(page, "clipboard");
+    await installShareMock(page, "kakao");
     await seedPraiseStorage(page, {
       request,
       votes: [praiseVote({ id: "original-feedback", praise: PRAISE_OPTIONS[2] })],
@@ -372,7 +378,7 @@ test.describe("A안 아이디어 응원 여정", () => {
     await expect(page.getByText("현재 공유 중인 버전 · 원본", { exact: true })).toBeVisible();
     await expect(page.getByRole("listitem", { name: "수정본 1 반응 0개", exact: true })).toBeVisible();
     await page.getByRole("button", { name: "수정한 아이디어 다시 물어보기", exact: true }).click();
-    await expect(page.getByText("수정본 1을 다시 물어봤어요.", { exact: true })).toBeVisible();
+    await expect(page.getByText("수정본 1의 카카오톡 공유 화면을 열었어요.", { exact: true })).toBeVisible();
 
     const revised = await page.evaluate(() => JSON.parse(localStorage.getItem("oneul:latest-praise-request:v1") ?? "null") as {
       slug: string;

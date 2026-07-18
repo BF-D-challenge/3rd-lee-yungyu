@@ -1,5 +1,22 @@
 import { expect, test, type Page } from "@playwright/test";
 
+function encodeLegacy(value: unknown) {
+  return Buffer.from(encodeURIComponent(JSON.stringify(value)), "utf8").toString("base64url");
+}
+
+const cardFixture = {
+  seedId: "e2e-route-seed",
+  seedLabel: "작은 팀 회의",
+  track: "know",
+  painId: 1,
+  formatId: "share-link",
+  title: "결정만 남기는 회의 메모",
+  oneliner: "회의가 끝나면 결정된 문장만 세 줄로 보여줘요.",
+  target: "작은 팀의 기획자",
+  situation: "회의 직후",
+  psych: "정리 피로",
+};
+
 async function openWithoutRuntimeErrors(page: Page, path: string) {
   const runtimeErrors: string[] = [];
   page.on("pageerror", (error) => runtimeErrors.push(error.message));
@@ -94,6 +111,40 @@ test.describe("전체 앱 라우트 직접 진입", () => {
     await page.keyboard.press("Escape");
     await expect(dialog).toBeHidden();
     await expect(trigger).toBeFocused();
+    await expectNoErrors();
+  });
+
+  test("대결 로그인 시트는 Esc로 닫고 명시적 버튼으로 다시 열 수 있다", async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.removeItem("oneul:demo-auth");
+      localStorage.removeItem("oneul:demo-actor");
+    });
+    const slug = encodeLegacy({ v: 1, a: cardFixture, b: { ...cardFixture, title: "회의 결론 보관함" } });
+    const expectNoErrors = await openWithoutRuntimeErrors(page, `/vs/${slug}`);
+    const dialog = page.getByRole("dialog", { name: "친구의 후보를 응원해 주세요" });
+
+    await expect(dialog).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+
+    const reopen = page.getByRole("button", { name: "로그인하고 응원하기", exact: true });
+    await expect(reopen).toBeFocused();
+    await reopen.click();
+    await expect(dialog).toBeVisible();
+    await expectNoErrors();
+  });
+
+  test("카드의 직접 응원 입력은 이름과 완료 포커스를 제공한다", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.addInitScript(() => localStorage.clear());
+    const slug = encodeLegacy(cardFixture);
+    const expectNoErrors = await openWithoutRuntimeErrors(page, `/c/${slug}`);
+
+    await page.getByRole("button", { name: "나도 이거 필요해", exact: true }).click();
+    const success = page.getByRole("status");
+    await expect(success).toBeFocused();
+    await page.getByRole("button", { name: "✏️ 직접 쓸래요", exact: true }).click();
+    await expect(page.getByRole("textbox", { name: "한마디 남기기", exact: true })).toBeFocused();
     await expectNoErrors();
   });
 

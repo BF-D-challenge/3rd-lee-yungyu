@@ -4,6 +4,18 @@ import { formatById, painById, type Track } from "./combos";
 import { decodeBinaryBase64Url, encodeBinaryBase64Url } from "./base64-url";
 import { isFeedbackWriteAccess, type FeedbackWriteAccess } from "./feedback-access";
 
+const MAX_SHARE_SLUG_LENGTH = 16_384;
+const MAX_SHORT_TEXT_LENGTH = 256;
+const MAX_LONG_TEXT_LENGTH = 2_000;
+const isObject = (value: unknown): value is Record<string, unknown> =>
+  Boolean(value) && typeof value === "object" && !Array.isArray(value);
+const isText = (value: unknown, max = MAX_SHORT_TEXT_LENGTH): value is string =>
+  typeof value === "string" && value.trim().length > 0 && value.length <= max;
+const isOptionalText = (value: unknown, max = MAX_SHORT_TEXT_LENGTH): value is string | undefined =>
+  value === undefined || (typeof value === "string" && value.length <= max);
+const isNullableText = (value: unknown, max = MAX_LONG_TEXT_LENGTH): value is string | null =>
+  value === null || (typeof value === "string" && value.length <= max);
+
 export interface CardPayload {
   seedId: string;
   seedLabel: string;
@@ -42,6 +54,30 @@ export const toPayload = (c: Combo, fromName?: string, preferenceId?: string): C
   ...(preferenceId ? { preferenceId } : {}),
 });
 
+const isCardPayload = (value: unknown): value is CardPayload => {
+  if (!isObject(value)) return false;
+  return (
+    isText(value.seedId)
+    && isText(value.seedLabel)
+    && (value.track === "like" || value.track === "know")
+    && Number.isInteger(value.painId)
+    && typeof value.painId === "number"
+    && Boolean(painById(value.painId))
+    && isText(value.formatId)
+    && Boolean(formatById(value.formatId))
+    && isNullableText(value.title)
+    && isNullableText(value.oneliner)
+    && isText(value.target, MAX_LONG_TEXT_LENGTH)
+    && isText(value.situation, MAX_LONG_TEXT_LENGTH)
+    && isText(value.psych, MAX_LONG_TEXT_LENGTH)
+    && isOptionalText(value.appName)
+    && isOptionalText(value.evidence, MAX_LONG_TEXT_LENGTH)
+    && isOptionalText(value.fromName)
+    && isOptionalText(value.preferenceId)
+    && (value.feedback === undefined || isFeedbackWriteAccess(value.feedback))
+  );
+};
+
 export function encodeSlug(payload: CardPayload): string {
   const json = JSON.stringify(payload);
   return encodeBinaryBase64Url(encodeURIComponent(json));
@@ -49,14 +85,9 @@ export function encodeSlug(payload: CardPayload): string {
 
 export function decodeSlug(slug: string): CardPayload | null {
   try {
-    const payload = JSON.parse(decodeURIComponent(decodeBinaryBase64Url(slug))) as CardPayload;
-    // 최소 무결성: 참조 데이터가 실제로 존재해야 렌더 가능
-    if (
-      !payload.seedLabel
-      || !painById(payload.painId)
-      || !formatById(payload.formatId)
-      || (payload.feedback !== undefined && !isFeedbackWriteAccess(payload.feedback))
-    ) return null;
+    if (!slug || slug.length > MAX_SHARE_SLUG_LENGTH) return null;
+    const payload = JSON.parse(decodeURIComponent(decodeBinaryBase64Url(slug))) as unknown;
+    if (!isCardPayload(payload)) return null;
     return payload;
   } catch {
     return null;
@@ -88,8 +119,7 @@ export interface RoundMeta {
 const DUEL_VERSION = 2;
 
 /** decodeSlug와 같은 최소 무결성: 참조 데이터가 실제로 존재해야 렌더 가능 */
-const isRenderable = (p: CardPayload | undefined): p is CardPayload =>
-  Boolean(p && p.seedLabel && painById(p.painId) && formatById(p.formatId));
+const isRenderable = (value: unknown): value is CardPayload => isCardPayload(value);
 
 export function encodeDuelSlug(a: CardPayload, b: CardPayload, meta?: RoundMeta): string {
   // 대결 링크에는 대결용 쓰기 권한만 넣고, 원본 카드의 별도 쓰기 권한은 노출하지 않는다.
@@ -103,6 +133,7 @@ export function encodeDuelSlug(a: CardPayload, b: CardPayload, meta?: RoundMeta)
 
 export function decodeDuelSlug(slug: string): DuelPayload | null {
   try {
+    if (!slug || slug.length > MAX_SHARE_SLUG_LENGTH) return null;
     const parsed = JSON.parse(decodeURIComponent(decodeBinaryBase64Url(slug))) as {
       v?: number;
       a?: CardPayload;
@@ -114,16 +145,32 @@ export function decodeDuelSlug(slug: string): DuelPayload | null {
       feedback?: FeedbackWriteAccess;
     };
     if ((parsed.v !== 1 && parsed.v !== DUEL_VERSION) || !isRenderable(parsed.a) || !isRenderable(parsed.b)) return null;
-    if (parsed.v === DUEL_VERSION && (!parsed.roundId || !parsed.rootRoundId)) return null;
+    if (
+      parsed.v === DUEL_VERSION
+      && (!isText(parsed.roundId) || !isText(parsed.rootRoundId))
+    ) return null;
+    if (!isOptionalText(parsed.parentRoundId ?? undefined)) return null;
+    if (
+      parsed.preferenceIds !== undefined
+      && (
+        !Array.isArray(parsed.preferenceIds)
+        || parsed.preferenceIds.length > 32
+        || !parsed.preferenceIds.every((value) => isText(value))
+      )
+    ) return null;
     if (parsed.feedback !== undefined && !isFeedbackWriteAccess(parsed.feedback)) return null;
+    const safeA = { ...parsed.a };
+    const safeB = { ...parsed.b };
+    delete safeA.feedback;
+    delete safeB.feedback;
     return {
-      a: parsed.a,
-      b: parsed.b,
+      a: safeA,
+      b: safeB,
       ...(parsed.roundId ? { roundId: parsed.roundId } : {}),
       ...(parsed.parentRoundId !== undefined ? { parentRoundId: parsed.parentRoundId } : {}),
       ...(parsed.rootRoundId ? { rootRoundId: parsed.rootRoundId } : {}),
       ...(Array.isArray(parsed.preferenceIds)
-        ? { preferenceIds: parsed.preferenceIds.filter((value): value is string => typeof value === "string") }
+        ? { preferenceIds: parsed.preferenceIds }
         : {}),
       ...(parsed.feedback ? { feedback: parsed.feedback } : {}),
     };
@@ -152,30 +199,3 @@ export const prefillSpinUrl = (
   if (context?.preferenceIds?.length) params.set("preferences", context.preferenceIds.join(","));
   return `/?${params.toString()}`;
 };
-
-// ── 네이티브 공유시트 (Web Share API) — 카톡/문자/에어드롭 등 선택 가능, 미지원 시 클립보드 폴백 ──
-// K(바이럴 계수) 측정 정의:
-//   실전달률 = public_card_view ÷ confirm_share_click (native 방식일 때만 신뢰 — clipboard는 실제 전달 불확실)
-//   응원율   = card_vote ÷ public_card_view
-//   재뽑기전환 = vote_to_spin ÷ card_vote
-
-export async function shareOrCopy(
-  url: string,
-  opts?: { title?: string; text?: string },
-): Promise<{ ok: boolean; method: "native" | "clipboard" }> {
-  if (typeof navigator !== "undefined" && "share" in navigator) {
-    try {
-      await navigator.share({ url, title: opts?.title, text: opts?.text });
-      return { ok: true, method: "native" };
-    } catch (err) {
-      if (err instanceof DOMException && err.name === "AbortError") return { ok: false, method: "native" };
-      // 다른 에러(권한 없음 등)는 클립보드 폴백으로 넘어간다
-    }
-  }
-  try {
-    await navigator.clipboard.writeText(url);
-    return { ok: true, method: "clipboard" };
-  } catch {
-    return { ok: false, method: "clipboard" };
-  }
-}

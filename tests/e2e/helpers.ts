@@ -2,7 +2,19 @@ import { expect, type Locator, type Page } from "@playwright/test";
 
 export const FIXED_NOW = new Date("2026-07-12T12:00:00+09:00");
 
-export type ShareMockMode = "native" | "clipboard" | "abort";
+export type ShareMockMode = "kakao" | "fail" | "fail-once";
+
+export interface KakaoShareCall {
+  objectType: "text";
+  text: string;
+  link: {
+    mobileWebUrl: string;
+    webUrl: string;
+  };
+  buttonTitle: string;
+  installTalk: boolean;
+  serverCallbackArgs?: Record<string, string>;
+}
 
 export interface TestPraiseRequestCard {
   v: 1;
@@ -92,17 +104,37 @@ export async function installShareMock(page: Page, mode: ShareMockMode) {
   await page.addInitScript((mockMode: ShareMockMode) => {
     const state = window as typeof window & {
       __shareCalls?: ShareData[];
+      __kakaoShareCalls?: KakaoShareCall[];
       __clipboardWrites?: string[];
+      __shareAttempt?: number;
     };
     state.__shareCalls = [];
+    state.__kakaoShareCalls = [];
     state.__clipboardWrites = [];
-
+    state.__shareAttempt = 0;
+    window.Kakao = {
+      init: () => undefined,
+      isInitialized: () => true,
+      Share: {
+        sendDefault: (payload: KakaoShareCall) => {
+          state.__shareCalls!.push({
+            title: payload.text,
+            text: payload.text,
+            url: payload.link.webUrl,
+          });
+          state.__kakaoShareCalls!.push(payload);
+          state.__shareAttempt! += 1;
+          if (mockMode === "fail" || (mockMode === "fail-once" && state.__shareAttempt === 1)) {
+            throw new Error("카카오톡 공유 화면을 열지 못했습니다.");
+          }
+        },
+      },
+    };
+    // 카카오톡 전용 구현이 아래 두 API를 잘못 호출하면 테스트에서 흔적이 남는다.
     Object.defineProperty(navigator, "share", {
       configurable: true,
-      value: async (payload: ShareData) => {
-        state.__shareCalls!.push(payload);
-        if (mockMode === "abort") throw new DOMException("사용자가 공유를 취소했습니다.", "AbortError");
-        if (mockMode === "clipboard") throw new DOMException("공유 API를 사용할 수 없습니다.", "NotAllowedError");
+      value: async () => {
+        throw new Error("navigator.share는 사용하면 안 됩니다.");
       },
     });
     Object.defineProperty(navigator, "clipboard", {
@@ -121,6 +153,11 @@ export async function shareCalls(page: Page): Promise<ShareData[]> {
     ((window as typeof window & { __shareCalls?: ShareData[] }).__shareCalls ?? []));
 }
 
+export async function kakaoShareCalls(page: Page): Promise<KakaoShareCall[]> {
+  return page.evaluate(() =>
+    ((window as typeof window & { __kakaoShareCalls?: KakaoShareCall[] }).__kakaoShareCalls ?? []));
+}
+
 export async function clipboardWrites(page: Page): Promise<string[]> {
   return page.evaluate(() =>
     ((window as typeof window & { __clipboardWrites?: string[] }).__clipboardWrites ?? []));
@@ -137,14 +174,27 @@ export function axisCard(page: Page, label: string): Locator {
 const DRAW_ALL_SETTLE_TIMEOUT = 20_000;
 
 export async function drawAll(page: Page) {
-  const autoFill = page.getByRole("button", { name: "나머지 자동으로 뽑기", exact: true });
-  if (!await autoFill.isVisible()) {
-    await page.getByRole("button", { name: "검증된 원본 카드 뽑기", exact: true }).click();
-    await expect(autoFill).toBeVisible();
+  const labels = ["검증된 원본", "돈 낼 사람", "필요한 순간", "한 끗 변화"];
+  for (const [index, label] of labels.entries()) {
+    const card = axisCard(page, label);
+    if ((await card.getAttribute("data-value")) !== "") continue;
+    const drawButton = page.getByRole("button", { name: `${label} 카드 뽑기`, exact: true });
+    await expect(drawButton).toBeVisible();
+    await drawButton.click();
+    if (index < labels.length - 1) {
+      await expect(card).not.toHaveAttribute("data-value", "");
+    }
   }
-  await autoFill.click();
-  await expect(page.getByRole("button", { name: /4장 다시 뽑기/ })).toBeEnabled({ timeout: DRAW_ALL_SETTLE_TIMEOUT });
-  await expect(page.locator(".idea-lab__status")).toContainText("네 장이 완성됐어요.", { timeout: DRAW_ALL_SETTLE_TIMEOUT });
+  await expect(page.locator(".idea-lab__stage--result")).toBeVisible({ timeout: DRAW_ALL_SETTLE_TIMEOUT });
+  await expect(page.getByRole("button", { name: "다른 아이디어 뽑기", exact: true })).toBeVisible();
+}
+
+export async function shareIdeaFromResult(page: Page) {
+  await page.getByRole("button", {
+    name: "공유하고 결과 보기",
+    exact: true,
+  }).click();
+  await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
 }
 
 export async function seedPraiseStorage(
@@ -163,6 +213,8 @@ export async function seedPraiseStorage(
     if (localStorage.getItem("__e2e_seeded_praise_storage") === "1") return;
     localStorage.clear();
     sessionStorage.clear();
+    localStorage.setItem("oneul:demo-auth", "1");
+    localStorage.setItem("oneul:demo-actor", "e2e-demo-actor");
     localStorage.setItem("oneul:latest-praise-request:v1", JSON.stringify(saved));
     localStorage.setItem(`oneul:votes:${slug}`, JSON.stringify(seededVotes));
     if (hasVoted) localStorage.setItem(`oneul:voted:${slug}`, "true");

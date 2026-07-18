@@ -4,18 +4,22 @@ import { expect, test, type Page } from "@playwright/test";
 import {
   FIXED_NOW,
   drawAll,
+  installShareMock,
   makePraiseRequest,
   openPraiseTab,
   praiseVote,
 } from "./helpers";
 
 const PRIMARY_RGB = "rgb(255, 68, 88)";
+const ACTION_PRIMARY_RGB = "rgb(217, 45, 69)";
 
 async function setPraiseFixture(page: Page, messages: string[]) {
   const request = makePraiseRequest();
   await page.evaluate(({ saved, slug, votes }) => {
     localStorage.clear();
     sessionStorage.clear();
+    localStorage.setItem("oneul:demo-auth", "1");
+    localStorage.setItem("oneul:demo-actor", "e2e-demo-actor");
     localStorage.setItem("oneul:latest-praise-request:v1", JSON.stringify(saved));
     localStorage.setItem(`oneul:votes:${slug}`, JSON.stringify(votes));
   }, {
@@ -33,7 +37,6 @@ async function setPraiseFixture(page: Page, messages: string[]) {
 
 /** A1(뽑기) → A2(결과) 스테이지 전환 */
 async function goResult(page: Page) {
-  await page.getByRole("button", { name: /결과 자세히 보기/ }).click();
   await expect(page.locator(".idea-lab__stage--result")).toBeVisible();
 }
 
@@ -43,8 +46,7 @@ test("Scenario 14: Primary 단일색과 네 분류 의미색, dark color scheme�
 
   await expect(page.getByRole("button", { name: "나머지 자동으로 뽑기", exact: true })).toHaveCount(0);
   await page.locator(".idea-lab__slot.is-carousel-active .idea-lab__card-frame button").click();
-  const drawButton = page.getByRole("button", { name: "나머지 자동으로 뽑기", exact: true });
-  await expect(drawButton).not.toHaveCSS("background-color", PRIMARY_RGB);
+  await expect(page.getByRole("button", { name: "나머지 자동으로 뽑기", exact: true })).toHaveCount(0);
   await expect(page.locator("html")).toHaveCSS("color-scheme", "dark");
 
   // 네 분류 의미색은 뽑기 스테이지의 슬롯 라벨에서 확인한다(결과 스테이지엔 슬롯이 없다).
@@ -56,8 +58,11 @@ test("Scenario 14: Primary 단일색과 네 분류 의미색, dark color scheme�
   await drawAll(page);
   await goResult(page);
   await page.mouse.move(0, 0); // 방금 클릭한 위치의 :hover 색이 잡히지 않도록 포인터를 치운다
-  const shareButton = page.getByRole("button", { name: /친구에게 알리고 시작하기/ });
-  await expect(shareButton).toHaveCSS("background-color", PRIMARY_RGB);
+  const shareButton = page.getByRole("button", {
+    name: "공유하고 결과 보기",
+    exact: true,
+  });
+  await expect(shareButton).toHaveCSS("background-color", ACTION_PRIMARY_RGB);
 
   const request = makePraiseRequest();
   await page.goto(`/praise/${request.slug}`);
@@ -68,7 +73,7 @@ test("Scenario 14: Primary 단일색과 네 분류 의미색, dark color scheme�
   await page.mouse.move(0, 0);
   await expect(page.getByRole("button", { name: "응원 카드 보내기", exact: true })).toHaveCSS(
     "background-color",
-    PRIMARY_RGB,
+    ACTION_PRIMARY_RGB,
   );
 });
 
@@ -90,6 +95,7 @@ for (const viewport of [{ width: 320, height: 568 }, { width: 375, height: 667 }
     await page.goto("/");
 
     const geometry = await page.evaluate(() => {
+      const appbar = document.querySelector<HTMLElement>(".idea-lab__appbar")!.getBoundingClientRect();
       const slots = document.querySelector<HTMLElement>(".idea-lab__slots")!.getBoundingClientRect();
       const frame = document.querySelector<HTMLElement>(
         ".idea-lab__slot.is-carousel-active .idea-lab__card-frame",
@@ -100,15 +106,18 @@ for (const viewport of [{ width: 320, height: 568 }, { width: 375, height: 667 }
       return {
         viewportWidth: window.innerWidth,
         scrollWidth: document.documentElement.scrollWidth,
+        appbarBottom: appbar.bottom,
         slotsTop: slots.top,
         slotsBottom: slots.bottom,
         frameTop: frame.top,
         frameBottom: frame.bottom,
+        labelTop: label.top,
         labelBottom: label.bottom,
       };
     });
 
     expect(geometry.scrollWidth).toBeLessThanOrEqual(geometry.viewportWidth + 1);
+    expect(geometry.labelTop).toBeGreaterThanOrEqual(geometry.appbarBottom - 1);
     expect(geometry.frameTop).toBeGreaterThanOrEqual(geometry.slotsTop - 1);
     expect(geometry.frameBottom).toBeLessThanOrEqual(geometry.slotsBottom + 1);
     expect(geometry.labelBottom).toBeLessThanOrEqual(geometry.slotsBottom + 1);
@@ -148,13 +157,14 @@ test("Step 2: 원본 비율의 카드 한 장에 집중하고 다음 카드는 �
   await expect(page.locator(".idea-lab__slot.is-carousel-next")).toHaveCount(1);
   await expect(page.locator(".idea-lab__slot.is-carousel-previous")).toHaveCount(0);
 
-  await drawAll(page);
-  const filledRadii = await page.locator(".idea-lab__card-frame").evaluateAll((frames) => frames.map((frame) => {
+  await page.locator(".idea-lab__slot.is-carousel-active .idea-lab__card-frame button").click();
+  await expect(page.locator(".idea-lab__slot.is-filled")).toHaveCount(1);
+  const filledRadii = await page.locator(".idea-lab__slot.is-filled .idea-lab__card-frame").evaluateAll((frames) => frames.map((frame) => {
     const button = frame.querySelector<HTMLButtonElement>("button")!;
     return (button.lastElementChild as HTMLElement).style.borderRadius;
   }));
-  expect(filledRadii).toEqual(["8px", "8px", "8px", "8px"]);
-  const textLimits = await page.locator(".idea-lab__card-frame").first().evaluate((frame) => ({
+  expect(filledRadii).toEqual(["8px"]);
+  const textLimits = await page.locator(".idea-lab__slot.is-filled .idea-lab__card-frame").evaluate((frame) => ({
     title: frame.querySelector<HTMLElement>("strong")?.style.webkitLineClamp,
     detail: frame.querySelector<HTMLElement>("p")?.style.webkitLineClamp,
   }));
@@ -244,7 +254,7 @@ test("Step 3: 현재 빈칸을 채우면 다음 카드가 옆에서 중앙으로
   });
 });
 
-test("자동 진행: 완료 카드가 중앙에서 읽기 시간을 채운 뒤 다음 칸으로 넘어간다", async ({ page }) => {
+test("수동 진행: 완료 카드가 중앙에서 읽기 시간을 채운 뒤 다음 칸으로 넘어간다", async ({ page }) => {
   await page.setViewportSize({ width: 440, height: 1020 });
   await page.goto("/");
 
@@ -274,10 +284,6 @@ test("자동 진행: 완료 카드가 중앙에서 읽기 시간을 채운 뒤 �
     element.classList.remove("is-reading");
     element.style.setProperty("--read-duration", originalDuration);
   }, originalProbeDuration);
-
-  await page.getByRole("button", { name: "검증된 원본 카드 뽑기", exact: true }).click();
-  const autoFill = page.getByRole("button", { name: "나머지 자동으로 뽑기", exact: true });
-  await expect(autoFill).toBeEnabled();
 
   const readingSequence = page.evaluate(() => new Promise<{
     axes: string[];
@@ -356,8 +362,6 @@ test("자동 진행: 완료 카드가 중앙에서 읽기 시간을 채운 뒤 �
           progressLoaderContent: getComputedStyle(progress, "::before").content,
           pauseButtonCount: document.querySelectorAll(".idea-lab__progress-toggle").length,
         };
-      }
-      if (axis === "payer" && sourceUi) {
         observer.disconnect();
         resolve({ axes, sourceUi });
       }
@@ -368,12 +372,12 @@ test("자동 진행: 완료 카드가 중앙에서 읽기 시간을 채운 뒤 �
     inspect();
   }));
 
-  await autoFill.click();
+  await page.getByRole("button", { name: "검증된 원본 카드 뽑기", exact: true }).click();
   const { axes, sourceUi: readingUi } = await readingSequence;
 
   expect(readingUi.activeCenterDelta).toBeLessThanOrEqual(1);
   expect(readingUi.progressCenterDelta).toBeLessThanOrEqual(1);
-  expect(readingUi.progressHeight).toBe(36);
+  expect(readingUi.progressHeight).toBe(48);
   expect(readingUi.progressWidth).toBe(124);
   expect(readingUi.readingSegmentCount).toBe(1);
   expect(readingUi.animationPlayState).toBe("running");
@@ -386,10 +390,11 @@ test("자동 진행: 완료 카드가 중앙에서 읽기 시간을 채운 뒤 �
   expect(readingUi.fillBackground).not.toBe(readingUi.trackBackground);
   expect(readingUi.progressLoaderContent).toBe("none");
   expect(readingUi.pauseButtonCount).toBe(0);
-  expect(axes.slice(0, 2)).toEqual(["source", "payer"]);
-  await expect(stage).toHaveAttribute("data-reading-axis", /payer|moment|twist/);
+  expect(axes).toEqual(["source"]);
+  await expect(payer).toHaveAttribute("data-carousel-position", "active");
+  await expect(stage).not.toHaveAttribute("data-reading-axis");
   await expect(source).not.toHaveAttribute("data-value", "");
-  await expect(payer).not.toHaveAttribute("data-value", "");
+  await expect(payer).toHaveAttribute("data-value", "");
 });
 
 test("카드 캐러셀: 인디케이터 화살표와 좌우 드래그로 준비된 카드를 탐색한다", async ({ page }) => {
@@ -406,7 +411,7 @@ test("카드 캐러셀: 인디케이터 화살표와 좌우 드래그로 준비�
   await expect(source).not.toHaveAttribute("data-value", "");
   await expect(previous).toBeEnabled();
   await expect(payer).toHaveAttribute("data-carousel-position", "active");
-  await expect(next).toBeDisabled();
+  await expect(next).toBeEnabled();
   await expect(progress).toHaveAttribute("aria-valuetext", "1 / 4");
 
   const readDockGeometry = () => page.locator(".idea-lab__progress-dock").evaluate((dock) => {
@@ -437,7 +442,7 @@ test("카드 캐러셀: 인디케이터 화살표와 좌우 드래그로 준비�
     { width: 48, height: 48 },
     { width: 48, height: 48 },
   ]);
-  expect(payerDock.arrows.map(({ visibility }) => visibility)).toEqual(["visible", "hidden"]);
+  expect(payerDock.arrows.map(({ visibility }) => visibility)).toEqual(["visible", "visible"]);
   expect(payerDock.pauseButtonCount).toBe(0);
 
   await previous.click();
@@ -446,7 +451,7 @@ test("카드 캐러셀: 인디케이터 화살표와 좌우 드래그로 준비�
   const sourceDock = await readDockGeometry();
   expect(sourceDock.progressX).toBe(payerDock.progressX);
   expect(sourceDock.arrows.map(({ x }) => x)).toEqual(payerDock.arrows.map(({ x }) => x));
-  expect(sourceDock.arrows.map(({ visibility }) => visibility)).toEqual(["hidden", "visible"]);
+  expect(sourceDock.arrows.map(({ visibility }) => visibility)).toEqual(["visible", "visible"]);
   await next.click();
   await expect(payer).toHaveAttribute("data-carousel-position", "active");
 
@@ -714,42 +719,46 @@ test("Steps 4-9: 핵심 조작, 진행 표시, 색상 위계와 48px 접근성�
   const progress = page.getByRole("progressbar", { name: "아이디어 카드 완성도" });
   await expect(progress).toHaveAttribute("aria-valuenow", "0");
   await expect(page.locator(".idea-lab__progress-segments span")).toHaveCount(4);
+  await expect(page.locator(".idea-lab__appbar-meta")).toHaveCount(0);
   await expect(page.locator(".idea-lab__ghost-box")).toHaveCount(0);
   await expect(page.locator(".idea-lab__deck-prompt")).toHaveCount(0);
   await expect(page.getByText("네 장을 조합하면 바로 만들 수 있는 아이디어가 완성돼요.", { exact: true })).toBeVisible();
   const guidePlacement = await page.evaluate(() => {
     const header = document.querySelector<HTMLElement>(".idea-lab__appbar")!;
-    const slots = document.querySelector<HTMLElement>(".idea-lab__slots")!;
+    const active = document.querySelector<HTMLElement>(".idea-lab__slot.is-carousel-active")!;
     const progress = document.querySelector<HTMLElement>(".idea-lab__progress-dock")!;
-    const cta = document.querySelector<HTMLElement>(".idea-lab__cta-bar")!;
     const deck = document.querySelector<HTMLElement>(".idea-lab__deck")!;
+    const activeRect = active.getBoundingClientRect();
     return {
-      headerAboveCards: header.getBoundingClientRect().bottom <= slots.getBoundingClientRect().top,
-      progressBelowCards: progress.getBoundingClientRect().top >= slots.getBoundingClientRect().bottom - 1,
-      ctaAboveDeck: cta.getBoundingClientRect().bottom <= deck.getBoundingClientRect().top,
+      headerAboveCards: header.getBoundingClientRect().bottom <= activeRect.top,
+      progressBelowCards: progress.getBoundingClientRect().top >= activeRect.bottom,
+      progressAboveDeck: progress.getBoundingClientRect().bottom <= deck.getBoundingClientRect().top,
+      activeCenterDelta: Math.abs(activeRect.top + activeRect.height / 2 - window.innerHeight / 2),
     };
   });
-  expect(guidePlacement).toEqual({ headerAboveCards: true, progressBelowCards: true, ctaAboveDeck: true });
+  expect(guidePlacement).toEqual({
+    headerAboveCards: true,
+    progressBelowCards: true,
+    progressAboveDeck: true,
+    activeCenterDelta: expect.any(Number),
+  });
+  expect(guidePlacement.activeCenterDelta).toBeLessThanOrEqual(2);
 
   const autoFill = page.getByRole("button", { name: "나머지 자동으로 뽑기", exact: true });
   await expect(autoFill).toHaveCount(0);
   await page.locator(".idea-lab__slot.is-carousel-active .idea-lab__card-frame button").click();
-  await expect(autoFill).toBeVisible();
-  await expect(autoFill).not.toHaveCSS("background-color", PRIMARY_RGB);
-  expect(await autoFill.evaluate((button) => button.getBoundingClientRect().height)).toBeGreaterThanOrEqual(48);
+  await expect(autoFill).toHaveCount(0);
 
-  const layers = await page.evaluate(() => ({
-    deck: Number(getComputedStyle(document.querySelector<HTMLElement>(".idea-lab__deck")!).zIndex),
-    cta: Number(getComputedStyle(document.querySelector<HTMLElement>(".idea-lab__cta-bar")!).zIndex),
-  }));
-  expect(layers.deck).toBeGreaterThan(layers.cta);
+  const deckLayer = await page.locator(".idea-lab__deck").evaluate((deck) =>
+    Number(getComputedStyle(deck).zIndex));
+  expect(deckLayer).toBeGreaterThan(0);
 
   const navTargets = await page.locator("nav button").evaluateAll((buttons) =>
     buttons.map((button) => ({
       height: button.getBoundingClientRect().height,
       width: button.getBoundingClientRect().width,
     })));
-  expect(navTargets).toHaveLength(3);
+  expect(navTargets).toHaveLength(4);
   for (const target of navTargets) {
     expect(target.height).toBeGreaterThanOrEqual(48);
     expect(target.width).toBeGreaterThanOrEqual(48);
@@ -766,62 +775,6 @@ test("Steps 4-9: 핵심 조작, 진행 표시, 색상 위계와 48px 접근성�
   expect(focusState.height).toBeGreaterThanOrEqual(48);
   expect(focusState.outline).toBe("solid");
 
-  await drawAll(page);
-  await expect(page.locator(".idea-lab__appbar.is-guide")).toHaveCount(0);
-  await expect(progress).toHaveAttribute("aria-valuenow", "4");
-  const completedProgress = await progress.evaluate((element) => {
-    const rect = element.getBoundingClientRect();
-    const style = getComputedStyle(element);
-    return { width: rect.width, height: rect.height, overflow: style.overflow, clip: style.clip };
-  });
-  expect(completedProgress.width).toBeGreaterThan(0);
-  expect(completedProgress.height).toBeGreaterThan(0);
-  await expect(page.getByRole("heading", { name: "아이디어가 완성됐어요", exact: true })).toBeVisible();
-  await expect(page.getByText("아이디어가 완성됐어요", { exact: true })).toHaveCount(1);
-  await expect(page.getByText("카드 눌러 교체", { exact: true })).toBeVisible();
-  const summaryLayout = await page.locator(".idea-lab__appbar.is-summary").evaluate((header) => {
-    const style = getComputedStyle(header);
-    const row = header.querySelector<HTMLElement>(".idea-lab__appbar-row")!;
-    const preview = header.querySelector<HTMLElement>(".idea-lab__idea-preview")!;
-    return {
-      marginTop: parseFloat(style.marginTop),
-      marginRight: parseFloat(style.marginRight),
-      marginBottom: parseFloat(style.marginBottom),
-      marginLeft: parseFloat(style.marginLeft),
-      textAlign: style.textAlign,
-      rowAlign: getComputedStyle(row).alignItems,
-      previewAlign: getComputedStyle(preview).alignItems,
-    };
-  });
-  expect(summaryLayout).toEqual({
-    marginTop: 10,
-    marginRight: 8,
-    marginBottom: 18,
-    marginLeft: 8,
-    textAlign: "center",
-    rowAlign: "center",
-    previewAlign: "center",
-  });
-  await expect(page.locator(".idea-lab__uvp-head, .idea-lab__completion-message")).toHaveCount(0);
-  const ideaPreview = page.locator(".idea-lab__idea-preview");
-  await expect(ideaPreview).toBeVisible();
-  await expect(page.locator(".idea-lab__appbar")).toContainText("아이디어가 완성됐어요");
-  await expect(page.locator(".idea-lab__appbar > .idea-lab__ghost-box")).toHaveCount(0);
-  await expect(ideaPreview.locator("strong")).not.toHaveText("");
-  await expect(ideaPreview.locator("span")).not.toHaveText("");
-  await expect(ideaPreview.locator("small")).toContainText("검수 원본");
-  await expect(ideaPreview).toHaveCSS("white-space", "normal");
-  expect(await ideaPreview.evaluate((line) => line.scrollWidth <= line.clientWidth + 1)).toBe(true);
-  const resultPlacement = await page.evaluate(() => {
-    const header = document.querySelector<HTMLElement>(".idea-lab__appbar")!;
-    const result = document.querySelector<HTMLElement>(".idea-lab__appbar-result")!;
-    const card = document.querySelector<HTMLElement>(".idea-lab__slot.is-carousel-active")!;
-    return {
-      resultInsideHeader: header.contains(result),
-      resultAboveCard: result.getBoundingClientRect().bottom <= card.getBoundingClientRect().top,
-    };
-  });
-  expect(resultPlacement).toEqual({ resultInsideHeader: true, resultAboveCard: true });
   const cardColors = await page.locator(".idea-lab__slot").evaluateAll((slots) =>
     slots.map((slot) => {
       const label = slot.querySelector<HTMLElement>(".idea-lab__slot-label")!;
@@ -830,10 +783,60 @@ test("Steps 4-9: 핵심 조작, 진행 표시, 색상 위계와 48px 접근성�
       return { label: getComputedStyle(label).color, faceBorder: face?.style.borderColor ?? "" };
     }));
   expect(new Set(cardColors.map((item) => item.label)).size).toBe(4);
-  expect(new Set(cardColors.map((item) => item.faceBorder))).toEqual(new Set(["rgba(255, 255, 255, 0.16)"]));
+  expect(new Set(cardColors.map((item) => item.faceBorder).filter(Boolean)))
+    .toEqual(new Set(["rgba(255, 255, 255, 0.16)"]));
+
+  await drawAll(page);
+  await expect(page.locator(".idea-lab__appbar.is-guide")).toHaveCount(0);
+  await expect(progress).toHaveCount(0);
+  await expect(page.locator(".idea-lab__stage--result")).toBeVisible();
+  await expect(page.getByText("카드 눌러 교체", { exact: true })).toHaveCount(0);
+  await expect(page.locator(".idea-lab__idea-preview")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /결과 자세히 보기|4장 다시 뽑기/ })).toHaveCount(0);
+  const redraw = page.getByRole("button", { name: "다른 아이디어 뽑기", exact: true });
+  await expect(redraw).toBeVisible();
+  expect(await redraw.evaluate((button) => button.getBoundingClientRect().height)).toBeGreaterThanOrEqual(48);
 });
 
-test("T24: 가이드·카드·하단 인디케이터 순서와 단계 문구가 함께 바뀐다", async ({ page }) => {
+test("다시 뽑기 취향 질문은 작은 화면에서도 한 문항만 묻고 한 번에 끝난다", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 568 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await drawAll(page);
+  await page.getByRole("button", { name: "다른 아이디어 뽑기", exact: true }).click();
+
+  const tasteStage = page.locator(".idea-lab__stage--taste");
+  await expect(tasteStage).toBeVisible();
+  await expect(tasteStage).toHaveAttribute("data-question-id", "audience");
+  await expect(page.getByRole("progressbar", { name: "취향 조사 진행" })).toHaveCount(0);
+  await expect(page.getByRole("timer")).toHaveCount(0);
+  await expect(tasteStage.locator(".idea-lab__taste-choice")).toHaveCount(3);
+
+  const geometry = await tasteStage.evaluate((stage) => {
+    const choices = [...stage.querySelectorAll<HTMLElement>(".idea-lab__taste-choice")]
+      .map((choice) => choice.getBoundingClientRect());
+    return {
+      stageOverflow: stage.scrollHeight - stage.clientHeight,
+      documentOverflow: document.documentElement.scrollWidth - window.innerWidth,
+      stacked: choices.length === 3
+        && choices.slice(1).every((choice, index) => choice.top >= choices[index].bottom),
+      minChoiceHeight: Math.min(...choices.map((choice) => choice.height)),
+    };
+  });
+  expect(geometry).toEqual({
+    stageOverflow: 0,
+    documentOverflow: 0,
+    stacked: true,
+    minChoiceHeight: expect.any(Number),
+  });
+  expect(geometry.minChoiceHeight).toBeGreaterThanOrEqual(62);
+
+  await tasteStage.locator(".idea-lab__taste-choice").first().click();
+  await expect(page.locator(".idea-lab__stage--result")).toBeVisible();
+  await expect(page.locator(".idea-lab__stage--taste")).toHaveCount(0);
+});
+
+test("T24: 단계 문구가 카드와 함께 바뀌고 네 번째 카드 뒤 결과로 바로 넘어간다", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
@@ -845,7 +848,6 @@ test("T24: 가이드·카드·하단 인디케이터 순서와 단계 문구가 
     ["1 / 4", "누가 돈을 낼까요?", "다음 카드를 뽑아 돈 낼 사람을 정해보세요."],
     ["2 / 4", "언제 이 앱이 필요할까요?", "다음 카드를 뽑아 필요한 순간을 정해보세요."],
     ["3 / 4", "무엇을 하나 바꿀까요?", "마지막 카드를 뽑아 한 끗 변화를 정해보세요."],
-    ["4 / 4", "아이디어가 완성됐어요", "결과를 확인하거나 카드를 눌러 교체해보세요."],
   ] as const;
 
   let baselineLayout: { headerHeight: number; slotsTop: number; deckTop: number } | null = null;
@@ -857,11 +859,12 @@ test("T24: 가이드·카드·하단 인디케이터 순서와 단계 문구가 
       const copy = header.querySelector(".idea-lab__appbar-description");
       const progress = stage.querySelector('[role="progressbar"]') as HTMLElement | null;
       const slots = stage.querySelector(".idea-lab__slots")!;
+      const active = stage.querySelector(".idea-lab__slot.is-carousel-active")!;
       const deck = stage.querySelector(".idea-lab__deck")!;
       const headerOrder = [title, copy].map((node) => node ? [...header.querySelectorAll("*")].indexOf(node) : -1);
       return {
         headerOrder,
-        progressBelowCards: Boolean(progress && progress.getBoundingClientRect().top >= slots.getBoundingClientRect().bottom - 1),
+        progressBelowCards: Boolean(progress && progress.getBoundingClientRect().top >= active.getBoundingClientRect().bottom),
         layout: {
           headerHeight: header.getBoundingClientRect().height,
           slotsTop: slots.getBoundingClientRect().top,
@@ -882,28 +885,145 @@ test("T24: 가이드·카드·하단 인디케이터 순서와 단계 문구가 
     await expect(page.getByRole("heading", { name: heading, exact: true })).toBeVisible();
     await expect(page.getByText(description, { exact: true })).toBeVisible();
 
-    if (index < 4) {
-      await page.getByRole("button", {
-        name: `${drawLabels[index]} 카드 뽑기`,
-        exact: true,
-      }).click();
-    }
+    await page.getByRole("button", {
+      name: `${drawLabels[index]} 카드 뽑기`,
+      exact: true,
+    }).click();
   }
 
-  const geometry = await page.evaluate(() => {
-    const card = document.querySelector<HTMLElement>(".idea-lab__slot.is-carousel-active .idea-lab__card-frame")!.getBoundingClientRect();
-    const deck = document.querySelector<HTMLElement>(".idea-lab__deck")!.getBoundingClientRect();
-    return {
-      cardBottom: card.bottom,
-      cardCenterX: card.left + card.width / 2,
-      deckBottom: deck.bottom,
-      viewport: window.innerHeight,
-      viewportCenterX: window.innerWidth / 2,
+  await expect(page.locator(".idea-lab__stage--result")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "아이디어가 완성됐어요", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /결과 자세히 보기/ })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "다른 아이디어 뽑기", exact: true })).toBeVisible();
+  await expect(page.locator(".idea-lab__stage--result .idea-lab__stage-top")).toHaveCount(0);
+});
+
+test("T25: 완성 시 네 카드가 모여 결과 표면으로 이어진 뒤 결과가 열린다", async ({ page }) => {
+  await page.setViewportSize({ width: 440, height: 1020 });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto("/");
+
+  await page.evaluate(() => {
+    const state = window as typeof window & {
+      __ideaCompletionTrace?: Array<{
+        phase: string;
+        title: string;
+        descriptionCount: number;
+        previewCount: number;
+        ctaButtonCount: number;
+        visibleCards: number;
+        glowAnimationName: string;
+        glowAnimationDelay: string;
+        handoffSourceCount: number;
+        fullScreenFlashAnimation: string;
+      }>;
     };
+    state.__ideaCompletionTrace = [];
+    const capture = () => {
+      window.requestAnimationFrame(() => {
+        const stage = document.querySelector<HTMLElement>(".idea-lab__stage--draw.is-completing");
+        if (!stage) return;
+        const phase = stage.dataset.completionPhase ?? "gather";
+        if (state.__ideaCompletionTrace!.some((entry) => entry.phase === phase)) return;
+        const cards = [...stage.querySelectorAll<HTMLElement>(".idea-lab__slot")];
+        const glow = cards[0] ? getComputedStyle(cards[0], "::after") : null;
+        state.__ideaCompletionTrace!.push({
+          phase,
+          title: stage.querySelector<HTMLElement>(".idea-lab__appbar-title")?.textContent?.trim() ?? "",
+          descriptionCount: stage.querySelectorAll(".idea-lab__appbar-description").length,
+          previewCount: stage.querySelectorAll(".idea-lab__idea-preview").length,
+          ctaButtonCount: stage.querySelectorAll(".idea-lab__cta-bar button").length,
+          visibleCards: cards.filter((card) => getComputedStyle(card).visibility === "visible").length,
+          glowAnimationName: glow?.animationName ?? "",
+          glowAnimationDelay: glow?.animationDelay ?? "",
+          handoffSourceCount: stage.querySelectorAll(".idea-lab__slot.is-handoff-source").length,
+          fullScreenFlashAnimation: getComputedStyle(stage, "::after").animationName,
+        });
+      });
+    };
+    const observer = new MutationObserver(capture);
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"],
+      childList: true,
+      subtree: true,
+    });
   });
-  expect(geometry.cardBottom).toBeLessThanOrEqual(geometry.viewport + 1);
-  expect(geometry.deckBottom).toBeLessThanOrEqual(geometry.viewport + 1);
-  expect(Math.abs(geometry.cardCenterX - geometry.viewportCenterX)).toBeLessThanOrEqual(1);
+
+  for (const label of ["검증된 원본", "돈 낼 사람", "필요한 순간", "한 끗 변화"]) {
+    await page.getByRole("button", { name: `${label} 카드 뽑기`, exact: true }).click();
+  }
+  const resultStage = page.locator(".idea-lab__stage--result");
+  await expect(resultStage).toBeVisible();
+  await expect(resultStage.locator(".idea-lab__result-hook")).toBeFocused();
+  await expect(resultStage).toHaveClass(/is-from-handoff/);
+  await expect(resultStage).not.toHaveAttribute("data-anim");
+  const resultReveal = await resultStage.evaluate((stage) => {
+    const selectors = [
+      ".idea-lab__result-summary",
+      ".idea-lab__locked-details",
+      ".idea-lab__unlock-guide",
+      ".idea-lab__cta-bar",
+    ];
+    return selectors.map((selector) => {
+      const style = getComputedStyle(stage.querySelector<HTMLElement>(selector)!);
+      return {
+        name: style.animationName,
+        delay: Number.parseFloat(style.animationDelay),
+        duration: Number.parseFloat(style.animationDuration),
+      };
+    });
+  });
+  const sharedHandoff = await resultStage.evaluate((stage) => stage.classList.contains("is-shared-handoff"));
+  if (sharedHandoff) {
+    expect(resultReveal[0].name).toBe("none");
+    expect(resultReveal.slice(1).every((motion) => motion.name.includes("idea-result-content-in"))).toBe(true);
+    expect(resultReveal.slice(1).map((motion) => motion.delay)).toEqual([0.06, 0.12, 0.18]);
+    await expect(resultStage.locator(".idea-lab__result-summary")).toHaveCSS(
+      "view-transition-name",
+      "idea-result-card",
+    );
+  } else {
+    expect(resultReveal.every((motion) => motion.name.includes("idea-result-content-in"))).toBe(true);
+    expect(resultReveal.map((motion) => motion.delay)).toEqual([0.02, 0.06, 0.12, 0.18]);
+  }
+  expect(resultReveal.slice(1).every((motion) => motion.duration >= 0.18)).toBe(true);
+
+  const trace = await page.evaluate(() =>
+    (window as typeof window & {
+      __ideaCompletionTrace?: Array<{
+        phase: string;
+        title: string;
+        descriptionCount: number;
+        previewCount: number;
+        ctaButtonCount: number;
+        visibleCards: number;
+        glowAnimationName: string;
+        glowAnimationDelay: string;
+        handoffSourceCount: number;
+        fullScreenFlashAnimation: string;
+      }>;
+    }).__ideaCompletionTrace ?? []);
+  expect(trace.map((entry) => entry.phase)).toEqual([
+    "gather",
+    "settle",
+    "glow",
+    "focus",
+    "breathe",
+  ]);
+  for (const entry of trace) {
+    expect(entry.title).toBe("아이디어가 완성됐어요");
+    expect(entry.descriptionCount).toBe(0);
+    expect(entry.previewCount).toBe(0);
+    expect(entry.ctaButtonCount).toBe(0);
+    expect(entry.visibleCards).toBe(4);
+    expect(entry.handoffSourceCount).toBe(1);
+    expect(entry.fullScreenFlashAnimation).toBe("none");
+  }
+  expect(trace[0].glowAnimationName).toBe("none");
+  expect(trace[1].glowAnimationName).toBe("none");
+  expect(trace[2].glowAnimationName).toContain("idea-card-white-glow");
+  expect(trace[2].glowAnimationDelay).toBe("0s");
 });
 
 for (const viewport of viewports) {
@@ -947,19 +1067,19 @@ for (const viewport of viewports) {
       });
       const heading = document.querySelector<HTMLElement>(".idea-lab__appbar-title")!.getBoundingClientRect();
       const activeLabel = document.querySelector<HTMLElement>(".idea-lab__slot.is-carousel-active .idea-lab__slot-label")!.getBoundingClientRect();
-      const cta = document.querySelector<HTMLElement>(".idea-lab__cta-bar")!.getBoundingClientRect();
+      const progress = document.querySelector<HTMLElement>(".idea-lab__progress-dock")!.getBoundingClientRect();
       return {
         scrollHeight: document.scrollingElement!.scrollHeight,
         clientHeight: document.scrollingElement!.clientHeight,
         headingBottom: heading.bottom,
         activeLabelTop: activeLabel.top,
-        ctaBottom: cta.bottom,
+        progressBottom: progress.bottom,
         slots,
       };
     });
     expect(draw.scrollHeight).toBeLessThanOrEqual(draw.clientHeight + 1);
     expect(draw.activeLabelTop).toBeGreaterThanOrEqual(draw.headingBottom);
-    expect(draw.ctaBottom).toBeLessThanOrEqual(viewport.height + 1);
+    expect(draw.progressBottom).toBeLessThanOrEqual(viewport.height + 1);
     expect(draw.slots).toHaveLength(4);
     const active = draw.slots.find((slot) => slot.position === "active")!;
     const next = draw.slots.find((slot) => slot.position === "next")!;
@@ -972,8 +1092,6 @@ for (const viewport of viewports) {
 
     // A2 결과 스테이지로 전환 — 슬롯은 사라지고 결과 패널이 컬럼 안에 들어온다.
     await drawAll(page);
-    const drawStageScrollTop = await page.locator(".idea-lab__stage--draw").evaluate((stage) => stage.scrollTop);
-    expect(drawStageScrollTop).toBeLessThanOrEqual(1);
     await goResult(page);
     const result = await page.evaluate(() => {
       const panel = document.querySelector<HTMLElement>(".idea-lab__result")!.getBoundingClientRect();
@@ -988,10 +1106,6 @@ for (const viewport of viewports) {
     expect(result.panel.width).toBeGreaterThan(0);
     expect(result.panel.left).toBeGreaterThanOrEqual(-1);
     expect(result.panel.right).toBeLessThanOrEqual(viewport.width + 1);
-
-    // 뒤로가기 → 카드 상태 유지한 채 A1 복귀.
-    await page.getByRole("button", { name: /카드 다시 보기/ }).click();
-    await expect(page.locator("article.idea-lab__slot.is-filled")).toHaveCount(4);
 
     const longPraise = "작은 화면부터 시작하면서도 사용자가 무엇을 넣고 어떤 결과를 받는지 아주 구체적으로 보여준 점이 정말 좋았어요. ".repeat(4).slice(0, 280);
     await setPraiseFixture(page, [longPraise, "내일 공개될 실제 두 번째 칭찬"]);
@@ -1023,17 +1137,85 @@ for (const viewport of viewports) {
   });
 }
 
+test("Scenario 15b: 공유 뒤 같은 결과 화면에서 상세와 제작 자료가 한 열로 열린다", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await installShareMock(page, "kakao");
+  await page.goto("/");
+  await drawAll(page);
+  await goResult(page);
+
+  const beforeMainWidth = await page.locator("main").evaluate((main) =>
+    main.getBoundingClientRect().width);
+
+  await page.getByRole("button", {
+    name: "공유하고 결과 보기",
+    exact: true,
+  }).click();
+  await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
+  await expect(page.locator(".idea-lab")).toHaveAttribute("data-stage", "result");
+
+  const desktop = await page.evaluate(() => {
+    const main = document.querySelector<HTMLElement>("main")!.getBoundingClientRect();
+    const details = document.querySelector<HTMLElement>(".idea-lab__locked-details")!
+      .getBoundingClientRect();
+    const artifacts = [...document.querySelectorAll<HTMLElement>(".idea-lab__artifact")]
+      .map((element) => element.getBoundingClientRect());
+    const prompt = document.querySelector<HTMLElement>(".idea-lab__prompt")!.getBoundingClientRect();
+    const unlocked = document.querySelector<HTMLElement>(".idea-lab__unlocked-content")!;
+    return {
+      mainWidth: main.width,
+      detailsBottom: details.bottom,
+      firstArtifact: { top: artifacts[0].top, bottom: artifacts[0].bottom },
+      secondArtifact: { top: artifacts[1].top, bottom: artifacts[1].bottom },
+      promptTop: prompt.top,
+      stageCount: document.querySelectorAll(".idea-lab__stage--result").length,
+      unlockedColumns: getComputedStyle(unlocked).gridTemplateColumns,
+      scrollWidth: document.documentElement.scrollWidth,
+    };
+  });
+  expect(Math.abs(desktop.mainWidth - beforeMainWidth)).toBeLessThanOrEqual(1);
+  expect(desktop.detailsBottom).toBeLessThanOrEqual(desktop.firstArtifact.top);
+  expect(desktop.secondArtifact.top).toBeGreaterThanOrEqual(desktop.firstArtifact.bottom);
+  expect(desktop.promptTop).toBeGreaterThanOrEqual(desktop.secondArtifact.bottom);
+  expect(desktop.stageCount).toBe(1);
+  expect(desktop.unlockedColumns.split(" ").length).toBe(1);
+  expect(desktop.scrollWidth).toBeLessThanOrEqual(1281);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  const mobile = await page.evaluate(() => {
+    const main = document.querySelector<HTMLElement>("main")!.getBoundingClientRect();
+    const artifacts = [...document.querySelectorAll<HTMLElement>(".idea-lab__artifact")]
+      .map((element) => element.getBoundingClientRect());
+    return {
+      mainWidth: main.width,
+      firstBottom: artifacts[0].bottom,
+      secondTop: artifacts[1].top,
+      stageCount: document.querySelectorAll(".idea-lab__stage--result").length,
+      unlockedColumns: getComputedStyle(
+        document.querySelector<HTMLElement>(".idea-lab__unlocked-content")!,
+      ).gridTemplateColumns,
+      scrollWidth: document.documentElement.scrollWidth,
+    };
+  });
+  expect(mobile.mainWidth).toBeLessThanOrEqual(391);
+  expect(mobile.secondTop).toBeGreaterThanOrEqual(mobile.firstBottom);
+  expect(mobile.stageCount).toBe(1);
+  expect(mobile.unlockedColumns.split(" ").length).toBe(1);
+  expect(mobile.scrollWidth).toBeLessThanOrEqual(391);
+});
+
 test("Scenario 16: reduced motion에서 회전·비행·3D 전환을 제거해도 기능은 동작한다", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.clock.install({ time: FIXED_NOW });
   await page.goto("/");
 
   await expect(page.locator(".fd-wheel")).toHaveCSS("animation-name", "none");
-  const startedAt = Date.now();
-  await drawAll(page);
   const readablePauseMs = Number(
     await page.locator(".idea-lab__stage--draw").getAttribute("data-readable-pause-ms"),
   );
+  const startedAt = Date.now();
+  await drawAll(page);
   expect(Date.now() - startedAt).toBeGreaterThanOrEqual(readablePauseMs * 4);
   await expect(page.locator(".idea-lab__flight")).toHaveCount(0);
   await expect(page.getByRole("heading", { name: /네 장을 뽑으면 결과가 나와요/ })).toHaveCount(0);
@@ -1052,9 +1234,10 @@ const walkFiles = (root: string): string[] => fs.readdirSync(root, { withFileTyp
   return entry.isDirectory() ? walkFiles(absolute) : [absolute];
 });
 
-test("Scenario 17: 폐기된 모닥불 구현은 src에서 사라지고 레퍼런스만 archive/research에 남는다", async () => {
+test("Scenario 17: 폐기된 PixelCampfire 구현은 src에서 사라지고 레퍼런스만 archive/research에 남는다", async () => {
   const projectRoot = path.resolve(__dirname, "../..");
-  const forbidden = /PixelCampfire|campfire|모닥불|유령|불꽃/;
+  // 제품 카피의 일반적인 "모닥불" 비유가 아니라 폐기된 구현 식별자만 막는다.
+  const forbidden = /\bPixelCampfire\b|pixel-campfire/i;
   const sourceMatches = walkFiles(path.join(projectRoot, "src"))
     .filter((file) => /\.(?:ts|tsx|css|json)$/.test(file))
     .filter((file) => forbidden.test(fs.readFileSync(file, "utf8")));

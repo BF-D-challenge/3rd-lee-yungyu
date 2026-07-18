@@ -8,7 +8,8 @@ import { Button } from "@/components/atoms/button";
 import { FakeDoorSheet } from "@/components/molecules/fake-door-sheet";
 import { PageShell } from "@/components/layouts/page-shell";
 import { TopBar } from "@/components/layouts/top-bar";
-import { duelUrl, encodeDuelSlug, encodeSlug, shareOrCopy, type CardPayload } from "@/lib/share";
+import { shareToKakao } from "@/lib/kakao-share";
+import { duelUrl, encodeDuelSlug, encodeSlug, type CardPayload } from "@/lib/share";
 import { addDuel, loadPublished, type PublishedCard } from "@/lib/storage";
 import { authEnabled } from "@/lib/backend/auth";
 import {
@@ -170,9 +171,10 @@ export function PublishFlow() {
       feedback: writeAccessFrom(access),
     };
     const slug = encodeDuelSlug(a, b, meta);
-    const result = await shareOrCopy(duelUrl(a, b, meta), {
+    const result = await shareToKakao(duelUrl(a, b, meta), {
       title: "오늘 해볼까 A/B 대결",
       text: `${cardTitle(a)} vs ${cardTitle(b)} — 오늘 해볼까에서 뽑았어. 뭐가 나아?`,
+      buttonTitle: "둘 중 골라주기",
     });
     if (!result.ok) return;
     addDuel({
@@ -184,7 +186,7 @@ export function PublishFlow() {
       createdAt: Date.now(),
     });
     trackShare("duel_created", result.method, { via: "publish" });
-    setDuelToast(result.method === "native" ? "공유했어요" : "대결 링크를 복사했어요");
+    setDuelToast("카카오톡 공유 화면을 열었어요");
     clearTimeout(toastTimer.current);
     toastTimer.current = setTimeout(() => setDuelToast(null), 2000);
   };

@@ -1,17 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useRef, useState } from "react";
 import { PageShell } from "@/components/layouts/page-shell";
 import { DuelCard } from "./duel-card";
 import { DuelLoginSheet } from "./duel-login-sheet";
 import { DuelPraisePanel } from "./duel-praise-panel";
 import { useDuelController } from "./use-duel-controller";
 
-// React 18 emits inert only for a string value even though the installed JSX type declares boolean.
-const INERT_ATTRIBUTE = "" as unknown as boolean;
-
 export function DuelPanel({ slug }: { slug: string }) {
   const controller = useDuelController(slug);
+  const [loginDismissed, setLoginDismissed] = useState(false);
+  const loginButtonRef = useRef<HTMLButtonElement>(null);
 
   if (controller.state === "loading") return null;
 
@@ -59,7 +59,7 @@ export function DuelPanel({ slug }: { slug: string }) {
           aria-label="응원할 후보"
           aria-orientation="horizontal"
           aria-disabled={!canSelect}
-          inert={canSelect ? undefined : INERT_ATTRIBUTE}
+          inert={canSelect ? undefined : true}
           className="mt-6 grid grid-cols-2 gap-3 sm:gap-4"
           data-duel-motion
           style={{ animation: "fade-up 400ms ease 50ms both" }}
@@ -90,6 +90,17 @@ export function DuelPanel({ slug }: { slug: string }) {
           />
         </div>
 
+        {controller.authState === "anonymous" && loginDismissed && !controller.legacyExpired ? (
+          <button
+            ref={loginButtonRef}
+            type="button"
+            className="mt-5 min-h-12 w-full rounded-lg bg-action px-4 text-sm font-black text-white transition-colors hover:bg-action-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            onClick={() => setLoginDismissed(false)}
+          >
+            로그인하고 응원하기
+          </button>
+        ) : null}
+
         <DuelPraisePanel
           chosen={chosen}
           praise={controller.praise}
@@ -106,9 +117,16 @@ export function DuelPanel({ slug }: { slug: string }) {
       </PageShell>
 
       <DuelLoginSheet
-        open={controller.authState === "anonymous" && !controller.legacyExpired}
+        open={controller.authState === "anonymous" && !controller.legacyExpired && !loginDismissed}
         onAuthenticated={controller.receiveAuthenticated}
-        onReturnFocus={() => radioRefs.current[activeRadio]?.focus()}
+        onDismiss={() => setLoginDismissed(true)}
+        onReturnFocus={() => {
+          if (controller.authState === "authenticated") {
+            radioRefs.current[activeRadio]?.focus();
+            return;
+          }
+          loginButtonRef.current?.focus();
+        }}
       />
     </>
   );

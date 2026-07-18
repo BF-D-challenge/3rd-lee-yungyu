@@ -11,6 +11,8 @@ const payload: IdeaLabSharePayload = {
   title: "결정만 남기는 음성 메모",
   summary: "음성 메모 × 작은 팀 기획자 × 회의 직후 × 결정 세 줄",
   prompt: "fixture prompt",
+  developmentPrompt: "fixture development prompt",
+  imagePrompt: "fixture image prompt",
   platform: "web",
   selection: {
     source: {

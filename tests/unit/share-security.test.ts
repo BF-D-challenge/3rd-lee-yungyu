@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { encodeBinaryBase64Url } from "../../src/lib/base64-url";
 import type { FeedbackOwnerAccess } from "../../src/lib/feedback-access";
 import {
   decodeDuelSlug,
@@ -30,6 +31,8 @@ const card = (title: string, access: FeedbackOwnerAccess): CardPayload => ({
     writeToken: access.writeToken,
   },
 });
+const rawSlug = (value: unknown): string =>
+  encodeBinaryBase64Url(encodeURIComponent(JSON.stringify(value)));
 
 describe("share capability separation", () => {
   it("puts only the card write capability in a card link", () => {
@@ -65,6 +68,34 @@ describe("share capability separation", () => {
       writeToken: duel.writeToken,
     });
     expect(decoded?.feedback).not.toHaveProperty("readToken");
+    expect(decoded?.a.feedback).toBeUndefined();
+    expect(decoded?.b.feedback).toBeUndefined();
+  });
+
+  it("rejects oversized or structurally invalid public payloads", () => {
+    const access = owner("a");
+    const valid = card("카드", access);
+
+    expect(decodeSlug("a".repeat(16_385))).toBeNull();
+    expect(decodeSlug(rawSlug({ ...valid, track: "admin" }))).toBeNull();
+    expect(decodeSlug(rawSlug({ ...valid, target: { injected: true } }))).toBeNull();
+    expect(decodeDuelSlug(rawSlug({
+      v: 2,
+      a: valid,
+      b: valid,
+      roundId: "",
+      rootRoundId: "root",
+    }))).toBeNull();
+  });
+
+  it("removes capabilities injected into nested duel cards", () => {
+    const access = owner("a");
+    const decoded = decodeDuelSlug(rawSlug({
+      v: 1,
+      a: card("A", access),
+      b: card("B", access),
+    }));
+
     expect(decoded?.a.feedback).toBeUndefined();
     expect(decoded?.b.feedback).toBeUndefined();
   });
