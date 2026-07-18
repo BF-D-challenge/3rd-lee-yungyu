@@ -9,7 +9,10 @@ import {
   clipboardWrites,
   drawAll,
   installShareMock,
+  installInstagramShareMock,
+  instagramShareCalls,
   kakaoShareCalls,
+  kakaoUploadCalls,
   shareIdeaFromResult,
   shareCalls,
   trackedEvents,
@@ -442,17 +445,34 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     const kakaoCalls = await kakaoShareCalls(page);
     expect(kakaoCalls).toHaveLength(1);
     expect(kakaoCalls[0]).toMatchObject({
-      objectType: "text",
+      objectType: "feed",
       buttonTitle: "친구 반응 남기기",
       installTalk: true,
-      link: {
-        webUrl: calls[0].url,
-        mobileWebUrl: calls[0].url,
+      content: {
+        imageUrl: "https://k.kakaocdn.net/dn/oneul-haebolkka-share.png",
+        imageWidth: 1080,
+        imageHeight: 1920,
+        link: {
+          webUrl: calls[0].url,
+          mobileWebUrl: calls[0].url,
+        },
       },
       serverCallbackArgs: {
         request_id: expect.any(String),
       },
     });
+    expect(await kakaoUploadCalls(page)).toEqual([
+      expect.objectContaining({
+        files: [
+          expect.objectContaining({
+            name: "oneul-haebolkka-share.png",
+            type: "image/png",
+            width: 1080,
+            height: 1920,
+          }),
+        ],
+      }),
+    ]);
     expect(await clipboardWrites(page)).toHaveLength(0);
     await assertShareEvents(page);
   });
@@ -491,6 +511,11 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     }).click();
     const sheet = page.getByRole("dialog", { name: "공유", exact: true });
     await expect(sheet).toBeVisible();
+    await expect(sheet.locator(".share-sheet__channel")).toHaveText([
+      "카카오톡",
+      "인스타그램",
+      "링크 복사",
+    ]);
     for (const channel of ["인스타그램", "카카오톡", "링크 복사"]) {
       await expect(sheet.getByRole("button", { name: channel, exact: true })).toBeVisible();
     }
@@ -512,6 +537,41 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     expect(events.find((entry) => entry.event === "praise_request_share_completed")).toMatchObject({
       share_method: "copy",
       completion_signal: "link_copied",
+    });
+  });
+
+  test("Scenario 4d. 인스타그램 선택 시 9:16 PNG와 수신자 링크를 기기 공유창에 전달한다", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await installInstagramShareMock(page);
+    await openIdeaLab(page);
+    await drawAll(page);
+    await goResult(page);
+
+    await page.getByRole("button", {
+      name: "공유하고 제작 자료 3개 열기",
+      exact: true,
+    }).click();
+    const sheet = page.getByRole("dialog", { name: "공유", exact: true });
+    await expect(sheet).toBeVisible();
+    await sheet.getByRole("button", { name: "인스타그램", exact: true }).click();
+
+    await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
+    const calls = await instagramShareCalls(page);
+    expect(calls).toHaveLength(1);
+    expect(calls[0].text).toContain("https://bfd-seven.vercel.app/praise/");
+    expect(calls[0].files).toEqual([
+      expect.objectContaining({
+        name: "oneul-haebolkka-share.png",
+        type: "image/png",
+        width: 1080,
+        height: 1920,
+      }),
+    ]);
+    expect(calls[0].files[0].size).toBeGreaterThan(10_000);
+    const events = await trackedEvents(page);
+    expect(events.find((entry) => entry.event === "praise_request_share_completed")).toMatchObject({
+      share_method: "instagram",
+      completion_signal: "picker_opened",
     });
   });
 

@@ -43,16 +43,16 @@ function InstagramIcon() {
 
 const CHANNELS = [
   {
-    id: "instagram",
-    label: "인스타그램",
-    icon: <InstagramIcon />,
-    iconClass: "share-sheet__icon--instagram",
-  },
-  {
     id: "kakao",
     label: "카카오톡",
     icon: <KakaoIcon />,
     iconClass: "share-sheet__icon--kakao",
+  },
+  {
+    id: "instagram",
+    label: "인스타그램",
+    icon: <InstagramIcon />,
+    iconClass: "share-sheet__icon--instagram",
   },
   {
     id: "copy",

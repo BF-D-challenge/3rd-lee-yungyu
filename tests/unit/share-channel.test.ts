@@ -10,6 +10,82 @@ afterEach(() => {
 });
 
 describe("share channel transports", () => {
+  it("shares a generated 9:16 PNG when the device accepts image files", async () => {
+    const nativeShare = vi.fn().mockResolvedValue(undefined);
+    const canShare = vi.fn().mockReturnValue(true);
+    const fillText = vi.fn();
+    const canvas = {
+      width: 0,
+      height: 0,
+      getContext: vi.fn().mockReturnValue({
+        beginPath: vi.fn(),
+        moveTo: vi.fn(),
+        lineTo: vi.fn(),
+        quadraticCurveTo: vi.fn(),
+        closePath: vi.fn(),
+        fill: vi.fn(),
+        stroke: vi.fn(),
+        fillRect: vi.fn(),
+        fillText,
+        measureText: (value: string) => ({ width: Array.from(value).length * 28 }),
+        createLinearGradient: () => ({ addColorStop: vi.fn() }),
+        createRadialGradient: () => ({ addColorStop: vi.fn() }),
+        set fillStyle(_: string | CanvasGradient) {},
+        set strokeStyle(_: string) {},
+        set lineWidth(_: number) {},
+        set font(_: string) {},
+        set textAlign(_: CanvasTextAlign) {},
+        set textBaseline(_: CanvasTextBaseline) {},
+      }),
+      toBlob: (callback: BlobCallback) => callback(new Blob(["png"], { type: "image/png" })),
+    };
+    class TestFile extends Blob {
+      name: string;
+      lastModified: number;
+
+      constructor(parts: BlobPart[], name: string, options: FilePropertyBag = {}) {
+        super(parts, options);
+        this.name = name;
+        this.lastModified = options.lastModified ?? 0;
+      }
+    }
+    vi.stubGlobal("File", TestFile);
+    vi.stubGlobal("document", {
+      createElement: vi.fn().mockReturnValue(canvas),
+    });
+    vi.stubGlobal("window", {
+      location: { origin: "https://oneul.example" },
+    });
+    vi.stubGlobal("navigator", {
+      share: nativeShare,
+      canShare,
+      clipboard: { writeText: vi.fn() },
+    });
+
+    await expect(shareToInstagram("/praise/request-image", {
+      title: "결정만 남기는 음성 메모",
+      text: "작은 팀의 기획자가 회의 직후 쓰는 웹 아이디어",
+    })).resolves.toEqual({ ok: true, method: "instagram" });
+
+    expect(canvas.width).toBe(1080);
+    expect(canvas.height).toBe(1920);
+    expect(canShare).toHaveBeenCalledWith({
+      files: [expect.objectContaining({
+        name: "oneul-haebolkka-share.png",
+        type: "image/png",
+      })],
+    });
+    expect(nativeShare).toHaveBeenCalledWith({
+      title: "결정만 남기는 음성 메모",
+      text: "작은 팀의 기획자가 회의 직후 쓰는 웹 아이디어\n\nhttps://oneul.example/praise/request-image",
+      files: [expect.objectContaining({
+        name: "oneul-haebolkka-share.png",
+        type: "image/png",
+      })],
+    });
+    expect(fillText).toHaveBeenCalledWith("오늘 해볼까", 219, 125);
+  });
+
   it("opens the device share menu for Instagram with the public receiver URL", async () => {
     const nativeShare = vi.fn().mockResolvedValue(undefined);
     vi.stubGlobal("window", {

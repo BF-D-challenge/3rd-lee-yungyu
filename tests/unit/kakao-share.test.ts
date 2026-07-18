@@ -8,14 +8,69 @@ afterEach(() => {
 describe("shareToKakao", () => {
   it("opens only the KakaoTalk default-share picker with an absolute receiver URL", async () => {
     const sendDefault = vi.fn();
+    const uploadImage = vi.fn().mockResolvedValue([{
+      url: "https://k.kakaocdn.net/dn/oneul-haebolkka-share.png",
+      length: 12_345,
+      content_type: "image/png",
+      width: 1080,
+      height: 1920,
+    }]);
     const nativeShare = vi.fn();
     const clipboardWrite = vi.fn();
+    const canvas = {
+      width: 0,
+      height: 0,
+      getContext: vi.fn().mockReturnValue({
+        beginPath: vi.fn(),
+        moveTo: vi.fn(),
+        lineTo: vi.fn(),
+        quadraticCurveTo: vi.fn(),
+        closePath: vi.fn(),
+        fill: vi.fn(),
+        stroke: vi.fn(),
+        fillRect: vi.fn(),
+        fillText: vi.fn(),
+        measureText: (value: string) => ({ width: Array.from(value).length * 28 }),
+        createLinearGradient: () => ({ addColorStop: vi.fn() }),
+        createRadialGradient: () => ({ addColorStop: vi.fn() }),
+        set fillStyle(_: string | CanvasGradient) {},
+        set strokeStyle(_: string) {},
+        set lineWidth(_: number) {},
+        set font(_: string) {},
+        set textAlign(_: CanvasTextAlign) {},
+        set textBaseline(_: CanvasTextBaseline) {},
+      }),
+      toBlob: (callback: BlobCallback) => callback(new Blob(["png"], { type: "image/png" })),
+    };
+    class TestFile extends Blob {
+      name: string;
+      lastModified: number;
+
+      constructor(parts: BlobPart[], name: string, options: FilePropertyBag = {}) {
+        super(parts, options);
+        this.name = name;
+        this.lastModified = options.lastModified ?? 0;
+      }
+    }
+    class TestDataTransfer {
+      files = [] as unknown as FileList;
+      items = {
+        add: (file: File) => {
+          (this.files as unknown as File[]).push(file);
+        },
+      };
+    }
+    vi.stubGlobal("File", TestFile);
+    vi.stubGlobal("DataTransfer", TestDataTransfer);
+    vi.stubGlobal("document", {
+      createElement: vi.fn().mockReturnValue(canvas),
+    });
     vi.stubGlobal("window", {
       location: { origin: "https://oneul.example" },
       Kakao: {
         init: vi.fn(),
         isInitialized: () => true,
-        Share: { sendDefault },
+        Share: { uploadImage, sendDefault },
       },
     });
     vi.stubGlobal("navigator", {
@@ -31,12 +86,26 @@ describe("shareToKakao", () => {
     });
 
     expect(result).toEqual({ ok: true, method: "kakao" });
+    expect(uploadImage).toHaveBeenCalledWith({
+      file: expect.objectContaining({
+        0: expect.objectContaining({
+          name: "oneul-haebolkka-share.png",
+          type: "image/png",
+        }),
+      }),
+    });
     expect(sendDefault).toHaveBeenCalledWith({
-      objectType: "text",
-      text: "결정만 남기는 음성 메모\n\n짧은 응원이나 의견을 남겨주세요.",
-      link: {
-        mobileWebUrl: "https://oneul.example/praise/request-1",
-        webUrl: "https://oneul.example/praise/request-1",
+      objectType: "feed",
+      content: {
+        title: "결정만 남기는 음성 메모",
+        description: "짧은 응원이나 의견을 남겨주세요.",
+        imageUrl: "https://k.kakaocdn.net/dn/oneul-haebolkka-share.png",
+        imageWidth: 1080,
+        imageHeight: 1920,
+        link: {
+          mobileWebUrl: "https://oneul.example/praise/request-1",
+          webUrl: "https://oneul.example/praise/request-1",
+        },
       },
       buttonTitle: "친구 반응 남기기",
       installTalk: true,

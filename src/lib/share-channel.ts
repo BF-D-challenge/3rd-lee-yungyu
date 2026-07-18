@@ -5,6 +5,7 @@ import {
   type KakaoShareOptions,
 } from "./kakao-share";
 import { toPublicShareUrl } from "./public-share-url";
+import { createShareCardFile } from "./share-card-image";
 
 export type ShareChannel = "instagram" | "kakao" | "copy";
 export type ShareFailureReason =
@@ -43,6 +44,31 @@ export async function shareToInstagram(
 
   const absoluteUrl = toPublicShareUrl(url);
   if (typeof navigator.share === "function") {
+    let storyFile: File | null = null;
+    if (typeof navigator.canShare === "function") {
+      try {
+        storyFile = await createShareCardFile(absoluteUrl, options);
+      } catch {
+        storyFile = null;
+      }
+    }
+
+    if (storyFile && navigator.canShare?.({ files: [storyFile] })) {
+      try {
+        await navigator.share({
+          ...(options.title?.trim() ? { title: options.title.trim() } : {}),
+          text: [options.text?.trim(), absoluteUrl].filter(Boolean).join("\n\n"),
+          files: [storyFile],
+        });
+        return { ok: true, method: "instagram" };
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return { ok: false, method: "instagram", reason: "cancelled" };
+        }
+        // 파일 공유 대상이 없으면 아래 링크 공유로 한 번 더 시도한다.
+      }
+    }
+
     try {
       // 웹에서는 특정 앱을 강제로 지정할 수 없어 기기의 공유 메뉴에서 인스타그램을 고른다.
       await navigator.share(shareData(absoluteUrl, options));

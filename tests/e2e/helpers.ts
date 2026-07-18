@@ -4,16 +4,47 @@ export const FIXED_NOW = new Date("2026-07-12T12:00:00+09:00");
 
 export type ShareMockMode = "kakao" | "fail" | "fail-once";
 
-export interface KakaoShareCall {
+interface KakaoShareLink {
+  mobileWebUrl: string;
+  webUrl: string;
+}
+
+export interface KakaoTextShareCall {
   objectType: "text";
   text: string;
-  link: {
-    mobileWebUrl: string;
-    webUrl: string;
+  link: KakaoShareLink;
+  buttonTitle: string;
+  installTalk: boolean;
+  serverCallbackArgs?: Record<string, string>;
+}
+
+export interface KakaoFeedShareCall {
+  objectType: "feed";
+  content: {
+    title: string;
+    description: string;
+    imageUrl: string;
+    imageWidth: number;
+    imageHeight: number;
+    link: KakaoShareLink;
   };
   buttonTitle: string;
   installTalk: boolean;
   serverCallbackArgs?: Record<string, string>;
+}
+
+export type KakaoShareCall = KakaoTextShareCall | KakaoFeedShareCall;
+
+export interface InstagramShareCall {
+  title?: string;
+  text?: string;
+  files: Array<{
+    name: string;
+    type: string;
+    size: number;
+    width: number;
+    height: number;
+  }>;
 }
 
 export interface TestPraiseRequestCard {
@@ -105,22 +136,51 @@ export async function installShareMock(page: Page, mode: ShareMockMode) {
     const state = window as typeof window & {
       __shareCalls?: ShareData[];
       __kakaoShareCalls?: KakaoShareCall[];
+      __kakaoUploadCalls?: InstagramShareCall[];
       __clipboardWrites?: string[];
       __shareAttempt?: number;
     };
     state.__shareCalls = [];
     state.__kakaoShareCalls = [];
+    state.__kakaoUploadCalls = [];
     state.__clipboardWrites = [];
     state.__shareAttempt = 0;
     window.Kakao = {
       init: () => undefined,
       isInitialized: () => true,
       Share: {
+        uploadImage: async ({ file }: { file: FileList }) => {
+          const imageFile = file[0];
+          if (!imageFile) throw new Error("공유 이미지가 없습니다.");
+          const image = await createImageBitmap(imageFile);
+          const metadata = {
+            name: imageFile.name,
+            type: imageFile.type,
+            size: imageFile.size,
+            width: image.width,
+            height: image.height,
+          };
+          image.close();
+          state.__kakaoUploadCalls!.push({
+            title: imageFile.name,
+            files: [metadata],
+          });
+          return [{
+            url: "https://k.kakaocdn.net/dn/oneul-haebolkka-share.png",
+            length: imageFile.size,
+            content_type: imageFile.type,
+            width: metadata.width,
+            height: metadata.height,
+          }];
+        },
         sendDefault: (payload: KakaoShareCall) => {
+          const content = payload.objectType === "feed" ? payload.content : null;
+          const link = content?.link ?? (payload.objectType === "text" ? payload.link : null);
+          if (!link) throw new Error("카카오톡 공유 링크가 없습니다.");
           state.__shareCalls!.push({
-            title: payload.text,
-            text: payload.text,
-            url: payload.link.webUrl,
+            title: content?.title ?? (payload.objectType === "text" ? payload.text : ""),
+            text: content?.description ?? (payload.objectType === "text" ? payload.text : ""),
+            url: link.webUrl,
           });
           state.__kakaoShareCalls!.push(payload);
           state.__shareAttempt! += 1;
@@ -148,6 +208,45 @@ export async function installShareMock(page: Page, mode: ShareMockMode) {
   }, mode);
 }
 
+export async function installInstagramShareMock(page: Page) {
+  await page.addInitScript(() => {
+    const state = window as typeof window & {
+      __instagramShareCalls?: InstagramShareCall[];
+    };
+    state.__instagramShareCalls = [];
+    Object.defineProperty(navigator, "canShare", {
+      configurable: true,
+      value: (data: ShareData) => (
+        Array.isArray(data.files)
+        && data.files.length === 1
+        && data.files[0]?.type === "image/png"
+      ),
+    });
+    Object.defineProperty(navigator, "share", {
+      configurable: true,
+      value: async (data: ShareData) => {
+        const files = await Promise.all((data.files ?? []).map(async (file) => {
+          const image = await createImageBitmap(file);
+          const metadata = {
+            name: file.name,
+            type: file.type,
+            size: file.size,
+            width: image.width,
+            height: image.height,
+          };
+          image.close();
+          return metadata;
+        }));
+        state.__instagramShareCalls!.push({
+          ...(data.title ? { title: data.title } : {}),
+          ...(data.text ? { text: data.text } : {}),
+          files,
+        });
+      },
+    });
+  });
+}
+
 export async function shareCalls(page: Page): Promise<ShareData[]> {
   return page.evaluate(() =>
     ((window as typeof window & { __shareCalls?: ShareData[] }).__shareCalls ?? []));
@@ -156,6 +255,20 @@ export async function shareCalls(page: Page): Promise<ShareData[]> {
 export async function kakaoShareCalls(page: Page): Promise<KakaoShareCall[]> {
   return page.evaluate(() =>
     ((window as typeof window & { __kakaoShareCalls?: KakaoShareCall[] }).__kakaoShareCalls ?? []));
+}
+
+export async function kakaoUploadCalls(page: Page): Promise<InstagramShareCall[]> {
+  return page.evaluate(() =>
+    ((window as typeof window & {
+      __kakaoUploadCalls?: InstagramShareCall[];
+    }).__kakaoUploadCalls ?? []));
+}
+
+export async function instagramShareCalls(page: Page): Promise<InstagramShareCall[]> {
+  return page.evaluate(() =>
+    ((window as typeof window & {
+      __instagramShareCalls?: InstagramShareCall[];
+    }).__instagramShareCalls ?? []));
 }
 
 export async function clipboardWrites(page: Page): Promise<string[]> {
