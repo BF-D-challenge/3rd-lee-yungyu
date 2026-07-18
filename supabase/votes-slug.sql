@@ -80,51 +80,23 @@ create index if not exists idx_duel_votes_user_id
   where user_id is not null;
 
 -- ----------------------------------------------------------------------------
--- RLS — 수신자 무로그인. 익명 insert 허용 + 공개 select.
---   slug는 추측 불가 capability 토큰(base64url 인코딩된 카드)이라, 이를 아는 사람만
---   해당 카드의 집계를 읽는다(기존 schema.sql ideas_select_public 과 동일 철학).
---   투표 내용에 PII 없음(voter_fp는 익명 UUID). 실명 리빌은 향후 opt-in으로 별도.
+-- RLS — 브라우저의 직접 접근은 모두 닫는다.
+--   쓰기 토큰은 수신자 링크에, 읽기 토큰은 만든 사람의 저장소에만 둔다.
+--   실제 검증·쓰기·읽기는 feedback-api Edge Function(service_role)이 담당한다.
 -- ----------------------------------------------------------------------------
 alter table public.card_votes enable row level security;
 alter table public.duel_votes enable row level security;
 
 drop policy if exists card_votes_insert_anon on public.card_votes;
-create policy card_votes_insert_anon on public.card_votes
-  for insert to anon, authenticated with check (true);
-
 drop policy if exists card_votes_select_public on public.card_votes;
-create policy card_votes_select_public on public.card_votes
-  for select to anon, authenticated using (true);
-
--- 응원 직후 한마디를 뒤늦게 붙일 때 자기 행 comment 갱신(프로토타입 신뢰모델 = insert와 동일).
 drop policy if exists card_votes_update_anon on public.card_votes;
-create policy card_votes_update_anon on public.card_votes
-  for update to anon, authenticated using (true) with check (true);
-
 drop policy if exists duel_votes_insert_anon on public.duel_votes;
-create policy duel_votes_insert_anon on public.duel_votes
-  for insert to anon, authenticated with check (true);
-
 drop policy if exists duel_votes_select_public on public.duel_votes;
-create policy duel_votes_select_public on public.duel_votes
-  for select to anon, authenticated using (true);
-
 drop policy if exists duel_votes_update_anon on public.duel_votes;
-create policy duel_votes_update_anon on public.duel_votes
-  for update to anon, authenticated using (true) with check (true);
+revoke all on public.card_votes from anon, authenticated;
+revoke all on public.duel_votes from anon, authenticated;
+grant select, insert, update on public.card_votes to service_role;
+grant select, insert, update on public.duel_votes to service_role;
 
--- 참고(어뷰징 방어): voter_fp는 클라이언트 생성이라 위조 가능. 프로토타입은 (slug,voter_fp)
---   unique + 클라이언트 dedup으로 충분. rate-limit/지문 무결성은 실측 후 Edge Function으로.
-
--- ----------------------------------------------------------------------------
--- 3. 컬럼 권한 강화 — update은 comment만 허용(응원 후 한마디를 뒤늦게 붙이는 용도).
---   위 update 정책의 using(true)/with check(true)는 "누가" 갱신 가능한지만 걸렀고
---   "어떤 컬럼"까지 바꿀 수 있는지는 막지 않았다 — 익명 누구나 임의 행의 kind/side까지
---   위조할 수 있던 구멍. 컬럼 단위 GRANT로 comment 외 컬럼은 update 자체를 차단한다.
---   (REVOKE/GRANT는 재실행해도 안전 — 존재 여부와 무관하게 멱등)
--- ----------------------------------------------------------------------------
-revoke update on public.card_votes from anon, authenticated;
-grant update (comment) on public.card_votes to anon, authenticated;
-
-revoke update on public.duel_votes from anon, authenticated;
-grant update (comment) on public.duel_votes to anon, authenticated;
+-- feedback_requests, 비공개 rate-limit 테이블, 토큰 해시 저장과 RPC는
+-- supabase/migrations/20260718010000_secure_feedback_gateway.sql이 단일 진실 소스다.

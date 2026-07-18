@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { josa } from "@/lib/josa";
 import { decodeSlug, prefillSpinUrl, type CardPayload } from "@/lib/share";
 import { castVote, attachVoteComment, hasVoted, type VoteType } from "@/lib/backend/votes";
+import { feedbackApiConfigured } from "@/lib/backend/feedback-api";
 import { loadVotes } from "@/lib/storage";
 import { track } from "@/lib/track";
 import { PublishCard } from "./publish-card";
@@ -41,6 +42,10 @@ export function VotePanel({ slug }: { slug: string }) {
   const [commentSent, setCommentSent] = useState<string | null>(null);
   const [customOpen, setCustomOpen] = useState(false);
   const [customText, setCustomText] = useState("");
+  const [sendError, setSendError] = useState(false);
+  const [commentSaving, setCommentSaving] = useState(false);
+  const [commentError, setCommentError] = useState(false);
+  const legacyExpired = Boolean(payload && feedbackApiConfigured() && !payload.feedback);
 
   useEffect(() => {
     const decoded = decodeSlug(slug);
@@ -66,7 +71,7 @@ export function VotePanel({ slug }: { slug: string }) {
         <div>
           <p className="font-serif text-2xl text-ink">이 카드는 사라졌어요</p>
           <p className="mt-3 text-sm text-mist">링크가 잘못됐거나 만료됐을 수 있어요.</p>
-          <Link href="/" className="mt-6 inline-block text-sm text-gold underline-offset-4 hover:underline">
+          <Link href="/" className="mt-6 inline-block text-sm font-semibold text-primary underline-offset-4 hover:underline">
             오늘 해볼까 구경하기 →
           </Link>
         </div>
@@ -74,27 +79,43 @@ export function VotePanel({ slug }: { slug: string }) {
     );
   }
 
-  const tapChip = (type: VoteType) => {
+  const tapChip = async (type: VoteType) => {
     if (voted || hasVoted(slug)) return; // 더블탭·다른 탭 중복 응원 방지
+    setSendError(false);
     setSelected(type);
-    void castVote(slug, type); // 낙관적 UI 유지 — Supabase upsert(+local 폴백)는 fire-and-forget
+    const result = await castVote(slug, type, undefined, payload.feedback);
+    if (result === "failed") {
+      setSelected(null);
+      setSendError(true);
+      return;
+    }
     track("card_vote", { vote_type: type });
     setTimeout(() => setVoted(true), 520); // 필 애니메이션이 끝난 뒤 응원 후 화면으로 스왑
   };
 
-  const pickPreset = (text: string) => {
-    void attachVoteComment(slug, text);
-    track("vote_comment", { via: "preset" });
+  const saveComment = async (text: string, via: "preset" | "custom") => {
+    if (commentSaving) return;
+    setCommentSaving(true);
+    setCommentError(false);
+    const result = await attachVoteComment(slug, text, payload.feedback);
+    setCommentSaving(false);
+    if (result === "failed") {
+      setCommentError(true);
+      return;
+    }
+    track("vote_comment", { via });
     setCommentSent(text);
+  };
+
+  const pickPreset = (text: string) => {
+    void saveComment(text, "preset");
   };
 
   const submitCustom = (e: React.FormEvent) => {
     e.preventDefault();
     const t = customText.trim();
     if (!t) return;
-    void attachVoteComment(slug, t);
-    track("vote_comment", { via: "custom" });
-    setCommentSent(t);
+    void saveComment(t, "custom");
   };
 
   const spinToo = () => {
@@ -146,8 +167,8 @@ export function VotePanel({ slug }: { slug: string }) {
               return (
                 <button
                   key={chip.type}
-                  onClick={() => tapChip(chip.type)}
-                  disabled={selected !== null}
+                  onClick={() => { void tapChip(chip.type); }}
+                  disabled={selected !== null || legacyExpired}
                   aria-label={chip.label}
                   className={cn(
                     "glass relative flex min-h-[108px] flex-col items-center justify-center overflow-hidden rounded-card",
@@ -187,6 +208,16 @@ export function VotePanel({ slug }: { slug: string }) {
               );
             })}
           </div>
+          {sendError ? (
+            <p role="alert" className="mt-3 text-center text-sm text-red-300">
+              응원을 전달하지 못했어요. 잠시 후 다시 시도해 주세요.
+            </p>
+          ) : null}
+          {legacyExpired ? (
+            <p role="alert" className="mt-3 text-center text-sm text-amber-200">
+              이 링크는 예전 방식이라 응원을 안전하게 보낼 수 없어요. 만든 친구에게 새 링크를 부탁해 주세요.
+            </p>
+          ) : null}
         </>
       ) : (
         <section className="mt-5 text-center" data-anim style={{ animation: "fade-up .45s ease both" }}>
@@ -210,6 +241,7 @@ export function VotePanel({ slug }: { slug: string }) {
                   <button
                     key={p}
                     onClick={() => pickPreset(p)}
+                    disabled={commentSaving}
                     className="glass rounded-pill px-3.5 py-2 text-[13px] text-ink transition-transform active:scale-[.97]"
                   >
                     {p}
@@ -235,10 +267,15 @@ export function VotePanel({ slug }: { slug: string }) {
                     className="glass h-11 flex-1 rounded-input bg-transparent px-4 text-center text-sm text-ink placeholder:text-caption focus:border-gold focus:outline-none"
                   />
                   <Button type="submit" variant="glass">
-                    남기기
+                    {commentSaving ? "저장 중…" : "남기기"}
                   </Button>
                 </form>
               )}
+              {commentError ? (
+                <p role="alert" className="mt-2 text-[13px] text-red-300">
+                  한마디를 저장하지 못했어요. 다시 시도해 주세요.
+                </p>
+              ) : null}
             </div>
           ) : (
             <p className="mt-3 text-[13px] text-mist">“{commentSent}” 한마디 고마워요</p>

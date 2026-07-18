@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Work_Sans, Playfair_Display, Pinyon_Script } from "next/font/google";
+import { Pinyon_Script } from "next/font/google";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import "./globals.css";
 
-const workSans = Work_Sans({ subsets: ["latin"], variable: "--font-sans" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif" });
 const pinyon = Pinyon_Script({ subsets: ["latin"], weight: "400", variable: "--font-swash" });
 
 export const metadata: Metadata = {
@@ -17,8 +16,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ko" className={`${workSans.variable} ${playfair.variable} ${pinyon.variable}`}>
-      <body className="ambient min-h-dvh">{children}</body>
+    <html lang="ko" className={pinyon.variable}>
+      <body className="ambient min-h-dvh">
+        {children}
+        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+      </body>
     </html>
   );
 }

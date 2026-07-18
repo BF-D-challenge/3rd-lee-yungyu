@@ -16,6 +16,10 @@ export interface TestPraiseRequestCard {
   twist: string;
   flow?: string;
   createdAt: number;
+  originRequestId?: string;
+  revisionId?: string;
+  version?: number;
+  parentRequestId?: string;
 }
 
 export interface TestVote {
@@ -130,10 +134,17 @@ export function axisCard(page: Page, label: string): Locator {
   return page.locator(`article.idea-lab__slot[data-axis-label="${label}"]`);
 }
 
+const DRAW_ALL_SETTLE_TIMEOUT = 20_000;
+
 export async function drawAll(page: Page) {
-  await page.getByRole("button", { name: "4장 자동 채우기", exact: true }).click();
-  await expect(page.getByRole("button", { name: /4장 다시 뽑기/ })).toBeEnabled();
-  await expect(page.locator(".idea-lab__status")).toContainText("네 장이 완성됐어요.");
+  const autoFill = page.getByRole("button", { name: "나머지 자동으로 뽑기", exact: true });
+  if (!await autoFill.isVisible()) {
+    await page.getByRole("button", { name: "검증된 원본 카드 뽑기", exact: true }).click();
+    await expect(autoFill).toBeVisible();
+  }
+  await autoFill.click();
+  await expect(page.getByRole("button", { name: /4장 다시 뽑기/ })).toBeEnabled({ timeout: DRAW_ALL_SETTLE_TIMEOUT });
+  await expect(page.locator(".idea-lab__status")).toContainText("네 장이 완성됐어요.", { timeout: DRAW_ALL_SETTLE_TIMEOUT });
 }
 
 export async function seedPraiseStorage(
@@ -149,11 +160,13 @@ export async function seedPraiseStorage(
   } = {},
 ) {
   await page.addInitScript(({ saved, slug, seededVotes, hasVoted }) => {
+    if (localStorage.getItem("__e2e_seeded_praise_storage") === "1") return;
     localStorage.clear();
     sessionStorage.clear();
     localStorage.setItem("oneul:latest-praise-request:v1", JSON.stringify(saved));
     localStorage.setItem(`oneul:votes:${slug}`, JSON.stringify(seededVotes));
     if (hasVoted) localStorage.setItem(`oneul:voted:${slug}`, "true");
+    localStorage.setItem("__e2e_seeded_praise_storage", "1");
   }, {
     saved: request.saved,
     slug: request.slug,

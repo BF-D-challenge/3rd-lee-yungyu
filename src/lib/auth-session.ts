@@ -4,6 +4,9 @@ const DEMO_AUTH_KEY = "oneul:demo-auth";
 const DEMO_ACTOR_KEY = "oneul:demo-actor";
 const AUTH_PENDING_KEY = "oneul:auth-pending";
 const AUTH_TRACK_KEY = "oneul:auth-active";
+const AUTH_RETURN_TO_KEY = "oneul:auth-return-to";
+const AUTH_CALLBACK_PATH = "/auth/callback";
+const AUTH_COMPLETE_PATH = "/auth/complete";
 
 export interface AuthSession {
   actorId: string;
@@ -13,6 +16,53 @@ export interface AuthSession {
 }
 
 export type AuthContext = "creator" | "receiver";
+
+const safeReturnPath = (value: string): string => {
+  if (typeof window === "undefined") return "/";
+  try {
+    const target = new URL(value, window.location.origin);
+    if (target.origin !== window.location.origin) return "/";
+    const path = `${target.pathname}${target.search}${target.hash}`;
+    if (target.pathname === AUTH_CALLBACK_PATH || target.pathname === AUTH_COMPLETE_PATH) return "/";
+    return path || "/";
+  } catch {
+    return "/";
+  }
+};
+
+/**
+ * OAuth 제공자에는 짧고 고정된 callback URL만 전달하고, 실제 복귀 경로는
+ * 같은 탭의 sessionStorage에 보관한다. 긴 공유 slug가 OAuth URL과 허용 목록에
+ * 그대로 노출되는 일을 막고 외부 도메인으로의 open redirect도 차단한다.
+ */
+export function prepareAuthRedirect(returnTo: string): string {
+  try {
+    sessionStorage.setItem(AUTH_RETURN_TO_KEY, safeReturnPath(returnTo));
+  } catch {
+    // 저장소가 막혀도 로그인은 계속하고 완료 뒤 홈으로 복귀한다.
+  }
+  return typeof window === "undefined"
+    ? AUTH_CALLBACK_PATH
+    : new URL(AUTH_CALLBACK_PATH, window.location.origin).toString();
+}
+
+export function peekAuthReturnTo(): string {
+  try {
+    return safeReturnPath(sessionStorage.getItem(AUTH_RETURN_TO_KEY) ?? "/");
+  } catch {
+    return "/";
+  }
+}
+
+export function consumeAuthReturnTo(): string {
+  const returnTo = peekAuthReturnTo();
+  try {
+    sessionStorage.removeItem(AUTH_RETURN_TO_KEY);
+  } catch {
+    // 복귀 자체는 저장소 정리 실패와 무관하게 진행한다.
+  }
+  return returnTo;
+}
 
 const markAuthenticatedForTracking = () => {
   try {
@@ -104,7 +154,7 @@ export type BeginAuthResult =
 
 export async function beginAuth(redirectTo: string): Promise<BeginAuthResult> {
   if (authEnabled) {
-    const { error } = await signInWithGoogle(redirectTo);
+    const { error } = await signInWithGoogle(prepareAuthRedirect(redirectTo));
     return error ? { status: "error", error } : { status: "redirecting" };
   }
 

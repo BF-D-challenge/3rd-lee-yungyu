@@ -51,7 +51,7 @@ async function startReplacement(page: Page, label: (typeof AXIS_LABELS)[number])
   await expect(page.getByRole("dialog")).toHaveCount(0);
 }
 
-async function drawReplacementCard(page: Page, label: (typeof AXIS_LABELS)[number]) {
+async function drawDeckCard(page: Page, label: (typeof AXIS_LABELS)[number]) {
   const axis = AXIS_IDS[label];
   const point = await page.evaluate((targetAxis) => {
     const host = document.querySelector<HTMLElement>(".fd-host")!.getBoundingClientRect();
@@ -95,7 +95,32 @@ async function assertShareEvents(page: Page, method: "native" | "clipboard") {
 }
 
 test.describe("아이디어 제작과 칭찬 요청 공유", () => {
-  test("Scenario 1. 도움말을 눌러 첫 카드를 뽑고, 네 장의 결과를 중요한 순서로 읽는다", async ({ page }) => {
+  test("첫 화면 진입부터 결과 확인까지 제작 퍼널을 순서대로 기록한다", async ({ page }) => {
+    await openIdeaLab(page);
+
+    for (let index = 0; index < AXIS_LABELS.length; index += 1) {
+      await page.getByRole("button", {
+        name: `${AXIS_LABELS[index]} 카드 뽑기`,
+        exact: true,
+      }).click();
+    }
+    await goResult(page);
+
+    const funnelNames = (await trackedEvents(page))
+      .map((entry) => entry.event)
+      .filter((event) => typeof event === "string" && event.startsWith("idea_"));
+    expect(funnelNames).toEqual([
+      "idea_lab_viewed",
+      "idea_first_card_drawn",
+      "idea_four_cards_completed",
+      "idea_result_viewed",
+    ]);
+
+    const firstCard = (await trackedEvents(page)).find((entry) => entry.event === "idea_first_card_drawn");
+    expect(firstCard).toMatchObject({ attempt: 1, draw_method: "manual", entry_path: "/" });
+  });
+
+  test("Scenario 1. 하단 덱에서 첫 카드를 뽑고, 네 장의 결과를 중요한 순서로 읽는다", async ({ page }) => {
     const lab = await openIdeaLab(page);
 
     // A1 뽑기 스테이지는 오직 슬롯·덱·뽑기 CTA만 — 결과 요소는 노출되지 않는다.
@@ -110,11 +135,11 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(axisCard(page, "돈 낼 사람")).toHaveAttribute("data-carousel-position", "next");
     await expect(page.getByText("네 장의 카드를 조합해 오늘 시험할 아이디어를 만들어보세요.", { exact: true })).toHaveCount(0);
 
-    // 큰 고스트 도움말도 빈칸 탭과 같은 카드 비행 경로를 사용한다.
-    await page.getByRole("button", { name: "카드를 끌어 빈칸에 놓거나 눌러 뽑으세요.", exact: true }).click();
+    // 첫 화면은 하단 덱 하나를 주요 진입점으로 사용한다.
+    await drawDeckCard(page, "검증된 원본");
     await expect(lab.locator("article.idea-lab__slot.is-filled")).toHaveCount(1);
     await expect(axisCard(page, "돈 낼 사람")).toHaveAttribute("data-carousel-position", "active");
-    await expect(page.getByText("‘돈 낼 사람’ 카드를 끌어 놓거나 눌러 뽑으세요.", { exact: true })).toBeVisible();
+    await expect(page.locator(".idea-lab__deck-prompt")).toHaveCount(0);
 
     await drawAll(page);
     await expect(lab.locator("article.idea-lab__slot.is-filled")).toHaveCount(4);
@@ -168,7 +193,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await page.getByRole("button", { name: /카드 다시 보기/ }).click();
     await startReplacement(page, "돈 낼 사람");
     await expect(page.getByRole("progressbar", { name: "아이디어 카드 완성도" })).toHaveAttribute("aria-valuenow", "4");
-    await drawReplacementCard(page, "돈 낼 사람");
+    await drawDeckCard(page, "돈 낼 사람");
     await expect(page.locator(".idea-lab__status")).toHaveText("돈 낼 사람 카드만 새로 뽑았어요.");
 
     const afterCards = await cardValues(page);
@@ -222,7 +247,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     const beforeScenarioId = await page.locator(".idea-lab__stage--draw").getAttribute("data-scenario-id");
 
     await startReplacement(page, "검증된 원본");
-    await drawReplacementCard(page, "검증된 원본");
+    await drawDeckCard(page, "검증된 원본");
     await expect(page.locator(".idea-lab__status"))
       .toHaveText("검증된 원본이 바뀌어 나머지 세 장도 새 원본에 맞췄어요.");
 
@@ -252,6 +277,16 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(page.locator(".idea-lab__prompt-copy")).toContainText("제품 메커니즘을 80~99% 그대로");
     await expect(page.locator(".idea-lab__prompt-copy")).toContainText("MVP 하드 게이트");
     await expect(page.locator(".idea-lab__prompt-copy")).toContainText("범위가 크면 다음 순서로 핵심 아이디어를 쪼개");
+    const promptToggle = page.getByRole("button", { name: "제작 문구 전체 보기" });
+    await expect(promptToggle).toHaveAttribute("aria-expanded", "false");
+    const collapsedPrompt = await page.locator(".idea-lab__prompt-copy").evaluate((element) => ({
+      clientHeight: element.clientHeight,
+      scrollHeight: element.scrollHeight,
+    }));
+    expect(collapsedPrompt.clientHeight).toBeLessThan(collapsedPrompt.scrollHeight);
+    await promptToggle.click();
+    await expect(page.getByRole("button", { name: "제작 문구 접기" })).toHaveAttribute("aria-expanded", "true");
+    await expect(page.locator(".idea-lab__prompt-copy")).toHaveCSS("max-height", "none");
 
     const calls = await shareCalls(page);
     expect(calls).toHaveLength(1);
@@ -405,7 +440,9 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     });
     expect(theme).toEqual({ colorScheme: "dark", primary: "#ff4458" });
 
-    const drawButton = page.getByRole("button", { name: "4장 자동 채우기", exact: true });
+    await expect(page.getByRole("button", { name: "나머지 자동으로 뽑기", exact: true })).toHaveCount(0);
+    await page.locator(".idea-lab__slot.is-carousel-active .idea-lab__card-frame button").click();
+    const drawButton = page.getByRole("button", { name: "나머지 자동으로 뽑기", exact: true });
     await expect(drawButton).not.toHaveCSS("background-color", "rgb(255, 68, 88)");
 
     const axisColors = await Promise.all(AXIS_LABELS.map((label) =>

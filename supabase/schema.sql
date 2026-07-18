@@ -92,7 +92,6 @@ create trigger trg_ideas_updated_at
   for each row execute function public.set_updated_at();
 
 create index if not exists idx_ideas_owner       on public.ideas (owner_id);
-create unique index if not exists idx_ideas_share_slug on public.ideas (share_slug);
 
 -- ----------------------------------------------------------------------------
 -- 3. votes — 비로그인 익명 투표. (idea_id, voter_fp) 로 1인 1표.
@@ -165,15 +164,15 @@ alter table public.purchases enable row level security;
 -- ---- profiles: 본인만 ------------------------------------------------------
 drop policy if exists profiles_select_own on public.profiles;
 create policy profiles_select_own on public.profiles
-  for select to authenticated using (auth.uid() = id);
+  for select to authenticated using ((select auth.uid()) = id);
 
 drop policy if exists profiles_insert_own on public.profiles;
 create policy profiles_insert_own on public.profiles
-  for insert to authenticated with check (auth.uid() = id);
+  for insert to authenticated with check ((select auth.uid()) = id);
 
 drop policy if exists profiles_update_own on public.profiles;
 create policy profiles_update_own on public.profiles
-  for update to authenticated using (auth.uid() = id) with check (auth.uid() = id);
+  for update to authenticated using ((select auth.uid()) = id) with check ((select auth.uid()) = id);
 
 -- ---- ideas: share_slug 공개 읽기 + owner 쓰기 -----------------------------
 -- 공개 읽기: slug 자체가 추측 불가 capability 토큰이라 anon 에도 select 개방.
@@ -184,15 +183,15 @@ create policy ideas_select_public on public.ideas
 
 drop policy if exists ideas_insert_own on public.ideas;
 create policy ideas_insert_own on public.ideas
-  for insert to authenticated with check (auth.uid() = owner_id);
+  for insert to authenticated with check ((select auth.uid()) = owner_id);
 
 drop policy if exists ideas_update_own on public.ideas;
 create policy ideas_update_own on public.ideas
-  for update to authenticated using (auth.uid() = owner_id) with check (auth.uid() = owner_id);
+  for update to authenticated using ((select auth.uid()) = owner_id) with check ((select auth.uid()) = owner_id);
 
 drop policy if exists ideas_delete_own on public.ideas;
 create policy ideas_delete_own on public.ideas
-  for delete to authenticated using (auth.uid() = owner_id);
+  for delete to authenticated using ((select auth.uid()) = owner_id);
 
 -- ---- votes: 익명 insert 허용 / 상세 읽기는 owner + 수요리포트 결제 확인 ----
 -- rate-limit(브라우저지문+IP당 분당 N건 등)은 RLS 로 표현 불가 →
@@ -209,12 +208,12 @@ create policy votes_select_owner_paid on public.votes
   for select to authenticated using (
     exists (
       select 1 from public.ideas i
-      where i.id = votes.idea_id and i.owner_id = auth.uid()
+      where i.id = votes.idea_id and i.owner_id = (select auth.uid())
     )
     and exists (
       select 1 from public.purchases p
       where p.idea_id = votes.idea_id
-        and p.user_id = auth.uid()
+        and p.user_id = (select auth.uid())
         and p.product = 'demand_report'
         and p.status  = 'paid'
     )
@@ -225,7 +224,7 @@ create policy votes_delete_owner on public.votes
   for delete to authenticated using (
     exists (
       select 1 from public.ideas i
-      where i.id = votes.idea_id and i.owner_id = auth.uid()
+      where i.id = votes.idea_id and i.owner_id = (select auth.uid())
     )
   );
 
@@ -233,27 +232,27 @@ create policy votes_delete_owner on public.votes
 -- 익명(anon) 세션의 스핀 카운트/캡 증가는 service_role Edge Function 에서 처리(RLS 우회).
 drop policy if exists spins_select_own on public.spins;
 create policy spins_select_own on public.spins
-  for select to authenticated using (auth.uid()::text = user_or_session_id);
+  for select to authenticated using ((select auth.uid())::text = user_or_session_id);
 
 drop policy if exists spins_insert_own on public.spins;
 create policy spins_insert_own on public.spins
-  for insert to authenticated with check (auth.uid()::text = user_or_session_id);
+  for insert to authenticated with check ((select auth.uid())::text = user_or_session_id);
 
 drop policy if exists spins_update_own on public.spins;
 create policy spins_update_own on public.spins
   for update to authenticated
-  using (auth.uid()::text = user_or_session_id)
-  with check (auth.uid()::text = user_or_session_id);
+  using ((select auth.uid())::text = user_or_session_id)
+  with check ((select auth.uid())::text = user_or_session_id);
 
 -- ---- purchases: owner 만 -------------------------------------------------
 -- 상태 전이(pending→paid 등)는 PG 웹훅을 받는 service_role Edge Function 이 담당(RLS 우회).
 drop policy if exists purchases_select_own on public.purchases;
 create policy purchases_select_own on public.purchases
-  for select to authenticated using (auth.uid() = user_id);
+  for select to authenticated using ((select auth.uid()) = user_id);
 
 drop policy if exists purchases_insert_own on public.purchases;
 create policy purchases_insert_own on public.purchases
-  for insert to authenticated with check (auth.uid() = user_id);
+  for insert to authenticated with check ((select auth.uid()) = user_id);
 
 -- ----------------------------------------------------------------------------
 -- 6. published_cards — 로그인 발행자의 카드 목록(기기 간 동기화용).
@@ -267,6 +266,7 @@ create table if not exists public.published_cards (
   user_id       uuid not null references auth.users (id) on delete cascade,
   slug          text not null,
   payload       jsonb not null,
+  feedback_read_token text,
   published_at  timestamptz not null default now(),
   unique (user_id, slug)
 );
@@ -278,26 +278,26 @@ alter table public.published_cards enable row level security;
 
 drop policy if exists published_cards_select_own on public.published_cards;
 create policy published_cards_select_own on public.published_cards
-  for select to authenticated using (auth.uid() = user_id);
+  for select to authenticated using ((select auth.uid()) = user_id);
 
 drop policy if exists published_cards_insert_own on public.published_cards;
 create policy published_cards_insert_own on public.published_cards
-  for insert to authenticated with check (auth.uid() = user_id);
+  for insert to authenticated with check ((select auth.uid()) = user_id);
 
 drop policy if exists published_cards_update_own on public.published_cards;
 create policy published_cards_update_own on public.published_cards
-  for update to authenticated using (auth.uid() = user_id) with check (auth.uid() = user_id);
+  for update to authenticated using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
 
 drop policy if exists published_cards_delete_own on public.published_cards;
 create policy published_cards_delete_own on public.published_cards
-  for delete to authenticated using (auth.uid() = user_id);
+  for delete to authenticated using ((select auth.uid()) = user_id);
 
 -- ============================================================================
 -- 끝. 요약
 --   테이블 6  : profiles, ideas, votes, spins, purchases, published_cards
 --   ENUM   4  : vote_type, product_type, purchase_status, seed_track
 --   RLS 정책 19: profiles×3, ideas×4, votes×3, spins×3, purchases×2, published_cards×4
---   Edge Function 위임: 익명 투표 rate-limit / 익명 스핀 캡 / 결제 상태 전이
+--   Edge Function 위임: capability 토큰 기반 익명 응원 / rate-limit / 익명 스핀 캡 / 결제 상태 전이
 --   ⚠ 라이브 DB에는 이 파일에 없는 card_votes/duel_votes 테이블이 이미 존재함(2026-07-08 REST 프로브로 확인).
 --     본 파일과 라이브 스키마가 어긋나 있으니, 다음 정리 작업 때 card_votes/duel_votes 정의도
 --     이 파일에 역으로 반영해 단일 진실 소스로 통합할 것.

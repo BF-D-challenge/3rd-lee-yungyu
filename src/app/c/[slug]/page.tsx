@@ -8,6 +8,7 @@ import { decodeSlug, type CardPayload } from "@/lib/share";
 
 const DEFAULT_TITLE = "오늘 해볼까";
 const DEFAULT_DESCRIPTION = "친구가 뽑은 카드를 확인하고 응원해주세요.";
+type PublicCardPageProps = { params: Promise<{ slug: string }> };
 
 /** publish-card.tsx의 cardTitle과 동일한 우선순위(appName > title > 씨앗×불편) — "use client" 모듈 간 RSC 경계를 피하려 로컬 재구현 */
 function cardTitle(payload: CardPayload): string {
@@ -17,8 +18,9 @@ function cardTitle(payload: CardPayload): string {
   return pain ? `${payload.seedLabel} × ${pain.short}` : payload.seedLabel;
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const payload = decodeSlug(params.slug);
+export async function generateMetadata({ params }: PublicCardPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const payload = decodeSlug(slug);
   if (!payload) {
     return {
       title: DEFAULT_TITLE,
@@ -40,6 +42,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function PublicCardPage({ params }: { params: { slug: string } }) {
-  return <VotePanel slug={params.slug} />;
+export default async function PublicCardPage({ params }: PublicCardPageProps) {
+  const { slug } = await params;
+  return <VotePanel slug={slug} />;
 }

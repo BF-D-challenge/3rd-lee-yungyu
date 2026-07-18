@@ -28,7 +28,10 @@ import {
   type AxisValue,
 } from "@/lib/pools";
 import { buildSpinAllSlots, filledRequired, REQUIRED, SPIN_CAP, useSlot, type Slots } from "@/lib/slot-store";
-import { shareOrCopy, shareUrl, toPayload } from "@/lib/share";
+import { encodeSlug, shareOrCopy, shareUrl, toPayload } from "@/lib/share";
+import { prepareFeedbackAccess } from "@/lib/backend/secure-feedback";
+import { publishCard } from "@/lib/backend/published";
+import { writeAccessFrom } from "@/lib/feedback-access";
 import { fakeDoor, track, trackShare } from "@/lib/track";
 import { cn } from "@/lib/utils";
 import { assembleCombo, assembleLine } from "./assemble";
@@ -91,6 +94,7 @@ export function SlotMachine({ initialIntroActive = true }: SlotMachineProps) {
   const plannedSlotsRef = useRef<Slots | null>(null);
   const [autoOpenTick, setAutoOpenTick] = useState(0);
   const [drawAllBusy, setDrawAllBusy] = useState(false);
+  const [shareBoostError, setShareBoostError] = useState<string | null>(null);
 
   const seedRef = useRef<HTMLDivElement>(null);
   const painRef = useRef<HTMLDivElement>(null);
@@ -225,7 +229,24 @@ export function SlotMachine({ initialIntroActive = true }: SlotMachineProps) {
   }, []);
 
   const onShareBoost = useCallback(async () => {
-    const url = combo ? shareUrl(toPayload(combo)) : `${location.origin}/`;
+    setShareBoostError(null);
+    let url = `${location.origin}/`;
+    if (combo) {
+      const access = await prepareFeedbackAccess("card");
+      if (!access) {
+        setShareBoostError("안전한 공유 링크를 준비하지 못했어요. 잠시 후 다시 시도해 주세요.");
+        return;
+      }
+      const payload = { ...toPayload(combo), feedback: writeAccessFrom(access) };
+      const slug = encodeSlug(payload);
+      await publishCard({
+        slug,
+        payload,
+        feedbackReadToken: access.readToken,
+        publishedAt: Date.now(),
+      });
+      url = shareUrl(payload);
+    }
     const result = await shareOrCopy(url, {
       title: combo?.appName ?? combo?.title ?? "오늘 해볼까",
       text: combo
@@ -488,6 +509,14 @@ export function SlotMachine({ initialIntroActive = true }: SlotMachineProps) {
           setFakeDoorOpen(true);
         }}
       />
+      {shareBoostError ? (
+        <p
+          role="alert"
+          className="fixed bottom-6 left-1/2 z-[60] w-[min(90vw,420px)] -translate-x-1/2 rounded-xl border border-amber-300/30 bg-[#18130a]/95 px-4 py-3 text-center text-sm text-amber-100 shadow-xl"
+        >
+          {shareBoostError}
+        </p>
+      ) : null}
 
       {/* 확정 분기 — 실행 브리프 + 준비물 복사 (플랜 990 CTA 폐지) */}
       <FakeDoorSheet

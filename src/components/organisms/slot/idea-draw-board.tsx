@@ -9,7 +9,10 @@ import { trackGrowth, newRoundId } from "@/lib/growth";
 import { drawIdeaCandidates, selectionEventParams, type IdeaCandidate } from "@/lib/idea";
 import { legacyTasteFor, preferenceForId, type PreferenceId } from "@/lib/preferences";
 import { buildDeck, type AxisId } from "@/lib/pools";
-import { duelUrl, shareOrCopy, toPayload, type RoundMeta } from "@/lib/share";
+import { duelUrl, encodeDuelSlug, shareOrCopy, toPayload, type RoundMeta } from "@/lib/share";
+import { prepareFeedbackAccess } from "@/lib/backend/secure-feedback";
+import { writeAccessFrom, type FeedbackOwnerAccess } from "@/lib/feedback-access";
+import { addDuel } from "@/lib/storage";
 import { IdeaCandidateCard } from "./idea-candidate-card";
 import { FanDeck, type FanDeckHandle } from "./fan-deck";
 
@@ -34,6 +37,7 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
   const cardARef = useRef<HTMLButtonElement>(null);
   const cardBRef = useRef<HTMLButtonElement>(null);
   const roundIdRef = useRef<string | null>(null);
+  const feedbackRef = useRef<FeedbackOwnerAccess | null>(null);
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   const clearTimers = () => {
@@ -51,6 +55,7 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
     setHotAxis(null);
     setShareState({ kind: "idle" });
     roundIdRef.current = null;
+    feedbackRef.current = null;
   }, [preferences]);
 
   useEffect(() => {
@@ -101,11 +106,12 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
     if (!accepted) setBusy(false);
   };
 
-  const roundMeta = (roundId: string): RoundMeta => ({
+  const roundMeta = (roundId: string, feedback: FeedbackOwnerAccess): RoundMeta => ({
     roundId,
     parentRoundId: sourceRoundId,
     rootRoundId: rootRoundId ?? sourceRoundId ?? roundId,
     preferenceIds: preferences,
+    feedback: writeAccessFrom(feedback),
   });
 
   const shareRound = async () => {
@@ -113,7 +119,19 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
     const roundId = (roundIdRef.current ??= newRoundId());
     const payloadA = toPayload(candidates[0].combo, session.displayName, candidates[0].preferenceId);
     const payloadB = toPayload(candidates[1].combo, session.displayName, candidates[1].preferenceId);
-    const url = duelUrl(payloadA, payloadB, roundMeta(roundId));
+    const feedback = await prepareFeedbackAccess(
+      "duel",
+      feedbackRef.current ? writeAccessFrom(feedbackRef.current) : undefined,
+      feedbackRef.current?.readToken,
+    );
+    if (!feedback) {
+      setShareState({ kind: "error", message: "안전한 공유 링크를 준비하지 못했어요.", url: "" });
+      return;
+    }
+    feedbackRef.current = feedback;
+    const meta = roundMeta(roundId, feedback);
+    const slug = encodeDuelSlug(payloadA, payloadB, meta);
+    const url = duelUrl(payloadA, payloadB, meta);
     trackGrowth("share_sheet_opened", { round_id: roundId, origin_round_id: sourceRoundId, user_id: session.actorId });
     const result = await shareOrCopy(url, {
       title: "오늘 만들 후보 두 장",
@@ -123,6 +141,14 @@ export function IdeaDrawBoard({ session, preferences, sourceRoundId = null, root
       setShareState({ kind: "error", message: "공유나 복사를 완료하지 못했어요.", url });
       return;
     }
+    addDuel({
+      slug,
+      a: payloadA,
+      b: payloadB,
+      feedback: meta.feedback,
+      feedbackReadToken: feedback.readToken,
+      createdAt: Date.now(),
+    });
     trackGrowth("round_shared", {
       round_id: roundId,
       origin_round_id: sourceRoundId,

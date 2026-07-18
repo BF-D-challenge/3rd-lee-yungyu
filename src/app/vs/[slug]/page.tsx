@@ -8,6 +8,7 @@ import { decodeDuelSlug, type CardPayload } from "@/lib/share";
 
 const DEFAULT_TITLE = "오늘 해볼까";
 const DEFAULT_DESCRIPTION = "친구 둘 중 어느 쪽을 응원할지 골라주세요.";
+type DuelPageProps = { params: Promise<{ slug: string }> };
 
 /** publish-card.tsx의 cardTitle과 동일한 우선순위(appName > title > 씨앗×불편) — "use client" 모듈 간 RSC 경계를 피하려 로컬 재구현 */
 function cardTitle(payload: CardPayload): string {
@@ -17,8 +18,9 @@ function cardTitle(payload: CardPayload): string {
   return pain ? `${payload.seedLabel} × ${pain.short}` : payload.seedLabel;
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const duel = decodeDuelSlug(params.slug);
+export async function generateMetadata({ params }: DuelPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const duel = decodeDuelSlug(slug);
   if (!duel) {
     return {
       title: DEFAULT_TITLE,
@@ -41,6 +43,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function DuelPage({ params }: { params: { slug: string } }) {
-  return <DuelPanel slug={params.slug} />;
+export default async function DuelPage({ params }: DuelPageProps) {
+  const { slug } = await params;
+  return <DuelPanel slug={slug} />;
 }

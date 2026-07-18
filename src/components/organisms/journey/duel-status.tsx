@@ -4,9 +4,12 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/atoms/button";
 import { GlassCard } from "@/components/atoms/glass-card";
-import { duelUrl } from "@/lib/share";
+import { encodeDuelSlug, type RoundMeta } from "@/lib/share";
 import { fetchDuelVotes, type DuelSide, type DuelVotes } from "@/lib/backend/votes";
-import { loadDuels, type Duel } from "@/lib/storage";
+import { addDuel, loadDuels, type Duel } from "@/lib/storage";
+import { prepareFeedbackAccess } from "@/lib/backend/secure-feedback";
+import { writeAccessFrom } from "@/lib/feedback-access";
+import { newRoundId } from "@/lib/growth";
 import { track } from "@/lib/track";
 import { copyText } from "@/lib/copy-text";
 import { cn } from "@/lib/utils";
@@ -24,7 +27,15 @@ export function DuelStatus({ onCopied }: { onCopied?: () => void }) {
     // 대결 현황도 서버 집계로 — fetchDuelVotes로 모든 수신자의 A/B 응원을 읽는다.
     let cancelled = false;
     void Promise.all(
-      loadDuels().map(async (duel) => ({ duel, votes: await fetchDuelVotes(duel.slug) })),
+      loadDuels().map(async (duel) => ({
+        duel,
+        votes: await fetchDuelVotes(
+          duel.slug,
+          duel.feedback && duel.feedbackReadToken
+            ? { requestId: duel.feedback.requestId, readToken: duel.feedbackReadToken }
+            : undefined,
+        ),
+      })),
     ).then((loaded) => {
       if (!cancelled) setRows(loaded);
     });
@@ -36,7 +47,31 @@ export function DuelStatus({ onCopied }: { onCopied?: () => void }) {
   if (rows.length === 0) return null;
 
   const copy = async (row: DuelRow) => {
-    await copyText(duelUrl(row.duel.a, row.duel.b));
+    const access = await prepareFeedbackAccess(
+      "duel",
+      row.duel.feedback,
+      row.duel.feedbackReadToken,
+    );
+    if (!access) return;
+    const roundId = newRoundId();
+    const meta: RoundMeta = {
+      roundId,
+      rootRoundId: roundId,
+      feedback: writeAccessFrom(access),
+    };
+    const secured = row.duel.feedback?.requestId === access.requestId
+      ? row.duel
+      : {
+          ...row.duel,
+          slug: encodeDuelSlug(row.duel.a, row.duel.b, meta),
+          feedback: meta.feedback,
+          feedbackReadToken: access.readToken,
+        };
+    addDuel(secured);
+    setRows((current) => current.map((item) => (
+      item.duel.slug === row.duel.slug ? { ...item, duel: secured } : item
+    )));
+    await copyText(`${location.origin}/vs/${secured.slug}`);
     track("card_share", { channel: "link", stage: "dashboard", kind: "duel" });
     onCopied?.();
   };
@@ -50,7 +85,7 @@ export function DuelStatus({ onCopied }: { onCopied?: () => void }) {
         return (
           <GlassCard key={row.duel.slug} className="p-5" data-anim style={{ animation: "fade-up .4s ease both" }}>
             <p className="text-xs text-caption">🆚 응원 대결</p>
-            <h2 className="mt-1 font-serif text-lg leading-snug text-ink">
+            <h2 className="mt-1 text-lg font-semibold leading-snug text-ink">
               {cardTitle(row.duel.a)} <span className="text-mist">vs</span> {cardTitle(row.duel.b)}
             </h2>
             <p className="mt-2 text-sm text-gold">{total > 0 ? <>📣 <b>{total}명</b> 응원 도착</> : "아직 응원 대기 중"}</p>

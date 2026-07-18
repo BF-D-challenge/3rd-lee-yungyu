@@ -26,7 +26,7 @@ export function DuelLoginSheet({ open, onAuthenticated, onReturnFocus }: DuelLog
             event.preventDefault();
             requestAnimationFrame(onReturnFocus);
           }}
-          className="glass-strong fixed inset-x-0 bottom-0 z-50 mx-auto max-h-[92dvh] w-full max-w-[520px] overflow-y-auto rounded-t-card px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6 outline-none"
+          className="glass-strong fixed inset-x-0 bottom-0 z-50 mx-auto max-h-[92dvh] w-full max-w-narrow overflow-y-auto rounded-t-card px-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-6 outline-none"
           style={{ animation: "fade-up 300ms ease both" }}
         >
           <Dialog.Title className="font-serif text-2xl leading-tight text-ink">친구의 후보를 응원해 주세요</Dialog.Title>

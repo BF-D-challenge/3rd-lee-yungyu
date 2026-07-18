@@ -49,6 +49,20 @@ describe("Idea Lab model", () => {
     expect(combinations).toBe(2_700);
   });
 
+  it("keeps the reviewed source mechanisms and the two audited scenarios coherent", () => {
+    const lookup = IDEA_LAB_SCENARIOS.find((scenario) => scenario.id === "lookup-brief")!;
+    expect(lookup.source.value).toContain("전화번호·이메일·IP");
+    expect(lookup.source.preservedFlow).toContain("실시간 API 검증");
+    expect(lookup.source.value).not.toContain("상대 정보를 찾아");
+    expect(lookup.twists.every((twist) => /전화번호·이메일·IP|값 하나/.test(twist.smallestBuild))).toBe(true);
+
+    const voice = IDEA_LAB_SCENARIOS.find((scenario) => scenario.id === "voice-notes")!;
+    expect(voice.source.value).toContain("음성 받아쓰기");
+    expect(voice.source.preservedFlow).toContain("입력칸에 텍스트 삽입");
+    expect(voice.moments.every((moment) => !/회의가 끝난|현장 점검을 마치고/.test(moment.value))).toBe(true);
+    expect(voice.twists.every((twist) => /음성|입력/.test(`${twist.value} ${twist.smallestBuild}`))).toBe(true);
+  });
+
   it("finds the requested initial scenario and falls back to the first scenario", () => {
     expect(initialScenarioIndex(IDEA_LAB_SCENARIOS[2].id)).toBe(2);
     expect(initialScenarioIndex("missing-scenario")).toBe(0);

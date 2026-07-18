@@ -35,7 +35,7 @@ export interface FanDeckProps {
   disabled?: boolean;
   /** false면 덱은 장식·비행 출발점만 담당하고 사용자 입력은 받지 않는다. drawTo는 계속 사용할 수 있다. */
   interactive?: boolean;
-  /** 프로그램 비행 시간. 기존 슬롯은 560ms를 사용한다. */
+  /** 프로그램 비행 시간. 반복 흐름을 막지 않도록 260ms를 기본으로 사용한다. */
   flightDurationMs?: number;
   /** 현재 조준 축 = 다음 빈 필수 칸 (원본 curAxis). null이면 게이트 해제 → 카드 고유 축 */
   aimAxis: string | null;
@@ -51,35 +51,36 @@ export interface FanDeckProps {
 
 type WCard = HTMLDivElement & { _base: number; _hov?: boolean; _deck: number; _skin?: string };
 
-const EASE = "cubic-bezier(.65,0,.35,1)";
-const SPRING = "cubic-bezier(.34,1.56,.64,1)";
-const DECK_CARD_CORNER_RADIUS = 24;
+const PULL_EASE = "cubic-bezier(.22,1,.36,1)";
+const DECK_CARD_CORNER_RADIUS = 18;
+const FOCUS_CURVE_RADIUS = 5;
+const FOCUS_CURVE_SIGMA = 2.1;
+const FOCUS_MAX_LIFT = 76;
+
+const focusCurveLift = (distance: number) => Math.round(
+  FOCUS_MAX_LIFT * Math.exp(-(distance * distance) / (2 * FOCUS_CURVE_SIGMA * FOCUS_CURVE_SIGMA)),
+);
 
 const DECK_CSS = `
-.fd-host{pointer-events:none;overflow:visible!important;
-  mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);
-  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%)}
-.fd-host[data-variant="responsive"]{
-  mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%);
-  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%)}
+.fd-host{pointer-events:none;overflow:visible!important}
 .fd-wheel{position:absolute;left:50%;width:0;height:0;will-change:transform;z-index:5}
 .fd-card{position:absolute;pointer-events:auto;cursor:grab;touch-action:none;user-select:none;
-  -webkit-user-select:none;will-change:transform;transition:transform .8s ${EASE},opacity .5s ease}
-.fd-card.noT{transition:opacity .5s ease}
-.fd-card .pull{position:absolute;inset:0;transition:transform .26s ${SPRING}}
-.fd-card:hover .pull,.fd-card:focus-visible .pull{transform:translateY(-30px) scale(1.03)}
+  -webkit-user-select:none;will-change:transform;transition:transform .24s ${PULL_EASE},opacity .16s ease-out}
+.fd-card.noT{transition:opacity .2s ease}
+.fd-card .pull{position:absolute;inset:0;transform-origin:50% 100%;transition:transform .18s ${PULL_EASE}}
+.fd-host[data-variant=responsive] .fd-card:focus-visible .pull{transform:translateY(-22px)}
+.fd-host[data-variant=compact] .fd-card[data-focus] .pull{transform:translate(var(--fd-focus-x,0px),var(--fd-focus-y,0px))}
 .fd-card:focus-visible{outline:2px solid #fff;outline-offset:3px;box-shadow:0 0 0 5px rgba(255,68,88,.55)}
-.fd-card:hover{z-index:600!important}
 .fd-card svg{display:block;width:100%;height:100%}
-.fd-card:hover svg{filter:drop-shadow(0 10px 14px rgba(0,0,0,.55))}
 .fd-card.ghost{visibility:hidden}
-.fd-card[data-active="false"]{opacity:.35;cursor:default}
-.fd-card[data-active="false"] .pull,.fd-card[data-active="false"]:hover .pull{transform:none}
-.fd-host[data-disabled="true"] .fd-card{pointer-events:none}
-.fd-host[data-interactive="false"] .fd-card{pointer-events:none;cursor:default}
+.fd-card[data-active=false]{opacity:.35;cursor:default}
+.fd-card[data-active=false] .pull,.fd-card[data-active=false]:hover .pull{transform:none}
+.fd-host[data-disabled=true] .fd-card{pointer-events:none}
+.fd-host[data-interactive=false] .fd-card{pointer-events:none;cursor:default}
 .fd-fly{position:fixed;z-index:2147483000;pointer-events:none;will-change:transform}
 .fd-fly svg{display:block;width:100%;height:100%;filter:drop-shadow(0 16px 22px rgba(0,0,0,.55))}
-@media (prefers-reduced-motion:reduce){.fd-card,.fd-card .pull{transition:none}}
+@media (hover:hover) and (pointer:fine){.fd-host[data-variant=responsive] .fd-card:hover .pull{transform:translateY(-22px)}}
+@media (prefers-reduced-motion:reduce){.fd-card{transition:opacity .16s ease}.fd-card .pull{transition:none}}
 `;
 
 export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
@@ -89,7 +90,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     axisLabels,
     disabled = false,
     interactive = true,
-    flightDurationMs = 560,
+    flightDurationMs = 260,
     aimAxis,
     inactiveAxes,
     getTargetRect,
@@ -168,6 +169,9 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     let entT0: number | null = null;
     let last = 0;
     let raf = 0;
+    let inViewport = true;
+    let pageVisible = document.visibilityState !== "hidden";
+    let nextRovingSyncAt = 0;
     let wasMobile: boolean;
     const flies = new Set<HTMLDivElement>();
     let WP = { spacing: 1, n: 0 };
@@ -179,8 +183,8 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       const h = host.clientHeight;
       const isMobile = mobile();
       const r = isMobile ? 640 : 1050;
-      const cw = isMobile ? 84 : 100;
-      const ch = isMobile ? 122 : 146;
+      const cw = compact ? 112 : isMobile ? 84 : 100;
+      const ch = compact ? 164 : isMobile ? 122 : 146;
       // compact는 낮은 덱 밴드에서도 카드가 잘리지 않게 맞추고, responsive는 이전 고정 기하를 보존한다.
       const apex = compact
         ? Math.min(150, Math.max(56, h - ch / 2 - 8))
@@ -258,13 +262,112 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     const effAxis = (c: WCard): string => aimRef.current ?? deckOf(c).axis;
     /** 게이트 중엔 전 카드 활성(원본: 벨트 전체가 curAxis로 향함), 해제 후엔 🔒 축만 비활성 */
     const isActive = (c: WCard) => (aimRef.current ? true : !inactiveRef.current.has(deckOf(c).axis));
+    let focusedCard: WCard | null = null;
+    let rovingCard: WCard | null = null;
+    const clearFocus = (candidate?: WCard) => {
+      if (candidate && focusedCard !== candidate) return;
+      focusedCard = null;
+      delete host.dataset.focused;
+      cardsEl.forEach((card) => {
+        delete card.dataset.focus;
+        delete card.dataset.focusDistance;
+        card.style.removeProperty("--fd-focus-lift");
+        card.style.removeProperty("--fd-focus-x");
+        card.style.removeProperty("--fd-focus-y");
+      });
+    };
+    const focusCard = (c: WCard, force = false) => {
+      if (!compact || !interactiveRef.current || disabledRef.current || held || busy || !isActive(c)) return;
+      if (!force && focusedCard === c) return;
+      focusedCard = c;
+      host.dataset.focused = "true";
+      const ordered = cardsEl.slice().sort((a, b) => absAngle(a) - absAngle(b));
+      const activeIndex = ordered.indexOf(c);
+      ordered.forEach((card, index) => {
+        const distance = index - activeIndex;
+        if (Math.abs(distance) <= FOCUS_CURVE_RADIUS) {
+          const lift = focusCurveLift(distance);
+          const angle = (absAngle(card) * Math.PI) / 180;
+          card.dataset.focus = distance === 0 ? "active" : "curve";
+          card.dataset.focusDistance = String(distance);
+          card.style.setProperty("--fd-focus-lift", `${lift}px`);
+          card.style.setProperty("--fd-focus-x", `${(-lift * Math.sin(angle)).toFixed(3)}px`);
+          card.style.setProperty("--fd-focus-y", `${(-lift * Math.cos(angle)).toFixed(3)}px`);
+        } else {
+          delete card.dataset.focus;
+          delete card.dataset.focusDistance;
+          card.style.removeProperty("--fd-focus-lift");
+          card.style.removeProperty("--fd-focus-x");
+          card.style.removeProperty("--fd-focus-y");
+        }
+      });
+    };
+    const activeCardsInVisualOrder = () => cardsEl
+      .filter((card) => isActive(card))
+      .sort((a, b) => absAngle(a) - absAngle(b));
+    const activeApexCard = () => {
+      let best: WCard | null = null;
+      let distance = Infinity;
+      activeCardsInVisualOrder().forEach((card) => {
+        const nextDistance = Math.abs(absAngle(card));
+        if (nextDistance < distance) {
+          best = card;
+          distance = nextDistance;
+        }
+      });
+      return best;
+    };
+    const setRovingCard = (preferred?: WCard | null, moveFocus = false) => {
+      const next = preferred && cardsEl.includes(preferred) && isActive(preferred)
+        ? preferred
+        : activeApexCard();
+      cardsEl.forEach((card) => {
+        const accessible = interactiveRef.current && card === next && isActive(card);
+        card.tabIndex = accessible ? 0 : -1;
+        if (accessible) {
+          const eff = effAxis(card);
+          card.setAttribute("role", "button");
+          card.setAttribute("aria-label", `덱에서 ${axisLabelsRef.current[eff] ?? eff} 카드 뽑기`);
+          card.removeAttribute("aria-hidden");
+        } else {
+          card.removeAttribute("role");
+          card.removeAttribute("aria-label");
+          card.setAttribute("aria-hidden", "true");
+        }
+      });
+      rovingCard = next;
+      if (moveFocus && next) {
+        next.focus({ preventScroll: true });
+        focusCard(next, true);
+      }
+    };
+    const syncRovingCard = () => {
+      const activeElement = document.activeElement;
+      const focused = activeElement instanceof HTMLDivElement && cardsEl.includes(activeElement as WCard)
+        ? activeElement as WCard
+        : null;
+      const next = focused && isActive(focused) ? focused : activeApexCard();
+      if (next === rovingCard) return;
+      setRovingCard(next);
+    };
+    const visualRect = (c: WCard) =>
+      (c.firstElementChild as HTMLElement | null)?.getBoundingClientRect() ?? c.getBoundingClientRect();
     /** 카드 스킨 — data-axis/data-active/aria/뒷면 글리프를 유효 축에 맞춘다 (재구축 없음) */
     const skin = (c: WCard) => {
       const eff = effAxis(c);
       c.dataset.axis = eff;
-      c.dataset.active = String(isActive(c));
-      if (interactiveRef.current)
-        c.setAttribute("aria-label", `${axisLabelsRef.current[eff] ?? eff} 카드 뽑기`);
+      const active = isActive(c);
+      c.dataset.active = String(active);
+      if (!interactiveRef.current || !active || c !== rovingCard) {
+        c.removeAttribute("role");
+        c.removeAttribute("aria-label");
+        c.setAttribute("aria-hidden", "true");
+        c.tabIndex = -1;
+      } else {
+        c.setAttribute("role", "button");
+        c.setAttribute("aria-label", `덱에서 ${axisLabelsRef.current[eff] ?? eff} 카드 뽑기`);
+        c.removeAttribute("aria-hidden");
+      }
       if (c._skin !== eff) {
         c._skin = eff;
         const pull = c.firstElementChild as HTMLElement | null;
@@ -296,6 +399,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       ang0: number,
       toRect: DOMRect,
       done: () => void,
+      skipMotion = false,
     ) => {
       // translate는 클론의 실제 DOM 기준점(left/top) 기준 — 드롭 위치≠기준점이어도 안 튄다
       const bx = parseFloat(clone.style.left) + parseFloat(clone.style.width) / 2;
@@ -305,7 +409,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       const c1 = { x: (c0.x + c2.x) / 2, y: Math.min(c0.y, c2.y) - 120 };
       const w0 = parseFloat(clone.style.width);
       const s2 = toRect.width / w0;
-      const D = RM ? 0 : flightDurationRef.current;
+      const D = RM || skipMotion ? 0 : flightDurationRef.current;
       const t0 = performance.now();
       let settled = false;
       let watchdog: number | null = null;
@@ -334,6 +438,8 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
 
     /** ★버그픽스 이식: 카드 제거 시 _hov가 남아 있으면 hoverSlow 누수 → 휠 영구 감속 */
     const removeCard = (c: WCard) => {
+      const restoreKeyboardFocus = document.activeElement === c;
+      clearFocus(c);
       if (c._hov) {
         c._hov = false;
         hoverSlow = Math.max(0, hoverSlow - 1);
@@ -349,6 +455,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         }
       });
       restack();
+      setRovingCard(null, restoreKeyboardFocus);
     };
 
     /** 릴 밖에 놓으면 그 자리에서 아래로 낙하해 버려진다 (제자리 복귀 X) */
@@ -362,7 +469,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       const cr = clone.getBoundingClientRect();
       const x0 = cr.left + cr.width / 2;
       const y0 = cr.top + cr.height / 2;
-      const dur = 560;
+      const dur = 260;
       const t0 = performance.now();
       const dist = innerHeight - y0 + 260;
       const rot = (x0 > innerWidth / 2 ? 1 : -1) * (6 + ((Math.round(y0) * 7) % 9));
@@ -383,7 +490,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
 
     /** 탭 → 유효 축(조준 중엔 curAxis) 슬롯으로 아크 비행 → 안착 시 onPick.
      *  목적지 rect는 조준 칸이 있을 때만 존재 — 없으면 무시. */
-    const drawToReel = (c: WCard) => {
+    const drawToReel = (c: WCard, skipMotion = false) => {
       if (!interactiveRef.current || disabledRef.current || busy || held || !isActive(c)) return;
       const card = deckOf(c);
       const eff = effAxis(c);
@@ -391,18 +498,20 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       if (!rect) return;
       busy = true;
       const gm = geom();
-      const b = c.getBoundingClientRect();
+      const b = visualRect(c);
       const cx = b.left + b.width / 2;
       const cy = b.top + b.height / 2;
       const a0 = absAngle(c);
       c.classList.add("ghost");
       const clone = makeClone(cx, cy, a0, gm.cw, gm.ch);
+      clone.dataset.s0 = "1";
+      clone.style.transform = `rotate(${a0}deg) scale(${clone.dataset.s0})`;
       flyTo(clone, { x: cx, y: cy }, a0, rect, () => {
         busy = false;
         if (disposed) return;
         removeCard(c);
         onPickRef.current(card, eff);
-      });
+      }, skipMotion);
     };
 
     /** 호버 풀아웃 + 드래그 틸트 + 드롭/탭 (원본 attach 이식) */
@@ -432,6 +541,8 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
           hoverSlow = Math.max(0, hoverSlow - 1);
         }
       });
+      c.addEventListener("focus", () => focusCard(c));
+      c.addEventListener("blur", () => clearFocus(c));
       c.addEventListener("pointerdown", (e) => {
         if (!interactiveRef.current || disabledRef.current || busy || held || !isActive(c)) return; // 원본: busy||curAxis()<0 게이트의 다크 등가
         e.preventDefault();
@@ -444,6 +555,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         drag = false;
         vx = 0;
         lx = e.clientX;
+        focusCard(c);
       });
       c.addEventListener("pointermove", (e) => {
         if (pid === null) return;
@@ -458,11 +570,12 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
           drag = true;
           busy = true;
           const g = geom();
-          const b = c.getBoundingClientRect();
+          const b = visualRect(c);
           ox = b.left + b.width / 2;
           oy = b.top + b.height / 2;
           clone = makeClone(ox, oy, absAngle(c), g.cw, g.ch);
           c.classList.add("ghost");
+          clearFocus(c);
         }
         if (drag && clone) {
           vx = vx * 0.8 + (e.clientX - lx) * 0.2;
@@ -538,6 +651,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         }
         drag = false;
         busy = false;
+        clearFocus(c);
       }
       c.addEventListener("pointerup", up);
       c.addEventListener("pointercancel", cancel);
@@ -547,6 +661,25 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       c.addEventListener("keydown", (e) => {
         if (
           interactiveRef.current &&
+          (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "Home") &&
+          !disabledRef.current &&
+          !busy &&
+          !held
+        ) {
+          e.preventDefault();
+          const ordered = activeCardsInVisualOrder();
+          const currentIndex = ordered.indexOf(c);
+          const next = e.key === "Home"
+            ? activeApexCard()
+            : ordered[Math.max(0, Math.min(
+                ordered.length - 1,
+                currentIndex + (e.key === "ArrowLeft" ? -1 : 1),
+              ))];
+          if (next) setRovingCard(next, true);
+          return;
+        }
+        if (
+          interactiveRef.current &&
           (e.key === "Enter" || e.key === " ") &&
           !disabledRef.current &&
           !busy &&
@@ -554,7 +687,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
           isActive(c)
         ) {
           e.preventDefault();
-          drawToReel(c);
+          drawToReel(c, true);
         }
       });
     };
@@ -562,6 +695,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     const buildWheel = () => {
       wheel.innerHTML = "";
       cardsEl = [];
+      clearFocus();
       WP = wheelParams();
       wasMobile = mobile();
       const g = geom();
@@ -575,7 +709,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         c.style.top = `${-g.ch / 2}px`;
         if (interactiveRef.current) {
           c.setAttribute("role", "button");
-          c.setAttribute("tabindex", "0");
+          c.setAttribute("tabindex", "-1");
         } else {
           c.setAttribute("aria-hidden", "true");
         }
@@ -589,40 +723,103 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         attach(c);
         if (!RM)
           c.animate([{ opacity: 0 }, { opacity: 1 }], {
-            duration: 600,
-            delay: 120 + i * 6,
-            easing: "ease-out",
+            duration: 260,
+            delay: 60 + i * 4,
+            easing: "cubic-bezier(.23,1,.32,1)",
             fill: "backwards",
           });
       }
       restack();
       positionWheel();
+      setRovingCard(activeApexCard());
     };
 
-    const loop = (now: number) => {
-      if (disposed) return;
+    const canAnimate = () => !RM && pageVisible && inViewport;
+    const stopLoop = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+      last = 0;
+      host.dataset.motion = RM ? "reduced" : "paused";
+    };
+    const scheduleLoop = () => {
+      if (disposed || !canAnimate() || raf) return;
+      host.dataset.motion = "running";
+      raf = requestAnimationFrame(loop);
+    };
+    function loop(now: number) {
+      raf = 0;
+      if (disposed || !canAnimate()) {
+        stopLoop();
+        return;
+      }
       if (!entT0) entT0 = now;
       if (!entered) {
-        const p = Math.min(1, (now - entT0) / (RM ? 1 : 3200));
-        wheelAngle = -12 * (1 - easeIO(p)); // 진입 스윕
-        if (p >= 1) {
+        if (focusedCard || hoverSlow) {
+          // 사용자가 덱을 가리키면 진입 스윕도 그 자리에서 멈춘다.
+          // 그래야 양 끝의 카드 중심이 포인터 아래에서 미끄러지지 않는다.
           entered = true;
-          sweptRef.current = true; // 완주한 뒤에만 기록 — StrictMode 재실행에도 첫 스윕 보장
+          sweptRef.current = true;
           last = now;
+          speed = 0;
+        } else {
+          const p = Math.min(1, (now - entT0) / 3200);
+          wheelAngle = -12 * (1 - easeIO(p)); // 진입 스윕
+          if (p >= 1) {
+            entered = true;
+            sweptRef.current = true; // 완주한 뒤에만 기록 — StrictMode 재실행에도 첫 스윕 보장
+            last = now;
+          }
         }
       } else {
         const dt = Math.min(0.05, (now - (last || now)) / 1000);
         last = now;
-        const t = targetSpeed * (hoverSlow ? (busy || held ? 0.05 : 0.25) : 1);
-        speed += (t - speed) * Math.min(1, dt * 3);
+        const pointingAtDeck = Boolean(focusedCard || hoverSlow);
+        const t = pointingAtDeck ? 0 : targetSpeed;
+        speed = pointingAtDeck ? 0 : speed + (t - speed) * Math.min(1, dt * 3);
         wheelAngle = (wheelAngle + speed * dt) % 360; // 드리프트 1.1°/s
         recycle();
       }
-      wheel.style.transform = `rotate(${wheelAngle}deg)`;
-      raf = requestAnimationFrame(loop);
-    };
+      wheel!.style.transform = `rotate(${wheelAngle}deg)`;
+      if (now >= nextRovingSyncAt) {
+        syncRovingCard();
+        nextRovingSyncAt = now + 350;
+      }
+      scheduleLoop();
+    }
 
     let rz: ReturnType<typeof setTimeout>;
+    const onHostPointerMove = (event: PointerEvent) => {
+      if (!compact || event.pointerType === "touch" || busy || held) return;
+      let next: WCard | null = null;
+      let closestDistance = Infinity;
+      activeCardsInVisualOrder().forEach((card) => {
+        if (card.classList.contains("ghost")) return;
+        const rect = card.getBoundingClientRect();
+        const distance = Math.abs(event.clientX - (rect.left + rect.width / 2));
+        if (distance < closestDistance) {
+          next = card;
+          closestDistance = distance;
+        }
+      });
+      if (next) focusCard(next);
+    };
+    const onHostPointerLeave = () => clearFocus();
+    host.addEventListener("pointermove", onHostPointerMove);
+    host.addEventListener("pointerleave", onHostPointerLeave);
+    const onVisibilityChange = () => {
+      pageVisible = document.visibilityState !== "hidden";
+      if (pageVisible) scheduleLoop();
+      else stopLoop();
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    const visibilityObserver = typeof IntersectionObserver === "undefined"
+      ? null
+      : new IntersectionObserver(([entry]) => {
+          inViewport = entry?.isIntersecting ?? true;
+          if (inViewport) scheduleLoop();
+          else stopLoop();
+        }, { rootMargin: "80px" });
+    visibilityObserver?.observe(host);
     const onResize = () => {
       clearTimeout(rz);
       rz = setTimeout(() => {
@@ -634,9 +831,19 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     addEventListener("resize", onResize);
 
     buildWheel();
-    raf = requestAnimationFrame(loop);
+    if (RM) {
+      entered = true;
+      sweptRef.current = true;
+      wheel.style.transform = "rotate(0deg)";
+      host.dataset.motion = "reduced";
+    } else {
+      scheduleLoop();
+    }
 
-    skinRef.current = () => cardsEl.forEach(skin);
+    skinRef.current = () => {
+      cardsEl.forEach(skin);
+      syncRovingCard();
+    };
     // 한 번에 뽑기 핸들 (원본 autoAll의 1스텝) — 부모가 430ms 간격으로 순차 호출한다.
     apiRef.current = {
       hold: (on) => {
@@ -649,7 +856,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
         if (!rect || !c) return false;
         busy = true;
         const gm = geom();
-        const b = c.getBoundingClientRect();
+        const b = visualRect(c);
         const cx = b.left + b.width / 2;
         const cy = b.top + b.height / 2;
         const a0 = absAngle(c);
@@ -673,6 +880,10 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       apiRef.current = null;
       cancelAnimationFrame(raf);
       clearTimeout(rz);
+      host.removeEventListener("pointermove", onHostPointerMove);
+      host.removeEventListener("pointerleave", onHostPointerLeave);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      visibilityObserver?.disconnect();
       removeEventListener("resize", onResize);
       flies.forEach((f) => f.remove());
       flies.clear();
@@ -689,6 +900,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
       data-variant={variant}
       data-disabled={disabled ? "true" : undefined}
       data-interactive={interactive ? undefined : "false"}
+      role={interactive ? "group" : undefined}
       aria-label={interactive ? "카드 덱 — 끌어 놓거나 탭해서 칸을 채워보세요" : "카드 덱"}
       aria-hidden={interactive ? undefined : true}
     >

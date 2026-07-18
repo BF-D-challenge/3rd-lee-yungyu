@@ -15,8 +15,8 @@ export function ProgressDots({ total, current, className }: ProgressDotsProps) {
         <span
           key={i}
           className={cn(
-            "h-1.5 rounded-full transition-all duration-300",
-            i === current ? "w-5 bg-gold" : "w-1.5 bg-white/20",
+            "h-1.5 w-5 origin-center rounded-full transition-transform duration-[200ms] ease-out",
+            i === current ? "scale-x-100 bg-gold" : "scale-x-[.3] bg-white/20",
           )}
         />
       ))}

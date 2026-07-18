@@ -258,7 +258,7 @@ export const SlotCell = forwardRef<HTMLDivElement, SlotCellProps>(function SlotC
               aria-pressed={locked || undefined}
               title="고정하면 전체 다시 뽑기에도 안 바뀌어요"
               className={cn(
-                "absolute left-1.5 top-1.5 z-10 grid h-5 w-5 place-items-center rounded-full text-[9px] transition-all sm:h-6 sm:w-6 sm:text-[10px]",
+                "ui-motion absolute left-1.5 top-1.5 z-10 grid h-5 w-5 place-items-center rounded-full text-[9px] sm:h-6 sm:w-6 sm:text-[10px]",
                 locked
                   ? "bg-glow/90 text-black"
                   : "glass text-mist opacity-60 hover:opacity-100",

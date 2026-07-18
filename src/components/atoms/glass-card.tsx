@@ -6,13 +6,13 @@ export interface GlassCardProps extends HTMLAttributes<HTMLDivElement> {
   gold?: boolean;
 }
 
-/** glassmorphism 2.0 기본 표면 (PRD §7) — 패널·카드·시트 공통 */
+/** 콘텐츠는 불투명 표면을 기본으로 하고, 부상 레이어만 glass를 사용한다. */
 export function GlassCard({ className, strong = false, gold = false, ...props }: GlassCardProps) {
   return (
     <div
       className={cn(
         "rounded-card",
-        gold ? "glass-gold" : strong ? "glass-strong" : "glass",
+        gold ? "glass-gold" : strong ? "glass-strong" : "surface-card",
         className,
       )}
       {...props}

@@ -39,13 +39,13 @@ const config: Config = {
         glass: "24px",
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "sans-serif"],
-        serif: ["var(--font-serif)", "serif"],
+        sans: ["var(--font-sans)"],
+        serif: ["var(--font-sans)"],
         swash: ["var(--font-swash)", "cursive"],
       },
       maxWidth: {
         wide: "1160px",
-        narrow: "560px",
+        narrow: "440px",
       },
     },
   },

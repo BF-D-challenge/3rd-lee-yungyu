@@ -1,5 +1,5 @@
 ---
-name: material-design-3
+name: design-google
 description: >
   Local-first Material Design 3 (M3, Material You) guidance for components,
   design tokens, color, typography, shape, elevation, motion, accessibility,
@@ -37,14 +37,14 @@ M3 perspective.
 2. Run `scripts/query_m3.py`. From the repository root:
 
    ```bash
-   python3 .claude/skills/material-design-3/scripts/query_m3.py \
+   python3 .claude/skills/design-google/scripts/query_m3.py \
      "navigation rail selection indicator" --component "navigation rail"
    ```
 
    From the runtime-synced skill:
 
    ```bash
-   python3 /Users/yungyulee/.agents/skills/material-design-3/scripts/query_m3.py \
+   python3 /Users/yungyulee/.agents/skills/design-google/scripts/query_m3.py \
      "compact window navigation" --page-type "adaptive"
    ```
 
@@ -133,18 +133,18 @@ files again and base the answer on those records.
 
 ```bash
 # Free-text component guidance
-python3 .claude/skills/material-design-3/scripts/query_m3.py \
+python3 .claude/skills/design-google/scripts/query_m3.py \
   "button disabled state accessibility" --component button --limit 5
 
 # Token lookup as machine-readable output
-python3 .claude/skills/material-design-3/scripts/query_m3.py \
+python3 .claude/skills/design-google/scripts/query_m3.py \
   "md sys color primary" --json
 
 # Page-pattern filter
-python3 .claude/skills/material-design-3/scripts/query_m3.py \
+python3 .claude/skills/design-google/scripts/query_m3.py \
   "navigation changes across window sizes" --page-type adaptive
 
 # Explicit corpus override
-python3 .claude/skills/material-design-3/scripts/query_m3.py \
+python3 .claude/skills/design-google/scripts/query_m3.py \
   "emphasized easing" --corpus /path/to/material-design-3
 ```

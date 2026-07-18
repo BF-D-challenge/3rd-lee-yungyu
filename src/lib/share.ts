@@ -2,6 +2,7 @@
 import type { Combo } from "./draw";
 import { formatById, painById, type Track } from "./combos";
 import { decodeBinaryBase64Url, encodeBinaryBase64Url } from "./base64-url";
+import { isFeedbackWriteAccess, type FeedbackWriteAccess } from "./feedback-access";
 
 export interface CardPayload {
   seedId: string;
@@ -20,6 +21,8 @@ export interface CardPayload {
   fromName?: string;
   /** 이 카드를 만든 다중 취향 중 직접 사용한 항목. 응원 후 같은 방향으로 이어갈 때 사용한다. */
   preferenceId?: string;
+  /** 수신자는 이 쓰기 capability만 받는다. 소유자 읽기 토큰은 URL에 넣지 않는다. */
+  feedback?: FeedbackWriteAccess;
 }
 
 export const toPayload = (c: Combo, fromName?: string, preferenceId?: string): CardPayload => ({
@@ -48,7 +51,12 @@ export function decodeSlug(slug: string): CardPayload | null {
   try {
     const payload = JSON.parse(decodeURIComponent(decodeBinaryBase64Url(slug))) as CardPayload;
     // 최소 무결성: 참조 데이터가 실제로 존재해야 렌더 가능
-    if (!payload.seedLabel || !painById(payload.painId) || !formatById(payload.formatId)) return null;
+    if (
+      !payload.seedLabel
+      || !painById(payload.painId)
+      || !formatById(payload.formatId)
+      || (payload.feedback !== undefined && !isFeedbackWriteAccess(payload.feedback))
+    ) return null;
     return payload;
   } catch {
     return null;
@@ -66,6 +74,7 @@ export interface DuelPayload {
   parentRoundId?: string | null;
   rootRoundId?: string;
   preferenceIds?: string[];
+  feedback?: FeedbackWriteAccess;
 }
 
 export interface RoundMeta {
@@ -73,6 +82,7 @@ export interface RoundMeta {
   parentRoundId?: string | null;
   rootRoundId: string;
   preferenceIds?: string[];
+  feedback?: FeedbackWriteAccess;
 }
 
 const DUEL_VERSION = 2;
@@ -82,7 +92,12 @@ const isRenderable = (p: CardPayload | undefined): p is CardPayload =>
   Boolean(p && p.seedLabel && painById(p.painId) && formatById(p.formatId));
 
 export function encodeDuelSlug(a: CardPayload, b: CardPayload, meta?: RoundMeta): string {
-  const json = JSON.stringify(meta ? { v: DUEL_VERSION, a, b, ...meta } : { v: 1, a, b });
+  // 대결 링크에는 대결용 쓰기 권한만 넣고, 원본 카드의 별도 쓰기 권한은 노출하지 않는다.
+  const safeA = { ...a };
+  const safeB = { ...b };
+  delete safeA.feedback;
+  delete safeB.feedback;
+  const json = JSON.stringify(meta ? { v: DUEL_VERSION, a: safeA, b: safeB, ...meta } : { v: 1, a: safeA, b: safeB });
   return encodeBinaryBase64Url(encodeURIComponent(json));
 }
 
@@ -96,9 +111,11 @@ export function decodeDuelSlug(slug: string): DuelPayload | null {
       parentRoundId?: string | null;
       rootRoundId?: string;
       preferenceIds?: string[];
+      feedback?: FeedbackWriteAccess;
     };
     if ((parsed.v !== 1 && parsed.v !== DUEL_VERSION) || !isRenderable(parsed.a) || !isRenderable(parsed.b)) return null;
     if (parsed.v === DUEL_VERSION && (!parsed.roundId || !parsed.rootRoundId)) return null;
+    if (parsed.feedback !== undefined && !isFeedbackWriteAccess(parsed.feedback)) return null;
     return {
       a: parsed.a,
       b: parsed.b,
@@ -108,6 +125,7 @@ export function decodeDuelSlug(slug: string): DuelPayload | null {
       ...(Array.isArray(parsed.preferenceIds)
         ? { preferenceIds: parsed.preferenceIds.filter((value): value is string => typeof value === "string") }
         : {}),
+      ...(parsed.feedback ? { feedback: parsed.feedback } : {}),
     };
   } catch {
     return null;

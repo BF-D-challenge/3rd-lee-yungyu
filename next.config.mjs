@@ -4,6 +4,10 @@
 //   Vercel에서는 SUPABASE_URL / SUPABASE_PUBLISHABLE_KEY 두 개만 넣으면 된다.
 //   publishable(anon) 키는 공개 안전 — 데이터는 RLS로 보호.
 const nextConfig = {
+  // 로컬 앱과 Playwright가 동시에 떠도 서로 다른 번들/env 값을 덮어쓰지 않는다.
+  distDir: process.env.NEXT_DIST_DIR ?? ".next",
+  // 상위 홈 디렉터리의 무관한 lockfile을 앱 루트로 오인하지 않게 고정한다.
+  outputFileTracingRoot: process.cwd(),
   env: {
     NEXT_PUBLIC_SUPABASE_URL:
       process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL ?? "",
