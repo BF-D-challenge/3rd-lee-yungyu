@@ -191,10 +191,17 @@ export async function drawAll(page: Page) {
 
 export async function shareIdeaFromResult(page: Page) {
   await page.getByRole("button", {
-    name: "공유하고 결과 보기",
+    name: "공유하고 제작 자료 3개 열기",
     exact: true,
   }).click();
+  await chooseKakaoShare(page);
   await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
+}
+
+export async function chooseKakaoShare(page: Page) {
+  const shareSheet = page.getByRole("dialog", { name: "공유", exact: true });
+  await expect(shareSheet).toBeVisible();
+  await shareSheet.getByRole("button", { name: "카카오톡", exact: true }).click();
 }
 
 export async function seedPraiseStorage(

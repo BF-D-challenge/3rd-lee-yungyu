@@ -229,6 +229,160 @@ textarea:focus-visible,
   }
 }
 
+/* 공유 하단 시트: 결과 화면의 맥락을 남긴 채 선택지만 전경으로 올린다. */
+.share-sheet__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.share-sheet__overlay[data-state="open"] {
+  animation: share-sheet-overlay-in 160ms ease-out both;
+}
+
+.share-sheet__overlay[data-state="closed"] {
+  animation: share-sheet-overlay-out 140ms ease-in both;
+}
+
+.share-sheet__content {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 81;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 10px 20px max(24px, env(safe-area-inset-bottom));
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-bottom: 0;
+  border-radius: 26px 26px 0 0;
+  outline: none;
+  background: #1c1c1f;
+  box-shadow: 0 -18px 52px rgba(0, 0, 0, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: var(--ink);
+}
+
+.share-sheet__content[data-state="open"] {
+  animation: share-sheet-content-in 240ms var(--ease-drawer) both;
+}
+
+.share-sheet__content[data-state="closed"] {
+  animation: share-sheet-content-out 180ms ease-in both;
+}
+
+.share-sheet__handle {
+  width: 42px;
+  height: 5px;
+  margin: 0 auto 14px;
+  border-radius: 999px;
+  background: rgba(235, 235, 245, 0.28);
+}
+
+.share-sheet__title {
+  margin: 0;
+  color: #f5f5f7;
+  font-size: 20px;
+  font-weight: 850;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.share-sheet__description {
+  margin: 4px 0 0;
+  color: rgba(235, 235, 245, 0.58);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.share-sheet__channels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.share-sheet__channel {
+  display: flex;
+  min-width: 0;
+  min-height: 104px;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 0 0;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: rgba(245, 245, 247, 0.86);
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: color 160ms ease-out, transform 160ms ease-out;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.share-sheet__channel:active {
+  transform: scale(0.97);
+}
+
+.share-sheet__icon {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 7px 20px rgba(0, 0, 0, 0.2);
+}
+
+.share-sheet__icon--instagram {
+  background: linear-gradient(145deg, #833ab4 5%, #fd1d1d 53%, #fcb045 100%);
+  color: #fff;
+}
+
+.share-sheet__icon--kakao {
+  background: #fee500;
+  color: #191600;
+}
+
+.share-sheet__icon--copy {
+  background: #353539;
+  color: #f5f5f7;
+}
+
+@keyframes share-sheet-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes share-sheet-overlay-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes share-sheet-content-in {
+  from {
+    opacity: 0.9;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes share-sheet-content-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(100%);
+  }
+}
+
 /* 히어로 발행 전환: 센터 카드가 한 바퀴(360deg) 플립한 뒤 확대되며 다음 화면으로 이어진다.
    backface-visibility를 숨기지 않아 회전 중 같은 면이 그대로 비쳐 보이는 '스핀' 느낌(뒷면 리빌 아님). */
 .hero-launch {
@@ -263,11 +417,18 @@ textarea:focus-visible,
   .hero-launch {
     animation: none !important;
   }
+  .share-sheet__overlay[data-state],
+  .share-sheet__content[data-state] {
+    animation: bloom 120ms ease-out both;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
   .aurora:hover {
     background: var(--action-primary-hover);
+  }
+  .share-sheet__channel:hover {
+    color: #fff;
   }
 }
 

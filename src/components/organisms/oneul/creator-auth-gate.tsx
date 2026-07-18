@@ -42,12 +42,28 @@ const PREVIEW_CARDS: DeckCard[] = Array.from({ length: 24 }, (_, index) => {
     label: PREVIEW_AXIS_LABELS[axis],
   };
 });
-const AUTO_PREVIEW_STOPS = [-0.68, -0.24, 0.3, 0.7, 0.12, -0.48];
+const AUTO_PREVIEW_STOPS = [-0.76, -0.4, -0.04, 0.32, 0.68, 0.32, -0.04, -0.4];
+const CURSOR_TRAVEL_PX = 118;
+const CURSOR_MAX_STEP_PX = 1;
+const CURSOR_MS_PER_PIXEL = 34;
+const CURSOR_MIN_DURATION_MS = 680;
+const CURSOR_START_DELAY_MS = 720;
+const CURSOR_STOP_PAUSE_MS = 180;
+
+const easeInOutSine = (progress: number): number =>
+  -(Math.cos(Math.PI * progress) - 1) / 2;
+
+export const stepCursorByOnePixel = (current: number, desired: number): number => {
+  const delta = Math.round(desired) - current;
+  if (delta === 0) return current;
+  return current + Math.sign(delta) * Math.min(CURSOR_MAX_STEP_PX, Math.abs(delta));
+};
 
 function InvertedDeckPreview() {
   const deckRef = useRef<FanDeckHandle>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const cursorPixelRef = useRef(Math.round(AUTO_PREVIEW_STOPS[0] * CURSOR_TRAVEL_PX));
   const resumeTimerRef = useRef<number | null>(null);
-  const [cursorPosition, setCursorPosition] = useState(AUTO_PREVIEW_STOPS[0]);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [autoplay, setAutoplay] = useState(true);
 
@@ -66,22 +82,57 @@ function InvertedDeckPreview() {
     }
     if (!autoplay) return;
 
-    let interval: number | null = null;
-    let index = -1;
+    let frame: number | null = null;
+    let timer: number | null = null;
+    let index = 0;
+    let disposed = false;
+
+    const writeCursorPixel = (pixel: number) => {
+      cursorPixelRef.current = pixel;
+      cursorRef.current?.style.setProperty("--deck-cursor-shift", `${pixel}px`);
+      deckRef.current?.previewAt(pixel / CURSOR_TRAVEL_PX);
+    };
+
+    const animateTo = (position: number, done: () => void) => {
+      const startPixel = cursorPixelRef.current;
+      const targetPixel = Math.round(position * CURSOR_TRAVEL_PX);
+      const distance = Math.abs(targetPixel - startPixel);
+      const duration = Math.max(CURSOR_MIN_DURATION_MS, distance * CURSOR_MS_PER_PIXEL);
+      const startedAt = performance.now();
+
+      const tick = (now: number) => {
+        if (disposed) return;
+        const progress = Math.min(1, (now - startedAt) / duration);
+        const desiredPixel =
+          startPixel + (targetPixel - startPixel) * easeInOutSine(progress);
+        const nextPixel = stepCursorByOnePixel(cursorPixelRef.current, desiredPixel);
+        if (nextPixel !== cursorPixelRef.current) writeCursorPixel(nextPixel);
+
+        if (progress < 1 || cursorPixelRef.current !== targetPixel) {
+          frame = window.requestAnimationFrame(tick);
+        } else {
+          frame = null;
+          done();
+        }
+      };
+
+      frame = window.requestAnimationFrame(tick);
+    };
+
     const advance = () => {
       index = (index + 1) % AUTO_PREVIEW_STOPS.length;
-      const next = AUTO_PREVIEW_STOPS[index];
-      setCursorPosition(next);
-      deckRef.current?.previewAt(next);
+      animateTo(AUTO_PREVIEW_STOPS[index], () => {
+        timer = window.setTimeout(advance, CURSOR_STOP_PAUSE_MS);
+      });
     };
-    const startTimer = window.setTimeout(() => {
-      advance();
-      interval = window.setInterval(advance, 760);
-    }, 180);
+
+    writeCursorPixel(cursorPixelRef.current);
+    timer = window.setTimeout(advance, CURSOR_START_DELAY_MS);
 
     return () => {
-      window.clearTimeout(startTimer);
-      if (interval !== null) window.clearInterval(interval);
+      disposed = true;
+      if (frame !== null) window.cancelAnimationFrame(frame);
+      if (timer !== null) window.clearTimeout(timer);
     };
   }, [autoplay, reducedMotion]);
 
@@ -110,7 +161,7 @@ function InvertedDeckPreview() {
 
   return (
     <div
-      className="deck-preview relative left-1/2 h-[196px] w-[calc(100%+3rem)] max-w-[440px] -translate-x-1/2 overflow-hidden"
+      className="deck-preview relative left-1/2 h-[196px] w-[calc(100%+3rem)] max-w-[440px] shrink-0 -translate-x-1/2 overflow-hidden"
       data-auto-preview={reducedMotion ? "reduced" : autoplay ? "playing" : "paused"}
       onPointerEnter={pauseAutoplay}
       onPointerLeave={resumeAutoplay}
@@ -137,12 +188,13 @@ function InvertedDeckPreview() {
           transform: rotate(180deg) scale(.86);
           transform-origin: 50% 50%;
         }
+        .deck-preview .fd-card .pull {
+          transition: transform 360ms cubic-bezier(.23,1,.32,1);
+        }
         .deck-preview__cursor {
           opacity: 0;
           transform: translate3d(calc(-50% + var(--deck-cursor-shift)), 0, 0);
-          transition:
-            transform 520ms cubic-bezier(.65,0,.35,1),
-            opacity 120ms ease-out;
+          transition: opacity 120ms ease-out;
           will-change: transform;
         }
         .deck-preview[data-auto-preview="playing"] .deck-preview__cursor {
@@ -154,6 +206,9 @@ function InvertedDeckPreview() {
         @media (prefers-reduced-motion: reduce) {
           .deck-preview__cursor {
             display: none;
+            transition: none;
+          }
+          .deck-preview .fd-card .pull {
             transition: none;
           }
         }
@@ -168,6 +223,8 @@ function InvertedDeckPreview() {
             axisLabels={PREVIEW_AXIS_LABELS}
             interactive
             previewOnly
+            entranceDurationMs={900}
+            entranceSweepDegrees={18}
             aimAxis={null}
             getTargetRect={() => null}
             onDragOver={() => undefined}
@@ -176,9 +233,12 @@ function InvertedDeckPreview() {
         </div>
       </div>
       <div
+        ref={cursorRef}
         className="deck-preview__cursor pointer-events-none absolute left-1/2 top-[92px] z-20"
+        data-step-px={CURSOR_MAX_STEP_PX}
+        data-easing="ease-in-out"
         style={{
-          "--deck-cursor-shift": `${cursorPosition * 118}px`,
+          "--deck-cursor-shift": `${Math.round(AUTO_PREVIEW_STOPS[0] * CURSOR_TRAVEL_PX)}px`,
         } as CSSProperties}
       >
         <MousePointer2
@@ -233,7 +293,7 @@ export function CreatorAuthGate({ children }: { children: ReactNode }) {
 
   return (
     <div className="flex min-h-dvh justify-center bg-bg text-ink">
-      <main className="relative flex min-h-dvh w-full max-w-[440px] flex-col overflow-x-hidden overflow-y-auto border-x border-white/[.05] bg-bg px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] shadow-[0_40px_120px_rgba(0,0,0,.55)]">
+      <main className="relative flex min-h-dvh w-full max-w-[440px] flex-col overflow-x-hidden overflow-y-auto border-x border-white/[.05] bg-bg px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-[env(safe-area-inset-top)] shadow-[0_40px_120px_rgba(0,0,0,.55)]">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"
@@ -243,23 +303,24 @@ export function CreatorAuthGate({ children }: { children: ReactNode }) {
           }}
         />
 
-        <header className="relative z-10 flex min-h-12 items-center">
-          <span className="text-sm font-black tracking-[-.025em] text-primary">오늘 해볼까</span>
-        </header>
-
-        <section className="relative z-10 my-auto py-3 text-center" aria-labelledby="creator-login-title">
+        <section
+          className="relative z-10 flex min-h-0 flex-1 flex-col text-center"
+          aria-labelledby="creator-login-title"
+        >
           <InvertedDeckPreview />
-          <h1
-            id="creator-login-title"
-            className="mx-auto mt-3 max-w-[340px] text-[32px] font-extrabold leading-[1.16] tracking-[-.04em] text-ink"
-          >
-            <span className="block">오늘 뭐 만들지.</span>
-            <span className="block">카드에게 물어보세요.</span>
-          </h1>
-          <p className="mx-auto mt-4 max-w-[300px] text-sm leading-6 text-mist">
-            <span className="block">아무 생각 없이 네 장만 뽑아보세요.</span>
-            <span className="block">오늘 시작할 아이디어가 나타나요.</span>
-          </p>
+          <div className="flex flex-1 flex-col items-center justify-center py-4">
+            <h1
+              id="creator-login-title"
+              className="mx-auto max-w-[340px] text-center text-[32px] font-extrabold leading-[1.16] tracking-[-.04em] text-ink"
+            >
+              <span className="block">오늘 뭐 만들지.</span>
+              <span className="block">카드에게 물어보세요.</span>
+            </h1>
+            <p className="mx-auto mt-4 max-w-[300px] text-center text-sm leading-6 text-mist">
+              <span className="block">아무 생각 없이 네 장만 뽑아보세요.</span>
+              <span className="block">오늘 시작할 아이디어가 나타나요.</span>
+            </p>
+          </div>
         </section>
 
         <section className="relative z-10">

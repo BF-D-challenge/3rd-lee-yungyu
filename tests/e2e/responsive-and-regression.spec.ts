@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { expect, test, type Page } from "@playwright/test";
 import {
+  chooseKakaoShare,
   FIXED_NOW,
   drawAll,
   installShareMock,
@@ -59,7 +60,7 @@ test("Scenario 14: Primary 단일색과 네 분류 의미색, dark color scheme�
   await goResult(page);
   await page.mouse.move(0, 0); // 방금 클릭한 위치의 :hover 색이 잡히지 않도록 포인터를 치운다
   const shareButton = page.getByRole("button", {
-    name: "공유하고 결과 보기",
+    name: "공유하고 제작 자료 3개 열기",
     exact: true,
   });
   await expect(shareButton).toHaveCSS("background-color", ACTION_PRIMARY_RGB);
@@ -164,11 +165,22 @@ test("Step 2: 원본 비율의 카드 한 장에 집중하고 다음 카드는 �
     return (button.lastElementChild as HTMLElement).style.borderRadius;
   }));
   expect(filledRadii).toEqual(["8px"]);
-  const textLimits = await page.locator(".idea-lab__slot.is-filled .idea-lab__card-frame").evaluate((frame) => ({
-    title: frame.querySelector<HTMLElement>("strong")?.style.webkitLineClamp,
-    detail: frame.querySelector<HTMLElement>("p")?.style.webkitLineClamp,
-  }));
-  expect(textLimits).toEqual({ title: "3", detail: "2" });
+  const textLimits = await page.locator(".idea-lab__slot.is-filled .idea-lab__card-frame").evaluate((frame) => {
+    const title = frame.querySelector<HTMLElement>("[data-card-title]")!;
+    const body = frame.querySelector<HTMLElement>("[data-card-body]")!;
+    const titleStyle = getComputedStyle(title);
+    const bodyStyle = getComputedStyle(body);
+    return {
+      titleClamp: title.style.webkitLineClamp,
+      bodyClamp: body.style.webkitLineClamp,
+      titleLeading: Number.parseFloat(titleStyle.lineHeight) / Number.parseFloat(titleStyle.fontSize),
+      bodyLeading: Number.parseFloat(bodyStyle.lineHeight) / Number.parseFloat(bodyStyle.fontSize),
+    };
+  });
+  expect(textLimits.titleClamp).toBe("3");
+  expect(textLimits.bodyClamp).toBe("2");
+  expect(textLimits.titleLeading).toBeCloseTo(1.5, 2);
+  expect(textLimits.bodyLeading).toBeCloseTo(1.75, 2);
 });
 
 test("Step 3: 현재 빈칸을 채우면 다음 카드가 옆에서 중앙으로 들어온다", async ({ page }) => {
@@ -190,7 +202,13 @@ test("Step 3: 현재 빈칸을 채우면 다음 카드가 옆에서 중앙으로
   const initial = await readEmptyStates();
   expect(initial).toHaveLength(4);
   expect(initial[0]).toMatchObject({ current: true, borderStyle: "dashed" });
-  expect(initial[0].text).toContain("눌러서 카드 뽑기");
+  expect(initial[0].text).toContain("카드를 눌러 뽑거나");
+  expect(initial[0].text).toContain("아래 덱에서 끌어 놓으세요");
+  const activeGuide = page.locator(".idea-lab__slot.is-carousel-active [data-empty-guide]");
+  await expect(activeGuide).toBeVisible();
+  expect(
+    await activeGuide.evaluate((guide) => Number.parseInt(getComputedStyle(guide).zIndex, 10)),
+  ).toBeGreaterThan(6);
   for (const state of initial.slice(1)) {
     expect(state).toMatchObject({ current: false, borderStyle: "dashed" });
     expect(state.text).toContain("?");
@@ -219,7 +237,8 @@ test("Step 3: 현재 빈칸을 채우면 다음 카드가 옆에서 중앙으로
   await expect(page.locator(".idea-lab__slot.is-carousel-previous .idea-lab__slot-label")).toContainText("검증된 원본");
   const next = await readEmptyStates();
   expect(next[1]).toMatchObject({ current: true, borderStyle: "dashed" });
-  expect(next[1].text).toContain("눌러서 카드 뽑기");
+  expect(next[1].text).toContain("카드를 눌러 뽑거나");
+  expect(next[1].text).toContain("아래 덱에서 끌어 놓으세요");
 
   const requestedSpacing = await page.evaluate(() => {
     const guide = document.querySelector<HTMLElement>(".idea-lab__appbar.is-guide")!;
@@ -714,7 +733,7 @@ test("Steps 4-9: 핵심 조작, 진행 표시, 색상 위계와 48px 접근성�
 
   await expect(page.locator(".idea-lab__rack")).toHaveCount(0);
   await expect(page.getByText("지금 채울 카드", { exact: false })).toHaveCount(0);
-  await expect(page.getByText("오늘 해볼까", { exact: true })).toHaveCount(1);
+  await expect(page.getByText("오늘 해볼까", { exact: true })).toHaveCount(0);
 
   const progress = page.getByRole("progressbar", { name: "아이디어 카드 완성도" });
   await expect(progress).toHaveAttribute("aria-valuenow", "0");
@@ -758,11 +777,21 @@ test("Steps 4-9: 핵심 조작, 진행 표시, 색상 위계와 48px 접근성�
       height: button.getBoundingClientRect().height,
       width: button.getBoundingClientRect().width,
     })));
-  expect(navTargets).toHaveLength(4);
+  expect(navTargets).toHaveLength(3);
   for (const target of navTargets) {
     expect(target.height).toBeGreaterThanOrEqual(48);
     expect(target.width).toBeGreaterThanOrEqual(48);
   }
+  const navAlignment = await page.evaluate(() => {
+    const nav = document.querySelector("nav")!.getBoundingClientRect();
+    const group = document.querySelector('[role="group"][aria-label="화면 전환"]')!
+      .getBoundingClientRect();
+    return {
+      navCenter: nav.left + nav.width / 2,
+      groupCenter: group.left + group.width / 2,
+    };
+  });
+  expect(Math.abs(navAlignment.navCenter - navAlignment.groupCenter)).toBeLessThanOrEqual(1);
   await expect(page.getByRole("button", { name: "아이디어 만들기", exact: true })).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByRole("button", { name: "받은 응원", exact: true })).toHaveAttribute("aria-pressed", "false");
 
@@ -1149,9 +1178,10 @@ test("Scenario 15b: 공유 뒤 같은 결과 화면에서 상세와 제작 자�
     main.getBoundingClientRect().width);
 
   await page.getByRole("button", {
-    name: "공유하고 결과 보기",
+    name: "공유하고 제작 자료 3개 열기",
     exact: true,
   }).click();
+  await chooseKakaoShare(page);
   await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
   await expect(page.locator(".idea-lab")).toHaveAttribute("data-stage", "result");
 

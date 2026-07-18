@@ -69,6 +69,27 @@ describe("shareToKakao", () => {
     expect(sendDefault).toHaveBeenCalledOnce();
   });
 
+  it("replaces a local receiver origin with the deployed public site", async () => {
+    const sendDefault = vi.fn();
+    vi.stubGlobal("window", {
+      location: { origin: "http://localhost:3000" },
+      Kakao: {
+        init: vi.fn(),
+        isInitialized: () => true,
+        Share: { sendDefault },
+      },
+    });
+
+    await shareToKakao("/praise/local-request?from=share");
+
+    expect(sendDefault).toHaveBeenCalledWith(expect.objectContaining({
+      link: {
+        mobileWebUrl: "https://bfd-seven.vercel.app/praise/local-request?from=share",
+        webUrl: "https://bfd-seven.vercel.app/praise/local-request?from=share",
+      },
+    }));
+  });
+
   it("fails closed instead of falling back when the Kakao SDK is unavailable", async () => {
     const nativeShare = vi.fn();
     const clipboardWrite = vi.fn();

@@ -41,6 +41,10 @@ export interface FanDeckProps {
   previewOnly?: boolean;
   /** 프로그램 비행 시간. 반복 흐름을 막지 않도록 260ms를 기본으로 사용한다. */
   flightDurationMs?: number;
+  /** 처음 펼쳐지는 덱 스윕 시간. 로그인 미리보기처럼 빠른 첫인상이 필요할 때만 줄인다. */
+  entranceDurationMs?: number;
+  /** 처음 펼쳐질 때 덱이 이동하는 각도. */
+  entranceSweepDegrees?: number;
   /** 현재 조준 축 = 다음 빈 필수 칸 (원본 curAxis). null이면 게이트 해제 → 카드 고유 축 */
   aimAxis: string | null;
   /** 게이트 해제 후 비활성 축(🔒 잠긴 축) — 해당 축 카드는 dim + 조준 불가 */
@@ -97,6 +101,8 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     interactive = true,
     previewOnly = false,
     flightDurationMs = 260,
+    entranceDurationMs = 3_200,
+    entranceSweepDegrees = 12,
     aimAxis,
     inactiveAxes,
     getTargetRect,
@@ -165,6 +171,7 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
 
     const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const easeIO = (p: number) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
+    const easeOut = (p: number) => 1 - Math.pow(1 - p, 3);
 
     let cardsEl: WCard[] = [];
     let busy = false;
@@ -800,8 +807,8 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
           last = now;
           speed = 0;
         } else {
-          const p = Math.min(1, (now - entT0) / 3200);
-          wheelAngle = -12 * (1 - easeIO(p)); // 진입 스윕
+          const p = Math.min(1, (now - entT0) / entranceDurationMs);
+          wheelAngle = -entranceSweepDegrees * (1 - easeOut(p)); // 진입 스윕
           if (p >= 1) {
             entered = true;
             sweptRef.current = true; // 완주한 뒤에만 기록 — StrictMode 재실행에도 첫 스윕 보장
@@ -954,7 +961,16 @@ export const FanDeck = forwardRef<FanDeckHandle, FanDeckProps>(function FanDeck(
     };
     // poolKey와 disabled가 덱 정체성 — disabled 전환 시 진행 중 body 클론까지 cleanup한다.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [disabled, flightDurationMs, interactive, poolKey, previewOnly, variant]);
+  }, [
+    disabled,
+    entranceDurationMs,
+    entranceSweepDegrees,
+    flightDurationMs,
+    interactive,
+    poolKey,
+    previewOnly,
+    variant,
+  ]);
 
   return (
     <div

@@ -1,3 +1,5 @@
+import { toPublicShareUrl } from "./public-share-url";
+
 export const KAKAO_JAVASCRIPT_SDK_URL =
   "https://t1.kakaocdn.net/kakao_js_sdk/2.8.1/kakao.min.js";
 export const KAKAO_JAVASCRIPT_SDK_INTEGRITY =
@@ -46,7 +48,6 @@ declare global {
 }
 
 const KAKAO_TEXT_LIMIT = 200;
-
 const compact = (value: string | undefined): string =>
   value?.replace(/\s+/g, " ").trim() ?? "";
 
@@ -91,7 +92,7 @@ export async function shareToKakao(
   }
 
   try {
-    const absoluteUrl = new URL(url, window.location.origin).toString();
+    const absoluteUrl = toPublicShareUrl(url);
     kakao.Share.sendDefault({
       objectType: "text",
       text: kakaoMessage(options.title, options.text),
