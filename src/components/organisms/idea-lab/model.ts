@@ -25,6 +25,7 @@ import { productIdentityForSource } from "./product-identities";
 export type ChoiceIndexes = Record<IdeaLabAxisId, number>;
 
 export const IDEA_LAB_SEEN_SCENARIOS_KEY = "oneul:idea-lab-seen-scenarios:v1";
+const IDEA_LAB_SCENARIO_ID_SET = new Set(IDEA_LAB_SCENARIOS.map((scenario) => scenario.id));
 
 /**
  * Claude 세션의 고품질 결과에서 반복된 생성 원리다. 카드 하나를 더 만드는
@@ -61,6 +62,23 @@ export function nextScenarioIndex(
     ? Math.min(0.999999, Math.max(0, randomValue))
     : 0;
   return candidates[Math.floor(normalizedRandom * candidates.length)].index;
+}
+
+/**
+ * 풀 소진 뒤 새 순환을 열 때 직전 원본만 제외한다.
+ * Set/localStorage의 삽입 순서 마지막 값이 실제 직전 뽑기이며, 새 마운트의 기본 index보다 우선한다.
+ */
+export function scenarioIdToAvoidForReuse(
+  seenScenarioIds: Iterable<string>,
+  currentIndex: number,
+) {
+  let lastSeenScenarioId: string | undefined;
+  for (const scenarioId of seenScenarioIds) {
+    if (IDEA_LAB_SCENARIO_ID_SET.has(scenarioId)) lastSeenScenarioId = scenarioId;
+  }
+  return lastSeenScenarioId
+    ?? IDEA_LAB_SCENARIOS[currentIndex]?.id
+    ?? IDEA_LAB_SCENARIOS[0].id;
 }
 
 export const optionFor = (

@@ -10,7 +10,12 @@ import {
   endAuthSession,
   type AuthSession,
 } from "@/lib/auth-session";
-import { track } from "@/lib/track";
+import { syncLocalPublishedCardsToAccount } from "@/lib/backend/published";
+import {
+  consumeIdeaResultLoginPending,
+  markIdeaResultLoginPending,
+} from "@/lib/idea-result-session";
+import { track, trackIdeaFunnelEvent } from "@/lib/track";
 
 type AuthState =
   | { status: "checking"; session: null }
@@ -22,6 +27,16 @@ export function AuthAccountMenu() {
   const [state, setState] = useState<AuthState>({ status: "checking", session: null });
   const [signingOut, setSigningOut] = useState(false);
   const [signOutError, setSignOutError] = useState("");
+
+  const recordResultLogin = (session: AuthSession, entry: "header" | "dialog") => {
+    const result = consumeIdeaResultLoginPending();
+    if (!result) return;
+    trackIdeaFunnelEvent("idea_login_after_result", {
+      scenario_id: result.scenarioId,
+      method: session.demo ? "demo" : "google",
+      entry,
+    });
+  };
 
   useEffect(() => {
     let active = true;
@@ -37,7 +52,9 @@ export function AuthAccountMenu() {
           method: session.demo ? "demo" : "google",
           entry: "header",
         });
+        recordResultLogin(session, "header");
       }
+      void syncLocalPublishedCardsToAccount();
       setState({ status: "authenticated", session });
     });
     return () => {
@@ -46,6 +63,8 @@ export function AuthAccountMenu() {
   }, []);
 
   const authenticated = (session: AuthSession) => {
+    recordResultLogin(session, "dialog");
+    void syncLocalPublishedCardsToAccount();
     setState({ status: "authenticated", session });
     setOpen(false);
   };
@@ -96,14 +115,14 @@ export function AuthAccountMenu() {
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="text-[11px] font-black text-primary">
-                {state.status === "authenticated" ? "내 계정" : "로그인 필요"}
+                {state.status === "authenticated" ? "내 계정" : "선택적 로그인"}
               </p>
               <Dialog.Title className="mt-1 text-xl font-black text-ink">
                 {state.status === "authenticated"
                   ? state.session.displayName
                     ? `${state.session.displayName}님으로 로그인했어요`
                     : "로그인되어 있어요"
-                  : "카드를 뽑으려면 로그인해 주세요"}
+                  : "필요할 때만 로그인하세요"}
               </Dialog.Title>
             </div>
             <Dialog.Close asChild>
@@ -122,8 +141,8 @@ export function AuthAccountMenu() {
             className="mt-3 text-sm leading-6 text-mist"
           >
             {state.status === "authenticated"
-              ? "다시 뽑기에서 고른 취향을 이 계정에 기억하고 추천에 반영해요."
-              : "Google 로그인 후 카드 뽑기와 누적 취향 추천을 다시 이용할 수 있어요."}
+              ? "다시 뽑기에서 고른 취향과 계정에 안전하게 연결된 카드를 이어볼 수 있어요."
+              : "지금 결과와 받은 응원은 로그인 없이 이 기기에 남아요. 로그인하면 취향과 이미 계정에 연결된 카드를 이어볼 수 있어요."}
           </Dialog.Description>
 
           {state.status === "anonymous" ? (
@@ -131,6 +150,7 @@ export function AuthAccountMenu() {
               <GoogleLoginButton
                 context="creator"
                 returnTo={typeof window === "undefined" ? "/" : window.location.href}
+                onBeforeAuth={markIdeaResultLoginPending}
                 onAuthenticated={authenticated}
               />
             </div>

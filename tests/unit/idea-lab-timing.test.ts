@@ -1,18 +1,18 @@
 import { describe, expect, it } from "vitest";
 import {
-  IDEA_LAB_READABLE_PAUSE_MS,
-  ideaLabReadablePauseMs,
+  IDEA_LAB_AUTO_ADVANCE_ENABLED,
+  ideaLabReadDurationMs,
 } from "../../src/lib/idea-lab-timing";
 
-describe("idea lab readable pause", () => {
-  it("keeps the production reading window at two and a half seconds", () => {
-    expect(IDEA_LAB_READABLE_PAUSE_MS).toBe(2_500);
-    expect(ideaLabReadablePauseMs()).toBe(2_500);
-    expect(ideaLabReadablePauseMs({ e2eOverride: "40" })).toBe(2_500);
+describe("Idea Lab timing", () => {
+  it("never advances a revealed card with a timer", () => {
+    expect(IDEA_LAB_AUTO_ADVANCE_ENABLED).toBe(false);
   });
 
-  it("accepts a shorter duration only for the explicit e2e build", () => {
-    expect(ideaLabReadablePauseMs({ e2e: true, e2eOverride: "40" })).toBe(40);
-    expect(ideaLabReadablePauseMs({ e2e: true, e2eOverride: "invalid" })).toBe(2_500);
+  it("records only a safe non-negative dwell duration", () => {
+    expect(ideaLabReadDurationMs(1_000, 3_512.4)).toBe(2_512);
+    expect(ideaLabReadDurationMs(null, 3_000)).toBe(0);
+    expect(ideaLabReadDurationMs(4_000, 3_000)).toBe(0);
+    expect(ideaLabReadDurationMs(Number.NaN, 3_000)).toBe(0);
   });
 });

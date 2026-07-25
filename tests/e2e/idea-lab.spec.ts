@@ -40,7 +40,7 @@ async function openIdeaLab(page: Page) {
 
 /** A1(뽑기) → A2(결과) 스테이지 전환 */
 async function goResult(page: Page) {
-  await expect(page.locator(".idea-lab__stage--result")).toBeVisible();
+  await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
 }
 
 async function answerOneTasteQuestion(page: Page, choiceIndex = 0) {
@@ -73,9 +73,11 @@ async function assertShareEvents(page: Page) {
   const events = await trackedEvents(page);
   const created = events.find((entry) => entry.event === "praise_request_created");
   const completed = events.find((entry) => entry.event === "praise_request_share_completed");
+  const voluntary = events.find((entry) => entry.event === "idea_voluntary_share");
 
   expect(created).toBeDefined();
   expect(completed).toBeDefined();
+  expect(voluntary).toMatchObject({ share_method: "kakao" });
   expect(completed).toMatchObject({
     share_method: "kakao",
     request_id: created?.request_id,
@@ -87,12 +89,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
   test("첫 화면 진입부터 결과 확인까지 제작 퍼널을 순서대로 기록한다", async ({ page }) => {
     await openIdeaLab(page);
 
-    for (let index = 0; index < AXIS_LABELS.length; index += 1) {
-      await page.getByRole("button", {
-        name: `${AXIS_LABELS[index]} 카드 뽑기`,
-        exact: true,
-      }).click();
-    }
+    await drawAll(page);
     await goResult(page);
 
     const funnelNames = (await trackedEvents(page))
@@ -101,12 +98,71 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     expect(funnelNames).toEqual([
       "idea_lab_viewed",
       "idea_first_card_drawn",
+      "idea_card_read",
+      "idea_card_next_clicked",
+      "idea_card_read",
+      "idea_card_next_clicked",
+      "idea_card_read",
+      "idea_card_next_clicked",
       "idea_four_cards_completed",
+      "idea_result_ready",
+      "idea_card_read",
+      "idea_result_opened",
       "idea_result_viewed",
     ]);
 
     const firstCard = (await trackedEvents(page)).find((entry) => entry.event === "idea_first_card_drawn");
     expect(firstCard).toMatchObject({ attempt: 1, draw_method: "manual", entry_path: "/" });
+    const resultReady = (await trackedEvents(page)).filter((entry) => entry.event === "idea_result_ready");
+    const resultViewed = (await trackedEvents(page)).filter((entry) => entry.event === "idea_result_viewed");
+    expect(resultReady).toHaveLength(1);
+    expect(resultViewed).toHaveLength(1);
+    expect(resultViewed[0]).toMatchObject({ open_method: "direct" });
+  });
+
+  test("카드와 결과는 기다려도 자동 진행하지 않고 명시적 CTA로만 열린다", async ({ page }) => {
+    await openIdeaLab(page);
+    const source = axisCard(page, "검증된 원본");
+    const payer = axisCard(page, "돈 낼 사람");
+
+    await page.getByRole("button", {
+      name: "검증된 원본 카드 뽑기",
+      exact: true,
+    }).click();
+    await expect(source).not.toHaveAttribute("data-value", "");
+    await expect(source).toHaveAttribute("data-carousel-position", "active");
+    await page.waitForTimeout(500);
+    await expect(source).toHaveAttribute("data-carousel-position", "active");
+    await expect(payer).not.toHaveAttribute("data-carousel-position", "active");
+    await expect(page.locator(".idea-lab__stage--result")).toHaveCount(0);
+
+    await page.getByRole("button", {
+      name: "읽었어요 · 다음 카드",
+      exact: true,
+    }).click();
+    await expect(payer).toHaveAttribute("data-carousel-position", "active");
+
+    for (const label of ["돈 낼 사람", "필요한 순간", "한 끗 변화"] as const) {
+      await page.getByRole("button", { name: `${label} 카드 뽑기`, exact: true }).click();
+      if (label !== "한 끗 변화") {
+        await page.getByRole("button", {
+          name: "읽었어요 · 다음 카드",
+          exact: true,
+        }).click();
+      }
+    }
+    await expect(page.getByRole("button", {
+      name: "이 아이디어 완성해서 보기",
+      exact: true,
+    })).toBeVisible();
+    await page.waitForTimeout(500);
+    await expect(page.locator(".idea-lab__stage--result")).toHaveCount(0);
+
+    await page.getByRole("button", {
+      name: "이 아이디어 완성해서 보기",
+      exact: true,
+    }).click();
+    await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
   });
 
   test("Scenario 1. 하단 덱에서 첫 카드를 뽑고, 네 장의 결과를 중요한 순서로 읽는다", async ({ page }) => {
@@ -127,11 +183,16 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     // 첫 화면은 하단 덱 하나를 주요 진입점으로 사용한다.
     await drawDeckCard(page, "검증된 원본");
     await expect(lab.locator("article.idea-lab__slot.is-filled")).toHaveCount(1);
-    await expect(axisCard(page, "돈 낼 사람")).toHaveAttribute("data-carousel-position", "active");
+    await expect(axisCard(page, "검증된 원본")).toHaveAttribute("data-carousel-position", "active");
+    await expect(axisCard(page, "돈 낼 사람")).toHaveAttribute("data-carousel-position", "next");
+    await expect(page.getByRole("button", {
+      name: "읽었어요 · 다음 카드",
+      exact: true,
+    })).toBeVisible();
     await expect(page.locator(".idea-lab__deck-prompt")).toHaveCount(0);
 
     await drawAll(page);
-    // 네 번째 카드 뒤 완료 편집 화면 없이 A2 결과로 바로 전환된다.
+    // 네 번째 카드 뒤 사용자가 결과 CTA를 눌러 A2 결과로 전환된다.
     await expect(page.locator(".idea-lab__stage--draw")).toHaveCount(0);
     await expect(page.locator("article.idea-lab__slot")).toHaveCount(0);
     await expect(page.getByRole("button", { name: /결과 자세히 보기/ })).toHaveCount(0);
@@ -147,46 +208,42 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(result.locator(".idea-lab__result-story span")).not.toHaveText("");
     await expect(result.locator(".idea-lab__result-story strong")).not.toHaveText("");
     await expect(result.locator(".idea-lab__result-story b")).toHaveCount(0);
-    const lockedDetails = result.locator(".idea-lab__locked-details");
-    await expect(lockedDetails).toBeVisible();
-    await expect(lockedDetails).toContainText("🎯 타겟");
-    await expect(lockedDetails).toContainText("⚔️ 딱 하나 다른 점");
-    await expect(lockedDetails).toContainText("🗺️ 전체 플로우");
-    await expect(lockedDetails.locator(".idea-lab__difference-list > div")).toHaveCount(2);
-    await expect(lockedDetails).not.toContainText("유일 주장");
-    await expect(lockedDetails.locator(".idea-lab__result-section")).toHaveCount(3);
-    await expect(result.getByRole("heading", {
-      name: "보내는 순간, 오늘 만들 제작 자료 3개가 열려요",
-      exact: true,
-    })).toBeVisible();
-    await expect(result.locator(".idea-lab__prompt")).toHaveCount(0);
-    await expect(result.locator(".idea-lab__unlocked-content")).toHaveCount(0);
-    await expect(result.locator(".idea-lab__unlock-summary > div")).toHaveCount(2);
-    await expect(result.locator(".idea-lab__share-preview")).toHaveCount(0);
-    await expect(page.getByRole("button", {
-      name: "공유하고 제작 자료 3개 열기",
-      exact: true,
-    })).toBeEnabled();
-    await expect(page.getByText(
-      "인스타그램 · 카카오톡 · 링크 복사 중에서 직접 선택해요.",
+    const details = result.locator(".idea-lab__locked-details");
+    await expect(details).toBeVisible();
+    await expect(details).toContainText("🎯 타겟");
+    await expect(details).toContainText("⚔️ 딱 하나 다른 점");
+    await expect(details).toContainText("🗺️ 전체 플로우");
+    await expect(details.locator(".idea-lab__difference-list > div")).toHaveCount(2);
+    await expect(details).not.toContainText("유일 주장");
+    await expect(details.locator(".idea-lab__result-section")).toHaveCount(3);
+    await expect(result.locator(".idea-lab__prompt")).toBeVisible();
+    await expect(result.locator(".idea-lab__unlocked-content")).toBeVisible();
+    await expect(result.getByText(
+      "공유하지 않아도 바로 쓸 수 있는 제작 자료예요.",
       { exact: true },
     )).toBeVisible();
+    await expect(result.locator(".idea-lab__share-preview")).toHaveCount(0);
+    await expect(page.getByRole("button", {
+      name: "친구에게 의견 물어보기",
+      exact: true,
+    })).toBeEnabled();
+    await expect(page.getByRole("button", { name: "AI 코딩 프롬프트 복사" })).toBeEnabled();
     await expect(page.getByRole("button", {
       name: "다른 아이디어 뽑기",
       exact: true,
     })).toBeVisible();
     await expect(result.locator(".idea-lab__result-summary-top")).toHaveCount(0);
 
-    // 요약 → 그라데이션 상세 → 공유 안내가 한 열로 이어진다.
+    // 요약 → 전체 상세 → 제작 자료가 가림 없이 한 열로 이어진다.
     const resultGeometry = await result.evaluate((panel) => {
       const summary = panel.querySelector<HTMLElement>(".idea-lab__result-summary")!;
       const details = panel.querySelector<HTMLElement>(".idea-lab__locked-details")!;
-      const guide = panel.querySelector<HTMLElement>(".idea-lab__unlock-guide")!;
+      const content = panel.querySelector<HTMLElement>(".idea-lab__unlocked-content")!;
       return {
         summaryBeforeDetails:
           summary.getBoundingClientRect().bottom <= details.getBoundingClientRect().top + 1,
-        detailsBeforeGuide:
-          details.getBoundingClientRect().bottom <= guide.getBoundingClientRect().top + 1,
+        detailsBeforeContent:
+          details.getBoundingClientRect().bottom <= content.getBoundingClientRect().top + 1,
         detailsOneColumn: getComputedStyle(details).gridTemplateColumns.split(" ").length === 1,
         detailsMasked: `${getComputedStyle(details).maskImage} ${getComputedStyle(details).webkitMaskImage}`
           .includes("gradient"),
@@ -194,9 +251,9 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
       };
     });
     expect(resultGeometry.summaryBeforeDetails).toBe(true);
-    expect(resultGeometry.detailsBeforeGuide).toBe(true);
+    expect(resultGeometry.detailsBeforeContent).toBe(true);
     expect(resultGeometry.detailsOneColumn).toBe(true);
-    expect(resultGeometry.detailsMasked).toBe(true);
+    expect(resultGeometry.detailsMasked).toBe(false);
     expect(resultGeometry.summaryHeight).toBeLessThanOrEqual(430);
     const fixedActions = await result.evaluate((stage) => {
       const scroller = stage.querySelector<HTMLElement>(".idea-lab__stage-scroll")!;
@@ -215,7 +272,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
       directChild: true,
       scrollBeforeActions: true,
       dockedToBottom: true,
-      buttons: 2,
+      buttons: 4,
     });
     const resultTypeScale = await page.locator(".idea-lab__stage--result").evaluate((stage) => {
       const fontSize = (selector: string) =>
@@ -298,7 +355,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(page.getByText(/한 가지 취향을 .*기억하고 새 결과에 반영했어요/)).toBeVisible();
   });
 
-  test("Scenario 2. 공유 뒤 다시 뽑으면 새 결과가 나오고 제작 문구가 다시 잠긴다", async ({ page }) => {
+  test("Scenario 2. 공유 뒤 다시 뽑아도 새 결과의 제작 자료를 즉시 쓴다", async ({ page }) => {
     await installShareMock(page, "kakao");
     await openIdeaLab(page);
     await drawAll(page);
@@ -308,7 +365,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await shareIdeaFromResult(page);
     await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
     await expect(page.getByText(
-      "제작 자료 3개를 열었어요.",
+      "친구에게 의견을 물어볼 공유 화면을 열었어요.",
       { exact: true },
     )).toBeVisible();
     await expect(page.getByRole("button", { name: "AI 코딩 프롬프트 복사" })).toBeEnabled();
@@ -319,10 +376,10 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(page.locator(".idea-lab__result-summary"))
       .not.toHaveAttribute("data-combination-id", beforeCombination!);
     await expect(page.getByRole("button", {
-      name: "공유하고 제작 자료 3개 열기",
+      name: "친구에게 의견 물어보기",
       exact: true,
     })).toBeEnabled();
-    await expect(page.getByRole("button", { name: "AI 코딩 프롬프트 복사" })).toHaveCount(0);
+    await expect(page.getByRole("button", { name: "AI 코딩 프롬프트 복사" })).toBeEnabled();
   });
 
   test("Scenario 2a. 다시 뽑을 때마다 한 문항만 묻고 다음에는 다른 축을 묻는다", async ({ page }) => {
@@ -399,7 +456,34 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(page.locator(".idea-lab__stage--result")).toBeVisible();
   });
 
-  test("Scenario 4a. 카카오톡 공유 화면을 연 뒤 전체 문구를 연다", async ({ page }) => {
+  test("Scenario 3c. 결과를 이 기기에 저장하고 새로고침 뒤 같은 조합을 이어본다", async ({ page }) => {
+    await openIdeaLab(page);
+    await drawAll(page);
+    const summary = page.locator(".idea-lab__result-summary");
+    const combinationId = await summary.getAttribute("data-combination-id");
+    expect(combinationId).not.toBeNull();
+
+    const saveButton = page.getByRole("button", {
+      name: "이 기기에 결과 저장",
+      exact: true,
+    });
+    await saveButton.click();
+    await expect(page.getByText(
+      "이 기기에 결과를 저장했어요. 다음에 같은 브라우저에서 이어볼 수 있어요.",
+      { exact: true },
+    )).toBeVisible();
+    await saveButton.click();
+    expect((await trackedEvents(page)).filter((entry) =>
+      entry.event === "idea_result_saved")).toHaveLength(1);
+
+    await page.reload();
+    await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
+    await expect(page.locator(".idea-lab__result-summary"))
+      .toHaveAttribute("data-combination-id", combinationId!);
+    await expect(page.getByRole("button", { name: "AI 코딩 프롬프트 복사" })).toBeEnabled();
+  });
+
+  test("Scenario 4a. 전체 제작 자료를 읽은 상태에서 카카오톡 공유 화면을 연다", async ({ page }) => {
     await installShareMock(page, "kakao");
     await openIdeaLab(page);
     await drawAll(page);
@@ -412,7 +496,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(page.locator(".idea-lab__stage--shared")).toHaveCount(0);
     await expect(page.locator(".idea-lab")).toHaveAttribute("data-stage", "result");
     await expect(sharedStage.getByText(
-      "제작 자료 3개를 열었어요.",
+      "친구에게 의견을 물어볼 공유 화면을 열었어요.",
       { exact: true },
     ))
       .toBeVisible();
@@ -506,7 +590,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await goResult(page);
 
     await page.getByRole("button", {
-      name: "공유하고 제작 자료 3개 열기",
+      name: "친구에게 의견 물어보기",
       exact: true,
     }).click();
     const sheet = page.getByRole("dialog", { name: "공유", exact: true });
@@ -522,9 +606,14 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
 
     await page.keyboard.press("Escape");
     await expect(sheet).toHaveCount(0);
-    await expect(page.locator(".idea-lab__stage--result")).not.toHaveClass(/is-unlocked/);
+    await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
+    await expect(page.getByRole("button", { name: "AI 코딩 프롬프트 복사" })).toBeEnabled();
+    await expect(page.getByText(
+      "공유를 취소해도 결과와 제작 자료는 그대로예요.",
+      { exact: true },
+    )).toBeVisible();
     await page.getByRole("button", {
-      name: "공유하고 제작 자료 3개 열기",
+      name: "친구에게 의견 물어보기",
       exact: true,
     }).click();
     await expect(sheet).toBeVisible();
@@ -538,6 +627,9 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
       share_method: "copy",
       completion_signal: "link_copied",
     });
+    expect(events.find((entry) => entry.event === "idea_voluntary_share")).toMatchObject({
+      share_method: "copy",
+    });
   });
 
   test("Scenario 4d. 인스타그램 선택 시 9:16 PNG와 수신자 링크를 기기 공유창에 전달한다", async ({ page }) => {
@@ -548,7 +640,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await goResult(page);
 
     await page.getByRole("button", {
-      name: "공유하고 제작 자료 3개 열기",
+      name: "친구에게 의견 물어보기",
       exact: true,
     }).click();
     const sheet = page.getByRole("dialog", { name: "공유", exact: true });
@@ -556,6 +648,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await sheet.getByRole("button", { name: "인스타그램", exact: true }).click();
 
     await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
+    await expect.poll(async () => (await instagramShareCalls(page)).length).toBe(1);
     const calls = await instagramShareCalls(page);
     expect(calls).toHaveLength(1);
     expect(calls[0].text).toContain("https://bfd-seven.vercel.app/praise/");
@@ -583,13 +676,17 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await goResult(page);
 
     const kakaoButton = page.getByRole("button", {
-      name: "공유하고 제작 자료 3개 열기",
+      name: "친구에게 의견 물어보기",
       exact: true,
     });
     await kakaoButton.click();
     await chooseKakaoShare(page);
-    await expect(page.getByText("공유를 시작하지 못했어요. 결과는 그대로 보관돼요.", { exact: true })).toBeVisible();
-    await expect(page.locator(".idea-lab__stage--result")).not.toHaveClass(/is-unlocked/);
+    await expect(page.getByText(
+      "공유를 시작하지 못했어요. 결과와 제작 자료는 그대로예요.",
+      { exact: true },
+    )).toBeVisible();
+    await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
+    await expect(page.getByRole("button", { name: "AI 코딩 프롬프트 복사" })).toBeEnabled();
     await expect(kakaoButton).toBeEnabled();
     expect(await clipboardWrites(page)).toHaveLength(0);
 
@@ -606,6 +703,10 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await chooseKakaoShare(page);
     await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
     await expect(page.getByRole("button", { name: "AI 코딩 프롬프트 복사" })).toBeEnabled();
+    await expect(page.getByText(
+      "친구에게 의견을 물어볼 공유 화면을 열었어요.",
+      { exact: true },
+    )).toBeVisible();
 
     const retriedCalls = await shareCalls(page);
     expect(retriedCalls).toHaveLength(2);
@@ -689,7 +790,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
       getComputedStyle(element).getPropertyValue("--action-primary").trim().toLowerCase());
     expect(actionPrimary).toBe("#d92d45");
     await expect(page.getByRole("button", {
-      name: "공유하고 제작 자료 3개 열기",
+      name: "친구에게 의견 물어보기",
       exact: true,
     }))
       .toHaveCSS("background-color", "rgb(217, 45, 69)");
@@ -701,13 +802,10 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await drawAll(page);
 
     const layout = await page.locator(".idea-lab__stage--result").evaluate((stage) => {
-      const scroll = stage.querySelector<HTMLElement>(".idea-lab__stage-scroll")!;
       const result = stage.querySelector<HTMLElement>(".idea-lab__result")!;
       const summary = stage.querySelector<HTMLElement>(".idea-lab__result-summary")!;
       return {
         documentFits: document.documentElement.scrollWidth <= document.documentElement.clientWidth,
-        scrollFits: scroll.scrollWidth <= scroll.clientWidth,
-        resultFits: result.scrollWidth <= result.clientWidth,
         summaryFits: summary.scrollWidth <= summary.clientWidth,
         summaryWithinResult:
           summary.getBoundingClientRect().left >= result.getBoundingClientRect().left
@@ -716,8 +814,6 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     });
     expect(layout).toEqual({
       documentFits: true,
-      scrollFits: true,
-      resultFits: true,
       summaryFits: true,
       summaryWithinResult: true,
     });

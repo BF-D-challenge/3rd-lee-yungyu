@@ -9,6 +9,7 @@ import { track } from "@/lib/track";
 export interface GoogleLoginButtonProps {
   context: "creator" | "receiver";
   onAuthenticated: (session: AuthSession) => void;
+  onBeforeAuth?: () => void;
   returnTo?: string;
   label?: string;
 }
@@ -16,6 +17,7 @@ export interface GoogleLoginButtonProps {
 export function GoogleLoginButton({
   context,
   onAuthenticated,
+  onBeforeAuth,
   returnTo,
   label = "Google로 시작하기",
 }: GoogleLoginButtonProps) {
@@ -32,6 +34,7 @@ export function GoogleLoginButton({
     setPending(true);
     setShowLoader(false);
     setError(null);
+    onBeforeAuth?.();
     track("auth_prompt", { context });
     markAuthPending(context);
     delayTimer.current = setTimeout(() => setShowLoader(true), 800);
