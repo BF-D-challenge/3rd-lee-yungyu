@@ -1,0 +1,51 @@
+.page { min-height: 100dvh; margin: 0 auto; padding: 20px 16px 48px; max-width: 1120px; }
+.header { display: flex; min-height: 48px; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { color: var(--ink); font-size: 15px; font-weight: 800; letter-spacing: -0.03em; text-decoration: none; }
+.badge, .eyebrow, .cardLabel { color: var(--primary); font-size: 12px; font-weight: 800; letter-spacing: -0.02em; }
+.badge { border: 1px solid rgba(255,68,88,.36); border-radius: 999px; padding: 7px 10px; }
+.hero, .flow { max-width: 720px; margin: 56px auto 0; }
+.hero { text-align: center; }
+.hero h1, .flow h1 { margin: 12px 0 16px; color: #fff; font-size: clamp(32px, 8vw, 56px); line-height: 1.14; letter-spacing: -0.065em; font-weight: 850; }
+.hero > p:last-child, .flow > p:not(.eyebrow) { color: var(--muted); font-size: 16px; line-height: 1.65; }
+.makerLink { display: inline-flex; min-height: 44px; align-items: center; gap: 6px; margin-top: 18px; color: var(--ink); font-size: 14px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
+.grid { display: grid; gap: 12px; margin: 34px auto 0; max-width: 980px; }
+.experimentCard, .result, .ideaCard, .loginBox { border: 1px solid rgba(255,255,255,.12); background: rgba(17,17,19,.86); box-shadow: 0 12px 30px rgba(0,0,0,.18); }
+.experimentCard { display: flex; flex-direction: column; min-height: 280px; border-radius: 22px; padding: 22px; }
+.icon, .resultIcon { display: grid; width: 44px; height: 44px; place-items: center; border-radius: 14px; color: #fff; background: var(--action-primary); }
+.cardLabel { margin: 20px 0 5px; }
+.experimentCard h2, .result h2, .ideaCard h2 { margin: 0; color: #fff; font-size: 21px; letter-spacing: -0.045em; }
+.experimentCard > p:not(.cardLabel), .result p, .ideaCard p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.primaryLink, .primaryButton, .secondaryButton { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; font-size: 15px; font-weight: 800; text-decoration: none; cursor: pointer; }
+.primaryLink { width: 100%; margin-top: auto; color: #fff; background: var(--action-primary); }
+.primaryButton { width: 100%; margin-top: 20px; border: 0; color: #fff; background: var(--action-primary); }
+.primaryButton:disabled { opacity: .45; cursor: not-allowed; }
+.back { display: inline-flex; min-height: 44px; align-items: center; gap: 5px; color: var(--muted); font-size: 14px; text-decoration: none; }
+.form { display: grid; gap: 10px; margin-top: 30px; padding: 20px; border: 1px solid rgba(255,255,255,.12); border-radius: 22px; background: rgba(17,17,19,.86); }
+.form label { margin-top: 4px; color: var(--ink); font-size: 14px; font-weight: 800; }
+.inputRow, .fullInput { min-height: 52px; box-sizing: border-box; border: 1px solid rgba(255,255,255,.16); border-radius: 12px; color: var(--ink); background: rgba(255,255,255,.05); }
+.inputRow { display: flex; align-items: center; gap: 10px; padding: 0 14px; color: var(--muted); }
+.inputRow input, .fullInput { width: 100%; border: 0; outline: none; padding: 0 14px; font: inherit; }
+.inputRow input { padding: 0; background: transparent; }
+.fullInput { padding: 0 14px; }
+.helper { margin: 2px 0 0; color: var(--caption); font-size: 13px; line-height: 1.5; }
+.error { margin: 0; color: #ff9ba8; font-size: 13px; line-height: 1.5; }
+.notice { margin: 2px 0 0; color: var(--caption); font-size: 12px; line-height: 1.55; }
+.result { margin-top: 30px; border-radius: 22px; padding: 24px 20px; }
+.result h2 { margin-top: 16px; }
+.sourceUrl { overflow-wrap: anywhere; border-radius: 10px; padding: 10px; background: rgba(255,255,255,.05); }
+.upload { display: grid; min-height: 210px; place-items: center; align-content: center; gap: 8px; overflow: hidden; border: 1px dashed rgba(255,255,255,.28); border-radius: 16px; color: var(--muted); text-align: center; cursor: pointer; }
+.upload strong { color: var(--ink); }
+.upload span { font-size: 13px; }
+.upload input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.upload img { width: 100%; height: 210px; object-fit: cover; }
+.coachLine { color: #fff !important; font-size: 18px !important; font-weight: 800; letter-spacing: -0.035em; }
+.ideaResults { display: grid; gap: 12px; margin-top: 28px; }
+.resultIntro { margin: 0 0 6px; color: var(--muted); line-height: 1.6; }
+.ideaCard { border-radius: 17px; padding: 18px; }
+.evidence { color: #dbc281 !important; }
+.meta { color: var(--caption) !important; font-size: 12px !important; }
+.loginBox { display: grid; gap: 12px; margin-top: 24px; border-radius: 16px; padding: 16px; }
+.loginBox p { margin: 0; }
+.secondaryButton { width: 100%; border: 1px solid rgba(255,255,255,.18); color: var(--ink); background: transparent; }
+.saved { display: flex; align-items: center; gap: 8px; margin-top: 24px; color: var(--good) !important; font-weight: 700; }
+@media (min-width: 720px) { .page { padding: 28px 32px 64px; } .hero { margin-top: 78px; } .grid { grid-template-columns: repeat(3, 1fr); gap: 18px; } .flow { margin-top: 64px; } .form, .result { padding: 28px; } }

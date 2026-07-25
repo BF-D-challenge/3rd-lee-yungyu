@@ -698,6 +698,10 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
       open_method: "direct",
       read_ms: readMs,
     });
+    trackIdeaFunnelEventOnce("idea_selected", ideaResult.combinationId, {
+      attempt: attemptRef.current,
+      scenario_id: scenario.id,
+    });
     setReadingAxis(null);
     setResultRequested(true);
     setMessage("네 장을 모아 결과를 열고 있어요.");
@@ -911,6 +915,13 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
         scenario_id: scenario.id,
         artifact_type: artifact,
       });
+      if (artifact === "development" && ideaResult) {
+        trackIdeaFunnelEventOnce("idea_first_action_started", ideaResult.combinationId, {
+          attempt: attemptRef.current,
+          scenario_id: scenario.id,
+          action_type: "development_prompt_copy",
+        });
+      }
       if (copyResetTimerRef.current !== null) window.clearTimeout(copyResetTimerRef.current);
       copyResetTimerRef.current = window.setTimeout(
         () => setCopiedArtifact((current) => current === artifact ? null : current),

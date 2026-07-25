@@ -47,6 +47,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# 광고 제작용 원본 이미지 — 배포에서는 public/images/ads/만 사용
+outputs/ad-creatives/
+outputs/*-instagram-4x5-*.png
+
 # 자동화 테스트 결과물
 test-results/
 playwright-report/

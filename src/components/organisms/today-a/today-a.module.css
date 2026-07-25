@@ -1,0 +1,291 @@
+.page {
+  min-height: 100dvh;
+  padding: 16px 16px 56px;
+  color: #f5f2eb;
+  background: #0b1010;
+}
+
+.header {
+  display: flex;
+  width: min(100%, 720px);
+  min-height: 48px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.back,
+.sourceLink {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 6px;
+  color: #d5ddd9;
+  font-size: 14px;
+  font-weight: 760;
+  text-decoration: none;
+}
+
+.routeLabel,
+.eyebrow {
+  color: #7de4be;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+.flow,
+.result {
+  width: min(100%, 720px);
+  margin: 44px auto 0;
+}
+
+.flow h1,
+.resultIntro h1 {
+  margin: 12px 0 16px;
+  font-size: clamp(32px, 9vw, 52px);
+  line-height: 1.12;
+  letter-spacing: -0.055em;
+}
+
+.lead,
+.resultIntro > p:not(.eyebrow),
+.evidence > p {
+  color: #aeb9b4;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.form {
+  display: grid;
+  gap: 20px;
+  margin-top: 32px;
+  padding: 20px;
+  border: 1px solid #283330;
+  border-radius: 20px;
+  background: #121817;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field label {
+  color: #f5f2eb;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.field select,
+.field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #3d4c48;
+  border-radius: 12px;
+  outline: 0;
+  color: #f5f2eb;
+  background: #0d1312;
+  font: inherit;
+}
+
+.field select {
+  min-height: 52px;
+  padding: 0 14px;
+}
+
+.field textarea {
+  min-height: 124px;
+  resize: vertical;
+  padding: 14px;
+  line-height: 1.55;
+}
+
+.field select:focus-visible,
+.field textarea:focus-visible {
+  border-color: #7de4be;
+  box-shadow: 0 0 0 3px rgba(125, 228, 190, 0.15);
+}
+
+.field p {
+  margin: 0;
+  color: #8d9a95;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.twoFields {
+  display: grid;
+  gap: 20px;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  width: 100%;
+  min-height: 52px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 850;
+  cursor: pointer;
+  transition: transform 120ms var(--ease-out), background-color 120ms var(--ease-out);
+}
+
+.primaryButton {
+  border: 1px solid #7de4be;
+  color: #09231a;
+  background: #7de4be;
+}
+
+.primaryButton:hover {
+  background: #97edcf;
+}
+
+.primaryButton:active,
+.secondaryButton:active {
+  transform: scale(0.98);
+}
+
+.primaryButton:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.secondaryButton {
+  border: 1px solid #3d4c48;
+  color: #eef4f1;
+  background: transparent;
+}
+
+.error {
+  margin: 0;
+  color: #ff9ba8;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.resultIntro {
+  padding-bottom: 28px;
+  border-bottom: 1px solid #283330;
+}
+
+.fitReason {
+  color: #b9d9cc !important;
+}
+
+.structure {
+  display: grid;
+  margin-top: 28px;
+  border-top: 1px solid #283330;
+}
+
+.structure div {
+  display: grid;
+  gap: 7px;
+  padding: 18px 0;
+  border-bottom: 1px solid #283330;
+}
+
+.structure span,
+.firstOffer > p,
+.evidence > div p {
+  margin: 0;
+  color: #7de4be;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.structure strong {
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.firstOffer,
+.evidence {
+  margin-top: 28px;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.firstOffer {
+  border: 1px solid #356152;
+  background: #13231e;
+}
+
+.firstOffer h2,
+.evidence h2 {
+  margin: 8px 0 0;
+  font-size: 20px;
+  line-height: 1.45;
+  letter-spacing: -0.035em;
+}
+
+.evidence {
+  border: 1px solid #283330;
+  background: #121817;
+}
+
+.evidence > p {
+  margin: 16px 0 0;
+  font-size: 14px;
+}
+
+.notice {
+  color: #8d9a95 !important;
+  font-size: 12px !important;
+}
+
+.sourceLink {
+  margin-top: 12px;
+  color: #7de4be;
+}
+
+.actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+@media (min-width: 640px) {
+  .page {
+    padding: 24px 28px 72px;
+  }
+
+  .flow,
+  .result {
+    margin-top: 68px;
+  }
+
+  .form,
+  .firstOffer,
+  .evidence {
+    padding: 28px;
+  }
+
+  .twoFields,
+  .actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .structure div {
+    grid-template-columns: 150px 1fr;
+    align-items: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .secondaryButton {
+    transition: none;
+  }
+
+  .primaryButton:active,
+  .secondaryButton:active {
+    transform: none;
+  }
+}
