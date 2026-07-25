@@ -1,0 +1,470 @@
+.page {
+  min-height: 100dvh;
+  padding: 16px 16px 56px;
+  color: #f8f2e6;
+  background: #11100d;
+}
+
+.header {
+  display: flex;
+  width: min(100%, 760px);
+  min-height: 48px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.back {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 6px;
+  color: #ddd5c5;
+  font-size: 14px;
+  font-weight: 760;
+  text-decoration: none;
+}
+
+.routeLabel,
+.eyebrow {
+  color: #e8c56a;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+}
+
+.flow,
+.result {
+  width: min(100%, 760px);
+  margin: 44px auto 0;
+}
+
+.flow h1,
+.resultIntro h1 {
+  margin: 12px 0 16px;
+  font-size: clamp(32px, 9vw, 52px);
+  line-height: 1.12;
+  letter-spacing: -0.055em;
+}
+
+.lead,
+.resultIntro > p,
+.notice {
+  color: #b8ae9d;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.form {
+  display: grid;
+  gap: 20px;
+  margin-top: 32px;
+  padding: 20px;
+  border: 1px solid #3b362b;
+  border-radius: 20px;
+  background: #181611;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field label,
+.signalGroup legend {
+  color: #f8f2e6;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #514a3b;
+  border-radius: 12px;
+  outline: 0;
+  color: #f8f2e6;
+  background: #110f0c;
+  font: inherit;
+}
+
+.field input,
+.field select {
+  min-height: 52px;
+  padding: 0 14px;
+}
+
+.field textarea {
+  min-height: 112px;
+  resize: vertical;
+  padding: 14px;
+  line-height: 1.55;
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  border-color: #e8c56a;
+  box-shadow: 0 0 0 3px rgba(232, 197, 106, 0.15);
+}
+
+.signalGroup {
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.signalGroup > p {
+  margin: 8px 0 12px;
+  color: #958b7a;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.signalOptions {
+  display: grid;
+  gap: 8px;
+}
+
+.signalOption {
+  display: flex;
+  min-height: 60px;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #514a3b;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.signalOption:has(input:checked) {
+  border-color: #e8c56a;
+  background: #282111;
+}
+
+.signalOption input {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  accent-color: #e8c56a;
+}
+
+.signalOption span {
+  display: grid;
+  gap: 3px;
+}
+
+.signalOption strong {
+  font-size: 14px;
+}
+
+.signalOption small {
+  color: #a89e8b;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  width: 100%;
+  min-height: 52px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 850;
+  cursor: pointer;
+  transition: transform 120ms var(--ease-out), background-color 120ms var(--ease-out);
+}
+
+.primaryButton {
+  border: 1px solid #e8c56a;
+  color: #241b03;
+  background: #e8c56a;
+}
+
+.primaryButton:hover {
+  background: #f0d783;
+}
+
+.primaryButton:active,
+.secondaryButton:active {
+  transform: scale(0.98);
+}
+
+.primaryButton:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.secondaryButton {
+  border: 1px solid #514a3b;
+  color: #f8f2e6;
+  background: transparent;
+}
+
+.error {
+  margin: 0;
+  color: #ff9ba8;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.resultIntro {
+  padding-bottom: 28px;
+  border-bottom: 1px solid #3b362b;
+}
+
+.assumption {
+  color: #f8f2e6 !important;
+  font-size: 20px !important;
+  font-weight: 780;
+  letter-spacing: -0.035em;
+}
+
+.hypothesis,
+.offer,
+.days,
+.decision {
+  margin-top: 28px;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.hypothesis {
+  border: 1px solid #6a5725;
+  background: #282111;
+}
+
+.hypothesis > p,
+.offer > p,
+.daysHeader p,
+.decision > p {
+  margin: 0;
+  color: #e8c56a;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.hypothesis h2,
+.offer h2,
+.daysHeader h2,
+.decision h2 {
+  margin: 8px 0 0;
+  font-size: 20px;
+  line-height: 1.45;
+  letter-spacing: -0.035em;
+}
+
+.metric {
+  display: grid;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.metric span {
+  border-top: 1px solid #51431e;
+  padding-top: 10px;
+  color: #c6bda8;
+  font-size: 13px;
+}
+
+.metric strong {
+  color: #f3d47d;
+  font-size: 21px;
+}
+
+.offer,
+.days,
+.decision {
+  border: 1px solid #3b362b;
+  background: #181611;
+}
+
+.daysHeader {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.daysHeader > span {
+  display: grid;
+  width: 48px;
+  min-height: 36px;
+  place-items: center;
+  border-radius: 999px;
+  color: #241b03;
+  background: #e8c56a;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.localNotice {
+  margin: 10px 0 0;
+  color: #958b7a;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.days ol {
+  display: grid;
+  gap: 0;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.days li {
+  border-top: 1px solid #3b362b;
+}
+
+.days li label {
+  display: flex;
+  min-height: 64px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 0;
+  cursor: pointer;
+}
+
+.days li input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.days li input:focus-visible + .checkmark {
+  outline: 2px solid #e8c56a;
+  outline-offset: 3px;
+}
+
+.checkmark {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #625a48;
+  border-radius: 10px;
+  color: #e8c56a;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.days li label > span:last-child {
+  display: grid;
+  gap: 6px;
+}
+
+.days li strong {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.days li small {
+  color: #b8ae9d;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.days li em {
+  color: #8f8575;
+  font-size: 11px;
+  font-style: normal;
+  line-height: 1.45;
+}
+
+.dayDone .checkmark {
+  border-color: #e8c56a;
+  color: #241b03;
+  background: #e8c56a;
+}
+
+.dayDone label > span:last-child {
+  opacity: 0.58;
+}
+
+.decision dl {
+  display: grid;
+  gap: 0;
+  margin: 20px 0 0;
+}
+
+.decision dl div {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 12px;
+  border-top: 1px solid #3b362b;
+  padding: 14px 0;
+}
+
+.decision dt {
+  color: #e8c56a;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.decision dd {
+  margin: 0;
+  color: #c6bda8;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.notice {
+  margin: 18px 0 0;
+  color: #958b7a;
+  font-size: 12px;
+}
+
+.actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+@media (min-width: 640px) {
+  .page {
+    padding: 24px 28px 72px;
+  }
+
+  .flow,
+  .result {
+    margin-top: 68px;
+  }
+
+  .form,
+  .hypothesis,
+  .offer,
+  .days,
+  .decision {
+    padding: 28px;
+  }
+
+  .signalOptions,
+  .metric,
+  .actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .secondaryButton {
+    transition: none;
+  }
+
+  .primaryButton:active,
+  .secondaryButton:active {
+    transform: none;
+  }
+}

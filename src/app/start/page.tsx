@@ -7,7 +7,7 @@ export default function StartRedirectPage() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace("/" + location.search);
+    router.replace("/maker" + location.search);
   }, [router]);
 
   return null;

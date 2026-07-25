@@ -87,6 +87,7 @@ async function assertShareEvents(page: Page) {
 
 test.describe("아이디어 제작과 칭찬 요청 공유", () => {
   test("첫 화면 진입부터 결과 확인까지 제작 퍼널을 순서대로 기록한다", async ({ page }) => {
+    await installShareMock(page, "kakao");
     await openIdeaLab(page);
 
     await drawAll(page);
@@ -108,6 +109,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
       "idea_result_ready",
       "idea_card_read",
       "idea_result_opened",
+      "idea_selected",
       "idea_result_viewed",
     ]);
 
@@ -118,6 +120,16 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     expect(resultReady).toHaveLength(1);
     expect(resultViewed).toHaveLength(1);
     expect(resultViewed[0]).toMatchObject({ open_method: "direct" });
+
+    await page.getByRole("button", { name: "AI 코딩 프롬프트 복사", exact: true }).click();
+    await expect(page.getByRole("button", { name: "복사했어요 ✓", exact: true })).toBeVisible();
+    const actionStarted = (await trackedEvents(page))
+      .filter((entry) => entry.event === "idea_first_action_started");
+    expect(actionStarted).toHaveLength(1);
+    expect(actionStarted[0]).toMatchObject({
+      action_type: "development_prompt_copy",
+      attempt: 1,
+    });
   });
 
   test("카드와 결과는 기다려도 자동 진행하지 않고 명시적 CTA로만 열린다", async ({ page }) => {

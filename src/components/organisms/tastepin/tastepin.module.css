@@ -1,0 +1,318 @@
+.page {
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+  max-width: 1120px;
+}
+
+.header {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
+
+.badge,
+.eyebrow,
+.clueLabel {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.badge {
+  border: 1px solid rgba(255, 68, 88, 0.36);
+  border-radius: 999px;
+  padding: 7px 10px;
+}
+
+.content {
+  max-width: 720px;
+  margin: 56px auto 0;
+}
+
+.back {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.eyebrow {
+  margin-top: 28px;
+}
+
+.content > h1 {
+  margin: 12px 0 16px;
+  color: #fff;
+  font-size: clamp(34px, 9vw, 58px);
+  font-weight: 850;
+  line-height: 1.12;
+  letter-spacing: -0.065em;
+}
+
+.lead {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.form,
+.result {
+  margin-top: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  padding: 20px;
+  background: rgba(17, 17, 19, 0.88);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.form {
+  display: grid;
+  gap: 10px;
+}
+
+.form label {
+  margin-top: 4px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.inputRow {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  padding: 0 14px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.inputRow:focus-within {
+  border-color: rgba(255, 96, 114, 0.7);
+  box-shadow: 0 0 0 3px rgba(255, 68, 88, 0.12);
+}
+
+.inputRow input {
+  width: 100%;
+  border: 0;
+  outline: none;
+  padding: 0;
+  color: var(--ink);
+  font: inherit;
+  background: transparent;
+}
+
+.inputRow input::placeholder {
+  color: var(--caption);
+}
+
+.helper,
+.privacy,
+.error,
+.mapNotice {
+  margin: 2px 0 0;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.helper,
+.privacy {
+  color: var(--caption);
+}
+
+.privacy {
+  font-size: 12px;
+}
+
+.error {
+  color: #ff9baa;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  min-height: 50px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.primaryButton {
+  margin-top: 10px;
+  border: 0;
+  color: #fff;
+  background: var(--action-primary);
+}
+
+.primaryButton:disabled {
+  opacity: 0.62;
+  cursor: wait;
+}
+
+.secondaryButton {
+  margin-top: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--ink);
+  background: transparent;
+}
+
+.resultIcon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 14px;
+  color: #fff;
+  background: var(--action-primary);
+}
+
+.result > h2 {
+  margin: 16px 0 8px;
+  color: #fff;
+  font-size: 24px;
+  letter-spacing: -0.045em;
+}
+
+.result > p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.clueList {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.clueCard {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 17px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.clueLabel {
+  margin: 0 0 5px;
+}
+
+.clueCard h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 21px;
+  letter-spacing: -0.04em;
+}
+
+.clueCard dl {
+  display: grid;
+  gap: 9px;
+  margin: 16px 0 0;
+}
+
+.clueCard dl div {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 8px;
+}
+
+.clueCard dt {
+  color: var(--caption);
+  font-size: 13px;
+}
+
+.clueCard dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.evidence {
+  margin: 14px 0 0;
+  color: #dbc281;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.mapSection {
+  display: grid;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.mapSection h3 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 3px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.mapCandidate {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 13px;
+  padding: 10px 12px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.mapCandidate span {
+  display: grid;
+  gap: 3px;
+}
+
+.mapCandidate small {
+  color: var(--caption);
+  line-height: 1.4;
+}
+
+.mapNotice {
+  margin-top: 20px !important;
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: var(--caption) !important;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 720px) {
+  .page {
+    padding: 28px 32px 64px;
+  }
+
+  .content {
+    margin-top: 64px;
+  }
+
+  .form,
+  .result {
+    padding: 28px;
+  }
+}
