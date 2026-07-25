@@ -1,14 +1,26 @@
-// PRD §8 계측. v4 단계에선 GA4 미연결 — 콘솔+localStorage 적재로 실측을 대체한다.
-
 import { authenticatedForTracking } from "./auth-session";
 import { trackMetaEvent } from "./meta-conversions";
 import type { ShareChannel } from "./share-channel";
 
 const EVENTS_KEY = "events";
+const ACQUISITION_KEY = "analytics:acquisition:v1";
 const IDEA_EVENT_KEYS = "idea:event-keys:v1";
 const IDEA_FUNNEL_EVENT_KEYS = "idea:funnel-event-keys:v1";
 
 let memSid: string | null = null; // 스토리지 차단 환경 폴백
+let memAcquisition: Acquisition | null = null;
+
+type Acquisition = {
+  source: string;
+  utm_source: string;
+  utm_medium: string;
+  utm_campaign: string;
+  utm_content: string;
+  utm_term: string;
+};
+
+const safeAttribution = (value: string | null): string =>
+  value?.trim().replace(/[^A-Za-z0-9._~:/+-]/g, "_").slice(0, 120) || "not_set";
 
 const sid = (): string => {
   try {
@@ -22,11 +34,76 @@ const sid = (): string => {
   }
 };
 
+const acquisition = (): Acquisition => {
+  if (memAcquisition) return memAcquisition;
+  try {
+    const stored = sessionStorage.getItem(ACQUISITION_KEY);
+    if (stored) {
+      const parsed = JSON.parse(stored) as Acquisition;
+      memAcquisition = parsed;
+      return parsed;
+    }
+  } catch {
+    // URL에 있는 비민감 캠페인 값으로 계속 진행한다.
+  }
+
+  const search = typeof window.location.search === "string"
+    ? new URLSearchParams(window.location.search)
+    : new URLSearchParams();
+  const utmSource = safeAttribution(search.get("utm_source"));
+  const next: Acquisition = {
+    source: utmSource !== "not_set"
+      ? utmSource
+      : typeof document !== "undefined" && document.referrer
+        ? "referral"
+        : "direct",
+    utm_source: utmSource,
+    utm_medium: safeAttribution(search.get("utm_medium")),
+    utm_campaign: safeAttribution(search.get("utm_campaign")),
+    utm_content: safeAttribution(search.get("utm_content")),
+    utm_term: safeAttribution(search.get("utm_term")),
+  };
+  memAcquisition = next;
+  try {
+    sessionStorage.setItem(ACQUISITION_KEY, JSON.stringify(next));
+  } catch {
+    // 저장소가 막혀도 현재 탭의 이벤트에는 같은 메모리 값을 사용한다.
+  }
+  return next;
+};
+
+const eventId = (): string => {
+  try {
+    return crypto.randomUUID();
+  } catch {
+    return `event-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  }
+};
+
 export function track(event: string, params: Record<string, unknown> = {}): void {
   if (typeof window === "undefined") return;
-  const entry = { event, session_id: sid(), is_logged_in: authenticatedForTracking(), ts: Date.now(), ...params };
-  (window as { gtag?: (...args: unknown[]) => void }).gtag?.("event", event, entry);
-  (window as { clarity?: (...args: unknown[]) => void }).clarity?.("event", event);
+  const now = Date.now();
+  const entry = {
+    ...params,
+    event,
+    event_id: eventId(),
+    session_id: sid(),
+    page_path: window.location.pathname,
+    occurred_at: new Date(now).toISOString(),
+    event_time: now,
+    is_logged_in: authenticatedForTracking(),
+    ...acquisition(),
+  };
+  try {
+    (window as { gtag?: (...args: unknown[]) => void }).gtag?.("event", event, entry);
+  } catch (error) {
+    console.warn("[analytics:ga4]", event, error instanceof Error ? error.message : "unknown_error");
+  }
+  try {
+    (window as { clarity?: (...args: unknown[]) => void }).clarity?.("event", event);
+  } catch (error) {
+    console.warn("[analytics:clarity]", event, error instanceof Error ? error.message : "unknown_error");
+  }
   trackMetaEvent(event, entry);
   try {
     const log = JSON.parse(localStorage.getItem(EVENTS_KEY) ?? "[]") as unknown[];
@@ -35,7 +112,7 @@ export function track(event: string, params: Record<string, unknown> = {}): void
   } catch {
     /* 스토리지 실패는 계측 손실로만 처리 */
   }
-  console.debug("[track]", event, entry);
+  console.debug("[analytics:event]", event, entry.event_id);
 }
 
 export type FakeDoorProduct = "plan" | "day_pass" | "demand_report";

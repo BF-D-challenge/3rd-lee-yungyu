@@ -18,7 +18,11 @@ const makeStorage = () => {
 beforeEach(() => {
   vi.stubGlobal("localStorage", makeStorage());
   vi.stubGlobal("sessionStorage", makeStorage());
-  vi.stubGlobal("window", { location: { pathname: "/" } });
+  vi.stubGlobal("crypto", { randomUUID: vi.fn()
+    .mockReturnValueOnce("event-1")
+    .mockReturnValueOnce("session-1")
+    .mockReturnValue("event-next") });
+  vi.stubGlobal("window", { location: { pathname: "/", search: "?utm_source=meta&utm_campaign=tastepin-launch&utm_content=creative-a" } });
   vi.spyOn(console, "debug").mockImplementation(() => undefined);
 });
 
@@ -36,6 +40,15 @@ describe("idea loop event tracking", () => {
       entry_path: "/",
       attempt: 1,
       draw_method: "manual",
+      event_id: "event-1",
+      session_id: "session-1",
+      page_path: "/",
+      source: "meta",
+      utm_source: "meta",
+      utm_medium: "not_set",
+      utm_campaign: "tastepin-launch",
+      utm_content: "creative-a",
+      utm_term: "not_set",
     });
     expect(JSON.stringify(events[0])).not.toContain("message");
   });

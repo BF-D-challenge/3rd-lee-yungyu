@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { GoogleLoginButton } from "./google-login-button";
+import { authEnabled } from "@/lib/backend/auth";
 import { checkAuthSession } from "@/lib/auth-session";
 import {
   markMvpSignupPending,
@@ -19,6 +20,10 @@ export function PostResultSignup({
   const [state, setState] = useState<"checking" | "anonymous" | "connected">("checking");
 
   useEffect(() => {
+    if (!authEnabled) {
+      setState("anonymous");
+      return;
+    }
     let active = true;
     void checkAuthSession().then((session) => {
       if (!active) return;
@@ -26,12 +31,13 @@ export function PostResultSignup({
         setState("anonymous");
         return;
       }
-      trackMvpSignupCompleted(experimentId);
+      trackMvpSignupCompleted(experimentId, session);
       setState("connected");
     });
     return () => { active = false; };
   }, [experimentId]);
 
+  if (!authEnabled) return null;
   if (state === "checking") return null;
   if (state === "connected") {
     return <p className="mt-5 text-center text-sm text-muted">계정이 연결됐어요.</p>;
@@ -47,8 +53,8 @@ export function PostResultSignup({
         label={label}
         returnTo={typeof window === "undefined" ? undefined : window.location.href}
         onBeforeAuth={() => markMvpSignupPending(experimentId)}
-        onAuthenticated={() => {
-          trackMvpSignupCompleted(experimentId);
+        onAuthenticated={(session) => {
+          trackMvpSignupCompleted(experimentId, session);
           setState("connected");
         }}
       />

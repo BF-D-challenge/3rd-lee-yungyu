@@ -1,73 +1,94 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("랜덤 엔딩 독립 MVP", () => {
-  test.beforeEach(async ({ page }) => {
+test.describe("상황 카드", () => {
+  test("상황을 고르면 로그인이나 확인 단계 없이 바로 채팅을 시작한다", async ({ page }) => {
     await page.goto("/story-cards");
-    await page.evaluate(() => {
-      localStorage.removeItem("random-ending:daily-draws:v1");
-    });
-    await page.reload();
-  });
 
-  test("로그인과 결제 없이 랜덤 카드부터 여덟 번째 선택의 결말까지 간다", async ({ page }) => {
-    await expect(page.getByRole("heading", { name: "랜덤 카드 한 장, 8번 고르면 끝." })).toBeVisible();
-    await expect(page.getByText("오늘 여러 장 무료", { exact: true })).toBeVisible();
-    await expect(page.getByRole("button", { name: "랜덤 카드 무료로 열기" })).toBeVisible();
-    await expect(page.getByText(/로그인이나 결제 없이 결말까지/)).toBeVisible();
+    await expect(page.getByRole("heading", { name: "지금 마음에 가까운 상황을 골라보세요." })).toBeVisible();
+    await expect(page.getByRole("group", { name: "대화를 시작할 상황" })).toBeVisible();
+    await expect(page.getByRole("group", { name: /카드 덱/ })).toBeVisible();
+    await expect(page.getByText("지금은 미리 준비한 안전 문장으로 답해요.", { exact: false })).toBeVisible();
 
-    await page.getByRole("button", { name: "랜덤 카드 무료로 열기" }).click();
+    await page.getByRole("button", { name: /유리 온실의 편지.*선택하고 대화 시작/ }).click();
 
-    for (let turn = 1; turn <= 8; turn += 1) {
-      await expect(page.getByText(`${turn} / 8번째 선택`, { exact: true })).toBeVisible();
-      await page.getByRole("button", { name: "단서를 더 살펴본다" }).click();
-    }
-
-    await expect(page.getByText("8번의 선택으로 완성한 결말", { exact: true })).toBeVisible();
-    await expect(page.getByText("결말을 먼저 보여드렸어요. 로그인·결제·공유 조건은 없습니다.", { exact: true })).toBeVisible();
-    await expect(page.getByRole("button", { name: "다른 카드도 무료로 열기" })).toBeVisible();
-    await expect(page.getByText("단서를 살핀 선택", { exact: true })).toBeVisible();
-    await expect(page.getByText("8번", { exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "유리 온실의 편지" })).toBeFocused();
+    await expect(page.getByText("이 편지는 아직 받는 사람이 없어요.", { exact: false })).toBeVisible();
+    await expect(page.getByLabel("내 이야기")).toBeVisible();
+    await expect(page.getByRole("button", { name: "메시지 보내기" })).toBeDisabled();
     await expect(page.getByText(/로그인하고|결제하기|친구 초대/)).toHaveCount(0);
+
+    const events = await page.evaluate(() => JSON.parse(localStorage.getItem("events") ?? "[]"));
+    expect(events).toEqual(expect.arrayContaining([
+      expect.objectContaining({ event: "story_cards_landing_viewed" }),
+      expect.objectContaining({ event: "story_cards_input_started" }),
+      expect.objectContaining({ event: "story_cards_result_viewed" }),
+      expect.objectContaining({ event: "story_card_situation_selected", card_id: "glass-greenhouse" }),
+      expect.objectContaining({ event: "story_card_chat_started", card_id: "glass-greenhouse" }),
+    ]));
   });
 
-  test("첫 완주 뒤 다른 무료 카드를 바로 열고 오늘 뽑기 수를 유지한다", async ({ page }) => {
-    await page.getByRole("button", { name: "랜덤 카드 무료로 열기" }).click();
-    const firstTitle = await page.locator("section").filter({ hasText: "1 / 8번째 선택" })
-      .getByRole("heading")
-      .textContent();
+  test("직접 쓴 문장을 보내고 실패하면 문장을 복구해 다시 보낼 수 있다", async ({ page }) => {
+    await page.goto("/story-cards");
+    await page.getByRole("button", { name: /파도 기록실.*선택하고 대화 시작/ }).click();
+    await expect(page.getByLabel("내 이야기")).toBeVisible();
 
-    for (let turn = 1; turn <= 8; turn += 1) {
-      await page.getByRole("button", { name: "먼저 말을 건넨다" }).click();
-    }
+    let shouldFail = true;
+    await page.route("**/api/story-cards", async (route) => {
+      if (route.request().method() === "POST" && shouldFail) {
+        shouldFail = false;
+        await route.fulfill({ status: 503, json: { error: "temporary_failure" } });
+        return;
+      }
+      await route.continue();
+    });
 
-    await page.getByRole("button", { name: "다른 카드도 무료로 열기" }).click();
-    await expect(page.getByText("1 / 8번째 선택", { exact: true })).toBeVisible();
-    const secondTitle = await page.locator("section").filter({ hasText: "1 / 8번째 선택" })
-      .getByRole("heading")
-      .textContent();
-    expect(secondTitle).not.toBe(firstTitle);
+    const composer = page.getByLabel("내 이야기");
+    await composer.fill("무슨 말부터 해야 할지 모르겠어요");
+    await page.getByRole("button", { name: "메시지 보내기" }).click();
+    await expect(page.locator("main [role='alert']")).toContainText("문장은 그대로 두었으니 다시 보내주세요.");
+    await expect(composer).toHaveValue("무슨 말부터 해야 할지 모르겠어요");
 
-    await page.getByRole("button", { name: "이 이야기를 멈추고 덱으로" }).click();
-    await expect(page.getByText("오늘 이 기기에서 2장 열었어요. 바로 또 열 수 있어요.", { exact: true })).toBeVisible();
+    await page.getByRole("button", { name: "메시지 보내기" }).click();
+    await expect(page.getByText("그 말을 처음 품었던 때의 당신은 무엇을 바라고 있었나요?")).toBeVisible();
+    await expect(composer).toHaveValue("");
 
-    await page.reload();
-    await expect(page.getByText("오늘 이 기기에서 2장 열었어요. 바로 또 열 수 있어요.", { exact: true })).toBeVisible();
+    const stored = await page.evaluate(() => localStorage.getItem("events") ?? "");
+    expect(stored).not.toContain("무슨 말부터 해야 할지 모르겠어요");
   });
 
-  test("작은 화면과 모션 축소 설정에서도 무료 뽑기와 선택 버튼을 쓸 수 있다", async ({ page }) => {
+  test("카드 목록 로딩 실패를 같은 화면에서 회복한다", async ({ page }) => {
+    let shouldFail = true;
+    await page.route("**/api/story-cards", async (route) => {
+      if (route.request().method() === "GET" && shouldFail) {
+        shouldFail = false;
+        await route.fulfill({ status: 503, json: { error: "temporary_failure" } });
+        return;
+      }
+      await route.continue();
+    });
+
+    await page.goto("/story-cards");
+    await expect(page.locator("main [role='alert']")).toContainText("상황 카드를 불러오지 못했어요.");
+    await page.getByRole("button", { name: "다시 불러오기" }).click();
+    await expect(page.getByRole("button", { name: /비가 멈춘 역.*선택하고 대화 시작/ })).toBeVisible();
+  });
+
+  test("작은 화면과 모션 축소 설정에서도 카드 선택과 채팅 입력을 쓸 수 있다", async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 568 });
     await page.emulateMedia({ reducedMotion: "reduce" });
-    await page.reload();
+    await page.goto("/story-cards");
 
-    const drawButton = page.getByRole("button", { name: "랜덤 카드 무료로 열기" });
-    await expect(drawButton).toBeVisible();
-    expect((await drawButton.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+    const situation = page.getByRole("button", { name: /달 아래의 가게.*선택하고 대화 시작/ });
+    await expect(situation).toBeVisible();
+    expect((await situation.boundingBox())?.height).toBeGreaterThanOrEqual(48);
+    await expect(page.locator(".fd-host")).toHaveAttribute("data-motion", "reduced");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 
-    await drawButton.click();
-    const firstChoice = page.getByRole("button", { name: "단서를 더 살펴본다" });
-    await expect(firstChoice).toBeVisible();
-    expect((await firstChoice.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+    await situation.click();
+    const composer = page.getByLabel("내 이야기");
+    await expect(composer).toBeVisible();
+    expect((await page.getByRole("button", { name: "메시지 보내기" }).boundingBox())?.height)
+      .toBeGreaterThanOrEqual(48);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   });
 });

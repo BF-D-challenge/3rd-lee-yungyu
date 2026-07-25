@@ -5,6 +5,7 @@ import {
   Camera,
   Check,
   ImagePlus,
+  LoaderCircle,
   RefreshCcw,
   ShieldCheck,
 } from "lucide-react";
@@ -25,12 +26,18 @@ import {
   type OnebiteRejectedResponse,
   type OnebiteSuccessResponse,
 } from "@/app/api/onebite/analyze/contract";
-import { trackMvpDeepAction, trackMvpResultViewed } from "@/lib/mvp-experiment-analytics";
+import {
+  trackMvpDeepAction,
+  trackMvpInputStarted,
+  trackMvpLandingViewed,
+  trackMvpResultViewed,
+} from "@/lib/mvp-experiment-analytics";
 import { PostResultSignup } from "@/components/organisms/journey/post-result-signup";
 import styles from "./onebite.module.css";
 
 type RequestState = "idle" | "loading" | "success" | "rejected" | "error";
 
+const ONEBITE_COMMIT_KEY = "onebite:next-meal-commit:v1";
 const supportedTypes = new Set<string>(ONEBITE_SUPPORTED_IMAGE_TYPES);
 
 const visibleGroupCopy: Record<
@@ -85,6 +92,7 @@ function errorCode(body: unknown): string {
 
 export function Onebite() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const inputStartedRef = useRef(false);
   const [photo, setPhoto] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [requestState, setRequestState] = useState<RequestState>("idle");
@@ -100,6 +108,10 @@ export function Onebite() {
     },
     [previewUrl],
   );
+
+  useEffect(() => {
+    trackMvpLandingViewed("onebite");
+  }, []);
 
   const resetRequest = () => {
     setResult(null);
@@ -133,6 +145,10 @@ export function Onebite() {
     }
 
     setPhoto(nextPhoto);
+    if (!inputStartedRef.current) {
+      inputStartedRef.current = true;
+      trackMvpInputStarted("onebite");
+    }
     setPreviewUrl(URL.createObjectURL(nextPhoto));
     resetRequest();
   };
@@ -200,11 +216,13 @@ export function Onebite() {
             className={styles.form}
             onSubmit={analyze}
             aria-busy={requestState === "loading"}
+            data-clarity-mask="true"
           >
             <label
               className={styles.upload}
               htmlFor="onebite-photo"
               data-has-photo={photo ? "true" : "false"}
+              data-loading={requestState === "loading" ? "true" : "false"}
             >
               {previewUrl ? (
                 <>
@@ -257,7 +275,12 @@ export function Onebite() {
               aria-describedby={!photo ? "onebite-submit-help" : undefined}
             >
               {requestState === "loading"
-                ? "사진에서 음식 그룹을 확인하는 중…"
+                ? (
+                  <>
+                    <LoaderCircle className={styles.spinner} size={18} aria-hidden />
+                    사진에서 음식 그룹을 확인하는 중…
+                  </>
+                )
                 : "사진 분석하고 다음 행동 보기"}
             </button>
             {!photo ? (
@@ -268,17 +291,17 @@ export function Onebite() {
 
             <p className={styles.privacy}>
               <ShieldCheck size={16} aria-hidden />
-              우리 서비스의 DB나 파일 저장소에는 사진을 보관하지 않습니다. 서버에서 크기와 메타데이터를 정리한 뒤 Gemini 분석 요청에 한 번 전송합니다.
+              사진은 저장하지 않아요. 분석을 위해 크기와 메타데이터를 정리한 뒤 Gemini에 한 번 전송해요.
             </p>
           </form>
         ) : null}
 
-        {requestState === "success" && result ? (
-          <Result result={result} onReset={clearPhoto} />
+        {requestState === "success" && result && previewUrl ? (
+          <Result result={result} previewUrl={previewUrl} onReset={clearPhoto} />
         ) : null}
 
         <p className={styles.boundary}>
-          사진만으로 칼로리·중량·질환을 판단하지 않으며, 의료·임상 영양 조언을 제공하지 않습니다.
+          사진만으로 칼로리·중량·질환은 판단하지 않아요. 의료·임상 영양 조언도 제공하지 않습니다.
         </p>
       </section>
     </main>
@@ -287,49 +310,104 @@ export function Onebite() {
 
 function Result({
   result,
+  previewUrl,
   onReset,
 }: {
   result: OnebiteSuccessResponse;
+  previewUrl: string;
   onReset: () => void;
 }) {
   const [committed, setCommitted] = useState(false);
+  const [commitError, setCommitError] = useState(false);
 
   useEffect(() => {
     trackMvpResultViewed("onebite");
-  }, []);
+    try {
+      const saved = JSON.parse(localStorage.getItem(ONEBITE_COMMIT_KEY) ?? "null") as {
+        actionCode?: unknown;
+      } | null;
+      setCommitted(saved?.actionCode === result.analysis.actionCode);
+    } catch {
+      setCommitted(false);
+    }
+  }, [result.analysis.actionCode]);
+
+  const commitAction = () => {
+    if (committed) return;
+    try {
+      localStorage.setItem(ONEBITE_COMMIT_KEY, JSON.stringify({
+        actionCode: result.analysis.actionCode,
+        savedAt: new Date().toISOString(),
+      }));
+      setCommitted(true);
+      setCommitError(false);
+      trackMvpDeepAction("onebite");
+    } catch {
+      setCommitError(true);
+    }
+  };
 
   return (
-    <section className={styles.result} role="status" aria-live="polite">
-      <span className={styles.resultIcon}><Check aria-hidden /></span>
-      <p className={styles.resultLabel}>사진에서 확인한 그룹</p>
-      <div className={styles.groupList}>
-        {result.analysis.visibleGroups.map((group) => (
-          <span key={group}>{visibleGroupCopy[group]}</span>
-        ))}
+    <section
+      className={styles.result}
+      aria-labelledby="onebite-result-title"
+      aria-live="polite"
+      data-clarity-mask="true"
+    >
+      <div className={styles.resultEvidence}>
+        <div className={styles.resultPhotoFrame}>
+          <Image
+            className={styles.resultPhoto}
+            src={previewUrl}
+            alt="분석한 음식 사진"
+            width={160}
+            height={160}
+            unoptimized
+          />
+          <span className={styles.resultIcon}><Check size={18} aria-hidden /></span>
+        </div>
+        <div>
+          <h2 id="onebite-result-title" className={styles.resultLabel}>
+            사진에서 확인한 그룹
+          </h2>
+          <div className={styles.groupList}>
+            {result.analysis.visibleGroups.map((group) => (
+              <span key={group}>{visibleGroupCopy[group]}</span>
+            ))}
+          </div>
+          <p className={styles.confidence}>
+            사진 판독 확신도 {confidenceCopy[result.analysis.confidence]}
+          </p>
+        </div>
       </div>
-      <p className={styles.confidence}>
-        사진 판독 확신도 {confidenceCopy[result.analysis.confidence]}
-      </p>
 
       <div className={styles.action}>
         <p>다음 한 끼 행동</p>
-        <h2>{result.actionLine}</h2>
+        <h3>{result.actionLine}</h3>
       </div>
 
       <p className={styles.resultNote}>
         이 문장은 Gemini가 자유롭게 만든 조언이 아니라, 사진에서 확인한 그룹에 맞춰 안전한 고정 문장 중 하나를 고른 결과예요.
       </p>
-      <button
-        className={styles.primaryButton}
-        type="button"
-        onClick={() => {
-          if (committed) return;
-          setCommitted(true);
-          trackMvpDeepAction("onebite");
-        }}
-      >
-        {committed ? "다음 끼니 행동으로 저장했어요" : "다음 끼니에 이 행동 해볼게요"}
-      </button>
+      {committed ? (
+        <p
+          className={styles.savedStatus}
+          role="status"
+          aria-label="이 기기에 다음 끼니 행동을 저장했어요"
+        >
+          <Check size={18} aria-hidden />
+          이 기기에 다음 끼니 행동을 저장했어요
+        </p>
+      ) : (
+        <button
+          className={styles.primaryButton}
+          type="button"
+          onClick={commitAction}
+        >
+          다음 끼니 행동으로 저장하기
+        </button>
+      )}
+      {commitError ? <p className={styles.error} role="alert">이 기기에 저장하지 못했어요. 브라우저 저장 공간을 확인해 주세요.</p> : null}
       <button className={styles.secondaryButton} type="button" onClick={onReset}>
         다른 사진 분석하기
       </button>

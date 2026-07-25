@@ -6,45 +6,42 @@ export const STORY_CARD_IDS = [
 ] as const;
 
 export type StoryCardId = (typeof STORY_CARD_IDS)[number];
-export type StoryChoiceId = "observe" | "answer" | "leave";
-export type StoryChoice = { id: StoryChoiceId; label: string };
 
-export type StoryCardSession = {
-  mode: "mock";
-  sessionId: string;
-  cardId: StoryCardId;
-  cardTitle: string;
-  character: string;
+export type StorySituation = {
+  id: StoryCardId;
+  title: string;
+  kicker: string;
   scene: string;
-  turn: number;
-  totalTurns: 8;
-  choiceHistory: StoryChoiceId[];
-  passage: string;
-  choices: StoryChoice[];
+  guideName: string;
+  artIndex: number;
+  accent: string;
 };
 
-export type StoryCardEnding = {
-  mode: "mock";
-  sessionId: string;
-  cardId: StoryCardId;
-  cardTitle: string;
-  character: string;
-  scene: string;
-  turn: 8;
-  totalTurns: 8;
-  choiceHistory: StoryChoiceId[];
-  endingTitle: string;
-  ending: string;
+export type StoryChatMessage = {
+  id: string;
+  role: "guide" | "user";
+  text: string;
 };
 
-export type StoryCardResponse = StoryCardSession | StoryCardEnding;
+export type StorySituationListResponse = {
+  mode: "mock";
+  situations: StorySituation[];
+};
+
+export type StoryChatSession = {
+  mode: "mock";
+  sessionId: string;
+  situation: StorySituation;
+  messages: StoryChatMessage[];
+  suggestedReplies: string[];
+};
 
 export type StoryCardRequest =
-  | { action: "draw"; excludeCardId?: StoryCardId }
+  | { action: "start"; situationId: StoryCardId }
   | {
-      action: "choose";
-      session: Pick<StoryCardSession, "sessionId" | "cardId" | "turn" | "choiceHistory">;
-      choiceId: StoryChoiceId;
+      action: "reply";
+      sessionId: string;
+      situationId: StoryCardId;
+      message: string;
+      messageCount: number;
     };
-
-export const isStoryEnding = (value: StoryCardResponse): value is StoryCardEnding => "ending" in value;
