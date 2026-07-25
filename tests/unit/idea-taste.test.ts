@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { IDEA_LAB_SCENARIOS } from "@/components/organisms/idea-lab/sample-data";
+import {
+  IDEA_LAB_SCENARIOS,
+  KOREA_POPULAR_IDEA_LAB_SCENARIOS,
+} from "@/components/organisms/idea-lab/sample-data";
 import {
   EMPTY_IDEA_TASTE_PROFILE,
   IDEA_TASTE_QUESTIONS,
@@ -106,6 +109,50 @@ describe("Idea Lab one-question taste model", () => {
       0.999,
     );
     expect(tiedRecommendation.scenarioIndex).toBe(IDEA_LAB_SCENARIOS.length - 1);
+  });
+
+  it("keeps taste rerolls unique until the source pool is exhausted", () => {
+    const profile = recordIdeaTasteAnswer(
+      recordIdeaTasteAnswer(EMPTY_IDEA_TASTE_PROFILE, "audience", "personal"),
+      "surface",
+      "browser",
+    );
+    const seen = new Set<string>();
+    const selectedIds: string[] = [];
+    let currentIndex = -1;
+
+    for (
+      let reroll = 0;
+      reroll < KOREA_POPULAR_IDEA_LAB_SCENARIOS.length;
+      reroll += 1
+    ) {
+      const recommendation = recommendIdeaForTaste(
+        KOREA_POPULAR_IDEA_LAB_SCENARIOS,
+        profile,
+        seen,
+        currentIndex,
+        0,
+      );
+      const nextId = KOREA_POPULAR_IDEA_LAB_SCENARIOS[recommendation.scenarioIndex].id;
+
+      expect(seen.has(nextId), `reroll ${reroll + 1}: ${nextId} was already seen`).toBe(false);
+      if (currentIndex >= 0) expect(recommendation.scenarioIndex).not.toBe(currentIndex);
+
+      seen.add(nextId);
+      selectedIds.push(nextId);
+      currentIndex = recommendation.scenarioIndex;
+    }
+
+    expect(new Set(selectedIds).size).toBe(KOREA_POPULAR_IDEA_LAB_SCENARIOS.length);
+
+    const recycled = recommendIdeaForTaste(
+      KOREA_POPULAR_IDEA_LAB_SCENARIOS,
+      profile,
+      seen,
+      currentIndex,
+      0,
+    );
+    expect(recycled.scenarioIndex).not.toBe(currentIndex);
   });
 
   it("gives every abstract trait a non-flat recommendation signal", () => {

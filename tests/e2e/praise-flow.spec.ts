@@ -173,18 +173,37 @@ test.describe("A안 아이디어 응원 여정", () => {
     await installShareMock(page, "kakao");
     await page.goto("/");
     await page.locator(".idea-lab__slot.is-carousel-active .idea-lab__card-frame button").press("Enter");
-    for (const label of ["돈 낼 사람", "필요한 순간", "한 끗 변화"]) {
+    await page.getByRole("button", {
+      name: "읽었어요 · 다음 카드",
+      exact: true,
+    }).press("Enter");
+    for (const [index, label] of ["돈 낼 사람", "필요한 순간", "한 끗 변화"].entries()) {
       const drawButton = page.getByRole("button", { name: `${label} 카드 뽑기`, exact: true });
       await expect(drawButton).toBeVisible();
       await drawButton.press("Enter");
+      if (index < 2) {
+        await page.getByRole("button", {
+          name: "읽었어요 · 다음 카드",
+          exact: true,
+        }).press("Enter");
+      }
     }
+    await expect(page.locator(".idea-lab__stage--result")).toHaveCount(0);
+    await page.getByRole("button", {
+      name: "이 아이디어 완성해서 보기",
+      exact: true,
+    }).press("Enter");
     await expect(page.locator(".idea-lab__stage--result")).toBeVisible({ timeout: DRAW_ALL_SETTLE_TIMEOUT });
     await page.getByRole("button", {
-      name: "공유하고 제작 자료 3개 열기",
+      name: "친구에게 의견 물어보기",
       exact: true,
     }).press("Enter");
     await chooseKakaoShare(page);
     await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
+    await expect(page.getByText(
+      "친구에게 의견을 물어볼 공유 화면을 열었어요.",
+      { exact: true },
+    )).toBeVisible();
 
     const saved = await page.evaluate(() =>
       JSON.parse(localStorage.getItem("oneul:latest-praise-request:v1") ?? "null") as {

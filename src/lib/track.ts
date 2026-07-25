@@ -5,6 +5,7 @@ import type { ShareChannel } from "./share-channel";
 
 const EVENTS_KEY = "events";
 const IDEA_EVENT_KEYS = "idea:event-keys:v1";
+const IDEA_FUNNEL_EVENT_KEYS = "idea:funnel-event-keys:v1";
 
 let memSid: string | null = null; // 스토리지 차단 환경 폴백
 
@@ -45,10 +46,20 @@ export const trackShare = (event: string, method: ShareChannel, params: Record<s
   track(event, { share_method: method, ...params });
 
 export type IdeaFunnelEventName =
+  | "idea_anonymous_home_viewed"
   | "idea_lab_viewed"
   | "idea_first_card_drawn"
+  | "idea_card_read"
+  | "idea_card_next_clicked"
   | "idea_four_cards_completed"
-  | "idea_result_viewed";
+  | "idea_result_ready"
+  | "idea_result_opened"
+  | "idea_result_viewed"
+  | "idea_prompt_copied"
+  | "idea_result_saved"
+  | "idea_voluntary_share"
+  | "idea_login_after_result"
+  | "idea_reroll_started";
 
 /** 제작 퍼널에는 선택 카드의 문구를 넣지 않고 행동 단계와 시도 번호만 기록한다. */
 export function trackIdeaFunnelEvent(
@@ -61,6 +72,31 @@ export function trackIdeaFunnelEvent(
     entry_path: window.location.pathname,
     ...params,
   });
+}
+
+/** React 재렌더·Strict Mode·OAuth 복귀에도 같은 퍼널 지점을 한 번만 기록한다. */
+export function trackIdeaFunnelEventOnce(
+  event: IdeaFunnelEventName,
+  dedupeKey: string,
+  params: Record<string, unknown> = {},
+): boolean {
+  if (typeof window === "undefined") return false;
+  const key = `${event}:${dedupeKey}`;
+  try {
+    const parsed = JSON.parse(sessionStorage.getItem(IDEA_FUNNEL_EVENT_KEYS) ?? "[]") as unknown;
+    const stored = Array.isArray(parsed)
+      ? parsed.filter((item): item is string => typeof item === "string")
+      : [];
+    if (stored.includes(key)) return false;
+    sessionStorage.setItem(
+      IDEA_FUNNEL_EVENT_KEYS,
+      JSON.stringify([...stored, key].slice(-1000)),
+    );
+  } catch {
+    // 중복 방지 저장이 막혀도 계측과 핵심 UI는 계속 동작한다.
+  }
+  trackIdeaFunnelEvent(event, params);
+  return true;
 }
 
 export type IdeaEventName =

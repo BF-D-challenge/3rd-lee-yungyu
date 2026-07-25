@@ -27,6 +27,7 @@ import {
   initialScenarioIndex,
   nextScenarioIndex,
   optionFor,
+  scenarioIdToAvoidForReuse,
   type ChoiceIndexes,
 } from "./model";
 import {
@@ -48,6 +49,12 @@ import {
   rememberIdeaTasteAnswer,
 } from "@/lib/backend/idea-taste";
 import {
+  clearIdeaResultSession,
+  loadIdeaResultSession,
+  saveIdeaResultSession,
+} from "@/lib/idea-result-session";
+import { ideaLabReadDurationMs } from "@/lib/idea-lab-timing";
+import {
   EMPTY_IDEA_TASTE_PROFILE,
   ideaTasteProfileFromAnswers,
   makeIdeaTasteAnswer,
@@ -58,10 +65,14 @@ import {
   type IdeaTasteProfile,
   type IdeaTasteQuestion,
 } from "@/lib/idea-taste";
-import { ideaLabReadablePauseMs } from "@/lib/idea-lab-timing";
 import { josa } from "@/lib/josa";
 import { shareToKakao } from "@/lib/kakao-share";
-import { track, trackIdeaFunnelEvent } from "@/lib/track";
+import { authenticatedForTracking } from "@/lib/auth-session";
+import {
+  track,
+  trackIdeaFunnelEvent,
+  trackIdeaFunnelEventOnce,
+} from "@/lib/track";
 
 type Revealed = Record<IdeaLabAxisId, boolean>;
 type PinnedOptions = Partial<{
@@ -75,15 +86,12 @@ type Stage = "draw" | "taste" | "result";
 type CopiedArtifact = "development" | "image" | "brief";
 type CompletionPhase = "idle" | "gather" | "settle" | "glow" | "focus" | "breathe";
 type ResultEntry = "default" | "handoff" | "shared";
+type ResultOpenMethod = "direct" | "taste_answer" | "restored";
 
 const EMPTY_REVEALED: Revealed = { source: false, payer: false, moment: false, twist: false };
 const DEFAULT_CHOICES: ChoiceIndexes = { source: 0, payer: 0, moment: 0, twist: 0 };
-/** 아크 비행 260ms · 카드 앞면을 읽는 안착 후 대기 · 결과 등장 */
+/** 아크 비행은 유지하되, 다음 카드와 결과 전환은 사용자가 직접 확정한다. */
 const FLIGHT_MS = 260;
-const AUTO_STEP_MS = ideaLabReadablePauseMs({
-  e2e: process.env.NEXT_PUBLIC_E2E === "1",
-  e2eOverride: process.env.NEXT_PUBLIC_E2E_IDEA_AUTO_STEP_MS,
-});
 const COMPLETE_SETTLE_AT_MS = 180;
 const COMPLETE_GLOW_AT_MS = 280;
 const COMPLETE_FOCUS_AT_MS = 420;
@@ -94,7 +102,7 @@ const COMPLETE_REDUCED_MS = 80;
 const GUIDE_COPY = [
   {
     title: "오늘 만들 아이디어를 한 장씩 뽑아보세요",
-    description: "네 장을 조합하면 바로 만들 수 있는 아이디어가 완성돼요.",
+    description: "카드 종류와 순서는 같아도 첫 원본 내용은 매번 달라져요.",
   },
   {
     title: "누가 돈을 낼까요?",
@@ -151,10 +159,6 @@ const DECK_POOL: DeckCard[] = Array.from({ length: 16 }, (_, index) => {
 });
 const SCENARIO_IDS = new Set(IDEA_LAB_SCENARIOS.map((scenario) => scenario.id));
 
-const wait = (ms: number) => new Promise<void>((resolve) => window.setTimeout(resolve, ms));
-const waitForPaint = () => new Promise<void>((resolve) => {
-  window.requestAnimationFrame(() => window.requestAnimationFrame(() => resolve()));
-});
 const isReduced = () =>
   typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -182,9 +186,9 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
   const [readingAxis, setReadingAxis] = useState<IdeaLabAxisId | null>(null);
   const [carouselDragX, setCarouselDragX] = useState(0);
   const [carouselDragging, setCarouselDragging] = useState(false);
-  const [promptUnlocked, setPromptUnlocked] = useState(false);
   const [promptExpanded, setPromptExpanded] = useState(false);
   const [stage, setStage] = useState<Stage>("draw");
+  const [resultRequested, setResultRequested] = useState(false);
   const [completionPhase, setCompletionPhase] = useState<CompletionPhase>("idle");
   const [resultEntry, setResultEntry] = useState<ResultEntry>("default");
   const [tasteQuestion, setTasteQuestion] = useState<IdeaTasteQuestion | null>(null);
@@ -201,10 +205,12 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
   const seenScenarioIdsRef = useRef<Set<string> | null>(null);
   const startedScenarioRef = useRef(false);
   const revealedRef = useRef(revealed);
-  const autoDrawingRef = useRef(false);
   const attemptRef = useRef(0);
   const viewTrackedRef = useRef(false);
   const completionStartedRef = useRef(false);
+  const restoredSessionRef = useRef(false);
+  const readingStartedAtRef = useRef<{ axis: IdeaLabAxisId; startedAt: number } | null>(null);
+  const resultOpenMethodRef = useRef<ResultOpenMethod>("direct");
   const tasteProfileRef = useRef<IdeaTasteProfile>(EMPTY_IDEA_TASTE_PROFILE);
   const tasteStorageRef = useRef<"database" | "local" | null>(null);
   const carouselDragRef = useRef({
@@ -255,8 +261,9 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
 
     const seen = seenScenarioIds();
     if (seen.size >= IDEA_LAB_SCENARIOS.length) {
+      const scenarioIdToAvoid = scenarioIdToAvoidForReuse(seen, scenarioIndex);
       seen.clear();
-      seen.add(IDEA_LAB_SCENARIOS[scenarioIndex].id);
+      seen.add(scenarioIdToAvoid);
     }
     const nextIndex = nextScenarioIndex(seen, scenarioIndex);
     startedScenarioRef.current = true;
@@ -284,16 +291,27 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
   const completedCount = inactiveAxes.length;
   const carouselAxis = replacementAxis ?? readingAxis ?? focusedAxis;
   const carouselIndex = IDEA_LAB_AXIS_IDS.indexOf(carouselAxis);
-  const maxNavigableIndex = complete
-    ? IDEA_LAB_AXIS_IDS.length - 1
-    : Math.min(completedCount, IDEA_LAB_AXIS_IDS.length - 1);
+  const maxNavigableIndex = readingAxis
+    ? Math.max(0, completedCount - 1)
+    : complete
+      ? IDEA_LAB_AXIS_IDS.length - 1
+      : Math.min(completedCount, IDEA_LAB_AXIS_IDS.length - 1);
   const canNavigateCarousel = !busy && !replacementAxis && maxNavigableIndex > 0;
   const guideCopy = replacementAxis
     ? {
         title: `${IDEA_LAB_AXIS_META[replacementAxis].label} 교체`,
         description: "새 카드를 뽑아 이 한 장만 바꿔보세요.",
       }
-    : GUIDE_COPY[completedCount];
+    : readingAxis
+      ? {
+          title: complete
+            ? "네 장을 다 뽑았어요"
+            : `${IDEA_LAB_AXIS_META[readingAxis].label} 카드를 읽어보세요`,
+          description: complete
+            ? "마지막 카드까지 읽은 뒤 결과를 직접 열어보세요."
+            : "준비되면 아래 버튼으로 다음 카드에 이동하세요.",
+        }
+      : GUIDE_COPY[completedCount];
   const completing = completionPhase !== "idle";
 
   const selection = useMemo<IdeaLabSelection | null>(() => complete
@@ -335,9 +353,58 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
   }, []);
 
   useEffect(() => {
+    if (!readingAxis) {
+      readingStartedAtRef.current = null;
+      return;
+    }
+    const frame = window.requestAnimationFrame(() => {
+      readingStartedAtRef.current = {
+        axis: readingAxis,
+        startedAt: performance.now(),
+      };
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [readingAxis]);
+
+  useEffect(() => {
+    if (restoredSessionRef.current || initialScenarioId) return;
+    restoredSessionRef.current = true;
+    const saved = loadIdeaResultSession();
+    if (!saved) return;
+    const savedScenarioIndex = IDEA_LAB_SCENARIOS.findIndex(
+      (candidate) => candidate.id === saved.scenarioId,
+    );
+    const savedScenario = IDEA_LAB_SCENARIOS[savedScenarioIndex];
+    const payer = savedScenario?.payers.findIndex((option) => option.id === saved.payerId) ?? -1;
+    const moment = savedScenario?.moments.findIndex((option) => option.id === saved.momentId) ?? -1;
+    const twist = savedScenario?.twists.findIndex((option) => option.id === saved.twistId) ?? -1;
+    if (savedScenarioIndex < 0 || payer < 0 || moment < 0 || twist < 0) {
+      clearIdeaResultSession();
+      return;
+    }
+    startedScenarioRef.current = true;
+    attemptRef.current = Math.max(1, attemptRef.current);
+    resultOpenMethodRef.current = "restored";
+    setScenarioIndex(savedScenarioIndex);
+    setChoiceIndexes({ source: 0, payer, moment, twist });
+    setPinnedOptions({});
+    setRevealed({ source: true, payer: true, moment: true, twist: true });
+    setFocusedAxis("twist");
+    setReadingAxis(null);
+    setResultRequested(false);
+    setCompletionPhase("idle");
+    setResultEntry("default");
+    setMessage("로그인 전 보던 결과를 그대로 이어서 보여드려요.");
+    setStage("result");
+  }, [initialScenarioId]);
+
+  useEffect(() => {
     if (viewTrackedRef.current) return;
     viewTrackedRef.current = true;
     trackIdeaFunnelEvent("idea_lab_viewed");
+    if (!authenticatedForTracking()) {
+      trackIdeaFunnelEventOnce("idea_anonymous_home_viewed", "home");
+    }
   }, []);
 
   useEffect(() => {
@@ -351,6 +418,30 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    if (!selection || !ideaResult) return;
+    trackIdeaFunnelEventOnce("idea_result_ready", ideaResult.combinationId, {
+      attempt: attemptRef.current,
+      scenario_id: scenario.id,
+    });
+  }, [ideaResult, scenario.id, selection]);
+
+  useEffect(() => {
+    if (stage !== "result" || !selection || !ideaResult) return;
+    saveIdeaResultSession({
+      scenarioId: scenario.id,
+      payerId: selection.payer.id,
+      momentId: selection.moment.id,
+      twistId: selection.twist.id,
+      savedAt: Date.now(),
+    });
+    trackIdeaFunnelEventOnce("idea_result_viewed", ideaResult.combinationId, {
+      attempt: attemptRef.current,
+      scenario_id: scenario.id,
+      open_method: resultOpenMethodRef.current,
+    });
+  }, [ideaResult, scenario.id, selection, stage]);
 
   const navigateCarousel = (direction: -1 | 1) => {
     if (busy || replacementAxis) return;
@@ -486,7 +577,6 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
       setPinnedOptions((current) => ({ ...current, [axis]: undefined }));
       setMessage(`${IDEA_LAB_AXIS_META[axis].label} 카드만 새로 뽑았어요.`);
     }
-    setPromptUnlocked(false);
     setReplacementAxis(null);
     setHotAxis(null);
   };
@@ -501,7 +591,7 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
     }
     if (revealedRef.current[axis]) return;
     const nextCount = IDEA_LAB_AXIS_IDS.filter((item) => revealedRef.current[item]).length + 1;
-    const drawMethod = autoDrawingRef.current ? "auto_fill" : "manual";
+    const drawMethod = "manual";
     if (nextCount === 1) {
       attemptRef.current += 1;
       trackIdeaFunnelEvent("idea_first_card_drawn", {
@@ -518,30 +608,14 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
     fillAxis(axis);
     setFocusedAxis(axis);
     setReadingAxis(axis);
-    setPromptUnlocked(false);
     setMessage(nextCount >= IDEA_LAB_AXIS_IDS.length
-      ? "친구에게 먼저 알리고, 실제 반응을 받은 뒤 만들기 시작해보세요."
-      : `${IDEA_LAB_AXIS_META[axis].label} 카드가 도착했어요.`);
-    if (!autoDrawingRef.current) {
-      const nextAxis = IDEA_LAB_AXIS_IDS[IDEA_LAB_AXIS_IDS.indexOf(axis) + 1];
-      if (nextAxis) setFocusedAxis(nextAxis);
-      setBusy(false);
-      void waitForReadablePause().then(() => {
-        setReadingAxis((current) => current === axis ? null : current);
-      });
-    }
+      ? "네 장을 다 읽은 뒤 결과를 직접 열어보세요."
+      : `${IDEA_LAB_AXIS_META[axis].label} 카드를 읽고 다음 버튼을 눌러주세요.`);
+    setBusy(false);
   };
 
   const getTargetRect = (axis: string) =>
-    (autoDrawingRef.current && axis !== carouselAxis
-      ? cellRefs.current[carouselAxis]
-      : cellRefs.current[axis as IdeaLabAxisId])?.getBoundingClientRect() ?? null;
-
-  const waitForReadablePause = async () => {
-    // 모션은 줄여도 읽을 시간은 줄이지 않는다. 카드 앞면이 그려진 뒤부터 시간을 센다.
-    await waitForPaint();
-    await wait(AUTO_STEP_MS);
-  };
+    cellRefs.current[axis as IdeaLabAxisId]?.getBoundingClientRect() ?? null;
 
   const drawSingle = (axis: IdeaLabAxisId, skipMotion = false) => {
     if (busy || revealedRef.current[axis]) return;
@@ -549,8 +623,6 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
     setFocusedAxis(axis);
     setReadingAxis(null);
     setBusy(true);
-    autoDrawingRef.current = false;
-    setPromptUnlocked(false);
     setHotAxis(null);
     setMessage(`${IDEA_LAB_AXIS_META[axis].label} 카드를 가져오고 있어요.`);
     const ok = deckRef.current?.drawTo(axis, () => undefined, skipMotion);
@@ -572,15 +644,73 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
     setMessage("교체를 취소했어요. 네 장은 그대로예요.");
   };
 
+  const recordCardRead = (axis: IdeaLabAxisId) => {
+    const started = readingStartedAtRef.current;
+    const readMs = ideaLabReadDurationMs(
+      started?.axis === axis ? started.startedAt : null,
+      performance.now(),
+    );
+    const optionId = resolved[axis]?.id ?? "unknown";
+    trackIdeaFunnelEventOnce(
+      "idea_card_read",
+      `${attemptRef.current}:${scenario.id}:${axis}:${optionId}`,
+      {
+        attempt: attemptRef.current,
+        scenario_id: scenario.id,
+        axis_id: axis,
+        card_index: IDEA_LAB_AXIS_IDS.indexOf(axis) + 1,
+        read_ms: readMs,
+      },
+    );
+    return readMs;
+  };
+
+  const advanceAfterReading = () => {
+    if (!readingAxis || busy) return;
+    const axis = readingAxis;
+    const nextAxis = IDEA_LAB_AXIS_IDS[IDEA_LAB_AXIS_IDS.indexOf(axis) + 1];
+    if (!nextAxis) return;
+    const readMs = recordCardRead(axis);
+    trackIdeaFunnelEventOnce(
+      "idea_card_next_clicked",
+      `${attemptRef.current}:${scenario.id}:${axis}:${resolved[axis]?.id ?? "unknown"}`,
+      {
+        attempt: attemptRef.current,
+        scenario_id: scenario.id,
+        axis_id: axis,
+        card_index: IDEA_LAB_AXIS_IDS.indexOf(axis) + 1,
+        read_ms: readMs,
+      },
+    );
+    setReadingAxis(null);
+    setFocusedAxis(nextAxis);
+    setMessage(`${IDEA_LAB_AXIS_META[nextAxis].label} 카드를 직접 뽑아보세요.`);
+  };
+
+  const openCompletedIdea = () => {
+    if (!selection || !ideaResult || busy) return;
+    const axis = readingAxis ?? "twist";
+    const readMs = recordCardRead(axis);
+    resultOpenMethodRef.current = "direct";
+    trackIdeaFunnelEventOnce("idea_result_opened", ideaResult.combinationId, {
+      attempt: attemptRef.current,
+      scenario_id: scenario.id,
+      open_method: "direct",
+      read_ms: readMs,
+    });
+    setReadingAxis(null);
+    setResultRequested(true);
+    setMessage("네 장을 모아 결과를 열고 있어요.");
+  };
+
   const goResult = useCallback((entry: ResultEntry = "default") => {
     if (!selection) return;
-    trackIdeaFunnelEvent("idea_result_viewed", { attempt: attemptRef.current });
     setReplacementAxis(null);
     setMessage(tasteApplied
       ? tasteStorageRef.current === "database"
         ? "방금 답한 한 가지 취향을 계정에 기억하고 새 결과에 반영했어요."
         : "방금 답한 한 가지 취향을 이 기기에 기억하고 새 결과에 반영했어요."
-      : "친구에게 먼저 알리고, 실제 반응을 받은 뒤 만들기 시작해보세요.");
+      : "결과와 제작 자료를 공유 없이 바로 사용할 수 있어요.");
     setResultEntry(entry);
     setStage("result");
   }, [selection, tasteApplied]);
@@ -592,13 +722,17 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
     setCompletionPhase("idle");
     setResultEntry("default");
     setBusy(false);
-    setPromptUnlocked(false);
+    setResultRequested(false);
     setReplacementAxis(null);
     setReadingAxis(null);
     setHotAxis(null);
     setTasteQuestion(question);
     setTasteApplied(false);
     tasteStorageRef.current = null;
+    trackIdeaFunnelEvent("idea_reroll_started", {
+      attempt: attemptRef.current,
+      scenario_id: scenario.id,
+    });
     track("idea_taste_question_viewed", {
       question_id: question.id,
       prior_answer_count: tasteProfileRef.current.answerCount,
@@ -649,6 +783,8 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
     setTasteApplied(true);
     setMessage("한 가지 답을 반영해 새 결과를 고르고 있어요.");
     completionStartedRef.current = false;
+    resultOpenMethodRef.current = "taste_answer";
+    setResultRequested(true);
     setCompletionPhase("idle");
     setStage("draw");
   };
@@ -661,13 +797,12 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
   };
 
   useEffect(() => {
-    if (stage !== "draw" || !selection || replacementAxis) {
+    if (stage !== "draw" || !selection || replacementAxis || !resultRequested) {
       completionStartedRef.current = false;
       return;
     }
     if (completionStartedRef.current) return;
     completionStartedRef.current = true;
-    autoDrawingRef.current = false;
     setBusy(false);
     const reducedMotion = isReduced();
     setCompletionPhase(reducedMotion ? "focus" : "gather");
@@ -686,6 +821,7 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
     const resultTimer = window.setTimeout(() => {
       completionStartedRef.current = false;
       const finish = (entry: ResultEntry) => {
+        setResultRequested(false);
         setCompletionPhase("idle");
         goResult(entry);
       };
@@ -707,7 +843,7 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
       if (breatheTimer !== null) window.clearTimeout(breatheTimer);
       window.clearTimeout(resultTimer);
     };
-  }, [goResult, replacementAxis, selection, stage]);
+  }, [goResult, replacementAxis, resultRequested, selection, stage]);
 
   const sharePayload = useMemo<IdeaLabSharePayload | null>(() => selection
     ? ({
@@ -725,7 +861,7 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
     if (sharePayload) onDraftReady?.(sharePayload);
   }, [onDraftReady, sharePayload]);
 
-  const shareAndUnlock = async () => {
+  const shareVoluntarily = async () => {
     if (!sharePayload || busy) return;
     setBusy(true);
     let result: IdeaLabShareResult = { ok: false, method: null };
@@ -743,16 +879,19 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
       setBusy(false);
     }
     if (result.ok) {
-      setPromptUnlocked(true);
-      setPromptExpanded(false);
-      setMessage("제작 자료 3개를 열었어요.");
+      trackIdeaFunnelEvent("idea_voluntary_share", {
+        attempt: attemptRef.current,
+        scenario_id: scenario.id,
+        share_method: result.method,
+      });
+      setMessage("친구에게 의견을 물어볼 공유 화면을 열었어요.");
     } else if (result.reason === "cancelled") {
-      setMessage("");
+      setMessage("공유를 취소해도 결과와 제작 자료는 그대로예요.");
     } else {
       setMessage(
         result.reason === "not_configured" || result.reason === "sdk_unavailable"
-          ? "선택한 공유 방법을 준비하지 못했어요. 잠시 후 다시 시도해 주세요."
-          : "공유를 시작하지 못했어요. 결과는 그대로 보관돼요.",
+          ? "선택한 공유 방법을 준비하지 못했어요. 제작 자료는 계속 사용할 수 있어요."
+          : "공유를 시작하지 못했어요. 결과와 제작 자료는 그대로예요.",
       );
     }
   };
@@ -762,17 +901,43 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
     value: string,
     label: string,
   ) => {
-    if (!promptUnlocked || !value) return;
+    if (!value) return;
     const success = await copyText(value);
     setCopiedArtifact(success ? artifact : null);
     setMessage(success ? `${label}를 복사했어요.` : "복사가 막혔어요. 문구를 직접 선택해 주세요.");
     if (success) {
+      trackIdeaFunnelEvent("idea_prompt_copied", {
+        attempt: attemptRef.current,
+        scenario_id: scenario.id,
+        artifact_type: artifact,
+      });
       if (copyResetTimerRef.current !== null) window.clearTimeout(copyResetTimerRef.current);
       copyResetTimerRef.current = window.setTimeout(
         () => setCopiedArtifact((current) => current === artifact ? null : current),
         1800,
       );
     }
+  };
+
+  const saveCurrentResult = () => {
+    if (!selection || !ideaResult) return;
+    const saved = saveIdeaResultSession({
+      scenarioId: scenario.id,
+      payerId: selection.payer.id,
+      momentId: selection.moment.id,
+      twistId: selection.twist.id,
+      savedAt: Date.now(),
+    });
+    if (!saved) {
+      setMessage("이 기기에 저장하지 못했어요. 결과와 제작 자료는 현재 화면에서 계속 쓸 수 있어요.");
+      return;
+    }
+    trackIdeaFunnelEventOnce("idea_result_saved", ideaResult.combinationId, {
+      attempt: attemptRef.current,
+      scenario_id: scenario.id,
+      storage_scope: "device",
+    });
+    setMessage("이 기기에 결과를 저장했어요. 다음에 같은 브라우저에서 이어볼 수 있어요.");
   };
 
   return (
@@ -790,7 +955,6 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
           ref={drawStageRef}
           className={`idea-lab__stage idea-lab__stage--draw ${completing ? `is-completing is-completion-${completionPhase}` : ""}`}
           data-anim
-          data-readable-pause-ms={AUTO_STEP_MS}
           data-reading-axis={readingAxis ?? undefined}
           data-scenario-id={selection ? scenario.id : undefined}
           data-replacement-axis={replacementAxis ?? undefined}
@@ -906,7 +1070,7 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
                     badge={value ? undefined : `${index + 1}`}
                     floaty={complete && !completing}
                     floatDelay={index}
-                    interactive={!completing && isActive && (complete || axis === aimAxis || axis === replacementAxis)}
+                    interactive={!completing && !readingAxis && isActive && (complete || axis === aimAxis || axis === replacementAxis)}
                     frameClassName="idea-lab__card-frame"
                     onFill={(options) => drawSingle(axis, Boolean(options?.skipMotion))}
                     onSwap={() => startReplacement(axis)}
@@ -955,14 +1119,9 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
                     className={`idea-lab__progress-segment ${revealed[axis] ? "is-complete" : ""} ${carouselAxis === axis && readingAxis !== axis ? "is-current" : ""} ${readingAxis === axis ? "is-reading" : ""}`}
                     style={{
                       "--axis": IDEA_LAB_AXIS_META[axis].color,
-                      "--read-duration": `${AUTO_STEP_MS}ms`,
                       backgroundColor: readingAxis === axis ? "rgba(255,255,255,.14)" : undefined,
                     } as CSSProperties}
-                  >
-                    {readingAxis === axis ? (
-                      <i className="idea-lab__progress-segment-fill" />
-                    ) : null}
-                  </span>
+                  />
                 ))}
               </div>
             </div>
@@ -978,18 +1137,20 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
           </div>
 
           <div
-            className={`idea-lab__deck ${completedCount === 0 ? "is-initial" : ""}`}
-            aria-hidden={busy ? "true" : undefined}
+            className={`idea-lab__deck ${completedCount === 0 ? "is-initial" : ""} ${readingAxis ? "is-awaiting-read" : ""}`}
+            aria-hidden={busy || readingAxis ? "true" : undefined}
           >
             <div className="idea-lab__deck-stage">
               <FanDeck
                 ref={deckRef}
                 cards={DECK_POOL}
                 axisLabels={AXIS_LABELS}
-                aimAxis={replacementAxis ?? aimAxis}
-                inactiveAxes={replacementAxis
-                  ? IDEA_LAB_AXIS_IDS.filter((axis) => axis !== replacementAxis)
-                  : inactiveAxes}
+                aimAxis={readingAxis ? null : replacementAxis ?? aimAxis}
+                inactiveAxes={readingAxis
+                  ? [...IDEA_LAB_AXIS_IDS]
+                  : replacementAxis
+                    ? IDEA_LAB_AXIS_IDS.filter((axis) => axis !== replacementAxis)
+                    : inactiveAxes}
                 flightDurationMs={FLIGHT_MS}
                 getTargetRect={getTargetRect}
                 onDragOver={(axis) => setHotAxis((axis as IdeaLabAxisId | null) ?? null)}
@@ -997,6 +1158,24 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
               />
             </div>
           </div>
+
+          <footer
+            className={`idea-lab__cta-bar ${readingAxis ? "" : "is-placeholder"}`}
+            aria-hidden={readingAxis ? undefined : "true"}
+          >
+            {readingAxis ? (
+              <button
+                type="button"
+                className="idea-lab__cta idea-lab__cta--primary"
+                onClick={complete ? openCompletedIdea : advanceAfterReading}
+                disabled={busy}
+              >
+                {complete ? "이 아이디어 완성해서 보기" : "읽었어요 · 다음 카드"}
+              </button>
+            ) : (
+              <span className="idea-lab__cta-placeholder" />
+            )}
+          </footer>
 
         </div>
       ) : null}
@@ -1045,7 +1224,7 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
       {/* ── A2 결과: 요약 → 그라데이션 상세 → 같은 화면에서 제작 자료 열기 ── */}
       {stage === "result" && selection ? (
         <div
-          className={`idea-lab__stage idea-lab__stage--result ${resultEntry !== "default" ? "is-from-handoff" : ""} ${resultEntry === "shared" ? "is-shared-handoff" : ""} ${promptUnlocked ? "is-unlocked" : ""}`}
+          className={`idea-lab__stage idea-lab__stage--result is-unlocked ${resultEntry !== "default" ? "is-from-handoff" : ""} ${resultEntry === "shared" ? "is-shared-handoff" : ""}`}
           data-anim={resultEntry === "default" ? "" : undefined}
         >
           <div className="idea-lab__stage-scroll">
@@ -1118,127 +1297,104 @@ export function IdeaLab({ initialScenarioId, onShare, onDraftReady, onViewPraise
                 </div>
               </div>
 
-              {!promptUnlocked ? (
-                <div className="idea-lab__unlock-guide">
-                  <header className="idea-lab__unlock-intro">
-                    <small>친구 한 명에게 먼저 보여주세요</small>
-                    <h3>보내는 순간, 오늘 만들 제작 자료 3개가 열려요</h3>
-                    <p>
-                      혼자 저장해두면 아이디어로 끝납니다. 친구 반응을 받고
-                      바로 만들기까지 한 번에 이어가세요.
-                    </p>
-                  </header>
+              <div className="idea-lab__unlocked-content">
+                <p className="idea-lab__banner">
+                  공유하지 않아도 바로 쓸 수 있는 제작 자료예요.
+                </p>
+                <p className="idea-lab__result-note" aria-live="polite">{message}</p>
 
-                  <dl className="idea-lab__unlock-summary">
-                    <div>
-                      <dt>친구가 받는 것</dt>
-                      <dd>아이디어 한 장과 한 줄 반응 링크</dd>
+                <div className="idea-lab__artifacts" aria-label="제작 자료">
+                  <section className="idea-lab__artifact idea-lab__artifact--development">
+                    <div className="idea-lab__artifact-head">
+                      <div><b>AI 코딩 프롬프트</b></div>
+                      <span>바로 붙여넣기</span>
                     </div>
-                    <div>
-                      <dt>내가 받는 것</dt>
-                      <dd>전체 브리프와 바로 붙여넣는 AI 프롬프트 2개</dd>
-                    </div>
-                  </dl>
-                  {tasteApplied || message.includes("못했어요") ? (
-                    <p className="idea-lab__result-note" aria-live="polite">{message}</p>
-                  ) : null}
-                  <p className="idea-lab__privacy-note">
-                    인스타그램 · 카카오톡 · 링크 복사 중에서 직접 선택해요.
-                  </p>
-                </div>
-              ) : (
-                <div className="idea-lab__unlocked-content">
-                  <p className="idea-lab__banner" aria-live="polite">
-                    제작 자료 3개를 열었어요.
-                  </p>
-
-                  <div className="idea-lab__artifacts" aria-label="제작 자료">
-                    <section className="idea-lab__artifact idea-lab__artifact--development">
-                      <div className="idea-lab__artifact-head">
-                        <div><b>AI 코딩 프롬프트</b></div>
-                        <span>바로 붙여넣기</span>
-                      </div>
-                      <pre>{developmentPrompt}</pre>
-                      <button
-                        type="button"
-                        onClick={() => copyArtifact("development", developmentPrompt, "AI 코딩 프롬프트")}
-                      >
-                        {copiedArtifact === "development" ? "복사했어요 ✓" : "AI 코딩 프롬프트 복사"}
-                      </button>
-                    </section>
-
-                    <section className="idea-lab__artifact idea-lab__artifact--image">
-                      <div className="idea-lab__artifact-head">
-                        <div><b>이미지 생성 프롬프트</b></div>
-                      </div>
-                      <pre>{imagePrompt}</pre>
-                      <figure className="idea-lab__artifact-example">
-                        <Image
-                          src="/images/idea-lab/image-prompt-example.png"
-                          alt="맛집 영상 링크 입력부터 지도와 여행 동선까지 이어지는 맛핀 이미지 예시"
-                          width={1672}
-                          height={941}
-                          sizes="(max-width: 460px) calc(100vw - 72px), 368px"
-                        />
-                        <figcaption>맛핀 예시 · 링크 입력부터 여행 동선까지</figcaption>
-                      </figure>
-                      <button
-                        type="button"
-                        onClick={() => copyArtifact("image", imagePrompt, "이미지 생성 프롬프트")}
-                      >
-                        {copiedArtifact === "image" ? "복사했어요 ✓" : "이미지 프롬프트 복사"}
-                      </button>
-                    </section>
-                  </div>
-
-                  <div className={`idea-lab__prompt is-unlocked ${promptExpanded ? "is-expanded" : ""}`}>
-                    <div className="idea-lab__prompt-head">
-                      <div><b>전체 아이디어 브리프</b></div>
-                    </div>
-                    <div className="idea-lab__prompt-copy" id="idea-lab-full-prompt">
-                      {promptLines.map((line, index) => (
-                        <p key={`prompt-full-${index}`}>{line}</p>
-                      ))}
-                    </div>
+                    <pre>{developmentPrompt}</pre>
                     <button
                       type="button"
-                      className="idea-lab__prompt-toggle"
-                      aria-expanded={promptExpanded}
-                      aria-controls="idea-lab-full-prompt"
-                      onClick={() => setPromptExpanded((expanded) => !expanded)}
+                      onClick={() => copyArtifact("development", developmentPrompt, "AI 코딩 프롬프트")}
                     >
-                      {promptExpanded ? "전체 브리프 접기" : "전체 브리프 보기"}
+                      {copiedArtifact === "development" ? "복사했어요 ✓" : "AI 코딩 프롬프트 복사"}
                     </button>
-                  </div>
+                  </section>
 
+                  <section className="idea-lab__artifact idea-lab__artifact--image">
+                    <div className="idea-lab__artifact-head">
+                      <div><b>이미지 생성 프롬프트</b></div>
+                    </div>
+                    <pre>{imagePrompt}</pre>
+                    <figure className="idea-lab__artifact-example">
+                      <Image
+                        src="/images/idea-lab/image-prompt-example.png"
+                        alt="맛집 영상 링크 입력부터 지도와 여행 동선까지 이어지는 맛핀 이미지 예시"
+                        width={1672}
+                        height={941}
+                        sizes="(max-width: 460px) calc(100vw - 72px), 368px"
+                      />
+                      <figcaption>맛핀 예시 · 링크 입력부터 여행 동선까지</figcaption>
+                    </figure>
+                    <button
+                      type="button"
+                      onClick={() => copyArtifact("image", imagePrompt, "이미지 생성 프롬프트")}
+                    >
+                      {copiedArtifact === "image" ? "복사했어요 ✓" : "이미지 프롬프트 복사"}
+                    </button>
+                  </section>
+                </div>
+
+                <div className={`idea-lab__prompt is-unlocked ${promptExpanded ? "is-expanded" : ""}`}>
+                  <div className="idea-lab__prompt-head">
+                    <div><b>전체 아이디어 브리프</b></div>
+                  </div>
+                  <div className="idea-lab__prompt-copy" id="idea-lab-full-prompt">
+                    {promptLines.map((line, index) => (
+                      <p key={`prompt-full-${index}`}>{line}</p>
+                    ))}
+                  </div>
                   <button
                     type="button"
-                    className="idea-lab__cta idea-lab__cta--ghost"
-                    onClick={() => copyArtifact("brief", prompt, "전체 아이디어 브리프")}
+                    className="idea-lab__prompt-toggle"
+                    aria-expanded={promptExpanded}
+                    aria-controls="idea-lab-full-prompt"
+                    onClick={() => setPromptExpanded((expanded) => !expanded)}
                   >
-                    {copiedArtifact === "brief" ? "복사했어요 ✓" : "전체 아이디어 브리프 복사"}
+                    {promptExpanded ? "전체 브리프 접기" : "전체 브리프 보기"}
                   </button>
                 </div>
-              )}
+
+                <button
+                  type="button"
+                  className="idea-lab__cta idea-lab__cta--ghost"
+                  onClick={() => copyArtifact("brief", prompt, "전체 아이디어 브리프")}
+                >
+                  {copiedArtifact === "brief" ? "복사했어요 ✓" : "전체 아이디어 브리프 복사"}
+                </button>
+              </div>
             </aside>
           </div>
           <footer className="idea-lab__cta-bar idea-lab__cta-bar--stack idea-lab__cta-bar--result">
-            {!promptUnlocked ? (
+            <button
+              type="button"
+              className="idea-lab__cta idea-lab__cta--primary"
+              onClick={shareVoluntarily}
+              disabled={busy}
+            >
+              {busy ? "공유하는 중…" : "친구에게 의견 물어보기"}
+            </button>
+            <button
+              type="button"
+              className="idea-lab__cta idea-lab__cta--ghost"
+              onClick={saveCurrentResult}
+            >
+              이 기기에 결과 저장
+            </button>
+            {onViewPraise ? (
               <button
                 type="button"
-                className="idea-lab__cta idea-lab__cta--primary"
-                onClick={shareAndUnlock}
-                disabled={busy}
-              >
-                {busy ? "공유하는 중…" : "공유하고 제작 자료 3개 열기"}
-              </button>
-            ) : onViewPraise ? (
-              <button
-                type="button"
-                className="idea-lab__cta idea-lab__cta--primary"
+                className="idea-lab__cta idea-lab__cta--ghost"
                 onClick={onViewPraise}
               >
-                받은 응원 보기 →
+                받은 응원 보기
               </button>
             ) : null}
             <button
@@ -1323,6 +1479,7 @@ const IDEA_LAB_CSS = `
 .idea-lab__idea-preview{display:flex;flex-direction:column;align-items:flex-start;gap:5px;width:100%;color:var(--lab-text);white-space:normal}.idea-lab__idea-preview strong,.idea-lab__idea-preview span{display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;text-wrap:balance}.idea-lab__idea-preview strong{-webkit-line-clamp:2;font-size:16px;font-weight:900;line-height:1.3}.idea-lab__idea-preview span{-webkit-line-clamp:2;color:#d7dbe1;font-size:12px;font-weight:700;line-height:1.45}.idea-lab__idea-preview small{max-width:100%;overflow:hidden;color:var(--lab-muted);font-size:10px;font-weight:800;text-overflow:ellipsis;white-space:nowrap}
 .idea-lab__deck{flex:none;position:relative;z-index:50;height:calc(84px + env(safe-area-inset-bottom,0px));margin:0 -16px;overflow:visible;pointer-events:none;background:linear-gradient(to bottom,transparent 0,rgba(9,11,16,.38) 52%,var(--lab-bg) 100%)}
 .idea-lab__deck .fd-card{pointer-events:auto}
+.idea-lab__deck.is-awaiting-read .fd-card{pointer-events:none}
 .idea-lab__deck-stage{position:absolute;top:12px;right:0;left:0;height:160px;overflow:visible}
 .idea-lab__deck-stage .fd-wheel{margin-top:0}
 @keyframes idea-deck-invite{0%,100%{transform:translateY(0)}42%{transform:translateY(-8px)}}
@@ -1368,7 +1525,7 @@ const IDEA_LAB_CSS = `
   .idea-lab__appbar.is-guide{margin:0 8px 8px;padding:12px 8px 6px}
   .idea-lab__slots{flex:none;height:clamp(230px,42dvh,300px);min-height:230px;transform:translateY(-64px)}
   .idea-lab__slot{width:min(58vw,24dvh,200px)}
-  .idea-lab__cta-bar.is-placeholder{display:none}
+  .idea-lab__cta-bar.is-placeholder{display:grid}
   .idea-lab__deck{height:calc(64px + env(safe-area-inset-bottom,0px))}
   .idea-lab__deck-stage{top:10px;height:144px}
   .idea-lab__appbar.is-completion-message{height:clamp(132px,24dvh,160px);min-height:clamp(132px,24dvh,160px)}

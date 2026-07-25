@@ -90,3 +90,14 @@ scripts/rollout/manual-batches/
 # 카드 모션 영상(용량)·미리보기 HTML 실험 (사용자 결정 2026-07-08)
 public/cards/aurora/motion/
 public/_preview/
+
+# 타사 세미나 전사본 — 제3자 저작물이라 공개 레포에 올리지 않음 (사용자 결정 2026-07-26)
+docs/sajuai.md
+
+# Mobbin(유료 구독) 원본 캡처·덤프 — ToS상 재배포 제한. 직접 쓴 분석 문서만 추적 (사용자 결정 2026-07-26)
+docs/research/mobbin/onboarding-flows/
+docs/dev/onboarding-process-from-mobbin.html
+docs/dev/onboarding-process-from-mobbin.md
+
+# 개인 Codex 도구 설정 (사용자 결정 2026-07-26)
+.agents/

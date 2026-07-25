@@ -1,5 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { trackIdeaEvent, trackIdeaFunnelEvent } from "../../src/lib/track";
+import {
+  trackIdeaEvent,
+  trackIdeaFunnelEvent,
+  trackIdeaFunnelEventOnce,
+} from "../../src/lib/track";
 
 const makeStorage = () => {
   const values = new Map<string, string>();
@@ -51,6 +55,18 @@ describe("idea loop event tracking", () => {
 
     const events = JSON.parse(localStorage.getItem("events") ?? "[]") as Array<{ event: string }>;
     expect(events.filter((event) => event.event === "idea_share_opened")).toHaveLength(1);
+  });
+
+  it("does not emit the same funnel state twice in one browser session", () => {
+    expect(trackIdeaFunnelEventOnce("idea_result_ready", "combo-1", {
+      scenario_id: "scenario-1",
+    })).toBe(true);
+    expect(trackIdeaFunnelEventOnce("idea_result_ready", "combo-1", {
+      scenario_id: "scenario-1",
+    })).toBe(false);
+
+    const events = JSON.parse(localStorage.getItem("events") ?? "[]") as Array<{ event: string }>;
+    expect(events.filter((event) => event.event === "idea_result_ready")).toHaveLength(1);
   });
 
   it("keeps revision events separate without storing message text", () => {

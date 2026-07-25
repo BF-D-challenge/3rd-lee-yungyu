@@ -290,25 +290,48 @@ export async function drawAll(page: Page) {
   const labels = ["검증된 원본", "돈 낼 사람", "필요한 순간", "한 끗 변화"];
   for (const [index, label] of labels.entries()) {
     const card = axisCard(page, label);
-    if ((await card.getAttribute("data-value")) !== "") continue;
-    const drawButton = page.getByRole("button", { name: `${label} 카드 뽑기`, exact: true });
-    await expect(drawButton).toBeVisible();
-    await drawButton.click();
-    if (index < labels.length - 1) {
+    if ((await card.getAttribute("data-value")) === "") {
+      const drawButton = page.getByRole("button", { name: `${label} 카드 뽑기`, exact: true });
+      await expect(drawButton).toBeVisible();
+      await drawButton.click();
       await expect(card).not.toHaveAttribute("data-value", "");
     }
+    await expect(card).toHaveAttribute("data-carousel-position", "active");
+    if (index < labels.length - 1) {
+      await expect(page.locator(".idea-lab__stage--result")).toHaveCount(0);
+      const nextButton = page.getByRole("button", {
+        name: "읽었어요 · 다음 카드",
+        exact: true,
+      });
+      await expect(nextButton).toBeVisible();
+      await nextButton.click();
+      await expect(axisCard(page, labels[index + 1]))
+        .toHaveAttribute("data-carousel-position", "active");
+    }
   }
+  await expect(page.locator(".idea-lab__stage--result")).toHaveCount(0);
+  const resultButton = page.getByRole("button", {
+    name: "이 아이디어 완성해서 보기",
+    exact: true,
+  });
+  await expect(resultButton).toBeVisible();
+  await resultButton.click();
   await expect(page.locator(".idea-lab__stage--result")).toBeVisible({ timeout: DRAW_ALL_SETTLE_TIMEOUT });
+  await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
   await expect(page.getByRole("button", { name: "다른 아이디어 뽑기", exact: true })).toBeVisible();
 }
 
 export async function shareIdeaFromResult(page: Page) {
   await page.getByRole("button", {
-    name: "공유하고 제작 자료 3개 열기",
+    name: "친구에게 의견 물어보기",
     exact: true,
   }).click();
   await chooseKakaoShare(page);
   await expect(page.locator(".idea-lab__stage--result.is-unlocked")).toBeVisible();
+  await expect(page.getByText(
+    "친구에게 의견을 물어볼 공유 화면을 열었어요.",
+    { exact: true },
+  )).toBeVisible();
 }
 
 export async function chooseKakaoShare(page: Page) {

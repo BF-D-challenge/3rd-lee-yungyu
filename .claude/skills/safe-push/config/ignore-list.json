@@ -3,11 +3,19 @@
     "무시할_목록": [
       "research/trustmrr-acquire/*.jsonl",
       "public/cards/aurora/motion/",
-      "public/_preview/"
+      "public/_preview/",
+      "docs/sajuai.md",
+      "docs/research/mobbin/onboarding-flows/",
+      "docs/dev/onboarding-process-from-mobbin.html",
+      "docs/dev/onboarding-process-from-mobbin.md",
+      ".agents/"
     ],
     "항상_올릴_목록": [
       ".claude/",
-      ".env.example"
+      ".env.example",
+      "docs/research/mobbin/aha-moment-jtbd-redesign-2026-07-21.md",
+      "docs/research/starter-story/",
+      "docs/research/appsprint-postback/"
     ]
   }
 }

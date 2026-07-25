@@ -13,6 +13,7 @@ import {
   initialScenarioIndex,
   nextScenarioIndex,
   optionFor,
+  scenarioIdToAvoidForReuse,
   type ChoiceIndexes,
 } from "@/components/organisms/idea-lab/model";
 import {
@@ -221,6 +222,16 @@ describe("Idea Lab model", () => {
     expect(initialScenarioIndex()).toBe(0);
   });
 
+  it("does not pin a fresh first draw to the catalog's first scenario", () => {
+    const firstCandidate = nextScenarioIndex([], 0, 0);
+    const lastCandidate = nextScenarioIndex([], 0, 0.999999);
+
+    expect(firstCandidate).toBe(0);
+    expect(lastCandidate).toBe(KOREA_POPULAR_IDEA_LAB_SCENARIOS.length - 1);
+    expect(KOREA_POPULAR_IDEA_LAB_SCENARIOS[firstCandidate].id)
+      .not.toBe(KOREA_POPULAR_IDEA_LAB_SCENARIOS[lastCandidate].id);
+  });
+
   it("prioritizes an unseen audited source and avoids the current source after a full cycle", () => {
     const allButLast = KOREA_POPULAR_IDEA_LAB_SCENARIOS
       .slice(0, -1)
@@ -230,6 +241,52 @@ describe("Idea Lab model", () => {
 
     const all = KOREA_POPULAR_IDEA_LAB_SCENARIOS.map((scenario) => scenario.id);
     expect(nextScenarioIndex(all, 0, 0)).toBe(1);
+  });
+
+  it("uses every unseen scenario before reuse and never repeats at the cycle boundary", () => {
+    const seen = new Set<string>();
+    const selectedIds: string[] = [];
+    let currentIndex = -1;
+
+    for (let draw = 0; draw < KOREA_POPULAR_IDEA_LAB_SCENARIOS.length; draw += 1) {
+      const nextIndex = nextScenarioIndex(seen, currentIndex, 0);
+      const nextId = KOREA_POPULAR_IDEA_LAB_SCENARIOS[nextIndex].id;
+
+      expect(seen.has(nextId), `draw ${draw + 1}: ${nextId} was already seen`).toBe(false);
+      if (currentIndex >= 0) expect(nextIndex).not.toBe(currentIndex);
+
+      seen.add(nextId);
+      selectedIds.push(nextId);
+      currentIndex = nextIndex;
+    }
+
+    expect(new Set(selectedIds).size).toBe(KOREA_POPULAR_IDEA_LAB_SCENARIOS.length);
+    expect(nextScenarioIndex(seen, currentIndex, 0)).not.toBe(currentIndex);
+  });
+
+  it("restores serialized seen ids after refresh and ignores stale storage entries", () => {
+    const storedIds = [
+      ...KOREA_POPULAR_IDEA_LAB_SCENARIOS.slice(0, -1).map((scenario) => scenario.id),
+      "removed-scenario-id",
+    ];
+    const restoredIds = JSON.parse(JSON.stringify(storedIds)) as string[];
+    const nextIndex = nextScenarioIndex(restoredIds, 0, 0.75);
+
+    expect(KOREA_POPULAR_IDEA_LAB_SCENARIOS[nextIndex].id)
+      .toBe(KOREA_POPULAR_IDEA_LAB_SCENARIOS.at(-1)?.id);
+  });
+
+  it("keeps the actual last stored scenario out of reuse after a full-pool remount", () => {
+    const storedIds = KOREA_POPULAR_IDEA_LAB_SCENARIOS.map((scenario) => scenario.id);
+    const actualPreviousId = storedIds.at(-1)!;
+    const remountedDefaultIndex = 0;
+
+    expect(KOREA_POPULAR_IDEA_LAB_SCENARIOS[remountedDefaultIndex].id)
+      .not.toBe(actualPreviousId);
+    expect(scenarioIdToAvoidForReuse(storedIds, remountedDefaultIndex))
+      .toBe(actualPreviousId);
+    expect(scenarioIdToAvoidForReuse(["removed-scenario"], remountedDefaultIndex))
+      .toBe(KOREA_POPULAR_IDEA_LAB_SCENARIOS[remountedDefaultIndex].id);
   });
 
   it("resolves the selected option for every axis", () => {

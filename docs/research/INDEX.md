@@ -25,6 +25,8 @@ metadata:
 | [newsletter-leads/](newsletter-leads/) | 외부 발견 큐 (JSONL 7) | 뉴스레터 사례를 8,406개 전수 심사와 분리해 Hold·Merge·Fail로 기록하는 안전한 입구 | [README.md](newsletter-leads/README.md) |
 | [gas-app/](gas-app/) | 문서 코퍼스 (12) | Gas 앱(익명 칭찬/투표) 성장·붕괴·규제·인프라 벤치마크 | [SUMMARY.md](gas-app/SUMMARY.md) |
 | [idea-tools-2026/](idea-tools-2026/) | 문서 코퍼스 (6) | 아이디어 검증 SaaS의 결제 순간 딜리버러블 4층 구조 | [SUMMARY.md](idea-tools-2026/SUMMARY.md) |
+| [appsprint-postback/](appsprint-postback/) | 문서 코퍼스 (2) | AppSprint ASO·Postback의 제품·UX·기술·가격·성장 루프 공개 블랙박스 분석 | [SUMMARY.md](appsprint-postback/SUMMARY.md) |
+| [starter-story/](starter-story/) | 문서 코퍼스 (2) | Starter Story 13개 메뉴의 실제 기능·접근 경계와 인터뷰·AI 사업 DB·Ask·Build·Academy·HubSpot 퍼널 공개 블랙박스 분석 | [SUMMARY.md](starter-story/SUMMARY.md) |
 | [oneul-haebolkka-demand/](oneul-haebolkka-demand/) | 문서 코퍼스 (4) | "오늘 해볼까" 수요 신호 교차검증 — 중~강, 포지셔닝 조건부 | [SUMMARY.md](oneul-haebolkka-demand/SUMMARY.md) |
 | [oneul-haebolkka-ux-test/](oneul-haebolkka-ux-test/) | 문서 코퍼스 (2) | 전체 여정 UX 테스트 — 발행 여정 단절 3/3 합의와 Gas 루프 비교 | [SUMMARY.md](oneul-haebolkka-ux-test/SUMMARY.md) |
 | [card-art-prompting/](card-art-prompting/) | 문서 코퍼스 (3) | 카드 아트 세트 일관성 프롬프트 기법 + gpt-image-2 5필드 구조 | [SUMMARY.md](card-art-prompting/SUMMARY.md) |
@@ -78,6 +80,32 @@ entryPoint: [idea-tools-2026/SUMMARY.md](idea-tools-2026/SUMMARY.md)
 | [idea-tools-2026/deep/DELIVERABLE_ANATOMY.md](idea-tools-2026/deep/DELIVERABLE_ANATOMY.md) | IdeaBrowser(11섹션 리포트)·DimeADozen(8섹션 $9/$129 검증 리포트)·GummySearch·Exploding Topics의 결제 순간 딜리버러블을 목차·근거출처·무료유료 경계·재방문 장치 단위까지 실물 해부하고 "오늘 해볼까"와의 갭 3줄씩 짚은 심층 분석. |
 | [idea-tools-2026/community/VOC.md](idea-tools-2026/community/VOC.md) | Reddit(r/SaaS·r/startupideas·r/indiehackers)·HN에서 수집한 아이디어 생성/검증 도구에 대한 빌더 실반응 — 원하는 결과물 Top5, 지불 실증(GummySearch 유료 1만명), AI 점수 신뢰붕괴 밈 등 냉소 Top5, "오늘 해볼까" 시사점 5줄. |
 | [idea-tools-2026/tech/OSS_SCAN.md](idea-tools-2026/tech/OSS_SCAN.md) | 아이디어 생성·발견·검증 GitHub 오픈소스 17개 레포(reddit-ai-trends·idea-validation-agents·subscope·fider 등)를 아웃풋·데이터소스 기준으로 스캔해 키리스 커뮤니티 마이닝·판정+다음행동 1개·CLI 스킬화 등 접근법 패턴 5가지를 도출. |
+
+---
+
+## appsprint-postback
+
+AppSprint ASO와 Postback을 공개 페이지·공식 문서·공개 API·브라우저 네트워크·클라이언트 번들·공식 SDK 배포물로 해부한 블랙박스 리버스 엔지니어링 코퍼스. 같은 운영사의 ASO 의사결정 워크스테이션과 모바일 어트리뷰션 SaaS가 어떻게 분리되고 연결되는지, 핵심 루프·기술 구조·가격·MCP·SDK·성장 장치와 공개 표면의 결함을 종합했다.
+
+entryPoint: [appsprint-postback/SUMMARY.md](appsprint-postback/SUMMARY.md)
+
+| 경로 | 설명 |
+|---|---|
+| [appsprint-postback/INDEX.md](appsprint-postback/INDEX.md) | 조사 범위·한계와 통합 리포트 진입점을 안내한다. |
+| [appsprint-postback/SUMMARY.md](appsprint-postback/SUMMARY.md) | 두 제품의 관계, AppSprint 무료 체커·로컬 MCP·Apple 연동, Postback SDK·어트리뷰션·가격 모델·인터랙티브 데모를 분석하고 P0/P1 리스크와 오늘 해볼까 적용점을 정리한다. |
+
+---
+
+## starter-story
+
+Starter Story를 공개 랜딩·아이디어 데이터베이스·인터뷰·AI researched profile·Build/Academy·결제 화면과 실제 로그인 브라우저의 DOM·네트워크로 해부한 블랙박스 리버스 엔지니어링 코퍼스. 창업가 인터뷰가 구조화된 사업 데이터와 자연어 질의로 확장되고, 2026년 HubSpot 인수 후 미디어·멤버십·교육·빌드·모회사 리드 퍼널이 하나로 연결되는 구조를 종합했다.
+
+entryPoint: [starter-story/SUMMARY.md](starter-story/SUMMARY.md)
+
+| 경로 | 설명 |
+|---|---|
+| [starter-story/INDEX.md](starter-story/INDEX.md) | 조사 범위·한계와 통합 리포트 진입점을 안내한다. |
+| [starter-story/SUMMARY.md](starter-story/SUMMARY.md) | 콘텐츠·데이터 모델, 무료·가입·유료 경계, 가격, SEO·데이터·미디어 성장 루프, Rails 기술 구조, 재구현 P0~P3와 오늘 해볼까 적용점을 정리한다. |
 
 ---
 

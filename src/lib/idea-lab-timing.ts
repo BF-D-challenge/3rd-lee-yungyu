@@ -1,17 +1,13 @@
-export const IDEA_LAB_READABLE_PAUSE_MS = 2_500;
+/** 카드 공개 뒤 다음 단계는 타이머가 아니라 사용자의 명시적 버튼 입력으로만 진행한다. */
+export const IDEA_LAB_AUTO_ADVANCE_ENABLED = false as const;
 
-/**
- * 실제 제품에서는 모션 설정과 관계없이 카드 앞면을 2.5초 보여준다.
- * 짧은 값은 명시적인 E2E 빌드에서만 허용해 회귀 테스트 시간을 줄인다.
- */
-export function ideaLabReadablePauseMs({
-  e2e = false,
-  e2eOverride,
-}: {
-  e2e?: boolean;
-  e2eOverride?: string;
-} = {}): number {
-  if (!e2e) return IDEA_LAB_READABLE_PAUSE_MS;
-  const parsed = Number(e2eOverride);
-  return Number.isFinite(parsed) && parsed >= 0 ? parsed : IDEA_LAB_READABLE_PAUSE_MS;
+/** 분석에는 문장 원문 대신 공개 시점부터 버튼 입력까지의 체류 시간만 남긴다. */
+export function ideaLabReadDurationMs(startedAt: number | null, endedAt: number): number {
+  if (
+    startedAt === null
+    || !Number.isFinite(startedAt)
+    || !Number.isFinite(endedAt)
+    || endedAt < startedAt
+  ) return 0;
+  return Math.max(0, Math.round(endedAt - startedAt));
 }
