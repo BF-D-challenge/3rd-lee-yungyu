@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { ArrowLeft, Check, ClipboardCheck, Copy, RotateCcw } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
+import { trackMvpDeepAction, trackMvpResultViewed } from "@/lib/mvp-experiment-analytics";
+import { PostResultSignup } from "@/components/organisms/journey/post-result-signup";
 import {
   todayBExperimentResponseSchema,
   type TodayBExperimentRequest,
@@ -64,6 +66,10 @@ export function TodayB() {
   const [completedDays, setCompletedDays] = useState<number[]>([]);
 
   useEffect(() => {
+    if (plan) trackMvpResultViewed("today_b");
+  }, [plan]);
+
+  useEffect(() => {
     try {
       const saved = JSON.parse(localStorage.getItem(RESULT_KEY) ?? "null") as unknown;
       const parsed = todayBExperimentResponseSchema.safeParse(saved);
@@ -97,6 +103,7 @@ export function TodayB() {
       setPlan(parsed.data);
       setCompletedDays([]);
       localStorage.setItem(RESULT_KEY, JSON.stringify(parsed.data));
+      trackMvpDeepAction("today_b");
       setStatus("idle");
     } catch {
       setStatus("error");
@@ -312,6 +319,7 @@ export function TodayB() {
             </button>
           </div>
           {copyState === "error" ? <p className={styles.error} role="alert">복사하지 못했어요. 브라우저의 클립보드 권한을 확인해 주세요.</p> : null}
+          <PostResultSignup experimentId="today_b" label="7일 실험을 이어가려면 Google로 연결하기" />
         </section>
       )}
     </main>

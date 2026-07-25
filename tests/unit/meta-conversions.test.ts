@@ -14,7 +14,7 @@ beforeEach(() => {
 });
 
 describe("Meta conversion tracking", () => {
-  it("maps the four funnel points to clear standard and custom events", () => {
+  it("maps the existing idea funnel to clear standard and custom events", () => {
     expect(metaConversionForEvent("idea_result_viewed", {
       scenario_id: "scenario-1",
       attempt: 2,
@@ -39,6 +39,46 @@ describe("Meta conversion tracking", () => {
       standard: false,
     });
     expect(metaConversionForEvent("idea_card_read")).toBeNull();
+  });
+
+  it("keeps each MVP result, deep action, and signup attributable to its product", () => {
+    expect(metaConversionForEvent("tastepin_result_viewed", {
+      experiment_id: "tastepin",
+    })).toEqual({
+      eventName: "ViewContent",
+      standard: true,
+      params: {
+        content_category: "mvp_experiment",
+        content_name: "tastepin",
+        content_type: "product",
+        content_ids: ["tastepin"],
+        experiment_id: "tastepin",
+      },
+    });
+    expect(metaConversionForEvent("today_b_experiment_started", {
+      experiment_id: "today_b",
+    })).toEqual({
+      eventName: "MvpDeepAction",
+      standard: false,
+      params: {
+        content_category: "mvp_experiment",
+        experiment_id: "today_b",
+        action_name: "today_b_experiment_started",
+      },
+    });
+    expect(metaConversionForEvent("random_ending_signup_completed", {
+      experiment_id: "random_ending",
+    })).toEqual({
+      eventName: "CompleteRegistration",
+      standard: true,
+      params: {
+        content_category: "mvp_experiment",
+        content_name: "random_ending",
+        status: "completed",
+        experiment_id: "random_ending",
+      },
+    });
+    expect(metaConversionForEvent("tastepin_signup_completed")).toBeNull();
   });
 
   it("is a network and Pixel no-op when Meta is not configured", () => {

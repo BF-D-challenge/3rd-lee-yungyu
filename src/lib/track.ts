@@ -26,6 +26,7 @@ export function track(event: string, params: Record<string, unknown> = {}): void
   if (typeof window === "undefined") return;
   const entry = { event, session_id: sid(), is_logged_in: authenticatedForTracking(), ts: Date.now(), ...params };
   (window as { gtag?: (...args: unknown[]) => void }).gtag?.("event", event, entry);
+  (window as { clarity?: (...args: unknown[]) => void }).clarity?.("event", event);
   trackMetaEvent(event, entry);
   try {
     const log = JSON.parse(localStorage.getItem(EVENTS_KEY) ?? "[]") as unknown[];

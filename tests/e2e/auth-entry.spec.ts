@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
 test("익명 사용자는 로그인 없이 카드에 진입하고 로그인은 선택적으로 연다", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 568 });
   await page.emulateMedia({ reducedMotion: "no-preference" });
-  await page.goto("/");
+  await page.goto("/maker");
 
   const lab = page.getByRole("region", {
     name: "검증된 원본에서 시작하는 네 장 아이디어 제작기",
@@ -66,7 +66,7 @@ test("익명 사용자는 로그인 없이 카드에 진입하고 로그인은 �
 test("동작 줄이기에서도 익명 카드와 수동 다음 CTA가 그대로 동작한다", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("/maker");
 
   await expect(page.locator(".fd-host")).toHaveAttribute("data-motion", "reduced");
   await page.getByRole("button", {
@@ -89,7 +89,7 @@ test("동작 줄이기에서도 익명 카드와 수동 다음 CTA가 그대로 
 test("200% 텍스트 확대에서도 익명 카드와 선택적 로그인 메뉴를 끝까지 조작한다", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("/maker");
   await page.evaluate(() => {
     document.documentElement.style.fontSize = "200%";
   });

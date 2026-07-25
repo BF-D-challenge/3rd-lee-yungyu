@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Pinyon_Script } from "next/font/google";
 import Script from "next/script";
+import { Clarity } from "@/components/analytics/clarity";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { MetaPixel } from "@/components/analytics/meta-pixel";
 import {
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         ) : null}
         <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        <Clarity projectId={process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID} />
         <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID} />
       </body>
     </html>

@@ -30,29 +30,32 @@ async function openWithoutRuntimeErrors(page: Page, path: string) {
 }
 
 test.describe("전체 앱 라우트 직접 진입", () => {
-  test("홈은 현재 아이디어 제작기를 연다", async ({ page }) => {
+  test("홈은 다섯 개 독립 MVP의 실제 진입 경로를 연다", async ({ page }) => {
     const expectNoErrors = await openWithoutRuntimeErrors(page, "/");
 
-    await expect(page.getByRole("region", {
-      name: "검증된 원본에서 시작하는 네 장 아이디어 제작기",
-    })).toBeVisible();
+    const experiments = page.getByRole("region", { name: "실험 선택" });
+    await expect(experiments).toBeVisible();
+    for (const href of ["/tastepin", "/onebite", "/today-a", "/today-b", "/story-cards"]) {
+      await expect(experiments.locator(`a[href="${href}"]`)).toHaveCount(1);
+    }
+    await expect(experiments.locator('a[href="/idea-fit"]')).toHaveCount(0);
     await expectNoErrors();
   });
 
   for (const alias of ["/start", "/slot"]) {
-    test(`${alias} 별칭은 검색 조건을 보존해 홈으로 이동한다`, async ({ page }) => {
+    test(`${alias} 별칭은 검색 조건을 보존해 제작기로 이동한다`, async ({ page }) => {
       const expectNoErrors = await openWithoutRuntimeErrors(page, `${alias}?source=route-smoke`);
 
-      await expect(page).toHaveURL(/\/\?source=route-smoke$/);
+      await expect(page).toHaveURL(/\/maker\?source=route-smoke$/);
       await expect(page.locator(".idea-lab__stage--draw")).toBeVisible();
       await expectNoErrors();
     });
   }
 
-  test("/publish 직접 진입은 발행할 카드가 없을 때 홈으로 안전하게 복귀한다", async ({ page }) => {
+  test("/publish 직접 진입은 발행할 카드가 없을 때 제작기로 안전하게 복귀한다", async ({ page }) => {
     const expectNoErrors = await openWithoutRuntimeErrors(page, "/publish");
 
-    await expect(page).toHaveURL(/\/$/);
+    await expect(page).toHaveURL(/\/maker$/);
     await expect(page.locator(".idea-lab__stage--draw")).toBeVisible();
     await expectNoErrors();
   });

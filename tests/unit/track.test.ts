@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
+  track,
   trackIdeaEvent,
   trackIdeaFunnelEvent,
   trackIdeaFunnelEventOnce,
@@ -37,6 +38,17 @@ describe("idea loop event tracking", () => {
       draw_method: "manual",
     });
     expect(JSON.stringify(events[0])).not.toContain("message");
+  });
+
+  it("forwards the fixed event name to Clarity when its runtime is configured", () => {
+    const clarity = vi.fn();
+    (window as typeof window & { clarity?: typeof clarity }).clarity = clarity;
+
+    track("tastepin_result_viewed", {
+      experiment_id: "tastepin",
+    });
+
+    expect(clarity).toHaveBeenCalledWith("event", "tastepin_result_viewed");
   });
 
   it("does not store the same request/version event twice", () => {

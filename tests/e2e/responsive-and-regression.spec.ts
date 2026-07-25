@@ -43,7 +43,7 @@ async function goResult(page: Page) {
 
 test("Scenario 14: Primary 단일색과 네 분류 의미색, dark color scheme을 유지한다", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce", colorScheme: "dark" });
-  await page.goto("/");
+  await page.goto("/maker");
 
   await expect(page.getByRole("button", { name: "나머지 자동으로 뽑기", exact: true })).toHaveCount(0);
   await page.locator(".idea-lab__slot.is-carousel-active .idea-lab__card-frame button").click();
@@ -94,7 +94,7 @@ for (const viewport of [{ width: 320, height: 568 }, { width: 375, height: 667 }
   test(`Compact ${viewport.width}×${viewport.height}: 활성 카드와 라벨이 카드 영역 안에서 잘리지 않는다`, async ({ page }) => {
     await page.setViewportSize(viewport);
     await page.emulateMedia({ reducedMotion: "reduce" });
-    await page.goto("/");
+    await page.goto("/maker");
 
     const geometry = await page.evaluate(() => {
       const appbar = document.querySelector<HTMLElement>(".idea-lab__appbar")!.getBoundingClientRect();
@@ -129,7 +129,7 @@ for (const viewport of [{ width: 320, height: 568 }, { width: 375, height: 667 }
 test("Step 2: 원본 비율의 카드 한 장에 집중하고 다음 카드는 가장자리에서 예고한다", async ({ page }) => {
   await page.setViewportSize({ width: 440, height: 1020 });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("/maker");
 
   const focus = await page.locator(".idea-lab__slot.is-carousel-active").evaluate((slot) => {
     const frame = slot.querySelector<HTMLElement>(".idea-lab__card-frame")!;
@@ -186,7 +186,7 @@ test("Step 2: 원본 비율의 카드 한 장에 집중하고 다음 카드는 �
 
 test("Step 3: 현재 빈칸을 채우면 공개 카드가 중앙에 머물고 다음 CTA가 나타난다", async ({ page }) => {
   await page.setViewportSize({ width: 440, height: 1020 });
-  await page.goto("/");
+  await page.goto("/maker");
 
   const readEmptyStates = () => page.locator(".idea-lab__slot").evaluateAll((slots) =>
     slots.map((slot) => {
@@ -279,7 +279,7 @@ test("Step 3: 현재 빈칸을 채우면 공개 카드가 중앙에 머물고 �
 
 test("수동 진행: 공개 카드는 기다려도 중앙에 머물고 CTA를 눌러야 다음 칸으로 넘어간다", async ({ page }) => {
   await page.setViewportSize({ width: 440, height: 1020 });
-  await page.goto("/");
+  await page.goto("/maker");
 
   const stage = page.locator(".idea-lab__stage--draw");
   const source = page.locator('article.idea-lab__slot[data-axis="source"]');
@@ -312,7 +312,7 @@ test("수동 진행: 공개 카드는 기다려도 중앙에 머물고 CTA를 �
 
 test("카드 캐러셀: 인디케이터 화살표와 좌우 드래그로 준비된 카드를 탐색한다", async ({ page }) => {
   await page.setViewportSize({ width: 440, height: 1020 });
-  await page.goto("/");
+  await page.goto("/maker");
 
   const source = page.locator('article.idea-lab__slot[data-axis="source"]');
   const payer = page.locator('article.idea-lab__slot[data-axis="payer"]');
@@ -399,7 +399,7 @@ test("카드 캐러셀: 인디케이터 화살표와 좌우 드래그로 준비�
 
 test("카드 덱: 호버 카드는 순서를 유지하고 이웃과 곡선적으로 빠르게 올라온다", async ({ page }) => {
   await page.setViewportSize({ width: 440, height: 1020 });
-  await page.goto("/");
+  await page.goto("/maker");
 
   const apexIndex = await page.locator(".fd-card").evaluateAll((cards) => {
     const hostRect = document.querySelector<HTMLElement>(".fd-host")!.getBoundingClientRect();
@@ -562,7 +562,7 @@ test("카드 덱: 호버 카드는 순서를 유지하고 이웃과 곡선적으
 test("카드 덱: 탭 순서는 가운데 한 장만 사용하고 방향키로 이웃 카드를 고른다", async ({ page }) => {
   await page.setViewportSize({ width: 440, height: 956 });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("/maker");
 
   const cards = page.locator(".fd-card");
   await expect(page.locator(".fd-host")).toHaveAttribute("data-motion", "reduced");
@@ -595,7 +595,7 @@ test("카드 덱: 탭 순서는 가운데 한 장만 사용하고 방향키로 �
 
 test("카드 덱: 화면 밖에서는 회전을 멈추고 다시 보이면 이어서 움직인다", async ({ page }) => {
   await page.setViewportSize({ width: 440, height: 956 });
-  await page.goto("/");
+  await page.goto("/maker");
 
   const deck = page.locator(".fd-host");
   await expect(deck).toHaveAttribute("data-motion", "running");
@@ -608,7 +608,7 @@ test("카드 덱: 화면 밖에서는 회전을 멈추고 다시 보이면 이�
 
 test("카드 덱: 실제 포인터 드래그앤드롭으로 현재 빈칸을 채운다", async ({ page }) => {
   await page.setViewportSize({ width: 440, height: 1020 });
-  await page.goto("/");
+  await page.goto("/maker");
 
   const start = await page.evaluate(() => {
     const host = document.querySelector<HTMLElement>(".fd-host")!.getBoundingClientRect();
@@ -635,7 +635,7 @@ test("카드 덱: 실제 포인터 드래그앤드롭으로 현재 빈칸을 채
 test("Steps 4-9: 핵심 조작, 진행 표시, 색상 위계와 48px 접근성을 유지한다", async ({ page }) => {
   await page.setViewportSize({ width: 440, height: 1020 });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("/maker");
 
   await expect(page.locator(".idea-lab__rack")).toHaveCount(0);
   await expect(page.getByText("지금 채울 카드", { exact: false })).toHaveCount(0);
@@ -732,7 +732,7 @@ test("Steps 4-9: 핵심 조작, 진행 표시, 색상 위계와 48px 접근성�
 test("다시 뽑기 취향 질문은 작은 화면에서도 한 문항만 묻고 한 번에 끝난다", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 568 });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("/maker");
   await drawAll(page);
   await page.getByRole("button", { name: "다른 아이디어 뽑기", exact: true }).click();
 
@@ -770,7 +770,7 @@ test("다시 뽑기 취향 질문은 작은 화면에서도 한 문항만 묻고
 test("T24: 단계 문구는 다음 CTA 뒤 바뀌고 네 번째 카드 결과도 직접 연다", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("/");
+  await page.goto("/maker");
 
   const drawLabels = ["검증된 원본", "돈 낼 사람", "필요한 순간", "한 끗 변화"] as const;
 
@@ -845,7 +845,7 @@ test("T24: 단계 문구는 다음 CTA 뒤 바뀌고 네 번째 카드 결과도
 test("T25: 완성 시 네 카드가 모여 결과 표면으로 이어진 뒤 결과가 열린다", async ({ page }) => {
   await page.setViewportSize({ width: 440, height: 1020 });
   await page.emulateMedia({ reducedMotion: "no-preference" });
-  await page.goto("/");
+  await page.goto("/maker");
 
   await page.evaluate(() => {
     const state = window as typeof window & {
@@ -986,7 +986,7 @@ for (const viewport of viewports) {
     await page.setViewportSize(viewport);
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.clock.install({ time: FIXED_NOW });
-    await page.goto("/");
+    await page.goto("/maker");
 
     // 모든 해상도에서 앱은 하나의 모바일 컬럼(≤440px)으로 중앙 정렬된다.
     const shell = await page.evaluate((max) => {
@@ -1096,7 +1096,7 @@ test("Scenario 15b: 공유 전후 같은 결과 화면에서 상세와 제작 �
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await installShareMock(page, "kakao");
-  await page.goto("/");
+  await page.goto("/maker");
   await drawAll(page);
   await goResult(page);
 
@@ -1164,7 +1164,7 @@ test("Scenario 15b: 공유 전후 같은 결과 화면에서 상세와 제작 �
 test("Scenario 16: reduced motion에서 회전·비행·3D 전환을 제거해도 기능은 동작한다", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.clock.install({ time: FIXED_NOW });
-  await page.goto("/");
+  await page.goto("/maker");
 
   await expect(page.locator(".fd-wheel")).toHaveCSS("animation-name", "none");
   await drawAll(page);

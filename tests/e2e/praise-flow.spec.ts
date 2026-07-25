@@ -171,7 +171,7 @@ test.describe("A안 아이디어 응원 여정", () => {
   test("키보드로 아이디어를 공유한 뒤 친구의 응원 카드를 새로고침 없이 받는다", async ({ page, context }) => {
     const selectedPraise = PRAISE_OPTIONS[2];
     await installShareMock(page, "kakao");
-    await page.goto("/");
+    await page.goto("/maker");
     await page.locator(".idea-lab__slot.is-carousel-active .idea-lab__card-frame button").press("Enter");
     await page.getByRole("button", {
       name: "읽었어요 · 다음 카드",
@@ -220,7 +220,9 @@ test.describe("A안 아이디어 응원 여정", () => {
     await startResponse.press("Enter");
     const praiseOption = receiver.getByRole("button", { name: selectedPraise });
     await expect(praiseOption).toBeVisible();
-    await praiseOption.press("Enter");
+    await praiseOption.focus();
+    await receiver.keyboard.press("Enter");
+    await expect(praiseOption).toHaveAttribute("aria-pressed", "true");
     const nextButton = receiver.getByRole("button", { name: "다음", exact: true });
     await expect(nextButton).toBeEnabled();
     await nextButton.press("Enter");
@@ -252,7 +254,7 @@ test.describe("A안 아이디어 응원 여정", () => {
   });
 
   test("받은 응원이 없으면 아이디어 만들기 또는 공유를 안내한다", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/maker");
     await openReceivedPraise(page, "empty");
 
     await expect(page.getByRole("heading", { name: "아직 도착한 응원이 없어요" })).toBeVisible();
@@ -263,7 +265,7 @@ test.describe("A안 아이디어 응원 여정", () => {
 
   test("완성했지만 아직 공유하지 않은 아이디어도 받은 응원에서 바로 공유한다", async ({ page }) => {
     await installShareMock(page, "kakao");
-    await page.goto("/");
+    await page.goto("/maker");
     await drawAll(page);
     await openReceivedPraise(page, "empty");
 
@@ -291,7 +293,7 @@ test.describe("A안 아이디어 응원 여정", () => {
         praiseVote({ id: "feedback-5", praise: "가격이 얼마인지 궁금해요" }),
       ],
     });
-    await page.goto("/");
+    await page.goto("/maker");
     await openReceivedPraise(page, "filled");
 
     await expect(page.getByRole("heading", { name: "친구 반응 5개", exact: true })).toBeVisible();
@@ -318,7 +320,7 @@ test.describe("A안 아이디어 응원 여정", () => {
         ideaTitle: request.card.title,
       })],
     });
-    await page.goto("/");
+    await page.goto("/maker");
     await expect(page.getByRole("button", { name: "받은 응원, 새 응원 1개" })).toBeVisible();
     await openReceivedPraise(page, "filled");
 
@@ -338,7 +340,7 @@ test.describe("A안 아이디어 응원 여정", () => {
 
     const revisit = await page.context().newPage();
     await revisit.clock.install({ time: FIXED_NOW });
-    await revisit.goto("/");
+    await revisit.goto("/maker");
     await openReceivedPraise(revisit, "filled");
     await expect(revisit.getByRole("button", { name: "응원 카드 뒷면 보기" })).toHaveAttribute("aria-pressed", "true");
     await expect(revisit.getByText(message, { exact: true })).toBeVisible();
@@ -359,7 +361,7 @@ test.describe("A안 아이디어 응원 여정", () => {
         ideaTitle: request.card.title,
       })],
     });
-    await page.goto("/");
+    await page.goto("/maker");
     await openReceivedPraise(page, "filled");
 
     await page.getByRole("button", { name: "응원 카드 뒤집어 내용 확인하기" }).click();
@@ -377,7 +379,7 @@ test.describe("A안 아이디어 응원 여정", () => {
       request,
       votes: [praiseVote({ id: "original-feedback", praise: PRAISE_OPTIONS[2] })],
     });
-    await page.goto("/");
+    await page.goto("/maker");
     await openReceivedPraise(page, "filled");
 
     await expect(page.getByRole("button", { name: "차별점 문장 고치기", exact: true })).toBeVisible();
@@ -447,7 +449,7 @@ test.describe("A안 아이디어 응원 여정", () => {
   test("반응이 없으면 다음 수정 조언을 만들지 않는다", async ({ page }) => {
     const request = makePraiseRequest({ id: "request-no-feedback" });
     await seedPraiseStorage(page, { request });
-    await page.goto("/");
+    await page.goto("/maker");
     await openReceivedPraise(page, "empty");
     await expect(page.getByText("다음에 무엇을 고칠까요?", { exact: true })).toHaveCount(0);
     await expect(page.getByRole("button", { name: "차별점 문장 고치기", exact: true })).toHaveCount(0);
