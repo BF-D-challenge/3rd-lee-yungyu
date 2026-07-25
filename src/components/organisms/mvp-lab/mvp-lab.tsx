@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState, type ChangeEvent } from "react";
-import { ArrowLeft, BookOpen, Clock3, ExternalLink, Lightbulb, MapPin, Sparkles, Utensils, Video } from "lucide-react";
+import { ArrowDown, ArrowLeft, ArrowRight, Clock3, Sparkles, Utensils, Video } from "lucide-react";
 import { GoogleLoginButton } from "@/components/organisms/journey/google-login-button";
 import styles from "./mvp-lab.module.css";
 
@@ -33,7 +33,7 @@ function Shell({ children }: { children: React.ReactNode }) {
 function Header({ active }: { active?: string }) {
   return (
     <header className={styles.header}>
-      <Link href="/" className={styles.brand} aria-label="실험 허브로 이동">오늘의 작은 실험</Link>
+      <Link href="/" className={styles.brand} aria-label="실험 허브로 이동">오늘 해볼까</Link>
       {active ? <span className={styles.badge}>{active}</span> : null}
     </header>
   );
@@ -61,25 +61,112 @@ export function MvpLab({ kind }: { kind: LabKind }) {
 
 function Hub() {
   const cards = [
-    { href: "/tastepin", icon: <MapPin aria-hidden />, label: "맛핀", title: "맛집 쇼츠에서 식당 단서 찾기", text: "공개 YouTube Shorts 링크를 넣으면 영상 속 식당명·메뉴·지역 단서를 찾습니다.", cta: "맛집 쇼츠 넣기" },
-    { href: "/onebite", icon: <Utensils aria-hidden />, label: "한입코치", title: "사진에서 다음 한 끼 행동 찾기", text: "음식 사진 한 장에서 확인한 내용으로 다음 끼니에 할 행동 하나를 제안합니다.", cta: "음식 사진 올리기" },
-    { href: "/today-a", icon: <Lightbulb aria-hidden />, label: "Today A", title: "내 조건에서 사업 구조 하나 찾기", text: "고객·반복 불편·강점·이번 주 시간을 실제 제품 원본과 비교해 구조 하나로 정리합니다.", cta: "내 조건 입력하기" },
-    { href: "/today-b", icon: <Clock3 aria-hidden />, label: "Today B", title: "아이디어의 7일 수요 실험 만들기", text: "지금 가진 아이디어의 가장 위험한 가정과 실제 행동을 셀 7일 계획을 만듭니다.", cta: "7일 실험 만들기" },
-    { href: "/story-cards", icon: <BookOpen aria-hidden />, label: "랜덤 엔딩", title: "카드 한 장에서 시작하는 8번의 선택", text: "랜덤 카드로 시작해 여덟 번의 선택 뒤 한 편의 결말을 완성합니다.", cta: "첫 카드 열기" },
+    {
+      href: "/tastepin",
+      image: "/images/experiment-gallery/tastepin.jpg",
+      imageAlt: "맛핀 화면. YouTube Shorts 링크를 넣어 식당 단서를 찾는 입력 화면",
+      label: "맛핀",
+      input: "공개 YouTube Shorts 링크",
+      output: "식당명·메뉴·지역 단서",
+      title: "저장한 맛집 쇼츠에서 갈 곳을 찾아요.",
+      text: "영상 속 음성·화면 글자·간판을 읽어 식당을 찾는 데 필요한 단서만 정리합니다.",
+      cta: "쇼츠 링크로 식당 찾기",
+    },
+    {
+      href: "/onebite",
+      image: "/images/experiment-gallery/onebite.jpg",
+      imageAlt: "한입코치 화면. 음식 사진 한 장을 고르고 다음 한 끼 행동을 받는 화면",
+      label: "한입코치",
+      input: "음식 사진 한 장",
+      output: "다음 끼니 행동 하나",
+      title: "먹은 걸 탓하지 않고, 다음 한 끼를 정해요.",
+      text: "칼로리를 단정하지 않아요. 사진에서 확인한 음식 그룹을 바탕으로 작은 행동 하나를 제안합니다.",
+      cta: "음식 사진으로 행동 받기",
+    },
+    {
+      href: "/today-a",
+      image: "/images/experiment-gallery/today-a.jpg",
+      imageAlt: "Today A 화면. 고객과 반복 불편, 강점, 시간을 입력하는 화면",
+      label: "Today A",
+      input: "고객·불편·강점·이번 주 시간",
+      output: "근거가 있는 사업 구조 하나",
+      title: "내가 할 수 있는 조건에서 사업 구조를 찾아요.",
+      text: "저장된 실제 제품 원본과 비교해 돈 낼 사람·필요한 순간·입력·결과를 한 줄씩 정리합니다.",
+      cta: "내 조건으로 구조 받기",
+    },
+    {
+      href: "/today-b",
+      image: "/images/experiment-gallery/today-b.jpg",
+      imageAlt: "Today B 화면. 아이디어와 고객, 얻을 결과를 입력해 7일 실험을 만드는 화면",
+      label: "Today B",
+      input: "아이디어·고객·얻을 결과",
+      output: "가장 위험한 가정의 7일 실험",
+      title: "아이디어가 있다면, 기능보다 수요를 먼저 봐요.",
+      text: "좋아요 대신 인터뷰·예약금·대기 신청·사전 구매처럼 실제 행동을 셀 계획을 만듭니다.",
+      cta: "아이디어로 7일 실험 만들기",
+    },
+    {
+      href: "/story-cards",
+      image: "/images/experiment-gallery/story-cards.jpg",
+      imageAlt: "상황 카드 화면. 네 장의 타로 스타일 상황에서 하나를 고르는 화면",
+      label: "상황 카드",
+      input: "마음에 가까운 상황 한 장",
+      output: "장면 속 안내자와 바로 채팅",
+      title: "설명하기 어려운 마음은 장면부터 골라요.",
+      text: "타로 카드처럼 펼쳐진 네 장의 상황 중 하나를 고르면, 로그인 없이 대화가 시작됩니다.",
+      cta: "상황 고르고 채팅 시작하기",
+    },
   ];
-  return <Shell><Header />
+  return <Shell><Header active="5개 실험" />
     <section className={styles.hero}>
-      <p className={styles.eyebrow}>서로 다른 실험을 따로 검증합니다</p>
-      <h1>지금 필요한 한 가지를<br />직접 써보세요.</h1>
-      <p>각 실험은 한 가지 행동과 한 가지 결과만 제공합니다. 아직 준비 중인 기능은 결과처럼 보이게 하지 않습니다.</p>
-      <Link className={styles.makerLink} href="/start">기존 오늘해볼까 제작기 열기 <ExternalLink size={16} aria-hidden /></Link>
+      <p className={styles.eyebrow}>오늘 바로 써보는 5개 앱</p>
+      <h1>필요한 결과부터<br />고르세요.</h1>
+      <p>무엇을 넣고, 바로 무엇을 받는지 같은 순서로 보여드려요. 다섯 앱 모두 로그인 없이 시작할 수 있습니다.</p>
+      <div className={styles.heroActions}>
+        <Link className={styles.heroPrimary} href="#experiment-gallery">앱 5개 비교하기 <ArrowDown size={17} aria-hidden /></Link>
+        <Link className={styles.makerLink} href="/start">새 아이디어 만들기 <ArrowRight size={16} aria-hidden /></Link>
+      </div>
     </section>
-    <section className={styles.grid} aria-label="실험 선택">
-      {cards.map((card) => <article className={styles.experimentCard} key={card.href}>
-        <span className={styles.icon}>{card.icon}</span><p className={styles.cardLabel}>{card.label}</p>
-        <h2>{card.title}</h2><p>{card.text}</p>
-        <Link className={styles.primaryLink} href={card.href}>{card.cta}<ExternalLink size={17} aria-hidden /></Link>
-      </article>)}
+    <section className={styles.gallerySection} id="experiment-gallery" aria-labelledby="gallery-title">
+      <div className={styles.sectionHeading}>
+        <p className={styles.eyebrow}>INPUT → RESULT</p>
+        <h2 id="gallery-title">넣는 것과 받는 것을 먼저 비교해요.</h2>
+        <p>각 앱의 대표 화면과 결과를 보고, 지금 필요한 한 곳만 열어보세요.</p>
+      </div>
+      <div className={styles.grid} role="region" aria-label="실험 선택">
+        {cards.map((card, index) => <article className={styles.experimentCard} key={card.href}>
+          <figure className={styles.preview}>
+            <Image
+              src={card.image}
+              alt={card.imageAlt}
+              width={1920}
+              height={1083}
+              sizes="(min-width: 1080px) 56vw, (min-width: 720px) 52vw, 92vw"
+            />
+            <figcaption>{card.label} 실제 입력 화면</figcaption>
+          </figure>
+          <div className={styles.cardBody}>
+            <div className={styles.appMeta}>
+              <p className={styles.cardLabel}><span>{String(index + 1).padStart(2, "0")}</span>{card.label}</p>
+              <span className={styles.noLogin}>로그인 없이 시작</span>
+            </div>
+            <h3>{card.title}</h3>
+            <p>{card.text}</p>
+            <dl className={styles.inputOutput}>
+              <div className={styles.ioItem}>
+                <dt>넣는 것</dt>
+                <dd>{card.input}</dd>
+              </div>
+              <ArrowRight className={styles.ioArrow} size={18} aria-hidden />
+              <div className={styles.ioItem}>
+                <dt>바로 받는 것</dt>
+                <dd>{card.output}</dd>
+              </div>
+            </dl>
+            <Link className={styles.primaryLink} href={card.href}>{card.cta}<ArrowRight size={17} aria-hidden /></Link>
+          </div>
+        </article>)}
+      </div>
     </section>
   </Shell>;
 }

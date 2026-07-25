@@ -35,6 +35,7 @@ test.describe("전체 앱 라우트 직접 진입", () => {
 
     const experiments = page.getByRole("region", { name: "실험 선택" });
     await expect(experiments).toBeVisible();
+    await expect(experiments.locator("img")).toHaveCount(5);
     for (const href of ["/tastepin", "/onebite", "/today-a", "/today-b", "/story-cards"]) {
       await expect(experiments.locator(`a[href="${href}"]`)).toHaveCount(1);
     }

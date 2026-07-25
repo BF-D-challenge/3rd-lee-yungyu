@@ -13,6 +13,8 @@ node_modules/
 # 빌드 결과물
 .next/
 .next-e2e/
+.next-today-a/
+.next-today-b-dev/
 out/
 dist/
 build/
@@ -50,6 +52,7 @@ pnpm-debug.log*
 # 광고 제작용 원본 이미지 — 배포에서는 public/images/ads/만 사용
 outputs/ad-creatives/
 outputs/*-instagram-4x5-*.png
+outputs/experiment-gallery-home-*.jpg
 
 # 발표용 로컬 산출물 — 팀 공유 전 사실 상태를 다시 확인
 outputs/bfd-experiment-status.html
@@ -103,6 +106,7 @@ docs/sajuai.md
 
 # Mobbin(유료 구독) 원본 캡처·덤프 — ToS상 재배포 제한. 직접 쓴 분석 문서만 추적 (사용자 결정 2026-07-26)
 docs/research/mobbin/onboarding-flows/
+docs/research/mobbin/assets/mvp-app-redesign-2026-07-26/
 docs/dev/onboarding-process-from-mobbin.html
 docs/dev/onboarding-process-from-mobbin.md
 

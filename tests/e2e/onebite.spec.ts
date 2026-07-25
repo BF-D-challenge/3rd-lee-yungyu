@@ -53,7 +53,31 @@ test.describe("한입코치 실제 분석 화면 계약", () => {
     await expect(page.getByRole("heading", {
       name: "다음 끼니에는 채소 반찬 한 가지를 먼저 담아보세요.",
     })).toBeVisible();
-    await expect(page.getByText(/칼로리·중량·질환을 판단하지 않으며/)).toBeVisible();
+    await expect(page.getByAltText("분석한 음식 사진")).toBeVisible();
+    await expect(page.getByText(/칼로리·중량·질환은 판단하지 않아요/)).toBeVisible();
+
+    await page.getByRole("button", { name: "다음 끼니 행동으로 저장하기" }).click();
+    await expect(page.getByRole("status", {
+      name: "이 기기에 다음 끼니 행동을 저장했어요",
+    })).toBeVisible();
+    await expect(page.getByRole("button", {
+      name: "다음 끼니 행동으로 저장하기",
+    })).toHaveCount(0);
+    const persisted = await page.evaluate(() => localStorage.getItem("onebite:next-meal-commit:v1"));
+    expect(persisted).toContain("add_vegetable");
+    const events = await page.evaluate(() => JSON.parse(localStorage.getItem("events") ?? "[]"));
+    expect(events).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        event: "onebite_landing_viewed",
+        product_id: "onebite",
+        product_slug: "onebite",
+        page_path: "/onebite",
+      }),
+      expect.objectContaining({ event: "onebite_input_started" }),
+      expect.objectContaining({ event: "onebite_result_viewed" }),
+      expect.objectContaining({ event: "onebite_next_meal_commit_saved" }),
+    ]));
+    await expect(page.locator("[data-clarity-mask='true']")).toHaveCount(1);
   });
 
   test("불확실한 사진은 422 안내와 다시 찍는 행동으로 복구한다", async ({

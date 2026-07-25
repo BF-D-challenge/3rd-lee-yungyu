@@ -1,21 +1,18 @@
 import { track } from "./track";
-import type { StoryCardId, StoryChoiceId } from "./story-card-contract";
+import type { StoryCardId } from "./story-card-contract";
 
 export type StoryCardEventName =
   | "viewed"
-  | "draw_requested"
-  | "draw_completed"
   | "request_failed"
-  | "choice_made"
-  | "story_completed"
-  | "story_abandoned";
+  | "situation_selected"
+  | "chat_started"
+  | "message_sent"
+  | "chat_abandoned";
 
 type StoryCardEventParams = {
   cardId?: StoryCardId;
-  choiceId?: StoryChoiceId;
-  drawNumber?: number;
-  stage?: "draw" | "choose";
-  turn?: number;
+  stage?: "load" | "start" | "reply";
+  messageCount?: number;
 };
 
 /**
@@ -28,13 +25,13 @@ export function trackStoryCardEvent(
 ): void {
   const safeParams: Record<string, string | number> = {};
   if (params.cardId) safeParams.card_id = params.cardId;
-  if (params.choiceId) safeParams.choice_id = params.choiceId;
-  if (Number.isInteger(params.drawNumber) && Number(params.drawNumber) > 0) {
-    safeParams.draw_number = Number(params.drawNumber);
-  }
   if (params.stage) safeParams.stage = params.stage;
-  if (Number.isInteger(params.turn) && Number(params.turn) >= 1 && Number(params.turn) <= 8) {
-    safeParams.turn = Number(params.turn);
+  if (
+    Number.isInteger(params.messageCount)
+    && Number(params.messageCount) >= 1
+    && Number(params.messageCount) <= 50
+  ) {
+    safeParams.message_count = Number(params.messageCount);
   }
 
   track(`story_card_${event}`, {

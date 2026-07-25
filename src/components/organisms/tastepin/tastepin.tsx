@@ -3,7 +3,12 @@
 import { ArrowLeft, ExternalLink, MapPin, Sparkles, Video } from "lucide-react";
 import Link from "next/link";
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { trackMvpDeepAction, trackMvpResultViewed } from "@/lib/mvp-experiment-analytics";
+import {
+  trackMvpDeepAction,
+  trackMvpInputStarted,
+  trackMvpLandingViewed,
+  trackMvpResultViewed,
+} from "@/lib/mvp-experiment-analytics";
 import { PostResultSignup } from "@/components/organisms/journey/post-result-signup";
 import { track } from "@/lib/track";
 import {
@@ -26,12 +31,15 @@ export function Tastepin() {
   const [requestState, setRequestState] = useState<RequestState>("idle");
   const [result, setResult] = useState<TastepinResolveResponse | null>(null);
   const [message, setMessage] = useState("");
-  const viewedSourceRef = useRef<string | null>(null);
+  const inputStartedRef = useRef(false);
+
+  useEffect(() => {
+    trackMvpLandingViewed("tastepin");
+  }, []);
 
   useEffect(() => {
     if (!result) return;
     trackMvpResultViewed("tastepin");
-    viewedSourceRef.current = url;
   }, [result, url]);
 
   const reset = () => {
@@ -51,10 +59,6 @@ export function Tastepin() {
     }
 
     setMessage("");
-    if (viewedSourceRef.current && viewedSourceRef.current !== normalized) {
-      trackMvpDeepAction("tastepin");
-      viewedSourceRef.current = null;
-    }
     setResult(null);
     setRequestState("loading");
     track("tastepin_source_submitted", {
@@ -125,7 +129,7 @@ export function Tastepin() {
         </p>
 
         {requestState !== "success" ? (
-          <form className={styles.form} onSubmit={submit}>
+          <form className={styles.form} onSubmit={submit} data-clarity-mask="true">
             <label htmlFor="tastepin-youtube-url">YouTube Shorts 공개 링크</label>
             <div className={styles.inputRow}>
               <Video size={20} aria-hidden />
@@ -134,6 +138,10 @@ export function Tastepin() {
                 value={url}
                 onChange={(event) => {
                   setUrl(event.target.value);
+                  if (!inputStartedRef.current && event.target.value.trim()) {
+                    inputStartedRef.current = true;
+                    trackMvpInputStarted("tastepin");
+                  }
                   setMessage("");
                   if (requestState === "error") setRequestState("idle");
                 }}
@@ -174,7 +182,7 @@ function Result({
 }) {
   if (result.extraction.status === "insufficient") {
     return (
-      <section className={styles.result} aria-live="polite">
+      <section className={styles.result} aria-live="polite" data-clarity-mask="true">
         <span className={styles.resultIcon}><Video aria-hidden /></span>
         <h2>이 영상에서는 식당 이름을 확인하지 못했어요.</h2>
         <p>{result.extraction.summary}</p>
@@ -187,7 +195,7 @@ function Result({
   }
 
   return (
-    <section className={styles.result} aria-live="polite">
+    <section className={styles.result} aria-live="polite" data-clarity-mask="true">
       <span className={styles.resultIcon}><Sparkles aria-hidden /></span>
       <h2>영상에서 이런 단서를 찾았어요.</h2>
       <p>{result.extraction.summary}</p>
@@ -224,6 +232,7 @@ function Result({
               target="_blank"
               rel="noreferrer"
               key={candidate.id}
+              onClick={() => trackMvpDeepAction("tastepin")}
             >
               <span>
                 <strong>{candidate.name}</strong>

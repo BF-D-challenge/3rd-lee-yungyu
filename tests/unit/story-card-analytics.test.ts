@@ -17,36 +17,34 @@ beforeEach(() => {
   vi.spyOn(console, "debug").mockImplementation(() => undefined);
 });
 
-describe("랜덤 엔딩 로컬 계측", () => {
-  it("records only product-local IDs and funnel counters", () => {
-    trackStoryCardEvent("choice_made", {
+describe("상황 카드 로컬 계측", () => {
+  it("records only the situation ID, stage, and bounded funnel count", () => {
+    trackStoryCardEvent("message_sent", {
       cardId: "rain-station",
-      choiceId: "observe",
-      drawNumber: 2,
-      turn: 4,
+      stage: "reply",
+      messageCount: 2,
     });
 
     const events = JSON.parse(localStorage.getItem("events") ?? "[]") as Array<Record<string, unknown>>;
     expect(events[0]).toMatchObject({
-      event: "story_card_choice_made",
-      event_type: "story_card_choice_made",
+      event: "story_card_message_sent",
+      event_type: "story_card_message_sent",
       entry_path: "/story-cards",
       card_id: "rain-station",
-      choice_id: "observe",
-      draw_number: 2,
-      turn: 4,
+      stage: "reply",
+      message_count: 2,
     });
   });
 
-  it("drops free-form story copy even if an untyped caller passes it", () => {
+  it("drops free-form chat copy even when an untyped caller passes it", () => {
     const unsafeCall = trackStoryCardEvent as (
-      event: "choice_made",
+      event: "message_sent",
       params: Record<string, unknown>,
     ) => void;
-    unsafeCall("choice_made", {
+    unsafeCall("message_sent", {
       cardId: "wave-archive",
-      turn: 2,
-      passage: "사용자가 쓴 비공개 문장",
+      messageCount: 1,
+      message: "사용자가 쓴 비공개 문장",
       errorMessage: "서버 원문",
     });
 
