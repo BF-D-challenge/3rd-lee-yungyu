@@ -30,7 +30,7 @@ const AXIS_IDS: Record<(typeof AXIS_LABELS)[number], "source" | "payer" | "momen
 test.use({ contextOptions: { reducedMotion: "reduce" } });
 
 async function openIdeaLab(page: Page) {
-  await page.goto("/");
+  await page.goto("/maker");
   const lab = page.getByRole("region", {
     name: "검증된 원본에서 시작하는 네 장 아이디어 제작기",
   });
@@ -114,7 +114,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     ]);
 
     const firstCard = (await trackedEvents(page)).find((entry) => entry.event === "idea_first_card_drawn");
-    expect(firstCard).toMatchObject({ attempt: 1, draw_method: "manual", entry_path: "/" });
+    expect(firstCard).toMatchObject({ attempt: 1, draw_method: "manual", entry_path: "/maker" });
     const resultReady = (await trackedEvents(page)).filter((entry) => entry.event === "idea_result_ready");
     const resultViewed = (await trackedEvents(page)).filter((entry) => entry.event === "idea_result_viewed");
     expect(resultReady).toHaveLength(1);
@@ -181,7 +181,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     const lab = await openIdeaLab(page);
 
     // A1 뽑기 스테이지는 오직 슬롯·덱·뽑기 CTA만 표시한다. 결과 요소는 노출하지 않는다.
-    await expect(page).toHaveURL(/\/$/);
+    await expect(page).toHaveURL(/\/maker$/);
     await expect(lab.getByRole("button", { name: /로그인|Google로 계속/ })).toHaveCount(0);
     await expect(lab.getByRole("heading", { name: /로그인|취향 조사/ })).toHaveCount(0);
     await expect(page.locator(".idea-lab__stage--draw")).toBeVisible();

@@ -16,7 +16,13 @@ declare global {
 }
 
 export type MetaConversion = {
-  eventName: "PageView" | "ViewContent" | "IdeaSelected" | "FirstActionPlanStarted";
+  eventName:
+    | "PageView"
+    | "ViewContent"
+    | "CompleteRegistration"
+    | "IdeaSelected"
+    | "FirstActionPlanStarted"
+    | "MvpDeepAction";
   standard: boolean;
   params: Record<string, string | number | string[]>;
 };
@@ -33,6 +39,30 @@ const safeAttempt = (value: unknown): number | undefined =>
     ? value
     : undefined;
 
+const mvpResultEvents = new Set([
+  "tastepin_result_viewed",
+  "onebite_result_viewed",
+  "today_a_result_viewed",
+  "today_b_result_viewed",
+  "random_ending_viewed",
+]);
+
+const mvpDeepActionEvents = new Set([
+  "tastepin_second_source_submitted",
+  "onebite_next_meal_commit_saved",
+  "today_a_structure_saved",
+  "today_b_experiment_started",
+  "random_ending_redraw_started",
+]);
+
+const mvpSignupEvents = new Set([
+  "tastepin_signup_completed",
+  "onebite_signup_completed",
+  "today_a_signup_completed",
+  "today_b_signup_completed",
+  "random_ending_signup_completed",
+]);
+
 /** 내부 분석 이벤트를 광고 전환용 최소 필드로만 변환한다. 사용자 작성 문구는 전달하지 않는다. */
 export function metaConversionForEvent(
   event: string,
@@ -40,11 +70,51 @@ export function metaConversionForEvent(
 ): MetaConversion | null {
   const scenarioId = safeString(params.scenario_id);
   const attempt = safeAttempt(params.attempt);
+  const experimentId = safeString(params.experiment_id);
   const common = {
     content_category: "idea_funnel",
     ...(scenarioId ? { scenario_id: scenarioId } : {}),
     ...(attempt ? { attempt } : {}),
   };
+
+  if (experimentId && mvpResultEvents.has(event)) {
+    return {
+      eventName: "ViewContent",
+      standard: true,
+      params: {
+        content_category: "mvp_experiment",
+        content_name: experimentId,
+        content_type: "product",
+        content_ids: [experimentId],
+        experiment_id: experimentId,
+      },
+    };
+  }
+
+  if (experimentId && mvpDeepActionEvents.has(event)) {
+    return {
+      eventName: "MvpDeepAction",
+      standard: false,
+      params: {
+        content_category: "mvp_experiment",
+        experiment_id: experimentId,
+        action_name: event,
+      },
+    };
+  }
+
+  if (experimentId && mvpSignupEvents.has(event)) {
+    return {
+      eventName: "CompleteRegistration",
+      standard: true,
+      params: {
+        content_category: "mvp_experiment",
+        content_name: experimentId,
+        status: "completed",
+        experiment_id: experimentId,
+      },
+    };
+  }
 
   switch (event) {
     case "idea_result_viewed":

@@ -51,6 +51,9 @@ pnpm-debug.log*
 outputs/ad-creatives/
 outputs/*-instagram-4x5-*.png
 
+# 발표용 로컬 산출물 — 팀 공유 전 사실 상태를 다시 확인
+outputs/bfd-experiment-status.html
+
 # 자동화 테스트 결과물
 test-results/
 playwright-report/

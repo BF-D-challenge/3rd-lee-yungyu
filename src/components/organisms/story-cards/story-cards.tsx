@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, BookOpen, LoaderCircle, RotateCcw, Sparkles } from "lucide-react";
 import { trackStoryCardEvent } from "@/lib/story-card-analytics";
+import { trackMvpDeepAction, trackMvpResultViewed } from "@/lib/mvp-experiment-analytics";
+import { PostResultSignup } from "@/components/organisms/journey/post-result-signup";
 import {
   isStoryEnding,
   type StoryCardId,
@@ -79,6 +81,7 @@ export function StoryCards() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const endingViewedRef = useRef(false);
 
   useEffect(() => {
     setTodayDraws(readTodayDraws());
@@ -89,8 +92,18 @@ export function StoryCards() {
     if (view !== "deck") headingRef.current?.focus();
   }, [story, view]);
 
+  useEffect(() => {
+    if (view !== "ending") return;
+    trackMvpResultViewed("random_ending");
+    endingViewedRef.current = true;
+  }, [view]);
+
   const draw = async () => {
     if (loading) return;
+    if (endingViewedRef.current) {
+      trackMvpDeepAction("random_ending");
+      endingViewedRef.current = false;
+    }
     const drawNumber = todayDraws + 1;
     setLoading(true);
     setError("");
@@ -294,6 +307,7 @@ export function StoryCards() {
             {loading ? "다른 카드를 여는 중" : "다른 카드도 무료로 열기"}
           </button>
           {error ? <p className={styles.error} role="alert">{error}</p> : null}
+          <PostResultSignup experimentId="random_ending" label="다른 결말도 이어서 보려면 Google로 연결하기" />
           <button type="button" className={styles.textButton} onClick={returnToDeck}>
             카드 덱으로 돌아가기
           </button>

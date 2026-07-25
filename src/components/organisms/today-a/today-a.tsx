@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Check, Copy, RefreshCw } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import { trackMvpDeepAction, trackMvpResultViewed } from "@/lib/mvp-experiment-analytics";
+import { PostResultSignup } from "@/components/organisms/journey/post-result-signup";
 import {
   todayAStructureResponseSchema,
   type TodayAStructureRequest,
@@ -40,6 +42,10 @@ export function TodayA() {
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [copyState, setCopyState] = useState<"idle" | "done" | "error">("idle");
 
+  useEffect(() => {
+    if (result) trackMvpResultViewed("today_a");
+  }, [result]);
+
   const generate = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus("loading");
@@ -66,6 +72,7 @@ export function TodayA() {
     try {
       await navigator.clipboard.writeText(structureText(result));
       setCopyState("done");
+      trackMvpDeepAction("today_a");
     } catch {
       setCopyState("error");
     }
@@ -209,6 +216,7 @@ export function TodayA() {
             </button>
           </div>
           {copyState === "error" ? <p className={styles.error} role="alert">복사하지 못했어요. 브라우저의 클립보드 권한을 확인해 주세요.</p> : null}
+          <PostResultSignup experimentId="today_a" label="내 구조를 다시 만들려면 Google로 연결하기" />
         </section>
       )}
     </main>

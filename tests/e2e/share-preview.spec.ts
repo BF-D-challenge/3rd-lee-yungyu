@@ -12,7 +12,7 @@ test.use({ contextOptions: { reducedMotion: "reduce" } });
 
 test("공유 전부터 상세와 제작 자료를 쓰고 자발적으로 같은 결과를 공유한다", async ({ page }) => {
   await installShareMock(page, "kakao");
-  await page.goto("/");
+  await page.goto("/maker");
   await drawAll(page);
 
   const result = page.locator(".idea-lab__stage--result.is-unlocked");
@@ -88,7 +88,7 @@ test("공유 전부터 상세와 제작 자료를 쓰고 자발적으로 같은 
 
 test("카카오톡 실행이 실패해도 제작 자료를 유지하고 동일 URL로 다시 시도한다", async ({ page }) => {
   await installShareMock(page, "fail-once");
-  await page.goto("/");
+  await page.goto("/maker");
   await drawAll(page);
 
   const result = page.locator(".idea-lab__stage--result.is-unlocked");

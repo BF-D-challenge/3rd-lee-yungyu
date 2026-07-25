@@ -61,10 +61,11 @@ export function MvpLab({ kind }: { kind: LabKind }) {
 
 function Hub() {
   const cards = [
-    { href: "/tastepin", icon: <MapPin aria-hidden />, label: "맛핀", title: "맛집 쇼츠에서 식당 단서 찾기", text: "YouTube Shorts 링크를 넣으면 Gemini가 영상 속 식당명·메뉴·지역 단서를 자동으로 찾습니다.", cta: "맛집 쇼츠 넣기" },
-    { href: "/onebite", icon: <Utensils aria-hidden />, label: "한입코치", title: "다음 끼니 예시를 보기", text: "음식 사진 한 장을 올리고 일반 예시 코칭을 확인합니다.", cta: "음식 사진 올리기" },
-    { href: "/idea-fit", icon: <Lightbulb aria-hidden />, label: "아이디어핏", title: "내 조건의 예시 후보 3개", text: "관심 분야와 시간으로 검증 전 예시 후보를 봅니다.", cta: "내 조건 입력하기" },
-    { href: "/story-cards", icon: <BookOpen aria-hidden />, label: "카드형 단편", title: "카드 한 장에서 시작하는 8번의 선택", text: "랜덤 장면과 인물로 시작하는 분기형 단편 미리보기입니다.", cta: "새 카드 열기" },
+    { href: "/tastepin", icon: <MapPin aria-hidden />, label: "맛핀", title: "맛집 쇼츠에서 식당 단서 찾기", text: "공개 YouTube Shorts 링크를 넣으면 영상 속 식당명·메뉴·지역 단서를 찾습니다.", cta: "맛집 쇼츠 넣기" },
+    { href: "/onebite", icon: <Utensils aria-hidden />, label: "한입코치", title: "사진에서 다음 한 끼 행동 찾기", text: "음식 사진 한 장에서 확인한 내용으로 다음 끼니에 할 행동 하나를 제안합니다.", cta: "음식 사진 올리기" },
+    { href: "/today-a", icon: <Lightbulb aria-hidden />, label: "Today A", title: "내 조건에서 사업 구조 하나 찾기", text: "고객·반복 불편·강점·이번 주 시간을 실제 제품 원본과 비교해 구조 하나로 정리합니다.", cta: "내 조건 입력하기" },
+    { href: "/today-b", icon: <Clock3 aria-hidden />, label: "Today B", title: "아이디어의 7일 수요 실험 만들기", text: "지금 가진 아이디어의 가장 위험한 가정과 실제 행동을 셀 7일 계획을 만듭니다.", cta: "7일 실험 만들기" },
+    { href: "/story-cards", icon: <BookOpen aria-hidden />, label: "랜덤 엔딩", title: "카드 한 장에서 시작하는 8번의 선택", text: "랜덤 카드로 시작해 여덟 번의 선택 뒤 한 편의 결말을 완성합니다.", cta: "첫 카드 열기" },
   ];
   return <Shell><Header />
     <section className={styles.hero}>

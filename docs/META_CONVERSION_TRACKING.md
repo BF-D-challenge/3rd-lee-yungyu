@@ -12,9 +12,12 @@ Conversions API(CAPI)에 같은 이벤트 ID를 보냅니다. Meta가 브라우�
 | 결과 조회 | 결과 화면이 실제로 표시됨 | `ViewContent` | 표준 |
 | 아이디어 선택 | `이 아이디어 완성해서 보기` 클릭 | `IdeaSelected` | 커스텀 |
 | 첫 실행 시작 | `AI 코딩 프롬프트 복사`가 성공함 | `FirstActionPlanStarted` | 커스텀 |
+| 5개 MVP 결과 조회 | 각 제품의 결과가 실제로 표시됨 | `ViewContent` + `experiment_id` | 표준 |
+| 5개 MVP 심화 행동 | 두 번째 입력·저장·실험 시작 등 제품별 행동 | `MvpDeepAction` + `experiment_id` | 커스텀 |
+| 5개 MVP 가입 완료 | 결과 뒤 가입 CTA로 시작한 인증이 완료됨 | `CompleteRegistration` + `experiment_id` | 표준 |
 
 사용자가 작성한 문구나 카드 본문은 보내지 않습니다. 시도 번호, 비개인
-시나리오 ID, 행동 종류만 전송합니다.
+시나리오 ID, 고정된 제품 ID와 행동 이름만 전송합니다.
 
 ## 서버 환경 변수
 

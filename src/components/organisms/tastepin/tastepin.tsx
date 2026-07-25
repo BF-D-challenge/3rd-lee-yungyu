@@ -2,7 +2,9 @@
 
 import { ArrowLeft, ExternalLink, MapPin, Sparkles, Video } from "lucide-react";
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import { trackMvpDeepAction, trackMvpResultViewed } from "@/lib/mvp-experiment-analytics";
+import { PostResultSignup } from "@/components/organisms/journey/post-result-signup";
 import { track } from "@/lib/track";
 import {
   normalizeYouTubeShortsUrl,
@@ -24,6 +26,13 @@ export function Tastepin() {
   const [requestState, setRequestState] = useState<RequestState>("idle");
   const [result, setResult] = useState<TastepinResolveResponse | null>(null);
   const [message, setMessage] = useState("");
+  const viewedSourceRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!result) return;
+    trackMvpResultViewed("tastepin");
+    viewedSourceRef.current = url;
+  }, [result, url]);
 
   const reset = () => {
     setUrl("");
@@ -42,6 +51,10 @@ export function Tastepin() {
     }
 
     setMessage("");
+    if (viewedSourceRef.current && viewedSourceRef.current !== normalized) {
+      trackMvpDeepAction("tastepin");
+      viewedSourceRef.current = null;
+    }
     setResult(null);
     setRequestState("loading");
     track("tastepin_source_submitted", {
@@ -168,6 +181,7 @@ function Result({
         <button className={styles.secondaryButton} type="button" onClick={onReset}>
           다른 쇼츠 넣기
         </button>
+        <PostResultSignup experimentId="tastepin" label="맛핀을 다시 쓰려면 Google로 연결하기" />
       </section>
     );
   }
@@ -233,6 +247,7 @@ function Result({
       <button className={styles.secondaryButton} type="button" onClick={onReset}>
         다른 쇼츠 넣기
       </button>
+      <PostResultSignup experimentId="tastepin" label="맛핀을 다시 쓰려면 Google로 연결하기" />
     </section>
   );
 }

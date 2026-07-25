@@ -25,6 +25,8 @@ import {
   type OnebiteRejectedResponse,
   type OnebiteSuccessResponse,
 } from "@/app/api/onebite/analyze/contract";
+import { trackMvpDeepAction, trackMvpResultViewed } from "@/lib/mvp-experiment-analytics";
+import { PostResultSignup } from "@/components/organisms/journey/post-result-signup";
 import styles from "./onebite.module.css";
 
 type RequestState = "idle" | "loading" | "success" | "rejected" | "error";
@@ -290,6 +292,12 @@ function Result({
   result: OnebiteSuccessResponse;
   onReset: () => void;
 }) {
+  const [committed, setCommitted] = useState(false);
+
+  useEffect(() => {
+    trackMvpResultViewed("onebite");
+  }, []);
+
   return (
     <section className={styles.result} role="status" aria-live="polite">
       <span className={styles.resultIcon}><Check aria-hidden /></span>
@@ -311,9 +319,21 @@ function Result({
       <p className={styles.resultNote}>
         이 문장은 Gemini가 자유롭게 만든 조언이 아니라, 사진에서 확인한 그룹에 맞춰 안전한 고정 문장 중 하나를 고른 결과예요.
       </p>
+      <button
+        className={styles.primaryButton}
+        type="button"
+        onClick={() => {
+          if (committed) return;
+          setCommitted(true);
+          trackMvpDeepAction("onebite");
+        }}
+      >
+        {committed ? "다음 끼니 행동으로 저장했어요" : "다음 끼니에 이 행동 해볼게요"}
+      </button>
       <button className={styles.secondaryButton} type="button" onClick={onReset}>
         다른 사진 분석하기
       </button>
+      <PostResultSignup experimentId="onebite" label="다음 끼니도 이어서 보려면 Google로 연결하기" />
     </section>
   );
 }
