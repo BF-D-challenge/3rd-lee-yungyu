@@ -66,12 +66,12 @@ export interface FakeDoorProductConfig {
 const defaultSlots: readonly FakeDoorSlotOption[] = [
   {
     value: "this-week",
-    label: "이번 주에 써보기",
-    description: "가장 빠른 체험 자리가 생기면 알려드려요.",
+    label: "이번 주에 써보고 싶어요",
+    description: "가장 빠른 체험 모집이 열리면 알려드려요.",
   },
   {
     value: "next-week",
-    label: "다음 주에 써보기",
+    label: "다음 주에 써보고 싶어요",
     description: "다음 모집 일정에 먼저 안내해드려요.",
   },
   {
@@ -86,10 +86,10 @@ export const fakeDoorProductConfigs: Record<FakeDoorTestProduct, FakeDoorProduct
     product: "matpick",
     name: "맛핀",
     eyebrow: "저장한 맛집 릴스, 다시 찾게",
-    headline: "내 맛집 저장함을 먼저 써보세요.",
+    headline: "내 맛집 저장함을 먼저 써볼 사람을 찾고 있어요.",
     description:
-      "릴스를 보내면 장소와 원본 영상을 함께 정리하는 맛핀 초기 체험을 예약해요.",
-    promise: "저장한 릴스를 장소별로 정리하는 초기 체험",
+      "릴스를 보내면 장소와 원본 영상을 함께 정리하는 맛핀의 선공개 체험을 예약해요. 기능이 준비되면 따로 안내해드릴게요.",
+    promise: "맛핀이 준비 중인 선공개 체험",
     proof: [
       "Instagram 맛집 릴스를 장소로 정리",
       "내 주변에서 가까운 맛집부터 확인",
@@ -97,7 +97,7 @@ export const fakeDoorProductConfigs: Record<FakeDoorTestProduct, FakeDoorProduct
     ],
     image: "/images/experiment-gallery/matpick.jpg",
     imageAlt: "강남역과 역삼역 주변 맛집과 원본 영상이 함께 보이는 맛핀 저장함",
-    appHref: "/matpick",
+    appHref: "/matpin",
     accent: "#2468d9",
     accentStrong: "#174eae",
     background: "#f2f5fa",
@@ -111,18 +111,18 @@ export const fakeDoorProductConfigs: Record<FakeDoorTestProduct, FakeDoorProduct
   onebite: {
     product: "onebite",
     name: "한입코치",
-    eyebrow: "식단 스토리를 올리면, 다음 한 끼가 달라지게",
-    headline: "식단 스토리를 공유하면 코치해드려요.",
+    eyebrow: "첫 코칭 뒤에도 계속 혼나고 싶다면",
+    headline: "7일 패스가 열리면 알려드릴게요.",
     description:
-      "먹은 음식 사진을 Instagram 스토리에 올리고 공유하면, 사진에서 보이는 식단을 바탕으로 다음 한 끼 행동 하나를 알려드리는 한입코치 초기 체험을 예약해요.",
-    promise: "식단 스토리를 공유하고 받는 다음 한 끼 코칭",
+      "첫 코칭은 무료예요. 팩폭과 다음 끼니 행동을 7일 동안 이어가는 4,900원 패스는 준비 중이며 자동 갱신되지 않아요. 지금은 결제 없이 출시 알림만 신청합니다.",
+    promise: "한입코치 7일 패스",
     proof: [
-      "먹은 음식 사진을 Instagram 스토리에 올리기",
-      "예약 뒤 안내받은 방법으로 스토리 공유하기",
-      "다음 한 끼에 할 행동 하나 받기",
+      "음식 사진마다 선택을 짚는 팩폭 한 방",
+      "다음 끼니 행동 하나와 다음 사진 확인",
+      "7일 4,900원 · 자동 갱신 없음",
     ],
     image: "/images/experiment-gallery/onebite-redesign.jpg",
-    imageAlt: "식단 스토리를 공유하고 다음 한 끼 행동을 받는 한입코치 화면",
+    imageAlt: "음식 사진을 고르고 다음 한 끼 행동을 받는 한입코치 화면",
     appHref: "/onebite",
     accent: "#2f765a",
     accentStrong: "#225943",
@@ -138,10 +138,10 @@ export const fakeDoorProductConfigs: Record<FakeDoorTestProduct, FakeDoorProduct
     product: "today",
     name: "오늘 해볼까",
     eyebrow: "아이디어만 주면, 테스트는 내일",
-    headline: "내일 받을 테스트 제작을 예약하세요.",
+    headline: "테스트 제작이 열리면 먼저 알려드릴게요.",
     description:
-      "아이디어를 신청하면 24시간 뒤 광고 이미지, 가짜문 랜딩, 측정 기준을 함께 받아요.",
-    promise: "24시간 뒤 받는 광고·가짜문 랜딩·측정 기준",
+      "아이디어를 광고 이미지, 가짜문 랜딩, 측정 기준으로 바꾸는 제작 체험을 준비 중이에요. 지금은 원하는 시점만 예약해요.",
+    promise: "오늘 해볼까가 준비 중인 테스트 제작 체험",
     proof: [
       "아이디어가 있으면 근거로 더 선명하게 개선",
       "아이디어가 없으면 세 가지 질문으로 시작",
@@ -161,8 +161,8 @@ export const fakeDoorProductConfigs: Record<FakeDoorTestProduct, FakeDoorProduct
     slots: [
       {
         value: "this-week",
-        label: "내일 결과 받아보기",
-        description: "가장 빠른 24시간 제작 자리가 생기면 알려드려요.",
+        label: "가장 먼저 써보고 싶어요",
+        description: "첫 제작 체험 모집이 열리면 알려드려요.",
       },
       {
         value: "next-week",
@@ -180,14 +180,14 @@ export const fakeDoorProductConfigs: Record<FakeDoorTestProduct, FakeDoorProduct
     product: "story-cards",
     name: "카드너머",
     eyebrow: "상황을 고르면, 그 사람이 먼저 말을 걸게",
-    headline: "다음 이야기의 첫 대화를 예약하세요.",
+    headline: "첫 대화 체험이 열리면 알려드릴게요.",
     description:
-      "마음에 가까운 장면을 고르면 그 장면의 매력적인 남자 주인공과 바로 대화하는 초기 체험을 예약해요.",
-    promise: "고른 장면의 남자 주인공과 시작하는 첫 대화",
+      "마음에 가까운 장면을 고르고 그 장면의 남자 주인공과 대화하는 선공개 체험을 준비 중이에요. 체험이 열리면 Instagram DM으로 안내해드려요.",
+    promise: "카드너머가 준비 중인 선공개 대화 체험",
     proof: [
       "지금 마음에 가까운 상황 카드 선택",
       "장면마다 다른 남자 주인공과 첫 대화",
-      "짧은 선택지와 직접 입력을 함께 지원",
+      "Instagram DM으로 첫 대화 안내",
     ],
     image: "/images/experiment-gallery/story-cards-redesign.jpg",
     imageAlt: "어두운 카드 덱에서 상황을 고르고 대화를 시작하는 카드너머 화면",
@@ -199,7 +199,7 @@ export const fakeDoorProductConfigs: Record<FakeDoorTestProduct, FakeDoorProduct
     ink: "#f5f2eb",
     muted: "#aaa69d",
     dark: true,
-    requiresInstagram: false,
+    requiresInstagram: true,
     slots: defaultSlots,
   },
 };

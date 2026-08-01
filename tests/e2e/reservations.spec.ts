@@ -10,14 +10,16 @@ const reservations = [
     handle: "matpin_test",
     instagramLabel: "맛집 릴스를 보낼 Instagram 아이디",
     instagramHelp: "예약 뒤 안내받은 방법으로 맛집 릴스를 보내면 내 맛집 저장함을 준비해드려요.",
+    consentLabel: "입력한 Instagram 계정으로 출시와 초기 체험 안내를 받는 데 동의해요.",
   },
   {
     product: "onebite",
     name: "한입코치",
     requiresInstagram: true,
     handle: "onebite_test",
-    instagramLabel: "식단 스토리를 공유할 Instagram 아이디",
-    instagramHelp: "예약 뒤 안내받은 방법으로 식단 스토리를 공유하면 코칭을 보내드려요.",
+    instagramLabel: "7일 패스 소식을 받을 Instagram 아이디",
+    instagramHelp: "패스가 열리면 입력한 계정으로 한 번 알려드려요. 아직 결제하지 않아요.",
+    consentLabel: "입력한 Instagram 계정으로 7일 패스 출시 안내를 받는 데 동의해요.",
   },
   {
     product: "today",
@@ -26,14 +28,16 @@ const reservations = [
     handle: null,
     instagramLabel: null,
     instagramHelp: null,
+    consentLabel: "Google 계정 이메일로 출시와 초기 체험 안내를 받는 데 동의해요.",
   },
   {
     product: "story-cards",
     name: "카드너머",
-    requiresInstagram: false,
-    handle: null,
-    instagramLabel: null,
-    instagramHelp: null,
+    requiresInstagram: true,
+    handle: "cardbeyond_test",
+    instagramLabel: "첫 대화 안내를 받을 Instagram 아이디",
+    instagramHelp: "체험이 열리면 입력한 계정으로 DM을 보내 첫 대화를 안내해드려요. 자동 대화는 아직 준비 중이에요.",
+    consentLabel: "입력한 Instagram 계정으로 첫 대화 체험 안내를 받는 데 동의해요.",
   },
 ] as const;
 
@@ -50,6 +54,9 @@ test.describe("공통 fake door 예약", () => {
         `/reserve/${reservation.product}?utm_source=instagram&utm_medium=paid_social&utm_campaign=fake_door_e2e&utm_content=${reservation.product}`,
       );
       await expect(page.getByText(/로컬 데모 모드/)).toBeVisible();
+      await expect(page.getByRole("heading", { name: "지금은 예약만 받아요." })).toBeVisible();
+      await expect(page.getByText(/실제 체험은 준비가 끝난 뒤/).first()).toBeVisible();
+      await expect(page.getByRole("link")).toHaveCount(0);
       const pageWidth = await page.evaluate(() => ({
         client: document.documentElement.clientWidth,
         scroll: document.documentElement.scrollWidth,
@@ -57,17 +64,22 @@ test.describe("공통 fake door 예약", () => {
       expect(pageWidth.scroll).toBeLessThanOrEqual(pageWidth.client + 1);
       const loginButton = page.getByRole("button", { name: "로컬 데모로 계속하기" });
       const contactConsent = page.getByRole("checkbox", {
-        name: "Google 계정 이메일로 출시와 초기 체험 안내를 받는 데 동의해요.",
+        name: reservation.consentLabel,
       });
       await expect(contactConsent).not.toBeChecked();
-      await expect(loginButton).toBeDisabled();
+      if (reservation.requiresInstagram) {
+        await expect(loginButton).toHaveCount(0);
+        await expect(page.getByText("Google 로그인", { exact: true })).toHaveCount(0);
+      } else {
+        await expect(loginButton).toBeDisabled();
+      }
 
       const stepOrder = await page.locator("[data-reservation-step]").evaluateAll((steps) =>
         steps.map((step) => step.getAttribute("data-reservation-step")),
       );
       expect(stepOrder).toEqual(
         reservation.requiresInstagram
-          ? ["instagram", "slot", "auth"]
+          ? ["instagram", "slot", "save"]
           : ["slot", "auth"],
       );
 
@@ -92,22 +104,22 @@ test.describe("공통 fake door 예약", () => {
       }
       await page.locator('input[name="reservation-slot"][value="next-week"]').check();
       await contactConsent.check();
-      await expect(loginButton).toBeEnabled();
-      await loginButton.click();
-      await expect(page.getByText("로컬 데모 준비 완료", { exact: true })).toBeVisible();
+      if (!reservation.requiresInstagram) {
+        await expect(loginButton).toBeEnabled();
+        await loginButton.click();
+        await expect(page.getByText("로컬 데모 준비 완료", { exact: true })).toBeVisible();
 
-      const completedStepOrder = await page.locator("[data-reservation-step]").evaluateAll((steps) =>
-        steps.map((step) => step.getAttribute("data-reservation-step")),
-      );
-      expect(completedStepOrder).toEqual(
-        reservation.requiresInstagram
-          ? ["instagram", "slot", "auth", "save"]
-          : ["slot", "auth", "save"],
-      );
+        const completedStepOrder = await page.locator("[data-reservation-step]").evaluateAll((steps) =>
+          steps.map((step) => step.getAttribute("data-reservation-step")),
+        );
+        expect(completedStepOrder).toEqual(["slot", "auth", "save"]);
+      }
 
       await page.getByRole("button", { name: /데모 저장$/ }).click();
       await expect(page.getByText("데모 저장 완료", { exact: true })).toBeVisible();
       await expect(page.getByText("실제 예약이나 전환으로 집계되지 않아요.")).toBeVisible();
+      await expect(page.getByText("이 페이지를 닫아도 예약 신청은 저장돼요.")).toBeVisible();
+      await expect(page.getByRole("link")).toHaveCount(0);
       if (reservation.handle) {
         await expect(page.getByText(`@${reservation.handle}`, { exact: true })).toBeVisible();
         await expect(page.getByText(`@${reservation.handle}`, { exact: true })).toHaveAttribute(

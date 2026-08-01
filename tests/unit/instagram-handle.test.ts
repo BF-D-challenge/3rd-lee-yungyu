@@ -50,13 +50,15 @@ describe("Instagram handle contract", () => {
     expect(instagramHandleError(value)).toBe("");
   });
 
-  it("keeps OAuth return values separate for matpick and onebite", () => {
+  it("keeps pending values separate for every Instagram reservation product", () => {
     vi.stubGlobal("sessionStorage", new MemoryStorage());
 
     savePendingInstagramHandle("@matpin_test", "matpick");
     savePendingInstagramHandle("@onebite_test", "onebite");
+    savePendingInstagramHandle("@cardbeyond_test", "story-cards");
 
     expect(loadPendingInstagramHandle("matpick")).toBe("matpin_test");
     expect(loadPendingInstagramHandle("onebite")).toBe("onebite_test");
+    expect(loadPendingInstagramHandle("story-cards")).toBe("cardbeyond_test");
   });
 });

@@ -217,14 +217,14 @@ test.describe("네 앱 초기 체험 예약", () => {
     { path: "/reserve/today", name: "오늘 해볼까" },
     { path: "/reserve/story-cards", name: "카드너머" },
   ]) {
-    test(`${reservation.name} 예약 페이지는 약속과 인증된 예약 행동을 함께 보여준다`, async ({ page }) => {
+    test(`${reservation.name} 예약 페이지는 약속과 예약 행동을 함께 보여준다`, async ({ page }) => {
       const expectNoErrors = await openWithoutRuntimeErrors(page, reservation.path);
 
       await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
       await expect(page.locator("main img").first()).toBeVisible();
       await expect(page.locator("fieldset")).toBeVisible();
       await expect(page.getByRole("button", { name: /데모 저장/ })).toBeVisible();
-      await expect(page.getByText("아직 결제하지 않아요. 한 번만 선택하면 됩니다.")).toBeVisible();
+      await expect(page.getByText(/세 단계로 신청하면.*아직 결제하지 않아요/)).toBeVisible();
       await expectNoErrors();
     });
   }
