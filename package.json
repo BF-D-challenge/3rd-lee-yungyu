@@ -13,6 +13,11 @@
     "test:unit": "vitest run",
     "test:e2e": "playwright test",
     "test:integration": "npm run test:unit && npm run test:e2e",
+    "ad:image:check": "node scripts/ad-image/render.mjs --manifest config/ad-image/manifest.json --dry-run",
+    "ad:image:render": "node scripts/ad-image/render.mjs --manifest config/ad-image/manifest.json",
+    "ad:image:v3:check": "node scripts/ad-image/render-v3.mjs --dry-run",
+    "ad:image:v3:render": "node scripts/ad-image/render-v3.mjs",
+    "ad:image:reference-lab": "node scripts/ad-image/render-reference-lab.mjs",
     "quality:cards": "node scripts/rollout/validate-golden.mjs public/data/golden.json && node scripts/rollout/check-golden-visible-smells.mjs && node scripts/rollout/audit-golden-human-fit.mjs --minScore 72 --label latest && node scripts/rollout/experiment-mobile-card-pairing.mjs --runs 20000"
   },
   "dependencies": {
@@ -31,6 +36,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.67.0",
+    "sharp": "^0.34.5",
     "tailwind-merge": "^2.6.0",
     "ts-pattern": "^5.9.0",
     "zod": "^4.4.3",

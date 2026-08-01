@@ -19,7 +19,7 @@ import { formatDistance } from "@/lib/tastepin-distance";
 import styles from "./matpick-start.module.css";
 
 export const metadata: Metadata = {
-  title: "역삼역 숏폼 맛집 — MATPICK",
+  title: "역삼역 숏폼 맛집 — 맛핀",
   description: "역삼역에서 최근 공개 릴스와 쇼츠에 나온 맛집을 먼저 보고, 원본 영상과 함께 저장하세요.",
 };
 
@@ -35,7 +35,7 @@ const steps = [
   {
     icon: Send,
     title: "@matpickapp으로 보내요",
-    description: "받는 사람에서 MATPICK 계정을 고르면 돼요.",
+    description: "받는 사람에서 맛핀 계정을 고르면 돼요.",
   },
   {
     icon: ListVideo,
@@ -90,8 +90,8 @@ export default function MatpickStartPage() {
         <Link className={styles.backButton} href="/" aria-label="앱 목록으로 돌아가기">
           <ArrowLeft aria-hidden="true" size={21} />
         </Link>
-        <Link className={styles.brand} href="/matpick" aria-label="MATPICK 홈">
-          MATPICK
+        <Link className={styles.brand} href="/matpick" aria-label="맛핀 홈">
+          맛핀
         </Link>
         <Link className={styles.savedLink} href="/matpick/map?saved=1" aria-label="내 저장함 보기">
           <Bookmark aria-hidden="true" size={20} />
@@ -147,7 +147,7 @@ export default function MatpickStartPage() {
               <ArrowRight aria-hidden="true" size={18} />
             </a>
             <Link className={styles.secondaryAction} href="/reserve/matpick">
-              MATPICK 초기 체험 예약
+              맛핀 초기 체험 예약
               <ArrowRight aria-hidden="true" size={18} />
             </Link>
           </div>
@@ -161,7 +161,7 @@ export default function MatpickStartPage() {
         <section className={styles.saveFlow} id="save-reels" aria-labelledby="save-reels-title">
           <p className={styles.eyebrow}>내가 본 릴스도 저장</p>
           <h2 id="save-reels-title">공유 한 번이면 장소별로 정리돼요</h2>
-          <p className={styles.saveLead}>Instagram을 보다가 맛집 릴스를 발견하면 MATPICK으로 보내세요.</p>
+          <p className={styles.saveLead}>Instagram을 보다가 맛집 릴스를 발견하면 맛핀으로 보내세요.</p>
 
           <ol className={styles.steps} aria-label="릴스 저장 방법">
             {steps.map(({ icon: Icon, title, description }, index) => (

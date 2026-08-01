@@ -1,30 +1,22 @@
 "use client";
 
-import Link from "next/link";
 import {
   type CSSProperties,
   type FormEvent,
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from "react";
 import {
-  ArrowLeft,
   ArrowUp,
   LoaderCircle,
   MessageCircle,
   RotateCcw,
-  Sparkles,
 } from "lucide-react";
-import {
-  FanDeck,
-  type DeckCard,
-  type FanDeckHandle,
-} from "@/components/organisms/four-card/four-card-deck";
-import { TarotArt } from "@/components/organisms/four-card/tarot-art";
+import Link from "next/link";
 import { PostResultSignup } from "@/components/organisms/journey/post-result-signup";
+import { MvpAppHeader } from "@/components/organisms/mvp-shared/mvp-app-header";
 import { trackStoryCardEvent } from "@/lib/story-card-analytics";
 import {
   trackMvpDeepAction,
@@ -32,6 +24,12 @@ import {
   trackMvpLandingViewed,
   trackMvpResultViewed,
 } from "@/lib/mvp-experiment-analytics";
+import {
+  clearStoryConversation,
+  loadStoryConversation,
+  saveStoryConversation,
+  type SavedStoryConversation,
+} from "@/lib/mvp-resume-state";
 import {
   type StoryCardRequest,
   type StoryChatMessage,
@@ -41,7 +39,34 @@ import {
 } from "@/lib/story-card-contract";
 import styles from "./story-cards.module.css";
 
-type View = "deck" | "chat";
+type View = "deck" | "restore" | "chat";
+
+const characterProfileByCard = {
+  "rain-station": {
+    label: "냉정한 제복 연상",
+    tags: "30대 · 직업남 · 보호자",
+    hook: "마지막 열차입니다. 타실 거면, 이번엔 내가 같이 갑니다.",
+  },
+  "glass-greenhouse": {
+    label: "햇살 같은 다정남",
+    tags: "순애 · 편지 · 직진",
+    hook: "보내지 못한 편지, 내가 받아도 될까요?",
+  },
+  "moon-shop": {
+    label: "위험한 은발 연하",
+    tags: "연하 · 계약 · 집착",
+    hook: "미련의 값은 받았어요. 이제 당신만 남았네요.",
+  },
+  "wave-archive": {
+    label: "동양풍 장발 무사",
+    tags: "무림 · 보호자 · 쌍방구원",
+    hook: "당신의 목소리는 내가 먼저 찾았습니다.",
+  },
+} as const satisfies Record<StorySituation["id"], {
+  label: string;
+  tags: string;
+  hook: string;
+}>;
 
 async function loadSituations(): Promise<StorySituation[]> {
   const response = await fetch("/api/story-cards", { cache: "no-store" });
@@ -60,6 +85,26 @@ async function requestChat(body: StoryCardRequest): Promise<StoryChatSession> {
   return response.json() as Promise<StoryChatSession>;
 }
 
+function CharacterPortrait({
+  cardId,
+  className,
+  label,
+}: {
+  cardId: StorySituation["id"];
+  className?: string;
+  label?: string;
+}) {
+  return (
+    <span
+      className={[styles.characterPortrait, className].filter(Boolean).join(" ")}
+      data-card={cardId}
+      role={label ? "img" : undefined}
+      aria-label={label}
+      aria-hidden={label ? undefined : true}
+    />
+  );
+}
+
 export function StoryCards() {
   const [view, setView] = useState<View>("deck");
   const [situations, setSituations] = useState<StorySituation[]>([]);
@@ -67,13 +112,11 @@ export function StoryCards() {
   const [messages, setMessages] = useState<StoryChatMessage[]>([]);
   const [draft, setDraft] = useState("");
   const [loading, setLoading] = useState(true);
-  const [deckBusy, setDeckBusy] = useState(false);
   const [selectedSituationId, setSelectedSituationId] = useState<StorySituation["id"] | null>(null);
+  const [savedConversation, setSavedConversation] = useState<SavedStoryConversation | null>(null);
   const [error, setError] = useState("");
   const chatHeadingRef = useRef<HTMLHeadingElement>(null);
   const composerRef = useRef<HTMLInputElement>(null);
-  const targetCardRef = useRef<HTMLDivElement>(null);
-  const deckRef = useRef<FanDeckHandle>(null);
   const resultTrackedRef = useRef(false);
   const deepActionTrackedRef = useRef(false);
 
@@ -83,15 +126,32 @@ export function StoryCards() {
     void loadSituations()
       .then(setSituations)
       .catch(() => {
-        setError("상황 카드를 불러오지 못했어요. 잠시 후 다시 시도해주세요.");
-        trackStoryCardEvent("request_failed", { stage: "load" });
+        setError("타로 카드를 불러오지 못했어요. 잠시 후 다시 시도해주세요.");
+        trackStoryCardEvent("story_card_request_failed", { stage: "load" });
       })
       .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
-    trackMvpLandingViewed("story_cards");
-    trackStoryCardEvent("viewed");
+    trackStoryCardEvent("story_cards_landing_viewed");
+    trackMvpLandingViewed("story-cards");
+    const params = new URLSearchParams(window.location.search);
+    const saved = loadStoryConversation();
+    if (params.get("new") === "1") {
+      clearStoryConversation();
+      window.history.replaceState(null, "", "/story-cards");
+    } else if (saved && params.get("resume") === "1") {
+      setSavedConversation(saved);
+      setSession(saved.session);
+      setMessages(saved.messages);
+      setSelectedSituationId(saved.session.situation.id);
+      setView("chat");
+      trackStoryCardEvent("story_card_chat_resumed", { cardId: saved.session.situation.id });
+      window.history.replaceState(null, "", "/story-cards");
+    } else if (saved) {
+      setSavedConversation(saved);
+      setView("restore");
+    }
     reloadSituations();
   }, [reloadSituations]);
 
@@ -102,68 +162,33 @@ export function StoryCards() {
 
   const startChat = useCallback(async (situation: StorySituation) => {
     if (loading) return;
+    setSelectedSituationId(situation.id);
     setLoading(true);
     setError("");
     trackMvpInputStarted("story_cards");
-    trackStoryCardEvent("situation_selected", { cardId: situation.id });
+    trackStoryCardEvent("story_card_selected", { cardId: situation.id });
 
     try {
       const next = await requestChat({ action: "start", situationId: situation.id });
       setSession(next);
       setMessages(next.messages);
+      saveStoryConversation(next, next.messages);
       setView("chat");
-      trackStoryCardEvent("chat_started", { cardId: situation.id });
+      trackStoryCardEvent("story_chat_started", { cardId: situation.id });
       if (!resultTrackedRef.current) {
         resultTrackedRef.current = true;
         trackMvpResultViewed("story_cards");
       }
     } catch {
       setError("대화를 시작하지 못했어요. 같은 카드를 다시 눌러주세요.");
-      trackStoryCardEvent("request_failed", { cardId: situation.id, stage: "start" });
+      trackStoryCardEvent("story_card_request_failed", {
+        cardId: situation.id,
+        stage: "start",
+      });
     } finally {
       setLoading(false);
-      setDeckBusy(false);
     }
   }, [loading]);
-
-  const situationById = useMemo(
-    () => new Map(situations.map((situation) => [situation.id, situation])),
-    [situations],
-  );
-  const axisLabels = useMemo<Record<string, string>>(
-    () => Object.fromEntries(situations.map((situation) => [situation.id, situation.title])),
-    [situations],
-  );
-  const deckCards = useMemo<DeckCard[]>(
-    () => situations.map((situation) => ({
-      axis: situation.id,
-      key: `story-situation:${situation.id}`,
-      label: situation.title,
-    })),
-    [situations],
-  );
-  const getTargetRect = useCallback(
-    () => targetCardRef.current?.getBoundingClientRect() ?? null,
-    [],
-  );
-  const settleDeckPick = useCallback((_card: DeckCard, targetAxis: string) => {
-    const situation = situationById.get(targetAxis as StorySituation["id"]);
-    if (!situation) {
-      setDeckBusy(false);
-      setError("선택한 상황을 찾지 못했어요. 다른 상황을 골라주세요.");
-      return;
-    }
-    setSelectedSituationId(situation.id);
-    void startChat(situation);
-  }, [situationById, startChat]);
-  const chooseSituation = (situation: StorySituation) => {
-    if (loading || deckBusy) return;
-    setError("");
-    setSelectedSituationId(situation.id);
-    setDeckBusy(true);
-    const started = deckRef.current?.drawTo(situation.id, () => undefined) ?? false;
-    if (!started) void startChat(situation);
-  };
 
   const sendMessage = async (value: string) => {
     const message = value.trim();
@@ -180,7 +205,7 @@ export function StoryCards() {
     setDraft("");
     setLoading(true);
     setError("");
-    trackStoryCardEvent("message_sent", {
+    trackStoryCardEvent("story_card_message_sent", {
       cardId: session.situation.id,
       messageCount,
     });
@@ -194,7 +219,9 @@ export function StoryCards() {
         messageCount,
       });
       setSession(next);
-      setMessages((current) => [...current, ...next.messages]);
+      const finalMessages = [...optimisticMessages, ...next.messages];
+      setMessages(finalMessages);
+      saveStoryConversation(next, finalMessages);
       if (!deepActionTrackedRef.current) {
         deepActionTrackedRef.current = true;
         trackMvpDeepAction("story_cards");
@@ -203,7 +230,7 @@ export function StoryCards() {
       setMessages(messages);
       setDraft(message);
       setError("답장을 받지 못했어요. 문장은 그대로 두었으니 다시 보내주세요.");
-      trackStoryCardEvent("request_failed", {
+      trackStoryCardEvent("story_card_request_failed", {
         cardId: session.situation.id,
         stage: "reply",
       });
@@ -220,134 +247,170 @@ export function StoryCards() {
 
   const returnToDeck = () => {
     if (session) {
-      trackStoryCardEvent("chat_abandoned", {
+      trackStoryCardEvent("story_card_chat_abandoned", {
         cardId: session.situation.id,
         messageCount: messages.filter((message) => message.role === "user").length,
       });
     }
     setView("deck");
+    clearStoryConversation();
+    setSavedConversation(null);
     setSession(null);
     setMessages([]);
     setDraft("");
     setError("");
     setSelectedSituationId(null);
-    setDeckBusy(false);
     deepActionTrackedRef.current = false;
   };
 
+  const resumeConversation = () => {
+    if (!savedConversation) return;
+    setSession(savedConversation.session);
+    setMessages(savedConversation.messages);
+    setSelectedSituationId(savedConversation.session.situation.id);
+    setView("chat");
+    trackStoryCardEvent("story_card_chat_resumed", {
+      cardId: savedConversation.session.situation.id,
+    });
+  };
+
+  const startNewConversation = () => {
+    clearStoryConversation();
+    setSavedConversation(null);
+    setSession(null);
+    setMessages([]);
+    setSelectedSituationId(null);
+    setView("deck");
+  };
+
+  const trackReservation = () => {
+    trackStoryCardEvent("story_cards_reservation_clicked", {
+      cardId: session?.situation.id,
+      messageCount: messages.filter((message) => message.role === "user").length || undefined,
+    });
+  };
+
   const userMessageCount = messages.filter((message) => message.role === "user").length;
-  const selectedSituation = selectedSituationId
-    ? situationById.get(selectedSituationId) ?? null
-    : null;
 
   return (
     <main className={styles.page} data-view={view}>
-      <header className={styles.header}>
-        <Link href="/" className={styles.back}>
-          <ArrowLeft size={18} aria-hidden />
-          오늘 해볼까
-        </Link>
-        <span>상황 카드</span>
-      </header>
+      <MvpAppHeader
+        backClassName={styles.back}
+        backLabel="오늘 해볼까"
+        className={styles.header}
+        meta="카드너머"
+      />
+
+      {view === "restore" && savedConversation ? (
+        <section className={styles.restore} aria-labelledby="story-restore-title">
+          <div
+            className={styles.restoreCard}
+            style={{ "--card-accent": savedConversation.session.situation.accent } as CSSProperties}
+          >
+            <CharacterPortrait
+              cardId={savedConversation.session.situation.id}
+              className={styles.restoreArt}
+              label={`${savedConversation.session.situation.guideName}의 타로 카드`}
+            />
+            <div className={styles.restoreCopy}>
+              <p>카드너머에 남은 장면</p>
+              <h1 id="story-restore-title">{savedConversation.session.situation.title}</h1>
+              <strong>
+                {characterProfileByCard[savedConversation.session.situation.id].label}
+                {" · "}
+                {savedConversation.session.situation.guideName}
+              </strong>
+              <span>
+                {savedConversation.messages.some((message) => message.role === "user")
+                  ? "이 브라우저에 남은 대화를 이어갈 수 있어요."
+                  : "그가 먼저 건넨 말에서 다시 시작해요."}
+              </span>
+            </div>
+          </div>
+          <div className={styles.restoreActions}>
+            <button type="button" className={styles.restorePrimary} onClick={resumeConversation}>
+              이어서 대화하기
+              <ArrowUp aria-hidden />
+            </button>
+            <button type="button" className={styles.restoreSecondary} onClick={startNewConversation}>
+              <RotateCcw aria-hidden />
+              새 카드 고르기
+            </button>
+          </div>
+          <p className={styles.restoreNotice}>대화는 이 브라우저에만 저장돼요.</p>
+        </section>
+      ) : null}
 
       {view === "deck" ? (
-        <section className={styles.deck} aria-labelledby="situation-card-title" aria-busy={loading}>
-          <div className={styles.deckCopy}>
-            <p className={styles.eyebrow}>상황 카드 · 로그인 없이 바로 시작</p>
-            <h1 id="situation-card-title">
-              지금 마음에 가까운
+        <section className={styles.deck} aria-labelledby="card-beyond-title" aria-busy={loading}>
+          <header className={styles.intro}>
+            <p className={styles.eyebrow}>여성향 판타지 대화 · 카드너머</p>
+            <h1 id="card-beyond-title">
+              카드를 고르면,
               <br />
-              상황을 골라보세요.
+              <em>그가 먼저 말을 걸어요.</em>
             </h1>
-            <p className={styles.lede}>
-              이름을 누르면 카드가 뽑히고, 장면 속 안내자와 바로 대화해요. 아무 카드나 직접 뽑아도 괜찮아요.
-            </p>
-          </div>
+            <p className={styles.lede}>네 장의 타로, 네 명의 남자, 고른 장면에서 바로 시작되는 대화.</p>
+          </header>
 
-          {loading && situations.length === 0 ? (
-            <p className={styles.loading} role="status">
-              <LoaderCircle className={styles.spin} aria-hidden />
-              상황 카드를 준비하는 중
-            </p>
-          ) : null}
+          <ol className={styles.uspList} aria-label="카드너머 특징">
+            <li><span>01</span>타로 카드 선택</li>
+            <li><span>02</span>서로 다른 남자 주인공</li>
+            <li><span>03</span>고른 장면에서 바로 대화</li>
+          </ol>
 
-          {situations.length > 0 ? (
-            <div className={styles.deckJourney}>
-              <div className={styles.situationList} role="group" aria-label="대화를 시작할 상황">
+          <div className={styles.cardSelection}>
+            <div className={styles.selectionHeading}>
+              <p>오늘 끌리는 그를 고르세요</p>
+              <span>좌우로 넘겨 네 장을 볼 수 있어요.</span>
+            </div>
+
+            {loading && situations.length === 0 ? (
+              <p className={styles.loading} role="status">
+                <LoaderCircle className={styles.spin} aria-hidden />
+                타로 카드를 펼치는 중
+              </p>
+            ) : null}
+
+            {situations.length > 0 ? (
+              <div className={styles.cardRail} role="group" aria-label="카드너머 타로 카드 선택">
                 {situations.map((situation, index) => (
                   <button
                     type="button"
                     className={styles.situationChoice}
+                    data-card={situation.id}
                     data-selected={selectedSituationId === situation.id ? "true" : undefined}
                     key={situation.id}
-                    onClick={() => chooseSituation(situation)}
-                    disabled={loading || deckBusy}
-                    aria-label={`${situation.title}: ${situation.kicker}. 선택하고 대화 시작`}
+                    onClick={() => void startChat(situation)}
+                    disabled={loading}
+                    aria-label={`${characterProfileByCard[situation.id].label}, ${situation.guideName}, ${situation.title} 타로 카드 선택. 선택한 장면에서 대화 시작`}
                     style={{ "--card-accent": situation.accent } as CSSProperties}
                   >
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <span>
-                      <strong>{situation.title}</strong>
-                      <small>{situation.kicker}</small>
+                    <CharacterPortrait cardId={situation.id} />
+                    <span className={styles.cardVeil} aria-hidden />
+                    <span className={styles.cardTopline} aria-hidden>
+                      <span className={styles.cardNumber}>ARCANA {String(index + 1).padStart(2, "0")}</span>
+                      <span className={styles.cardTags}>{characterProfileByCard[situation.id].tags}</span>
                     </span>
-                    <span aria-hidden>→</span>
+                    <span className={styles.cardCopy}>
+                      <span className={styles.cardArchetype}>
+                        {characterProfileByCard[situation.id].label}
+                      </span>
+                      <strong>{situation.guideName}</strong>
+                      <span className={styles.sceneTitle}>{situation.title}</span>
+                      <small>“{characterProfileByCard[situation.id].hook}”</small>
+                      <span className={styles.cardAction}>
+                        이 장면에서 시작
+                        <ArrowUp aria-hidden />
+                      </span>
+                    </span>
                   </button>
                 ))}
               </div>
+            ) : null}
+          </div>
 
-              <div className={styles.readingTable}>
-                <div
-                  ref={targetCardRef}
-                  className={styles.targetCard}
-                  data-armed={selectedSituation ? "true" : undefined}
-                  style={selectedSituation
-                    ? { "--card-accent": selectedSituation.accent } as CSSProperties
-                    : undefined}
-                  aria-hidden
-                >
-                  {selectedSituation ? (
-                    <>
-                      <TarotArt
-                        axisIndex={selectedSituation.artIndex}
-                        color={selectedSituation.accent}
-                        className={styles.targetArt}
-                      />
-                      <span>{selectedSituation.title}</span>
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles aria-hidden />
-                      <span>선택한 장면</span>
-                    </>
-                  )}
-                </div>
-                <div className={styles.deckStage}>
-                  <FanDeck
-                    ref={deckRef}
-                    cards={deckCards}
-                    variant="compact"
-                    axisLabels={axisLabels}
-                    disabled={loading}
-                    entranceDurationMs={1_100}
-                    entranceSweepDegrees={18}
-                    aimAxis={null}
-                    getTargetRect={getTargetRect}
-                    onDragOver={() => undefined}
-                    onPick={settleDeckPick}
-                  />
-                </div>
-                <p className={styles.deckHint}>
-                  {deckBusy && selectedSituation
-                    ? `${selectedSituation.title} 카드를 여는 중`
-                    : "상황 이름을 누르거나 덱에서 한 장을 뽑으세요"}
-                </p>
-              </div>
-            </div>
-          ) : null}
-
-          <p className={styles.note}>
-            지금은 미리 준비한 안전 문장으로 답해요. 입력한 이야기는 계정이나 DB에 저장하지 않아요.
-          </p>
+          <p className={styles.note}>대화는 이 브라우저에만 저장돼요.</p>
           {error ? (
             <div className={styles.error} role="alert">
               <p>{error}</p>
@@ -363,38 +426,38 @@ export function StoryCards() {
 
       {view === "chat" && session ? (
         <section className={styles.chat} aria-busy={loading}>
-          <aside className={styles.contextCard} style={{ "--card-accent": session.situation.accent } as CSSProperties}>
-            <TarotArt
-              axisIndex={session.situation.artIndex}
-              color={session.situation.accent}
+          <aside
+            className={styles.contextCard}
+            style={{ "--card-accent": session.situation.accent } as CSSProperties}
+          >
+            <CharacterPortrait
+              cardId={session.situation.id}
               className={styles.contextArt}
+              label={`${session.situation.guideName}, ${session.situation.title}`}
             />
-            <div>
-              <p>{session.situation.kicker}</p>
+            <div className={styles.contextCopy}>
+              <p>{characterProfileByCard[session.situation.id].label}</p>
               <h1 ref={chatHeadingRef} tabIndex={-1}>{session.situation.title}</h1>
-              <span>{session.situation.guideName}과 대화 중</span>
+              <strong>{session.situation.guideName}</strong>
+              <span>“{characterProfileByCard[session.situation.id].hook}”</span>
             </div>
           </aside>
 
           <div className={styles.chatPanel}>
             <div className={styles.chatTopline}>
               <div>
-                <p>지금 이 장면에서</p>
+                <p>그가 먼저 말을 걸었어요</p>
                 <strong>{session.situation.guideName}</strong>
               </div>
               <button type="button" onClick={returnToDeck}>
                 <RotateCcw size={16} aria-hidden />
-                다른 상황
+                다른 카드
               </button>
             </div>
 
-            <div className={styles.messages} aria-live="polite" aria-label="상황 카드 대화">
+            <div className={styles.messages} aria-live="polite" aria-label="카드너머 대화">
               {messages.map((message) => (
-                <article
-                  className={styles.message}
-                  data-role={message.role}
-                  key={message.id}
-                >
+                <article className={styles.message} data-role={message.role} key={message.id}>
                   <span>{message.role === "guide" ? session.situation.guideName : "나"}</span>
                   <p>{message.text}</p>
                 </article>
@@ -435,15 +498,30 @@ export function StoryCards() {
                   {loading ? <LoaderCircle className={styles.spin} aria-hidden /> : <ArrowUp aria-hidden />}
                 </button>
               </div>
-              <p>이 대화는 현재 탭을 닫으면 사라져요.</p>
+              <p>새 카드를 고르면 이 대화는 지워져요.</p>
             </form>
 
             {error ? <p className={styles.error} role="alert">{error}</p> : null}
+
+            <div className={styles.reservationInvite}>
+              <div>
+                <strong>그와 다음 장면도 이어가고 싶나요?</strong>
+                <span>정식판에서는 관계와 기억이 장면마다 이어져요.</span>
+              </div>
+              <Link
+                className={styles.reserveButton}
+                href="/reserve/story-cards"
+                onClick={trackReservation}
+              >
+                카드너머 출시 알림 예약하기
+              </Link>
+            </div>
+
             {userMessageCount >= 3 ? (
               <div className={styles.optionalSignup}>
                 <MessageCircle size={18} aria-hidden />
-                <p>대화는 로그인 없이 계속할 수 있어요. 다른 기기에서도 이어보고 싶을 때만 연결하세요.</p>
-                <PostResultSignup experimentId="story_cards" label="대화를 이어보도록 Google 연결하기" />
+                <p>계정 연결은 선택이에요. 대화 동기화는 아직 제공하지 않아요.</p>
+                <PostResultSignup experimentId="story_cards" label="Google 계정만 연결하기" />
               </div>
             ) : null}
           </div>

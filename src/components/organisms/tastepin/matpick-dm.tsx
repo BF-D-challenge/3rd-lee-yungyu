@@ -136,11 +136,11 @@ export function MatpickDm() {
   return (
     <main className={styles.page}>
       <header className={styles.appBar}>
-        <Link href="/matpick" aria-label="MATPICK 홈으로 돌아가기">
+        <Link href="/matpick" aria-label="맛핀 홈으로 돌아가기">
           <ArrowLeft aria-hidden="true" size={22} />
         </Link>
         <div>
-          <strong>MATPICK</strong>
+          <strong>맛핀</strong>
           <span>릴스 저장</span>
         </div>
         <Link className={styles.savedLink} href="/matpick/map" aria-label={`내 저장함 ${savedCount}곳 보기`}>

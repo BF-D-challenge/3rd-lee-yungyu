@@ -120,11 +120,11 @@ export function MatpickImport() {
   return (
     <main className={styles.page}>
       <header className={styles.appBar}>
-        <Link href="/matpick/map" aria-label="MATPICK 맛집 목록으로 돌아가기">
+        <Link href="/matpick/map" aria-label="맛핀 맛집 목록으로 돌아가기">
           <ArrowLeft aria-hidden size={21} />
         </Link>
         <div>
-          <strong>MATPICK</strong>
+          <strong>맛핀</strong>
           <span>Shorts 저장</span>
         </div>
         <Link className={styles.savedLink} href="/matpick/map">

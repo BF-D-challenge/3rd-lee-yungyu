@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef1fb"/>
+      <stop offset="0.55" stop-color="#f7f5f0"/>
+      <stop offset="1" stop-color="#f7f5f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="26" flood-color="#22345f" flood-opacity=".12"/>
+    </filter>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg)"/>
+  <g transform="translate(72 54)">
+    <text x="0" y="10" fill="#244bdb" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="14" font-weight="800" letter-spacing="2">IDEA → FAKE DOOR TEST</text>
+    <text x="0" y="88" fill="#15171d" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="50" font-weight="900">아이디어만 알려주세요.</text>
+    <text x="0" y="151" fill="#15171d" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="46" font-weight="900">24시간 뒤, 테스트 자료가 와요.</text>
+    <text x="0" y="200" fill="#606775" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18">광고 이미지·가짜문 랜딩·측정 기준을 내일 받습니다.</text>
+    <g transform="translate(0 250)">
+      <circle cx="9" cy="2" r="9" fill="#244bdb"/>
+      <path d="M4 2l3 3 6-7" fill="none" stroke="#fff" stroke-width="2"/>
+      <text x="27" y="8" fill="#15171d" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="17" font-weight="700">광고 이미지</text>
+      <circle cx="160" cy="2" r="9" fill="#244bdb"/>
+      <path d="M155 2l3 3 6-7" fill="none" stroke="#fff" stroke-width="2"/>
+      <text x="178" y="8" fill="#15171d" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="17" font-weight="700">가짜문 랜딩</text>
+      <circle cx="337" cy="2" r="9" fill="#244bdb"/>
+      <path d="M332 2l3 3 6-7" fill="none" stroke="#fff" stroke-width="2"/>
+      <text x="355" y="8" fill="#15171d" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="17" font-weight="700">측정 기준</text>
+    </g>
+  </g>
+  <g transform="translate(600 56)" filter="url(#shadow)">
+    <rect width="290" height="428" rx="28" fill="#fff"/>
+    <text x="24" y="45" fill="#15171d" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="18" font-weight="800">어디에서 시작할까요?</text>
+    <g transform="translate(20 70)">
+      <rect width="250" height="124" rx="18" fill="#f8f9ff" stroke="#244bdb" stroke-width="2"/>
+      <rect x="16" y="18" width="40" height="40" rx="12" fill="#e8edff"/>
+      <circle cx="36" cy="36" r="9" fill="none" stroke="#244bdb" stroke-width="2"/>
+      <path d="M31 45h10" stroke="#244bdb" stroke-width="2"/>
+      <text x="68" y="39" fill="#15171d" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="16" font-weight="800">아이디어가 있어요</text>
+      <text x="68" y="67" fill="#606775" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="12">한 문장으로 개선안을 만들어요.</text>
+      <path d="M218 62h14m-5-6 6 6-6 6" fill="none" stroke="#15171d" stroke-width="2"/>
+    </g>
+    <g transform="translate(20 210)">
+      <rect width="250" height="124" rx="18" fill="#fbfbfa" stroke="#d9dce3"/>
+      <rect x="16" y="18" width="40" height="40" rx="12" fill="#e8edff"/>
+      <path d="M36 25v22M25 36h22M29 29l14 14M43 29 29 43" stroke="#244bdb" stroke-width="2"/>
+      <text x="68" y="39" fill="#15171d" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="16" font-weight="800">아이디어가 없어요</text>
+      <text x="68" y="67" fill="#606775" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="12">세 선택으로 출발점을 찾아요.</text>
+      <path d="M218 62h14m-5-6 6 6-6 6" fill="none" stroke="#15171d" stroke-width="2"/>
+    </g>
+    <text x="24" y="380" fill="#7b8290" font-family="Apple SD Gothic Neo, Noto Sans KR, sans-serif" font-size="11">가입 없이 아이디어 결과를 먼저 확인해요.</text>
+  </g>
+</svg>

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
@@ -18,6 +17,7 @@ import {
   trackMvpResultViewed,
 } from "@/lib/mvp-experiment-analytics";
 import { PostResultSignup } from "@/components/organisms/journey/post-result-signup";
+import { MvpAppHeader } from "@/components/organisms/mvp-shared/mvp-app-header";
 import {
   todayBExperimentResponseSchema,
   type TodayBExperimentRequest,
@@ -109,6 +109,7 @@ function planText(plan: TodayBExperimentResponse): string {
 
 export function TodayB() {
   const [input, setInput] = useState(initialInput);
+  const [formStep, setFormStep] = useState<1 | 2 | 3>(1);
   const [plan, setPlan] = useState<TodayBExperimentResponse | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
@@ -117,6 +118,7 @@ export function TodayB() {
   const [progressState, setProgressState] = useState<"idle" | "error">("idle");
   const [completedDays, setCompletedDays] = useState<number[]>([]);
   const inputStartedRef = useRef(false);
+  const stepHeadingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     trackMvpLandingViewed("today_b");
@@ -125,6 +127,10 @@ export function TodayB() {
   useEffect(() => {
     if (plan) trackMvpResultViewed("today_b");
   }, [plan]);
+
+  useEffect(() => {
+    if (formStep > 1) stepHeadingRef.current?.focus();
+  }, [formStep]);
 
   useEffect(() => {
     try {
@@ -193,6 +199,31 @@ export function TodayB() {
     }
   };
 
+  const advanceToCustomer = () => {
+    const nextErrors = validateInput(input);
+    if (nextErrors.idea) {
+      setFieldErrors({ idea: nextErrors.idea });
+      requestAnimationFrame(() => document.getElementById("today-b-idea")?.focus());
+      return;
+    }
+    setFormStep(2);
+  };
+
+  const advanceToSignal = () => {
+    const nextErrors = validateInput(input);
+    const customerErrors = {
+      ...(nextErrors.customer ? { customer: nextErrors.customer } : {}),
+      ...(nextErrors.promise ? { promise: nextErrors.promise } : {}),
+    };
+    if (Object.keys(customerErrors).length > 0) {
+      setFieldErrors(customerErrors);
+      const firstField = Object.keys(customerErrors)[0];
+      requestAnimationFrame(() => document.getElementById(`today-b-${firstField}`)?.focus());
+      return;
+    }
+    setFormStep(3);
+  };
+
   const startExperiment = () => {
     if (!plan || startState === "done") return;
     try {
@@ -220,7 +251,6 @@ export function TodayB() {
       localStorage.setItem(PROGRESS_KEY, JSON.stringify({ ...progress, [plan.planId]: next }));
       setCompletedDays(next);
       setProgressState("idle");
-      if (!wasCompleted) startExperiment();
     } catch {
       setProgressState("error");
     }
@@ -228,6 +258,7 @@ export function TodayB() {
 
   const reset = () => {
     setPlan(null);
+    setFormStep(1);
     setCompletedDays([]);
     setCopyState("idle");
     setStartState("idle");
@@ -248,16 +279,18 @@ export function TodayB() {
 
   return (
     <main className={styles.page}>
-      <header className={styles.header}>
-        <Link href="/" className={styles.back}>
-          <ArrowLeft aria-hidden size={18} />
-          실험 허브
-        </Link>
-        <span className={styles.routeLabel}>
+      <MvpAppHeader
+        backClassName={styles.back}
+        backLabel="실험 허브"
+        className={styles.header}
+        meta={(
+          <>
           <FlaskConical aria-hidden size={14} />
           TODAY B
-        </span>
-      </header>
+          </>
+        )}
+        metaClassName={styles.routeLabel}
+      />
 
       {!plan ? (
         <section className={styles.flow} aria-labelledby="today-b-title">
@@ -269,144 +302,219 @@ export function TodayB() {
             </p>
             <ol className={styles.previewSteps} aria-label="7일 수요 실험을 만드는 순서">
               <li><span>1</span><strong>아이디어를 한 문장으로 정리</strong></li>
-              <li><span>2</span><strong>확인할 행동 신호 선택</strong></li>
-              <li><span>3</span><strong>7일 실행 계획 시작</strong></li>
+              <li><span>2</span><strong>고객과 바로 줄 결과 정리</strong></li>
+              <li><span>3</span><strong>확인할 행동 신호 선택</strong></li>
             </ol>
           </div>
 
           <form className={styles.form} onSubmit={generate} noValidate data-clarity-mask="true">
             <div className={styles.formHeading}>
-              <span>STEP 1</span>
+              <span>STEP {formStep}</span>
               <div>
-                <h2>누구에게 무엇을 제안하나요?</h2>
-                <p>완성된 기획서 대신, 고객과 결과만 구체적으로 적어 주세요.</p>
+                <h2 ref={stepHeadingRef} tabIndex={formStep > 1 ? -1 : undefined}>
+                  {formStep === 1
+                    ? "어떤 아이디어를 시험하나요?"
+                    : formStep === 2
+                      ? "누구에게 어떤 결과를 주나요?"
+                      : "이번 주에 어떤 행동을 확인할까요?"}
+                </h2>
+                <p>
+                  {formStep === 1
+                    ? "아직 만들지 않아도 괜찮아요. 해결하려는 일을 한 문장으로 적어 주세요."
+                    : formStep === 2
+                      ? "처음 제안할 한 사람과 바로 줄 결과만 구체적으로 적어 주세요."
+                      : "앞에서 정한 제안을 실제 고객에게 보여줄 방법을 고르세요."}
+                </p>
               </div>
             </div>
 
-            <div className={`${styles.field} ${fieldErrors.idea ? styles.fieldInvalid : ""}`}>
-              <div className={styles.labelRow}>
-                <label htmlFor="today-b-idea">해보고 싶은 아이디어</label>
-                <span>{input.idea.length}/240</span>
-              </div>
-              <textarea
-                id="today-b-idea"
-                value={input.idea}
-                onChange={(event) => {
-                  updateTextField("idea", event.target.value);
-                  if (!inputStartedRef.current && event.target.value.trim()) {
-                    inputStartedRef.current = true;
-                    trackMvpInputStarted("today_b");
-                  }
-                }}
-                placeholder="예: 고객 문의를 읽고 답변 초안을 만드는 작은 도구"
-                minLength={8}
-                maxLength={240}
-                required
-                aria-invalid={Boolean(fieldErrors.idea)}
-                aria-describedby={fieldErrors.idea ? "today-b-idea-error" : "today-b-idea-hint"}
-              />
-              <p id={fieldErrors.idea ? "today-b-idea-error" : "today-b-idea-hint"} role={fieldErrors.idea ? "alert" : undefined}>
-                {fieldErrors.idea ?? "아직 만들지 않은 아이디어도 괜찮아요."}
-              </p>
-            </div>
-
-            <div className={styles.fieldPair}>
-              <div className={`${styles.field} ${fieldErrors.customer ? styles.fieldInvalid : ""}`}>
-                <label htmlFor="today-b-customer">처음 제안할 고객</label>
-                <input
-                  id="today-b-customer"
-                  value={input.customer}
-                  onChange={(event) => updateTextField("customer", event.target.value)}
-                  placeholder="예: 혼자 쇼핑몰을 운영하는 사람"
-                  minLength={4}
-                  maxLength={120}
+            {formStep === 1 ? (
+              <div className={`${styles.field} ${fieldErrors.idea ? styles.fieldInvalid : ""}`}>
+                <div className={styles.labelRow}>
+                  <label htmlFor="today-b-idea">해보고 싶은 아이디어</label>
+                  <span>{input.idea.length}/240</span>
+                </div>
+                <textarea
+                  id="today-b-idea"
+                  value={input.idea}
+                  onChange={(event) => {
+                    updateTextField("idea", event.target.value);
+                    if (!inputStartedRef.current && event.target.value.trim()) {
+                      inputStartedRef.current = true;
+                      trackMvpInputStarted("today_b");
+                    }
+                  }}
+                  placeholder="예: 고객 문의를 읽고 답변 초안을 만드는 작은 도구"
+                  minLength={8}
+                  maxLength={240}
                   required
-                  aria-invalid={Boolean(fieldErrors.customer)}
-                  aria-describedby={fieldErrors.customer ? "today-b-customer-error" : undefined}
+                  aria-invalid={Boolean(fieldErrors.idea)}
+                  aria-describedby={fieldErrors.idea ? "today-b-idea-error" : "today-b-idea-hint"}
                 />
-                {fieldErrors.customer ? <p id="today-b-customer-error" role="alert">{fieldErrors.customer}</p> : null}
+                <p id={fieldErrors.idea ? "today-b-idea-error" : "today-b-idea-hint"} role={fieldErrors.idea ? "alert" : undefined}>
+                  {fieldErrors.idea ?? "아직 만들지 않은 아이디어도 괜찮아요."}
+                </p>
               </div>
-
-              <div className={`${styles.field} ${fieldErrors.promise ? styles.fieldInvalid : ""}`}>
-                <label htmlFor="today-b-promise">고객이 바로 얻는 결과</label>
-                <input
-                  id="today-b-promise"
-                  value={input.promise}
-                  onChange={(event) => updateTextField("promise", event.target.value)}
-                  placeholder="예: 문의 10개 답변을 5분 안에 받기"
-                  minLength={6}
-                  maxLength={180}
-                  required
-                  aria-invalid={Boolean(fieldErrors.promise)}
-                  aria-describedby={fieldErrors.promise ? "today-b-promise-error" : undefined}
-                />
-                {fieldErrors.promise ? <p id="today-b-promise-error" role="alert">{fieldErrors.promise}</p> : null}
-              </div>
-            </div>
-
-            <div className={styles.field}>
-              <label htmlFor="today-b-channel">이 고객에게 닿을 수 있는 곳</label>
-              <select
-                id="today-b-channel"
-                value={input.channel}
-                onChange={(event) => setInput({ ...input, channel: event.target.value as TodayBExperimentRequest["channel"] })}
-              >
-                <option value="direct">직접 연락할 수 있어요</option>
-                <option value="community">모여 있는 커뮤니티가 있어요</option>
-                <option value="audience">내 콘텐츠 채널에 있어요</option>
-                <option value="offline">오프라인에서 만날 수 있어요</option>
-              </select>
-            </div>
-
-            <fieldset className={styles.signalGroup}>
-              <legend>
-                <span>STEP 2</span>
-                이번 주에 어떤 행동을 확인할까요?
-              </legend>
-              <p>지금 요청해도 무리가 없는 범위에서 가장 강한 신호를 고르세요.</p>
-              <div className={styles.signalOptions}>
-                {signalOptions.map((option) => (
-                  <label
-                    key={option.value}
-                    className={styles.signalOption}
-                    data-selected={input.signal === option.value}
-                  >
+            ) : formStep === 2 ? (
+              <>
+                <dl className={styles.answerSummary} aria-label="앞에서 정한 아이디어">
+                  <div>
+                    <dt>아이디어</dt>
+                    <dd>{input.idea}</dd>
+                  </div>
+                </dl>
+                <div className={styles.fieldPair}>
+                  <div className={`${styles.field} ${fieldErrors.customer ? styles.fieldInvalid : ""}`}>
+                    <label htmlFor="today-b-customer">처음 제안할 고객</label>
                     <input
-                      type="radio"
-                      name="today-b-signal"
-                      value={option.value}
-                      checked={input.signal === option.value}
-                      onChange={() => setInput({ ...input, signal: option.value })}
+                      id="today-b-customer"
+                      value={input.customer}
+                      onChange={(event) => updateTextField("customer", event.target.value)}
+                      placeholder="예: 혼자 쇼핑몰을 운영하는 사람"
+                      minLength={4}
+                      maxLength={120}
+                      required
+                      aria-invalid={Boolean(fieldErrors.customer)}
+                      aria-describedby={fieldErrors.customer ? "today-b-customer-error" : undefined}
                     />
-                    <span className={styles.radioMark} aria-hidden>
-                      <span />
-                    </span>
-                    <span className={styles.signalCopy}>
-                      <span className={styles.signalTitle}>
-                        <strong>{option.title}</strong>
-                        <em>{option.strength}</em>
-                      </span>
-                      <small>{option.description}</small>
-                    </span>
-                  </label>
-                ))}
-              </div>
-            </fieldset>
+                    {fieldErrors.customer ? <p id="today-b-customer-error" role="alert">{fieldErrors.customer}</p> : null}
+                  </div>
+
+                  <div className={`${styles.field} ${fieldErrors.promise ? styles.fieldInvalid : ""}`}>
+                    <label htmlFor="today-b-promise">고객이 바로 얻는 결과</label>
+                    <input
+                      id="today-b-promise"
+                      value={input.promise}
+                      onChange={(event) => updateTextField("promise", event.target.value)}
+                      placeholder="예: 문의 10개 답변을 5분 안에 받기"
+                      minLength={6}
+                      maxLength={180}
+                      required
+                      aria-invalid={Boolean(fieldErrors.promise)}
+                      aria-describedby={fieldErrors.promise ? "today-b-promise-error" : undefined}
+                    />
+                    {fieldErrors.promise ? <p id="today-b-promise-error" role="alert">{fieldErrors.promise}</p> : null}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <dl className={styles.answerSummary} aria-label="앞에서 정한 제안">
+                  <div>
+                    <dt>아이디어</dt>
+                    <dd>{input.idea}</dd>
+                  </div>
+                  <div>
+                    <dt>처음 만날 고객</dt>
+                    <dd>{input.customer}</dd>
+                  </div>
+                  <div>
+                    <dt>바로 줄 결과</dt>
+                    <dd>{input.promise}</dd>
+                  </div>
+                </dl>
+
+                <div className={styles.field}>
+                  <label htmlFor="today-b-channel">이 고객에게 닿을 수 있는 곳</label>
+                  <select
+                    id="today-b-channel"
+                    value={input.channel}
+                    onChange={(event) => setInput({ ...input, channel: event.target.value as TodayBExperimentRequest["channel"] })}
+                  >
+                    <option value="direct">직접 연락할 수 있어요</option>
+                    <option value="community">모여 있는 커뮤니티가 있어요</option>
+                    <option value="audience">내 콘텐츠 채널에 있어요</option>
+                    <option value="offline">오프라인에서 만날 수 있어요</option>
+                  </select>
+                </div>
+
+                <fieldset className={styles.signalGroup}>
+                  <legend>이번 주에 확인할 행동</legend>
+                  <p>지금 요청해도 무리가 없는 범위에서 가장 강한 신호를 고르세요.</p>
+                  <div className={styles.signalOptions}>
+                    {signalOptions.map((option) => (
+                      <label
+                        key={option.value}
+                        className={styles.signalOption}
+                        data-selected={input.signal === option.value}
+                      >
+                        <input
+                          type="radio"
+                          name="today-b-signal"
+                          value={option.value}
+                          checked={input.signal === option.value}
+                          onChange={() => setInput({ ...input, signal: option.value })}
+                        />
+                        <span className={styles.radioMark} aria-hidden>
+                          <span />
+                        </span>
+                        <span className={styles.signalCopy}>
+                          <span className={styles.signalTitle}>
+                            <strong>{option.title}</strong>
+                            <em>{option.strength}</em>
+                          </span>
+                          <small>{option.description}</small>
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              </>
+            )}
 
             <div className={styles.submitArea}>
               <div>
-                <strong>다음 화면에서 바로 확인해요</strong>
-                <span>가장 위험한 가정 · 성공 기준 · 1~7일차 행동</span>
+                <strong>{formStep < 3 ? "입력한 내용은 다음 단계에도 남아요" : "다음 화면에서 바로 확인해요"}</strong>
+                <span>
+                  {formStep === 1
+                    ? "다음에는 처음 만날 고객과 줄 결과를 정합니다."
+                    : formStep === 2
+                      ? "마지막으로 고객에게 요청할 행동을 고릅니다."
+                      : "가장 위험한 가정 · 성공 기준 · 1~7일차 행동"}
+                </span>
               </div>
-              <button
-                className={styles.primaryButton}
-                type="submit"
-                disabled={status === "loading"}
-                aria-busy={status === "loading"}
-              >
-                {status === "loading" ? "7일 계획을 만드는 중…" : status === "error" ? "다시 7일 계획 만들기" : "7일 수요 실험 만들기"}
-                {status !== "loading" ? <ArrowRight aria-hidden size={18} /> : null}
-              </button>
+              {formStep === 1 ? (
+                <button className={styles.primaryButton} type="button" onClick={advanceToCustomer}>
+                  다음: 고객과 결과 정하기
+                  <ArrowRight aria-hidden size={18} />
+                </button>
+              ) : formStep === 2 ? (
+                <div className={styles.stepActions}>
+                  <button className={styles.secondaryButton} type="button" onClick={() => setFormStep(1)}>
+                    <ArrowLeft aria-hidden size={17} />
+                    아이디어 수정
+                  </button>
+                  <button
+                    className={styles.primaryButton}
+                    key="today-b-to-signal"
+                    type="button"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      advanceToSignal();
+                    }}
+                  >
+                    다음: 행동 신호 고르기
+                    <ArrowRight aria-hidden size={18} />
+                  </button>
+                </div>
+              ) : (
+                <div className={styles.stepActions}>
+                  <button className={styles.secondaryButton} type="button" onClick={() => setFormStep(2)}>
+                    <ArrowLeft aria-hidden size={17} />
+                    고객과 결과 수정
+                  </button>
+                  <button
+                    className={styles.primaryButton}
+                    key="today-b-submit-plan"
+                    type="submit"
+                    disabled={status === "loading"}
+                    aria-busy={status === "loading"}
+                  >
+                    {status === "loading" ? "7일 계획을 만드는 중…" : status === "error" ? "다시 7일 계획 만들기" : "7일 수요 실험 만들기"}
+                    {status !== "loading" ? <ArrowRight aria-hidden size={18} /> : null}
+                  </button>
+                </div>
+              )}
             </div>
             {status === "error" ? (
               <p className={styles.error} role="alert">
@@ -467,14 +575,35 @@ export function TodayB() {
             <progress aria-label="7일 실험 진행률" max={7} value={completedDays.length}>
               {completedDays.length}/7
             </progress>
-            <p className={styles.localNotice}>체크한 날은 이 기기에 바로 저장됩니다.</p>
+            {startState === "done" ? (
+              <p className={styles.localNotice}>체크한 날은 이 기기에 바로 저장됩니다.</p>
+            ) : (
+              <button className={styles.startGate} type="button" onClick={startExperiment}>
+                <Check aria-hidden size={18} />
+                이 7일 실험 시작하기
+              </button>
+            )}
+            {startState === "error" ? (
+              <p className={styles.error} role="alert">
+                시작 상태를 저장하지 못했어요. 브라우저 저장 공간을 확인해 주세요.
+              </p>
+            ) : null}
             <ol>
               {plan.experiment.days.map((day) => {
                 const checked = completedDays.includes(day.day);
                 return (
-                  <li key={day.day} className={checked ? styles.dayDone : undefined}>
+                  <li
+                    key={day.day}
+                    className={checked ? styles.dayDone : undefined}
+                    data-locked={startState !== "done"}
+                  >
                     <label>
-                      <input type="checkbox" checked={checked} onChange={() => toggleDay(day.day)} />
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        disabled={startState !== "done"}
+                        onChange={() => toggleDay(day.day)}
+                      />
                       <span className={styles.checkmark} aria-hidden>
                         {checked ? <Check size={17} strokeWidth={3} /> : day.day}
                       </span>
@@ -525,15 +654,12 @@ export function TodayB() {
           <aside className={styles.actionPanel} aria-label="7일 실험 실행 메뉴">
             <p className={styles.notice}>{plan.notice}</p>
             <div className={styles.actions}>
-              <button
-                className={styles.primaryButton}
-                type="button"
-                onClick={startExperiment}
-                disabled={startState === "done"}
-              >
-                <Check aria-hidden size={18} />
-                {startState === "done" ? "이 기기에서 7일 실험을 시작했어요" : "이 7일 실험 시작하기"}
-              </button>
+              {startState === "done" ? (
+                <p className={styles.startedNotice}>
+                  <Check aria-hidden size={18} />
+                  이 기기에서 7일 실험을 시작했어요.
+                </p>
+              ) : null}
               <button className={styles.secondaryButton} type="button" onClick={copyPlan}>
                 {copyState === "done" ? <ClipboardCheck aria-hidden size={18} /> : <Copy aria-hidden size={18} />}
                 {copyState === "done" ? "계획을 복사했어요" : "전체 계획 복사하기"}
@@ -548,12 +674,9 @@ export function TodayB() {
                 복사하지 못했어요. 브라우저의 클립보드 권한을 확인해 주세요.
               </p>
             ) : null}
-            {startState === "error" ? (
-              <p className={styles.error} role="alert">
-                시작 상태를 저장하지 못했어요. 브라우저 저장 공간을 확인해 주세요.
-              </p>
+            {startState === "done" ? (
+              <PostResultSignup experimentId="today_b" label="Google 계정만 연결하기" />
             ) : null}
-            <PostResultSignup experimentId="today_b" label="다른 기기에서도 이어서 체크하기" />
           </aside>
         </section>
       )}

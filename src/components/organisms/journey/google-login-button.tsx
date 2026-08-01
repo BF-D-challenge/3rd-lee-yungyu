@@ -12,6 +12,8 @@ export interface GoogleLoginButtonProps {
   onBeforeAuth?: () => void;
   returnTo?: string;
   label?: string;
+  disabled?: boolean;
+  requireSupabaseWhenConfigured?: boolean;
 }
 
 export function GoogleLoginButton({
@@ -20,6 +22,8 @@ export function GoogleLoginButton({
   onBeforeAuth,
   returnTo,
   label = "Google로 시작하기",
+  disabled = false,
+  requireSupabaseWhenConfigured = false,
 }: GoogleLoginButtonProps) {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const delayTimer = useRef<ReturnType<typeof setTimeout>>();
@@ -30,7 +34,7 @@ export function GoogleLoginButton({
   useEffect(() => () => clearTimeout(delayTimer.current), []);
 
   const login = async () => {
-    if (pending) return;
+    if (pending || disabled) return;
     setPending(true);
     setShowLoader(false);
     setError(null);
@@ -39,7 +43,9 @@ export function GoogleLoginButton({
     markAuthPending(context);
     delayTimer.current = setTimeout(() => setShowLoader(true), 800);
 
-    const result = await beginAuth(returnTo ?? window.location.href);
+    const result = await beginAuth(returnTo ?? window.location.href, {
+      requireSupabaseWhenConfigured,
+    });
     clearTimeout(delayTimer.current);
     if (result.status === "redirecting") return;
     setPending(false);
@@ -63,7 +69,7 @@ export function GoogleLoginButton({
         variant="aurora"
         size="lg"
         className="w-full"
-        disabled={pending}
+        disabled={pending || disabled}
         aria-busy={pending}
         onClick={login}
       >

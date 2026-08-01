@@ -2,12 +2,14 @@ import { track } from "./track";
 import type { StoryCardId } from "./story-card-contract";
 
 export type StoryCardEventName =
-  | "viewed"
-  | "request_failed"
-  | "situation_selected"
-  | "chat_started"
-  | "message_sent"
-  | "chat_abandoned";
+  | "story_cards_landing_viewed"
+  | "story_card_selected"
+  | "story_chat_started"
+  | "story_cards_reservation_clicked"
+  | "story_card_request_failed"
+  | "story_card_chat_resumed"
+  | "story_card_message_sent"
+  | "story_card_chat_abandoned";
 
 type StoryCardEventParams = {
   cardId?: StoryCardId;
@@ -34,9 +36,9 @@ export function trackStoryCardEvent(
     safeParams.message_count = Number(params.messageCount);
   }
 
-  track(`story_card_${event}`, {
-    event_type: `story_card_${event}`,
+  track(event, {
+    event_type: event,
     entry_path: "/story-cards",
     ...safeParams,
-  });
+  }, { meta: false });
 }

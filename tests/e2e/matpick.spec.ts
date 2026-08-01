@@ -13,11 +13,11 @@ async function openWithoutRuntimeErrors(page: Page, path: string) {
 }
 
 async function expectMatpickBrand(page: Page) {
-  await expect(page.locator("body")).toContainText(/MATPICK|맛픽/);
-  await expect(page.locator("body")).not.toContainText("맛핀");
+  await expect(page.locator("body")).toContainText("맛핀");
+  await expect(page.locator("body")).not.toContainText(/MATPICK|맛픽/);
 }
 
-test.describe("MATPICK 리브랜딩 경로", () => {
+test.describe("맛핀 대표 경로", () => {
   test("/matpick 광고 랜딩은 390×844에서 문제, 정직한 범위, 예약 CTA를 먼저 보여준다", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     const expectNoErrors = await openWithoutRuntimeErrors(
@@ -276,4 +276,16 @@ test.describe("MATPICK 리브랜딩 경로", () => {
     await expectNoErrors();
   });
 
+  test("기존 맛핀 경로는 대응하는 맛핀 대표 경로로 이동한다", async ({ page }) => {
+    const expectLandingNoErrors = await openWithoutRuntimeErrors(page, "/tastepin");
+    await expect(page).toHaveURL(/\/matpick$/);
+    await expectMatpickBrand(page);
+    await expectLandingNoErrors();
+
+    const expectMapNoErrors = await openWithoutRuntimeErrors(page, "/tastepin/map");
+    await expect(page).toHaveURL(/\/matpick$/);
+    await expectMatpickBrand(page);
+    await expect(page.getByRole("heading", { name: /저장한 맛집 릴스만 200개/ })).toBeVisible();
+    await expectMapNoErrors();
+  });
 });

@@ -119,7 +119,7 @@ describe("Tastepin device saves", () => {
     expect(loadTastepinSaves()).toEqual([]);
   });
 
-  it("keeps MATPICK place saves across reads and removes the same place on a second toggle", () => {
+  it("keeps 맛핀 place saves across reads and removes the same place on a second toggle", () => {
     expect(toggleSavedMatpickPlace({ id: "yeoksam-daewoo" })).toMatchObject({
       saved: true,
       ids: ["yeoksam-daewoo"],
@@ -132,14 +132,14 @@ describe("Tastepin device saves", () => {
     });
   });
 
-  it("확정 저장은 같은 MATPICK 장소를 중복으로 추가하지 않는다", () => {
+  it("확정 저장은 같은 맛핀 장소를 중복으로 추가하지 않는다", () => {
     saveMatpickPlace({ id: "yeoksam-sanjang" });
     saveMatpickPlace({ id: "yeoksam-sanjang" });
 
     expect(loadSavedMatpickPlaceIds()).toEqual(["yeoksam-sanjang"]);
   });
 
-  it("shows a place added from YouTube Shorts in the MATPICK map collection", () => {
+  it("shows a place added from YouTube Shorts in the 맛핀 map collection", () => {
     saveTastepinResult("https://www.youtube.com/shorts/abcdefghijk", {
       ...response,
       mapStatus: "candidates",

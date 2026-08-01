@@ -1,0 +1,5 @@
+import { permanentRedirect } from "next/navigation";
+
+export default function TastepinMapCompatibilityRedirect() {
+  permanentRedirect("/matpick");
+}

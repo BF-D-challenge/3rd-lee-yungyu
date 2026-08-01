@@ -30,18 +30,62 @@ async function openWithoutRuntimeErrors(page: Page, path: string) {
 }
 
 test.describe("전체 앱 라우트 직접 진입", () => {
-  test("홈은 다섯 개 독립 MVP의 실제 진입 경로를 연다", async ({ page }) => {
+  test("홈은 네 개 독립 MVP의 실제 진입 경로를 연다", async ({ page }) => {
     const expectNoErrors = await openWithoutRuntimeErrors(page, "/");
 
-    const experiments = page.getByRole("region", { name: "실험 선택" });
+    const experiments = page.getByRole("region", { name: "앱 선택" });
     await expect(experiments).toBeVisible();
-    await expect(experiments.locator("img")).toHaveCount(5);
-    for (const href of ["/tastepin", "/onebite", "/today-a", "/today-b", "/story-cards"]) {
+    await expect(experiments.locator("img")).toHaveCount(4);
+    for (const href of ["/matpick", "/onebite", "/today", "/story-cards"]) {
       await expect(experiments.locator(`a[href="${href}"]`)).toHaveCount(1);
     }
+    await expect(experiments.locator('a[href="/today-a"]')).toHaveCount(0);
+    await expect(experiments.locator('a[href="/today-b"]')).toHaveCount(0);
     await expect(experiments.locator('a[href="/idea-fit"]')).toHaveCount(0);
+    await expect(page.locator('a[href="/start"]')).toHaveCount(0);
     await expectNoErrors();
   });
+
+  test("홈은 저장 결과가 없는 최근 앱을 처음부터 시작하게 한다", async ({ page }) => {
+    const expectNoErrors = await openWithoutRuntimeErrors(page, "/");
+
+    await page.getByRole("link", { name: /한입코치: 음식 사진으로 행동 받기/ }).click();
+    await expect(page).toHaveURL(/\/onebite$/);
+    await page.goto("/");
+
+    const recent = page.getByRole("complementary", { name: "최근 사용한 앱" });
+    await expect(recent).toContainText("한입코치");
+    await expect(recent).toContainText("저장한 다음 끼니 행동이 없어요.");
+    await expect(recent.getByRole("link", { name: "처음부터 시작" })).toHaveAttribute("href", "/onebite");
+    await expect(recent.getByRole("link", { name: "새로 시작" })).toHaveCount(0);
+    await expectNoErrors();
+  });
+
+  test("홈은 실제 저장 상태가 있는 앱에 이어서 하기와 새로 시작을 나눈다", async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem("mvp-hub:last-app:v2", "onebite");
+      localStorage.setItem("onebite:next-meal-commit:v1", JSON.stringify({
+        actionCode: "vegetable-first",
+        actionLine: "채소를 먼저 두 입 먹기",
+        savedAt: "2026-07-29T00:00:00.000Z",
+      }));
+    });
+    const expectNoErrors = await openWithoutRuntimeErrors(page, "/");
+
+    const recent = page.getByRole("complementary", { name: "최근 사용한 앱" });
+    await expect(recent).toContainText("지난번에 정한 다음 끼니 행동이 있어요.");
+    await expect(recent.getByRole("link", { name: "이어서 하기" })).toHaveAttribute("href", "/onebite");
+    await expect(recent.getByRole("link", { name: "새로 시작" })).toHaveAttribute("href", "/onebite?new=1");
+    await expectNoErrors();
+  });
+
+  for (const alias of ["/tastepin", "/tastepin/map"]) {
+    test(`${alias} 맛핀 별칭은 대표 주소로 합쳐진다`, async ({ page }) => {
+      const expectNoErrors = await openWithoutRuntimeErrors(page, alias);
+      await expect(page).toHaveURL(/\/matpick$/);
+      await expectNoErrors();
+    });
+  }
 
   for (const alias of ["/start", "/slot"]) {
     test(`${alias} 별칭은 검색 조건을 보존해 제작기로 이동한다`, async ({ page }) => {
@@ -161,6 +205,26 @@ test.describe("전체 앱 라우트 직접 진입", () => {
       const expectNoErrors = await openWithoutRuntimeErrors(page, route.path);
 
       await expect(page.getByText(route.message, { exact: true })).toBeVisible();
+      await expectNoErrors();
+    });
+  }
+});
+
+test.describe("네 앱 초기 체험 예약", () => {
+  for (const reservation of [
+    { path: "/reserve/matpick", name: "맛핀" },
+    { path: "/reserve/onebite", name: "한입코치" },
+    { path: "/reserve/today", name: "오늘 해볼까" },
+    { path: "/reserve/story-cards", name: "카드너머" },
+  ]) {
+    test(`${reservation.name} 예약 페이지는 약속과 인증된 예약 행동을 함께 보여준다`, async ({ page }) => {
+      const expectNoErrors = await openWithoutRuntimeErrors(page, reservation.path);
+
+      await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+      await expect(page.locator("main img").first()).toBeVisible();
+      await expect(page.locator("fieldset")).toBeVisible();
+      await expect(page.getByRole("button", { name: /데모 저장/ })).toBeVisible();
+      await expect(page.getByText("아직 결제하지 않아요. 한 번만 선택하면 됩니다.")).toBeVisible();
       await expectNoErrors();
     });
   }

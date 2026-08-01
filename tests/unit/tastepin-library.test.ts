@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { GET } from "@/app/api/matpick/library/route";
+import { GET } from "@/app/api/tastepin/library/route";
 import { tastepinLibraryResponseSchema } from "@/lib/tastepin-library-contract";
 import { distanceInMeters, formatDistance } from "@/lib/tastepin-distance";
 

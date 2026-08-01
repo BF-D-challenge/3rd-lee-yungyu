@@ -1,8 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import {
-  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
   Check,
@@ -16,6 +14,7 @@ import {
   type FormEvent,
 } from "react";
 import { PostResultSignup } from "@/components/organisms/journey/post-result-signup";
+import { MvpAppHeader } from "@/components/organisms/mvp-shared/mvp-app-header";
 import {
   trackMvpDeepAction,
   trackMvpInputStarted,
@@ -80,11 +79,12 @@ const timeOptions: Array<{
   { value: "one_day", label: "하루" },
 ];
 
-const progressSteps = [
-  { step: 1, label: "불편" },
-  { step: 2, label: "고객" },
-  { step: 3, label: "실행 조건" },
-] as const;
+function selectedLabel<T extends string>(
+  options: Array<{ value: T; label: string }>,
+  value: T,
+) {
+  return options.find((option) => option.value === value)?.label ?? "";
+}
 
 function structureText(result: TodayAStructureResponse["result"]): string {
   return [
@@ -105,16 +105,16 @@ function structureText(result: TodayAStructureResponse["result"]): string {
 
 export function TodayA() {
   const [input, setInput] = useState(initialInput);
-  const [step, setStep] = useState<1 | 2 | 3>(1);
   const [problemError, setProblemError] = useState("");
   const [result, setResult] = useState<TodayAStructureResponse["result"] | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [copyState, setCopyState] = useState<"idle" | "done" | "error">("idle");
   const [saveState, setSaveState] = useState<"idle" | "done" | "error">("idle");
   const inputStartedRef = useRef(false);
-  const stepHeadingRef = useRef<HTMLHeadingElement>(null);
   const problemRef = useRef<HTMLTextAreaElement>(null);
-  const previousStepRef = useRef(step);
+  const resultHeadingRef = useRef<HTMLHeadingElement>(null);
+  const focusResultRef = useRef(false);
+  const focusInputRef = useRef(false);
 
   useEffect(() => {
     trackMvpLandingViewed("today_a");
@@ -134,15 +134,20 @@ export function TodayA() {
   }, []);
 
   useEffect(() => {
-    if (result) trackMvpResultViewed("today_a");
+    if (!result) return;
+    trackMvpResultViewed("today_a");
+    if (focusResultRef.current) {
+      focusResultRef.current = false;
+      requestAnimationFrame(() => resultHeadingRef.current?.focus());
+    }
   }, [result]);
 
   useEffect(() => {
-    if (previousStepRef.current !== step) {
-      stepHeadingRef.current?.focus();
-      previousStepRef.current = step;
+    if (!result && focusInputRef.current) {
+      focusInputRef.current = false;
+      requestAnimationFrame(() => problemRef.current?.focus());
     }
-  }, [step]);
+  }, [result]);
 
   const validateProblem = () => {
     if (input.problem.trim().length >= MIN_PROBLEM_LENGTH) {
@@ -152,11 +157,6 @@ export function TodayA() {
     setProblemError("누가 언제 겪는 불편인지 8자 이상 적어주세요.");
     requestAnimationFrame(() => problemRef.current?.focus());
     return false;
-  };
-
-  const goToStep = (nextStep: 1 | 2 | 3) => {
-    setStatus("idle");
-    setStep(nextStep);
   };
 
   const generate = async () => {
@@ -173,6 +173,7 @@ export function TodayA() {
       const body: unknown = await response.json();
       const parsed = todayAStructureResponseSchema.safeParse(body);
       if (!response.ok || !parsed.success) throw new Error("invalid_response");
+      focusResultRef.current = true;
       setResult(parsed.data.result);
       setStatus("idle");
     } catch {
@@ -182,19 +183,12 @@ export function TodayA() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (step === 1) {
-      if (validateProblem()) goToStep(2);
-      return;
-    }
-    if (step === 2) {
-      goToStep(3);
-      return;
-    }
+    if (!validateProblem()) return;
     void generate();
   };
 
   const saveResult = () => {
-    if (!result) return;
+    if (!result || saveState === "done") return;
     try {
       localStorage.setItem(SAVED_STRUCTURE_KEY, JSON.stringify(result));
       setSaveState("done");
@@ -216,254 +210,205 @@ export function TodayA() {
   };
 
   const editConditions = () => {
+    focusInputRef.current = true;
     setResult(null);
-    setStep(1);
     setCopyState("idle");
     setSaveState("idle");
     setStatus("idle");
   };
 
+  const customerLabel = selectedLabel(customerOptions, input.customer);
+  const strengthLabel = selectedLabel(strengthOptions, input.strength);
+  const timeLabel = selectedLabel(timeOptions, input.weeklyTime);
+
   return (
     <main className={styles.page}>
-      <header className={styles.header}>
-        <Link href="/" className={styles.back}>
-          <ArrowLeft aria-hidden size={18} />
-          실험 허브
-        </Link>
-        <span className={styles.routeLabel}>TODAY A · STRUCTURE FINDER</span>
-      </header>
+      <MvpAppHeader
+        backClassName={styles.back}
+        backLabel="실험 허브"
+        className={styles.header}
+        meta="TODAY A"
+        metaClassName={styles.routeLabel}
+      />
 
       {!result ? (
         <section className={styles.flow} aria-labelledby="today-a-title">
           <div className={styles.journeyIntro}>
-            <p className={styles.eyebrow}>조건에서 시작하는 사업 구조</p>
+            <p className={styles.eyebrow}>관찰한 불편에서 시작</p>
             <h1 id="today-a-title">
-              막연한 아이디어보다,
+              본 불편을 적으면,
               <br />
-              관찰한 불편에서 시작해요.
+              사업 구조로 정리해드려요.
             </h1>
             <p className={styles.lead}>
-              세 단계로 조건을 좁히면 감사 통과 원본과 비교해, 이번 주에 시험할 사업 구조 하나를 보여드려요.
+              돈 낼 사람과 필요한 순간, 이번 주에 건넬 첫 제안까지 바로 보여드려요.
             </p>
-            <dl className={styles.promise}>
-              <div>
-                <dt>입력</dt>
-                <dd>관찰한 불편과 내가 쓸 수 있는 조건</dd>
-              </div>
-              <div>
-                <dt>결과</dt>
-                <dd>돈 낼 사람부터 첫 제안까지 한 구조</dd>
-              </div>
-            </dl>
           </div>
 
-          <div className={styles.formShell}>
-            <nav className={styles.progress} aria-label="사업 구조 찾기 진행">
-              <p>
-                <span>{step}</span> / 3
+          <form
+            className={styles.formShell}
+            onSubmit={handleSubmit}
+            data-clarity-mask="true"
+            noValidate
+          >
+            <div className={styles.formHeading}>
+              <span aria-hidden>01</span>
+              <div>
+                <p>한 가지 질문</p>
+                <h2>반복해서 보이는 불편은 무엇인가요?</h2>
+              </div>
+            </div>
+
+            <div className={styles.field}>
+              <label htmlFor="today-a-problem">관찰한 불편</label>
+              <textarea
+                ref={problemRef}
+                id="today-a-problem"
+                value={input.problem}
+                onChange={(event) => {
+                  const problem = event.target.value;
+                  setInput({ ...input, problem });
+                  setStatus("idle");
+                  if (problemError && problem.trim().length >= MIN_PROBLEM_LENGTH) {
+                    setProblemError("");
+                  }
+                  if (!inputStartedRef.current && problem.trim()) {
+                    inputStartedRef.current = true;
+                    trackMvpInputStarted("today_a");
+                  }
+                }}
+                placeholder="예: 문의가 여러 채널로 들어와 답변과 예약이 자꾸 늦어져요."
+                minLength={MIN_PROBLEM_LENGTH}
+                maxLength={240}
+                required
+                aria-invalid={Boolean(problemError)}
+                aria-describedby="today-a-problem-help"
+              />
+              <div className={styles.fieldMeta}>
+                <p id="today-a-problem-help" className={problemError ? styles.fieldError : undefined}>
+                  {problemError || "누가 언제 겪는 불편인지 구체적으로 적어주세요."}
+                </p>
+                <span aria-label={`${input.problem.length}자 입력`}>{input.problem.length} / 240</span>
+              </div>
+            </div>
+
+            <section className={styles.livePreview} aria-label="적용할 조건 미리보기">
+              <p>이 조건으로 비교해요</p>
+              <dl>
+                <div>
+                  <dt>처음 만날 사람</dt>
+                  <dd>{customerLabel}</dd>
+                </div>
+                <div>
+                  <dt>쓸 수 있는 강점</dt>
+                  <dd>{strengthLabel}</dd>
+                </div>
+                <div>
+                  <dt>이번 주 시간</dt>
+                  <dd>{timeLabel}</dd>
+                </div>
+              </dl>
+            </section>
+
+            <details className={styles.conditions}>
+              <summary>비교 조건 바꾸기</summary>
+              <div className={styles.conditionFields}>
+                <fieldset className={styles.choiceFieldset}>
+                  <legend>처음 만날 사람</legend>
+                  <div className={styles.choiceList}>
+                    {customerOptions.map((option) => (
+                      <label key={option.value} className={styles.choice}>
+                        <input
+                          type="radio"
+                          name="today-a-customer"
+                          value={option.value}
+                          checked={input.customer === option.value}
+                          onChange={() => setInput({ ...input, customer: option.value })}
+                        />
+                        <span className={styles.choiceControl} aria-hidden>
+                          <Check size={14} />
+                        </span>
+                        <span>
+                          <strong>{option.label}</strong>
+                          <small>{option.description}</small>
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset className={styles.choiceFieldset}>
+                  <legend>가장 자신 있는 일</legend>
+                  <div className={styles.segmented} data-columns="2">
+                    {strengthOptions.map((option) => (
+                      <label key={option.value}>
+                        <input
+                          type="radio"
+                          name="today-a-strength"
+                          value={option.value}
+                          checked={input.strength === option.value}
+                          onChange={() => setInput({ ...input, strength: option.value })}
+                        />
+                        <span>
+                          <Check aria-hidden size={14} />
+                          {option.label}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset className={styles.choiceFieldset}>
+                  <legend>이번 주 쓸 수 있는 시간</legend>
+                  <div className={styles.segmented} data-columns="3">
+                    {timeOptions.map((option) => (
+                      <label key={option.value}>
+                        <input
+                          type="radio"
+                          name="today-a-time"
+                          value={option.value}
+                          checked={input.weeklyTime === option.value}
+                          onChange={() => setInput({ ...input, weeklyTime: option.value })}
+                        />
+                        <span>
+                          <Check aria-hidden size={14} />
+                          {option.label}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              </div>
+            </details>
+
+            {status === "error" ? (
+              <p className={styles.error} role="alert">
+                구조를 불러오지 못했어요. 입력은 그대로 두었으니 다시 시도해 주세요.
               </p>
-              <ol>
-                {progressSteps.map((item) => (
-                  <li
-                    key={item.step}
-                    data-state={item.step < step ? "done" : item.step === step ? "current" : "upcoming"}
-                    aria-current={item.step === step ? "step" : undefined}
-                  >
-                    <span aria-hidden>{item.step < step ? <Check size={13} /> : item.step}</span>
-                    {item.label}
-                  </li>
-                ))}
-              </ol>
-            </nav>
+            ) : null}
 
-            <form className={styles.form} onSubmit={handleSubmit} data-clarity-mask="true" noValidate>
-              {step === 1 ? (
-                <div className={styles.stepPanel}>
-                  <div className={styles.stepCopy}>
-                    <p>첫 번째 질문</p>
-                    <h2 ref={stepHeadingRef} tabIndex={-1}>
-                      반복해서 보이는 불편은 무엇인가요?
-                    </h2>
-                    <span>해결책은 아직 쓰지 않아도 괜찮아요.</span>
-                  </div>
-
-                  <div className={styles.field}>
-                    <label htmlFor="today-a-problem">관찰한 불편</label>
-                    <textarea
-                      ref={problemRef}
-                      id="today-a-problem"
-                      value={input.problem}
-                      onChange={(event) => {
-                        const problem = event.target.value;
-                        setInput({ ...input, problem });
-                        if (problemError && problem.trim().length >= MIN_PROBLEM_LENGTH) {
-                          setProblemError("");
-                        }
-                        if (!inputStartedRef.current && problem.trim()) {
-                          inputStartedRef.current = true;
-                          trackMvpInputStarted("today_a");
-                        }
-                      }}
-                      placeholder="예: 문의가 여러 채널로 들어와 답변과 예약이 자꾸 늦어져요."
-                      minLength={MIN_PROBLEM_LENGTH}
-                      maxLength={240}
-                      required
-                      aria-invalid={Boolean(problemError)}
-                      aria-describedby="today-a-problem-help"
-                    />
-                    <div className={styles.fieldMeta}>
-                      <p id="today-a-problem-help" className={problemError ? styles.fieldError : undefined}>
-                        {problemError || "누가 언제 겪는 불편인지 구체적으로 적을수록 좋아요."}
-                      </p>
-                      <span aria-label={`${input.problem.length}자 입력`}>{input.problem.length} / 240</span>
-                    </div>
-                  </div>
-
-                  <button className={styles.primaryButton} type="submit">
-                    다음: 고객 고르기
-                    <ArrowRight aria-hidden size={18} />
-                  </button>
-                </div>
-              ) : null}
-
-              {step === 2 ? (
-                <div className={styles.stepPanel}>
-                  <div className={styles.stepCopy}>
-                    <p>두 번째 질문</p>
-                    <h2 ref={stepHeadingRef} tabIndex={-1}>
-                      누가 이 불편으로 가장 곤란한가요?
-                    </h2>
-                    <span>처음 제안할 사람 한 종류만 골라주세요.</span>
-                  </div>
-
-                  <fieldset className={styles.choiceFieldset}>
-                    <legend>처음 만날 고객</legend>
-                    <div className={styles.choiceList}>
-                      {customerOptions.map((option) => (
-                        <label key={option.value} className={styles.choice}>
-                          <input
-                            type="radio"
-                            name="today-a-customer"
-                            value={option.value}
-                            checked={input.customer === option.value}
-                            onChange={() => setInput({ ...input, customer: option.value })}
-                          />
-                          <span className={styles.choiceControl} aria-hidden>
-                            <Check size={14} />
-                          </span>
-                          <span>
-                            <strong>{option.label}</strong>
-                            <small>{option.description}</small>
-                          </span>
-                        </label>
-                      ))}
-                    </div>
-                  </fieldset>
-
-                  <div className={styles.formActions}>
-                    <button className={styles.backButton} type="button" onClick={() => goToStep(1)}>
-                      <ArrowLeft aria-hidden size={18} />
-                      이전 질문
-                    </button>
-                    <button className={styles.primaryButton} type="submit">
-                      다음: 실행 조건 고르기
-                      <ArrowRight aria-hidden size={18} />
-                    </button>
-                  </div>
-                </div>
-              ) : null}
-
-              {step === 3 ? (
-                <div className={styles.stepPanel}>
-                  <div className={styles.stepCopy}>
-                    <p>마지막 질문</p>
-                    <h2 ref={stepHeadingRef} tabIndex={-1}>
-                      이번 주에 해낼 수 있는 크기로 좁혀요.
-                    </h2>
-                    <span>잘하는 일과 실제로 쓸 시간을 골라주세요.</span>
-                  </div>
-
-                  <fieldset className={styles.choiceFieldset}>
-                    <legend>가장 자신 있는 일</legend>
-                    <div className={styles.segmented} data-columns="2">
-                      {strengthOptions.map((option) => (
-                        <label key={option.value}>
-                          <input
-                            type="radio"
-                            name="today-a-strength"
-                            value={option.value}
-                            checked={input.strength === option.value}
-                            onChange={() => setInput({ ...input, strength: option.value })}
-                          />
-                          <span>
-                            <Check aria-hidden size={14} />
-                            {option.label}
-                          </span>
-                        </label>
-                      ))}
-                    </div>
-                  </fieldset>
-
-                  <fieldset className={styles.choiceFieldset}>
-                    <legend>이번 주 쓸 수 있는 시간</legend>
-                    <div className={styles.segmented} data-columns="3">
-                      {timeOptions.map((option) => (
-                        <label key={option.value}>
-                          <input
-                            type="radio"
-                            name="today-a-time"
-                            value={option.value}
-                            checked={input.weeklyTime === option.value}
-                            onChange={() => setInput({ ...input, weeklyTime: option.value })}
-                          />
-                          <span>
-                            <Check aria-hidden size={14} />
-                            {option.label}
-                          </span>
-                        </label>
-                      ))}
-                    </div>
-                  </fieldset>
-
-                  <div className={styles.reviewLine} aria-label="입력 조건 요약">
-                    <span>비교할 불편</span>
-                    <p>{input.problem}</p>
-                  </div>
-
-                  {status === "error" ? (
-                    <p className={styles.error} role="alert">
-                      구조를 불러오지 못했어요. 입력은 그대로 두었으니 다시 시도해 주세요.
-                    </p>
-                  ) : null}
-
-                  <div className={styles.formActions}>
-                    <button className={styles.backButton} type="button" onClick={() => goToStep(2)}>
-                      <ArrowLeft aria-hidden size={18} />
-                      이전 질문
-                    </button>
-                    <button
-                      className={styles.primaryButton}
-                      type="submit"
-                      disabled={status === "loading"}
-                      aria-busy={status === "loading"}
-                    >
-                      {status === "loading" ? (
-                        <>
-                          <RefreshCw className={styles.spinner} aria-hidden size={18} />
-                          원본과 비교하는 중…
-                        </>
-                      ) : (
-                        <>
-                          {status === "error" ? "다시 구조 찾기" : "근거가 있는 구조 1개 보기"}
-                          <ArrowRight aria-hidden size={18} />
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              ) : null}
-            </form>
-          </div>
+            <button
+              className={styles.primaryButton}
+              type="submit"
+              disabled={status === "loading"}
+              aria-busy={status === "loading"}
+            >
+              {status === "loading" ? (
+                <>
+                  <RefreshCw className={styles.spinner} aria-hidden size={18} />
+                  원본과 비교하는 중…
+                </>
+              ) : (
+                <>
+                  {status === "error" ? "다시 구조 보기" : "사업 구조 바로 보기"}
+                  <ArrowRight aria-hidden size={18} />
+                </>
+              )}
+            </button>
+            <p className={styles.submitNote}>
+              저장된 원본 스냅샷과 비교하며, 결과를 보기 전에는 가입하지 않아요.
+            </p>
+          </form>
         </section>
       ) : (
         <section
@@ -473,8 +418,12 @@ export function TodayA() {
           data-clarity-mask="true"
         >
           <div className={styles.resultIntro}>
-            <p className={styles.eyebrow}>조건에 가장 가까운 구조 1개</p>
-            <h1 id="today-a-result-title">{result.title}</h1>
+            <p className={styles.eyebrow}>
+              {saveState === "done" ? "이 기기에 저장된 구조" : "가장 가까운 구조 1개"}
+            </p>
+            <h1 id="today-a-result-title" ref={resultHeadingRef} tabIndex={-1}>
+              {result.title}
+            </h1>
             <p className={styles.resultSummary}>{result.summary}</p>
             <p className={styles.fitReason}>{result.fitReason}</p>
           </div>
@@ -483,47 +432,41 @@ export function TodayA() {
             <div className={styles.sectionHeading}>
               <div>
                 <p>STRUCTURE MAP</p>
-                <h2>돈을 내는 순간부터 결과까지</h2>
+                <h2>누가, 언제, 무엇을 받는지</h2>
               </div>
-              <span>5단계</span>
+              <span>원본 비교</span>
             </div>
-            <ol>
-              <li>
+
+            <dl className={styles.decisionGrid}>
+              <div>
+                <dt>돈 낼 사람</dt>
+                <dd>{result.structure.payer}</dd>
+              </div>
+              <div>
+                <dt>필요한 순간</dt>
+                <dd>{result.structure.needMoment}</dd>
+              </div>
+            </dl>
+
+            <div className={styles.valueFlow}>
+              <div>
                 <span>01</span>
-                <div>
-                  <small>돈 낼 사람</small>
-                  <strong>{result.structure.payer}</strong>
-                </div>
-              </li>
-              <li>
+                <small>받을 입력</small>
+                <strong>{result.structure.input}</strong>
+              </div>
+              <ArrowRight aria-hidden size={18} />
+              <div>
                 <span>02</span>
-                <div>
-                  <small>필요한 순간</small>
-                  <strong>{result.structure.needMoment}</strong>
-                </div>
-              </li>
-              <li>
+                <small>할 처리</small>
+                <strong>{result.structure.process}</strong>
+              </div>
+              <ArrowRight aria-hidden size={18} />
+              <div>
                 <span>03</span>
-                <div>
-                  <small>받을 입력</small>
-                  <strong>{result.structure.input}</strong>
-                </div>
-              </li>
-              <li>
-                <span>04</span>
-                <div>
-                  <small>할 처리</small>
-                  <strong>{result.structure.process}</strong>
-                </div>
-              </li>
-              <li>
-                <span>05</span>
-                <div>
-                  <small>바로 받는 결과</small>
-                  <strong>{result.structure.output}</strong>
-                </div>
-              </li>
-            </ol>
+                <small>바로 받는 결과</small>
+                <strong>{result.structure.output}</strong>
+              </div>
+            </div>
           </section>
 
           <section className={styles.firstOffer} aria-labelledby="today-a-first-offer">
@@ -533,7 +476,13 @@ export function TodayA() {
           </section>
 
           <div className={styles.actions}>
-            <button className={styles.primaryButton} type="button" onClick={saveResult}>
+            <button
+              className={styles.primaryButton}
+              type="button"
+              onClick={saveResult}
+              disabled={saveState === "done"}
+              aria-pressed={saveState === "done"}
+            >
               <Check aria-hidden size={18} />
               {saveState === "done" ? "이 기기에 구조를 저장했어요" : "이 구조 저장하기"}
             </button>
@@ -543,7 +492,7 @@ export function TodayA() {
             </button>
             <button className={styles.secondaryButton} type="button" onClick={editConditions}>
               <RefreshCw aria-hidden size={18} />
-              조건 고치기
+              조건을 바꿔 다시 보기
             </button>
           </div>
 
@@ -578,12 +527,14 @@ export function TodayA() {
             </a>
           </aside>
 
-          <div className={styles.signup}>
-            <PostResultSignup
-              experimentId="today_a"
-              label="내 구조를 다시 만들려면 Google로 연결하기"
-            />
-          </div>
+          {saveState === "done" ? (
+            <div className={styles.signup}>
+                <PostResultSignup
+                  experimentId="today_a"
+                  label="Google 계정만 연결하기"
+                />
+            </div>
+          ) : null}
         </section>
       )}
     </main>

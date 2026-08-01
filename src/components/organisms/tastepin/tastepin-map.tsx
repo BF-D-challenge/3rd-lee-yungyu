@@ -188,7 +188,7 @@ export function TastepinMap({
     setLoadState("loading");
 
     try {
-      const response = await fetch("/api/matpick/library", { cache: "no-store" });
+      const response = await fetch("/api/tastepin/library", { cache: "no-store" });
       const parsed = tastepinLibraryResponseSchema.safeParse(await response.json());
       if (!response.ok || !parsed.success) throw new Error("invalid_library");
       const importedPlaces = loadImportedMatpickPlaces().map((place) => ({
@@ -287,8 +287,8 @@ export function TastepinMap({
   return (
     <main className={styles.shell}>
       <header className={styles.appBar}>
-        <Link className={styles.brandLink} href="/matpick" aria-label="MATPICK 소개로 돌아가기">
-          MATPICK
+        <Link className={styles.brandLink} href="/matpick" aria-label="맛핀 소개로 돌아가기">
+          맛핀
         </Link>
         <div className={styles.headerActions}>
           <Link

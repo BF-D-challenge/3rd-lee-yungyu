@@ -4,6 +4,7 @@ import { ArrowRight, Bookmark, Check, MapPin, Search, Sparkles } from "lucide-re
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
+import { trackMvpLandingViewed, trackMvpPrimaryCta } from "@/lib/mvp-experiment-analytics";
 import { track } from "@/lib/track";
 import styles from "./matpick-landing.module.css";
 
@@ -26,11 +27,13 @@ export function MatpickLanding() {
       product_slug: "tastepin",
       product_path: "/matpick",
       experiment_id: "tastepin",
-    });
+    }, { meta: false });
+    trackMvpLandingViewed("matpick");
   }, []);
 
   const trackPrimaryCta = () => {
-    track("tastepin_primary_cta_clicked", productEventParams);
+    track("tastepin_primary_cta_clicked", productEventParams, { meta: false });
+    trackMvpPrimaryCta("matpick");
   };
 
   return (
@@ -38,7 +41,7 @@ export function MatpickLanding() {
       <header className={styles.header}>
         <Link className={styles.brand} href="/" aria-label="BF.D 제품 목록으로 돌아가기">
           <span aria-hidden="true"><MapPin size={17} strokeWidth={2.5} /></span>
-          MATPICK
+          맛핀
         </Link>
         <span className={styles.stageBadge}>초기 체험 모집 중</span>
       </header>
@@ -51,7 +54,7 @@ export function MatpickLanding() {
             <br />오늘 갈 곳은 또 못 찾았다.
           </h1>
           <p className={styles.lead}>
-            MATPICK은 맛집 릴스 링크에서 장소 후보를 찾아, 원본 영상과 함께 다시 볼 수 있게
+            맛핀은 맛집 릴스 링크에서 장소 후보를 찾아, 원본 영상과 함께 다시 볼 수 있게
             정리하려는 초기 제품이에요.
           </p>
 
@@ -87,7 +90,7 @@ export function MatpickLanding() {
 
           <div className={styles.demoDivider}>
             <span />
-            <b>MATPICK 데모</b>
+            <b>맛핀 데모</b>
             <span />
           </div>
 
