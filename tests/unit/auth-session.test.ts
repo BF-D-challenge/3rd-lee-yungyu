@@ -57,6 +57,20 @@ describe("Google OAuth redirect handoff", () => {
     expect(peekAuthReturnTo()).toBe("/");
   });
 
+  it.each(["matpick", "onebite", "today", "story-cards"])(
+    "returns to the %s reservation after Google login",
+    async (product) => {
+      const returnTo = `/reserve/${product}`;
+
+      await expect(beginAuth(returnTo)).resolves.toEqual({ status: "redirecting" });
+
+      expect(authMocks.signInWithGoogle).toHaveBeenLastCalledWith(
+        "https://bfd-seven.vercel.app/auth/callback",
+      );
+      expect(consumeAuthReturnTo()).toBe(returnTo);
+    },
+  );
+
   it("blocks an external return target instead of creating an open redirect", () => {
     expect(prepareAuthRedirect("https://attacker.example/steal")).toBe(
       "https://bfd-seven.vercel.app/auth/callback",

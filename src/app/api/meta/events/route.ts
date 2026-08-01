@@ -1,23 +1,46 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const ALLOWED_EVENTS = new Set([
+const META_SERVER_EVENT_NAMES = [
   "PageView",
   "ViewContent",
+  "CompleteRegistration",
+  "MvpLandingView",
+  "MvpPrimaryCta",
+  "MvpInstagramInputStarted",
+  "MvpReservationCompleted",
   "IdeaSelected",
   "FirstActionPlanStarted",
+] as const;
+
+const META_SERVER_CUSTOM_DATA_KEYS = [
+  "product_id",
+  "creative_id",
+  "landing_variant",
+  "slot_key",
+  "storage_mode",
+  "submit_success",
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+] as const;
+
+const ALLOWED_EVENTS = new Set<string>(META_SERVER_EVENT_NAMES);
+const ALLOWED_CUSTOM_DATA = new Set<string>(META_SERVER_CUSTOM_DATA_KEYS);
+const PRODUCT_EVENTS = new Set([
+  "CompleteRegistration",
+  "MvpLandingView",
+  "MvpPrimaryCta",
+  "MvpInstagramInputStarted",
+  "MvpReservationCompleted",
 ]);
-const ALLOWED_CUSTOM_DATA = new Set([
-  "action_type",
-  "attempt",
-  "content_category",
-  "content_ids",
-  "content_name",
-  "content_type",
-  "scenario_id",
-]);
+const PRODUCT_IDS = new Set(["matpick", "onebite", "today", "story-cards"]);
 const SAFE_ID = /^[A-Za-z0-9._:-]{1,120}$/;
-const SAFE_PATH = /^\/[^\s]{0,500}$/;
+const SAFE_VALUE = /^[A-Za-z0-9._~:/+-]{1,120}$/;
+const SAFE_PATH = /^\/[^\s?]{0,500}$/;
 const SAFE_GRAPH_VERSION = /^v\d{1,2}\.\d$/;
+const SAFE_TEST_EVENT_CODE = /^TEST\d{1,20}$/;
 
 type ClientEvent = {
   event_name?: unknown;
@@ -26,20 +49,14 @@ type ClientEvent = {
   custom_data?: unknown;
 };
 
-function sanitizedCustomData(value: unknown): Record<string, string | number | string[]> {
+function sanitizedCustomData(value: unknown): Record<string, string | number | boolean> {
   if (!value || typeof value !== "object" || Array.isArray(value)) return {};
-  const result: Record<string, string | number | string[]> = {};
+  const result: Record<string, string | number | boolean> = {};
   for (const [key, item] of Object.entries(value)) {
     if (!ALLOWED_CUSTOM_DATA.has(key)) continue;
-    if (typeof item === "string" && item.length <= 120) result[key] = item;
+    if (typeof item === "string" && SAFE_VALUE.test(item)) result[key] = item;
     if (typeof item === "number" && Number.isFinite(item)) result[key] = item;
-    if (
-      Array.isArray(item)
-      && item.length <= 10
-      && item.every((entry) => typeof entry === "string" && entry.length <= 120)
-    ) {
-      result[key] = item;
-    }
+    if (key === "submit_success" && typeof item === "boolean") result[key] = item;
   }
   return result;
 }
@@ -77,9 +94,26 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid_event" }, { status: 400 });
   }
 
+  const customData = sanitizedCustomData(body.custom_data);
+  if (
+    PRODUCT_EVENTS.has(body.event_name)
+    && (typeof customData.product_id !== "string" || !PRODUCT_IDS.has(customData.product_id))
+  ) {
+    return NextResponse.json({ error: "invalid_product" }, { status: 400 });
+  }
+  if (
+    body.event_name === "MvpReservationCompleted"
+    && (customData.submit_success !== true || customData.storage_mode === "local_demo")
+  ) {
+    return NextResponse.json({ error: "invalid_reservation" }, { status: 400 });
+  }
+
   const graphVersion = SAFE_GRAPH_VERSION.test(process.env.META_GRAPH_API_VERSION ?? "")
     ? process.env.META_GRAPH_API_VERSION!
     : "v25.0";
+  const testEventCode = SAFE_TEST_EVENT_CODE.test(process.env.META_TEST_EVENT_CODE ?? "")
+    ? process.env.META_TEST_EVENT_CODE
+    : undefined;
   const forwardedFor = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
   const userAgent = request.headers.get("user-agent");
   const fbp = request.cookies.get("_fbp")?.value;
@@ -108,17 +142,23 @@ export async function POST(request: NextRequest) {
             event_source_url: new URL(body.event_source_path, request.nextUrl.origin).toString(),
             action_source: "website",
             user_data: userData,
-            custom_data: sanitizedCustomData(body.custom_data),
+            custom_data: customData,
           }],
+          ...(testEventCode ? { test_event_code: testEventCode } : {}),
         }),
         cache: "no-store",
       },
     );
     if (!response.ok) {
+      console.error("[meta-capi] upstream_rejected", { status: response.status });
       return NextResponse.json({ error: "meta_upstream_error" }, { status: 502 });
     }
     return new NextResponse(null, { status: 204 });
-  } catch {
+  } catch (error) {
+    console.error(
+      "[meta-capi] unavailable",
+      error instanceof Error ? error.message : "unknown_error",
+    );
     return NextResponse.json({ error: "meta_unavailable" }, { status: 502 });
   }
 }

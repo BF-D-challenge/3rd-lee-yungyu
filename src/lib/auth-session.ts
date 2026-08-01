@@ -1,4 +1,5 @@
 import { authEnabled, getUser, signInWithGoogle, signOut } from "./backend/auth";
+import { supabaseEnabled } from "./backend/client";
 
 const DEMO_AUTH_KEY = "oneul:demo-auth";
 const DEMO_ACTOR_KEY = "oneul:demo-actor";
@@ -15,6 +16,14 @@ export interface AuthSession {
   demo: boolean;
   displayName?: string;
 }
+
+export interface AuthSessionOptions {
+  /** Supabase env가 있으면 데모로 우회하지 않고 실제 세션/OAuth만 사용한다. */
+  requireSupabaseWhenConfigured?: boolean;
+}
+
+/** 예약 화면이 실제 OAuth/DB 모드인지, 브라우저 전용 데모 모드인지 표시할 때 쓴다. */
+export const reservationUsesSupabase = supabaseEnabled;
 
 export type AuthContext = "creator" | "receiver";
 
@@ -115,15 +124,18 @@ const randomId = (): string =>
     ? crypto.randomUUID()
     : `demo-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
 
+const isUuid = (value: string): boolean =>
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
+
 const demoActorId = (): string => {
   try {
     const existing = localStorage.getItem(DEMO_ACTOR_KEY);
-    if (existing) return existing;
+    if (existing && isUuid(existing)) return existing;
     const next = randomId();
     localStorage.setItem(DEMO_ACTOR_KEY, next);
     return next;
   } catch {
-    return "demo-anonymous";
+    return "00000000-0000-4000-8000-000000000000";
   }
 };
 
@@ -134,17 +146,21 @@ const displayNameFrom = (metadata: Record<string, unknown> | undefined): string 
   return value?.trim().replace(/님$/, "").slice(0, 16);
 };
 
-export async function checkAuthSession(): Promise<AuthSession | null> {
-  if (authEnabled) {
+export async function checkAuthSession(
+  options: AuthSessionOptions = {},
+): Promise<AuthSession | null> {
+  if (supabaseEnabled || authEnabled) {
     const user = await getUser();
-    if (!user) return null;
-    markAuthenticatedForTracking();
-    return {
-      actorId: user.id,
-      authenticated: true,
-      demo: false,
-      displayName: displayNameFrom(user.user_metadata as Record<string, unknown> | undefined),
-    };
+    if (user) {
+      markAuthenticatedForTracking();
+      return {
+        actorId: user.id,
+        authenticated: true,
+        demo: false,
+        displayName: displayNameFrom(user.user_metadata as Record<string, unknown> | undefined),
+      };
+    }
+    if (authEnabled || options.requireSupabaseWhenConfigured) return null;
   }
 
   try {
@@ -161,8 +177,11 @@ export type BeginAuthResult =
   | { status: "redirecting" }
   | { status: "error"; error: string };
 
-export async function beginAuth(redirectTo: string): Promise<BeginAuthResult> {
-  if (authEnabled) {
+export async function beginAuth(
+  redirectTo: string,
+  options: AuthSessionOptions = {},
+): Promise<BeginAuthResult> {
+  if (authEnabled || (options.requireSupabaseWhenConfigured && supabaseEnabled)) {
     const { error } = await signInWithGoogle(prepareAuthRedirect(redirectTo));
     return error ? { status: "error", error } : { status: "redirecting" };
   }

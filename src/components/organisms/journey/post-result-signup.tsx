@@ -13,9 +13,11 @@ import {
 export function PostResultSignup({
   experimentId,
   label,
+  description = "결과는 로그인 없이 먼저 봤어요. 지금은 계정 연결만 되며, 결과 저장·동기화는 아직 제공하지 않아요.",
 }: {
   experimentId: MvpExperimentId;
   label: string;
+  description?: string;
 }) {
   const [state, setState] = useState<"checking" | "anonymous" | "connected">("checking");
 
@@ -46,7 +48,7 @@ export function PostResultSignup({
   return (
     <section className="mt-5 border-t border-white/10 pt-5" aria-label="결과 뒤 선택적 계정 연결">
       <p className="mb-3 text-center text-sm leading-6 text-muted">
-        결과는 로그인 없이 먼저 봤어요. 지금은 계정 연결만 되며, 결과 저장·동기화는 아직 제공하지 않아요.
+        {description}
       </p>
       <GoogleLoginButton
         context="creator"

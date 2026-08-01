@@ -80,7 +80,16 @@ const eventId = (): string => {
   }
 };
 
-export function track(event: string, params: Record<string, unknown> = {}): void {
+export type TrackOptions = {
+  /** Legacy product events can stay in GA/local logs while the shared funnel owns Meta. */
+  meta?: boolean;
+};
+
+export function track(
+  event: string,
+  params: Record<string, unknown> = {},
+  options: TrackOptions = {},
+): void {
   if (typeof window === "undefined") return;
   const now = Date.now();
   const entry = {
@@ -104,7 +113,7 @@ export function track(event: string, params: Record<string, unknown> = {}): void
   } catch (error) {
     console.warn("[analytics:clarity]", event, error instanceof Error ? error.message : "unknown_error");
   }
-  trackMetaEvent(event, entry);
+  if (options.meta !== false) trackMetaEvent(event, entry);
   try {
     const log = JSON.parse(localStorage.getItem(EVENTS_KEY) ?? "[]") as unknown[];
     log.push(entry);

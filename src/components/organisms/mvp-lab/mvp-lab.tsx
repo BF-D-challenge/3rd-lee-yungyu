@@ -2,9 +2,16 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState, type ChangeEvent } from "react";
-import { ArrowDown, ArrowLeft, ArrowRight, Clock3, Sparkles, Utensils, Video } from "lucide-react";
+import { useEffect, useState, type ChangeEvent, type CSSProperties } from "react";
+import { ArrowLeft, ArrowRight, Clock3, RotateCcw, Sparkles, Utensils, Video } from "lucide-react";
 import { GoogleLoginButton } from "@/components/organisms/journey/google-login-button";
+import {
+  getMvpResumeState,
+  loadLastMvpApp,
+  saveLastMvpApp,
+  type MvpAppId,
+  type MvpResumeState,
+} from "@/lib/mvp-resume-state";
 import styles from "./mvp-lab.module.css";
 
 type LabKind = "hub" | "tastepin" | "onebite" | "idea-fit";
@@ -62,110 +69,148 @@ export function MvpLab({ kind }: { kind: LabKind }) {
 function Hub() {
   const cards = [
     {
-      href: "/tastepin",
-      image: "/images/experiment-gallery/tastepin.jpg",
-      imageAlt: "맛핀 화면. YouTube Shorts 링크를 넣어 식당 단서를 찾는 입력 화면",
+      id: "matpick" as const,
+      href: "/matpick",
+      image: "/images/experiment-gallery/matpick.jpg",
+      imageAlt: "맛핀 화면. 강남역과 역삼역 주변 맛집을 원본 영상과 함께 보는 저장함",
       label: "맛핀",
-      input: "공개 YouTube Shorts 링크",
-      output: "식당명·메뉴·지역 단서",
-      title: "저장한 맛집 쇼츠에서 갈 곳을 찾아요.",
-      text: "영상 속 음성·화면 글자·간판을 읽어 식당을 찾는 데 필요한 단서만 정리합니다.",
-      cta: "쇼츠 링크로 식당 찾기",
+      input: "Instagram에서 모은 맛집",
+      output: "장소 확인·원본 영상 저장",
+      title: "릴스를 보내고 맛집으로 다시 찾아요.",
+      cta: "릴스 저장 시작하기",
+      tone: "#4285f4",
     },
     {
+      id: "onebite" as const,
       href: "/onebite",
-      image: "/images/experiment-gallery/onebite.jpg",
+      image: "/images/experiment-gallery/onebite-redesign.jpg",
       imageAlt: "한입코치 화면. 음식 사진 한 장을 고르고 다음 한 끼 행동을 받는 화면",
       label: "한입코치",
       input: "음식 사진 한 장",
       output: "다음 끼니 행동 하나",
-      title: "먹은 걸 탓하지 않고, 다음 한 끼를 정해요.",
-      text: "칼로리를 단정하지 않아요. 사진에서 확인한 음식 그룹을 바탕으로 작은 행동 하나를 제안합니다.",
+      title: "다음 한 끼 행동 하나를 받아요.",
       cta: "음식 사진으로 행동 받기",
+      tone: "#7bc8a4",
     },
     {
-      href: "/today-a",
-      image: "/images/experiment-gallery/today-a.jpg",
-      imageAlt: "Today A 화면. 고객과 반복 불편, 강점, 시간을 입력하는 화면",
-      label: "Today A",
-      input: "고객·불편·강점·이번 주 시간",
-      output: "근거가 있는 사업 구조 하나",
-      title: "내가 할 수 있는 조건에서 사업 구조를 찾아요.",
-      text: "저장된 실제 제품 원본과 비교해 돈 낼 사람·필요한 순간·입력·결과를 한 줄씩 정리합니다.",
-      cta: "내 조건으로 구조 받기",
+      id: "today" as const,
+      href: "/today",
+      image: "/images/experiment-gallery/today-unified.svg",
+      imageAlt: "오늘 해볼까 화면. 아이디어를 만들거나 개선해 24시간 제작을 신청하는 화면",
+      label: "오늘 해볼까",
+      input: "아이디어 한 문장 또는 선택 세 가지",
+      output: "24시간 뒤 광고·가짜문 랜딩·측정 기준",
+      title: "아이디어를 내일 테스트해요.",
+      cta: "아이디어 테스트 신청하기",
+      tone: "#244bdb",
     },
     {
-      href: "/today-b",
-      image: "/images/experiment-gallery/today-b.jpg",
-      imageAlt: "Today B 화면. 아이디어와 고객, 얻을 결과를 입력해 7일 실험을 만드는 화면",
-      label: "Today B",
-      input: "아이디어·고객·얻을 결과",
-      output: "가장 위험한 가정의 7일 실험",
-      title: "아이디어가 있다면, 기능보다 수요를 먼저 봐요.",
-      text: "좋아요 대신 인터뷰·예약금·대기 신청·사전 구매처럼 실제 행동을 셀 계획을 만듭니다.",
-      cta: "아이디어로 7일 실험 만들기",
-    },
-    {
+      id: "story-cards" as const,
       href: "/story-cards",
-      image: "/images/experiment-gallery/story-cards.jpg",
-      imageAlt: "상황 카드 화면. 네 장의 타로 스타일 상황에서 하나를 고르는 화면",
-      label: "상황 카드",
+      image: "/images/experiment-gallery/story-cards-redesign.jpg",
+      imageAlt: "카드너머 화면. 네 장의 타로 스타일 상황에서 하나를 고르는 화면",
+      label: "카드너머",
       input: "마음에 가까운 상황 한 장",
       output: "장면 속 안내자와 바로 채팅",
-      title: "설명하기 어려운 마음은 장면부터 골라요.",
-      text: "타로 카드처럼 펼쳐진 네 장의 상황 중 하나를 고르면, 로그인 없이 대화가 시작됩니다.",
+      title: "상황을 고르고 바로 대화해요.",
       cta: "상황 고르고 채팅 시작하기",
+      tone: "#a98ce5",
     },
   ];
-  return <Shell><Header active="5개 실험" />
-    <section className={styles.hero}>
-      <p className={styles.eyebrow}>오늘 바로 써보는 5개 앱</p>
-      <h1>필요한 결과부터<br />고르세요.</h1>
-      <p>무엇을 넣고, 바로 무엇을 받는지 같은 순서로 보여드려요. 다섯 앱 모두 로그인 없이 시작할 수 있습니다.</p>
-      <div className={styles.heroActions}>
-        <Link className={styles.heroPrimary} href="#experiment-gallery">앱 5개 비교하기 <ArrowDown size={17} aria-hidden /></Link>
-        <Link className={styles.makerLink} href="/start">새 아이디어 만들기 <ArrowRight size={16} aria-hidden /></Link>
-      </div>
+  const [recentAppId, setRecentAppId] = useState<MvpAppId | null>(null);
+  const [resumeState, setResumeState] = useState<MvpResumeState | null>(null);
+  const recentCard = cards.find((card) => card.id === recentAppId);
+
+  useEffect(() => {
+    const saved = loadLastMvpApp();
+    if (saved) {
+      setRecentAppId(saved);
+      setResumeState(getMvpResumeState(saved));
+    }
+  }, []);
+
+  const rememberApp = (appId: MvpAppId) => {
+    saveLastMvpApp(appId);
+    setRecentAppId(appId);
+    setResumeState(getMvpResumeState(appId));
+  };
+
+  return <Shell><Header active="4개 앱" />
+    <section className={styles.hubHero} aria-labelledby="hub-title">
+      <p className={styles.eyebrow}>4개 앱 · 모두 로그인 없이</p>
+      <h1 id="hub-title">오늘 무엇을<br />해볼까요?</h1>
+      <p>원하는 결과를 고르면 바로 시작해요.</p>
     </section>
-    <section className={styles.gallerySection} id="experiment-gallery" aria-labelledby="gallery-title">
-      <div className={styles.sectionHeading}>
-        <p className={styles.eyebrow}>INPUT → RESULT</p>
-        <h2 id="gallery-title">넣는 것과 받는 것을 먼저 비교해요.</h2>
-        <p>각 앱의 대표 화면과 결과를 보고, 지금 필요한 한 곳만 열어보세요.</p>
+
+    {recentCard && resumeState ? <aside className={styles.recentApp} aria-label="최근 사용한 앱">
+      <div>
+        <span>{resumeState.kind === "resume" ? "이어서 할 수 있어요" : "최근 사용"}</span>
+        <strong>{recentCard.label}</strong>
+        <p>{resumeState.summary}</p>
       </div>
-      <div className={styles.grid} role="region" aria-label="실험 선택">
-        {cards.map((card, index) => <article className={styles.experimentCard} key={card.href}>
-          <figure className={styles.preview}>
-            <Image
-              src={card.image}
-              alt={card.imageAlt}
-              width={1920}
-              height={1083}
-              sizes="(min-width: 1080px) 56vw, (min-width: 720px) 52vw, 92vw"
-            />
-            <figcaption>{card.label} 실제 입력 화면</figcaption>
-          </figure>
-          <div className={styles.cardBody}>
-            <div className={styles.appMeta}>
-              <p className={styles.cardLabel}><span>{String(index + 1).padStart(2, "0")}</span>{card.label}</p>
-              <span className={styles.noLogin}>로그인 없이 시작</span>
+      <div className={styles.recentActions}>
+        <Link
+          className={styles.recentPrimary}
+          href={resumeState.resumeHref}
+          onClick={() => rememberApp(recentCard.id)}
+        >
+          {resumeState.kind === "resume" ? "이어서 하기" : "처음부터 시작"}
+          <ArrowRight size={17} aria-hidden />
+        </Link>
+        {resumeState.kind === "resume" ? (
+          <Link
+            className={styles.recentSecondary}
+            href={resumeState.newHref}
+            onClick={() => rememberApp(recentCard.id)}
+          >
+            <RotateCcw size={16} aria-hidden />
+            새로 시작
+          </Link>
+        ) : null}
+      </div>
+    </aside> : null}
+
+    <section className={styles.appChooser} aria-labelledby="chooser-title">
+      <div className={styles.chooserHeading}>
+        <h2 id="chooser-title">{recentCard ? "다른 앱 화면 보기" : "앱 화면을 보고 고르세요"}</h2>
+      </div>
+      <div className={styles.chooserGrid} role="region" aria-label="앱 선택">
+        {cards.map((card) => (
+          <Link
+            className={styles.chooserCard}
+            href={card.href}
+            key={card.href}
+            onClick={() => rememberApp(card.id)}
+            style={{ "--app-tone": card.tone } as CSSProperties}
+            aria-label={`${card.label}: ${card.cta}`}
+          >
+            <div className={styles.chooserPreview}>
+              <Image
+                src={card.image}
+                alt={card.imageAlt}
+                width={960}
+                height={540}
+                sizes="(min-width: 840px) 42vw, 92vw"
+              />
+              <span className={styles.previewBadge}>화면 미리보기</span>
             </div>
-            <h3>{card.title}</h3>
-            <p>{card.text}</p>
-            <dl className={styles.inputOutput}>
-              <div className={styles.ioItem}>
-                <dt>넣는 것</dt>
-                <dd>{card.input}</dd>
-              </div>
-              <ArrowRight className={styles.ioArrow} size={18} aria-hidden />
-              <div className={styles.ioItem}>
-                <dt>바로 받는 것</dt>
-                <dd>{card.output}</dd>
-              </div>
-            </dl>
-            <Link className={styles.primaryLink} href={card.href}>{card.cta}<ArrowRight size={17} aria-hidden /></Link>
-          </div>
-        </article>)}
+            <div className={styles.chooserBody}>
+              <strong className={styles.chooserLabel}>{card.label}</strong>
+              <h3>{card.title}</h3>
+              <p
+                className={styles.chooserFlow}
+                aria-label={`입력 ${card.input}, 결과 ${card.output}`}
+              >
+                <span>{card.input}</span>
+                <ArrowRight size={14} aria-hidden />
+                <strong>{card.output}</strong>
+              </p>
+            </div>
+            <span className={styles.chooserArrow} aria-hidden>
+              <ArrowRight size={18} />
+            </span>
+          </Link>
+        ))}
       </div>
     </section>
   </Shell>;

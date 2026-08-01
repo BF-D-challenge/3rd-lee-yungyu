@@ -17,9 +17,9 @@ beforeEach(() => {
   vi.spyOn(console, "debug").mockImplementation(() => undefined);
 });
 
-describe("상황 카드 로컬 계측", () => {
+describe("카드너머 로컬 계측", () => {
   it("records only the situation ID, stage, and bounded funnel count", () => {
-    trackStoryCardEvent("message_sent", {
+    trackStoryCardEvent("story_card_message_sent", {
       cardId: "rain-station",
       stage: "reply",
       messageCount: 2,
@@ -38,10 +38,10 @@ describe("상황 카드 로컬 계측", () => {
 
   it("drops free-form chat copy even when an untyped caller passes it", () => {
     const unsafeCall = trackStoryCardEvent as (
-      event: "message_sent",
+      event: "story_card_message_sent",
       params: Record<string, unknown>,
     ) => void;
-    unsafeCall("message_sent", {
+    unsafeCall("story_card_message_sent", {
       cardId: "wave-archive",
       messageCount: 1,
       message: "사용자가 쓴 비공개 문장",
@@ -52,5 +52,20 @@ describe("상황 카드 로컬 계측", () => {
     expect(stored).toContain("wave-archive");
     expect(stored).not.toContain("사용자가 쓴 비공개 문장");
     expect(stored).not.toContain("서버 원문");
+  });
+
+  it("emits the four required card-beyond funnel events verbatim", () => {
+    trackStoryCardEvent("story_cards_landing_viewed");
+    trackStoryCardEvent("story_card_selected", { cardId: "rain-station" });
+    trackStoryCardEvent("story_chat_started", { cardId: "rain-station" });
+    trackStoryCardEvent("story_cards_reservation_clicked", { cardId: "rain-station" });
+
+    const events = JSON.parse(localStorage.getItem("events") ?? "[]") as Array<{ event: string }>;
+    expect(events.map(({ event }) => event)).toEqual([
+      "story_cards_landing_viewed",
+      "story_card_selected",
+      "story_chat_started",
+      "story_cards_reservation_clicked",
+    ]);
   });
 });

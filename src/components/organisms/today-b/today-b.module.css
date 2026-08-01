@@ -157,6 +157,10 @@
   letter-spacing: -0.03em;
 }
 
+.formHeading h2:focus {
+  outline: none;
+}
+
 .formHeading p {
   margin: 6px 0 0;
   color: var(--tb-muted);
@@ -262,6 +266,35 @@
   color: #ff9ca7;
 }
 
+.answerSummary {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--tb-line);
+}
+
+.answerSummary > div {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: 1rem;
+  border-bottom: 1px solid var(--tb-line);
+  padding: 0.875rem 0;
+}
+
+.answerSummary dt {
+  color: var(--tb-accent);
+  font-size: 0.6875rem;
+  font-weight: 850;
+}
+
+.answerSummary dd {
+  margin: 0;
+  color: #d7d4ca;
+  font-size: 0.75rem;
+  line-height: var(--mvp-body-leading);
+  overflow-wrap: anywhere;
+}
+
 .signalGroup {
   min-width: 0;
   margin: 0;
@@ -317,9 +350,13 @@
 
 .signalOption input {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
   opacity: 0;
+  cursor: pointer;
 }
 
 .radioMark {
@@ -402,6 +439,11 @@
   color: var(--tb-subtle);
   font-size: 10px;
   line-height: 1.45;
+}
+
+.stepActions {
+  display: grid;
+  gap: 0.5rem;
 }
 
 .primaryButton,
@@ -682,6 +724,24 @@
   line-height: 1.5;
 }
 
+.startGate {
+  display: inline-flex;
+  width: 100%;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  border: 0;
+  border-radius: var(--mvp-radius-control);
+  color: #17180f;
+  background: var(--tb-accent);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
 .days ol {
   display: grid;
   gap: 0;
@@ -707,6 +767,11 @@
   gap: 14px;
   padding: 18px 0;
   cursor: pointer;
+}
+
+.days li[data-locked="true"] label {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .days li input {
@@ -854,6 +919,21 @@
   gap: 9px;
 }
 
+.startedNotice {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  border: 1px solid rgba(120, 214, 167, 0.34);
+  border-radius: var(--mvp-radius-control);
+  color: var(--tb-positive);
+  background: rgba(120, 214, 167, 0.07);
+  font-size: 12px;
+  font-weight: 780;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .back:hover {
     color: var(--tb-text);
@@ -865,6 +945,10 @@
   }
 
   .primaryButton:hover:not(:disabled) {
+    background: #f5d57f;
+  }
+
+  .startGate:hover {
     background: #f5d57f;
   }
 
@@ -880,9 +964,10 @@
 
 .signalOption:active,
 .primaryButton:active:not(:disabled),
+.startGate:active,
 .secondaryButton:active,
 .textButton:active,
-.days li label:active .checkmark {
+.days li[data-locked="false"] label:active .checkmark {
   transform: scale(0.97);
 }
 
@@ -927,8 +1012,18 @@
     align-items: center;
   }
 
-  .submitArea .primaryButton {
+  .submitArea > .primaryButton,
+  .stepActions .primaryButton {
     min-width: 218px;
+  }
+
+  .stepActions {
+    grid-template-columns: auto auto;
+  }
+
+  .stepActions .secondaryButton {
+    width: auto;
+    min-width: 138px;
   }
 
   .result {
@@ -992,6 +1087,7 @@
   .field textarea,
   .signalOption,
   .primaryButton,
+  .startGate,
   .secondaryButton,
   .textButton,
   .checkmark,
@@ -1001,6 +1097,7 @@
 
   .signalOption:active,
   .primaryButton:active:not(:disabled),
+  .startGate:active,
   .secondaryButton:active,
   .textButton:active,
   .days li label:active .checkmark {

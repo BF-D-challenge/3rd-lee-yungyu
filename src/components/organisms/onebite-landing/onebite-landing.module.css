@@ -1,0 +1,449 @@
+.page {
+  --landing-paper: #f8f3ec;
+  --landing-ink: #17231d;
+  --landing-muted: #5f6c64;
+  --landing-green: #2f765a;
+  --landing-green-strong: #1a4f3a;
+  --landing-coral: #f06f4f;
+  min-width: 0;
+  min-height: 100dvh;
+  overflow-x: clip;
+  color: var(--landing-ink);
+  background: var(--landing-paper);
+  font-family: var(--font-sans);
+}
+
+.header {
+  display: flex;
+  width: min(100%, 76rem);
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
+}
+
+.brand,
+.footer a {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  color: var(--landing-ink);
+  font-size: 0.9375rem;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.header > span {
+  color: var(--landing-green);
+  font-size: 0.8125rem;
+  font-weight: 850;
+}
+
+.hero {
+  position: relative;
+  width: min(100%, 76rem);
+  min-height: calc(100svh - 3.5rem);
+  margin: 0 auto;
+  overflow: hidden;
+  background: #0d1713;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.heroShade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(6, 12, 10, 0.08) 10%, rgba(6, 12, 10, 0.2) 38%, rgba(6, 12, 10, 0.96) 100%),
+    linear-gradient(90deg, rgba(6, 12, 10, 0.24), transparent 60%);
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: calc(100svh - 3.5rem);
+  align-content: end;
+  padding: 2rem 1.25rem max(1.25rem, env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+.eyebrow,
+.sectionHeading > p,
+.reservation > div > p {
+  margin: 0;
+  color: var(--landing-coral);
+  font-size: 0.8125rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.hero h1 {
+  max-width: 10ch;
+  margin: 0.625rem 0 0;
+  color: #fff;
+  font-size: clamp(2.55rem, 11.8vw, 5.25rem);
+  font-weight: 950;
+  letter-spacing: -0.065em;
+  line-height: 1.3;
+  word-break: keep-all;
+}
+
+.lead {
+  max-width: 31rem;
+  margin: 0.875rem 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.heroActions {
+  display: grid;
+  gap: 0.625rem;
+  margin-top: 1.125rem;
+}
+
+.primaryAction,
+.secondaryAction,
+.closingAction {
+  display: inline-flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  border-radius: 0.875rem;
+  padding: 0 1.25rem;
+  box-sizing: border-box;
+  color: inherit;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color 160ms cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 160ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.primaryAction {
+  color: #17231d;
+  background: #ff8b68;
+}
+
+.secondaryAction {
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  color: #fff;
+  background: rgba(8, 17, 13, 0.42);
+}
+
+.primaryAction svg,
+.closingAction svg {
+  width: 1.125rem;
+}
+
+.primaryAction:active,
+.secondaryAction:active,
+.closingAction:active {
+  transform: scale(0.97);
+}
+
+.example,
+.steps,
+.reservation,
+.footer {
+  width: min(100%, 76rem);
+  margin: 0 auto;
+  padding: 4rem 1.25rem;
+  box-sizing: border-box;
+}
+
+.example {
+  display: grid;
+  gap: 2rem;
+}
+
+.sectionHeading h2,
+.reservation h2 {
+  margin: 0.75rem 0 0;
+  color: var(--landing-ink);
+  font-size: clamp(2rem, 8vw, 3.75rem);
+  font-weight: 950;
+  letter-spacing: -0.055em;
+  line-height: 1.3;
+  word-break: keep-all;
+}
+
+.coachingExample {
+  min-width: 0;
+  border-left: 0.5rem solid var(--landing-coral);
+  padding: 0.5rem 0 0.5rem 1.25rem;
+}
+
+.mealContext {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.mealContext span {
+  color: var(--landing-muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.mealContext strong {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.coachingExample blockquote {
+  margin: 1.5rem 0 0;
+  color: var(--landing-ink);
+  font-size: clamp(1.7rem, 7vw, 3.25rem);
+  font-weight: 950;
+  letter-spacing: -0.05em;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+.coachingExample > p {
+  max-width: 34rem;
+  margin: 1.5rem 0 0;
+  color: var(--landing-muted);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.steps {
+  display: grid;
+  gap: 2rem;
+  background: #e5eee4;
+}
+
+.steps ol {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps li {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(23, 35, 29, 0.18);
+}
+
+.steps li:first-child {
+  padding-top: 0;
+}
+
+.steps li > span {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--landing-green);
+  font-size: 0.8125rem;
+  font-weight: 900;
+}
+
+.steps li > div {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.steps strong {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.steps li p {
+  margin: 0;
+  color: var(--landing-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.reservation {
+  display: grid;
+  gap: 1.5rem;
+  color: #fff;
+  background: var(--landing-green-strong);
+}
+
+.reservation h2 {
+  color: #fff;
+}
+
+.reservation > div > span {
+  display: block;
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.closingAction {
+  width: 100%;
+  color: var(--landing-green-strong);
+  background: #ff9b78;
+}
+
+.privacy,
+.footer p {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.privacy {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.privacy svg,
+.footer p svg {
+  width: 1rem;
+  flex: 0 0 1rem;
+  margin-top: 0.125rem;
+}
+
+.footer {
+  display: grid;
+  gap: 1rem;
+  border-top: 1px solid rgba(23, 35, 29, 0.14);
+  padding-top: 2rem;
+  padding-bottom: max(2rem, env(safe-area-inset-bottom));
+}
+
+.footer p {
+  color: var(--landing-muted);
+}
+
+.footer a {
+  color: var(--landing-green);
+  font-size: 0.8125rem;
+}
+
+.brand:focus-visible,
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible,
+.closingAction:focus-visible,
+.footer a:focus-visible {
+  outline: 3px solid #ff9b78;
+  outline-offset: 3px;
+}
+
+@media (min-width: 52.5rem) {
+  .header {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+
+  .hero {
+    min-height: min(48rem, calc(100svh - 3.5rem));
+    border-radius: 0 0 2rem 2rem;
+  }
+
+  .heroCopy {
+    min-height: min(48rem, calc(100svh - 3.5rem));
+    padding: 4rem;
+  }
+
+  .heroImage {
+    object-position: center 38%;
+  }
+
+  .heroActions {
+    grid-template-columns: max-content max-content;
+  }
+
+  .primaryAction,
+  .secondaryAction {
+    min-width: 13rem;
+  }
+
+  .example,
+  .steps {
+    grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1.22fr);
+    gap: 5rem;
+    padding: 7rem 2rem;
+  }
+
+  .steps,
+  .reservation {
+    width: min(calc(100% - 4rem), 76rem);
+    border-radius: 2rem;
+  }
+
+  .reservation {
+    grid-template-columns: minmax(0, 1fr) max-content;
+    align-items: end;
+    gap: 1.25rem 4rem;
+    padding: 5rem 4rem;
+  }
+
+  .closingAction {
+    min-width: 15rem;
+  }
+
+  .privacy {
+    grid-column: 1 / -1;
+  }
+
+  .footer {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primaryAction:hover,
+  .closingAction:hover {
+    background: #ffad91;
+  }
+
+  .secondaryAction:hover {
+    border-color: #fff;
+    background: rgba(8, 17, 13, 0.64);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryAction,
+  .secondaryAction,
+  .closingAction {
+    transition: background-color 120ms ease, border-color 120ms ease;
+  }
+
+  .primaryAction:active,
+  .secondaryAction:active,
+  .closingAction:active {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .secondaryAction {
+    border-width: 2px;
+    background: #08110d;
+  }
+}

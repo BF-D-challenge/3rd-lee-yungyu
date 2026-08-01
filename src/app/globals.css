@@ -68,6 +68,28 @@
   --aurora-glow-outer: rgba(26, 47, 181, 0.4);
   --aurora-angle: 120deg; /* 흐름 방향: 좌하단 → 우상단 */
   --aurora-accent-stop: 28%; /* 작을수록 파랑 비중↑ */
+
+  /* 4개 MVP 공통 행동 기반. 앱별 색·표면은 각 모듈이 소유한다. */
+  --mvp-space-1: 0.25rem;
+  --mvp-space-2: 0.5rem;
+  --mvp-space-3: 0.75rem;
+  --mvp-space-4: 1rem;
+  --mvp-space-5: 1.5rem;
+  --mvp-space-6: 2rem;
+  --mvp-touch: 3rem;
+  --mvp-body-leading: 1.75;
+  --mvp-title-leading: 1.25;
+  --mvp-caption-leading: 1.52;
+  --mvp-focus-width: 0.1875rem;
+  --mvp-focus-offset: 0.125rem;
+  --mvp-compact-max: 37.4375rem;
+  --mvp-medium-min: 37.5rem;
+  --mvp-expanded-min: 52.5rem;
+  --mvp-radius-control: 0.75rem;
+  --mvp-radius-sheet: 1.5rem;
+  --mvp-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --mvp-motion-fast: 160ms;
+  --mvp-motion-state: 220ms;
 }
 
 html {

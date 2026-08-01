@@ -340,12 +340,305 @@ drop policy if exists idea_taste_answers_insert_own on public.idea_taste_answers
 create policy idea_taste_answers_insert_own on public.idea_taste_answers
   for insert to authenticated with check ((select auth.uid()) = user_id);
 
+-- ----------------------------------------------------------------------------
+-- 8. today_jobs / today-production — Today 24시간 제작 작업과 비공개 큐.
+--    브라우저 역할에는 노출하지 않고 service_role 서버 경로만 사용한다.
+-- ----------------------------------------------------------------------------
+create extension if not exists pgmq;
+
+create table if not exists public.today_jobs (
+  id uuid primary key,
+  access_token_hash text not null,
+  email text not null,
+  masked_email text not null,
+  status text not null default 'queued'
+    check (status in ('queued', 'processing', 'ready', 'delivery_failed', 'failed', 'cancelled')),
+  idea jsonb not null,
+  channel text not null check (channel in ('instagram', 'community', 'direct')),
+  signal text not null check (signal in ('waitlist', 'interview', 'deposit')),
+  artifacts jsonb,
+  submitted_at timestamptz not null default now(),
+  ready_at timestamptz not null,
+  started_at timestamptz,
+  completed_at timestamptz,
+  emailed_at timestamptz,
+  resend_email_id text,
+  attempt_count integer not null default 0,
+  last_error text,
+  updated_at timestamptz not null default now()
+);
+
+alter table public.today_jobs enable row level security;
+revoke all on table public.today_jobs from anon, authenticated;
+grant select, insert, update, delete on table public.today_jobs to service_role;
+
+create index if not exists today_jobs_status_ready_at_idx
+  on public.today_jobs (status, ready_at);
+
+select pgmq.create('today-production');
+
+create or replace function public.today_enqueue_job(
+  p_job_id uuid,
+  p_delay_seconds integer default 86400
+)
+returns bigint
+language plpgsql
+security definer
+set search_path = public, pg_catalog
+as $$
+declare
+  v_message_id bigint;
+begin
+  select pgmq.send(
+    'today-production',
+    jsonb_build_object('job_id', p_job_id),
+    greatest(0, p_delay_seconds)
+  )
+  into v_message_id;
+
+  return v_message_id;
+end;
+$$;
+
+create or replace function public.today_claim_next_job()
+returns jsonb
+language plpgsql
+security definer
+set search_path = public, pg_catalog
+as $$
+declare
+  v_message_id bigint;
+  v_message_body jsonb;
+  v_job public.today_jobs%rowtype;
+begin
+  select msg_id, message
+  into v_message_id, v_message_body
+  from pgmq.read('today-production', 300, 1)
+  limit 1;
+
+  if v_message_id is null then
+    return null;
+  end if;
+
+  update public.today_jobs
+  set
+    status = 'processing',
+    started_at = coalesce(started_at, now()),
+    attempt_count = attempt_count + 1,
+    last_error = null,
+    updated_at = now()
+  where id = (v_message_body ->> 'job_id')::uuid
+    and status in ('queued', 'processing', 'delivery_failed')
+  returning *
+  into v_job;
+
+  if v_job.id is null then
+    perform pgmq.delete('today-production', v_message_id);
+    return jsonb_build_object('skipped', true);
+  end if;
+
+  return jsonb_build_object(
+    'messageId', v_message_id,
+    'job', to_jsonb(v_job)
+  );
+end;
+$$;
+
+create or replace function public.today_complete_job(
+  p_job_id uuid,
+  p_message_id bigint,
+  p_artifacts jsonb,
+  p_resend_email_id text
+)
+returns void
+language plpgsql
+security definer
+set search_path = public, pg_catalog
+as $$
+begin
+  update public.today_jobs
+  set
+    status = 'ready',
+    artifacts = p_artifacts,
+    completed_at = now(),
+    emailed_at = now(),
+    resend_email_id = p_resend_email_id,
+    last_error = null,
+    updated_at = now()
+  where id = p_job_id;
+
+  perform pgmq.delete('today-production', p_message_id);
+end;
+$$;
+
+create or replace function public.today_retry_job(
+  p_job_id uuid,
+  p_error text
+)
+returns void
+language sql
+security definer
+set search_path = public, pg_catalog
+as $$
+  update public.today_jobs
+  set
+    status = case when attempt_count >= 3 then 'failed' else 'delivery_failed' end,
+    last_error = left(p_error, 500),
+    updated_at = now()
+  where id = p_job_id;
+$$;
+
+revoke all on function public.today_enqueue_job(uuid, integer) from public, anon, authenticated;
+revoke all on function public.today_claim_next_job() from public, anon, authenticated;
+revoke all on function public.today_complete_job(uuid, bigint, jsonb, text) from public, anon, authenticated;
+revoke all on function public.today_retry_job(uuid, text) from public, anon, authenticated;
+
+grant execute on function public.today_enqueue_job(uuid, integer) to service_role;
+grant execute on function public.today_claim_next_job() to service_role;
+grant execute on function public.today_complete_job(uuid, bigint, jsonb, text) to service_role;
+grant execute on function public.today_retry_job(uuid, text) to service_role;
+
+-- ----------------------------------------------------------------------------
+-- 9. fake_door_reservations — 네 MVP의 로그인 기반 초기 체험 예약.
+--    결제·예약 확정이 아니라 제품별 수요와 원하는 체험 시기만 기록한다.
+-- ----------------------------------------------------------------------------
+create table if not exists public.fake_door_reservations (
+  id          uuid primary key default gen_random_uuid(),
+  user_id     uuid not null references auth.users (id) on delete cascade,
+  product     text not null check (
+    product in ('matpick', 'onebite', 'today', 'story-cards')
+  ),
+  slot_key    text not null check (
+    slot_key in ('this-week', 'next-week', 'launch-notice')
+  ),
+  status      text not null default 'reserved' check (
+    status in ('reserved', 'cancelled')
+  ),
+  source_path text not null default '/' check (
+    char_length(source_path) between 1 and 240
+    and left(source_path, 1) = '/'
+  ),
+  instagram_handle text check (
+    (
+      instagram_handle is null
+      and product not in ('matpick', 'onebite')
+    )
+    or (
+      product in ('matpick', 'onebite')
+      and instagram_handle is not null
+      and char_length(instagram_handle) between 1 and 30
+      and instagram_handle ~ '^[a-z0-9_]+([.][a-z0-9_]+)*$'
+    )
+  ),
+  contact_consent_at timestamptz not null check (
+    contact_consent_at <= now() + interval '5 minutes'
+  ),
+  privacy_version text not null check (privacy_version = '2026-08-01'),
+  acquisition_source text check (
+    acquisition_source is null or char_length(acquisition_source) between 1 and 120
+  ),
+  utm_source text check (
+    utm_source is null or char_length(utm_source) between 1 and 120
+  ),
+  utm_medium text check (
+    utm_medium is null or char_length(utm_medium) between 1 and 120
+  ),
+  utm_campaign text check (
+    utm_campaign is null or char_length(utm_campaign) between 1 and 120
+  ),
+  utm_content text check (
+    utm_content is null or char_length(utm_content) between 1 and 120
+  ),
+  utm_term text check (
+    utm_term is null or char_length(utm_term) between 1 and 120
+  ),
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now(),
+  unique (user_id, product)
+);
+
+create index if not exists idx_fake_door_reservations_product_created
+  on public.fake_door_reservations (product, created_at desc);
+
+drop trigger if exists trg_fake_door_reservations_updated_at
+  on public.fake_door_reservations;
+create trigger trg_fake_door_reservations_updated_at
+  before update on public.fake_door_reservations
+  for each row execute function public.set_updated_at();
+
+alter table public.fake_door_reservations enable row level security;
+
+revoke all on table public.fake_door_reservations from anon;
+revoke all on table public.fake_door_reservations from authenticated;
+grant select, insert, update on table public.fake_door_reservations to authenticated;
+grant all on table public.fake_door_reservations to service_role;
+
+drop policy if exists fake_door_reservations_select_own
+  on public.fake_door_reservations;
+create policy fake_door_reservations_select_own
+  on public.fake_door_reservations
+  for select
+  to authenticated
+  using ((select auth.uid()) = user_id);
+
+drop policy if exists fake_door_reservations_insert_own
+  on public.fake_door_reservations;
+create policy fake_door_reservations_insert_own
+  on public.fake_door_reservations
+  for insert
+  to authenticated
+  with check (
+    (select auth.uid()) = user_id
+    and status = 'reserved'
+  );
+
+drop policy if exists fake_door_reservations_update_own
+  on public.fake_door_reservations;
+create policy fake_door_reservations_update_own
+  on public.fake_door_reservations
+  for update
+  to authenticated
+  using ((select auth.uid()) = user_id)
+  with check ((select auth.uid()) = user_id);
+
+create schema if not exists private;
+
+create or replace view private.fake_door_reservation_leads
+with (security_barrier = true)
+as
+select
+  r.id as reservation_id,
+  r.user_id,
+  u.email as contact_email,
+  u.email_confirmed_at,
+  r.product,
+  r.slot_key,
+  r.status,
+  r.instagram_handle,
+  r.contact_consent_at,
+  r.privacy_version,
+  r.source_path,
+  r.acquisition_source,
+  r.utm_source,
+  r.utm_medium,
+  r.utm_campaign,
+  r.utm_content,
+  r.utm_term,
+  r.created_at,
+  r.updated_at
+from public.fake_door_reservations r
+join auth.users u on u.id = r.user_id;
+
+revoke all on table private.fake_door_reservation_leads from public, anon, authenticated;
+grant usage on schema private to service_role;
+grant select on table private.fake_door_reservation_leads to service_role;
+
 -- ============================================================================
 -- 끝. 요약
---   테이블 7  : profiles, ideas, votes, spins, purchases, published_cards, idea_taste_answers
+--   테이블 9  : 기존 7개 + today_jobs + fake_door_reservations
 --   ENUM   4  : vote_type, product_type, purchase_status, seed_track
---   RLS 정책 21: profiles×3, ideas×4, votes×3, spins×3, purchases×2,
---                 published_cards×4, idea_taste_answers×2
+--   RLS 정책 24: 기존 21개 + fake_door_reservations×3
+--   service_role 전용: today_jobs CRUD + today-production 큐 함수 4개
 --   Edge Function 위임: capability 토큰 기반 익명 응원 / rate-limit / 익명 스핀 캡 / 결제 상태 전이
 --   ⚠ 라이브 DB에는 이 파일에 없는 card_votes/duel_votes 테이블이 이미 존재함(2026-07-08 REST 프로브로 확인).
 --     본 파일과 라이브 스키마가 어긋나 있으니, 다음 정리 작업 때 card_votes/duel_votes 정의도
