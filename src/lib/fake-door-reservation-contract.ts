@@ -182,12 +182,12 @@ export const fakeDoorProductConfigs: Record<FakeDoorTestProduct, FakeDoorProduct
     eyebrow: "상황을 고르면, 그 사람이 먼저 말을 걸게",
     headline: "첫 대화 체험이 열리면 알려드릴게요.",
     description:
-      "마음에 가까운 장면을 고르고 그 장면의 남자 주인공과 대화하는 선공개 체험을 준비 중이에요.",
+      "마음에 가까운 장면을 고르고 그 장면의 남자 주인공과 대화하는 선공개 체험을 준비 중이에요. 체험이 열리면 Instagram DM으로 안내해드려요.",
     promise: "카드너머가 준비 중인 선공개 대화 체험",
     proof: [
       "지금 마음에 가까운 상황 카드 선택",
       "장면마다 다른 남자 주인공과 첫 대화",
-      "짧은 선택지와 직접 입력을 함께 지원",
+      "Instagram DM으로 첫 대화 안내",
     ],
     image: "/images/experiment-gallery/story-cards-redesign.jpg",
     imageAlt: "어두운 카드 덱에서 상황을 고르고 대화를 시작하는 카드너머 화면",
@@ -199,7 +199,7 @@ export const fakeDoorProductConfigs: Record<FakeDoorTestProduct, FakeDoorProduct
     ink: "#f5f2eb",
     muted: "#aaa69d",
     dark: true,
-    requiresInstagram: false,
+    requiresInstagram: true,
     slots: defaultSlots,
   },
 };

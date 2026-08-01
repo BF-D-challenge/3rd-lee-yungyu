@@ -30,6 +30,8 @@ describe("fake door reservation contract", () => {
     expect(fakeDoorProductConfigs.matpick.name).toBe("맛핀");
     expect(fakeDoorProductConfigs.onebite.requiresInstagram).toBe(true);
     expect(fakeDoorProductConfigs.matpick.requiresInstagram).toBe(true);
+    expect(fakeDoorProductConfigs["story-cards"].requiresInstagram).toBe(true);
+    expect(fakeDoorProductConfigs.today.requiresInstagram).toBe(false);
     expect(Object.values(fakeDoorProductConfigs).every((config) =>
       !config.description.includes("바로 대화")
       && !config.description.includes("24시간 뒤"),
@@ -49,6 +51,30 @@ describe("fake door reservation contract", () => {
       created_at: "2026-07-29T00:00:00.000Z",
       updated_at: "2026-07-29T00:00:00.000Z",
     }).success).toBe(false);
+    expect(fakeDoorReservationSchema.safeParse({
+      id: "f60112fc-49e0-471b-89c8-16a649a1ad55",
+      user_id: "ce4491a8-e5e3-4d53-93cf-c3411ed72f0a",
+      product: "story-cards",
+      slot_key: "this-week",
+      status: "reserved",
+      source_path: "/reserve/story-cards",
+      instagram_handle: null,
+      ...leadFields,
+      created_at: "2026-07-29T00:00:00.000Z",
+      updated_at: "2026-07-29T00:00:00.000Z",
+    }).success).toBe(false);
+    expect(fakeDoorReservationSchema.safeParse({
+      id: "f60112fc-49e0-471b-89c8-16a649a1ad55",
+      user_id: "ce4491a8-e5e3-4d53-93cf-c3411ed72f0a",
+      product: "story-cards",
+      slot_key: "this-week",
+      status: "reserved",
+      source_path: "/reserve/story-cards",
+      instagram_handle: "cardbeyond_test",
+      ...leadFields,
+      created_at: "2026-07-29T00:00:00.000Z",
+      updated_at: "2026-07-29T00:00:00.000Z",
+    }).success).toBe(true);
     expect(fakeDoorReservationSchema.safeParse({
       id: "f60112fc-49e0-471b-89c8-16a649a1ad55",
       user_id: "ce4491a8-e5e3-4d53-93cf-c3411ed72f0a",

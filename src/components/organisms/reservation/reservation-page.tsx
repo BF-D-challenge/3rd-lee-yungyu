@@ -12,6 +12,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { GoogleLoginButton } from "@/components/organisms/journey/google-login-button";
 import {
+  beginAnonymousAuth,
   checkAuthSession,
   consumeAuthPending,
   reservationUsesSupabase,
@@ -72,22 +73,31 @@ export function ReservationPage({ config }: ReservationPageProps) {
   );
   const requiresInstagram = config.requiresInstagram;
   const isOnebite = config.product === "onebite";
+  const isStoryCards = config.product === "story-cards";
   const instagramLabel = isOnebite
     ? "7일 패스 소식을 받을 Instagram 아이디"
-    : "맛집 릴스를 보낼 Instagram 아이디";
+    : isStoryCards
+      ? "첫 대화 안내를 받을 Instagram 아이디"
+      : "맛집 릴스를 보낼 Instagram 아이디";
   const instagramHelp = isOnebite
-    ? "패스가 열리면 연결한 계정 기준으로 한 번 알려드려요. 아직 결제하지 않아요."
-    : "예약 뒤 안내받은 방법으로 맛집 릴스를 보내면 내 맛집 저장함을 준비해드려요.";
+    ? "패스가 열리면 입력한 계정으로 한 번 알려드려요. 아직 결제하지 않아요."
+    : isStoryCards
+      ? "체험이 열리면 입력한 계정으로 DM을 보내 첫 대화를 안내해드려요. 자동 대화는 아직 준비 중이에요."
+      : "예약 뒤 안내받은 방법으로 맛집 릴스를 보내면 내 맛집 저장함을 준비해드려요.";
   const reservationLabel = isOnebite ? "7일 패스 출시 알림" : "선공개 예약";
-  const contactConsentLabel = isOnebite
-    ? "Google 계정 이메일로 7일 패스 출시 안내를 받는 데 동의해요."
+  const contactConsentLabel = requiresInstagram
+    ? isOnebite
+      ? "입력한 Instagram 계정으로 7일 패스 출시 안내를 받는 데 동의해요."
+      : isStoryCards
+        ? "입력한 Instagram 계정으로 첫 대화 체험 안내를 받는 데 동의해요."
+        : "입력한 Instagram 계정으로 출시와 초기 체험 안내를 받는 데 동의해요."
     : "Google 계정 이메일로 출시와 초기 체험 안내를 받는 데 동의해요.";
   const normalizedInstagram = normalizeInstagramHandle(instagramHandle);
   const instagramReady = !requiresInstagram || Boolean(normalizedInstagram);
   const loginReady = instagramReady && Boolean(contactConsent);
   const slotStepNumber = requiresInstagram ? 2 : 1;
-  const authStepNumber = requiresInstagram ? 3 : 2;
-  const saveStepNumber = requiresInstagram ? 4 : 3;
+  const authStepNumber = 2;
+  const saveStepNumber = 3;
 
   useEffect(() => {
     let cancelled = false;
@@ -100,7 +110,7 @@ export function ReservationPage({ config }: ReservationPageProps) {
         setSession(nextSession);
         if (!nextSession) return;
         setMode(nextSession.demo ? "local_demo" : "supabase");
-        if (consumeAuthPending("creator")) {
+        if (!nextSession.anonymous && consumeAuthPending("creator")) {
           track("fake_door_reservation_login_completed", {
             product: config.product,
             method: nextSession.demo ? "demo" : "google",
@@ -138,7 +148,7 @@ export function ReservationPage({ config }: ReservationPageProps) {
   };
 
   const reserve = async () => {
-    if (!session || saving) return;
+    if (saving) return;
     if (requiresInstagram && !normalizedInstagram) {
       setInstagramError(instagramHandleError(instagramHandle));
       instagramInputRef.current?.focus();
@@ -151,14 +161,30 @@ export function ReservationPage({ config }: ReservationPageProps) {
     }
     setSaving(true);
     setError("");
-    if (!session.demo) {
+    let activeSession = session;
+    if (!activeSession && requiresInstagram) {
+      const authResult = await beginAnonymousAuth();
+      if (authResult.status !== "authenticated") {
+        setError("예약 연결을 만들지 못했어요. 잠시 후 다시 시도해주세요.");
+        setSaving(false);
+        return;
+      }
+      activeSession = authResult.session;
+      setSession(activeSession);
+      setMode(activeSession.demo ? "local_demo" : "supabase");
+    }
+    if (!activeSession) {
+      setSaving(false);
+      return;
+    }
+    if (!activeSession.demo) {
       track("fake_door_reservation_submit", {
         product: config.product,
         slot_key: slot,
       });
     }
     try {
-      const result = await saveFakeDoorReservation(session, {
+      const result = await saveFakeDoorReservation(activeSession, {
         product: config.product,
         slotKey: slot,
         sourcePath: `${window.location.pathname}${window.location.search}`,
@@ -175,7 +201,7 @@ export function ReservationPage({ config }: ReservationPageProps) {
           storage_mode: result.mode,
           submit_success: true,
         }, { meta: false });
-        trackMvpReservationCompleted(config.product, session, {
+        trackMvpReservationCompleted(config.product, activeSession, {
           slot_key: slot,
           storage_mode: result.mode,
           submit_success: true,
@@ -221,7 +247,7 @@ export function ReservationPage({ config }: ReservationPageProps) {
             <h1 id="reservation-title">{config.headline}</h1>
             <p className={styles.description}>{config.description}</p>
             <p className={styles.releaseNotice} role="note">
-              지금은 예약만 받아요. 실제 체험은 준비가 끝난 뒤 연결한 Google 계정으로 안내해드릴게요.
+              지금은 예약만 받아요. 실제 체험은 준비가 끝난 뒤 {requiresInstagram ? "입력한 Instagram 계정" : "연결한 Google 계정"}으로 안내해드릴게요.
             </p>
           </div>
 
@@ -278,7 +304,7 @@ export function ReservationPage({ config }: ReservationPageProps) {
                 </p>
               ) : (
                 <p className={styles.honestNotice}>
-                  지금 결제되거나 체험 일정이 확정된 것은 아니에요. 실제 체험은 준비가 끝난 뒤 연결한 Google 계정으로 안내해드려요.
+                  지금 결제되거나 체험 일정이 확정된 것은 아니에요. 실제 체험은 준비가 끝난 뒤 {requiresInstagram ? "입력한 Instagram 계정" : "연결한 Google 계정"}으로 안내해드려요.
                 </p>
               )}
               <p className={styles.closeNotice}>이 페이지를 닫아도 예약 신청은 저장돼요.</p>
@@ -294,7 +320,7 @@ export function ReservationPage({ config }: ReservationPageProps) {
               <div className={styles.bookingHeading}>
                 <p>{reservationLabel}</p>
                 <h2 id="booking-title">지금은 예약만 받아요.</h2>
-                <span>{requiresInstagram ? "네" : "세"} 단계로 신청하면, 실제 체험이 준비됐을 때 안내해드려요. 아직 결제하지 않아요.</span>
+                <span>세 단계로 신청하면, 실제 체험이 준비됐을 때 안내해드려요. 아직 결제하지 않아요.</span>
               </div>
 
               {requiresInstagram ? (
@@ -322,7 +348,7 @@ export function ReservationPage({ config }: ReservationPageProps) {
                         }
                       }}
                       onBlur={() => setInstagramError(instagramHandleError(instagramHandle))}
-                      placeholder={isOnebite ? "my_daily_meal" : "my_food_archive"}
+                      placeholder={isOnebite ? "my_daily_meal" : isStoryCards ? "my_story" : "my_food_archive"}
                       autoCapitalize="none"
                       autoCorrect="off"
                       autoComplete="off"
@@ -374,90 +400,44 @@ export function ReservationPage({ config }: ReservationPageProps) {
                 </fieldset>
               </div>
 
-              <div className={styles.authStep} data-reservation-step="auth">
-                <div className={styles.stepLabel}>
-                  <span>{authStepNumber}</span>
-                  <p>Google 로그인</p>
-                </div>
-                <label className={styles.contactConsent}>
-                  <input
-                    ref={contactConsentRef}
-                    type="checkbox"
-                    checked={Boolean(contactConsent)}
-                    onChange={(event) => {
-                      setContactConsent(
-                        savePendingContactConsent(config.product, event.target.checked),
-                      );
-                      setContactConsentError("");
-                      setError("");
-                    }}
-                    aria-describedby="reservation-contact-consent-help reservation-contact-consent-error"
-                    aria-invalid={Boolean(contactConsentError)}
-                  />
-                  <span>
-                    {contactConsentLabel}
-                  </span>
-                </label>
-                <p id="reservation-contact-consent-help" className={styles.contactConsentHelp}>
-                  예약 안내에만 사용하고 광고 분석에는 보내지 않아요. 동의하지 않으면 예약을 저장하지 않습니다.
-                </p>
-                <p
-                  id="reservation-contact-consent-error"
-                  className={styles.fieldError}
-                  role="alert"
-                >
-                  {contactConsentError}
-                </p>
-                {checkingAuth ? (
-                  <p className={styles.loading} role="status">
-                    <LoaderCircle aria-hidden />
-                    계정 상태 확인 중
-                  </p>
-                ) : session ? (
-                  <>
-                    <p className={styles.accountReady}>
-                      <ShieldCheck aria-hidden />
-                      {session.demo
-                        ? "로컬 데모 준비 완료"
-                        : session.displayName
-                          ? `${session.displayName}님 Google 계정 확인 완료`
-                          : "Google 계정 확인 완료"}
-                    </p>
-                  </>
-                ) : (
-                  <GoogleLoginButton
-                    context="creator"
-                    label={reservationUsesSupabase ? "Google로 예약 계속하기" : "로컬 데모로 계속하기"}
-                    disabled={!loginReady}
-                    requireSupabaseWhenConfigured
-                    returnTo={`/reserve/${config.product}`}
-                    onAuthenticated={authenticated}
-                    onBeforeAuth={() => {
-                      if (!contactConsent) {
-                        setContactConsentError("출시와 초기 체험 안내를 위한 연락 동의가 필요해요.");
-                        contactConsentRef.current?.focus();
-                        return;
-                      }
-                      track("fake_door_reservation_login_started", {
-                        product: config.product,
-                        slot_key: slot,
-                      });
-                    }}
-                  />
-                )}
-              </div>
-
-              {session ? (
+              {requiresInstagram ? (
                 <div className={styles.saveStep} data-reservation-step="save">
                   <div className={styles.stepLabel}>
                     <span>{saveStepNumber}</span>
-                    <p>{session.demo ? "데모 저장" : "예약 저장"}</p>
+                    <p>연락 동의와 예약 저장</p>
                   </div>
+                  <label className={styles.contactConsent}>
+                    <input
+                      ref={contactConsentRef}
+                      type="checkbox"
+                      checked={Boolean(contactConsent)}
+                      onChange={(event) => {
+                        setContactConsent(
+                          savePendingContactConsent(config.product, event.target.checked),
+                        );
+                        setContactConsentError("");
+                        setError("");
+                      }}
+                      aria-describedby="reservation-contact-consent-help reservation-contact-consent-error"
+                      aria-invalid={Boolean(contactConsentError)}
+                    />
+                    <span>{contactConsentLabel}</span>
+                  </label>
+                  <p id="reservation-contact-consent-help" className={styles.contactConsentHelp}>
+                    예약 안내에만 사용하고 광고 분석에는 보내지 않아요. 동의하지 않으면 예약을 저장하지 않습니다.
+                  </p>
+                  <p
+                    id="reservation-contact-consent-error"
+                    className={styles.fieldError}
+                    role="alert"
+                  >
+                    {contactConsentError}
+                  </p>
                   <button
                     className={styles.primaryButton}
                     type="button"
                     onClick={() => void reserve()}
-                    disabled={saving || !loginReady}
+                    disabled={checkingAuth || saving || !loginReady}
                   >
                     {saving ? (
                       <>
@@ -467,12 +447,110 @@ export function ReservationPage({ config }: ReservationPageProps) {
                     ) : (
                       <>
                         <Clock3 aria-hidden />
-                        {session.demo ? `${selectedSlot.label} 데모 저장` : `${selectedSlot.label} 예약 신청`}
+                        {mode === "local_demo" ? `${selectedSlot.label} 데모 저장` : `${selectedSlot.label} 예약 신청`}
                       </>
                     )}
                   </button>
                 </div>
-              ) : null}
+              ) : (
+                <>
+                  <div className={styles.authStep} data-reservation-step="auth">
+                    <div className={styles.stepLabel}>
+                      <span>{authStepNumber}</span>
+                      <p>Google 로그인</p>
+                    </div>
+                    <label className={styles.contactConsent}>
+                      <input
+                        ref={contactConsentRef}
+                        type="checkbox"
+                        checked={Boolean(contactConsent)}
+                        onChange={(event) => {
+                          setContactConsent(
+                            savePendingContactConsent(config.product, event.target.checked),
+                          );
+                          setContactConsentError("");
+                          setError("");
+                        }}
+                        aria-describedby="reservation-contact-consent-help reservation-contact-consent-error"
+                        aria-invalid={Boolean(contactConsentError)}
+                      />
+                      <span>{contactConsentLabel}</span>
+                    </label>
+                    <p id="reservation-contact-consent-help" className={styles.contactConsentHelp}>
+                      예약 안내에만 사용하고 광고 분석에는 보내지 않아요. 동의하지 않으면 예약을 저장하지 않습니다.
+                    </p>
+                    <p
+                      id="reservation-contact-consent-error"
+                      className={styles.fieldError}
+                      role="alert"
+                    >
+                      {contactConsentError}
+                    </p>
+                    {checkingAuth ? (
+                      <p className={styles.loading} role="status">
+                        <LoaderCircle aria-hidden />
+                        계정 상태 확인 중
+                      </p>
+                    ) : session && !session.anonymous ? (
+                      <p className={styles.accountReady}>
+                        <ShieldCheck aria-hidden />
+                        {session.demo
+                          ? "로컬 데모 준비 완료"
+                          : session.displayName
+                            ? `${session.displayName}님 Google 계정 확인 완료`
+                            : "Google 계정 확인 완료"}
+                      </p>
+                    ) : (
+                      <GoogleLoginButton
+                        context="creator"
+                        label={reservationUsesSupabase ? "Google로 예약 계속하기" : "로컬 데모로 계속하기"}
+                        disabled={!loginReady}
+                        requireSupabaseWhenConfigured
+                        returnTo={`/reserve/${config.product}`}
+                        onAuthenticated={authenticated}
+                        onBeforeAuth={() => {
+                          if (!contactConsent) {
+                            setContactConsentError("출시와 초기 체험 안내를 위한 연락 동의가 필요해요.");
+                            contactConsentRef.current?.focus();
+                            return;
+                          }
+                          track("fake_door_reservation_login_started", {
+                            product: config.product,
+                            slot_key: slot,
+                          });
+                        }}
+                      />
+                    )}
+                  </div>
+
+                  {session && !session.anonymous ? (
+                    <div className={styles.saveStep} data-reservation-step="save">
+                      <div className={styles.stepLabel}>
+                        <span>{saveStepNumber}</span>
+                        <p>{session.demo ? "데모 저장" : "예약 저장"}</p>
+                      </div>
+                      <button
+                        className={styles.primaryButton}
+                        type="button"
+                        onClick={() => void reserve()}
+                        disabled={saving || !loginReady}
+                      >
+                        {saving ? (
+                          <>
+                            <LoaderCircle aria-hidden />
+                            저장 중
+                          </>
+                        ) : (
+                          <>
+                            <Clock3 aria-hidden />
+                            {session.demo ? `${selectedSlot.label} 데모 저장` : `${selectedSlot.label} 예약 신청`}
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  ) : null}
+                </>
+              )}
 
               {error ? <p className={styles.error} role="alert">{error}</p> : null}
               {requiresInstagram ? (

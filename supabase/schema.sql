@@ -521,10 +521,10 @@ create table if not exists public.fake_door_reservations (
   instagram_handle text check (
     (
       instagram_handle is null
-      and product not in ('matpick', 'onebite')
+      and product not in ('matpick', 'onebite', 'story-cards')
     )
     or (
-      product in ('matpick', 'onebite')
+      product in ('matpick', 'onebite', 'story-cards')
       and instagram_handle is not null
       and char_length(instagram_handle) between 1 and 30
       and instagram_handle ~ '^[a-z0-9_]+([.][a-z0-9_]+)*$'

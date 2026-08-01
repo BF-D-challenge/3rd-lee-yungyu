@@ -21,6 +21,20 @@ export async function signInWithGoogle(redirectTo?: string): Promise<{ error: st
   return { error: error?.message ?? null };
 }
 
+/**
+ * Instagram 연락처만 받는 예약에 사용할 실제 Supabase 사용자 세션을 만든다.
+ * Google 계정 정보나 Instagram 아이디를 Auth 메타데이터에 넣지 않는다.
+ */
+export async function signInAnonymously(): Promise<{
+  user: User | null;
+  error: string | null;
+}> {
+  const sb = getSupabase();
+  if (!sb) return { user: null, error: "auth-disabled" };
+  const { data, error } = await sb.auth.signInAnonymously();
+  return { user: data.user ?? null, error: error?.message ?? null };
+}
+
 export async function getUser(): Promise<User | null> {
   const sb = getSupabase();
   if (!sb) return null;
