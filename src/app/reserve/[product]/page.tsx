@@ -21,8 +21,8 @@ export async function generateMetadata({
   if (!result.success) return {};
   const config = fakeDoorProductConfigs[result.data];
   return {
-    title: `${config.name} 초기 체험 예약`,
-    description: config.description,
+    title: `${config.name} 선공개 예약`,
+    description: `${config.name} 실제 체험이 준비되기 전에 원하는 시점을 예약하세요. 지금은 결제하지 않아요.`,
   };
 }
 

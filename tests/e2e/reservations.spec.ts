@@ -16,8 +16,8 @@ const reservations = [
     name: "한입코치",
     requiresInstagram: true,
     handle: "onebite_test",
-    instagramLabel: "식단 스토리를 공유할 Instagram 아이디",
-    instagramHelp: "예약 뒤 안내받은 방법으로 식단 스토리를 공유하면 코칭을 보내드려요.",
+    instagramLabel: "7일 패스 소식을 받을 Instagram 아이디",
+    instagramHelp: "패스가 열리면 연결한 계정 기준으로 한 번 알려드려요. 아직 결제하지 않아요.",
   },
   {
     product: "today",
@@ -50,6 +50,9 @@ test.describe("공통 fake door 예약", () => {
         `/reserve/${reservation.product}?utm_source=instagram&utm_medium=paid_social&utm_campaign=fake_door_e2e&utm_content=${reservation.product}`,
       );
       await expect(page.getByText(/로컬 데모 모드/)).toBeVisible();
+      await expect(page.getByRole("heading", { name: "지금은 예약만 받아요." })).toBeVisible();
+      await expect(page.getByText(/실제 체험은 준비가 끝난 뒤/).first()).toBeVisible();
+      await expect(page.getByRole("link")).toHaveCount(0);
       const pageWidth = await page.evaluate(() => ({
         client: document.documentElement.clientWidth,
         scroll: document.documentElement.scrollWidth,
@@ -57,7 +60,9 @@ test.describe("공통 fake door 예약", () => {
       expect(pageWidth.scroll).toBeLessThanOrEqual(pageWidth.client + 1);
       const loginButton = page.getByRole("button", { name: "로컬 데모로 계속하기" });
       const contactConsent = page.getByRole("checkbox", {
-        name: "Google 계정 이메일로 출시와 초기 체험 안내를 받는 데 동의해요.",
+        name: reservation.product === "onebite"
+          ? "Google 계정 이메일로 7일 패스 출시 안내를 받는 데 동의해요."
+          : "Google 계정 이메일로 출시와 초기 체험 안내를 받는 데 동의해요.",
       });
       await expect(contactConsent).not.toBeChecked();
       await expect(loginButton).toBeDisabled();
@@ -108,6 +113,8 @@ test.describe("공통 fake door 예약", () => {
       await page.getByRole("button", { name: /데모 저장$/ }).click();
       await expect(page.getByText("데모 저장 완료", { exact: true })).toBeVisible();
       await expect(page.getByText("실제 예약이나 전환으로 집계되지 않아요.")).toBeVisible();
+      await expect(page.getByText("이 페이지를 닫아도 예약 신청은 저장돼요.")).toBeVisible();
+      await expect(page.getByRole("link")).toHaveCount(0);
       if (reservation.handle) {
         await expect(page.getByText(`@${reservation.handle}`, { exact: true })).toBeVisible();
         await expect(page.getByText(`@${reservation.handle}`, { exact: true })).toHaveAttribute(
