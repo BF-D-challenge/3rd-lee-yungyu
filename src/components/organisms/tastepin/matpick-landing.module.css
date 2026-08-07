@@ -157,148 +157,30 @@
   word-break: keep-all;
 }
 
-.problemScene {
+.flowPreview {
   position: relative;
   overflow: hidden;
+  margin: 0;
   border: 1px solid rgba(25, 27, 34, 0.1);
   border-radius: 28px;
-  padding: 18px;
+  padding: 10px;
   background: rgba(255, 255, 255, 0.88);
   box-shadow: 0 28px 70px rgba(35, 39, 51, 0.12);
 }
 
-.problemScene::before {
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: rgba(36, 107, 253, 0.12);
-  content: "";
-  filter: blur(10px);
-  inset: -90px -60px auto auto;
+.flowPreview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
 }
 
-.sceneHeader {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  font-size: 12px;
-  font-weight: 780;
-}
-
-.sceneHeader span:last-child {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  color: #6c7280;
-}
-
-.searchAttempt {
-  margin-top: 18px;
-  border-radius: 18px;
-  padding: 15px;
-  background: #f3f4f7;
-}
-
-.searchField {
-  display: flex;
-  min-height: 46px;
-  align-items: center;
-  gap: 9px;
-  border: 1px solid #dde0e7;
-  border-radius: 14px;
-  padding: 0 14px;
-  color: #4e5562;
-  background: #fff;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.searchAttempt p {
-  margin: 12px 2px 0;
-  color: #7a808d;
+.flowPreview figcaption {
+  padding: 10px 8px 4px;
+  color: #737986;
   font-size: 12px;
   line-height: 1.55;
-}
-
-.demoDivider {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 10px;
-  margin: 17px 0;
-  color: var(--blue);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-}
-
-.demoDivider span {
-  height: 1px;
-  background: #e3e6ec;
-}
-
-.resultCard {
-  display: grid;
-  min-width: 0;
-  grid-template-columns: 116px minmax(0, 1fr);
-  gap: 15px;
-}
-
-.resultImage {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 9 / 13;
-  border-radius: 16px;
-  background: #e7e9ed;
-}
-
-.resultImage img {
-  object-fit: cover;
-  object-position: center 45%;
-}
-
-.resultCopy {
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.resultCopy > span,
-.resultCopy small {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.resultCopy > span {
-  color: var(--blue);
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.resultCopy strong {
-  margin-top: 8px;
-  font-size: 22px;
-  letter-spacing: -0.045em;
-  line-height: 1.25;
-}
-
-.resultCopy p {
-  margin: 5px 0 0;
-  color: #69707c;
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-.resultCopy small {
-  margin-top: 14px;
-  color: #4f5662;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 1.5;
+  text-align: center;
 }
 
 .flow {
@@ -401,6 +283,20 @@
   display: none;
 }
 
+.legalLinks {
+  width: min(100% - 40px, 1080px);
+  margin: -48px auto 72px;
+  color: #6b6f78;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.legalLinks a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .primaryAction:hover,
   .finalCta a:hover,
@@ -423,7 +319,7 @@
     max-width: none;
   }
 
-  .problemScene {
+  .flowPreview {
     width: min(100%, 480px);
     box-sizing: border-box;
     margin: 0 auto;
@@ -443,7 +339,8 @@
   .header,
   .hero,
   .flow,
-  .finalCta {
+  .finalCta,
+  .legalLinks {
     width: min(100% - 32px, 1080px);
   }
 
@@ -458,7 +355,7 @@
   .stageBadge {
     min-height: 30px;
     padding: 0 9px;
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .hero {
@@ -497,26 +394,13 @@
 
   .honestyNote {
     margin-top: 14px;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.6;
   }
 
-  .problemScene {
+  .flowPreview {
     border-radius: 22px;
-    padding: 15px;
-  }
-
-  .resultCard {
-    grid-template-columns: 104px minmax(0, 1fr);
-    gap: 13px;
-  }
-
-  .resultCopy strong {
-    font-size: 19px;
-  }
-
-  .resultCopy small {
-    margin-top: 10px;
+    padding: 8px;
   }
 
   .flow {
@@ -537,6 +421,10 @@
     margin-bottom: 24px;
     border-radius: 22px;
     padding: 34px 24px;
+  }
+
+  .legalLinks {
+    margin: 0 auto 24px;
   }
 
   .finalCta a {

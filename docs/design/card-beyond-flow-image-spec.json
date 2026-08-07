@@ -1,0 +1,27 @@
+{
+  "accent": "candle gold-to-rose vertical gradient #E9C56B to #FF8091",
+  "flat_screens": [1, 4, 5],
+  "hero_screens": [2, 3],
+  "screens": [
+    {
+      "label": "카드너머 입장",
+      "description": "a compact header labeled '카드너머', a large headline '카드를 고르면, 그가 먼저 말을 걸어요', a short privacy note '대화는 이 브라우저에만 저장돼요', a slim preview of four tarot cards, and a bottom CTA labeled '카드 보러가기' that scrolls to the card deck"
+    },
+    {
+      "label": "오늘의 카드 선택",
+      "description": "a horizontal snap-scrolling deck of four illustrated fantasy tarot cards, the selected card '유리 온실의 편지' enlarged with tags '순애 · 편지 · 직진', character name '온실의 우체국장', and a bottom CTA labeled '이 장면에서 시작' that requests the first mock conversation message"
+    },
+    {
+      "label": "그의 첫 인사",
+      "description": "the chosen painterly character illustration contained inside a scene card, a guide chat bubble reading '이 편지는 아직 받는 사람이 없어요', two suggested reply chips, and a bottom CTA labeled '전하지 못한 말이 있어요' that sends the first reply"
+    },
+    {
+      "label": "내 이야기 답장",
+      "description": "a readable chat thread with alternating guide and user chat bubbles, a text input labeled '내 이야기' with placeholder '지금 떠오르는 말을 적어보세요', a small notice '새 카드를 고르면 이 대화는 지워져요', and a bottom CTA labeled '답장 보내기' that requests the next fixed mock follow-up"
+    },
+    {
+      "label": "다음 장면 예약",
+      "description": "the third guide response, a clear status note '대화는 이 브라우저에만 저장돼요', an honest invitation card titled '그와 다음 장면도 이어가고 싶나요?', a secondary note '계정 연결은 선택이에요', and a bottom CTA labeled '출시 알림 예약하기' that opens the reservation flow"
+    }
+  ]
+}

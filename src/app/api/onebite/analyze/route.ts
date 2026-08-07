@@ -6,6 +6,7 @@ import {
   ONEBITE_SUPPORTED_IMAGE_TYPES,
   onebiteAnalysisSchema,
   onebiteGeminiJsonSchema,
+  onebiteRoastLineSchema,
   type OnebiteActionCode,
   type OnebiteAnalysis,
 } from "./contract";
@@ -37,6 +38,14 @@ const actionLines: Record<OnebiteActionCode, string> = {
   keep_regular_meal: "다음 끼니도 거르지 말고 비슷한 시간에 드세요.",
   retake_photo: "음식 전체가 밝게 보이도록 위에서 다시 찍어주세요.",
 };
+const fallbackRoastLines: Record<OnebiteActionCode, string> = {
+  add_vegetable: "채소가 이 접시 단톡방에서 혼자 강퇴당했네요.",
+  add_protein: "단백질이 오늘 접시 회의에 초대장도 못 받았네요.",
+  choose_water: "음료가 목마름 잡으러 왔다가 디저트로 취업했네요.",
+  keep_regular_meal: "이 접시, 균형 잡다가 곡예단에 스카우트되겠네요.",
+  retake_photo: "음식보다 픽셀이 선명하면 코치도 현미경부터 삽니다.",
+};
+const unsafeRoastPattern = /(뚱뚱|돼지|비만|살쪘|몸무게|체중|외모|못생|의지박약|한심|게으르|쓰레기|인간도|굶|단식|토해|구토|벌로\s*운동)/i;
 const medicalBoundaryLine =
   "이 사진으로 코칭을 계속하지 않아요. 식단은 담당 의료진이나 임상영양사와 확인해주세요.";
 
@@ -50,16 +59,25 @@ const geminiInteractionSchema = z.object({
   })),
 });
 
-const analysisPrompt = `당신은 음식 사진에서 안전한 일반 행동 하나를 고르는 분류기입니다.
+const analysisPrompt = `당신은 음식 사진에서 안전한 일반 행동 하나와 짧은 팩폭을 만드는 한입코치입니다.
 
-사진에서 직접 보이는 것만 사용하세요. 음식 이름, 재료, 조리법, 중량, 양, 칼로리, 영양소 수치, 건강 효과를 추측하지 마세요.
+사진에서 직접 보이는 것만 사용하세요. 분명히 보이는 음식 이름은 visibleFoods에 짧은 한국어로 적되, 재료, 조리법, 중량, 양, 칼로리, 영양소 수치, 건강 효과는 추측하지 마세요.
 사람의 몸, 체중, 외모, 의지, 인격을 평가하지 마세요. 진단이나 감량·보상 운동·굶기 조언을 하지 마세요.
 사진 또는 사용자 맥락에 질환, 임신, 알레르기, 섭식장애, 극단적 식이 제한처럼 의료·섭식장애 판단이 필요한 단서가 있으면 riskFlag를 medical_or_ed로 두세요.
 한 끼 음식 사진이 아니면 isMealPhoto=false, riskFlag=not_food, actionCode=retake_photo로 반환하세요.
 사진이 어둡거나 잘렸거나 음식 그룹을 구분하기 어려우면 confidence=low, riskFlag=uncertain, actionCode=retake_photo로 반환하세요.
 확신할 수 있는 음식 사진이면 riskFlag=none으로 두고 보이는 그룹만 visibleGroups에 넣으세요.
 행동은 사진에서 채소가 보이지 않으면 add_vegetable, 단백질 식품군이 보이지 않으면 add_protein, 음료 선택을 바꾸는 것이 가장 작은 행동이면 choose_water, 이미 여러 그룹이 보이면 keep_regular_meal 중 하나만 고르세요.
-사용자에게 보여줄 문장을 만들지 마세요. 반드시 지정된 JSON 필드와 enum 값만 반환하세요.`;
+roastLine은 이 제품의 핵심 결과입니다. 매 사진마다 새로 만든, 말도 안 되게 웃긴 한국어 팩폭 한 문장을 자유롭게 창작하세요. 사진에서 분명히 보이는 음식 이름을 최소 하나 넣고, 그 음식들의 조합이나 빠진 그룹만 놀리세요.
+- 황당한 의인화, 과장된 사건, 진지한 속보체, 엉뚱한 비유, 예상 밖 반전 중 가장 웃긴 장치를 자유롭게 고르세요. 여러 장치를 억지로 섞지는 마세요.
+- 읽자마자 장면이 그려지고 한 번 피식할 만큼 구체적으로 쓰세요. 점잖은 영양 상담 말투나 교훈적인 잔소리는 금지합니다.
+- 결석, 투명인간, 어디 갔나요처럼 흔하고 예상 가능한 표현을 반복하지 마세요.
+- 15~80자, 한 문장, 따옴표와 이모지 없이 작성하세요.
+- 몸, 체중, 외모, 인격, 의지, 직업, 질환을 공격하거나 사용자를 모욕하지 마세요.
+- 굶기, 단식, 구토, 보상 운동을 권하지 마세요.
+- 사진에서 알 수 없는 야근, 감정, 시간, 생활 습관을 지어내지 마세요.
+- 행동 지시는 roastLine에 넣지 마세요. 다음 행동은 actionCode로만 정합니다.
+반드시 지정된 JSON 필드만 반환하세요.`;
 
 function noStoreJson(body: unknown, status = 200) {
   return NextResponse.json(body, {
@@ -107,7 +125,7 @@ async function preprocessImage(photo: File): Promise<Buffer> {
 async function analyzeWithGemini(
   image: Buffer,
   apiKey: string,
-): Promise<OnebiteAnalysis> {
+): Promise<{ analysis: OnebiteAnalysis; roastLine: string }> {
   const model =
     process.env.ONEBITE_GEMINI_MODEL?.trim() || "gemini-3.6-flash";
   const response = await fetch(GEMINI_INTERACTIONS_URL, {
@@ -155,9 +173,20 @@ async function analyzeWithGemini(
     throw new Error("gemini_invalid_json");
   }
 
-  const analysis = onebiteAnalysisSchema.safeParse(parsed);
+  if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) {
+    throw new Error("gemini_invalid_analysis");
+  }
+  const { roastLine: roastCandidate, ...analysisCandidate } = parsed as Record<string, unknown>;
+  const analysis = onebiteAnalysisSchema.safeParse(analysisCandidate);
   if (!analysis.success) throw new Error("gemini_invalid_analysis");
-  return analysis.data;
+  const roastLine = onebiteRoastLineSchema.safeParse(roastCandidate);
+  if (!roastLine.success) throw new Error("gemini_invalid_roast");
+  return { analysis: analysis.data, roastLine: roastLine.data };
+}
+
+function safeRoastLine(generated: string, actionCode: OnebiteActionCode): string {
+  if (unsafeRoastPattern.test(generated)) return fallbackRoastLines[actionCode];
+  return generated;
 }
 
 function rejectionCode(
@@ -218,9 +247,9 @@ export async function POST(request: Request) {
     return noStoreJson({ error: "gemini_not_configured" }, 503);
   }
 
-  let analysis: OnebiteAnalysis;
+  let generated: { analysis: OnebiteAnalysis; roastLine: string };
   try {
-    analysis = await analyzeWithGemini(preparedImage, geminiApiKey);
+    generated = await analyzeWithGemini(preparedImage, geminiApiKey);
   } catch (error) {
     const timeout = error instanceof Error && error.name === "TimeoutError";
     return noStoreJson(
@@ -228,6 +257,8 @@ export async function POST(request: Request) {
       timeout ? 504 : 502,
     );
   }
+
+  const { analysis } = generated;
 
   const rejected = rejectionCode(analysis);
   const actionLine = rejected === "medical_or_ed"
@@ -237,5 +268,6 @@ export async function POST(request: Request) {
     return noStoreJson({ error: rejected, analysis, actionLine }, 422);
   }
 
-  return noStoreJson({ mode: "live", analysis, actionLine });
+  const roastLine = safeRoastLine(generated.roastLine, analysis.actionCode);
+  return noStoreJson({ mode: "live", analysis, roastLine, actionLine });
 }

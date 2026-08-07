@@ -1,15 +1,19 @@
 "use client";
 
 import {
+  ArrowRight,
   Camera,
   Check,
   CheckCircle2,
   Circle,
+  Flame,
   History,
   ImagePlus,
   LoaderCircle,
   RefreshCcw,
+  Share2,
   ShieldCheck,
+  Utensils,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -46,7 +50,20 @@ import { track } from "@/lib/track";
 import styles from "./onebite.module.css";
 
 type RequestState = "idle" | "loading" | "success" | "rejected" | "error";
+type FlowStep = 1 | 2 | 3 | 4 | 5;
 const supportedTypes = new Set<string>(ONEBITE_SUPPORTED_IMAGE_TYPES);
+
+function scrollToPageTopAfterLayout() {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "auto" });
+      document.getElementById("onebite-page-top")?.scrollIntoView({
+        block: "start",
+        behavior: "auto",
+      });
+    });
+  });
+}
 
 const visibleGroupCopy: Record<
   OnebiteSuccessResponse["analysis"]["visibleGroups"][number],
@@ -176,6 +193,7 @@ export function Onebite() {
     setLatestExecution(null);
     resetRequest();
     if (inputRef.current) inputRef.current.value = "";
+    scrollToPageTopAfterLayout();
   };
 
   const selectPhoto = (event: ChangeEvent<HTMLInputElement>) => {
@@ -293,25 +311,40 @@ export function Onebite() {
   const submitDisabled = !photo
     || requestState === "loading"
     || (isRevisit && !executionStatus);
+  const inputStep: FlowStep = isRevisit ? 5 : requestState === "loading" ? 2 : 1;
+  const inputStepLabel = isRevisit
+    ? "복귀 확인"
+    : requestState === "loading"
+      ? "음식 확인"
+      : "사진 제출";
+  const inputTitle = isRevisit
+    ? <>지난 약속,<br />이번엔 어땠어요?</>
+    : requestState === "loading"
+      ? <>사진 속 음식을<br />확인하고 있어요.</>
+      : <>오늘 뭐<br />먹었어요?</>;
+  const inputLead = isRevisit
+    ? "다음 끼니 사진을 고르고, 지난 약속을 해봤는지 솔직하게 알려주세요."
+    : requestState === "loading"
+      ? "사진에서 직접 보이는 음식만 찾고 있어요. 잠시만 기다려주세요."
+      : "사진 한 장이면 충분해요. 확인이 끝나면 선택을 짚는 팩폭이 시작됩니다.";
 
   return (
     <main className={styles.page}>
-      <header className={styles.header}>
+      <header id="onebite-page-top" className={styles.header}>
         <Link href="/" className={styles.brand}>오늘 해볼까</Link>
         <span className={styles.badge}>한입코치</span>
       </header>
 
       <section className={styles.content}>
-        <h1>
-          {isRevisit
-            ? <>다음 끼니를<br />보여주세요.</>
-            : <>먹은 건 됐어요.<br />다음 한 끼를 잡아요.</>}
-        </h1>
-        <p className={styles.lead}>
-          {isRevisit
-            ? "사진을 고르면 지난 행동을 해봤는지 물어볼게요."
-            : "사진에서 보이는 음식만 확인하고, 다음 한 끼에 할 행동 하나를 분명하게 말해요."}
-        </p>
+        {requestState !== "success" ? (
+          <>
+            <FlowProgress step={inputStep} label={inputStepLabel} />
+            <div className={styles.screenHeading}>
+              <h1>{inputTitle}</h1>
+              <p className={styles.lead}>{inputLead}</p>
+            </div>
+          </>
+        ) : null}
 
         {!isRevisit && requestState === "idle" && !photo ? (
           <figure className={styles.coachIntro}>
@@ -323,8 +356,8 @@ export function Onebite() {
               sizes="(max-width: 640px) calc(100vw - 2.5rem), 40rem"
             />
             <figcaption>
-              <strong>“사진만 올려요.”</strong>
-              <span>다음 행동은 제가 정할게요.</span>
+              <strong>“숨기지 말고, 한 끼 전체를 보여줘요.”</strong>
+              <span>사진 확인 뒤에 제대로 한마디 할게요.</span>
             </figcaption>
           </figure>
         ) : null}
@@ -399,7 +432,7 @@ export function Onebite() {
                   <span className={styles.stepNumber}>3</span>
                   <span>
                     <strong>지난 행동을 해봤나요?</strong>
-                    <small>평가하지 않아요. 사실대로 골라주세요.</small>
+                    <small>몸은 평가하지 않아요. 선택은 솔직하게 골라주세요.</small>
                   </span>
                 </legend>
                 <div className={styles.executionOptions}>
@@ -456,7 +489,7 @@ export function Onebite() {
                     )
                     : isRevisit
                       ? "기록 저장하고 새 코칭 보기"
-                      : "다음 한 끼 행동 보기"}
+                      : "사진 속 음식 확인하기"}
                 </button>
                 {submitDisabled && requestState !== "loading" ? (
                   <p id="onebite-submit-help" className={styles.helper}>
@@ -491,6 +524,26 @@ export function Onebite() {
         </p>
       </section>
     </main>
+  );
+}
+
+function FlowProgress({ step, label }: { step: FlowStep; label: string }) {
+  return (
+    <div className={styles.flowProgress} aria-label={`전체 5단계 중 ${step}단계 ${label}`}>
+      <div className={styles.flowStepTitle}>
+        <span>{step}</span>
+        <strong>{label}</strong>
+      </div>
+      <div className={styles.progressTrack} aria-hidden>
+        {([1, 2, 3, 4, 5] as const).map((item) => (
+          <i
+            key={item}
+            data-complete={item < step ? "true" : undefined}
+            data-current={item === step ? "true" : undefined}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -531,8 +584,23 @@ function Result({
   onReset: () => void;
   onCommitted: (commit: OnebiteSavedCommit) => void;
 }) {
+  const [stage, setStage] = useState<2 | 3 | 4>(2);
   const [committed, setCommitted] = useState(false);
   const [commitError, setCommitError] = useState(false);
+  const [shareStatus, setShareStatus] = useState("");
+
+  useEffect(() => {
+    setStage(2);
+    setShareStatus("");
+  }, [result]);
+
+  useEffect(() => {
+    scrollToPageTopAfterLayout();
+  }, [stage]);
+
+  const goToStage = (nextStage: 2 | 3 | 4) => {
+    setStage(nextStage);
+  };
 
   useEffect(() => {
     if (executionRecord) {
@@ -560,13 +628,137 @@ function Result({
     }
   };
 
+  const shareRoast = async () => {
+    const shareData = {
+      title: "오늘의 팩폭 — 한입코치",
+      text: `“${result.roastLine}”\n다음 끼니 약속: ${result.actionLine}\n\n나도 혼나보기`,
+      url: `${window.location.origin}/onebite/start`,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        setShareStatus("오늘의 팩폭을 공유했어요.");
+      } else {
+        await navigator.clipboard.writeText(
+          `${shareData.text}\n${shareData.url}`,
+        );
+        setShareStatus("오늘의 팩폭을 복사했어요.");
+      }
+      track("onebite_roast_shared", {
+        event_type: "onebite_roast_shared",
+        funnel_stage: "share",
+        product_id: "onebite",
+        product_slug: "onebite",
+      }, { meta: false });
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      setShareStatus("지금은 공유하지 못했어요. 잠시 후 다시 시도해주세요.");
+    }
+  };
+
+  if (stage === 2) {
+    return (
+      <section
+        className={styles.resultScreen}
+        aria-labelledby="onebite-confirm-title"
+        aria-live="polite"
+        data-clarity-mask="true"
+      >
+        <FlowProgress step={2} label="음식 확인" />
+        <div className={styles.screenHeading}>
+          <p className={styles.screenEyebrow}>사진 분석 완료</p>
+          <h2 id="onebite-confirm-title">이 음식들이 맞나요?</h2>
+          <p>팩폭 전에 사진에서 확인한 내용을 먼저 보여드려요.</p>
+        </div>
+
+        <div className={styles.confirmPhotoFrame}>
+          <Image
+            className={styles.confirmPhoto}
+            src={previewUrl}
+            alt="확인할 음식 사진"
+            width={720}
+            height={540}
+            unoptimized
+          />
+          <span><Check size={18} aria-hidden /> 분석 완료</span>
+        </div>
+
+        <ul className={styles.foodReviewList} aria-label="사진에서 확인한 음식">
+          {result.analysis.visibleFoods.map((food) => (
+            <li key={food}>
+              <span><Utensils size={18} aria-hidden /></span>
+              <strong>{food}</strong>
+              <CheckCircle2 size={20} aria-hidden />
+            </li>
+          ))}
+        </ul>
+
+        <div className={styles.analysisSummary}>
+          <div className={styles.groupList}>
+            {result.analysis.visibleGroups.map((group) => (
+              <span key={group}>{visibleGroupCopy[group]}</span>
+            ))}
+          </div>
+          <p className={styles.confidence}>
+            사진이 보인 정도 {confidenceCopy[result.analysis.confidence]}
+          </p>
+        </div>
+
+        <button className={styles.primaryButton} type="button" onClick={() => goToStage(3)}>
+          맞아요. 제대로 혼내주세요
+          <ArrowRight size={18} aria-hidden />
+        </button>
+        <button className={styles.secondaryButton} type="button" onClick={onReset}>
+          다른 사진 고르기
+        </button>
+      </section>
+    );
+  }
+
+  if (stage === 3) {
+    return (
+      <section
+        className={styles.resultScreen}
+        aria-labelledby="onebite-result-title"
+        aria-live="polite"
+        data-clarity-mask="true"
+      >
+        <FlowProgress step={3} label="팩폭" />
+        <div className={styles.roastScene}>
+          <Image
+            src="/images/onebite/coach-fridge.webp"
+            alt="냉장고 안에서 정면을 바라보는 한입코치"
+            fill
+            priority
+            sizes="(max-width: 480px) calc(100vw - 2.5rem), 30rem"
+          />
+          <div className={styles.roastShade} aria-hidden />
+          <div className={styles.roastCopy}>
+            <span><Flame size={16} aria-hidden /> 이 사진 전용 팩폭</span>
+            <h2 id="onebite-result-title">{result.roastLine}</h2>
+            <p>몸·외모·인격 말고, 사진 속 선택만 짚었습니다.</p>
+          </div>
+        </div>
+        <button className={styles.roastNextButton} type="button" onClick={() => goToStage(4)}>
+          웃었으면 다음 한입으로 복귀
+          <ArrowRight size={18} aria-hidden />
+        </button>
+        <button className={styles.textButton} type="button" onClick={() => goToStage(2)}>
+          음식 확인으로 돌아가기
+        </button>
+      </section>
+    );
+  }
+
   return (
     <section
-      className={styles.result}
-      aria-labelledby="onebite-result-title"
+      className={styles.resultScreen}
+      aria-labelledby="onebite-promise-title"
       aria-live="polite"
       data-clarity-mask="true"
     >
+      <FlowProgress step={4} label="다음 한입 약속" />
       {executionRecord ? (
         <div className={styles.recordReceipt} role="status">
           <CheckCircle2 size={20} aria-hidden />
@@ -579,68 +771,75 @@ function Result({
         </div>
       ) : null}
 
-      <div className={styles.resultIntro}>
-        <p>다음 한 끼에 해볼 일</p>
-        <h2 id="onebite-result-title">{result.actionLine}</h2>
+      <div className={styles.screenHeading}>
+        <p className={styles.screenEyebrow}>웃음값은 행동 하나로 받습니다</p>
+        <h2 id="onebite-promise-title">다음 끼니는<br />이것부터 해요.</h2>
+        <p>팩폭은 끝났어요. 이제 실제로 지킬 행동 하나만 남았습니다.</p>
       </div>
 
-      <div className={styles.resultEvidence}>
-        <div className={styles.resultPhotoFrame}>
-          <Image
-            className={styles.resultPhoto}
-            src={previewUrl}
-            alt="확인한 음식 사진"
-            width={160}
-            height={160}
-            unoptimized
-          />
-          <span className={styles.resultIcon}><Check size={18} aria-hidden /></span>
-        </div>
-        <div>
-          <h3 className={styles.resultLabel}>사진에서 보인 음식</h3>
-          <div className={styles.groupList}>
-            {result.analysis.visibleGroups.map((group) => (
-              <span key={group}>{visibleGroupCopy[group]}</span>
-            ))}
-          </div>
-          <p className={styles.confidence}>
-            음식이 보인 정도 {confidenceCopy[result.analysis.confidence]}
-          </p>
-        </div>
+      <div className={styles.missionCard}>
+        <div className={styles.missionClip} aria-hidden />
+        <span className={styles.missionLabel}>오늘의 복귀 미션</span>
+        <div className={styles.missionIcon}><Utensils size={28} aria-hidden /></div>
+        <h3>{result.actionLine}</h3>
+        <p>다음 사진에서 해봤는지 확인할게요.</p>
       </div>
 
-      <p className={styles.resultNote}>
-        사진에서 보인 음식에 맞춰 미리 정한 안전한 행동 중 하나를 골랐어요.
-      </p>
-      {committed ? (
-        <p
-          className={styles.savedStatus}
-          role="status"
-          aria-label="이 기기에 다음 끼니 행동을 저장했어요"
-        >
-          <Check size={18} aria-hidden />
-          이 기기에 다음 끼니 행동을 저장했어요
-        </p>
+      {!committed ? (
+        <>
+          <button className={styles.primaryButton} type="button" onClick={commitAction}>
+            <Check size={18} aria-hidden />
+            이 행동으로 약속하기
+          </button>
+          <button className={styles.textButton} type="button" onClick={() => goToStage(3)}>
+            팩폭 다시 보기
+          </button>
+        </>
       ) : (
-        <button className={styles.primaryButton} type="button" onClick={commitAction}>
-          다음 끼니 행동으로 저장하기
-        </button>
+        <>
+          <div className={styles.promiseComplete} role="status" aria-label="다음 한입 약속 완료">
+            <CheckCircle2 size={24} aria-hidden />
+            <div>
+              <strong>약속 완료</strong>
+              <span>다음 끼니 사진에서 다시 만나요.</span>
+            </div>
+          </div>
+
+          <div className={styles.shareCard}>
+            <div>
+              <span>오늘의 팩폭</span>
+              <strong>{result.roastLine}</strong>
+            </div>
+            <p>{result.actionLine}</p>
+          </div>
+
+          <button className={styles.shareButton} type="button" onClick={shareRoast}>
+            <Share2 size={18} aria-hidden />
+            오늘의 팩폭 공유하기
+          </button>
+          {shareStatus ? (
+            <p className={styles.shareStatus} role="status" aria-label={shareStatus}>
+              {shareStatus}
+            </p>
+          ) : null}
+          <button className={styles.secondaryButton} type="button" onClick={onReset}>
+            다른 사진으로 혼나기
+          </button>
+          <Link
+            className={styles.reserveButton}
+            href="/reserve/onebite"
+            onClick={() => trackPrimaryCta("result")}
+          >
+            7일 패스 나오면 알려주세요
+          </Link>
+        </>
       )}
+
       {commitError ? (
         <p className={styles.error} role="alert">
           이 기기에 저장하지 못했어요. 브라우저 저장 공간을 확인해 주세요.
         </p>
       ) : null}
-      <button className={styles.secondaryButton} type="button" onClick={onReset}>
-        다른 사진 분석하기
-      </button>
-      <Link
-        className={styles.reserveButton}
-        href="/reserve/onebite"
-        onClick={() => trackPrimaryCta("result")}
-      >
-        한입코치 예약하기
-      </Link>
     </section>
   );
 }

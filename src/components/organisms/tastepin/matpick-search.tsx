@@ -177,7 +177,7 @@ export function MatpickSearch({
         <button
           aria-label="맛집 목록으로 돌아가기"
           className={styles.backButton}
-          onClick={() => router.push("/matpick/map")}
+          onClick={() => router.push("/matpin/map")}
           type="button"
         >
           <ArrowLeft aria-hidden="true" size={24} />
@@ -214,7 +214,7 @@ export function MatpickSearch({
         </form>
         <button
           className={styles.closeButton}
-          onClick={() => router.push("/matpick/map")}
+          onClick={() => router.push("/matpin/map")}
           type="button"
         >
           닫기

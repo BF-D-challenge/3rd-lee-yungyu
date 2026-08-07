@@ -1,0 +1,946 @@
+{
+  "version": 2,
+  "canvas": {
+    "width": 1080,
+    "height": 1350
+  },
+  "safeArea": {
+    "top": 72,
+    "right": 72,
+    "bottom": 72,
+    "left": 72
+  },
+  "outputDir": "outputs/ad-image-system/rendered",
+  "sourcePolicy": {
+    "default": "owned-product-evidence",
+    "referenceImages": "layout-reference-only",
+    "aiImage": "disabled-when-owned-evidence-exists",
+    "text": "code-rendered",
+    "layout": "manifest-driven-css-equivalent"
+  },
+  "templates": {
+    "tastepin-editorial": {
+      "layers": [
+        {
+          "type": "circle",
+          "cx": 946,
+          "cy": 112,
+          "r": 210,
+          "fill": "{{accentSoft}}"
+        },
+        {
+          "type": "text",
+          "x": 76,
+          "y": 76,
+          "width": 520,
+          "fontSize": 25,
+          "fontWeight": 800,
+          "letterSpacing": 1.2,
+          "maxLines": 1,
+          "fill": "{{ink}}",
+          "text": "TASTEPIN / 실제 제품 화면",
+          "critical": true
+        },
+        {
+          "type": "text",
+          "x": 76,
+          "y": 142,
+          "width": 850,
+          "fontSize": 78,
+          "minFontSize": 66,
+          "fontWeight": 800,
+          "lineHeight": 1.08,
+          "maxLines": 2,
+          "fill": "{{ink}}",
+          "text": "{{headline}}",
+          "critical": true
+        },
+        {
+          "type": "text",
+          "x": 78,
+          "y": 338,
+          "width": 790,
+          "fontSize": 31,
+          "fontWeight": 600,
+          "lineHeight": 1.35,
+          "maxLines": 2,
+          "fill": "{{muted}}",
+          "text": "{{support}}",
+          "critical": true
+        },
+        {
+          "type": "rect",
+          "x": 52,
+          "y": 484,
+          "width": 976,
+          "height": 718,
+          "radius": 36,
+          "fill": "#FFFFFF",
+          "shadow": {
+            "y": 18,
+            "blur": 46,
+            "color": "#6A3513",
+            "opacity": 0.2
+          }
+        },
+        {
+          "type": "image",
+          "name": "owned-product-screen",
+          "x": 76,
+          "y": 508,
+          "width": 928,
+          "height": 670,
+          "radius": 24,
+          "source": "{{asset}}",
+          "fit": "cover",
+          "position": "{{assetPosition}}"
+        },
+        {
+          "type": "pill",
+          "x": 748,
+          "y": 448,
+          "width": 260,
+          "height": 64,
+          "radius": 32,
+          "fill": "{{accent}}",
+          "text": "{{momentLabel}}",
+          "textFill": "{{ink}}",
+          "fontSize": 24,
+          "fontWeight": 800
+        },
+        {
+          "type": "text",
+          "x": 76,
+          "y": 1232,
+          "width": 928,
+          "fontSize": 26,
+          "fontWeight": 800,
+          "maxLines": 1,
+          "fill": "{{ink}}",
+          "text": "{{foot}}",
+          "critical": true
+        }
+      ]
+    },
+    "onebite-photo-note": {
+      "layers": [
+        {
+          "type": "circle",
+          "cx": 78,
+          "cy": 1162,
+          "r": 260,
+          "fill": "{{accentSoft}}"
+        },
+        {
+          "type": "text",
+          "x": 72,
+          "y": 76,
+          "width": 936,
+          "fontSize": 24,
+          "fontWeight": 800,
+          "letterSpacing": 1.4,
+          "maxLines": 1,
+          "fill": "{{ink}}",
+          "text": "ONEBITE / 사진 한 장에서 시작",
+          "critical": true
+        },
+        {
+          "type": "text",
+          "x": 72,
+          "y": 142,
+          "width": 900,
+          "fontSize": 76,
+          "minFontSize": 64,
+          "fontWeight": 800,
+          "lineHeight": 1.08,
+          "maxLines": 2,
+          "fill": "{{ink}}",
+          "text": "{{headline}}",
+          "critical": true
+        },
+        {
+          "type": "rect",
+          "x": 304,
+          "y": 398,
+          "width": 704,
+          "height": 746,
+          "radius": 42,
+          "fill": "#FFFFFF",
+          "shadow": {
+            "y": 20,
+            "blur": 48,
+            "color": "#7A244A",
+            "opacity": 0.2
+          }
+        },
+        {
+          "type": "image",
+          "name": "owned-product-screen",
+          "x": 328,
+          "y": 422,
+          "width": 656,
+          "height": 698,
+          "radius": 28,
+          "source": "{{asset}}",
+          "fit": "cover",
+          "position": "{{assetPosition}}"
+        },
+        {
+          "type": "pill",
+          "x": 72,
+          "y": 462,
+          "width": 250,
+          "height": 64,
+          "radius": 18,
+          "fill": "{{accent}}",
+          "text": "{{momentLabel}}",
+          "textFill": "{{ink}}",
+          "fontSize": 24,
+          "fontWeight": 800
+        },
+        {
+          "type": "text",
+          "x": 72,
+          "y": 574,
+          "width": 230,
+          "fontSize": 31,
+          "fontWeight": 700,
+          "lineHeight": 1.38,
+          "maxLines": 5,
+          "fill": "{{muted}}",
+          "text": "{{support}}",
+          "critical": true
+        },
+        {
+          "type": "rect",
+          "x": 72,
+          "y": 1050,
+          "width": 198,
+          "height": 12,
+          "radius": 6,
+          "fill": "{{accent}}"
+        },
+        {
+          "type": "text",
+          "x": 72,
+          "y": 1216,
+          "width": 936,
+          "fontSize": 26,
+          "fontWeight": 800,
+          "maxLines": 1,
+          "fill": "{{ink}}",
+          "text": "{{foot}}",
+          "critical": true
+        }
+      ]
+    },
+    "today-a-editorial": {
+      "layers": [
+        {
+          "type": "text",
+          "x": 74,
+          "y": 76,
+          "width": 930,
+          "fontSize": 23,
+          "fontWeight": 800,
+          "letterSpacing": 1.4,
+          "maxLines": 1,
+          "fill": "{{muted}}",
+          "text": "TODAY A / 조건을 구조로 바꾸기",
+          "critical": true
+        },
+        {
+          "type": "rect",
+          "x": 64,
+          "y": 148,
+          "width": 930,
+          "height": 112,
+          "radius": 0,
+          "fill": "{{accentSoft}}"
+        },
+        {
+          "type": "text",
+          "x": 78,
+          "y": 126,
+          "width": 900,
+          "fontSize": 74,
+          "minFontSize": 61,
+          "fontWeight": 800,
+          "lineHeight": 1.08,
+          "maxLines": 2,
+          "fill": "{{ink}}",
+          "text": "{{headline}}",
+          "critical": true
+        },
+        {
+          "type": "text",
+          "x": 78,
+          "y": 332,
+          "width": 820,
+          "fontSize": 30,
+          "fontWeight": 600,
+          "lineHeight": 1.35,
+          "maxLines": 2,
+          "fill": "{{muted}}",
+          "text": "{{support}}",
+          "critical": true
+        },
+        {
+          "type": "rect",
+          "x": 132,
+          "y": 472,
+          "width": 816,
+          "height": 694,
+          "radius": 8,
+          "fill": "#FFFFFF",
+          "shadow": {
+            "y": 18,
+            "blur": 40,
+            "color": "#294B40",
+            "opacity": 0.18
+          }
+        },
+        {
+          "type": "image",
+          "name": "owned-product-screen",
+          "x": 154,
+          "y": 494,
+          "width": 772,
+          "height": 650,
+          "radius": 2,
+          "source": "{{asset}}",
+          "fit": "cover",
+          "position": "{{assetPosition}}"
+        },
+        {
+          "type": "pill",
+          "x": 740,
+          "y": 438,
+          "width": 230,
+          "height": 58,
+          "radius": 6,
+          "fill": "{{accent}}",
+          "text": "{{momentLabel}}",
+          "textFill": "{{ink}}",
+          "fontSize": 23,
+          "fontWeight": 800
+        },
+        {
+          "type": "text",
+          "x": 78,
+          "y": 1216,
+          "width": 924,
+          "fontSize": 26,
+          "fontWeight": 800,
+          "maxLines": 1,
+          "fill": "{{ink}}",
+          "text": "{{foot}}",
+          "critical": true
+        }
+      ]
+    },
+    "today-b-proof-board": {
+      "layers": [
+        {
+          "type": "circle",
+          "cx": 950,
+          "cy": 120,
+          "r": 210,
+          "fill": "{{accentSoft}}",
+          "opacity": 0.28
+        },
+        {
+          "type": "pill",
+          "x": 72,
+          "y": 74,
+          "width": 238,
+          "height": 58,
+          "radius": 29,
+          "fill": "{{accent}}",
+          "text": "{{momentLabel}}",
+          "textFill": "{{accentText}}",
+          "fontSize": 23,
+          "fontWeight": 800,
+          "critical": true
+        },
+        {
+          "type": "text",
+          "x": 72,
+          "y": 160,
+          "width": 910,
+          "fontSize": 74,
+          "minFontSize": 62,
+          "fontWeight": 800,
+          "lineHeight": 1.08,
+          "maxLines": 2,
+          "fill": "#FFFFFF",
+          "text": "{{headline}}",
+          "critical": true
+        },
+        {
+          "type": "text",
+          "x": 72,
+          "y": 354,
+          "width": 890,
+          "fontSize": 29,
+          "fontWeight": 600,
+          "lineHeight": 1.35,
+          "maxLines": 2,
+          "fill": "{{muted}}",
+          "text": "{{support}}",
+          "critical": true
+        },
+        {
+          "type": "rect",
+          "x": 72,
+          "y": 476,
+          "width": 936,
+          "height": 682,
+          "radius": 32,
+          "fill": "#181626",
+          "stroke": "{{accent}}",
+          "strokeWidth": 2,
+          "shadow": {
+            "y": 24,
+            "blur": 52,
+            "color": "#000000",
+            "opacity": 0.45
+          }
+        },
+        {
+          "type": "image",
+          "name": "owned-product-screen",
+          "x": 94,
+          "y": 498,
+          "width": 892,
+          "height": 638,
+          "radius": 20,
+          "source": "{{asset}}",
+          "fit": "cover",
+          "position": "{{assetPosition}}"
+        },
+        {
+          "type": "text",
+          "x": 72,
+          "y": 1216,
+          "width": 936,
+          "fontSize": 26,
+          "fontWeight": 800,
+          "maxLines": 1,
+          "fill": "{{accent}}",
+          "text": "{{foot}}",
+          "critical": true
+        }
+      ]
+    },
+    "story-cards-table": {
+      "layers": [
+        {
+          "type": "text",
+          "x": 72,
+          "y": 76,
+          "width": 936,
+          "fontSize": 24,
+          "fontWeight": 800,
+          "letterSpacing": 1.2,
+          "maxLines": 1,
+          "fill": "{{muted}}",
+          "text": "STORY CARDS / 랜덤 카드 1장",
+          "critical": true
+        },
+        {
+          "type": "text",
+          "x": 72,
+          "y": 142,
+          "width": 880,
+          "fontSize": 76,
+          "minFontSize": 63,
+          "fontWeight": 800,
+          "lineHeight": 1.08,
+          "maxLines": 2,
+          "fill": "{{ink}}",
+          "text": "{{headline}}",
+          "critical": true
+        },
+        {
+          "type": "text",
+          "x": 74,
+          "y": 338,
+          "width": 810,
+          "fontSize": 30,
+          "fontWeight": 600,
+          "lineHeight": 1.35,
+          "maxLines": 2,
+          "fill": "{{muted}}",
+          "text": "{{support}}",
+          "critical": true
+        },
+        {
+          "type": "rect",
+          "x": 54,
+          "y": 472,
+          "width": 830,
+          "height": 702,
+          "radius": 30,
+          "fill": "#10131A",
+          "shadow": {
+            "y": 20,
+            "blur": 48,
+            "color": "#402A24",
+            "opacity": 0.22
+          }
+        },
+        {
+          "type": "image",
+          "name": "owned-product-screen",
+          "x": 76,
+          "y": 494,
+          "width": 786,
+          "height": 658,
+          "radius": 18,
+          "source": "{{asset}}",
+          "fit": "cover",
+          "position": "{{assetPosition}}"
+        },
+        {
+          "type": "image",
+          "name": "owned-card-back",
+          "x": 806,
+          "y": 430,
+          "width": 214,
+          "height": 322,
+          "radius": 22,
+          "source": "public/cards/back.png",
+          "fit": "cover",
+          "position": "centre"
+        },
+        {
+          "type": "image",
+          "name": "owned-card-symbol",
+          "x": 826,
+          "y": 722,
+          "width": 188,
+          "height": 282,
+          "radius": 18,
+          "source": "public/cards/axis/situation.png",
+          "fit": "cover",
+          "position": "centre"
+        },
+        {
+          "type": "pill",
+          "x": 770,
+          "y": 1070,
+          "width": 250,
+          "height": 64,
+          "radius": 12,
+          "fill": "{{accent}}",
+          "text": "{{momentLabel}}",
+          "textFill": "{{ink}}",
+          "fontSize": 23,
+          "fontWeight": 800
+        },
+        {
+          "type": "text",
+          "x": 72,
+          "y": 1216,
+          "width": 936,
+          "fontSize": 26,
+          "fontWeight": 800,
+          "maxLines": 1,
+          "fill": "{{ink}}",
+          "text": "{{foot}}",
+          "critical": true
+        }
+      ]
+    }
+  },
+  "creatives": [
+    {
+      "id": "tastepin-01-problem",
+      "idea": "Tastepin",
+      "moment": "problem",
+      "template": "tastepin-editorial",
+      "background": { "fill": "#FFF1DB" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/tastepin.jpg",
+        "assetPosition": "centre",
+        "accent": "#FFB84D",
+        "accentSoft": "#FFD99A",
+        "ink": "#271609",
+        "muted": "#745437",
+        "momentLabel": "문제 순간",
+        "headline": "맛집 영상은 저장했는데\n어디였는지 또 잊었다",
+        "support": "분위기 사진 대신, 실제로 링크를 넣는 화면을 보여줍니다.",
+        "foot": "저장한 맛집 쇼츠 링크부터 붙여보기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["tastepin product screen"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "tastepin-02-result",
+      "idea": "Tastepin",
+      "moment": "result",
+      "template": "tastepin-editorial",
+      "background": { "fill": "#FFF7E8" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/tastepin.jpg",
+        "assetPosition": "centre",
+        "accent": "#FFBE55",
+        "accentSoft": "#FFE3AD",
+        "ink": "#271609",
+        "muted": "#745437",
+        "momentLabel": "결과 화면",
+        "headline": "쇼츠 링크 하나가\n맛집 단서로 바뀐다",
+        "support": "제품이 실제로 돌려주는 결과만 약속합니다.",
+        "foot": "영상 속 장소와 메뉴 단서 확인하기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["tastepin product screen"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "tastepin-03-action",
+      "idea": "Tastepin",
+      "moment": "action",
+      "template": "tastepin-editorial",
+      "background": { "fill": "#FFE8C4" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/tastepin.jpg",
+        "assetPosition": "centre",
+        "accent": "#FFAA32",
+        "accentSoft": "#FFD384",
+        "ink": "#271609",
+        "muted": "#745437",
+        "momentLabel": "첫 행동",
+        "headline": "저장한 영상 링크\n하나만 붙여보세요",
+        "support": "광고 속 가짜 버튼 대신, 다음 화면에서 할 일을 정확히 씁니다.",
+        "foot": "맛집 쇼츠 링크 붙여보기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["tastepin product screen"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "onebite-01-problem",
+      "idea": "Onebite",
+      "moment": "problem",
+      "template": "onebite-photo-note",
+      "background": { "fill": "#FFF0F5" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/onebite.jpg",
+        "assetPosition": "centre",
+        "accent": "#FF8DB8",
+        "accentSoft": "#FFD5E5",
+        "ink": "#391827",
+        "muted": "#80556A",
+        "momentLabel": "막히는 순간",
+        "headline": "뭘 먹었는지보다\n다음 한 끼가 막막할 때",
+        "support": "실제 업로드 화면이 먼저 신뢰를 만듭니다.",
+        "foot": "음식 사진 한 장 고르기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["onebite upload screen"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "onebite-02-result",
+      "idea": "Onebite",
+      "moment": "result",
+      "template": "onebite-photo-note",
+      "background": { "fill": "#FFEAF2" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/onebite.jpg",
+        "assetPosition": "centre",
+        "accent": "#FF83B1",
+        "accentSoft": "#FFCDE0",
+        "ink": "#391827",
+        "muted": "#80556A",
+        "momentLabel": "받는 결과",
+        "headline": "사진 한 장에서\n다음 한 입을 정리해요",
+        "support": "숫자와 과장 없이 작은 행동 하나만 제안합니다.",
+        "foot": "사진 분석 결과 받아보기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["onebite product screen"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "onebite-03-action",
+      "idea": "Onebite",
+      "moment": "action",
+      "template": "onebite-photo-note",
+      "background": { "fill": "#FFF5F8" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/onebite.jpg",
+        "assetPosition": "centre",
+        "accent": "#FF97BD",
+        "accentSoft": "#FFE0EA",
+        "ink": "#391827",
+        "muted": "#80556A",
+        "momentLabel": "첫 행동",
+        "headline": "음식 사진 한 장\n먼저 골라보세요",
+        "support": "AI 캐릭터를 만들지 않아도 행동이 보입니다.",
+        "foot": "오늘 먹은 사진 올리기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["onebite upload screen"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "today-a-01-problem",
+      "idea": "Today A",
+      "moment": "problem",
+      "template": "today-a-editorial",
+      "background": { "fill": "#F3F0E8" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/today-a.jpg",
+        "assetPosition": "centre",
+        "accent": "#75D9B5",
+        "accentSoft": "#BCEBD9",
+        "ink": "#122B23",
+        "muted": "#53675F",
+        "momentLabel": "입력 화면",
+        "headline": "하고 싶은 건 많은데\n뭘 먼저 만들지 모르겠다",
+        "support": "추상적인 아이디어 그림이 아니라 실제 질문 폼을 보여줍니다.",
+        "foot": "내 조건 세 가지 적어보기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["today-a condition form"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "today-a-02-result",
+      "idea": "Today A",
+      "moment": "result",
+      "template": "today-a-editorial",
+      "background": { "fill": "#F6F4ED" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/today-a.jpg",
+        "assetPosition": "centre",
+        "accent": "#68D1AA",
+        "accentSoft": "#C6EDDE",
+        "ink": "#122B23",
+        "muted": "#53675F",
+        "momentLabel": "구조 결과",
+        "headline": "내 조건을 넣으면\n시작 구조가 보입니다",
+        "support": "사람·시간·경험을 입력으로 받고 구조를 결과로 돌려줍니다.",
+        "foot": "내 조건으로 구조 보기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["today-a condition form"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "today-a-03-action",
+      "idea": "Today A",
+      "moment": "action",
+      "template": "today-a-editorial",
+      "background": { "fill": "#EEF5F1" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/today-a.jpg",
+        "assetPosition": "centre",
+        "accent": "#57CAA0",
+        "accentSoft": "#B9E7D6",
+        "ink": "#122B23",
+        "muted": "#53675F",
+        "momentLabel": "첫 행동",
+        "headline": "지금 가진 조건으로\n구조부터 받아보세요",
+        "support": "광고 다음 화면에서 묻게 될 입력을 미리 보여줍니다.",
+        "foot": "조건 입력하고 구조 만들기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["today-a condition form"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "today-b-01-problem",
+      "idea": "Today B",
+      "moment": "problem",
+      "template": "today-b-proof-board",
+      "background": { "fill": "#0F0D17" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/today-b.jpg",
+        "assetPosition": "centre",
+        "accent": "#B49BFF",
+        "accentSoft": "#7153D9",
+        "accentText": "#171124",
+        "muted": "#C5BDD9",
+        "momentLabel": "위험 신호",
+        "headline": "기능은 많은데\n가장 위험한 가정은 안 보인다",
+        "support": "근거 없는 성장 장면 대신 실제 가정 입력 화면을 씁니다.",
+        "foot": "틀리면 끝나는 가정부터 찾기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["today-b assumption form"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "today-b-02-result",
+      "idea": "Today B",
+      "moment": "result",
+      "template": "today-b-proof-board",
+      "background": { "fill": "#12101D" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/today-b.jpg",
+        "assetPosition": "centre",
+        "accent": "#C1AEFF",
+        "accentSoft": "#6247C5",
+        "accentText": "#171124",
+        "muted": "#C5BDD9",
+        "momentLabel": "핵심 가정",
+        "headline": "틀리면 끝나는 가정\n한 개가 먼저 보인다",
+        "support": "검증 순서를 정하는 결과만 보여주고 성과 수치는 만들지 않습니다.",
+        "foot": "가장 위험한 가정 확인하기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["today-b assumption form"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "today-b-03-action",
+      "idea": "Today B",
+      "moment": "action",
+      "template": "today-b-proof-board",
+      "background": { "fill": "#0D0B14" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/today-b.jpg",
+        "assetPosition": "centre",
+        "accent": "#A98DFF",
+        "accentSoft": "#5940B3",
+        "accentText": "#171124",
+        "muted": "#C5BDD9",
+        "momentLabel": "7일 실험",
+        "headline": "7일 동안 확인할\n반응 하나만 정하세요",
+        "support": "사람이 실제로 할 행동을 검증 대상으로 남깁니다.",
+        "foot": "7일 수요 테스트 만들기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["today-b assumption form"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "story-cards-01-problem",
+      "idea": "Story Cards",
+      "moment": "problem",
+      "template": "story-cards-table",
+      "background": { "fill": "#F3E7DA" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/story-cards.jpg",
+        "assetPosition": "centre",
+        "accent": "#63CEBE",
+        "ink": "#24201D",
+        "muted": "#706158",
+        "momentLabel": "대화 시작",
+        "headline": "둘이 있는데\n무슨 말을 해야 할지 모르겠다",
+        "support": "낯선 AI 인물 대신 실제 카드와 실행 화면을 같이 보여줍니다.",
+        "foot": "로그인 없이 랜덤 카드 한 장 열기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["story-cards product screen", "owned card backs"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "story-cards-02-result",
+      "idea": "Story Cards",
+      "moment": "result",
+      "template": "story-cards-table",
+      "background": { "fill": "#F7EDE3" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/story-cards.jpg",
+        "assetPosition": "centre",
+        "accent": "#F48E7D",
+        "ink": "#24201D",
+        "muted": "#706158",
+        "momentLabel": "첫 카드",
+        "headline": "랜덤 카드 한 장이\n첫 이야기를 꺼냅니다",
+        "support": "8번 고르는 실제 규칙과 준비된 카드 자산을 그대로 씁니다.",
+        "foot": "첫 카드 무료로 열기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["story-cards product screen", "owned card backs"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    },
+    {
+      "id": "story-cards-03-action",
+      "idea": "Story Cards",
+      "moment": "action",
+      "template": "story-cards-table",
+      "background": { "fill": "#EFE1D2" },
+      "variables": {
+        "asset": "public/images/experiment-gallery/story-cards.jpg",
+        "assetPosition": "centre",
+        "accent": "#72D5C5",
+        "ink": "#24201D",
+        "muted": "#706158",
+        "momentLabel": "1분 시작",
+        "headline": "로그인 없이\n카드 한 장 열어보세요",
+        "support": "광고 안에 가짜 버튼을 그리지 않고 다음 행동을 문장으로 씁니다.",
+        "foot": "랜덤 카드로 이야기 시작하기 →"
+      },
+      "layerContract": {
+        "codeText": ["headline", "support", "foot", "momentLabel"],
+        "layout": "manifest",
+        "ownedImage": ["story-cards product screen", "owned card backs"],
+        "aiImage": "none"
+      },
+      "approval": { "status": "draft" }
+    }
+  ]
+}

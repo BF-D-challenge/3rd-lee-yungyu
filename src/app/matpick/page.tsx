@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { MatpickLanding } from "@/components/organisms/tastepin/matpick-landing";
 
 export const metadata: Metadata = {
-  title: "맛핀 — 저장한 맛집 릴스를 다시 찾는 가장 짧은 방법",
-  description: "저장한 맛집 릴스는 많은데 오늘 갈 곳을 찾기 어렵다면, 맛핀 초기 체험을 예약해보세요.",
+  title: "맛핀 — 맛집 릴스를 공유하면 지도에 자동 정리",
+  description: "Instagram 맛집 릴스를 matpin.kr로 공유하면 영상 속 장소를 찾아 원본 릴스와 함께 지도에 정리해요.",
 };
 
 export default function MatpickPage() {

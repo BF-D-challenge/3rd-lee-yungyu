@@ -24,6 +24,9 @@ export const MVP_LAST_APP_KEY = "mvp-hub:last-app:v2";
 export const STORY_CONVERSATION_KEY = "story-cards:conversation:v1";
 
 const pathToApp: Record<string, MvpAppId> = {
+  "/matpin": "matpick",
+  "/matpin/map": "matpick",
+  "/matpin/start": "matpick",
   "/matpick": "matpick",
   "/matpick/map": "matpick",
   "/matpick/start": "matpick",
@@ -151,14 +154,14 @@ export function getMvpResumeState(appId: MvpAppId): MvpResumeState {
       appId,
       kind: "resume",
       summary: `저장한 맛집 ${savedCount}곳이 있어요.`,
-      resumeHref: "/matpick?saved=1",
-      newHref: "/matpick",
+      resumeHref: "/matpin?saved=1",
+      newHref: "/matpin",
     } : {
       appId,
       kind: "empty",
       summary: "저장한 맛집이 아직 없어요.",
-      resumeHref: "/matpick",
-      newHref: "/matpick",
+      resumeHref: "/matpin",
+      newHref: "/matpin",
     };
   }
 

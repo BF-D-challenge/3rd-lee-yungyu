@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ArrowLeft,
   AtSign,
   Check,
   CheckCircle2,
@@ -10,7 +9,6 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { GoogleLoginButton } from "@/components/organisms/journey/google-login-button";
 import {
@@ -75,11 +73,15 @@ export function ReservationPage({ config }: ReservationPageProps) {
   const requiresInstagram = config.requiresInstagram;
   const isOnebite = config.product === "onebite";
   const instagramLabel = isOnebite
-    ? "식단 스토리를 공유할 Instagram 아이디"
+    ? "7일 패스 소식을 받을 Instagram 아이디"
     : "맛집 릴스를 보낼 Instagram 아이디";
   const instagramHelp = isOnebite
-    ? "예약 뒤 안내받은 방법으로 식단 스토리를 공유하면 코칭을 보내드려요."
+    ? "패스가 열리면 연결한 계정 기준으로 한 번 알려드려요. 아직 결제하지 않아요."
     : "예약 뒤 안내받은 방법으로 맛집 릴스를 보내면 내 맛집 저장함을 준비해드려요.";
+  const reservationLabel = isOnebite ? "7일 패스 출시 알림" : "선공개 예약";
+  const contactConsentLabel = isOnebite
+    ? "Google 계정 이메일로 7일 패스 출시 안내를 받는 데 동의해요."
+    : "Google 계정 이메일로 출시와 초기 체험 안내를 받는 데 동의해요.";
   const normalizedInstagram = normalizeInstagramHandle(instagramHandle);
   const instagramReady = !requiresInstagram || Boolean(normalizedInstagram);
   const loginReady = instagramReady && Boolean(contactConsent);
@@ -208,11 +210,8 @@ export function ReservationPage({ config }: ReservationPageProps) {
       style={theme}
     >
       <header className={styles.header}>
-        <Link href={config.appHref} aria-label={`${config.name} 화면으로 돌아가기`}>
-          <ArrowLeft aria-hidden />
-          <span>{config.name}</span>
-        </Link>
-        <span>초기 체험 예약</span>
+        <strong>{config.name}</strong>
+        <span>실제 체험 준비 중</span>
       </header>
 
       <div className={styles.layout}>
@@ -221,16 +220,23 @@ export function ReservationPage({ config }: ReservationPageProps) {
             <p className={styles.eyebrow}>{config.eyebrow}</p>
             <h1 id="reservation-title">{config.headline}</h1>
             <p className={styles.description}>{config.description}</p>
+            <p className={styles.releaseNotice} role="note">
+              지금은 예약만 받아요 · 아직 결제하지 않아요.
+            </p>
+            <a className={styles.jumpToBooking} href="#reservation-form">
+              예약 정보 입력하기
+            </a>
           </div>
 
           <div className={styles.visual}>
+            <span className={styles.visualLabel}>AI 제품 화면 시안</span>
             <Image
               src={config.image}
               alt={config.imageAlt}
-              width={1280}
-              height={800}
+              width={390}
+              height={844}
               priority
-              sizes="(max-width: 839px) 100vw, 52vw"
+              sizes="(max-width: 480px) calc(100vw - 3rem), 320px"
             />
           </div>
 
@@ -247,11 +253,15 @@ export function ReservationPage({ config }: ReservationPageProps) {
           </section>
         </section>
 
-        <section className={styles.booking} aria-labelledby="booking-title">
+        <section
+          className={styles.booking}
+          id="reservation-form"
+          aria-labelledby="booking-title"
+        >
           {reservation ? (
             <div className={styles.complete} role="status" tabIndex={-1}>
               <CheckCircle2 aria-hidden />
-              <p>{mode === "local_demo" ? "데모 저장 완료" : "예약 완료"}</p>
+              <p>{mode === "local_demo" ? "데모 저장 완료" : "예약 신청 완료"}</p>
               <h2 id="booking-title">{selectedSlot.label}</h2>
               <span>{selectedSlot.description}</span>
               <dl>
@@ -261,7 +271,7 @@ export function ReservationPage({ config }: ReservationPageProps) {
                 </div>
                 <div>
                   <dt>현재 상태</dt>
-                  <dd>{mode === "local_demo" ? "로컬 데모" : "초기 체험 대기"}</dd>
+                  <dd>{mode === "local_demo" ? "로컬 데모" : "체험 안내 대기"}</dd>
                 </div>
                 {reservation.instagram_handle ? (
                   <div>
@@ -276,12 +286,10 @@ export function ReservationPage({ config }: ReservationPageProps) {
                 </p>
               ) : (
                 <p className={styles.honestNotice}>
-                  결제되거나 일정이 확정된 것은 아니에요. 실제 체험 자리가 열리면 연결한 Google 계정 기준으로 안내합니다.
+                  지금 결제되거나 체험 일정이 확정된 것은 아니에요. 실제 체험은 준비가 끝난 뒤 연결한 Google 계정으로 안내해드려요.
                 </p>
               )}
-              <Link className={styles.backToProduct} href={config.appHref}>
-                {config.name} 화면으로 돌아가기
-              </Link>
+              <p className={styles.closeNotice}>이 페이지를 닫아도 예약 신청은 저장돼요.</p>
             </div>
           ) : (
             <>
@@ -292,9 +300,9 @@ export function ReservationPage({ config }: ReservationPageProps) {
               ) : null}
 
               <div className={styles.bookingHeading}>
-                <p>초기 체험 예약</p>
-                <h2 id="booking-title">{requiresInstagram ? "네" : "세"} 단계만 입력하면 끝나요.</h2>
-                <span>아직 결제하지 않아요. 한 번만 선택하면 됩니다.</span>
+                <p>{reservationLabel}</p>
+                <h2 id="booking-title">지금은 예약만 받아요.</h2>
+                <span>{requiresInstagram ? "네" : "세"} 단계로 신청하면, 실제 체험이 준비됐을 때 안내해드려요. 아직 결제하지 않아요.</span>
               </div>
 
               {requiresInstagram ? (
@@ -344,10 +352,10 @@ export function ReservationPage({ config }: ReservationPageProps) {
               <div className={styles.slotStep} data-reservation-step="slot">
                 <div className={styles.stepLabel}>
                   <span>{slotStepNumber}</span>
-                  <p>예약 시점</p>
+                  <p>희망 시점</p>
                 </div>
                 <fieldset className={styles.slots}>
-                  <legend className="sr-only">체험 희망 시기</legend>
+                  <legend className="sr-only">실제 체험 희망 시기</legend>
                   {config.slots.map((option) => (
                     <label key={option.value} data-selected={slot === option.value ? "true" : undefined}>
                       <input
@@ -395,7 +403,7 @@ export function ReservationPage({ config }: ReservationPageProps) {
                     aria-invalid={Boolean(contactConsentError)}
                   />
                   <span>
-                    Google 계정 이메일로 출시와 초기 체험 안내를 받는 데 동의해요.
+                    {contactConsentLabel}
                   </span>
                 </label>
                 <p id="reservation-contact-consent-help" className={styles.contactConsentHelp}>
@@ -467,7 +475,7 @@ export function ReservationPage({ config }: ReservationPageProps) {
                     ) : (
                       <>
                         <Clock3 aria-hidden />
-                        {session.demo ? `${selectedSlot.label} 데모 저장` : `${selectedSlot.label} 예약 확정`}
+                        {session.demo ? `${selectedSlot.label} 데모 저장` : `${selectedSlot.label} 예약 신청`}
                       </>
                     )}
                   </button>
@@ -478,7 +486,7 @@ export function ReservationPage({ config }: ReservationPageProps) {
               {requiresInstagram ? (
                 <p className={styles.privacy}>
                   <ShieldCheck aria-hidden />
-                  Instagram 아이디는 {config.name} 초기 체험 예약에만 사용하며 GA, Clarity, Meta 이벤트에는 보내지 않아요.
+                  Instagram 아이디는 {isOnebite ? "7일 패스 출시 알림" : `${config.name} 선공개 예약`}에만 사용하며 GA, Clarity, Meta 이벤트에는 보내지 않아요.
                 </p>
               ) : null}
             </>

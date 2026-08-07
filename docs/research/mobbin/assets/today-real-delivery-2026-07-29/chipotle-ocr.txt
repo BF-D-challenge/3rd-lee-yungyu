@@ -1,0 +1,194 @@
+image_width: 776
+image_height: 844
+line_count: 63
+text: "9:41\nHome\nDELIVERY CONFIRMED\nJuly 14, 2025\n7:06m\nEstimated Arrival\nHANVAKU\nSOUARE\nHarvard Sta\nCambridge\nChataiRi\n80\nDELIVERY STATUS\nLooking for a driver..\nMassi\ninstit!\nOrder\nReceived\nHeaded\nto Pickup\nFood's on\nthe Way\nTRACK YOUR ORDER\nNeed Help? Chat with Pepper\nArriving\nSoon\nChipotle\ncurated by\nwh Mobbin\n9:417\n해 이\nDELIVERY CONFIRMED\nX\nPoints are on the way\nNo need to scan in the restaurant.\nORDER SUMMARY\nNapkins & Utensils\nBag Total\nWELCOME! FREE GUAC\nSubtotal\nDelivery Fee\nS0.00\n$30.50\n-$3.60\n$26.90\n$1.00\nService Fee\n$3.05\nThis helps offset the costs of digital convenience.\nTax\n$2.10\nDELIVERY STATUS\nLooking for a driver..\nOrder\nReceived\nHeaded\nto Pickup\nFood's on\nthe Way\nArriving\nSoon\nChipotle\ncurated by l Mobbin"
+lines:
+  -
+    text: "9:41"
+    confidence: 1
+  -
+    text: Home
+    confidence: 1
+  -
+    text: "DELIVERY CONFIRMED"
+    confidence: 1
+  -
+    text: "July 14, 2025"
+    confidence: 1
+  -
+    text: "7:06m"
+    confidence: 1
+  -
+    text: "Estimated Arrival"
+    confidence: 1
+  -
+    text: HANVAKU
+    confidence: 0.5
+  -
+    text: SOUARE
+    confidence: 0.5
+  -
+    text: "Harvard Sta"
+    confidence: 1
+  -
+    text: Cambridge
+    confidence: 1
+  -
+    text: ChataiRi
+    confidence: 0.5
+  -
+    text: "80"
+    confidence: 0.5
+  -
+    text: "DELIVERY STATUS"
+    confidence: 1
+  -
+    text: "Looking for a driver.."
+    confidence: 1
+  -
+    text: Massi
+    confidence: 1
+  -
+    text: "instit!"
+    confidence: 0.5
+  -
+    text: Order
+    confidence: 1
+  -
+    text: Received
+    confidence: 1
+  -
+    text: Headed
+    confidence: 1
+  -
+    text: "to Pickup"
+    confidence: 1
+  -
+    text: "Food's on"
+    confidence: 0.5
+  -
+    text: "the Way"
+    confidence: 1
+  -
+    text: "TRACK YOUR ORDER"
+    confidence: 1
+  -
+    text: "Need Help? Chat with Pepper"
+    confidence: 1
+  -
+    text: Arriving
+    confidence: 1
+  -
+    text: Soon
+    confidence: 0.5
+  -
+    text: Chipotle
+    confidence: 1
+  -
+    text: "curated by"
+    confidence: 1
+  -
+    text: "wh Mobbin"
+    confidence: 0.5
+  -
+    text: "9:417"
+    confidence: 1
+  -
+    text: "해 이"
+    confidence: 0.5
+  -
+    text: "DELIVERY CONFIRMED"
+    confidence: 1
+  -
+    text: X
+    confidence: 0.3
+  -
+    text: "Points are on the way"
+    confidence: 1
+  -
+    text: "No need to scan in the restaurant."
+    confidence: 1
+  -
+    text: "ORDER SUMMARY"
+    confidence: 1
+  -
+    text: "Napkins & Utensils"
+    confidence: 0.5
+  -
+    text: "Bag Total"
+    confidence: 1
+  -
+    text: "WELCOME! FREE GUAC"
+    confidence: 1
+  -
+    text: Subtotal
+    confidence: 1
+  -
+    text: "Delivery Fee"
+    confidence: 1
+  -
+    text: S0.00
+    confidence: 1
+  -
+    text: "$30.50"
+    confidence: 1
+  -
+    text: "-$3.60"
+    confidence: 1
+  -
+    text: "$26.90"
+    confidence: 1
+  -
+    text: "$1.00"
+    confidence: 1
+  -
+    text: "Service Fee"
+    confidence: 1
+  -
+    text: "$3.05"
+    confidence: 1
+  -
+    text: "This helps offset the costs of digital convenience."
+    confidence: 1
+  -
+    text: Tax
+    confidence: 0.5
+  -
+    text: "$2.10"
+    confidence: 1
+  -
+    text: "DELIVERY STATUS"
+    confidence: 1
+  -
+    text: "Looking for a driver.."
+    confidence: 1
+  -
+    text: Order
+    confidence: 1
+  -
+    text: Received
+    confidence: 1
+  -
+    text: Headed
+    confidence: 1
+  -
+    text: "to Pickup"
+    confidence: 1
+  -
+    text: "Food's on"
+    confidence: 0.5
+  -
+    text: "the Way"
+    confidence: 1
+  -
+    text: Arriving
+    confidence: 1
+  -
+    text: Soon
+    confidence: 0.5
+  -
+    text: Chipotle
+    confidence: 1
+  -
+    text: "curated by l Mobbin"
+    confidence: 1

@@ -212,6 +212,14 @@
   word-break: keep-all;
 }
 
+.exampleAction {
+  display: block;
+  margin-top: 1.25rem;
+  color: var(--landing-green-strong);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 .coachingExample > p {
   max-width: 34rem;
   margin: 1.5rem 0 0;

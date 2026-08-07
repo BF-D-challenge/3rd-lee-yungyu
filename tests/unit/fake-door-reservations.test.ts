@@ -30,6 +30,10 @@ describe("fake door reservation contract", () => {
     expect(fakeDoorProductConfigs.matpick.name).toBe("맛핀");
     expect(fakeDoorProductConfigs.onebite.requiresInstagram).toBe(true);
     expect(fakeDoorProductConfigs.matpick.requiresInstagram).toBe(true);
+    expect(Object.values(fakeDoorProductConfigs).every((config) =>
+      !config.description.includes("바로 대화")
+      && !config.description.includes("24시간 뒤"),
+    )).toBe(true);
   });
 
   it("requires an authenticated UUID-shaped owner", () => {

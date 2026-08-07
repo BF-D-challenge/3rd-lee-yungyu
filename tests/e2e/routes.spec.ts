@@ -36,7 +36,7 @@ test.describe("전체 앱 라우트 직접 진입", () => {
     const experiments = page.getByRole("region", { name: "앱 선택" });
     await expect(experiments).toBeVisible();
     await expect(experiments.locator("img")).toHaveCount(4);
-    for (const href of ["/matpick", "/onebite", "/today", "/story-cards"]) {
+    for (const href of ["/matpin", "/onebite", "/today", "/story-cards"]) {
       await expect(experiments.locator(`a[href="${href}"]`)).toHaveCount(1);
     }
     await expect(experiments.locator('a[href="/today-a"]')).toHaveCount(0);
@@ -82,7 +82,7 @@ test.describe("전체 앱 라우트 직접 진입", () => {
   for (const alias of ["/tastepin", "/tastepin/map"]) {
     test(`${alias} 맛핀 별칭은 대표 주소로 합쳐진다`, async ({ page }) => {
       const expectNoErrors = await openWithoutRuntimeErrors(page, alias);
-      await expect(page).toHaveURL(/\/matpick$/);
+      await expect(page).toHaveURL(/\/matpin$/);
       await expectNoErrors();
     });
   }
@@ -224,7 +224,9 @@ test.describe("네 앱 초기 체험 예약", () => {
       await expect(page.locator("main img").first()).toBeVisible();
       await expect(page.locator("fieldset")).toBeVisible();
       await expect(page.getByRole("button", { name: /데모 저장/ })).toBeVisible();
-      await expect(page.getByText("아직 결제하지 않아요. 한 번만 선택하면 됩니다.")).toBeVisible();
+      await expect(page.getByText(
+        /단계로 신청하면, 실제 체험이 준비됐을 때 안내해드려요\. 아직 결제하지 않아요\./,
+      )).toBeVisible();
       await expectNoErrors();
     });
   }

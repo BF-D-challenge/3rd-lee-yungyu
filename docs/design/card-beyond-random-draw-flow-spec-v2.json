@@ -1,0 +1,27 @@
+{
+  "accent": "candle gold-to-rose vertical gradient #E9C56B to #FF8091",
+  "flat_screens": [1, 2, 3],
+  "hero_screens": [4, 5],
+  "screens": [
+    {
+      "label": "타로 덱 펼치기",
+      "description": "a compact header labeled '카드너머', a headline '한 장을 뽑아 대화를 시작하세요', one empty glowing tarot slot above a wide fan-shaped deck of identical face-down cards entering with a subtle sweep, a helper line '어떤 장면이 나올지는 뒤집기 전까지 몰라요', and a bottom CTA labeled '랜덤 카드 한 장 뽑기' that selects one face-down card and starts the existing deck draw motion"
+    },
+    {
+      "label": "한 장 고르기",
+      "description": "the same fan-shaped face-down deck, only one center card lifted above neighboring cards with a slight drag tilt, the empty target slot glowing above it, a helper line '카드를 누르거나 빈칸에 끌어 놓으세요', and a bottom CTA labeled '이 카드 뽑기' that commits the selected face-down card without revealing its random scene"
+    },
+    {
+      "label": "슬롯에 놓기",
+      "description": "the selected face-down card moving alone from the fan deck to the empty slot along a clear curved arc with a restrained motion trail while every other deck card stays still, the destination slot highlighted, and a disabled bottom CTA labeled '카드가 이동 중' that becomes available only after landing"
+    },
+    {
+      "label": "랜덤 장면 공개",
+      "description": "the card settled in the slot and flipping from its engraved back to a painterly fantasy tarot front with a brief gold-to-rose bloom, randomly revealing '유리 온실의 편지' and '온실의 우체국장', a small badge '랜덤으로 열린 장면', and a bottom CTA labeled '이 장면에서 대화 시작' that requests the first mock conversation message"
+    },
+    {
+      "label": "그의 첫 인사",
+      "description": "the chosen tarot card reduced to a compact scene header, a guide chat bubble reading '이 편지는 아직 받는 사람이 없어요. 지금 가장 먼저 떠오르는 사람이나 말이 있나요?', two reply chips labeled '전하지 못한 말이 있어요' and '누구에게 쓸지 모르겠어요', a privacy note '대화는 이 브라우저에만 저장돼요', and a bottom CTA labeled '전하지 못한 말이 있어요' that sends the first reply"
+    }
+  ]
+}

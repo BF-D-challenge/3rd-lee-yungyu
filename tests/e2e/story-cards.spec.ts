@@ -2,18 +2,24 @@ import { expect, test } from "@playwright/test";
 
 test.describe("카드너머", () => {
   test("타로 카드를 고르면 그가 먼저 말하고 예약 CTA까지 이어진다", async ({ page }) => {
+    await page.addInitScript(() => { Math.random = () => 0.3; });
     await page.goto("/story-cards");
 
     await expect(page.getByText("카드너머", { exact: true })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "카드를 고르면, 그가 먼저 말을 걸어요." })).toBeVisible();
-    await expect(page.getByRole("group", { name: "카드너머 타로 카드 선택" })).toBeVisible();
-    await expect(page.getByRole("listitem").filter({ hasText: "타로 카드 선택" })).toBeVisible();
-    await expect(page.getByRole("listitem").filter({ hasText: "서로 다른 남자 주인공" })).toBeVisible();
-    await expect(page.getByRole("listitem").filter({ hasText: "고른 장면에서 바로 대화" })).toBeVisible();
-    await expect(page.getByText("냉정한 제복 연상", { exact: true })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "한 장을 뽑아, 그의 장면을 열어보세요." })).toBeVisible();
+    await expect(page.getByRole("group", { name: "카드너머 랜덤 타로 카드 뽑기" })).toBeVisible();
+    await expect(page.getByRole("listitem").filter({ hasText: "익명의 카드 한 장" })).toBeVisible();
+    await expect(page.getByRole("listitem").filter({ hasText: "랜덤으로 열리는 장면" })).toBeVisible();
+    await expect(page.getByRole("listitem").filter({ hasText: "그가 먼저 건네는 말" })).toBeVisible();
+    await expect(page.getByTestId("story-revealed-card")).toHaveCount(0);
     await expect(page.getByText("대화는 이 브라우저에만 저장돼요.", { exact: true })).toBeVisible();
 
-    await page.getByRole("button", { name: /온실의 우체국장.*유리 온실의 편지.*대화 시작/ }).click();
+    await page.getByRole("button", { name: "랜덤 카드 한 장 뽑기", exact: true }).click();
+    await expect(page.getByTestId("story-revealed-card")).toHaveAttribute(
+      "aria-label",
+      "유리 온실의 편지, 온실의 우체국장",
+    );
+    await page.getByRole("button", { name: "이 장면에서 대화 시작", exact: true }).click();
 
     await expect(page.getByRole("heading", { name: "유리 온실의 편지" })).toBeFocused();
     await expect(page.getByText("햇살 같은 다정남", { exact: true })).toBeVisible();
@@ -45,8 +51,14 @@ test.describe("카드너머", () => {
   });
 
   test("직접 쓴 문장을 보내고 실패하면 문장을 복구해 다시 보낼 수 있다", async ({ page }) => {
+    await page.addInitScript(() => { Math.random = () => 0.99; });
     await page.goto("/story-cards");
-    await page.getByRole("button", { name: /파도 기록관.*파도 기록실.*대화 시작/ }).click();
+    await page.getByRole("button", { name: "랜덤 카드 한 장 뽑기", exact: true }).click();
+    await expect(page.getByTestId("story-revealed-card")).toHaveAttribute(
+      "aria-label",
+      "파도 기록실, 파도 기록관",
+    );
+    await page.getByRole("button", { name: "이 장면에서 대화 시작", exact: true }).click();
     await expect(page.getByLabel("내 이야기")).toBeVisible();
     await expect(page.getByText("동양풍 장발 무사", { exact: true })).toBeVisible();
 
@@ -114,7 +126,7 @@ test.describe("카드너머", () => {
 
     await page.goto("/story-cards");
     await page.getByRole("button", { name: "새 카드 고르기" }).click();
-    await expect(page.getByRole("heading", { name: "카드를 고르면, 그가 먼저 말을 걸어요." })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "한 장을 뽑아, 그의 장면을 열어보세요." })).toBeVisible();
     expect(await page.evaluate(() => localStorage.getItem("story-cards:conversation:v1"))).toBeNull();
   });
 
@@ -132,26 +144,111 @@ test.describe("카드너머", () => {
     await page.goto("/story-cards");
     await expect(page.locator("main [role='alert']")).toContainText("타로 카드를 불러오지 못했어요.");
     await page.getByRole("button", { name: "다시 불러오기" }).click();
-    await expect(page.getByRole("button", { name: /마지막 열차의 기관사.*비가 멈춘 역.*대화 시작/ })).toBeVisible();
+    await expect(page.getByRole("button", { name: "랜덤 카드 한 장 뽑기", exact: true })).toBeEnabled();
   });
 
   test("390×844와 모션 축소 설정에서도 카드 선택과 예약 CTA를 쓸 수 있다", async ({ page }) => {
+    await page.addInitScript(() => { Math.random = () => 0.6; });
     await page.setViewportSize({ width: 390, height: 844 });
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/story-cards");
 
-    const situation = page.getByRole("button", { name: /달빛 가게의 주인.*달 아래의 가게.*대화 시작/ });
-    await expect(situation).toBeVisible();
-    await expect(situation.getByText("위험한 은발 연하", { exact: true })).toBeVisible();
-    expect((await situation.boundingBox())?.height).toBeGreaterThanOrEqual(48);
+    const deckCard = page.getByRole("button", { name: "덱에서 랜덤 타로 카드 뽑기", exact: true });
+    await expect(deckCard).toBeVisible();
+    expect((await deckCard.boundingBox())?.height).toBeGreaterThanOrEqual(48);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 
-    await situation.click();
+    const visibleDeckPoint = await page.evaluate(() => {
+      const host = document.querySelector<HTMLElement>("[data-testid='story-fan-deck'] .fd-host")!;
+      const bounds = host.getBoundingClientRect();
+      const x = bounds.left + bounds.width / 2;
+      const visiblePixels: number[] = [];
+      for (let y = Math.floor(bounds.top); y < bounds.bottom; y += 2) {
+        if (document.elementFromPoint(x, y)?.closest(".fd-card[data-active='true']")) {
+          visiblePixels.push(y);
+        }
+      }
+      if (visiblePixels.length === 0) throw new Error("화면에 보이는 랜덤 타로 카드를 찾지 못했어요.");
+      return { x, y: (visiblePixels[0] + visiblePixels[visiblePixels.length - 1]) / 2 };
+    });
+    await page.mouse.click(visibleDeckPoint.x, visibleDeckPoint.y);
+    await expect(page.getByTestId("story-revealed-card")).toHaveAttribute(
+      "aria-label",
+      "달 아래의 가게, 달빛 가게의 주인",
+    );
+    await page.getByRole("button", { name: "이 장면에서 대화 시작", exact: true }).click();
     const composer = page.getByLabel("내 이야기");
     await expect(composer).toBeVisible();
     expect((await page.getByRole("button", { name: "메시지 보내기" }).boundingBox())?.height)
       .toBeGreaterThanOrEqual(48);
     await expect(page.getByRole("link", { name: "카드너머 출시 알림 예약하기" })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  });
+
+  test("빈 슬롯을 누르면 덱 카드 한 장만 곡선 비행한 뒤 랜덤 장면이 열린다", async ({ page }) => {
+    await page.addInitScript(() => { Math.random = () => 0; });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/story-cards");
+
+    await page.getByRole("button", { name: "랜덤 카드 뽑기", exact: true }).click();
+    await expect(page.locator(".fd-fly")).toHaveCount(1);
+    await expect(page.getByTestId("story-revealed-card")).toHaveAttribute(
+      "aria-label",
+      "비가 멈춘 역, 마지막 열차의 기관사",
+    );
+    await expect(page.locator(".fd-fly")).toHaveCount(0);
+    await expect(page.getByTestId("story-fan-deck")).toHaveCount(0);
+  });
+
+  test("덱에서 카드를 빈 슬롯으로 끌어 놓아도 같은 랜덤 장면이 열린다", async ({ page }) => {
+    await page.addInitScript(() => { Math.random = () => 0.3; });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/story-cards");
+    await page.getByTestId("story-fan-deck").scrollIntoViewIfNeeded();
+
+    const start = await page.evaluate(() => {
+      const host = document.querySelector<HTMLElement>("[data-testid='story-fan-deck'] .fd-host")!;
+      const bounds = host.getBoundingClientRect();
+      const x = bounds.left + bounds.width / 2;
+      const visiblePixels: number[] = [];
+      for (let y = Math.floor(bounds.top); y < bounds.bottom; y += 2) {
+        if (document.elementFromPoint(x, y)?.closest(".fd-card[data-active='true']")) {
+          visiblePixels.push(y);
+        }
+      }
+      if (visiblePixels.length === 0) throw new Error("드래그할 랜덤 타로 카드를 찾지 못했어요.");
+      return { x, y: (visiblePixels[0] + visiblePixels[visiblePixels.length - 1]) / 2 };
+    });
+    const target = (await page.getByRole("button", { name: "랜덤 카드 뽑기", exact: true }).boundingBox())!;
+
+    await page.mouse.move(start.x, start.y);
+    await page.mouse.down();
+    await page.mouse.move(target.x + target.width / 2, target.y + target.height / 2, { steps: 8 });
+    await expect(page.getByRole("button", { name: "랜덤 카드 뽑기", exact: true }))
+      .toHaveAttribute("data-hot", "true");
+    await page.mouse.up();
+
+    await expect(page.getByTestId("story-revealed-card")).toHaveAttribute(
+      "aria-label",
+      "유리 온실의 편지, 온실의 우체국장",
+    );
+    await expect(page.locator(".fd-fly")).toHaveCount(0);
+  });
+
+  test("200% 글자 크기와 키보드 Enter에서도 랜덤 카드 뽑기를 완료한다", async ({ page }) => {
+    await page.addInitScript(() => { Math.random = () => 0.6; });
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/story-cards");
+    await page.evaluate(() => { document.documentElement.style.fontSize = "200%"; });
+
+    const target = page.getByRole("button", { name: "랜덤 카드 뽑기", exact: true });
+    await target.focus();
+    await page.keyboard.press("Enter");
+
+    await expect(page.getByTestId("story-revealed-card")).toHaveAttribute(
+      "aria-label",
+      "달 아래의 가게, 달빛 가게의 주인",
+    );
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   });
 });

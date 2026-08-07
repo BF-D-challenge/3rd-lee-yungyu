@@ -6,66 +6,77 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  deployment-owner:
     runs-on: ubuntu-latest
+    outputs:
+      cli-configured: ${{ steps.detect.outputs.configured }}
     steps:
-      - name: Check Vercel secrets
-        id: check
+      - id: detect
+        name: Select the single production deployment owner
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
-          if [ -z "${{ secrets.VERCEL_TOKEN }}" ] || [ -z "${{ secrets.VERCEL_ORG_ID }}" ] || [ -z "${{ secrets.VERCEL_PROJECT_ID }}" ]; then
-            echo "::warning::Vercel 시크릿이 아직 등록되지 않았어요. README의 셋업 가이드를 참고해주세요."
-            echo "ready=false" >> $GITHUB_OUTPUT
+          if [ -z "$VERCEL_TOKEN" ] || [ -z "$VERCEL_ORG_ID" ] || [ -z "$VERCEL_PROJECT_ID" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            {
+              echo "## Production deploy: Vercel Git integration"
+              echo
+              echo "The CLI deploy job is intentionally skipped because one or more Vercel secrets are absent."
+              echo "The Vercel Git integration is the only production deployment owner for this push."
+            } >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "ready=true" >> $GITHUB_OUTPUT
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "## Production deploy: GitHub Actions Vercel CLI"
+              echo
+              echo "All three Vercel secrets are configured, so the CLI deploy job will run."
+            } >> "$GITHUB_STEP_SUMMARY"
           fi
 
+  deploy:
+    needs: deployment-owner
+    if: needs.deployment-owner.outputs.cli-configured == 'true'
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v4
-        if: steps.check.outputs.ready == 'true'
 
       - uses: actions/setup-node@v4
-        if: steps.check.outputs.ready == 'true'
         with:
-          node-version: '20'
+          node-version: '22'
           cache: npm
 
       - name: Install dependencies
-        if: steps.check.outputs.ready == 'true'
         run: npm ci
 
       - name: Verify application
-        if: steps.check.outputs.ready == 'true'
         run: |
           npm run lint
           npm test
 
       - name: Install Playwright Chromium
-        if: steps.check.outputs.ready == 'true'
         run: npx playwright install --with-deps chromium
 
       - name: Run end-to-end tests
-        if: steps.check.outputs.ready == 'true'
         run: npm run test:e2e
 
       - name: Install Vercel CLI
-        if: steps.check.outputs.ready == 'true'
         run: npm install --global vercel@latest
 
       - name: Pull Vercel Environment Information
-        if: steps.check.outputs.ready == 'true'
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
-        if: steps.check.outputs.ready == 'true'
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts
-        if: steps.check.outputs.ready == 'true'
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}

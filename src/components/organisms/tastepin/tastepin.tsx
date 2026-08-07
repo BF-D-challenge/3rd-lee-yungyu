@@ -94,7 +94,7 @@ export function Tastepin() {
   };
 
   const openSaved = () => {
-    window.location.assign("/matpick");
+    window.location.assign("/matpin");
   };
 
   const reset = () => {
