@@ -1557,6 +1557,9 @@ const IDEA_LAB_CSS = `
 .idea-lab__stage--draw .idea-lab__cta-bar{grid-template-columns:1fr auto}
 .idea-lab__stage--draw .idea-lab__cta-bar:has(.idea-lab__cta--ghost){grid-template-columns:1fr auto}
 .idea-lab__stage--draw .idea-lab__cta-bar:not(:has(.idea-lab__cta--ghost)){grid-template-columns:1fr}
+@media (max-width:440px) and (min-height:761px){
+  .idea-lab__slots{transform:translateY(-84px)}
+}
 .idea-lab__cta-bar.is-placeholder{pointer-events:none}.idea-lab__cta-placeholder{display:block;height:48px}
 .idea-lab__cta{min-height:48px;padding:0 18px;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;transition:background .16s ease,border-color .16s ease,transform .1s ease}
 .idea-lab__cta--primary{border:1px solid var(--action-primary);background:var(--action-primary);color:var(--action-on-primary)!important}
