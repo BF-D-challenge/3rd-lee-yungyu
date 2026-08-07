@@ -42,7 +42,7 @@ export const MVP_DEFINITIONS: Record<MvpExperimentId, MvpDefinition> = {
   matpick: {
     productId: "matpick",
     productSlug: "matpick",
-    path: "/matpick",
+    path: "/matpin",
     events: {
       result: "matpick_result_viewed",
       deepAction: "matpick_place_followup_opened",
@@ -51,7 +51,7 @@ export const MVP_DEFINITIONS: Record<MvpExperimentId, MvpDefinition> = {
   tastepin: {
     productId: "matpick",
     productSlug: "matpick",
-    path: "/matpick",
+    path: "/matpin",
     events: {
       result: "tastepin_result_viewed",
       deepAction: "tastepin_place_followup_opened",

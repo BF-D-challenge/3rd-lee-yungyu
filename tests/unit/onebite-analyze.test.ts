@@ -11,6 +11,7 @@ type Analysis = Parameters<typeof onebiteAnalysisSchema.parse>[0];
 const safeAnalysis = {
   isMealPhoto: true,
   visibleGroups: ["starch", "protein"],
+  visibleFoods: ["밥", "닭고기 반찬"],
   actionCode: "add_vegetable",
   confidence: "high",
   riskFlag: "none",
@@ -83,7 +84,10 @@ describe("POST /api/onebite/analyze", () => {
     vi.stubEnv("ALLSALE_GEMINI_API_KEY", "");
     vi.stubEnv("ONEBITE_GEMINI_MODEL", "");
     const fetchSpy = vi.spyOn(globalThis, "fetch").mockResolvedValueOnce(
-      new Response(JSON.stringify(geminiResponse(safeAnalysis)), {
+      new Response(JSON.stringify(geminiResponse({
+        ...safeAnalysis,
+        roastLine: "밥과 닭고기가 접시를 점령하고 채소 입국 심사대를 폐쇄했네요.",
+      })), {
         status: 200,
         headers: { "content-type": "application/json" },
       }),
@@ -97,6 +101,7 @@ describe("POST /api/onebite/analyze", () => {
     expect(body).toEqual({
       mode: "live",
       analysis: safeAnalysis,
+      roastLine: "밥과 닭고기가 접시를 점령하고 채소 입국 심사대를 폐쇄했네요.",
       actionLine: "다음 끼니에는 채소 반찬 한 가지를 먼저 담아보세요.",
     });
     expect(JSON.stringify(body)).not.toContain("server-only-test-key");
@@ -119,6 +124,8 @@ describe("POST /api/onebite/analyze", () => {
       mime_type: "image/webp",
     }));
     expect(upstreamBody.response_format.mime_type).toBe("application/json");
+    expect(upstreamBody.input[0].text).toContain("말도 안 되게 웃긴");
+    expect(upstreamBody.input[0].text).toContain("사진에서 분명히 보이는 음식 이름을 최소 하나");
 
     const preparedImage = Buffer.from(upstreamBody.input[1].data, "base64");
     const metadata = await sharp(preparedImage).metadata();
@@ -128,11 +135,12 @@ describe("POST /api/onebite/analyze", () => {
     expect(metadata.icc).toBeUndefined();
   });
 
-  it("모델의 자유 문장과 계약 밖 필드는 결과로 통과시키지 않는다", async () => {
+  it("모델의 계약 밖 행동 문장은 결과로 통과시키지 않는다", async () => {
     vi.stubEnv("GEMINI_API_KEY", "server-only-test-key");
     vi.spyOn(globalThis, "fetch").mockResolvedValueOnce(
       new Response(JSON.stringify(geminiResponse({
         ...safeAnalysis,
+        roastLine: "오늘 접시는 채소를 또 투명인간 취급했네요.",
         actionLine: "다음 끼니는 굶으세요.",
       })), { status: 200 }),
     );
@@ -143,11 +151,28 @@ describe("POST /api/onebite/analyze", () => {
     expect(await response.json()).toEqual({ error: "gemini_failed" });
   });
 
+  it("몸과 체중을 공격하는 팩폭은 서버의 안전 문장으로 교체한다", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "server-only-test-key");
+    vi.spyOn(globalThis, "fetch").mockResolvedValueOnce(
+      new Response(JSON.stringify(geminiResponse({
+        ...safeAnalysis,
+        roastLine: "이렇게 먹으니 살쪘네요. 의지박약이 따로 없어요.",
+      })), { status: 200 }),
+    );
+
+    const response = await analyzeRequest(await jpegPhoto());
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.roastLine).toBe("채소가 이 접시 단톡방에서 혼자 강퇴당했네요.");
+  });
+
   it.each([
     {
       analysis: {
         isMealPhoto: false,
         visibleGroups: [],
+        visibleFoods: [],
         actionCode: "retake_photo",
         confidence: "high",
         riskFlag: "not_food",
@@ -159,6 +184,7 @@ describe("POST /api/onebite/analyze", () => {
       analysis: {
         isMealPhoto: true,
         visibleGroups: ["unknown"],
+        visibleFoods: [],
         actionCode: "retake_photo",
         confidence: "low",
         riskFlag: "uncertain",
@@ -170,6 +196,7 @@ describe("POST /api/onebite/analyze", () => {
       analysis: {
         isMealPhoto: true,
         visibleGroups: ["starch"],
+        visibleFoods: ["밥"],
         actionCode: "retake_photo",
         confidence: "medium",
         riskFlag: "medical_or_ed",
@@ -185,7 +212,10 @@ describe("POST /api/onebite/analyze", () => {
   }) => {
     vi.stubEnv("GEMINI_API_KEY", "server-only-test-key");
     vi.spyOn(globalThis, "fetch").mockResolvedValueOnce(
-      new Response(JSON.stringify(geminiResponse(analysis)), { status: 200 }),
+      new Response(JSON.stringify(geminiResponse({
+        ...analysis,
+        roastLine: "사진부터 제대로 보여줘야 코치도 한마디 하죠.",
+      })), { status: 200 }),
     );
 
     const response = await analyzeRequest(await jpegPhoto());

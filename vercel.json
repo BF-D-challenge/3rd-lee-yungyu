@@ -3,6 +3,10 @@
     {
       "path": "/api/today/jobs/process",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/matpin/jobs/process",
+      "schedule": "30 18 * * *"
     }
   ]
 }

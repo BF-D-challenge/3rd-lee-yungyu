@@ -352,6 +352,316 @@
   transform: rotate(45deg);
 }
 
+.drawStage {
+  position: relative;
+  display: flex;
+  width: calc(100% + 2rem);
+  min-width: 0;
+  min-height: 31rem;
+  flex-direction: column;
+  align-items: stretch;
+  margin-inline: -1rem;
+  overflow: hidden;
+  padding: 0.25rem 1rem 1rem;
+}
+
+.drawStage > * {
+  min-width: 0;
+}
+
+.drawTargetWrap {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  width: 100%;
+  min-height: 16rem;
+  place-items: center;
+}
+
+.drawTarget,
+.revealedCard {
+  width: min(44vw, 11rem);
+  aspect-ratio: 3 / 4;
+  border-radius: 1.125rem;
+}
+
+.drawTarget {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  border: 1px dashed rgba(233, 197, 107, 0.58);
+  padding: 1.25rem;
+  color: #f8f2e8;
+  background:
+    radial-gradient(circle at 50% 105%, rgba(255, 128, 145, 0.15), transparent 54%),
+    radial-gradient(circle at 50% -5%, rgba(233, 197, 107, 0.13), transparent 52%),
+    #0d0e12;
+  box-shadow:
+    0 0 0 1px rgba(233, 197, 107, 0.08),
+    0 0 2.4rem rgba(233, 197, 107, 0.08);
+  font: inherit;
+  cursor: pointer;
+  transition:
+    border-color 160ms var(--ease-out),
+    background 160ms var(--ease-out),
+    box-shadow 160ms var(--ease-out),
+    transform 160ms var(--ease-out);
+}
+
+.drawTarget::before {
+  position: absolute;
+  inset: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.8rem;
+  content: "";
+  pointer-events: none;
+}
+
+.drawTarget[data-hot="true"] {
+  border-color: #f3d78f;
+  background:
+    radial-gradient(circle at 50% 90%, rgba(255, 128, 145, 0.24), transparent 58%),
+    #111116;
+  box-shadow:
+    0 0 0 3px rgba(233, 197, 107, 0.18),
+    0 0 3rem rgba(255, 128, 145, 0.16);
+  transform: scale(1.025);
+}
+
+.drawTarget:disabled {
+  cursor: wait;
+}
+
+.drawTargetMark {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgba(233, 197, 107, 0.38);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+
+.drawTarget strong,
+.drawTarget small {
+  position: relative;
+  z-index: 1;
+}
+
+.drawTarget strong {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.drawTarget small {
+  max-width: 10rem;
+  color: #8f8a82;
+  font-size: 0.6875rem;
+  line-height: 1.55;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.fanDeckStage {
+  position: relative;
+  z-index: 3;
+  height: 12.5rem;
+  flex: 0 0 12.5rem;
+  margin: -2rem -1rem 0;
+  overflow: visible;
+  background: linear-gradient(180deg, transparent, rgba(9, 10, 14, 0.68) 72%, var(--night));
+}
+
+.fanDeckStage :global(.fd-card) {
+  pointer-events: auto;
+}
+
+.revealedCard {
+  --card-accent: var(--gold);
+  position: relative;
+  perspective: 90rem;
+  filter: drop-shadow(0 1.5rem 2.5rem rgba(0, 0, 0, 0.38));
+}
+
+.revealedCard::after {
+  position: absolute;
+  inset: -1.25rem;
+  z-index: -1;
+  border-radius: 2rem;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--card-accent) 34%, transparent),
+    transparent 74%
+  );
+  content: "";
+  animation: revealed-bloom 560ms var(--ease-out) both;
+  pointer-events: none;
+}
+
+.revealedCardInner {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+  animation: revealed-flip 560ms var(--ease-out) both;
+}
+
+.revealedCardBack,
+.revealedCardFront {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 1.125rem;
+  backface-visibility: hidden;
+}
+
+.revealedCardBack svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.revealedCardFront {
+  border: 1px solid color-mix(in srgb, var(--card-accent) 54%, #32333a);
+  background: #111318;
+  transform: rotateY(180deg);
+}
+
+.revealedCardFront > .characterPortrait {
+  position: absolute;
+  inset: 0;
+}
+
+.revealedVeil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 34%, rgba(5, 6, 8, 0.22) 54%, rgba(5, 6, 8, 0.96) 96%),
+    linear-gradient(145deg, color-mix(in srgb, var(--card-accent) 16%, transparent), transparent 46%);
+}
+
+.revealedCopy {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 1;
+}
+
+.revealedCopy span,
+.revealedCopy h2,
+.revealedCopy strong {
+  display: block;
+  margin: 0;
+}
+
+.revealedCopy span {
+  color: color-mix(in srgb, var(--card-accent) 72%, #fff);
+  font-size: 0.6875rem;
+  font-weight: 900;
+  line-height: 1.52;
+}
+
+.revealedCopy h2 {
+  margin-top: 0.2rem;
+  font-family: "Iowan Old Style", "AppleMyungjo", "Noto Serif KR", serif;
+  font-size: clamp(1.4rem, 6vw, 2rem);
+  line-height: 1.32;
+  letter-spacing: -0.04em;
+  word-break: keep-all;
+}
+
+.revealedCopy strong {
+  margin-top: 0.35rem;
+  color: #d8d2c8;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.drawStatus {
+  position: relative;
+  z-index: 4;
+  min-height: 1.5rem;
+  margin: 0.25rem auto 0;
+  color: #8f8a82;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.drawActions {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  width: 100%;
+  max-width: 30rem;
+  gap: 0.625rem;
+  margin: 0.75rem auto 0;
+}
+
+.drawActions button {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0 1.25rem;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 880;
+  cursor: pointer;
+  transition:
+    border-color 160ms var(--ease-out),
+    opacity 160ms var(--ease-out),
+    transform 160ms var(--ease-out);
+}
+
+.drawActions svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.drawPrimary {
+  border: 1px solid #f0c15e;
+  color: #171008;
+  background: linear-gradient(100deg, #f5c457, #ff708a);
+  box-shadow: 0 0.75rem 2rem rgba(255, 112, 138, 0.12);
+}
+
+.drawPrimary > svg:not(.spin) {
+  transform: rotate(45deg);
+}
+
+.drawSecondary {
+  border: 1px solid var(--line);
+  color: #d8d2c8;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.drawActions button:disabled {
+  cursor: wait;
+  opacity: 0.58;
+}
+
+@keyframes revealed-flip {
+  from { transform: rotateY(0deg) scale(0.97); }
+  46% { transform: rotateY(92deg) scale(1.015); }
+  to { transform: rotateY(180deg) scale(1); }
+}
+
+@keyframes revealed-bloom {
+  from { opacity: 0; transform: scale(0.82); }
+  48% { opacity: 0.9; transform: scale(1.08); }
+  to { opacity: 0.18; transform: scale(1); }
+}
+
 .note {
   margin: 0.125rem 0 0;
   color: #77736c;
@@ -930,6 +1240,17 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .drawTarget:hover:not(:disabled) {
+    border-color: #f3d78f;
+    box-shadow:
+      0 0 0 3px rgba(233, 197, 107, 0.12),
+      0 0 2.75rem rgba(255, 128, 145, 0.12);
+  }
+
+  .drawActions button:hover:not(:disabled) {
+    transform: translateY(-0.125rem);
+  }
+
   .situationChoice:hover {
     border-color: var(--card-accent);
     transform: translateY(-0.25rem);
@@ -946,6 +1267,8 @@
 }
 
 .situationChoice:active,
+.drawTarget:active,
+.drawActions button:active,
 .restoreActions button:active,
 .suggestions button:active,
 .composer button:active,
@@ -954,6 +1277,8 @@
 }
 
 .back:focus-visible,
+.drawTarget:focus-visible,
+.drawActions button:focus-visible,
 .restoreActions button:focus-visible,
 .situationChoice:focus-visible,
 .chatTopline button:focus-visible,
@@ -983,6 +1308,17 @@
     margin-inline: 0;
     padding-inline: 0;
     scroll-padding-inline: 0;
+  }
+
+  .drawStage {
+    width: 100%;
+    margin-inline: 0;
+    border-inline: 1px solid rgba(255, 255, 255, 0.06);
+    padding-inline: 1.5rem;
+  }
+
+  .drawActions:has(.drawSecondary) {
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
   .restoreActions {
@@ -1041,6 +1377,18 @@
     overflow: visible;
   }
 
+  .drawStage {
+    min-height: 38rem;
+  }
+
+  .drawTargetWrap {
+    min-height: 21rem;
+  }
+
+  .fanDeckStage {
+    height: 14rem;
+  }
+
   .situationChoice {
     min-height: 0;
   }
@@ -1081,6 +1429,8 @@
 
   .situationChoice,
   .situationChoice > .characterPortrait,
+  .drawTarget,
+  .drawActions button,
   .restoreActions button,
   .suggestions button,
   .composer button,
@@ -1091,11 +1441,20 @@
   .situationChoice:hover,
   .situationChoice:hover > .characterPortrait,
   .situationChoice:active,
+  .drawTarget:hover,
+  .drawTarget:active,
+  .drawActions button:hover,
+  .drawActions button:active,
   .restoreActions button:active,
   .suggestions button:active,
   .composer button:active,
   .reserveButton:active {
     transform: none;
+  }
+
+  .revealedCard::after,
+  .revealedCardInner {
+    animation: none;
   }
 }
 

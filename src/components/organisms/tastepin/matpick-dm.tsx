@@ -69,7 +69,7 @@ export function MatpickDm() {
         funnel_stage: "result",
         product_id: "tastepin",
         product_slug: "tastepin",
-        product_path: "/matpick",
+        product_path: "/matpin",
         experiment_id: "tastepin",
       });
     }
@@ -91,7 +91,7 @@ export function MatpickDm() {
     setDuplicate(false);
 
     try {
-      const response = await fetch("/api/matpick/dm", {
+      const response = await fetch("/api/matpin/dm", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ reelUrl: normalizedUrl }),
@@ -136,14 +136,14 @@ export function MatpickDm() {
   return (
     <main className={styles.page}>
       <header className={styles.appBar}>
-        <Link href="/matpick" aria-label="맛핀 홈으로 돌아가기">
+        <Link href="/matpin" aria-label="맛핀 홈으로 돌아가기">
           <ArrowLeft aria-hidden="true" size={22} />
         </Link>
         <div>
           <strong>맛핀</strong>
           <span>릴스 저장</span>
         </div>
-        <Link className={styles.savedLink} href="/matpick/map" aria-label={`내 저장함 ${savedCount}곳 보기`}>
+        <Link className={styles.savedLink} href="/matpin/map" aria-label={`내 저장함 ${savedCount}곳 보기`}>
           <Bookmark aria-hidden="true" size={18} />
           <span>{savedCount}</span>
         </Link>
@@ -332,7 +332,7 @@ export function MatpickDm() {
               </div>
             </article>
 
-            <Link className={styles.primaryButton} href="/matpick/map?saved=1">
+            <Link className={styles.primaryButton} href="/matpin/map?saved=1">
               내 저장함에서 보기
               <ArrowRight aria-hidden="true" size={19} />
             </Link>

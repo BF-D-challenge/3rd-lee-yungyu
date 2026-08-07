@@ -1,0 +1,224 @@
+image_width: 984
+image_height: 708
+line_count: 73
+text: "9:41\nContracts\nC Exclusive Freelancer Plus perk\nJoin Freelancer Plus. and work smarter with 20% off\nan annual Microsoft 365 subscription, Limited time\nOnly.\nVegrade plan>\nEarnings available now:\n$44.06\nActive contracts\n• Search contracts\nAIl\nHourly (2)\nActive Milestones (C\nUI/Ux design for a mobile ap\nfor parents and children.\nHired by\nJobs\nProposals\nContracts\nMessages\nAlerts\nUpwork\ncurated by\nw Mobbin\n9:41\n9:41\nActive contracts\nSearch contracts\nAIll\nHourly (2)\nActive Milestones (C\nUI/UX design for a mobile app\nfor parents and children.\n***\nHired by\nInc.\nActive\n2:00 hrs. $16.80 this week\nRate: $8.40/hr, 40 hrs weekly imit\nJul 17, 2024- Present\nSee timesheet\nUll design and infographics\n•••\nJobs\nProposals\nContracts\nMessages\nAlerts\nSee timesheet\nSeeking.a Web Designer\nHired by\nPaused\nby Upwork\n$300.00 Budget\n$0.00 in Escrow\nWe are investigating a problem with\n's account.\nPlease do not resume work until the contract is active\nagain. Lear more\nApr 24, 2024- Present\nSend a message\nView all contracts\nJobs\nProposals\nContracts\nMessages\nAlerts\nUpwork\ncurated by\ne Mobbin\n5 Upwork\ncurated by al Mobbin"
+lines:
+  -
+    text: "9:41"
+    confidence: 1
+  -
+    text: Contracts
+    confidence: 1
+  -
+    text: "C Exclusive Freelancer Plus perk"
+    confidence: 1
+  -
+    text: "Join Freelancer Plus. and work smarter with 20% off"
+    confidence: 1
+  -
+    text: "an annual Microsoft 365 subscription, Limited time"
+    confidence: 1
+  -
+    text: Only.
+    confidence: 0.5
+  -
+    text: "Vegrade plan>"
+    confidence: 0.5
+  -
+    text: "Earnings available now:"
+    confidence: 1
+  -
+    text: "$44.06"
+    confidence: 1
+  -
+    text: "Active contracts"
+    confidence: 1
+  -
+    text: "• Search contracts"
+    confidence: 1
+  -
+    text: AIl
+    confidence: 0.5
+  -
+    text: "Hourly (2)"
+    confidence: 1
+  -
+    text: "Active Milestones (C"
+    confidence: 1
+  -
+    text: "UI/Ux design for a mobile ap"
+    confidence: 1
+  -
+    text: "for parents and children."
+    confidence: 1
+  -
+    text: "Hired by"
+    confidence: 1
+  -
+    text: Jobs
+    confidence: 0.5
+  -
+    text: Proposals
+    confidence: 1
+  -
+    text: Contracts
+    confidence: 1
+  -
+    text: Messages
+    confidence: 1
+  -
+    text: Alerts
+    confidence: 1
+  -
+    text: Upwork
+    confidence: 0.5
+  -
+    text: "curated by"
+    confidence: 1
+  -
+    text: "w Mobbin"
+    confidence: 0.5
+  -
+    text: "9:41"
+    confidence: 1
+  -
+    text: "9:41"
+    confidence: 1
+  -
+    text: "Active contracts"
+    confidence: 1
+  -
+    text: "Search contracts"
+    confidence: 1
+  -
+    text: AIll
+    confidence: 0.5
+  -
+    text: "Hourly (2)"
+    confidence: 1
+  -
+    text: "Active Milestones (C"
+    confidence: 1
+  -
+    text: "UI/UX design for a mobile app"
+    confidence: 1
+  -
+    text: "for parents and children."
+    confidence: 1
+  -
+    text: "***"
+    confidence: 0.3
+  -
+    text: "Hired by"
+    confidence: 1
+  -
+    text: Inc.
+    confidence: 0.5
+  -
+    text: Active
+    confidence: 1
+  -
+    text: "2:00 hrs. $16.80 this week"
+    confidence: 1
+  -
+    text: "Rate: $8.40/hr, 40 hrs weekly imit"
+    confidence: 1
+  -
+    text: "Jul 17, 2024- Present"
+    confidence: 1
+  -
+    text: "See timesheet"
+    confidence: 1
+  -
+    text: "Ull design and infographics"
+    confidence: 1
+  -
+    text: "•••"
+    confidence: 0.5
+  -
+    text: Jobs
+    confidence: 0.5
+  -
+    text: Proposals
+    confidence: 1
+  -
+    text: Contracts
+    confidence: 1
+  -
+    text: Messages
+    confidence: 1
+  -
+    text: Alerts
+    confidence: 0.5
+  -
+    text: "See timesheet"
+    confidence: 1
+  -
+    text: "Seeking.a Web Designer"
+    confidence: 1
+  -
+    text: "Hired by"
+    confidence: 1
+  -
+    text: Paused
+    confidence: 1
+  -
+    text: "by Upwork"
+    confidence: 1
+  -
+    text: "$300.00 Budget"
+    confidence: 1
+  -
+    text: "$0.00 in Escrow"
+    confidence: 1
+  -
+    text: "We are investigating a problem with"
+    confidence: 1
+  -
+    text: "'s account."
+    confidence: 0.5
+  -
+    text: "Please do not resume work until the contract is active"
+    confidence: 1
+  -
+    text: "again. Lear more"
+    confidence: 1
+  -
+    text: "Apr 24, 2024- Present"
+    confidence: 1
+  -
+    text: "Send a message"
+    confidence: 1
+  -
+    text: "View all contracts"
+    confidence: 1
+  -
+    text: Jobs
+    confidence: 0.5
+  -
+    text: Proposals
+    confidence: 1
+  -
+    text: Contracts
+    confidence: 1
+  -
+    text: Messages
+    confidence: 1
+  -
+    text: Alerts
+    confidence: 1
+  -
+    text: Upwork
+    confidence: 0.5
+  -
+    text: "curated by"
+    confidence: 1
+  -
+    text: "e Mobbin"
+    confidence: 0.5
+  -
+    text: "5 Upwork"
+    confidence: 0.5
+  -
+    text: "curated by al Mobbin"
+    confidence: 1

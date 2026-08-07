@@ -70,7 +70,7 @@ function Hub() {
   const cards = [
     {
       id: "matpick" as const,
-      href: "/matpick",
+      href: "/matpin",
       image: "/images/experiment-gallery/matpick.jpg",
       imageAlt: "맛핀 화면. 강남역과 역삼역 주변 맛집을 원본 영상과 함께 보는 저장함",
       label: "맛핀",

@@ -287,14 +287,14 @@ export function TastepinMap({
   return (
     <main className={styles.shell}>
       <header className={styles.appBar}>
-        <Link className={styles.brandLink} href="/matpick" aria-label="맛핀 소개로 돌아가기">
+        <Link className={styles.brandLink} href="/matpin" aria-label="맛핀 소개로 돌아가기">
           맛핀
         </Link>
         <div className={styles.headerActions}>
           <Link
             aria-label="맛집 검색"
             className={styles.headerIconAction}
-            href="/matpick/search"
+            href="/matpin/search"
           >
             <Search aria-hidden="true" size={21} />
           </Link>

@@ -15,8 +15,14 @@ import {
   RotateCcw,
 } from "lucide-react";
 import Link from "next/link";
+import {
+  FanDeck,
+  type DeckCard,
+  type FanDeckHandle,
+} from "@/components/organisms/four-card";
 import { PostResultSignup } from "@/components/organisms/journey/post-result-signup";
 import { MvpAppHeader } from "@/components/organisms/mvp-shared/mvp-app-header";
+import { backSvg } from "@/components/organisms/slot/card-back";
 import { trackStoryCardEvent } from "@/lib/story-card-analytics";
 import {
   trackMvpDeepAction,
@@ -40,6 +46,14 @@ import {
 import styles from "./story-cards.module.css";
 
 type View = "deck" | "restore" | "chat";
+
+const STORY_DECK_AXIS = "story";
+const STORY_DECK_CARDS: DeckCard[] = Array.from({ length: 24 }, (_, index) => ({
+  axis: STORY_DECK_AXIS,
+  key: `story-card-${index}`,
+  label: "랜덤 타로",
+}));
+const STORY_DECK_AXIS_LABELS = { [STORY_DECK_AXIS]: "랜덤 타로" };
 
 const characterProfileByCard = {
   "rain-station": {
@@ -85,6 +99,17 @@ async function requestChat(body: StoryCardRequest): Promise<StoryChatSession> {
   return response.json() as Promise<StoryChatSession>;
 }
 
+function pickRandomSituation(
+  situations: StorySituation[],
+  previousId?: StorySituation["id"],
+): StorySituation | null {
+  const candidates = situations.length > 1 && previousId
+    ? situations.filter((situation) => situation.id !== previousId)
+    : situations;
+  if (candidates.length === 0) return null;
+  return candidates[Math.floor(Math.random() * candidates.length)] ?? candidates[0];
+}
+
 function CharacterPortrait({
   cardId,
   className,
@@ -112,11 +137,15 @@ export function StoryCards() {
   const [messages, setMessages] = useState<StoryChatMessage[]>([]);
   const [draft, setDraft] = useState("");
   const [loading, setLoading] = useState(true);
-  const [selectedSituationId, setSelectedSituationId] = useState<StorySituation["id"] | null>(null);
+  const [drawnSituation, setDrawnSituation] = useState<StorySituation | null>(null);
+  const [drawBusy, setDrawBusy] = useState(false);
+  const [drawHot, setDrawHot] = useState(false);
   const [savedConversation, setSavedConversation] = useState<SavedStoryConversation | null>(null);
   const [error, setError] = useState("");
   const chatHeadingRef = useRef<HTMLHeadingElement>(null);
   const composerRef = useRef<HTMLInputElement>(null);
+  const deckRef = useRef<FanDeckHandle>(null);
+  const drawTargetRef = useRef<HTMLButtonElement>(null);
   const resultTrackedRef = useRef(false);
   const deepActionTrackedRef = useRef(false);
 
@@ -144,7 +173,6 @@ export function StoryCards() {
       setSavedConversation(saved);
       setSession(saved.session);
       setMessages(saved.messages);
-      setSelectedSituationId(saved.session.situation.id);
       setView("chat");
       trackStoryCardEvent("story_card_chat_resumed", { cardId: saved.session.situation.id });
       window.history.replaceState(null, "", "/story-cards");
@@ -162,11 +190,8 @@ export function StoryCards() {
 
   const startChat = useCallback(async (situation: StorySituation) => {
     if (loading) return;
-    setSelectedSituationId(situation.id);
     setLoading(true);
     setError("");
-    trackMvpInputStarted("story_cards");
-    trackStoryCardEvent("story_card_selected", { cardId: situation.id });
 
     try {
       const next = await requestChat({ action: "start", situationId: situation.id });
@@ -180,7 +205,7 @@ export function StoryCards() {
         trackMvpResultViewed("story_cards");
       }
     } catch {
-      setError("대화를 시작하지 못했어요. 같은 카드를 다시 눌러주세요.");
+      setError("대화를 시작하지 못했어요. 잠시 후 다시 시작해주세요.");
       trackStoryCardEvent("story_card_request_failed", {
         cardId: situation.id,
         stage: "start",
@@ -189,6 +214,44 @@ export function StoryCards() {
       setLoading(false);
     }
   }, [loading]);
+
+  const revealRandomSituation = useCallback(() => {
+    const next = pickRandomSituation(situations, drawnSituation?.id);
+    setDrawBusy(false);
+    setDrawHot(false);
+    if (!next) {
+      setError("랜덤 장면을 열지 못했어요. 카드를 다시 불러와주세요.");
+      return;
+    }
+    setDrawnSituation(next);
+    trackMvpInputStarted("story_cards");
+    trackStoryCardEvent("story_card_selected", { cardId: next.id });
+  }, [drawnSituation?.id, situations]);
+
+  const drawRandomCard = useCallback((skipMotion = false) => {
+    if (loading || drawBusy || drawnSituation || situations.length === 0) return;
+    setDrawBusy(true);
+    setDrawHot(false);
+    setError("");
+    const started = deckRef.current?.drawTo(
+      STORY_DECK_AXIS,
+      () => undefined,
+      skipMotion,
+    );
+    if (!started) revealRandomSituation();
+  }, [drawBusy, drawnSituation, loading, revealRandomSituation, situations.length]);
+
+  const handleDeckPick = useCallback((_card: DeckCard, targetAxis: string) => {
+    if (targetAxis !== STORY_DECK_AXIS || drawnSituation) return;
+    revealRandomSituation();
+  }, [drawnSituation, revealRandomSituation]);
+
+  const resetDraw = () => {
+    setDrawnSituation(null);
+    setDrawBusy(false);
+    setDrawHot(false);
+    setError("");
+  };
 
   const sendMessage = async (value: string) => {
     const message = value.trim();
@@ -259,7 +322,9 @@ export function StoryCards() {
     setMessages([]);
     setDraft("");
     setError("");
-    setSelectedSituationId(null);
+    setDrawnSituation(null);
+    setDrawBusy(false);
+    setDrawHot(false);
     deepActionTrackedRef.current = false;
   };
 
@@ -267,7 +332,6 @@ export function StoryCards() {
     if (!savedConversation) return;
     setSession(savedConversation.session);
     setMessages(savedConversation.messages);
-    setSelectedSituationId(savedConversation.session.situation.id);
     setView("chat");
     trackStoryCardEvent("story_card_chat_resumed", {
       cardId: savedConversation.session.situation.id,
@@ -279,7 +343,9 @@ export function StoryCards() {
     setSavedConversation(null);
     setSession(null);
     setMessages([]);
-    setSelectedSituationId(null);
+    setDrawnSituation(null);
+    setDrawBusy(false);
+    setDrawHot(false);
     setView("deck");
   };
 
@@ -342,27 +408,35 @@ export function StoryCards() {
       ) : null}
 
       {view === "deck" ? (
-        <section className={styles.deck} aria-labelledby="card-beyond-title" aria-busy={loading}>
+        <section
+          className={styles.deck}
+          aria-labelledby="card-beyond-title"
+          aria-busy={loading || drawBusy}
+        >
           <header className={styles.intro}>
             <p className={styles.eyebrow}>여성향 판타지 대화 · 카드너머</p>
             <h1 id="card-beyond-title">
-              카드를 고르면,
+              한 장을 뽑아,
               <br />
-              <em>그가 먼저 말을 걸어요.</em>
+              <em>그의 장면을 열어보세요.</em>
             </h1>
-            <p className={styles.lede}>네 장의 타로, 네 명의 남자, 고른 장면에서 바로 시작되는 대화.</p>
+            <p className={styles.lede}>어떤 장면이 나올지는 카드를 뒤집기 전까지 몰라요.</p>
           </header>
 
           <ol className={styles.uspList} aria-label="카드너머 특징">
-            <li><span>01</span>타로 카드 선택</li>
-            <li><span>02</span>서로 다른 남자 주인공</li>
-            <li><span>03</span>고른 장면에서 바로 대화</li>
+            <li><span>01</span>익명의 카드 한 장</li>
+            <li><span>02</span>랜덤으로 열리는 장면</li>
+            <li><span>03</span>그가 먼저 건네는 말</li>
           </ol>
 
           <div className={styles.cardSelection}>
             <div className={styles.selectionHeading}>
-              <p>오늘 끌리는 그를 고르세요</p>
-              <span>좌우로 넘겨 네 장을 볼 수 있어요.</span>
+              <p>{drawnSituation ? "오늘 열린 장면" : "오늘의 카드 한 장"}</p>
+              <span>
+                {drawnSituation
+                  ? "카드를 열기 전에는 알 수 없던 장면이에요."
+                  : "카드를 누르거나 빈칸에 끌어 놓으세요."}
+              </span>
             </div>
 
             {loading && situations.length === 0 ? (
@@ -373,39 +447,123 @@ export function StoryCards() {
             ) : null}
 
             {situations.length > 0 ? (
-              <div className={styles.cardRail} role="group" aria-label="카드너머 타로 카드 선택">
-                {situations.map((situation, index) => (
-                  <button
-                    type="button"
-                    className={styles.situationChoice}
-                    data-card={situation.id}
-                    data-selected={selectedSituationId === situation.id ? "true" : undefined}
-                    key={situation.id}
-                    onClick={() => void startChat(situation)}
-                    disabled={loading}
-                    aria-label={`${characterProfileByCard[situation.id].label}, ${situation.guideName}, ${situation.title} 타로 카드 선택. 선택한 장면에서 대화 시작`}
-                    style={{ "--card-accent": situation.accent } as CSSProperties}
-                  >
-                    <CharacterPortrait cardId={situation.id} />
-                    <span className={styles.cardVeil} aria-hidden />
-                    <span className={styles.cardTopline} aria-hidden>
-                      <span className={styles.cardNumber}>ARCANA {String(index + 1).padStart(2, "0")}</span>
-                      <span className={styles.cardTags}>{characterProfileByCard[situation.id].tags}</span>
-                    </span>
-                    <span className={styles.cardCopy}>
-                      <span className={styles.cardArchetype}>
-                        {characterProfileByCard[situation.id].label}
-                      </span>
-                      <strong>{situation.guideName}</strong>
-                      <span className={styles.sceneTitle}>{situation.title}</span>
-                      <small>“{characterProfileByCard[situation.id].hook}”</small>
-                      <span className={styles.cardAction}>
-                        이 장면에서 시작
-                        <ArrowUp aria-hidden />
-                      </span>
-                    </span>
-                  </button>
-                ))}
+              <div
+                className={styles.drawStage}
+                data-revealed={drawnSituation ? "true" : undefined}
+                role="group"
+                aria-label="카드너머 랜덤 타로 카드 뽑기"
+              >
+                <div className={styles.drawTargetWrap}>
+                  {drawnSituation ? (
+                    <div
+                      className={styles.revealedCard}
+                      data-testid="story-revealed-card"
+                      style={{ "--card-accent": drawnSituation.accent } as CSSProperties}
+                      role="img"
+                      aria-label={`${drawnSituation.title}, ${drawnSituation.guideName}`}
+                    >
+                      <div className={styles.revealedCardInner}>
+                        <div
+                          className={styles.revealedCardBack}
+                          aria-hidden
+                          dangerouslySetInnerHTML={{ __html: backSvg(18) }}
+                        />
+                        <div className={styles.revealedCardFront}>
+                          <CharacterPortrait cardId={drawnSituation.id} />
+                          <span className={styles.revealedVeil} aria-hidden />
+                          <div className={styles.revealedCopy}>
+                            <span>랜덤으로 열린 장면</span>
+                            <h2>{drawnSituation.title}</h2>
+                            <strong>{drawnSituation.guideName}</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <button
+                      ref={drawTargetRef}
+                      type="button"
+                      className={styles.drawTarget}
+                      data-hot={drawHot ? "true" : undefined}
+                      onClick={() => drawRandomCard()}
+                      disabled={loading || drawBusy}
+                      aria-label="랜덤 카드 뽑기"
+                    >
+                      <span className={styles.drawTargetMark} aria-hidden>✦</span>
+                      <strong>{drawBusy ? "카드가 이동 중" : "뽑은 카드"}</strong>
+                      <small>누르거나 아래 덱에서 끌어 놓으세요</small>
+                    </button>
+                  )}
+                </div>
+
+                {!drawnSituation ? (
+                  <div className={styles.fanDeckStage} data-testid="story-fan-deck">
+                    <FanDeck
+                      ref={deckRef}
+                      cards={STORY_DECK_CARDS}
+                      axisLabels={STORY_DECK_AXIS_LABELS}
+                      aimAxis={STORY_DECK_AXIS}
+                      inactiveAxes={[]}
+                      interactive={!loading}
+                      disabled={loading}
+                      flightDurationMs={260}
+                      getTargetRect={() => drawTargetRef.current?.getBoundingClientRect() ?? null}
+                      onDragOver={(axis) => setDrawHot(axis === STORY_DECK_AXIS)}
+                      onPick={handleDeckPick}
+                    />
+                  </div>
+                ) : null}
+
+                <p className={styles.drawStatus} aria-live="polite">
+                  {drawnSituation
+                    ? `${characterProfileByCard[drawnSituation.id].label} · ${characterProfileByCard[drawnSituation.id].tags}`
+                    : drawBusy
+                      ? "선택한 카드가 슬롯으로 이동하고 있어요."
+                      : "모든 카드는 같은 뒷면이에요. 결과는 도착한 뒤 공개돼요."}
+                </p>
+
+                <div className={styles.drawActions}>
+                  {drawnSituation ? (
+                    <>
+                      <button
+                        type="button"
+                        className={styles.drawPrimary}
+                        onClick={() => void startChat(drawnSituation)}
+                        disabled={loading}
+                      >
+                        {loading ? (
+                          <LoaderCircle className={styles.spin} aria-hidden />
+                        ) : (
+                          <ArrowUp aria-hidden />
+                        )}
+                        이 장면에서 대화 시작
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.drawSecondary}
+                        onClick={resetDraw}
+                        disabled={loading}
+                      >
+                        <RotateCcw aria-hidden />
+                        다른 카드 뽑기
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      type="button"
+                      className={styles.drawPrimary}
+                      onClick={() => drawRandomCard()}
+                      disabled={loading || drawBusy}
+                    >
+                      {drawBusy ? (
+                        <LoaderCircle className={styles.spin} aria-hidden />
+                      ) : (
+                        <span aria-hidden>✦</span>
+                      )}
+                      {drawBusy ? "카드가 이동 중" : "랜덤 카드 한 장 뽑기"}
+                    </button>
+                  )}
+                </div>
               </div>
             ) : null}
           </div>

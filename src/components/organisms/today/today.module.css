@@ -12,7 +12,10 @@
   --coral: #ff6b57;
   --state-hover: rgba(36, 75, 219, 0.08);
   --state-focus: rgba(36, 75, 219, 0.16);
+  width: 100%;
+  max-width: 100%;
   min-height: 100dvh;
+  overflow-x: clip;
   padding: 1rem 1rem 4rem;
   color: var(--ink);
   color-scheme: light;
@@ -25,10 +28,17 @@
 .header {
   display: flex;
   width: min(100%, 74rem);
+  min-width: 0;
   min-height: 3rem;
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.header > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .back,
@@ -58,12 +68,18 @@
   line-height: 1.52;
 }
 
+.routeLabel,
+.back {
+  overflow-wrap: anywhere;
+}
+
 .intro,
 .workspace,
 .resultWorkspace,
 .applyWorkspace,
 .readyPage {
   width: min(100%, 42rem);
+  min-width: 0;
   margin: clamp(2rem, 7vw, 4rem) auto 0;
 }
 
@@ -1212,6 +1228,16 @@
 
   .intro {
     margin-top: 2.4rem;
+  }
+
+  .header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .back,
+  .routeLabel {
+    flex: 0 1 auto;
   }
 
   .introCopy h1 {

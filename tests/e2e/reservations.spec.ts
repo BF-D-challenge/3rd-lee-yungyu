@@ -56,7 +56,7 @@ test.describe("공통 fake door 예약", () => {
       await expect(page.getByText(/로컬 데모 모드/)).toBeVisible();
       await expect(page.getByRole("heading", { name: "지금은 예약만 받아요." })).toBeVisible();
       await expect(page.getByText(/실제 체험은 준비가 끝난 뒤/).first()).toBeVisible();
-      await expect(page.getByRole("link")).toHaveCount(0);
+      await expect(page.locator('a[href="#reservation-form"]')).toHaveText("예약 정보 입력하기");
       const pageWidth = await page.evaluate(() => ({
         client: document.documentElement.clientWidth,
         scroll: document.documentElement.scrollWidth,
@@ -119,7 +119,7 @@ test.describe("공통 fake door 예약", () => {
       await expect(page.getByText("데모 저장 완료", { exact: true })).toBeVisible();
       await expect(page.getByText("실제 예약이나 전환으로 집계되지 않아요.")).toBeVisible();
       await expect(page.getByText("이 페이지를 닫아도 예약 신청은 저장돼요.")).toBeVisible();
-      await expect(page.getByRole("link")).toHaveCount(0);
+      await expect(page.locator('a[href="#reservation-form"]')).toHaveText("예약 정보 입력하기");
       if (reservation.handle) {
         await expect(page.getByText(`@${reservation.handle}`, { exact: true })).toBeVisible();
         await expect(page.getByText(`@${reservation.handle}`, { exact: true })).toHaveAttribute(

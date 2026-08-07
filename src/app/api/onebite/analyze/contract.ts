@@ -33,9 +33,12 @@ export const onebiteRiskFlagSchema = z.enum([
   "medical_or_ed",
 ]);
 
+export const onebiteRoastLineSchema = z.string().trim().min(15).max(80);
+
 export const onebiteAnalysisSchema = z.object({
   isMealPhoto: z.boolean(),
   visibleGroups: z.array(onebiteVisibleGroupSchema).max(6),
+  visibleFoods: z.array(z.string().trim().min(1).max(30)).max(6),
   actionCode: onebiteActionCodeSchema,
   confidence: onebiteConfidenceSchema,
   riskFlag: onebiteRiskFlagSchema,
@@ -45,6 +48,14 @@ export const onebiteAnalysisSchema = z.object({
       code: "custom",
       message: "visibleGroups에는 중복 값을 넣을 수 없습니다.",
       path: ["visibleGroups"],
+    });
+  }
+
+  if (new Set(value.visibleFoods).size !== value.visibleFoods.length) {
+    context.addIssue({
+      code: "custom",
+      message: "visibleFoods에는 중복 값을 넣을 수 없습니다.",
+      path: ["visibleFoods"],
     });
   }
 
@@ -92,6 +103,20 @@ export const onebiteAnalysisSchema = z.object({
     });
   }
 
+
+  if (
+    value.isMealPhoto
+    && value.confidence !== "low"
+    && value.riskFlag === "none"
+    && value.visibleFoods.length === 0
+  ) {
+    context.addIssue({
+      code: "custom",
+      message: "확정된 음식 사진에는 확인한 음식 이름이 하나 이상 필요합니다.",
+      path: ["visibleFoods"],
+    });
+  }
+
   if (
     value.isMealPhoto
     && value.confidence !== "low"
@@ -112,6 +137,7 @@ export type OnebiteActionCode = z.infer<typeof onebiteActionCodeSchema>;
 export const onebiteSuccessResponseSchema = z.object({
   mode: z.literal("live"),
   analysis: onebiteAnalysisSchema,
+  roastLine: onebiteRoastLineSchema,
   actionLine: z.string().min(1),
 }).strict();
 
@@ -154,6 +180,17 @@ export const onebiteGeminiJsonSchema = {
       },
       description: "사진에서 직접 확인되는 음식 그룹만 포함",
     },
+    visibleFoods: {
+      type: "array",
+      maxItems: 6,
+      uniqueItems: true,
+      items: {
+        type: "string",
+        minLength: 1,
+        maxLength: 30,
+      },
+      description: "사진에서 직접 확인되는 음식 이름만 짧은 한국어로 포함",
+    },
     actionCode: {
       type: "string",
       enum: [
@@ -175,12 +212,20 @@ export const onebiteGeminiJsonSchema = {
       enum: ["none", "uncertain", "not_food", "medical_or_ed"],
       description: "분석을 중단하고 안전 안내가 필요한지 나타내는 플래그",
     },
+    roastLine: {
+      type: "string",
+      minLength: 15,
+      maxLength: 80,
+      description: "보이는 음식 이름을 넣어 선택만 황당하게 놀리는 웃긴 한국어 팩폭 한 문장",
+    },
   },
   required: [
     "isMealPhoto",
     "visibleGroups",
+    "visibleFoods",
     "actionCode",
     "confidence",
     "riskFlag",
+    "roastLine",
   ],
 } as const;

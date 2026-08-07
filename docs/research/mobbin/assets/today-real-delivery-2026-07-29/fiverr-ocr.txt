@@ -1,0 +1,239 @@
+image_width: 981
+image_height: 708
+line_count: 78
+text: "9:41\nManage orders\nActive (1)\nDue in the next 24 Hours\n$5\nDo quickly any background removal,\nproduct retouching, photo editing\nsujamia\nIN PROGAESS\nDue in 21h 31m\nFiverr\n비\n9:41\n^\n.?-\nsujamia\n임\nTimeline\nChat\nDo quickly any background removal,\nproduct retouching. photo editing\nIN PROGRESS\n$5\nExpected delivery Jul 14, 2022\n0\nDays\n23\nHours\n23\nMinutes\nA Notify Me\n6 Add to Calendar\nYour delivery date was updated to\n7/14/22\nOrder started\nOrder requirements submitted\nplease give me your photos and what type\nformat you need\n2216F24D-ACD8-4D2C-BE28-\nA3CC548F8708.png\ncurated by\n1h Mobbin\nFiverr\n^\n^\n9:41\n<\nsujamia\nTimeline\n이미의 %\nChat\nExpected delivery Jul 14, 2022\n0\nDays\n23\nHours\n23\nMinutes\n4 Notify Me\na Add to Calendar\n®\nYour delivery date was updated to\n7/14/22\n6 Order started\nOrder requirements submitted\nplease give me your photos and what type\nformat you need\n2216F24D-ACD8-4D2C-BE28-\nA3CC548F8708.png\nOrder created\n•••\n₩~\n^\n^\n~\ncurated by la Mobbin\nfl Fiverr\ncurated by Cla Mobbin"
+lines:
+  -
+    text: "9:41"
+    confidence: 1
+  -
+    text: "Manage orders"
+    confidence: 1
+  -
+    text: "Active (1)"
+    confidence: 1
+  -
+    text: "Due in the next 24 Hours"
+    confidence: 1
+  -
+    text: "$5"
+    confidence: 0.5
+  -
+    text: "Do quickly any background removal,"
+    confidence: 1
+  -
+    text: "product retouching, photo editing"
+    confidence: 1
+  -
+    text: sujamia
+    confidence: 0.5
+  -
+    text: "IN PROGAESS"
+    confidence: 1
+  -
+    text: "Due in 21h 31m"
+    confidence: 1
+  -
+    text: Fiverr
+    confidence: 1
+  -
+    text: "비"
+    confidence: 0.5
+  -
+    text: "9:41"
+    confidence: 1
+  -
+    text: "^"
+    confidence: 0.5
+  -
+    text: ".?-"
+    confidence: 0.5
+  -
+    text: sujamia
+    confidence: 1
+  -
+    text: "임"
+    confidence: 0.5
+  -
+    text: Timeline
+    confidence: 1
+  -
+    text: Chat
+    confidence: 1
+  -
+    text: "Do quickly any background removal,"
+    confidence: 1
+  -
+    text: "product retouching. photo editing"
+    confidence: 1
+  -
+    text: "IN PROGRESS"
+    confidence: 1
+  -
+    text: "$5"
+    confidence: 0.5
+  -
+    text: "Expected delivery Jul 14, 2022"
+    confidence: 1
+  -
+    text: "0"
+    confidence: 1
+  -
+    text: Days
+    confidence: 1
+  -
+    text: "23"
+    confidence: 1
+  -
+    text: Hours
+    confidence: 1
+  -
+    text: "23"
+    confidence: 1
+  -
+    text: Minutes
+    confidence: 1
+  -
+    text: "A Notify Me"
+    confidence: 1
+  -
+    text: "6 Add to Calendar"
+    confidence: 1
+  -
+    text: "Your delivery date was updated to"
+    confidence: 1
+  -
+    text: "7/14/22"
+    confidence: 1
+  -
+    text: "Order started"
+    confidence: 1
+  -
+    text: "Order requirements submitted"
+    confidence: 1
+  -
+    text: "please give me your photos and what type"
+    confidence: 1
+  -
+    text: "format you need"
+    confidence: 1
+  -
+    text: "2216F24D-ACD8-4D2C-BE28-"
+    confidence: 0.5
+  -
+    text: A3CC548F8708.png
+    confidence: 1
+  -
+    text: "curated by"
+    confidence: 1
+  -
+    text: "1h Mobbin"
+    confidence: 0.5
+  -
+    text: Fiverr
+    confidence: 1
+  -
+    text: "^"
+    confidence: 0.5
+  -
+    text: "^"
+    confidence: 0.5
+  -
+    text: "9:41"
+    confidence: 1
+  -
+    text: "<"
+    confidence: 0.5
+  -
+    text: sujamia
+    confidence: 0.5
+  -
+    text: Timeline
+    confidence: 1
+  -
+    text: "이미의 %"
+    confidence: 0.5
+  -
+    text: Chat
+    confidence: 1
+  -
+    text: "Expected delivery Jul 14, 2022"
+    confidence: 1
+  -
+    text: "0"
+    confidence: 0.5
+  -
+    text: Days
+    confidence: 1
+  -
+    text: "23"
+    confidence: 1
+  -
+    text: Hours
+    confidence: 1
+  -
+    text: "23"
+    confidence: 1
+  -
+    text: Minutes
+    confidence: 1
+  -
+    text: "4 Notify Me"
+    confidence: 0.5
+  -
+    text: "a Add to Calendar"
+    confidence: 1
+  -
+    text: "®"
+    confidence: 0.5
+  -
+    text: "Your delivery date was updated to"
+    confidence: 1
+  -
+    text: "7/14/22"
+    confidence: 1
+  -
+    text: "6 Order started"
+    confidence: 1
+  -
+    text: "Order requirements submitted"
+    confidence: 1
+  -
+    text: "please give me your photos and what type"
+    confidence: 1
+  -
+    text: "format you need"
+    confidence: 1
+  -
+    text: "2216F24D-ACD8-4D2C-BE28-"
+    confidence: 0.5
+  -
+    text: A3CC548F8708.png
+    confidence: 1
+  -
+    text: "Order created"
+    confidence: 1
+  -
+    text: "•••"
+    confidence: 0.5
+  -
+    text: "₩~"
+    confidence: 0.3
+  -
+    text: "^"
+    confidence: 0.5
+  -
+    text: "^"
+    confidence: 0.5
+  -
+    text: "~"
+    confidence: 0.5
+  -
+    text: "curated by la Mobbin"
+    confidence: 1
+  -
+    text: "fl Fiverr"
+    confidence: 0.5
+  -
+    text: "curated by Cla Mobbin"
+    confidence: 1

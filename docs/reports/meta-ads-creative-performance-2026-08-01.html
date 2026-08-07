@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BF.D 광고 이미지별 성과 — 16:9 보고서</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --canvas: #e9e8e3;
+      --paper: #fbfbf9;
+      --ink: #171716;
+      --muted: #6b6a65;
+      --surface: #f0efeb;
+      --surface-strong: #e4e2db;
+      --green: #176a43;
+      --green-soft: #e4f2e9;
+      --amber: #815512;
+      --amber-soft: #f7ecd6;
+      --blue: #245bbb;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; overflow-x: hidden; overflow-y: auto; }
+    body {
+      min-height: 100%;
+      margin: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--blue); text-underline-offset: 3px; }
+
+    .report {
+      display: grid;
+      gap: 24px;
+      width: min(1200px, calc(100% - 32px));
+      margin: 32px auto 72px;
+    }
+
+    .slide {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      min-height: 0;
+      overflow: hidden;
+      padding: clamp(32px, 4.5vw, 58px) clamp(34px, 5vw, 66px);
+      border-radius: 22px;
+      background: var(--paper);
+      box-shadow: 0 16px 40px rgba(32, 31, 27, .09);
+    }
+
+    .slide-number {
+      position: absolute;
+      right: 28px;
+      bottom: 20px;
+      color: #9a9891;
+      font-size: 11px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .kicker {
+      margin: 0 0 7px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 780;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 0; font-size: clamp(44px, 6vw, 72px); line-height: 1.06; letter-spacing: -.06em; }
+    h2 { margin-bottom: 6px; font-size: clamp(26px, 3.1vw, 40px); line-height: 1.16; letter-spacing: -.045em; }
+    h3 { margin-bottom: 6px; font-size: 19px; line-height: 1.25; letter-spacing: -.03em; }
+    .lead { max-width: 760px; margin-bottom: 0; color: var(--muted); font-size: 15px; }
+
+    .cover { display: grid; grid-template-columns: 1.25fr .75fr; gap: 46px; align-items: center; }
+    .cover-copy { align-self: center; }
+    .cover-meta {
+      display: grid;
+      gap: 18px;
+      padding: 30px;
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .meta-item span { display: block; margin-bottom: 3px; color: var(--muted); font-size: 11px; }
+    .meta-item strong { display: block; font-size: 15px; overflow-wrap: anywhere; }
+    .cover-summary { margin: 28px 0 0; max-width: 720px; color: var(--muted); }
+
+    .slide-head { margin-bottom: clamp(18px, 2.4vw, 30px); }
+    .summary-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 24px; }
+    .verdict-panel {
+      display: flex;
+      min-height: 255px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px;
+      border-radius: var(--radius);
+      background: var(--ink);
+      color: white;
+    }
+    .verdict-panel strong { display: block; font-size: clamp(24px, 3vw, 38px); line-height: 1.2; letter-spacing: -.045em; }
+    .verdict-panel p { margin: 20px 0 0; color: #d6d5d0; font-size: 13px; }
+
+    .stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+    .stat { min-width: 0; padding: 17px 14px; border-radius: 14px; background: var(--surface); }
+    .stat strong { display: block; font-size: clamp(18px, 2vw, 27px); line-height: 1.15; letter-spacing: -.035em; }
+    .stat span { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; }
+
+    .budget-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
+    .budget-strip .stat { background: var(--surface-strong); }
+    .budget-note { margin: 0 0 20px; color: var(--muted); font-size: 12px; }
+
+    .table-surface { overflow-x: auto; border-radius: 14px; background: var(--surface); -webkit-overflow-scrolling: touch; }
+    table { width: 100%; border-collapse: collapse; }
+    .comparison { min-width: 900px; font-size: 11px; }
+    th, td { padding: 10px 8px; text-align: right; white-space: nowrap; }
+    th { color: var(--muted); font-size: 10px; font-weight: 760; }
+    th:first-child, td:first-child { text-align: left; }
+    tbody tr:nth-child(even) { background: rgba(255, 255, 255, .55); }
+    .signal { color: var(--green); font-weight: 800; }
+
+    .ad-overview-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+    .ad-overview-card {
+      display: block;
+      min-width: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      background: var(--surface);
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .ad-overview-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: contain;
+      background: #111;
+    }
+    .ad-overview-card strong { display: block; padding: 10px 12px 2px; font-size: 14px; }
+    .ad-overview-card span { display: block; padding: 0 12px 11px; color: var(--muted); font-size: 10px; }
+    .creative-card {
+      display: grid;
+      grid-template-columns: clamp(285px, 34vw, 390px) minmax(0, 1fr);
+      height: clamp(318px, 35vw, 420px);
+      min-height: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .creative-link { position: relative; display: grid; height: 100%; min-height: 0; overflow: hidden; place-items: center; background: #111; }
+    .creative-link img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; }
+    .creative-body { display: flex; min-width: 0; flex-direction: column; padding: 25px 28px 22px; }
+    .creative-heading { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+    .creative-heading h3 { margin: 0; font-size: 30px; }
+    .status { padding: 4px 7px; border-radius: 999px; font-size: 10px; font-weight: 780; }
+    .status.converted { color: var(--green); background: var(--green-soft); }
+    .status.measured { color: var(--amber); background: var(--amber-soft); }
+    .status.waiting { color: #66645f; background: #e2e0da; }
+    .ad-name { margin: 5px 0 16px; color: var(--muted); font-size: 10px; overflow-wrap: anywhere; }
+    .creative-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
+    .creative-metric { min-width: 0; padding: 10px; border-radius: 10px; background: rgba(255, 255, 255, .78); }
+    .creative-metric span { display: block; color: var(--muted); font-size: 9px; }
+    .creative-metric strong { display: block; margin-top: 4px; font-size: 13px; }
+    .creative-reading { margin: 16px 0 8px; font-size: 12px; line-height: 1.55; }
+    .destination { margin-top: auto; font-size: 11px; overflow-wrap: anywhere; }
+
+    .hour-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .surface { padding: 24px; border-radius: var(--radius); background: var(--surface); }
+    .hour-bars { display: grid; gap: 15px; margin-top: 18px; }
+    .hour-row { display: grid; grid-template-columns: 62px minmax(0, 1fr) 58px; gap: 8px; align-items: center; font-size: 11px; font-weight: 730; }
+    .hour-track { height: 13px; overflow: hidden; border-radius: 999px; background: #d7d5cf; }
+    .hour-fill { height: 100%; min-width: 3px; border-radius: inherit; background: var(--ink); }
+    .hour-value { text-align: right; }
+    .hour-table { min-width: 510px; font-size: 11px; }
+    .insight { margin: 18px 0 0; padding: 18px; border-radius: 14px; background: var(--amber-soft); color: #68450e; font-size: 12px; }
+
+    .evidence-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .reservation-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+    .share-bar { display: flex; height: 28px; overflow: hidden; margin: 20px 0 8px; border-radius: 999px; background: #d2d0ca; }
+    .share-bar strong { width: 82.27%; background: var(--ink); }
+    .legend { display: flex; gap: 18px; color: var(--muted); font-size: 11px; }
+    .learning-list { display: grid; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
+    .learning-list li { padding: 12px 14px; border-radius: 12px; background: rgba(255, 255, 255, .75); font-size: 12px; }
+
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 26px; }
+    .step { min-height: 230px; padding: 24px; border-radius: var(--radius); background: var(--surface); }
+    .step b { display: block; margin-bottom: 28px; color: #a2a099; font-size: 34px; line-height: 1; }
+    .step h3 { font-size: 21px; }
+    .step p { margin: 0; color: var(--muted); font-size: 12px; }
+    .source-note { position: absolute; right: 66px; bottom: 40px; left: 66px; color: #8b8982; font-size: 9px; line-height: 1.45; }
+
+    @media (max-width: 960px) {
+      .slide { padding: 24px 28px; }
+      .slide-head { margin-bottom: 14px; }
+      .slide-head .lead { font-size: 12px; }
+      .cover { gap: 28px; }
+      .cover-meta { padding: 22px; }
+      .creative-card { grid-template-columns: 285px minmax(0, 1fr); height: 318px; }
+      .creative-body { padding: 15px 18px 13px; }
+      .creative-heading h3 { font-size: 22px; }
+      .ad-name { margin-bottom: 8px; }
+      .creative-metric { padding: 6px 7px; }
+      .creative-reading { margin: 9px 0 5px; font-size: 10px; }
+      .creative-metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .surface { padding: 18px; }
+      .hour-bars { gap: 10px; margin-top: 12px; }
+      .source-note { right: 28px; bottom: 22px; left: 28px; }
+    }
+
+    @media (max-width: 720px) {
+      body { background: var(--paper); word-break: normal; }
+      .report { display: block; width: 100%; margin: 0; }
+      .slide { min-height: 100svh; aspect-ratio: auto; padding: 42px 22px 64px; border-radius: 0; box-shadow: none; }
+      .slide + .slide { border-top: 10px solid var(--canvas); }
+      .cover, .summary-layout, .hour-layout, .evidence-layout { grid-template-columns: 1fr; }
+      .cover { align-content: center; }
+      .cover-meta { margin-top: 20px; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .budget-strip, .reservation-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .ad-overview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .creative-card { grid-template-columns: 1fr; height: auto; }
+      .creative-link { aspect-ratio: 4 / 5; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .step { min-height: 0; }
+      .source-note { position: static; margin-top: 34px; }
+    }
+
+    @media print {
+      @page { size: 13.333in 7.5in; margin: 0; }
+      html, body { width: 13.333in; background: #fff; }
+      .report { display: block; width: 13.333in; margin: 0; }
+      .slide { width: 13.333in; height: 7.5in; min-height: 7.5in; padding: .55in .68in; border-radius: 0; box-shadow: none; break-after: page; }
+      .slide:last-child { break-after: auto; }
+      a { color: var(--ink); text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="report">
+    <section class="slide cover" aria-labelledby="report-title">
+      <div class="cover-copy">
+        <p class="kicker">BF.D · Meta ads test report</p>
+        <h1 id="report-title">5만원 광고 실험,<br />무엇을 배웠을까?</h1>
+        <p class="cover-summary">네 제품의 광고비, 노출, 랜딩 조회, 실제 예약을 한 흐름으로 연결했습니다. 광고 소재를 누르면 해당 제품의 예약 페이지가 열립니다.</p>
+      </div>
+      <aside class="cover-meta" aria-label="보고서 정보">
+        <div class="meta-item"><span>캠페인</span><strong>TR_LPV_IG_KR_W30-39_6H_20260801</strong></div>
+        <div class="meta-item"><span>대상</span><strong>대한민국 30~39세 여성</strong></div>
+        <div class="meta-item"><span>게재 위치</span><strong>Instagram Feed / Stories / Reels</strong></div>
+        <div class="meta-item"><span>확인 시점</span><strong>2026-08-02 00:26 KST</strong></div>
+      </aside>
+      <span class="slide-number">01 / 11</span>
+    </section>
+
+    <section class="slide" id="ad-overview" aria-labelledby="ad-overview-title">
+      <header class="slide-head"><p class="kicker">Ads tested</p><h2 id="ad-overview-title">먼저, 이 네 광고를 실험했습니다</h2><p class="lead">성과를 보기 전에 실제 노출된 광고 이미지를 먼저 확인하세요. 이미지를 누르면 해당 예약 페이지가 열립니다.</p></header>
+      <div class="ad-overview-grid">
+        <a class="ad-overview-card" href="https://bfd-seven.vercel.app/reserve/story-cards" target="_blank" rel="noopener"><img src="../../outputs/instagram-campaign-prep-20260801/creatives/cardbeyond/feed-1080x1350.png" alt="카드너머 광고 소재" /><strong>카드너머</strong><span>타로 초대장</span></a>
+        <a class="ad-overview-card" href="https://bfd-seven.vercel.app/reserve/today" target="_blank" rel="noopener"><img src="../../outputs/instagram-campaign-prep-20260801/creatives/today/feed-1080x1350.png" alt="오늘 해볼까 광고 소재" /><strong>오늘 해볼까</strong><span>내일의 답장</span></a>
+        <a class="ad-overview-card" href="https://bfd-seven.vercel.app/reserve/matpick" target="_blank" rel="noopener"><img src="../../outputs/instagram-campaign-prep-20260801/creatives/matpick/feed-1080x1350.png" alt="맛핀 광고 소재" /><strong>맛핀</strong><span>저장한 맛집 릴스</span></a>
+        <a class="ad-overview-card" href="https://bfd-seven.vercel.app/reserve/onebite" target="_blank" rel="noopener"><img src="../../outputs/instagram-campaign-prep-20260801/creatives/onebite/feed-1080x1350.png" alt="한입코치 광고 소재" /><strong>한입코치</strong><span>냉장고 속 코치</span></a>
+      </div>
+      <span class="slide-number">02 / 11</span>
+    </section>
+
+    <section class="slide" id="conclusion" aria-labelledby="conclusion-title">
+      <header class="slide-head"><p class="kicker">Executive summary</p><h2 id="conclusion-title">한눈에 보는 결론</h2><p class="lead">관심 신호와 예약 신호를 구분해서 봐야 합니다.</p></header>
+      <div class="summary-layout">
+        <article class="verdict-panel"><strong>예약 신호는<br />카드너머.</strong><p>실제 예약 1건을 만들었지만 전체 광고비의 82.27%를 사용했습니다. 최종 우승자는 아직 없습니다.</p></article>
+        <div class="stats" aria-label="전체 광고 성과">
+          <article class="stat"><strong>₩45,256</strong><span>세전 광고비</span></article><article class="stat"><strong>6,990명</strong><span>도달</span></article><article class="stat"><strong>7,405회</strong><span>노출</span></article><article class="stat"><strong>106회</strong><span>랜딩 조회</span></article><article class="stat"><strong>1건</strong><span>실제 광고 예약</span></article>
+          <article class="stat"><strong>1.06회</strong><span>평균 빈도</span></article><article class="stat"><strong>₩6,112</strong><span>전체 CPM</span></article><article class="stat"><strong>1.43%</strong><span>노출→랜딩 조회</span></article><article class="stat"><strong>₩427</strong><span>조회 1회 비용</span></article><article class="stat"><strong>0.94%</strong><span>조회→예약</span></article>
+        </div>
+      </div>
+      <span class="slide-number">03 / 11</span>
+    </section>
+
+    <section class="slide" id="comparison" aria-labelledby="comparison-title">
+      <header class="slide-head"><p class="kicker">Budget & comparison</p><h2 id="comparison-title">예산과 네 제품 성과</h2></header>
+      <div class="budget-strip">
+        <article class="stat"><strong>₩50,000</strong><span>처음 충전</span></article><article class="stat"><strong>₩45,256</strong><span>세전 광고비</span></article><article class="stat"><strong>약 ₩4,526</strong><span>부가세 약 10%</span></article><article class="stat"><strong>₩216</strong><span>남은 선불 잔액</span></article>
+      </div>
+      <p class="budget-note">광고 관리자 지출은 세전이고, 선불 잔액은 부가세까지 차감된 금액입니다. 잔액 ₩216은 추가 테스트에 부족합니다.</p>
+      <div class="table-surface" role="region" aria-label="네 제품 성과 비교표" tabindex="0">
+        <table class="comparison">
+          <thead><tr><th>제품</th><th>지출</th><th>도달</th><th>노출</th><th>빈도</th><th>CPM</th><th>랜딩 조회</th><th>노출→조회</th><th>조회당 비용</th><th>예약</th><th>조회→예약</th><th>예산 비중</th><th>판정</th></tr></thead>
+          <tbody><tr><td><strong>카드너머</strong></td><td>₩37,231</td><td>5,854</td><td>6,099</td><td>1.04</td><td>₩6,104</td><td>90</td><td>1.48%</td><td>₩414</td><td>1</td><td>1.11%</td><td>82.27%</td><td class="signal">예약 신호</td></tr><tr><td><strong>오늘 해볼까</strong></td><td>₩6,833</td><td>1,028</td><td>1,094</td><td>1.06</td><td>₩6,246</td><td>16</td><td>1.46%</td><td>₩427</td><td>0</td><td>0%</td><td>15.10%</td><td>추가 검증</td></tr><tr><td><strong>맛핀</strong></td><td>₩706</td><td>142</td><td>151</td><td>1.06</td><td>₩4,675</td><td>0</td><td>0%</td><td>—</td><td>0</td><td>—</td><td>1.56%</td><td>데이터 부족</td></tr><tr><td><strong>한입코치</strong></td><td>₩486</td><td>57</td><td>61</td><td>1.07</td><td>₩7,967</td><td>0</td><td>0%</td><td>—</td><td>0</td><td>—</td><td>1.07%</td><td>데이터 부족</td></tr></tbody>
+        </table>
+      </div>
+      <span class="slide-number">04 / 11</span>
+    </section>
+
+    <section class="slide" id="creatives" aria-labelledby="creative-title-cardbeyond">
+      <header class="slide-head"><p class="kicker">Creative performance · 1/4</p><h2 id="creative-title-cardbeyond">카드너머 광고 성과</h2></header>
+        <article class="creative-card">
+          <a class="creative-link" href="https://bfd-seven.vercel.app/reserve/story-cards" target="_blank" rel="noopener" aria-label="카드너머 예약 페이지 열기"><img src="../../outputs/instagram-campaign-prep-20260801/creatives/cardbeyond/feed-1080x1350.png" alt="카드너머 광고 소재" /></a>
+          <div class="creative-body"><div class="creative-heading"><h3>카드너머</h3><span class="status converted">예약 1건</span></div><p class="ad-name">AD_CARDBEYOND_TAROT_INVITATION</p><div class="creative-metrics"><div class="creative-metric"><span>지출</span><strong>₩37,231</strong></div><div class="creative-metric"><span>도달</span><strong>5,854명</strong></div><div class="creative-metric"><span>노출</span><strong>6,099회</strong></div><div class="creative-metric"><span>빈도</span><strong>1.04회</strong></div><div class="creative-metric"><span>CPM</span><strong>₩6,104</strong></div><div class="creative-metric"><span>랜딩</span><strong>90회</strong></div><div class="creative-metric"><span>노출→조회</span><strong>1.48%</strong></div><div class="creative-metric"><span>예약</span><strong>1건</strong></div></div><p class="creative-reading"><strong>확인:</strong> 조회 90회와 광고 예약 1건. 조회당 ₩414, 예약당 광고비 ₩37,231입니다.</p><a class="destination" href="https://bfd-seven.vercel.app/reserve/story-cards" target="_blank" rel="noopener">예약 페이지 열기</a></div>
+        </article>
+      <span class="slide-number">05 / 11</span>
+    </section>
+
+    <section class="slide" aria-labelledby="creative-title-today">
+      <header class="slide-head"><p class="kicker">Creative performance · 2/4</p><h2 id="creative-title-today">오늘 해볼까 광고 성과</h2></header>
+        <article class="creative-card">
+          <a class="creative-link" href="https://bfd-seven.vercel.app/reserve/today" target="_blank" rel="noopener" aria-label="오늘 해볼까 예약 페이지 열기"><img src="../../outputs/instagram-campaign-prep-20260801/creatives/today/feed-1080x1350.png" alt="오늘 해볼까 광고 소재" /></a>
+          <div class="creative-body"><div class="creative-heading"><h3>오늘 해볼까</h3><span class="status measured">랜딩 16회</span></div><p class="ad-name">AD_TODAY_TOMORROW_RESPONSE</p><div class="creative-metrics"><div class="creative-metric"><span>지출</span><strong>₩6,833</strong></div><div class="creative-metric"><span>도달</span><strong>1,028명</strong></div><div class="creative-metric"><span>노출</span><strong>1,094회</strong></div><div class="creative-metric"><span>빈도</span><strong>1.06회</strong></div><div class="creative-metric"><span>CPM</span><strong>₩6,246</strong></div><div class="creative-metric"><span>랜딩</span><strong>16회</strong></div><div class="creative-metric"><span>노출→조회</span><strong>1.46%</strong></div><div class="creative-metric"><span>예약</span><strong>0건</strong></div></div><p class="creative-reading"><strong>해석:</strong> 조회당 ₩427로 카드너머와 비슷했지만 예약 완료는 없었습니다.</p><a class="destination" href="https://bfd-seven.vercel.app/reserve/today" target="_blank" rel="noopener">예약 페이지 열기</a></div>
+        </article>
+      <span class="slide-number">06 / 11</span>
+    </section>
+
+    <section class="slide" aria-labelledby="creative-title-matpick">
+      <header class="slide-head"><p class="kicker">Creative performance · 3/4</p><h2 id="creative-title-matpick">맛핀 광고 성과</h2></header>
+        <article class="creative-card">
+          <a class="creative-link" href="https://bfd-seven.vercel.app/reserve/matpick" target="_blank" rel="noopener" aria-label="맛핀 예약 페이지 열기"><img src="../../outputs/instagram-campaign-prep-20260801/creatives/matpick/feed-1080x1350.png" alt="맛핀 광고 소재" /></a>
+          <div class="creative-body"><div class="creative-heading"><h3>맛핀</h3><span class="status waiting">데이터 부족</span></div><p class="ad-name">AD_MATPIN_SAVED_SHORTS</p><div class="creative-metrics"><div class="creative-metric"><span>지출</span><strong>₩706</strong></div><div class="creative-metric"><span>도달</span><strong>142명</strong></div><div class="creative-metric"><span>노출</span><strong>151회</strong></div><div class="creative-metric"><span>빈도</span><strong>1.06회</strong></div><div class="creative-metric"><span>CPM</span><strong>₩4,675</strong></div><div class="creative-metric"><span>랜딩</span><strong>0회</strong></div><div class="creative-metric"><span>노출→조회</span><strong>0%</strong></div><div class="creative-metric"><span>예약</span><strong>0건</strong></div></div><p class="creative-reading"><strong>해석:</strong> 151회 노출만으로 실패라고 결론 내리면 안 됩니다.</p><a class="destination" href="https://bfd-seven.vercel.app/reserve/matpick" target="_blank" rel="noopener">예약 페이지 열기</a></div>
+        </article>
+      <span class="slide-number">07 / 11</span>
+    </section>
+
+    <section class="slide" aria-labelledby="creative-title-onebite">
+      <header class="slide-head"><p class="kicker">Creative performance · 4/4</p><h2 id="creative-title-onebite">한입코치 광고 성과</h2></header>
+        <article class="creative-card">
+          <a class="creative-link" href="https://bfd-seven.vercel.app/reserve/onebite" target="_blank" rel="noopener" aria-label="한입코치 예약 페이지 열기"><img src="../../outputs/instagram-campaign-prep-20260801/creatives/onebite/feed-1080x1350.png" alt="한입코치 광고 소재" /></a>
+          <div class="creative-body"><div class="creative-heading"><h3>한입코치</h3><span class="status waiting">데이터 부족</span></div><p class="ad-name">AD_ONEBITE_FRIDGE_COACH</p><div class="creative-metrics"><div class="creative-metric"><span>지출</span><strong>₩486</strong></div><div class="creative-metric"><span>도달</span><strong>57명</strong></div><div class="creative-metric"><span>노출</span><strong>61회</strong></div><div class="creative-metric"><span>빈도</span><strong>1.07회</strong></div><div class="creative-metric"><span>CPM</span><strong>₩7,967</strong></div><div class="creative-metric"><span>랜딩</span><strong>0회</strong></div><div class="creative-metric"><span>노출→조회</span><strong>0%</strong></div><div class="creative-metric"><span>예약</span><strong>0건</strong></div></div><p class="creative-reading"><strong>해석:</strong> 61회 노출은 사실상 예열 수준입니다.</p><a class="destination" href="https://bfd-seven.vercel.app/reserve/onebite" target="_blank" rel="noopener">예약 페이지 열기</a></div>
+        </article>
+      <span class="slide-number">08 / 11</span>
+    </section>
+
+    <section class="slide" id="hourly" aria-labelledby="hourly-title">
+      <header class="slide-head"><p class="kicker">Delivery by hour</p><h2 id="hourly-title">시간대별 노출</h2><p class="lead">KST 기준입니다. 카드너머는 20~23시, 나머지 제품은 23시 이후에 주로 노출됐습니다.</p></header>
+      <div class="hour-layout">
+        <article class="surface"><h3>전체 노출 흐름</h3><div class="hour-bars"><div class="hour-row"><span>20–21시</span><div class="hour-track"><div class="hour-fill" style="width:100%"></div></div><span class="hour-value">4,350</span></div><div class="hour-row"><span>21–22시</span><div class="hour-track"><div class="hour-fill" style="width:15.89%"></div></div><span class="hour-value">691</span></div><div class="hour-row"><span>22–23시</span><div class="hour-track"><div class="hour-fill" style="width:22.07%"></div></div><span class="hour-value">960</span></div><div class="hour-row"><span>23–24시</span><div class="hour-track"><div class="hour-fill" style="width:2.14%"></div></div><span class="hour-value">93</span></div><div class="hour-row"><span>00–01시</span><div class="hour-track"><div class="hour-fill" style="width:30.14%"></div></div><span class="hour-value">1,311</span></div></div><p class="insight">노출 시간까지 달랐기 때문에 이번 결과는 동일 조건 비교가 아닙니다.</p></article>
+        <div class="table-surface" role="region" aria-label="제품별 시간대 노출표" tabindex="0"><table class="hour-table"><thead><tr><th>시간</th><th>카드너머</th><th>오늘 해볼까</th><th>맛핀</th><th>한입코치</th><th>전체</th></tr></thead><tbody><tr><td>20–21시</td><td>4,350</td><td>0</td><td>0</td><td>0</td><td>4,350</td></tr><tr><td>21–22시</td><td>691</td><td>0</td><td>0</td><td>0</td><td>691</td></tr><tr><td>22–23시</td><td>960</td><td>0</td><td>0</td><td>0</td><td>960</td></tr><tr><td>23–24시</td><td>64</td><td>28</td><td>1</td><td>0</td><td>93</td></tr><tr><td>00–01시</td><td>34</td><td>1,066</td><td>150</td><td>61</td><td>1,311</td></tr></tbody></table></div>
+      </div>
+      <span class="slide-number">09 / 11</span>
+    </section>
+
+    <section class="slide" id="reservation" aria-labelledby="reservation-title">
+      <header class="slide-head"><p class="kicker">Evidence & limitation</p><h2 id="reservation-title">예약은 있었지만, 공정한 승부는 아니었습니다</h2></header>
+      <div class="evidence-layout">
+        <article class="surface"><h3>실제 예약 확인</h3><p class="lead"><strong>카드너머 1건</strong>이 2026년 8월 1일 23:07 KST 운영 DB에 저장됐습니다. 내부 검증 예약은 제외했습니다.</p><div class="reservation-stats"><article class="stat"><strong>90회</strong><span>광고 랜딩 조회</span></article><article class="stat"><strong>1건</strong><span>광고 예약</span></article><article class="stat"><strong>1.11%</strong><span>조회→예약</span></article><article class="stat"><strong>₩37,231</strong><span>확인 예약당 광고비</span></article></div></article>
+        <article class="surface"><h3>예산이 한쪽으로 쏠렸습니다</h3><p class="lead">총 지출의 82.27%가 카드너머에 사용됐습니다.</p><div class="share-bar" role="img" aria-label="카드너머 82.27퍼센트, 나머지 3개 17.73퍼센트"><strong></strong></div><div class="legend"><span>카드너머 <b>82.27%</b></span><span>나머지 3개 <b>17.73%</b></span></div><ul class="learning-list"><li>카드너머: 예약 신호 확인</li><li>오늘 해볼까: 클릭 관심 확인</li><li>맛핀·한입코치: 표본 부족</li></ul></article>
+      </div>
+      <span class="slide-number">10 / 11</span>
+    </section>
+
+    <section class="slide" id="next" aria-labelledby="next-title">
+      <header class="slide-head"><p class="kicker">Next experiment</p><h2 id="next-title">다음에는 이렇게 실험합니다</h2><p class="lead">같은 기회와 같은 기준을 먼저 만들어야 아이디어를 비교할 수 있습니다.</p></header>
+      <div class="steps-grid"><article class="step"><b>01</b><h3>예산을 분리합니다</h3><p>네 광고 세트에 같은 총예산을 넣어 한 제품이 먼저 전부 쓰지 못하게 합니다.</p></article><article class="step"><b>02</b><h3>최소 표본을 정합니다</h3><p>제품별 랜딩 조회 30회가 쌓이기 전에는 승자와 실패를 결정하지 않습니다.</p></article><article class="step"><b>03</b><h3>같은 기준으로 봅니다</h3><p>조회 비용, 예약 수, 조회→예약 전환율을 함께 확인합니다.</p></article></div>
+      <footer class="source-note">출처: Meta Ads Manager 광고 세트×광고 계정 시간대 보고서, 청구 및 결제 선불 잔액, 운영 Supabase 예약 집계 · 광고비·도달·노출·랜딩 조회는 Meta 반영 지연으로 소폭 바뀔 수 있습니다. 예약은 광고 UTM이 있는 운영 DB 행만 포함하고 내부 QA 2건과 OAuth 검증 1건은 제외했습니다. Instagram 아이디·이메일 등 개인 식별 정보는 포함하지 않았습니다.</footer>
+      <span class="slide-number">11 / 11</span>
+    </section>
+  </main>
+</body>
+</html>

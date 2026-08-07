@@ -15,6 +15,8 @@ node_modules/
 .next-e2e/
 .next-today-a/
 .next-today-b-dev/
+.next-reservation/
+.next-reservation-full/
 out/
 dist/
 build/
@@ -37,6 +39,7 @@ service-account*.json
 CLAUDE.local.md
 
 # 구현 참고용 내부 조사 자료
+.claude/knowledge/research/
 .claude/knowledge/research/tarot-card-dot-art/
 
 # macOS
@@ -50,6 +53,7 @@ yarn-error.log*
 pnpm-debug.log*
 
 # 광고 제작용 원본 이미지 — 배포에서는 public/images/ads/만 사용
+outputs/
 outputs/ad-creatives/
 outputs/*-instagram-4x5-*.png
 outputs/experiment-gallery-home-*.jpg
@@ -58,6 +62,7 @@ outputs/experiment-gallery-home-*.jpg
 outputs/bfd-experiment-status.html
 
 # 자동화 테스트 결과물
+artifacts/
 test-results/
 playwright-report/
 blob-report/

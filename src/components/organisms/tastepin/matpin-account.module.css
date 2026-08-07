@@ -1,0 +1,275 @@
+.page {
+  --accent: #ff6b35;
+  --accent-soft: rgba(255, 107, 53, 0.14);
+  --ink: #f5f7fb;
+  --muted: #a5adbb;
+  --line: rgba(255, 255, 255, 0.1);
+  min-height: 100dvh;
+  color: var(--ink);
+  background: #08090b;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.page a:focus-visible,
+.page button:focus-visible {
+  outline: 3px solid #ffae8d;
+  outline-offset: 3px;
+}
+
+.appBar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding: 0 16px;
+  background: rgba(8, 9, 11, 0.94);
+  backdrop-filter: blur(18px);
+}
+
+.appBar a {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--ink);
+}
+
+.appBar strong {
+  font-size: 16px;
+}
+
+.content {
+  width: min(calc(100% - 32px), 560px);
+  margin: 0 auto;
+  padding: 40px 0 72px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.content h1 {
+  margin: 0;
+  font-size: clamp(30px, 8vw, 42px);
+  letter-spacing: -0.055em;
+  line-height: 1.25;
+  word-break: keep-all;
+}
+
+.lead,
+.message {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+.candidateList,
+.savedList {
+  display: grid;
+  gap: 12px;
+  margin: 28px 0 20px;
+  padding: 0;
+  border: 0;
+  list-style: none;
+}
+
+.candidateList legend {
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.candidate,
+.savedCard {
+  display: grid;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #151619;
+}
+
+.candidate {
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.candidate[data-selected="true"] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.candidate input {
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  accent-color: var(--accent);
+}
+
+.candidate strong,
+.savedCard strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.candidate span,
+.savedCard p,
+.savedCard small {
+  display: block;
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.candidate em {
+  display: block;
+  margin-top: 8px;
+  color: #c7cdd8;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.confidence {
+  color: var(--accent) !important;
+  font-weight: 800;
+}
+
+.primary,
+.secondary,
+.danger,
+.deleteButton {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 14px;
+  padding: 0 18px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.primary {
+  width: 100%;
+  border: 1px solid var(--accent);
+  color: #fff;
+  background: var(--accent);
+}
+
+.primary:disabled,
+.deleteButton:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.secondary {
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: #202226;
+}
+
+.danger {
+  width: 100%;
+  border: 1px solid #b3261e;
+  color: #fff;
+  background: #b83d38;
+}
+
+.danger:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.warning {
+  margin-top: 28px;
+  border-left: 4px solid #b3261e;
+  padding: 4px 0 4px 16px;
+  color: #ffaaa6;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.savedCard {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  padding: 18px;
+}
+
+.savedActions {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.savedActions a,
+.deleteButton {
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--ink);
+  background: #202226;
+}
+
+.savedActions a {
+  display: grid;
+  place-items: center;
+}
+
+.deleteButton {
+  width: 44px;
+  padding: 0;
+  color: #b3261e;
+}
+
+.empty,
+.error {
+  margin-top: 28px;
+  border-radius: 16px;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.empty {
+  background: #202226;
+}
+
+.error {
+  color: #ffaaa6;
+  background: rgba(184, 61, 56, 0.16);
+}
+
+.spinner {
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; }
+}
+
+@media (min-width: 720px) {
+  .content { padding-top: 64px; }
+}

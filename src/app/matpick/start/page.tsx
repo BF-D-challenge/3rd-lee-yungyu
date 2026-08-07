@@ -20,10 +20,10 @@ import styles from "./matpick-start.module.css";
 
 export const metadata: Metadata = {
   title: "역삼역 숏폼 맛집 — 맛핀",
-  description: "역삼역에서 최근 공개 릴스와 쇼츠에 나온 맛집을 먼저 보고, 원본 영상과 함께 저장하세요.",
+  description: "Instagram 맛집 릴스를 matpin.kr로 공유하고, 영상 속 장소를 지도에서 다시 찾아보세요.",
 };
 
-const instagramUrl = "https://www.instagram.com/matpickapp/";
+const instagramUrl = "https://www.instagram.com/matpin.kr/";
 const dmReady = process.env.NEXT_PUBLIC_MATPICK_DM_READY === "true";
 
 const steps = [
@@ -34,7 +34,7 @@ const steps = [
   },
   {
     icon: Send,
-    title: "@matpickapp으로 보내요",
+    title: "matpin.kr로 보내요",
     description: "받는 사람에서 맛핀 계정을 고르면 돼요.",
   },
   {
@@ -90,10 +90,10 @@ export default function MatpickStartPage() {
         <Link className={styles.backButton} href="/" aria-label="앱 목록으로 돌아가기">
           <ArrowLeft aria-hidden="true" size={21} />
         </Link>
-        <Link className={styles.brand} href="/matpick" aria-label="맛핀 홈">
+        <Link className={styles.brand} href="/matpin" aria-label="맛핀 홈">
           맛핀
         </Link>
-        <Link className={styles.savedLink} href="/matpick/map?saved=1" aria-label="내 저장함 보기">
+        <Link className={styles.savedLink} href="/matpin/map?saved=1" aria-label="내 저장함 보기">
           <Bookmark aria-hidden="true" size={20} />
         </Link>
       </header>
@@ -138,7 +138,7 @@ export default function MatpickStartPage() {
           </div>
 
           <div className={styles.actions}>
-            <Link className={styles.primaryAction} href="/matpick/map?station=yeoksam-station">
+            <Link className={styles.primaryAction} href="/matpin/map?station=yeoksam-station">
               역삼역 {yeoksam?.placeIds.length ?? featuredPlaces.length}곳 보기
               <ArrowRight aria-hidden="true" size={18} />
             </Link>
@@ -191,7 +191,7 @@ export default function MatpickStartPage() {
           </div>
 
           <div className={styles.actions}>
-            <Link className={styles.primaryAction} href="/matpick/dm">
+            <Link className={styles.primaryAction} href="/matpin/dm">
               릴스 저장 흐름 체험
               <ArrowRight aria-hidden="true" size={18} />
             </Link>
@@ -200,14 +200,14 @@ export default function MatpickStartPage() {
               href={instagramUrl}
               target="_blank"
               rel="noreferrer"
-              aria-label="Instagram에서 matpickapp 프로필 열기, 새 창"
+              aria-label="Instagram에서 matpin.kr 프로필 열기, 새 창"
             >
-              @matpickapp 열기
+              matpin.kr 열기
               <ExternalLink aria-hidden="true" size={18} />
             </a>
           </div>
 
-          <Link className={styles.fallbackLink} href="/matpick/import">
+          <Link className={styles.fallbackLink} href="/matpin/import">
             <Link2 aria-hidden="true" size={17} />
             YouTube Shorts 링크로 저장하기
           </Link>

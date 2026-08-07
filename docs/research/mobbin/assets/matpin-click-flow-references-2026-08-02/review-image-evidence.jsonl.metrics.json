@@ -1,0 +1,13 @@
+{
+  "stage": "image-reader",
+  "mode": "fast",
+  "started_at": "2026-08-01T19:05:02.918Z",
+  "finished_at": "2026-08-01T19:05:05.681Z",
+  "duration_ms": 2755,
+  "input_rows": 8,
+  "unique_images": 8,
+  "duplicate_images": 0,
+  "ocr_calls": 8,
+  "cloud_vision_tokens": 0,
+  "output_bytes": 9744
+}

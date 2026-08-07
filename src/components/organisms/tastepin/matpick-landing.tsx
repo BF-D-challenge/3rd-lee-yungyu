@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Bookmark, Check, MapPin, Search, Sparkles } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -13,10 +13,16 @@ const productEventParams = {
   funnel_stage: "primary_cta",
   product_id: "tastepin",
   product_slug: "tastepin",
-  product_path: "/matpick",
+  product_path: "/matpin",
   experiment_id: "tastepin",
-  destination: "/reserve/matpick",
 } as const;
+
+const destinations = {
+  flow: "/matpin/start#save-reels",
+  reservation: "/reserve/matpick",
+} as const;
+
+const dmReady = process.env.NEXT_PUBLIC_MATPICK_DM_READY === "true";
 
 export function MatpickLanding() {
   useEffect(() => {
@@ -25,14 +31,17 @@ export function MatpickLanding() {
       funnel_stage: "landing",
       product_id: "tastepin",
       product_slug: "tastepin",
-      product_path: "/matpick",
+      product_path: "/matpin",
       experiment_id: "tastepin",
     }, { meta: false });
     trackMvpLandingViewed("matpick");
   }, []);
 
-  const trackPrimaryCta = () => {
-    track("tastepin_primary_cta_clicked", productEventParams, { meta: false });
+  const trackPrimaryCta = (destination: (typeof destinations)[keyof typeof destinations]) => {
+    track("tastepin_primary_cta_clicked", {
+      ...productEventParams,
+      destination,
+    }, { meta: false });
     trackMvpPrimaryCta("matpick");
   };
 
@@ -43,102 +52,94 @@ export function MatpickLanding() {
           <span aria-hidden="true"><MapPin size={17} strokeWidth={2.5} /></span>
           맛핀
         </Link>
-        <span className={styles.stageBadge}>초기 체험 모집 중</span>
+        <span className={styles.stageBadge}>{dmReady ? "Instagram 자동 저장 사용 가능" : "Instagram 연동 준비 중"}</span>
       </header>
 
       <section className={styles.hero} aria-labelledby="matpick-title">
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>저장한 릴스가 쌓일수록, 다시 찾기는 더 어려워져요</p>
+          <p className={styles.eyebrow}>Instagram에서 보던 그 자리에서 저장</p>
           <h1 id="matpick-title">
-            저장한 맛집 릴스만 200개.
-            <br />오늘 갈 곳은 또 못 찾았다.
+            맛집 릴스를
+            <br />matpin.kr로 보내면,
+            <br />지도에 정리돼요.
           </h1>
           <p className={styles.lead}>
-            맛핀은 맛집 릴스 링크에서 장소 후보를 찾아, 원본 영상과 함께 다시 볼 수 있게
-            정리하려는 초기 제품이에요.
+            Instagram 릴스에서 공유하기를 누르고 matpin.kr를 선택하세요. 맛핀이 영상 속
+            장소와 원본 릴스를 찾아 한 지도에 자동으로 정리해요.
           </p>
 
           <div className={styles.actions}>
-            <Link className={styles.primaryAction} href="/reserve/matpick" onClick={trackPrimaryCta}>
-              초기 체험 예약하기
+            <Link
+              className={styles.primaryAction}
+              href={destinations.flow}
+              onClick={() => trackPrimaryCta(destinations.flow)}
+            >
+              릴스 저장 방법 보기
               <ArrowRight aria-hidden="true" size={19} />
             </Link>
-            <Link className={styles.demoAction} href="/matpick/dm">
-              공개 릴스로 30초 데모 보기
+            <Link
+              className={styles.demoAction}
+              href={destinations.reservation}
+              onClick={() => trackPrimaryCta(destinations.reservation)}
+            >
+              초기 체험 예약하기
             </Link>
           </div>
 
           <p className={styles.honestyNote}>
-            지금은 공개 릴스 링크로 장소 후보를 확인하는 데모만 제공해요. Instagram 저장함
-            전체 가져오기와 자동 DM 수집은 아직 지원하지 않아요.
+            {dmReady
+              ? "Instagram에서 보낸 릴스를 분석한 뒤, 장소가 확실하지 않으면 저장 전에 확인을 요청해요."
+              : "Instagram 공유 자동 저장은 현재 연결 중이에요. 지금은 공개 릴스 링크로 장소를 확인한 뒤 지도에 저장하는 같은 흐름을 먼저 체험할 수 있어요."}
           </p>
         </div>
 
-        <div className={styles.problemScene} aria-label="저장한 릴스에서 오늘 갈 맛집을 다시 찾는 상황 예시">
-          <div className={styles.sceneHeader}>
-            <span>오늘 저녁 · 역삼</span>
-            <span><Bookmark aria-hidden="true" size={15} fill="currentColor" /> 저장됨 200</span>
-          </div>
-
-          <div className={styles.searchAttempt}>
-            <div className={styles.searchField}>
-              <Search aria-hidden="true" size={17} />
-              <span>오늘 갈 맛집</span>
-            </div>
-            <p>결국 저장한 릴스를 하나씩 다시 여는 중…</p>
-          </div>
-
-          <div className={styles.demoDivider}>
-            <span />
-            <b>맛핀 데모</b>
-            <span />
-          </div>
-
-          <article className={styles.resultCard}>
-            <div className={styles.resultImage}>
-              <Image
-                alt="산장장작구이 공개 릴스의 음식 장면"
-                fill
-                priority
-                sizes="(max-width: 720px) 116px, 148px"
-                src="/images/matpick/yeoksam-sanjang-reel.jpg"
-              />
-            </div>
-            <div className={styles.resultCopy}>
-              <span><Sparkles aria-hidden="true" size={14} /> 공개 릴스 예시 결과</span>
-              <strong>산장장작구이</strong>
-              <p>역삼역 · 고기구이</p>
-              <small><Check aria-hidden="true" size={13} /> 장소 후보를 직접 확인한 뒤 저장</small>
-            </div>
-          </article>
-        </div>
+        <figure className={styles.flowPreview}>
+          <Image
+            alt="릴스에서 공유하기, matpin.kr로 보내기, 지도에 자동 정리되는 맛핀 3단계 사용 흐름 예시"
+            height={941}
+            priority
+            sizes="(max-width: 820px) calc(100vw - 40px), 520px"
+            src="/images/matpick/matpin-instagram-share-flow.png"
+            width={1672}
+          />
+          <figcaption>사용 흐름 예시 · Instagram 공유부터 지도 저장까지</figcaption>
+        </figure>
       </section>
 
       <section className={styles.flow} aria-labelledby="flow-title">
         <div>
-          <p className={styles.sectionEyebrow}>지금 체험할 수 있는 흐름</p>
-          <h2 id="flow-title">링크 하나, 장소 확인, 저장.</h2>
-          <p>검색·지도·가져오기를 모두 설명하지 않고, 현재 동작하는 가장 짧은 데모만 남겼어요.</p>
+          <p className={styles.sectionEyebrow}>맛핀의 핵심 사용법</p>
+          <h2 id="flow-title">공유 한 번이면 지도에 정리돼요.</h2>
+          <p>Instagram에서 맛집 릴스를 보던 흐름을 끊지 않고 바로 저장할 수 있어요.</p>
         </div>
         <ol>
-          <li><span>1</span><p><strong>공개 릴스 링크 붙여넣기</strong><small>실제 DM이나 Instagram 계정에는 접근하지 않아요.</small></p></li>
-          <li><span>2</span><p><strong>장소 후보 직접 확인하기</strong><small>자동 추출이 틀릴 수 있어 사용자가 마지막으로 골라요.</small></p></li>
-          <li><span>3</span><p><strong>이 브라우저에 저장하기</strong><small>원본 릴스와 장소를 현재 기기에 함께 남겨요.</small></p></li>
+          <li><span>1</span><p><strong>릴스에서 공유하기 누르기</strong><small>나중에 가고 싶은 맛집을 발견한 순간 시작해요.</small></p></li>
+          <li><span>2</span><p><strong>matpin.kr로 보내기</strong><small>공유할 계정에서 맛핀을 선택하면 돼요.</small></p></li>
+          <li><span>3</span><p><strong>지도에 자동 정리</strong><small>영상 속 장소와 원본 릴스가 한 지도에 함께 모여요.</small></p></li>
         </ol>
       </section>
 
       <section className={styles.finalCta}>
         <p>이 문제가 내 이야기라면</p>
         <h2>먼저 써보고 싶은 이유를 알려주세요.</h2>
-        <Link href="/reserve/matpick" onClick={trackPrimaryCta}>
+        <Link
+          href={destinations.reservation}
+          onClick={() => trackPrimaryCta(destinations.reservation)}
+        >
           초기 체험 예약하기
           <ArrowRight aria-hidden="true" size={19} />
         </Link>
       </section>
 
+      <nav className={styles.legalLinks} aria-label="맛핀 법적 안내">
+        <Link href="/privacy">개인정보처리방침</Link>{" · "}
+        <Link href="/terms">이용약관</Link>{" · "}
+        <Link href="/data-deletion">데이터 삭제</Link>
+      </nav>
+
       <div className={styles.mobileDock}>
-        <Link href="/reserve/matpick" onClick={trackPrimaryCta}>
-          초기 체험 예약하기
+        <Link href={destinations.flow} onClick={() => trackPrimaryCta(destinations.flow)}>
+          릴스 저장 방법 보기
           <ArrowRight aria-hidden="true" size={19} />
         </Link>
       </div>

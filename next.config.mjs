@@ -21,6 +21,15 @@ const nextConfig = {
     NEXT_PUBLIC_GOOGLE_LOGIN:
       process.env.NEXT_PUBLIC_GOOGLE_LOGIN ?? process.env.GOOGLE_LOGIN ?? "",
   },
+  async redirects() {
+    return [
+      {
+        source: "/matpick/:path*",
+        destination: "/matpin/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

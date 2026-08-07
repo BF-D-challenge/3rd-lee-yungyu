@@ -8,14 +8,17 @@ import { trackMvpLandingViewed, trackMvpPrimaryCta } from "@/lib/mvp-experiment-
 import { track } from "@/lib/track";
 import styles from "./onebite-landing.module.css";
 
-function trackPrimaryCta(placement: "hero" | "closing") {
+function trackPrimaryCta(
+  placement: "hero" | "closing",
+  destination: "/onebite" | "/reserve/onebite",
+) {
   track("onebite_primary_cta_clicked", {
     event_type: "onebite_primary_cta_clicked",
     funnel_stage: "primary_cta",
     product_id: "onebite",
     product_slug: "onebite",
     cta_placement: placement,
-    destination: "/reserve/onebite",
+    destination,
   }, { meta: false });
   trackMvpPrimaryCta("onebite");
 }
@@ -36,7 +39,7 @@ export function OnebiteLanding() {
     <main className={styles.page}>
       <header className={styles.header}>
         <Link href="/" className={styles.brand}>한입코치</Link>
-        <span>초기 체험</span>
+        <span>첫 코칭 무료</span>
       </header>
 
       <section className={styles.hero} aria-labelledby="onebite-landing-title">
@@ -50,28 +53,28 @@ export function OnebiteLanding() {
         />
         <div className={styles.heroShade} aria-hidden />
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>사진 한 장 → 다음 한 끼 행동 하나</p>
+          <p className={styles.eyebrow}>사진 한 장 → 팩폭 한 방 → 다음 끼니 복귀</p>
           <h1 id="onebite-landing-title">
-            먹은 건 됐어요.<br />
-            다음 한 끼는<br />
-            제가 잡을게요.
+            사진 한 장이면<br />
+            혼나고,<br />
+            바로 복귀.
           </h1>
           <p className={styles.lead}>
-            음식 사진에서 보이는 것만 확인해요. 몸 상태를 진단하지 않고,
-            다음에 할 일 하나만 분명하게 말해요.
+            망한 한 끼를 망한 하루로 키우지 마세요. 선택은 세게 짚고,
+            다음 끼니에 할 행동 하나로 끝냅니다.
           </p>
           <div className={styles.heroActions}>
             <Link
               className={styles.primaryAction}
-              href="/reserve/onebite"
-              onClick={() => trackPrimaryCta("hero")}
+              href="/onebite"
+              onClick={() => trackPrimaryCta("hero", "/onebite")}
             >
-              한입코치 예약하기
+              무료로 한 번 혼나기
               <ArrowRight aria-hidden />
             </Link>
-            <Link className={styles.secondaryAction} href="/onebite">
-              사진으로 먼저 해보기
-            </Link>
+            <a className={styles.secondaryAction} href="#coaching-example">
+              팩폭 예시 먼저 보기
+            </a>
           </div>
         </div>
       </section>
@@ -82,28 +85,29 @@ export function OnebiteLanding() {
         aria-labelledby="coaching-example-title"
       >
         <div className={styles.sectionHeading}>
-          <p>코치는 세게, 기준은 안전하게</p>
-          <h2 id="coaching-example-title">혼내는 건 음식이 아니라, 다음 행동이에요</h2>
+          <p>정신이 번쩍 드는 한 방</p>
+          <h2 id="coaching-example-title">다정한 기록 말고, 복귀시키는 팩폭</h2>
         </div>
         <div className={styles.coachingExample}>
           <div className={styles.mealContext}>
             <span>보낸 사진 예시</span>
-            <strong>어젯밤 치킨과 맥주</strong>
+            <strong>야근 뒤 치킨</strong>
           </div>
           <blockquote>
-            “치킨 먹은 건 됐어요.<br />다음 끼니엔 채소 반찬부터 담아요.”
+            “야근은 핑계고,<br />치킨은 진심이네요.”
           </blockquote>
+          <strong className={styles.exampleAction}>다음 끼니: 채소 반찬부터 담기</strong>
           <p>
-            예시 문구예요. 실제 답은 사진에서 보이는 음식 그룹에 맞춰 정해집니다.
-            칼로리, 체중, 질환은 판단하지 않아요.
+            팩폭은 선택과 패턴만 짚고 반드시 복귀 행동으로 끝납니다.
+            몸·외모·인격은 건드리지 않고, 칼로리·체중·질환도 판단하지 않아요.
           </p>
         </div>
       </section>
 
       <section className={styles.steps} aria-labelledby="onebite-steps-title">
         <div className={styles.sectionHeading}>
-          <p>받는 것은 딱 하나</p>
-          <h2 id="onebite-steps-title">다음 식사에서 바로 해볼 행동</h2>
+          <p>혼나고 끝내지 않아요</p>
+          <h2 id="onebite-steps-title">다음 사진까지 이어지는 복귀 루프</h2>
         </div>
         <ol>
           <li>
@@ -116,15 +120,29 @@ export function OnebiteLanding() {
           <li>
             <span>2</span>
             <div>
-              <strong>사진에 보이는 음식만 확인합니다</strong>
-              <p>칼로리를 맞히거나 먹은 사람을 점수로 매기지 않아요.</p>
+              <strong>AI가 확인한 음식을 먼저 봅니다</strong>
+              <p>사진에서 직접 확인한 음식 이름과 그룹이 맞는지 고릅니다.</p>
             </div>
           </li>
           <li>
             <span>3</span>
             <div>
-              <strong>다음 한 끼 행동 하나를 받습니다</strong>
-              <p>“채소 반찬부터 담기”처럼 바로 할 수 있는 말로 끝나요.</p>
+              <strong>사진마다 다른 팩폭 한 방을 받습니다</strong>
+              <p>몸이나 인격이 아니라, 사진에서 확인한 선택만 혼내요.</p>
+            </div>
+          </li>
+          <li>
+            <span>4</span>
+            <div>
+              <strong>다음 한 끼 행동 하나를 약속합니다</strong>
+              <p>“채소 반찬부터 담기”처럼 바로 해볼 행동 하나로 끝나요.</p>
+            </div>
+          </li>
+          <li>
+            <span>5</span>
+            <div>
+              <strong>다음 사진에서 복귀를 확인합니다</strong>
+              <p>약속을 해봤는지 기록하고, 새 사진으로 다시 코칭받아요.</p>
             </div>
           </li>
         </ol>
@@ -132,29 +150,29 @@ export function OnebiteLanding() {
 
       <section className={styles.reservation} aria-labelledby="onebite-reservation-title">
         <div>
-          <p>초기 체험 예약</p>
-          <h2 id="onebite-reservation-title">다음 한 끼를 바꿀 준비만 해요</h2>
+          <p>계속 혼나고 싶다면</p>
+          <h2 id="onebite-reservation-title">7일 패스 4,900원</h2>
           <span>
-            Instagram 아이디 저장과 Google 로그인은 다음 예약 화면에서 한 번에 진행합니다.
+            첫 코칭은 무료예요. 7일 패스는 준비 중이며 자동 갱신은 없습니다.
           </span>
         </div>
         <Link
           className={styles.closingAction}
           href="/reserve/onebite"
-          onClick={() => trackPrimaryCta("closing")}
+          onClick={() => trackPrimaryCta("closing", "/reserve/onebite")}
         >
-          예약 화면으로 가기
+          7일 패스 알림 받기
           <ArrowRight aria-hidden />
         </Link>
         <p className={styles.privacy}>
           <ShieldCheck aria-hidden />
-          이 화면에서는 Instagram 아이디나 Google 계정을 받지 않아요.
+          혼내는 건 코치뿐, 결제는 안 혼납니다. 다음 화면에서 출시 알림만 신청해요.
         </p>
       </section>
 
       <footer className={styles.footer}>
         <p><Check aria-hidden /> 의료·임상 영양 상담이 아닌 일반 식사 행동 코칭입니다.</p>
-        <Link href="/onebite">사진으로 먼저 해보기</Link>
+        <Link href="/onebite">무료로 한 번 혼나기</Link>
       </footer>
     </main>
   );

@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const routes = ["/", "/matpick", "/onebite", "/today", "/story-cards"] as const;
+const routes = ["/", "/matpin", "/onebite", "/today", "/story-cards"] as const;
 const viewports = [
   { name: "compact", width: 390, height: 844 },
   { name: "medium-boundary", width: 839, height: 900 },
@@ -80,6 +80,7 @@ test("200% 텍스트에서도 허브와 주요 입력 화면을 가로 스크롤
   for (const route of ["/", "/onebite", "/today", "/story-cards"]) {
     await page.goto(route);
     await page.addStyleTag({ content: "html { font-size: 200% !important; }" });
+    await page.evaluate(() => document.fonts.ready);
     const sizes = await page.evaluate(() => ({
       clientWidth: document.documentElement.clientWidth,
       scrollWidth: document.documentElement.scrollWidth,

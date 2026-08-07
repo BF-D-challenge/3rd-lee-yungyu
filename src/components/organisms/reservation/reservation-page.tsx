@@ -247,18 +247,22 @@ export function ReservationPage({ config }: ReservationPageProps) {
             <h1 id="reservation-title">{config.headline}</h1>
             <p className={styles.description}>{config.description}</p>
             <p className={styles.releaseNotice} role="note">
-              지금은 예약만 받아요. 실제 체험은 준비가 끝난 뒤 {requiresInstagram ? "입력한 Instagram 계정" : "연결한 Google 계정"}으로 안내해드릴게요.
+              지금은 예약만 받아요. 아직 결제하지 않아요. 실제 체험은 준비가 끝난 뒤 {requiresInstagram ? "입력한 Instagram 계정" : "연결한 Google 계정"}으로 안내해드릴게요.
             </p>
+            <a className={styles.jumpToBooking} href="#reservation-form">
+              예약 정보 입력하기
+            </a>
           </div>
 
           <div className={styles.visual}>
+            <span className={styles.visualLabel}>AI 제품 화면 시안</span>
             <Image
               src={config.image}
               alt={config.imageAlt}
-              width={1280}
-              height={800}
+              width={390}
+              height={844}
               priority
-              sizes="(max-width: 839px) 100vw, 52vw"
+              sizes="(max-width: 480px) calc(100vw - 3rem), 320px"
             />
           </div>
 
@@ -275,7 +279,11 @@ export function ReservationPage({ config }: ReservationPageProps) {
           </section>
         </section>
 
-        <section className={styles.booking} aria-labelledby="booking-title">
+        <section
+          className={styles.booking}
+          id="reservation-form"
+          aria-labelledby="booking-title"
+        >
           {reservation ? (
             <div className={styles.complete} role="status" tabIndex={-1}>
               <CheckCircle2 aria-hidden />

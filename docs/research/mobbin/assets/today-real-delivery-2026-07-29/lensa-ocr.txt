@@ -1,0 +1,131 @@
+image_width: 1148
+image_height: 618
+line_count: 42
+text: "9:41\n...-\n9:41\nHide\nNew Avatars\nUploading photos...\nNew Avatars\n9:41\nHide\nNew Avatars\nCreating avatars...\nCreating avatars...\n9:41\nClose\nPack #1\n50 avatars\nMagic Avatars\n0 of 17\nRemaining time\n13 min\nRemaining time\n15 min\nplease keep the app open\nWhen it's finished, you'll get 50 images\ngenerated for you. Feel free to close the app.\nV You\"l be notified when it's done\nWhen it's finished, youl get 50 images\ngenerated for you. Feel free to close the app.\nV Youill be notified when it's done\nHide this screen\nHide this screen\ne You will never have the same results!\nEvery time Al generates unique avatars.\nCreate new avatars\nO Lensa AI\ncurated by ala Mobbin\nO Lense Al\ncurated by Cla Mobbin\nO Lense Al\ncurated by ww Mobbin\n• Lense AI\ncurated by wal Mobbin"
+lines:
+  -
+    text: "9:41"
+    confidence: 1
+  -
+    text: "...-"
+    confidence: 0.5
+  -
+    text: "9:41"
+    confidence: 1
+  -
+    text: Hide
+    confidence: 1
+  -
+    text: "New Avatars"
+    confidence: 1
+  -
+    text: "Uploading photos..."
+    confidence: 1
+  -
+    text: "New Avatars"
+    confidence: 1
+  -
+    text: "9:41"
+    confidence: 1
+  -
+    text: Hide
+    confidence: 1
+  -
+    text: "New Avatars"
+    confidence: 1
+  -
+    text: "Creating avatars..."
+    confidence: 1
+  -
+    text: "Creating avatars..."
+    confidence: 1
+  -
+    text: "9:41"
+    confidence: 1
+  -
+    text: Close
+    confidence: 1
+  -
+    text: "Pack #1"
+    confidence: 0.5
+  -
+    text: "50 avatars"
+    confidence: 1
+  -
+    text: "Magic Avatars"
+    confidence: 1
+  -
+    text: "0 of 17"
+    confidence: 1
+  -
+    text: "Remaining time"
+    confidence: 1
+  -
+    text: "13 min"
+    confidence: 1
+  -
+    text: "Remaining time"
+    confidence: 1
+  -
+    text: "15 min"
+    confidence: 1
+  -
+    text: "please keep the app open"
+    confidence: 1
+  -
+    text: "When it's finished, you'll get 50 images"
+    confidence: 1
+  -
+    text: "generated for you. Feel free to close the app."
+    confidence: 1
+  -
+    text: "V You\"l be notified when it's done"
+    confidence: 1
+  -
+    text: "When it's finished, youl get 50 images"
+    confidence: 1
+  -
+    text: "generated for you. Feel free to close the app."
+    confidence: 1
+  -
+    text: "V Youill be notified when it's done"
+    confidence: 1
+  -
+    text: "Hide this screen"
+    confidence: 1
+  -
+    text: "Hide this screen"
+    confidence: 1
+  -
+    text: "e You will never have the same results!"
+    confidence: 1
+  -
+    text: "Every time Al generates unique avatars."
+    confidence: 1
+  -
+    text: "Create new avatars"
+    confidence: 1
+  -
+    text: "O Lensa AI"
+    confidence: 0.5
+  -
+    text: "curated by ala Mobbin"
+    confidence: 1
+  -
+    text: "O Lense Al"
+    confidence: 0.5
+  -
+    text: "curated by Cla Mobbin"
+    confidence: 1
+  -
+    text: "O Lense Al"
+    confidence: 0.5
+  -
+    text: "curated by ww Mobbin"
+    confidence: 1
+  -
+    text: "• Lense AI"
+    confidence: 0.5
+  -
+    text: "curated by wal Mobbin"
+    confidence: 1

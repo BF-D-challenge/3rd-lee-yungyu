@@ -36,7 +36,7 @@ test.describe("전체 앱 라우트 직접 진입", () => {
     const experiments = page.getByRole("region", { name: "앱 선택" });
     await expect(experiments).toBeVisible();
     await expect(experiments.locator("img")).toHaveCount(4);
-    for (const href of ["/matpick", "/onebite", "/today", "/story-cards"]) {
+    for (const href of ["/matpin", "/onebite", "/today", "/story-cards"]) {
       await expect(experiments.locator(`a[href="${href}"]`)).toHaveCount(1);
     }
     await expect(experiments.locator('a[href="/today-a"]')).toHaveCount(0);
@@ -82,7 +82,7 @@ test.describe("전체 앱 라우트 직접 진입", () => {
   for (const alias of ["/tastepin", "/tastepin/map"]) {
     test(`${alias} 맛핀 별칭은 대표 주소로 합쳐진다`, async ({ page }) => {
       const expectNoErrors = await openWithoutRuntimeErrors(page, alias);
-      await expect(page).toHaveURL(/\/matpick$/);
+      await expect(page).toHaveURL(/\/matpin$/);
       await expectNoErrors();
     });
   }
