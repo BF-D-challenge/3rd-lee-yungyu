@@ -29,6 +29,59 @@ final result: passed
 
 ---
 
+# 맛핀 Poly식 사진 수미상관 Design QA
+
+## 비교 대상
+
+- source visual truth: `/Users/yungyulee/Project/03_BFD/3rd-lee-yungyu/artifacts/design-qa/matpin-bookend-source-hero.png`
+- implementation screenshot: `/Users/yungyulee/Project/03_BFD/3rd-lee-yungyu/artifacts/design-qa/matpin-bookend-final.png`
+- combined comparison evidence: `/Users/yungyulee/Project/03_BFD/3rd-lee-yungyu/artifacts/design-qa/matpin-bookend-comparison.png`
+- implementation: `http://127.0.0.1:3107/matpin`, scene 01과 scene 08
+- browser screenshot pixels: source와 implementation 모두 `1300 × 1040`
+- device screen CSS size: source와 implementation 모두 `390 × 844`, 동일 브라우저와 동일 밀도
+- state: 다크 모드, 첫 제품 약속과 마지막 DM 저장 결과
+
+## Findings
+
+- P0, P1, P2 잔여 이슈 없음.
+- 폰트와 타이포그래피: 첫 장면과 마지막 장면 모두 같은 좌측 브랜드, 중앙 2행 제목, 짧은 설명의 위계를 유지합니다. 마지막 제목은 DM 결과를 직접 말해 시작 장면과 역할이 겹치지 않아요.
+- 간격과 레이아웃: 같은 휴대폰 프레임과 같은 사진 크롭을 사용합니다. 첫 장면의 중앙 보관함 UI는 마지막 장면에서 DM 3개와 계정 보관함 요약으로 교체되며 CTA와 하단 내비게이션이 겹치지 않습니다.
+- 색과 시각 토큰: 마지막 장면은 같은 따뜻한 사진을 어둡게 처리해 흰 글자와 DM 카드의 대비를 확보했습니다. 첫 장면보다 결과 카드가 또렷하지만 사진의 책상, 카메라, 손이 계속 식별돼요.
+- 이미지 품질: 두 장면 모두 `/images/matpin/matpin-poly-workspace-viewer-v2.png`를 같은 전체 화면 슬롯에서 사용합니다. 별도 CSS 그림이나 대체 이미지 없이 실제 이미지 자산을 재사용했습니다.
+- 카피와 콘텐츠: 시작은 `맛집 릴스를 역별로 모아드려요`, 끝은 `저장될 때마다 DM이 도착해요`로 연결됩니다. 약속과 결과가 한 쌍으로 읽히며 DM 3개, 역 3개, 릴스 12개가 제품 증거로 남아요.
+
+## Full-view comparison evidence
+
+- `matpin-bookend-comparison.png`에서 첫 장면과 마지막 장면을 같은 캔버스에 배치해 기기 크기, 사진 크롭, 제목 위치, 결과 카드 밀도를 비교했습니다.
+- 동일한 작업 공간 사진이 처음에는 제품 약속의 무대, 마지막에는 저장 완료의 배경으로 재등장합니다. Poly의 시작과 끝이 같은 세계로 돌아오는 원리를 유지해요.
+
+## Focused region comparison evidence
+
+- 별도 확대 비교는 필요하지 않았습니다. 동일한 390 × 844 기기 화면과 같은 이미지 자산을 사용하며, 전체 비교 화면에서 제목, CTA, DM 카드 및 배경 사진의 식별 여부를 충분히 확인했습니다.
+
+## Comparison history
+
+1. 이전 구현
+   - [P1] 마지막 장면의 사진 불투명도가 낮아 첫 장면과 같은 공간으로 돌아왔다는 점이 보이지 않았습니다.
+2. 수정
+   - 마지막 장면의 사진을 다시 전체 불투명도로 노출하고 밝기와 채도만 낮췄습니다.
+   - 첫 장면의 중앙 보관함 UI는 숨기고, 마지막 DM 결과와 계정 보관함 요약만 남겼어요.
+3. 수정 후 비교
+   - 같은 사진, 같은 휴대폰 프레임, 다른 제품 상태가 한눈에 구분됩니다.
+   - P0, P1, P2 차이는 남지 않았습니다.
+
+## Primary interactions tested
+
+- 세로 스크롤로 scene 01부터 scene 08까지 이동
+- 첫 장면 CTA의 실제 Instagram 프로필 링크 확인
+- 마지막 장면 DM 3개와 계정 보관함 요약 노출 확인
+- 하단 단계 버튼 4개가 유지되는지 확인
+- 브라우저 console error 0개, warning 0개
+
+final result: passed
+
+---
+
 # 맛핀 8단계 역별 자동 정리 장면 Design QA
 
 ## Comparison target
