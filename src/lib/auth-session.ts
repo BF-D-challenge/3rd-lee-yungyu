@@ -1,7 +1,14 @@
-import { authEnabled, getUser, signInWithGoogle, signOut } from "./backend/auth";
+import {
+  authEnabled,
+  getUser,
+  signInAnonymously,
+  signInWithGoogle,
+  signOut,
+} from "./backend/auth";
 import { supabaseEnabled } from "./backend/client";
 
 const DEMO_AUTH_KEY = "oneul:demo-auth";
+const DEMO_ANONYMOUS_AUTH_KEY = "oneul:demo-anonymous-auth";
 const DEMO_ACTOR_KEY = "oneul:demo-actor";
 const AUTH_PENDING_KEY = "oneul:auth-pending";
 const AUTH_TRACK_KEY = "oneul:auth-active";
@@ -14,6 +21,7 @@ export interface AuthSession {
   actorId: string;
   authenticated: true;
   demo: boolean;
+  anonymous?: boolean;
   displayName?: string;
 }
 
@@ -152,11 +160,13 @@ export async function checkAuthSession(
   if (supabaseEnabled || authEnabled) {
     const user = await getUser();
     if (user) {
-      markAuthenticatedForTracking();
+      const anonymous = user.is_anonymous === true;
+      if (!anonymous) markAuthenticatedForTracking();
       return {
         actorId: user.id,
         authenticated: true,
         demo: false,
+        anonymous,
         displayName: displayNameFrom(user.user_metadata as Record<string, unknown> | undefined),
       };
     }
@@ -168,8 +178,14 @@ export async function checkAuthSession(
   } catch {
     return null;
   }
-  markAuthenticatedForTracking();
-  return { actorId: demoActorId(), authenticated: true, demo: true };
+  let anonymous = false;
+  try {
+    anonymous = localStorage.getItem(DEMO_ANONYMOUS_AUTH_KEY) === "1";
+  } catch {
+    // 데모 세션 자체는 유지한다.
+  }
+  if (!anonymous) markAuthenticatedForTracking();
+  return { actorId: demoActorId(), authenticated: true, demo: true, anonymous };
 }
 
 export type BeginAuthResult =
@@ -188,6 +204,7 @@ export async function beginAuth(
 
   try {
     localStorage.setItem(DEMO_AUTH_KEY, "1");
+    localStorage.removeItem(DEMO_ANONYMOUS_AUTH_KEY);
   } catch {
     return { status: "error", error: "브라우저 저장소를 사용할 수 없어요." };
   }
@@ -198,6 +215,44 @@ export async function beginAuth(
   };
 }
 
+/**
+ * 이메일 로그인이 필요 없는 fake-door 예약용 세션을 만든다.
+ * Supabase 환경에서는 RLS 소유권을 유지하는 익명 Auth 사용자, 로컬에서는 데모 사용자를 쓴다.
+ */
+export async function beginAnonymousAuth(): Promise<BeginAuthResult> {
+  if (supabaseEnabled) {
+    const { user, error } = await signInAnonymously();
+    if (error || !user) {
+      return { status: "error", error: error ?? "익명 예약 세션을 만들지 못했어요." };
+    }
+    return {
+      status: "authenticated",
+      session: {
+        actorId: user.id,
+        authenticated: true,
+        demo: false,
+        anonymous: true,
+      },
+    };
+  }
+
+  try {
+    localStorage.setItem(DEMO_AUTH_KEY, "1");
+    localStorage.setItem(DEMO_ANONYMOUS_AUTH_KEY, "1");
+  } catch {
+    return { status: "error", error: "브라우저 저장소를 사용할 수 없어요." };
+  }
+  return {
+    status: "authenticated",
+    session: {
+      actorId: demoActorId(),
+      authenticated: true,
+      demo: true,
+      anonymous: true,
+    },
+  };
+}
+
 /** 실제 OAuth와 로컬 데모 세션을 같은 계정 UI에서 안전하게 종료한다. */
 export async function endAuthSession(): Promise<void> {
   try {
@@ -205,6 +260,7 @@ export async function endAuthSession(): Promise<void> {
   } finally {
     try {
       localStorage.removeItem(DEMO_AUTH_KEY);
+      localStorage.removeItem(DEMO_ANONYMOUS_AUTH_KEY);
     } catch {
       // 브라우저 저장소가 막혀도 실제 Supabase 로그아웃 결과는 유지한다.
     }

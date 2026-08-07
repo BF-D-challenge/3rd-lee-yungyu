@@ -36,12 +36,12 @@ class MemoryStorage {
 
 const productsWithoutInstagram: FakeDoorTestProduct[] = [
   "today",
-  "story-cards",
 ];
 
 const productsWithInstagram = [
   { product: "matpick", handle: "matpin_test" },
   { product: "onebite", handle: "onebite_test" },
+  { product: "story-cards", handle: "cardbeyond_test" },
 ] as const;
 
 const demoSession: AuthSession = {

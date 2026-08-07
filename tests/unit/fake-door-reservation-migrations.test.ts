@@ -17,6 +17,9 @@ const addInstagram = readSql(
 const addLeadCapture = readSql(
   "supabase/migrations/20260801065914_add_fake_door_lead_capture.sql",
 );
+const requireStoryCardsInstagram = readSql(
+  "supabase/migrations/20260801092527_require_story_cards_instagram_handle.sql",
+);
 const schema = readSql("supabase/schema.sql");
 
 describe("reservation migration and schema parity", () => {
@@ -34,7 +37,7 @@ describe("reservation migration and schema parity", () => {
     }
   });
 
-  it("requires a normalized Instagram handle only for matpick and onebite", () => {
+  it("requires a normalized Instagram handle for matpick, onebite, and story-cards", () => {
     const instagramCheck =
       "char_length(instagram_handle) between 1 and 30 and instagram_handle ~ '^[a-z0-9_]+([.][a-z0-9_]+)*$'";
 
@@ -42,9 +45,23 @@ describe("reservation migration and schema parity", () => {
     expect(addInstagram).toContain("instagram_handle is null and product not in ('matpick', 'onebite')");
     expect(addInstagram).toContain("product in ('matpick', 'onebite') and instagram_handle is not null");
     expect(addInstagram).not.toContain("alter column instagram_handle set not null");
+    expect(requireStoryCardsInstagram).toContain(
+      "drop constraint if exists fake_door_reservations_instagram_handle_check",
+    );
+    expect(requireStoryCardsInstagram).toContain(
+      "instagram_handle is null and product not in ('matpick', 'onebite', 'story-cards')",
+    );
+    expect(requireStoryCardsInstagram).toContain(
+      "product in ('matpick', 'onebite', 'story-cards') and instagram_handle is not null",
+    );
+    expect(requireStoryCardsInstagram).toContain(instagramCheck);
     expect(schema).toContain("instagram_handle text check");
-    expect(schema).toContain("instagram_handle is null and product not in ('matpick', 'onebite')");
-    expect(schema).toContain("product in ('matpick', 'onebite') and instagram_handle is not null");
+    expect(schema).toContain(
+      "instagram_handle is null and product not in ('matpick', 'onebite', 'story-cards')",
+    );
+    expect(schema).toContain(
+      "product in ('matpick', 'onebite', 'story-cards') and instagram_handle is not null",
+    );
     expect(schema).toContain(instagramCheck);
   });
 

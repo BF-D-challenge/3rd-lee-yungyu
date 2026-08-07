@@ -140,12 +140,12 @@ export const fakeDoorProductConfigs: Record<FakeDoorTestProduct, FakeDoorProduct
     eyebrow: "아이디어만 주면, 판단은 내일",
     headline: "실제 수요 테스트가 열리면 먼저 알려드릴게요.",
     description:
-      "아이디어를 광고와 예약 페이지로 실제 공개하고, 예약·신청 같은 행동으로 계속할지 판단하는 체험을 준비 중이에요. 지금은 원하는 시점만 예약해요.",
+      "아이디어를 광고와 예약 페이지로 실제 공개하고, 예약이나 신청 같은 행동으로 계속할지 판단하는 체험을 준비 중이에요. 지금은 원하는 시점만 예약해요.",
     promise: "오늘 해볼까가 준비 중인 수요 테스트 체험",
     proof: [
       "광고와 랜딩을 같은 약속으로 제작",
-      "좋아요 대신 예약·신청 같은 행동을 확인",
-      "결과에 따라 계속·수정·중단을 판단",
+      "좋아요 대신 예약이나 신청 같은 행동을 확인",
+      "결과에 따라 계속, 수정, 중단을 판단",
     ],
     image: "/images/reservation-ai/today-mobile-ui-v4.webp",
     imageAlt: "아이디어 한 줄을 보내면 광고와 신청 페이지를 만들고 다음 날 실제 예약 반응을 알려주는 오늘 해볼까의 AI 제품 화면 시안",
@@ -182,12 +182,12 @@ export const fakeDoorProductConfigs: Record<FakeDoorTestProduct, FakeDoorProduct
     eyebrow: "상황을 고르면, 그 사람이 먼저 말을 걸게",
     headline: "첫 대화 체험이 열리면 알려드릴게요.",
     description:
-      "마음에 가까운 장면을 고르고 그 장면의 남자 주인공과 대화하는 선공개 체험을 준비 중이에요.",
+      "마음에 가까운 장면을 고르고 그 장면의 남자 주인공과 대화하는 선공개 체험을 준비 중이에요. 체험이 열리면 Instagram DM으로 안내해드려요.",
     promise: "카드너머가 준비 중인 선공개 대화 체험",
     proof: [
       "지금 마음에 가까운 상황 카드 선택",
       "장면마다 다른 남자 주인공과 첫 대화",
-      "짧은 선택지와 직접 입력을 함께 지원",
+      "Instagram DM으로 첫 대화 안내",
     ],
     image: "/images/reservation-ai/story-cards-mobile-ui-v2.webp",
     imageAlt: "무작위 타로 카드가 뒤집힌 뒤 등장인물이 먼저 말을 거는 카드너머의 AI 제품 화면 시안",
@@ -199,7 +199,7 @@ export const fakeDoorProductConfigs: Record<FakeDoorTestProduct, FakeDoorProduct
     ink: "#f5f2eb",
     muted: "#aaa69d",
     dark: true,
-    requiresInstagram: false,
+    requiresInstagram: true,
     slots: defaultSlots,
   },
 };
