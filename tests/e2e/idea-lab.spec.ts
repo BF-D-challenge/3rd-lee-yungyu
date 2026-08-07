@@ -812,6 +812,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await page.setViewportSize({ width: 195, height: 422 });
     await openIdeaLab(page);
     await drawAll(page);
+    await page.evaluate(() => document.fonts.ready);
 
     const layout = await page.locator(".idea-lab__stage--result").evaluate((stage) => {
       const result = stage.querySelector<HTMLElement>(".idea-lab__result")!;

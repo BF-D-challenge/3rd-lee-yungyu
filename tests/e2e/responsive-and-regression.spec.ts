@@ -987,6 +987,7 @@ for (const viewport of viewports) {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.clock.install({ time: FIXED_NOW });
     await page.goto("/maker");
+    await page.evaluate(() => document.fonts.ready);
 
     // 모든 해상도에서 앱은 하나의 모바일 컬럼(≤440px)으로 중앙 정렬된다.
     const shell = await page.evaluate((max) => {
