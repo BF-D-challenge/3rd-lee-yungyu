@@ -716,6 +716,36 @@
 
 .heroActions a:active { transform: scale(0.97); }
 
+.legalLinks {
+  position: absolute;
+  z-index: 35;
+  right: 38px;
+  bottom: 18px;
+  left: 38px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.legalLinks a {
+  display: flex;
+  min-width: 0;
+  min-height: 56px;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  font-size: 11px;
+  font-weight: 620;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.28);
+  text-underline-offset: 3px;
+}
+
+.legalLinks a:hover { color: #fff; }
+
 .productPhone {
   position: absolute;
   z-index: 8;

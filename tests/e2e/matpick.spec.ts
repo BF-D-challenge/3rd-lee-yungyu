@@ -134,6 +134,16 @@ test.describe("맛핀 대표 경로", () => {
     const instagramCta = page.getByRole("link", { name: "Instagram에서 시작하기" });
     await expect(instagramCta).toBeVisible();
     await expect(instagramCta).toHaveAttribute("href", "https://www.instagram.com/matpin.kr/");
+    for (const linkName of ["개인정보", "이용약관", "데이터 삭제"]) {
+      const legalLink = page.getByRole("link", { name: linkName, exact: true });
+      await expect(legalLink).toBeVisible();
+      const legalBox = await legalLink.boundingBox();
+      expect(legalBox?.height).toBeGreaterThanOrEqual(44);
+    }
+    await instagramCta.evaluate((element) => {
+      element.addEventListener("click", (event) => event.preventDefault(), { once: true });
+    });
+    await instagramCta.click();
     const storyScroller = page.getByLabel("맛핀 소개 장면. 위아래로 스크롤할 수 있습니다.");
     await expect(storyScroller.getByRole("region")).toHaveCount(8);
     await storyScroller.evaluate((element) => {
@@ -157,6 +167,9 @@ test.describe("맛핀 대표 경로", () => {
     const events = await page.evaluate(() => JSON.parse(localStorage.getItem("events") ?? "[]"));
     expect(events).toEqual(expect.arrayContaining([
       expect.objectContaining({ event: "tastepin_landing_viewed", page_path: "/matpin", utm_campaign: "matpin-share" }),
+      expect.objectContaining({ event: "landing_view", product_id: "matpick", page_path: "/matpin" }),
+      expect.objectContaining({ event: "tastepin_primary_cta_clicked", page_path: "/matpin" }),
+      expect.objectContaining({ event: "primary_cta", product_id: "matpick", page_path: "/matpin" }),
     ]));
     await expectNoErrors();
   });
