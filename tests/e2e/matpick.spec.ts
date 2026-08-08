@@ -123,6 +123,13 @@ test.describe("맛핀 대표 경로", () => {
     await page.setViewportSize({ width: 390, height: 844 });
     const expectNoErrors = await openWithoutRuntimeErrors(page, "/matpin?utm_source=meta&utm_campaign=matpin-share");
 
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://matpin-kr.vercel.app/matpin");
+    await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", "https://matpin-kr.vercel.app/matpin");
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+      "content",
+      "https://matpin-kr.vercel.app/images/matpick/matpin-instagram-share-flow.png",
+    );
+    await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
     await expect(page.getByRole("heading", { name: "맛집 릴스를 역별로 모아드려요" })).toBeAttached();
     await expect(page.getByTestId("phone-frame")).toBeVisible();
     await expect(page.getByTestId("device-screen")).toBeVisible();

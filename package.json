@@ -13,6 +13,7 @@
     "test:unit": "vitest run",
     "test:e2e": "playwright test",
     "test:integration": "npm run test:unit && npm run test:e2e",
+    "matpin:launch:check": "node scripts/matpin-launch-check.mjs",
     "ad:image:check": "node scripts/ad-image/render.mjs --manifest config/ad-image/manifest.json --dry-run",
     "ad:image:render": "node scripts/ad-image/render.mjs --manifest config/ad-image/manifest.json",
     "ad:image:v3:check": "node scripts/ad-image/render-v3.mjs --dry-run",
