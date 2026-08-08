@@ -27,6 +27,10 @@ import {
   type CSSProperties,
   type UIEvent,
 } from "react";
+import {
+  trackMvpLandingViewed,
+  trackMvpPrimaryCta,
+} from "@/lib/mvp-experiment-analytics";
 import { track } from "@/lib/track";
 import styles from "./matpin-mobile-frame.module.css";
 
@@ -136,6 +140,7 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
       },
       { meta: false },
     );
+    trackMvpLandingViewed("matpick");
   }, [variant]);
 
   useEffect(() => {
@@ -199,6 +204,7 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
       },
       { meta: false },
     );
+    trackMvpPrimaryCta("matpick");
   };
 
   return (
@@ -558,6 +564,14 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
                     Instagram에서 시작하기
                   </a>
                 )}
+
+                {variant === "landing" && scene === 0 ? (
+                  <nav className={styles.legalLinks} aria-label="맛핀 법적 안내">
+                    <Link href="/privacy">개인정보</Link>
+                    <Link href="/terms">이용약관</Link>
+                    <Link href="/data-deletion">데이터 삭제</Link>
+                  </nav>
+                ) : null}
 
                 <nav className={styles.storyDock} aria-label="맛핀 소개 장면 바로가기">
                   {dockItems.map(({ label, scene: targetScene, Icon }) => {

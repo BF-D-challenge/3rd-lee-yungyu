@@ -16,6 +16,11 @@ test.describe("맛핀 Instagram 공유 진입과 독립 계측", () => {
         event: "tastepin_landing_viewed",
         page_path: "/matpin",
       }),
+      expect.objectContaining({
+        event: "landing_view",
+        product_id: "matpick",
+        page_path: "/matpin",
+      }),
     ]));
   });
 });
