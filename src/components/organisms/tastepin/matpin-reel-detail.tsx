@@ -39,7 +39,7 @@ export function MatpinReelDetail({ reelId, stationName }: { reelId: string; stat
   const presentation = useMatpinReelPresentation(presentationTarget, true);
 
   if (state === "loading") {
-    return <main className={styles.statePage}><LoaderCircle className={styles.spinner} aria-hidden="true" /><b>릴스를 열고 있어요</b></main>;
+    return <main className={styles.statePage}><LoaderCircle className={styles.spinner} aria-hidden="true" /><b>게시물을 열고 있어요</b></main>;
   }
 
   if (state === "error") {
@@ -61,7 +61,7 @@ export function MatpinReelDetail({ reelId, stationName }: { reelId: string; stat
     }
     try {
       if (navigator.share) {
-        await navigator.share({ title: primary.place.name, text: `${group.name}에서 저장한 맛집 릴스`, url: originalUrl });
+        await navigator.share({ title: primary.place.name, text: `${group.name}에서 저장한 맛집 게시물`, url: originalUrl });
         setShareState("shared");
       } else {
         await navigator.clipboard.writeText(originalUrl);
@@ -75,7 +75,7 @@ export function MatpinReelDetail({ reelId, stationName }: { reelId: string; stat
 
   return (
     <main className={styles.detailPage} data-clarity-mask="true">
-      <section className={styles.detailMedia} aria-label={`${primary.place.name} 릴스`}>
+      <section className={styles.detailMedia} aria-label={`${primary.place.name} 게시물`}>
         {presentation.videoUrl ? (
           <video
             className={styles.detailVideo}
@@ -87,7 +87,7 @@ export function MatpinReelDetail({ reelId, stationName }: { reelId: string; stat
             <source src={presentation.videoUrl} type="video/mp4" />
           </video>
         ) : (
-          <MatpinReelArtwork reel={reel} alt={`${primary.place.name} 릴스 대표 화면`} priority />
+          <MatpinReelArtwork reel={reel} alt={`${primary.place.name} 게시물 대표 화면`} priority />
         )}
         <div className={styles.detailShade} aria-hidden="true" />
         <div className={styles.detailTopActions}>
@@ -100,23 +100,23 @@ export function MatpinReelDetail({ reelId, stationName }: { reelId: string; stat
         <div className={styles.detailTitle}>
           <span><TrainFront aria-hidden="true" size={14} /> {group.name}</span>
           <h1>{primary.place.name}</h1>
-          <p>{presentation.ownerUsername ? `@${presentation.ownerUsername}` : "Instagram 원본 릴스"}</p>
+          <p>{presentation.ownerUsername ? `@${presentation.ownerUsername}` : "Instagram 원본 게시물"}</p>
         </div>
 
-        <nav className={styles.detailActions} aria-label="릴스 주요 행동">
+        <nav className={styles.detailActions} aria-label="게시물 주요 행동">
           {originalUrl ? (
-            <a href={originalUrl} target="_blank" rel="noreferrer"><ExternalLink aria-hidden="true" size={18} /><span>원본 릴스</span></a>
+            <a href={originalUrl} target="_blank" rel="noreferrer"><ExternalLink aria-hidden="true" size={18} /><span>원본 게시물</span></a>
           ) : <span aria-disabled="true"><ExternalLink aria-hidden="true" size={18} /><span>원본 없음</span></span>}
           <a href={primary.place.mapUrl} target="_blank" rel="noreferrer"><Navigation aria-hidden="true" size={18} /><span>길찾기</span></a>
-          <button type="button" onClick={shareOriginal}><Share2 aria-hidden="true" size={18} /><span>원본 릴스 공유</span></button>
+          <button type="button" onClick={shareOriginal}><Share2 aria-hidden="true" size={18} /><span>원본 게시물 공유</span></button>
           <button type="button" onClick={() => detailsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}><MapPin aria-hidden="true" size={18} /><span>장소 정보</span></button>
         </nav>
 
         {shareState !== "idle" ? (
           <p className={styles.shareFeedback} aria-live="polite">
-            {shareState === "shared" ? <><Check aria-hidden="true" size={14} /> 원본 릴스를 공유했어요.</> : null}
-            {shareState === "copied" ? <><Check aria-hidden="true" size={14} /> 원본 릴스 링크를 복사했어요.</> : null}
-            {shareState === "error" ? "원본 릴스를 공유하지 못했어요. 원본 릴스 버튼을 이용해주세요." : null}
+            {shareState === "shared" ? <><Check aria-hidden="true" size={14} /> 원본 게시물을 공유했어요.</> : null}
+            {shareState === "copied" ? <><Check aria-hidden="true" size={14} /> 원본 게시물 링크를 복사했어요.</> : null}
+            {shareState === "error" ? "원본 게시물을 공유하지 못했어요. 원본 게시물 버튼을 이용해주세요." : null}
           </p>
         ) : null}
 
@@ -150,7 +150,7 @@ export function MatpinReelDetail({ reelId, stationName }: { reelId: string; stat
         </section>
 
         <aside className={styles.detailPrivacy}>
-          <Check aria-hidden="true" size={16} /> 내 위치가 아니라 릴스 속 장소 주소로 역을 정했어요.
+          <Check aria-hidden="true" size={16} /> 내 위치가 아니라 게시물 속 장소 주소로 역을 정했어요.
         </aside>
       </section>
     </main>

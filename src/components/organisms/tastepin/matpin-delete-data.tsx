@@ -54,15 +54,15 @@ export function MatpinDeleteData() {
           <>
             <p className={styles.eyebrow}><Check aria-hidden="true" size={16} /> 삭제 완료</p>
             <h1>맛핀 데이터를<br />모두 삭제했어요.</h1>
-            <p className={styles.lead}>저장한 장소, 릴스 처리 기록, 개인 보관함 연결 정보는 복구할 수 없어요.</p>
+            <p className={styles.lead}>저장한 장소, 게시물 처리 기록, 개인 보관함 연결 정보는 복구할 수 없어요.</p>
             <Link className={styles.primary} href="/matpin">맛핀 홈으로</Link>
           </>
         ) : (
           <>
             <p className={styles.eyebrow}>개인정보 관리</p>
             <h1>내 데이터를<br />직접 삭제할 수 있어요.</h1>
-            <p className={styles.lead}>삭제하면 저장한 장소, 릴스 처리 기록, 개인 보관함 연결 정보가 모두 사라져요.</p>
-            <p className={styles.warning}>이 작업은 되돌릴 수 없어요. 나중에 다시 쓰려면 Instagram에서 새 릴스를 보내 처음부터 시작해야 해요.</p>
+            <p className={styles.lead}>삭제하면 저장한 장소, 게시물 처리 기록, 개인 보관함 연결 정보가 모두 사라져요.</p>
+            <p className={styles.warning}>이 작업은 되돌릴 수 없어요. 나중에 다시 쓰려면 Instagram에서 새 게시물을 보내 처음부터 시작해야 해요.</p>
             {error ? <p className={styles.error} role="alert">{error}</p> : null}
             {state === "ready" ? (
               <button className={styles.secondary} type="button" onClick={() => setState("confirming")} disabled={!token}>

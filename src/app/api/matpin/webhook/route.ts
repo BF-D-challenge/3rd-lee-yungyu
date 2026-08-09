@@ -1,5 +1,10 @@
 import { after, NextResponse } from "next/server";
-import { normalizeMetaWebhookMessages } from "@/lib/matpin/contract";
+import {
+  normalizeMetaWebhookGuidanceRecipients,
+  normalizeMetaWebhookMessages,
+} from "@/lib/matpin/contract";
+import { MATPIN_USAGE_GUIDANCE } from "@/lib/matpin/guidance";
+import { sendMatpinInstagramMessage } from "@/lib/matpin/instagram-send";
 import { verifyMetaWebhookSignature, verifyMetaWebhookToken } from "@/lib/matpin/security";
 import { ingestMatpinMessage } from "@/lib/matpin/store";
 import { processMatpinQueue } from "@/lib/matpin/worker";
@@ -53,9 +58,15 @@ export async function POST(request: Request) {
   const accountId = process.env.META_INSTAGRAM_ACCOUNT_ID?.trim();
   if (!accountId) return noStoreJson({ error: "meta_account_not_configured" }, 503);
   const messages = normalizeMetaWebhookMessages(payload, accountId);
-  if (messages.length === 0) return noStoreJson({ ok: true, accepted: 0, ignored: true });
+  const guidanceRecipients = normalizeMetaWebhookGuidanceRecipients(payload, accountId);
+  if (messages.length === 0 && guidanceRecipients.length === 0) {
+    return noStoreJson({ ok: true, accepted: 0, ignored: true });
+  }
 
   try {
+    await Promise.all(guidanceRecipients.map((recipient) =>
+      sendMatpinInstagramMessage(recipient.senderScopedId, MATPIN_USAGE_GUIDANCE)
+    ));
     const results = await Promise.all(messages.map((message) => ingestMatpinMessage(message)));
     const accepted = results.filter((result) => result.accepted).length;
     if (accepted > 0) {
@@ -71,6 +82,7 @@ export async function POST(request: Request) {
       ok: true,
       accepted,
       duplicates: results.filter((result) => result.duplicate).length,
+      guidanceSent: guidanceRecipients.length,
     });
   } catch (error) {
     console.error("[matpin-webhook] ingest_failed", error instanceof Error ? error.message : "unknown_error");

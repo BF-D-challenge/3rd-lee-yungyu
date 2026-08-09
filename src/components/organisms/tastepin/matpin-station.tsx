@@ -84,7 +84,7 @@ export function MatpinStation({ stationName }: { stationName: string }) {
                   aria-label={`${primary.place.name} 영상 자세히 보기`}
                 >
                   <span className={styles.gridReelMedia}>
-                    <MatpinReelArtwork reel={reel} alt={`${primary.place.name} 릴스 대표 화면`} priority={index < 2} />
+                    <MatpinReelArtwork reel={reel} alt={`${primary.place.name} 게시물 대표 화면`} priority={index < 2} />
                     <span className={styles.gridPlay}><Play aria-hidden="true" fill="currentColor" size={15} /></span>
                   </span>
                   <span className={styles.gridReelCopy}>

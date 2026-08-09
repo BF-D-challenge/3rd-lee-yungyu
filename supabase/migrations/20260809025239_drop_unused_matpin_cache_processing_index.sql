@@ -1,0 +1,1 @@
+drop index if exists public.matpin_media_analysis_cache_processing_idx;

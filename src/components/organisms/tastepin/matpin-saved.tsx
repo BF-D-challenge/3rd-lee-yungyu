@@ -48,7 +48,7 @@ export function MatpinSaved({ autoFocusSearch = false }: { autoFocusSearch?: boo
   const reelCount = useMemo(() => matpinUniqueReelCount(places), [places]);
 
   if (state === "loading") {
-    return <main className={styles.statePage}><LoaderCircle className={styles.spinner} aria-hidden="true" /><b>역별 보관함을 열고 있어요</b><p>저장한 릴스를 가까운 역별로 모으고 있어요.</p></main>;
+    return <main className={styles.statePage}><LoaderCircle className={styles.spinner} aria-hidden="true" /><b>역별 보관함을 열고 있어요</b><p>저장한 게시물을 가까운 역별로 모으고 있어요.</p></main>;
   }
 
   if (state === "error") {
@@ -70,13 +70,13 @@ export function MatpinSaved({ autoFocusSearch = false }: { autoFocusSearch?: boo
         </Link>
         <Link className={styles.wordmark} href="/matpin">matpin.kr</Link>
         <a className={styles.sendButton} href="https://www.instagram.com/matpin.kr/" target="_blank" rel="noreferrer">
-          <Send aria-hidden="true" size={15} /> 릴스 보내기
+          <Send aria-hidden="true" size={15} /> 게시물 보내기
         </a>
       </header>
 
       <div className={styles.content}>
         <section className={styles.intro} aria-labelledby="saved-reels-title">
-          <span className={styles.eyebrow}>내 맛집 릴스 보관함</span>
+          <span className={styles.eyebrow}>내 맛집 게시물 보관함</span>
           <h1 id="saved-reels-title">저장한 역</h1>
           <p>역 {groups.length}개, 영상 {reelCount}개</p>
         </section>
@@ -97,9 +97,9 @@ export function MatpinSaved({ autoFocusSearch = false }: { autoFocusSearch?: boo
         {places.length === 0 ? (
           <section className={styles.emptyState}>
             <Send aria-hidden="true" size={30} />
-            <h2>아직 저장한 릴스가 없어요.</h2>
-            <p>Instagram에서 맛집 릴스를 matpin.kr로 보내면 가까운 역에 자동으로 정리해요.</p>
-            <a href="https://www.instagram.com/matpin.kr/" target="_blank" rel="noreferrer">Instagram에서 첫 릴스 보내기 <ChevronRight aria-hidden="true" size={17} /></a>
+            <h2>아직 저장한 게시물가 없어요.</h2>
+            <p>Instagram에서 맛집 게시물을 matpin.kr로 보내면 가까운 역에 자동으로 정리해요.</p>
+            <a href="https://www.instagram.com/matpin.kr/" target="_blank" rel="noreferrer">Instagram에서 첫 게시물 보내기 <ChevronRight aria-hidden="true" size={17} /></a>
           </section>
         ) : filteredGroups.length > 0 ? (
           <div className={styles.stationList}>
@@ -124,7 +124,7 @@ export function MatpinSaved({ autoFocusSearch = false }: { autoFocusSearch?: boo
                         aria-label={`${group.name} ${primary.place.name} 영상 자세히 보기`}
                       >
                         <span className={styles.reelMedia}>
-                          <MatpinReelArtwork reel={reel} alt={`${primary.place.name} 릴스 대표 화면`} priority={groupIndex === 0 && reelIndex < 3} />
+                          <MatpinReelArtwork reel={reel} alt={`${primary.place.name} 게시물 대표 화면`} priority={groupIndex === 0 && reelIndex < 3} />
                           <span className={styles.playBadge}><Play aria-hidden="true" fill="currentColor" size={16} /></span>
                         </span>
                         <span className={styles.reelCopy}>
@@ -148,7 +148,7 @@ export function MatpinSaved({ autoFocusSearch = false }: { autoFocusSearch?: boo
 
         <aside className={styles.privacyNote}>
           <ShieldCheck aria-hidden="true" size={18} />
-          <span><b>내 위치는 사용하지 않아요.</b><small>릴스 속 장소의 주소로 가까운 역만 찾아요.</small></span>
+          <span><b>내 위치는 사용하지 않아요.</b><small>게시물 속 장소의 주소로 가까운 역만 찾아요.</small></span>
         </aside>
 
         <Link className={styles.dataLink} href={`/matpin/delete#token=${encodeURIComponent(token)}`}><Settings2 aria-hidden="true" size={17} /> 내 데이터 관리</Link>

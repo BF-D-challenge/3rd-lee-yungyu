@@ -1,34 +1,121 @@
 import { sendMatpinInstagramMessage } from "@/lib/matpin/instagram-send";
-import { resolveMatpinPlaces } from "@/lib/matpin/place-resolver";
-import { createGeminiReelAnalyzer, MatpinAnalysisError } from "@/lib/matpin/reel-analyzer";
+import type { MatpinPlaceCandidate } from "@/lib/matpin/contract";
+import { resolveMatpinPlacesWithMetrics } from "@/lib/matpin/place-resolver";
 import {
+  createGeminiReelAnalyzer,
+  MatpinAnalysisError,
+  type MatpinAnalysisResult,
+} from "@/lib/matpin/reel-analyzer";
+import {
+  claimMatpinMediaAnalysis,
   claimNextMatpinMessage,
   completeMatpinAnalysis,
+  completeMatpinMediaAnalysis,
+  releaseMatpinMediaAnalysis,
+  recordMatpinUsageEvent,
   retryMatpinMessage,
   saveMatpinPlaces,
+  type MatpinMediaAnalysisCacheClaim,
 } from "@/lib/matpin/store";
 
-function publicUrl(path: string, params: Record<string, string>): string {
+const CACHE_WAIT_INTERVAL_MS = 750;
+const CACHE_WAIT_ATTEMPTS = 45;
+
+const cacheMetrics = {
+  model: "cache",
+  durationMs: 0,
+  requestCount: 0,
+  mediaBytes: 0,
+  inputTokens: 0,
+  outputTokens: 0,
+  thoughtTokens: 0,
+  toolUseTokens: 0,
+  totalTokens: 0,
+};
+
+async function recordUsageSafely(input: Parameters<typeof recordMatpinUsageEvent>[0]) {
+  try {
+    await recordMatpinUsageEvent(input);
+  } catch {
+    console.warn("[matpin:usage] record_failed");
+  }
+}
+
+function publicUrl(path: string): string {
   const origin = process.env.MATPIN_PUBLIC_APP_URL?.trim();
   if (!origin) throw new Error("matpin_public_url_not_configured");
-  const url = new URL(path, origin);
-  for (const [key, value] of Object.entries(params)) {
-    if (key === "token") url.hash = `token=${encodeURIComponent(value)}`;
-    else url.searchParams.set(key, value);
-  }
-  return url.toString();
+  return new URL(path, origin).toString();
 }
 
 async function processOneMatpinMessage() {
   const job = await claimNextMatpinMessage();
   if (!job) return { state: "empty" as const };
 
+  let ownsCache = false;
+
   try {
-    const analyzed = await createGeminiReelAnalyzer().analyze({
-      mediaUrl: job.mediaUrl,
-      reelId: job.reelId,
-    });
-    const candidates = await resolveMatpinPlaces(analyzed.analysis);
+    let cacheClaim: MatpinMediaAnalysisCacheClaim = await claimMatpinMediaAnalysis(job.reelId);
+    for (let attempt = 0; cacheClaim.state === "pending" && attempt < CACHE_WAIT_ATTEMPTS; attempt += 1) {
+      await new Promise((resolve) => setTimeout(resolve, CACHE_WAIT_INTERVAL_MS));
+      cacheClaim = await claimMatpinMediaAnalysis(job.reelId);
+    }
+
+    if (cacheClaim.state === "pending") {
+      throw new MatpinAnalysisError("analysis_cache_busy", true);
+    }
+
+    ownsCache = cacheClaim.state === "owner";
+    let candidates: MatpinPlaceCandidate[];
+    let metrics: MatpinAnalysisResult["metrics"];
+    if (cacheClaim.state === "hit") {
+      candidates = cacheClaim.candidates;
+      metrics = cacheMetrics;
+    } else {
+      const analyzed = await createGeminiReelAnalyzer().analyze({
+        mediaUrl: job.mediaUrl,
+        reelId: job.reelId,
+      });
+      await recordUsageSafely({
+        messageId: job.messageId,
+        stage: "extraction",
+        provider: "gemini",
+        model: analyzed.metrics.model,
+        outcome: "success",
+        requestCount: analyzed.metrics.requestCount,
+        inputTokens: analyzed.metrics.inputTokens,
+        outputTokens: analyzed.metrics.outputTokens,
+        thoughtTokens: analyzed.metrics.thoughtTokens,
+        toolUseTokens: analyzed.metrics.toolUseTokens,
+        totalTokens: analyzed.metrics.totalTokens,
+        groundingQueryCount: null,
+        durationMs: analyzed.metrics.durationMs,
+      });
+      const resolved = await resolveMatpinPlacesWithMetrics(analyzed.analysis);
+      candidates = resolved.candidates;
+      await recordUsageSafely({
+        messageId: job.messageId,
+        stage: "place_resolution",
+        provider: resolved.metrics.provider,
+        model: resolved.metrics.model,
+        outcome: "success",
+        requestCount: resolved.metrics.requestCount,
+        inputTokens: resolved.metrics.inputTokens,
+        outputTokens: resolved.metrics.outputTokens,
+        thoughtTokens: resolved.metrics.thoughtTokens,
+        toolUseTokens: resolved.metrics.toolUseTokens,
+        totalTokens: resolved.metrics.totalTokens,
+        groundingQueryCount: resolved.metrics.groundingQueryCount,
+        durationMs: resolved.metrics.durationMs,
+      });
+      metrics = analyzed.metrics;
+      await completeMatpinMediaAnalysis({
+        mediaKey: job.reelId,
+        outcome: candidates.length > 0 ? "resolved" : "insufficient",
+        candidates,
+        metrics,
+      });
+      ownsCache = false;
+    }
 
     if (candidates.length > 0) {
       await saveMatpinPlaces({
@@ -37,38 +124,49 @@ async function processOneMatpinMessage() {
         candidates,
         confirmationSource: "automatic_high_confidence",
       });
-      const mapUrl = publicUrl("/matpin/saved", { token: job.accessToken });
-      await sendMatpinInstagramMessage(
-        job.senderScopedId,
-        candidates.length === 1
-          ? `릴스에서 찾은 장소를 가까운 역 보관함에 저장했어요.\n${candidates[0].name}\n${mapUrl}`
-          : `릴스에서 찾은 ${candidates.length}곳을 가까운 역별 보관함에 저장했어요.\n${mapUrl}`,
-      );
+      const mapUrl = publicUrl(`/s/${job.shortLinkCode}`);
+      if (job.replyRequired) {
+        await sendMatpinInstagramMessage(
+          job.senderScopedId,
+          candidates.length === 1
+            ? `게시물에서 찾은 장소를 가까운 역 보관함에 저장했어요.\n${candidates[0].name}\n${mapUrl}`
+            : `게시물에서 찾은 ${candidates.length}곳을 가까운 역별 보관함에 저장했어요.\n${mapUrl}`,
+        );
+      }
       await completeMatpinAnalysis({
         messageId: job.messageId,
         queueMessageId: job.queueMessageId,
         status: "saved",
         candidates,
-        metrics: analyzed.metrics,
-        replied: true,
+        metrics,
+        replied: job.replyRequired,
       });
       return { state: "saved" as const, messageId: job.messageId };
     }
 
-    await sendMatpinInstagramMessage(
-      job.senderScopedId,
-      "영상에서 식당 이름을 확인하지 못했어요. 식당 이름이나 지역이 보이는 다른 릴스를 보내주세요.",
-    );
+    if (job.replyRequired) {
+      await sendMatpinInstagramMessage(
+        job.senderScopedId,
+        "게시물에서 식당 이름을 확인하지 못했어요. 식당 이름이나 지역이 보이는 다른 공개 게시물을 보내주세요.",
+      );
+    }
     await completeMatpinAnalysis({
       messageId: job.messageId,
       queueMessageId: job.queueMessageId,
       status: "failed",
       candidates: [],
-      metrics: analyzed.metrics,
-      replied: true,
+      metrics,
+      replied: job.replyRequired,
     });
     return { state: "failed" as const, messageId: job.messageId };
   } catch (error) {
+    if (ownsCache) {
+      try {
+        await releaseMatpinMediaAnalysis(job.reelId);
+      } catch {
+        // 만료된 분석 임대가 다음 요청에서 회수되도록 둔다.
+      }
+    }
     const code = error instanceof MatpinAnalysisError
       ? error.code
       : error instanceof Error
@@ -77,17 +175,19 @@ async function processOneMatpinMessage() {
     const retryable = !(error instanceof MatpinAnalysisError) || error.retryable;
     if (!retryable) {
       try {
-        await sendMatpinInstagramMessage(
-          job.senderScopedId,
-          "이 릴스는 아직 자동으로 분석할 수 없어요. 다른 공개 릴스를 보내주세요.",
-        );
+        if (job.replyRequired) {
+          await sendMatpinInstagramMessage(
+            job.senderScopedId,
+            "이 게시물은 아직 자동으로 분석할 수 없어요. 다른 공개 맛집 게시물을 보내주세요.",
+          );
+        }
         await completeMatpinAnalysis({
           messageId: job.messageId,
           queueMessageId: job.queueMessageId,
           status: "failed",
           candidates: [],
           metrics: null,
-          replied: true,
+          replied: job.replyRequired,
         });
         return { state: "failed" as const, messageId: job.messageId, code };
       } catch {

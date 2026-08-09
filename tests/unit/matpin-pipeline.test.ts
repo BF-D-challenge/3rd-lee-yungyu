@@ -13,12 +13,17 @@ import {
   MatpinAnalysisError,
 } from "@/lib/matpin/reel-analyzer";
 import { parseInstagramEmbedSource } from "@/lib/matpin/reel-source";
-import { resolveMatpinPlaces } from "@/lib/matpin/place-resolver";
+import {
+  resolveMatpinPlaces,
+  resolveMatpinPlacesWithMetrics,
+} from "@/lib/matpin/place-resolver";
 import {
   createMatpinAccessToken,
+  createMatpinShortLinkCode,
   decryptMatpinValue,
   encryptMatpinValue,
   hashMatpinAccessToken,
+  hashMatpinShortLinkCode,
   hashMatpinSender,
   verifyMatpinAdminRequest,
   verifyMetaWebhookSignature,
@@ -97,6 +102,100 @@ describe("Meta Instagram webhook contract", () => {
     expect(messages[1].senderScopedId).toBe("sender-2");
   });
 
+  it("normalizes a shared feed post with a stable Instagram media key", () => {
+    const messages = normalizeMetaWebhookMessages(webhookBody({
+      attachments: [{
+        type: "share",
+        payload: { url: "https://www.instagram.com/p/Post_123/?utm_source=ig_web_copy_link" },
+      }],
+    }), "professional-account");
+
+    expect(messages).toHaveLength(1);
+    expect(messages[0]).toMatchObject({
+      reelId: "Post_123",
+      reelUrl: "https://www.instagram.com/p/Post_123/",
+      attachmentType: "share",
+    });
+  });
+
+  it("uses the Meta asset id as the stable key for a shared carousel preview", () => {
+    const messages = normalizeMetaWebhookMessages(webhookBody({
+      attachments: [{
+        type: "share",
+        payload: {
+          url: `https://lookaside.fbsbx.com/ig_messaging_cdn/?asset_id=17869495296426197&signature=${"x".repeat(5_000)}`,
+        },
+      }],
+    }), "professional-account");
+
+    expect(messages).toHaveLength(1);
+    expect(messages[0]).toMatchObject({
+      reelId: "17869495296426197",
+      reelUrl: null,
+      attachmentType: "share",
+    });
+  });
+
+  it("maps Meta media attachments from shared carousel cards to share", () => {
+    const messages = normalizeMetaWebhookMessages(webhookBody({
+      attachments: [{
+        type: "media",
+        payload: { url: "https://www.instagram.com/p/Carousel_123/?igsh=example" },
+      }],
+    }), "professional-account");
+
+    expect(messages).toHaveLength(1);
+    expect(messages[0]).toMatchObject({
+      reelId: "Carousel_123",
+      reelUrl: "https://www.instagram.com/p/Carousel_123/",
+      attachmentType: "share",
+    });
+  });
+
+  it.each(["image", "video"])("ignores directly attached %s media", (type) => {
+    expect(normalizeMetaWebhookMessages(webhookBody({
+      attachments: [{
+        type,
+        payload: { url: "https://scontent-icn1-1.xx.fbcdn.net/direct-media" },
+      }],
+    }), "professional-account")).toEqual([]);
+  });
+
+  it("ignores text-only direct messages", () => {
+    expect(normalizeMetaWebhookMessages(webhookBody({
+      text: "이 가게 저장해줘",
+      attachments: undefined,
+    }), "professional-account")).toEqual([]);
+  });
+
+  it.each([
+    ["post", "https://www.instagram.com/p/Post_123/?igsh=example", "Post_123"],
+    ["reel", "https://instagram.com/reel/Reel_123/?igsh=example", "Reel_123"],
+    ["legacy video", "https://www.instagram.com/tv/Tv_123/", "Tv_123"],
+  ])("normalizes a pasted Instagram %s URL", (_label, text, mediaId) => {
+    const messages = normalizeMetaWebhookMessages(webhookBody({
+      text,
+      attachments: undefined,
+    }), "professional-account");
+
+    expect(messages).toHaveLength(1);
+    expect(messages[0]).toMatchObject({
+      reelId: mediaId,
+      attachmentType: "share",
+    });
+  });
+
+  it.each([
+    "https://example.com/p/Post_123/",
+    "이 게시물 저장해줘 https://www.instagram.com/p/Post_123/",
+    "https://www.instagram.com/example-profile/",
+  ])("ignores unsupported pasted text or URL: %s", (text) => {
+    expect(normalizeMetaWebhookMessages(webhookBody({
+      text,
+      attachments: undefined,
+    }), "professional-account")).toEqual([]);
+  });
+
   it.each([
     { is_echo: true },
     { is_self: true },
@@ -130,6 +229,9 @@ describe("Matpin secrets and signature", () => {
     expect(decryptMatpinValue(encrypted)).toBe("instagram-scoped-user-1");
     expect(hashMatpinSender("instagram-scoped-user-1")).toMatch(/^[0-9a-f]{64}$/);
     expect(hashMatpinAccessToken(token)).toMatch(/^[0-9a-f]{64}$/);
+    const shortCode = createMatpinShortLinkCode("instagram-scoped-user-1");
+    expect(shortCode).toMatch(/^[A-Za-z0-9_-]{16}$/);
+    expect(hashMatpinShortLinkCode(shortCode)).toMatch(/^[0-9a-f]{64}$/);
   });
 
   it("allows a one-time admin token without exposing the personal map token", () => {
@@ -230,8 +332,9 @@ describe("Gemini input gate", () => {
   });
 
   it("does not keep high confidence when Kakao returns a different name or region", async () => {
+    vi.stubEnv("GOOGLE_MAPS_API_KEY", "google-should-not-be-used");
     vi.stubEnv("KAKAO_REST_API_KEY", "kakao-test-key");
-    vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
+    const kakaoFetch = vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
       documents: [{
         id: "place-1",
         place_name: "다른식당",
@@ -245,7 +348,7 @@ describe("Gemini input gate", () => {
       }],
     }), { status: 200, headers: { "content-type": "application/json" } }));
 
-    const candidates = await resolveMatpinPlaces({
+    const resolved = await resolveMatpinPlacesWithMetrics({
       status: "resolved",
       summary: "산장장작구이를 확인했어요.",
       places: [{
@@ -258,13 +361,200 @@ describe("Gemini input gate", () => {
       }],
     });
 
-    expect(candidates[0].confidence).toBeLessThan(0.9);
+    expect(resolved.candidates[0].confidence).toBeLessThan(0.9);
+    expect(resolved.metrics).toMatchObject({ provider: "kakao_local", requestCount: 1 });
+    expect(kakaoFetch.mock.calls[0][0]).toEqual(expect.stringContaining("dapi.kakao.com"));
+  });
+
+  it("uses Google Places before Kakao for an explicitly overseas place", async () => {
+    vi.stubEnv("GOOGLE_MAPS_API_KEY", "google-places-test-key");
+    vi.stubEnv("KAKAO_REST_API_KEY", "kakao-should-not-be-used");
+    vi.stubEnv("GEMINI_API_KEY", "");
+    const placesFetch = vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
+      places: [{
+        id: "google-place-1",
+        displayName: { text: "스시 다이" },
+        formattedAddress: "일본 도쿄도 고토구 도요스 6초메",
+        location: { latitude: 35.6444, longitude: 139.7818 },
+        googleMapsUri: "https://maps.google.com/?cid=123",
+        primaryTypeDisplayName: { text: "스시 전문점" },
+      }],
+    }), { status: 200, headers: { "content-type": "application/json" } }));
+
+    const resolved = await resolveMatpinPlacesWithMetrics({
+      status: "resolved",
+      summary: "스시 다이를 확인했어요.",
+      places: [{
+        name: "스시 다이",
+        branch: null,
+        menus: ["스시"],
+        regionHints: ["일본 도쿄 도요스"],
+        confidence: 0.98,
+        evidence: [{ kind: "caption", text: "스시 다이", timestampSeconds: null }],
+      }],
+    });
+
+    expect(resolved.candidates).toEqual([expect.objectContaining({
+      id: "google-place-1",
+      name: "스시 다이",
+      category: "Google Maps · 스시 전문점",
+      address: "일본 도쿄도 고토구 도요스 6초메",
+      mapUrl: "https://maps.google.com/?cid=123",
+    })]);
+    expect(resolved.metrics).toMatchObject({
+      provider: "google_places",
+      model: null,
+      requestCount: 1,
+      groundingQueryCount: null,
+    });
+    expect(placesFetch).toHaveBeenCalledTimes(1);
+    expect(placesFetch.mock.calls[0][0]).toBe("https://places.googleapis.com/v1/places:searchText");
+    const request = placesFetch.mock.calls[0][1] as RequestInit;
+    expect(request.method).toBe("POST");
+    expect(request.headers).toMatchObject({
+      "x-goog-api-key": "google-places-test-key",
+    });
+    expect((request.headers as Record<string, string>)["x-goog-fieldmask"]).not.toContain("*");
+    expect(JSON.parse(request.body as string)).toEqual({
+      textQuery: "스시 다이 일본 도쿄 도요스",
+      languageCode: "ko",
+      pageSize: 3,
+    });
+  });
+
+  it("falls back from an empty domestic Kakao result to Google Places", async () => {
+    vi.stubEnv("GOOGLE_MAPS_API_KEY", "google-places-test-key");
+    vi.stubEnv("KAKAO_REST_API_KEY", "kakao-test-key");
+    const placesFetch = vi.spyOn(globalThis, "fetch")
+      .mockResolvedValueOnce(new Response(JSON.stringify({ documents: [] }), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({
+        places: [{
+          id: "google-place-1",
+          displayName: { text: "우래옥" },
+          formattedAddress: "대한민국 서울특별시 중구 창경궁로 62-29",
+          location: { latitude: 37.5682, longitude: 126.9987 },
+          googleMapsUri: "https://maps.google.com/?cid=456",
+          primaryTypeDisplayName: { text: "냉면 전문점" },
+        }],
+      }), { status: 200 }));
+
+    const resolved = await resolveMatpinPlacesWithMetrics({
+      status: "resolved",
+      summary: "우래옥을 확인했어요.",
+      places: [{
+        name: "우래옥",
+        branch: null,
+        menus: ["냉면"],
+        regionHints: ["서울 중구"],
+        confidence: 0.97,
+        evidence: [{ kind: "caption", text: "우래옥", timestampSeconds: null }],
+      }],
+    });
+
+    expect(placesFetch).toHaveBeenCalledTimes(2);
+    expect(placesFetch.mock.calls[0][0]).toEqual(expect.stringContaining("dapi.kakao.com"));
+    expect(placesFetch.mock.calls[1][0]).toBe("https://places.googleapis.com/v1/places:searchText");
+    expect(resolved).toMatchObject({
+      candidates: [{ id: "google-place-1", name: "우래옥" }],
+      metrics: { provider: "google_places" },
+    });
+  });
+
+  it.each([
+    {
+      label: "국내 맛집",
+      clue: { name: "우래옥", regionHints: ["서울 중구"] },
+      result: {
+        id: "places/wooraeok",
+        name: "우래옥",
+        address: "대한민국 서울특별시 중구 창경궁로 62-29",
+        category: "냉면 전문점",
+        latitude: 37.5682,
+        longitude: 126.9987,
+      },
+      expectedQuery: "우래옥 서울 중구",
+    },
+    {
+      label: "일본 맛집",
+      clue: { name: "스시 다이", regionHints: ["일본 도쿄 도요스"] },
+      result: {
+        id: "places/sushi-dai",
+        name: "스시 다이",
+        address: "일본 도쿄도 고토구 도요스 6초메",
+        category: "스시 전문점",
+        latitude: 35.6444,
+        longitude: 139.7818,
+      },
+      expectedQuery: "스시 다이 일본 도쿄 도요스",
+    },
+    {
+      label: "카페와 여행지",
+      clue: { name: "오설록 티 뮤지엄", regionHints: ["제주 서귀포"] },
+      result: {
+        id: "places/osulloc",
+        name: "오설록 티 뮤지엄",
+        address: "대한민국 제주특별자치도 서귀포시 안덕면 신화역사로 15",
+        category: "관광 명소",
+        latitude: 33.3059,
+        longitude: 126.2895,
+      },
+      expectedQuery: "오설록 티 뮤지엄 제주 서귀포",
+    },
+  ])("resolves supported expansion input: $label", async ({ clue, result, expectedQuery }) => {
+    vi.stubEnv("GOOGLE_MAPS_API_KEY", "google-places-test-key");
+    vi.stubEnv("KAKAO_REST_API_KEY", "");
+    const placesFetch = vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
+      places: [{
+        id: result.id,
+        displayName: { text: result.name },
+        formattedAddress: result.address,
+        location: { latitude: result.latitude, longitude: result.longitude },
+        googleMapsUri: `https://maps.google.com/?cid=${encodeURIComponent(result.id)}`,
+        primaryTypeDisplayName: { text: result.category },
+      }],
+    }), { status: 200, headers: { "content-type": "application/json" } }));
+
+    const resolved = await resolveMatpinPlacesWithMetrics({
+      status: "resolved",
+      summary: `${clue.name}을 확인했어요.`,
+      places: [{
+        name: clue.name,
+        branch: null,
+        menus: [],
+        regionHints: clue.regionHints,
+        confidence: 0.96,
+        evidence: [{ kind: "caption", text: clue.name, timestampSeconds: null }],
+      }],
+    });
+
+    expect(resolved.candidates[0]).toMatchObject({
+      id: result.id,
+      name: result.name,
+      address: result.address,
+    });
+    expect(resolved.metrics).toMatchObject({ provider: "google_places", requestCount: 1 });
+    expect(JSON.parse(placesFetch.mock.calls[0][1]?.body as string)).toMatchObject({
+      textQuery: expectedQuery,
+      languageCode: "ko",
+    });
   });
 
   it("uses a Google Maps-grounded Gemini result when a Kakao key is not configured", async () => {
+    vi.stubEnv("GOOGLE_MAPS_API_KEY", "");
     vi.stubEnv("KAKAO_REST_API_KEY", "");
     vi.stubEnv("GEMINI_API_KEY", "gemini-test-key");
-    vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
+    vi.stubEnv("MATPIN_MAPS_MODEL", "");
+    vi.stubEnv("MATPIN_GEMINI_MODEL", "");
+    const mapsFetch = vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
+      model: "gemini-3.6-flash",
+      usage: {
+        total_input_tokens: 120,
+        total_output_tokens: 30,
+        total_thought_tokens: 10,
+        total_tool_use_tokens: 15,
+        total_tokens: 175,
+        grounding_tool_count: [{ type: "google_maps", count: 2 }],
+      },
       steps: [{
         type: "google_maps_result",
         result: [{
@@ -291,7 +581,7 @@ describe("Gemini input gate", () => {
       }],
     }), { status: 200, headers: { "content-type": "application/json" } }));
 
-    const candidates = await resolveMatpinPlaces({
+    const resolved = await resolveMatpinPlacesWithMetrics({
       status: "resolved",
       summary: "산장장작구이를 확인했어요.",
       places: [{
@@ -304,16 +594,29 @@ describe("Gemini input gate", () => {
       }],
     });
 
-    expect(candidates).toHaveLength(1);
-    expect(candidates[0]).toMatchObject({
+    expect(resolved.candidates).toHaveLength(1);
+    expect(resolved.candidates[0]).toMatchObject({
       id: "places/test-place",
       name: "산장장작구이",
       category: "Google Maps · 한식당",
       mapUrl: "https://maps.google.com/?cid=123",
     });
+    expect(resolved.metrics).toMatchObject({
+      provider: "gemini_maps",
+      model: "gemini-3.6-flash",
+      requestCount: 1,
+      inputTokens: 120,
+      outputTokens: 30,
+      thoughtTokens: 10,
+      toolUseTokens: 15,
+      totalTokens: 175,
+      groundingQueryCount: 2,
+    });
+    expect(JSON.parse(mapsFetch.mock.calls[0][1]?.body as string).model).toBe("gemini-3.6-flash");
   });
 
   it("accepts a bilingual model name when the grounded Google Maps name is romanized", async () => {
+    vi.stubEnv("GOOGLE_MAPS_API_KEY", "");
     vi.stubEnv("KAKAO_REST_API_KEY", "");
     vi.stubEnv("GEMINI_API_KEY", "gemini-test-key");
     vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
@@ -385,13 +688,63 @@ describe("Gemini input gate", () => {
     expect(download).not.toHaveBeenCalled();
   });
 
+  it("uses Flash-Lite as the default extraction model", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "gemini-test-key");
+    vi.stubEnv("MATPIN_EXTRACTION_MODEL", "");
+    vi.stubEnv("MATPIN_GEMINI_MODEL", "");
+    const geminiFetch = vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      usage: { total_input_tokens: 80, total_output_tokens: 20, total_tokens: 100 },
+      steps: [{
+        type: "model_output",
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            status: "resolved",
+            summary: "캡션에서 장소를 확인했어요.",
+            places: [{
+              name: "산장장작구이",
+              branch: null,
+              menus: [],
+              regionHints: ["강남"],
+              confidence: 0.96,
+              evidence: [{ kind: "caption", text: "산장장작구이", timestampSeconds: null }],
+            }],
+          }),
+        }],
+      }],
+    }), { status: 200, headers: { "content-type": "application/json" } }));
+    const analyzer = createGeminiReelAnalyzer({
+      fetch: geminiFetch,
+      source: vi.fn().mockResolvedValue({
+        caption: "산장장작구이",
+        creatorComments: [],
+        videoUrl: null,
+        thumbnailUrl: null,
+        mediaUrls: [],
+      }),
+    });
+
+    await expect(analyzer.analyze({
+      mediaUrl: "https://www.instagram.com/reel/test/",
+      reelId: "test",
+    })).resolves.toMatchObject({ metrics: { model: "gemini-3.1-flash-lite" } });
+    expect(JSON.parse(geminiFetch.mock.calls[0][1].body as string).model)
+      .toBe("gemini-3.1-flash-lite");
+  });
+
   it("validates structured Gemini output and records token and media metrics", async () => {
     vi.stubEnv("GEMINI_API_KEY", "gemini-test-key");
     const analyzer = createGeminiReelAnalyzer({
       download: vi.fn().mockResolvedValue({ bytes: Buffer.from("video"), mimeType: "video/mp4" }),
       fetch: vi.fn().mockResolvedValue(new Response(JSON.stringify({
         model: "gemini-test-model",
-        usage: { total_input_tokens: 100, total_output_tokens: 20, total_tokens: 120 },
+        usage: {
+          total_input_tokens: 100,
+          total_output_tokens: 20,
+          total_thought_tokens: 8,
+          total_tool_use_tokens: 2,
+          total_tokens: 130,
+        },
         steps: [{
           type: "model_output",
           content: [{
@@ -416,8 +769,192 @@ describe("Gemini input gate", () => {
     await expect(analyzer.analyze({ mediaUrl: "https://video.cdninstagram.com/reel.mp4", reelId: "reel-1" }))
       .resolves.toMatchObject({
         analysis: { status: "resolved", places: [{ name: "산장장작구이" }] },
-        metrics: { model: "gemini-test-model", mediaBytes: 5, inputTokens: 100, outputTokens: 20, totalTokens: 120 },
+        metrics: {
+          model: "gemini-test-model",
+          requestCount: 1,
+          mediaBytes: 5,
+          inputTokens: 100,
+          outputTokens: 20,
+          thoughtTokens: 8,
+          toolUseTokens: 2,
+          totalTokens: 130,
+        },
       });
+  });
+
+  it("adds both Gemini calls when text clues require a media fallback", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "gemini-test-key");
+    const geminiFetch = vi.fn()
+      .mockResolvedValueOnce(new Response(JSON.stringify({
+        usage: {
+          total_input_tokens: 10,
+          total_output_tokens: 5,
+          total_thought_tokens: 2,
+          total_tool_use_tokens: 1,
+          total_tokens: 18,
+        },
+        steps: [{
+          type: "model_output",
+          content: [{
+            type: "text",
+            text: JSON.stringify({
+              status: "insufficient",
+              summary: "텍스트만으로 장소를 확인하지 못했어요.",
+              places: [],
+            }),
+          }],
+        }],
+      }), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({
+        usage: {
+          total_input_tokens: 100,
+          total_output_tokens: 20,
+          total_thought_tokens: 8,
+          total_tool_use_tokens: 2,
+          total_tokens: 130,
+        },
+        steps: [{
+          type: "model_output",
+          content: [{
+            type: "text",
+            text: JSON.stringify({
+              status: "resolved",
+              summary: "영상에서 장소를 확인했어요.",
+              places: [{
+                name: "산장장작구이",
+                branch: null,
+                menus: [],
+                regionHints: ["강남"],
+                confidence: 0.95,
+                evidence: [{ kind: "on_screen_text", text: "산장장작구이", timestampSeconds: 2 }],
+              }],
+            }),
+          }],
+        }],
+      }), { status: 200 }));
+    const analyzer = createGeminiReelAnalyzer({
+      download: vi.fn().mockResolvedValue({ bytes: Buffer.from("video"), mimeType: "video/mp4" }),
+      fetch: geminiFetch,
+      source: vi.fn().mockResolvedValue({
+        caption: "강남 맛집",
+        creatorComments: [],
+        videoUrl: "https://video.cdninstagram.com/reel.mp4",
+        thumbnailUrl: null,
+        mediaUrls: ["https://video.cdninstagram.com/reel.mp4"],
+      }),
+    });
+
+    await expect(analyzer.analyze({
+      mediaUrl: "https://www.instagram.com/reel/test/",
+      reelId: "test",
+    })).resolves.toMatchObject({
+      metrics: {
+        requestCount: 2,
+        mediaBytes: 5,
+        inputTokens: 110,
+        outputTokens: 25,
+        thoughtTokens: 10,
+        toolUseTokens: 3,
+        totalTokens: 148,
+      },
+    });
+    expect(geminiFetch).toHaveBeenCalledTimes(2);
+  });
+
+  it("analyzes the image preview of a shared feed post", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "gemini-test-key");
+    const geminiFetch = vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      model: "gemini-test-model",
+      usage: { total_input_tokens: 60, total_output_tokens: 20, total_tokens: 80 },
+      steps: [{
+        type: "model_output",
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            status: "resolved",
+            summary: "이미지에서 땀땀 강남본점을 확인했어요.",
+            places: [{
+              name: "땀땀",
+              branch: "강남본점",
+              menus: ["쌀국수"],
+              regionHints: ["강남역"],
+              confidence: 0.96,
+              evidence: [{ kind: "on_screen_text", text: "땀땀 강남본점", timestampSeconds: null }],
+            }],
+          }),
+        }],
+      }],
+    }), { status: 200, headers: { "content-type": "application/json" } }));
+    const download = vi.fn().mockResolvedValue({ bytes: Buffer.from("image"), mimeType: "image/jpeg" });
+    const analyzer = createGeminiReelAnalyzer({
+      download,
+      fetch: geminiFetch,
+      source: vi.fn().mockResolvedValue({
+        caption: null,
+        creatorComments: [],
+        videoUrl: null,
+        thumbnailUrl: "https://scontent-icn1-1.xx.fbcdn.net/post.jpg",
+        mediaUrls: ["https://scontent-icn1-1.xx.fbcdn.net/post.jpg"],
+      }),
+    });
+
+    await expect(analyzer.analyze({
+      mediaUrl: "https://www.instagram.com/p/Post_123/",
+      reelId: "Post_123",
+    })).resolves.toMatchObject({
+      analysis: { places: [{ name: "땀땀" }] },
+      metrics: { mediaBytes: 5, totalTokens: 80 },
+    });
+    expect(download).toHaveBeenCalledWith("https://scontent-icn1-1.xx.fbcdn.net/post.jpg");
+    const requestBody = JSON.parse(geminiFetch.mock.calls[0][1].body as string);
+    expect(requestBody.input[0]).toMatchObject({ type: "image", mime_type: "image/jpeg" });
+  });
+
+  it("analyzes up to three public carousel items in one Gemini request", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "gemini-test-key");
+    const geminiFetch = vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      steps: [{
+        type: "model_output",
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            status: "resolved",
+            summary: "캐러셀에서 식당을 확인했어요.",
+            places: [{
+              name: "땀땀",
+              branch: "강남본점",
+              menus: [],
+              regionHints: ["강남역"],
+              confidence: 0.95,
+              evidence: [{ kind: "on_screen_text", text: "땀땀 강남본점", timestampSeconds: null }],
+            }],
+          }),
+        }],
+      }],
+    }), { status: 200, headers: { "content-type": "application/json" } }));
+    const download = vi.fn().mockResolvedValue({ bytes: Buffer.from("image"), mimeType: "image/jpeg" });
+    const mediaUrls = [1, 2, 3, 4].map((index) => `https://scontent-icn1-1.xx.fbcdn.net/carousel-${index}.jpg`);
+    const analyzer = createGeminiReelAnalyzer({
+      download,
+      fetch: geminiFetch,
+      source: vi.fn().mockResolvedValue({
+        caption: null,
+        creatorComments: [],
+        videoUrl: null,
+        thumbnailUrl: mediaUrls[0],
+        mediaUrls,
+      }),
+    });
+
+    await analyzer.analyze({
+      mediaUrl: "https://www.instagram.com/p/Carousel_123/",
+      reelId: "Carousel_123",
+    });
+
+    expect(download).toHaveBeenCalledTimes(3);
+    const requestBody = JSON.parse(geminiFetch.mock.calls[0][1].body as string);
+    expect(requestBody.input.map((item: { type: string }) => item.type))
+      .toEqual(["image", "image", "image", "text"]);
   });
 
   it("parses the public Instagram embed source without trusting arbitrary page scripts", () => {
@@ -444,6 +981,7 @@ describe("Gemini input gate", () => {
         creatorComments: [],
         thumbnailUrl: null,
         videoUrl: "https://video.cdninstagram.com/reel.mp4",
+        mediaUrls: ["https://video.cdninstagram.com/reel.mp4"],
       },
     });
   });
@@ -480,6 +1018,8 @@ describe("Gemini input gate", () => {
         caption: "강남 반차 코스 🏷 튜니니",
         creatorComments: ["첫 장소는 튜니니입니다."],
         videoUrl: "https://video.cdninstagram.com/reel.mp4",
+        thumbnailUrl: null,
+        mediaUrls: ["https://video.cdninstagram.com/reel.mp4"],
       }),
     });
 
@@ -548,5 +1088,42 @@ describe("Matpin database boundary", () => {
     expect(sql).toContain("grant select, insert, update, delete on table public.matpin_saved_places to service_role");
     expect(sql).toContain("unique (sender_hash, reel_id)");
     expect(sql).toContain("media_url_ciphertext = null");
+  });
+
+  it("keeps permanent media analysis results server-only", () => {
+    const sql = readFileSync(
+      "supabase/migrations/20260809025141_add_matpin_media_cache_and_post_support.sql",
+      "utf8",
+    );
+    expect(sql).toContain("create table public.matpin_media_analysis_cache");
+    expect(sql).toContain("alter table public.matpin_media_analysis_cache enable row level security");
+    expect(sql).toContain("revoke all on table public.matpin_media_analysis_cache from anon, authenticated");
+    expect(sql).toContain("grant select, insert, update, delete on table public.matpin_media_analysis_cache to service_role");
+    expect(sql).not.toMatch(/\n\s*expires_at\s+timestamptz/u);
+    expect(sql).toContain("hit_count = hit_count + 1");
+  });
+
+  it("keeps short-link codes hashed and server-only", () => {
+    const sql = readFileSync(
+      "supabase/migrations/20260809070601_add_matpin_short_links.sql",
+      "utf8",
+    );
+    expect(sql).toContain("add column short_link_hash text");
+    expect(sql).toContain("create unique index matpin_instagram_users_short_link_hash_idx");
+    expect(sql).toContain("revoke all on function public.matpin_ingest_message");
+    expect(sql).toContain("grant execute on function public.matpin_ingest_message");
+    expect(sql).not.toContain("short_link_code");
+  });
+
+  it("keeps API usage events server-only and queryable by message", () => {
+    const sql = readFileSync(
+      "supabase/migrations/20260809105826_add_matpin_usage_events.sql",
+      "utf8",
+    );
+    expect(sql).toContain("create table public.matpin_api_usage_events");
+    expect(sql).toContain("references public.matpin_instagram_messages(id) on delete cascade");
+    expect(sql).toContain("alter table public.matpin_api_usage_events enable row level security");
+    expect(sql).toContain("revoke all on table public.matpin_api_usage_events from public, anon, authenticated");
+    expect(sql).toContain("grant select, insert on table public.matpin_api_usage_events to service_role");
   });
 });

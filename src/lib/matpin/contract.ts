@@ -1,13 +1,13 @@
 import { z } from "zod";
-import { instagramReelId, normalizeInstagramReelUrl } from "@/lib/matpick-dm-contract";
+import { instagramMediaId, normalizeInstagramMediaUrl } from "@/lib/matpick-dm-contract";
 
-export const matpinAttachmentTypeSchema = z.enum(["share", "video", "ig_reel", "reel"]);
+export const matpinAttachmentTypeSchema = z.enum(["share", "ig_reel", "reel"]);
 export type MatpinAttachmentType = z.infer<typeof matpinAttachmentTypeSchema>;
 
 const metaAttachmentSchema = z.object({
   type: z.string(),
   payload: z.object({
-    url: z.string().url().max(4_096).optional(),
+    url: z.string().url().max(16_384).optional(),
   }).passthrough().optional(),
 }).passthrough();
 
@@ -43,11 +43,16 @@ export const matpinInboundMessageSchema = z.object({
   recipientAccountId: z.string().min(1).max(200),
   reelId: z.string().min(1).max(500),
   reelUrl: z.string().url().nullable(),
-  mediaUrl: z.string().url().max(4_096),
+  mediaUrl: z.string().url().max(16_384),
   attachmentType: matpinAttachmentTypeSchema,
   receivedAt: z.string().datetime({ offset: true }),
 });
 export type MatpinInboundMessage = z.infer<typeof matpinInboundMessageSchema>;
+
+export type MatpinGuidanceRecipient = {
+  metaMessageId: string;
+  senderScopedId: string;
+};
 
 export const matpinEvidenceSchema = z.object({
   kind: z.enum([
@@ -121,11 +126,11 @@ export const matpinSavedPlaceSchema = z.object({
 });
 export type MatpinSavedPlace = z.infer<typeof matpinSavedPlaceSchema>;
 
-const SUPPORTED_ATTACHMENTS = new Set<MatpinAttachmentType>([
+const SUPPORTED_ATTACHMENTS = new Set([
   "share",
-  "video",
   "ig_reel",
   "reel",
+  "media",
 ]);
 
 function toDate(timestamp: string | number): string {
@@ -135,8 +140,23 @@ function toDate(timestamp: string | number): string {
   return Number.isNaN(date.getTime()) ? new Date().toISOString() : date.toISOString();
 }
 
-function possibleReelUrl(value: string): string | null {
-  return normalizeInstagramReelUrl(value);
+function possibleInstagramMediaUrl(value: string): string | null {
+  return normalizeInstagramMediaUrl(value);
+}
+
+function instagramAssetId(value: string): string | null {
+  try {
+    const assetId = new URL(value).searchParams.get("asset_id")?.trim();
+    return assetId && /^\d{5,50}$/.test(assetId) ? assetId : null;
+  } catch {
+    return null;
+  }
+}
+
+function storedAttachmentType(value: string): MatpinAttachmentType | null {
+  if (value === "media") return "share";
+  const parsed = matpinAttachmentTypeSchema.safeParse(value);
+  return parsed.success ? parsed.data : null;
 }
 
 export function normalizeMetaWebhookMessages(
@@ -159,18 +179,22 @@ export function normalizeMetaWebhookMessages(
       ) continue;
 
       const attachment = message.attachments?.find((item) =>
-        SUPPORTED_ATTACHMENTS.has(item.type as MatpinAttachmentType)
+        SUPPORTED_ATTACHMENTS.has(item.type)
         && Boolean(item.payload?.url),
       );
-      if (!attachment?.payload?.url) continue;
-
-      const attachmentType = matpinAttachmentTypeSchema.safeParse(attachment.type);
-      if (!attachmentType.success) continue;
-
-      const reelUrl = possibleReelUrl(attachment.payload.url);
-      const reelId = reelUrl
-        ? instagramReelId(reelUrl)
+      const attachmentType = attachment
+        ? storedAttachmentType(attachment.type)
         : null;
+      const textMediaUrl = !attachment && message.text
+        ? possibleInstagramMediaUrl(message.text)
+        : null;
+      const mediaUrl = attachment?.payload?.url ?? textMediaUrl;
+      if (!mediaUrl || (attachment && !attachmentType)) continue;
+
+      const reelUrl = possibleInstagramMediaUrl(mediaUrl);
+      const reelId = reelUrl
+        ? instagramMediaId(reelUrl)
+        : instagramAssetId(mediaUrl);
 
       results.push(matpinInboundMessageSchema.parse({
         metaMessageId: message.mid,
@@ -178,13 +202,48 @@ export function normalizeMetaWebhookMessages(
         recipientAccountId: event.recipient.id,
         reelId: reelId ?? `message-${message.mid}`,
         reelUrl,
-        mediaUrl: attachment.payload.url,
-        attachmentType: attachmentType.data,
+        mediaUrl,
+        attachmentType: attachmentType ?? "share",
         receivedAt: toDate(event.timestamp),
       }));
     }
   }
   return results;
+}
+
+export function normalizeMetaWebhookGuidanceRecipients(
+  payload: unknown,
+  expectedAccountId: string,
+): MatpinGuidanceRecipient[] {
+  const parsed = matpinMetaWebhookSchema.safeParse(payload);
+  if (!parsed.success) return [];
+
+  const supportedMessages = normalizeMetaWebhookMessages(payload, expectedAccountId);
+  const supportedMessageIds = new Set(supportedMessages.map((message) => message.metaMessageId));
+  const supportedSenders = new Set(supportedMessages.map((message) => message.senderScopedId));
+  const recipients = new Map<string, MatpinGuidanceRecipient>();
+
+  for (const entry of parsed.data.entry) {
+    for (const event of entry.messaging ?? []) {
+      const message = event.message;
+      if (
+        event.recipient.id !== expectedAccountId
+        || message.is_deleted
+        || message.is_echo
+        || message.is_self
+        || message.is_unsupported
+        || supportedMessageIds.has(message.mid)
+        || supportedSenders.has(event.sender.id)
+      ) continue;
+
+      recipients.set(event.sender.id, {
+        metaMessageId: message.mid,
+        senderScopedId: event.sender.id,
+      });
+    }
+  }
+
+  return [...recipients.values()];
 }
 
 export const matpinGeminiJsonSchema = {

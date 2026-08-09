@@ -13,7 +13,7 @@ const candidates = [
     longitude: 127.001,
     mapUrl: "https://map.kakao.com/?q=%ED%8A%9C%EB%8B%88%EB%8B%88",
     confidence: 0.96,
-    matchReason: "릴스의 캡션과 작성자 댓글에서 확인한 장소예요.",
+    matchReason: "게시물의 캡션과 작성자 댓글에서 확인한 장소예요.",
   },
   {
     id: "place-2",
@@ -25,7 +25,7 @@ const candidates = [
     longitude: 127.039,
     mapUrl: "https://map.kakao.com/?q=%EA%B5%AC%ED%85%8C%EB%A1%9C%EC%9D%B4%ED%85%8C",
     confidence: 0.93,
-    matchReason: "릴스의 고정 댓글에서 확인한 장소예요.",
+    matchReason: "게시물의 고정 댓글에서 확인한 장소예요.",
   },
   {
     id: "place-3",
@@ -37,7 +37,7 @@ const candidates = [
     longitude: 126.926,
     mapUrl: "https://map.kakao.com/?q=%EB%8B%AC%EB%9D%BC%EB%94%94%EC%A0%80%ED%8A%B8",
     confidence: 0.91,
-    matchReason: "릴스 영상과 캡션에서 확인한 장소예요.",
+    matchReason: "게시물 영상과 캡션에서 확인한 장소예요.",
   },
 ] as const;
 
@@ -77,7 +77,7 @@ const savedPlaces = [
       longitude: 127.0362866,
       mapUrl: "https://maps.google.com/?q=dotgogi506",
       confidence: 0.93,
-      matchReason: "릴스의 캡션에서 확인한 장소예요.",
+      matchReason: "게시물의 캡션에서 확인한 장소예요.",
     },
     confirmationSource: "automatic_high_confidence",
     savedAt: "2026-08-01T17:10:00.000Z",
@@ -97,7 +97,7 @@ const savedPlaces = [
       longitude: 127.0366875,
       mapUrl: "https://maps.google.com/?q=chisot",
       confidence: 0.91,
-      matchReason: "릴스의 캡션과 영상에서 확인한 장소예요.",
+      matchReason: "게시물의 캡션과 영상에서 확인한 장소예요.",
     },
     confirmationSource: "automatic_high_confidence",
     savedAt: "2026-07-30T12:15:00.000Z",
@@ -130,7 +130,7 @@ test.describe("맛핀 대표 경로", () => {
       "https://matpin-kr.vercel.app/images/matpick/matpin-instagram-share-flow.png",
     );
     await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
-    await expect(page.getByRole("heading", { name: "맛집 릴스를 역별로 모아드려요" })).toBeAttached();
+    await expect(page.getByRole("heading", { name: "맛집 게시물을 역별로 모아드려요" })).toBeAttached();
     await expect(page.getByTestId("phone-frame")).toBeVisible();
     await expect(page.getByTestId("device-screen")).toBeVisible();
     const heroLibrary = page.getByTestId("hero-station-library");
@@ -160,9 +160,9 @@ test.describe("맛핀 대표 경로", () => {
       "aria-label",
       "맛핀 모션 이야기 8단계: 저장될 때마다 DM이 도착해요",
     );
-    await expect(page.getByTestId("dm-thread")).toContainText("릴스 저장 알림 3개");
+    await expect(page.getByTestId("dm-thread")).toContainText("게시물 저장 알림 3개");
     await expect(page.getByTestId("dm-message")).toHaveCount(3);
-    await expect(page.getByTestId("dm-collection-summary")).toContainText("역 3개, 릴스 12개");
+    await expect(page.getByTestId("dm-collection-summary")).toContainText("역 3개, 게시물 12개");
     const phoneBox = await page.getByTestId("phone-frame").boundingBox();
     expect(phoneBox).not.toBeNull();
     expect(phoneBox!.x).toBeGreaterThanOrEqual(0);
@@ -185,7 +185,7 @@ test.describe("맛핀 대표 경로", () => {
     for (const path of ["/matpin/start", "/matpin/dm", "/matpin/import"]) {
       await page.goto(path);
       await expect(page).toHaveURL(/\/matpin#how$/);
-      await expect(page.getByRole("heading", { name: "맛집 릴스를 역별로 모아드려요" })).toBeAttached();
+      await expect(page.getByRole("heading", { name: "맛집 게시물을 역별로 모아드려요" })).toBeAttached();
       await expect(page.getByRole("link", { name: "Instagram에서 시작하기" }).first()).toBeVisible();
     }
   });
@@ -227,11 +227,11 @@ test.describe("맛핀 대표 경로", () => {
     await expect(page.getByLabel("저장할 장소").getByRole("article")).toHaveCount(3);
     await page.getByRole("button", { name: "3곳 모두 저장하기" }).click();
     await expect(page.getByRole("heading", { name: /역별 보관함에 정리했어요/ })).toBeVisible();
-    await expect(page.getByRole("link", { name: /내 릴스 보관함 보기/ })).toHaveAttribute("href", "/matpin/saved#token=test-access-token");
+    await expect(page.getByRole("link", { name: /내 게시물 보관함 보기/ })).toHaveAttribute("href", "/matpin/saved#token=test-access-token");
     await expectNoErrors();
   });
 
-  test("개인 보관함은 저장한 릴스를 가까운 역별로 보여준다", async ({ page }) => {
+  test("개인 보관함은 저장한 게시물을 가까운 역별로 보여준다", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await mockSavedPlaces(page);
 
@@ -275,9 +275,9 @@ test.describe("맛핀 대표 경로", () => {
     await page.getByRole("button", { name: "전체" }).click();
     await page.getByRole("link", { name: "산장장작구이 영상 자세히 보기" }).click();
     await expect(page.getByRole("heading", { name: "산장장작구이" })).toBeVisible();
-    await expect(page.getByRole("link", { name: "원본 릴스" })).toHaveAttribute("href", "https://www.instagram.com/reel/DbTBhcZNY1b/");
+    await expect(page.getByRole("link", { name: "원본 게시물" })).toHaveAttribute("href", "https://www.instagram.com/reel/DbTBhcZNY1b/");
     await expect(page.getByRole("link", { name: "길찾기", exact: true })).toHaveAttribute("href", "https://maps.google.com/?q=sanjang");
-    await expect(page.getByRole("button", { name: "원본 릴스 공유" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "원본 게시물 공유" })).toBeVisible();
     await expect(page.getByRole("button", { name: "장소 정보" })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
   });

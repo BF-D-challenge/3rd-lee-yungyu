@@ -44,7 +44,7 @@ const checks = [
     run: async () => {
       const { response, body } = await request("/matpin");
       requireStatus("맛핀 대표 화면", response, 200);
-      requireText("맛핀 대표 화면", body, "맛집 릴스를 역별로 모아드려요");
+      requireText("맛핀 대표 화면", body, "맛집 게시물을 역별로 모아드려요");
       requireText("canonical", body, `<link rel="canonical" href="${publicUrl}/matpin"`);
       requireText("Open Graph URL", body, `<meta property="og:url" content="${publicUrl}/matpin"`);
       requireText(
@@ -96,6 +96,13 @@ const checks = [
     run: async () => {
       const { response } = await request("/api/matpin/saves");
       requireStatus("개인 보관함 인증 차단", response, 404);
+    },
+  },
+  {
+    label: "잘못된 짧은 링크 차단",
+    run: async () => {
+      const { response } = await request("/s/invalid");
+      requireStatus("잘못된 짧은 링크 차단", response, 404);
     },
   },
   {

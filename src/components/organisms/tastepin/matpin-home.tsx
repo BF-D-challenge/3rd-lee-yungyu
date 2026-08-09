@@ -26,7 +26,7 @@ const sourceItems = [
   {
     icon: Captions,
     order: "먼저",
-    title: "릴스 캡션",
+    title: "게시물 캡션",
     description: "가게 이름과 지역처럼 작성자가 직접 적은 정보를 먼저 확인해요.",
   },
   {
@@ -46,15 +46,15 @@ const sourceItems = [
 const faqs = [
   {
     question: "내 위치도 수집하나요?",
-    answer: "아니요. 현재 위치 권한을 요청하지 않아요. 릴스에서 확인한 장소 주소로 가까운 역만 찾아요.",
+    answer: "아니요. 현재 위치 권한을 요청하지 않아요. 게시물에서 확인한 장소 주소로 가까운 역만 찾아요.",
   },
   {
-    question: "한 릴스에 장소가 여러 개면 어떻게 되나요?",
+    question: "한 게시물에 장소가 여러 개면 어떻게 되나요?",
     answer: "확인된 장소는 모두 저장하고 관련된 역마다 같은 영상을 보여줘요. 사용자는 가고 싶은 역만 고르면 돼요.",
   },
   {
     question: "다른 Instagram 계정에서 보내면 같은 보관함에 저장되나요?",
-    answer: "아니요. 보관함은 릴스를 보낸 Instagram 계정별로 나뉘어요. 다른 사람의 영상과 섞이지 않아요.",
+    answer: "아니요. 보관함은 게시물을 보낸 Instagram 계정별로 나뉘어요. 다른 사람의 영상과 섞이지 않아요.",
   },
   {
     question: "장소 이름이 정확히 나오지 않으면요?",
@@ -121,16 +121,16 @@ export function MatpinHome() {
       <section className={styles.hero} aria-labelledby="matpin-title">
         <div className={styles.heroCopy}>
           <div className={styles.serviceStatus}>
-            <Check aria-hidden="true" size={15} /> Instagram DM으로 릴스 저장
+            <Check aria-hidden="true" size={15} /> Instagram DM으로 게시물 저장
           </div>
-          <p className={styles.eyebrow}>Instagram 릴스 → 역별 맛집 보관함</p>
+          <p className={styles.eyebrow}>Instagram 게시물 → 역별 맛집 보관함</p>
           <h1 id="matpin-title">
-            맛집 릴스는<br />
+            맛집 게시물은<br />
             보내기만 하세요.<br />
             역별로 모아둘게요.
           </h1>
           <p className={styles.lead}>
-            Instagram에서 <strong>matpin.kr</strong> 계정으로 릴스를 보내면,
+            Instagram에서 <strong>matpin.kr</strong> 계정으로 게시물을 보내면,
             장소를 확인해 가까운 역을 찾고 같은 계정의 보관함에 정리해요.
           </p>
 
@@ -159,7 +159,7 @@ export function MatpinHome() {
           <Image
             className={styles.heroImage}
             src="/images/ads/matpin-woman-ad-original.png"
-            alt="밤에 휴대폰으로 맛집 릴스를 보다가 저장한 장소를 다시 찾는 사람"
+            alt="밤에 휴대폰으로 맛집 게시물을 보다가 저장한 장소를 다시 찾는 사람"
             fill
             priority
             sizes="(max-width: 839px) calc(100vw - 32px), 500px"
@@ -168,7 +168,7 @@ export function MatpinHome() {
             <ShieldCheck aria-hidden="true" size={16} /> 내 위치는 수집하지 않아요
           </span>
           <figcaption>
-            <span>릴스 보내기</span>
+            <span>게시물 보내기</span>
             <ArrowRight aria-hidden="true" size={16} />
             <strong>역별로 자동 정리</strong>
           </figcaption>
@@ -182,7 +182,7 @@ export function MatpinHome() {
         </div>
         <div className={styles.beforeAfter}>
           <div>
-            <span>릴스만 저장하면</span>
+            <span>게시물만 저장하면</span>
             <strong>“그 가게가 어디였지?”</strong>
             <p>영상은 남아도 가게 이름과 위치를 다시 찾아야 해요.</p>
           </div>
@@ -190,7 +190,7 @@ export function MatpinHome() {
           <div className={styles.after}>
             <span>matpin.kr로 보내면</span>
             <strong>역을 고르면 영상이 바로</strong>
-            <p>가고 싶은 역에서 저장한 원본 릴스를 바로 확인할 수 있어요.</p>
+            <p>가고 싶은 역에서 저장한 원본 게시물을 바로 확인할 수 있어요.</p>
           </div>
         </div>
       </section>
@@ -205,7 +205,7 @@ export function MatpinHome() {
           <li>
             <span className={styles.stepNumber}>1</span>
             <Send aria-hidden="true" size={24} />
-            <div><b>릴스에서 공유하기</b><p>저장하고 싶은 맛집 릴스의 공유 버튼을 누르세요.</p></div>
+            <div><b>게시물에서 공유하기</b><p>저장하고 싶은 맛집 게시물의 공유 버튼을 누르세요.</p></div>
           </li>
           <li>
             <span className={styles.stepNumber}>2</span>
@@ -246,13 +246,13 @@ export function MatpinHome() {
           <p className={styles.eyebrow}>Instagram 아이디 기준으로</p>
           <h2 id="saved-title">보낼수록<br />역별로 쌓여요.</h2>
           <p>
-            오늘 보낸 릴스도, 다음 주에 보낸 릴스도 같은 Instagram 계정의 보관함에 모여요.
+            오늘 보낸 게시물도, 다음 주에 보낸 게시물도 같은 Instagram 계정의 보관함에 모여요.
             갈 역을 고르면 관련 영상만 바로 볼 수 있어요.
           </p>
           <ul>
             <li><ShieldCheck aria-hidden="true" size={18} /> 계정마다 분리된 개인 보관함</li>
             <li><TrainFront aria-hidden="true" size={18} /> 가까운 역별 자동 정리</li>
-            <li><Video aria-hidden="true" size={18} /> 장소마다 원본 릴스 함께 보관</li>
+            <li><Video aria-hidden="true" size={18} /> 장소마다 원본 게시물 함께 보관</li>
           </ul>
         </div>
 
@@ -264,12 +264,12 @@ export function MatpinHome() {
             <span className={styles.privatePill}><ShieldCheck size={13} /> 나만의 보관함</span>
           </div>
           <div className={styles.reelRows}>
-            <div><span>릴스 A</span><p><TrainFront size={15} /> 성수역</p></div>
-            <div><span>릴스 B</span><p><TrainFront size={15} /> 강남역</p></div>
+            <div><span>게시물 A</span><p><TrainFront size={15} /> 성수역</p></div>
+            <div><span>게시물 B</span><p><TrainFront size={15} /> 강남역</p></div>
           </div>
           <div className={styles.flowArrow}><ArrowDown aria-hidden="true" size={18} /></div>
           <div className={styles.mapResult}>
-            <div><LibraryBig aria-hidden="true" size={27} /><span><small>내 맛집 릴스</small><strong>역별 보관함 2개</strong></span></div>
+            <div><LibraryBig aria-hidden="true" size={27} /><span><small>내 맛집 게시물</small><strong>역별 보관함 2개</strong></span></div>
             <div className={styles.pinRail} aria-hidden="true"><span>성수</span><span>강남</span></div>
           </div>
           <p className={styles.exampleNote}>역을 누르면 그 역과 관련된 영상만 크게 보여요.</p>
@@ -292,7 +292,7 @@ export function MatpinHome() {
       </section>
 
       <section className={styles.finalCta} aria-labelledby="final-title">
-        <p className={styles.eyebrow}>다음 맛집 릴스부터</p>
+        <p className={styles.eyebrow}>다음 맛집 게시물부터</p>
         <h2 id="final-title">잊기 전에 보내세요.<br />찾을 때는 역만 고르면 돼요.</h2>
         <a
           className={styles.primaryAction}
@@ -305,11 +305,11 @@ export function MatpinHome() {
           Instagram에서 matpin.kr 열기
           <ArrowUpRight aria-hidden="true" size={18} />
         </a>
-        <p><ShieldCheck aria-hidden="true" size={16} /> 개인 보관함 링크는 릴스를 보낸 계정의 DM으로 보내요. 링크를 다른 사람과 공유하지 마세요.</p>
+        <p><ShieldCheck aria-hidden="true" size={16} /> 개인 보관함 링크는 게시물을 보낸 계정의 DM으로 보내요. 링크를 다른 사람과 공유하지 마세요.</p>
       </section>
 
       <footer className={styles.footer}>
-        <div><strong>matpin.kr</strong><span>맛집 릴스를 역별로.</span></div>
+        <div><strong>matpin.kr</strong><span>맛집 게시물을 역별로.</span></div>
         <nav aria-label="맛핀 정책">
           <Link href="/privacy">개인정보처리방침</Link>
           <Link href="/terms">이용약관</Link>
