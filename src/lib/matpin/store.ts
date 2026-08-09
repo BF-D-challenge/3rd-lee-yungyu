@@ -34,6 +34,24 @@ const requeueResultSchema = z.object({
   queueMessageId: z.number().int().optional(),
 });
 
+const matpinUsageEventInputSchema = z.object({
+  messageId: z.string().uuid(),
+  stage: z.enum(["extraction", "place_resolution"]),
+  provider: z.string().trim().min(1).max(80),
+  model: z.string().trim().min(1).max(120).nullable(),
+  outcome: z.enum(["success", "error"]).default("success"),
+  requestCount: z.number().int().nonnegative(),
+  inputTokens: z.number().int().nonnegative().nullable(),
+  outputTokens: z.number().int().nonnegative().nullable(),
+  thoughtTokens: z.number().int().nonnegative().nullable(),
+  toolUseTokens: z.number().int().nonnegative().nullable(),
+  totalTokens: z.number().int().nonnegative().nullable(),
+  groundingQueryCount: z.number().int().nonnegative().nullable(),
+  durationMs: z.number().int().nonnegative().nullable(),
+});
+
+export type MatpinUsageEventInput = z.input<typeof matpinUsageEventInputSchema>;
+
 const mediaAnalysisCacheClaimSchema = z.discriminatedUnion("state", [
   z.object({ state: z.literal("owner") }),
   z.object({ state: z.literal("pending") }),
@@ -54,6 +72,7 @@ const claimedJobSchema = z.object({
     reel_url: z.string().url().nullable(),
     attachment_type: z.enum(["share", "ig_reel", "reel"]),
     media_url_ciphertext: z.string().nullable(),
+    reply_required: z.boolean(),
     attempt_count: z.number().int(),
   }).optional(),
   user: z.object({
@@ -95,6 +114,7 @@ export type MatpinClaimedJob = {
   reelUrl: string | null;
   attachmentType: MatpinInboundMessage["attachmentType"];
   mediaUrl: string;
+  replyRequired: boolean;
   attemptCount: number;
 };
 
@@ -130,6 +150,30 @@ export async function ingestMatpinMessage(
     p_received_at: value.receivedAt,
   });
   if (error) throw new Error(`matpin_ingest_failed:${error.message}`);
+  return ingestResultSchema.parse(data);
+}
+
+export async function ingestMatpinBackfillMessage(
+  input: MatpinInboundMessage,
+): Promise<z.infer<typeof ingestResultSchema>> {
+  const value = matpinInboundMessageSchema.parse(input);
+  const senderHash = hashMatpinSender(value.senderScopedId);
+  const accessToken = createMatpinAccessToken(value.senderScopedId);
+  const shortLinkCode = createMatpinShortLinkCode(value.senderScopedId);
+  const client = getMatpinServerClient();
+  const { data, error } = await client.rpc("matpin_backfill_message", {
+    p_meta_message_id: value.metaMessageId,
+    p_sender_hash: senderHash,
+    p_sender_ciphertext: encryptMatpinValue(value.senderScopedId),
+    p_access_token_hash: hashMatpinAccessToken(accessToken),
+    p_short_link_hash: hashMatpinShortLinkCode(shortLinkCode),
+    p_reel_id: value.reelId,
+    p_reel_url: value.reelUrl,
+    p_attachment_type: value.attachmentType,
+    p_media_url_ciphertext: encryptMatpinValue(value.mediaUrl),
+    p_received_at: value.receivedAt,
+  });
+  if (error) throw new Error(`matpin_backfill_ingest_failed:${error.message}`);
   return ingestResultSchema.parse(data);
 }
 
@@ -173,6 +217,7 @@ export async function claimNextMatpinMessage(): Promise<MatpinClaimedJob | null>
     reelUrl: claimed.message.reel_url,
     attachmentType: claimed.message.attachment_type,
     mediaUrl: decryptMatpinValue(claimed.message.media_url_ciphertext),
+    replyRequired: claimed.message.reply_required,
     attemptCount: claimed.message.attempt_count,
   };
 }
@@ -222,6 +267,27 @@ export async function completeMatpinAnalysis(input: {
     p_replied: input.replied,
   });
   if (error) throw new Error(`matpin_complete_failed:${error.message}`);
+}
+
+export async function recordMatpinUsageEvent(input: MatpinUsageEventInput): Promise<void> {
+  const value = matpinUsageEventInputSchema.parse(input);
+  const client = getMatpinServerClient();
+  const { error } = await client.from("matpin_api_usage_events").insert({
+    message_id: value.messageId,
+    stage: value.stage,
+    provider: value.provider,
+    model: value.model,
+    outcome: value.outcome,
+    request_count: value.requestCount,
+    input_tokens: value.inputTokens,
+    output_tokens: value.outputTokens,
+    thought_tokens: value.thoughtTokens,
+    tool_use_tokens: value.toolUseTokens,
+    total_tokens: value.totalTokens,
+    grounding_query_count: value.groundingQueryCount,
+    duration_ms: value.durationMs,
+  });
+  if (error) throw new Error(`matpin_usage_record_failed:${error.message}`);
 }
 
 export async function claimMatpinMediaAnalysis(

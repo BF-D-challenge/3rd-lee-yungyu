@@ -42,6 +42,8 @@ const geminiInteractionSchema = z.object({
   usage: z.object({
     total_input_tokens: z.number().int().nonnegative().optional(),
     total_output_tokens: z.number().int().nonnegative().optional(),
+    total_thought_tokens: z.number().int().nonnegative().optional(),
+    total_tool_use_tokens: z.number().int().nonnegative().optional(),
     total_tokens: z.number().int().nonnegative().optional(),
   }).optional(),
   steps: z.array(z.object({
@@ -53,16 +55,16 @@ const geminiInteractionSchema = z.object({
   })),
 });
 
-const extractionPrompt = `당신은 한국 맛집 Instagram 게시물에서 지도 검색에 필요한 장소 단서만 찾는 추출기입니다.
+const extractionPrompt = `당신은 Instagram 게시물에서 지도 검색에 필요한 방문 장소 단서만 찾는 추출기입니다.
 
 게시물 캡션, 작성자의 댓글, 이미지 글자, 영상의 음성, 화면 글자, 간판처럼 직접 확인되는 정보만 사용하세요.
 장소 단서는 캡션, 작성자 댓글, 영상 순서로 확인하세요.
 작성자 댓글이 고정 댓글인지 API에서 확인할 수 없는 경우에는 creator_comment로만 기록하세요.
-식당 이름을 추측하거나 비슷한 유명 식당으로 보완하지 마세요.
-식당 이름을 직접 확인하지 못하면 status를 insufficient로 하고 places는 빈 배열로 반환하세요.
+식당, 카페, 관광지, 상점 등 실제 방문 장소의 이름을 추측하거나 비슷한 유명 장소로 보완하지 마세요.
+방문 장소 이름을 직접 확인하지 못하면 status를 insufficient로 하고 places는 빈 배열로 반환하세요.
 주소, 좌표, 지점은 게시물에서 직접 확인되지 않으면 만들지 마세요.
 메뉴와 지역도 직접 확인한 것만 넣고, 모르는 값은 빈 배열 또는 null로 두세요.
-한 게시물에 여러 식당이 명확히 나오면 최대 3곳까지만 반환하세요.
+한 게시물에 여러 장소가 명확히 나오면 최대 3곳까지만 반환하세요.
 evidence.text에는 판단 근거가 된 짧은 음성 또는 화면 글자를 적고, 확인 가능하면 시점을 적으세요.
 summary는 사용자에게 보여줄 짧고 정직한 한국어 문장으로 작성하세요.`;
 
@@ -76,9 +78,12 @@ export type MatpinAnalysisResult = {
   metrics: {
     model: string;
     durationMs: number;
+    requestCount: number;
     mediaBytes: number;
     inputTokens: number | null;
     outputTokens: number | null;
+    thoughtTokens: number | null;
+    toolUseTokens: number | null;
     totalTokens: number | null;
   };
 };
@@ -228,6 +233,9 @@ export function createGeminiReelAnalyzer(dependencies: {
       const startedAt = Date.now();
       const apiKey = process.env.GEMINI_API_KEY?.trim() || process.env.ALLSALE_GEMINI_API_KEY?.trim();
       if (!apiKey) throw new MatpinAnalysisError("gemini_not_configured", false);
+      const model = process.env.MATPIN_EXTRACTION_MODEL?.trim()
+        || process.env.MATPIN_GEMINI_MODEL?.trim()
+        || "gemini-3.1-flash-lite";
       const fetchImpl = dependencies.fetch ?? fetch;
       const source = await (dependencies.source
         ? dependencies.source(mediaUrl)
@@ -253,7 +261,7 @@ export function createGeminiReelAnalyzer(dependencies: {
             method: "POST",
             headers: { "content-type": "application/json", "x-goog-api-key": apiKey },
             body: JSON.stringify({
-              model: process.env.MATPIN_GEMINI_MODEL?.trim() || "gemini-3.6-flash",
+              model,
               input,
               response_format: {
                 type: "text",
@@ -275,18 +283,22 @@ export function createGeminiReelAnalyzer(dependencies: {
         return {
           analysis: parsed.analysis,
           metrics: {
-            model: parsed.model || process.env.MATPIN_GEMINI_MODEL?.trim() || "gemini-3.6-flash",
+            model: parsed.model || model,
             durationMs: Date.now() - startedAt,
+            requestCount: 1,
             mediaBytes,
             inputTokens: parsed.usage?.total_input_tokens ?? null,
             outputTokens: parsed.usage?.total_output_tokens ?? null,
+            thoughtTokens: parsed.usage?.total_thought_tokens ?? null,
+            toolUseTokens: parsed.usage?.total_tool_use_tokens ?? null,
             totalTokens: parsed.usage?.total_tokens ?? null,
           },
         };
       };
 
+      let textResult: MatpinAnalysisResult | null = null;
       if (sourceSections.length > 0) {
-        const textResult = await runGemini([{ type: "text", text: sourcePrompt }], 0);
+        textResult = await runGemini([{ type: "text", text: sourcePrompt }], 0);
         if (textResult.analysis.status === "resolved" || source?.mediaUrls.length === 0) return textResult;
       }
 
@@ -307,7 +319,25 @@ export function createGeminiReelAnalyzer(dependencies: {
           mime_type: mimeType,
         });
       }
-      return runGemini([...mediaInputs, { type: "text", text: sourcePrompt }], totalMediaBytes);
+      const mediaResult = await runGemini(
+        [...mediaInputs, { type: "text", text: sourcePrompt }],
+        totalMediaBytes,
+      );
+      if (!textResult) return mediaResult;
+      const sumUsage = (left: number | null, right: number | null) =>
+        left === null && right === null ? null : (left ?? 0) + (right ?? 0);
+      return {
+        analysis: mediaResult.analysis,
+        metrics: {
+          ...mediaResult.metrics,
+          requestCount: textResult.metrics.requestCount + mediaResult.metrics.requestCount,
+          inputTokens: sumUsage(textResult.metrics.inputTokens, mediaResult.metrics.inputTokens),
+          outputTokens: sumUsage(textResult.metrics.outputTokens, mediaResult.metrics.outputTokens),
+          thoughtTokens: sumUsage(textResult.metrics.thoughtTokens, mediaResult.metrics.thoughtTokens),
+          toolUseTokens: sumUsage(textResult.metrics.toolUseTokens, mediaResult.metrics.toolUseTokens),
+          totalTokens: sumUsage(textResult.metrics.totalTokens, mediaResult.metrics.totalTokens),
+        },
+      };
     },
   };
 }
@@ -340,9 +370,12 @@ export function createMockReelAnalyzer(): MatpinReelAnalyzer {
         metrics: {
           model: "mock",
           durationMs: 0,
+          requestCount: 0,
           mediaBytes: 0,
           inputTokens: null,
           outputTokens: null,
+          thoughtTokens: null,
+          toolUseTokens: null,
           totalTokens: null,
         },
       };

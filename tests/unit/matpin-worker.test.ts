@@ -6,9 +6,11 @@ const mocks = vi.hoisted(() => ({
   complete: vi.fn(),
   completeCache: vi.fn(),
   releaseCache: vi.fn(),
+  recordUsage: vi.fn(),
   saveMany: vi.fn(),
   retry: vi.fn(),
   analyze: vi.fn(),
+  backfill: vi.fn(),
   resolve: vi.fn(),
   send: vi.fn(),
 }));
@@ -19,6 +21,7 @@ vi.mock("@/lib/matpin/store", () => ({
   completeMatpinAnalysis: mocks.complete,
   completeMatpinMediaAnalysis: mocks.completeCache,
   releaseMatpinMediaAnalysis: mocks.releaseCache,
+  recordMatpinUsageEvent: mocks.recordUsage,
   saveMatpinPlaces: mocks.saveMany,
   retryMatpinMessage: mocks.retry,
 }));
@@ -31,8 +34,9 @@ vi.mock("@/lib/matpin/reel-analyzer", async (importOriginal) => {
   };
 });
 
-vi.mock("@/lib/matpin/place-resolver", () => ({ resolveMatpinPlaces: mocks.resolve }));
+vi.mock("@/lib/matpin/place-resolver", () => ({ resolveMatpinPlacesWithMetrics: mocks.resolve }));
 vi.mock("@/lib/matpin/instagram-send", () => ({ sendMatpinInstagramMessage: mocks.send }));
+vi.mock("@/lib/matpin/backfill", () => ({ backfillMatpinConversationHistory: mocks.backfill }));
 
 import { GET } from "@/app/api/matpin/jobs/process/route";
 
@@ -47,16 +51,33 @@ const job = {
   reelUrl: "https://www.instagram.com/reel/DbTBhcZNY1b/",
   attachmentType: "ig_reel" as const,
   mediaUrl: "https://video.cdninstagram.com/reel.mp4",
+  replyRequired: true,
   attemptCount: 1,
 };
 
 const metrics = {
   model: "gemini-test",
   durationMs: 900,
+  requestCount: 1,
   mediaBytes: 1_024,
   inputTokens: 100,
   outputTokens: 20,
+  thoughtTokens: 10,
+  toolUseTokens: 0,
   totalTokens: 120,
+};
+
+const resolutionMetrics = {
+  provider: "google_places" as const,
+  model: null,
+  durationMs: 120,
+  requestCount: 1,
+  inputTokens: null,
+  outputTokens: null,
+  thoughtTokens: null,
+  toolUseTokens: null,
+  totalTokens: null,
+  groundingQueryCount: null,
 };
 
 const candidate = {
@@ -81,6 +102,7 @@ beforeEach(() => {
   mocks.complete.mockReset().mockResolvedValue(undefined);
   mocks.completeCache.mockReset().mockResolvedValue(undefined);
   mocks.releaseCache.mockReset().mockResolvedValue(undefined);
+  mocks.recordUsage.mockReset().mockResolvedValue(undefined);
   mocks.saveMany.mockReset().mockResolvedValue(1);
   mocks.retry.mockReset().mockResolvedValue("retry");
   mocks.analyze.mockReset().mockResolvedValue({
@@ -98,7 +120,13 @@ beforeEach(() => {
     },
     metrics,
   });
-  mocks.resolve.mockReset().mockResolvedValue([candidate]);
+  mocks.backfill.mockReset().mockResolvedValue({
+    conversationsScanned: 2,
+    messagesScanned: 10,
+    accepted: 7,
+    duplicates: 3,
+  });
+  mocks.resolve.mockReset().mockResolvedValue({ candidates: [candidate], metrics: resolutionMetrics });
   mocks.send.mockReset().mockResolvedValue("reply-1");
 });
 
@@ -114,6 +142,27 @@ function workerRequest() {
 }
 
 describe("Matpin worker", () => {
+  it("skips conversation backfill during ordinary cron processing", async () => {
+    const response = await GET(workerRequest());
+
+    expect(response.status).toBe(200);
+    expect(mocks.backfill).not.toHaveBeenCalled();
+    expect(await response.json()).toMatchObject({ backfill: { skipped: true } });
+  });
+
+  it("runs conversation backfill only when explicitly requested", async () => {
+    const response = await GET(new Request(
+      "https://matpin.kr/api/matpin/jobs/process?backfill=1",
+      { headers: { authorization: "Bearer cron-secret" } },
+    ));
+
+    expect(response.status).toBe(200);
+    expect(mocks.backfill).toHaveBeenCalledTimes(1);
+    expect(await response.json()).toMatchObject({
+      backfill: { conversationsScanned: 2, messagesScanned: 10, accepted: 7, duplicates: 3 },
+    });
+  });
+
   it("automatically saves every grounded candidate and sends the private station library link", async () => {
     const response = await GET(workerRequest());
 
@@ -137,11 +186,22 @@ describe("Matpin worker", () => {
       mediaKey: job.reelId,
       candidates: [candidate],
     }));
+    expect(mocks.recordUsage).toHaveBeenNthCalledWith(1, expect.objectContaining({
+      stage: "extraction",
+      provider: "gemini",
+      requestCount: 1,
+      thoughtTokens: 10,
+    }));
+    expect(mocks.recordUsage).toHaveBeenNthCalledWith(2, expect.objectContaining({
+      stage: "place_resolution",
+      provider: "google_places",
+      requestCount: 1,
+    }));
   });
 
   it("stores all places from a multi-place reel without asking the user to choose", async () => {
     const second = { ...candidate, id: "place-2", name: "두번째식당", confidence: 0.82 };
-    mocks.resolve.mockResolvedValue([candidate, second]);
+    mocks.resolve.mockResolvedValue({ candidates: [candidate, second], metrics: resolutionMetrics });
     mocks.saveMany.mockResolvedValue(2);
 
     const response = await GET(workerRequest());
@@ -161,7 +221,7 @@ describe("Matpin worker", () => {
   });
 
   it("does not invent a save when no real place candidate is found", async () => {
-    mocks.resolve.mockResolvedValue([]);
+    mocks.resolve.mockResolvedValue({ candidates: [], metrics: resolutionMetrics });
 
     const response = await GET(workerRequest());
 
@@ -171,6 +231,25 @@ describe("Matpin worker", () => {
       status: "failed",
       candidates: [],
       replied: true,
+    }));
+  });
+
+  it("stores a historical share without sending a delayed reply", async () => {
+    mocks.claim.mockReset()
+      .mockResolvedValueOnce({ ...job, replyRequired: false })
+      .mockResolvedValueOnce(null);
+
+    const response = await GET(workerRequest());
+
+    expect(response.status).toBe(200);
+    expect(mocks.saveMany).toHaveBeenCalledWith(expect.objectContaining({
+      messageId: job.messageId,
+      candidates: [candidate],
+    }));
+    expect(mocks.send).not.toHaveBeenCalled();
+    expect(mocks.complete).toHaveBeenCalledWith(expect.objectContaining({
+      status: "saved",
+      replied: false,
     }));
   });
 });

@@ -1,6 +1,6 @@
 import { sendMatpinInstagramMessage } from "@/lib/matpin/instagram-send";
 import type { MatpinPlaceCandidate } from "@/lib/matpin/contract";
-import { resolveMatpinPlaces } from "@/lib/matpin/place-resolver";
+import { resolveMatpinPlacesWithMetrics } from "@/lib/matpin/place-resolver";
 import {
   createGeminiReelAnalyzer,
   MatpinAnalysisError,
@@ -12,6 +12,7 @@ import {
   completeMatpinAnalysis,
   completeMatpinMediaAnalysis,
   releaseMatpinMediaAnalysis,
+  recordMatpinUsageEvent,
   retryMatpinMessage,
   saveMatpinPlaces,
   type MatpinMediaAnalysisCacheClaim,
@@ -23,11 +24,22 @@ const CACHE_WAIT_ATTEMPTS = 45;
 const cacheMetrics = {
   model: "cache",
   durationMs: 0,
+  requestCount: 0,
   mediaBytes: 0,
   inputTokens: 0,
   outputTokens: 0,
+  thoughtTokens: 0,
+  toolUseTokens: 0,
   totalTokens: 0,
 };
+
+async function recordUsageSafely(input: Parameters<typeof recordMatpinUsageEvent>[0]) {
+  try {
+    await recordMatpinUsageEvent(input);
+  } catch {
+    console.warn("[matpin:usage] record_failed");
+  }
+}
 
 function publicUrl(path: string): string {
   const origin = process.env.MATPIN_PUBLIC_APP_URL?.trim();
@@ -63,7 +75,38 @@ async function processOneMatpinMessage() {
         mediaUrl: job.mediaUrl,
         reelId: job.reelId,
       });
-      candidates = await resolveMatpinPlaces(analyzed.analysis);
+      await recordUsageSafely({
+        messageId: job.messageId,
+        stage: "extraction",
+        provider: "gemini",
+        model: analyzed.metrics.model,
+        outcome: "success",
+        requestCount: analyzed.metrics.requestCount,
+        inputTokens: analyzed.metrics.inputTokens,
+        outputTokens: analyzed.metrics.outputTokens,
+        thoughtTokens: analyzed.metrics.thoughtTokens,
+        toolUseTokens: analyzed.metrics.toolUseTokens,
+        totalTokens: analyzed.metrics.totalTokens,
+        groundingQueryCount: null,
+        durationMs: analyzed.metrics.durationMs,
+      });
+      const resolved = await resolveMatpinPlacesWithMetrics(analyzed.analysis);
+      candidates = resolved.candidates;
+      await recordUsageSafely({
+        messageId: job.messageId,
+        stage: "place_resolution",
+        provider: resolved.metrics.provider,
+        model: resolved.metrics.model,
+        outcome: "success",
+        requestCount: resolved.metrics.requestCount,
+        inputTokens: resolved.metrics.inputTokens,
+        outputTokens: resolved.metrics.outputTokens,
+        thoughtTokens: resolved.metrics.thoughtTokens,
+        toolUseTokens: resolved.metrics.toolUseTokens,
+        totalTokens: resolved.metrics.totalTokens,
+        groundingQueryCount: resolved.metrics.groundingQueryCount,
+        durationMs: resolved.metrics.durationMs,
+      });
       metrics = analyzed.metrics;
       await completeMatpinMediaAnalysis({
         mediaKey: job.reelId,
@@ -82,34 +125,38 @@ async function processOneMatpinMessage() {
         confirmationSource: "automatic_high_confidence",
       });
       const mapUrl = publicUrl(`/s/${job.shortLinkCode}`);
-      await sendMatpinInstagramMessage(
-        job.senderScopedId,
-        candidates.length === 1
-          ? `게시물에서 찾은 장소를 가까운 역 보관함에 저장했어요.\n${candidates[0].name}\n${mapUrl}`
-          : `게시물에서 찾은 ${candidates.length}곳을 가까운 역별 보관함에 저장했어요.\n${mapUrl}`,
-      );
+      if (job.replyRequired) {
+        await sendMatpinInstagramMessage(
+          job.senderScopedId,
+          candidates.length === 1
+            ? `게시물에서 찾은 장소를 가까운 역 보관함에 저장했어요.\n${candidates[0].name}\n${mapUrl}`
+            : `게시물에서 찾은 ${candidates.length}곳을 가까운 역별 보관함에 저장했어요.\n${mapUrl}`,
+        );
+      }
       await completeMatpinAnalysis({
         messageId: job.messageId,
         queueMessageId: job.queueMessageId,
         status: "saved",
         candidates,
         metrics,
-        replied: true,
+        replied: job.replyRequired,
       });
       return { state: "saved" as const, messageId: job.messageId };
     }
 
-    await sendMatpinInstagramMessage(
-      job.senderScopedId,
-      "게시물에서 식당 이름을 확인하지 못했어요. 식당 이름이나 지역이 보이는 다른 공개 게시물을 보내주세요.",
-    );
+    if (job.replyRequired) {
+      await sendMatpinInstagramMessage(
+        job.senderScopedId,
+        "게시물에서 식당 이름을 확인하지 못했어요. 식당 이름이나 지역이 보이는 다른 공개 게시물을 보내주세요.",
+      );
+    }
     await completeMatpinAnalysis({
       messageId: job.messageId,
       queueMessageId: job.queueMessageId,
       status: "failed",
       candidates: [],
       metrics,
-      replied: true,
+      replied: job.replyRequired,
     });
     return { state: "failed" as const, messageId: job.messageId };
   } catch (error) {
@@ -128,17 +175,19 @@ async function processOneMatpinMessage() {
     const retryable = !(error instanceof MatpinAnalysisError) || error.retryable;
     if (!retryable) {
       try {
-        await sendMatpinInstagramMessage(
-          job.senderScopedId,
-          "이 게시물은 아직 자동으로 분석할 수 없어요. 다른 공개 맛집 게시물을 보내주세요.",
-        );
+        if (job.replyRequired) {
+          await sendMatpinInstagramMessage(
+            job.senderScopedId,
+            "이 게시물은 아직 자동으로 분석할 수 없어요. 다른 공개 맛집 게시물을 보내주세요.",
+          );
+        }
         await completeMatpinAnalysis({
           messageId: job.messageId,
           queueMessageId: job.queueMessageId,
           status: "failed",
           candidates: [],
           metrics: null,
-          replied: true,
+          replied: job.replyRequired,
         });
         return { state: "failed" as const, messageId: job.messageId, code };
       } catch {

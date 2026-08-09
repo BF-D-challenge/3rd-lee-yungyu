@@ -7,6 +7,7 @@ const mocks = vi.hoisted(() => ({
   completeAnalysis: vi.fn(),
   completeCache: vi.fn(),
   releaseCache: vi.fn(),
+  recordUsage: vi.fn(),
   resolvePlaces: vi.fn(),
   retryMessage: vi.fn(),
   savePlaces: vi.fn(),
@@ -18,7 +19,7 @@ vi.mock("@/lib/matpin/instagram-send", () => ({
 }));
 
 vi.mock("@/lib/matpin/place-resolver", () => ({
-  resolveMatpinPlaces: mocks.resolvePlaces,
+  resolveMatpinPlacesWithMetrics: mocks.resolvePlaces,
 }));
 
 vi.mock("@/lib/matpin/reel-analyzer", () => ({
@@ -36,6 +37,7 @@ vi.mock("@/lib/matpin/store", () => ({
   completeMatpinAnalysis: mocks.completeAnalysis,
   completeMatpinMediaAnalysis: mocks.completeCache,
   releaseMatpinMediaAnalysis: mocks.releaseCache,
+  recordMatpinUsageEvent: mocks.recordUsage,
   retryMatpinMessage: mocks.retryMessage,
   saveMatpinPlaces: mocks.savePlaces,
 }));
@@ -74,6 +76,7 @@ describe("Matpin permanent media analysis cache", () => {
       reelUrl: "https://www.instagram.com/p/Post_123/",
       attachmentType: "share",
       mediaUrl: "https://www.instagram.com/p/Post_123/",
+      replyRequired: true,
       attemptCount: 1,
     });
     mocks.claimCache.mockResolvedValue({
@@ -115,6 +118,7 @@ describe("Matpin permanent media analysis cache", () => {
       reelUrl: "https://www.instagram.com/p/Post_456/",
       attachmentType: "share",
       mediaUrl: "https://www.instagram.com/p/Post_456/",
+      replyRequired: true,
       attemptCount: 1,
     });
     mocks.claimCache.mockResolvedValue({ state: "owner" });
@@ -123,13 +127,31 @@ describe("Matpin permanent media analysis cache", () => {
       metrics: {
         model: "gemini-test",
         durationMs: 10,
+        requestCount: 1,
         mediaBytes: 5,
         inputTokens: 10,
         outputTokens: 5,
+        thoughtTokens: 2,
+        toolUseTokens: 0,
         totalTokens: 15,
       },
     });
-    mocks.resolvePlaces.mockResolvedValue([candidate]);
+    mocks.resolvePlaces.mockResolvedValue({
+      candidates: [candidate],
+      metrics: {
+        provider: "google_places",
+        model: null,
+        durationMs: 5,
+        requestCount: 1,
+        inputTokens: null,
+        outputTokens: null,
+        thoughtTokens: null,
+        toolUseTokens: null,
+        totalTokens: null,
+        groundingQueryCount: null,
+      },
+    });
+    mocks.recordUsage.mockResolvedValue(undefined);
     mocks.completeCache.mockResolvedValue(undefined);
     mocks.savePlaces.mockResolvedValue(1);
     mocks.sendMessage.mockResolvedValue(undefined);

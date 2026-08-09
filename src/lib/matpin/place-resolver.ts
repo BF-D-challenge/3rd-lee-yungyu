@@ -8,6 +8,8 @@ import { MatpinAnalysisError } from "@/lib/matpin/analysis-error";
 
 const KAKAO_LOCAL_URL = "https://dapi.kakao.com/v2/local/search/keyword.json";
 const KAKAO_TIMEOUT_MS = 8_000;
+const GOOGLE_PLACES_TEXT_SEARCH_URL = "https://places.googleapis.com/v1/places:searchText";
+const GOOGLE_PLACES_TIMEOUT_MS = 10_000;
 const GEMINI_INTERACTIONS_URL = "https://generativelanguage.googleapis.com/v1beta/interactions";
 const GEMINI_MAPS_TIMEOUT_MS = 30_000;
 
@@ -25,6 +27,20 @@ const kakaoResponseSchema = z.object({
   })),
 });
 
+const googlePlacesTextSearchSchema = z.object({
+  places: z.array(z.object({
+    id: z.string().trim().min(1),
+    displayName: z.object({ text: z.string().trim().min(1) }),
+    formattedAddress: z.string().trim().min(1),
+    location: z.object({
+      latitude: z.number().min(-90).max(90),
+      longitude: z.number().min(-180).max(180),
+    }),
+    googleMapsUri: z.string().url(),
+    primaryTypeDisplayName: z.object({ text: z.string().trim().min(1) }).optional(),
+  })).default([]),
+});
+
 const geminiMapsOutputSchema = z.object({
   places: z.array(z.object({
     name: z.string().trim().min(1).max(120),
@@ -36,6 +52,18 @@ const geminiMapsOutputSchema = z.object({
 });
 
 const geminiMapsInteractionSchema = z.object({
+  model: z.string().optional(),
+  usage: z.object({
+    total_input_tokens: z.number().int().nonnegative().optional(),
+    total_output_tokens: z.number().int().nonnegative().optional(),
+    total_thought_tokens: z.number().int().nonnegative().optional(),
+    total_tool_use_tokens: z.number().int().nonnegative().optional(),
+    total_tokens: z.number().int().nonnegative().optional(),
+    grounding_tool_count: z.array(z.object({
+      type: z.string().optional(),
+      count: z.number().int().nonnegative().optional(),
+    })).optional(),
+  }).optional(),
   steps: z.array(z.object({
     type: z.string(),
     content: z.array(z.object({
@@ -51,6 +79,24 @@ const geminiMapsInteractionSchema = z.object({
     }).passthrough()).optional(),
   }).passthrough()),
 });
+
+export type MatpinPlaceResolutionMetrics = {
+  provider: "none" | "google_places" | "kakao_local" | "gemini_maps";
+  model: string | null;
+  durationMs: number;
+  requestCount: number;
+  inputTokens: number | null;
+  outputTokens: number | null;
+  thoughtTokens: number | null;
+  toolUseTokens: number | null;
+  totalTokens: number | null;
+  groundingQueryCount: number | null;
+};
+
+export type MatpinPlaceResolutionResult = {
+  candidates: MatpinPlaceCandidate[];
+  metrics: MatpinPlaceResolutionMetrics;
+};
 
 const geminiMapsJsonSchema = {
   type: "object",
@@ -121,6 +167,14 @@ function groundedName(value: string): string {
     .replace(/\s+-\s+google maps$/i, ""));
 }
 
+function namesOverlap(left: string, right: string): boolean {
+  const normalizedLeft = normalizedName(left);
+  const normalizedRight = normalizedName(right);
+  return Boolean(normalizedLeft)
+    && Boolean(normalizedRight)
+    && (normalizedLeft.includes(normalizedRight) || normalizedRight.includes(normalizedLeft));
+}
+
 function bestClueForCandidate(analysis: MatpinAnalysis, candidateName: string) {
   const candidate = normalizedName(candidateName);
   return analysis.places.find((clue) => {
@@ -129,9 +183,13 @@ function bestClueForCandidate(analysis: MatpinAnalysis, candidateName: string) {
   }) ?? analysis.places[0];
 }
 
-async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPlaceCandidate[]> {
+async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPlaceResolutionResult> {
+  const startedAt = Date.now();
   const apiKey = process.env.GEMINI_API_KEY?.trim() || process.env.ALLSALE_GEMINI_API_KEY?.trim();
   if (!apiKey) throw new MatpinAnalysisError("place_search_not_configured", false);
+  const model = process.env.MATPIN_MAPS_MODEL?.trim()
+    || process.env.MATPIN_GEMINI_MODEL?.trim()
+    || "gemini-3.6-flash";
 
   const clues = analysis.places.slice(0, 3);
   const query = clues.map((clue, index) =>
@@ -143,8 +201,8 @@ async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPl
       method: "POST",
       headers: { "content-type": "application/json", "x-goog-api-key": apiKey },
       body: JSON.stringify({
-        model: process.env.MATPIN_GEMINI_MODEL?.trim() || "gemini-3.6-flash",
-        input: `Find each exact restaurant, cafe, shop, or visitable place in South Korea matching the numbered clues below:\n${query}\nUse only verified Google Maps place results. Return at most one best result per clue and at most three results total. Return the Korean place name and address when available. Skip a clue when no verified place matches.`,
+        model,
+        input: `Find each exact restaurant, cafe, shop, tourist attraction, or other visitable place matching the numbered clues below:\n${query}\nRespect any country or region named in each clue. If no country is given and the clue is Korean, prefer South Korea. Use only verified Google Maps place results. Return at most one best result per clue and at most three results total. Return the Korean place name and address when available. Skip a clue when no verified place matches.`,
         tools: [{ type: "google_maps" }],
         response_format: {
           type: "text",
@@ -188,7 +246,7 @@ async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPl
       all.findIndex((other) => (other.place_id && other.place_id === place.place_id) || other.url === place.url) === index,
     );
 
-  return parsed.places.flatMap((candidate, index) => {
+  const candidates = parsed.places.flatMap((candidate, index) => {
     const candidateName = normalizedName(candidate.name);
     const grounded = groundedPlaces.find((place) => {
       if (!place.name) return false;
@@ -218,13 +276,137 @@ async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPl
       matchReason: matchReason(analysis, clue),
     })];
   }).slice(0, 3);
+  const usage = interaction.data.usage;
+  return {
+    candidates,
+    metrics: {
+      provider: "gemini_maps",
+      model: interaction.data.model || model,
+      durationMs: Date.now() - startedAt,
+      requestCount: 1,
+      inputTokens: usage?.total_input_tokens ?? null,
+      outputTokens: usage?.total_output_tokens ?? null,
+      thoughtTokens: usage?.total_thought_tokens ?? null,
+      toolUseTokens: usage?.total_tool_use_tokens ?? null,
+      totalTokens: usage?.total_tokens ?? null,
+      groundingQueryCount: usage?.grounding_tool_count
+        ?.filter((item) => item.type === "google_maps")
+        .reduce((sum, item) => sum + (item.count ?? 0), 0) ?? null,
+    },
+  };
 }
 
-export async function resolveMatpinPlaces(analysis: MatpinAnalysis): Promise<MatpinPlaceCandidate[]> {
-  if (analysis.status === "insufficient" || analysis.places.length === 0) return [];
+async function resolveWithGooglePlaces(
+  analysis: MatpinAnalysis,
+  apiKey: string,
+): Promise<MatpinPlaceResolutionResult> {
+  const startedAt = Date.now();
+  const clues = analysis.places.slice(0, 3);
+  const resolved = await Promise.all(clues.map(async (clue) => {
+    const textQuery = [clue.name, clue.branch, ...clue.regionHints.slice(0, 2)]
+      .filter(Boolean)
+      .join(" ");
+    let response: Response;
+    try {
+      response = await fetch(GOOGLE_PLACES_TEXT_SEARCH_URL, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "x-goog-api-key": apiKey,
+          "x-goog-fieldmask": [
+            "places.id",
+            "places.displayName",
+            "places.formattedAddress",
+            "places.location",
+            "places.googleMapsUri",
+            "places.primaryTypeDisplayName",
+          ].join(","),
+        },
+        body: JSON.stringify({ textQuery, languageCode: "ko", pageSize: 3 }),
+        signal: AbortSignal.timeout(GOOGLE_PLACES_TIMEOUT_MS),
+        cache: "no-store",
+      });
+    } catch (error) {
+      const timeout = error instanceof Error && error.name === "TimeoutError";
+      throw new MatpinAnalysisError(timeout ? "place_search_timeout" : "place_search_unavailable", true);
+    }
+    if (!response.ok) {
+      throw new MatpinAnalysisError("place_search_upstream", response.status === 429 || response.status >= 500);
+    }
+
+    const parsed = googlePlacesTextSearchSchema.safeParse(await response.json());
+    if (!parsed.success) throw new MatpinAnalysisError("place_search_invalid_response", true);
+    const place = parsed.data.places.find((candidate) => namesOverlap(clue.name, candidate.displayName.text))
+      ?? parsed.data.places[0];
+    if (!place) return null;
+
+    return matpinPlaceCandidateSchema.parse({
+      id: place.id,
+      name: place.displayName.text,
+      area: areaFromAddress(place.formattedAddress),
+      category: `Google Maps · ${place.primaryTypeDisplayName?.text || "장소"}`,
+      address: place.formattedAddress,
+      latitude: place.location.latitude,
+      longitude: place.location.longitude,
+      mapUrl: place.googleMapsUri,
+      confidence: candidateConfidence({
+        clueName: clue.name,
+        clueRegion: clue.regionHints[0],
+        clueConfidence: clue.confidence,
+        candidateName: place.displayName.text,
+        candidateAddress: place.formattedAddress,
+      }),
+      matchReason: matchReason(analysis, clue),
+    });
+  }));
+
+  const candidates = resolved
+    .filter((candidate): candidate is MatpinPlaceCandidate => candidate !== null)
+    .filter((candidate, index, all) => all.findIndex((other) => other.id === candidate.id) === index)
+    .slice(0, 3);
+  return {
+    candidates,
+    metrics: {
+      provider: "google_places",
+      model: null,
+      durationMs: Date.now() - startedAt,
+      requestCount: clues.length,
+      inputTokens: null,
+      outputTokens: null,
+      thoughtTokens: null,
+      toolUseTokens: null,
+      totalTokens: null,
+      groundingQueryCount: null,
+    },
+  };
+}
+
+export async function resolveMatpinPlacesWithMetrics(
+  analysis: MatpinAnalysis,
+): Promise<MatpinPlaceResolutionResult> {
+  if (analysis.status === "insufficient" || analysis.places.length === 0) {
+    return {
+      candidates: [],
+      metrics: {
+        provider: "none",
+        model: null,
+        durationMs: 0,
+        requestCount: 0,
+        inputTokens: null,
+        outputTokens: null,
+        thoughtTokens: null,
+        toolUseTokens: null,
+        totalTokens: null,
+        groundingQueryCount: null,
+      },
+    };
+  }
+  const googlePlacesKey = process.env.GOOGLE_MAPS_API_KEY?.trim();
+  if (googlePlacesKey) return resolveWithGooglePlaces(analysis, googlePlacesKey);
   const key = process.env.KAKAO_REST_API_KEY?.trim();
   if (!key) return resolveWithGeminiMaps(analysis);
 
+  const startedAt = Date.now();
   const clue = analysis.places[0];
   const query = [clue.name, clue.branch, clue.regionHints[0]].filter(Boolean).join(" ");
   const params = new URLSearchParams({ query, size: "5" });
@@ -244,7 +426,7 @@ export async function resolveMatpinPlaces(analysis: MatpinAnalysis): Promise<Mat
   const parsed = kakaoResponseSchema.safeParse(await response.json());
   if (!parsed.success) throw new MatpinAnalysisError("place_search_invalid_response", true);
 
-  return parsed.data.documents
+  const candidates = parsed.data.documents
     .filter((document) => document.category_group_code === "FD6" || document.category_group_code === "CE7")
     .slice(0, 3)
     .map((document) => {
@@ -268,4 +450,23 @@ export async function resolveMatpinPlaces(analysis: MatpinAnalysis): Promise<Mat
         matchReason: matchReason(analysis),
       });
     });
+  return {
+    candidates,
+    metrics: {
+      provider: "kakao_local",
+      model: null,
+      durationMs: Date.now() - startedAt,
+      requestCount: 1,
+      inputTokens: null,
+      outputTokens: null,
+      thoughtTokens: null,
+      toolUseTokens: null,
+      totalTokens: null,
+      groundingQueryCount: null,
+    },
+  };
+}
+
+export async function resolveMatpinPlaces(analysis: MatpinAnalysis): Promise<MatpinPlaceCandidate[]> {
+  return (await resolveMatpinPlacesWithMetrics(analysis)).candidates;
 }

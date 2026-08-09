@@ -49,6 +49,11 @@ export const matpinInboundMessageSchema = z.object({
 });
 export type MatpinInboundMessage = z.infer<typeof matpinInboundMessageSchema>;
 
+export type MatpinGuidanceRecipient = {
+  metaMessageId: string;
+  senderScopedId: string;
+};
+
 export const matpinEvidenceSchema = z.object({
   kind: z.enum([
     "caption",
@@ -204,6 +209,41 @@ export function normalizeMetaWebhookMessages(
     }
   }
   return results;
+}
+
+export function normalizeMetaWebhookGuidanceRecipients(
+  payload: unknown,
+  expectedAccountId: string,
+): MatpinGuidanceRecipient[] {
+  const parsed = matpinMetaWebhookSchema.safeParse(payload);
+  if (!parsed.success) return [];
+
+  const supportedMessages = normalizeMetaWebhookMessages(payload, expectedAccountId);
+  const supportedMessageIds = new Set(supportedMessages.map((message) => message.metaMessageId));
+  const supportedSenders = new Set(supportedMessages.map((message) => message.senderScopedId));
+  const recipients = new Map<string, MatpinGuidanceRecipient>();
+
+  for (const entry of parsed.data.entry) {
+    for (const event of entry.messaging ?? []) {
+      const message = event.message;
+      if (
+        event.recipient.id !== expectedAccountId
+        || message.is_deleted
+        || message.is_echo
+        || message.is_self
+        || message.is_unsupported
+        || supportedMessageIds.has(message.mid)
+        || supportedSenders.has(event.sender.id)
+      ) continue;
+
+      recipients.set(event.sender.id, {
+        metaMessageId: message.mid,
+        senderScopedId: event.sender.id,
+      });
+    }
+  }
+
+  return [...recipients.values()];
 }
 
 export const matpinGeminiJsonSchema = {
