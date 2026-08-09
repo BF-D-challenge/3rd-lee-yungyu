@@ -121,10 +121,11 @@ export const matpinSavedPlaceSchema = z.object({
 });
 export type MatpinSavedPlace = z.infer<typeof matpinSavedPlaceSchema>;
 
-const SUPPORTED_ATTACHMENTS = new Set<MatpinAttachmentType>([
+const SUPPORTED_ATTACHMENTS = new Set([
   "share",
   "ig_reel",
   "reel",
+  "media",
 ]);
 
 function toDate(timestamp: string | number): string {
@@ -147,6 +148,12 @@ function instagramAssetId(value: string): string | null {
   }
 }
 
+function storedAttachmentType(value: string): MatpinAttachmentType | null {
+  if (value === "media") return "share";
+  const parsed = matpinAttachmentTypeSchema.safeParse(value);
+  return parsed.success ? parsed.data : null;
+}
+
 export function normalizeMetaWebhookMessages(
   payload: unknown,
   expectedAccountId: string,
@@ -167,17 +174,17 @@ export function normalizeMetaWebhookMessages(
       ) continue;
 
       const attachment = message.attachments?.find((item) =>
-        SUPPORTED_ATTACHMENTS.has(item.type as MatpinAttachmentType)
+        SUPPORTED_ATTACHMENTS.has(item.type)
         && Boolean(item.payload?.url),
       );
       const attachmentType = attachment
-        ? matpinAttachmentTypeSchema.safeParse(attachment.type)
+        ? storedAttachmentType(attachment.type)
         : null;
       const textMediaUrl = !attachment && message.text
         ? possibleInstagramMediaUrl(message.text)
         : null;
       const mediaUrl = attachment?.payload?.url ?? textMediaUrl;
-      if (!mediaUrl || (attachmentType && !attachmentType.success)) continue;
+      if (!mediaUrl || (attachment && !attachmentType)) continue;
 
       const reelUrl = possibleInstagramMediaUrl(mediaUrl);
       const reelId = reelUrl
@@ -191,7 +198,7 @@ export function normalizeMetaWebhookMessages(
         reelId: reelId ?? `message-${message.mid}`,
         reelUrl,
         mediaUrl,
-        attachmentType: attachmentType?.success ? attachmentType.data : "share",
+        attachmentType: attachmentType ?? "share",
         receivedAt: toDate(event.timestamp),
       }));
     }

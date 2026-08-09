@@ -133,6 +133,22 @@ describe("Meta Instagram webhook contract", () => {
     });
   });
 
+  it("maps Meta media attachments from shared carousel cards to share", () => {
+    const messages = normalizeMetaWebhookMessages(webhookBody({
+      attachments: [{
+        type: "media",
+        payload: { url: "https://www.instagram.com/p/Carousel_123/?igsh=example" },
+      }],
+    }), "professional-account");
+
+    expect(messages).toHaveLength(1);
+    expect(messages[0]).toMatchObject({
+      reelId: "Carousel_123",
+      reelUrl: "https://www.instagram.com/p/Carousel_123/",
+      attachmentType: "share",
+    });
+  });
+
   it.each(["image", "video"])("ignores directly attached %s media", (type) => {
     expect(normalizeMetaWebhookMessages(webhookBody({
       attachments: [{
