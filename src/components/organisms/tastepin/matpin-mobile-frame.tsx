@@ -121,6 +121,7 @@ type MatpinMobileFramePrototypeProps = {
 };
 
 export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobileFramePrototypeProps) {
+  const pageRef = useRef<HTMLElement>(null);
   const hostRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
@@ -171,21 +172,40 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
   const goToScene = useCallback((nextScene: number) => {
     const scroller = scrollerRef.current;
     const target = Math.max(0, Math.min(scenes.length - 1, nextScene));
-    if (!scroller) {
-      setScene(target);
+    setScene(target);
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (variant === "landing" && !window.matchMedia("(max-width: 959px)").matches) {
+      const page = pageRef.current;
+      if (!page) return;
+      page.scrollTo({
+        top: target * page.clientHeight,
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
       return;
     }
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!scroller) {
+      return;
+    }
+
     scroller.scrollTo({
       top: target * scroller.clientHeight,
       behavior: reduceMotion ? "auto" : "smooth",
     });
-  }, []);
+  }, [variant]);
 
   const handleScroll = (event: UIEvent<HTMLDivElement>) => {
+    if (variant === "landing" && !window.matchMedia("(max-width: 959px)").matches) return;
     const scroller = event.currentTarget;
     const nextScene = Math.round(scroller.scrollTop / scroller.clientHeight);
+    setScene(Math.max(0, Math.min(scenes.length - 1, nextScene)));
+  };
+
+  const handlePageScroll = (event: UIEvent<HTMLElement>) => {
+    if (variant !== "landing" || window.matchMedia("(max-width: 959px)").matches) return;
+    const page = event.currentTarget;
+    const nextScene = Math.round(page.scrollTop / page.clientHeight);
     setScene(Math.max(0, Math.min(scenes.length - 1, nextScene)));
   };
 
@@ -208,7 +228,11 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
   };
 
   return (
-    <main className={`${styles.page} ${variant === "landing" ? styles.landingPage : ""}`}>
+    <main
+      ref={pageRef}
+      className={`${styles.page} ${variant === "landing" ? styles.landingPage : ""}`}
+      onScroll={handlePageScroll}
+    >
       {variant === "prototype" ? (
         <header className={styles.previewHeader}>
           <Link href="/matpin/motion-lab/compare-5-3-1" aria-label="모션 비교 화면으로 돌아가기">
@@ -223,10 +247,51 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
         </header>
       ) : null}
 
-      <section className={styles.mockupStage} aria-label="Poly 흐름을 적용한 맛핀 모바일 목업">
-        <div className={styles.deviceHost} ref={hostRef}>
-          <div className={styles.deviceCanvas} style={canvasStyle}>
-            <div className={styles.deviceFrame} data-testid="phone-frame">
+      <section
+        className={styles.mockupStage}
+        aria-label="Poly 흐름을 적용한 맛핀 모바일 목업"
+        style={{ "--scene-count": scenes.length } as CSSProperties}
+      >
+        <div className={styles.desktopSticky}>
+          {variant === "landing" ? (
+            <aside className={styles.desktopNarrative} aria-label="맛핀 주요 기능">
+              <div className={styles.desktopBrand} aria-label="matpin">
+                matpin<span aria-hidden="true">.</span>
+              </div>
+              <p className={styles.desktopEyebrow}>Instagram 맛집 릴스 정리</p>
+              <h1>보내기만 하면,<br />맛집이 역별로 모여요</h1>
+              <p className={styles.desktopDescription}>
+                Instagram 공유 화면에서 matpin.kr를 선택하세요. 같은 계정으로 보낸 릴스를 가까운 역별로 정리하고, 저장 결과를 DM으로 알려드려요.
+              </p>
+
+              <ol className={styles.desktopProofs}>
+                <li>
+                  <span><Send size={17} aria-hidden="true" /></span>
+                  <div><strong>릴스 보내기</strong><small>공유 대상에서 matpin.kr를 선택해요.</small></div>
+                </li>
+                <li>
+                  <span><MapPin size={17} aria-hidden="true" /></span>
+                  <div><strong>역별 자동 정리</strong><small>찾은 장소를 가까운 역 보관함에 넣습니다.</small></div>
+                </li>
+                <li>
+                  <span><MessageCircle size={17} aria-hidden="true" /></span>
+                  <div><strong>DM으로 결과 확인</strong><small>저장된 역과 보관함 링크를 바로 받아요.</small></div>
+                </li>
+              </ol>
+
+              <div className={styles.desktopActions}>
+                <a href={instagramProfile} target="_blank" rel="noreferrer" onClick={trackOpenInstagram}>
+                  Instagram에서 시작하기
+                  <ExternalLink size={16} aria-hidden="true" />
+                </a>
+                <p><ArrowDown size={15} aria-hidden="true" /> 화면 어디에서든 스크롤해보세요</p>
+              </div>
+            </aside>
+          ) : null}
+
+          <div className={styles.deviceHost} ref={hostRef}>
+            <div className={styles.deviceCanvas} style={canvasStyle}>
+              <div className={styles.deviceFrame} data-testid="phone-frame">
               <span className={styles.silentButton} aria-hidden="true" />
               <span className={styles.volumeUpButton} aria-hidden="true" />
               <span className={styles.volumeDownButton} aria-hidden="true" />
@@ -595,8 +660,14 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
                 <div className={styles.homeIndicator} aria-hidden="true" />
               </section>
             </div>
+            </div>
           </div>
         </div>
+        {variant === "landing" ? (
+          <div className={styles.desktopSceneRail} aria-hidden="true">
+            {scenes.map((_, index) => <span key={index} />)}
+          </div>
+        ) : null}
       </section>
     </main>
   );
