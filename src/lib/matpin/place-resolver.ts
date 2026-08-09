@@ -12,6 +12,14 @@ const GOOGLE_PLACES_TEXT_SEARCH_URL = "https://places.googleapis.com/v1/places:s
 const GOOGLE_PLACES_TIMEOUT_MS = 10_000;
 const GEMINI_INTERACTIONS_URL = "https://generativelanguage.googleapis.com/v1beta/interactions";
 const GEMINI_MAPS_TIMEOUT_MS = 30_000;
+const FOREIGN_REGION_PATTERN = new RegExp([
+  "일본", "도쿄", "오사카", "교토", "후쿠오카", "삿포로", "나고야", "오키나와",
+  "미국", "뉴욕", "로스앤젤레스", "하와이", "중국", "상하이", "베이징",
+  "대만", "타이베이", "홍콩", "마카오", "태국", "방콕", "베트남", "다낭",
+  "싱가포르", "말레이시아", "인도네시아", "발리", "필리핀", "프랑스", "파리",
+  "영국", "런던", "이탈리아", "로마", "스페인", "바르셀로나", "독일",
+  "호주", "시드니", "캐나다", "밴쿠버", "두바이",
+].join("|"), "i");
 
 const kakaoResponseSchema = z.object({
   documents: z.array(z.object({
@@ -173,6 +181,12 @@ function namesOverlap(left: string, right: string): boolean {
   return Boolean(normalizedLeft)
     && Boolean(normalizedRight)
     && (normalizedLeft.includes(normalizedRight) || normalizedRight.includes(normalizedLeft));
+}
+
+function hasExplicitForeignRegion(analysis: MatpinAnalysis): boolean {
+  return analysis.places.some((clue) =>
+    clue.regionHints.some((region) => FOREIGN_REGION_PATTERN.test(region))
+  );
 }
 
 function bestClueForCandidate(analysis: MatpinAnalysis, candidateName: string) {
@@ -381,6 +395,78 @@ async function resolveWithGooglePlaces(
   };
 }
 
+async function resolveWithKakaoLocal(
+  analysis: MatpinAnalysis,
+  apiKey: string,
+): Promise<MatpinPlaceResolutionResult> {
+  const startedAt = Date.now();
+  const clues = analysis.places.slice(0, 3);
+  const resolved = await Promise.all(clues.map(async (clue) => {
+    const query = [clue.name, clue.branch, ...clue.regionHints.slice(0, 2)]
+      .filter(Boolean)
+      .join(" ");
+    const params = new URLSearchParams({ query, size: "5" });
+    let response: Response;
+    try {
+      response = await fetch(`${KAKAO_LOCAL_URL}?${params.toString()}`, {
+        headers: { authorization: `KakaoAK ${apiKey}` },
+        signal: AbortSignal.timeout(KAKAO_TIMEOUT_MS),
+        cache: "no-store",
+      });
+    } catch {
+      throw new MatpinAnalysisError("place_search_unavailable", true);
+    }
+    if (!response.ok) {
+      throw new MatpinAnalysisError("place_search_upstream", response.status === 429 || response.status >= 500);
+    }
+    const parsed = kakaoResponseSchema.safeParse(await response.json());
+    if (!parsed.success) throw new MatpinAnalysisError("place_search_invalid_response", true);
+    const document = parsed.data.documents.find((candidate) =>
+      namesOverlap(clue.name, candidate.place_name)
+    ) ?? parsed.data.documents[0];
+    if (!document) return null;
+
+    const address = document.road_address_name || document.address_name;
+    return matpinPlaceCandidateSchema.parse({
+      id: document.id,
+      name: document.place_name,
+      area: areaFromAddress(address),
+      category: document.category_name,
+      address,
+      latitude: Number(document.y),
+      longitude: Number(document.x),
+      mapUrl: document.place_url,
+      confidence: candidateConfidence({
+        clueName: clue.name,
+        clueRegion: clue.regionHints[0],
+        clueConfidence: clue.confidence,
+        candidateName: document.place_name,
+        candidateAddress: address,
+      }),
+      matchReason: matchReason(analysis, clue),
+    });
+  }));
+
+  return {
+    candidates: resolved
+      .filter((candidate): candidate is MatpinPlaceCandidate => candidate !== null)
+      .filter((candidate, index, all) => all.findIndex((other) => other.id === candidate.id) === index)
+      .slice(0, 3),
+    metrics: {
+      provider: "kakao_local",
+      model: null,
+      durationMs: Date.now() - startedAt,
+      requestCount: clues.length,
+      inputTokens: null,
+      outputTokens: null,
+      thoughtTokens: null,
+      toolUseTokens: null,
+      totalTokens: null,
+      groundingQueryCount: null,
+    },
+  };
+}
+
 export async function resolveMatpinPlacesWithMetrics(
   analysis: MatpinAnalysis,
 ): Promise<MatpinPlaceResolutionResult> {
@@ -402,69 +488,13 @@ export async function resolveMatpinPlacesWithMetrics(
     };
   }
   const googlePlacesKey = process.env.GOOGLE_MAPS_API_KEY?.trim();
+  const kakaoKey = process.env.KAKAO_REST_API_KEY?.trim();
+  if (!hasExplicitForeignRegion(analysis) && kakaoKey) {
+    const kakaoResult = await resolveWithKakaoLocal(analysis, kakaoKey);
+    if (kakaoResult.candidates.length > 0) return kakaoResult;
+  }
   if (googlePlacesKey) return resolveWithGooglePlaces(analysis, googlePlacesKey);
-  const key = process.env.KAKAO_REST_API_KEY?.trim();
-  if (!key) return resolveWithGeminiMaps(analysis);
-
-  const startedAt = Date.now();
-  const clue = analysis.places[0];
-  const query = [clue.name, clue.branch, clue.regionHints[0]].filter(Boolean).join(" ");
-  const params = new URLSearchParams({ query, size: "5" });
-  let response: Response;
-  try {
-    response = await fetch(`${KAKAO_LOCAL_URL}?${params.toString()}`, {
-      headers: { authorization: `KakaoAK ${key}` },
-      signal: AbortSignal.timeout(KAKAO_TIMEOUT_MS),
-      cache: "no-store",
-    });
-  } catch {
-    throw new MatpinAnalysisError("place_search_unavailable", true);
-  }
-  if (!response.ok) {
-    throw new MatpinAnalysisError("place_search_upstream", response.status === 429 || response.status >= 500);
-  }
-  const parsed = kakaoResponseSchema.safeParse(await response.json());
-  if (!parsed.success) throw new MatpinAnalysisError("place_search_invalid_response", true);
-
-  const candidates = parsed.data.documents
-    .filter((document) => document.category_group_code === "FD6" || document.category_group_code === "CE7")
-    .slice(0, 3)
-    .map((document) => {
-      const address = document.road_address_name || document.address_name;
-      return matpinPlaceCandidateSchema.parse({
-        id: document.id,
-        name: document.place_name,
-        area: areaFromAddress(address),
-        category: document.category_name,
-        address,
-        latitude: Number(document.y),
-        longitude: Number(document.x),
-        mapUrl: document.place_url,
-        confidence: candidateConfidence({
-          clueName: clue.name,
-          clueRegion: clue.regionHints[0],
-          clueConfidence: clue.confidence,
-          candidateName: document.place_name,
-          candidateAddress: address,
-        }),
-        matchReason: matchReason(analysis),
-      });
-    });
-  return {
-    candidates,
-    metrics: {
-      provider: "kakao_local",
-      model: null,
-      durationMs: Date.now() - startedAt,
-      requestCount: 1,
-      inputTokens: null,
-      outputTokens: null,
-      thoughtTokens: null,
-      toolUseTokens: null,
-      totalTokens: null,
-      groundingQueryCount: null,
-    },
-  };
+  return resolveWithGeminiMaps(analysis);
 }
 
 export async function resolveMatpinPlaces(analysis: MatpinAnalysis): Promise<MatpinPlaceCandidate[]> {

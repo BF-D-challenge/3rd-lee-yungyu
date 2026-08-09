@@ -332,9 +332,9 @@ describe("Gemini input gate", () => {
   });
 
   it("does not keep high confidence when Kakao returns a different name or region", async () => {
-    vi.stubEnv("GOOGLE_MAPS_API_KEY", "");
+    vi.stubEnv("GOOGLE_MAPS_API_KEY", "google-should-not-be-used");
     vi.stubEnv("KAKAO_REST_API_KEY", "kakao-test-key");
-    vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
+    const kakaoFetch = vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
       documents: [{
         id: "place-1",
         place_name: "다른식당",
@@ -363,41 +363,42 @@ describe("Gemini input gate", () => {
 
     expect(resolved.candidates[0].confidence).toBeLessThan(0.9);
     expect(resolved.metrics).toMatchObject({ provider: "kakao_local", requestCount: 1 });
+    expect(kakaoFetch.mock.calls[0][0]).toEqual(expect.stringContaining("dapi.kakao.com"));
   });
 
-  it("uses Google Places Text Search before Kakao or Gemini grounding", async () => {
+  it("uses Google Places before Kakao for an explicitly overseas place", async () => {
     vi.stubEnv("GOOGLE_MAPS_API_KEY", "google-places-test-key");
     vi.stubEnv("KAKAO_REST_API_KEY", "kakao-should-not-be-used");
     vi.stubEnv("GEMINI_API_KEY", "");
     const placesFetch = vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
       places: [{
         id: "google-place-1",
-        displayName: { text: "산장 장작구이" },
-        formattedAddress: "대한민국 서울특별시 강남구 봉은사로30길 70",
-        location: { latitude: 37.5052, longitude: 127.0378 },
+        displayName: { text: "스시 다이" },
+        formattedAddress: "일본 도쿄도 고토구 도요스 6초메",
+        location: { latitude: 35.6444, longitude: 139.7818 },
         googleMapsUri: "https://maps.google.com/?cid=123",
-        primaryTypeDisplayName: { text: "바비큐 식당" },
+        primaryTypeDisplayName: { text: "스시 전문점" },
       }],
     }), { status: 200, headers: { "content-type": "application/json" } }));
 
     const resolved = await resolveMatpinPlacesWithMetrics({
       status: "resolved",
-      summary: "산장장작구이를 확인했어요.",
+      summary: "스시 다이를 확인했어요.",
       places: [{
-        name: "산장장작구이",
+        name: "스시 다이",
         branch: null,
-        menus: ["삼겹살"],
-        regionHints: ["서울 강남구"],
+        menus: ["스시"],
+        regionHints: ["일본 도쿄 도요스"],
         confidence: 0.98,
-        evidence: [{ kind: "caption", text: "산장장작구이", timestampSeconds: null }],
+        evidence: [{ kind: "caption", text: "스시 다이", timestampSeconds: null }],
       }],
     });
 
     expect(resolved.candidates).toEqual([expect.objectContaining({
       id: "google-place-1",
-      name: "산장 장작구이",
-      category: "Google Maps · 바비큐 식당",
-      address: "대한민국 서울특별시 강남구 봉은사로30길 70",
+      name: "스시 다이",
+      category: "Google Maps · 스시 전문점",
+      address: "일본 도쿄도 고토구 도요스 6초메",
       mapUrl: "https://maps.google.com/?cid=123",
     })]);
     expect(resolved.metrics).toMatchObject({
@@ -415,9 +416,47 @@ describe("Gemini input gate", () => {
     });
     expect((request.headers as Record<string, string>)["x-goog-fieldmask"]).not.toContain("*");
     expect(JSON.parse(request.body as string)).toEqual({
-      textQuery: "산장장작구이 서울 강남구",
+      textQuery: "스시 다이 일본 도쿄 도요스",
       languageCode: "ko",
       pageSize: 3,
+    });
+  });
+
+  it("falls back from an empty domestic Kakao result to Google Places", async () => {
+    vi.stubEnv("GOOGLE_MAPS_API_KEY", "google-places-test-key");
+    vi.stubEnv("KAKAO_REST_API_KEY", "kakao-test-key");
+    const placesFetch = vi.spyOn(globalThis, "fetch")
+      .mockResolvedValueOnce(new Response(JSON.stringify({ documents: [] }), { status: 200 }))
+      .mockResolvedValueOnce(new Response(JSON.stringify({
+        places: [{
+          id: "google-place-1",
+          displayName: { text: "우래옥" },
+          formattedAddress: "대한민국 서울특별시 중구 창경궁로 62-29",
+          location: { latitude: 37.5682, longitude: 126.9987 },
+          googleMapsUri: "https://maps.google.com/?cid=456",
+          primaryTypeDisplayName: { text: "냉면 전문점" },
+        }],
+      }), { status: 200 }));
+
+    const resolved = await resolveMatpinPlacesWithMetrics({
+      status: "resolved",
+      summary: "우래옥을 확인했어요.",
+      places: [{
+        name: "우래옥",
+        branch: null,
+        menus: ["냉면"],
+        regionHints: ["서울 중구"],
+        confidence: 0.97,
+        evidence: [{ kind: "caption", text: "우래옥", timestampSeconds: null }],
+      }],
+    });
+
+    expect(placesFetch).toHaveBeenCalledTimes(2);
+    expect(placesFetch.mock.calls[0][0]).toEqual(expect.stringContaining("dapi.kakao.com"));
+    expect(placesFetch.mock.calls[1][0]).toBe("https://places.googleapis.com/v1/places:searchText");
+    expect(resolved).toMatchObject({
+      candidates: [{ id: "google-place-1", name: "우래옥" }],
+      metrics: { provider: "google_places" },
     });
   });
 
@@ -463,6 +502,7 @@ describe("Gemini input gate", () => {
     },
   ])("resolves supported expansion input: $label", async ({ clue, result, expectedQuery }) => {
     vi.stubEnv("GOOGLE_MAPS_API_KEY", "google-places-test-key");
+    vi.stubEnv("KAKAO_REST_API_KEY", "");
     const placesFetch = vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
       places: [{
         id: result.id,
