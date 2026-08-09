@@ -5,7 +5,7 @@ test.describe("맛핀 Instagram 공유 진입과 독립 계측", () => {
     await page.goto("/matpin/import");
     await expect(page).toHaveURL(/\/matpin#how$/);
     await expect(page.getByRole("heading", { name: "맛집 릴스를 역별로 모아드려요" })).toBeAttached();
-    await expect(page.getByRole("link", { name: "Instagram에서 시작하기" })).toHaveAttribute(
+    await expect(page.getByRole("link", { name: "Instagram에서 시작하기" }).first()).toHaveAttribute(
       "href",
       "https://www.instagram.com/matpin.kr/",
     );
