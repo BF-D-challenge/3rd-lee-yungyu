@@ -7,6 +7,7 @@ const mocks = vi.hoisted(() => ({
   completeCache: vi.fn(),
   releaseCache: vi.fn(),
   recordUsage: vi.fn(),
+  readContext: vi.fn(),
   saveMany: vi.fn(),
   retry: vi.fn(),
   analyze: vi.fn(),
@@ -22,6 +23,7 @@ vi.mock("@/lib/matpin/store", () => ({
   completeMatpinMediaAnalysis: mocks.completeCache,
   releaseMatpinMediaAnalysis: mocks.releaseCache,
   recordMatpinUsageEvent: mocks.recordUsage,
+  readMatpinConversationContext: mocks.readContext,
   saveMatpinPlaces: mocks.saveMany,
   retryMatpinMessage: mocks.retry,
 }));
@@ -103,6 +105,19 @@ beforeEach(() => {
   mocks.completeCache.mockReset().mockResolvedValue(undefined);
   mocks.releaseCache.mockReset().mockResolvedValue(undefined);
   mocks.recordUsage.mockReset().mockResolvedValue(undefined);
+  mocks.readContext.mockReset()
+    .mockResolvedValueOnce({
+      knownUser: true,
+      inboundMessageCount: 1,
+      savedPlaceCount: 0,
+      hasSavedMedia: false,
+    })
+    .mockResolvedValue({
+      knownUser: true,
+      inboundMessageCount: 1,
+      savedPlaceCount: 1,
+      hasSavedMedia: false,
+    });
   mocks.saveMany.mockReset().mockResolvedValue(1);
   mocks.retry.mockReset().mockResolvedValue("retry");
   mocks.analyze.mockReset().mockResolvedValue({
@@ -174,6 +189,10 @@ describe("Matpin worker", () => {
     }));
     expect(mocks.send).toHaveBeenCalledWith(
       "sender-1",
+      expect.stringContaining("첫 장소를 저장했습니다"),
+    );
+    expect(mocks.send).toHaveBeenCalledWith(
+      "sender-1",
       expect.stringContaining("https://matpin.kr/s/AbCdEfGhIjKlMnOp"),
     );
     expect(mocks.complete).toHaveBeenCalledWith(expect.objectContaining({
@@ -203,6 +222,19 @@ describe("Matpin worker", () => {
     const second = { ...candidate, id: "place-2", name: "두번째식당", confidence: 0.82 };
     mocks.resolve.mockResolvedValue({ candidates: [candidate, second], metrics: resolutionMetrics });
     mocks.saveMany.mockResolvedValue(2);
+    mocks.readContext.mockReset()
+      .mockResolvedValueOnce({
+        knownUser: true,
+        inboundMessageCount: 1,
+        savedPlaceCount: 0,
+        hasSavedMedia: false,
+      })
+      .mockResolvedValue({
+        knownUser: true,
+        inboundMessageCount: 1,
+        savedPlaceCount: 2,
+        hasSavedMedia: false,
+      });
 
     const response = await GET(workerRequest());
 
@@ -212,7 +244,7 @@ describe("Matpin worker", () => {
     }));
     expect(mocks.send).toHaveBeenCalledWith(
       "sender-1",
-      expect.stringContaining("찾은 2곳을 가까운 역별 보관함에 저장했어요"),
+      expect.stringContaining("첫 장소 2곳을 저장했습니다"),
     );
     expect(mocks.complete).toHaveBeenCalledWith(expect.objectContaining({
       status: "saved",
@@ -251,5 +283,36 @@ describe("Matpin worker", () => {
       status: "saved",
       replied: false,
     }));
+    expect(mocks.readContext).not.toHaveBeenCalled();
+  });
+
+  it("reuses cached analysis and gives a repeat-share response", async () => {
+    mocks.claimCache.mockResolvedValue({
+      state: "hit",
+      outcome: "resolved",
+      candidates: [candidate],
+    });
+    mocks.readContext.mockReset()
+      .mockResolvedValueOnce({
+        knownUser: true,
+        inboundMessageCount: 3,
+        savedPlaceCount: 1,
+        hasSavedMedia: true,
+      })
+      .mockResolvedValueOnce({
+        knownUser: true,
+        inboundMessageCount: 3,
+        savedPlaceCount: 1,
+        hasSavedMedia: true,
+      });
+
+    const response = await GET(workerRequest());
+
+    expect(response.status).toBe(200);
+    expect(mocks.analyze).not.toHaveBeenCalled();
+    expect(mocks.send).toHaveBeenCalledWith(
+      "sender-1",
+      expect.stringContaining("이미 저장한 게시물입니다"),
+    );
   });
 });

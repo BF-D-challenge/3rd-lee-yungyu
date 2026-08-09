@@ -83,7 +83,7 @@ export async function resendMatpinMap(messageId: string): Promise<{ savedPlaceCo
     "이용에 불편을 드려 죄송합니다.",
     "방금 일반 게시물과 캐러셀도 저장할 수 있도록 수정했어요.",
     "번거로우시겠지만 같은 게시물을 한 번만 다시 보내주세요.",
-    `지금까지 저장한 맛집 ${count}곳은 아래 링크에서 확인할 수 있습니다.`,
+    `지금까지 저장한 장소 ${count}곳은 아래 링크에서 확인할 수 있습니다.`,
     publicMapUrl(shortLinkCode),
   ].join("\n"));
 
