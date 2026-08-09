@@ -61,3 +61,21 @@ export function normalizeInstagramReelUrl(value: string): string | null {
 export function instagramReelId(value: string): string | null {
   return normalizeInstagramReelUrl(value)?.match(/\/reel\/([A-Za-z0-9_-]+)\//)?.[1] ?? null;
 }
+
+export function normalizeInstagramMediaUrl(value: string): string | null {
+  try {
+    const url = new URL(value.trim());
+    if (url.protocol !== "https:" || !INSTAGRAM_HOSTS.has(url.hostname)) return null;
+
+    const match = url.pathname.match(/^\/(reel|p|tv)\/([A-Za-z0-9_-]+)\/?$/);
+    if (!match) return null;
+
+    return `https://www.instagram.com/${match[1]}/${match[2]}/`;
+  } catch {
+    return null;
+  }
+}
+
+export function instagramMediaId(value: string): string | null {
+  return normalizeInstagramMediaUrl(value)?.match(/^https:\/\/www\.instagram\.com\/(?:reel|p|tv)\/([A-Za-z0-9_-]+)\/$/)?.[1] ?? null;
+}

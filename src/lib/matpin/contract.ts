@@ -1,13 +1,13 @@
 import { z } from "zod";
-import { instagramReelId, normalizeInstagramReelUrl } from "@/lib/matpick-dm-contract";
+import { instagramMediaId, normalizeInstagramMediaUrl } from "@/lib/matpick-dm-contract";
 
-export const matpinAttachmentTypeSchema = z.enum(["share", "video", "ig_reel", "reel"]);
+export const matpinAttachmentTypeSchema = z.enum(["share", "ig_reel", "reel"]);
 export type MatpinAttachmentType = z.infer<typeof matpinAttachmentTypeSchema>;
 
 const metaAttachmentSchema = z.object({
   type: z.string(),
   payload: z.object({
-    url: z.string().url().max(4_096).optional(),
+    url: z.string().url().max(16_384).optional(),
   }).passthrough().optional(),
 }).passthrough();
 
@@ -43,7 +43,7 @@ export const matpinInboundMessageSchema = z.object({
   recipientAccountId: z.string().min(1).max(200),
   reelId: z.string().min(1).max(500),
   reelUrl: z.string().url().nullable(),
-  mediaUrl: z.string().url().max(4_096),
+  mediaUrl: z.string().url().max(16_384),
   attachmentType: matpinAttachmentTypeSchema,
   receivedAt: z.string().datetime({ offset: true }),
 });
@@ -123,7 +123,6 @@ export type MatpinSavedPlace = z.infer<typeof matpinSavedPlaceSchema>;
 
 const SUPPORTED_ATTACHMENTS = new Set<MatpinAttachmentType>([
   "share",
-  "video",
   "ig_reel",
   "reel",
 ]);
@@ -135,8 +134,17 @@ function toDate(timestamp: string | number): string {
   return Number.isNaN(date.getTime()) ? new Date().toISOString() : date.toISOString();
 }
 
-function possibleReelUrl(value: string): string | null {
-  return normalizeInstagramReelUrl(value);
+function possibleInstagramMediaUrl(value: string): string | null {
+  return normalizeInstagramMediaUrl(value);
+}
+
+function instagramAssetId(value: string): string | null {
+  try {
+    const assetId = new URL(value).searchParams.get("asset_id")?.trim();
+    return assetId && /^\d{5,50}$/.test(assetId) ? assetId : null;
+  } catch {
+    return null;
+  }
 }
 
 export function normalizeMetaWebhookMessages(
@@ -162,15 +170,19 @@ export function normalizeMetaWebhookMessages(
         SUPPORTED_ATTACHMENTS.has(item.type as MatpinAttachmentType)
         && Boolean(item.payload?.url),
       );
-      if (!attachment?.payload?.url) continue;
-
-      const attachmentType = matpinAttachmentTypeSchema.safeParse(attachment.type);
-      if (!attachmentType.success) continue;
-
-      const reelUrl = possibleReelUrl(attachment.payload.url);
-      const reelId = reelUrl
-        ? instagramReelId(reelUrl)
+      const attachmentType = attachment
+        ? matpinAttachmentTypeSchema.safeParse(attachment.type)
         : null;
+      const textMediaUrl = !attachment && message.text
+        ? possibleInstagramMediaUrl(message.text)
+        : null;
+      const mediaUrl = attachment?.payload?.url ?? textMediaUrl;
+      if (!mediaUrl || (attachmentType && !attachmentType.success)) continue;
+
+      const reelUrl = possibleInstagramMediaUrl(mediaUrl);
+      const reelId = reelUrl
+        ? instagramMediaId(reelUrl)
+        : instagramAssetId(mediaUrl);
 
       results.push(matpinInboundMessageSchema.parse({
         metaMessageId: message.mid,
@@ -178,8 +190,8 @@ export function normalizeMetaWebhookMessages(
         recipientAccountId: event.recipient.id,
         reelId: reelId ?? `message-${message.mid}`,
         reelUrl,
-        mediaUrl: attachment.payload.url,
-        attachmentType: attachmentType.data,
+        mediaUrl,
+        attachmentType: attachmentType?.success ? attachmentType.data : "share",
         receivedAt: toDate(event.timestamp),
       }));
     }

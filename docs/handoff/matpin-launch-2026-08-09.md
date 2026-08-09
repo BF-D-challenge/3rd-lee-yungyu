@@ -23,6 +23,7 @@
 | Instagram 계정 | 완료 | `matpin.kr` 연결과 Webhook 구독 설정 확인 |
 | Webhook 콜백 | 완료 | `https://matpin-kr.vercel.app/api/matpin/webhook` 등록 확인 |
 | 메시지 Webhook | 완료 | `messages` 필드 구독 중 확인 |
+| 개인 보관함 짧은 링크 | 완료 | `/s/{16자리 코드}`에서 만료되지 않은 개인 보관함으로만 이동, 코드 원문은 DB에 저장하지 않음 |
 | 메시지 권한 고급 액세스 | 미완료 | `테스트 준비 완료`, `앱 검수에 추가` 상태 |
 | 최신 배포 실사용 왕복 | 승인 대기 | 실제 Instagram 메시지 전송 전 사용자 승인 필요 |
 | 운영 분석 영수증 | 미완료 | GA4, Clarity, Meta Pixel 운영 ID 없음 |
@@ -33,29 +34,29 @@
 
 한국어 설명:
 
-> 맛핀은 연결된 Instagram 프로페셔널 계정 `matpin.kr`을 식별하고 계정 연결 상태를 유지하기 위해 이 권한을 사용합니다. 사용자가 먼저 `matpin.kr`에 공유한 공개 맛집 릴스만 처리하며, 임의의 Instagram 사용자나 공개 프로필을 수집하지 않습니다.
+> 맛핀은 연결된 Instagram 프로페셔널 계정 `matpin.kr`을 식별하고 계정 연결 상태를 유지하기 위해 이 권한을 사용합니다. 사용자가 먼저 `matpin.kr`에 공유한 공개 맛집 게시물만 처리하며, 임의의 Instagram 사용자나 공개 프로필을 수집하지 않습니다.
 
 English description:
 
-> Matpin uses this permission to identify the connected Instagram professional account, `matpin.kr`, and maintain its account connection. The service processes only public restaurant Reels that a user intentionally sends to `matpin.kr`. It does not scrape arbitrary Instagram users or public profiles.
+> Matpin uses this permission to identify the connected Instagram professional account, `matpin.kr`, and maintain its account connection. The service processes only public restaurant posts, including Reels and carousel posts, that a user intentionally shares with `matpin.kr`. It does not process text or media files directly attached to a DM, and it does not scrape arbitrary Instagram users or public profiles.
 
 ### instagram_business_manage_messages
 
 한국어 설명:
 
-> 사용자가 Instagram에서 `matpin.kr`로 공개 맛집 릴스를 먼저 공유하면, 맛핀은 해당 DM을 받아 영상 속 장소 후보를 확인하고 개인 보관함에 저장합니다. 처리가 끝나면 같은 대화에 저장 결과와 개인 보관함 링크를 답장합니다. 사용자가 시작하지 않은 광고나 홍보 메시지는 보내지 않습니다.
+> 사용자가 Instagram에서 `matpin.kr`로 공개 맛집 게시물을 먼저 공유하면, 맛핀은 해당 DM을 받아 게시물 속 장소 후보를 확인하고 개인 보관함에 저장합니다. 릴스, 일반 피드 게시물과 캐러셀 공유를 처리하지만 DM에 직접 첨부한 글, 이미지와 동영상은 처리하지 않습니다. 처리가 끝나면 같은 대화에 저장 결과와 개인 보관함 링크를 답장합니다. 사용자가 시작하지 않은 광고나 홍보 메시지는 보내지 않습니다.
 
 English description:
 
-> When a user first shares a public restaurant Reel with `matpin.kr` on Instagram, Matpin receives that DM, identifies the place candidates in the Reel, and saves the result to the user's private collection. Matpin then replies in the same conversation with the save result and a private collection link. It never sends unsolicited promotional messages.
+> When a user first shares a public restaurant post with `matpin.kr` on Instagram, Matpin receives that DM, identifies place candidates in the post, and saves the result to the user's private collection. It supports Reels, feed posts, and carousel shares, but does not process text, images, or videos directly attached to a DM. Matpin then replies in the same conversation with the save result and a private collection link. It never sends unsolicited promotional messages.
 
 ## 검수자 테스트 절차
 
-1. Instagram에서 공개 음식점 릴스를 엽니다.
-2. 공유 버튼을 누르고 `matpin.kr`로 릴스를 보냅니다.
+1. Instagram에서 공개 음식점 게시물을 엽니다.
+2. 공유 버튼을 누르고 `matpin.kr`로 게시물을 보냅니다.
 3. 같은 대화에서 맛핀이 보낸 처리 완료 답장을 기다립니다.
 4. 답장의 개인 보관함 링크를 엽니다.
-5. 릴스에서 확인한 장소가 역별 보관함에 저장됐는지 확인합니다.
+5. 게시물에서 확인한 장소가 역별 보관함에 저장됐는지 확인합니다.
 6. 보관함의 `내 데이터 관리`를 눌러 장소 삭제와 전체 데이터 삭제 진입점을 확인합니다.
 7. 개인정보처리방침과 데이터 삭제 안내는 아래 URL에서 확인합니다.
 
@@ -66,7 +67,7 @@ English description:
 ## 검수 제출 전에 만들 증거
 
 - 30초에서 60초 길이의 실제 Instagram 왕복 화면 녹화
-- 릴스 공유, 자동 답장, 개인 보관함 열기까지 한 영상에 포함
+- 게시물 공유, 자동 답장, 개인 보관함 열기까지 한 영상에 포함
 - 테스트 계정명과 개인 보관함 토큰은 제출 영상 외부에 공개하지 않음
 - 운영 로그는 시간, 성공 상태, 내부 요청 식별자만 남기고 토큰과 사용자 식별값은 가림
 - 데이터 삭제 화면과 개인정보처리방침 URL 스크린샷 첨부
@@ -75,7 +76,7 @@ English description:
 
 ### P0, 오늘 완료
 
-- [ ] 실제 릴스 1건 왕복 테스트 승인받기
+- [ ] 실제 게시물 1건 왕복 테스트 승인받기
 - [ ] 최신 운영 배포에서 자동 답장과 개인 보관함 링크 확인하기
 - [ ] Meta 앱 검수에 `instagram_business_basic`과 `instagram_business_manage_messages` 추가하기
 - [ ] 실제 왕복 화면 녹화와 권한 사용 설명 제출하기
@@ -116,6 +117,7 @@ English description:
 ## 보안 원칙
 
 - 액세스 토큰, Webhook 인증 토큰, 개인 보관함 토큰을 문서와 로그에 넣지 않습니다.
+- DM에는 96비트 짧은 코드만 보내고, 데이터베이스에는 코드의 SHA-256 해시만 저장합니다.
 - 실제 전체 데이터 삭제는 별도 테스트 계정과 명시적인 승인 후 실행합니다.
 - Meta 설정 변경과 앱 검수 제출은 제출 내용을 사람이 마지막으로 확인한 뒤 실행합니다.
 

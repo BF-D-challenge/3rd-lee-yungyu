@@ -80,6 +80,17 @@ export function hashMatpinAccessToken(token: string): string {
   return createHash("sha256").update(token).digest("hex");
 }
 
+export function createMatpinShortLinkCode(senderScopedId: string): string {
+  return createHmac("sha256", requiredSecret("MATPIN_LINK_SECRET"))
+    .update(`matpin-short-link:${senderScopedId}`)
+    .digest("base64url")
+    .slice(0, 16);
+}
+
+export function hashMatpinShortLinkCode(code: string): string {
+  return createHash("sha256").update(code).digest("hex");
+}
+
 export function bearerToken(request: Request): string | null {
   const authorization = request.headers.get("authorization");
   return authorization?.startsWith("Bearer ") ? authorization.slice(7).trim() : null;

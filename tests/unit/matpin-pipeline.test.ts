@@ -16,9 +16,11 @@ import { parseInstagramEmbedSource } from "@/lib/matpin/reel-source";
 import { resolveMatpinPlaces } from "@/lib/matpin/place-resolver";
 import {
   createMatpinAccessToken,
+  createMatpinShortLinkCode,
   decryptMatpinValue,
   encryptMatpinValue,
   hashMatpinAccessToken,
+  hashMatpinShortLinkCode,
   hashMatpinSender,
   verifyMatpinAdminRequest,
   verifyMetaWebhookSignature,
@@ -97,6 +99,84 @@ describe("Meta Instagram webhook contract", () => {
     expect(messages[1].senderScopedId).toBe("sender-2");
   });
 
+  it("normalizes a shared feed post with a stable Instagram media key", () => {
+    const messages = normalizeMetaWebhookMessages(webhookBody({
+      attachments: [{
+        type: "share",
+        payload: { url: "https://www.instagram.com/p/Post_123/?utm_source=ig_web_copy_link" },
+      }],
+    }), "professional-account");
+
+    expect(messages).toHaveLength(1);
+    expect(messages[0]).toMatchObject({
+      reelId: "Post_123",
+      reelUrl: "https://www.instagram.com/p/Post_123/",
+      attachmentType: "share",
+    });
+  });
+
+  it("uses the Meta asset id as the stable key for a shared carousel preview", () => {
+    const messages = normalizeMetaWebhookMessages(webhookBody({
+      attachments: [{
+        type: "share",
+        payload: {
+          url: `https://lookaside.fbsbx.com/ig_messaging_cdn/?asset_id=17869495296426197&signature=${"x".repeat(5_000)}`,
+        },
+      }],
+    }), "professional-account");
+
+    expect(messages).toHaveLength(1);
+    expect(messages[0]).toMatchObject({
+      reelId: "17869495296426197",
+      reelUrl: null,
+      attachmentType: "share",
+    });
+  });
+
+  it.each(["image", "video"])("ignores directly attached %s media", (type) => {
+    expect(normalizeMetaWebhookMessages(webhookBody({
+      attachments: [{
+        type,
+        payload: { url: "https://scontent-icn1-1.xx.fbcdn.net/direct-media" },
+      }],
+    }), "professional-account")).toEqual([]);
+  });
+
+  it("ignores text-only direct messages", () => {
+    expect(normalizeMetaWebhookMessages(webhookBody({
+      text: "이 가게 저장해줘",
+      attachments: undefined,
+    }), "professional-account")).toEqual([]);
+  });
+
+  it.each([
+    ["post", "https://www.instagram.com/p/Post_123/?igsh=example", "Post_123"],
+    ["reel", "https://instagram.com/reel/Reel_123/?igsh=example", "Reel_123"],
+    ["legacy video", "https://www.instagram.com/tv/Tv_123/", "Tv_123"],
+  ])("normalizes a pasted Instagram %s URL", (_label, text, mediaId) => {
+    const messages = normalizeMetaWebhookMessages(webhookBody({
+      text,
+      attachments: undefined,
+    }), "professional-account");
+
+    expect(messages).toHaveLength(1);
+    expect(messages[0]).toMatchObject({
+      reelId: mediaId,
+      attachmentType: "share",
+    });
+  });
+
+  it.each([
+    "https://example.com/p/Post_123/",
+    "이 게시물 저장해줘 https://www.instagram.com/p/Post_123/",
+    "https://www.instagram.com/example-profile/",
+  ])("ignores unsupported pasted text or URL: %s", (text) => {
+    expect(normalizeMetaWebhookMessages(webhookBody({
+      text,
+      attachments: undefined,
+    }), "professional-account")).toEqual([]);
+  });
+
   it.each([
     { is_echo: true },
     { is_self: true },
@@ -130,6 +210,9 @@ describe("Matpin secrets and signature", () => {
     expect(decryptMatpinValue(encrypted)).toBe("instagram-scoped-user-1");
     expect(hashMatpinSender("instagram-scoped-user-1")).toMatch(/^[0-9a-f]{64}$/);
     expect(hashMatpinAccessToken(token)).toMatch(/^[0-9a-f]{64}$/);
+    const shortCode = createMatpinShortLinkCode("instagram-scoped-user-1");
+    expect(shortCode).toMatch(/^[A-Za-z0-9_-]{16}$/);
+    expect(hashMatpinShortLinkCode(shortCode)).toMatch(/^[0-9a-f]{64}$/);
   });
 
   it("allows a one-time admin token without exposing the personal map token", () => {
@@ -420,6 +503,102 @@ describe("Gemini input gate", () => {
       });
   });
 
+  it("analyzes the image preview of a shared feed post", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "gemini-test-key");
+    const geminiFetch = vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      model: "gemini-test-model",
+      usage: { total_input_tokens: 60, total_output_tokens: 20, total_tokens: 80 },
+      steps: [{
+        type: "model_output",
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            status: "resolved",
+            summary: "이미지에서 땀땀 강남본점을 확인했어요.",
+            places: [{
+              name: "땀땀",
+              branch: "강남본점",
+              menus: ["쌀국수"],
+              regionHints: ["강남역"],
+              confidence: 0.96,
+              evidence: [{ kind: "on_screen_text", text: "땀땀 강남본점", timestampSeconds: null }],
+            }],
+          }),
+        }],
+      }],
+    }), { status: 200, headers: { "content-type": "application/json" } }));
+    const download = vi.fn().mockResolvedValue({ bytes: Buffer.from("image"), mimeType: "image/jpeg" });
+    const analyzer = createGeminiReelAnalyzer({
+      download,
+      fetch: geminiFetch,
+      source: vi.fn().mockResolvedValue({
+        caption: null,
+        creatorComments: [],
+        videoUrl: null,
+        thumbnailUrl: "https://scontent-icn1-1.xx.fbcdn.net/post.jpg",
+        mediaUrls: ["https://scontent-icn1-1.xx.fbcdn.net/post.jpg"],
+      }),
+    });
+
+    await expect(analyzer.analyze({
+      mediaUrl: "https://www.instagram.com/p/Post_123/",
+      reelId: "Post_123",
+    })).resolves.toMatchObject({
+      analysis: { places: [{ name: "땀땀" }] },
+      metrics: { mediaBytes: 5, totalTokens: 80 },
+    });
+    expect(download).toHaveBeenCalledWith("https://scontent-icn1-1.xx.fbcdn.net/post.jpg");
+    const requestBody = JSON.parse(geminiFetch.mock.calls[0][1].body as string);
+    expect(requestBody.input[0]).toMatchObject({ type: "image", mime_type: "image/jpeg" });
+  });
+
+  it("analyzes up to three public carousel items in one Gemini request", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "gemini-test-key");
+    const geminiFetch = vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      steps: [{
+        type: "model_output",
+        content: [{
+          type: "text",
+          text: JSON.stringify({
+            status: "resolved",
+            summary: "캐러셀에서 식당을 확인했어요.",
+            places: [{
+              name: "땀땀",
+              branch: "강남본점",
+              menus: [],
+              regionHints: ["강남역"],
+              confidence: 0.95,
+              evidence: [{ kind: "on_screen_text", text: "땀땀 강남본점", timestampSeconds: null }],
+            }],
+          }),
+        }],
+      }],
+    }), { status: 200, headers: { "content-type": "application/json" } }));
+    const download = vi.fn().mockResolvedValue({ bytes: Buffer.from("image"), mimeType: "image/jpeg" });
+    const mediaUrls = [1, 2, 3, 4].map((index) => `https://scontent-icn1-1.xx.fbcdn.net/carousel-${index}.jpg`);
+    const analyzer = createGeminiReelAnalyzer({
+      download,
+      fetch: geminiFetch,
+      source: vi.fn().mockResolvedValue({
+        caption: null,
+        creatorComments: [],
+        videoUrl: null,
+        thumbnailUrl: mediaUrls[0],
+        mediaUrls,
+      }),
+    });
+
+    await analyzer.analyze({
+      mediaUrl: "https://www.instagram.com/p/Carousel_123/",
+      reelId: "Carousel_123",
+    });
+
+    expect(download).toHaveBeenCalledTimes(3);
+    const requestBody = JSON.parse(geminiFetch.mock.calls[0][1].body as string);
+    expect(requestBody.input.map((item: { type: string }) => item.type))
+      .toEqual(["image", "image", "image", "text"]);
+  });
+
   it("parses the public Instagram embed source without trusting arbitrary page scripts", () => {
     const embedded = JSON.stringify({
       gql_data: {
@@ -444,6 +623,7 @@ describe("Gemini input gate", () => {
         creatorComments: [],
         thumbnailUrl: null,
         videoUrl: "https://video.cdninstagram.com/reel.mp4",
+        mediaUrls: ["https://video.cdninstagram.com/reel.mp4"],
       },
     });
   });
@@ -480,6 +660,8 @@ describe("Gemini input gate", () => {
         caption: "강남 반차 코스 🏷 튜니니",
         creatorComments: ["첫 장소는 튜니니입니다."],
         videoUrl: "https://video.cdninstagram.com/reel.mp4",
+        thumbnailUrl: null,
+        mediaUrls: ["https://video.cdninstagram.com/reel.mp4"],
       }),
     });
 
@@ -548,5 +730,30 @@ describe("Matpin database boundary", () => {
     expect(sql).toContain("grant select, insert, update, delete on table public.matpin_saved_places to service_role");
     expect(sql).toContain("unique (sender_hash, reel_id)");
     expect(sql).toContain("media_url_ciphertext = null");
+  });
+
+  it("keeps permanent media analysis results server-only", () => {
+    const sql = readFileSync(
+      "supabase/migrations/20260809025141_add_matpin_media_cache_and_post_support.sql",
+      "utf8",
+    );
+    expect(sql).toContain("create table public.matpin_media_analysis_cache");
+    expect(sql).toContain("alter table public.matpin_media_analysis_cache enable row level security");
+    expect(sql).toContain("revoke all on table public.matpin_media_analysis_cache from anon, authenticated");
+    expect(sql).toContain("grant select, insert, update, delete on table public.matpin_media_analysis_cache to service_role");
+    expect(sql).not.toMatch(/\n\s*expires_at\s+timestamptz/u);
+    expect(sql).toContain("hit_count = hit_count + 1");
+  });
+
+  it("keeps short-link codes hashed and server-only", () => {
+    const sql = readFileSync(
+      "supabase/migrations/20260809070601_add_matpin_short_links.sql",
+      "utf8",
+    );
+    expect(sql).toContain("add column short_link_hash text");
+    expect(sql).toContain("create unique index matpin_instagram_users_short_link_hash_idx");
+    expect(sql).toContain("revoke all on function public.matpin_ingest_message");
+    expect(sql).toContain("grant execute on function public.matpin_ingest_message");
+    expect(sql).not.toContain("short_link_code");
   });
 });

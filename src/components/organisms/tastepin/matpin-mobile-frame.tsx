@@ -50,23 +50,23 @@ const aiReelThumbnails = [
 const scenes = [
   {
     eyebrow: "",
-    title: "맛집 릴스를\n역별로 모아드려요",
+    title: "맛집 게시물을\n역별로 모아드려요",
     description: "Instagram에서 matpin.kr로 보내면 가까운 역별 보관함에 저장해요.",
   },
   {
     eyebrow: "쌓여가는 저장 목록",
-    title: "저장한 릴스는\n금세 쌓이니까",
+    title: "저장한 게시물은\n금세 쌓이니까",
     description: "다시 찾을 때는 가게 이름과 위치를 또 확인해야 해요.",
   },
   {
-    eyebrow: "Instagram 릴스",
-    title: "다시 가고 싶은\n릴스를 고르세요",
-    description: "저장할 맛집 릴스 하나에서 시작해요.",
+    eyebrow: "Instagram 게시물",
+    title: "다시 가고 싶은\n게시물을 고르세요",
+    description: "저장할 맛집 게시물 하나에서 시작해요.",
   },
   {
     eyebrow: "공유하기",
     title: "공유 버튼을\n누르세요",
-    description: "릴스 오른쪽의 종이비행기 버튼을 누르면 돼요.",
+    description: "게시물 오른쪽의 종이비행기 버튼을 누르면 돼요.",
   },
   {
     eyebrow: "공유할 사람",
@@ -75,28 +75,28 @@ const scenes = [
   },
   {
     eyebrow: "역별 자동 정리",
-    title: "릴스가 가까운\n역에 저장돼요",
+    title: "게시물가 가까운\n역에 저장돼요",
     description: "장소를 확인해 가장 가까운 역 보관함에 연결해요.",
   },
   {
     eyebrow: "내 보관함",
     title: "보낼수록\n역별로 쌓여요",
-    description: "같은 Instagram 계정으로 보낸 릴스가 하나의 보관함에 모여요.",
+    description: "같은 Instagram 계정으로 보낸 게시물가 하나의 보관함에 모여요.",
   },
   {
     eyebrow: "Instagram DM",
     title: "저장될 때마다\nDM이 도착해요",
-    description: "각 릴스의 역별 저장 결과와 보관함 링크를 보내드려요.",
+    description: "각 게시물의 역별 저장 결과와 보관함 링크를 보내드려요.",
   },
 ] as const;
 
 const scatteredReels = [
-  { x: -122, y: -82, r: -12, ox: -102, oy: -118, or: -7, label: "껍데기 릴스", hook: "불판 위 바삭\n껍데기 한입", effect: "contrast(1.14) saturate(1.18) brightness(1.03) sepia(0.04)", src: aiReelThumbnails[0] },
-  { x: 110, y: -105, r: 10, ox: 62, oy: -118, or: 5, label: "딸기 케이크 릴스", hook: "딸기 한 조각 가득\n시즌 케이크", effect: "contrast(1.06) saturate(0.96) brightness(1.08)", src: aiReelThumbnails[1] },
-  { x: -142, y: 92, r: 8, ox: -52, oy: 62, or: -4, label: "칼국수 릴스", hook: "국물까지 뜨끈한\n칼국수 한 그릇", effect: "contrast(1.08) saturate(0.9) brightness(1.05)", src: aiReelThumbnails[2] },
-  { x: 124, y: 76, r: -9, ox: 45, oy: 64, or: 4, label: "떡볶이 릴스", hook: "쌀떡에 양념 가득\n즉석 떡볶이", effect: "contrast(1.14) saturate(1.2) brightness(1.03)", src: aiReelThumbnails[3] },
-  { x: -28, y: 148, r: 7, ox: 4, oy: 76, or: 2, label: "치즈 닭갈비 릴스", hook: "치즈가 끝없이\n늘어나는 닭갈비", effect: "contrast(1.12) saturate(1.16) brightness(1.04)", src: aiReelThumbnails[4] },
-  { x: 12, y: -166, r: -4, ox: 0, oy: -72, or: -2, label: "등갈비 릴스", hook: "양념이 제대로 밴\n매운 등갈비", effect: "contrast(1.16) saturate(1.22) brightness(1.02)", src: aiReelThumbnails[5] },
+  { x: -122, y: -82, r: -12, ox: -102, oy: -118, or: -7, label: "껍데기 게시물", hook: "불판 위 바삭\n껍데기 한입", effect: "contrast(1.14) saturate(1.18) brightness(1.03) sepia(0.04)", src: aiReelThumbnails[0] },
+  { x: 110, y: -105, r: 10, ox: 62, oy: -118, or: 5, label: "딸기 케이크 게시물", hook: "딸기 한 조각 가득\n시즌 케이크", effect: "contrast(1.06) saturate(0.96) brightness(1.08)", src: aiReelThumbnails[1] },
+  { x: -142, y: 92, r: 8, ox: -52, oy: 62, or: -4, label: "칼국수 게시물", hook: "국물까지 뜨끈한\n칼국수 한 그릇", effect: "contrast(1.08) saturate(0.9) brightness(1.05)", src: aiReelThumbnails[2] },
+  { x: 124, y: 76, r: -9, ox: 45, oy: 64, or: 4, label: "떡볶이 게시물", hook: "쌀떡에 양념 가득\n즉석 떡볶이", effect: "contrast(1.14) saturate(1.2) brightness(1.03)", src: aiReelThumbnails[3] },
+  { x: -28, y: 148, r: 7, ox: 4, oy: 76, or: 2, label: "치즈 닭갈비 게시물", hook: "치즈가 끝없이\n늘어나는 닭갈비", effect: "contrast(1.12) saturate(1.16) brightness(1.04)", src: aiReelThumbnails[4] },
+  { x: 12, y: -166, r: -4, ox: 0, oy: -72, or: -2, label: "등갈비 게시물", hook: "양념이 제대로 밴\n매운 등갈비", effect: "contrast(1.16) saturate(1.22) brightness(1.02)", src: aiReelThumbnails[5] },
 ] as const;
 
 const heroStationGroups = [
@@ -105,7 +105,7 @@ const heroStationGroups = [
 ] as const;
 
 const dockItems = [
-  { label: "릴스 보내기", scene: 2, Icon: Send },
+  { label: "게시물 보내기", scene: 2, Icon: Send },
   { label: "장소 확인", scene: 5, Icon: Search },
   { label: "역별 보관함", scene: 6, Icon: MapPin },
 ] as const;
@@ -258,16 +258,16 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
               <div className={styles.desktopBrand} aria-label="matpin">
                 matpin<span aria-hidden="true">.</span>
               </div>
-              <p className={styles.desktopEyebrow}>Instagram 맛집 릴스 정리</p>
+              <p className={styles.desktopEyebrow}>Instagram 맛집 게시물 정리</p>
               <h1>보내기만 하면,<br />맛집이 역별로 모여요</h1>
               <p className={styles.desktopDescription}>
-                Instagram 공유 화면에서 matpin.kr를 선택하세요. 같은 계정으로 보낸 릴스를 가까운 역별로 정리하고, 저장 결과를 DM으로 알려드려요.
+                Instagram 공유 화면에서 matpin.kr를 선택하세요. 같은 계정으로 보낸 게시물을 가까운 역별로 정리하고, 저장 결과를 DM으로 알려드려요.
               </p>
 
               <ol className={styles.desktopProofs}>
                 <li>
                   <span><Send size={17} aria-hidden="true" /></span>
-                  <div><strong>릴스 보내기</strong><small>공유 대상에서 matpin.kr를 선택해요.</small></div>
+                  <div><strong>게시물 보내기</strong><small>공유 대상에서 matpin.kr를 선택해요.</small></div>
                 </li>
                 <li>
                   <span><MapPin size={17} aria-hidden="true" /></span>
@@ -342,7 +342,7 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
                       </header>
                       <div className={styles.heroPhoneBody} data-testid="hero-station-library">
                         <div className={styles.heroLibraryIntro}>
-                          <p>내 맛집 릴스 보관함</p>
+                          <p>내 맛집 게시물 보관함</p>
                           <h3>저장한 역</h3>
                           <small>역 3개, 영상 12개</small>
                         </div>
@@ -396,7 +396,7 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
                       <span className={styles.igReelShade} />
                       <header className={styles.igReelTop}>
                         <ArrowLeft size={19} />
-                        <strong>릴스</strong>
+                        <strong>게시물</strong>
                         <Camera size={19} />
                       </header>
                       <div className={styles.igReelRail}>
@@ -434,7 +434,7 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
                       <span>m</span>
                       <div>
                         <strong>matpin.kr</strong>
-                        <small>릴스 저장 알림 3개</small>
+                        <small>게시물 저장 알림 3개</small>
                       </div>
                     </header>
                     <div className={styles.dmMessages}>
@@ -464,7 +464,7 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
                   <div className={styles.dmCollectionSummary} data-testid="dm-collection-summary">
                     <div>
                       <small>내 역별 보관함</small>
-                      <strong>역 3개, 릴스 12개</strong>
+                      <strong>역 3개, 게시물 12개</strong>
                     </div>
                     <span>보관함 열기 <ExternalLink size={11} /></span>
                   </div>
@@ -476,7 +476,7 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
                     </div>
                     <div className={styles.productPhoneBody}>
                       <p>저장한 역</p>
-                      <h3>역삼역 <small>릴스 3개</small></h3>
+                      <h3>역삼역 <small>게시물 3개</small></h3>
                       <div className={styles.productReelGrid}>
                         {[3, 0, 2].map((reelIndex, index) => (
                           <div
@@ -531,7 +531,7 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
                           style={{ objectPosition: `${30 + index * 9}% center` }}
                         />
                         <span className={styles.reelOverlay} />
-                        <span className={styles.reelBadge}><Camera size={10} /> 릴스</span>
+                        <span className={styles.reelBadge}><Camera size={10} /> 게시물</span>
                         <strong className={styles.reelHook}>
                           {reel.hook.split("\n").map((line) => <span key={line}>{line}</span>)}
                         </strong>
@@ -569,8 +569,8 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
                       </div>
                       <div className={styles.stationSaveCopy}>
                         <span className={styles.stationSavedBadge}><Check size={13} /> 저장 완료</span>
-                        <strong>이 릴스를<br />역삼역에 넣었어요</strong>
-                        <small>역삼역, 저장한 릴스 1개</small>
+                        <strong>이 게시물을<br />역삼역에 넣었어요</strong>
+                        <small>역삼역, 저장한 게시물 1개</small>
                       </div>
                     </div>
                   </div>

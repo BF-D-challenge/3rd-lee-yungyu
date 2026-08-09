@@ -58,7 +58,7 @@ export function useMatpinLibrary(): {
       setState("ready");
     }).catch((reason: unknown) => {
       if (reason instanceof DOMException && reason.name === "AbortError") return;
-      setError("내 맛집 릴스를 불러오지 못했어요. 잠시 후 다시 열어주세요.");
+      setError("내 맛집 게시물을 불러오지 못했어요. 잠시 후 다시 열어주세요.");
       setState("error");
     });
     return () => controller.abort();

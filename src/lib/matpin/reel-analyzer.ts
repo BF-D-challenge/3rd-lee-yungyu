@@ -20,6 +20,9 @@ const MAX_INLINE_BYTES = 14 * 1024 * 1024;
 const MEDIA_TIMEOUT_MS = 15_000;
 const GEMINI_TIMEOUT_MS = 35_000;
 const SUPPORTED_MIME_TYPES = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
   "video/mp4",
   "video/mpeg",
   "video/mpg",
@@ -50,16 +53,16 @@ const geminiInteractionSchema = z.object({
   })),
 });
 
-const extractionPrompt = `당신은 한국 맛집 Instagram Reel에서 지도 검색에 필요한 장소 단서만 찾는 추출기입니다.
+const extractionPrompt = `당신은 한국 맛집 Instagram 게시물에서 지도 검색에 필요한 장소 단서만 찾는 추출기입니다.
 
-릴스 캡션, 릴스 작성자의 댓글, 영상의 음성, 화면 글자, 간판처럼 직접 확인되는 정보만 사용하세요.
+게시물 캡션, 작성자의 댓글, 이미지 글자, 영상의 음성, 화면 글자, 간판처럼 직접 확인되는 정보만 사용하세요.
 장소 단서는 캡션, 작성자 댓글, 영상 순서로 확인하세요.
 작성자 댓글이 고정 댓글인지 API에서 확인할 수 없는 경우에는 creator_comment로만 기록하세요.
 식당 이름을 추측하거나 비슷한 유명 식당으로 보완하지 마세요.
 식당 이름을 직접 확인하지 못하면 status를 insufficient로 하고 places는 빈 배열로 반환하세요.
-주소, 좌표, 지점은 영상에서 직접 확인되지 않으면 만들지 마세요.
+주소, 좌표, 지점은 게시물에서 직접 확인되지 않으면 만들지 마세요.
 메뉴와 지역도 직접 확인한 것만 넣고, 모르는 값은 빈 배열 또는 null로 두세요.
-한 영상에 여러 식당이 명확히 나오면 최대 3곳까지만 반환하세요.
+한 게시물에 여러 식당이 명확히 나오면 최대 3곳까지만 반환하세요.
 evidence.text에는 판단 근거가 된 짧은 음성 또는 화면 글자를 적고, 확인 가능하면 시점을 적으세요.
 summary는 사용자에게 보여줄 짧고 정직한 한국어 문장으로 작성하세요.`;
 
@@ -172,7 +175,7 @@ async function downloadMedia(mediaUrl: string): Promise<{ bytes: Buffer; mimeTyp
     const response = await fetch(url, {
       redirect: "manual",
       signal: AbortSignal.timeout(MEDIA_TIMEOUT_MS),
-      headers: { accept: "video/*" },
+      headers: { accept: "image/*,video/*" },
       cache: "no-store",
     });
 
@@ -231,9 +234,9 @@ export function createGeminiReelAnalyzer(dependencies: {
         : loadInstagramReelSource(mediaUrl, fetchImpl));
 
       const sourceSections = [
-        source?.caption ? `릴스 캡션:\n${source.caption}` : "",
+        source?.caption ? `게시물 캡션:\n${source.caption}` : "",
         source?.creatorComments.length
-          ? `릴스 작성자 댓글:\n${source.creatorComments.map((comment, index) => `${index + 1}. ${comment}`).join("\n")}`
+          ? `게시물 작성자 댓글:\n${source.creatorComments.map((comment, index) => `${index + 1}. ${comment}`).join("\n")}`
           : "",
       ].filter(Boolean);
       const sourcePrompt = sourceSections.length > 0
@@ -284,15 +287,27 @@ export function createGeminiReelAnalyzer(dependencies: {
 
       if (sourceSections.length > 0) {
         const textResult = await runGemini([{ type: "text", text: sourcePrompt }], 0);
-        if (textResult.analysis.status === "resolved" || !source?.videoUrl) return textResult;
+        if (textResult.analysis.status === "resolved" || source?.mediaUrls.length === 0) return textResult;
       }
 
-      const videoUrl = source?.videoUrl ?? mediaUrl;
-      const { bytes, mimeType } = await (dependencies.download ?? downloadMedia)(videoUrl);
-      return runGemini([
-        { type: "video", data: bytes.toString("base64"), mime_type: mimeType },
-        { type: "text", text: sourcePrompt },
-      ], bytes.byteLength);
+      const downloadableUrls = source?.mediaUrls.length
+        ? source.mediaUrls
+        : [source?.videoUrl ?? source?.thumbnailUrl ?? mediaUrl];
+      const mediaInputs: Array<Record<string, string>> = [];
+      let totalMediaBytes = 0;
+      for (const downloadableUrl of downloadableUrls.slice(0, 3)) {
+        const { bytes, mimeType } = await (dependencies.download ?? downloadMedia)(downloadableUrl);
+        totalMediaBytes += bytes.byteLength;
+        if (totalMediaBytes > MAX_INLINE_BYTES) {
+          throw new MatpinAnalysisError("media_too_large", false);
+        }
+        mediaInputs.push({
+          type: mimeType.startsWith("image/") ? "image" : "video",
+          data: bytes.toString("base64"),
+          mime_type: mimeType,
+        });
+      }
+      return runGemini([...mediaInputs, { type: "text", text: sourcePrompt }], totalMediaBytes);
     },
   };
 }

@@ -2,7 +2,10 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
   claim: vi.fn(),
+  claimCache: vi.fn(),
   complete: vi.fn(),
+  completeCache: vi.fn(),
+  releaseCache: vi.fn(),
   saveMany: vi.fn(),
   retry: vi.fn(),
   analyze: vi.fn(),
@@ -11,8 +14,11 @@ const mocks = vi.hoisted(() => ({
 }));
 
 vi.mock("@/lib/matpin/store", () => ({
+  claimMatpinMediaAnalysis: mocks.claimCache,
   claimNextMatpinMessage: mocks.claim,
   completeMatpinAnalysis: mocks.complete,
+  completeMatpinMediaAnalysis: mocks.completeCache,
+  releaseMatpinMediaAnalysis: mocks.releaseCache,
   saveMatpinPlaces: mocks.saveMany,
   retryMatpinMessage: mocks.retry,
 }));
@@ -36,6 +42,7 @@ const job = {
   senderHash: "a".repeat(64),
   senderScopedId: "sender-1",
   accessToken: "access-token",
+  shortLinkCode: "AbCdEfGhIjKlMnOp",
   reelId: "DbTBhcZNY1b",
   reelUrl: "https://www.instagram.com/reel/DbTBhcZNY1b/",
   attachmentType: "ig_reel" as const,
@@ -70,7 +77,10 @@ beforeEach(() => {
   vi.stubEnv("MATPIN_PUBLIC_APP_URL", "https://matpin.kr");
   vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "live");
   mocks.claim.mockReset().mockResolvedValueOnce(job).mockResolvedValueOnce(null);
+  mocks.claimCache.mockReset().mockResolvedValue({ state: "owner" });
   mocks.complete.mockReset().mockResolvedValue(undefined);
+  mocks.completeCache.mockReset().mockResolvedValue(undefined);
+  mocks.releaseCache.mockReset().mockResolvedValue(undefined);
   mocks.saveMany.mockReset().mockResolvedValue(1);
   mocks.retry.mockReset().mockResolvedValue("retry");
   mocks.analyze.mockReset().mockResolvedValue({
@@ -115,13 +125,17 @@ describe("Matpin worker", () => {
     }));
     expect(mocks.send).toHaveBeenCalledWith(
       "sender-1",
-      expect.stringContaining("https://matpin.kr/matpin/saved#token=access-token"),
+      expect.stringContaining("https://matpin.kr/s/AbCdEfGhIjKlMnOp"),
     );
     expect(mocks.complete).toHaveBeenCalledWith(expect.objectContaining({
       status: "saved",
       candidates: [candidate],
       metrics,
       replied: true,
+    }));
+    expect(mocks.completeCache).toHaveBeenCalledWith(expect.objectContaining({
+      mediaKey: job.reelId,
+      candidates: [candidate],
     }));
   });
 

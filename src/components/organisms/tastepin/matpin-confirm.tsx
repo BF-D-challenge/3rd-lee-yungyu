@@ -43,7 +43,7 @@ export function MatpinConfirm() {
       setMessage(parsed.data);
       setState(parsed.data.status === "failed" || parsed.data.status === "deleted" ? "error" : "ready");
       if (parsed.data.status === "failed" || parsed.data.status === "deleted") {
-        setError("더 이상 수정할 수 없는 릴스예요. Instagram에서 릴스를 다시 보내주세요.");
+        setError("더 이상 수정할 수 없는 게시물예요. Instagram에서 게시물을 다시 보내주세요.");
       }
     }).catch((reason: unknown) => {
       if (reason instanceof DOMException && reason.name === "AbortError") return;
@@ -81,7 +81,7 @@ export function MatpinConfirm() {
       </header>
       <section className={styles.content} aria-live="polite">
         {state === "loading" ? (
-          <><LoaderCircle className={styles.spinner} aria-hidden="true" /><p className={styles.message}>받은 릴스의 장소 후보를 불러오고 있어요.</p></>
+          <><LoaderCircle className={styles.spinner} aria-hidden="true" /><p className={styles.message}>받은 게시물의 장소 후보를 불러오고 있어요.</p></>
         ) : null}
 
         {state === "ready" && message ? (
@@ -118,8 +118,8 @@ export function MatpinConfirm() {
           <>
             <p className={styles.eyebrow}><Check aria-hidden="true" size={16} /> 저장 완료</p>
             <h1>역별 보관함에<br />정리했어요.</h1>
-            <p className={styles.lead}>같은 계정으로 릴스를 더 보내면 가까운 역에 계속 쌓여요.</p>
-            <Link className={styles.primary} href={savedHref}>내 릴스 보관함 보기 <ArrowRight aria-hidden="true" size={18} /></Link>
+            <p className={styles.lead}>같은 계정으로 게시물을 더 보내면 가까운 역에 계속 쌓여요.</p>
+            <Link className={styles.primary} href={savedHref}>내 게시물 보관함 보기 <ArrowRight aria-hidden="true" size={18} /></Link>
           </>
         ) : null}
 

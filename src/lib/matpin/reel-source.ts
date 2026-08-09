@@ -1,7 +1,7 @@
 import { lookup } from "node:dns/promises";
 import { isIP } from "node:net";
 import { z } from "zod";
-import { normalizeInstagramReelUrl } from "@/lib/matpick-dm-contract";
+import { normalizeInstagramMediaUrl } from "@/lib/matpick-dm-contract";
 import { MatpinAnalysisError } from "@/lib/matpin/analysis-error";
 
 const EMBED_TIMEOUT_MS = 12_000;
@@ -24,6 +24,14 @@ const embeddedMediaSchema = z.object({
       node: z.object({ text: z.string() }),
     })).max(4),
   }).optional(),
+  edge_sidecar_to_children: z.object({
+    edges: z.array(z.object({
+      node: z.object({
+        video_url: z.string().url().optional(),
+        display_url: z.string().url().optional(),
+      }).passthrough(),
+    })).max(20),
+  }).optional(),
 }).passthrough();
 
 const commentsResponseSchema = z.object({
@@ -41,6 +49,7 @@ export type MatpinReelSource = {
   creatorComments: string[];
   videoUrl: string | null;
   thumbnailUrl: string | null;
+  mediaUrls: string[];
 };
 
 function isPrivateIp(address: string): boolean {
@@ -173,6 +182,15 @@ export function parseInstagramEmbedSource(html: string): {
       const media = findEmbeddedMedia(JSON.parse(objectText));
       if (!media) continue;
       const caption = media.edge_media_to_caption?.edges[0]?.node.text.trim() || null;
+      const mediaUrls = media.edge_sidecar_to_children?.edges
+        .map(({ node }) => node.video_url ?? node.display_url)
+        .filter((value): value is string => Boolean(value))
+        .slice(0, 3)
+        ?? [];
+      if (mediaUrls.length === 0) {
+        const primaryMediaUrl = media.video_url ?? media.display_url ?? media.thumbnail_src;
+        if (primaryMediaUrl) mediaUrls.push(primaryMediaUrl);
+      }
       return {
         mediaId: media.id,
         ownerUsername: media.owner?.username?.trim() || null,
@@ -181,6 +199,7 @@ export function parseInstagramEmbedSource(html: string): {
           creatorComments: [],
           videoUrl: media.video_url ?? null,
           thumbnailUrl: media.display_url ?? media.thumbnail_src ?? null,
+          mediaUrls,
         },
       };
     } catch {
@@ -225,7 +244,7 @@ async function loadInstagramEmbed(
   reelUrl: string,
   fetchImpl: typeof fetch = fetch,
 ): Promise<ReturnType<typeof parseInstagramEmbedSource>> {
-  const normalized = normalizeInstagramReelUrl(reelUrl);
+  const normalized = normalizeInstagramMediaUrl(reelUrl);
   if (!normalized) return null;
   const url = new URL(normalized);
   await validatePublicInstagramHost(url.hostname);
