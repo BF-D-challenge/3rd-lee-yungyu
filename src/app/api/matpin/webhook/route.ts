@@ -3,10 +3,18 @@ import {
   normalizeMetaWebhookGuidanceRecipients,
   normalizeMetaWebhookMessages,
 } from "@/lib/matpin/contract";
-import { MATPIN_USAGE_GUIDANCE } from "@/lib/matpin/guidance";
+import {
+  buildMatpinGuidanceReply,
+  buildMatpinReceiptReply,
+  getMatpinMediaKind,
+} from "@/lib/matpin/conversation-copy";
 import { sendMatpinInstagramMessage } from "@/lib/matpin/instagram-send";
 import { verifyMetaWebhookSignature, verifyMetaWebhookToken } from "@/lib/matpin/security";
-import { ingestMatpinMessage } from "@/lib/matpin/store";
+import {
+  ingestMatpinMessage,
+  markMatpinMessageAcknowledged,
+  readMatpinConversationContext,
+} from "@/lib/matpin/store";
 import { processMatpinQueue } from "@/lib/matpin/worker";
 
 export const runtime = "nodejs";
@@ -65,9 +73,35 @@ export async function POST(request: Request) {
 
   try {
     await Promise.all(guidanceRecipients.map((recipient) =>
-      sendMatpinInstagramMessage(recipient.senderScopedId, MATPIN_USAGE_GUIDANCE)
+      sendMatpinInstagramMessage(
+        recipient.senderScopedId,
+        buildMatpinGuidanceReply(recipient.reason),
+      )
     ));
     const results = await Promise.all(messages.map((message) => ingestMatpinMessage(message)));
+    await Promise.all(results.map(async (result, index) => {
+      const message = messages[index];
+      if (
+        !message
+        || !result.messageId
+        || result.acknowledged === true
+        || result.replyRequired === false
+      ) return;
+
+      const context = await readMatpinConversationContext({
+        senderScopedId: message.senderScopedId,
+        reelId: message.reelId,
+      });
+      await sendMatpinInstagramMessage(
+        message.senderScopedId,
+        buildMatpinReceiptReply({
+          mediaKind: getMatpinMediaKind(message),
+          isReturningUser: context.inboundMessageCount > 1,
+          alreadySavedMedia: context.hasSavedMedia,
+        }),
+      );
+      await markMatpinMessageAcknowledged(result.messageId);
+    }));
     const accepted = results.filter((result) => result.accepted).length;
     if (accepted > 0) {
       after(async () => {
@@ -83,6 +117,9 @@ export async function POST(request: Request) {
       accepted,
       duplicates: results.filter((result) => result.duplicate).length,
       guidanceSent: guidanceRecipients.length,
+      receiptsSent: results.filter((result) =>
+        result.messageId && result.acknowledged !== true && result.replyRequired !== false
+      ).length,
     });
   } catch (error) {
     console.error("[matpin-webhook] ingest_failed", error instanceof Error ? error.message : "unknown_error");

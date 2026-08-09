@@ -8,6 +8,7 @@ const mocks = vi.hoisted(() => ({
   completeCache: vi.fn(),
   releaseCache: vi.fn(),
   recordUsage: vi.fn(),
+  readContext: vi.fn(),
   resolvePlaces: vi.fn(),
   retryMessage: vi.fn(),
   savePlaces: vi.fn(),
@@ -38,6 +39,7 @@ vi.mock("@/lib/matpin/store", () => ({
   completeMatpinMediaAnalysis: mocks.completeCache,
   releaseMatpinMediaAnalysis: mocks.releaseCache,
   recordMatpinUsageEvent: mocks.recordUsage,
+  readMatpinConversationContext: mocks.readContext,
   retryMatpinMessage: mocks.retryMessage,
   saveMatpinPlaces: mocks.savePlaces,
 }));
@@ -85,6 +87,19 @@ describe("Matpin permanent media analysis cache", () => {
       candidates: [candidate],
     });
     mocks.savePlaces.mockResolvedValue(1);
+    mocks.readContext
+      .mockResolvedValueOnce({
+        knownUser: true,
+        inboundMessageCount: 1,
+        savedPlaceCount: 0,
+        hasSavedMedia: false,
+      })
+      .mockResolvedValue({
+        knownUser: true,
+        inboundMessageCount: 1,
+        savedPlaceCount: 1,
+        hasSavedMedia: false,
+      });
     mocks.sendMessage.mockResolvedValue(undefined);
     mocks.completeAnalysis.mockResolvedValue(undefined);
 
@@ -101,7 +116,7 @@ describe("Matpin permanent media analysis cache", () => {
     }));
     expect(mocks.sendMessage).toHaveBeenCalledWith(
       "sender-1",
-      expect.stringContaining("게시물에서 찾은 장소"),
+      expect.stringContaining("첫 장소를 저장했습니다"),
     );
   });
 
@@ -154,6 +169,19 @@ describe("Matpin permanent media analysis cache", () => {
     mocks.recordUsage.mockResolvedValue(undefined);
     mocks.completeCache.mockResolvedValue(undefined);
     mocks.savePlaces.mockResolvedValue(1);
+    mocks.readContext
+      .mockResolvedValueOnce({
+        knownUser: true,
+        inboundMessageCount: 1,
+        savedPlaceCount: 0,
+        hasSavedMedia: false,
+      })
+      .mockResolvedValue({
+        knownUser: true,
+        inboundMessageCount: 1,
+        savedPlaceCount: 1,
+        hasSavedMedia: false,
+      });
     mocks.sendMessage.mockResolvedValue(undefined);
     mocks.completeAnalysis.mockResolvedValue(undefined);
 

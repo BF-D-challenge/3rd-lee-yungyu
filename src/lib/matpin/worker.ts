@@ -1,5 +1,11 @@
 import { sendMatpinInstagramMessage } from "@/lib/matpin/instagram-send";
 import type { MatpinPlaceCandidate } from "@/lib/matpin/contract";
+import {
+  buildMatpinNoPlaceReply,
+  buildMatpinSavedReply,
+  buildMatpinUnsupportedMediaReply,
+  getMatpinMediaKind,
+} from "@/lib/matpin/conversation-copy";
 import { resolveMatpinPlacesWithMetrics } from "@/lib/matpin/place-resolver";
 import {
   createGeminiReelAnalyzer,
@@ -13,6 +19,7 @@ import {
   completeMatpinMediaAnalysis,
   releaseMatpinMediaAnalysis,
   recordMatpinUsageEvent,
+  readMatpinConversationContext,
   retryMatpinMessage,
   saveMatpinPlaces,
   type MatpinMediaAnalysisCacheClaim,
@@ -54,6 +61,13 @@ async function processOneMatpinMessage() {
   let ownsCache = false;
 
   try {
+    const mediaKind = getMatpinMediaKind(job);
+    const initialContext = job.replyRequired
+      ? await readMatpinConversationContext({
+          senderScopedId: job.senderScopedId,
+          reelId: job.reelId,
+        })
+      : null;
     let cacheClaim: MatpinMediaAnalysisCacheClaim = await claimMatpinMediaAnalysis(job.reelId);
     for (let attempt = 0; cacheClaim.state === "pending" && attempt < CACHE_WAIT_ATTEMPTS; attempt += 1) {
       await new Promise((resolve) => setTimeout(resolve, CACHE_WAIT_INTERVAL_MS));
@@ -126,11 +140,19 @@ async function processOneMatpinMessage() {
       });
       const mapUrl = publicUrl(`/s/${job.shortLinkCode}`);
       if (job.replyRequired) {
+        const finalContext = await readMatpinConversationContext({
+          senderScopedId: job.senderScopedId,
+          reelId: job.reelId,
+        });
         await sendMatpinInstagramMessage(
           job.senderScopedId,
-          candidates.length === 1
-            ? `게시물에서 찾은 장소를 가까운 역 보관함에 저장했어요.\n${candidates[0].name}\n${mapUrl}`
-            : `게시물에서 찾은 ${candidates.length}곳을 가까운 역별 보관함에 저장했어요.\n${mapUrl}`,
+          buildMatpinSavedReply({
+            candidates,
+            totalSavedPlaceCount: finalContext.savedPlaceCount,
+            isFirstSavedPlace: (initialContext?.savedPlaceCount ?? 0) === 0,
+            alreadySavedMedia: initialContext?.hasSavedMedia ?? false,
+            mapUrl,
+          }),
         );
       }
       await completeMatpinAnalysis({
@@ -147,7 +169,7 @@ async function processOneMatpinMessage() {
     if (job.replyRequired) {
       await sendMatpinInstagramMessage(
         job.senderScopedId,
-        "게시물에서 식당 이름을 확인하지 못했어요. 식당 이름이나 지역이 보이는 다른 공개 게시물을 보내주세요.",
+        buildMatpinNoPlaceReply(mediaKind),
       );
     }
     await completeMatpinAnalysis({
@@ -178,7 +200,7 @@ async function processOneMatpinMessage() {
         if (job.replyRequired) {
           await sendMatpinInstagramMessage(
             job.senderScopedId,
-            "이 게시물은 아직 자동으로 분석할 수 없어요. 다른 공개 맛집 게시물을 보내주세요.",
+            buildMatpinUnsupportedMediaReply(getMatpinMediaKind(job)),
           );
         }
         await completeMatpinAnalysis({

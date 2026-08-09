@@ -49,9 +49,23 @@ export const matpinInboundMessageSchema = z.object({
 });
 export type MatpinInboundMessage = z.infer<typeof matpinInboundMessageSchema>;
 
+export const matpinGuidanceReasonSchema = z.enum([
+  "greeting",
+  "appreciation",
+  "help",
+  "direct_image",
+  "direct_video",
+  "external_link",
+  "instagram_profile",
+  "plain_text",
+  "unsupported_attachment",
+]);
+export type MatpinGuidanceReason = z.infer<typeof matpinGuidanceReasonSchema>;
+
 export type MatpinGuidanceRecipient = {
   metaMessageId: string;
   senderScopedId: string;
+  reason: MatpinGuidanceReason;
 };
 
 export const matpinEvidenceSchema = z.object({
@@ -159,6 +173,31 @@ function storedAttachmentType(value: string): MatpinAttachmentType | null {
   return parsed.success ? parsed.data : null;
 }
 
+function guidanceReason(message: z.infer<typeof metaMessageSchema>): MatpinGuidanceReason {
+  const attachmentTypes = new Set(message.attachments?.map((item) => item.type) ?? []);
+  if (attachmentTypes.has("image")) return "direct_image";
+  if (attachmentTypes.has("video")) return "direct_video";
+  if (attachmentTypes.size > 0) return "unsupported_attachment";
+
+  const text = message.text?.trim() ?? "";
+  if (/^(안녕|안녕하세요|반가워|hello\b|hi\b)/i.test(text)) return "greeting";
+  if (/(고마워|고맙|감사|신기|대박|좋네요|좋아요|유용|멋지)/i.test(text)) return "appreciation";
+  if (/(어떻게|사용법|사용 방법|도움|뭘 보내|뭐 보내|지원|되나요|방법)/i.test(text)) return "help";
+
+  const urlMatch = text.match(/https?:\/\/[^\s]+/i)?.[0];
+  if (urlMatch) {
+    try {
+      const url = new URL(urlMatch);
+      if (/(^|\.)instagram\.com$/i.test(url.hostname)) return "instagram_profile";
+    } catch {
+      // 유효하지 않은 URL은 일반 글로 안내한다.
+    }
+    return "external_link";
+  }
+
+  return "plain_text";
+}
+
 export function normalizeMetaWebhookMessages(
   payload: unknown,
   expectedAccountId: string,
@@ -239,6 +278,7 @@ export function normalizeMetaWebhookGuidanceRecipients(
       recipients.set(event.sender.id, {
         metaMessageId: message.mid,
         senderScopedId: event.sender.id,
+        reason: guidanceReason(message),
       });
     }
   }

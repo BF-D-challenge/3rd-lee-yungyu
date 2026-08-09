@@ -27,6 +27,15 @@ const ingestResultSchema = z.object({
   duplicate: z.boolean(),
   messageId: z.string().uuid().optional(),
   queueMessageId: z.number().int().optional(),
+  acknowledged: z.boolean().optional(),
+  replyRequired: z.boolean().optional(),
+});
+
+const conversationContextSchema = z.object({
+  knownUser: z.boolean(),
+  inboundMessageCount: z.number().int().nonnegative(),
+  savedPlaceCount: z.number().int().nonnegative(),
+  hasSavedMedia: z.boolean(),
 });
 
 const requeueResultSchema = z.object({
@@ -119,6 +128,7 @@ export type MatpinClaimedJob = {
 };
 
 export type MatpinMediaAnalysisCacheClaim = z.infer<typeof mediaAnalysisCacheClaimSchema>;
+export type MatpinConversationContext = z.infer<typeof conversationContextSchema>;
 
 export function getMatpinServerClient(): SupabaseClient {
   const url = process.env.SUPABASE_URL?.trim() || process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
@@ -175,6 +185,31 @@ export async function ingestMatpinBackfillMessage(
   });
   if (error) throw new Error(`matpin_backfill_ingest_failed:${error.message}`);
   return ingestResultSchema.parse(data);
+}
+
+export async function readMatpinConversationContext(input: {
+  senderScopedId: string;
+  reelId?: string | null;
+}): Promise<MatpinConversationContext> {
+  const senderScopedId = z.string().trim().min(1).max(200).parse(input.senderScopedId);
+  const reelId = z.string().trim().min(1).max(500).nullable().parse(input.reelId ?? null);
+  const client = getMatpinServerClient();
+  const { data, error } = await client.rpc("matpin_conversation_context", {
+    p_sender_hash: hashMatpinSender(senderScopedId),
+    p_reel_id: reelId,
+  });
+  if (error) throw new Error(`matpin_conversation_context_failed:${error.message}`);
+  return conversationContextSchema.parse(data);
+}
+
+export async function markMatpinMessageAcknowledged(messageId: string): Promise<boolean> {
+  const id = z.string().uuid().parse(messageId);
+  const client = getMatpinServerClient();
+  const { data, error } = await client.rpc("matpin_mark_message_acknowledged", {
+    p_message_id: id,
+  });
+  if (error) throw new Error(`matpin_acknowledge_failed:${error.message}`);
+  return z.boolean().parse(data);
 }
 
 export async function claimNextMatpinMessage(): Promise<MatpinClaimedJob | null> {
@@ -445,10 +480,10 @@ export async function readMatpinMessage(
       candidates: row.candidates,
       receivedAt: row.received_at,
       notice: row.status === "needs_confirmation"
-        ? "게시물 단서와 실제 장소 후보를 비교한 뒤 찾은 장소를 모두 저장해주세요."
+          ? "게시물 단서와 실제 장소 후보를 비교한 뒤 찾은 장소를 모두 저장해주세요."
         : row.status === "saved"
           ? "역별 게시물 보관함에 저장된 장소예요."
-          : "장소를 확인하지 못했어요. 원본 게시물에서 식당 이름을 확인해 다시 보내주세요.",
+          : "장소를 확인하지 못했어요. 원본 게시물에서 장소 이름을 확인해 다시 보내주세요.",
     }),
   };
 }
