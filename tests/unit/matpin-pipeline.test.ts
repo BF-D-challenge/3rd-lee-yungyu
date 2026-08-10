@@ -25,9 +25,9 @@ import {
   hashMatpinAccessToken,
   hashMatpinShortLinkCode,
   hashMatpinSender,
-  verifyMatpinAdminRequest,
   verifyMetaWebhookSignature,
 } from "@/lib/matpin/security";
+import { createMatpinWorkerDeadline } from "@/lib/matpin/deadline";
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -233,17 +233,6 @@ describe("Matpin secrets and signature", () => {
     expect(shortCode).toMatch(/^[A-Za-z0-9_-]{16}$/);
     expect(hashMatpinShortLinkCode(shortCode)).toMatch(/^[0-9a-f]{64}$/);
   });
-
-  it("allows a one-time admin token without exposing the personal map token", () => {
-    vi.stubEnv("MATPIN_ADMIN_ACTION_TOKEN", "one-time-admin-token");
-    vi.stubEnv("CRON_SECRET", "cron-token");
-    expect(verifyMatpinAdminRequest(new Request("https://matpin.kr", {
-      headers: { authorization: "Bearer one-time-admin-token" },
-    }))).toBe(true);
-    expect(verifyMatpinAdminRequest(new Request("https://matpin.kr", {
-      headers: { authorization: "Bearer wrong-token" },
-    }))).toBe(false);
-  });
 });
 
 describe("Webhook and worker route guards", () => {
@@ -348,6 +337,7 @@ describe("Gemini input gate", () => {
       }],
     }), { status: 200, headers: { "content-type": "application/json" } }));
 
+    const deadline = createMatpinWorkerDeadline();
     const resolved = await resolveMatpinPlacesWithMetrics({
       status: "resolved",
       summary: "산장장작구이를 확인했어요.",
@@ -359,11 +349,12 @@ describe("Gemini input gate", () => {
         confidence: 0.98,
         evidence: [{ kind: "on_screen_text", text: "산장장작구이", timestampSeconds: 1 }],
       }],
-    });
+    }, { deadline });
 
     expect(resolved.candidates[0].confidence).toBeLessThan(0.9);
     expect(resolved.metrics).toMatchObject({ provider: "kakao_local", requestCount: 1 });
     expect(kakaoFetch.mock.calls[0][0]).toEqual(expect.stringContaining("dapi.kakao.com"));
+    expect(kakaoFetch.mock.calls[0][1]?.signal).toBeInstanceOf(AbortSignal);
   });
 
   it("uses Google Places before Kakao for an explicitly overseas place", async () => {
@@ -934,24 +925,35 @@ describe("Gemini input gate", () => {
     }), { status: 200, headers: { "content-type": "application/json" } }));
     const download = vi.fn().mockResolvedValue({ bytes: Buffer.from("image"), mimeType: "image/jpeg" });
     const mediaUrls = [1, 2, 3, 4].map((index) => `https://scontent-icn1-1.xx.fbcdn.net/carousel-${index}.jpg`);
+    const source = vi.fn().mockResolvedValue({
+      caption: null,
+      creatorComments: [],
+      videoUrl: null,
+      thumbnailUrl: mediaUrls[0],
+      mediaUrls,
+    });
     const analyzer = createGeminiReelAnalyzer({
       download,
       fetch: geminiFetch,
-      source: vi.fn().mockResolvedValue({
-        caption: null,
-        creatorComments: [],
-        videoUrl: null,
-        thumbnailUrl: mediaUrls[0],
-        mediaUrls,
-      }),
+      source,
     });
+    const deadline = createMatpinWorkerDeadline();
 
     await analyzer.analyze({
       mediaUrl: "https://www.instagram.com/p/Carousel_123/",
       reelId: "Carousel_123",
+      deadline,
     });
 
     expect(download).toHaveBeenCalledTimes(3);
+    expect(source).toHaveBeenCalledWith(
+      "https://www.instagram.com/p/Carousel_123/",
+      { deadline },
+    );
+    const mediaDeadlines = download.mock.calls.map((call) => call[1]?.deadline);
+    expect(mediaDeadlines.every((mediaDeadline) => mediaDeadline === mediaDeadlines[0])).toBe(true);
+    expect(download.mock.calls.every((call) => call[1]?.signal instanceof AbortSignal)).toBe(true);
+    expect(geminiFetch.mock.calls[0][1].signal).toBeInstanceOf(AbortSignal);
     const requestBody = JSON.parse(geminiFetch.mock.calls[0][1].body as string);
     expect(requestBody.input.map((item: { type: string }) => item.type))
       .toEqual(["image", "image", "image", "text"]);

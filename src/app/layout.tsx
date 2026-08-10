@@ -1,13 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Pinyon_Script } from "next/font/google";
-import Script from "next/script";
-import { Clarity } from "@/components/analytics/clarity";
-import { GoogleAnalytics } from "@/components/analytics/google-analytics";
-import { MetaPixel } from "@/components/analytics/meta-pixel";
-import {
-  KAKAO_JAVASCRIPT_SDK_INTEGRITY,
-  KAKAO_JAVASCRIPT_SDK_URL,
-} from "@/lib/kakao-share";
+import { KakaoJavascriptSdk } from "@/components/analytics/kakao-javascript-sdk";
+import { ProductAnalytics } from "@/components/analytics/product-analytics";
 import "./globals.css";
 
 const pinyon = Pinyon_Script({ subsets: ["latin"], weight: "400", variable: "--font-swash" });
@@ -26,18 +20,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ko" className={pinyon.variable}>
       <body className="ambient min-h-dvh">
         {children}
-        {process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY ? (
-          <Script
-            id="kakao-javascript-sdk"
-            src={KAKAO_JAVASCRIPT_SDK_URL}
-            integrity={KAKAO_JAVASCRIPT_SDK_INTEGRITY}
-            crossOrigin="anonymous"
-            strategy="afterInteractive"
-          />
-        ) : null}
-        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-        <Clarity projectId={process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID} />
-        <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID} />
+        <KakaoJavascriptSdk javascriptKey={process.env.NEXT_PUBLIC_KAKAO_JAVASCRIPT_KEY} />
+        <ProductAnalytics
+          googleMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}
+          clarityProjectId={process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}
+          metaPixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID}
+        />
       </body>
     </html>
   );

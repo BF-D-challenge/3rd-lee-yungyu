@@ -5,6 +5,11 @@ import {
   type MatpinPlaceCandidate,
 } from "@/lib/matpin/contract";
 import { MatpinAnalysisError } from "@/lib/matpin/analysis-error";
+import {
+  MatpinDeadlineExceededError,
+  matpinDeadlineSignal,
+  type MatpinDeadline,
+} from "@/lib/matpin/deadline";
 
 const KAKAO_LOCAL_URL = "https://dapi.kakao.com/v2/local/search/keyword.json";
 const KAKAO_TIMEOUT_MS = 8_000;
@@ -106,6 +111,10 @@ export type MatpinPlaceResolutionResult = {
   metrics: MatpinPlaceResolutionMetrics;
 };
 
+export type MatpinPlaceResolutionOptions = {
+  deadline?: MatpinDeadline;
+};
+
 const geminiMapsJsonSchema = {
   type: "object",
   additionalProperties: false,
@@ -197,7 +206,10 @@ function bestClueForCandidate(analysis: MatpinAnalysis, candidateName: string) {
   }) ?? analysis.places[0];
 }
 
-async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPlaceResolutionResult> {
+async function resolveWithGeminiMaps(
+  analysis: MatpinAnalysis,
+  options: MatpinPlaceResolutionOptions,
+): Promise<MatpinPlaceResolutionResult> {
   const startedAt = Date.now();
   const apiKey = process.env.GEMINI_API_KEY?.trim() || process.env.ALLSALE_GEMINI_API_KEY?.trim();
   if (!apiKey) throw new MatpinAnalysisError("place_search_not_configured", false);
@@ -225,10 +237,11 @@ async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPl
         },
         store: false,
       }),
-      signal: AbortSignal.timeout(GEMINI_MAPS_TIMEOUT_MS),
+      signal: matpinDeadlineSignal(options.deadline, GEMINI_MAPS_TIMEOUT_MS),
       cache: "no-store",
     });
   } catch (error) {
+    if (error instanceof MatpinDeadlineExceededError) throw error;
     const timeout = error instanceof Error && error.name === "TimeoutError";
     throw new MatpinAnalysisError(timeout ? "place_search_timeout" : "place_search_unavailable", true);
   }
@@ -313,6 +326,7 @@ async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPl
 async function resolveWithGooglePlaces(
   analysis: MatpinAnalysis,
   apiKey: string,
+  options: MatpinPlaceResolutionOptions,
 ): Promise<MatpinPlaceResolutionResult> {
   const startedAt = Date.now();
   const clues = analysis.places.slice(0, 3);
@@ -337,10 +351,11 @@ async function resolveWithGooglePlaces(
           ].join(","),
         },
         body: JSON.stringify({ textQuery, languageCode: "ko", pageSize: 3 }),
-        signal: AbortSignal.timeout(GOOGLE_PLACES_TIMEOUT_MS),
+        signal: matpinDeadlineSignal(options.deadline, GOOGLE_PLACES_TIMEOUT_MS),
         cache: "no-store",
       });
     } catch (error) {
+      if (error instanceof MatpinDeadlineExceededError) throw error;
       const timeout = error instanceof Error && error.name === "TimeoutError";
       throw new MatpinAnalysisError(timeout ? "place_search_timeout" : "place_search_unavailable", true);
     }
@@ -398,6 +413,7 @@ async function resolveWithGooglePlaces(
 async function resolveWithKakaoLocal(
   analysis: MatpinAnalysis,
   apiKey: string,
+  options: MatpinPlaceResolutionOptions,
 ): Promise<MatpinPlaceResolutionResult> {
   const startedAt = Date.now();
   const clues = analysis.places.slice(0, 3);
@@ -410,10 +426,11 @@ async function resolveWithKakaoLocal(
     try {
       response = await fetch(`${KAKAO_LOCAL_URL}?${params.toString()}`, {
         headers: { authorization: `KakaoAK ${apiKey}` },
-        signal: AbortSignal.timeout(KAKAO_TIMEOUT_MS),
+        signal: matpinDeadlineSignal(options.deadline, KAKAO_TIMEOUT_MS),
         cache: "no-store",
       });
-    } catch {
+    } catch (error) {
+      if (error instanceof MatpinDeadlineExceededError) throw error;
       throw new MatpinAnalysisError("place_search_unavailable", true);
     }
     if (!response.ok) {
@@ -469,6 +486,7 @@ async function resolveWithKakaoLocal(
 
 export async function resolveMatpinPlacesWithMetrics(
   analysis: MatpinAnalysis,
+  options: MatpinPlaceResolutionOptions = {},
 ): Promise<MatpinPlaceResolutionResult> {
   if (analysis.status === "insufficient" || analysis.places.length === 0) {
     return {
@@ -490,13 +508,16 @@ export async function resolveMatpinPlacesWithMetrics(
   const googlePlacesKey = process.env.GOOGLE_MAPS_API_KEY?.trim();
   const kakaoKey = process.env.KAKAO_REST_API_KEY?.trim();
   if (!hasExplicitForeignRegion(analysis) && kakaoKey) {
-    const kakaoResult = await resolveWithKakaoLocal(analysis, kakaoKey);
+    const kakaoResult = await resolveWithKakaoLocal(analysis, kakaoKey, options);
     if (kakaoResult.candidates.length > 0) return kakaoResult;
   }
-  if (googlePlacesKey) return resolveWithGooglePlaces(analysis, googlePlacesKey);
-  return resolveWithGeminiMaps(analysis);
+  if (googlePlacesKey) return resolveWithGooglePlaces(analysis, googlePlacesKey, options);
+  return resolveWithGeminiMaps(analysis, options);
 }
 
-export async function resolveMatpinPlaces(analysis: MatpinAnalysis): Promise<MatpinPlaceCandidate[]> {
-  return (await resolveMatpinPlacesWithMetrics(analysis)).candidates;
+export async function resolveMatpinPlaces(
+  analysis: MatpinAnalysis,
+  options: MatpinPlaceResolutionOptions = {},
+): Promise<MatpinPlaceCandidate[]> {
+  return (await resolveMatpinPlacesWithMetrics(analysis, options)).candidates;
 }

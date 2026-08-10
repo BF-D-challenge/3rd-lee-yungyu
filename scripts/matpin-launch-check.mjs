@@ -99,6 +99,26 @@ const checks = [
     },
   },
   {
+    label: "운영 CRM 화면",
+    run: async () => {
+      const { response, body } = await request("/matpin/admin");
+      requireStatus("운영 CRM 화면", response, 200);
+      requireText("운영 CRM 화면", body, "맛핀 운영 CRM");
+    },
+  },
+  {
+    label: "운영 CRM 미로그인 차단",
+    run: async () => {
+      const { response, body } = await request("/api/matpin/admin/summary?range=24h");
+      requireStatus("운영 CRM 미로그인 차단", response, 401);
+      requireText("운영 CRM 미로그인 차단", body, '"error":"unauthenticated"');
+      const cacheControl = response.headers.get("cache-control") ?? "";
+      if (!cacheControl.includes("private") || !cacheControl.includes("no-store")) {
+        throw new Error(`운영 CRM 미로그인 차단: cache-control이 안전하지 않습니다: ${cacheControl}`);
+      }
+    },
+  },
+  {
     label: "잘못된 짧은 링크 차단",
     run: async () => {
       const { response } = await request("/s/invalid");

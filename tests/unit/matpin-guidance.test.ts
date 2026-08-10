@@ -2,34 +2,33 @@ import { createHmac } from "node:crypto";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
-  context: vi.fn(),
-  ingest: vi.fn(),
-  markAcknowledged: vi.fn(),
-  process: vi.fn(),
-  send: vi.fn(),
+  after: vi.fn(),
+  enqueueBatch: vi.fn(),
+  preflight: vi.fn(),
+  processCycle: vi.fn(),
 }));
 
 vi.mock("next/server", async (importOriginal) => {
   const original = await importOriginal<typeof import("next/server")>();
-  return { ...original, after: vi.fn() };
+  return { ...original, after: mocks.after };
 });
 vi.mock("@/lib/matpin/store", () => ({
-  ingestMatpinMessage: mocks.ingest,
-  markMatpinMessageAcknowledged: mocks.markAcknowledged,
-  readMatpinConversationContext: mocks.context,
+  enqueueMatpinWebhookBatch: mocks.enqueueBatch,
 }));
-vi.mock("@/lib/matpin/worker", () => ({ processMatpinQueue: mocks.process }));
-vi.mock("@/lib/matpin/instagram-send", () => ({ sendMatpinInstagramMessage: mocks.send }));
+vi.mock("@/lib/matpin/work-cycle", () => ({
+  processMatpinWorkCycle: mocks.processCycle,
+}));
+vi.mock("@/lib/matpin/instagram-send", () => ({
+  preflightMatpinInstagramMessage: mocks.preflight,
+}));
 
 import { POST } from "@/app/api/matpin/webhook/route";
 import {
   normalizeMetaWebhookGuidanceRecipients,
   normalizeMetaWebhookMessages,
 } from "@/lib/matpin/contract";
-import {
-  buildMatpinGuidanceReply,
-  buildMatpinReceiptReply,
-} from "@/lib/matpin/conversation-copy";
+import { buildMatpinGuidanceReply } from "@/lib/matpin/conversation-copy";
+import { decryptMatpinValue } from "@/lib/matpin/security";
 
 function webhookBody(message: Record<string, unknown>) {
   return {
@@ -56,20 +55,28 @@ function signedRequest(payload: unknown) {
   });
 }
 
+function batchResult(overrides: Record<string, unknown> = {}) {
+  return {
+    accepted: 0,
+    duplicates: 0,
+    receiptsQueued: 0,
+    guidanceQueued: 0,
+    guidanceCooldown: 0,
+    results: [],
+    ...overrides,
+  };
+}
+
 beforeEach(() => {
   vi.stubEnv("META_APP_SECRET", "meta-test-secret");
   vi.stubEnv("META_INSTAGRAM_ACCOUNT_ID", "professional-account");
   vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "live");
-  mocks.context.mockReset().mockResolvedValue({
-    knownUser: true,
-    inboundMessageCount: 1,
-    savedPlaceCount: 0,
-    hasSavedMedia: false,
-  });
-  mocks.ingest.mockReset();
-  mocks.markAcknowledged.mockReset().mockResolvedValue(true);
-  mocks.process.mockReset();
-  mocks.send.mockReset().mockResolvedValue("reply-1");
+  vi.stubEnv("MATPIN_DATA_SECRET", "matpin-data-secret-at-least-32-chars");
+  vi.stubEnv("MATPIN_LINK_SECRET", "matpin-link-secret-at-least-32-chars");
+  mocks.after.mockReset();
+  mocks.enqueueBatch.mockReset().mockResolvedValue(batchResult());
+  mocks.preflight.mockReset().mockReturnValue(undefined);
+  mocks.processCycle.mockReset().mockResolvedValue({});
 });
 
 afterEach(() => {
@@ -77,7 +84,7 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-describe("Matpin usage guidance", () => {
+describe("Matpin durable webhook intake", () => {
   it("keeps help copy numbered, factual, and recoverable", () => {
     const reply = buildMatpinGuidanceReply("help");
 
@@ -97,12 +104,13 @@ describe("Matpin usage guidance", () => {
     ["external link", { text: "https://example.com/place" }, "external_link", "이 링크는 저장하지 않았습니다"],
     ["Instagram profile", { text: "https://www.instagram.com/matpin.kr/" }, "instagram_profile", "프로필은 저장하지 않았습니다"],
     ["plain text", { text: "강남 맛집 알려줘" }, "plain_text", "보내주신 글은 저장하지 않았습니다"],
-  ] as const)("replies for %s without storing the inbound content", async (
+  ] as const)("queues encrypted guidance for %s without storing inbound content", async (
     _label,
     message,
     reason,
     expectedCopy,
   ) => {
+    mocks.enqueueBatch.mockResolvedValue(batchResult({ guidanceQueued: 1 }));
     const payload = webhookBody(message);
     expect(normalizeMetaWebhookMessages(payload, "professional-account")).toEqual([]);
     expect(normalizeMetaWebhookGuidanceRecipients(payload, "professional-account")).toEqual([{
@@ -114,106 +122,121 @@ describe("Matpin usage guidance", () => {
     const response = await POST(signedRequest(payload));
 
     expect(response.status).toBe(200);
-    expect(await response.json()).toMatchObject({ accepted: 0, guidanceSent: 1 });
-    expect(mocks.send).toHaveBeenCalledWith("sender-1", expect.stringContaining(expectedCopy));
-    expect(mocks.ingest).not.toHaveBeenCalled();
+    expect(await response.json()).toMatchObject({ accepted: 0, guidanceQueued: 1, outboundQueued: 1 });
+    expect(mocks.enqueueBatch).toHaveBeenCalledTimes(1);
+    const events = mocks.enqueueBatch.mock.calls[0]?.[0] as Array<Record<string, string>>;
+    expect(events).toHaveLength(1);
+    expect(events[0]).toMatchObject({
+      type: "guidance",
+      dedupHash: expect.stringMatching(/^[0-9a-f]{64}$/),
+      outboundSenderHash: expect.stringMatching(/^[0-9a-f]{64}$/),
+    });
+    expect(decryptMatpinValue(events[0]?.recipientCiphertext ?? "")).toBe("sender-1");
+    expect(decryptMatpinValue(events[0]?.bodyCiphertext ?? "")).toContain(expectedCopy);
+    expect(JSON.stringify(events)).not.toContain("강남 맛집 알려줘");
+    expect(mocks.preflight).toHaveBeenCalled();
   });
 
-  it("does not send guidance for a supported Instagram post", async () => {
-    const payload = webhookBody({
-      text: "https://www.instagram.com/p/Post_123/",
-    });
-
-    expect(normalizeMetaWebhookGuidanceRecipients(payload, "professional-account")).toEqual([]);
-  });
-
-  it("acknowledges an accepted Reel before background processing", async () => {
-    mocks.ingest.mockResolvedValue({
-      accepted: true,
-      duplicate: false,
-      messageId: "11111111-1111-4111-8111-111111111111",
-      queueMessageId: 31,
-      acknowledged: false,
-    });
+  it("queues a supported message and three encrypted receipt variants in one RPC", async () => {
+    mocks.enqueueBatch.mockResolvedValue(batchResult({ accepted: 1, receiptsQueued: 1 }));
     const payload = webhookBody({ text: "https://www.instagram.com/reel/Reel_123/" });
 
     const response = await POST(signedRequest(payload));
 
     expect(response.status).toBe(200);
-    expect(mocks.send).toHaveBeenCalledWith(
-      "sender-1",
-      buildMatpinReceiptReply({
-        mediaKind: "릴스",
-        isReturningUser: false,
-        alreadySavedMedia: false,
-      }),
-    );
-    expect(mocks.markAcknowledged).toHaveBeenCalledWith("11111111-1111-4111-8111-111111111111");
-    expect(await response.json()).toMatchObject({ accepted: 1, receiptsSent: 1 });
+    expect(await response.json()).toMatchObject({ accepted: 1, receiptsQueued: 1, outboundQueued: 1 });
+    expect(mocks.enqueueBatch).toHaveBeenCalledTimes(1);
+    const events = mocks.enqueueBatch.mock.calls[0]?.[0] as Array<Record<string, string>>;
+    expect(events[0]).toMatchObject({
+      type: "supported",
+      metaMessageId: "mid-1",
+      senderHash: expect.stringMatching(/^[0-9a-f]{64}$/),
+      outboundSenderHash: expect.stringMatching(/^[0-9a-f]{64}$/),
+      receiptDedupHash: expect.stringMatching(/^[0-9a-f]{64}$/),
+    });
+    expect(decryptMatpinValue(events[0]?.bodyCiphertext ?? "")).toContain("릴스 받았습니다");
+    expect(decryptMatpinValue(events[0]?.returningBodyCiphertext ?? "")).toContain("이번 장소도");
+    expect(decryptMatpinValue(events[0]?.alreadySavedBodyCiphertext ?? "")).toContain("전에 보내주신 릴스");
+    expect(mocks.after).toHaveBeenCalledTimes(1);
+    expect(mocks.processCycle).not.toHaveBeenCalled();
   });
 
-  it("uses saved history when the same post is shared again", async () => {
-    mocks.context.mockResolvedValue({
-      knownUser: true,
-      inboundMessageCount: 3,
-      savedPlaceCount: 4,
-      hasSavedMedia: true,
-    });
-    mocks.ingest.mockResolvedValue({
-      accepted: true,
-      duplicate: false,
-      messageId: "22222222-2222-4222-8222-222222222222",
-      queueMessageId: 32,
-      acknowledged: false,
-    });
+  it("does not wait for outbound delivery before returning 200", async () => {
+    mocks.enqueueBatch.mockResolvedValue(batchResult({ guidanceQueued: 1 }));
+    mocks.processCycle.mockReturnValue(new Promise(() => undefined));
 
-    const response = await POST(signedRequest(webhookBody({
-      text: "https://www.instagram.com/p/Post_123/",
-    })));
+    const response = await POST(signedRequest(webhookBody({ text: "도움말" })));
 
     expect(response.status).toBe(200);
-    expect(mocks.send).toHaveBeenCalledWith(
-      "sender-1",
-      expect.stringContaining("다시 분석하지 않고 저장 내역을 확인하고 있어요"),
-    );
+    expect(mocks.processCycle).not.toHaveBeenCalled();
+    expect(mocks.after).toHaveBeenCalledTimes(1);
   });
 
-  it("does not send a delayed receipt for a historical backfill duplicate", async () => {
-    mocks.ingest.mockResolvedValue({
-      accepted: false,
-      duplicate: true,
-      messageId: "33333333-3333-4333-8333-333333333333",
-      acknowledged: false,
-      replyRequired: false,
-    });
-
-    const response = await POST(signedRequest(webhookBody({
-      text: "https://www.instagram.com/p/Post_456/",
-    })));
+  it("passes a four-second abort signal to the single batch RPC", async () => {
+    const response = await POST(signedRequest(webhookBody({ text: "도움말" })));
 
     expect(response.status).toBe(200);
-    expect(mocks.send).not.toHaveBeenCalled();
-    expect(mocks.markAcknowledged).not.toHaveBeenCalled();
-    expect(await response.json()).toMatchObject({ receiptsSent: 0 });
+    expect(mocks.enqueueBatch).toHaveBeenCalledTimes(1);
+    const options = mocks.enqueueBatch.mock.calls[0]?.[1] as { signal: AbortSignal };
+    expect(options.signal).toBeInstanceOf(AbortSignal);
+    expect(options.signal.aborted).toBe(false);
   });
 
-  it("does not reply to echo events", async () => {
-    const payload = webhookBody({ text: "안녕하세요", is_echo: true });
+  it("returns 503 when the atomic batch enqueue fails", async () => {
+    mocks.enqueueBatch.mockRejectedValue(new Error("matpin_webhook_batch_failed:timeout"));
+
+    const response = await POST(signedRequest(webhookBody({ text: "도움말" })));
+
+    expect(response.status).toBe(503);
+    expect(await response.json()).toEqual({ error: "ingest_failed" });
+    expect(mocks.after).not.toHaveBeenCalled();
+  });
+
+  it("returns 503 for a signed event during maintenance", async () => {
+    vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "maintenance");
+
+    const response = await POST(signedRequest(webhookBody({ text: "도움말" })));
+
+    expect(response.status).toBe(503);
+    expect(await response.json()).toEqual({ error: "maintenance" });
+    expect(mocks.enqueueBatch).not.toHaveBeenCalled();
+  });
+
+  it("reports queued and cooldown results without claiming a send", async () => {
+    mocks.enqueueBatch.mockResolvedValue(batchResult({ guidanceCooldown: 1 }));
+
+    const response = await POST(signedRequest(webhookBody({ text: "도움말" })));
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({ guidanceQueued: 0, guidanceCooldown: 1, outboundQueued: 0 });
+    expect(mocks.after).not.toHaveBeenCalled();
+  });
+
+  it("rejects more than 100 normalized events before the batch RPC", async () => {
+    const supported = Array.from({ length: 100 }, (_, index) => ({
+      sender: { id: `supported-${index}` },
+      recipient: { id: "professional-account" },
+      timestamp: 1_754_000_000_000 + index,
+      message: { mid: `mid-supported-${index}`, text: `https://www.instagram.com/reel/Reel_${index}/` },
+    }));
+    const guidance = [{
+      sender: { id: "guidance-1" },
+      recipient: { id: "professional-account" },
+      timestamp: 1_754_000_000_101,
+      message: { mid: "mid-guidance-1", text: "도움말" },
+    }];
+    const payload = {
+      object: "instagram",
+      entry: [
+        { id: "professional-account", messaging: supported },
+        { id: "professional-account", messaging: guidance },
+      ],
+    };
 
     const response = await POST(signedRequest(payload));
 
-    expect(response.status).toBe(200);
-    expect(await response.json()).toEqual({ ok: true, accepted: 0, ignored: true });
-    expect(mocks.send).not.toHaveBeenCalled();
-  });
-
-  it("does not reply to unsupported Meta events", async () => {
-    const payload = webhookBody({ text: "안녕하세요", is_unsupported: true });
-
-    const response = await POST(signedRequest(payload));
-
-    expect(response.status).toBe(200);
-    expect(await response.json()).toEqual({ ok: true, accepted: 0, ignored: true });
-    expect(mocks.send).not.toHaveBeenCalled();
+    expect(response.status).toBe(413);
+    expect(await response.json()).toEqual({ error: "too_many_events" });
+    expect(mocks.enqueueBatch).not.toHaveBeenCalled();
   });
 });

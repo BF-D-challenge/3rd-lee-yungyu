@@ -8,20 +8,32 @@ import {
   buildMatpinReceiptReply,
   getMatpinMediaKind,
 } from "@/lib/matpin/conversation-copy";
-import { sendMatpinInstagramMessage } from "@/lib/matpin/instagram-send";
-import { verifyMetaWebhookSignature, verifyMetaWebhookToken } from "@/lib/matpin/security";
+import { preflightMatpinInstagramMessage } from "@/lib/matpin/instagram-send";
 import {
-  ingestMatpinMessage,
-  markMatpinMessageAcknowledged,
-  readMatpinConversationContext,
+  createMatpinAccessToken,
+  createMatpinShortLinkCode,
+  encryptMatpinValue,
+  hashMatpinAccessToken,
+  hashMatpinOutboundDedup,
+  hashMatpinOutboundSender,
+  hashMatpinSender,
+  hashMatpinShortLinkCode,
+  verifyMetaWebhookSignature,
+  verifyMetaWebhookToken,
+} from "@/lib/matpin/security";
+import {
+  enqueueMatpinWebhookBatch,
+  type MatpinPreparedWebhookEvent,
 } from "@/lib/matpin/store";
-import { processMatpinQueue } from "@/lib/matpin/worker";
+import { processMatpinWorkCycle } from "@/lib/matpin/work-cycle";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 const MAX_WEBHOOK_BYTES = 512 * 1024;
+const MAX_WEBHOOK_EVENTS = 100;
+const WEBHOOK_DATABASE_TIMEOUT_MS = 4_000;
 
 function noStoreJson(body: unknown, status = 200) {
   return NextResponse.json(body, { status, headers: { "cache-control": "no-store" } });
@@ -39,6 +51,67 @@ export async function GET(request: Request) {
     status: 200,
     headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" },
   });
+}
+
+function prepareSupportedEvent(
+  message: ReturnType<typeof normalizeMetaWebhookMessages>[number],
+): MatpinPreparedWebhookEvent {
+  const mediaKind = getMatpinMediaKind(message);
+  const newUserReceipt = buildMatpinReceiptReply({
+    mediaKind,
+    isReturningUser: false,
+    alreadySavedMedia: false,
+  });
+  const returningUserReceipt = buildMatpinReceiptReply({
+    mediaKind,
+    isReturningUser: true,
+    alreadySavedMedia: false,
+  });
+  const alreadySavedReceipt = buildMatpinReceiptReply({
+    mediaKind,
+    isReturningUser: true,
+    alreadySavedMedia: true,
+  });
+
+  preflightMatpinInstagramMessage(message.senderScopedId, newUserReceipt);
+  preflightMatpinInstagramMessage(message.senderScopedId, returningUserReceipt);
+  preflightMatpinInstagramMessage(message.senderScopedId, alreadySavedReceipt);
+
+  const accessToken = createMatpinAccessToken(message.senderScopedId);
+  const shortLinkCode = createMatpinShortLinkCode(message.senderScopedId);
+  return {
+    type: "supported",
+    metaMessageId: message.metaMessageId,
+    senderHash: hashMatpinSender(message.senderScopedId),
+    outboundSenderHash: hashMatpinOutboundSender(message.senderScopedId),
+    senderCiphertext: encryptMatpinValue(message.senderScopedId),
+    accessTokenHash: hashMatpinAccessToken(accessToken),
+    shortLinkHash: hashMatpinShortLinkCode(shortLinkCode),
+    reelId: message.reelId,
+    reelUrl: message.reelUrl,
+    attachmentType: message.attachmentType,
+    mediaUrlCiphertext: encryptMatpinValue(message.mediaUrl),
+    receivedAt: message.receivedAt,
+    receiptDedupHash: hashMatpinOutboundDedup("receipt", message.metaMessageId),
+    recipientCiphertext: encryptMatpinValue(message.senderScopedId),
+    bodyCiphertext: encryptMatpinValue(newUserReceipt),
+    returningBodyCiphertext: encryptMatpinValue(returningUserReceipt),
+    alreadySavedBodyCiphertext: encryptMatpinValue(alreadySavedReceipt),
+  };
+}
+
+function prepareGuidanceEvent(
+  recipient: ReturnType<typeof normalizeMetaWebhookGuidanceRecipients>[number],
+): MatpinPreparedWebhookEvent {
+  const text = buildMatpinGuidanceReply(recipient.reason);
+  preflightMatpinInstagramMessage(recipient.senderScopedId, text);
+  return {
+    type: "guidance",
+    dedupHash: hashMatpinOutboundDedup("guidance", recipient.metaMessageId),
+    outboundSenderHash: hashMatpinOutboundSender(recipient.senderScopedId),
+    recipientCiphertext: encryptMatpinValue(recipient.senderScopedId),
+    bodyCiphertext: encryptMatpinValue(text),
+  };
 }
 
 export async function POST(request: Request) {
@@ -59,7 +132,11 @@ export async function POST(request: Request) {
     return noStoreJson({ error: "invalid_json" }, 400);
   }
 
-  if (process.env.MATPIN_INSTAGRAM_PIPELINE_MODE !== "live") {
+  const pipelineMode = process.env.MATPIN_INSTAGRAM_PIPELINE_MODE?.trim();
+  if (pipelineMode === "maintenance") {
+    return noStoreJson({ error: "maintenance" }, 503);
+  }
+  if (pipelineMode !== "live") {
     return noStoreJson({ ok: true, accepted: 0, pipelineMode: "mock" });
   }
 
@@ -67,62 +144,48 @@ export async function POST(request: Request) {
   if (!accountId) return noStoreJson({ error: "meta_account_not_configured" }, 503);
   const messages = normalizeMetaWebhookMessages(payload, accountId);
   const guidanceRecipients = normalizeMetaWebhookGuidanceRecipients(payload, accountId);
+  if (messages.length + guidanceRecipients.length > MAX_WEBHOOK_EVENTS) {
+    return noStoreJson({ error: "too_many_events" }, 413);
+  }
   if (messages.length === 0 && guidanceRecipients.length === 0) {
     return noStoreJson({ ok: true, accepted: 0, ignored: true });
   }
 
   try {
-    await Promise.all(guidanceRecipients.map((recipient) =>
-      sendMatpinInstagramMessage(
-        recipient.senderScopedId,
-        buildMatpinGuidanceReply(recipient.reason),
-      )
-    ));
-    const results = await Promise.all(messages.map((message) => ingestMatpinMessage(message)));
-    await Promise.all(results.map(async (result, index) => {
-      const message = messages[index];
-      if (
-        !message
-        || !result.messageId
-        || result.acknowledged === true
-        || result.replyRequired === false
-      ) return;
-
-      const context = await readMatpinConversationContext({
-        senderScopedId: message.senderScopedId,
-        reelId: message.reelId,
-      });
-      await sendMatpinInstagramMessage(
-        message.senderScopedId,
-        buildMatpinReceiptReply({
-          mediaKind: getMatpinMediaKind(message),
-          isReturningUser: context.inboundMessageCount > 1,
-          alreadySavedMedia: context.hasSavedMedia,
-        }),
-      );
-      await markMatpinMessageAcknowledged(result.messageId);
-    }));
-    const accepted = results.filter((result) => result.accepted).length;
-    if (accepted > 0) {
+    const events = [
+      ...messages.map(prepareSupportedEvent),
+      ...guidanceRecipients.map(prepareGuidanceEvent),
+    ];
+    const result = await enqueueMatpinWebhookBatch(events, {
+      signal: AbortSignal.timeout(WEBHOOK_DATABASE_TIMEOUT_MS),
+    });
+    const outboundQueued = result.receiptsQueued + result.guidanceQueued;
+    if (outboundQueued > 0) {
       after(async () => {
         try {
-          await processMatpinQueue(Math.min(accepted, 3));
+          await processMatpinWorkCycle();
         } catch (error) {
-          console.error("[matpin-webhook] background_worker_failed", error instanceof Error ? error.message : "unknown_error");
+          console.error(
+            "[matpin-webhook] work_cycle_wake_failed",
+            error instanceof Error ? error.message : "unknown_error",
+          );
         }
       });
     }
     return noStoreJson({
       ok: true,
-      accepted,
-      duplicates: results.filter((result) => result.duplicate).length,
-      guidanceSent: guidanceRecipients.length,
-      receiptsSent: results.filter((result) =>
-        result.messageId && result.acknowledged !== true && result.replyRequired !== false
-      ).length,
+      accepted: result.accepted,
+      duplicates: result.duplicates,
+      receiptsQueued: result.receiptsQueued,
+      guidanceQueued: result.guidanceQueued,
+      guidanceCooldown: result.guidanceCooldown,
+      outboundQueued,
     });
   } catch (error) {
-    console.error("[matpin-webhook] ingest_failed", error instanceof Error ? error.message : "unknown_error");
+    console.error(
+      "[matpin-webhook] batch_enqueue_failed",
+      error instanceof Error ? error.message : "unknown_error",
+    );
     return noStoreJson({ error: "ingest_failed" }, 503);
   }
 }

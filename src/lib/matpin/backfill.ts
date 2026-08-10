@@ -10,6 +10,10 @@ import { ingestMatpinBackfillMessage } from "@/lib/matpin/store";
 const SAFE_GRAPH_VERSION = /^v\d{1,2}\.\d$/;
 const MAX_CONVERSATIONS = 20;
 const MAX_MESSAGES_PER_CONVERSATION = 20;
+const GRAPH_CONCURRENCY = 5;
+const INGEST_CONCURRENCY = 10;
+const GRAPH_REQUEST_TIMEOUT_MS = 8_000;
+const BACKFILL_DEADLINE_MS = 45_000;
 const SUPPORTED_ATTACHMENT_TYPES = new Set(["share", "media", "ig_reel", "reel"]);
 
 type UnknownRecord = Record<string, unknown>;
@@ -137,7 +141,11 @@ export function normalizeMatpinConversationMessage(
   return parsed.success ? parsed.data : null;
 }
 
-async function graphGet(path: string, params: Record<string, string>): Promise<UnknownRecord> {
+async function graphGet(
+  path: string,
+  params: Record<string, string>,
+  signal: AbortSignal,
+): Promise<UnknownRecord> {
   const accessToken = process.env.META_INSTAGRAM_ACCESS_TOKEN?.trim();
   const graphVersion = process.env.META_GRAPH_API_VERSION?.trim();
   if (!accessToken || !graphVersion || !SAFE_GRAPH_VERSION.test(graphVersion)) {
@@ -148,7 +156,7 @@ async function graphGet(path: string, params: Record<string, string>): Promise<U
   for (const [key, value] of Object.entries(params)) url.searchParams.set(key, value);
   const response = await fetch(url, {
     headers: { authorization: `Bearer ${accessToken}` },
-    signal: AbortSignal.timeout(8_000),
+    signal: AbortSignal.any([signal, AbortSignal.timeout(GRAPH_REQUEST_TIMEOUT_MS)]),
     cache: "no-store",
   });
   if (!response.ok) throw new Error(`meta_backfill_fetch_failed:${response.status}`);
@@ -163,15 +171,62 @@ function dataRecords(body: UnknownRecord): UnknownRecord[] {
     : [];
 }
 
-export async function backfillMatpinConversationHistory(): Promise<MatpinBackfillResult> {
+async function mapWithConcurrency<Input, Output>(
+  values: Input[],
+  concurrency: number,
+  signal: AbortSignal,
+  operation: (value: Input, index: number, signal: AbortSignal) => Promise<Output>,
+): Promise<Output[]> {
+  const results = new Array<Output>(values.length);
+  const internalAbort = new AbortController();
+  const operationSignal = AbortSignal.any([signal, internalAbort.signal]);
+  let nextIndex = 0;
+  let stopped = false;
+  let hasError = false;
+  let firstError: unknown;
+
+  async function lane() {
+    while (true) {
+      try {
+        operationSignal.throwIfAborted();
+        if (stopped) return;
+        const index = nextIndex;
+        if (index >= values.length) return;
+        nextIndex += 1;
+        results[index] = await operation(values[index], index, operationSignal);
+      } catch (error) {
+        if (!hasError) {
+          hasError = true;
+          firstError = error;
+        }
+        stopped = true;
+        internalAbort.abort(error);
+        return;
+      }
+    }
+  }
+
+  await Promise.all(Array.from(
+    { length: Math.min(values.length, Math.max(1, concurrency)) },
+    () => lane(),
+  ));
+  if (hasError) throw firstError;
+  return results;
+}
+
+export async function backfillMatpinConversationHistory(
+  options: { signal?: AbortSignal } = {},
+): Promise<MatpinBackfillResult> {
   const accountId = process.env.META_INSTAGRAM_ACCOUNT_ID?.trim();
   if (!accountId) throw new MatpinConfigurationError("meta_account_not_configured");
+  const signal = options.signal ?? AbortSignal.timeout(BACKFILL_DEADLINE_MS);
+  signal.throwIfAborted();
 
   const conversationsBody = await graphGet(`${accountId}/conversations`, {
     platform: "instagram",
     fields: "id",
     limit: String(MAX_CONVERSATIONS),
-  });
+  }, signal);
   const conversations = dataRecords(conversationsBody).slice(0, MAX_CONVERSATIONS);
   const result: MatpinBackfillResult = {
     conversations: conversations.length,
@@ -181,24 +236,39 @@ export async function backfillMatpinConversationHistory(): Promise<MatpinBackfil
     duplicates: 0,
   };
 
-  for (const conversation of conversations) {
-    const conversationId = typeof conversation.id === "string" ? conversation.id.trim() : "";
-    if (!conversationId) continue;
-    const messagesBody = await graphGet(`${conversationId}/messages`, {
-      fields: "id,created_time,from,to,message,attachments",
-      limit: String(MAX_MESSAGES_PER_CONVERSATION),
-    });
-    const messages = dataRecords(messagesBody).slice(0, MAX_MESSAGES_PER_CONVERSATION);
-    result.scanned += messages.length;
+  const conversationMessages = await mapWithConcurrency(
+    conversations,
+    GRAPH_CONCURRENCY,
+    signal,
+    async (conversation, _index, operationSignal) => {
+      const conversationId = typeof conversation.id === "string" ? conversation.id.trim() : "";
+      if (!conversationId) return [];
+      const messagesBody = await graphGet(`${conversationId}/messages`, {
+        fields: "id,created_time,from,to,message,attachments",
+        limit: String(MAX_MESSAGES_PER_CONVERSATION),
+      }, operationSignal);
+      return dataRecords(messagesBody).slice(0, MAX_MESSAGES_PER_CONVERSATION);
+    },
+  );
+  const messages = conversationMessages.flat();
+  result.scanned = messages.length;
 
-    for (const message of messages) {
-      const normalized = normalizeMatpinConversationMessage(message, accountId);
-      if (!normalized) continue;
-      result.eligible += 1;
-      const ingested = await ingestMatpinBackfillMessage(normalized);
-      if (ingested.accepted) result.accepted += 1;
-      if (ingested.duplicate) result.duplicates += 1;
-    }
+  const eligible = messages
+    .map((message) => normalizeMatpinConversationMessage(message, accountId))
+    .filter((message): message is MatpinInboundMessage => Boolean(message));
+  result.eligible = eligible.length;
+  const ingestedResults = await mapWithConcurrency(
+    eligible,
+    INGEST_CONCURRENCY,
+    signal,
+    (message, _index, operationSignal) => ingestMatpinBackfillMessage(
+      message,
+      { signal: operationSignal },
+    ),
+  );
+  for (const ingested of ingestedResults) {
+    if (ingested.accepted) result.accepted += 1;
+    if (ingested.duplicate) result.duplicates += 1;
   }
 
   return result;
