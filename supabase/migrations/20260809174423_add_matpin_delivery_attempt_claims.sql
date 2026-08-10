@@ -50,6 +50,24 @@ comment on column public.matpin_instagram_messages.analysis_claimed_at is
 comment on column public.matpin_instagram_messages.outbound_generation is
   'Incremented only by an explicit failed-message reprocess so its final reply gets a new idempotency generation.';
 
+-- The user identity hash and outbound recipient hash use different HMAC
+-- domains and cannot be derived from one another. Persist only their hashed
+-- association so account deletion can scrub message-less guidance rows
+-- without retaining a raw Meta scoped id.
+alter table public.matpin_instagram_users
+  add column outbound_sender_hash text
+    check (
+      outbound_sender_hash is null
+      or outbound_sender_hash ~ '^[0-9a-f]{64}$'
+    );
+
+create unique index matpin_instagram_users_outbound_sender_hash_idx
+  on public.matpin_instagram_users (outbound_sender_hash)
+  where outbound_sender_hash is not null;
+
+comment on column public.matpin_instagram_users.outbound_sender_hash is
+  'Domain-separated HMAC used only to associate message-less outbox rows with account deletion. Never a raw Meta identifier.';
+
 -- Cache work can run for nearly the worker's 255-second deadline. A 300-second
 -- fenced lease prevents duplicate owners while remaining below PGMQ's
 -- 600-second crash-recovery visibility window.
@@ -297,6 +315,11 @@ create table public.matpin_outbound_deliveries (
   dedup_hash text not null unique check (dedup_hash ~ '^[0-9a-f]{64}$'),
   message_id uuid references public.matpin_instagram_messages(id) on delete cascade,
   generation integer not null default 0 check (generation between 0 and 1000000),
+  account_sender_hash text
+    check (
+      account_sender_hash is null
+      or account_sender_hash ~ '^[0-9a-f]{64}$'
+    ),
   sender_hash text not null check (sender_hash ~ '^[0-9a-f]{64}$'),
   recipient_ciphertext text,
   body_ciphertext text,
@@ -320,6 +343,10 @@ create table public.matpin_outbound_deliveries (
   check (
     (kind = 'guidance' and message_id is null)
     or (kind in ('receipt', 'final') and message_id is not null)
+  ),
+  check (
+    (kind = 'guidance' and account_sender_hash is not null)
+    or (kind in ('receipt', 'final') and account_sender_hash is null)
   ),
   check (
     (state in ('pending', 'leased', 'sending')
@@ -354,6 +381,9 @@ create index matpin_outbound_lease_expiry_idx
 create index matpin_outbound_sender_guidance_idx
   on public.matpin_outbound_deliveries (sender_hash, created_at desc)
   where kind = 'guidance';
+create index matpin_outbound_account_guidance_idx
+  on public.matpin_outbound_deliveries (account_sender_hash, created_at desc)
+  where kind = 'guidance';
 create index matpin_outbound_expiry_idx
   on public.matpin_outbound_deliveries (expires_at);
 
@@ -362,6 +392,266 @@ revoke all on table public.matpin_outbound_deliveries
   from public, anon, authenticated;
 grant select, insert, update, delete on table public.matpin_outbound_deliveries
   to service_role;
+
+-- Guidance can arrive before a supported post creates a full user row. Keep
+-- only the two domain-separated HMACs so that later account deletion can find
+-- message-less deliveries. The poller removes guidance-only mappings at the
+-- same bounded retention horizon as their outbox payloads.
+create table public.matpin_sender_outbound_mappings (
+  sender_hash text primary key check (sender_hash ~ '^[0-9a-f]{64}$'),
+  outbound_sender_hash text not null unique
+    check (outbound_sender_hash ~ '^[0-9a-f]{64}$'),
+  last_seen_at timestamptz not null default now(),
+  expires_at timestamptz not null default (now() + interval '7 days'),
+  check (expires_at > last_seen_at)
+);
+
+create index matpin_sender_outbound_mapping_expiry_idx
+  on public.matpin_sender_outbound_mappings (expires_at);
+
+alter table public.matpin_sender_outbound_mappings enable row level security;
+revoke all on table public.matpin_sender_outbound_mappings
+  from public, anon, authenticated;
+grant select, insert, update, delete
+  on table public.matpin_sender_outbound_mappings
+  to service_role;
+
+-- Analysis results are not active saved places until the fenced completion
+-- RPC commits. This service-only staging table keeps a response-lost or
+-- failed analysis from leaking partially saved data through the public map.
+create table public.matpin_staged_places (
+  message_id uuid not null
+    references public.matpin_instagram_messages(id) on delete cascade,
+  analysis_claim_token uuid not null,
+  sender_hash text not null
+    references public.matpin_instagram_users(sender_hash) on delete cascade,
+  reel_id text not null,
+  reel_url text,
+  place_order smallint not null check (place_order between 1 and 3),
+  place_id text not null check (length(place_id) between 1 and 500),
+  place jsonb not null check (jsonb_typeof(place) = 'object'),
+  confirmation_source text not null
+    check (confirmation_source in ('automatic_high_confidence', 'user_confirmation')),
+  staged_at timestamptz not null default now(),
+  primary key (message_id, analysis_claim_token, place_order),
+  unique (message_id, analysis_claim_token, place_id)
+);
+
+create index matpin_staged_places_sender_idx
+  on public.matpin_staged_places (sender_hash, message_id);
+
+alter table public.matpin_staged_places enable row level security;
+revoke all on table public.matpin_staged_places
+  from public, anon, authenticated;
+grant select, insert, update, delete on table public.matpin_staged_places
+  to service_role;
+
+-- Before this migration, stage_places wrote directly to the active save
+-- table. Keep completed saves compatible, but hide any legacy active row
+-- whose source message never committed the saved state. Reprocessing repeats
+-- this soft-delete below so a failed legacy row cannot become visible again.
+update public.matpin_saved_places saved
+set deleted_at = coalesce(saved.deleted_at, now())
+from public.matpin_instagram_messages message
+where saved.message_id = message.id
+  and saved.deleted_at is null
+  and message.status <> 'saved';
+
+-- A bounded hash-only deletion marker closes the race where a signed webhook
+-- was already in flight but had not inserted its guidance delivery when the
+-- account row was deleted. Unknown first-time guidance remains allowed. A
+-- later supported post is treated as explicit reactivation and clears this
+-- marker before creating new account data.
+create table public.matpin_account_deletion_tombstones (
+  sender_hash text primary key check (sender_hash ~ '^[0-9a-f]{64}$'),
+  outbound_sender_hash text
+    check (
+      outbound_sender_hash is null
+      or outbound_sender_hash ~ '^[0-9a-f]{64}$'
+    ),
+  deleted_at timestamptz not null default now(),
+  expires_at timestamptz not null default (now() + interval '7 days'),
+  check (expires_at > deleted_at)
+);
+
+create unique index matpin_account_deletion_outbound_hash_idx
+  on public.matpin_account_deletion_tombstones (outbound_sender_hash)
+  where outbound_sender_hash is not null;
+create index matpin_account_deletion_expiry_idx
+  on public.matpin_account_deletion_tombstones (expires_at);
+
+alter table public.matpin_account_deletion_tombstones enable row level security;
+revoke all on table public.matpin_account_deletion_tombstones
+  from public, anon, authenticated;
+grant select, insert, update, delete
+  on table public.matpin_account_deletion_tombstones
+  to service_role;
+
+-- The worker builds its completion reply after staging. Include only the
+-- current media's private staged identities in the count, deduplicated with
+-- active saves, without exposing staged rows through the saved-place table.
+create or replace function public.matpin_conversation_context(
+  p_sender_hash text,
+  p_reel_id text default null
+)
+returns jsonb
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_known_user boolean;
+  v_inbound_message_count bigint;
+  v_saved_place_count bigint;
+  v_has_saved_media boolean;
+begin
+  if p_sender_hash is null or length(p_sender_hash) <> 64 then
+    raise exception 'invalid matpin sender hash';
+  end if;
+
+  select exists (
+    select 1
+    from public.matpin_instagram_users
+    where sender_hash = p_sender_hash
+  ) into v_known_user;
+
+  select count(*)
+  from public.matpin_instagram_messages
+  where sender_hash = p_sender_hash
+    and status <> 'deleted'
+  into v_inbound_message_count;
+
+  select count(*)
+  from (
+    select saved.reel_id, saved.place ->> 'id' as place_id
+    from public.matpin_saved_places saved
+    where saved.sender_hash = p_sender_hash
+      and saved.deleted_at is null
+    union
+    select staged.reel_id, staged.place_id
+    from public.matpin_staged_places staged
+    where staged.sender_hash = p_sender_hash
+      and p_reel_id is not null
+      and staged.reel_id = p_reel_id
+  ) visible_after_completion
+  into v_saved_place_count;
+
+  select p_reel_id is not null and exists (
+    select 1
+    from public.matpin_saved_places
+    where sender_hash = p_sender_hash
+      and reel_id = p_reel_id
+      and deleted_at is null
+  ) into v_has_saved_media;
+
+  return jsonb_build_object(
+    'knownUser', v_known_user,
+    'inboundMessageCount', v_inbound_message_count,
+    'savedPlaceCount', v_saved_place_count,
+    'hasSavedMedia', v_has_saved_media
+  );
+end;
+$$;
+
+revoke all on function public.matpin_conversation_context(text, text)
+  from public, anon, authenticated;
+grant execute on function public.matpin_conversation_context(text, text)
+  to service_role;
+
+-- Extend the existing account-deletion trigger. The advisory lock matches
+-- guidance ingestion, so an already-enqueued delivery is terminalized in the
+-- same transaction before the user row cascades away. A send that may have
+-- crossed the provider boundary remains uncertain; every other active state
+-- becomes a payload-free superseded tombstone retaining only hashes.
+create or replace function public.matpin_delete_admin_actions_for_user()
+returns trigger
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_outbound_sender_hash text;
+begin
+  v_outbound_sender_hash := old.outbound_sender_hash;
+
+  if v_outbound_sender_hash is null then
+    select mapping.outbound_sender_hash
+    into v_outbound_sender_hash
+    from public.matpin_sender_outbound_mappings mapping
+    where mapping.sender_hash = old.sender_hash;
+  end if;
+
+  if v_outbound_sender_hash is null then
+    select delivery.sender_hash
+    into v_outbound_sender_hash
+    from public.matpin_outbound_deliveries delivery
+    where delivery.kind = 'guidance'
+      and delivery.account_sender_hash = old.sender_hash
+    order by delivery.created_at desc
+    limit 1;
+  end if;
+
+  if v_outbound_sender_hash is not null then
+    perform pg_catalog.pg_advisory_xact_lock(
+      pg_catalog.hashtextextended(v_outbound_sender_hash, 0)
+    );
+  end if;
+
+  insert into public.matpin_account_deletion_tombstones (
+    sender_hash,
+    outbound_sender_hash,
+    deleted_at,
+    expires_at
+  ) values (
+    old.sender_hash,
+    v_outbound_sender_hash,
+    now(),
+    now() + interval '7 days'
+  )
+  on conflict (sender_hash) do update set
+    outbound_sender_hash = coalesce(
+      excluded.outbound_sender_hash,
+      public.matpin_account_deletion_tombstones.outbound_sender_hash
+    ),
+    deleted_at = now(),
+    expires_at = now() + interval '7 days';
+
+  update public.matpin_outbound_deliveries
+  set
+    state = case when state = 'sending' then 'uncertain' else 'superseded' end,
+    recipient_ciphertext = null,
+    body_ciphertext = null,
+    terminal_lease_token = lease_token,
+    lease_token = null,
+    lease_expires_at = null,
+    error_code = 'account_deleted',
+    terminal_at = now(),
+    updated_at = now()
+  where kind = 'guidance'
+    and (
+      account_sender_hash = old.sender_hash
+      or (
+        v_outbound_sender_hash is not null
+        and sender_hash = v_outbound_sender_hash
+      )
+    )
+    and state in ('pending', 'leased', 'sending');
+
+  update public.matpin_sender_outbound_mappings
+  set
+    last_seen_at = now(),
+    expires_at = now() + interval '7 days'
+  where sender_hash = old.sender_hash;
+
+  delete from public.matpin_admin_actions
+  where sender_hash = old.sender_hash;
+  return old;
+end;
+$$;
+
+revoke all on function public.matpin_delete_admin_actions_for_user()
+  from public, anon, authenticated, service_role;
+
 grant usage on schema pgmq to service_role;
 grant execute on function pgmq.send(text, jsonb, integer) to service_role;
 grant execute on function pgmq.delete(text, bigint) to service_role;
@@ -515,6 +805,7 @@ declare
   v_results jsonb := '[]'::jsonb;
   v_late_receipt boolean;
   v_receipt_body_ciphertext text;
+  v_deleted_sender public.matpin_account_deletion_tombstones%rowtype;
 begin
   if jsonb_typeof(p_events) <> 'array' then
     raise exception 'matpin_webhook_batch_must_be_array';
@@ -550,6 +841,7 @@ begin
 
       insert into public.matpin_instagram_users (
         sender_hash,
+        outbound_sender_hash,
         sender_ciphertext,
         access_token_hash,
         short_link_hash,
@@ -557,6 +849,7 @@ begin
         updated_at
       ) values (
         v_event ->> 'senderHash',
+        v_event ->> 'outboundSenderHash',
         v_event ->> 'senderCiphertext',
         v_event ->> 'accessTokenHash',
         v_event ->> 'shortLinkHash',
@@ -564,11 +857,71 @@ begin
         now()
       )
       on conflict (sender_hash) do update set
+        outbound_sender_hash = excluded.outbound_sender_hash,
         sender_ciphertext = excluded.sender_ciphertext,
         access_token_hash = excluded.access_token_hash,
         short_link_hash = excluded.short_link_hash,
         link_expires_at = now() + interval '90 days',
-        updated_at = now();
+        updated_at = now()
+      where public.matpin_instagram_users.outbound_sender_hash is null
+        or public.matpin_instagram_users.outbound_sender_hash = excluded.outbound_sender_hash;
+
+      if not exists (
+        select 1
+        from public.matpin_instagram_users mapped_user
+        where mapped_user.sender_hash = v_event ->> 'senderHash'
+          and mapped_user.outbound_sender_hash = v_event ->> 'outboundSenderHash'
+      ) then
+        raise exception 'matpin_sender_mapping_mismatch';
+      end if;
+
+      insert into public.matpin_sender_outbound_mappings (
+        sender_hash,
+        outbound_sender_hash,
+        last_seen_at,
+        expires_at
+      ) values (
+        v_event ->> 'senderHash',
+        v_event ->> 'outboundSenderHash',
+        now(),
+        now() + interval '90 days'
+      )
+      on conflict (sender_hash) do update set
+        last_seen_at = now(),
+        expires_at = now() + interval '90 days'
+      where public.matpin_sender_outbound_mappings.outbound_sender_hash
+        = excluded.outbound_sender_hash;
+
+      if not exists (
+        select 1
+        from public.matpin_sender_outbound_mappings mapped_sender
+        where mapped_sender.sender_hash = v_event ->> 'senderHash'
+          and mapped_sender.outbound_sender_hash = v_event ->> 'outboundSenderHash'
+      ) then
+        raise exception 'matpin_sender_mapping_mismatch';
+      end if;
+
+      perform pg_catalog.pg_advisory_xact_lock(
+        pg_catalog.hashtextextended(v_event ->> 'outboundSenderHash', 0)
+      );
+
+      if exists (
+        select 1
+        from public.matpin_account_deletion_tombstones deleted_sender
+        where deleted_sender.sender_hash = v_event ->> 'senderHash'
+          and deleted_sender.expires_at > now()
+          and deleted_sender.outbound_sender_hash is not null
+          and deleted_sender.outbound_sender_hash is distinct from v_event ->> 'outboundSenderHash'
+      ) then
+        raise exception 'matpin_sender_mapping_mismatch';
+      end if;
+
+      delete from public.matpin_account_deletion_tombstones
+      where sender_hash = v_event ->> 'senderHash'
+        and (
+          outbound_sender_hash is null
+          or outbound_sender_hash = v_event ->> 'outboundSenderHash'
+        );
 
       v_inserted_message_id := null;
       insert into public.matpin_instagram_messages (
@@ -702,15 +1055,168 @@ begin
 
     elsif v_event_type = 'guidance' then
       if (v_event ->> 'dedupHash') !~ '^[0-9a-f]{64}$'
+        or (v_event ->> 'senderHash') !~ '^[0-9a-f]{64}$'
         or (v_event ->> 'outboundSenderHash') !~ '^[0-9a-f]{64}$'
         or nullif(v_event ->> 'recipientCiphertext', '') is null
         or nullif(v_event ->> 'bodyCiphertext', '') is null then
         raise exception 'matpin_guidance_event_invalid';
       end if;
 
+      update public.matpin_instagram_users
+      set
+        outbound_sender_hash = v_event ->> 'outboundSenderHash',
+        updated_at = now()
+      where sender_hash = v_event ->> 'senderHash'
+        and (
+          outbound_sender_hash is null
+          or outbound_sender_hash = v_event ->> 'outboundSenderHash'
+        );
+
+      if exists (
+        select 1
+        from public.matpin_instagram_users mapped_user
+        where mapped_user.sender_hash = v_event ->> 'senderHash'
+          and mapped_user.outbound_sender_hash is distinct from v_event ->> 'outboundSenderHash'
+      ) then
+        raise exception 'matpin_sender_mapping_mismatch';
+      end if;
+
+      insert into public.matpin_sender_outbound_mappings (
+        sender_hash,
+        outbound_sender_hash,
+        last_seen_at,
+        expires_at
+      ) values (
+        v_event ->> 'senderHash',
+        v_event ->> 'outboundSenderHash',
+        now(),
+        now() + interval '7 days'
+      )
+      on conflict (sender_hash) do update set
+        last_seen_at = now(),
+        expires_at = greatest(
+          public.matpin_sender_outbound_mappings.expires_at,
+          now() + interval '7 days'
+        )
+      where public.matpin_sender_outbound_mappings.outbound_sender_hash
+        = excluded.outbound_sender_hash;
+
+      if not exists (
+        select 1
+        from public.matpin_sender_outbound_mappings mapped_sender
+        where mapped_sender.sender_hash = v_event ->> 'senderHash'
+          and mapped_sender.outbound_sender_hash = v_event ->> 'outboundSenderHash'
+      ) then
+        raise exception 'matpin_sender_mapping_mismatch';
+      end if;
+
       perform pg_catalog.pg_advisory_xact_lock(
         pg_catalog.hashtextextended(v_event ->> 'outboundSenderHash', 0)
       );
+
+      -- A sender with only an unsupported/guidance event has no account row
+      -- or deletion credential yet. It may enqueue while no deletion marker
+      -- exists, but its payload remains bounded by the seven-day outbox TTL.
+      -- Once a supported event creates the account, the hash mapping above
+      -- makes later account deletion cover all guidance for this sender.
+      delete from public.matpin_account_deletion_tombstones
+      where sender_hash = v_event ->> 'senderHash'
+        and expires_at <= now();
+
+      select * into v_deleted_sender
+      from public.matpin_account_deletion_tombstones
+      where sender_hash = v_event ->> 'senderHash'
+        and expires_at > now()
+      for update;
+
+      if v_deleted_sender.sender_hash is not null then
+        if v_deleted_sender.outbound_sender_hash is not null
+          and v_deleted_sender.outbound_sender_hash is distinct from v_event ->> 'outboundSenderHash' then
+          raise exception 'matpin_sender_mapping_mismatch';
+        end if;
+
+        update public.matpin_account_deletion_tombstones
+        set outbound_sender_hash = v_event ->> 'outboundSenderHash'
+        where sender_hash = v_deleted_sender.sender_hash;
+
+        select * into v_delivery
+        from public.matpin_outbound_deliveries
+        where dedup_hash = v_event ->> 'dedupHash'
+        for update;
+
+        if v_delivery.id is null then
+          insert into public.matpin_outbound_deliveries (
+            kind,
+            dedup_hash,
+            account_sender_hash,
+            sender_hash,
+            state,
+            error_code,
+            terminal_at,
+            expires_at,
+            updated_at
+          ) values (
+            'guidance',
+            v_event ->> 'dedupHash',
+            v_event ->> 'senderHash',
+            v_event ->> 'outboundSenderHash',
+            'superseded',
+            'account_deleted',
+            now(),
+            now() + interval '7 days',
+            now()
+          )
+          returning * into v_delivery;
+
+          v_results := v_results || jsonb_build_array(jsonb_build_object(
+            'type', 'guidance',
+            'queued', false,
+            'duplicate', false,
+            'cooldown', false,
+            'outboundId', v_delivery.id,
+            'deliveryState', v_delivery.state
+          ));
+        else
+          if v_delivery.kind <> 'guidance'
+            or v_delivery.account_sender_hash <> v_event ->> 'senderHash'
+            or v_delivery.sender_hash <> v_event ->> 'outboundSenderHash' then
+            raise exception 'matpin_outbound_idempotency_mismatch';
+          end if;
+
+          update public.matpin_outbound_deliveries
+          set
+            state = case when state = 'sending' then 'uncertain' else 'superseded' end,
+            recipient_ciphertext = null,
+            body_ciphertext = null,
+            terminal_lease_token = lease_token,
+            lease_token = null,
+            lease_expires_at = null,
+            error_code = 'account_deleted',
+            terminal_at = coalesce(terminal_at, now()),
+            updated_at = now()
+          where id = v_delivery.id
+            and state in ('pending', 'leased', 'sending')
+          returning * into v_delivery;
+
+          if not found then
+            select * into v_delivery
+            from public.matpin_outbound_deliveries
+            where dedup_hash = v_event ->> 'dedupHash';
+          end if;
+
+          v_duplicate_count := v_duplicate_count + 1;
+          v_results := v_results || jsonb_build_array(jsonb_build_object(
+            'type', 'guidance',
+            'queued', false,
+            'duplicate', true,
+            'cooldown', false,
+            'outboundId', v_delivery.id,
+            'deliveryState', v_delivery.state
+          ));
+        end if;
+
+        continue;
+      end if;
 
       delete from public.matpin_outbound_deliveries
       where kind = 'guidance'
@@ -724,6 +1230,7 @@ begin
 
       if v_delivery.id is not null then
         if v_delivery.kind <> 'guidance'
+          or v_delivery.account_sender_hash <> v_event ->> 'senderHash'
           or v_delivery.sender_hash <> v_event ->> 'outboundSenderHash' then
           raise exception 'matpin_outbound_idempotency_mismatch';
         end if;
@@ -740,6 +1247,7 @@ begin
         select 1
         from public.matpin_outbound_deliveries recent
         where recent.kind = 'guidance'
+          and recent.account_sender_hash = v_event ->> 'senderHash'
           and recent.sender_hash = v_event ->> 'outboundSenderHash'
           and recent.created_at > now() - interval '30 seconds'
           and recent.expires_at > now()
@@ -755,6 +1263,7 @@ begin
         insert into public.matpin_outbound_deliveries (
           kind,
           dedup_hash,
+          account_sender_hash,
           sender_hash,
           recipient_ciphertext,
           body_ciphertext,
@@ -762,6 +1271,7 @@ begin
         ) values (
           'guidance',
           v_event ->> 'dedupHash',
+          v_event ->> 'senderHash',
           v_event ->> 'outboundSenderHash',
           v_event ->> 'recipientCiphertext',
           v_event ->> 'bodyCiphertext',
@@ -808,6 +1318,28 @@ begin
   if p_lease_seconds < 15 or p_lease_seconds > 120 then
     raise exception 'matpin_outbound_lease_invalid';
   end if;
+
+  delete from public.matpin_sender_outbound_mappings mapping
+  using (
+    select expired.sender_hash
+    from public.matpin_sender_outbound_mappings expired
+    where expired.expires_at <= now()
+    order by expired.expires_at
+    for update skip locked
+    limit 100
+  ) expired
+  where mapping.sender_hash = expired.sender_hash;
+
+  delete from public.matpin_account_deletion_tombstones tombstone
+  using (
+    select expired.sender_hash
+    from public.matpin_account_deletion_tombstones expired
+    where expired.expires_at <= now()
+    order by expired.expires_at
+    for update skip locked
+    limit 100
+  ) expired
+  where tombstone.sender_hash = expired.sender_hash;
 
   delete from public.matpin_outbound_deliveries delivery
   using public.matpin_instagram_messages message
@@ -1017,6 +1549,9 @@ declare
   v_delivery public.matpin_outbound_deliveries%rowtype;
   v_terminal boolean;
 begin
+  if p_lease_token is null then
+    raise exception 'matpin_outbound_lease_mismatch';
+  end if;
   if p_retry_after_seconds < 1 or p_retry_after_seconds > 3600 then
     raise exception 'matpin_outbound_retry_delay_invalid';
   end if;
@@ -1031,12 +1566,13 @@ begin
   end if;
   if v_delivery.state in ('succeeded', 'failed', 'uncertain', 'superseded') then
     if v_delivery.terminal_lease_token is null
-      or v_delivery.terminal_lease_token <> p_lease_token then
+      or v_delivery.terminal_lease_token is distinct from p_lease_token then
       raise exception 'matpin_outbound_lease_mismatch';
     end if;
     return v_delivery.state;
   end if;
-  if v_delivery.state <> 'leased' or v_delivery.lease_token <> p_lease_token then
+  if v_delivery.state <> 'leased'
+    or v_delivery.lease_token is distinct from p_lease_token then
     raise exception 'matpin_outbound_lease_mismatch';
   end if;
 
@@ -1086,6 +1622,9 @@ declare
   v_next_state text;
   v_retry_at timestamptz;
 begin
+  if p_lease_token is null then
+    raise exception 'matpin_outbound_lease_mismatch';
+  end if;
   if p_outcome not in ('succeeded', 'known_not_sent', 'failed', 'uncertain') then
     raise exception 'matpin_outbound_outcome_invalid';
   end if;
@@ -1107,12 +1646,13 @@ begin
   end if;
   if v_delivery.state in ('succeeded', 'failed', 'uncertain', 'superseded') then
     if v_delivery.terminal_lease_token is null
-      or v_delivery.terminal_lease_token <> p_lease_token then
+      or v_delivery.terminal_lease_token is distinct from p_lease_token then
       raise exception 'matpin_outbound_lease_mismatch';
     end if;
     return jsonb_build_object('state', v_delivery.state, 'retryAt', null);
   end if;
-  if v_delivery.state <> 'sending' or v_delivery.lease_token <> p_lease_token then
+  if v_delivery.state <> 'sending'
+    or v_delivery.lease_token is distinct from p_lease_token then
     raise exception 'matpin_outbound_lease_mismatch';
   end if;
 
@@ -1215,9 +1755,34 @@ declare
   v_message public.matpin_instagram_messages%rowtype;
   v_delivery public.matpin_outbound_deliveries%rowtype;
   v_requires_final boolean;
+  v_staged_places jsonb;
+  v_selected_place_id text;
+  v_sender_hash text;
 begin
   if p_status not in ('needs_confirmation', 'saved', 'failed') then
     raise exception 'invalid_matpin_completion_status';
+  end if;
+  if jsonb_typeof(coalesce(p_candidates, '[]'::jsonb)) <> 'array' then
+    raise exception 'invalid_matpin_completion_candidates';
+  end if;
+
+  select sender_hash into v_sender_hash
+  from public.matpin_instagram_messages
+  where id = p_message_id;
+
+  if v_sender_hash is null then
+    raise exception 'matpin_message_not_found';
+  end if;
+
+  -- Account deletion locks user then cascades to message. Take the same lock
+  -- order before saved-place FK checks so completion cannot deadlock with it.
+  perform 1
+  from public.matpin_instagram_users
+  where sender_hash = v_sender_hash
+  for key share;
+
+  if not found then
+    raise exception 'matpin_message_not_found';
   end if;
 
   select * into v_message
@@ -1249,6 +1814,23 @@ begin
     raise exception 'matpin_analysis_claim_mismatch';
   end if;
 
+  if p_status = 'saved' then
+    select
+      jsonb_agg(staged.place order by staged.place_order),
+      max(staged.place_id) filter (where staged.place_order = 1)
+    into v_staged_places, v_selected_place_id
+    from public.matpin_staged_places staged
+    where staged.message_id = p_message_id
+      and staged.analysis_claim_token = p_analysis_claim_token
+      and staged.sender_hash = v_message.sender_hash;
+
+    if v_staged_places is null
+      or v_staged_places is distinct from coalesce(p_candidates, '[]'::jsonb)
+      or v_selected_place_id is null then
+      raise exception 'matpin_staged_places_mismatch';
+    end if;
+  end if;
+
   v_requires_final := v_message.reply_required and v_message.replied_at is null;
   if v_requires_final and (
     p_final_dedup_hash !~ '^[0-9a-f]{64}$'
@@ -1269,10 +1851,46 @@ begin
     raise exception 'matpin_receipt_not_terminal';
   end if;
 
+  if p_status = 'saved' then
+    insert into public.matpin_saved_places (
+      sender_hash,
+      message_id,
+      reel_id,
+      reel_url,
+      place,
+      confirmation_source,
+      saved_at,
+      deleted_at
+    )
+    select
+      staged.sender_hash,
+      staged.message_id,
+      staged.reel_id,
+      staged.reel_url,
+      staged.place,
+      staged.confirmation_source,
+      now(),
+      null
+    from public.matpin_staged_places staged
+    where staged.message_id = p_message_id
+      and staged.analysis_claim_token = p_analysis_claim_token
+    order by staged.place_order
+    on conflict (sender_hash, reel_id, ((place ->> 'id')))
+      where deleted_at is null
+    do update set
+      message_id = excluded.message_id,
+      reel_url = excluded.reel_url,
+      place = excluded.place,
+      confirmation_source = excluded.confirmation_source,
+      saved_at = now(),
+      deleted_at = null;
+  end if;
+
   update public.matpin_instagram_messages
   set
     status = p_status,
     candidates = coalesce(p_candidates, '[]'::jsonb),
+    selected_place_id = case when p_status = 'saved' then v_selected_place_id else null end,
     analysis_model = p_analysis_model,
     analysis_duration_ms = p_analysis_duration_ms,
     media_bytes = p_media_bytes,
@@ -1287,6 +1905,9 @@ begin
     last_error = null,
     updated_at = now()
   where id = p_message_id;
+
+  delete from public.matpin_staged_places
+  where message_id = p_message_id;
 
   perform pgmq.delete('matpin-instagram', p_queue_message_id);
 
@@ -1350,6 +1971,7 @@ as $$
 declare
   v_message public.matpin_instagram_messages%rowtype;
   v_place jsonb;
+  v_place_order smallint;
   v_saved_count integer := 0;
 begin
   if p_message_id is null
@@ -1366,6 +1988,17 @@ begin
     raise exception 'matpin places must contain between one and three items';
   end if;
 
+  -- Match account deletion's user-to-message lock order before staged-place
+  -- FK checks. A delete that won the user lock makes this claim fail closed.
+  perform 1
+  from public.matpin_instagram_users
+  where sender_hash = p_sender_hash
+  for key share;
+
+  if not found then
+    raise exception 'matpin message not stageable';
+  end if;
+
   select * into v_message
   from public.matpin_instagram_messages
   where id = p_message_id
@@ -1379,7 +2012,12 @@ begin
     raise exception 'matpin message not stageable';
   end if;
 
-  for v_place in select value from jsonb_array_elements(p_places)
+  delete from public.matpin_staged_places
+  where message_id = p_message_id;
+
+  for v_place, v_place_order in
+    select value, ordinality::smallint
+    from jsonb_array_elements(p_places) with ordinality
   loop
     if jsonb_typeof(v_place) <> 'object'
       or nullif(v_place ->> 'id', '') is null
@@ -1388,45 +2026,30 @@ begin
       raise exception 'invalid matpin place';
     end if;
 
-    insert into public.matpin_saved_places (
-      sender_hash,
+    insert into public.matpin_staged_places (
       message_id,
+      analysis_claim_token,
+      sender_hash,
       reel_id,
       reel_url,
+      place_order,
+      place_id,
       place,
-      confirmation_source,
-      saved_at,
-      deleted_at
+      confirmation_source
     ) values (
-      p_sender_hash,
       p_message_id,
+      p_analysis_claim_token,
+      p_sender_hash,
       v_message.reel_id,
       v_message.reel_url,
+      v_place_order,
+      v_place ->> 'id',
       v_place,
-      p_confirmation_source,
-      now(),
-      null
-    )
-    on conflict (sender_hash, reel_id, ((place ->> 'id')))
-      where deleted_at is null
-    do update set
-      message_id = excluded.message_id,
-      reel_url = excluded.reel_url,
-      place = excluded.place,
-      confirmation_source = excluded.confirmation_source,
-      saved_at = now(),
-      deleted_at = null;
+      p_confirmation_source
+    );
 
     v_saved_count := v_saved_count + 1;
   end loop;
-
-  update public.matpin_instagram_messages
-  set
-    status = 'processing',
-    selected_place_id = p_places -> 0 ->> 'id',
-    updated_at = now()
-  where id = p_message_id
-    and sender_hash = p_sender_hash;
 
   return v_saved_count;
 end;
@@ -1460,6 +2083,9 @@ begin
     or v_message.analysis_claim_token is distinct from p_analysis_claim_token then
     raise exception 'matpin_analysis_claim_mismatch';
   end if;
+
+  delete from public.matpin_staged_places
+  where message_id = p_message_id;
 
   if v_message.attempt_count >= 2 then
     return 'complete_failed_required';
@@ -1512,6 +2138,9 @@ begin
     or v_message.analysis_claim_token is distinct from p_analysis_claim_token then
     raise exception 'matpin_analysis_claim_mismatch';
   end if;
+
+  delete from public.matpin_staged_places
+  where message_id = p_message_id;
 
   if v_message.reply_required and v_message.replied_at is null then
     v_dedup_hash := encode(extensions.hmac(
@@ -1728,6 +2357,9 @@ begin
   v_poisoned := v_message.attempt_count >= 10;
   v_claim_token := gen_random_uuid();
 
+  delete from public.matpin_staged_places
+  where message_id = v_message.id;
+
   update public.matpin_instagram_messages
   set
     status = 'processing',
@@ -1786,6 +2418,14 @@ begin
     return jsonb_build_object('accepted', false);
   end if;
   v_next_generation := v_outbound_generation + 1;
+
+  delete from public.matpin_staged_places
+  where message_id = p_message_id;
+
+  update public.matpin_saved_places
+  set deleted_at = coalesce(deleted_at, now())
+  where message_id = p_message_id
+    and deleted_at is null;
 
   update public.matpin_media_analysis_cache
   set invalidated_at = now(), updated_at = now()
@@ -1922,6 +2562,14 @@ begin
   if v_status is null or v_status <> 'failed' or v_reel_url is null then
     return jsonb_build_object('accepted', false);
   end if;
+
+  delete from public.matpin_staged_places
+  where message_id = p_message_id;
+
+  update public.matpin_saved_places
+  set deleted_at = coalesce(deleted_at, now())
+  where message_id = p_message_id
+    and deleted_at is null;
 
   update public.matpin_media_analysis_cache
   set invalidated_at = now(), updated_at = now()

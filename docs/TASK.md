@@ -1,6 +1,6 @@
 # 맛핀 실행 TASK
 
-> 기준일: 2026-08-10
+> 기준일: 2026-08-11
 >
 > 기준 명세: [맛핀 제품 요구사항](PRD.md)
 
@@ -95,10 +95,11 @@
 - [x] 대화 목록, 부분 성공, 최근 20건 제한 단위 테스트
 - [x] DM 길이, 24시간 제한, 수신자 재검증과 멱등성 단위 테스트
 - [x] 실패 재처리와 보관함 재전송 단위 테스트
+- [x] Webhook, poller, bearer 재처리와 관리자 mutation의 Production-live 공용 가드 및 인증 우선 회귀 테스트
 - [x] 관리자 접근, 미리보기 확인과 모바일 전환 Playwright 테스트
 - [x] `npm run typecheck`
-- [x] `npm run test:unit` 전체 68개 파일, 501개 테스트
-- [x] `npm run test:e2e` 전체 123개 테스트
+- [x] `npm run test:unit` 전체 70개 파일, 556개 테스트
+- [x] `npm run test:e2e` 전체 128개 테스트
 - [x] `npm run lint`
 - [x] `npm run build`
 
@@ -113,10 +114,12 @@
 - [x] `codex/matpin-conversation-crm` 브랜치를 원격에 올리고 Draft PR #30으로 검토 범위 확정
 - [x] Draft PR #30의 CI 환경 의존 레이아웃 검사 1건을 수정하고 로컬 전체 필수 검사 통과
 - [ ] Draft PR #30의 GitHub CI 재실행과 독립 리뷰 완료
-- [ ] 유지보수 시간대를 확정하고 `maintenance` 배포, poller 중지, 최소 360초 대기, `received=0`, `processing=0`, PGMQ 0건과 관리자 pending 0건 확인
-- [ ] 위 drain 상태에서 outbox 마이그레이션과 service role 전용 ACL을 적용하고 신규 앱을 운영 별칭 100%에 연결
-- [ ] Supabase Vault와 Cron에 30초 독립 poller를 등록하고 HTTP 202뿐 아니라 Vercel 로그와 DB 및 큐 forward progress 확인
-- [ ] Vercel에 배포한 뒤 `matpin-kr.vercel.app` 운영 별칭이 새 Ready 배포를 가리키는지 확인
+- [ ] 유지보수 시간대를 확정하고 병합 SHA의 `maintenance` 배포를 Ready 확인 뒤 운영 alias에 연결, 서명된 모드와 이벤트 미수락 확인
+- [ ] poller 중지 뒤 최소 360초 대기하고 `received=0`, `processing=0`, PGMQ 0건 및 신규 DB 행, 큐, outbox와 관리자 pending mutation 생성 없음 확인. maintenance 503에 따른 Meta 서명 요청 재시도 로그는 예상 가능하며 HTTP 재시도와 DB 유입을 구분
+- [ ] 위 drain 상태에서 outbox 마이그레이션과 service role 전용 ACL을 적용하고, 이 시점부터 구버전 앱 alias 롤백 금지
+- [ ] 같은 병합 SHA의 `live` 배포를 alias 연결 전에 별도로 Ready 확인하고, 운영 alias 승격 뒤 서명된 live 및 Production 모드 확인
+- [ ] live alias 확인 뒤에만 Supabase Vault와 Cron의 30초 독립 poller를 등록 또는 활성화하고 HTTP 202뿐 아니라 Vercel 로그와 DB 및 큐 forward progress 확인
+- [ ] 운영 값과 실제 Supabase, Meta, service role, 데이터, 링크 및 Cron 비밀값은 Production scope에만 두고 Preview는 격리된 mock 환경인지 확인
 - [x] `npm run matpin:launch:check -- https://matpin-kr.vercel.app`을 실행해 현재 운영 CRM 화면과 미로그인 차단이 각각 HTTP 404로 실패함을 확인
 - [ ] 신규 배포 뒤 같은 출시 점검의 모든 항목 통과
 - [ ] 허용된 Google 계정으로 `/matpin/admin` 실제 로그인
@@ -147,6 +150,7 @@ T7과 T8이 끝나기 전에는 로컬 구현 완료를 운영 출시 완료로 
 
 - [x] 발표 C안의 개인정보 가림과 브라우저 재QA 완료
 - [x] Moonlight 카드 상호작용을 로컬 HTTP 환경에서 실제 포인터 동작으로 재QA
+- [ ] Moonlight 포인터 수정은 별도 브랜치가 병합된 뒤 Git 정본 반영으로 표시
 - [ ] Onebite와 Today 확장 시안을 다시 시작하기 전에 현재 맛핀 정본을 바꾸는 별도 제품 결정 확정
 
-발표 C안은 `outputs/presentation-candidates/` 아래의 별도 로컬 산출물이며 현재 Git에서 무시됩니다. 9장과 정확히 240초, 데스크톱 및 모바일 넘침 없음, 개인정보 가림과 최종 광고 수치를 브라우저에서 확인했어요. Moonlight도 맛핀 출시 범위와 분리해 실제 포인터 종료 상태까지 검증했습니다. 과거 Onebite와 Today 확장 시안은 현재 맛핀 정본과 충돌하므로, 제품 결정을 새로 확정하기 전에는 재개하지 않습니다.
+발표 C안은 `outputs/presentation-candidates/` 아래의 별도 로컬 산출물이며 현재 Git에서 무시됩니다. 9장과 정확히 240초, 데스크톱 및 모바일 넘침 없음, 개인정보 가림과 최종 광고 수치를 브라우저에서 확인했어요. Moonlight도 맛핀 출시 범위와 분리해 실제 포인터 종료 상태까지 검증했지만, 별도 브랜치가 병합되기 전까지 Git 정본 반영은 미완료입니다. 과거 Onebite와 Today 확장 시안은 현재 맛핀 정본과 충돌하므로, 제품 결정을 새로 확정하기 전에는 재개하지 않습니다.

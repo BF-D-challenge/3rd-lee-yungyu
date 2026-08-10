@@ -178,6 +178,9 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
   });
 
   test("Scenario 1. 하단 덱에서 첫 카드를 뽑고, 네 장의 결과를 중요한 순서로 읽는다", async ({ page }) => {
+    await page.addInitScript(() => {
+      Math.random = () => 0;
+    });
     const lab = await openIdeaLab(page);
 
     // A1 뽑기 스테이지는 오직 슬롯·덱·뽑기 CTA만 표시한다. 결과 요소는 노출하지 않는다.
@@ -214,7 +217,10 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(result.locator(".idea-lab__result-name")).not.toHaveText("");
     await expect(result.locator(".idea-lab__result-name")).not.toContainText("—");
     await expect(result.locator(".idea-lab__result-head > span")).toHaveCount(0);
-    await expect(result.locator(".idea-lab__result-summary")).toHaveAttribute("data-combination-id", /.+/);
+    await expect(result.locator(".idea-lab__result-summary")).toHaveAttribute(
+      "data-combination-id",
+      "source-voice:payer-ops-writer:moment-hard-to-type:twist-one-minute-three-fields",
+    );
     await expect(result.locator("h2.idea-lab__result-hook")).not.toHaveText("");
     await expect(result.locator("h2.idea-lab__result-hook")).toContainText("?");
     await expect(result.locator(".idea-lab__result-story span")).not.toHaveText("");
@@ -247,11 +253,21 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(result.locator(".idea-lab__result-summary-top")).toHaveCount(0);
 
     // 요약 → 전체 상세 → 제작 자료가 가림 없이 한 열로 이어진다.
-    await page.evaluate(() => document.fonts.ready);
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+    });
     const resultGeometry = await result.evaluate((panel) => {
       const summary = panel.querySelector<HTMLElement>(".idea-lab__result-summary")!;
       const details = panel.querySelector<HTMLElement>(".idea-lab__locked-details")!;
       const content = panel.querySelector<HTMLElement>(".idea-lab__unlocked-content")!;
+      const summaryRect = summary.getBoundingClientRect();
+      const summaryContainsChildren = [...summary.children].every((child) => {
+        const childRect = child.getBoundingClientRect();
+        return childRect.top >= summaryRect.top - 1
+          && childRect.right <= summaryRect.right + 1
+          && childRect.bottom <= summaryRect.bottom + 1
+          && childRect.left >= summaryRect.left - 1;
+      });
       return {
         summaryBeforeDetails:
           summary.getBoundingClientRect().bottom <= details.getBoundingClientRect().top + 1,
@@ -260,14 +276,20 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
         detailsOneColumn: getComputedStyle(details).gridTemplateColumns.split(" ").length === 1,
         detailsMasked: `${getComputedStyle(details).maskImage} ${getComputedStyle(details).webkitMaskImage}`
           .includes("gradient"),
-        summaryFitsContent: summary.scrollHeight <= summary.clientHeight + 1,
+        summaryHeight: summaryRect.height,
+        summaryContainsChildren,
+        summaryFitsVertically: summary.scrollHeight <= summary.clientHeight + 1,
+        summaryFitsHorizontally: summary.scrollWidth <= summary.clientWidth + 1,
       };
     });
     expect(resultGeometry.summaryBeforeDetails).toBe(true);
     expect(resultGeometry.detailsBeforeContent).toBe(true);
     expect(resultGeometry.detailsOneColumn).toBe(true);
     expect(resultGeometry.detailsMasked).toBe(false);
-    expect(resultGeometry.summaryFitsContent).toBe(true);
+    expect(resultGeometry.summaryContainsChildren).toBe(true);
+    expect(resultGeometry.summaryFitsVertically).toBe(true);
+    expect(resultGeometry.summaryFitsHorizontally).toBe(true);
+    expect(resultGeometry.summaryHeight).toBeLessThanOrEqual(430);
     const fixedActions = await result.evaluate((stage) => {
       const scroller = stage.querySelector<HTMLElement>(".idea-lab__stage-scroll")!;
       const actions = stage.querySelector<HTMLElement>(".idea-lab__cta-bar--result")!;

@@ -2,6 +2,7 @@ import { getMatpinAdminAccess } from "@/lib/matpin/admin-auth";
 import { matpinAdminSendSchema } from "@/lib/matpin/admin-contract";
 import { matpinAdminAccessError, matpinAdminJson, matpinAdminOperationError } from "@/lib/matpin/admin-http";
 import { sendMatpinAdminReply } from "@/lib/matpin/admin-service";
+import { isMatpinPipelineLive } from "@/lib/matpin/pipeline-mode";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -11,6 +12,9 @@ export const maxDuration = 60;
 export async function POST(request: Request, context: { params: Promise<{ id: string }> }) {
   const access = await getMatpinAdminAccess();
   if (access.state !== "authorized") return matpinAdminAccessError(access);
+  if (!isMatpinPipelineLive()) {
+    return matpinAdminJson({ error: "pipeline_not_live" }, { status: 409 });
+  }
   const body = matpinAdminSendSchema.safeParse(await request.json().catch(() => null));
   if (!body.success) return matpinAdminJson({ error: "invalid_message" }, { status: 400 });
   const { id } = await context.params;

@@ -28,6 +28,8 @@ import {
   verifyMetaWebhookSignature,
 } from "@/lib/matpin/security";
 import { createMatpinWorkerDeadline } from "@/lib/matpin/deadline";
+import { getMatpinPipelineModeState } from "@/lib/matpin/pipeline-mode";
+import * as matpinStore from "@/lib/matpin/store";
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -55,6 +57,28 @@ function webhookBody(overrides: Record<string, unknown> = {}) {
       }],
     }],
   };
+}
+
+function signedWebhookRequest(payload: unknown = webhookBody()) {
+  const raw = JSON.stringify(payload);
+  const signature = `sha256=${createHmac("sha256", "meta-test-secret").update(raw).digest("hex")}`;
+  return new Request("https://matpin.kr/api/matpin/webhook", {
+    method: "POST",
+    headers: { "x-hub-signature-256": signature },
+    body: raw,
+  });
+}
+
+function signedModeCheckRequest(secret: string, timestamp = Math.floor(Date.now() / 1_000)) {
+  const signature = `sha256=${createHmac("sha256", secret)
+    .update(`matpin-pipeline-mode-check:v1:${timestamp}`)
+    .digest("hex")}`;
+  return new Request("https://matpin.kr/api/matpin/webhook?mode_check=1", {
+    headers: {
+      "x-matpin-mode-check-timestamp": String(timestamp),
+      "x-matpin-mode-check-signature": signature,
+    },
+  });
 }
 
 describe("Meta Instagram webhook contract", () => {
@@ -235,6 +259,33 @@ describe("Matpin secrets and signature", () => {
   });
 });
 
+describe("Matpin pipeline mode contract", () => {
+  it.each([
+    ["mock", "preview", true, "mock", "non-production"],
+    ["mock", "", true, "mock", "non-production"],
+    ["mock", "production", false, "invalid", "production"],
+    ["maintenance", "production", true, "maintenance", "production"],
+    ["maintenance", "preview", false, "invalid", "non-production"],
+    ["live", "production", true, "live", "production"],
+    ["live", "preview", false, "invalid", "non-production"],
+    ["live", "", false, "invalid", "non-production"],
+    ["", "production", false, "invalid", "production"],
+    ["unexpected", "production", false, "invalid", "production"],
+  ] as const)(
+    "classifies mode %j in %j as valid=%s, mode=%s, environment=%s",
+    (mode, vercelEnvironment, valid, expectedMode, environment) => {
+      vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", mode);
+      vi.stubEnv("VERCEL_ENV", vercelEnvironment);
+
+      expect(getMatpinPipelineModeState()).toEqual({
+        valid,
+        mode: expectedMode,
+        environment,
+      });
+    },
+  );
+});
+
 describe("Webhook and worker route guards", () => {
   it("answers Meta challenge only with the configured verify token", async () => {
     vi.stubEnv("META_WEBHOOK_VERIFY_TOKEN", "verify-token");
@@ -247,6 +298,29 @@ describe("Webhook and worker route guards", () => {
     expect(accepted.status).toBe(200);
     expect(await accepted.text()).toBe("12345");
     expect(rejected.status).toBe(403);
+  });
+
+  it("reports maintenance mode only to a fresh CRON_SECRET-signed GET", async () => {
+    vi.stubEnv("CRON_SECRET", "cron-test-secret");
+    vi.stubEnv("VERCEL_ENV", "production");
+    vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "maintenance");
+
+    const accepted = await verifyWebhook(signedModeCheckRequest("cron-test-secret"));
+    const rejected = await verifyWebhook(signedModeCheckRequest("wrong-secret"));
+    const stale = await verifyWebhook(signedModeCheckRequest(
+      "cron-test-secret",
+      Math.floor(Date.now() / 1_000) - 61,
+    ));
+
+    expect(accepted.status).toBe(204);
+    expect(accepted.headers.get("cache-control")).toContain("private");
+    expect(accepted.headers.get("cache-control")).toContain("no-store");
+    expect(accepted.headers.get("x-matpin-pipeline-mode")).toBe("maintenance");
+    expect(accepted.headers.get("x-matpin-pipeline-mode-valid")).toBe("true");
+    expect(accepted.headers.get("x-matpin-pipeline-environment")).toBe("production");
+    expect(accepted.headers.get("x-matpin-pipeline-accepts-events")).toBe("false");
+    expect(rejected.status).toBe(401);
+    expect(stale.status).toBe(401);
   });
 
   it("rejects an unsigned payload before touching storage", async () => {
@@ -262,6 +336,7 @@ describe("Webhook and worker route guards", () => {
     vi.stubEnv("META_APP_SECRET", "meta-test-secret");
     vi.stubEnv("META_INSTAGRAM_ACCOUNT_ID", "professional-account");
     vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "live");
+    vi.stubEnv("VERCEL_ENV", "production");
     const raw = JSON.stringify(webhookBody({ is_echo: true }));
     const signature = `sha256=${createHmac("sha256", "meta-test-secret").update(raw).digest("hex")}`;
     const response = await receiveWebhook(new Request("https://matpin.kr/api/matpin/webhook", {
@@ -273,17 +348,85 @@ describe("Webhook and worker route guards", () => {
     expect(await response.json()).toEqual({ ok: true, accepted: 0, ignored: true });
   });
 
-  it("acknowledges signed events without ingesting while the pipeline flag is mock", async () => {
+  it("acknowledges signed events without ingesting only with explicit mock in non-production", async () => {
     vi.stubEnv("META_APP_SECRET", "meta-test-secret");
-    const raw = JSON.stringify(webhookBody());
-    const signature = `sha256=${createHmac("sha256", "meta-test-secret").update(raw).digest("hex")}`;
-    const response = await receiveWebhook(new Request("https://matpin.kr/api/matpin/webhook", {
-      method: "POST",
-      headers: { "x-hub-signature-256": signature },
-      body: raw,
-    }));
+    vi.stubEnv("VERCEL_ENV", "preview");
+    vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "mock");
+    const response = await receiveWebhook(signedWebhookRequest());
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ ok: true, accepted: 0, pipelineMode: "mock" });
+  });
+
+  it.each(["", "unexpected"])(
+    "fails closed for a missing or unknown pipeline mode: %j",
+    async (mode) => {
+      vi.stubEnv("META_APP_SECRET", "meta-test-secret");
+      vi.stubEnv("VERCEL_ENV", "production");
+      vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", mode);
+
+      const response = await receiveWebhook(signedWebhookRequest());
+
+      expect(response.status).toBe(503);
+      expect(await response.json()).toEqual({ error: "pipeline_not_configured" });
+    },
+  );
+
+  it.each([
+    ["mock", "production"],
+    ["live", "preview"],
+    ["live", ""],
+    ["maintenance", "preview"],
+  ])("fails closed when %s is used in %s", async (mode, vercelEnvironment) => {
+    vi.stubEnv("META_APP_SECRET", "meta-test-secret");
+    vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", mode);
+    vi.stubEnv("VERCEL_ENV", vercelEnvironment);
+
+    const response = await receiveWebhook(signedWebhookRequest());
+
+    expect(response.status).toBe(503);
+    expect(await response.json()).toEqual({ error: "pipeline_not_configured" });
+  });
+
+  it("returns 503 for signed events during maintenance", async () => {
+    vi.stubEnv("META_APP_SECRET", "meta-test-secret");
+    vi.stubEnv("VERCEL_ENV", "production");
+    vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "maintenance");
+
+    const response = await receiveWebhook(signedWebhookRequest());
+
+    expect(response.status).toBe(503);
+    expect(await response.json()).toEqual({ error: "maintenance" });
+  });
+
+  it("prepares guidance with the stable inbound sender hash", async () => {
+    vi.stubEnv("META_APP_SECRET", "meta-test-secret");
+    vi.stubEnv("META_INSTAGRAM_ACCOUNT_ID", "professional-account");
+    vi.stubEnv("META_INSTAGRAM_ACCESS_TOKEN", "instagram-test-token");
+    vi.stubEnv("META_GRAPH_API_VERSION", "v25.0");
+    vi.stubEnv("MATPIN_DATA_SECRET", "data-secret-that-is-longer-than-32-characters");
+    vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "live");
+    vi.stubEnv("VERCEL_ENV", "production");
+    const enqueue = vi.spyOn(matpinStore, "enqueueMatpinWebhookBatch").mockResolvedValue({
+      accepted: 0,
+      duplicates: 0,
+      receiptsQueued: 0,
+      guidanceQueued: 0,
+      guidanceCooldown: 0,
+      results: [],
+    });
+
+    const response = await receiveWebhook(signedWebhookRequest(webhookBody({
+      text: "도움말",
+      attachments: undefined,
+    })));
+
+    expect(response.status).toBe(200);
+    const events = enqueue.mock.calls[0]?.[0];
+    expect(events).toHaveLength(1);
+    expect(events?.[0]).toMatchObject({
+      type: "guidance",
+      senderHash: hashMatpinSender("sender-1"),
+    });
   });
 
   it("rejects cron execution without the server secret", async () => {
@@ -309,6 +452,34 @@ describe("Webhook and worker route guards", () => {
     );
     expect(response.status).toBe(401);
   });
+
+  it.each([
+    ["live", "preview"],
+    ["live", ""],
+    ["maintenance", "production"],
+  ])(
+    "rejects authenticated reprocessing when mode %s is used in %j",
+    async (mode, vercelEnvironment) => {
+      vi.stubEnv("CRON_SECRET", "cron-test-secret");
+      vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", mode);
+      vi.stubEnv("VERCEL_ENV", vercelEnvironment);
+
+      const response = await reprocessMessage(
+        new Request(
+          "https://matpin.kr/api/matpin/messages/11111111-1111-4111-8111-111111111111/reprocess",
+          {
+            method: "POST",
+            headers: { authorization: "Bearer cron-test-secret" },
+          },
+        ),
+        { params: Promise.resolve({ id: "11111111-1111-4111-8111-111111111111" }) },
+      );
+
+      expect(response.status).toBe(409);
+      expect(await response.json()).toEqual({ error: "pipeline_not_live" });
+    },
+  );
+
 });
 
 describe("Gemini input gate", () => {

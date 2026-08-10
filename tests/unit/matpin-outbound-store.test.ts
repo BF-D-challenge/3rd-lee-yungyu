@@ -71,6 +71,7 @@ describe("Matpin outbound store", () => {
     const event = {
       type: "guidance" as const,
       dedupHash: hash,
+      senderHash: "c".repeat(64),
       outboundSenderHash: "b".repeat(64),
       recipientCiphertext: "encrypted-recipient",
       bodyCiphertext: "encrypted-body",
@@ -82,6 +83,23 @@ describe("Matpin outbound store", () => {
     expect(rpc).toHaveBeenCalledTimes(1);
     expect(rpc).toHaveBeenCalledWith("matpin_ingest_webhook_batch", { p_events: [event] });
     expect(rpcRequest.abortSignal).toHaveBeenCalledWith(signal);
+  });
+
+  it("rejects guidance that cannot bind its account hash to its outbound hash", async () => {
+    const rpc = vi.fn();
+    mocks.createClient.mockReturnValue({ rpc });
+    const eventWithoutAccountHash = {
+      type: "guidance",
+      dedupHash: hash,
+      outboundSenderHash: "b".repeat(64),
+      recipientCiphertext: "encrypted-recipient",
+      bodyCiphertext: "encrypted-body",
+    };
+
+    await expect(enqueueMatpinWebhookBatch([
+      eventWithoutAccountHash as unknown as Parameters<typeof enqueueMatpinWebhookBatch>[0][number],
+    ])).rejects.toThrow();
+    expect(rpc).not.toHaveBeenCalled();
   });
 
   it("parses a leased claim and applies the caller signal", async () => {

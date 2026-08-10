@@ -142,6 +142,7 @@ beforeEach(() => {
   vi.stubEnv("CRON_SECRET", "cron-secret");
   vi.stubEnv("MATPIN_PUBLIC_APP_URL", "https://matpin.kr");
   vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "live");
+  vi.stubEnv("VERCEL_ENV", "production");
   vi.stubEnv("MATPIN_DATA_SECRET", "data-secret-that-is-at-least-32-characters-long");
   mocks.after.mockReset();
   mocks.claim.mockReset().mockResolvedValue(job);
@@ -543,7 +544,40 @@ describe("Matpin jobs route", () => {
 
     expect(response.status).toBe(409);
     expect(mocks.after).not.toHaveBeenCalled();
+    expect(mocks.processCycle).not.toHaveBeenCalled();
+    expect(mocks.backfill).not.toHaveBeenCalled();
   });
+
+  it.each([
+    ["live", "preview"],
+    ["live", ""],
+    ["", "production"],
+    ["unexpected", "production"],
+    ["mock", "preview"],
+  ])(
+    "rejects authenticated GET and POST work for mode %j in %j",
+    async (mode, vercelEnvironment) => {
+      vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", mode);
+      vi.stubEnv("VERCEL_ENV", vercelEnvironment);
+
+      const getResponse = await GET(workerRequest());
+      const postResponse = await POST(new Request(
+        "https://matpin.kr/api/matpin/jobs/process",
+        {
+          method: "POST",
+          headers: { authorization: "Bearer cron-secret" },
+        },
+      ));
+
+      expect(getResponse.status).toBe(409);
+      expect(await getResponse.json()).toEqual({ error: "pipeline_not_live" });
+      expect(postResponse.status).toBe(409);
+      expect(await postResponse.json()).toEqual({ error: "pipeline_not_live" });
+      expect(mocks.after).not.toHaveBeenCalled();
+      expect(mocks.processCycle).not.toHaveBeenCalled();
+      expect(mocks.backfill).not.toHaveBeenCalled();
+    },
+  );
 
   it("accepts a poller kick immediately and runs the promised cycle without request signal", async () => {
     const response = await POST(new Request(

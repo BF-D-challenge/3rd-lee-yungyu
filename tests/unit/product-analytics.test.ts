@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { shouldLoadProductAnalytics } from "@/components/analytics/analytics-path";
+import {
+  isSameOriginMatpinAdminDestination,
+  shouldLoadProductAnalytics,
+} from "@/components/analytics/analytics-path";
 
 describe("product analytics route gate", () => {
   it("excludes the Matpin admin route and all of its private subroutes", () => {
@@ -12,5 +15,28 @@ describe("product analytics route gate", () => {
     expect(shouldLoadProductAnalytics("/matpin/saved")).toBe(true);
     expect(shouldLoadProductAnalytics("/matpin/administrator")).toBe(true);
     expect(shouldLoadProductAnalytics(null)).toBe(false);
+  });
+
+  it("uses a document replacement only for verified same-origin admin destinations", () => {
+    const origin = "https://bfd-seven.vercel.app";
+
+    expect(isSameOriginMatpinAdminDestination("/matpin/admin", origin)).toBe(true);
+    expect(isSameOriginMatpinAdminDestination(
+      "/matpin/admin/conversations/user-1?range=24h#latest",
+      origin,
+    )).toBe(true);
+    expect(isSameOriginMatpinAdminDestination(
+      "https://bfd-seven.vercel.app/matpin/admin",
+      origin,
+    )).toBe(true);
+
+    expect(isSameOriginMatpinAdminDestination(
+      "https://attacker.example/matpin/admin",
+      origin,
+    )).toBe(false);
+    expect(isSameOriginMatpinAdminDestination("//attacker.example/matpin/admin", origin)).toBe(false);
+    expect(isSameOriginMatpinAdminDestination("/matpin/administrator", origin)).toBe(false);
+    expect(isSameOriginMatpinAdminDestination("/matpin/admin%2Fconversations", origin)).toBe(false);
+    expect(isSameOriginMatpinAdminDestination("/matpin/admin", "not-an-origin")).toBe(false);
   });
 });

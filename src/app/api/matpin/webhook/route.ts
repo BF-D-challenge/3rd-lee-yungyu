@@ -1,3 +1,4 @@
+import { createHmac, timingSafeEqual } from "node:crypto";
 import { after, NextResponse } from "next/server";
 import {
   normalizeMetaWebhookGuidanceRecipients,
@@ -9,6 +10,7 @@ import {
   getMatpinMediaKind,
 } from "@/lib/matpin/conversation-copy";
 import { preflightMatpinInstagramMessage } from "@/lib/matpin/instagram-send";
+import { getMatpinPipelineModeState } from "@/lib/matpin/pipeline-mode";
 import {
   createMatpinAccessToken,
   createMatpinShortLinkCode,
@@ -34,13 +36,59 @@ export const maxDuration = 300;
 const MAX_WEBHOOK_BYTES = 512 * 1024;
 const MAX_WEBHOOK_EVENTS = 100;
 const WEBHOOK_DATABASE_TIMEOUT_MS = 4_000;
+const PIPELINE_MODE_CHECK_MAX_SKEW_SECONDS = 60;
+const PIPELINE_MODE_CHECK_CONTEXT = "matpin-pipeline-mode-check:v1";
 
 function noStoreJson(body: unknown, status = 200) {
   return NextResponse.json(body, { status, headers: { "cache-control": "no-store" } });
 }
 
+function safeEqual(left: string, right: string): boolean {
+  const leftBuffer = Buffer.from(left);
+  const rightBuffer = Buffer.from(right);
+  return leftBuffer.length === rightBuffer.length && timingSafeEqual(leftBuffer, rightBuffer);
+}
+
+function verifyPipelineModeCheckRequest(request: Request): boolean {
+  const secret = process.env.CRON_SECRET?.trim();
+  const timestampHeader = request.headers.get("x-matpin-mode-check-timestamp")?.trim();
+  const signature = request.headers.get("x-matpin-mode-check-signature")?.trim();
+  if (!secret || !timestampHeader || !signature) return false;
+
+  const timestamp = Number(timestampHeader);
+  if (!Number.isSafeInteger(timestamp)) return false;
+  const now = Math.floor(Date.now() / 1_000);
+  if (Math.abs(now - timestamp) > PIPELINE_MODE_CHECK_MAX_SKEW_SECONDS) return false;
+
+  const expected = `sha256=${createHmac("sha256", secret)
+    .update(`${PIPELINE_MODE_CHECK_CONTEXT}:${timestampHeader}`)
+    .digest("hex")}`;
+  return safeEqual(expected, signature);
+}
+
 export async function GET(request: Request) {
   const url = new URL(request.url);
+  if (url.searchParams.get("mode_check") === "1") {
+    if (!verifyPipelineModeCheckRequest(request)) {
+      return NextResponse.json({ error: "unauthorized" }, {
+        status: 401,
+        headers: { "cache-control": "private, no-store" },
+      });
+    }
+
+    const state = getMatpinPipelineModeState();
+    return new NextResponse(null, {
+      status: state.valid ? 204 : 503,
+      headers: {
+        "cache-control": "private, no-store",
+        "x-matpin-pipeline-mode": state.mode,
+        "x-matpin-pipeline-mode-valid": String(state.valid),
+        "x-matpin-pipeline-environment": state.environment,
+        "x-matpin-pipeline-accepts-events": String(state.valid && state.mode === "live"),
+      },
+    });
+  }
+
   const mode = url.searchParams.get("hub.mode");
   const token = url.searchParams.get("hub.verify_token");
   const challenge = url.searchParams.get("hub.challenge");
@@ -108,6 +156,7 @@ function prepareGuidanceEvent(
   return {
     type: "guidance",
     dedupHash: hashMatpinOutboundDedup("guidance", recipient.metaMessageId),
+    senderHash: hashMatpinSender(recipient.senderScopedId),
     outboundSenderHash: hashMatpinOutboundSender(recipient.senderScopedId),
     recipientCiphertext: encryptMatpinValue(recipient.senderScopedId),
     bodyCiphertext: encryptMatpinValue(text),
@@ -125,6 +174,14 @@ export async function POST(request: Request) {
     return noStoreJson({ error: "invalid_signature" }, 401);
   }
 
+  const pipelineState = getMatpinPipelineModeState();
+  if (pipelineState.valid && pipelineState.mode === "maintenance") {
+    return noStoreJson({ error: "maintenance" }, 503);
+  }
+  if (!pipelineState.valid) {
+    return noStoreJson({ error: "pipeline_not_configured" }, 503);
+  }
+
   let payload: unknown;
   try {
     payload = JSON.parse(rawBody);
@@ -132,11 +189,7 @@ export async function POST(request: Request) {
     return noStoreJson({ error: "invalid_json" }, 400);
   }
 
-  const pipelineMode = process.env.MATPIN_INSTAGRAM_PIPELINE_MODE?.trim();
-  if (pipelineMode === "maintenance") {
-    return noStoreJson({ error: "maintenance" }, 503);
-  }
-  if (pipelineMode !== "live") {
+  if (pipelineState.mode === "mock") {
     return noStoreJson({ ok: true, accepted: 0, pipelineMode: "mock" });
   }
 

@@ -2,6 +2,7 @@ import { after, NextResponse } from "next/server";
 import { backfillMatpinConversationHistory } from "@/lib/matpin/backfill";
 import { verifyMatpinWorkerRequest } from "@/lib/matpin/security";
 import { createMatpinWorkerDeadline } from "@/lib/matpin/deadline";
+import { isMatpinPipelineLive } from "@/lib/matpin/pipeline-mode";
 import {
   MATPIN_WORK_LIVENESS,
   processMatpinWorkCycle,
@@ -15,7 +16,7 @@ function workerAccessError(request: Request): Response | null {
   if (!verifyMatpinWorkerRequest(request)) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
-  if (process.env.MATPIN_INSTAGRAM_PIPELINE_MODE !== "live") {
+  if (!isMatpinPipelineLive()) {
     return NextResponse.json({ error: "pipeline_not_live" }, { status: 409 });
   }
   return null;

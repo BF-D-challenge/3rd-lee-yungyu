@@ -1,5 +1,6 @@
 import { after, NextResponse } from "next/server";
 import { processMatpinQueue } from "@/lib/matpin/worker";
+import { isMatpinPipelineLive } from "@/lib/matpin/pipeline-mode";
 import { verifyMatpinWorkerRequest } from "@/lib/matpin/security";
 import { requeueFailedMatpinMessage } from "@/lib/matpin/store";
 
@@ -11,7 +12,7 @@ export async function POST(request: Request, context: { params: Promise<{ id: st
   if (!verifyMatpinWorkerRequest(request)) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
-  if (process.env.MATPIN_INSTAGRAM_PIPELINE_MODE !== "live") {
+  if (!isMatpinPipelineLive()) {
     return NextResponse.json({ error: "pipeline_not_live" }, { status: 409 });
   }
   const { id } = await context.params;

@@ -284,6 +284,73 @@ test.describe("맛핀 운영 CRM 접근 제어", () => {
     await expect(page.getByText("데모 로그인은 제공하지 않으며")).toBeVisible();
   });
 
+  test("OAuth 완료 뒤 관리자 복귀는 새 문서에서 분석 전역을 제거한다", async ({ page }) => {
+    await page.addInitScript(() => {
+      if (window.location.pathname !== "/auth/complete") return;
+      const target = window as typeof window & {
+        __authCompleteDocument?: true;
+        __metaPixelConfigured?: boolean;
+        clarity?: () => void;
+        fbq?: () => void;
+        gtag?: () => void;
+      };
+      target.__authCompleteDocument = true;
+      target.__metaPixelConfigured = true;
+      target.clarity = () => undefined;
+      target.fbq = () => undefined;
+      target.gtag = () => undefined;
+    });
+
+    await page.goto("/matpin");
+    await page.evaluate(() => {
+      sessionStorage.setItem("oneul:auth-return-to", "/matpin/admin");
+    });
+    await page.goto("/auth/complete");
+
+    await expect(page).toHaveURL(/\/matpin\/admin$/);
+    await expect(page.getByRole("heading", { name: "관리자 접근이 잠겨 있습니다" })).toBeVisible();
+    await expect.poll(() => page.evaluate(() => {
+      const target = window as typeof window & {
+        __authCompleteDocument?: true;
+        __metaPixelConfigured?: boolean;
+        clarity?: unknown;
+        fbq?: unknown;
+        gtag?: unknown;
+      };
+      return {
+        authCompleteDocument: target.__authCompleteDocument === true,
+        clarity: typeof target.clarity !== "undefined",
+        fbq: typeof target.fbq !== "undefined",
+        gtag: typeof target.gtag !== "undefined",
+        metaConfigured: target.__metaPixelConfigured === true,
+      };
+    })).toEqual({
+      authCompleteDocument: false,
+      clarity: false,
+      fbq: false,
+      gtag: false,
+      metaConfigured: false,
+    });
+  });
+
+  test("OAuth 완료 뒤 일반 화면 복귀는 현재 클라이언트 문서를 유지한다", async ({ page }) => {
+    await page.addInitScript(() => {
+      if (window.location.pathname !== "/auth/complete") return;
+      (window as typeof window & { __authCompleteDocument?: true }).__authCompleteDocument = true;
+    });
+
+    await page.goto("/matpin");
+    await page.evaluate(() => {
+      sessionStorage.setItem("oneul:auth-return-to", "/dashboard");
+    });
+    await page.goto("/auth/complete");
+
+    await expect(page).toHaveURL(/\/dashboard$/);
+    await expect.poll(() => page.evaluate(() =>
+      (window as typeof window & { __authCompleteDocument?: true })
+        .__authCompleteDocument === true)).toBe(true);
+  });
+
   test("미설정 관리자 API는 private no-store로 거부한다", async ({ request }) => {
     const response = await request.get("/api/matpin/admin/summary?range=24h");
     expect(response.status()).toBe(403);

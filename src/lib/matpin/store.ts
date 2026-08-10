@@ -76,6 +76,7 @@ const preparedWebhookEventSchema = z.discriminatedUnion("type", [
   z.object({
     type: z.literal("guidance"),
     dedupHash: z.string().regex(/^[0-9a-f]{64}$/),
+    senderHash: z.string().regex(/^[0-9a-f]{64}$/),
     outboundSenderHash: z.string().regex(/^[0-9a-f]{64}$/),
     recipientCiphertext: z.string().min(1),
     bodyCiphertext: z.string().min(1),

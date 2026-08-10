@@ -28,6 +28,8 @@
 
 2026-08-10 로컬 최종 검증에서 `npm run typecheck`, `npm run lint`, `npm run build`, 단위 테스트 68개 파일의 501개 테스트와 Playwright 123개 테스트가 모두 통과했습니다. Outbox 마이그레이션은 새 PostgreSQL에 처음부터 적용해 receipt ordering, claim token, cache fencing, TTL 정리, 답장 포함 및 미포함 재처리와 ACL 경합을 재현했어요. 다만 `20260809174423_add_matpin_delivery_attempt_claims.sql`은 운영 DB에 적용하지 않았습니다. 운영 배포, DB 전환, 독립 poller, 실제 관리자 로그인과 소유 테스트 계정 발송은 아직 별도 게이트입니다.
 
+2026-08-11 PR #30 리뷰 보완 뒤 로컬에서 `npm run typecheck`, `npm run lint`, 단위 테스트 70개 파일의 556개 테스트와 Playwright 128개 테스트를 모두 통과했습니다. Playwright의 전체 실행이 새 Production build를 만들고 실제 Next 서버를 사용했으며, 출시 점검 스크립트 문법과 `git diff --check`도 통과했어요. 이 최신 검증은 로컬 코드 증거이며 운영 배포, 운영 DB 전환이나 실제 Meta 왕복 완료를 뜻하지 않습니다.
+
 맛핀 CRM 구현과 요청된 문서 아카이브는 각각 `c20c1f2`, `6f18328`로 커밋해 원격 `codex/matpin-conversation-crm` 브랜치에 올렸습니다. 현재 검토 단위는 Draft PR #30입니다. CI Ubuntu에서만 실패한 Idea Lab의 고정 높이 검사를 실제 내용 잘림 검사로 바꿨고, 2026-08-10 로컬에서 `npm run typecheck`, `npm run lint`, `npm run test:unit`, `npm run build`, `npm run test:e2e`를 다시 모두 통과했습니다. 문서 갱신 시점에는 변경 푸시 뒤 GitHub CI 재실행과 독립 리뷰가 남아 있어요. 이 업로드와 PR 생성은 운영 배포, 운영 DB 전환 또는 관리자 로그인 성공을 뜻하지 않습니다.
 
 ## 운영 주소
@@ -53,7 +55,7 @@
 5. Google Auth 제공자를 켜고 운영 origin의 `/auth/callback`을 Supabase Redirect URLs에 등록합니다.
 6. Supabase 공개 URL과 publishable key가 브라우저에 연결되는지 확인하고, `MATPIN_ADMIN_EMAILS`에 확인된 Google 계정 이메일만 쉼표로 등록해요.
 
-맛핀 관리자 로그인은 공유 Google 로그인 플래그를 사용하지 않습니다. 허용목록이 비어 있으면 관리자 화면과 API는 모두 거부돼요. 서비스 역할 키는 서버 전용이며 브라우저 환경 변수로 등록하지 않습니다.
+맛핀 관리자 로그인은 공유 Google 로그인 플래그를 사용하지 않습니다. 허용목록이 비어 있으면 관리자 화면과 API는 모두 거부돼요. 서비스 역할 키는 서버 전용이며 브라우저 환경 변수로 등록하지 않습니다. 운영 Supabase URL과 키는 Vercel Production scope에만 등록하고, Preview에는 별도 격리 프로젝트를 연결하거나 연결을 비워 둡니다. 운영 service role key를 Preview에 복사하지 않아요.
 
 현재 운영 DB에서 다음 관리자 CRM 마이그레이션 7개의 적용을 확인했습니다.
 
@@ -69,18 +71,21 @@
 
 ### Durable outbox 전환 순서
 
-17번 마이그레이션은 다음 순서로만 적용합니다.
+17번 마이그레이션은 다음 순서로만 적용합니다. 유지보수 배포와 live 배포는 모두 PR이 병합된 같은 Git SHA를 사용하며, 환경 변수 차이만 둡니다.
 
-1. `MATPIN_INSTAGRAM_PIPELINE_MODE=maintenance`인 유지보수 배포를 운영 alias 100%에 연결합니다. 서명이 유효한 POST가 503을 반환하는지 확인해요.
-2. 독립 poller를 비활성화하고 신규 테스트 전송을 중지합니다. `mock`은 운영 중지에 사용하지 않습니다.
+1. 병합 SHA에 `MATPIN_INSTAGRAM_PIPELINE_MODE=maintenance`를 적용한 유지보수 배포가 `Ready`인지 확인한 뒤 운영 alias 100%에 연결합니다. 서명이 유효한 Webhook POST가 503인지, 아래 서명된 모드 점검의 `x-matpin-pipeline-mode=maintenance`와 `x-matpin-pipeline-accepts-events=false`가 맞는지 확인해요.
+2. 독립 poller를 비활성화하고 신규 테스트 전송을 중지합니다. maintenance에서는 작업 API, bearer 재처리와 관리자 답장, 링크 재전송 및 분석 재처리가 409를 반환하므로 이 단계부터 새 pending action이나 DM이 생기지 않습니다. 관리자 조회는 drain 확인을 위해 계속 열어 두고, poller는 끈 상태로 유지해요. `mock`은 운영 중지에 사용하지 않습니다.
 3. 구버전 함수 최대 실행 시간 300초에 여유를 더해 최소 360초 기다립니다.
-4. 운영 DB에서 `status in ('received', 'processing')`인 메시지, 기존 `matpin-instagram` PGMQ 큐, 관리자 pending action이 모두 0건인지 확인해요. 최근 신규 Webhook 유입도 없어야 합니다.
+4. 운영 DB에서 `status in ('received', 'processing')`인 메시지와 기존 `matpin-instagram` PGMQ 큐가 모두 0건인지 확인해요. 신규 DB 행, 큐, outbox와 관리자 pending mutation이 생성되지 않았는지도 확인합니다. maintenance Webhook의 503 응답 때문에 Meta의 서명 요청 재시도 로그가 남는 것은 예상할 수 있으며, HTTP 재시도 자체를 drain 실패로 보지 않아요.
 5. `20260809174423_add_matpin_delivery_attempt_claims.sql`을 운영 DB에 적용합니다. 마이그레이션 자체가 `received`나 `processing` 행을 발견하면 예외로 중단해요.
 6. `matpin_outbound_deliveries`, analysis enqueue gate, media cache claim token, 신규 RPC, 빈 `search_path`, RLS와 `service_role` 전용 권한을 확인합니다.
-7. 신규 앱 배포를 운영 alias 100%에 연결합니다. 이 마이그레이션은 구 단건 ingest와 구 analysis 완료 RPC를 제거하므로, 앱만 구버전으로 되돌릴 수 없습니다. 되돌릴 때는 검증된 DB 롤백이 함께 필요해요.
-8. 아래 30초 독립 poller를 등록하고 최근 실행, HTTP 202와 큐의 실제 감소를 확인합니다.
-9. 유지보수 모드를 `live`로 바꾼 뒤 소유 테스트 계정의 지원 게시물 한 건과 제외 입력 한 건을 보냅니다. 접수, 최종 답장과 사용 방법 답장이 각각 한 번만 와야 해요.
-10. receipt가 terminal이 되기 전에 분석 PGMQ가 0인지, terminal 뒤 정확히 한 건인지 확인합니다. Outbox terminal 행의 수신자와 본문 암호문이 즉시 `NULL`인지도 확인해요.
+7. 같은 병합 SHA에 `MATPIN_INSTAGRAM_PIPELINE_MODE=live`를 적용한 새 배포를 아직 운영 alias에 연결하지 않은 상태로 만듭니다. 배포 상세의 Git SHA, Production 환경 scope와 `Ready` 상태를 먼저 확인해요.
+8. 7번 live 배포를 운영 alias 100%에 연결하고, 서명된 모드 점검의 `x-matpin-pipeline-mode=live`, `x-matpin-pipeline-environment=production`과 `x-matpin-pipeline-accepts-events=true`를 확인합니다.
+9. 그다음에만 아래 30초 독립 poller를 등록하거나 다시 활성화합니다. 최근 Cron 실행, HTTP 202, Vercel 로그와 큐의 실제 감소를 함께 확인해요. maintenance alias가 남아 있으면 작업 API가 409이므로 poller를 먼저 켜지 않습니다.
+10. 소유 테스트 계정의 지원 게시물 한 건과 제외 입력 한 건을 보냅니다. 접수, 최종 답장과 사용 방법 답장이 각각 한 번만 와야 해요.
+11. receipt가 terminal이 되기 전에 분석 PGMQ가 0인지, terminal 뒤 정확히 한 건인지 확인합니다. Outbox terminal 행의 수신자와 본문 암호문이 즉시 `NULL`인지도 확인해요.
+
+롤백 경계는 마이그레이션 적용 전후로 나뉩니다. 5번 마이그레이션 전에는 기존 alias로 앱을 되돌릴 수 있습니다. 5번 이후에는 구 단건 ingest와 구 analysis 완료 RPC가 제거되므로 구버전 앱으로 alias를 되돌리면 안 돼요. live 배포나 검증이 실패하면 같은 병합 SHA의 maintenance 배포를 유지하거나 다시 운영 alias에 연결하고, poller를 끈 채 수정된 새 버전으로 roll-forward합니다. 사전에 실제 복구 연습을 마친 down migration 또는 시점 복구(PITR)가 있는 경우에만 DB 복구와 앱 복구를 한 작업으로 수행할 수 있습니다. 검증하지 않은 수동 SQL 롤백을 즉석에서 만들지 않아요.
 
 이 유지보수 게이트와 poller를 확보하지 못하면 배포는 HOLD입니다. 마이그레이션은 terminal 상태의 기존 `reply_required = true` 행만 `succeeded` 또는 보수적인 `uncertain` outbox로 옮깁니다. `acknowledged_at`과 `replied_at`은 계속 확인된 성공만 뜻해요. `sending` lease가 만료되면 `uncertain`으로 끝나며 자동 재발송하지 않습니다. `leased`가 전송 시작 전에 만료된 경우만 안전하게 `pending`으로 복구합니다.
 
@@ -167,7 +172,7 @@ select cron.unschedule('matpin-jobs-process-30s');
 1. 연결한 Instagram Professional 계정 ID와 전송 권한 토큰을 등록합니다.
 2. Webhook 콜백과 검증 토큰을 설정하고 `messages` 필드를 구독해요.
 3. 앱 비밀값으로 서명 검증이 성공하는지 확인합니다.
-4. 실제 수신과 저장 왕복이 확인된 뒤에만 `MATPIN_INSTAGRAM_PIPELINE_MODE=live`로 전환해요.
+4. 운영 컷오버에서는 maintenance와 drain 및 마이그레이션 검증 뒤 `live` 배포를 승격하고, 즉시 소유 테스트 계정의 수신과 저장 왕복을 확인해요. 실패하면 구버전이 아니라 같은 병합 SHA의 maintenance 배포로 돌아가 roll-forward합니다.
 5. 공개 운영 전 `instagram_business_basic`과 `instagram_business_manage_messages`의 현재 액세스 수준을 다시 확인합니다.
 
 [Meta Send API 공식 계약](https://www.postman.com/meta/instagram/folder/23987686-f05b6c9f-a4be-4511-9f88-1cd94828fdf3)에 별도의 요청 수락 API는 없습니다. 비팔로워의 새 대화는 요청함에 들어오며, 맛핀이 API로 첫 답장을 보내면 대화가 General로 이동해요. `messages` Webhook은 [모든 대화 진입점의 수신 메시지](https://www.postman.com/meta/messenger-platform-api/folder/22794852-b5d97624-14d8-4e67-a2e4-529add49ca58)를 알리므로 지원 게시물과 사용 방법 안내 답장은 요청함 대화를 함께 처리하는 방식입니다. 다만 운영 계정에서 요청함 Webhook 수신과 첫 답장 뒤 이동까지는 앱 역할이 없는 테스트 계정으로 다시 확인해야 합니다.
@@ -175,6 +180,20 @@ select cron.unschedule('matpin-jobs-process-30s');
 ### 3. 비밀 환경 변수
 
 필수 이름과 역할은 [아키텍처 문서](./ARCHITECTURE.md#환경-변수-계약)를 따릅니다. 값을 문서, 이슈, 채팅, 브라우저 로그와 Git에 넣지 않습니다.
+
+운영 Supabase와 Meta 값, `SUPABASE_SERVICE_ROLE_KEY`, `MATPIN_DATA_SECRET`, `MATPIN_LINK_SECRET`, `CRON_SECRET` 및 실제 사용자 데이터에 접근하는 모든 값은 Vercel Production scope에만 등록합니다. Vercel Preview에는 운영 비밀값을 하나도 복사하지 않아요. Preview는 별도 Supabase 및 Meta 테스트 자격 증명을 쓰거나 외부 연결을 비우고 `MATPIN_INSTAGRAM_PIPELINE_MODE=mock`으로 격리합니다. 실제 운영 데이터와 링크를 재현해야 하는 Preview는 허용하지 않습니다.
+
+파이프라인 모드는 다음 조합만 유효합니다.
+
+- Vercel Preview, 로컬 개발 및 테스트: 명시적인 `mock`
+- Vercel Production 유지보수: `maintenance`
+- Vercel Production 실제 처리: `live`
+
+값이 없거나 알 수 없는 값이면 서명된 Webhook도 503으로 닫습니다. Production의 `mock`과 Preview의 `live`도 503이며, 운영 중지는 반드시 `maintenance`를 사용해요.
+
+Webhook, 작업 처리, bearer 재처리와 세 관리자 mutation은 이 공용 판정을 사용합니다. Worker와 재처리 및 인증된 관리자 mutation은 Production `live`가 아니면 body, DB와 Meta 작업 전에 `409 pipeline_not_live`로 닫혀요. 관리자 인증은 모드 판정보다 먼저 수행하므로 미인증자에게 운영 모드를 노출하지 않습니다. 관리자 조회 API는 maintenance drain을 관찰할 수 있도록 그대로 유지합니다.
+
+사용자가 이미 끝난 분석 후보를 확정하는 `messages/[id]/confirm`은 새 queue, outbox, 관리자 pending action이나 DM을 만들지 않으므로 maintenance에서도 유지합니다. 계정 전체 삭제와 저장 장소 하나 삭제도 개인정보 삭제권이므로 모든 파이프라인 모드에서 계속 허용해요. 이 세 경로에는 Production-live 가드를 추가하지 않습니다.
 
 다음 조합은 배포 전 반드시 서로 맞는지 확인해요.
 
@@ -217,7 +236,16 @@ Meta 조회 시간 예산, 불확실한 발송의 중복 차단과 자동 답장
 npm run matpin:launch:check -- https://matpin-kr.vercel.app
 ```
 
-HTTP 200만으로 자동 답장, DB 저장과 관리자 인증이 동작한다고 결론 내리면 안 됩니다.
+위 공개 점검만으로 현재 파이프라인 모드는 증명되지 않습니다. 운영 모드 확인 때는 보안 세션에 운영 `CRON_SECRET`을 일시 주입하고 기대 모드도 함께 지정해 서명된 GET을 실행합니다. 값을 명령 기록, 로그와 `.env`에 쓰지 않아요.
+
+```bash
+MATPIN_LAUNCH_EXPECTED_PIPELINE_MODE=maintenance npm run matpin:launch:check -- https://matpin-kr.vercel.app
+MATPIN_LAUNCH_EXPECTED_PIPELINE_MODE=live npm run matpin:launch:check -- https://matpin-kr.vercel.app
+```
+
+두 명령은 각각 해당 컷오버 단계에서 한 번만 실행합니다. 기대 모드를 지정했는데 스크립트가 `CRON_SECRET`을 찾지 못하면 실패하므로 운영 모드 증거로 인정하지 않아요. 성공 응답은 `private, no-store`이며, 모드와 Production 여부 및 이벤트 수락 상태만 헤더로 돌려줍니다. DM 원문, 토큰과 사용자 식별값은 반환하지 않습니다.
+
+HTTP 200, Vercel `Ready` 또는 서명된 모드 헤더 하나만으로 자동 답장, DB 저장과 관리자 인증이 동작한다고 결론 내리면 안 됩니다.
 
 ## 배포 후 공개 서비스 점검
 

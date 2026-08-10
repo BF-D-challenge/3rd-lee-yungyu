@@ -71,6 +71,7 @@ beforeEach(() => {
   vi.stubEnv("META_APP_SECRET", "meta-test-secret");
   vi.stubEnv("META_INSTAGRAM_ACCOUNT_ID", "professional-account");
   vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "live");
+  vi.stubEnv("VERCEL_ENV", "production");
   vi.stubEnv("MATPIN_DATA_SECRET", "matpin-data-secret-at-least-32-chars");
   vi.stubEnv("MATPIN_LINK_SECRET", "matpin-link-secret-at-least-32-chars");
   mocks.after.mockReset();
@@ -200,6 +201,47 @@ describe("Matpin durable webhook intake", () => {
     expect(response.status).toBe(503);
     expect(await response.json()).toEqual({ error: "maintenance" });
     expect(mocks.enqueueBatch).not.toHaveBeenCalled();
+    expect(mocks.preflight).not.toHaveBeenCalled();
+    expect(mocks.after).not.toHaveBeenCalled();
+    expect(mocks.processCycle).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["", "production"],
+    ["unexpected", "production"],
+    ["live", "preview"],
+    ["live", ""],
+    ["mock", "production"],
+    ["maintenance", "preview"],
+  ])(
+    "rejects %j in %j before preparing or persisting a webhook event",
+    async (mode, vercelEnvironment) => {
+      vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", mode);
+      vi.stubEnv("VERCEL_ENV", vercelEnvironment);
+
+      const response = await POST(signedRequest(webhookBody({ text: "도움말" })));
+
+      expect(response.status).toBe(503);
+      expect(await response.json()).toEqual({ error: "pipeline_not_configured" });
+      expect(mocks.enqueueBatch).not.toHaveBeenCalled();
+      expect(mocks.preflight).not.toHaveBeenCalled();
+      expect(mocks.after).not.toHaveBeenCalled();
+      expect(mocks.processCycle).not.toHaveBeenCalled();
+    },
+  );
+
+  it("accepts explicit Preview mock as a no-op without preparing or persisting an event", async () => {
+    vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "mock");
+    vi.stubEnv("VERCEL_ENV", "preview");
+
+    const response = await POST(signedRequest(webhookBody({ text: "도움말" })));
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ ok: true, accepted: 0, pipelineMode: "mock" });
+    expect(mocks.enqueueBatch).not.toHaveBeenCalled();
+    expect(mocks.preflight).not.toHaveBeenCalled();
+    expect(mocks.after).not.toHaveBeenCalled();
+    expect(mocks.processCycle).not.toHaveBeenCalled();
   });
 
   it("reports queued and cooldown results without claiming a send", async () => {
