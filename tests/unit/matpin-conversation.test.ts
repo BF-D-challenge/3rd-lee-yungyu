@@ -7,6 +7,11 @@ import {
   buildMatpinSavedReply,
   getMatpinMediaKind,
 } from "@/lib/matpin/conversation-copy";
+import {
+  MATPIN_INSTAGRAM_TEXT_MAX_BYTES,
+  matpinInstagramTextBytes,
+  truncateMatpinInstagramText,
+} from "@/lib/matpin/message-limits";
 
 const candidate = {
   id: "place-1",
@@ -78,6 +83,38 @@ describe("Matpin conversation copy", () => {
     expect(reply).toContain("이미 저장한 게시물입니다");
     expect(reply).toContain("최신 순으로 올렸어요");
     expect(reply).not.toContain("새로 저장");
+  });
+
+  it("keeps an automatic saved reply within 1,000 UTF-8 bytes", () => {
+    const mapUrl = "https://matpin.kr/s/AbCdEfGhIjKlMnOp";
+    const oversizedName = "😀".repeat(908);
+    const unboundedReply = [
+      "이번 장소를 저장했습니다.",
+      oversizedName,
+      "보관함에는 지금 1곳이 있어요.",
+      mapUrl,
+    ].join("\n");
+    expect(matpinInstagramTextBytes(unboundedReply)).toBe(3_748);
+
+    const reply = buildMatpinSavedReply({
+      candidates: [{ ...candidate, name: oversizedName }],
+      totalSavedPlaceCount: 1,
+      isFirstSavedPlace: false,
+      alreadySavedMedia: false,
+      mapUrl,
+    });
+
+    expect(matpinInstagramTextBytes(reply)).toBeLessThanOrEqual(
+      MATPIN_INSTAGRAM_TEXT_MAX_BYTES,
+    );
+    expect(reply).toContain("…\n보관함에는 지금 1곳이 있어요.");
+    expect(reply.endsWith(mapUrl)).toBe(true);
+    expect(reply).not.toContain("�");
+  });
+
+  it("does not split Hangul or a joined emoji grapheme while truncating", () => {
+    const familyEmoji = "👨‍👩‍👧‍👦";
+    expect(truncateMatpinInstagramText(`가${familyEmoji}나`, 30)).toBe("가…");
   });
 
   it("keeps failure and direct-message guidance accurate", () => {

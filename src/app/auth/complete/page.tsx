@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LoaderCircle } from "lucide-react";
 import { Button } from "@/components/atoms/button";
+import { isSameOriginMatpinAdminDestination } from "@/components/analytics/analytics-path";
 import { PageShell } from "@/components/layouts/page-shell";
 import { TopBar } from "@/components/layouts/top-bar";
 import {
@@ -35,6 +36,10 @@ export default function AuthCompletePage() {
           return;
         }
         const returnTo = consumeAuthReturnTo();
+        if (isSameOriginMatpinAdminDestination(returnTo, window.location.origin)) {
+          window.location.replace(returnTo);
+          return;
+        }
         router.replace(returnTo);
         router.refresh();
       })
@@ -48,7 +53,12 @@ export default function AuthCompletePage() {
   }, [router]);
 
   const returnToApp = () => {
-    router.replace(peekAuthReturnTo());
+    const returnTo = peekAuthReturnTo();
+    if (isSameOriginMatpinAdminDestination(returnTo, window.location.origin)) {
+      window.location.replace(returnTo);
+      return;
+    }
+    router.replace(returnTo);
   };
 
   return (

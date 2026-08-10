@@ -14,7 +14,7 @@
 
 ### 아직 적용하면 안 되는 마지막 잠금
 
-[`20260718020000_lock_direct_feedback_access.sql`](../supabase/migrations/20260718020000_lock_direct_feedback_access.sql)은 새 웹앱 운영 배포가 확인된 뒤에만 적용한다. 먼저 적용하면 현재 운영 중인 구버전 웹앱의 응원 기능이 멈춘다.
+[`20260718020000_lock_direct_feedback_access.sql`](../../../../supabase/migrations/20260718020000_lock_direct_feedback_access.sql)은 새 웹앱 운영 배포가 확인된 뒤에만 적용한다. 먼저 적용하면 현재 운영 중인 구버전 웹앱의 응원 기능이 멈춘다.
 
 1. 이 코드가 포함된 웹앱을 Vercel 운영 환경에 배포한다.
 2. 새 카드 링크를 만들고 다른 브라우저에서 응원한 뒤, 만든 브라우저에서 결과가 보이는지 확인한다.

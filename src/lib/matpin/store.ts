@@ -43,6 +43,97 @@ const requeueResultSchema = z.object({
   queueMessageId: z.number().int().optional(),
 });
 
+const outboundStateSchema = z.enum([
+  "pending",
+  "leased",
+  "sending",
+  "succeeded",
+  "failed",
+  "uncertain",
+  "superseded",
+]);
+
+const preparedWebhookEventSchema = z.discriminatedUnion("type", [
+  z.object({
+    type: z.literal("supported"),
+    metaMessageId: z.string().trim().min(1).max(500),
+    senderHash: z.string().regex(/^[0-9a-f]{64}$/),
+    outboundSenderHash: z.string().regex(/^[0-9a-f]{64}$/),
+    senderCiphertext: z.string().min(1),
+    accessTokenHash: z.string().regex(/^[0-9a-f]{64}$/),
+    shortLinkHash: z.string().regex(/^[0-9a-f]{64}$/),
+    reelId: z.string().trim().min(1).max(500),
+    reelUrl: z.string().url().nullable(),
+    attachmentType: z.enum(["share", "ig_reel", "reel"]),
+    mediaUrlCiphertext: z.string().min(1),
+    receivedAt: z.string().datetime({ offset: true }),
+    receiptDedupHash: z.string().regex(/^[0-9a-f]{64}$/),
+    recipientCiphertext: z.string().min(1),
+    bodyCiphertext: z.string().min(1),
+    returningBodyCiphertext: z.string().min(1),
+    alreadySavedBodyCiphertext: z.string().min(1),
+  }),
+  z.object({
+    type: z.literal("guidance"),
+    dedupHash: z.string().regex(/^[0-9a-f]{64}$/),
+    senderHash: z.string().regex(/^[0-9a-f]{64}$/),
+    outboundSenderHash: z.string().regex(/^[0-9a-f]{64}$/),
+    recipientCiphertext: z.string().min(1),
+    bodyCiphertext: z.string().min(1),
+  }),
+]);
+
+const webhookBatchResultSchema = z.object({
+  accepted: z.number().int().nonnegative(),
+  duplicates: z.number().int().nonnegative(),
+  receiptsQueued: z.number().int().nonnegative(),
+  guidanceQueued: z.number().int().nonnegative(),
+  guidanceCooldown: z.number().int().nonnegative(),
+  results: z.array(z.object({
+    type: z.enum(["supported", "guidance"]),
+    accepted: z.boolean().optional(),
+    queued: z.boolean().optional(),
+    duplicate: z.boolean(),
+    cooldown: z.boolean().optional(),
+    messageId: z.string().uuid().optional(),
+    outboundId: z.string().uuid().nullable().optional(),
+    deliveryState: z.union([outboundStateSchema, z.literal("not_required")]).optional(),
+  })),
+});
+
+const claimedOutboundSchema = z.object({
+  id: z.string().uuid(),
+  kind: z.enum(["receipt", "guidance", "final"]),
+  dedup_hash: z.string().regex(/^[0-9a-f]{64}$/),
+  message_id: z.string().uuid().nullable(),
+  generation: z.number().int().nonnegative(),
+  sender_hash: z.string().regex(/^[0-9a-f]{64}$/),
+  recipient_ciphertext: z.string().min(1),
+  body_ciphertext: z.string().min(1),
+  state: z.literal("leased"),
+  lease_token: z.string().uuid(),
+  lease_expires_at: z.string().datetime({ offset: true }),
+  attempt_count: z.number().int().min(0).max(3),
+  expires_at: z.string().datetime({ offset: true }),
+});
+
+const outboundFinishResultSchema = z.object({
+  state: outboundStateSchema,
+  retryAt: z.string().datetime({ offset: true }).nullable(),
+});
+
+const completeAnalysisV2ResultSchema = z.object({
+  completed: z.boolean(),
+  outboundId: z.string().uuid().nullable(),
+  deliveryState: outboundStateSchema.nullable(),
+});
+
+export type MatpinPreparedWebhookEvent = z.infer<typeof preparedWebhookEventSchema>;
+export type MatpinWebhookBatchResult = z.infer<typeof webhookBatchResultSchema>;
+export type MatpinClaimedOutbound = z.infer<typeof claimedOutboundSchema>;
+export type MatpinOutboundState = z.infer<typeof outboundStateSchema>;
+export type MatpinOutboundFinishResult = z.infer<typeof outboundFinishResultSchema>;
+
 const matpinUsageEventInputSchema = z.object({
   messageId: z.string().uuid(),
   stage: z.enum(["extraction", "place_resolution"]),
@@ -62,7 +153,10 @@ const matpinUsageEventInputSchema = z.object({
 export type MatpinUsageEventInput = z.input<typeof matpinUsageEventInputSchema>;
 
 const mediaAnalysisCacheClaimSchema = z.discriminatedUnion("state", [
-  z.object({ state: z.literal("owner") }),
+  z.object({
+    state: z.literal("owner"),
+    claimToken: z.string().uuid(),
+  }),
   z.object({ state: z.literal("pending") }),
   z.object({
     state: z.literal("hit"),
@@ -71,9 +165,18 @@ const mediaAnalysisCacheClaimSchema = z.discriminatedUnion("state", [
   }),
 ]);
 
+const claimedJobEnvelopeSchema = z.object({
+  skipped: z.boolean().optional(),
+  poisoned: z.boolean().optional().default(false),
+  terminalFailureRequired: z.boolean().optional().default(false),
+  queueMessageId: z.number().int().optional(),
+});
+
 const claimedJobSchema = z.object({
   skipped: z.boolean().optional(),
-  queueMessageId: z.number().int().optional(),
+  poisoned: z.literal(false).optional().default(false),
+  terminalFailureRequired: z.literal(false).optional().default(false),
+  queueMessageId: z.number().int().positive(),
   message: z.object({
     id: z.string().uuid(),
     sender_hash: z.string().length(64),
@@ -83,13 +186,54 @@ const claimedJobSchema = z.object({
     media_url_ciphertext: z.string().nullable(),
     reply_required: z.boolean(),
     attempt_count: z.number().int(),
-  }).optional(),
+    outbound_generation: z.number().int().nonnegative(),
+    analysis_claim_token: z.string().uuid(),
+  }),
   user: z.object({
     sender_hash: z.string().length(64),
     sender_ciphertext: z.string(),
     access_token_hash: z.string().length(64),
     short_link_hash: z.string().length(64).nullable(),
-  }).optional(),
+  }),
+});
+
+const claimedTerminalFailureJobSchema = z.object({
+  skipped: z.boolean().optional(),
+  poisoned: z.boolean().optional().default(false),
+  terminalFailureRequired: z.literal(true).optional().default(true),
+  queueMessageId: z.number().int().positive(),
+  message: z.object({
+    id: z.string().uuid(),
+    sender_hash: z.string().length(64),
+    reel_id: z.unknown().transform((value) => typeof value === "string" ? value : "unreadable"),
+    reel_url: z.unknown().transform((value) => {
+      if (typeof value !== "string") return null;
+      try {
+        return new URL(value).toString();
+      } catch {
+        return null;
+      }
+    }),
+    attachment_type: z.unknown().transform((value): MatpinInboundMessage["attachmentType"] => (
+      value === "ig_reel" || value === "reel" ? value : "share"
+    )),
+    reply_required: z.boolean(),
+    attempt_count: z.number().int(),
+    outbound_generation: z.number().int().nonnegative(),
+    analysis_claim_token: z.string().uuid(),
+  }),
+  user: z.object({
+    sender_hash: z.string().length(64),
+    sender_ciphertext: z.unknown().transform((value) => typeof value === "string" ? value : ""),
+  }),
+}).superRefine((value, context) => {
+  if (value.message.sender_hash !== value.user.sender_hash) {
+    context.addIssue({
+      code: "custom",
+      message: "matpin_poison_sender_mismatch",
+      path: ["user", "sender_hash"],
+    });
+  }
 });
 
 const messageRowSchema = z.object({
@@ -114,6 +258,9 @@ const savedPlaceRowSchema = z.object({
 
 export type MatpinClaimedJob = {
   queueMessageId: number;
+  analysisClaimToken: string;
+  poisoned: boolean;
+  terminalFailureRequired: boolean;
   messageId: string;
   senderHash: string;
   senderScopedId: string;
@@ -125,6 +272,7 @@ export type MatpinClaimedJob = {
   mediaUrl: string;
   replyRequired: boolean;
   attemptCount: number;
+  outboundGeneration: number;
 };
 
 export type MatpinMediaAnalysisCacheClaim = z.infer<typeof mediaAnalysisCacheClaimSchema>;
@@ -139,39 +287,35 @@ export function getMatpinServerClient(): SupabaseClient {
   });
 }
 
-export async function ingestMatpinMessage(
-  input: MatpinInboundMessage,
-): Promise<z.infer<typeof ingestResultSchema>> {
-  const value = matpinInboundMessageSchema.parse(input);
-  const senderHash = hashMatpinSender(value.senderScopedId);
-  const accessToken = createMatpinAccessToken(value.senderScopedId);
-  const shortLinkCode = createMatpinShortLinkCode(value.senderScopedId);
+function withAbortSignal<T>(request: T, signal?: AbortSignal): T {
+  if (!signal) return request;
+  return (request as T & { abortSignal(value: AbortSignal): T }).abortSignal(signal);
+}
+
+export async function enqueueMatpinWebhookBatch(
+  events: MatpinPreparedWebhookEvent[],
+  options: { signal?: AbortSignal } = {},
+): Promise<MatpinWebhookBatchResult> {
+  const values = z.array(preparedWebhookEventSchema).max(100).parse(events);
   const client = getMatpinServerClient();
-  const { data, error } = await client.rpc("matpin_ingest_message", {
-    p_meta_message_id: value.metaMessageId,
-    p_sender_hash: senderHash,
-    p_sender_ciphertext: encryptMatpinValue(value.senderScopedId),
-    p_access_token_hash: hashMatpinAccessToken(accessToken),
-    p_short_link_hash: hashMatpinShortLinkCode(shortLinkCode),
-    p_reel_id: value.reelId,
-    p_reel_url: value.reelUrl,
-    p_attachment_type: value.attachmentType,
-    p_media_url_ciphertext: encryptMatpinValue(value.mediaUrl),
-    p_received_at: value.receivedAt,
-  });
-  if (error) throw new Error(`matpin_ingest_failed:${error.message}`);
-  return ingestResultSchema.parse(data);
+  const request = withAbortSignal(client.rpc("matpin_ingest_webhook_batch", {
+    p_events: values,
+  }), options.signal);
+  const { data, error } = await request;
+  if (error) throw new Error(`matpin_webhook_batch_failed:${error.message}`);
+  return webhookBatchResultSchema.parse(data);
 }
 
 export async function ingestMatpinBackfillMessage(
   input: MatpinInboundMessage,
+  options: { signal?: AbortSignal } = {},
 ): Promise<z.infer<typeof ingestResultSchema>> {
   const value = matpinInboundMessageSchema.parse(input);
   const senderHash = hashMatpinSender(value.senderScopedId);
   const accessToken = createMatpinAccessToken(value.senderScopedId);
   const shortLinkCode = createMatpinShortLinkCode(value.senderScopedId);
   const client = getMatpinServerClient();
-  const { data, error } = await client.rpc("matpin_backfill_message", {
+  const request = withAbortSignal(client.rpc("matpin_backfill_message", {
     p_meta_message_id: value.metaMessageId,
     p_sender_hash: senderHash,
     p_sender_ciphertext: encryptMatpinValue(value.senderScopedId),
@@ -182,7 +326,8 @@ export async function ingestMatpinBackfillMessage(
     p_attachment_type: value.attachmentType,
     p_media_url_ciphertext: encryptMatpinValue(value.mediaUrl),
     p_received_at: value.receivedAt,
-  });
+  }), options.signal);
+  const { data, error } = await request;
   if (error) throw new Error(`matpin_backfill_ingest_failed:${error.message}`);
   return ingestResultSchema.parse(data);
 }
@@ -190,59 +335,161 @@ export async function ingestMatpinBackfillMessage(
 export async function readMatpinConversationContext(input: {
   senderScopedId: string;
   reelId?: string | null;
-}): Promise<MatpinConversationContext> {
+}, options: { signal?: AbortSignal } = {}): Promise<MatpinConversationContext> {
   const senderScopedId = z.string().trim().min(1).max(200).parse(input.senderScopedId);
   const reelId = z.string().trim().min(1).max(500).nullable().parse(input.reelId ?? null);
   const client = getMatpinServerClient();
-  const { data, error } = await client.rpc("matpin_conversation_context", {
+  const request = withAbortSignal(client.rpc("matpin_conversation_context", {
     p_sender_hash: hashMatpinSender(senderScopedId),
     p_reel_id: reelId,
-  });
+  }), options.signal);
+  const { data, error } = await request;
   if (error) throw new Error(`matpin_conversation_context_failed:${error.message}`);
   return conversationContextSchema.parse(data);
 }
 
-export async function markMatpinMessageAcknowledged(messageId: string): Promise<boolean> {
-  const id = z.string().uuid().parse(messageId);
+export async function claimNextMatpinOutbound(
+  options: { leaseSeconds?: number; signal?: AbortSignal } = {},
+): Promise<MatpinClaimedOutbound | null> {
+  const leaseSeconds = z.number().int().min(15).max(120).parse(options.leaseSeconds ?? 30);
   const client = getMatpinServerClient();
-  const { data, error } = await client.rpc("matpin_mark_message_acknowledged", {
-    p_message_id: id,
-  });
-  if (error) throw new Error(`matpin_acknowledge_failed:${error.message}`);
+  const request = withAbortSignal(client.rpc("matpin_claim_next_outbound", {
+    p_lease_seconds: leaseSeconds,
+  }), options.signal);
+  const { data, error } = await request;
+  if (error) throw new Error(`matpin_outbound_claim_failed:${error.message}`);
+  return data ? claimedOutboundSchema.parse(data) : null;
+}
+
+export async function beginMatpinOutboundSend(input: {
+  deliveryId: string;
+  leaseToken: string;
+  signal?: AbortSignal;
+}): Promise<boolean> {
+  const deliveryId = z.string().uuid().parse(input.deliveryId);
+  const leaseToken = z.string().uuid().parse(input.leaseToken);
+  const client = getMatpinServerClient();
+  const request = withAbortSignal(client.rpc("matpin_begin_outbound_send", {
+    p_delivery_id: deliveryId,
+    p_lease_token: leaseToken,
+  }), input.signal);
+  const { data, error } = await request;
+  if (error) throw new Error(`matpin_outbound_begin_failed:${error.message}`);
   return z.boolean().parse(data);
 }
 
-export async function claimNextMatpinMessage(): Promise<MatpinClaimedJob | null> {
+export async function releaseMatpinOutboundLease(input: {
+  deliveryId: string;
+  leaseToken: string;
+  errorCode: string;
+  retryAfterSeconds?: number;
+  permanent?: boolean;
+  signal?: AbortSignal;
+}): Promise<MatpinOutboundState> {
   const client = getMatpinServerClient();
-  const { data, error } = await client.rpc("matpin_claim_next_message");
+  const request = withAbortSignal(client.rpc("matpin_release_outbound_lease", {
+    p_delivery_id: z.string().uuid().parse(input.deliveryId),
+    p_lease_token: z.string().uuid().parse(input.leaseToken),
+    p_error_code: z.string().trim().min(1).max(120).parse(input.errorCode),
+    p_retry_after_seconds: z.number().int().min(1).max(3600).parse(input.retryAfterSeconds ?? 30),
+    p_permanent: input.permanent ?? false,
+  }), input.signal);
+  const { data, error } = await request;
+  if (error) throw new Error(`matpin_outbound_release_failed:${error.message}`);
+  return outboundStateSchema.parse(data);
+}
+
+export async function finishMatpinOutbound(input: {
+  deliveryId: string;
+  leaseToken: string;
+  outcome: "succeeded" | "known_not_sent" | "failed" | "uncertain";
+  errorCode?: string | null;
+  providerMessageIdHash?: string | null;
+  providerStatus?: number | null;
+  signal?: AbortSignal;
+}): Promise<MatpinOutboundFinishResult> {
+  const client = getMatpinServerClient();
+  const request = withAbortSignal(client.rpc("matpin_finish_outbound", {
+    p_delivery_id: z.string().uuid().parse(input.deliveryId),
+    p_lease_token: z.string().uuid().parse(input.leaseToken),
+    p_outcome: input.outcome,
+    p_error_code: z.string().trim().min(1).max(120).nullable().parse(input.errorCode ?? null),
+    p_provider_message_id_hash: z.string().regex(/^[0-9a-f]{64}$/).nullable()
+      .parse(input.providerMessageIdHash ?? null),
+    p_provider_status: z.number().int().min(100).max(599).nullable()
+      .parse(input.providerStatus ?? null),
+  }), input.signal);
+  const { data, error } = await request;
+  if (error) throw new Error(`matpin_outbound_finish_failed:${error.message}`);
+  return outboundFinishResultSchema.parse(data);
+}
+
+export async function claimNextMatpinMessage(
+  options: { signal?: AbortSignal } = {},
+): Promise<MatpinClaimedJob | null> {
+  const client = getMatpinServerClient();
+  const request = withAbortSignal(client.rpc("matpin_claim_next_message"), options.signal);
+  const { data, error } = await request;
   if (error) throw new Error(`matpin_claim_failed:${error.message}`);
   if (!data) return null;
 
-  const claimed = claimedJobSchema.parse(data);
-  if (claimed.skipped || !claimed.message || !claimed.user || !claimed.queueMessageId) return null;
-  if (!claimed.message.media_url_ciphertext) throw new Error("matpin_media_url_missing");
+  const envelope = claimedJobEnvelopeSchema.parse(data);
+  if (envelope.skipped || !envelope.queueMessageId) return null;
+  const terminalFailureRequired = envelope.terminalFailureRequired || envelope.poisoned;
+  const claimed = terminalFailureRequired
+    ? claimedTerminalFailureJobSchema.parse(data)
+    : claimedJobSchema.parse(data);
+  if (!claimed.terminalFailureRequired && !claimed.message.media_url_ciphertext) {
+    throw new Error("matpin_media_url_missing");
+  }
 
-  const senderScopedId = decryptMatpinValue(claimed.user.sender_ciphertext);
-  const accessToken = createMatpinAccessToken(senderScopedId);
-  if (hashMatpinAccessToken(accessToken) !== claimed.user.access_token_hash) {
-    throw new Error("matpin_access_token_mismatch");
+  let senderScopedId: string;
+  try {
+    senderScopedId = decryptMatpinValue(claimed.user.sender_ciphertext);
+  } catch (cause) {
+    if (!claimed.terminalFailureRequired) throw cause;
+    const quarantineRequest = withAbortSignal(client.rpc("matpin_terminalize_unreadable_claim", {
+      p_message_id: claimed.message.id,
+      p_queue_message_id: claimed.queueMessageId,
+      p_analysis_claim_token: claimed.message.analysis_claim_token,
+    }), options.signal);
+    const { data: quarantined, error: quarantineError } = await quarantineRequest;
+    if (quarantineError || quarantined !== true) {
+      throw new Error(
+        `matpin_poison_quarantine_failed:${quarantineError?.message ?? "not_terminalized"}`,
+        { cause },
+      );
+    }
+    return null;
   }
-  const shortLinkCode = createMatpinShortLinkCode(senderScopedId);
-  const shortLinkHash = hashMatpinShortLinkCode(shortLinkCode);
-  if (claimed.user.short_link_hash && shortLinkHash !== claimed.user.short_link_hash) {
-    throw new Error("matpin_short_link_mismatch");
-  }
-  if (!claimed.user.short_link_hash) {
-    const { error: shortLinkError } = await client
-      .from("matpin_instagram_users")
-      .update({ short_link_hash: shortLinkHash })
-      .eq("sender_hash", claimed.user.sender_hash)
-      .is("short_link_hash", null);
-    if (shortLinkError) throw new Error(`matpin_short_link_update_failed:${shortLinkError.message}`);
+  let accessToken = "";
+  let shortLinkCode = "";
+  if (!claimed.terminalFailureRequired) {
+    accessToken = createMatpinAccessToken(senderScopedId);
+    shortLinkCode = createMatpinShortLinkCode(senderScopedId);
+    if (hashMatpinAccessToken(accessToken) !== claimed.user.access_token_hash) {
+      throw new Error("matpin_access_token_mismatch");
+    }
+    const shortLinkHash = hashMatpinShortLinkCode(shortLinkCode);
+    if (claimed.user.short_link_hash && shortLinkHash !== claimed.user.short_link_hash) {
+      throw new Error("matpin_short_link_mismatch");
+    }
+    if (!claimed.user.short_link_hash) {
+      const shortLinkRequest = withAbortSignal(client
+        .from("matpin_instagram_users")
+        .update({ short_link_hash: shortLinkHash })
+        .eq("sender_hash", claimed.user.sender_hash)
+        .is("short_link_hash", null), options.signal);
+      const { error: shortLinkError } = await shortLinkRequest;
+      if (shortLinkError) throw new Error(`matpin_short_link_update_failed:${shortLinkError.message}`);
+    }
   }
 
   return {
     queueMessageId: claimed.queueMessageId,
+    analysisClaimToken: claimed.message.analysis_claim_token,
+    poisoned: claimed.poisoned,
+    terminalFailureRequired: claimed.terminalFailureRequired,
     messageId: claimed.message.id,
     senderHash: claimed.message.sender_hash,
     senderScopedId,
@@ -251,9 +498,12 @@ export async function claimNextMatpinMessage(): Promise<MatpinClaimedJob | null>
     reelId: claimed.message.reel_id,
     reelUrl: claimed.message.reel_url,
     attachmentType: claimed.message.attachment_type,
-    mediaUrl: decryptMatpinValue(claimed.message.media_url_ciphertext),
+    mediaUrl: claimed.terminalFailureRequired
+      ? ""
+      : decryptMatpinValue(claimed.message.media_url_ciphertext as string),
     replyRequired: claimed.message.reply_required,
     attemptCount: claimed.message.attempt_count,
+    outboundGeneration: claimed.message.outbound_generation,
   };
 }
 
@@ -278,19 +528,33 @@ export async function resolveMatpinShortLink(code: string): Promise<string | nul
   return hashMatpinAccessToken(accessToken) === data.access_token_hash ? accessToken : null;
 }
 
-export async function completeMatpinAnalysis(input: {
+export async function completeMatpinAnalysisV2(input: {
   messageId: string;
   queueMessageId: number;
+  analysisClaimToken: string;
   status: "needs_confirmation" | "saved" | "failed";
   candidates: MatpinPlaceCandidate[];
   metrics: MatpinAnalysisResult["metrics"] | null;
-  replied: boolean;
-}): Promise<void> {
+  finalOutbound?: {
+    dedupHash: string;
+    senderHash: string;
+    recipientCiphertext: string;
+    bodyCiphertext: string;
+  } | null;
+  signal?: AbortSignal;
+}): Promise<z.infer<typeof completeAnalysisV2ResultSchema>> {
+  const finalOutbound = z.object({
+    dedupHash: z.string().regex(/^[0-9a-f]{64}$/),
+    senderHash: z.string().regex(/^[0-9a-f]{64}$/),
+    recipientCiphertext: z.string().min(1),
+    bodyCiphertext: z.string().min(1),
+  }).nullable().parse(input.finalOutbound ?? null);
   const candidates = z.array(matpinPlaceCandidateSchema).max(3).parse(input.candidates);
   const client = getMatpinServerClient();
-  const { error } = await client.rpc("matpin_complete_analysis", {
-    p_message_id: input.messageId,
-    p_queue_message_id: input.queueMessageId,
+  const request = withAbortSignal(client.rpc("matpin_complete_analysis_v2", {
+    p_message_id: z.string().uuid().parse(input.messageId),
+    p_queue_message_id: z.number().int().positive().parse(input.queueMessageId),
+    p_analysis_claim_token: z.string().uuid().parse(input.analysisClaimToken),
     p_status: input.status,
     p_candidates: candidates,
     p_analysis_model: input.metrics?.model ?? null,
@@ -299,15 +563,23 @@ export async function completeMatpinAnalysis(input: {
     p_input_tokens: input.metrics?.inputTokens ?? null,
     p_output_tokens: input.metrics?.outputTokens ?? null,
     p_total_tokens: input.metrics?.totalTokens ?? null,
-    p_replied: input.replied,
-  });
-  if (error) throw new Error(`matpin_complete_failed:${error.message}`);
+    p_final_dedup_hash: finalOutbound?.dedupHash ?? null,
+    p_final_sender_hash: finalOutbound?.senderHash ?? null,
+    p_final_recipient_ciphertext: finalOutbound?.recipientCiphertext ?? null,
+    p_final_body_ciphertext: finalOutbound?.bodyCiphertext ?? null,
+  }), input.signal);
+  const { data, error } = await request;
+  if (error) throw new Error(`matpin_complete_v2_failed:${error.message}`);
+  return completeAnalysisV2ResultSchema.parse(data);
 }
 
-export async function recordMatpinUsageEvent(input: MatpinUsageEventInput): Promise<void> {
+export async function recordMatpinUsageEvent(
+  input: MatpinUsageEventInput,
+  options: { signal?: AbortSignal } = {},
+): Promise<void> {
   const value = matpinUsageEventInputSchema.parse(input);
   const client = getMatpinServerClient();
-  const { error } = await client.from("matpin_api_usage_events").insert({
+  const request = withAbortSignal(client.from("matpin_api_usage_events").insert({
     message_id: value.messageId,
     stage: value.stage,
     provider: value.provider,
@@ -321,33 +593,39 @@ export async function recordMatpinUsageEvent(input: MatpinUsageEventInput): Prom
     total_tokens: value.totalTokens,
     grounding_query_count: value.groundingQueryCount,
     duration_ms: value.durationMs,
-  });
+  }), options.signal);
+  const { error } = await request;
   if (error) throw new Error(`matpin_usage_record_failed:${error.message}`);
 }
 
 export async function claimMatpinMediaAnalysis(
   mediaKey: string,
+  options: { signal?: AbortSignal } = {},
 ): Promise<MatpinMediaAnalysisCacheClaim> {
   const key = z.string().trim().min(1).max(500).parse(mediaKey);
   const client = getMatpinServerClient();
-  const { data, error } = await client.rpc("matpin_claim_media_analysis", {
+  const request = withAbortSignal(client.rpc("matpin_claim_media_analysis", {
     p_media_key: key,
-  });
+  }), options.signal);
+  const { data, error } = await request;
   if (error) throw new Error(`matpin_cache_claim_failed:${error.message}`);
   return mediaAnalysisCacheClaimSchema.parse(data);
 }
 
 export async function completeMatpinMediaAnalysis(input: {
   mediaKey: string;
+  claimToken: string;
   outcome: "resolved" | "insufficient";
   candidates: MatpinPlaceCandidate[];
   metrics: MatpinAnalysisResult["metrics"];
+  signal?: AbortSignal;
 }): Promise<void> {
   const key = z.string().trim().min(1).max(500).parse(input.mediaKey);
   const candidates = z.array(matpinPlaceCandidateSchema).max(3).parse(input.candidates);
   const client = getMatpinServerClient();
-  const { error } = await client.rpc("matpin_complete_media_analysis", {
+  const request = withAbortSignal(client.rpc("matpin_complete_media_analysis", {
     p_media_key: key,
+    p_claim_token: z.string().uuid().parse(input.claimToken),
     p_outcome: input.outcome,
     p_candidates: candidates,
     p_analysis_model: input.metrics.model,
@@ -356,35 +634,49 @@ export async function completeMatpinMediaAnalysis(input: {
     p_input_tokens: input.metrics.inputTokens,
     p_output_tokens: input.metrics.outputTokens,
     p_total_tokens: input.metrics.totalTokens,
-  });
+  }), input.signal);
+  const { error } = await request;
   if (error) throw new Error(`matpin_cache_complete_failed:${error.message}`);
 }
 
-export async function releaseMatpinMediaAnalysis(mediaKey: string): Promise<void> {
+export async function releaseMatpinMediaAnalysis(
+  mediaKey: string,
+  claimToken: string,
+  options: { signal?: AbortSignal } = {},
+): Promise<void> {
   const key = z.string().trim().min(1).max(500).parse(mediaKey);
   const client = getMatpinServerClient();
-  const { error } = await client.rpc("matpin_release_media_analysis", {
+  const request = withAbortSignal(client.rpc("matpin_release_media_analysis", {
     p_media_key: key,
-  });
+    p_claim_token: z.string().uuid().parse(claimToken),
+  }), options.signal);
+  const { error } = await request;
   if (error) throw new Error(`matpin_cache_release_failed:${error.message}`);
 }
 
 export async function retryMatpinMessage(input: {
   messageId: string;
   queueMessageId: number;
+  analysisClaimToken: string;
   error: string;
-}): Promise<"retry" | "failed"> {
+  signal?: AbortSignal;
+}): Promise<"retry" | "complete_failed_required"> {
   const client = getMatpinServerClient();
-  const result = await client.rpc("matpin_retry_message", {
+  const request = withAbortSignal(client.rpc("matpin_retry_message_v2", {
     p_message_id: input.messageId,
     p_queue_message_id: input.queueMessageId,
+    p_analysis_claim_token: z.string().uuid().parse(input.analysisClaimToken),
     p_error: input.error.slice(0, 500),
-  });
+  }), input.signal);
+  const result = await request;
   if (result.error) throw new Error(`matpin_retry_failed:${result.error.message}`);
-  return z.enum(["retry", "failed"]).parse(result.data);
+  return z.enum(["retry", "complete_failed_required"]).parse(result.data);
 }
 
-export async function requeueFailedMatpinMessage(messageId: string): Promise<boolean> {
+export async function requeueFailedMatpinMessage(
+  messageId: string,
+  options: { replyRequired?: boolean } = {},
+): Promise<boolean> {
   const id = z.string().uuid().parse(messageId);
   const client = getMatpinServerClient();
   const { data: message, error: readError } = await client
@@ -395,10 +687,14 @@ export async function requeueFailedMatpinMessage(messageId: string): Promise<boo
   if (readError) throw new Error(`matpin_requeue_read_failed:${readError.message}`);
   if (!message || message.status !== "failed" || !message.reel_url) return false;
 
-  const { data, error } = await client.rpc("matpin_requeue_failed_message", {
-    p_message_id: id,
-    p_media_url_ciphertext: encryptMatpinValue(message.reel_url),
-  });
+  const replyRequired = options.replyRequired ?? true;
+  const { data, error } = await client.rpc(
+    replyRequired ? "matpin_requeue_failed_message" : "matpin_requeue_failed_message_without_reply",
+    {
+      p_message_id: id,
+      p_media_url_ciphertext: encryptMatpinValue(message.reel_url),
+    },
+  );
   if (error) throw new Error(`matpin_requeue_failed:${error.message}`);
   return requeueResultSchema.parse(data).accepted;
 }
@@ -436,6 +732,28 @@ export async function saveMatpinPlaces(input: {
     p_confirmation_source: input.confirmationSource,
   });
   if (error) throw new Error(`matpin_save_places_failed:${error.message}`);
+  return z.coerce.number().int().min(1).max(3).parse(data);
+}
+
+export async function stageMatpinPlaces(input: {
+  messageId: string;
+  analysisClaimToken: string;
+  senderHash: string;
+  candidates: MatpinPlaceCandidate[];
+  confirmationSource: "automatic_high_confidence" | "user_confirmation";
+  signal?: AbortSignal;
+}): Promise<number> {
+  const candidates = z.array(matpinPlaceCandidateSchema).min(1).max(3).parse(input.candidates);
+  const client = getMatpinServerClient();
+  const request = withAbortSignal(client.rpc("matpin_stage_places", {
+    p_message_id: input.messageId,
+    p_analysis_claim_token: z.string().uuid().parse(input.analysisClaimToken),
+    p_sender_hash: input.senderHash,
+    p_places: candidates,
+    p_confirmation_source: input.confirmationSource,
+  }), input.signal);
+  const { data, error } = await request;
+  if (error) throw new Error(`matpin_stage_places_failed:${error.message}`);
   return z.coerce.number().int().min(1).max(3).parse(data);
 }
 
