@@ -107,9 +107,12 @@
 - [ ] 실제 관리자 Google 이메일을 확정하고 로컬 및 배포 환경의 `MATPIN_ADMIN_EMAILS`에 등록
 - [x] T4의 출시 전 코드 결함 3개를 수정하고 관련 단위 테스트와 Playwright 테스트 재실행
 - [x] Durable outbox, 255초 Worker deadline, 300초 cache lease, 600초 PGMQ visibility와 POST poller kick의 로컬 구현 및 fresh PostgreSQL 검증
-- [ ] 관리자 감사 로그의 보존 기간과 계정 삭제 시 처리 정책 확정 및 구현 범위 결정
-- [ ] 맛핀 변경 파일만 커밋하고 다른 제품 및 사용자의 미완료 변경이 섞이지 않았는지 확인
-- [ ] 현재 브랜치를 원격에 올리고 검토 가능한 변경 범위를 확정
+- [x] 계정 삭제 시 같은 발신자 해시의 관리자 감사 로그를 먼저 삭제하는 트리거 구현 및 검증
+- [ ] 관리자 감사 로그의 시간 기반 보존 기간을 확정하고 자동 정리 구현 범위 결정
+- [x] 맛핀 변경 파일과 요청된 문서 아카이브만 두 커밋으로 분리하고 다른 제품 및 사용자의 미완료 변경이 섞이지 않았는지 확인
+- [x] `codex/matpin-conversation-crm` 브랜치를 원격에 올리고 Draft PR #30으로 검토 범위 확정
+- [x] Draft PR #30의 CI 환경 의존 레이아웃 검사 1건을 수정하고 로컬 전체 필수 검사 통과
+- [ ] Draft PR #30의 GitHub CI 재실행과 독립 리뷰 완료
 - [ ] 유지보수 시간대를 확정하고 `maintenance` 배포, poller 중지, 최소 360초 대기, `received=0`, `processing=0`, PGMQ 0건과 관리자 pending 0건 확인
 - [ ] 위 drain 상태에서 outbox 마이그레이션과 service role 전용 ACL을 적용하고 신규 앱을 운영 별칭 100%에 연결
 - [ ] Supabase Vault와 Cron에 30초 독립 poller를 등록하고 HTTP 202뿐 아니라 Vercel 로그와 DB 및 큐 forward progress 확인

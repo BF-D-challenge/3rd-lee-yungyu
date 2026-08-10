@@ -247,6 +247,7 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     await expect(result.locator(".idea-lab__result-summary-top")).toHaveCount(0);
 
     // 요약 → 전체 상세 → 제작 자료가 가림 없이 한 열로 이어진다.
+    await page.evaluate(() => document.fonts.ready);
     const resultGeometry = await result.evaluate((panel) => {
       const summary = panel.querySelector<HTMLElement>(".idea-lab__result-summary")!;
       const details = panel.querySelector<HTMLElement>(".idea-lab__locked-details")!;
@@ -259,14 +260,14 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
         detailsOneColumn: getComputedStyle(details).gridTemplateColumns.split(" ").length === 1,
         detailsMasked: `${getComputedStyle(details).maskImage} ${getComputedStyle(details).webkitMaskImage}`
           .includes("gradient"),
-        summaryHeight: summary.getBoundingClientRect().height,
+        summaryFitsContent: summary.scrollHeight <= summary.clientHeight + 1,
       };
     });
     expect(resultGeometry.summaryBeforeDetails).toBe(true);
     expect(resultGeometry.detailsBeforeContent).toBe(true);
     expect(resultGeometry.detailsOneColumn).toBe(true);
     expect(resultGeometry.detailsMasked).toBe(false);
-    expect(resultGeometry.summaryHeight).toBeLessThanOrEqual(430);
+    expect(resultGeometry.summaryFitsContent).toBe(true);
     const fixedActions = await result.evaluate((stage) => {
       const scroller = stage.querySelector<HTMLElement>(".idea-lab__stage-scroll")!;
       const actions = stage.querySelector<HTMLElement>(".idea-lab__cta-bar--result")!;
