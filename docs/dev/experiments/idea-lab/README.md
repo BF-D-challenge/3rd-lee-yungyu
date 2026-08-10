@@ -4,8 +4,8 @@
 
 ## 현재 정본
 
-- 전체 작업: [`../../../../TASK.md`](../../../../TASK.md)
-- 새 세션 인계: [`../../../handoff/2026-07-13-idea-card-expansion.md`](../../../handoff/2026-07-13-idea-card-expansion.md)
+- 당시 전체 작업: [`../../../archive/legacy-root/repository/TASK.md`](../../../archive/legacy-root/repository/TASK.md)
+- 당시 세션 인계: [`../../../archive/legacy-handoff/2026-07-13-idea-card-expansion.md`](../../../archive/legacy-handoff/2026-07-13-idea-card-expansion.md)
 - 공통 평가표: [`idea-evaluation-rubric-v2.md`](./idea-evaluation-rubric-v2.md)
 - 최종 62개 판정: [`../../../research/idea-final-decisions-62.jsonl`](../../../research/idea-final-decisions-62.jsonl)
 - 현재 사용자 대기열: [`idea-user-validation-queue-current.md`](./idea-user-validation-queue-current.md)
