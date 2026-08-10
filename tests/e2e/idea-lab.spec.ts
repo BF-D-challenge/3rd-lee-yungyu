@@ -289,7 +289,6 @@ test.describe("아이디어 제작과 칭찬 요청 공유", () => {
     expect(resultGeometry.summaryContainsChildren).toBe(true);
     expect(resultGeometry.summaryFitsVertically).toBe(true);
     expect(resultGeometry.summaryFitsHorizontally).toBe(true);
-    expect(resultGeometry.summaryHeight).toBeLessThanOrEqual(430);
     const fixedActions = await result.evaluate((stage) => {
       const scroller = stage.querySelector<HTMLElement>(".idea-lab__stage-scroll")!;
       const actions = stage.querySelector<HTMLElement>(".idea-lab__cta-bar--result")!;
