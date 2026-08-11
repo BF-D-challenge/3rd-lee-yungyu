@@ -12,6 +12,18 @@ export type MatpinStationMatch = {
   isStation: boolean;
 };
 
+const COUNTRY_NAMES: Record<string, string> = {
+  KR: "대한민국",
+  JP: "일본",
+  US: "미국",
+  CN: "중국",
+  TW: "대만",
+  HK: "홍콩",
+  SG: "싱가포르",
+  TH: "태국",
+  VN: "베트남",
+};
+
 // CC0 station coordinates adapted from:
 // https://gist.github.com/nemorize/ac5f39ff62b6bf82dc496d10c69b2b46
 // The MVP starts with the Seoul areas represented by current Matpin saves.
@@ -74,7 +86,29 @@ function distanceMeters(
   return Math.round(earthRadius * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
 }
 
+function isWithinSouthKorea(latitude: number, longitude: number): boolean {
+  return latitude >= 33 && latitude <= 39.5 && longitude >= 124 && longitude <= 132;
+}
+
 export function stationForMatpinPlace(place: MatpinPlaceCandidate): MatpinStationMatch {
+  if (place.nearbyTransit) {
+    return {
+      name: place.nearbyTransit.name,
+      distanceMeters: place.nearbyTransit.distanceMeters,
+      isStation: true,
+    };
+  }
+
+  const countryCode = place.countryCode;
+  if (countryCode !== "KR" && (!isWithinSouthKorea(place.latitude, place.longitude) || Boolean(countryCode))) {
+    const country = countryCode ? (COUNTRY_NAMES[countryCode] ?? countryCode) : null;
+    return {
+      name: [country, place.regionName || place.area || "해외 장소"].filter(Boolean).join(" "),
+      distanceMeters: null,
+      isStation: false,
+    };
+  }
+
   const explicit = [place.area, place.address, place.matchReason]
     .join(" ")
     .match(/([가-힣A-Za-z0-9·]+역)(?:\s|$|[,.·])/u)?.[1];

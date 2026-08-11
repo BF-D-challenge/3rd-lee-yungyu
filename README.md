@@ -1,80 +1,63 @@
-# 🔥 오늘 해볼까
+# 맛핀
 
-> **검증된 제품의 작동 방식을 네 장으로 뽑아 80~90%는 남기고 한 가지만 바꾼 아이디어를 만들고, 공유한 뒤 익명 응원을 받는 도구.**
-> BF.D Vibe Coding Challenge 4주 프로젝트 · 이윤규
+Instagram에서 발견한 맛집, 카페와 여행지 게시물을 `matpin.kr`에 보내면 장소를 찾아 가까운 역별 개인 보관함에 정리하는 서비스입니다.
 
-- **검증된 원본 / 돈 낼 사람 / 필요한 순간 / 한 끗 변화** 네 장을 먼저 뽑는다.
-- 마음에 들지 않으면 전체 또는 한 장만 다시 뽑고, 직접 문장을 쓸 수도 있다.
-- 결과를 공유하면 AI 코딩 도구에 붙여 넣을 전체 제작 문구가 열린다.
-- 익명 응원이 오면 모닥불 주위의 유령과 점선 의자가 사람과 실제 의자로 채워지고 불꽃이 커진다.
+2026-08-10 기준으로 앱 역할 계정을 위한 비공개 베타를 운영하고 있습니다. 관리자 CRM은 로컬 구현과 운영 Supabase 마이그레이션 7개를 확인했지만 아직 운영에 배포하지 않았고, 실제 Google 로그인과 실대화도 검증하지 않았어요. Meta 메시지 권한은 테스트 준비 완료 상태이며 앱 검수에 제출하지 않았습니다. 일반 공개 전에는 고급 액세스 승인과 앱 역할이 없는 일반 계정 왕복을 확인해야 해요. 최신 운영 판정은 [운영 가이드](docs/matpin/OPERATIONS.md)에서 관리합니다.
 
-기준 명세는 [최종 PRD v4](docs/prd/오늘-해볼까-prd.md), 현재 실행 순서는 [TASK](docs/TASK.md)다.
+## 지원 범위
 
----
+| 입력 | 동작 |
+| --- | --- |
+| 공개 Instagram 릴스 | 장소를 분석하고 보관함에 저장합니다. |
+| 공개 피드 게시물과 캐러셀 | 게시물 또는 미리보기를 분석하고 장소를 저장해요. |
+| 개별 Instagram 게시물 URL | URL만 단독으로 보냈을 때 처리합니다. |
+| 같은 게시물 재공유 | 영구 분석 캐시를 재사용하고 AI 분석 비용을 다시 쓰지 않아요. |
+| 직접 보낸 글, 사진과 동영상 | 분석하거나 저장하지 않고 올바른 사용 방법을 답장합니다. |
+| 프로필과 외부 링크 | 저장하지 않고 개별 Instagram 게시물을 보내달라고 안내해요. |
 
-## 🚀 실행
+## 주요 화면
+
+- 서비스 안내: <https://matpin-kr.vercel.app/matpin>
+- 개인 보관함: `/s/{code}` 또는 `/matpin/saved#token=...`
+- 내 데이터 관리: `/matpin/delete`
+- 운영 CRM: `/matpin/admin` (배포 및 운영 검증 대기)
+
+운영 CRM은 확인된 Google 이메일과 `MATPIN_ADMIN_EMAILS` 허용목록으로 보호됩니다. 실제 관리자 Google 이메일을 확정해 배포 환경에 등록해야 하며, 허용목록이 비어 있으면 모든 관리자 접근을 거부해요. 조회 시간 예산, 불확실한 발송의 중복 차단과 자동 답장 1,000바이트 제한은 수정 및 로컬 검증을 마쳤습니다. 운영 배포와 허용 계정 로그인 전까지는 운영 완료 상태가 아닙니다.
+
+## 로컬 실행
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
-npm run typecheck  # 타입 검사
-npm run build      # 프로덕션 빌드
+npm run dev
 ```
 
-기존 Supabase 응원 저장 계층은 남아 있지만, v4의 익명 응원·이름 공개 동의·990원 가짜 문 데이터 구조는 TASK 순서에 따라 다시 맞춘다.
+기본 주소는 <http://localhost:3000/matpin>입니다. 실제 비밀값은 `.env.example`의 이름만 참고해 로컬 `.env`와 Vercel 환경 변수에 등록하고, 저장소에는 올리지 않습니다.
 
-## 📂 레포 지도
+## 검증
 
-문서(`docs/`)와 실행 코드(`src/`)를 분리한다. 최신 PRD는 한 개만 유지하고, 이전 기획은 날짜별 아카이브에서 보존한다.
-
-```
-docs/                     # 문서 전부 (코드와 완전 분리)
-  README.md               #   문서 전체 지도
-  PRD.md                  #   v4 한 장 요약
-  TASK.md                 #   T0~T6 실행 순서
-  DEPLOY.md               #   배포 가이드
-  prd/
-    오늘-해볼까-prd.md      #   ★ 유일한 최신 기준 명세
-    archive/              #   과거 PRD와 실행 계획
-    assets/               #   과거 목업·설계 근거
-  research/               #   Gas·TrustMRR·App Store·Mobbin 등 리서치 코퍼스
-  dev/                    #   정적 프로토타입·감사 페이지·실험과 체크포인트
-src/                      # 코드 전부 (Next.js 공식 src/ 컨벤션)
-  app/                    #   Next.js 라우트
-  components/             #   아토믹: atoms → molecules → organisms → layouts
-  lib/                    #   카드 선택·결과 조립·저장·공유 로직
-  data/                   #   컴팩트한 입력 데이터
-public/data/              # 원본 카드와 런타임 생성 데이터
-supabase/                 # 익명 응원 저장 스키마
-scripts/research/         # 감사·리서치 정적 페이지 생성
-scripts/rollout/          # 카드 데이터 빌드·검증
+```bash
+npm run typecheck
+npm run test:unit
+npm run test:e2e
+npm run lint
+npm run build
+npm run matpin:launch:check -- https://matpin-kr.vercel.app
 ```
 
-자세한 폴더 역할은 [PROJECT_STRUCTURE](docs/PROJECT_STRUCTURE.md)를 참고한다.
+실행한 검증만 완료로 기록합니다. 운영 배포는 커밋과 배포 완료 표시뿐 아니라 운영 별칭과 실제 화면까지 확인해야 해요.
 
-## 📅 4주 계획
+## 문서
 
-| 주차 | 목표 |
-|------|------|
-| 1주차 | 최종 PRD, Flow A/B 10화면 정적 HTML, 5명 이해 테스트 |
-| 2주차 | 검증된 원본 기반 네 장 뽑기와 쉬운 결과·제작 문구 |
-| 3주차 | 공유 링크, 익명 응원, 유령·의자 전환, 불꽃 성장 |
-| 4주차 | 990원 가짜 문, 퍼널 계측, 실사용 결과와 데모 영상 |
+- [맛핀 문서 허브](docs/matpin/README.md)
+- [제품 요구사항](docs/PRD.md)
+- [현재 작업과 출시 게이트](docs/TASK.md)
+- [프로젝트 구조](docs/PROJECT_STRUCTURE.md)
+- [기술 구조와 개인정보 경계](docs/matpin/ARCHITECTURE.md)
+- [운영 및 배포 가이드](docs/matpin/OPERATIONS.md)
+- [제품 설계 계약](.design-architect/PRODUCT.md)
+- [경험 설계 계약](.design-architect/EXPERIENCE.md)
+- [화면 설계 계약](.design-architect/DESIGN.md)
 
-## 🌐 배포 (Vercel 자동 배포)
+활성 문서는 맛핀만 다룹니다. 기존 리서치와 실험 파일은 근거 보존을 위해 삭제하지 않았으며, 현재 제품 판단의 정본으로 사용하지 않습니다.
 
-`main`에 push하면 `.github/workflows/deploy.yml`이 Vercel로 자동 배포한다. 작업 레포 GitHub **Settings → Secrets and variables → Actions**에 아래 3개가 등록돼 있어야 한다 (없으면 배포만 조용히 건너뜀):
-
-| Name | Value |
-|------|-------|
-| `VERCEL_TOKEN` | [vercel.com/account/settings/tokens](https://vercel.com/account/settings/tokens)에서 발급 |
-| `VERCEL_ORG_ID` | Vercel 계정 Settings → General → User ID |
-| `VERCEL_PROJECT_ID` | Vercel 프로젝트(Create Empty Project로 생성) Settings → General → Project ID (`prj_…`) |
-
-환경 변수는 `.env.example` 참고 — **비밀 값은 절대 코드·커밋에 넣지 말 것** (`.env`는 gitignore됨). 초기 환경 세팅 전반은 [docs/bfd-setup/SETUP.md](docs/dev/bfd-setup/SETUP.md), 4주 운영 가이드는 [4주 챌린지 플레이북](docs/dev/bfd-setup/templates/4주-챌린지-플레이북.md).
-
-## 💻 작업 흐름
-
-1. 이 레포를 Claude Code로 열고 작업한다.
-2. 올릴 때는 클로드에게 **"올려줘"** — safe-push 스킬이 비밀 파일·대용량 데이터를 점검한 뒤 push한다. (커밋만으로는 BF.D 트래킹 안 됨 — **PR을 올려야 집계**)
-3. push되면 Vercel 자동 배포.
+별도 로컬 산출물인 발표 C안은 `outputs/presentation-candidates/`에 있고 Git에서 무시됩니다. 개인정보 가림, 9장과 240초 구성, 데스크톱 및 모바일 브라우저 재QA를 마쳤어요. Moonlight 카드 상호작용도 로컬 HTTP에서 실제 포인터 동작을 검증했습니다. 과거 Onebite와 Today 확장 시안은 현재 맛핀 정본과 충돌하므로, 제품 방향을 다시 결정하기 전에는 재개하지 않습니다.

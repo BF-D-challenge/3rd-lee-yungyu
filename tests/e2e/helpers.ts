@@ -1,4 +1,5 @@
 import { expect, type Locator, type Page } from "@playwright/test";
+import { KAKAO_JAVASCRIPT_SDK_URL } from "../../src/lib/kakao-share";
 
 export const FIXED_NOW = new Date("2026-07-12T12:00:00+09:00");
 
@@ -132,6 +133,15 @@ export function praiseVote({
 }
 
 export async function installShareMock(page: Page, mode: ShareMockMode) {
+  // Keep the page-level Kakao mock authoritative even when the production
+  // layout correctly injects the public SDK script during E2E builds.
+  await page.route(KAKAO_JAVASCRIPT_SDK_URL, async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/javascript",
+      body: "",
+    });
+  });
   await page.addInitScript((mockMode: ShareMockMode) => {
     const state = window as typeof window & {
       __shareCalls?: ShareData[];

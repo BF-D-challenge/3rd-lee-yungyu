@@ -1,10 +1,16 @@
 import { z } from "zod";
 import {
   matpinPlaceCandidateSchema,
+  type MatpinPlaceType,
   type MatpinAnalysis,
   type MatpinPlaceCandidate,
 } from "@/lib/matpin/contract";
 import { MatpinAnalysisError } from "@/lib/matpin/analysis-error";
+import {
+  MatpinDeadlineExceededError,
+  matpinDeadlineSignal,
+  type MatpinDeadline,
+} from "@/lib/matpin/deadline";
 
 const KAKAO_LOCAL_URL = "https://dapi.kakao.com/v2/local/search/keyword.json";
 const KAKAO_TIMEOUT_MS = 8_000;
@@ -20,6 +26,31 @@ const FOREIGN_REGION_PATTERN = new RegExp([
   "영국", "런던", "이탈리아", "로마", "스페인", "바르셀로나", "독일",
   "호주", "시드니", "캐나다", "밴쿠버", "두바이",
 ].join("|"), "i");
+
+const KAKAO_PLACE_TYPE_CODES: Record<string, MatpinPlaceType> = {
+  FD6: "restaurant",
+  CE7: "cafe",
+  AT4: "attraction",
+  AD5: "lodging",
+};
+
+const GOOGLE_PLACE_TYPES: Partial<Record<MatpinPlaceType, string>> = {
+  cafe: "cafe",
+  attraction: "tourist_attraction",
+  lodging: "lodging",
+};
+
+const COUNTRY_PATTERNS: Array<[string, RegExp]> = [
+  ["JP", /일본|도쿄|오사카|교토|후쿠오카|삿포로|나고야|오키나와|東京|大阪|京都|福岡|札幌|名古屋|沖縄|japan|tokyo|osaka|kyoto/i],
+  ["US", /미국|뉴욕|로스앤젤레스|하와이|united states|new york|los angeles|hawaii/i],
+  ["CN", /중국|상하이|베이징|china|shanghai|beijing/i],
+  ["TW", /대만|타이베이|taiwan|taipei/i],
+  ["HK", /홍콩|hong kong/i],
+  ["SG", /싱가포르|singapore/i],
+  ["TH", /태국|방콕|thailand|bangkok/i],
+  ["VN", /베트남|다낭|vietnam|danang/i],
+  ["KR", /대한민국|한국|서울|부산|제주|인천|대구|광주|대전|울산|세종|korea|seoul|busan|jeju/i],
+];
 
 const kakaoResponseSchema = z.object({
   documents: z.array(z.object({
@@ -106,6 +137,10 @@ export type MatpinPlaceResolutionResult = {
   metrics: MatpinPlaceResolutionMetrics;
 };
 
+export type MatpinPlaceResolutionOptions = {
+  deadline?: MatpinDeadline;
+};
+
 const geminiMapsJsonSchema = {
   type: "object",
   additionalProperties: false,
@@ -135,8 +170,48 @@ function areaFromAddress(address: string): string {
   return parts.slice(0, 2).join(" ") || "지역 확인 필요";
 }
 
+function countryCodeForPlace(clue: MatpinAnalysis["places"][number], address: string): string | undefined {
+  const text = [clue.regionHints.join(" "), address].join(" ");
+  return COUNTRY_PATTERNS.find(([, pattern]) => pattern.test(text))?.[0];
+}
+
+function regionNameFromAddress(address: string, countryCode: string | undefined): string | undefined {
+  const parts = address.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return undefined;
+  const withoutCountry = parts.filter((part) => !/^(대한민국|한국|일본|japan|korea)$/iu.test(part));
+  const regionParts = countryCode === "JP" ? withoutCountry : parts;
+  return regionParts.slice(0, 2).join(" ") || undefined;
+}
+
+function placeTypeFromText(value: string): MatpinPlaceType | undefined {
+  if (/(카페|커피|cafe|coffee|喫茶|カフェ)/iu.test(value)) return "cafe";
+  if (/(숙소|호텔|모텔|리조트|게스트하우스|hotel|hostel|resort|lodging|旅館|ホテル)/iu.test(value)) return "lodging";
+  if (/(관광|명소|뮤지엄|박물관|미술관|전시|공원|전망대|attraction|museum|gallery|park|観光|美術館|博物館)/iu.test(value)) return "attraction";
+  if (/(식당|음식점|맛집|restaurant|dining|食堂|レストラン)/iu.test(value)) return "restaurant";
+  return undefined;
+}
+
+function placeTypeFor(
+  clue: MatpinAnalysis["places"][number],
+  category: string,
+  kakaoCategoryCode?: string,
+): MatpinPlaceType {
+  return clue.placeType
+    ?? (kakaoCategoryCode ? KAKAO_PLACE_TYPE_CODES[kakaoCategoryCode] : undefined)
+    ?? placeTypeFromText(category)
+    ?? "restaurant";
+}
+
+function googleLanguageCode(countryCode: string | undefined): string {
+  return countryCode === "JP" ? "ja" : "ko";
+}
+
+function queryTypeHint(placeType: MatpinPlaceType | undefined): string {
+  return placeType && placeType !== "restaurant" ? placeType : "";
+}
+
 function normalizedName(value: string): string {
-  return value.normalize("NFKC").toLowerCase().replace(/[^0-9a-z가-힣]/g, "");
+  return value.normalize("NFKC").toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
 }
 
 function candidateConfidence(input: {
@@ -197,7 +272,10 @@ function bestClueForCandidate(analysis: MatpinAnalysis, candidateName: string) {
   }) ?? analysis.places[0];
 }
 
-async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPlaceResolutionResult> {
+async function resolveWithGeminiMaps(
+  analysis: MatpinAnalysis,
+  options: MatpinPlaceResolutionOptions,
+): Promise<MatpinPlaceResolutionResult> {
   const startedAt = Date.now();
   const apiKey = process.env.GEMINI_API_KEY?.trim() || process.env.ALLSALE_GEMINI_API_KEY?.trim();
   if (!apiKey) throw new MatpinAnalysisError("place_search_not_configured", false);
@@ -207,7 +285,7 @@ async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPl
 
   const clues = analysis.places.slice(0, 3);
   const query = clues.map((clue, index) =>
-    `${index + 1}. ${[clue.name, clue.branch, clue.regionHints.join(" ")].filter(Boolean).join(" ")}`,
+    `${index + 1}. ${[clue.name, clue.branch, clue.placeType, clue.regionHints.join(" ")].filter(Boolean).join(" ")}`,
   ).join("\n");
   let response: Response;
   try {
@@ -216,7 +294,7 @@ async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPl
       headers: { "content-type": "application/json", "x-goog-api-key": apiKey },
       body: JSON.stringify({
         model,
-        input: `Find each exact restaurant, cafe, shop, tourist attraction, or other visitable place matching the numbered clues below:\n${query}\nRespect any country or region named in each clue. If no country is given and the clue is Korean, prefer South Korea. Use only verified Google Maps place results. Return at most one best result per clue and at most three results total. Return the Korean place name and address when available. Skip a clue when no verified place matches.`,
+        input: `Find each exact restaurant, cafe, tourist attraction, or lodging matching the numbered clues below:\n${query}\nRespect any country or region and place type named in each clue. If no country is given and the clue is Korean, prefer South Korea. Use only verified Google Maps place results. Return at most one best result per clue and at most three results total. Return the local place name and address when available. Skip a clue when no verified place matches.`,
         tools: [{ type: "google_maps" }],
         response_format: {
           type: "text",
@@ -225,10 +303,11 @@ async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPl
         },
         store: false,
       }),
-      signal: AbortSignal.timeout(GEMINI_MAPS_TIMEOUT_MS),
+      signal: matpinDeadlineSignal(options.deadline, GEMINI_MAPS_TIMEOUT_MS),
       cache: "no-store",
     });
   } catch (error) {
+    if (error instanceof MatpinDeadlineExceededError) throw error;
     const timeout = error instanceof Error && error.name === "TimeoutError";
     throw new MatpinAnalysisError(timeout ? "place_search_timeout" : "place_search_unavailable", true);
   }
@@ -270,6 +349,8 @@ async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPl
       ?? (parsed.places.length === 1 && groundedPlaces.length === 1 ? groundedPlaces[0] : undefined);
     if (!grounded?.url) return [];
     const clue = bestClueForCandidate(analysis, candidate.name);
+    const placeType = placeTypeFor(clue, candidate.category);
+    const countryCode = countryCodeForPlace(clue, candidate.address);
     const confidence = candidateConfidence({
       clueName: clue.name,
       clueRegion: clue.regionHints[0],
@@ -280,6 +361,9 @@ async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPl
     return [matpinPlaceCandidateSchema.parse({
       id: grounded.place_id || `google-maps-${normalizedName(candidate.name)}`,
       name: candidate.name,
+      placeType,
+      countryCode,
+      regionName: regionNameFromAddress(candidate.address, countryCode),
       area: areaFromAddress(candidate.address),
       category: `Google Maps · ${candidate.category || "장소"}`,
       address: candidate.address,
@@ -313,13 +397,18 @@ async function resolveWithGeminiMaps(analysis: MatpinAnalysis): Promise<MatpinPl
 async function resolveWithGooglePlaces(
   analysis: MatpinAnalysis,
   apiKey: string,
+  options: MatpinPlaceResolutionOptions,
 ): Promise<MatpinPlaceResolutionResult> {
   const startedAt = Date.now();
   const clues = analysis.places.slice(0, 3);
   const resolved = await Promise.all(clues.map(async (clue) => {
+    const placeTypeHint = queryTypeHint(clue.placeType);
     const textQuery = [clue.name, clue.branch, ...clue.regionHints.slice(0, 2)]
+      .concat(placeTypeHint ? [placeTypeHint] : [])
       .filter(Boolean)
       .join(" ");
+    const countryCode = countryCodeForPlace(clue, clue.regionHints.join(" "));
+    const includedType = clue.placeType ? GOOGLE_PLACE_TYPES[clue.placeType] : undefined;
     let response: Response;
     try {
       response = await fetch(GOOGLE_PLACES_TEXT_SEARCH_URL, {
@@ -336,11 +425,17 @@ async function resolveWithGooglePlaces(
             "places.primaryTypeDisplayName",
           ].join(","),
         },
-        body: JSON.stringify({ textQuery, languageCode: "ko", pageSize: 3 }),
-        signal: AbortSignal.timeout(GOOGLE_PLACES_TIMEOUT_MS),
+        body: JSON.stringify({
+          textQuery,
+          languageCode: googleLanguageCode(countryCode),
+          pageSize: 3,
+          ...(includedType ? { includedType, strictTypeFiltering: true } : {}),
+        }),
+        signal: matpinDeadlineSignal(options.deadline, GOOGLE_PLACES_TIMEOUT_MS),
         cache: "no-store",
       });
     } catch (error) {
+      if (error instanceof MatpinDeadlineExceededError) throw error;
       const timeout = error instanceof Error && error.name === "TimeoutError";
       throw new MatpinAnalysisError(timeout ? "place_search_timeout" : "place_search_unavailable", true);
     }
@@ -357,6 +452,12 @@ async function resolveWithGooglePlaces(
     return matpinPlaceCandidateSchema.parse({
       id: place.id,
       name: place.displayName.text,
+      placeType: placeTypeFor(clue, place.primaryTypeDisplayName?.text ?? ""),
+      countryCode: countryCodeForPlace(clue, place.formattedAddress),
+      regionName: regionNameFromAddress(
+        place.formattedAddress,
+        countryCodeForPlace(clue, place.formattedAddress),
+      ),
       area: areaFromAddress(place.formattedAddress),
       category: `Google Maps · ${place.primaryTypeDisplayName?.text || "장소"}`,
       address: place.formattedAddress,
@@ -398,6 +499,7 @@ async function resolveWithGooglePlaces(
 async function resolveWithKakaoLocal(
   analysis: MatpinAnalysis,
   apiKey: string,
+  options: MatpinPlaceResolutionOptions,
 ): Promise<MatpinPlaceResolutionResult> {
   const startedAt = Date.now();
   const clues = analysis.places.slice(0, 3);
@@ -406,14 +508,20 @@ async function resolveWithKakaoLocal(
       .filter(Boolean)
       .join(" ");
     const params = new URLSearchParams({ query, size: "5" });
+    const categoryGroupCode = clue.placeType
+      ? Object.entries(KAKAO_PLACE_TYPE_CODES)
+        .find(([, placeType]) => placeType === clue.placeType)?.[0]
+      : undefined;
+    if (categoryGroupCode) params.set("category_group_code", categoryGroupCode);
     let response: Response;
     try {
       response = await fetch(`${KAKAO_LOCAL_URL}?${params.toString()}`, {
         headers: { authorization: `KakaoAK ${apiKey}` },
-        signal: AbortSignal.timeout(KAKAO_TIMEOUT_MS),
+        signal: matpinDeadlineSignal(options.deadline, KAKAO_TIMEOUT_MS),
         cache: "no-store",
       });
-    } catch {
+    } catch (error) {
+      if (error instanceof MatpinDeadlineExceededError) throw error;
       throw new MatpinAnalysisError("place_search_unavailable", true);
     }
     if (!response.ok) {
@@ -427,9 +535,14 @@ async function resolveWithKakaoLocal(
     if (!document) return null;
 
     const address = document.road_address_name || document.address_name;
+    const placeType = placeTypeFor(clue, document.category_name, document.category_group_code);
+    const countryCode = countryCodeForPlace(clue, address);
     return matpinPlaceCandidateSchema.parse({
       id: document.id,
       name: document.place_name,
+      placeType,
+      countryCode,
+      regionName: regionNameFromAddress(address, countryCode),
       area: areaFromAddress(address),
       category: document.category_name,
       address,
@@ -469,6 +582,7 @@ async function resolveWithKakaoLocal(
 
 export async function resolveMatpinPlacesWithMetrics(
   analysis: MatpinAnalysis,
+  options: MatpinPlaceResolutionOptions = {},
 ): Promise<MatpinPlaceResolutionResult> {
   if (analysis.status === "insufficient" || analysis.places.length === 0) {
     return {
@@ -490,13 +604,16 @@ export async function resolveMatpinPlacesWithMetrics(
   const googlePlacesKey = process.env.GOOGLE_MAPS_API_KEY?.trim();
   const kakaoKey = process.env.KAKAO_REST_API_KEY?.trim();
   if (!hasExplicitForeignRegion(analysis) && kakaoKey) {
-    const kakaoResult = await resolveWithKakaoLocal(analysis, kakaoKey);
+    const kakaoResult = await resolveWithKakaoLocal(analysis, kakaoKey, options);
     if (kakaoResult.candidates.length > 0) return kakaoResult;
   }
-  if (googlePlacesKey) return resolveWithGooglePlaces(analysis, googlePlacesKey);
-  return resolveWithGeminiMaps(analysis);
+  if (googlePlacesKey) return resolveWithGooglePlaces(analysis, googlePlacesKey, options);
+  return resolveWithGeminiMaps(analysis, options);
 }
 
-export async function resolveMatpinPlaces(analysis: MatpinAnalysis): Promise<MatpinPlaceCandidate[]> {
-  return (await resolveMatpinPlacesWithMetrics(analysis)).candidates;
+export async function resolveMatpinPlaces(
+  analysis: MatpinAnalysis,
+  options: MatpinPlaceResolutionOptions = {},
+): Promise<MatpinPlaceCandidate[]> {
+  return (await resolveMatpinPlacesWithMetrics(analysis, options)).candidates;
 }

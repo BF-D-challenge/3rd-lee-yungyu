@@ -17,6 +17,7 @@ import {
   resolveMatpinPlaces,
   resolveMatpinPlacesWithMetrics,
 } from "@/lib/matpin/place-resolver";
+import { MATPIN_GLOBAL_PLACE_INPUT_FIXTURES } from "../fixtures/matpin-global-place-inputs";
 import {
   createMatpinAccessToken,
   createMatpinShortLinkCode,
@@ -25,9 +26,11 @@ import {
   hashMatpinAccessToken,
   hashMatpinShortLinkCode,
   hashMatpinSender,
-  verifyMatpinAdminRequest,
   verifyMetaWebhookSignature,
 } from "@/lib/matpin/security";
+import { createMatpinWorkerDeadline } from "@/lib/matpin/deadline";
+import { getMatpinPipelineModeState } from "@/lib/matpin/pipeline-mode";
+import * as matpinStore from "@/lib/matpin/store";
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -55,6 +58,28 @@ function webhookBody(overrides: Record<string, unknown> = {}) {
       }],
     }],
   };
+}
+
+function signedWebhookRequest(payload: unknown = webhookBody()) {
+  const raw = JSON.stringify(payload);
+  const signature = `sha256=${createHmac("sha256", "meta-test-secret").update(raw).digest("hex")}`;
+  return new Request("https://matpin.kr/api/matpin/webhook", {
+    method: "POST",
+    headers: { "x-hub-signature-256": signature },
+    body: raw,
+  });
+}
+
+function signedModeCheckRequest(secret: string, timestamp = Math.floor(Date.now() / 1_000)) {
+  const signature = `sha256=${createHmac("sha256", secret)
+    .update(`matpin-pipeline-mode-check:v1:${timestamp}`)
+    .digest("hex")}`;
+  return new Request("https://matpin.kr/api/matpin/webhook?mode_check=1", {
+    headers: {
+      "x-matpin-mode-check-timestamp": String(timestamp),
+      "x-matpin-mode-check-signature": signature,
+    },
+  });
 }
 
 describe("Meta Instagram webhook contract", () => {
@@ -233,17 +258,33 @@ describe("Matpin secrets and signature", () => {
     expect(shortCode).toMatch(/^[A-Za-z0-9_-]{16}$/);
     expect(hashMatpinShortLinkCode(shortCode)).toMatch(/^[0-9a-f]{64}$/);
   });
+});
 
-  it("allows a one-time admin token without exposing the personal map token", () => {
-    vi.stubEnv("MATPIN_ADMIN_ACTION_TOKEN", "one-time-admin-token");
-    vi.stubEnv("CRON_SECRET", "cron-token");
-    expect(verifyMatpinAdminRequest(new Request("https://matpin.kr", {
-      headers: { authorization: "Bearer one-time-admin-token" },
-    }))).toBe(true);
-    expect(verifyMatpinAdminRequest(new Request("https://matpin.kr", {
-      headers: { authorization: "Bearer wrong-token" },
-    }))).toBe(false);
-  });
+describe("Matpin pipeline mode contract", () => {
+  it.each([
+    ["mock", "preview", true, "mock", "non-production"],
+    ["mock", "", true, "mock", "non-production"],
+    ["mock", "production", false, "invalid", "production"],
+    ["maintenance", "production", true, "maintenance", "production"],
+    ["maintenance", "preview", false, "invalid", "non-production"],
+    ["live", "production", true, "live", "production"],
+    ["live", "preview", false, "invalid", "non-production"],
+    ["live", "", false, "invalid", "non-production"],
+    ["", "production", false, "invalid", "production"],
+    ["unexpected", "production", false, "invalid", "production"],
+  ] as const)(
+    "classifies mode %j in %j as valid=%s, mode=%s, environment=%s",
+    (mode, vercelEnvironment, valid, expectedMode, environment) => {
+      vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", mode);
+      vi.stubEnv("VERCEL_ENV", vercelEnvironment);
+
+      expect(getMatpinPipelineModeState()).toEqual({
+        valid,
+        mode: expectedMode,
+        environment,
+      });
+    },
+  );
 });
 
 describe("Webhook and worker route guards", () => {
@@ -260,6 +301,29 @@ describe("Webhook and worker route guards", () => {
     expect(rejected.status).toBe(403);
   });
 
+  it("reports maintenance mode only to a fresh CRON_SECRET-signed GET", async () => {
+    vi.stubEnv("CRON_SECRET", "cron-test-secret");
+    vi.stubEnv("VERCEL_ENV", "production");
+    vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "maintenance");
+
+    const accepted = await verifyWebhook(signedModeCheckRequest("cron-test-secret"));
+    const rejected = await verifyWebhook(signedModeCheckRequest("wrong-secret"));
+    const stale = await verifyWebhook(signedModeCheckRequest(
+      "cron-test-secret",
+      Math.floor(Date.now() / 1_000) - 61,
+    ));
+
+    expect(accepted.status).toBe(204);
+    expect(accepted.headers.get("cache-control")).toContain("private");
+    expect(accepted.headers.get("cache-control")).toContain("no-store");
+    expect(accepted.headers.get("x-matpin-pipeline-mode")).toBe("maintenance");
+    expect(accepted.headers.get("x-matpin-pipeline-mode-valid")).toBe("true");
+    expect(accepted.headers.get("x-matpin-pipeline-environment")).toBe("production");
+    expect(accepted.headers.get("x-matpin-pipeline-accepts-events")).toBe("false");
+    expect(rejected.status).toBe(401);
+    expect(stale.status).toBe(401);
+  });
+
   it("rejects an unsigned payload before touching storage", async () => {
     vi.stubEnv("META_APP_SECRET", "meta-test-secret");
     const response = await receiveWebhook(new Request("https://matpin.kr/api/matpin/webhook", {
@@ -273,6 +337,7 @@ describe("Webhook and worker route guards", () => {
     vi.stubEnv("META_APP_SECRET", "meta-test-secret");
     vi.stubEnv("META_INSTAGRAM_ACCOUNT_ID", "professional-account");
     vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "live");
+    vi.stubEnv("VERCEL_ENV", "production");
     const raw = JSON.stringify(webhookBody({ is_echo: true }));
     const signature = `sha256=${createHmac("sha256", "meta-test-secret").update(raw).digest("hex")}`;
     const response = await receiveWebhook(new Request("https://matpin.kr/api/matpin/webhook", {
@@ -284,17 +349,85 @@ describe("Webhook and worker route guards", () => {
     expect(await response.json()).toEqual({ ok: true, accepted: 0, ignored: true });
   });
 
-  it("acknowledges signed events without ingesting while the pipeline flag is mock", async () => {
+  it("acknowledges signed events without ingesting only with explicit mock in non-production", async () => {
     vi.stubEnv("META_APP_SECRET", "meta-test-secret");
-    const raw = JSON.stringify(webhookBody());
-    const signature = `sha256=${createHmac("sha256", "meta-test-secret").update(raw).digest("hex")}`;
-    const response = await receiveWebhook(new Request("https://matpin.kr/api/matpin/webhook", {
-      method: "POST",
-      headers: { "x-hub-signature-256": signature },
-      body: raw,
-    }));
+    vi.stubEnv("VERCEL_ENV", "preview");
+    vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "mock");
+    const response = await receiveWebhook(signedWebhookRequest());
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ ok: true, accepted: 0, pipelineMode: "mock" });
+  });
+
+  it.each(["", "unexpected"])(
+    "fails closed for a missing or unknown pipeline mode: %j",
+    async (mode) => {
+      vi.stubEnv("META_APP_SECRET", "meta-test-secret");
+      vi.stubEnv("VERCEL_ENV", "production");
+      vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", mode);
+
+      const response = await receiveWebhook(signedWebhookRequest());
+
+      expect(response.status).toBe(503);
+      expect(await response.json()).toEqual({ error: "pipeline_not_configured" });
+    },
+  );
+
+  it.each([
+    ["mock", "production"],
+    ["live", "preview"],
+    ["live", ""],
+    ["maintenance", "preview"],
+  ])("fails closed when %s is used in %s", async (mode, vercelEnvironment) => {
+    vi.stubEnv("META_APP_SECRET", "meta-test-secret");
+    vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", mode);
+    vi.stubEnv("VERCEL_ENV", vercelEnvironment);
+
+    const response = await receiveWebhook(signedWebhookRequest());
+
+    expect(response.status).toBe(503);
+    expect(await response.json()).toEqual({ error: "pipeline_not_configured" });
+  });
+
+  it("returns 503 for signed events during maintenance", async () => {
+    vi.stubEnv("META_APP_SECRET", "meta-test-secret");
+    vi.stubEnv("VERCEL_ENV", "production");
+    vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "maintenance");
+
+    const response = await receiveWebhook(signedWebhookRequest());
+
+    expect(response.status).toBe(503);
+    expect(await response.json()).toEqual({ error: "maintenance" });
+  });
+
+  it("prepares guidance with the stable inbound sender hash", async () => {
+    vi.stubEnv("META_APP_SECRET", "meta-test-secret");
+    vi.stubEnv("META_INSTAGRAM_ACCOUNT_ID", "professional-account");
+    vi.stubEnv("META_INSTAGRAM_ACCESS_TOKEN", "instagram-test-token");
+    vi.stubEnv("META_GRAPH_API_VERSION", "v25.0");
+    vi.stubEnv("MATPIN_DATA_SECRET", "data-secret-that-is-longer-than-32-characters");
+    vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", "live");
+    vi.stubEnv("VERCEL_ENV", "production");
+    const enqueue = vi.spyOn(matpinStore, "enqueueMatpinWebhookBatch").mockResolvedValue({
+      accepted: 0,
+      duplicates: 0,
+      receiptsQueued: 0,
+      guidanceQueued: 0,
+      guidanceCooldown: 0,
+      results: [],
+    });
+
+    const response = await receiveWebhook(signedWebhookRequest(webhookBody({
+      text: "도움말",
+      attachments: undefined,
+    })));
+
+    expect(response.status).toBe(200);
+    const events = enqueue.mock.calls[0]?.[0];
+    expect(events).toHaveLength(1);
+    expect(events?.[0]).toMatchObject({
+      type: "guidance",
+      senderHash: hashMatpinSender("sender-1"),
+    });
   });
 
   it("rejects cron execution without the server secret", async () => {
@@ -320,6 +453,34 @@ describe("Webhook and worker route guards", () => {
     );
     expect(response.status).toBe(401);
   });
+
+  it.each([
+    ["live", "preview"],
+    ["live", ""],
+    ["maintenance", "production"],
+  ])(
+    "rejects authenticated reprocessing when mode %s is used in %j",
+    async (mode, vercelEnvironment) => {
+      vi.stubEnv("CRON_SECRET", "cron-test-secret");
+      vi.stubEnv("MATPIN_INSTAGRAM_PIPELINE_MODE", mode);
+      vi.stubEnv("VERCEL_ENV", vercelEnvironment);
+
+      const response = await reprocessMessage(
+        new Request(
+          "https://matpin.kr/api/matpin/messages/11111111-1111-4111-8111-111111111111/reprocess",
+          {
+            method: "POST",
+            headers: { authorization: "Bearer cron-test-secret" },
+          },
+        ),
+        { params: Promise.resolve({ id: "11111111-1111-4111-8111-111111111111" }) },
+      );
+
+      expect(response.status).toBe(409);
+      expect(await response.json()).toEqual({ error: "pipeline_not_live" });
+    },
+  );
+
 });
 
 describe("Gemini input gate", () => {
@@ -348,6 +509,7 @@ describe("Gemini input gate", () => {
       }],
     }), { status: 200, headers: { "content-type": "application/json" } }));
 
+    const deadline = createMatpinWorkerDeadline();
     const resolved = await resolveMatpinPlacesWithMetrics({
       status: "resolved",
       summary: "산장장작구이를 확인했어요.",
@@ -359,11 +521,12 @@ describe("Gemini input gate", () => {
         confidence: 0.98,
         evidence: [{ kind: "on_screen_text", text: "산장장작구이", timestampSeconds: 1 }],
       }],
-    });
+    }, { deadline });
 
     expect(resolved.candidates[0].confidence).toBeLessThan(0.9);
     expect(resolved.metrics).toMatchObject({ provider: "kakao_local", requestCount: 1 });
     expect(kakaoFetch.mock.calls[0][0]).toEqual(expect.stringContaining("dapi.kakao.com"));
+    expect(kakaoFetch.mock.calls[0][1]?.signal).toBeInstanceOf(AbortSignal);
   });
 
   it("uses Google Places before Kakao for an explicitly overseas place", async () => {
@@ -417,7 +580,7 @@ describe("Gemini input gate", () => {
     expect((request.headers as Record<string, string>)["x-goog-fieldmask"]).not.toContain("*");
     expect(JSON.parse(request.body as string)).toEqual({
       textQuery: "스시 다이 일본 도쿄 도요스",
-      languageCode: "ko",
+      languageCode: "ja",
       pageSize: 3,
     });
   });
@@ -486,6 +649,7 @@ describe("Gemini input gate", () => {
         longitude: 139.7818,
       },
       expectedQuery: "스시 다이 일본 도쿄 도요스",
+      expectedLanguage: "ja",
     },
     {
       label: "카페와 여행지",
@@ -500,7 +664,7 @@ describe("Gemini input gate", () => {
       },
       expectedQuery: "오설록 티 뮤지엄 제주 서귀포",
     },
-  ])("resolves supported expansion input: $label", async ({ clue, result, expectedQuery }) => {
+  ])("resolves supported expansion input: $label", async ({ clue, result, expectedQuery, expectedLanguage = "ko" }) => {
     vi.stubEnv("GOOGLE_MAPS_API_KEY", "google-places-test-key");
     vi.stubEnv("KAKAO_REST_API_KEY", "");
     const placesFetch = vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
@@ -535,8 +699,57 @@ describe("Gemini input gate", () => {
     expect(resolved.metrics).toMatchObject({ provider: "google_places", requestCount: 1 });
     expect(JSON.parse(placesFetch.mock.calls[0][1]?.body as string)).toMatchObject({
       textQuery: expectedQuery,
-      languageCode: "ko",
+      languageCode: expectedLanguage,
     });
+  });
+
+  it.each(MATPIN_GLOBAL_PLACE_INPUT_FIXTURES)("resolves real global input: $label", async (fixture) => {
+    vi.stubEnv("GOOGLE_MAPS_API_KEY", "google-places-test-key");
+    vi.stubEnv("KAKAO_REST_API_KEY", "");
+    const placesFetch = vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({
+      places: [{
+        id: fixture.result.id,
+        displayName: { text: fixture.result.name },
+        formattedAddress: fixture.result.address,
+        location: { latitude: fixture.result.latitude, longitude: fixture.result.longitude },
+        googleMapsUri: `https://maps.google.com/?cid=${encodeURIComponent(fixture.result.id)}`,
+        primaryTypeDisplayName: { text: fixture.result.category },
+      }],
+    }), { status: 200, headers: { "content-type": "application/json" } }));
+
+    const resolved = await resolveMatpinPlacesWithMetrics({
+      status: "resolved",
+      summary: `${fixture.name}을 확인했어요.`,
+      places: [{
+        name: fixture.name,
+        placeType: fixture.placeType,
+        branch: null,
+        menus: [],
+        regionHints: fixture.regionHints,
+        confidence: 0.96,
+        evidence: [{ kind: "caption", text: fixture.name, timestampSeconds: null }],
+      }],
+    });
+
+    expect(resolved.candidates[0]).toMatchObject({
+      id: fixture.result.id,
+      name: fixture.result.name,
+      placeType: fixture.placeType,
+      countryCode: "JP",
+      regionName: expect.stringContaining("東京都"),
+    });
+    expect(resolved.metrics).toMatchObject({ provider: "google_places", requestCount: 1 });
+    const request = JSON.parse(placesFetch.mock.calls[0][1]?.body as string);
+    expect(request).toMatchObject({
+      languageCode: "ja",
+      includedType: fixture.placeType === "cafe"
+        ? "cafe"
+        : fixture.placeType === "attraction"
+          ? "tourist_attraction"
+          : "lodging",
+      strictTypeFiltering: true,
+    });
+    expect(request.textQuery).toContain(fixture.placeType);
   });
 
   it("uses a Google Maps-grounded Gemini result when a Kakao key is not configured", async () => {
@@ -934,24 +1147,35 @@ describe("Gemini input gate", () => {
     }), { status: 200, headers: { "content-type": "application/json" } }));
     const download = vi.fn().mockResolvedValue({ bytes: Buffer.from("image"), mimeType: "image/jpeg" });
     const mediaUrls = [1, 2, 3, 4].map((index) => `https://scontent-icn1-1.xx.fbcdn.net/carousel-${index}.jpg`);
+    const source = vi.fn().mockResolvedValue({
+      caption: null,
+      creatorComments: [],
+      videoUrl: null,
+      thumbnailUrl: mediaUrls[0],
+      mediaUrls,
+    });
     const analyzer = createGeminiReelAnalyzer({
       download,
       fetch: geminiFetch,
-      source: vi.fn().mockResolvedValue({
-        caption: null,
-        creatorComments: [],
-        videoUrl: null,
-        thumbnailUrl: mediaUrls[0],
-        mediaUrls,
-      }),
+      source,
     });
+    const deadline = createMatpinWorkerDeadline();
 
     await analyzer.analyze({
       mediaUrl: "https://www.instagram.com/p/Carousel_123/",
       reelId: "Carousel_123",
+      deadline,
     });
 
     expect(download).toHaveBeenCalledTimes(3);
+    expect(source).toHaveBeenCalledWith(
+      "https://www.instagram.com/p/Carousel_123/",
+      { deadline },
+    );
+    const mediaDeadlines = download.mock.calls.map((call) => call[1]?.deadline);
+    expect(mediaDeadlines.every((mediaDeadline) => mediaDeadline === mediaDeadlines[0])).toBe(true);
+    expect(download.mock.calls.every((call) => call[1]?.signal instanceof AbortSignal)).toBe(true);
+    expect(geminiFetch.mock.calls[0][1].signal).toBeInstanceOf(AbortSignal);
     const requestBody = JSON.parse(geminiFetch.mock.calls[0][1].body as string);
     expect(requestBody.input.map((item: { type: string }) => item.type))
       .toEqual(["image", "image", "image", "text"]);

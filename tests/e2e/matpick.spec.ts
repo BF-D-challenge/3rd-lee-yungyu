@@ -130,9 +130,13 @@ test.describe("맛핀 대표 경로", () => {
       "https://matpin-kr.vercel.app/images/matpick/matpin-instagram-share-flow.png",
     );
     await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
-    await expect(page.getByRole("heading", { name: "맛집 게시물을 역별로 모아드려요" })).toBeAttached();
     await expect(page.getByTestId("phone-frame")).toBeVisible();
-    await expect(page.getByTestId("device-screen")).toBeVisible();
+    await expect(page.getByTestId("device-screen"))
+      .toHaveAttribute("data-scene", "0");
+    await expect(page.getByTestId("device-screen")).toHaveAttribute(
+      "aria-label",
+      "맛핀 모션 이야기 1단계: 맛집 게시물을 역별로 모아드려요",
+    );
     const heroLibrary = page.getByTestId("hero-station-library");
     await expect(heroLibrary.locator("[data-station]")).toHaveCount(2);
     await expect(heroLibrary.locator("[data-station] img")).toHaveCount(6);
@@ -141,6 +145,8 @@ test.describe("맛핀 대표 경로", () => {
     const instagramCta = page.getByRole("link", { name: "Instagram에서 시작하기" });
     await expect(instagramCta).toBeVisible();
     await expect(instagramCta).toHaveAttribute("href", "https://www.instagram.com/matpin.kr/");
+    await expect(instagramCta).toHaveAttribute("target", "_blank");
+    await expect(instagramCta).toHaveAttribute("rel", "noreferrer");
     for (const linkName of ["개인정보", "이용약관", "데이터 삭제"]) {
       const legalLink = page.getByRole("link", { name: linkName, exact: true });
       await expect(legalLink).toBeVisible();
@@ -182,10 +188,18 @@ test.describe("맛핀 대표 경로", () => {
   });
 
   test("이전 데모 진입점은 실제 Instagram 저장 방법으로 모인다", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 720 });
+
     for (const path of ["/matpin/start", "/matpin/dm", "/matpin/import"]) {
       await page.goto(path);
       await expect(page).toHaveURL(/\/matpin#how$/);
-      await expect(page.getByRole("heading", { name: "맛집 게시물을 역별로 모아드려요" })).toBeAttached();
+      await expect(page.locator("#how")).toBeAttached();
+      await expect(page.getByTestId("device-screen"))
+        .toHaveAttribute("data-scene", "2");
+      await expect(page.getByTestId("device-screen")).toHaveAttribute(
+        "aria-label",
+        "맛핀 모션 이야기 3단계: 다시 가고 싶은 게시물을 고르세요",
+      );
       await expect(page.getByRole("link", { name: "Instagram에서 시작하기" }).first()).toBeVisible();
     }
   });
@@ -198,6 +212,19 @@ test.describe("맛핀 대표 경로", () => {
     await page.goto("/matpin/saved");
     await expect(page.getByText("개인 보관함을 열 수 없어요")).toBeVisible();
     await expect(page.getByText(/개인 보관함 링크가 올바르지 않아요/)).toBeVisible();
+  });
+
+  test("빈 개인 보관함은 저장한 게시물이 없는 상태를 정확히 안내한다", async ({ page }) => {
+    await page.route("**/api/matpin/saves", async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify({ places: [] }),
+      });
+    });
+
+    await page.goto("/matpin/saved#token=test-access-token");
+    await expect(page.getByRole("heading", { name: "아직 저장한 게시물이 없어요." })).toBeVisible();
   });
 
   test("이전 확인 링크도 후보 장소를 모두 한 번에 저장한다", async ({ page }) => {

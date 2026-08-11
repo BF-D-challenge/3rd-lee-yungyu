@@ -3,6 +3,11 @@ import { isIP } from "node:net";
 import { z } from "zod";
 import { normalizeInstagramMediaUrl } from "@/lib/matpick-dm-contract";
 import { MatpinAnalysisError } from "@/lib/matpin/analysis-error";
+import {
+  MatpinDeadlineExceededError,
+  matpinDeadlineSignal,
+  type MatpinDeadline,
+} from "@/lib/matpin/deadline";
 
 const EMBED_TIMEOUT_MS = 12_000;
 const COMMENTS_TIMEOUT_MS = 8_000;
@@ -50,6 +55,10 @@ export type MatpinReelSource = {
   videoUrl: string | null;
   thumbnailUrl: string | null;
   mediaUrls: string[];
+};
+
+export type MatpinReelSourceOptions = {
+  deadline?: MatpinDeadline;
 };
 
 function isPrivateIp(address: string): boolean {
@@ -213,6 +222,7 @@ async function readCreatorComments(
   mediaId: string,
   ownerUsername: string | null,
   fetchImpl: typeof fetch,
+  options: MatpinReelSourceOptions,
 ): Promise<string[]> {
   const accessToken = process.env.META_INSTAGRAM_ACCESS_TOKEN?.trim();
   if (!accessToken) return [];
@@ -224,7 +234,7 @@ async function readCreatorComments(
   url.searchParams.set("access_token", accessToken);
   try {
     const response = await fetchImpl(url, {
-      signal: AbortSignal.timeout(COMMENTS_TIMEOUT_MS),
+      signal: matpinDeadlineSignal(options.deadline, COMMENTS_TIMEOUT_MS),
       cache: "no-store",
     });
     if (!response.ok) return [];
@@ -235,7 +245,9 @@ async function readCreatorComments(
       .sort((left, right) => (right.like_count ?? 0) - (left.like_count ?? 0))
       .slice(0, 8)
       .map((comment) => comment.text.slice(0, MAX_COMMENT_CHARS));
-  } catch {
+  } catch (error) {
+    if (error instanceof MatpinDeadlineExceededError) throw error;
+    options.deadline?.throwIfInsufficient();
     return [];
   }
 }
@@ -243,11 +255,21 @@ async function readCreatorComments(
 async function loadInstagramEmbed(
   reelUrl: string,
   fetchImpl: typeof fetch = fetch,
+  options: MatpinReelSourceOptions = {},
 ): Promise<ReturnType<typeof parseInstagramEmbedSource>> {
   const normalized = normalizeInstagramMediaUrl(reelUrl);
   if (!normalized) return null;
   const url = new URL(normalized);
-  await validatePublicInstagramHost(url.hostname);
+  options.deadline?.throwIfInsufficient();
+  if (options.deadline) {
+    await options.deadline.run(
+      () => validatePublicInstagramHost(url.hostname),
+      EMBED_TIMEOUT_MS,
+    );
+  } else {
+    await validatePublicInstagramHost(url.hostname);
+  }
+  options.deadline?.throwIfInsufficient();
   url.pathname = `${url.pathname.replace(/\/$/, "")}/embed/captioned/`;
   url.search = "";
   url.hash = "";
@@ -260,10 +282,11 @@ async function loadInstagramEmbed(
         accept: "text/html",
         "user-agent": "Mozilla/5.0 (compatible; Matpin/1.0)",
       },
-      signal: AbortSignal.timeout(EMBED_TIMEOUT_MS),
+      signal: matpinDeadlineSignal(options.deadline, EMBED_TIMEOUT_MS),
       cache: "no-store",
     });
   } catch (error) {
+    if (error instanceof MatpinDeadlineExceededError) throw error;
     const timeout = error instanceof Error && error.name === "TimeoutError";
     throw new MatpinAnalysisError(timeout ? "reel_source_timeout" : "reel_source_unavailable", true);
   }
@@ -281,8 +304,9 @@ async function loadInstagramEmbed(
 export async function loadInstagramReelPreview(
   reelUrl: string,
   fetchImpl: typeof fetch = fetch,
+  options: MatpinReelSourceOptions = {},
 ): Promise<string | null> {
-  const parsed = await loadInstagramEmbed(reelUrl, fetchImpl);
+  const parsed = await loadInstagramEmbed(reelUrl, fetchImpl, options);
   if (!parsed) return null;
   return parsed.source.thumbnailUrl;
 }
@@ -290,12 +314,13 @@ export async function loadInstagramReelPreview(
 export async function loadInstagramReelPresentation(
   reelUrl: string,
   fetchImpl: typeof fetch = fetch,
+  options: MatpinReelSourceOptions = {},
 ): Promise<{
   thumbnailUrl: string | null;
   videoUrl: string | null;
   ownerUsername: string | null;
 } | null> {
-  const parsed = await loadInstagramEmbed(reelUrl, fetchImpl);
+  const parsed = await loadInstagramEmbed(reelUrl, fetchImpl, options);
   if (!parsed) return null;
   return {
     thumbnailUrl: parsed.source.thumbnailUrl,
@@ -307,13 +332,15 @@ export async function loadInstagramReelPresentation(
 export async function loadInstagramReelSource(
   reelUrl: string,
   fetchImpl: typeof fetch = fetch,
+  options: MatpinReelSourceOptions = {},
 ): Promise<MatpinReelSource | null> {
-  const parsed = await loadInstagramEmbed(reelUrl, fetchImpl);
+  const parsed = await loadInstagramEmbed(reelUrl, fetchImpl, options);
   if (!parsed) return null;
   const creatorComments = await readCreatorComments(
     parsed.mediaId,
     parsed.ownerUsername,
     fetchImpl,
+    options,
   );
   return { ...parsed.source, creatorComments };
 }

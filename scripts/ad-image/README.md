@@ -2,7 +2,7 @@
 
 기본 manifest는 v2다. 실제 제품 화면을 이미지 레이어로 넣고,
 제목·설명·행동 라벨은 코드로 합성한다. 전체 디자인 판단과 레이어 계약은
-`docs/AD_CREATIVE_SYSTEM_V2.md`에 있다.
+과거 설계 계약은 `docs/archive/legacy-root/docs/AD_CREATIVE_SYSTEM_V2.md`에 보존되어 있다.
 
 ## 실행
 
@@ -51,7 +51,7 @@ v2는 그대로 보존한다. v3는 다음 파일을 사용한다.
 - 광고 15개: `config/ad-image/manifest.v3.json`
 - placement와 안전영역: `config/ad-image/placement-profiles.v3.json`
 - 렌더러: `scripts/ad-image/render-v3.mjs`
-- 설계 계약: `docs/AD_CREATIVE_SYSTEM_V3.md`
+- 설계 계약: `docs/archive/legacy-root/docs/AD_CREATIVE_SYSTEM_V3.md`
 
 검증과 전체 렌더:
 

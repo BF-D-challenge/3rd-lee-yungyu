@@ -3,6 +3,11 @@ import { lookup } from "node:dns/promises";
 import { z } from "zod";
 import { MatpinAnalysisError } from "@/lib/matpin/analysis-error";
 import {
+  MatpinDeadline,
+  MatpinDeadlineExceededError,
+  matpinDeadlineSignal,
+} from "@/lib/matpin/deadline";
+import {
   matpinAnalysisSchema,
   matpinGeminiJsonSchema,
   type MatpinAnalysis,
@@ -60,17 +65,22 @@ const extractionPrompt = `당신은 Instagram 게시물에서 지도 검색에 �
 게시물 캡션, 작성자의 댓글, 이미지 글자, 영상의 음성, 화면 글자, 간판처럼 직접 확인되는 정보만 사용하세요.
 장소 단서는 캡션, 작성자 댓글, 영상 순서로 확인하세요.
 작성자 댓글이 고정 댓글인지 API에서 확인할 수 없는 경우에는 creator_comment로만 기록하세요.
-식당, 카페, 관광지, 상점 등 실제 방문 장소의 이름을 추측하거나 비슷한 유명 장소로 보완하지 마세요.
+식당, 카페, 관광지, 숙소 등 실제 방문 장소의 이름을 추측하거나 비슷한 유명 장소로 보완하지 마세요.
 방문 장소 이름을 직접 확인하지 못하면 status를 insufficient로 하고 places는 빈 배열로 반환하세요.
 주소, 좌표, 지점은 게시물에서 직접 확인되지 않으면 만들지 마세요.
 메뉴와 지역도 직접 확인한 것만 넣고, 모르는 값은 빈 배열 또는 null로 두세요.
 한 게시물에 여러 장소가 명확히 나오면 최대 3곳까지만 반환하세요.
+각 장소의 유형은 restaurant, cafe, attraction, lodging 중 하나로 직접 확인한 범위에서만 기록하세요. 유형을 알 수 없으면 restaurant로 추정하지 말고 placeType을 생략하세요.
 evidence.text에는 판단 근거가 된 짧은 음성 또는 화면 글자를 적고, 확인 가능하면 시점을 적으세요.
 summary는 사용자에게 보여줄 짧고 정직한 한국어 문장으로 작성하세요.`;
 
 export interface MatpinReelAnalyzer {
   readonly mode: "mock" | "gemini";
-  analyze(input: { mediaUrl: string; reelId: string }): Promise<MatpinAnalysisResult>;
+  analyze(input: {
+    mediaUrl: string;
+    reelId: string;
+    deadline?: MatpinDeadline;
+  }): Promise<MatpinAnalysisResult>;
 }
 
 export type MatpinAnalysisResult = {
@@ -171,30 +181,41 @@ async function readLimitedBody(response: Response): Promise<Buffer> {
   return Buffer.concat(chunks, size);
 }
 
-async function downloadMedia(mediaUrl: string): Promise<{ bytes: Buffer; mimeType: string }> {
+async function downloadMedia(
+  mediaUrl: string,
+  deadline: MatpinDeadline,
+): Promise<{ bytes: Buffer; mimeType: string }> {
   let current = mediaUrl;
-  for (let redirect = 0; redirect <= 3; redirect += 1) {
-    if (!isAllowedMatpinMediaUrl(current)) throw new MatpinAnalysisError("media_url_not_allowed", false);
-    const url = new URL(current);
-    await validatePublicDns(url.hostname);
-    const response = await fetch(url, {
-      redirect: "manual",
-      signal: AbortSignal.timeout(MEDIA_TIMEOUT_MS),
-      headers: { accept: "image/*,video/*" },
-      cache: "no-store",
-    });
+  try {
+    for (let redirect = 0; redirect <= 3; redirect += 1) {
+      deadline.throwIfInsufficient(1, 0);
+      if (!isAllowedMatpinMediaUrl(current)) throw new MatpinAnalysisError("media_url_not_allowed", false);
+      const url = new URL(current);
+      await deadline.run(() => validatePublicDns(url.hostname), MEDIA_TIMEOUT_MS, 0);
+      const response = await fetch(url, {
+        redirect: "manual",
+        signal: deadline.signalFor(MEDIA_TIMEOUT_MS, 0),
+        headers: { accept: "image/*,video/*" },
+        cache: "no-store",
+      });
 
-    if (response.status >= 300 && response.status < 400) {
-      const location = response.headers.get("location");
-      if (!location) throw new MatpinAnalysisError("media_redirect_invalid", false);
-      current = new URL(location, current).toString();
-      continue;
+      if (response.status >= 300 && response.status < 400) {
+        const location = response.headers.get("location");
+        if (!location) throw new MatpinAnalysisError("media_redirect_invalid", false);
+        current = new URL(location, current).toString();
+        continue;
+      }
+      if (!response.ok) throw new MatpinAnalysisError("media_download_failed", response.status >= 500);
+
+      const mimeType = response.headers.get("content-type")?.split(";")[0]?.trim().toLowerCase() ?? "";
+      if (!SUPPORTED_MIME_TYPES.has(mimeType)) throw new MatpinAnalysisError("media_type_unsupported", false);
+      return { bytes: await readLimitedBody(response), mimeType };
     }
-    if (!response.ok) throw new MatpinAnalysisError("media_download_failed", response.status >= 500);
-
-    const mimeType = response.headers.get("content-type")?.split(";")[0]?.trim().toLowerCase() ?? "";
-    if (!SUPPORTED_MIME_TYPES.has(mimeType)) throw new MatpinAnalysisError("media_type_unsupported", false);
-    return { bytes: await readLimitedBody(response), mimeType };
+  } catch (error) {
+    if (error instanceof MatpinAnalysisError || error instanceof MatpinDeadlineExceededError) throw error;
+    const timeout = error instanceof Error
+      && (error.name === "TimeoutError" || error.name === "AbortError");
+    throw new MatpinAnalysisError(timeout ? "media_download_timeout" : "media_download_failed", true);
   }
   throw new MatpinAnalysisError("media_redirect_limit", false);
 }
@@ -223,13 +244,19 @@ function parseGeminiOutput(value: unknown): {
 }
 
 export function createGeminiReelAnalyzer(dependencies: {
-  download?: (url: string) => Promise<{ bytes: Buffer; mimeType: string }>;
+  download?: (
+    url: string,
+    options?: { signal: AbortSignal; deadline: MatpinDeadline },
+  ) => Promise<{ bytes: Buffer; mimeType: string }>;
   fetch?: typeof fetch;
-  source?: (url: string) => Promise<MatpinReelSource | null>;
+  source?: (
+    url: string,
+    options?: { deadline?: MatpinDeadline },
+  ) => Promise<MatpinReelSource | null>;
 } = {}): MatpinReelAnalyzer {
   return {
     mode: "gemini",
-    async analyze({ mediaUrl }) {
+    async analyze({ mediaUrl, deadline }) {
       const startedAt = Date.now();
       const apiKey = process.env.GEMINI_API_KEY?.trim() || process.env.ALLSALE_GEMINI_API_KEY?.trim();
       if (!apiKey) throw new MatpinAnalysisError("gemini_not_configured", false);
@@ -238,8 +265,8 @@ export function createGeminiReelAnalyzer(dependencies: {
         || "gemini-3.1-flash-lite";
       const fetchImpl = dependencies.fetch ?? fetch;
       const source = await (dependencies.source
-        ? dependencies.source(mediaUrl)
-        : loadInstagramReelSource(mediaUrl, fetchImpl));
+        ? dependencies.source(mediaUrl, deadline ? { deadline } : undefined)
+        : loadInstagramReelSource(mediaUrl, fetchImpl, { deadline }));
 
       const sourceSections = [
         source?.caption ? `게시물 캡션:\n${source.caption}` : "",
@@ -269,10 +296,11 @@ export function createGeminiReelAnalyzer(dependencies: {
                 schema: matpinGeminiJsonSchema,
               },
             }),
-            signal: AbortSignal.timeout(GEMINI_TIMEOUT_MS),
+            signal: matpinDeadlineSignal(deadline, GEMINI_TIMEOUT_MS),
             cache: "no-store",
           });
         } catch (error) {
+          if (error instanceof MatpinDeadlineExceededError) throw error;
           const timeout = error instanceof Error && error.name === "TimeoutError";
           throw new MatpinAnalysisError(timeout ? "gemini_timeout" : "gemini_unavailable", true);
         }
@@ -307,8 +335,19 @@ export function createGeminiReelAnalyzer(dependencies: {
         : [source?.videoUrl ?? source?.thumbnailUrl ?? mediaUrl];
       const mediaInputs: Array<Record<string, string>> = [];
       let totalMediaBytes = 0;
+      const mediaDeadline = deadline
+        ? deadline.fork(MEDIA_TIMEOUT_MS, 0)
+        : new MatpinDeadline({ durationMs: MEDIA_TIMEOUT_MS, reserveMs: 0 });
       for (const downloadableUrl of downloadableUrls.slice(0, 3)) {
-        const { bytes, mimeType } = await (dependencies.download ?? downloadMedia)(downloadableUrl);
+        const { bytes, mimeType } = dependencies.download
+          ? await (deadline
+              ? mediaDeadline.run(
+                  (signal) => dependencies.download!(downloadableUrl, { signal, deadline: mediaDeadline }),
+                  MEDIA_TIMEOUT_MS,
+                  0,
+                )
+              : dependencies.download(downloadableUrl))
+          : await downloadMedia(downloadableUrl, mediaDeadline);
         totalMediaBytes += bytes.byteLength;
         if (totalMediaBytes > MAX_INLINE_BYTES) {
           throw new MatpinAnalysisError("media_too_large", false);

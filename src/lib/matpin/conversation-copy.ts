@@ -3,6 +3,11 @@ import type {
   MatpinGuidanceReason,
   MatpinPlaceCandidate,
 } from "@/lib/matpin/contract";
+import {
+  MATPIN_INSTAGRAM_TEXT_MAX_BYTES,
+  matpinInstagramTextBytes,
+  truncateMatpinInstagramText,
+} from "@/lib/matpin/message-limits";
 
 export type MatpinMediaKind = "릴스" | "게시물";
 
@@ -69,11 +74,29 @@ export function buildMatpinSavedReply(input: {
     ? [input.candidates[0].name]
     : input.candidates.map((candidate, index) => `${index + 1}. ${candidate.name}`);
 
-  return [
+  const lines = [
     title,
     ...places,
     `보관함에는 지금 ${input.totalSavedPlaceCount}곳이 있어요.`,
     input.mapUrl,
+  ];
+  const reply = lines.join("\n");
+  if (matpinInstagramTextBytes(reply) <= MATPIN_INSTAGRAM_TEXT_MAX_BYTES) return reply;
+
+  const closingLines = [
+    `보관함에는 지금 ${input.totalSavedPlaceCount}곳이 있어요.`,
+    input.mapUrl,
+  ];
+  const fixedReply = [title, "", ...closingLines].join("\n");
+  const placeBytes = MATPIN_INSTAGRAM_TEXT_MAX_BYTES - matpinInstagramTextBytes(fixedReply);
+  if (placeBytes <= 0) {
+    return truncateMatpinInstagramText(reply, MATPIN_INSTAGRAM_TEXT_MAX_BYTES);
+  }
+
+  return [
+    title,
+    truncateMatpinInstagramText(places.join("\n"), placeBytes),
+    ...closingLines,
   ].join("\n");
 }
 
