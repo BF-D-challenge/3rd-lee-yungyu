@@ -16,15 +16,14 @@
 
 ## 새 세션에서 읽을 순서
 
-1. [`TASK.md`](../../TASK.md) — 현재 목표와 다음 작업
-2. [`docs/PRD.md`](../PRD.md) — 제품 한 장 요약
-3. [`docs/prd/오늘-해볼까-prd.md`](../prd/오늘-해볼까-prd.md) — 상세 제품 기준
-4. [`docs/dev/experiments/idea-lab/README.md`](../dev/experiments/idea-lab/README.md) — 아이디어 확장 자료 지도
-5. [`docs/research/idea-source-coverage-summary.md`](../research/idea-source-coverage-summary.md) — 8,406개 원본 장부
-6. [`docs/research/idea-final-decisions-62.jsonl`](../research/idea-final-decisions-62.jsonl) — 최근 후보 62개 결정 정본
-7. [`src/components/organisms/idea-lab/sample-data.ts`](../../src/components/organisms/idea-lab/sample-data.ts) — 실제 앱 카드 데이터
-8. [`src/components/organisms/idea-lab/idea-lab.tsx`](../../src/components/organisms/idea-lab/idea-lab.tsx) — 실제 조합·교체·결과 UI
-9. [`tests/e2e/idea-lab.spec.ts`](../../tests/e2e/idea-lab.spec.ts) — 구현된 사용자 흐름
+1. [`TASK.md`](../legacy-root/repository/TASK.md): 당시 목표와 다음 작업
+2. [`docs/prd/오늘-해볼까-prd.md`](../../prd/오늘-해볼까-prd.md): 당시 제품 기준
+3. [`docs/dev/experiments/idea-lab/README.md`](../../dev/experiments/idea-lab/README.md): 아이디어 확장 자료 지도
+4. [`docs/research/idea-source-coverage-summary.md`](../../research/idea-source-coverage-summary.md): 8,406개 원본 장부
+5. [`docs/research/idea-final-decisions-62.jsonl`](../../research/idea-final-decisions-62.jsonl): 최근 후보 62개 결정 정본
+6. [`src/components/organisms/idea-lab/sample-data.ts`](../../../src/components/organisms/idea-lab/sample-data.ts): 실제 앱 카드 데이터
+7. [`src/components/organisms/idea-lab/idea-lab.tsx`](../../../src/components/organisms/idea-lab/idea-lab.tsx): 실제 조합, 교체와 결과 UI
+8. [`tests/e2e/idea-lab.spec.ts`](../../../tests/e2e/idea-lab.spec.ts): 구현된 사용자 흐름
 
 ## 현재 상태
 

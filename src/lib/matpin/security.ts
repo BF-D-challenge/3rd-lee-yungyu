@@ -70,6 +70,38 @@ export function hashMatpinSender(senderScopedId: string): string {
     .digest("hex");
 }
 
+export type MatpinOutboundKind = "receipt" | "guidance" | "final";
+
+function requiredOutboundIdentity(value: string, code: string): string {
+  const normalized = value.trim();
+  if (!normalized || normalized.length > 500) throw new Error(code);
+  return normalized;
+}
+
+export function hashMatpinOutboundDedup(kind: MatpinOutboundKind, sourceId: string): string {
+  const source = requiredOutboundIdentity(sourceId, "matpin_outbound_dedup_invalid");
+  return createHmac("sha256", dataSecret())
+    .update(`outbound-dedup:${kind}:${source}`)
+    .digest("hex");
+}
+
+export function hashMatpinOutboundSender(senderScopedId: string): string {
+  const sender = requiredOutboundIdentity(senderScopedId, "matpin_outbound_sender_invalid");
+  return createHmac("sha256", dataSecret())
+    .update(`outbound-sender:${sender}`)
+    .digest("hex");
+}
+
+export function hashMatpinOutboundProviderMessage(providerMessageId: string): string {
+  const providerMessage = requiredOutboundIdentity(
+    providerMessageId,
+    "matpin_outbound_provider_message_invalid",
+  );
+  return createHmac("sha256", dataSecret())
+    .update(`outbound-provider:${providerMessage}`)
+    .digest("hex");
+}
+
 export function createMatpinAccessToken(senderScopedId: string): string {
   return createHmac("sha256", requiredSecret("MATPIN_LINK_SECRET"))
     .update(`matpin-user:${senderScopedId}`)
@@ -100,13 +132,4 @@ export function verifyMatpinWorkerRequest(request: Request): boolean {
   const expected = process.env.CRON_SECRET?.trim();
   const received = bearerToken(request);
   return Boolean(expected && received && safeEqual(expected, received));
-}
-
-export function verifyMatpinAdminRequest(request: Request): boolean {
-  const received = bearerToken(request);
-  if (!received) return false;
-  return [process.env.CRON_SECRET, process.env.MATPIN_ADMIN_ACTION_TOKEN]
-    .map((value) => value?.trim())
-    .filter((value): value is string => Boolean(value))
-    .some((expected) => safeEqual(expected, received));
 }

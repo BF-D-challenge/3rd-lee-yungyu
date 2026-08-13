@@ -75,13 +75,13 @@ const scenes = [
   },
   {
     eyebrow: "역별 자동 정리",
-    title: "게시물가 가까운\n역에 저장돼요",
+    title: "게시물이 가까운\n역에 저장돼요",
     description: "장소를 확인해 가장 가까운 역 보관함에 연결해요.",
   },
   {
     eyebrow: "내 보관함",
     title: "보낼수록\n역별로 쌓여요",
-    description: "같은 Instagram 계정으로 보낸 게시물가 하나의 보관함에 모여요.",
+    description: "같은 Instagram 계정으로 보낸 게시물이 하나의 보관함에 모여요.",
   },
   {
     eyebrow: "Instagram DM",
@@ -194,6 +194,18 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
       behavior: reduceMotion ? "auto" : "smooth",
     });
   }, [variant]);
+
+  useEffect(() => {
+    if (variant !== "landing") return;
+
+    const syncSceneWithHash = () => {
+      if (window.location.hash === "#how") goToScene(2);
+    };
+
+    syncSceneWithHash();
+    window.addEventListener("hashchange", syncSceneWithHash);
+    return () => window.removeEventListener("hashchange", syncSceneWithHash);
+  }, [goToScene, variant]);
 
   const handleScroll = (event: UIEvent<HTMLDivElement>) => {
     if (variant === "landing" && !window.matchMedia("(max-width: 959px)").matches) return;
@@ -592,7 +604,11 @@ export function MatpinMobileFramePrototype({ variant = "prototype" }: MatpinMobi
                   aria-label="맛핀 소개 장면. 위아래로 스크롤할 수 있습니다."
                 >
                   {scenes.map((item, index) => (
-                    <section key={item.eyebrow} aria-label={`${index + 1}단계 ${item.eyebrow}`} />
+                    <section
+                      id={index === 2 ? "how" : undefined}
+                      key={item.eyebrow}
+                      aria-label={`${index + 1}단계 ${item.eyebrow}`}
+                    />
                   ))}
                 </div>
 

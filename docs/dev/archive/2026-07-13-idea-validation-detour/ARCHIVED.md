@@ -4,4 +4,4 @@
 
 `오늘 해볼까`의 현재 핵심은 여러 고품질 아이디어 카드 원천을 미리 생성·검수해 즉시 조합으로 전달하는 것이다. 따라서 이 폴더는 **현재 TASK가 아니며 외부 실행하지 않는다.** 역사적 참고를 위해서만 보존한다.
 
-현재 작업은 저장소 루트의 [`TASK.md`](../../../../TASK.md)와 [`docs/handoff/2026-07-13-idea-card-expansion.md`](../../../handoff/2026-07-13-idea-card-expansion.md)를 따른다.
+당시 작업은 [`TASK.md`](../../../archive/legacy-root/repository/TASK.md)와 [`아이디어 카드 확장 인수인계`](../../../archive/legacy-handoff/2026-07-13-idea-card-expansion.md)에 보존되어 있다.

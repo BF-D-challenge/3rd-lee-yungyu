@@ -81,8 +81,24 @@ export const matpinEvidenceSchema = z.object({
   timestampSeconds: z.number().int().min(0).max(3_600).nullable(),
 });
 
+export const matpinPlaceTypeSchema = z.enum([
+  "restaurant",
+  "cafe",
+  "attraction",
+  "lodging",
+]);
+export type MatpinPlaceType = z.infer<typeof matpinPlaceTypeSchema>;
+
+export const matpinNearbyTransitSchema = z.object({
+  name: z.string().trim().min(1).max(120),
+  distanceMeters: z.number().nonnegative().nullable(),
+  source: z.enum(["place_evidence", "provider_search"]),
+});
+export type MatpinNearbyTransit = z.infer<typeof matpinNearbyTransitSchema>;
+
 export const matpinPlaceClueSchema = z.object({
   name: z.string().trim().min(1).max(120),
+  placeType: matpinPlaceTypeSchema.optional(),
   branch: z.string().trim().min(1).max(80).nullable(),
   menus: z.array(z.string().trim().min(1).max(80)).max(8),
   regionHints: z.array(z.string().trim().min(1).max(80)).max(6),
@@ -107,6 +123,10 @@ export type MatpinAnalysis = z.infer<typeof matpinAnalysisSchema>;
 export const matpinPlaceCandidateSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
+  placeType: matpinPlaceTypeSchema.optional(),
+  countryCode: z.string().regex(/^[A-Z]{2}$/).optional(),
+  regionName: z.string().trim().min(1).max(120).optional(),
+  nearbyTransit: matpinNearbyTransitSchema.optional(),
   area: z.string().min(1),
   category: z.string(),
   address: z.string().min(1),
@@ -300,6 +320,7 @@ export const matpinGeminiJsonSchema = {
         additionalProperties: false,
         properties: {
           name: { type: "string" },
+          placeType: { type: "string", enum: ["restaurant", "cafe", "attraction", "lodging"] },
           branch: { type: ["string", "null"] },
           menus: { type: "array", maxItems: 8, items: { type: "string" } },
           regionHints: { type: "array", maxItems: 6, items: { type: "string" } },

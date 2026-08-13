@@ -63,4 +63,31 @@ describe("Matpin station reel library", () => {
     expect(href).toBe("/matpin/reel/reel-a?station=%EC%84%B1%EC%88%98%EC%97%AD&preview=station-reels#token=private-token");
     expect(href.split("#")[0]).not.toContain("private-token");
   });
+
+  it("falls back to country and city for an overseas place without inventing a station", () => {
+    const overseas = saved({
+      id: 4,
+      messageId: "44444444-4444-4444-8444-444444444444",
+      reelId: "reel-japan",
+      placeId: "japan-cafe",
+      name: "도쿄 카페",
+      station: "東京都 渋谷区",
+    });
+    overseas.place = {
+      ...overseas.place,
+      area: "東京都 渋谷区",
+      address: "東京都渋谷区神宮前1-1-1, Japan",
+      countryCode: "JP",
+      regionName: "東京都 渋谷区",
+      latitude: 35.67,
+      longitude: 139.7,
+    };
+
+    const groups = groupMatpinPlacesByStation([overseas]);
+
+    expect(groups).toMatchObject([{
+      name: "일본 東京都 渋谷区",
+      isStation: false,
+    }]);
+  });
 });

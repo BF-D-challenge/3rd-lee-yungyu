@@ -97,7 +97,7 @@ export function MatpinSaved({ autoFocusSearch = false }: { autoFocusSearch?: boo
         {places.length === 0 ? (
           <section className={styles.emptyState}>
             <Send aria-hidden="true" size={30} />
-            <h2>아직 저장한 게시물가 없어요.</h2>
+            <h2>아직 저장한 게시물이 없어요.</h2>
             <p>Instagram에서 맛집 게시물을 matpin.kr로 보내면 가까운 역에 자동으로 정리해요.</p>
             <a href="https://www.instagram.com/matpin.kr/" target="_blank" rel="noreferrer">Instagram에서 첫 게시물 보내기 <ChevronRight aria-hidden="true" size={17} /></a>
           </section>
