@@ -26,6 +26,10 @@ const migration = readFileSync(join(
   process.cwd(),
   "supabase/migrations/20260819145426_add_matpin_operator_verified_source.sql",
 ), "utf8").toLowerCase();
+const storeSource = readFileSync(join(
+  process.cwd(),
+  "src/lib/matpin/store.ts",
+), "utf8");
 
 const candidate = {
   id: "operator:place-1",
@@ -80,6 +84,10 @@ describe("Matpin operator-verified recovery", () => {
     expect(rpc).toHaveBeenCalledWith("matpin_save_places", expect.objectContaining({
       p_confirmation_source: "operator_verified",
     }));
+  });
+
+  it("accepts operator-verified rows when reading the private library", () => {
+    expect(storeSource).toContain("confirmation_source: matpinConfirmationSourceSchema");
   });
 
   it("updates only the existing recovery RPC and preserves its service-role boundary", () => {

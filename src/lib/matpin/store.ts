@@ -272,7 +272,7 @@ const savedPlaceRowSchema = z.object({
   reel_id: z.string(),
   reel_url: z.string().url().nullable(),
   place: matpinPlaceCandidateSchema,
-  confirmation_source: z.enum(["automatic_high_confidence", "user_confirmation"]),
+  confirmation_source: matpinConfirmationSourceSchema,
   saved_at: z.string().datetime({ offset: true }),
 });
 
