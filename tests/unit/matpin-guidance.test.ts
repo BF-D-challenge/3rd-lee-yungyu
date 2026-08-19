@@ -155,7 +155,12 @@ describe("Matpin durable webhook intake", () => {
       outboundSenderHash: expect.stringMatching(/^[0-9a-f]{64}$/),
       receiptDedupHash: expect.stringMatching(/^[0-9a-f]{64}$/),
     });
-    expect(decryptMatpinValue(events[0]?.bodyCiphertext ?? "")).toContain("릴스 받았습니다");
+    expect(decryptMatpinValue(events[0]?.bodyCiphertext ?? "")).toContain(
+      "맛핀은 맛집, 카페 또는 여행지 게시물 속 장소를 찾아 내 보관함에 저장해드려요",
+    );
+    expect(decryptMatpinValue(events[0]?.bodyCiphertext ?? "")).toContain(
+      "방금 보내주신 릴스를 받았고",
+    );
     expect(decryptMatpinValue(events[0]?.returningBodyCiphertext ?? "")).toContain("이번 장소도");
     expect(decryptMatpinValue(events[0]?.alreadySavedBodyCiphertext ?? "")).toContain("전에 보내주신 릴스");
     expect(mocks.after).toHaveBeenCalledTimes(1);

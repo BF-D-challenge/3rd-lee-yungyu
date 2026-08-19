@@ -98,7 +98,9 @@ function isWithinSouthKorea(latitude: number, longitude: number): boolean {
   return latitude >= 33 && latitude <= 39.5 && longitude >= 124 && longitude <= 132;
 }
 
-export function stationForMatpinPlace(place: MatpinStationPlace): MatpinStationMatch {
+export function stationForMatpinPlace(
+  place: MatpinStationPlace | MatpinPlaceCandidate,
+): MatpinStationMatch {
   if (place.nearbyTransit) {
     return {
       name: place.nearbyTransit.name,
