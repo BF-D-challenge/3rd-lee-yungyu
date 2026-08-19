@@ -1,6 +1,7 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import {
+  matpinAnalysisSchema,
   matpinInboundMessageSchema,
   matpinMessagePublicSchema,
   matpinPlaceCandidateSchema,
@@ -8,6 +9,7 @@ import {
   matpinPublicProfileSchema,
   matpinSavedPlaceSchema,
   type MatpinInboundMessage,
+  type MatpinAnalysis,
   type MatpinMessagePublic,
   type MatpinPlaceCandidate,
   type MatpinPublicProfile,
@@ -169,6 +171,18 @@ const mediaAnalysisCacheClaimSchema = z.discriminatedUnion("state", [
   }),
 ]);
 
+const mediaExtractionCacheClaimSchema = z.discriminatedUnion("state", [
+  z.object({
+    state: z.literal("owner"),
+    claimToken: z.string().uuid(),
+  }),
+  z.object({ state: z.literal("pending") }),
+  z.object({
+    state: z.literal("hit"),
+    analysis: matpinAnalysisSchema,
+  }),
+]);
+
 const claimedJobEnvelopeSchema = z.object({
   skipped: z.boolean().optional(),
   poisoned: z.boolean().optional().default(false),
@@ -296,6 +310,7 @@ export type MatpinClaimedJob = {
 };
 
 export type MatpinMediaAnalysisCacheClaim = z.infer<typeof mediaAnalysisCacheClaimSchema>;
+export type MatpinMediaExtractionCacheClaim = z.infer<typeof mediaExtractionCacheClaimSchema>;
 export type MatpinConversationContext = z.infer<typeof conversationContextSchema>;
 
 export function getMatpinServerClient(): SupabaseClient {
@@ -672,6 +687,72 @@ export async function releaseMatpinMediaAnalysis(
   }), options.signal);
   const { error } = await request;
   if (error) throw new Error(`matpin_cache_release_failed:${error.message}`);
+}
+
+export async function claimMatpinMediaExtraction(
+  mediaKey: string,
+  extractionVersion: string,
+  options: { signal?: AbortSignal } = {},
+): Promise<MatpinMediaExtractionCacheClaim> {
+  const key = z.string().trim().min(1).max(500).parse(mediaKey);
+  const version = z.string().trim().min(1).max(120).parse(extractionVersion);
+  const client = getMatpinServerClient();
+  const request = withAbortSignal(client.rpc("matpin_claim_media_extraction", {
+    p_media_key: key,
+    p_extraction_version: version,
+  }), options.signal);
+  const { data, error } = await request;
+  if (error) throw new Error(`matpin_extraction_cache_claim_failed:${error.message}`);
+  return mediaExtractionCacheClaimSchema.parse(data);
+}
+
+export async function completeMatpinMediaExtraction(input: {
+  mediaKey: string;
+  extractionVersion: string;
+  claimToken: string;
+  analysis: MatpinAnalysis;
+  metrics: MatpinAnalysisResult["metrics"];
+  signal?: AbortSignal;
+}): Promise<void> {
+  const key = z.string().trim().min(1).max(500).parse(input.mediaKey);
+  const version = z.string().trim().min(1).max(120).parse(input.extractionVersion);
+  const analysis = matpinAnalysisSchema.parse(input.analysis);
+  const client = getMatpinServerClient();
+  const request = withAbortSignal(client.rpc("matpin_complete_media_extraction", {
+    p_media_key: key,
+    p_extraction_version: version,
+    p_claim_token: z.string().uuid().parse(input.claimToken),
+    p_analysis: analysis,
+    p_analysis_model: input.metrics.model,
+    p_analysis_duration_ms: input.metrics.durationMs,
+    p_request_count: input.metrics.requestCount,
+    p_media_bytes: input.metrics.mediaBytes,
+    p_input_tokens: input.metrics.inputTokens,
+    p_output_tokens: input.metrics.outputTokens,
+    p_thought_tokens: input.metrics.thoughtTokens,
+    p_tool_use_tokens: input.metrics.toolUseTokens,
+    p_total_tokens: input.metrics.totalTokens,
+  }), input.signal);
+  const { error } = await request;
+  if (error) throw new Error(`matpin_extraction_cache_complete_failed:${error.message}`);
+}
+
+export async function releaseMatpinMediaExtraction(
+  mediaKey: string,
+  extractionVersion: string,
+  claimToken: string,
+  options: { signal?: AbortSignal } = {},
+): Promise<void> {
+  const key = z.string().trim().min(1).max(500).parse(mediaKey);
+  const version = z.string().trim().min(1).max(120).parse(extractionVersion);
+  const client = getMatpinServerClient();
+  const request = withAbortSignal(client.rpc("matpin_release_media_extraction", {
+    p_media_key: key,
+    p_extraction_version: version,
+    p_claim_token: z.string().uuid().parse(claimToken),
+  }), options.signal);
+  const { error } = await request;
+  if (error) throw new Error(`matpin_extraction_cache_release_failed:${error.message}`);
 }
 
 export async function retryMatpinMessage(input: {

@@ -22,22 +22,27 @@ import {
   hashMatpinOutboundSender,
 } from "@/lib/matpin/security";
 import {
+  claimMatpinMediaExtraction,
   claimMatpinMediaAnalysis,
   claimNextMatpinMessage,
   completeMatpinAnalysisV2,
+  completeMatpinMediaExtraction,
   completeMatpinMediaAnalysis,
   readMatpinConversationContext,
   recordMatpinUsageEvent,
+  releaseMatpinMediaExtraction,
   releaseMatpinMediaAnalysis,
   retryMatpinMessage,
   stageMatpinPlaces,
   type MatpinClaimedJob,
   type MatpinMediaAnalysisCacheClaim,
+  type MatpinMediaExtractionCacheClaim,
 } from "@/lib/matpin/store";
 
 const CACHE_WAIT_INTERVAL_MS = 750;
 const CACHE_WAIT_ATTEMPTS = 45;
 export const MATPIN_ANALYSIS_CACHE_VERSION = "global-place-types-v1";
+export const MATPIN_EXTRACTION_CACHE_VERSION = "instagram-place-extraction-v1";
 
 export function matpinAnalysisCacheKey(mediaKey: string): string {
   return `${MATPIN_ANALYSIS_CACHE_VERSION}:${mediaKey}`;
@@ -57,6 +62,11 @@ const cacheMetrics = {
   thoughtTokens: 0,
   toolUseTokens: 0,
   totalTokens: 0,
+};
+
+const extractionCacheMetrics: MatpinAnalysisResult["metrics"] = {
+  ...cacheMetrics,
+  model: `cache:${MATPIN_EXTRACTION_CACHE_VERSION}`,
 };
 
 function databaseSignal(deadline: MatpinDeadline): AbortSignal {
@@ -216,6 +226,7 @@ async function processOneMatpinMessage(deadline: MatpinDeadline) {
   }
 
   let cacheClaimToken: string | null = null;
+  let extractionClaimToken: string | null = null;
   const cacheKey = matpinAnalysisCacheKey(job.reelId);
 
   try {
@@ -253,27 +264,83 @@ async function processOneMatpinMessage(deadline: MatpinDeadline) {
       candidates = cacheClaim.candidates;
       metrics = cacheMetrics;
     } else {
-      deadline.throwIfInsufficient(MIN_DATABASE_STAGE_MS);
-      const analyzed = await createGeminiReelAnalyzer().analyze({
-        mediaUrl: job.mediaUrl,
-        reelId: job.reelId,
-        deadline,
-      });
-      await recordUsageSafely({
-        messageId: job.messageId,
-        stage: "extraction",
-        provider: "gemini",
-        model: analyzed.metrics.model,
-        outcome: "success",
-        requestCount: analyzed.metrics.requestCount,
-        inputTokens: analyzed.metrics.inputTokens,
-        outputTokens: analyzed.metrics.outputTokens,
-        thoughtTokens: analyzed.metrics.thoughtTokens,
-        toolUseTokens: analyzed.metrics.toolUseTokens,
-        totalTokens: analyzed.metrics.totalTokens,
-        groundingQueryCount: null,
-        durationMs: analyzed.metrics.durationMs,
-      }, deadline);
+      let extractionClaim: MatpinMediaExtractionCacheClaim = await claimMatpinMediaExtraction(
+        job.reelId,
+        MATPIN_EXTRACTION_CACHE_VERSION,
+        { signal: databaseSignal(deadline) },
+      );
+      for (
+        let attempt = 0;
+        extractionClaim.state === "pending" && attempt < CACHE_WAIT_ATTEMPTS;
+        attempt += 1
+      ) {
+        await deadline.sleep(CACHE_WAIT_INTERVAL_MS);
+        extractionClaim = await claimMatpinMediaExtraction(
+          job.reelId,
+          MATPIN_EXTRACTION_CACHE_VERSION,
+          { signal: databaseSignal(deadline) },
+        );
+      }
+      if (extractionClaim.state === "pending") {
+        throw new MatpinAnalysisError("extraction_cache_busy", true);
+      }
+
+      extractionClaimToken = extractionClaim.state === "owner"
+        ? extractionClaim.claimToken
+        : null;
+      let analyzed: MatpinAnalysisResult;
+      if (extractionClaim.state === "hit") {
+        analyzed = {
+          analysis: extractionClaim.analysis,
+          metrics: extractionCacheMetrics,
+        };
+        await recordUsageSafely({
+          messageId: job.messageId,
+          stage: "extraction",
+          provider: "cache",
+          model: MATPIN_EXTRACTION_CACHE_VERSION,
+          outcome: "success",
+          requestCount: 0,
+          inputTokens: 0,
+          outputTokens: 0,
+          thoughtTokens: 0,
+          toolUseTokens: 0,
+          totalTokens: 0,
+          groundingQueryCount: null,
+          durationMs: 0,
+        }, deadline);
+      } else {
+        deadline.throwIfInsufficient(MIN_DATABASE_STAGE_MS);
+        analyzed = await createGeminiReelAnalyzer().analyze({
+          mediaUrl: job.mediaUrl,
+          reelId: job.reelId,
+          deadline,
+        });
+        await recordUsageSafely({
+          messageId: job.messageId,
+          stage: "extraction",
+          provider: "gemini",
+          model: analyzed.metrics.model,
+          outcome: "success",
+          requestCount: analyzed.metrics.requestCount,
+          inputTokens: analyzed.metrics.inputTokens,
+          outputTokens: analyzed.metrics.outputTokens,
+          thoughtTokens: analyzed.metrics.thoughtTokens,
+          toolUseTokens: analyzed.metrics.toolUseTokens,
+          totalTokens: analyzed.metrics.totalTokens,
+          groundingQueryCount: null,
+          durationMs: analyzed.metrics.durationMs,
+        }, deadline);
+        await completeMatpinMediaExtraction({
+          mediaKey: job.reelId,
+          extractionVersion: MATPIN_EXTRACTION_CACHE_VERSION,
+          claimToken: extractionClaim.claimToken,
+          analysis: analyzed.analysis,
+          metrics: analyzed.metrics,
+          signal: databaseSignal(deadline),
+        });
+        extractionClaimToken = null;
+      }
       deadline.throwIfInsufficient(MIN_DATABASE_STAGE_MS);
       const resolved = await resolveMatpinPlacesWithMetrics(analyzed.analysis, { deadline });
       candidates = resolved.candidates;
@@ -349,6 +416,21 @@ async function processOneMatpinMessage(deadline: MatpinDeadline) {
     });
     return { state: "failed" as const, messageId: job.messageId };
   } catch (error) {
+    if (extractionClaimToken) {
+      const signal = cleanupSignal(deadline);
+      if (signal) {
+        try {
+          await releaseMatpinMediaExtraction(
+            job.reelId,
+            MATPIN_EXTRACTION_CACHE_VERSION,
+            extractionClaimToken,
+            { signal },
+          );
+        } catch {
+          // 만료된 추출 임대가 다음 요청에서 회수되도록 둔다.
+        }
+      }
+    }
     if (cacheClaimToken) {
       const signal = cleanupSignal(deadline);
       if (signal) {

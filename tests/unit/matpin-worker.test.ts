@@ -6,12 +6,15 @@ const mocks = vi.hoisted(() => ({
   backfill: vi.fn(),
   claim: vi.fn(),
   claimCache: vi.fn(),
+  claimExtraction: vi.fn(),
   completeCache: vi.fn(),
+  completeExtraction: vi.fn(),
   completeV2: vi.fn(),
   processCycle: vi.fn(),
   readContext: vi.fn(),
   recordUsage: vi.fn(),
   releaseCache: vi.fn(),
+  releaseExtraction: vi.fn(),
   resolve: vi.fn(),
   retry: vi.fn(),
   send: vi.fn(),
@@ -25,12 +28,15 @@ vi.mock("next/server", async (importOriginal) => {
 
 vi.mock("@/lib/matpin/store", () => ({
   claimMatpinMediaAnalysis: mocks.claimCache,
+  claimMatpinMediaExtraction: mocks.claimExtraction,
   claimNextMatpinMessage: mocks.claim,
   completeMatpinAnalysisV2: mocks.completeV2,
   completeMatpinMediaAnalysis: mocks.completeCache,
+  completeMatpinMediaExtraction: mocks.completeExtraction,
   readMatpinConversationContext: mocks.readContext,
   recordMatpinUsageEvent: mocks.recordUsage,
   releaseMatpinMediaAnalysis: mocks.releaseCache,
+  releaseMatpinMediaExtraction: mocks.releaseExtraction,
   retryMatpinMessage: mocks.retry,
   stageMatpinPlaces: mocks.stage,
 }));
@@ -86,6 +92,7 @@ const job = {
   terminalFailureRequired: false,
 };
 const cacheClaimToken = "55555555-5555-4555-8555-555555555555";
+const extractionClaimToken = "66666666-6666-4666-8666-666666666666";
 
 const metrics = {
   model: "gemini-test",
@@ -150,7 +157,12 @@ beforeEach(() => {
     state: "owner",
     claimToken: cacheClaimToken,
   });
+  mocks.claimExtraction.mockReset().mockResolvedValue({
+    state: "owner",
+    claimToken: extractionClaimToken,
+  });
   mocks.completeCache.mockReset().mockResolvedValue(undefined);
+  mocks.completeExtraction.mockReset().mockResolvedValue(undefined);
   mocks.completeV2.mockReset().mockResolvedValue({
     completed: true,
     outboundId: "22222222-2222-4222-8222-222222222222",
@@ -171,6 +183,7 @@ beforeEach(() => {
     });
   mocks.recordUsage.mockReset().mockResolvedValue(undefined);
   mocks.releaseCache.mockReset().mockResolvedValue(undefined);
+  mocks.releaseExtraction.mockReset().mockResolvedValue(undefined);
   mocks.retry.mockReset().mockResolvedValue("retry");
   mocks.stage.mockReset().mockResolvedValue(1);
   mocks.send.mockReset();

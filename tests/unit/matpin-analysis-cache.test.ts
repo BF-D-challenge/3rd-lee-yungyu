@@ -3,12 +3,15 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({
   analyze: vi.fn(),
   claimCache: vi.fn(),
+  claimExtraction: vi.fn(),
   claimMessage: vi.fn(),
   completeAnalysis: vi.fn(),
   completeCache: vi.fn(),
+  completeExtraction: vi.fn(),
   readContext: vi.fn(),
   recordUsage: vi.fn(),
   releaseCache: vi.fn(),
+  releaseExtraction: vi.fn(),
   resolvePlaces: vi.fn(),
   retryMessage: vi.fn(),
   savePlaces: vi.fn(),
@@ -29,18 +32,25 @@ vi.mock("@/lib/matpin/reel-analyzer", () => ({
 
 vi.mock("@/lib/matpin/store", () => ({
   claimMatpinMediaAnalysis: mocks.claimCache,
+  claimMatpinMediaExtraction: mocks.claimExtraction,
   claimNextMatpinMessage: mocks.claimMessage,
   completeMatpinAnalysisV2: mocks.completeAnalysis,
   completeMatpinMediaAnalysis: mocks.completeCache,
+  completeMatpinMediaExtraction: mocks.completeExtraction,
   readMatpinConversationContext: mocks.readContext,
   recordMatpinUsageEvent: mocks.recordUsage,
   releaseMatpinMediaAnalysis: mocks.releaseCache,
+  releaseMatpinMediaExtraction: mocks.releaseExtraction,
   retryMatpinMessage: mocks.retryMessage,
   stageMatpinPlaces: mocks.savePlaces,
 }));
 
 import { decryptMatpinValue } from "@/lib/matpin/security";
-import { matpinAnalysisCacheKey, processMatpinQueue } from "@/lib/matpin/worker";
+import {
+  MATPIN_EXTRACTION_CACHE_VERSION,
+  matpinAnalysisCacheKey,
+  processMatpinQueue,
+} from "@/lib/matpin/worker";
 
 const candidate = {
   id: "place-1",
@@ -74,18 +84,24 @@ const baseJob = {
   terminalFailureRequired: false,
 };
 const cacheClaimToken = "66666666-6666-4666-8666-666666666666";
+const extractionClaimToken = "77777777-7777-4777-8777-777777777777";
 
 beforeEach(() => {
   vi.stubEnv("MATPIN_PUBLIC_APP_URL", "https://matpin.example");
   vi.stubEnv("MATPIN_DATA_SECRET", "data-secret-that-is-at-least-32-characters-long");
   mocks.claimMessage.mockReset().mockResolvedValue(baseJob);
   mocks.claimCache.mockReset();
+  mocks.claimExtraction.mockReset().mockResolvedValue({
+    state: "owner",
+    claimToken: extractionClaimToken,
+  });
   mocks.completeAnalysis.mockReset().mockResolvedValue({
     completed: true,
     outboundId: "22222222-2222-4222-8222-222222222222",
     deliveryState: "pending",
   });
   mocks.completeCache.mockReset().mockResolvedValue(undefined);
+  mocks.completeExtraction.mockReset().mockResolvedValue(undefined);
   mocks.readContext.mockReset()
     .mockResolvedValueOnce({
       knownUser: true,
@@ -101,6 +117,7 @@ beforeEach(() => {
     });
   mocks.recordUsage.mockReset().mockResolvedValue(undefined);
   mocks.releaseCache.mockReset().mockResolvedValue(undefined);
+  mocks.releaseExtraction.mockReset().mockResolvedValue(undefined);
   mocks.retryMessage.mockReset().mockResolvedValue("retry");
   mocks.savePlaces.mockReset().mockResolvedValue(1);
 });
@@ -189,6 +206,13 @@ describe("Matpin permanent media analysis cache", () => {
       messageId: "33333333-3333-4333-8333-333333333333",
     }]);
 
+    expect(mocks.completeExtraction).toHaveBeenCalledWith(expect.objectContaining({
+      mediaKey: "Post_456",
+      extractionVersion: MATPIN_EXTRACTION_CACHE_VERSION,
+      claimToken: extractionClaimToken,
+      analysis: { status: "resolved", summary: "확인했어요.", places: [] },
+      signal: expect.any(AbortSignal),
+    }));
     expect(mocks.completeCache).toHaveBeenCalledWith(expect.objectContaining({
       mediaKey: "global-place-types-v1:Post_456",
       claimToken: cacheClaimToken,
@@ -198,5 +222,58 @@ describe("Matpin permanent media analysis cache", () => {
     }));
     expect(mocks.completeCache.mock.invocationCallOrder[0])
       .toBeLessThan(mocks.completeAnalysis.mock.invocationCallOrder[0]);
+  });
+
+  it("reuses extraction when the final place cache was not completed", async () => {
+    mocks.claimCache.mockResolvedValue({
+      state: "owner",
+      claimToken: cacheClaimToken,
+    });
+    mocks.claimExtraction.mockResolvedValue({
+      state: "hit",
+      analysis: {
+        status: "resolved",
+        summary: "추출 결과를 다시 사용해요.",
+        places: [],
+      },
+    });
+    mocks.resolvePlaces.mockResolvedValue({
+      candidates: [candidate],
+      metrics: {
+        provider: "google_places",
+        model: null,
+        durationMs: 5,
+        requestCount: 1,
+        inputTokens: null,
+        outputTokens: null,
+        thoughtTokens: null,
+        toolUseTokens: null,
+        totalTokens: null,
+        groundingQueryCount: null,
+      },
+    });
+
+    await expect(processMatpinQueue(1)).resolves.toEqual([{
+      state: "saved",
+      messageId: baseJob.messageId,
+    }]);
+
+    expect(mocks.analyze).not.toHaveBeenCalled();
+    expect(mocks.completeExtraction).not.toHaveBeenCalled();
+    expect(mocks.resolvePlaces).toHaveBeenCalledWith(
+      expect.objectContaining({ summary: "추출 결과를 다시 사용해요." }),
+      expect.any(Object),
+    );
+    expect(mocks.completeCache).toHaveBeenCalledWith(expect.objectContaining({
+      metrics: expect.objectContaining({
+        model: `cache:${MATPIN_EXTRACTION_CACHE_VERSION}`,
+        totalTokens: 0,
+      }),
+    }));
+    expect(mocks.recordUsage).toHaveBeenCalledWith(expect.objectContaining({
+      stage: "extraction",
+      provider: "cache",
+      requestCount: 0,
+    }), expect.any(Object));
   });
 });
