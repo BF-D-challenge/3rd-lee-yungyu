@@ -44,7 +44,7 @@ test("미인증 관리자 mutation은 pipeline 상태를 노출하지 않는다"
   }
 });
 
-test("장소 확정과 개인정보 삭제 API는 invalid pipeline에서도 차단 가드를 적용하지 않는다", async ({ request }) => {
+test("장소 확정과 개인정보 삭제 API는 pipeline보다 사용자 인증을 먼저 확인한다", async ({ request }) => {
   const confirm = await request.post(
     "/api/matpin/messages/11111111-1111-4111-8111-111111111111/confirm",
     {
@@ -61,8 +61,8 @@ test("장소 확정과 개인정보 삭제 API는 invalid pipeline에서도 차�
 
   expect(confirm.status()).toBe(503);
   expect(await confirm.json()).toEqual({ error: "not_configured" });
-  expect(account.status()).toBe(503);
-  expect(await account.json()).toEqual({ error: "delete_failed" });
-  expect(savedPlace.status()).toBe(503);
-  expect(await savedPlace.json()).toEqual({ error: "not_configured" });
+  expect(account.status()).toBe(401);
+  expect(await account.json()).toEqual({ error: "login_required" });
+  expect(savedPlace.status()).toBe(401);
+  expect(await savedPlace.json()).toEqual({ error: "login_required" });
 });

@@ -40,9 +40,18 @@ export function buildMatpinReceiptReply(input: {
     ].join("\n");
   }
 
+  if (!input.isReturningUser) {
+    return [
+      "안녕하세요. 맛핀입니다.",
+      "맛핀은 맛집, 카페 또는 여행지 게시물 속 장소를 찾아 내 보관함에 저장해드려요.",
+      `방금 보내주신 ${input.mediaKind}를 받았고, 장소를 확인하고 있어요.`,
+      "저장되면 이 대화로 보관함 링크를 보내드릴게요.",
+    ].join("\n");
+  }
+
   return [
     `${input.mediaKind} 받았습니다.`,
-    input.isReturningUser ? "이번 장소도 확인하고 있어요." : "장소 정보를 확인하고 있어요.",
+    "이번 장소도 확인하고 있어요.",
     "저장이 끝나면 바로 알려드리겠습니다.",
   ].join("\n");
 }

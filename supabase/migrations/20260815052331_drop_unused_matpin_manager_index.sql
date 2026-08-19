@@ -1,0 +1,1 @@
+drop index public.matpin_instagram_users_manager_user_idx;

@@ -2,15 +2,16 @@
 
 import {
   ArrowLeft,
+  BookmarkCheck,
   Check,
-  ChevronRight,
   CircleHelp,
-  ExternalLink,
-  Heart,
+  Info,
   LoaderCircle,
   MapPin,
   Navigation,
   Share2,
+  ShieldCheck,
+  SquareArrowOutUpRight,
   TrainFront,
 } from "lucide-react";
 import Link from "next/link";
@@ -31,6 +32,7 @@ type ShareState = "idle" | "shared" | "copied" | "error";
 export function MatpinReelDetail({ reelId, stationName }: { reelId: string; stationName: string }) {
   const { token, places, state, error, preview } = useMatpinLibrary();
   const detailsRef = useRef<HTMLElement | null>(null);
+  const detailsHeadingRef = useRef<HTMLHeadingElement | null>(null);
   const [shareState, setShareState] = useState<ShareState>("idle");
   const groups = useMemo(() => groupMatpinPlacesByStation(places), [places]);
   const group = groups.find((item) => item.name === stationName) ?? null;
@@ -73,6 +75,13 @@ export function MatpinReelDetail({ reelId, stationName }: { reelId: string; stat
     }
   };
 
+  const scrollToDetails = () => {
+    if (!detailsRef.current) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    detailsHeadingRef.current?.focus({ preventScroll: true });
+    detailsRef.current.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  };
+
   return (
     <main className={styles.detailPage} data-clarity-mask="true">
       <section className={styles.detailMedia} aria-label={`${primary.place.name} 게시물`}>
@@ -92,31 +101,64 @@ export function MatpinReelDetail({ reelId, stationName }: { reelId: string; stat
         <div className={styles.detailShade} aria-hidden="true" />
         <div className={styles.detailTopActions}>
           <Link href={backHref} aria-label={`${group.name} 영상 목록으로 돌아가기`}><ArrowLeft aria-hidden="true" size={22} /></Link>
-          <span aria-label="저장됨" title="저장됨"><Heart aria-hidden="true" fill="currentColor" size={18} /></span>
+          <span className={styles.savedStatus} aria-label="저장된 게시물">
+            <BookmarkCheck aria-hidden="true" size={17} />
+            저장됨
+          </span>
         </div>
       </section>
 
       <section className={styles.detailBody}>
         <div className={styles.detailTitle}>
-          <span><TrainFront aria-hidden="true" size={14} /> {group.name}</span>
+          <span>
+            {group.isStation ? <TrainFront aria-hidden="true" size={15} /> : <MapPin aria-hidden="true" size={15} />}
+            {group.name}
+          </span>
           <h1>{primary.place.name}</h1>
           <p>{presentation.ownerUsername ? `@${presentation.ownerUsername}` : "Instagram 원본 게시물"}</p>
         </div>
 
-        <nav className={styles.detailActions} aria-label="게시물 주요 행동">
+        <nav
+          className={styles.detailActions}
+          aria-label="게시물 주요 행동"
+          data-original-unavailable={!originalUrl}
+        >
           {originalUrl ? (
-            <a href={originalUrl} target="_blank" rel="noreferrer"><ExternalLink aria-hidden="true" size={18} /><span>원본 게시물</span></a>
-          ) : <span aria-disabled="true"><ExternalLink aria-hidden="true" size={18} /><span>원본 없음</span></span>}
-          <a href={primary.place.mapUrl} target="_blank" rel="noreferrer"><Navigation aria-hidden="true" size={18} /><span>길찾기</span></a>
-          <button type="button" onClick={shareOriginal}><Share2 aria-hidden="true" size={18} /><span>원본 게시물 공유</span></button>
-          <button type="button" onClick={() => detailsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}><MapPin aria-hidden="true" size={18} /><span>장소 정보</span></button>
+            <a
+              className={styles.detailActionPrimary}
+              href={originalUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="원본 게시물"
+            >
+              <SquareArrowOutUpRight aria-hidden="true" size={17} />
+              <span>원본</span>
+            </a>
+          ) : (
+            <span className={styles.detailActionPrimary} aria-disabled="true">
+              <SquareArrowOutUpRight aria-hidden="true" size={17} />
+              <span>원본 없음</span>
+            </span>
+          )}
+          <a href={primary.place.mapUrl} target="_blank" rel="noreferrer" aria-label="길찾기">
+            <Navigation aria-hidden="true" size={17} />
+            <span>길찾기</span>
+          </a>
+          <button type="button" onClick={shareOriginal} disabled={!originalUrl} aria-label="원본 게시물 공유">
+            <Share2 aria-hidden="true" size={17} />
+            <span>공유</span>
+          </button>
+          <button type="button" onClick={scrollToDetails} aria-label="장소 정보">
+            <Info aria-hidden="true" size={17} />
+            <span>장소</span>
+          </button>
         </nav>
 
         {shareState !== "idle" ? (
           <p className={styles.shareFeedback} aria-live="polite">
             {shareState === "shared" ? <><Check aria-hidden="true" size={14} /> 원본 게시물을 공유했어요.</> : null}
             {shareState === "copied" ? <><Check aria-hidden="true" size={14} /> 원본 게시물 링크를 복사했어요.</> : null}
-            {shareState === "error" ? "원본 게시물을 공유하지 못했어요. 원본 게시물 버튼을 이용해주세요." : null}
+            {shareState === "error" ? "원본 게시물을 공유하지 못했어요. 원본 보기 버튼을 이용해주세요." : null}
           </p>
         ) : null}
 
@@ -124,8 +166,8 @@ export function MatpinReelDetail({ reelId, stationName }: { reelId: string; stat
 
         <section className={styles.placeDetails} ref={detailsRef} aria-labelledby="place-details-title">
           <div className={styles.detailSectionHeading}>
-            <span>이 역에서 찾은 장소</span>
-            <h2 id="place-details-title">{group.name}에서<br />가기 쉬워요.</h2>
+            <span>{group.isStation ? "이 역에서 찾은 장소" : "이 지역에서 찾은 장소"}</span>
+            <h2 id="place-details-title" ref={detailsHeadingRef} tabIndex={-1}>{group.name}에서 가기 쉬워요.</h2>
           </div>
 
           <div className={styles.placeDetailList}>
@@ -138,7 +180,7 @@ export function MatpinReelDetail({ reelId, stationName }: { reelId: string; stat
                     <strong>{saved.place.name}</strong>
                     <p>{group.name}{minutes ? `, 도보 약 ${minutes}분` : ""}</p>
                   </div>
-                  <a href={saved.place.mapUrl} target="_blank" rel="noreferrer" aria-label={`${saved.place.name} 길찾기`}><ChevronRight aria-hidden="true" size={20} /></a>
+                  <a href={saved.place.mapUrl} target="_blank" rel="noreferrer" aria-label={`${saved.place.name} 길찾기`}><Navigation aria-hidden="true" size={19} /></a>
                   <dl>
                     <div><dt>주소</dt><dd>{saved.place.address}</dd></div>
                     {saved.place.category ? <div><dt>종류</dt><dd>{saved.place.category}</dd></div> : null}
@@ -150,7 +192,7 @@ export function MatpinReelDetail({ reelId, stationName }: { reelId: string; stat
         </section>
 
         <aside className={styles.detailPrivacy}>
-          <Check aria-hidden="true" size={16} /> 내 위치가 아니라 게시물 속 장소 주소로 역을 정했어요.
+          <ShieldCheck aria-hidden="true" size={17} /> 내 위치가 아니라 게시물 속 장소 주소로 역을 정했어요.
         </aside>
       </section>
     </main>

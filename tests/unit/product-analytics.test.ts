@@ -10,9 +10,11 @@ describe("product analytics route gate", () => {
     expect(shouldLoadProductAnalytics("/matpin/admin/conversations/user-1")).toBe(false);
   });
 
-  it("keeps analytics enabled for public pages and similarly named routes", () => {
+  it("keeps analytics out of Matpin private and public profile pages", () => {
     expect(shouldLoadProductAnalytics("/")).toBe(true);
-    expect(shouldLoadProductAnalytics("/matpin/saved")).toBe(true);
+    expect(shouldLoadProductAnalytics("/matpin/saved")).toBe(false);
+    expect(shouldLoadProductAnalytics("/matpin/saved/public.foodie")).toBe(false);
+    expect(shouldLoadProductAnalytics("/matpin/reel/Post_123")).toBe(false);
     expect(shouldLoadProductAnalytics("/matpin/administrator")).toBe(true);
     expect(shouldLoadProductAnalytics(null)).toBe(false);
   });

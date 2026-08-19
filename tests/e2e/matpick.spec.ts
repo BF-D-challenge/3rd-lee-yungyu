@@ -263,6 +263,7 @@ test.describe("맛핀 대표 경로", () => {
     await mockSavedPlaces(page);
 
     const expectNoErrors = await openWithoutRuntimeErrors(page, "/matpin/saved#token=test-access-token");
+    await expect(page.getByTestId("matpin-saved-view")).toBeVisible();
     await expect(page.getByRole("heading", { name: "저장한 역" })).toBeVisible();
     await expect(page.getByText("역 1개, 영상 3개")).toBeVisible();
     await expect(page.getByRole("link", { name: /가까운 역 역삼역 영상 3개/ })).toBeVisible();

@@ -1,15 +1,23 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import {
+  matpinAnalysisSchema,
   matpinInboundMessageSchema,
+  matpinConfirmationSourceSchema,
   matpinMessagePublicSchema,
   matpinPlaceCandidateSchema,
+  matpinPublicPlaceSchema,
+  matpinPublicProfileSchema,
   matpinSavedPlaceSchema,
   type MatpinInboundMessage,
+  type MatpinConfirmationSource,
+  type MatpinAnalysis,
   type MatpinMessagePublic,
   type MatpinPlaceCandidate,
+  type MatpinPublicProfile,
   type MatpinSavedPlace,
 } from "@/lib/matpin/contract";
+import { normalizeInstagramHandle } from "@/lib/instagram-handle";
 import {
   createMatpinAccessToken,
   createMatpinShortLinkCode,
@@ -165,6 +173,18 @@ const mediaAnalysisCacheClaimSchema = z.discriminatedUnion("state", [
   }),
 ]);
 
+const mediaExtractionCacheClaimSchema = z.discriminatedUnion("state", [
+  z.object({
+    state: z.literal("owner"),
+    claimToken: z.string().uuid(),
+  }),
+  z.object({ state: z.literal("pending") }),
+  z.object({
+    state: z.literal("hit"),
+    analysis: matpinAnalysisSchema,
+  }),
+]);
+
 const claimedJobEnvelopeSchema = z.object({
   skipped: z.boolean().optional(),
   poisoned: z.boolean().optional().default(false),
@@ -256,6 +276,22 @@ const savedPlaceRowSchema = z.object({
   saved_at: z.string().datetime({ offset: true }),
 });
 
+const publicProfileRowSchema = z.object({
+  username: z.string(),
+  sender_hash: z.string().length(64),
+});
+
+const publicSavedPlaceRowSchema = z.object({
+  reel_id: z.string(),
+  reel_url: z.string().url().nullable(),
+  place: matpinPlaceCandidateSchema,
+});
+
+const managerUserRowSchema = z.object({
+  sender_hash: z.string().length(64),
+  manager_user_id: z.string().uuid().nullable(),
+});
+
 export type MatpinClaimedJob = {
   queueMessageId: number;
   analysisClaimToken: string;
@@ -276,6 +312,7 @@ export type MatpinClaimedJob = {
 };
 
 export type MatpinMediaAnalysisCacheClaim = z.infer<typeof mediaAnalysisCacheClaimSchema>;
+export type MatpinMediaExtractionCacheClaim = z.infer<typeof mediaExtractionCacheClaimSchema>;
 export type MatpinConversationContext = z.infer<typeof conversationContextSchema>;
 
 export function getMatpinServerClient(): SupabaseClient {
@@ -654,6 +691,72 @@ export async function releaseMatpinMediaAnalysis(
   if (error) throw new Error(`matpin_cache_release_failed:${error.message}`);
 }
 
+export async function claimMatpinMediaExtraction(
+  mediaKey: string,
+  extractionVersion: string,
+  options: { signal?: AbortSignal } = {},
+): Promise<MatpinMediaExtractionCacheClaim> {
+  const key = z.string().trim().min(1).max(500).parse(mediaKey);
+  const version = z.string().trim().min(1).max(120).parse(extractionVersion);
+  const client = getMatpinServerClient();
+  const request = withAbortSignal(client.rpc("matpin_claim_media_extraction", {
+    p_media_key: key,
+    p_extraction_version: version,
+  }), options.signal);
+  const { data, error } = await request;
+  if (error) throw new Error(`matpin_extraction_cache_claim_failed:${error.message}`);
+  return mediaExtractionCacheClaimSchema.parse(data);
+}
+
+export async function completeMatpinMediaExtraction(input: {
+  mediaKey: string;
+  extractionVersion: string;
+  claimToken: string;
+  analysis: MatpinAnalysis;
+  metrics: MatpinAnalysisResult["metrics"];
+  signal?: AbortSignal;
+}): Promise<void> {
+  const key = z.string().trim().min(1).max(500).parse(input.mediaKey);
+  const version = z.string().trim().min(1).max(120).parse(input.extractionVersion);
+  const analysis = matpinAnalysisSchema.parse(input.analysis);
+  const client = getMatpinServerClient();
+  const request = withAbortSignal(client.rpc("matpin_complete_media_extraction", {
+    p_media_key: key,
+    p_extraction_version: version,
+    p_claim_token: z.string().uuid().parse(input.claimToken),
+    p_analysis: analysis,
+    p_analysis_model: input.metrics.model,
+    p_analysis_duration_ms: input.metrics.durationMs,
+    p_request_count: input.metrics.requestCount,
+    p_media_bytes: input.metrics.mediaBytes,
+    p_input_tokens: input.metrics.inputTokens,
+    p_output_tokens: input.metrics.outputTokens,
+    p_thought_tokens: input.metrics.thoughtTokens,
+    p_tool_use_tokens: input.metrics.toolUseTokens,
+    p_total_tokens: input.metrics.totalTokens,
+  }), input.signal);
+  const { error } = await request;
+  if (error) throw new Error(`matpin_extraction_cache_complete_failed:${error.message}`);
+}
+
+export async function releaseMatpinMediaExtraction(
+  mediaKey: string,
+  extractionVersion: string,
+  claimToken: string,
+  options: { signal?: AbortSignal } = {},
+): Promise<void> {
+  const key = z.string().trim().min(1).max(500).parse(mediaKey);
+  const version = z.string().trim().min(1).max(120).parse(extractionVersion);
+  const client = getMatpinServerClient();
+  const request = withAbortSignal(client.rpc("matpin_release_media_extraction", {
+    p_media_key: key,
+    p_extraction_version: version,
+    p_claim_token: z.string().uuid().parse(claimToken),
+  }), options.signal);
+  const { error } = await request;
+  if (error) throw new Error(`matpin_extraction_cache_release_failed:${error.message}`);
+}
+
 export async function retryMatpinMessage(input: {
   messageId: string;
   queueMessageId: number;
@@ -703,7 +806,7 @@ export async function confirmMatpinPlace(input: {
   messageId: string;
   senderHash: string;
   candidate: MatpinPlaceCandidate;
-  confirmationSource: "automatic_high_confidence" | "user_confirmation";
+  confirmationSource: MatpinConfirmationSource;
 }): Promise<number> {
   const candidate = matpinPlaceCandidateSchema.parse(input.candidate);
   const client = getMatpinServerClient();
@@ -721,15 +824,16 @@ export async function saveMatpinPlaces(input: {
   messageId: string;
   senderHash: string;
   candidates: MatpinPlaceCandidate[];
-  confirmationSource: "automatic_high_confidence" | "user_confirmation";
+  confirmationSource: MatpinConfirmationSource;
 }): Promise<number> {
   const candidates = z.array(matpinPlaceCandidateSchema).min(1).max(3).parse(input.candidates);
+  const confirmationSource = matpinConfirmationSourceSchema.parse(input.confirmationSource);
   const client = getMatpinServerClient();
   const { data, error } = await client.rpc("matpin_save_places", {
     p_message_id: input.messageId,
     p_sender_hash: input.senderHash,
     p_places: candidates,
-    p_confirmation_source: input.confirmationSource,
+    p_confirmation_source: confirmationSource,
   });
   if (error) throw new Error(`matpin_save_places_failed:${error.message}`);
   return z.coerce.number().int().min(1).max(3).parse(data);
@@ -740,7 +844,7 @@ export async function stageMatpinPlaces(input: {
   analysisClaimToken: string;
   senderHash: string;
   candidates: MatpinPlaceCandidate[];
-  confirmationSource: "automatic_high_confidence" | "user_confirmation";
+  confirmationSource: MatpinConfirmationSource;
   signal?: AbortSignal;
 }): Promise<number> {
   const candidates = z.array(matpinPlaceCandidateSchema).min(1).max(3).parse(input.candidates);
@@ -768,6 +872,47 @@ async function senderHashFromAccessToken(accessToken: string): Promise<string | 
     .maybeSingle<{ sender_hash: string }>();
   if (error) throw new Error(`matpin_user_read_failed:${error.message}`);
   return data?.sender_hash ?? null;
+}
+
+async function managedSenderHashFromAccessToken(
+  accessToken: string,
+  authUserId: string,
+): Promise<string | null> {
+  const userId = z.string().uuid().parse(authUserId);
+  const tokenHash = hashMatpinAccessToken(accessToken);
+  const client = getMatpinServerClient();
+  const { data, error } = await client
+    .from("matpin_instagram_users")
+    .select("sender_hash,manager_user_id")
+    .eq("access_token_hash", tokenHash)
+    .gt("link_expires_at", new Date().toISOString())
+    .maybeSingle();
+  if (error) throw new Error(`matpin_manager_read_failed:${error.message}`);
+  if (!data) return null;
+
+  const current = managerUserRowSchema.parse(data);
+  if (current.manager_user_id === userId) return current.sender_hash;
+  if (current.manager_user_id) return null;
+
+  const now = new Date().toISOString();
+  const claim = await client
+    .from("matpin_instagram_users")
+    .update({ manager_user_id: userId, manager_linked_at: now })
+    .eq("sender_hash", current.sender_hash)
+    .is("manager_user_id", null)
+    .select("sender_hash,manager_user_id")
+    .maybeSingle();
+  if (claim.error) throw new Error(`matpin_manager_claim_failed:${claim.error.message}`);
+  if (claim.data) return managerUserRowSchema.parse(claim.data).sender_hash;
+
+  const reread = await client
+    .from("matpin_instagram_users")
+    .select("sender_hash,manager_user_id")
+    .eq("sender_hash", current.sender_hash)
+    .maybeSingle();
+  if (reread.error) throw new Error(`matpin_manager_reread_failed:${reread.error.message}`);
+  const claimed = reread.data ? managerUserRowSchema.parse(reread.data) : null;
+  return claimed?.manager_user_id === userId ? claimed.sender_hash : null;
 }
 
 export async function readMatpinMessage(
@@ -829,8 +974,81 @@ export async function listMatpinSavedPlaces(accessToken: string): Promise<Matpin
   }));
 }
 
-export async function deleteMatpinSavedPlace(id: number, accessToken: string): Promise<boolean> {
-  const senderHash = await senderHashFromAccessToken(accessToken);
+export async function readMatpinPublicProfile(username: string): Promise<MatpinPublicProfile | null> {
+  const normalized = normalizeInstagramHandle(username);
+  if (!normalized) return null;
+
+  const client = getMatpinServerClient();
+  const profileResult = await client
+    .from("matpin_public_profiles")
+    .select("username,sender_hash")
+    .eq("username", normalized)
+    .eq("is_public", true)
+    .maybeSingle();
+  if (profileResult.error) {
+    throw new Error(`matpin_public_profile_read_failed:${profileResult.error.message}`);
+  }
+  if (!profileResult.data) return null;
+
+  const profile = publicProfileRowSchema.parse(profileResult.data);
+  const placesResult = await client
+    .from("matpin_saved_places")
+    .select("reel_id,reel_url,place")
+    .eq("sender_hash", profile.sender_hash)
+    .is("deleted_at", null)
+    .order("saved_at", { ascending: false })
+    .limit(100);
+  if (placesResult.error) {
+    throw new Error(`matpin_public_places_read_failed:${placesResult.error.message}`);
+  }
+
+  const rows = z.array(publicSavedPlaceRowSchema).parse(placesResult.data ?? []);
+
+  return matpinPublicProfileSchema.parse({
+    username: profile.username,
+    places: rows.flatMap((row) => {
+      const result = matpinPublicPlaceSchema.safeParse({
+        reelId: row.reel_id,
+        reelUrl: row.reel_url,
+        place: {
+          name: row.place.name,
+          area: row.place.area,
+          category: row.place.category,
+          address: row.place.address,
+          latitude: row.place.latitude,
+          longitude: row.place.longitude,
+          mapUrl: row.place.mapUrl,
+        },
+      });
+      return result.success ? [result.data] : [];
+    }),
+  });
+}
+
+export async function disableMatpinPublicProfile(
+  accessToken: string,
+  authUserId: string,
+): Promise<boolean> {
+  const senderHash = await managedSenderHashFromAccessToken(accessToken, authUserId);
+  if (!senderHash) return false;
+  const now = new Date().toISOString();
+  const client = getMatpinServerClient();
+  const { data, error } = await client
+    .from("matpin_public_profiles")
+    .update({ is_public: false, disabled_at: now, updated_at: now })
+    .eq("sender_hash", senderHash)
+    .select("sender_hash")
+    .maybeSingle<{ sender_hash: string }>();
+  if (error) throw new Error(`matpin_public_profile_disable_failed:${error.message}`);
+  return Boolean(data);
+}
+
+export async function deleteMatpinSavedPlace(
+  id: number,
+  accessToken: string,
+  authUserId: string,
+): Promise<boolean> {
+  const senderHash = await managedSenderHashFromAccessToken(accessToken, authUserId);
   if (!senderHash) return false;
   const client = getMatpinServerClient();
   const { data, error } = await client.rpc("matpin_delete_saved_place", {
@@ -841,8 +1059,11 @@ export async function deleteMatpinSavedPlace(id: number, accessToken: string): P
   return data === true;
 }
 
-export async function deleteMatpinAccount(accessToken: string): Promise<boolean> {
-  const senderHash = await senderHashFromAccessToken(accessToken);
+export async function deleteMatpinAccount(
+  accessToken: string,
+  authUserId: string,
+): Promise<boolean> {
+  const senderHash = await managedSenderHashFromAccessToken(accessToken, authUserId);
   if (!senderHash) return false;
   const client = getMatpinServerClient();
   const { error, count } = await client

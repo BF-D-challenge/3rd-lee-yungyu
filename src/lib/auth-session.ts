@@ -33,7 +33,7 @@ export interface AuthSessionOptions {
 /** 예약 화면이 실제 OAuth/DB 모드인지, 브라우저 전용 데모 모드인지 표시할 때 쓴다. */
 export const reservationUsesSupabase = supabaseEnabled;
 
-export type AuthContext = "creator" | "receiver";
+export type AuthContext = "creator" | "receiver" | "matpin_data";
 
 const safeReturnPath = (value: string): string => {
   if (typeof window === "undefined") return "/";

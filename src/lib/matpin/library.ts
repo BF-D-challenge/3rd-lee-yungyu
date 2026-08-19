@@ -1,11 +1,21 @@
-import type { MatpinSavedPlace } from "@/lib/matpin/contract";
+import type { MatpinPlaceCandidate, MatpinSavedPlace } from "@/lib/matpin/contract";
 import { stationForMatpinPlace } from "@/lib/matpin/stations";
+
+export type MatpinLibraryPlace = Pick<MatpinSavedPlace, "reelId" | "reelUrl"> & {
+  id?: number;
+  messageId?: string;
+  savedAt?: string;
+  place: Pick<
+    MatpinPlaceCandidate,
+    "name" | "area" | "category" | "address" | "latitude" | "longitude" | "mapUrl"
+  > & Partial<Pick<MatpinPlaceCandidate, "id" | "confidence" | "matchReason">>;
+};
 
 export type MatpinStationReel = {
   key: string;
   reelId: string;
   reelUrl: string | null;
-  places: MatpinSavedPlace[];
+  places: MatpinLibraryPlace[];
   savedAt: string;
   distanceMeters: number | null;
 };
@@ -86,7 +96,7 @@ function minDistance(current: number | null, next: number | null): number | null
   return Math.min(current, next);
 }
 
-export function groupMatpinPlacesByStation(places: MatpinSavedPlace[]): MatpinStationGroup[] {
+export function groupMatpinPlacesByStation(places: MatpinLibraryPlace[]): MatpinStationGroup[] {
   const groups = new Map<string, MatpinStationGroup & { reelMap: Map<string, MatpinStationReel> }>();
 
   for (const saved of places) {
@@ -96,25 +106,26 @@ export function groupMatpinPlacesByStation(places: MatpinSavedPlace[]): MatpinSt
       isStation: station.isStation,
       reels: [],
       reelMap: new Map<string, MatpinStationReel>(),
-      latestSavedAt: saved.savedAt,
+      latestSavedAt: saved.savedAt ?? "",
     };
-    const reelKey = saved.reelId || saved.messageId;
+    const reelKey = saved.reelId || saved.messageId || saved.place.mapUrl;
+    const savedAt = saved.savedAt ?? "";
     const existingReel = existingGroup.reelMap.get(reelKey);
     if (existingReel) {
       existingReel.places.push(saved);
       existingReel.distanceMeters = minDistance(existingReel.distanceMeters, station.distanceMeters);
-      if (saved.savedAt > existingReel.savedAt) existingReel.savedAt = saved.savedAt;
+      if (savedAt > existingReel.savedAt) existingReel.savedAt = savedAt;
     } else {
       existingGroup.reelMap.set(reelKey, {
         key: `${station.name}-${reelKey}`,
         reelId: saved.reelId,
         reelUrl: saved.reelUrl,
         places: [saved],
-        savedAt: saved.savedAt,
+        savedAt,
         distanceMeters: station.distanceMeters,
       });
     }
-    if (saved.savedAt > existingGroup.latestSavedAt) existingGroup.latestSavedAt = saved.savedAt;
+    if (savedAt > existingGroup.latestSavedAt) existingGroup.latestSavedAt = savedAt;
     groups.set(station.name, existingGroup);
   }
 
@@ -132,12 +143,12 @@ export function matpinReelSearchText(reel: MatpinStationReel): string {
     saved.place.area,
     saved.place.category,
     saved.place.address,
-    saved.place.matchReason,
+    saved.place.matchReason ?? "",
   ]).join(" ").toLocaleLowerCase("ko-KR");
 }
 
-export function matpinUniqueReelCount(places: MatpinSavedPlace[]): number {
-  return new Set(places.map((saved) => saved.reelId || saved.messageId)).size;
+export function matpinUniqueReelCount(places: MatpinLibraryPlace[]): number {
+  return new Set(places.map((saved) => saved.reelId || saved.messageId || saved.place.mapUrl)).size;
 }
 
 export function matpinStationPath(stationName: string): string {

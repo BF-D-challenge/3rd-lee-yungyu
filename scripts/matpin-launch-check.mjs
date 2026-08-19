@@ -74,7 +74,7 @@ const checks = [
     run: async () => {
       const { response, body } = await request("/privacy");
       requireStatus("개인정보처리방침", response, 200);
-      requireText("개인정보처리방침", body, "2026년 8월 9일");
+      requireText("개인정보처리방침", body, "2026년 8월 14일");
       requireText("개인정보 문의", body, "@matpin.kr");
     },
   },

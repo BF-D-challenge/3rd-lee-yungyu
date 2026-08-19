@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { z } from "zod";
-import { matpinSavedPlaceSchema, type MatpinSavedPlace } from "@/lib/matpin/contract";
-import { MATPIN_DEVELOPMENT_PREVIEW_PLACES } from "@/lib/matpin/library";
+import { matpinSavedPlaceSchema } from "@/lib/matpin/contract";
+import { MATPIN_DEVELOPMENT_PREVIEW_PLACES, type MatpinLibraryPlace } from "@/lib/matpin/library";
 
 const responseSchema = z.object({ places: z.array(matpinSavedPlaceSchema).max(100) });
 export type MatpinLibraryState = "loading" | "ready" | "error";
@@ -13,20 +13,26 @@ function tokenFromHash(): string {
   return new URLSearchParams(window.location.hash.slice(1)).get("token") ?? "";
 }
 
-export function useMatpinLibrary(): {
+export function useMatpinLibrary(initialPlaces?: MatpinLibraryPlace[]): {
   token: string;
-  places: MatpinSavedPlace[];
+  places: MatpinLibraryPlace[];
   state: MatpinLibraryState;
   error: string;
   preview: boolean;
 } {
   const [token, setToken] = useState("");
-  const [places, setPlaces] = useState<MatpinSavedPlace[]>([]);
-  const [state, setState] = useState<MatpinLibraryState>("loading");
+  const [places, setPlaces] = useState<MatpinLibraryPlace[]>(initialPlaces ?? []);
+  const [state, setState] = useState<MatpinLibraryState>(initialPlaces ? "ready" : "loading");
   const [error, setError] = useState("");
   const [preview, setPreview] = useState(false);
 
   useEffect(() => {
+    if (initialPlaces) {
+      setPlaces(initialPlaces);
+      setState("ready");
+      return;
+    }
+
     const developmentPreview = process.env.NODE_ENV === "development"
       && new URLSearchParams(window.location.search).get("preview") === "station-reels";
     setPreview(developmentPreview);
@@ -62,7 +68,7 @@ export function useMatpinLibrary(): {
       setState("error");
     });
     return () => controller.abort();
-  }, []);
+  }, [initialPlaces]);
 
   return { token, places, state, error, preview };
 }

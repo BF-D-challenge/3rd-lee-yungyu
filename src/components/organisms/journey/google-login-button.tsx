@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { LoaderCircle, LogIn } from "lucide-react";
 import { Button } from "@/components/atoms/button";
-import { beginAuth, consumeAuthPending, markAuthPending, type AuthSession } from "@/lib/auth-session";
+import { beginAuth, consumeAuthPending, markAuthPending, type AuthContext, type AuthSession } from "@/lib/auth-session";
 import { track } from "@/lib/track";
 
 export interface GoogleLoginButtonProps {
-  context: "creator" | "receiver";
+  context: AuthContext;
   onAuthenticated: (session: AuthSession) => void;
   onBeforeAuth?: () => void;
   returnTo?: string;
