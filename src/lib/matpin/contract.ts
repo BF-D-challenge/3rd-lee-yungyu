@@ -138,6 +138,13 @@ export const matpinPlaceCandidateSchema = z.object({
 });
 export type MatpinPlaceCandidate = z.infer<typeof matpinPlaceCandidateSchema>;
 
+export const matpinConfirmationSourceSchema = z.enum([
+  "automatic_high_confidence",
+  "user_confirmation",
+  "operator_verified",
+]);
+export type MatpinConfirmationSource = z.infer<typeof matpinConfirmationSourceSchema>;
+
 export const matpinMessagePublicSchema = z.object({
   id: z.string().uuid(),
   status: z.enum(["needs_confirmation", "saved", "failed", "deleted"]),
@@ -155,7 +162,7 @@ export const matpinSavedPlaceSchema = z.object({
   reelId: z.string().min(1),
   reelUrl: z.string().url().nullable(),
   place: matpinPlaceCandidateSchema,
-  confirmationSource: z.enum(["automatic_high_confidence", "user_confirmation"]),
+  confirmationSource: matpinConfirmationSourceSchema,
   savedAt: z.string().datetime({ offset: true }),
 });
 export type MatpinSavedPlace = z.infer<typeof matpinSavedPlaceSchema>;

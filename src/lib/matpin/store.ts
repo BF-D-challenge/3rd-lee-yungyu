@@ -3,12 +3,14 @@ import { z } from "zod";
 import {
   matpinAnalysisSchema,
   matpinInboundMessageSchema,
+  matpinConfirmationSourceSchema,
   matpinMessagePublicSchema,
   matpinPlaceCandidateSchema,
   matpinPublicPlaceSchema,
   matpinPublicProfileSchema,
   matpinSavedPlaceSchema,
   type MatpinInboundMessage,
+  type MatpinConfirmationSource,
   type MatpinAnalysis,
   type MatpinMessagePublic,
   type MatpinPlaceCandidate,
@@ -804,7 +806,7 @@ export async function confirmMatpinPlace(input: {
   messageId: string;
   senderHash: string;
   candidate: MatpinPlaceCandidate;
-  confirmationSource: "automatic_high_confidence" | "user_confirmation";
+  confirmationSource: MatpinConfirmationSource;
 }): Promise<number> {
   const candidate = matpinPlaceCandidateSchema.parse(input.candidate);
   const client = getMatpinServerClient();
@@ -822,15 +824,16 @@ export async function saveMatpinPlaces(input: {
   messageId: string;
   senderHash: string;
   candidates: MatpinPlaceCandidate[];
-  confirmationSource: "automatic_high_confidence" | "user_confirmation";
+  confirmationSource: MatpinConfirmationSource;
 }): Promise<number> {
   const candidates = z.array(matpinPlaceCandidateSchema).min(1).max(3).parse(input.candidates);
+  const confirmationSource = matpinConfirmationSourceSchema.parse(input.confirmationSource);
   const client = getMatpinServerClient();
   const { data, error } = await client.rpc("matpin_save_places", {
     p_message_id: input.messageId,
     p_sender_hash: input.senderHash,
     p_places: candidates,
-    p_confirmation_source: input.confirmationSource,
+    p_confirmation_source: confirmationSource,
   });
   if (error) throw new Error(`matpin_save_places_failed:${error.message}`);
   return z.coerce.number().int().min(1).max(3).parse(data);
@@ -841,7 +844,7 @@ export async function stageMatpinPlaces(input: {
   analysisClaimToken: string;
   senderHash: string;
   candidates: MatpinPlaceCandidate[];
-  confirmationSource: "automatic_high_confidence" | "user_confirmation";
+  confirmationSource: MatpinConfirmationSource;
   signal?: AbortSignal;
 }): Promise<number> {
   const candidates = z.array(matpinPlaceCandidateSchema).min(1).max(3).parse(input.candidates);
