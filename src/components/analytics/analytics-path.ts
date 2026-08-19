@@ -1,9 +1,19 @@
 const MATPIN_ADMIN_PATH = "/matpin/admin";
+const PUBLIC_MATPIN_PROFILE_PATH = /^\/(?:@[a-z0-9._]{1,30}|matpin\/(?:public|saved)\/[a-z0-9._]{1,30})\/?$/i;
+const PRIVATE_MATPIN_TOKEN_PATH = /^\/matpin\/(?:saved|delete|confirm|station\/[^/]+|reel\/[^/]+)\/?$/i;
 
 export function isMatpinAdminPath(pathname: string | null): boolean {
   if (!pathname) return false;
 
   return pathname === MATPIN_ADMIN_PATH || pathname.startsWith(`${MATPIN_ADMIN_PATH}/`);
+}
+
+export function isPublicMatpinProfilePath(pathname: string): boolean {
+  return PUBLIC_MATPIN_PROFILE_PATH.test(pathname);
+}
+
+export function isPrivateMatpinTokenPath(pathname: string): boolean {
+  return PRIVATE_MATPIN_TOKEN_PATH.test(pathname);
 }
 
 /**
@@ -31,5 +41,8 @@ export function isSameOriginMatpinAdminDestination(
  * its subroutes.
  */
 export function shouldLoadProductAnalytics(pathname: string | null): boolean {
-  return Boolean(pathname) && !isMatpinAdminPath(pathname);
+  return Boolean(pathname)
+    && !isMatpinAdminPath(pathname)
+    && !isPublicMatpinProfilePath(pathname as string)
+    && !isPrivateMatpinTokenPath(pathname as string);
 }

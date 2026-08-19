@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
+import type { MatpinPublicProfile } from "@/lib/matpin/contract";
 import {
   groupMatpinPlacesByStation,
   matpinPrivateHref,
@@ -26,14 +27,27 @@ import { MatpinReelArtwork } from "./matpin-reel-artwork";
 import { useMatpinLibrary } from "./use-matpin-library";
 import styles from "./matpin-map.module.css";
 
-export function MatpinSaved({ autoFocusSearch = false }: { autoFocusSearch?: boolean }) {
-  const { token, places, state, error, preview } = useMatpinLibrary();
+export function MatpinSaved({
+  autoFocusSearch = false,
+  publicProfile,
+}: {
+  autoFocusSearch?: boolean;
+  publicProfile?: MatpinPublicProfile;
+}) {
+  const publicPlaces = useMemo(() => publicProfile?.places, [publicProfile]);
+  const { token, places, state, error, preview } = useMatpinLibrary(publicPlaces);
+  const isPublic = Boolean(publicProfile);
   const [query, setQuery] = useState("");
   const searchRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     if (autoFocusSearch && state === "ready") searchRef.current?.focus();
   }, [autoFocusSearch, state]);
+
+  useEffect(() => {
+    if (!isPublic || !window.location.hash) return;
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+  }, [isPublic]);
 
   const groups = useMemo(() => groupMatpinPlacesByStation(places), [places]);
   const filteredGroups = useMemo(() => {
@@ -63,7 +77,7 @@ export function MatpinSaved({ autoFocusSearch = false }: { autoFocusSearch?: boo
   }
 
   return (
-    <main className={styles.page} data-clarity-mask="true">
+    <main className={styles.page} data-clarity-mask="true" data-testid="matpin-saved-view">
       <header className={styles.topBar}>
         <Link className={styles.iconButton} href="/matpin" aria-label="맛핀 소개로 돌아가기">
           <ArrowLeft aria-hidden="true" size={22} />
@@ -76,7 +90,7 @@ export function MatpinSaved({ autoFocusSearch = false }: { autoFocusSearch?: boo
 
       <div className={styles.content}>
         <section className={styles.intro} aria-labelledby="saved-reels-title">
-          <span className={styles.eyebrow}>내 맛집 게시물 보관함</span>
+          <span className={styles.eyebrow}>{publicProfile ? `@${publicProfile.username}의 맛집 게시물 보관함` : "내 맛집 게시물 보관함"}</span>
           <h1 id="saved-reels-title">저장한 역</h1>
           <p>역 {groups.length}개, 영상 {reelCount}개</p>
         </section>
@@ -105,31 +119,51 @@ export function MatpinSaved({ autoFocusSearch = false }: { autoFocusSearch?: boo
           <div className={styles.stationList}>
             {filteredGroups.map((group, groupIndex) => (
               <section className={styles.stationSection} key={group.name} aria-labelledby={`station-title-${groupIndex}`}>
-                <Link className={styles.stationHeading} href={matpinPrivateHref(matpinStationPath(group.name), token, preview)}>
+                {isPublic ? <div className={styles.stationHeading}>
                   <div>
                     <span>{group.isStation ? "가까운 역" : "저장한 지역"}</span>
                     <h2 id={`station-title-${groupIndex}`}>{group.name}</h2>
                   </div>
                   <b>영상 {group.reels.length}개 <ChevronRight aria-hidden="true" size={16} /></b>
-                </Link>
+                </div> : <Link className={styles.stationHeading} href={matpinPrivateHref(matpinStationPath(group.name), token, preview)}>
+                  <div>
+                    <span>{group.isStation ? "가까운 역" : "저장한 지역"}</span>
+                    <h2 id={`station-title-${groupIndex}`}>{group.name}</h2>
+                  </div>
+                  <b>영상 {group.reels.length}개 <ChevronRight aria-hidden="true" size={16} /></b>
+                </Link>}
 
                 <div className={styles.reelRail}>
-                  {group.reels.slice(0, 3).map((reel, reelIndex) => {
+                  {(isPublic ? group.reels : group.reels.slice(0, 3)).map((reel, reelIndex) => {
                     const primary = reel.places[0];
-                    return (
+                    const cardContent = <>
+                      <span className={styles.reelMedia}>
+                        <MatpinReelArtwork reel={reel} alt={`${primary.place.name} 게시물 대표 화면`} priority={groupIndex === 0 && reelIndex < 3} />
+                        <span className={styles.playBadge}><Play aria-hidden="true" fill="currentColor" size={16} /></span>
+                      </span>
+                      <span className={styles.reelCopy}>
+                        <strong>{primary.place.name}</strong>
+                      </span>
+                    </>;
+                    return isPublic ? (
+                      <a
+                        className={styles.reelCard}
+                        href={reel.reelUrl ?? primary.place.mapUrl}
+                        key={reel.key}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${group.name} ${primary.place.name} 원본 게시물 보기`}
+                      >
+                        {cardContent}
+                      </a>
+                    ) : (
                       <Link
                         className={styles.reelCard}
                         href={matpinPrivateHref(matpinReelPath(reel.reelId, group.name), token, preview)}
                         key={reel.key}
                         aria-label={`${group.name} ${primary.place.name} 영상 자세히 보기`}
                       >
-                        <span className={styles.reelMedia}>
-                          <MatpinReelArtwork reel={reel} alt={`${primary.place.name} 게시물 대표 화면`} priority={groupIndex === 0 && reelIndex < 3} />
-                          <span className={styles.playBadge}><Play aria-hidden="true" fill="currentColor" size={16} /></span>
-                        </span>
-                        <span className={styles.reelCopy}>
-                          <strong>{primary.place.name}</strong>
-                        </span>
+                        {cardContent}
                       </Link>
                     );
                   })}
@@ -151,7 +185,7 @@ export function MatpinSaved({ autoFocusSearch = false }: { autoFocusSearch?: boo
           <span><b>내 위치는 사용하지 않아요.</b><small>게시물 속 장소의 주소로 가까운 역만 찾아요.</small></span>
         </aside>
 
-        <Link className={styles.dataLink} href={`/matpin/delete#token=${encodeURIComponent(token)}`}><Settings2 aria-hidden="true" size={17} /> 내 데이터 관리</Link>
+        {isPublic ? null : <Link className={styles.dataLink} href={`/matpin/delete#token=${encodeURIComponent(token)}`}><Settings2 aria-hidden="true" size={17} /> 내 데이터 관리</Link>}
       </div>
     </main>
   );

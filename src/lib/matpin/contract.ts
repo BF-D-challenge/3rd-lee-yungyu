@@ -160,6 +160,43 @@ export const matpinSavedPlaceSchema = z.object({
 });
 export type MatpinSavedPlace = z.infer<typeof matpinSavedPlaceSchema>;
 
+const publicInstagramUrlSchema = z.string().url().refine((value) => {
+  const url = new URL(value);
+  return url.protocol === "https:" && ["instagram.com", "www.instagram.com"].includes(url.hostname);
+}, "공개 원본 게시물은 Instagram HTTPS 주소여야 합니다.");
+
+const publicMapUrlSchema = z.string().url().refine((value) => {
+  const url = new URL(value);
+  return url.protocol === "https:" && [
+    "google.com",
+    "www.google.com",
+    "maps.google.com",
+    "maps.app.goo.gl",
+    "map.kakao.com",
+    "place.map.kakao.com",
+  ].includes(url.hostname);
+}, "공개 지도 링크는 허용된 Google Maps 또는 Kakao Map HTTPS 주소여야 합니다.");
+
+export const matpinPublicPlaceSchema = z.object({
+  reelId: z.string().min(1),
+  reelUrl: publicInstagramUrlSchema.nullable(),
+  place: matpinPlaceCandidateSchema.pick({
+    name: true,
+    area: true,
+    category: true,
+    address: true,
+    latitude: true,
+    longitude: true,
+  }).extend({ mapUrl: publicMapUrlSchema }),
+});
+export type MatpinPublicPlace = z.infer<typeof matpinPublicPlaceSchema>;
+
+export const matpinPublicProfileSchema = z.object({
+  username: z.string().regex(/^[a-z0-9_](?:[a-z0-9._]*[a-z0-9_])?$/).max(30),
+  places: z.array(matpinPublicPlaceSchema).max(100),
+});
+export type MatpinPublicProfile = z.infer<typeof matpinPublicProfileSchema>;
+
 const SUPPORTED_ATTACHMENTS = new Set([
   "share",
   "ig_reel",

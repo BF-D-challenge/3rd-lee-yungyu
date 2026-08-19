@@ -24,6 +24,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/@:username([A-Za-z0-9._]{1,30})",
+        destination: "/matpin/saved/:username",
+        permanent: false,
+      },
+      {
         source: "/matpick/:path*",
         destination: "/matpin/:path*",
         permanent: true,

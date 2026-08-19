@@ -1,5 +1,13 @@
 import type { MatpinPlaceCandidate } from "@/lib/matpin/contract";
 
+export type MatpinStationPlace = Pick<
+  MatpinPlaceCandidate,
+  "area" | "address" | "latitude" | "longitude"
+> & Partial<Pick<
+  MatpinPlaceCandidate,
+  "matchReason" | "countryCode" | "regionName" | "nearbyTransit"
+>>;
+
 type StationSeed = {
   name: string;
   latitude: number;
@@ -90,7 +98,7 @@ function isWithinSouthKorea(latitude: number, longitude: number): boolean {
   return latitude >= 33 && latitude <= 39.5 && longitude >= 124 && longitude <= 132;
 }
 
-export function stationForMatpinPlace(place: MatpinPlaceCandidate): MatpinStationMatch {
+export function stationForMatpinPlace(place: MatpinStationPlace): MatpinStationMatch {
   if (place.nearbyTransit) {
     return {
       name: place.nearbyTransit.name,
@@ -109,7 +117,7 @@ export function stationForMatpinPlace(place: MatpinPlaceCandidate): MatpinStatio
     };
   }
 
-  const explicit = [place.area, place.address, place.matchReason]
+  const explicit = [place.area, place.address, place.matchReason ?? ""]
     .join(" ")
     .match(/([가-힣A-Za-z0-9·]+역)(?:\s|$|[,.·])/u)?.[1];
   if (explicit) return { name: explicit, distanceMeters: null, isStation: true };
